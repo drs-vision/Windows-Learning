@@ -59,7 +59,7 @@ public class WebShellWindow : Window
         core.WebMessageReceived += OnWebMessage;
 
         _pipe.OnEvent += ev => Dispatcher.Invoke(() => core.PostWebMessageAsString(JsonSerializer.Serialize(ev, HouseholdStore.Json)));
-        _pipe.Disconnected += () => Dispatcher.Invoke(() => core.PostWebMessageAsString("{\"name\":\"disconnected\"}"));
+        _pipe.Disconnected += () => { Log("Guardian disconnected"); Dispatcher.Invoke(() => core.PostWebMessageAsString("{\"name\":\"disconnected\"}")); };
         await TryConnectAsync();
 
         var dev = Environment.GetEnvironmentVariable("COINQUEST_WEB_DEV"); // e.g. http://localhost:5173 during development
@@ -70,9 +70,21 @@ public class WebShellWindow : Window
     {
         for (var i = 0; i < 10 && !_pipe.IsConnected; i++)
         {
-            try { await _pipe.ConnectAsync(2000); }
-            catch { await Task.Delay(1000); }
+            try { await _pipe.ConnectAsync(2000); Log("connected to Guardian"); }
+            catch (Exception ex) { Log($"connect attempt {i + 1} failed: {ex.Message}"); await Task.Delay(1000); }
         }
+    }
+
+    /// <summary>%LocalAppData%\CoinQuest\shell.log — the first place to look when "Guardian unavailable" shows up.</summary>
+    public static void Log(string message)
+    {
+        try
+        {
+            var dir = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "CoinQuest");
+            Directory.CreateDirectory(dir);
+            File.AppendAllText(Path.Combine(dir, "shell.log"), $"{DateTime.Now:yyyy-MM-dd HH:mm:ss} {message}{Environment.NewLine}");
+        }
+        catch { }
     }
 
     private async void OnWebMessage(object? sender, CoreWebView2WebMessageReceivedEventArgs e)
@@ -94,7 +106,11 @@ public class WebShellWindow : Window
         if (!_pipe.IsConnected) await TryConnectAsync();
         string respJson;
         try { respJson = await _pipe.ForwardRawAsync(raw); }
-        catch (Exception ex) { respJson = JsonSerializer.Serialize(Response.Fail(id, "Guardian unavailable: " + ex.Message), HouseholdStore.Json); }
+        catch (Exception ex)
+        {
+            Log($"{op} failed: {ex}");
+            respJson = JsonSerializer.Serialize(Response.Fail(id, "Guardian unavailable: " + ex.Message), HouseholdStore.Json);
+        }
         _web.CoreWebView2.PostWebMessageAsString(respJson);
     }
 

@@ -82,6 +82,7 @@ public sealed class PipeClient : IAsyncDisposable
     /// <summary>Forward a raw request line from WebView2 JS and return the raw response line.</summary>
     public async Task<string> ForwardRawAsync(string requestJson)
     {
+        if (_writer is null || !IsConnected) throw new InvalidOperationException("the CoinQuest Guardian service is not running");
         var req = JsonSerializer.Deserialize<Request>(requestJson, HouseholdStore.Json) ?? new Request { Op = "" };
         var tcs = new TaskCompletionSource<Response>(TaskCreationOptions.RunContinuationsAsynchronously);
         lock (_pending) _pending[req.Id] = tcs;

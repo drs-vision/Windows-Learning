@@ -15,7 +15,8 @@ export function ParentConsole({ embedded, onClose }: { embedded?: boolean; onClo
   const [tab, setTab] = useState<Tab>('today');
   const [error, setError] = useState('');
 
-  useEffect(() => { bridge.hello().then(setHello).catch((e) => setError(e.message)); }, []);
+  const sayHello = () => { setError(''); bridge.hello().then(setHello).catch((e) => setError(e.message)); };
+  useEffect(sayHello, []);
 
   const refresh = () => bridge.parentState().then((s) => { setState(s); setError(''); }).catch((e) => setError(e.message));
 
@@ -27,7 +28,14 @@ export function ParentConsole({ embedded, onClose }: { embedded?: boolean; onClo
     return () => { off(); clearInterval(t); };
   }, [authed]);
 
-  if (error && !hello) return <div class="screen center"><p class="error">{error}</p></div>;
+  if (error && !hello) return (
+    <div class="screen center">
+      <h2>Can't reach the Guardian</h2>
+      <p class="error">{error}</p>
+      <p class="muted">The CoinQuest Guardian is a Windows service that should start automatically. If this keeps happening, open Services, find "CoinQuest Guardian" and start it, then check <code>C:\ProgramData\CoinQuest\logs\guardian.log</code>.</p>
+      <button class="primary" onClick={sayHello}>Try again</button>
+    </div>
+  );
   if (!hello) return <div class="screen center"><p class="muted">Connecting…</p></div>;
   if (hello.setupNeeded) return <SetupWizard onDone={() => { setHello({ ...hello, setupNeeded: false }); setAuthed(true); }} />;
 

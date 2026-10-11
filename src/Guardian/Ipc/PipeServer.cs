@@ -56,24 +56,36 @@ public sealed class PipeServer
         Client? client = null;
         try
         {
-            string account = "?"; bool isAdmin = false;
-            pipe.RunAsClient(() =>
-            {
-                using var id = WindowsIdentity.GetCurrent();
-                account = id.Name;
-                // Present even in a UAC-filtered token (as deny-only), which is what we want for "is this a parent's account".
-                isAdmin = id.Groups?.Any(g => g.Value == "S-1-5-32-544") == true;
-            });
-
-            client = new Client { Pipe = pipe, Writer = new StreamWriter(pipe, new UTF8Encoding(false)) { AutoFlush = true }, Account = account, IsAdmin = isAdmin };
-            lock (_clients) _clients.Add(client);
-            _log.LogInformation("Client connected: {Account} admin={Admin}", account, isAdmin);
-
             using var reader = new StreamReader(pipe, Encoding.UTF8);
             while (!ct.IsCancellationRequested && pipe.IsConnected)
             {
                 var line = await reader.ReadLineAsync(ct);
                 if (line is null) break;
+
+                // Windows only allows impersonating a pipe client AFTER the server has read from the pipe
+                // (ImpersonateNamedPipeClient → ERROR_CANNOT_IMPERSONATE otherwise), so identify on the first request.
+                if (client is null)
+                {
+                    string account = "?"; bool isAdmin = false;
+                    try
+                    {
+                        pipe.RunAsClient(() =>
+                        {
+                            using var id = WindowsIdentity.GetCurrent();
+                            account = id.Name;
+                            // Present even in a UAC-filtered token (as deny-only), which is what we want for "is this a parent's account".
+                            isAdmin = id.Groups?.Any(g => g.Value == "S-1-5-32-544") == true;
+                        });
+                    }
+                    catch (Exception ex)
+                    {
+                        _log.LogWarning(ex, "Could not identify pipe client");
+                    }
+                    client = new Client { Pipe = pipe, Writer = new StreamWriter(pipe, new UTF8Encoding(false)) { AutoFlush = true }, Account = account, IsAdmin = isAdmin };
+                    lock (_clients) _clients.Add(client);
+                    _log.LogInformation("Client connected: {Account} admin={Admin}", account, isAdmin);
+                }
+
                 Response resp;
                 Request? req = null;
                 try
