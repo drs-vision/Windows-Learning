@@ -15,16 +15,16 @@ public sealed record ScoreOutcome(int Coins, bool NeedsApproval, string Detail, 
 /// </summary>
 public sealed class ScoreEngine
 {
-    private readonly string _source;
+    private readonly string? _path;
+    private string? _source;
 
-    public ScoreEngine(string? scorersJsPath = null)
-    {
-        var path = scorersJsPath ?? Path.Combine(Paths.WebRoot, "scorers.js");
-        _source = File.ReadAllText(path);
-    }
+    public ScoreEngine(string? scorersJsPath = null) { _path = scorersJsPath ?? Path.Combine(Paths.WebRoot, "scorers.js"); }
 
     public static ScoreEngine FromSource(string js) => new(js, true);
     private ScoreEngine(string js, bool _) { _source = js; }
+
+    /// <summary>Loaded lazily so a missing bundle surfaces as a rejected submission, not a service that won't start.</summary>
+    private string Source => _source ??= File.ReadAllText(_path!);
 
     public ScoreOutcome Score(string moduleId, JsonNode? activity, JsonNode? result, JsonNode? settings)
     {
@@ -34,7 +34,7 @@ public sealed class ScoreEngine
             .TimeoutInterval(TimeSpan.FromSeconds(2))
             .MaxStatements(2_000_000)
             .Strict());
-        engine.Execute(_source);
+        engine.Execute(Source);
         engine.SetValue("__moduleId", moduleId);
         engine.SetValue("__activity", JsValue.FromObject(engine, ToPlain(activity)));
         engine.SetValue("__result", JsValue.FromObject(engine, ToPlain(result)));

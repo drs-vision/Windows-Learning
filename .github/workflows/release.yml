@@ -114,6 +114,7 @@ jobs:
           GH_TOKEN: ${{ github.token }}
         run: |
           V="v${{ steps.ver.outputs.version }}"
+          gh release delete "$V" -y --cleanup-tag 2>/dev/null || true   # re-runs of the same workflow run
           NOTES="Automated build of ${GITHUB_SHA::7}: $(git log -1 --pretty=%s)"
           gh release create "$V" dist/CoinQuest-win-x64.zip dist/CoinQuest-win-x64.zip.sha256 dist/CoinQuest-Setup-*.exe \
             --title "CoinQuest $V" --notes "$NOTES" --latest
