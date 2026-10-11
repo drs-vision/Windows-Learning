@@ -33,6 +33,7 @@ public sealed class GuardianWorker : BackgroundService
 
     protected override async Task ExecuteAsync(CancellationToken ct)
     {
+        await Task.Yield(); // let StartAsync return immediately; a stop during startup must not fail the host
         _log.LogInformation("CoinQuest Guardian {Version} starting. Data: {Data}", RequestRouter.Version, Paths.DataRoot);
 
         _router.StateChanged += () => PushState();
@@ -61,8 +62,9 @@ public sealed class GuardianWorker : BackgroundService
         var updateTask = _updates.RunAsync(ct);
 
         using var timer = new PeriodicTimer(TimeSpan.FromSeconds(1));
-        while (await timer.WaitForNextTickAsync(ct))
+        while (!ct.IsCancellationRequested)
         {
+            try { if (!await timer.WaitForNextTickAsync(ct)) break; } catch (OperationCanceledException) { break; }
             try
             {
                 _session.Poll();
@@ -78,7 +80,7 @@ public sealed class GuardianWorker : BackgroundService
             catch (Exception ex) { _log.LogError(ex, "Heartbeat error"); }
         }
 
-        await Task.WhenAll(pipeTask, updateTask);
+        try { await Task.WhenAll(pipeTask, updateTask); } catch (OperationCanceledException) { }
     }
 
     private void PushState()

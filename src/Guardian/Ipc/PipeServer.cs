@@ -4,6 +4,7 @@ using System.Security.Principal;
 using System.Text;
 using System.Text.Json;
 using CoinQuest.Shared.Config;
+using CoinQuest.Guardian.Setup;
 using CoinQuest.Shared.Ipc;
 
 namespace CoinQuest.Guardian.Ipc;
@@ -73,9 +74,11 @@ public sealed class PipeServer
                         {
                             using var id = WindowsIdentity.GetCurrent();
                             account = id.Name;
-                            // Present even in a UAC-filtered token (as deny-only), which is what we want for "is this a parent's account".
                             isAdmin = id.Groups?.Any(g => g.Value == "S-1-5-32-544") == true;
                         });
+                        // A non-elevated admin's token carries Administrators as deny-only, which .NET's Groups omits —
+                        // so ask the local group directly. The service is SYSTEM; this is cheap and cached.
+                        if (!isAdmin) isAdmin = LocalAccounts.IsLocalAdmin(account);
                     }
                     catch (Exception ex)
                     {
@@ -90,7 +93,7 @@ public sealed class PipeServer
                 Request? req = null;
                 try
                 {
-                    req = JsonSerializer.Deserialize<Request>(line, HouseholdStore.Json);
+                    req = JsonSerializer.Deserialize<Request>(line, Wire.Json);
                     resp = req is null ? Response.Fail("", "bad request") : await _router.Handle(req, client);
                 }
                 catch (Exception ex)
@@ -98,7 +101,7 @@ public sealed class PipeServer
                     _log.LogWarning(ex, "Request {Op} failed", req?.Op);
                     resp = Response.Fail(req?.Id ?? "", ex.Message);
                 }
-                await Send(client, JsonSerializer.Serialize(resp, HouseholdStore.Json));
+                await Send(client, JsonSerializer.Serialize(resp, Wire.Json));
             }
         }
         catch (OperationCanceledException) { }
@@ -122,7 +125,7 @@ public sealed class PipeServer
     /// <summary>Broadcast an event to every connected client (optionally only a given account).</summary>
     public void Broadcast(string name, object? payload, string? onlyAccount = null)
     {
-        var ev = JsonSerializer.Serialize(new Event { Name = name, Payload = payload is null ? null : JsonSerializer.SerializeToNode(payload, HouseholdStore.Json) }, HouseholdStore.Json);
+        var ev = JsonSerializer.Serialize(new Event { Name = name, Payload = payload is null ? null : JsonSerializer.SerializeToNode(payload, Wire.Json) }, Wire.Json);
         List<Client> targets;
         lock (_clients) targets = _clients.Where(c => onlyAccount is null || string.Equals(c.Account, onlyAccount, StringComparison.OrdinalIgnoreCase)).ToList();
         foreach (var c in targets) _ = Send(c, ev);

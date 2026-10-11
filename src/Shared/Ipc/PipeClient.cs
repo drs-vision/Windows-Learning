@@ -14,6 +14,9 @@ public sealed class PipeClient : IAsyncDisposable
     private readonly Dictionary<string, TaskCompletionSource<Response>> _pending = new();
     private readonly SemaphoreSlim _writeLock = new(1, 1);
     private CancellationTokenSource? _cts;
+    private readonly string _pipeName;
+
+    public PipeClient(string? pipeName = null) { _pipeName = pipeName ?? Paths.PipeName; }
 
     public event Action<Event>? OnEvent;
     public event Action? Disconnected;
@@ -21,7 +24,7 @@ public sealed class PipeClient : IAsyncDisposable
 
     public async Task ConnectAsync(int timeoutMs = 5000)
     {
-        _pipe = new NamedPipeClientStream(".", Paths.PipeName, PipeDirection.InOut, PipeOptions.Asynchronous);
+        _pipe = new NamedPipeClientStream(".", _pipeName, PipeDirection.InOut, PipeOptions.Asynchronous);
         await _pipe.ConnectAsync(timeoutMs);
         _writer = new StreamWriter(_pipe, new UTF8Encoding(false)) { AutoFlush = true };
         _cts = new CancellationTokenSource();
@@ -37,18 +40,19 @@ public sealed class PipeClient : IAsyncDisposable
             {
                 var line = await reader.ReadLineAsync(ct);
                 if (line is null) break;
-                var node = JsonNode.Parse(line);
+                JsonNode? node;
+                try { node = JsonNode.Parse(line); } catch (JsonException) { continue; }
                 if (node is null) continue;
                 if (node["id"] is not null)
                 {
-                    var resp = node.Deserialize<Response>(HouseholdStore.Json)!;
+                    var resp = node.Deserialize<Response>(Wire.Json)!;
                     TaskCompletionSource<Response>? tcs;
                     lock (_pending) _pending.Remove(resp.Id, out tcs);
                     tcs?.TrySetResult(resp);
                 }
                 else if (node["name"] is not null)
                 {
-                    OnEvent?.Invoke(node.Deserialize<Event>(HouseholdStore.Json)!);
+                    OnEvent?.Invoke(node.Deserialize<Event>(Wire.Json)!);
                 }
             }
         }
@@ -68,11 +72,11 @@ public sealed class PipeClient : IAsyncDisposable
     public async Task<Response> SendAsync(string op, object? payload = null, string? token = null, int timeoutMs = 15000)
     {
         if (_writer is null) throw new InvalidOperationException("Not connected");
-        var req = new Request { Op = op, Token = token, Payload = payload is null ? null : JsonSerializer.SerializeToNode(payload, HouseholdStore.Json) };
+        var req = new Request { Op = op, Token = token, Payload = payload is null ? null : JsonSerializer.SerializeToNode(payload, Wire.Json) };
         var tcs = new TaskCompletionSource<Response>(TaskCreationOptions.RunContinuationsAsynchronously);
         lock (_pending) _pending[req.Id] = tcs;
         await _writeLock.WaitAsync();
-        try { await _writer.WriteLineAsync(JsonSerializer.Serialize(req, HouseholdStore.Json)); }
+        try { await _writer.WriteLineAsync(JsonSerializer.Serialize(req, Wire.Json)); }
         finally { _writeLock.Release(); }
         using var cts = new CancellationTokenSource(timeoutMs);
         await using var _ = cts.Token.Register(() => tcs.TrySetException(new TimeoutException(op)));
@@ -83,16 +87,16 @@ public sealed class PipeClient : IAsyncDisposable
     public async Task<string> ForwardRawAsync(string requestJson)
     {
         if (_writer is null || !IsConnected) throw new InvalidOperationException("the CoinQuest Guardian service is not running");
-        var req = JsonSerializer.Deserialize<Request>(requestJson, HouseholdStore.Json) ?? new Request { Op = "" };
+        var req = JsonSerializer.Deserialize<Request>(requestJson, Wire.Json) ?? new Request { Op = "" };
         var tcs = new TaskCompletionSource<Response>(TaskCreationOptions.RunContinuationsAsynchronously);
         lock (_pending) _pending[req.Id] = tcs;
         await _writeLock.WaitAsync();
-        try { await _writer!.WriteLineAsync(JsonSerializer.Serialize(req, HouseholdStore.Json)); }
+        try { await _writer!.WriteLineAsync(JsonSerializer.Serialize(req, Wire.Json)); }
         finally { _writeLock.Release(); }
         using var cts = new CancellationTokenSource(15000);
         await using var _ = cts.Token.Register(() => tcs.TrySetException(new TimeoutException(req.Op)));
         var resp = await tcs.Task;
-        return JsonSerializer.Serialize(resp, HouseholdStore.Json);
+        return JsonSerializer.Serialize(resp, Wire.Json);
     }
 
     public async ValueTask DisposeAsync()

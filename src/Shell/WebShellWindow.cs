@@ -58,7 +58,7 @@ public class WebShellWindow : Window
         core.NewWindowRequested += (_, e) => { e.Handled = true; }; // no popups out of the shell
         core.WebMessageReceived += OnWebMessage;
 
-        _pipe.OnEvent += ev => Dispatcher.Invoke(() => core.PostWebMessageAsString(JsonSerializer.Serialize(ev, HouseholdStore.Json)));
+        _pipe.OnEvent += ev => Dispatcher.Invoke(() => core.PostWebMessageAsString(JsonSerializer.Serialize(ev, Wire.Json)));
         _pipe.Disconnected += () => { Log("Guardian disconnected"); Dispatcher.Invoke(() => core.PostWebMessageAsString("{\"name\":\"disconnected\"}")); };
         await TryConnectAsync();
 
@@ -99,7 +99,7 @@ public class WebShellWindow : Window
         if (op.StartsWith("shell."))
         {
             var resp = HandleShellOp(op, node?["payload"]);
-            _web.CoreWebView2.PostWebMessageAsString(JsonSerializer.Serialize(resp with { Id = id }, HouseholdStore.Json));
+            _web.CoreWebView2.PostWebMessageAsString(JsonSerializer.Serialize(resp with { Id = id }, Wire.Json));
             return;
         }
 
@@ -109,7 +109,7 @@ public class WebShellWindow : Window
         catch (Exception ex)
         {
             Log($"{op} failed: {ex}");
-            respJson = JsonSerializer.Serialize(Response.Fail(id, "Guardian unavailable: " + ex.Message), HouseholdStore.Json);
+            respJson = JsonSerializer.Serialize(Response.Fail(id, "Guardian unavailable: " + ex.Message), Wire.Json);
         }
         _web.CoreWebView2.PostWebMessageAsString(respJson);
     }

@@ -24,6 +24,21 @@ public static class LocalAccounts
         return list.OrderBy(a => a.IsAdmin).ThenBy(a => a.Name).ToList();
     }
 
+    private static HashSet<string>? _adminCache;
+    private static DateTime _adminCacheAt;
+
+    /// <summary>Is this account (bare or DOMAIN\name) a member of the local Administrators group? Cached for 30 s.</summary>
+    public static bool IsLocalAdmin(string account)
+    {
+        var bare = account.Contains('\\') ? account[(account.IndexOf('\\') + 1)..] : account;
+        if (_adminCache is null || (DateTime.UtcNow - _adminCacheAt).TotalSeconds > 30)
+        {
+            _adminCache = AdminMembers();
+            _adminCacheAt = DateTime.UtcNow;
+        }
+        return _adminCache.Contains(bare);
+    }
+
     private static HashSet<string> AdminMembers()
     {
         var set = new HashSet<string>(StringComparer.OrdinalIgnoreCase);

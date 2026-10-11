@@ -11,6 +11,12 @@ namespace CoinQuest.Shared.Ipc;
 /// other end — not from anything in the message. Parent operations additionally need a
 /// short-lived token obtained with a PIN.
 /// </summary>
+/// <summary>One JSON object per LINE — so the wire format must never be indented. (Config files use HouseholdStore.Json, which is.)</summary>
+public static class Wire
+{
+    public static readonly JsonSerializerOptions Json = new(HouseholdStore.Json) { WriteIndented = false };
+}
+
 public sealed class Request
 {
     public string Id { get; set; } = Guid.NewGuid().ToString("N");
@@ -27,7 +33,7 @@ public sealed record Response
     public JsonNode? Payload { get; set; }
 
     public static Response Success(string id, object? payload = null) =>
-        new() { Id = id, Ok = true, Payload = payload is null ? null : JsonSerializer.SerializeToNode(payload, HouseholdStore.Json) };
+        new() { Id = id, Ok = true, Payload = payload is null ? null : JsonSerializer.SerializeToNode(payload, Wire.Json) };
     public static Response Fail(string id, string error) => new() { Id = id, Ok = false, Error = error };
 }
 
