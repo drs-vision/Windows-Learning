@@ -1,0 +1,24 @@
+# .NET
+bin/
+obj/
+*.user
+*.suo
+.vs/
+publish/
+Releases/
+
+# web
+node_modules/
+src/web/dist/
+src/web/public/vendor/
+*.local
+
+# downloaded game payloads (fetched by scripts/fetch-games.*; manifest is committed)
+content/games/swf/*
+!content/games/swf/.gitkeep
+content/games/html5/*/
+!content/games/html5/.gitkeep
+
+# OS
+.DS_Store
+Thumbs.db

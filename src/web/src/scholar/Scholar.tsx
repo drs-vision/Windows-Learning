@@ -1,0 +1,173 @@
+import { useEffect, useRef, useState } from 'preact/hooks';
+import type { ChildState, Prize, Unlock } from '../core/types';
+import { bridge } from '../core/bridge';
+import { MODULES, moduleById } from '../modules/registry';
+import { Arcade, fmt } from '../modules/arcade/Arcade';
+import { ParentConsole } from '../parent/ParentConsole';
+import type { LessonModule } from '../core/module';
+
+type View = { name: 'home' } | { name: 'quest'; moduleId: string } | { name: 'shop' } | { name: 'arcade' } | { name: 'parent' };
+
+/** The child's whole world: home base, quests, shop, arcade. */
+export function Scholar() {
+  const [state, setState] = useState<ChildState | null>(null);
+  const [view, setView] = useState<View>({ name: 'home' });
+  const [toast, setToast] = useState<string>('');
+  const [error, setError] = useState('');
+  const [tick, setTick] = useState(0);
+
+  const refresh = () => bridge.state().then(setState).catch((e) => setError(e.message));
+
+  useEffect(() => {
+    refresh();
+    const off = bridge.on((ev) => {
+      if (ev.name === 'state') refresh();
+      if (ev.name === 'unlockEnded') { setToast(`⏰ ${ev.payload?.prizeName ?? 'Your time'} is up`); if (view.name === 'arcade') setView({ name: 'home' }); }
+      if (ev.name === 'blocked') setToast(`🚫 ${ev.payload?.exe ?? 'That app'} isn't on your list`);
+      if (ev.name === 'openParent') setView({ name: 'parent' });
+      if (ev.name === 'disconnected') setError('Lost connection to the Guardian — reconnecting…');
+    });
+    const t = setInterval(() => setTick((n) => n + 1), 1000);
+    return () => { off(); clearInterval(t); };
+  }, []);
+
+  useEffect(() => { if (toast) { const t = setTimeout(() => setToast(''), 6000); return () => clearTimeout(t); } }, [toast]);
+
+  if (error && !state) return <div class="screen center"><h2>Hmm.</h2><p>{error}</p><button class="primary" onClick={refresh}>Try again</button></div>;
+  if (!state) return <div class="screen center"><p class="muted">Loading…</p></div>;
+
+  // Recompute secondsLeft locally between server pushes so countdowns are smooth.
+  const unlocks = state.unlocks.map((u) => ({ ...u, secondsLeft: Math.max(0, Math.round((Date.parse(u.expiresAt) - Date.now()) / 1000)) }));
+  const arcadeUnlock = unlocks.find((u) => u.kind === 'arcadeUnlock' && u.secondsLeft > 0);
+
+  return (
+    <div class="scholar">
+      {view.name !== 'parent' && <TopBar state={state} unlocks={unlocks} onHome={() => setView({ name: 'home' })} onShop={() => setView({ name: 'shop' })} />}
+      <main>
+        {view.name === 'home' && <Home state={state} arcadeUnlock={arcadeUnlock} onQuest={(id) => setView({ name: 'quest', moduleId: id })} onArcade={() => setView({ name: 'arcade' })} onShop={() => setView({ name: 'shop' })} />}
+        {view.name === 'quest' && <QuestRunner module={moduleById(view.moduleId)!} state={state} onExit={() => { setView({ name: 'home' }); refresh(); }} />}
+        {view.name === 'shop' && <Shop state={state} onBought={(msg) => { setToast(msg); refresh(); }} onExit={() => setView({ name: 'home' })} />}
+        {view.name === 'arcade' && <Arcade unlock={arcadeUnlock} onExit={() => setView({ name: 'home' })} />}
+        {view.name === 'parent' && <ParentConsole embedded onClose={() => { setView({ name: 'home' }); refresh(); }} />}
+      </main>
+      {toast && <div class="toast">{toast}</div>}
+    </div>
+  );
+}
+
+function TopBar({ state, unlocks, onHome, onShop }: { state: ChildState; unlocks: Unlock[]; onHome: () => void; onShop: () => void }) {
+  return (
+    <header class="topbar">
+      <button class="brand" onClick={onHome}>🏠 <span>Hi, {state.child.displayName}</span></button>
+      <div class="unlock-pills">
+        {unlocks.filter((u) => u.secondsLeft > 0).map((u) => <span class="pill">{u.prizeName.replace(/^\d+ minutes of /, '')} · {fmt(u.secondsLeft)}</span>)}
+      </div>
+      <button class="wallet" onClick={onShop}>🪙 <b>{state.balance}</b></button>
+    </header>
+  );
+}
+
+function Home({ state, arcadeUnlock, onQuest, onArcade, onShop }: { state: ChildState; arcadeUnlock?: Unlock; onQuest: (id: string) => void; onArcade: () => void; onShop: () => void }) {
+  const quests = MODULES.filter((m) => state.modules[m.id]?.enabled);
+  const pending = state.pendingClaims.length;
+  return (
+    <div class="home">
+      <section class="quests">
+        <h2>Today's quests</h2>
+        <div class="quest-grid">
+          {quests.map((m) => {
+            const s = state.modules[m.id];
+            const left = s.dailyCap > 0 ? Math.max(0, s.dailyCap - s.earnedToday) : null;
+            return (
+              <button class={'quest-card' + (left === 0 ? ' maxed' : '')} onClick={() => onQuest(m.id)}>
+                <div class="quest-icon">{m.icon}</div>
+                <b>{m.title}</b>
+                <small>{m.tagline}</small>
+                <div class="quest-meta">{s.coinsPerActivity} 🪙 each{left !== null && <> · {left === 0 ? 'done for today' : `${left} left today`}</>}</div>
+                <ProgressLine moduleId={m.id} state={state} />
+              </button>
+            );
+          })}
+        </div>
+      </section>
+      <aside class="side">
+        <button class="big-btn" onClick={onShop}>🛒 Shop</button>
+        <button class={'big-btn' + (arcadeUnlock ? ' live' : '')} onClick={onArcade}>🕹️ Arcade {arcadeUnlock && <small>{fmt(arcadeUnlock.secondsLeft)}</small>}</button>
+        {pending > 0 && <div class="note">⏳ {pending} claim{pending > 1 ? 's' : ''} waiting for a parent</div>}
+        <Recent state={state} />
+      </aside>
+    </div>
+  );
+}
+
+function ProgressLine({ moduleId, state }: { moduleId: string; state: ChildState }) {
+  const p = (state.progress[moduleId] ?? {}) as Record<string, any>;
+  if (moduleId === 'typing-quest') return <small class="muted">{p.placed ? `Row ${(p.lane ?? 0) + 1} · best ${p.bestWpm ?? 0} WPM` : 'Start with a placement test'}</small>;
+  if (moduleId === 'bible-typing') return <small class="muted">{(p.done?.length ?? 0)} passages · {p.totalWords ?? 0} words</small>;
+  return null;
+}
+
+function Recent({ state }: { state: ChildState }) {
+  if (!state.recent.length) return <div class="recent"><h3>Today</h3><p class="muted">Nothing yet. Pick a quest!</p></div>;
+  return (
+    <div class="recent">
+      <h3>Today</h3>
+      <ul>
+        {state.recent.slice(0, 8).map((e) => <li class={e.kind}><span class="delta">{e.delta > 0 ? '+' : ''}{e.delta || '⏳'}</span><span>{e.detail}</span></li>)}
+      </ul>
+    </div>
+  );
+}
+
+/** Mounts a module's activity UI and wires its context to the bridge. */
+function QuestRunner({ module, state, onExit }: { module: LessonModule; state: ChildState; onExit: () => void }) {
+  const host = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    if (!host.current) return;
+    const progress = (state.progress[module.id] ?? {}) as Record<string, unknown>;
+    const activity = { ...module.nextActivity(progress, Math.random), issuedAt: Date.now() };
+    const settings = state.modules[module.id];
+    const unmount = module.mount(host.current, activity, {
+      progress, settings,
+      submit: (result, act) => bridge.submit(module.id, act ?? activity, result),
+      saveProgress: (p) => bridge.saveProgress(module.id, p).then(() => { }),
+      exit: onExit,
+    });
+    return unmount;
+  }, [module.id]);
+  return <div class="quest-host" ref={host} />;
+}
+
+function Shop({ state, onBought, onExit }: { state: ChildState; onBought: (msg: string) => void; onExit: () => void }) {
+  const [busy, setBusy] = useState('');
+  const [error, setError] = useState('');
+  async function buy(p: Prize) {
+    setBusy(p.id); setError('');
+    try { await bridge.buy(p.id); onBought(p.kind === 'realWorld' ? `🎉 ${p.name} — tell your parent!` : `✅ ${p.name} started`); }
+    catch (e) { setError((e as Error).message); }
+    finally { setBusy(''); }
+  }
+  return (
+    <div class="shop">
+      <header><h2>🛒 Shop</h2><span class="wallet-big">🪙 {state.balance}</span><button class="ghost" onClick={onExit}>Back</button></header>
+      {error && <p class="error">{error}</p>}
+      <div class="prize-grid">
+        {state.prizes.map((p) => {
+          const soldOut = p.dailyCap > 0 && p.boughtToday >= p.dailyCap;
+          const canAfford = state.balance >= p.cost;
+          return (
+            <div class={'prize-card' + (soldOut ? ' soldout' : '') + (!canAfford ? ' poor' : '')}>
+              <div class="prize-icon">{ICON[p.kind]}</div>
+              <b>{p.name}</b>
+              <div class="price">🪙 {p.cost}</div>
+              {p.dailyCap > 0 && <small class="muted">{p.boughtToday}/{p.dailyCap} today</small>}
+              <button class="primary" disabled={soldOut || !canAfford || busy === p.id} onClick={() => buy(p)}>{soldOut ? 'Tomorrow' : canAfford ? 'Buy' : `${p.cost - state.balance} more`}</button>
+            </div>
+          );
+        })}
+      </div>
+    </div>
+  );
+}
+
+const ICON: Record<string, string> = { siteUnlock: '▶️', arcadeUnlock: '🕹️', appUnlock: '💻', screenTimeExtension: '⏰', realWorld: '🎁' };

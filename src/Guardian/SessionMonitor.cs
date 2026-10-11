@@ -1,0 +1,49 @@
+using CoinQuest.Guardian.Native;
+using CoinQuest.Shared.Config;
+using CoinQuest.Shared.Models;
+
+namespace CoinQuest.Guardian;
+
+/// <summary>
+/// Knows who is sitting at the computer right now and whether that account is a managed child.
+/// Everything else in the Guardian keys off <see cref="Current"/>: when it's null, the Guardian does nothing.
+/// </summary>
+public sealed class SessionMonitor
+{
+    private readonly HouseholdStore _store;
+    private readonly ILogger<SessionMonitor> _log;
+
+    public SessionMonitor(HouseholdStore store, ILogger<SessionMonitor> log) { _store = store; _log = log; }
+
+    public sealed record ActiveSession(uint SessionId, string Account, Child Child);
+
+    /// <summary>The managed child currently at the console, or null (nobody / a parent / lock screen).</summary>
+    public ActiveSession? Current { get; private set; }
+    public uint ConsoleSessionId { get; private set; }
+    public string? ConsoleAccount { get; private set; }
+
+    public event Action<ActiveSession?>? Changed;
+
+    /// <summary>Called every second by the worker. Cheap.</summary>
+    public void Poll()
+    {
+        var sid = Wts.ActiveConsoleSessionId();
+        var account = sid == 0xFFFFFFFF ? null : Wts.SessionUser(sid);
+        ConsoleSessionId = sid;
+        ConsoleAccount = account;
+
+        var child = account is null ? null : _store.FindChildByAccount(account);
+        var next = child is null ? null : new ActiveSession(sid, account!, child);
+
+        if (next?.SessionId != Current?.SessionId || next?.Child.Id != Current?.Child.Id)
+        {
+            _log.LogInformation("Console session {Sid} user {User} managed={Managed}", sid, account ?? "(none)", next is not null);
+            Current = next;
+            Changed?.Invoke(next);
+        }
+        else if (next is not null && !ReferenceEquals(next.Child, Current!.Child))
+        {
+            Current = next; // same child, refreshed settings
+        }
+    }
+}

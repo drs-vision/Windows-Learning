@@ -1,0 +1,11 @@
+<Project>
+  <PropertyGroup>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <LangVersion>latest</LangVersion>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <Version Condition="'$(Version)' == ''">0.1.0</Version>
+    <Authors>CoinQuest contributors</Authors>
+    <Product>CoinQuest</Product>
+  </PropertyGroup>
+</Project>
