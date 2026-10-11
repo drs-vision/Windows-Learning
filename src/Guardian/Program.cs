@@ -9,6 +9,15 @@ using CoinQuest.Shared.Scoring;
 
 Paths.EnsureDirectories();
 
+// `CoinQuest.Guardian.exe --clear-policies` — run by the uninstaller so the child's browser isn't left locked down.
+if (args.Contains("--clear-policies"))
+{
+    var store = new HouseholdStore();
+    foreach (var child in store.Current.Children)
+        if (!string.IsNullOrEmpty(child.WindowsSid)) BrowserPolicy.ClearStatic(child.WindowsSid);
+    return;
+}
+
 var builder = Host.CreateApplicationBuilder(args);
 builder.Services.AddWindowsService(o => o.ServiceName = Paths.ServiceName);
 builder.Logging.AddProvider(new FileLoggerProvider(Path.Combine(Paths.LogDir, "guardian.log")));

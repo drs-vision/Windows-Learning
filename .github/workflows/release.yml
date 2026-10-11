@@ -75,11 +75,14 @@ jobs:
             dotnet publish $p -c Release -r win-x64 --self-contained false -o publish -p:Version=$v -p:PublishReadyToRun=false
             if ($LASTEXITCODE -ne 0) { exit 1 }
           }
-          New-Item -ItemType Directory -Force publish/web, publish/content, publish/redist | Out-Null
+          New-Item -ItemType Directory -Force publish/web, publish/content, redist | Out-Null
           Copy-Item -Recurse -Force src/web/dist/* publish/web/
           Copy-Item -Recurse -Force content/* publish/content/
           Remove-Item -Force publish/content/games/html5/.gitkeep, publish/content/games/swf/.gitkeep -ErrorAction SilentlyContinue
-          try { Invoke-WebRequest -Uri "https://go.microsoft.com/fwlink/p/?LinkId=2124703" -OutFile publish/redist/MicrosoftEdgeWebview2Setup.exe } catch { Write-Warning "WebView2 bootstrapper download failed: $_" }
+          # Prerequisites bundled into the installer (not into the update zip): .NET 8 Desktop Runtime + WebView2 bootstrapper.
+          Invoke-WebRequest -Uri "https://aka.ms/dotnet/8.0/windowsdesktop-runtime-win-x64.exe" -OutFile redist/windowsdesktop-runtime-win-x64.exe
+          Invoke-WebRequest -Uri "https://go.microsoft.com/fwlink/p/?LinkId=2124703" -OutFile redist/MicrosoftEdgeWebview2Setup.exe
+          Get-ChildItem redist | ForEach-Object { "{0}  {1:N1} MB" -f $_.Name, ($_.Length / 1MB) }
           Get-ChildItem publish -Recurse | Measure-Object -Property Length -Sum | ForEach-Object { "publish size: {0:N1} MB" -f ($_.Sum / 1MB) }
 
       # ---------- package ----------
@@ -96,7 +99,7 @@ jobs:
         shell: pwsh
         run: |
           choco install innosetup --no-progress -y | Out-Null
-          & "${env:ProgramFiles(x86)}\Inno Setup 6\ISCC.exe" /DVersion=${{ steps.ver.outputs.version }} /DStage=..\publish installer\CoinQuest.iss
+          & "${env:ProgramFiles(x86)}\Inno Setup 6\ISCC.exe" /DVersion=${{ steps.ver.outputs.version }} /DStage=..\publish /DRedist=..\redist installer\CoinQuest.iss
           if ($LASTEXITCODE -ne 0) { exit 1 }
           Get-ChildItem dist
 

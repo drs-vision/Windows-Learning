@@ -79,8 +79,10 @@ public sealed class BrowserPolicy
         _log.LogInformation("Browser allowlist for {Child}: {N} entries", child.DisplayName, allow.Count);
     }
 
-    /// <summary>Remove our policies from a user hive (when a child is un-managed).</summary>
-    public void Clear(string sid)
+    /// <summary>Remove our policies from a user hive (when a child is un-managed, or on uninstall).</summary>
+    public void Clear(string sid) { ClearStatic(sid); _lastWritten = null; }
+
+    public static void ClearStatic(string sid)
     {
         using var hku = RegistryKey.OpenBaseKey(RegistryHive.Users, RegistryView.Default);
         using var userRoot = hku.OpenSubKey(sid, writable: true);
@@ -89,7 +91,6 @@ public sealed class BrowserPolicy
         {
             try { userRoot.DeleteSubKeyTree(basePath, throwOnMissingSubKey: false); } catch { }
         }
-        _lastWritten = null;
     }
 
     public void Invalidate() => _lastWritten = null;

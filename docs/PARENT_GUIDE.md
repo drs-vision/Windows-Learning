@@ -14,7 +14,7 @@ Your own Windows account is never restricted.
 
 ## Setup (10 minutes)
 
-1. Run `CoinQuest-Setup.exe` from an **administrator** account.
+1. Download `CoinQuest-Setup-<version>.exe` from the project's GitHub Releases page and run it from an **administrator** account. It installs everything it needs (the .NET runtime, the browser component, the background service) — there is nothing else to install first.
 2. The setup wizard asks three things:
    - **Which Windows account is your child's?** Pick it from the list, or let the wizard create one. (It must be a *Standard* account, not an administrator — the wizard will fix that for you.)
    - **Choose a PIN.** Four to six digits. This opens the Parent Console from inside your child's account.
