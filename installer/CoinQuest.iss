@@ -83,13 +83,26 @@ begin
     Result := not (RegQueryStringValue(HKCU, 'Software\Microsoft\EdgeUpdate\Clients\{F3017226-FE2A-4295-8BDF-00C3A9A7E4C5}', 'pv', V) and (V <> '') and (V <> '0.0.0.0'));
 end;
 
-function NeedsDotNet: Boolean;
-var Names: TArrayOfString; I: Integer;
+// The .NET installer registers under the 32-bit registry view (WOW6432Node), so read HKLM32.
+// Also accept the runtime folder on disk, so detection never depends on one mechanism.
+function HasDesktopRuntime8: Boolean;
+var Names: TArrayOfString; I: Integer; FR: TFindRec;
 begin
-  Result := True;
-  if RegGetValueNames(HKLM, 'SOFTWARE\dotnet\Setup\InstalledVersions\x64\sharedfx\Microsoft.WindowsDesktop.App', Names) then
+  Result := False;
+  if RegGetValueNames(HKLM32, 'SOFTWARE\dotnet\Setup\InstalledVersions\x64\sharedfx\Microsoft.WindowsDesktop.App', Names) then
     for I := 0 to GetArrayLength(Names) - 1 do
-      if Copy(Names[I], 1, 2) = '8.' then Result := False;
+      if Copy(Names[I], 1, 2) = '8.' then Result := True;
+  if not Result then
+    if FindFirst(ExpandConstant('{commonpf64}\dotnet\shared\Microsoft.WindowsDesktop.App\8.*'), FR) then
+    begin
+      Result := True;
+      FindClose(FR);
+    end;
+end;
+
+function NeedsDotNet: Boolean;
+begin
+  Result := not HasDesktopRuntime8;
 end;
 
 function InitializeSetup: Boolean;
