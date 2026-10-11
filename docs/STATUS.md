@@ -1,6 +1,6 @@
 # CoinQuest — status & decisions (2026-10-11)
 
-Repo: https://github.com/drs-vision/Windows-Learning (first push pending GitHub connector link). Full design in `docs/ARCHITECTURE.md`; parent-facing manual in `docs/PARENT_GUIDE.md`.
+Repo: https://github.com/drs-vision/Windows-Learning — pushed 2026-10-11; first CI build green; installer at https://github.com/drs-vision/Windows-Learning/releases/latest (`CoinQuest-Setup-0.1.N.exe`, ~97 MB, bundles .NET 8 runtime + WebView2). Full design in `docs/ARCHITECTURE.md`; parent-facing manual in `docs/PARENT_GUIDE.md`.
 
 ## What it is
 Windows software that locks a child's account to an allowlist (apps + websites), pays **coins** for learning, and sells **prizes** (YouTube minutes, arcade minutes, real-world rewards). Parent's own account is never restricted. Self-updates from GitHub Releases on every push to `main`.
@@ -24,10 +24,10 @@ Windows software that locks a child's account to an allowlist (apps + websites),
 
 ## Status
 - Web UI: builds, 15 scorer tests pass, full flow exercised in headless Chromium (setup wizard → parent adjust → child placement test → coins → buy arcade → Ruffle game runs with countdown).
-- .NET: written and independently reviewed for compile errors; **first GitHub Actions run is the real compile**. Expect a round of fixes.
+- .NET: compiles and unit tests pass on GitHub Actions (windows-latest). Release v0.1.1 published automatically.
 - Not yet started: Khan Academy browser extension (auto-verify), full-Bible plan, cloud sync/multi-household, additional earning modules.
 
 ## Next steps
-1. Connect GitHub in claude.ai (Settings → Connectors) so the repo can be pushed; CI then produces `CoinQuest-Setup-0.1.N.exe`.
-2. Install on the child's machine from an admin account; run the 3-step setup wizard.
-3. Preview the arcade games; enable Red Rogue if acceptable.
+1. Install `CoinQuest-Setup-0.1.N.exe` on the child's machine from an admin account; run the 3-step setup wizard. Report anything that doesn't behave — this is the first run on real Windows.
+2. Preview the arcade games; enable Red Rogue if acceptable.
+3. Phase 5: Khan Academy browser extension for automatic verification.
