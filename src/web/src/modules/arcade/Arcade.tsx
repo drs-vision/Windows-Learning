@@ -81,6 +81,13 @@ export function Arcade({ unlocks, balance, onExit, onChanged }: { unlocks: Unloc
   const [cat, setCat] = useState('All');
   const [sel, setSel] = useState<Game | null>(null);
   const [playing, setPlaying] = useState<Game | null>(null);
+  // When the current play's time runs out, from the purchase itself. The shared state (unlocks) arrives a moment
+  // later; until it does, this is what keeps the game open (and the countdown right).
+  const [until, setUntil] = useState(0);
+  const startedAt = useRef(0);
+  const [, setTick] = useState(0);
+  useEffect(() => { const t = setInterval(() => setTick((x) => x + 1), 1000); return () => clearInterval(t); }, []);
+  const secondsLeft = (g: Game) => unlockFor(unlocks, g.id)?.secondsLeft ?? (playing?.id === g.id ? Math.max(0, Math.round((until - Date.now()) / 1000)) : 0);
   const [error, setError] = useState('');
   const [busy, setBusy] = useState(false);
 
@@ -88,7 +95,14 @@ export function Arcade({ unlocks, balance, onExit, onChanged }: { unlocks: Unloc
     bridge.arcade().then((r) => { setGames(r.games); setSampler(r.sampler ?? null); setMaxBlocks(r.maxBlocks ?? 12); setFpRoot(r.flashpointRoot ?? null); }).catch((e) => setError(e.message));
   }, []);
   // Time ran out (or a parent ended it): close whatever is open.
-  useEffect(() => { if (playing && !unlockFor(unlocks, playing.id)) { bridge.closeGame(); setPlaying(null); } }, [unlocks, playing]);
+  useEffect(() => {
+    if (!playing) return;
+    const u = unlockFor(unlocks, playing.id);
+    if (u) { const end = Date.parse(u.expiresAt); if (Math.abs(end - until) > 1500) setUntil(end); return; }
+    // No time in the shared state: either it hasn't caught up with the purchase yet (give it a few seconds),
+    // or the time really ended / a parent ended it.
+    if (Date.now() >= until || Date.now() - startedAt.current > 8000) { bridge.closeGame(); setPlaying(null); }
+  });
   // The child closed the game window: the play is over.
   useEffect(() => bridge.on((ev) => {
     if (ev.name === 'gameClosed') setPlaying((p) => { if (p) { bridge.arcadeQuit(p.id).then(onChanged); } return null; });
@@ -113,6 +127,8 @@ export function Arcade({ unlocks, balance, onExit, onChanged }: { unlocks: Unloc
     try {
       if (playing && playing.id !== g.id) { bridge.closeGame(); setPlaying(null); }
       const r = await bridge.arcadePlay(g.id, n);
+      startedAt.current = Date.now();
+      setUntil(r.unlock?.expiresAt ? Date.parse(r.unlock.expiresAt) : Date.now() + 5 * 60_000);
       onChanged();
       if (g.kind === 'flashpoint') {
         const root = r.flashpointRoot ?? fpRoot;
@@ -134,8 +150,7 @@ export function Arcade({ unlocks, balance, onExit, onChanged }: { unlocks: Unloc
   }
 
   if (playing && (playing.kind === 'swf' || playing.kind === 'html5')) {
-    const u = unlockFor(unlocks, playing.id);
-    return <Player game={playing} onBack={quit} secondsLeft={u?.secondsLeft ?? 0} sampler={!!pass && !unlocks.some((x) => x.targets.includes(playing.id) && x.secondsLeft > 0)} />;
+    return <Player game={playing} onBack={quit} secondsLeft={secondsLeft(playing)} sampler={!!pass && !unlocks.some((x) => x.targets.includes(playing.id) && x.secondsLeft > 0)} />;
   }
 
   return (
@@ -159,7 +174,7 @@ export function Arcade({ unlocks, balance, onExit, onChanged }: { unlocks: Unloc
       )}
       {playing && (
         <div class="now-playing">
-          <span>🎮 Now playing <b>{playing.title}</b> · <span class="countdown">{fmt(unlockFor(unlocks, playing.id)?.secondsLeft ?? 0)}</span> left — {playing.kind === 'flashpoint' ? 'it opens in its own window (the first time it may take a moment to download).' : 'it is open in its own window.'}</span>
+          <span>🎮 Now playing <b>{playing.title}</b> · <span class="countdown">{fmt(secondsLeft(playing))}</span> left — {playing.kind === 'flashpoint' ? 'it opens in its own window (the first time it may take a moment to download).' : 'it is open in its own window.'}</span>
           <button class="primary" onClick={quit}>I'm done playing</button>
         </div>
       )}
