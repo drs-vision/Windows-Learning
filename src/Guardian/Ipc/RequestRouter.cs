@@ -39,7 +39,24 @@ public sealed class RequestRouter
         BrowserPolicy policy, UpdateChecker updates, YouTubeService youtube, FlashpointService fp, ClassicsStocker stocker, NetGate gate, NetLock netLock, ILogger<RequestRouter> log)
     { _fp = fp; _stocker = stocker; _gate = gate; _netLock = netLock; _store = store; _ledger = ledger; _scorer = scorer; _unlocks = unlocks; _session = session; _policy = policy; _updates = updates; _youtube = youtube; _log = log; }
 
+    /// <summary>
+    /// Requests that wait on the network or the disk run side by side; everything else (ledger, settings, timers)
+    /// runs one at a time, because the ledger's database connection and the stores are not built for parallel use.
+    /// </summary>
+    private static readonly HashSet<string> Slow = new()
+    {
+        Ops.YouTubeLibrary, Ops.YouTubeCheck, Ops.ParentYouTubeResolve, Ops.ParentCheckUpdate, Ops.ParentInstalledApps, Ops.SetupAccounts,
+        Ops.ParentFpStatus, Ops.ParentFpSearch, Ops.ParentFpSuggest, Ops.ParentFpInstallClifp, Ops.ParentFpDownloadInstaller, Ops.ParentFpThumbs, Ops.ParentFpStockNow, Ops.ParentBlocked,
+    };
+    private readonly object _sync = new();
+
     public Task<Response> Handle(Request req, PipeServer.Client client)
+    {
+        if (Slow.Contains(req.Op)) return HandleCore(req, client);
+        lock (_sync) return HandleCore(req, client);
+    }
+
+    private Task<Response> HandleCore(Request req, PipeServer.Client client)
     {
         var child = _store.FindChildByAccount(client.Account);
         return Task.FromResult(req.Op switch

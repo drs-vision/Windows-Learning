@@ -135,6 +135,7 @@ const titles = await kid.locator('.tile .tile-title').allTextContents();
 log(`  ${titles.length} games: ${titles.join(', ')}`);
 for (const title of titles) {
   await check(`arcade: "${title}" opens and stays open after Play`, async () => {
+    if (await kid.locator('.modal').count()) await kid.locator('.game-detail button.ghost').click().catch(() => undefined); // tidy up after a failed step
     await kid.locator('.tile', { hasText: title }).first().click();
     await kid.waitForSelector('.game-detail', { timeout: 10000 });
     await shot(kid, `arcade-${title}-detail`);
