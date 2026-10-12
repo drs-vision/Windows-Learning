@@ -59,6 +59,22 @@ internal static class Wts
         try { return Marshal.PtrToStringUni(buf); } finally { WTSFreeMemory(buf); }
     }
 
+    /// <summary>
+    /// The SID of the user logged into a session, read from their logon token. This is the reliable way to know
+    /// who is at the keyboard — names can differ (Microsoft accounts, renamed accounts, "DESKTOP\\name" vs "name").
+    /// </summary>
+    public static string? SessionUserSid(uint sessionId)
+    {
+        if (sessionId == 0xFFFFFFFF || !WTSQueryUserToken(sessionId, out var token)) return null;
+        try
+        {
+            using var id = new WindowsIdentity(token);
+            return id.User?.Value;
+        }
+        catch { return null; }
+        finally { CloseHandle(token); }
+    }
+
     public static string? SidForAccount(string account)
     {
         try { return (new NTAccount(account).Translate(typeof(SecurityIdentifier)) as SecurityIdentifier)?.Value; }

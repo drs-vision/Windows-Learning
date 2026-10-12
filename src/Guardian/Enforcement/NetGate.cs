@@ -17,10 +17,11 @@ public sealed class NetGate
 
     private readonly SessionMonitor _session;
     private readonly UnlockManager _unlocks;
+    private readonly CoinQuest.Shared.Config.HouseholdStore _store;
     private readonly ILogger<NetGate> _log;
     private readonly Dictionary<string, DateTime> _recentDenied = new(StringComparer.OrdinalIgnoreCase);
 
-    public NetGate(SessionMonitor session, UnlockManager unlocks, ILogger<NetGate> log) { _session = session; _unlocks = unlocks; _log = log; }
+    public NetGate(SessionMonitor session, UnlockManager unlocks, CoinQuest.Shared.Config.HouseholdStore store, ILogger<NetGate> log) { _session = session; _unlocks = unlocks; _store = store; _log = log; }
 
     /// <summary>Static assets only — fonts, script CDNs and sign-in pages that allowed sites need. None are browsable destinations.</summary>
     public static readonly string[] Infrastructure =
@@ -43,13 +44,15 @@ public sealed class NetGate
     {
         host = host.Trim().TrimEnd('.').ToLowerInvariant();
         if (host is "localhost" or "127.0.0.1" or "::1" or "coinquest.local") return new(true, "local");
-        var s = _session.Current;
-        if (s is null) return new(false, "no managed child is logged in");
+        // Only managed child accounts are forced through this gate (the WFP rule), so whoever is connecting is a child.
+        // Prefer the one at the keyboard; otherwise allow what any managed child is allowed (one child = exactly theirs).
+        var children = _session.Current is { } cur ? new List<Child> { cur.Child } : _store.Current.Children;
+        if (children.Count == 0) return new(false, "no managed child is set up");
         bool Match(string domain) { domain = domain.Trim().ToLowerInvariant().TrimStart('.'); if (domain.StartsWith("www.")) domain = domain[4..]; return host == domain || host.EndsWith("." + domain); }
 
         if (Infrastructure.Any(Match)) return new(true, "infrastructure");
-        if (s.Child.Allowlist.Sites.Any(Match)) return new(true, "allowed site");
-        var active = _unlocks.ActiveFor(s.Child.Id);
+        if (children.Any(c => c.Allowlist.Sites.Any(Match))) return new(true, "allowed site");
+        var active = children.SelectMany(c => _unlocks.ActiveFor(c.Id)).ToList();
         if (active.Any(u => u.Kind == PrizeKind.SiteUnlock && u.Targets.Any(Match))) return new(true, "site unlock");
         if (active.Any(u => u.Kind == PrizeKind.YouTube) && YouTubeHosts.Any(Match)) return new(true, "YouTube time");
         return new(false, "not on the list");

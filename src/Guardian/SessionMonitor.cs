@@ -21,6 +21,7 @@ public sealed class SessionMonitor
     public ActiveSession? Current { get; private set; }
     public uint ConsoleSessionId { get; private set; }
     public string? ConsoleAccount { get; private set; }
+    public string? ConsoleSid { get; private set; }
 
     public event Action<ActiveSession?>? Changed;
 
@@ -32,12 +33,17 @@ public sealed class SessionMonitor
         ConsoleSessionId = sid;
         ConsoleAccount = account;
 
-        var child = account is null ? null : _store.FindChildByAccount(account);
+        // Match by SID first (always correct), then by name (older setups without a SID).
+        var userSid = account is null ? null : Wts.SessionUserSid(sid);
+        ConsoleSid = userSid;
+        var child = (userSid is null ? null : _store.Current.Children.FirstOrDefault(c => string.Equals(c.WindowsSid, userSid, StringComparison.OrdinalIgnoreCase)))
+                    ?? (account is null ? null : _store.FindChildByAccount(account));
         var next = child is null ? null : new ActiveSession(sid, account!, child);
 
         if (next?.SessionId != Current?.SessionId || next?.Child.Id != Current?.Child.Id)
         {
-            _log.LogInformation("Console session {Sid} user {User} managed={Managed}", sid, account ?? "(none)", next is not null);
+            _log.LogInformation("Console session {Sid} user {User} ({UserSid}) managed={Managed}. Children: {Children}", sid, account ?? "(none)", ConsoleSid ?? "?", next is not null,
+                string.Join("; ", _store.Current.Children.Select(c => $"{c.DisplayName}={c.WindowsAccount}/{c.WindowsSid}")));
             Current = next;
             Changed?.Invoke(next);
         }
