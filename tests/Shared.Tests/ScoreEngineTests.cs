@@ -1,3 +1,4 @@
+using Jint;
 using System.Text.Json.Nodes;
 using CoinQuest.Shared.Scoring;
 using Xunit;
