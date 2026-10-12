@@ -144,7 +144,13 @@ public sealed partial class YouTubeService
                         Add(lv["contentId"]?.GetValue<string>(), lv["metadata"]?["lockupMetadataViewModel"]?["title"]?["content"]?.GetValue<string>());
                         return;
                     }
-                    if (o["continuationCommand"]?["token"] is JsonValue tok) next = tok.GetValue<string>();
+                    // The "load more" token lives in the grid's continuationItemRenderer (sort chips carry tokens too — ignore those).
+                    if (o["continuationItemRenderer"] is JsonObject ci)
+                    {
+                        var tok = ci["continuationEndpoint"]?["continuationCommand"]?["token"] ?? Find(ci, "token");
+                        if (tok is JsonValue tv) next = tv.GetValue<string>();
+                        return;
+                    }
                     foreach (var kv in o) Walk(kv.Value);
                     break;
                 case JsonArray a: foreach (var x in a) Walk(x); break;
@@ -155,6 +161,13 @@ public sealed partial class YouTubeService
         if (list.Count == 0) next = null;
         return new Page(list, next);
     }
+
+    private static JsonNode? Find(JsonNode? n, string key) => n switch
+    {
+        JsonObject o => o[key] ?? o.Select(kv => Find(kv.Value, key)).FirstOrDefault(x => x is not null),
+        JsonArray a => a.Select(x => Find(x, key)).FirstOrDefault(x => x is not null),
+        _ => null,
+    };
 
     /// <summary>For the child app: a page of one approved channel, or the first page if Browse isn't working.</summary>
     public async Task<object> ChannelPage(Child child, string channelId, string? continuation)
