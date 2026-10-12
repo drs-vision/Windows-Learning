@@ -28,6 +28,34 @@ public class ScoreEngineTests
         Assert.Contains("Fractions", out_.Detail);
     }
 
+    /// <summary>Every Letter Rescue lesson, played perfectly, must be accepted and pay coins — through the real bundle in Jint.</summary>
+    [Fact]
+    public void Every_sound_keys_lesson_scores_end_to_end()
+    {
+        var path = BundlePath();
+        if (path is null) return;
+        var js = new Jint.Engine();
+        js.Execute(File.ReadAllText(path));
+        var count = (int)js.Evaluate("CoinQuestScorers.soundKeysLessonCount()").AsNumber();
+        Assert.True(count >= 30);
+        var engine = new ScoreEngine(path);
+        var settings = JsonNode.Parse("""{"enabled":true,"coinsPerActivity":12,"dailyCap":100,"requireApproval":false}""");
+        for (var id = 1; id <= count; id++)
+        {
+            var items = JsonNode.Parse(js.Evaluate($"JSON.stringify(CoinQuestScorers.soundKeysItems({id}, 0))").AsString())!.AsArray();
+            Assert.NotEmpty(items);
+            var typed = new JsonArray(items.Select(n => (JsonNode?)JsonValue.Create(n!.GetValue<string>())).ToArray());
+            var firstTry = new JsonArray(items.Select(_ => (JsonNode?)JsonValue.Create(true)).ToArray());
+            var activity = new JsonObject { ["moduleId"] = "sound-keys", ["kind"] = "lesson", ["issuedAt"] = 0,
+                ["data"] = new JsonObject { ["lessonId"] = id, ["current"] = id, ["seed"] = 0, ["done"] = new JsonArray() } };
+            var result = new JsonObject { ["startedAt"] = 0, ["finishedAt"] = 600_000, ["data"] = new JsonObject { ["typed"] = typed, ["firstTry"] = firstTry } };
+            var o = engine.Score("sound-keys", activity, result, settings);
+            Assert.True(o.Valid, $"lesson {id}: {o.Reason}");
+            Assert.True(o.Coins > 0, $"lesson {id} paid nothing");
+            Assert.Equal(id == count ? count : id + 1, o.ProgressDelta?["lesson"]?.GetValue<int>());
+        }
+    }
+
     [Fact]
     public void Unknown_module_is_invalid()
     {

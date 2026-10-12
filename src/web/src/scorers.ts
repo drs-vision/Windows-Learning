@@ -6,6 +6,7 @@ import type { Activity, ModuleSettings, Result, ScoreOutcome } from './core/type
 import { settingsOrDefault } from './core/module';
 import { scoreTypingQuest, DEFAULTS as TQ } from './modules/typing-quest/score';
 import { scoreSoundKeys, DEFAULTS as SK } from './modules/sound-keys/score';
+import { LESSONS as SK_LESSONS, buildLesson as skBuildLesson } from './modules/sound-keys/content';
 import { scoreBibleTyping, DEFAULTS as BT } from './modules/bible-typing/score';
 import { scoreKhanAcademy, DEFAULTS as KA } from './modules/khan-academy/score';
 
@@ -31,4 +32,9 @@ export function scoreModule(moduleId: string, activity: Activity, result: Result
 
 export const score = scoreModule;
 // Global for Jint: globalThis.CoinQuestScorers.score(...)
-(globalThis as any).CoinQuestScorers = { score: scoreModule, modules: Object.keys(scorers) };
+(globalThis as any).CoinQuestScorers = {
+  score: scoreModule, modules: Object.keys(scorers),
+  // For the Guardian's tests: what a lesson asks the child to type, so every lesson can be scored end to end.
+  soundKeysLessonCount: () => SK_LESSONS.length,
+  soundKeysItems: (lessonId: number, seed: number) => skBuildLesson(lessonId, seed).flatMap((s) => s.items),
+};

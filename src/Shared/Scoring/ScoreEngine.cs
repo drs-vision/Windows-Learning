@@ -35,11 +35,13 @@ public sealed class ScoreEngine
             .MaxStatements(2_000_000)
             .Strict());
         engine.Execute(Source);
+        // Hand the data over as JSON text and parse it INSIDE the engine, so arrays are real JS arrays
+        // (CLR lists passed through interop fail Array.isArray, which made every list-based scorer reject results).
         engine.SetValue("__moduleId", moduleId);
-        engine.SetValue("__activity", JsValue.FromObject(engine, ToPlain(activity)));
-        engine.SetValue("__result", JsValue.FromObject(engine, ToPlain(result)));
-        engine.SetValue("__settings", JsValue.FromObject(engine, ToPlain(settings)));
-        var json = engine.Evaluate("JSON.stringify(globalThis.CoinQuestScorers.score(__moduleId, __activity, __result, __settings))").AsString();
+        engine.SetValue("__activityJson", activity?.ToJsonString() ?? "null");
+        engine.SetValue("__resultJson", result?.ToJsonString() ?? "null");
+        engine.SetValue("__settingsJson", settings?.ToJsonString() ?? "null");
+        var json = engine.Evaluate("JSON.stringify(globalThis.CoinQuestScorers.score(__moduleId, JSON.parse(__activityJson), JSON.parse(__resultJson), JSON.parse(__settingsJson)))").AsString();
         var node = JsonNode.Parse(json)!;
         return new ScoreOutcome(
             Coins: node["coins"]?.GetValue<int>() ?? 0,
@@ -49,18 +51,4 @@ public sealed class ScoreEngine
             Valid: node["valid"]?.GetValue<bool>() ?? true,
             Reason: node["reason"]?.GetValue<string>());
     }
-
-    // Jint interops cleanly with plain CLR dictionaries/lists; JsonNode is not a plain object.
-    private static object? ToPlain(JsonNode? n) => n switch
-    {
-        null => null,
-        JsonObject o => o.ToDictionary(kv => kv.Key, kv => ToPlain(kv.Value)),
-        JsonArray a => a.Select(ToPlain).ToList(),
-        JsonValue v => v.TryGetValue<bool>(out var b) ? b
-                      : v.TryGetValue<long>(out var l) ? (l is >= int.MinValue and <= int.MaxValue ? (object)(int)l : l)
-                      : v.TryGetValue<double>(out var d) ? d
-                      : v.TryGetValue<string>(out var s) ? s
-                      : v.ToJsonString(),
-        _ => JsonSerializer.Deserialize<object>(n.ToJsonString())
-    };
 }
