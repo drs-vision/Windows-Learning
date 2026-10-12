@@ -42,8 +42,10 @@ async function attach(port, label) {
       const page = ctx.pages().find((p) => p.url().includes('coinquest.local')) ?? ctx.pages()[0];
       if (page) { page.on('pageerror', (e) => log(`  [${label} page error] ${e.message}`)); return { browser, page }; }
     } catch { /* not up yet */ }
+    if (i === 20 || i === 60) desktop(`${label}-waiting`);
     await sleep(1000);
   }
+  try { log(execFileSync('cmd', ['/c', `netstat -ano | findstr ${port} & tasklist /v | findstr /i "coinquest msedgewebview2"`], { encoding: 'utf8' })); } catch (e) { log('  diag: ' + e.message); }
   throw new Error(`${label}: DevTools port ${port} never came up`);
 }
 

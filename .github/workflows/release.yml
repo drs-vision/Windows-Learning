@@ -171,7 +171,8 @@ jobs:
         run: |
           New-Item -ItemType Directory -Force e2e-shots/logs | Out-Null
           Copy-Item C:\ProgramData\CoinQuest\logs\* e2e-shots/logs/ -ErrorAction SilentlyContinue
-          Copy-Item C:\Users\kid\AppData\Local\CoinQuest\shell.log e2e-shots/logs/kid-shell.log -ErrorAction SilentlyContinue
+          Get-ChildItem C:\Users\kid*\AppData\Local\CoinQuest\shell.log -ErrorAction SilentlyContinue | ForEach-Object { Copy-Item $_.FullName e2e-shots/logs/kid-shell.log }
+          Get-ChildItem C:\Users -Directory | Select-Object Name | Out-File e2e-shots/logs/users.txt
           Copy-Item $env:LOCALAPPDATA\CoinQuest\shell.log e2e-shots/logs/parent-shell.log -ErrorAction SilentlyContinue
       - name: Publish screenshots to the e2e-results branch
         if: always()
