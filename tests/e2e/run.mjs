@@ -94,7 +94,7 @@ await check('Flashpoint panel shows install steps', async () => {
 });
 await pb.close().catch(() => undefined);
 try { process.kill(parentProc.pid); } catch { /* gone */ }
-execFileSync('taskkill', ['/F', '/IM', 'CoinQuest.ParentConsole.exe'], { stdio: 'ignore' }) ;
+try { execFileSync('taskkill', ['/F', '/IM', 'CoinQuest.ParentConsole.exe'], { stdio: 'ignore' }); } catch { /* already closed */ }
 
 // ====================================================================== Scholar (as the kid)
 log('== Scholar as the kid account');
