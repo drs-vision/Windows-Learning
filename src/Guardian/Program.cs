@@ -8,6 +8,8 @@ using CoinQuest.Shared.Ledgers;
 using CoinQuest.Shared.Scoring;
 
 Paths.EnsureDirectories();
+// Some requests wait on the network (YouTube, updates). Plenty of ready threads keeps everything else instant meanwhile.
+ThreadPool.SetMinThreads(64, 64);
 
 // `CoinQuest.Guardian.exe --clear-policies` — run by the uninstaller so the child's browser isn't left locked down.
 if (args.Contains("--clear-policies"))

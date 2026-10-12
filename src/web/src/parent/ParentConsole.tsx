@@ -547,9 +547,12 @@ function Quests({ child, onSave }: { child: Child; onSave: (c: Child) => void })
               <div class="row module-options">
                 {m.options.map((o) => (
                   <label title={o.help}>{o.label}
-                    <select value={s.options?.[o.key] ?? o.default} onChange={(e) => setMod(m.id, { options: { ...(s.options ?? {}), [o.key]: (e.target as HTMLSelectElement).value } })}>
-                      {o.choices.map(([v, l]) => <option value={v}>{l}</option>)}
-                    </select>
+                    {o.number
+                      ? <input type="number" min={o.number.min} max={o.number.max} value={s.options?.[o.key] ?? o.default}
+                          onChange={(e) => { const v = Math.max(o.number!.min, Math.min(o.number!.max, Math.round(Number((e.target as HTMLInputElement).value) || 0))); setMod(m.id, { options: { ...(s.options ?? {}), [o.key]: String(v) } }); }} />
+                      : <select value={s.options?.[o.key] ?? o.default} onChange={(e) => setMod(m.id, { options: { ...(s.options ?? {}), [o.key]: (e.target as HTMLSelectElement).value } })}>
+                          {(o.choices ?? []).map(([v, l]) => <option value={v}>{l}</option>)}
+                        </select>}
                   </label>
                 ))}
               </div>

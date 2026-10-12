@@ -25,7 +25,7 @@ export interface LessonModule {
   defaults: { coinsPerActivity: number; dailyCap: number };
   requiredSites?: string[];
   /** Parent-facing settings shown on the Quests screen. Stored as strings in ModuleSettings.options. */
-  options?: { key: string; label: string; help?: string; choices: [string, string][]; default: string }[];
+  options?: { key: string; label: string; help?: string; choices?: [string, string][]; number?: { min: number; max: number }; default: string }[];
 
   nextActivity(progress: Progress, rng: () => number): Activity;
   /** Mount the activity UI. Return a cleanup function. */

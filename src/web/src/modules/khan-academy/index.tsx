@@ -13,8 +13,8 @@ export const khanAcademy: LessonModule = {
   icon: '🎓',
   verification: 'observed',
   options: [
-    { key: 'perAnswer', label: 'Coins per correct answer', choices: [['1', '1'], ['2', '2'], ['3', '3'], ['5', '5']], default: '2' },
-    { key: 'perVideo', label: 'Coins per finished video', choices: [['0', 'None'], ['3', '3'], ['5', '5'], ['10', '10']], default: '5' },
+    { key: 'perAnswer', label: 'Coins per correct answer', number: { min: 0, max: 50 }, default: '2' },
+    { key: 'perVideo', label: 'Coins per finished video', number: { min: 0, max: 100 }, default: '5' },
   ],
   defaults: DEFAULTS,
   requiredSites: ['khanacademy.org', 'kastatic.org', 'kasandbox.org'],

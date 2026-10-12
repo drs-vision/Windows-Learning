@@ -89,19 +89,26 @@ public sealed class PipeServer
                     _log.LogInformation("Client connected: {Account} admin={Admin}", account, isAdmin);
                 }
 
-                Response resp;
-                Request? req = null;
-                try
+                // Each request runs on its own, so one slow request (a YouTube lookup, an update download) never holds
+                // up the next one on the same connection — e.g. giving coins from the Parent Console inside the child app.
+                // Responses carry the request id, so they may come back in any order.
+                var c = client;
+                _ = Task.Run(async () =>
                 {
-                    req = JsonSerializer.Deserialize<Request>(line, Wire.Json);
-                    resp = req is null ? Response.Fail("", "bad request") : await _router.Handle(req, client);
-                }
-                catch (Exception ex)
-                {
-                    _log.LogWarning(ex, "Request {Op} failed", req?.Op);
-                    resp = Response.Fail(req?.Id ?? "", ex.Message);
-                }
-                await Send(client, JsonSerializer.Serialize(resp, Wire.Json));
+                    Response resp;
+                    Request? req = null;
+                    try
+                    {
+                        req = JsonSerializer.Deserialize<Request>(line, Wire.Json);
+                        resp = req is null ? Response.Fail("", "bad request") : await _router.Handle(req, c);
+                    }
+                    catch (Exception ex)
+                    {
+                        _log.LogWarning(ex, "Request {Op} failed", req?.Op);
+                        resp = Response.Fail(req?.Id ?? "", ex.Message);
+                    }
+                    await Send(c, JsonSerializer.Serialize(resp, Wire.Json));
+                });
             }
         }
         catch (OperationCanceledException) { }

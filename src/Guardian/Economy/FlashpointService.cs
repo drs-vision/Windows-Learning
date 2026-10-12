@@ -39,6 +39,7 @@ public sealed class FlashpointService
     {
         if (configured is not null && IsRoot(configured)) return _root = configured;
         if (_root is not null && IsRoot(_root) && (DateTime.UtcNow - _rootCheckedAt).TotalMinutes < 5) return _root;
+        if (_root is null && (DateTime.UtcNow - _rootCheckedAt).TotalSeconds < 60) return null; // not installed: look again in a minute
         _rootCheckedAt = DateTime.UtcNow;
         var candidates = new List<string>();
         foreach (var d in DriveInfo.GetDrives().Where(d => d.DriveType == DriveType.Fixed && d.IsReady))

@@ -55,7 +55,7 @@ class Bridge {
       resp = await new Promise<Resp>((resolve) => {
         this.pending.set(req.id, { resolve });
         window.chrome!.webview!.postMessage(JSON.stringify(req));
-        setTimeout(() => { if (this.pending.has(req.id)) { this.pending.delete(req.id); resolve({ id: req.id, ok: false, error: 'timeout' }); } }, 20000);
+        setTimeout(() => { if (this.pending.has(req.id)) { this.pending.delete(req.id); resolve({ id: req.id, ok: false, error: 'CoinQuest is taking too long to answer — try again' }); } }, 50000);
       });
     }
     if (!resp.ok) throw new Error(resp.error ?? 'failed');

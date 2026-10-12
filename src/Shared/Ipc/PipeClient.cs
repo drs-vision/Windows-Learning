@@ -93,9 +93,11 @@ public sealed class PipeClient : IAsyncDisposable
         await _writeLock.WaitAsync();
         try { await _writer!.WriteLineAsync(JsonSerializer.Serialize(req, Wire.Json)); }
         finally { _writeLock.Release(); }
-        using var cts = new CancellationTokenSource(15000);
+        using var cts = new CancellationTokenSource(45000);
         await using var _ = cts.Token.Register(() => tcs.TrySetException(new TimeoutException(req.Op)));
-        var resp = await tcs.Task;
+        Response resp;
+        try { resp = await tcs.Task; }
+        catch (TimeoutException) { lock (_pending) _pending.Remove(req.Id); resp = Response.Fail(req.Id, "CoinQuest is taking too long to answer — try again"); }
         return JsonSerializer.Serialize(resp, Wire.Json);
     }
 

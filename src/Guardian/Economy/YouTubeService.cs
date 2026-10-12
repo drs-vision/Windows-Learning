@@ -21,7 +21,7 @@ public sealed partial class YouTubeService
     public YouTubeService(ILogger<YouTubeService> log)
     {
         _log = log;
-        _http = new HttpClient { Timeout = TimeSpan.FromSeconds(20) };
+        _http = new HttpClient { Timeout = TimeSpan.FromSeconds(12) };
         _http.DefaultRequestHeaders.UserAgent.Add(new ProductInfoHeaderValue("Mozilla", "5.0"));
         _http.DefaultRequestHeaders.AcceptLanguage.ParseAdd("en-US,en;q=0.8");
     }
