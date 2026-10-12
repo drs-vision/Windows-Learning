@@ -88,7 +88,7 @@ public sealed class HouseholdStore
         }
     }
 
-    public const int CurrentSchema = 5;
+    public const int CurrentSchema = 6;
 
     /// <summary>Upgrade data written by older versions. Runs on every load; must be idempotent.</summary>
     public static Household Migrate(Household h)
@@ -115,6 +115,26 @@ public sealed class HouseholdStore
             if (h.SchemaVersion < 4 && modules.TryGetValue("khan-academy", out var ka)) modules["khan-academy"] = ka with { RequireApproval = false };
             // v5: arcade prices became "per 5 minutes"; old per-play overrides would be far too expensive.
             var arcade = h.SchemaVersion < 5 ? c.Arcade with { PriceOverrides = new() } : c.Arcade;
+            // v6: one price sheet (≈1 coin per minute of real learning; 5 min of a thinking game ≈ 4 coins, 5 min of
+            // YouTube = 12). Khan Academy and Duolingo pay automatically per finished piece of work, no approvals.
+            if (h.SchemaVersion < 6)
+            {
+                if (modules.TryGetValue("khan-academy", out var k6))
+                {
+                    var opts = new Dictionary<string, string>(k6.Options);
+                    if (!opts.TryGetValue("perAnswer", out var pa) || pa == "2") opts["perAnswer"] = "1";
+                    if (!opts.TryGetValue("perVideo", out var pv) || pv == "5") opts["perVideo"] = "3";
+                    modules["khan-academy"] = k6 with
+                    {
+                        RequireApproval = false, Options = opts,
+                        CoinsPerActivity = k6.CoinsPerActivity is 35 or 0 ? 5 : k6.CoinsPerActivity,
+                        DailyCap = k6.DailyCap is 140 or 150 or 0 ? 80 : k6.DailyCap,
+                    };
+                }
+                if (modules.TryGetValue("duolingo", out var d6) && c.Allowlist.Sites.Any(s => s.EndsWith("duolingo.com", StringComparison.OrdinalIgnoreCase)))
+                    modules["duolingo"] = d6 with { Enabled = true };
+                prizes = prizes.Select(p => p.Kind == PrizeKind.YouTube && p.Cost == 40 && p.Minutes == 20 ? p with { Cost = 48 } : p).ToList();
+            }
             var allow = c.Allowlist;
             if (h.SchemaVersion < 3)
                 allow = allow with { Apps = allow.Apps.Where(a => !Allowlist.Browsers.Contains(Path.GetFileName(a), StringComparer.OrdinalIgnoreCase)).ToList() };

@@ -216,7 +216,16 @@ function Allowed({ child, onSave }: { child: Child; onSave: (c: Child) => void }
   const [showApps, setShowApps] = useState(false);
   const sites = child.allowlist.sites; const appList = child.allowlist.apps;
 
-  const setSites = (s: string[]) => onSave({ ...child, allowlist: { ...child.allowlist, sites: s } });
+  const setSites = (s: string[]) => {
+    // Allowing a learning site that pays (Duolingo, Khan Academy) switches on its quest too.
+    const modules = { ...child.modules };
+    for (const m of MODULES) {
+      const main = m.requiredSites?.[0];
+      if (main && s.includes(main) && !sites.includes(main) && !modules[m.id]?.enabled)
+        modules[m.id] = modules[m.id] ? { ...modules[m.id], enabled: true } : { ...m.defaults, requireApproval: false, enabled: true };
+    }
+    onSave({ ...child, modules, allowlist: { ...child.allowlist, sites: s } });
+  };
   const setApps2 = (a: string[]) => onSave({ ...child, allowlist: { ...child.allowlist, apps: a } });
   const addSite = () => { const s = site.trim().toLowerCase().replace(/^https?:\/\//, '').replace(/^www\./, '').split('/')[0]; if (s && !sites.includes(s)) setSites([...sites, s]); setSite(''); };
 
@@ -229,7 +238,6 @@ function Allowed({ child, onSave }: { child: Child; onSave: (c: Child) => void }
         <div class="row"><input value={site} placeholder="e.g. duolingo.com" onInput={(e) => setSite((e.target as HTMLInputElement).value)} onKeyDown={(e) => e.key === 'Enter' && addSite()} /><button class="primary" onClick={addSite}>Add</button></div>
         <div class="chips">{sites.map((s) => <span class="chip">{s}<button onClick={() => setSites(sites.filter((x) => x !== s))}>✕</button></span>)}</div>
         <div class="presets">{Object.entries(SITE_PRESETS).map(([name, list]) => <button class="ghost small" onClick={() => setSites([...new Set([...sites, ...list])])}>+ {name}</button>)}</div>
-        <RecentlyBlocked sites={sites} onAllow={(h) => setSites([...new Set([...sites, h])])} />
       </div>
       <div class="card">
         <h3>Apps</h3>
@@ -278,14 +286,13 @@ function Troubleshooting() {
   const load = () => bridge.parentDiagnostics().then(setD).catch((e) => setErr(e.message));
   useEffect(() => { load(); }, []);
   return (
-    <div class="card troubleshooting" style={{ gridColumn: '1 / -1' }}>
+    <div class="troubleshooting">
       <div class="row between"><h3>Troubleshooting</h3><button class="ghost small" onClick={load}>↻ Refresh</button></div>
       {err && <p class="error">{err}</p>}
       {d && <>
         <p class="muted small">Version {d.version} · internet lock {d.internetLock?.applied ? 'on' : 'OFF' + (d.internetLock?.error ? ` (${d.internetLock.error})` : '')}</p>
         <h4>Recent problems</h4>
         {d.problems.length === 0 ? <p class="muted small">None. 👍</p> : <ul class="problems">{d.problems.map((p) => <li><code>{p}</code></li>)}</ul>}
-        {d.blocked.length > 0 && <><h4>Recently blocked addresses</h4><p class="muted small">{d.blocked.join(' · ')}</p></>}
       </>}
     </div>
   );
@@ -628,7 +635,6 @@ function Settings({ state, child, onSave, onChange }: { state: ParentState; chil
   const u = upd;
   return (
     <div class="settings two-col">
-      <Troubleshooting />
       <div class="card">
         <h3>Child</h3>
         <label>Name<input value={child.displayName} onChange={(e) => onSave({ ...child, displayName: (e.target as HTMLInputElement).value })} /></label>
@@ -641,11 +647,16 @@ function Settings({ state, child, onSave, onChange }: { state: ParentState; chil
         <div class="row"><input type="password" inputMode="numeric" placeholder="New PIN (4–8 digits)" value={pin} onInput={(e) => setPin((e.target as HTMLInputElement).value)} /><button class="primary" disabled={!/^\d{4,8}$/.test(pin)} onClick={() => bridge.parentSetPin(pin).then(() => { setPin(''); setPinMsg('PIN changed.'); }).catch((e) => setPinMsg(e.message))}>Change</button></div>
         {pinMsg && <p class="muted">{pinMsg}</p>}
         <h3>Updates</h3>
-        <p>Version <b>{u.current}</b> — {u.state === 'upToDate' ? 'up to date' : u.state === 'readyToApply' ? `version ${u.latest} will install when ${child.displayName} logs off` : u.state === 'error' ? `couldn't check (${u.message})` : u.state}{u.lastChecked && <small class="muted"> · checked {new Date(u.lastChecked).toLocaleString()}</small>}</p>
+        <p>Version <b>{u.current}</b> — {u.state === 'upToDate' ? 'up to date' : u.state === 'readyToApply' ? `version ${u.latest} is downloaded and installs as soon as ${child.displayName} isn't in paid game or YouTube time` : u.state === 'installing' || u.state === 'applying' ? `installing ${u.latest ? 'version ' + u.latest : 'an update'}… CoinQuest restarts by itself` : u.state === 'downloading' ? `downloading ${u.latest}…` : u.state === 'error' ? `couldn't check (${u.message})` : u.state}{u.lastChecked && <small class="muted"> · checked {new Date(u.lastChecked).toLocaleString()}</small>}</p>
         <button class="secondary" onClick={() => bridge.parentCheckUpdate().then(setUpd).catch((e) => setUpd({ ...u, state: 'error', message: e.message }))}>Check now</button>
         <h3>Honest limits</h3>
         <p class="muted small">A young child can't get around this. A determined teenager with physical access could boot from USB or reinstall Windows; BitLocker plus a BIOS password closes that.</p>
       </div>
+      <details class="card advanced" style={{ gridColumn: '1 / -1' }}>
+        <summary><b>Advanced</b> <span class="muted small">— troubleshooting, recent problems, blocked addresses</span></summary>
+        <Troubleshooting />
+        <RecentlyBlocked sites={child.allowlist.sites} onAllow={(h) => onSave({ ...child, allowlist: { ...child.allowlist, sites: [...new Set([...child.allowlist.sites, h])] } })} />
+      </details>
     </div>
   );
 }

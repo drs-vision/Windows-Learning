@@ -129,7 +129,7 @@ export function Arcade({ unlocks, balance, onExit, onChanged }: { unlocks: Unloc
       if (playing && playing.id !== g.id) { bridge.closeGame(); setPlaying(null); }
       // Classics: get the game's files ready first (a few seconds the first time), so no coins are spent on a
       // game that can't start.
-      let classic: { url: string; base: string; prefix: string } | null = null;
+      let classic: { url: string; base: string; prefix: string; platform?: string } | null = null;
       if (g.kind === 'classic') { setPreparing(g.title); classic = await bridge.arcadePrepare(g.id).finally(() => setPreparing('')); }
       const r = await bridge.arcadePlay(g.id, n);
       startedAt.current = Date.now();
@@ -143,7 +143,7 @@ export function Arcade({ unlocks, balance, onExit, onChanged }: { unlocks: Unloc
         await bridge.openGame(g.url, g.title);
       }
       setSel(null);
-      setPlaying(classic ? { ...g, kind: 'swf', url: classic.url, base: classic.base, rewritePrefix: classic.prefix } : g);
+      setPlaying(classic ? (classic.platform?.toLowerCase() === 'html5' ? { ...g, kind: 'html5', url: classic.url } : { ...g, kind: 'swf', url: classic.url, base: classic.base, rewritePrefix: classic.prefix }) : g);
     } catch (e) { setError((e as Error).message); }
     finally { setBusy(false); }
   }

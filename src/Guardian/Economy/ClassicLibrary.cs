@@ -71,8 +71,11 @@ public sealed class ClassicLibrary
             if (!File.Exists(metaPath))
             {
                 var (launch, platform) = await Lookup(id);
-                if (!platform.Equals("Flash", StringComparison.OrdinalIgnoreCase))
-                    throw new InvalidOperationException($"This one is a {platform} game — CoinQuest can only play Flash classics.");
+                if (!Playable(platform))
+                {
+                    MarkUnavailable(id); // never shown again
+                    throw new InvalidOperationException($"This one is a {platform} game — CoinQuest can't play those, so it's been taken out of the arcade.");
+                }
                 if (!Uri.TryCreate(launch, UriKind.Absolute, out var lu)) throw new InvalidOperationException("This game has no file to start.");
                 var tmp = dir + ".partial";
                 if (Directory.Exists(tmp)) Directory.Delete(tmp, true);
@@ -104,6 +107,9 @@ public sealed class ClassicLibrary
         }
         finally { _one.Release(); }
     }
+
+    /// <summary>Flash plays in Ruffle; HTML5 games play as a web page from the local copy.</summary>
+    public static bool Playable(string platform) => platform.Equals("Flash", StringComparison.OrdinalIgnoreCase) || platform.Equals("HTML5", StringComparison.OrdinalIgnoreCase);
 
     public bool IsReady(string id) => File.Exists(Path.Combine(Dir, id, "meta.json"));
 

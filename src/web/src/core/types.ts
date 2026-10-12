@@ -153,7 +153,7 @@ export interface FpCatalogGame { id: string; title: string; developer: string; p
 
 /** More thinking = cheaper. Mirrors ArcadeSettings.DefaultPrice in Models.cs. */
 /** Coins per 5 minutes of a game (must match ArcadeSettings.DefaultPrice). More thinking = cheaper. */
-export const defaultArcadePrice = (strategy: number) => ({ 5: 2, 4: 3, 3: 4, 2: 5 } as Record<number, number>)[Math.max(1, Math.min(5, Math.round(strategy)))] ?? 6;
+export const defaultArcadePrice = (strategy: number) => 9 - Math.max(1, Math.min(5, Math.round(strategy))); // 4 (heavy thinking) … 8 (pure reflex); must match ArcadeSettings.DefaultPrice
 export const BLOCK_MINUTES = 5;
 /** Must match ArcadeSettings.YouTubeBlockPrice: YouTube always costs more than the priciest arcade game. */
 export function youTubeBlockPrice(cost: number, minutes: number, arcadePrices: number[]) {

@@ -94,7 +94,9 @@ public sealed class UpdateChecker
 
                 Status = Status with { State = "downloading", Latest = latest };
                 Directory.CreateDirectory(Paths.UpdateStaging);
-                var zipPath = Path.Combine(Paths.UpdateStaging, AssetName);
+                // A fresh file name each time: a zip still held by antivirus or a running install can't block the download.
+                foreach (var old in Directory.EnumerateFiles(Paths.UpdateStaging, "CoinQuest-win-x64*.zip")) { try { File.Delete(old); } catch { } }
+                var zipPath = Path.Combine(Paths.UpdateStaging, $"CoinQuest-win-x64-{latest}-{DateTime.UtcNow.Ticks}.zip");
                 await using (var fs = File.Create(zipPath))
                 await using (var s = await _http.GetStreamAsync(zipUrl, ct)) await s.CopyToAsync(fs, ct);
 
@@ -110,14 +112,23 @@ public sealed class UpdateChecker
                 }
 
                 var extractDir = Path.Combine(Paths.UpdateStaging, "v" + latest);
-                if (Directory.Exists(extractDir)) Directory.Delete(extractDir, true);
+                try { if (Directory.Exists(extractDir)) Directory.Delete(extractDir, true); }
+                catch { extractDir = Path.Combine(Paths.UpdateStaging, $"v{latest}-{DateTime.UtcNow.Ticks}"); }
                 ZipFile.ExtractToDirectory(zipPath, extractDir);
+                try { File.Delete(zipPath); } catch { }
                 _stagedVersion = latest; _stagedDir = extractDir; _stagedAt = DateTimeOffset.UtcNow;
                 _log.LogInformation("Update {Latest} staged at {Dir}", latest, extractDir);
             }
 
             Status = new UpdateStatus(Current, latest, "readyToApply", null, DateTimeOffset.UtcNow);
             if (applyEvenIfChildActive || GoodMoment()) Apply();
+            return Status;
+        }
+        catch (Exception ex) when (ex is UnauthorizedAccessException or IOException)
+        {
+            // Files in use: almost always an update that's installing right now.
+            Status = new UpdateStatus(Current, Status.Latest, "installing", "an update is being installed — CoinQuest restarts by itself when it's done", DateTimeOffset.UtcNow);
+            _log.LogInformation("Update check: files busy ({Msg}) — treating as install in progress", ex.Message);
             return Status;
         }
         catch (Exception ex)

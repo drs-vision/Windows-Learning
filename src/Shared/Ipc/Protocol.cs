@@ -58,6 +58,7 @@ public static class Ops
     public const string ArcadeQuit = "arcade.quit";    // { gameId } → the play is over
     public const string YouTubeLibrary = "youtube.library"; // approved channels' recent videos
     public const string YouTubeCheck = "youtube.check";     // { videoId } → allowed?
+    public const string YouTubeChannel = "youtube.channel"; // { channelId, next? } → a page of that approved channel's videos
 
     // parent — needs token from parent.login
     public const string ParentLogin = "parent.login";  // { pin } -> { token }

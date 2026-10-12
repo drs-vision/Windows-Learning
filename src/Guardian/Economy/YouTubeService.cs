@@ -1,4 +1,7 @@
+using System.Collections.Concurrent;
 using System.Net.Http.Headers;
+using System.Text;
+using System.Text.Json.Nodes;
 using System.Text.RegularExpressions;
 using System.Xml.Linq;
 using CoinQuest.Shared.Models;
@@ -70,7 +73,11 @@ public sealed partial class YouTubeService
         try { videos = await FromRss(channelId); }
         catch (Exception ex)
         {
-            _log.LogInformation("RSS for {Channel} failed ({Msg}); reading the channel page instead", channelId, ex.Message);
+            _log.LogInformation("RSS for {Channel} failed ({Msg}); asking YouTube's own app API instead", channelId, ex.Message);
+            try { videos = (await Browse(channelId, null)).Videos; if (videos.Count == 0) throw new InvalidOperationException("no videos"); }
+            catch (Exception exB)
+            {
+            _log.LogInformation("Browse for {Channel} failed ({Msg}); reading the channel page instead", channelId, exB.Message);
             try { videos = await FromChannelPage(channelId); }
             catch (Exception ex2)
             {
@@ -78,10 +85,93 @@ public sealed partial class YouTubeService
                 videos = LoadSaved(channelId);
                 if (videos.Count == 0) throw;
             }
+            }
         }
         if (videos.Count > 0) Save(channelId, videos);
+        Remember(videos);
         lock (_cache) _cache[channelId] = (DateTimeOffset.UtcNow, videos);
         return videos;
+    }
+
+    // ---- every video of a channel, page by page (YouTube's own web-app API, the same call its Videos tab makes) ----
+
+    /// <summary>Video ids we've listed from an approved channel → that channel. Only these can be played.</summary>
+    private readonly ConcurrentDictionary<string, string> _known = new();
+    private void Remember(IEnumerable<Video> videos) { foreach (var v in videos) _known[v.Id] = v.ChannelId; }
+
+    private string? CachedTitle(string channelId) { lock (_cache) return _cache.TryGetValue(channelId, out var c) ? c.videos.FirstOrDefault()?.ChannelTitle : null; }
+
+    public sealed record Page(List<Video> Videos, string? Next);
+    private const string VideosTab = "EgZ2aWRlb3PyBgQKAjoA";
+
+    /// <summary>One page of a channel's uploads (about 30), newest first. Pass the previous page's <c>Next</c> for more.</summary>
+    public async Task<Page> Browse(string channelId, string? continuation)
+    {
+        var client = new JsonObject { ["clientName"] = "WEB", ["clientVersion"] = "2.20250312.04.00", ["hl"] = "en", ["gl"] = "US" };
+        var body = new JsonObject { ["context"] = new JsonObject { ["client"] = client } };
+        if (continuation is null) { body["browseId"] = channelId; body["params"] = VideosTab; }
+        else body["continuation"] = continuation;
+        using var req = new HttpRequestMessage(HttpMethod.Post, "https://www.youtube.com/youtubei/v1/browse?prettyPrint=false")
+        { Content = new StringContent(body.ToJsonString(), Encoding.UTF8, "application/json") };
+        req.Headers.Add("X-YouTube-Client-Name", "1");
+        req.Headers.Add("X-YouTube-Client-Version", "2.20250312.04.00");
+        req.Headers.Add("Origin", "https://www.youtube.com");
+        using var resp = await _http.SendAsync(req);
+        resp.EnsureSuccessStatusCode();
+        var root = JsonNode.Parse(await resp.Content.ReadAsStringAsync());
+        var title = root?["metadata"]?["channelMetadataRenderer"]?["title"]?.GetValue<string>()
+                    ?? CachedTitle(channelId) ?? "";
+        var list = new List<Video>(); var seen = new HashSet<string>(); string? next = null;
+        void Add(string? id, string? t)
+        {
+            if (id is null || id.Length != 11 || !seen.Add(id)) return;
+            list.Add(new Video(id, t ?? "Video", channelId, title, DateTimeOffset.UtcNow.AddMinutes(-list.Count), $"https://i.ytimg.com/vi/{id}/mqdefault.jpg"));
+        }
+        void Walk(JsonNode? n)
+        {
+            switch (n)
+            {
+                case JsonObject o:
+                    if (o["reelItemRenderer"] is not null || o["shortsLockupViewModel"] is not null) return; // Shorts aren't what a parent approved
+                    if (o["videoRenderer"] is JsonObject vr)
+                    {
+                        var runs = vr["title"]?["runs"] as JsonArray;
+                        Add(vr["videoId"]?.GetValue<string>(), runs?.FirstOrDefault()?["text"]?.GetValue<string>() ?? vr["title"]?["simpleText"]?.GetValue<string>());
+                        return;
+                    }
+                    if (o["lockupViewModel"] is JsonObject lv && (lv["contentType"]?.GetValue<string>() ?? "").Contains("VIDEO"))
+                    {
+                        Add(lv["contentId"]?.GetValue<string>(), lv["metadata"]?["lockupMetadataViewModel"]?["title"]?["content"]?.GetValue<string>());
+                        return;
+                    }
+                    if (o["continuationCommand"]?["token"] is JsonValue tok) next = tok.GetValue<string>();
+                    foreach (var kv in o) Walk(kv.Value);
+                    break;
+                case JsonArray a: foreach (var x in a) Walk(x); break;
+            }
+        }
+        Walk(root);
+        Remember(list);
+        if (list.Count == 0) next = null;
+        return new Page(list, next);
+    }
+
+    /// <summary>For the child app: a page of one approved channel, or the first page if Browse isn't working.</summary>
+    public async Task<object> ChannelPage(Child child, string channelId, string? continuation)
+    {
+        if (!child.YouTubeChannels.Any(c => c.Id == channelId)) throw new InvalidOperationException("that channel isn't approved");
+        try
+        {
+            var p = await Browse(channelId, continuation);
+            var title = child.YouTubeChannels.First(c => c.Id == channelId).Title;
+            return new { videos = p.Videos.Select(v => v with { ChannelTitle = title }), next = p.Next };
+        }
+        catch (Exception ex)
+        {
+            _log.LogWarning(ex, "Browse failed for {Channel}", channelId);
+            if (continuation is not null) throw new InvalidOperationException("couldn't load more videos right now");
+            return new { videos = await Feed(channelId), next = (string?)null };
+        }
     }
 
     private async Task<List<Video>> FromRss(string channelId)
@@ -157,6 +247,7 @@ public sealed partial class YouTubeService
     /// <summary>Is this video from an approved channel? (Checked before the player is allowed to load it.)</summary>
     public async Task<bool> IsAllowed(Child child, string videoId)
     {
+        if (_known.TryGetValue(videoId, out var ch) && child.YouTubeChannels.Any(c => c.Id == ch)) return true;
         foreach (var c in child.YouTubeChannels)
         {
             try { if ((await Feed(c.Id)).Any(v => v.Id == videoId)) return true; } catch { }

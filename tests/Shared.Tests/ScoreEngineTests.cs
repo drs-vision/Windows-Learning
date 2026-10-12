@@ -19,14 +19,14 @@ public class ScoreEngineTests
         var path = BundlePath();
         if (path is null) return; // web not built in this environment; CI builds it first
         var engine = new ScoreEngine(path);
-        var activity = JsonNode.Parse("""{"moduleId":"khan-academy","kind":"claim","data":{},"issuedAt":0}""");
-        var result = JsonNode.Parse("""{"startedAt":0,"finishedAt":1000,"data":{"topic":"Fractions","kind":"quiz"}}""");
-        var settings = JsonNode.Parse("""{"enabled":true,"coinsPerActivity":35,"dailyCap":140,"requireApproval":true}""");
+        var activity = JsonNode.Parse("""{"moduleId":"khan-academy","kind":"observed","data":{},"issuedAt":0}""");
+        var result = JsonNode.Parse("""{"startedAt":0,"finishedAt":1000,"data":{"correct":3,"done":1}}""");
+        var settings = JsonNode.Parse("""{"enabled":true,"coinsPerActivity":5,"dailyCap":80,"requireApproval":false,"options":{"perAnswer":"1"}}""");
         var out_ = engine.Score("khan-academy", activity, result, settings);
         Assert.True(out_.Valid);
-        Assert.Equal(53, out_.Coins);
-        Assert.True(out_.NeedsApproval);
-        Assert.Contains("Fractions", out_.Detail);
+        Assert.Equal(8, out_.Coins);
+        Assert.False(out_.NeedsApproval);
+        Assert.Contains("Khan Academy", out_.Detail);
     }
 
     /// <summary>Every Letter Rescue lesson, played perfectly, must be accepted and pay coins — through the real bundle in Jint.</summary>

@@ -7,7 +7,7 @@ import { autoSamplerPrice, defaultArcadePrice, youTubeBlockPrice } from './types
 import type { Ev } from './bridge';
 
 const STARTER_PRIZES: Prize[] = [
-  { id: 'p-yt', name: '20 minutes of YouTube', cost: 40, kind: 'youTube', minutes: 20, dailyCap: 3, boughtToday: 0, targets: [] },
+  { id: 'p-yt', name: '20 minutes of YouTube', cost: 48, kind: 'youTube', minutes: 20, dailyCap: 3, boughtToday: 0, targets: [] },
   { id: 'p-ext', name: 'Extra 15 minutes tonight', cost: 30, kind: 'screenTimeExtension', minutes: 15, dailyCap: 1, boughtToday: 0, targets: [] },
   { id: 'p-movie', name: "Pick Friday's movie", cost: 150, kind: 'realWorld', minutes: 0, dailyCap: 1, boughtToday: 0, targets: [] },
 ];
@@ -34,7 +34,7 @@ export class MockGuardian {
       'sound-keys': { enabled: true, coinsPerActivity: 12, dailyCap: 100, requireApproval: false, options: {} },
       'typing-quest': { enabled: false, coinsPerActivity: 10, dailyCap: 80, requireApproval: false },
       'bible-typing': { enabled: true, coinsPerActivity: 15, dailyCap: 60, requireApproval: false },
-      'khan-academy': { enabled: true, coinsPerActivity: 35, dailyCap: 140, requireApproval: true },
+      'khan-academy': { enabled: true, coinsPerActivity: 5, dailyCap: 80, requireApproval: false },
     },
   };
   private ledger: LedgerEntry[] = JSON.parse(localStorage.getItem('cq.mock.ledger') ?? '[]');
@@ -155,6 +155,7 @@ export class MockGuardian {
       }
       case 'shell.flashpoint': case 'shell.openGame': case 'shell.openSite': case 'shell.closeGame': case 'shell.launch': return ok({ ok: true });
       case 'youtube.library': return ok({ channels: this.child.youTubeChannels, errors: [], videos: Array.from({ length: 9 }, (_, i) => ({ id: 'dQw4w9WgXcQ', title: `Amazing science video #${i + 1}`, channelId: this.child.youTubeChannels![0].id, channelTitle: 'Mark Rober', published: new Date().toISOString(), thumbnail: '' })) });
+      case 'youtube.channel': { const n = Number(p?.next || 0); return ok({ videos: Array.from({ length: 12 }, (_, i) => ({ id: 'vid' + String(n * 12 + i).padStart(8, '0'), title: `Older video #${n * 12 + i + 1}`, channelId: p?.channelId, channelTitle: 'Mark Rober', published: new Date().toISOString(), thumbnail: '' })), next: n < 2 ? String(n + 1) : null }); }
       case 'youtube.check': return ok({ allowed: this.unlocks.some((u) => u.kind === 'youTube') });
       case 'parent.youtubeResolve': return ok({ id: 'UC' + Math.random().toString(36).slice(2).padEnd(22, 'x').slice(0, 22), title: String(p.url).split('@')[1] ?? 'Channel', url: p.url });
       case 'parent.arcadeCatalog': { const l = (await this.handle({ id: 'x', op: 'arcade.list' })).payload as any; return ok({ games: l.games, settings: this.child.arcade }); }

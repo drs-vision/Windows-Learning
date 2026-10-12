@@ -76,6 +76,7 @@ class Bridge {
   arcadeQuit(gameId: string) { return this.call('arcade.quit', { gameId }).catch(() => undefined); }
   flashpoint(root: string, id: string, verb: 'play' | 'prepare' = 'play') { return this.call('shell.flashpoint', { root, id, verb }); }
   youtubeLibrary() { return this.call<{ channels: { id: string; title: string }[]; videos: Video[]; errors: string[] }>('youtube.library'); }
+  youtubeChannel(channelId: string, next?: string | null) { return this.call<{ videos: Video[]; next: string | null }>('youtube.channel', { channelId, next: next ?? '' }); }
   youtubeCheck(videoId: string) { return this.call<{ allowed: boolean }>('youtube.check', { videoId }); }
 
   async parentLogin(pin: string) {

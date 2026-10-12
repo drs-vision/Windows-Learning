@@ -9,12 +9,14 @@ import { scoreSoundKeys, DEFAULTS as SK } from './modules/sound-keys/score';
 import { LESSONS as SK_LESSONS, buildLesson as skBuildLesson } from './modules/sound-keys/content';
 import { scoreBibleTyping, DEFAULTS as BT } from './modules/bible-typing/score';
 import { scoreKhanAcademy, DEFAULTS as KA } from './modules/khan-academy/score';
+import { scoreDuolingo, DEFAULTS as DU } from './modules/duolingo/score';
 
 const scorers: Record<string, { fn: (a: Activity, r: Result, s: ModuleSettings) => ScoreOutcome; defaults: { coinsPerActivity: number; dailyCap: number } }> = {
   'sound-keys': { fn: scoreSoundKeys, defaults: SK },
   'typing-quest': { fn: scoreTypingQuest, defaults: TQ },
   'bible-typing': { fn: scoreBibleTyping, defaults: BT },
   'khan-academy': { fn: scoreKhanAcademy, defaults: KA },
+  'duolingo': { fn: scoreDuolingo, defaults: DU },
 };
 
 export function scoreModule(moduleId: string, activity: Activity, result: Result, settings: Partial<ModuleSettings> | undefined): ScoreOutcome {
@@ -23,7 +25,7 @@ export function scoreModule(moduleId: string, activity: Activity, result: Result
   try {
     const out = s.fn(activity, result, settingsOrDefault(settings, s.defaults));
     // Belt and braces: never mint more than 5× the base per activity, never negative.
-    const cap = Math.max(settingsOrDefault(settings, s.defaults).coinsPerActivity * 5, moduleId === 'khan-academy' ? 200 : 0);
+    const cap = Math.max(settingsOrDefault(settings, s.defaults).coinsPerActivity * 5, moduleId === 'khan-academy' ? 60 : 0);
     return { ...out, coins: Math.max(0, Math.min(cap, Math.round(out.coins || 0))) };
   } catch (e) {
     return { valid: false, reason: 'scorer error: ' + (e as Error).message, coins: 0, needsApproval: false, detail: '' };

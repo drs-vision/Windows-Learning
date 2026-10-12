@@ -95,16 +95,28 @@ describe('bible-typing', () => {
 });
 
 describe('khan-academy', () => {
-  const act = { moduleId: 'khan-academy', kind: 'claim', data: {}, issuedAt: 0 };
-  const s = { ...settings, coinsPerActivity: 35 };
-  it('files a claim needing approval', () => {
-    const out = scoreModule('khan-academy', act, { startedAt: 0, finishedAt: 1000, data: { topic: 'Fractions', kind: 'quiz' } }, s);
-    expect(out.needsApproval).toBe(true);
-    expect(out.coins).toBe(53);
-    expect(out.detail).toContain('Fractions');
+  const act = { moduleId: 'khan-academy', kind: 'observed', data: {}, issuedAt: 0 };
+  const s = { ...settings, coinsPerActivity: 5, options: { perAnswer: '1', perVideo: '3' } };
+  it('pays automatically for answers, videos and finished exercises', () => {
+    const out = scoreModule('khan-academy', act, { startedAt: 0, finishedAt: 1000, data: { correct: 4, video: 1, done: 1 } }, s);
+    expect(out.needsApproval).toBe(false);
+    expect(out.coins).toBe(4 + 3 + 5);
   });
-  it('rejects an empty topic', () => {
-    expect(scoreModule('khan-academy', act, { startedAt: 0, finishedAt: 1000, data: { topic: '' } }, s).valid).toBe(false);
+  it('no longer accepts hand claims', () => {
+    expect(scoreModule('khan-academy', { ...act, kind: 'claim' }, { startedAt: 0, finishedAt: 1000, data: { topic: 'Fractions' } }, s).valid).toBe(false);
+  });
+});
+
+describe('duolingo', () => {
+  const act = { moduleId: 'duolingo', kind: 'observed', data: {}, issuedAt: 0 };
+  it('pays per finished lesson and story', () => {
+    const out = scoreModule('duolingo', act, { startedAt: 0, finishedAt: 1000, data: { lesson: 2, story: 1 } }, { ...settings, coinsPerActivity: 5 });
+    expect(out.valid).toBe(true);
+    expect(out.needsApproval).toBe(false);
+    expect(out.coins).toBe(15);
+  });
+  it('caps a burst', () => {
+    expect(scoreModule('duolingo', act, { startedAt: 0, finishedAt: 1000, data: { lesson: 99 } }, { ...settings, coinsPerActivity: 5 }).coins).toBe(15);
   });
 });
 

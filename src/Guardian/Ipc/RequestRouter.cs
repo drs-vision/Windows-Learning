@@ -46,7 +46,7 @@ public sealed class RequestRouter
     /// </summary>
     private static readonly HashSet<string> Slow = new()
     {
-        Ops.ArcadePrepare, Ops.YouTubeLibrary, Ops.YouTubeCheck, Ops.ParentYouTubeResolve, Ops.ParentCheckUpdate, Ops.ParentInstalledApps, Ops.SetupAccounts,
+        Ops.ArcadePrepare, Ops.YouTubeLibrary, Ops.YouTubeCheck, Ops.YouTubeChannel, Ops.ParentYouTubeResolve, Ops.ParentCheckUpdate, Ops.ParentInstalledApps, Ops.SetupAccounts,
         Ops.ParentFpStatus, Ops.ParentFpSearch, Ops.ParentFpSuggest, Ops.ParentFpInstallClifp, Ops.ParentFpDownloadInstaller, Ops.ParentFpThumbs, Ops.ParentFpStockNow, Ops.ParentBlocked, Ops.ParentDiagnostics,
     };
     private readonly object _sync = new();
@@ -76,6 +76,8 @@ public sealed class RequestRouter
             Ops.ArcadePrepare => child is null ? Response.Fail(req.Id, "not a managed account") : ArcadePrepare(req, child),
             Ops.ArcadeSampler => child is null ? Response.Fail(req.Id, "not a managed account") : ArcadeSampler(req, child, client.Account),
             Ops.YouTubeLibrary => child is null ? Response.Fail(req.Id, "not a managed account") : Response.Success(req.Id, _youtube.Library(child).GetAwaiter().GetResult()),
+            Ops.YouTubeChannel => child is null ? Response.Fail(req.Id, "not a managed account")
+                : Response.Success(req.Id, _youtube.ChannelPage(child, Str(req, "channelId"), OptStr(req, "next")).GetAwaiter().GetResult()),
             Ops.YouTubeCheck => child is null ? Response.Fail(req.Id, "not a managed account")
                 : Response.Success(req.Id, new { allowed = _unlocks.ActiveFor(child.Id).Any(u => u.Kind == PrizeKind.YouTube) && _youtube.IsAllowed(child, Str(req, "videoId")).GetAwaiter().GetResult() }),
 
@@ -471,6 +473,8 @@ public sealed class RequestRouter
         if (_session.Current is { } s) _policy.Apply(_store.FindChild(s.Child.Id) ?? s.Child);
         StateChanged?.Invoke();
     }
+
+    private static string? OptStr(Request req, string key) => req.Payload?[key] is System.Text.Json.Nodes.JsonValue v && v.TryGetValue<string>(out var s) && s.Length > 0 ? s : null;
 
     private static string Str(Request req, string key) =>
         req.Payload?[key]?.GetValue<string>() ?? throw new ArgumentException($"{key} required");

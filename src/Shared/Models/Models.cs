@@ -96,7 +96,7 @@ public sealed record ArcadeSettings
     public const int MaxBlocks = 12;
 
     /// <summary>Coins per 5-minute block. More thinking = cheaper.</summary>
-    public static int DefaultPrice(int strategy) => Math.Clamp(strategy, 1, 5) switch { 5 => 2, 4 => 3, 3 => 4, 2 => 5, _ => 6 };
+    public static int DefaultPrice(int strategy) => 9 - Math.Clamp(strategy, 1, 5); // 4 (heavy thinking) … 8 (pure reflex)
 
     /// <summary>
     /// YouTube costs more than the arcade (games beat videos). Per 5 minutes: the prize's own rate, but always at
@@ -151,7 +151,7 @@ public sealed record Prize
 
     public static List<Prize> Starters() => new()
     {
-        new() { Name = "20 minutes of YouTube", Cost = 40, Kind = PrizeKind.YouTube, Minutes = 20, DailyCap = 3 },
+        new() { Name = "20 minutes of YouTube", Cost = 48, Kind = PrizeKind.YouTube, Minutes = 20, DailyCap = 3 },
         new() { Name = "Extra 15 minutes tonight", Cost = 30, Kind = PrizeKind.ScreenTimeExtension, Minutes = 15, DailyCap = 1 },
         new() { Name = "Pick Friday's movie", Cost = 150, Kind = PrizeKind.RealWorld, DailyCap = 1 },
     };
@@ -172,7 +172,8 @@ public sealed record ModuleSettings
         ["sound-keys"] = new() { CoinsPerActivity = 12, DailyCap = 100 },
         ["typing-quest"] = new() { Enabled = false, CoinsPerActivity = 10, DailyCap = 80 },
         ["bible-typing"] = new() { CoinsPerActivity = 15, DailyCap = 60 },
-        ["khan-academy"] = new() { CoinsPerActivity = 35, DailyCap = 150 },
+        ["khan-academy"] = new() { CoinsPerActivity = 5, DailyCap = 80, Options = new() { ["perAnswer"] = "1", ["perVideo"] = "3" } },
+        ["duolingo"] = new() { Enabled = false, CoinsPerActivity = 5, DailyCap = 50 },
     };
 }
 

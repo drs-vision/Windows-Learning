@@ -212,6 +212,42 @@ await check('classic Flash game (Flashpoint Archive) appears, downloads and play
   await kid.locator('.player header button').first().click().catch(() => undefined);
   await sleep(800);
 });
+await check('HTML5 classic (Bloxorz) plays or is gone from the arcade', async () => {
+  const search = kid.locator('.portal input[type=search], .portal input').first();
+  await search.fill('Bloxorz'); await sleep(1200);
+  const tile = kid.locator('.tile', { hasText: /Bloxorz/ }).first();
+  if (!(await tile.count())) { log('  Bloxorz not in this arcade (not stocked here) — nothing to check'); await search.fill(''); return; }
+  await tile.click();
+  await kid.click('.time-buyer .coin-btn');
+  for (let i = 0; i < 60 && !(await kid.locator('.player, .portal .error').count()); i++) await sleep(1000);
+  await sleep(8000);
+  await shot(kid, 'html5-Bloxorz-loaded'); desktop('html5-Bloxorz-loaded');
+  const err = await kid.locator('.portal .error, .player .error').allTextContents();
+  if (err.length) {
+    log('  error: ' + err.join(' / '));
+    // Then it must have been taken out of the arcade.
+    await kid.click('.portal-head button.ghost').catch(() => undefined); await sleep(500);
+    await kid.click('text=/Arcade/'); await sleep(2500);
+    await kid.locator('.portal input').first().fill('Bloxorz'); await sleep(1200);
+    expect(!(await kid.locator('.tile', { hasText: /Bloxorz/ }).count()), 'Bloxorz failed but is still in the arcade');
+    await kid.locator('.portal input').first().fill('');
+    return;
+  }
+  const frame = kid.frames().find((f) => f.url().includes('coinquest-classics.local'));
+  const info = frame ? await frame.evaluate(() => ({ canvases: document.querySelectorAll('canvas').length, text: document.body.innerText.slice(0, 120), html: document.body.innerHTML.length })).catch((e) => ({ error: String(e) })) : null;
+  log('  frame: ' + (frame ? frame.url() : 'none') + ' ' + JSON.stringify(info));
+  const box = await kid.locator('.player-host').first().boundingBox();
+  if (box) {
+    await kid.mouse.click(box.x + box.width / 2, box.y + box.height / 2); await sleep(1500);
+    for (const k of ['Space', 'Enter', 'ArrowRight', 'ArrowUp', 'ArrowRight', 'ArrowDown']) { await kid.keyboard.press(k); await sleep(400); }
+    await kid.mouse.click(box.x + box.width / 2, box.y + box.height * 0.6); await sleep(3000);
+    await shot(kid, 'html5-Bloxorz-PLAYING-after-input'); desktop('html5-Bloxorz-PLAYING-after-input');
+  }
+  expect(info && !info.error && (info.canvases > 0 || info.html > 500), 'the HTML5 game page is empty');
+  await kid.locator('.player header button').first().click().catch(() => undefined);
+  await sleep(800);
+  await kid.locator('.portal input').first().fill('').catch(() => undefined);
+});
 await check('sampler pass: buy and play any game', async () => {
   const btn = kid.locator('text=GET PASS');
   expect(await btn.count(), 'no sampler button');
@@ -248,7 +284,27 @@ await check('YouTube: + buys time and a video plays', async () => {
     const t = await f.textContent('body').catch(() => '');
     if (/not a bot/i.test(t ?? '')) log('  note: YouTube asked "confirm you are not a bot" (it does this for data-centre connections like this test machine)');
   }
+  const next = kid.locator('.upnext-card');
+  log(`  up next: ${await next.count()} approved videos beside the player`);
+  expect(await next.count() > 0, 'no "Up next" videos beside the player');
+  const before = await kid.locator('.player header b').textContent();
+  await next.nth(1).click();
+  await sleep(6000);
+  await shot(kid, 'youtube-upnext-clicked'); desktop('youtube-upnext-clicked');
+  expect((await kid.locator('.player header b').textContent()) !== before, 'clicking an Up next video did not switch videos');
   await kid.click('text=← Videos');
+  await sleep(800);
+});
+await check('YouTube: pick a creator and scroll through all their videos', async () => {
+  await kid.locator('.yt-channels button').nth(1).click();
+  await sleep(5000);
+  const first = await kid.locator('.video-card').count();
+  for (let i = 0; i < 6; i++) { await kid.mouse.move(640, 500); await kid.mouse.wheel(0, 4000); await sleep(2500); }
+  const after = await kid.locator('.video-card').count();
+  await shot(kid, 'youtube-creator-scrolled'); desktop('youtube-creator-scrolled');
+  const more = await kid.locator('.yt-more').textContent().catch(() => '');
+  log(`  creator videos: ${first} at first, ${after} after scrolling · ${String(more).trim()}`);
+  expect(after > 15, `only ${after} videos — scrolling did not load older ones`);
   await kid.click('.arcade header button.ghost');
 });
 

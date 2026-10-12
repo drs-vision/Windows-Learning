@@ -538,3 +538,18 @@ button.big { font-size: 1.1em; padding: .7em 1.4em; }
 .blocked { margin-top: 1em; border-top: 1px dashed var(--muted); padding-top: .6em; } .blocked h4 { margin: 0 0 .2em; }
 .blocked-row { padding: .25em 0; } .blocked-row code { font-size: .95em; }
 .problems { margin: .2em 0; padding-left: 1.2em; max-height: 260px; overflow: auto; } .problems code { font-size: .82em; white-space: pre-wrap; word-break: break-word; }
+.parent .advanced summary { cursor: pointer; padding: 4px 0; list-style-position: inside; }
+
+/* YouTube: watch page with an "Up next" rail of approved videos */
+.yt-watch-body { display: flex; gap: 14px; flex: 1; min-height: 0; }
+.yt-main { flex: 1; display: flex; flex-direction: column; min-width: 0; }
+.yt-main .player-host { flex: 1; min-height: 300px; }
+.yt-upnext { width: 300px; overflow-y: auto; display: flex; flex-direction: column; gap: 8px; }
+.yt-upnext h4 { margin: 0 0 4px; }
+.upnext-card { display: flex; align-items: flex-start; gap: 8px; flex: none; text-align: left; background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.08); border-radius: 10px; padding: 6px; color: inherit; cursor: pointer; }
+.upnext-card:hover { background: rgba(255,255,255,.1); }
+.upnext-card img { width: 120px; height: 68px; object-fit: cover; border-radius: 6px; flex: none; }
+.upnext-card span { display: flex; flex-direction: column; gap: 2px; font-size: 13px; }
+.yt-more { text-align: center; padding: 16px; }
+.yt-channels { flex-wrap: wrap; }
+@media (max-width: 900px) { .yt-watch-body { flex-direction: column; } .yt-upnext { width: auto; max-height: 40vh; } }

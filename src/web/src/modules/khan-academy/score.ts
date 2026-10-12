@@ -1,26 +1,28 @@
 import type { Activity, Result, ModuleSettings, ScoreOutcome } from '../../core/types';
 import { invalid } from '../../core/module';
 
-export const DEFAULTS = { coinsPerActivity: 35, dailyCap: 140 };
+/** coinsPerActivity = coins for a finished exercise, quiz or unit test. */
+export const DEFAULTS = { coinsPerActivity: 5, dailyCap: 80 };
 
-/** v1: a claim. The child says what they finished; the parent approves it. v2 will accept extension-observed completions. */
+const n = (v: unknown, max: number) => Math.max(0, Math.min(max, Math.floor(Number(v) || 0)));
+
+/**
+ * Fully automatic — nothing to approve. Seen inside CoinQuest's browser on Khan Academy: correct answers,
+ * finished videos and finished exercises/quizzes/unit tests.
+ */
 export function scoreKhanAcademy(activity: Activity, result: Result, settings: ModuleSettings): ScoreOutcome {
-  if (activity.kind === 'observed') {
-    // Seen automatically inside CoinQuest's browser: correct answers and finished videos on Khan Academy.
-    const correct = Math.max(0, Math.min(30, Math.floor(Number(result.data.correct) || 0)));
-    const videos = Math.max(0, Math.min(5, Math.floor(Number(result.data.videos) || 0)));
-    if (correct + videos === 0) return invalid('nothing to count');
-    const perAnswer = Number(settings.options?.perAnswer ?? 2);
-    const perVideo = Number(settings.options?.perVideo ?? 5);
-    const parts = [correct ? `${correct} correct answer${correct > 1 ? 's' : ''}` : '', videos ? `${videos} video${videos > 1 ? 's' : ''}` : ''].filter(Boolean);
-    return { valid: true, coins: correct * perAnswer + videos * perVideo, needsApproval: false, detail: `Khan Academy: ${parts.join(' + ')}` };
-  }
-  const topic = String(result.data.topic ?? '').trim();
-  const kind = String(result.data.kind ?? 'lesson');
-  if (topic.length < 3) return invalid('tell us what you finished');
-  if (topic.length > 120) return invalid('keep it short');
-  const multiplier = kind === 'unitTest' ? 2 : kind === 'quiz' ? 1.5 : 1;
-  const coins = Math.round(settings.coinsPerActivity * multiplier);
-  const label = kind === 'unitTest' ? 'Unit test' : kind === 'quiz' ? 'Quiz' : 'Lesson';
-  return { valid: true, coins, needsApproval: true, detail: `${label}: ${topic}` };
+  if (activity.kind !== 'observed') return invalid('Khan Academy pays automatically now — just do it in CoinQuest');
+  const correct = n(result.data.correct, 30);
+  const videos = n(result.data.video ?? result.data.videos, 5);
+  const done = n(result.data.done, 3);
+  if (correct + videos + done === 0) return invalid('nothing to count');
+  const perAnswer = Number(settings.options?.perAnswer ?? 1);
+  const perVideo = Number(settings.options?.perVideo ?? 3);
+  const perTask = settings.coinsPerActivity;
+  const parts = [
+    done ? `${done} finished exercise/quiz${done > 1 ? 'zes' : ''}` : '',
+    correct ? `${correct} correct answer${correct > 1 ? 's' : ''}` : '',
+    videos ? `${videos} video${videos > 1 ? 's' : ''}` : '',
+  ].filter(Boolean);
+  return { valid: true, coins: correct * perAnswer + videos * perVideo + done * perTask, needsApproval: false, detail: `Khan Academy: ${parts.join(' + ')}` };
 }

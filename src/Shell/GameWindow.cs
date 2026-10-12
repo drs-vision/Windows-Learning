@@ -53,7 +53,7 @@ public sealed class GameWindow : Window
             core.Settings.AreDefaultContextMenusEnabled = false;
             // Pop-ups never open a second window; an allowed one (e.g. a sign-in page) loads here instead.
             core.NewWindowRequested += (_, e) => { e.Handled = true; if (Uri.TryCreate(e.Uri, UriKind.Absolute, out var nu) && Allowed(nu)) core.Navigate(e.Uri); };
-            if (_sites.Any(d => d.EndsWith("khanacademy.org"))) KhanObserver.Attach(core, OnKhan);
+            if (_sites.Any(d => d.EndsWith("khanacademy.org") || d.EndsWith("duolingo.com"))) LearningObserver.Attach(core, OnLearn);
             core.NavigationStarting += (_, e) =>
             {
                 if (!Uri.TryCreate(e.Uri, UriKind.Absolute, out var u)) { e.Cancel = true; return; }
@@ -65,9 +65,9 @@ public sealed class GameWindow : Window
         };
     }
 
-    /// <summary>Raised for Khan Academy progress seen in this window ("correct", "video").</summary>
-    public event Action<string>? OnKhanEvent;
-    private void OnKhan(string kind) => Dispatcher.Invoke(() => OnKhanEvent?.Invoke(kind));
+    /// <summary>Raised for learning progress seen in this window ("khan:correct", "khan:video", "khan:done", "duolingo:lesson", "duolingo:story").</summary>
+    public event Action<string>? OnLearnEvent;
+    private void OnLearn(string kind) => Dispatcher.Invoke(() => OnLearnEvent?.Invoke(kind));
 
     private bool Allowed(Uri u)
     {
