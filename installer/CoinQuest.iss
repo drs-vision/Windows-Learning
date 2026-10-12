@@ -61,7 +61,7 @@ Filename: "sc.exe"; Parameters: "create CoinQuestGuardian binPath= ""{app}\CoinQ
 Filename: "sc.exe"; Parameters: "description CoinQuestGuardian ""Enforces CoinQuest allowlists and keeps the coin ledger for managed child accounts."""; Flags: runhidden waituntilterminated
 Filename: "sc.exe"; Parameters: "failure CoinQuestGuardian reset= 60 actions= restart/5000/restart/5000/restart/5000"; Flags: runhidden waituntilterminated
 Filename: "sc.exe"; Parameters: "start CoinQuestGuardian"; Flags: runhidden waituntilterminated
-Filename: "{app}\CoinQuest.ParentConsole.exe"; Description: "Open the Parent Console to finish setup"; Flags: postinstall nowait
+Filename: "{app}\CoinQuest.ParentConsole.exe"; Description: "Open the Parent Console to finish setup"; Flags: postinstall nowait skipifsilent
 
 [UninstallRun]
 Filename: "sc.exe"; Parameters: "stop CoinQuestGuardian"; Flags: runhidden waituntilterminated; RunOnceId: "stopsvc"

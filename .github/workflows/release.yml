@@ -143,7 +143,9 @@ jobs:
         run: |
           net user kid 'Kid-Pass-2026!' /add /y
           $setup = Get-ChildItem dist/CoinQuest-Setup-*.exe | Select-Object -First 1
-          Start-Process $setup.FullName -ArgumentList '/VERYSILENT','/SUPPRESSMSGBOXES','/NORESTART' -Wait
+          $p = Start-Process $setup.FullName -ArgumentList '/VERYSILENT','/SUPPRESSMSGBOXES','/NORESTART','/LOG=install.log' -PassThru
+          $p.WaitForExit(600000) | Out-Null
+          Get-Content install.log -Tail 15
           New-Item -ItemType File -Force 'C:\ProgramData\CoinQuest\e2e-test-mode' | Out-Null
           Restart-Service CoinQuestGuardian
           Start-Sleep 5
