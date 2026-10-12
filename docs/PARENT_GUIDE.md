@@ -28,7 +28,7 @@ Open **Parent Console** from the Start menu (your account) or press `Ctrl+Shift+
 | Screen | What you do there |
 |---|---|
 | **Today** | See what your child did, coins earned and spent, and anything waiting on you. |
-| **Approvals** | Some earnings need a parent's tap — e.g. "Finished Khan Academy: Fractions — 35 coins?" Approve or deny. |
+| **Approvals** | Only for earnings you chose to approve by hand. Khan Academy and Duolingo pay automatically. |
 | **Allowed** | The list of apps and websites your child can use. Add from "apps on this computer" or type a website address. |
 | **Shop** | The prizes. Each has a name, a coin price, and what it unlocks. Starter prizes are included. |
 | **Quests** | Which earning activities are on, how many coins each pays, and daily limits. |
@@ -53,7 +53,26 @@ When your child buys "20 minutes of YouTube", YouTube is allowed in the browser 
 
 Pay-per-play, like quarters in a machine: each game has a coin price, and a play lasts until your child leaves the game (with a safety cap you set). Games that take more thinking cost less; you can change any price under **Shop → Arcade**.
 
-**Classic 2000s Flash games** (Fancy Pants, Gravity Guy, Bloons TD, Learn to Fly, Raft Wars…) come from [Flashpoint Archive](https://flashpointarchive.org), the free preservation project. In **Shop → Arcade**, press **Install Flashpoint**, then **Finish setup**, then approve games from the suggested list (or search Flashpoint for more). Only games you approve appear, and Flashpoint's adult-tagged games never show up in the search.
+**Classic 2000s games** (Fancy Pants, Gravity Guy, Bloons TD, Learn to Fly, Raft Wars, Bloxorz…) come from [Flashpoint Archive](https://flashpointarchive.org), the free preservation project. CoinQuest downloads them by itself and plays them inside CoinQuest (Flash and HTML5 games); nothing to install. Any game whose files can't be played is taken out of the arcade. Flashpoint's adult-tagged games never show up.
+
+## The price sheet (defaults — change any of them)
+
+Rule of thumb: **about 1 coin per minute of real learning.**
+
+| Earn | Coins |
+|---|---|
+| Letter Rescue lesson | 12 |
+| Scripture passage | ~15 (by length) |
+| Khan Academy | 1 per correct answer · 3 per finished video · 5 per finished exercise, quiz or unit test |
+| Duolingo | 5 per finished lesson or story |
+
+| Spend (per 5 minutes) | Coins |
+|---|---|
+| Arcade, thinking games (strategy/puzzle) | 4 |
+| Arcade, reflex/action games | up to 8 |
+| YouTube | 12 (always more than any game) |
+
+So 5 minutes of YouTube costs about 10–12 minutes of learning; 5 minutes of a puzzle game about 4.
 
 You can also add a `.swf` file you own, or a link to a game on its maker's website.
 
