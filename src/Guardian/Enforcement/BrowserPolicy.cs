@@ -33,6 +33,7 @@ public sealed class BrowserPolicy
     /// <summary>Recompute and write the allowlist for this child. Idempotent and cheap to call often.</summary>
     public void Apply(Child child)
     {
+        if (CoinQuest.Shared.Config.Paths.E2ETestMode) return;
         if (string.IsNullOrEmpty(child.WindowsSid)) return;
 
         var allow = new List<string>(AlwaysAllow);

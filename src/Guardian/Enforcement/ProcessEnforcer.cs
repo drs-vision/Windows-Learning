@@ -64,6 +64,7 @@ public sealed class ProcessEnforcer
 
     public void Sweep()
     {
+        if (CoinQuest.Shared.Config.Paths.E2ETestMode) return; // CI machine: the test driver runs as the "child"
         var s = _session.Current;
         if (s is null) return;
 

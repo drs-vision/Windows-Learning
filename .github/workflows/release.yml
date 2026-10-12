@@ -126,7 +126,7 @@ jobs:
 
   # ---------- end-to-end test of the real installed app, with screenshots ----------
   # Installs the release on a clean Windows machine, sets it up through the Parent Console, then plays it as a
-  # separate standard "kid" account (internet-locked like a real child): arcade, sampler, YouTube, Letter Rescue,
+  # the signed-in account as the child (app started by the Guardian, as at home): arcade, sampler, YouTube, Letter Rescue,
   # Scripture typing. Screenshots and logs are uploaded as the "e2e-screens" artifact.
   e2e:
     needs: build
@@ -138,12 +138,11 @@ jobs:
         with:
           name: coinquest-${{ needs.build.outputs.version }}
           path: dist
-      - name: Create the kid account and install CoinQuest
+      - name: Install CoinQuest
         shell: pwsh
         run: |
-          Set-Service seclogon -StartupType Manual; Start-Service seclogon   # lets the test start the child app as the kid
-          net user kid 'Pl4y-Learn-2026!' /add /y
-          if ($LASTEXITCODE -ne 0) { throw 'could not create the kid account' }
+          # The child app the Guardian launches for this account opens a DevTools port for the test (test machines only).
+          [Environment]::SetEnvironmentVariable('COINQUEST_DEBUG_PORT', '9223', 'User')
           $setup = Get-ChildItem dist/CoinQuest-Setup-*.exe | Select-Object -First 1
           $p = Start-Process $setup.FullName -ArgumentList '/VERYSILENT','/SUPPRESSMSGBOXES','/NORESTART','/LOG=install.log' -PassThru
           $p.WaitForExit(600000) | Out-Null
@@ -171,9 +170,7 @@ jobs:
         run: |
           New-Item -ItemType Directory -Force e2e-shots/logs | Out-Null
           Copy-Item C:\ProgramData\CoinQuest\logs\* e2e-shots/logs/ -ErrorAction SilentlyContinue
-          Get-ChildItem C:\Users\kid*\AppData\Local\CoinQuest\shell.log -ErrorAction SilentlyContinue | ForEach-Object { Copy-Item $_.FullName e2e-shots/logs/kid-shell.log }
-          Get-ChildItem C:\Users -Directory | Select-Object Name | Out-File e2e-shots/logs/users.txt
-          Copy-Item $env:LOCALAPPDATA\CoinQuest\shell.log e2e-shots/logs/parent-shell.log -ErrorAction SilentlyContinue
+          Copy-Item $env:LOCALAPPDATA\CoinQuest\shell.log e2e-shots/logs/shell.log -ErrorAction SilentlyContinue
       - name: Publish screenshots to the e2e-results branch
         if: always()
         shell: bash

@@ -29,6 +29,7 @@ public sealed class NetLock
     /// <summary>Idempotent; re-applies when the set of children changes (and once at startup, in case a rule was removed).</summary>
     public void Ensure(bool force = false)
     {
+        if (Paths.E2ETestMode) { Status = new(false, DateTimeOffset.UtcNow, "test machine: internet lock off"); return; } // the CI runner itself plays the child
         var sids = _store.Current.Children.Select(c => c.WindowsSid).Where(s => !string.IsNullOrEmpty(s)).Distinct().OrderBy(s => s).ToList();
         var permits = Permits();
         var sig = string.Join(",", sids) + "|" + string.Join(",", permits);

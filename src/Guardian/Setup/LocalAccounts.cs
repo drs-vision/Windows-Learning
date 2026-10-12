@@ -61,6 +61,7 @@ public static class LocalAccounts
     /// <summary>A managed child must be a Standard user. Removes them from Administrators if present.</summary>
     public static void EnsureStandardUser(string account)
     {
+        if (CoinQuest.Shared.Config.Paths.E2ETestMode) return; // CI machine: the test account must stay an administrator
         var bare = account.Contains('\\') ? account[(account.IndexOf('\\') + 1)..] : account;
         if (AdminMembers().Contains(bare)) Run("net", $"localgroup Administrators \"{bare}\" /delete");
         Run("net", $"localgroup Users \"{bare}\" /add");

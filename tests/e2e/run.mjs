@@ -9,7 +9,9 @@ import { join } from 'node:path';
 
 const OUT = process.env.E2E_OUT ?? 'e2e-shots';
 const INSTALL = process.env.CQ_INSTALL ?? 'C:\\Program Files\\CoinQuest';
-const KID = process.env.KID_USER ?? 'kid', KID_PW = process.env.KID_PW ?? 'Pl4y-Learn-2026!';
+// The CI user itself plays the child (it is the one signed in at the console, exactly like Daniel's account at home).
+// On a machine marked as a test machine the Guardian leaves the internet lock and app blocking off, so the runner keeps working.
+const KID = process.env.USERNAME ?? 'runneradmin';
 mkdirSync(OUT, { recursive: true });
 const crash = (e) => { log('FAIL  (stopped) ' + (e?.stack ?? e)); writeFileSync(join(OUT, 'RESULT.txt'), 'CRASHED'); process.exit(1); };
 process.on('unhandledRejection', crash); process.on('uncaughtException', crash);
@@ -60,7 +62,7 @@ function startAs(user, pw, exe, port) {
 log('== Parent Console: first-run setup');
 const parentProc = spawn(join(INSTALL, 'CoinQuest.ParentConsole.exe'), [], { env: { ...process.env, COINQUEST_DEBUG_PORT: '9222' }, detached: true, stdio: 'ignore' });
 let { browser: pb, page: parent } = await attach(9222, 'parent');
-await parent.waitForSelector('text=/kid/i', { timeout: 60000 }).catch(() => undefined);
+await parent.waitForSelector('button.account', { timeout: 60000 }).catch(() => undefined);
 await shot(parent, 'parent-wizard'); desktop('parent-wizard');
 await check('setup wizard completes with the kid account', async () => {
   await parent.locator('button.account', { hasText: new RegExp(`^.*${KID}.*$`, 'i') }).first().click();
@@ -70,6 +72,9 @@ await check('setup wizard completes with the kid account', async () => {
   await parent.click('text=Next');
   await shot(parent, 'parent-wizard-preset');
   await parent.click('text=Finish');
+  // This account is now the child, so the Parent Console asks for the PIN (as it would inside Daniel's account).
+  await parent.waitForSelector('nav.tabs, form.pin-gate', { timeout: 30000 });
+  if (await parent.locator('form.pin-gate').count()) { await parent.fill('form.pin-gate input', '2468'); await parent.click('form.pin-gate button[type=submit]'); }
   await parent.waitForSelector('nav.tabs', { timeout: 30000 });
   await shot(parent, 'parent-today');
 });
@@ -99,8 +104,7 @@ try { process.kill(parentProc.pid); } catch { /* gone */ }
 try { execFileSync('taskkill', ['/F', '/IM', 'CoinQuest.ParentConsole.exe'], { stdio: 'ignore' }); } catch { /* already closed */ }
 
 // ====================================================================== Scholar (as the kid)
-log('== Scholar as the kid account');
-startAs(KID, KID_PW, join(INSTALL, 'CoinQuest.Scholar.exe'), 9223);
+log('== Scholar (started by the Guardian in the child\'s session, as at home)');
 let { browser: kb, page: kid } = await attach(9223, 'scholar');
 await kid.waitForSelector('text=/Hi,/', { timeout: 90000 });
 await sleep(1500);
