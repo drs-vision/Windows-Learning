@@ -144,7 +144,7 @@ public sealed partial class YouTubeService
         foreach (var c in child.YouTubeChannels)
         {
             try { all.AddRange(await Feed(c.Id)); }
-            catch (Exception ex) { errors.Add(c.Title); _log.LogWarning(ex, "Feed failed for {Channel}", c.Title); }
+            catch (Exception ex) { errors.Add($"{c.Title} ({ex.Message})"); _log.LogWarning(ex, "Feed failed for {Channel}", c.Title); }
         }
         return new
         {

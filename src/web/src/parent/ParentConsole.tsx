@@ -255,6 +255,26 @@ function RecentlyBlocked({ sites, onAllow }: { sites: string[]; onAllow: (host: 
   );
 }
 
+/** What went wrong recently, in one place — a screenshot of this card is usually enough to diagnose a problem. */
+function Troubleshooting() {
+  const [d, setD] = useState<Awaited<ReturnType<typeof bridge.parentDiagnostics>> | null>(null);
+  const [err, setErr] = useState('');
+  const load = () => bridge.parentDiagnostics().then(setD).catch((e) => setErr(e.message));
+  useEffect(() => { load(); }, []);
+  return (
+    <div class="card troubleshooting" style={{ gridColumn: '1 / -1' }}>
+      <div class="row between"><h3>Troubleshooting</h3><button class="ghost small" onClick={load}>↻ Refresh</button></div>
+      {err && <p class="error">{err}</p>}
+      {d && <>
+        <p class="muted small">Version {d.version} · internet lock {d.internetLock?.applied ? 'on' : 'OFF' + (d.internetLock?.error ? ` (${d.internetLock.error})` : '')}</p>
+        <h4>Recent problems</h4>
+        {d.problems.length === 0 ? <p class="muted small">None. 👍</p> : <ul class="problems">{d.problems.map((p) => <li><code>{p}</code></li>)}</ul>}
+        {d.blocked.length > 0 && <><h4>Recently blocked addresses</h4><p class="muted small">{d.blocked.join(' · ')}</p></>}
+      </>}
+    </div>
+  );
+}
+
 function YouTubeChannels({ child, onSave }: { child: Child; onSave: (c: Child) => void }) {
   const [url, setUrl] = useState('');
   const [busy, setBusy] = useState(false);
@@ -598,6 +618,7 @@ function Settings({ state, child, onSave, onChange }: { state: ParentState; chil
   const u = upd;
   return (
     <div class="settings two-col">
+      <Troubleshooting />
       <div class="card">
         <h3>Child</h3>
         <label>Name<input value={child.displayName} onChange={(e) => onSave({ ...child, displayName: (e.target as HTMLInputElement).value })} /></label>

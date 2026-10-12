@@ -3,6 +3,11 @@ namespace CoinQuest.Guardian;
 /// <summary>Tiny rolling file logger: one file, rolled at 5 MB, keeps 3. No dependencies.</summary>
 public sealed class FileLoggerProvider : ILoggerProvider
 {
+    private static readonly LinkedList<string> _recent = new();
+    /// <summary>Recent warnings and errors, newest first — shown in the Parent Console's Troubleshooting card.</summary>
+    public static List<string> Recent() { lock (_recent) return _recent.ToList(); }
+    internal static void Remember(string s) { lock (_recent) { _recent.AddFirst(s); while (_recent.Count > 40) _recent.RemoveLast(); } }
+
     private readonly string _path;
     private readonly object _gate = new();
     public FileLoggerProvider(string path) { _path = path; Directory.CreateDirectory(Path.GetDirectoryName(path)!); }
@@ -41,6 +46,7 @@ public sealed class FileLoggerProvider : ILoggerProvider
         {
             if (!IsEnabled(level)) return;
             var line = $"{DateTime.Now:yyyy-MM-dd HH:mm:ss} [{level.ToString()[..4].ToUpper()}] {_cat}: {fmt(state, ex)}";
+            if (level >= LogLevel.Warning) FileLoggerProvider.Remember($"{DateTime.Now:MM-dd HH:mm} {_cat}: {fmt(state, ex)}{(ex is null ? "" : " — " + ex.GetType().Name + ": " + ex.Message)}");
             if (ex is not null) line += Environment.NewLine + ex;
             _p.Write(line);
         }

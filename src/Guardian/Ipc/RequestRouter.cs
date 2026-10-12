@@ -46,7 +46,7 @@ public sealed class RequestRouter
     private static readonly HashSet<string> Slow = new()
     {
         Ops.YouTubeLibrary, Ops.YouTubeCheck, Ops.ParentYouTubeResolve, Ops.ParentCheckUpdate, Ops.ParentInstalledApps, Ops.SetupAccounts,
-        Ops.ParentFpStatus, Ops.ParentFpSearch, Ops.ParentFpSuggest, Ops.ParentFpInstallClifp, Ops.ParentFpDownloadInstaller, Ops.ParentFpThumbs, Ops.ParentFpStockNow, Ops.ParentBlocked,
+        Ops.ParentFpStatus, Ops.ParentFpSearch, Ops.ParentFpSuggest, Ops.ParentFpInstallClifp, Ops.ParentFpDownloadInstaller, Ops.ParentFpThumbs, Ops.ParentFpStockNow, Ops.ParentBlocked, Ops.ParentDiagnostics,
     };
     private readonly object _sync = new();
 
@@ -92,6 +92,7 @@ public sealed class RequestRouter
             Ops.ParentArcadeCatalog => Parent(req, client, child, () => FirstChild() is { } c ? new { games = Arcade.Catalog(c), settings = c.Arcade } : new { games = new List<Arcade.Game>(), settings = new ArcadeSettings() }),
             Ops.ParentArcadeUpload => Parent(req, client, child, () => Arcade.Upload(FirstChild() ?? throw new InvalidOperationException("set up a child first"),
                 Str(req, "fileName"), Str(req, "data"), req.Payload?["title"]?.GetValue<string>(), req.Payload?["strategy"]?.GetValue<int>() ?? 3)),
+            Ops.ParentDiagnostics => Parent(req, client, child, () => new { version = Version, problems = CoinQuest.Guardian.FileLoggerProvider.Recent(), blocked = _gate.RecentlyBlocked().Take(20).Select(b => b.Host), internetLock = _netLock.Status }),
             Ops.ParentBlocked => Parent(req, client, child, () => _gate.RecentlyBlocked().Select(b => new { host = b.Host, at = b.At, reason = b.Reason })),
             Ops.ParentFpStatus => Parent(req, client, child, () => FpStatus()),
             Ops.ParentFpStockNow => Parent(req, client, child, () => { _stocker.Tick(force: true); return FpStatus(); }),
