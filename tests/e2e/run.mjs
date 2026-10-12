@@ -98,15 +98,24 @@ await check('parent adds a YouTube channel', async () => {
 await check('parent allows duolingo.com', async () => {
   await parent.click('nav.tabs >> text=Allowed');
   await parent.fill('input[placeholder="e.g. duolingo.com"]', 'duolingo.com');
-  await parent.locator('.card', { hasText: 'Websites' }).locator('button.primary', { hasText: 'Add' }).click();
-  await sleep(800);
+  await parent.press('input[placeholder="e.g. duolingo.com"]', 'Enter');
+  await sleep(1500);
+  await parent.locator('.chip', { hasText: 'duolingo.com' }).first().scrollIntoViewIfNeeded().catch(() => undefined);
   await shot(parent, 'parent-sites');
+  expect(await parent.locator('.chip', { hasText: 'duolingo.com' }).count() > 0, 'duolingo.com chip not shown after adding');
 });
 await check('Flashpoint panel shows install steps', async () => {
   await parent.click('nav.tabs >> text=Shop');
   await sleep(1500);
   await parent.locator('.fp-panel').scrollIntoViewIfNeeded();
   await shot(parent, 'parent-arcade-flashpoint');
+});
+await check('settings survive switching tabs (duolingo.com still allowed)', async () => {
+  await parent.click('nav.tabs >> text=Today'); await sleep(800);
+  await parent.click('nav.tabs >> text=Allowed'); await sleep(1500);
+  const n = await parent.locator('.chip', { hasText: 'duolingo.com' }).count();
+  if (!n) await shot(parent, 'parent-sites-LOST');
+  expect(n > 0, 'duolingo.com disappeared from the allowed sites');
 });
 await pb.close().catch(() => undefined);
 try { process.kill(parentProc.pid); } catch { /* gone */ }
@@ -149,8 +158,21 @@ for (const title of titles) {
     expect(open2 > 0, 'game closed by itself within 14 s');
     const err = await kid.locator('.player .error, .portal .error').allTextContents();
     expect(err.length === 0, 'error shown: ' + err.join(' / '));
-    // Ruffle/iframe content actually rendered something
-    if (await kid.locator('.player').count()) await shot(kid, `arcade-${title}-after14s`);
+    // Actually PLAY it: click into the game and press the usual start/move keys, then screenshot the result.
+    if (await kid.locator('.player').count()) {
+      await shot(kid, `arcade-${title}-after14s`);
+      const host = kid.locator('.player-host').first();
+      const box = await host.boundingBox();
+      if (box) {
+        await kid.mouse.click(box.x + box.width / 2, box.y + box.height / 2);
+        await sleep(800);
+        for (const k of ['Space', 'Enter', 'ArrowRight', 'ArrowRight', 'ArrowUp', 'Space', 'ArrowLeft', 'ArrowDown', 'Space', 'ArrowRight', 'ArrowUp', 'Space']) { await kid.keyboard.press(k); await sleep(250); }
+        await kid.mouse.click(box.x + box.width / 2, box.y + box.height / 2);
+        for (const k of ['ArrowLeft', 'ArrowUp', 'Space', 'ArrowRight', 'ArrowDown', 'Space']) { await kid.keyboard.press(k); await sleep(250); }
+        await sleep(1500);
+        await shot(kid, `arcade-${title}-PLAYING-after-input`); desktop(`arcade-${title}-PLAYING-after-input`);
+      }
+    }
     // back to the arcade (time keeps counting)
     const back = kid.locator('.player header button').first();
     if (await back.count()) await back.click(); else await kid.click('text=I\'m done playing');

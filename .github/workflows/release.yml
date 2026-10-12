@@ -170,6 +170,7 @@ jobs:
         run: |
           New-Item -ItemType Directory -Force e2e-shots/logs | Out-Null
           Copy-Item C:\ProgramData\CoinQuest\logs\* e2e-shots/logs/ -ErrorAction SilentlyContinue
+          Copy-Item C:\ProgramData\CoinQuest\household*.json e2e-shots/logs/ -ErrorAction SilentlyContinue
           Copy-Item $env:LOCALAPPDATA\CoinQuest\shell.log e2e-shots/logs/shell.log -ErrorAction SilentlyContinue
       - name: Publish screenshots to the e2e-results branch
         if: always()
