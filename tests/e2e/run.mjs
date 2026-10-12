@@ -11,6 +11,8 @@ const OUT = process.env.E2E_OUT ?? 'e2e-shots';
 const INSTALL = process.env.CQ_INSTALL ?? 'C:\\Program Files\\CoinQuest';
 const KID = process.env.KID_USER ?? 'kid', KID_PW = process.env.KID_PW ?? 'Pl4y-Learn-2026!';
 mkdirSync(OUT, { recursive: true });
+const crash = (e) => { log('FAIL  (stopped) ' + (e?.stack ?? e)); writeFileSync(join(OUT, 'RESULT.txt'), 'CRASHED'); process.exit(1); };
+process.on('unhandledRejection', crash); process.on('uncaughtException', crash);
 let n = 0, failures = 0;
 const log = (s) => { console.log(s); appendFileSync(join(OUT, 'log.txt'), s + '\n'); };
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
@@ -48,7 +50,8 @@ async function attach(port, label) {
 /** Start a CoinQuest shell as another Windows account (the kid), with the test debugging port. */
 function startAs(user, pw, exe, port) {
   const ps = `$p = New-Object System.Diagnostics.ProcessStartInfo '${exe}'; $p.UseShellExecute=$false; $p.UserName='${user}'; $p.Password=(ConvertTo-SecureString '${pw}' -AsPlainText -Force); $p.LoadUserProfile=$true; $p.WorkingDirectory='${INSTALL}'; $p.Environment['COINQUEST_DEBUG_PORT']='${port}'; [System.Diagnostics.Process]::Start($p) | Out-Null`;
-  execFileSync('powershell', ['-NoProfile', '-Command', ps], { stdio: 'inherit' });
+  try { const out = execFileSync('powershell', ['-NoProfile', '-Command', ps], { encoding: 'utf8' }); if (out.trim()) log('  start: ' + out.trim()); }
+  catch (e) { log('  start failed: ' + (e.stderr || e.message)); throw e; }
 }
 
 // ====================================================================== Parent Console (as the admin running CI)

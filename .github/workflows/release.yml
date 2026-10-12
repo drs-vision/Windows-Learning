@@ -141,6 +141,7 @@ jobs:
       - name: Create the kid account and install CoinQuest
         shell: pwsh
         run: |
+          Set-Service seclogon -StartupType Manual; Start-Service seclogon   # lets the test start the child app as the kid
           net user kid 'Pl4y-Learn-2026!' /add /y
           if ($LASTEXITCODE -ne 0) { throw 'could not create the kid account' }
           $setup = Get-ChildItem dist/CoinQuest-Setup-*.exe | Select-Object -First 1
