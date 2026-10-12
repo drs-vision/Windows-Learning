@@ -92,10 +92,11 @@ class Bridge {
   parentArcadeCatalog() { return this.call<{ games: Game[]; settings: ArcadeSettings }>('parent.arcadeCatalog', undefined, { parent: true }); }
   parentArcadeUpload(fileName: string, data: string, title: string, strategy: number) { return this.call<Game>('parent.arcadeUpload', { fileName, data, title, strategy }, { parent: true }); }
   parentArcadeRemove(gameId: string) { return this.call('parent.arcadeRemove', { gameId }, { parent: true }); }
-  parentFpStatus() { return this.call<{ installed: boolean; root?: string | null; clifp: boolean; installerUrl: string }>('parent.fpStatus', undefined, { parent: true }); }
+  parentFpStatus() { return this.call<FpStatus>('parent.fpStatus', undefined, { parent: true }); }
+  parentFpStockNow() { return this.call<FpStatus>('parent.fpStockNow', undefined, { parent: true }); }
   parentFpSearch(q: string) { return this.call<FpCatalogGame[]>('parent.fpSearch', { q }, { parent: true }); }
   parentFpSuggest() { return this.call<{ pick: { search: string; genre: string; strategy: number; note?: string | null }; game: FpCatalogGame; approved: boolean }[]>('parent.fpSuggest', undefined, { parent: true }); }
-  parentFpInstallClifp() { return this.call<{ installed: boolean; root?: string | null; clifp: boolean }>('parent.fpInstallClifp', undefined, { parent: true }); }
+  parentFpInstallClifp() { return this.call<FpStatus>('parent.fpInstallClifp', undefined, { parent: true }); }
   parentFpDownloadInstaller() { return this.call<{ path: string }>('parent.fpDownloadInstaller', undefined, { parent: true }); }
   parentFpThumbs(ids: string[]) { return this.call<Record<string, string>>('parent.fpThumbs', { ids }, { parent: true }); }
   launch(exe: string) { return this.call('shell.launch', { exe }); }
@@ -111,3 +112,10 @@ class Bridge {
 }
 
 export const bridge = new Bridge();
+
+export interface FpStatus {
+  installed: boolean; root?: string | null; clifp: boolean; installerUrl: string;
+  autoClassics?: boolean; approved?: number;
+  /** stage: idle | not-installed | installing-launcher | downloading | ready */
+  stock?: { stage: string; approved: number; downloaded: number; queued: number; error?: string | null };
+}

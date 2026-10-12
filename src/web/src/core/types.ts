@@ -98,7 +98,7 @@ export interface ChildState {
 
 export interface YouTubeChannel { id: string; title: string; url: string }
 export interface WebGame { id: string; title: string; url: string; strategy: number }
-export interface ArcadeSettings { minutesPerPlay: number; priceOverrides: Record<string, number>; hidden: string[]; webGames: WebGame[]; flashpoint?: FlashpointGame[]; flashpointRoot?: string | null }
+export interface ArcadeSettings { minutesPerPlay: number; priceOverrides: Record<string, number>; hidden: string[]; webGames: WebGame[]; flashpoint?: FlashpointGame[]; flashpointRoot?: string | null; autoClassics?: boolean; stockedPicks?: string[] }
 export interface Video { id: string; title: string; channelId: string; channelTitle: string; published: string; thumbnail: string }
 
 export interface Child {

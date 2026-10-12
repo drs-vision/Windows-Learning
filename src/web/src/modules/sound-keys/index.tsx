@@ -4,18 +4,19 @@ import type { Activity, ModuleSettings, Progress } from '../../core/types';
 import type { ActivityContext, LessonModule } from '../../core/module';
 import { contentUrl } from '../../core/content-url';
 import {
-  FINGER_COLOR, FINGER_NAME, KEY_FINGER, LESSONS, SOUNDS, WORDS, buildLesson,
+  FINGER_COLOR, FINGER_NAME, KEY_FINGER, LESSONS, SOUNDS, WORDS, buildLesson, rng, scramble,
   type Finger, type Lesson, type Step, type StepKind,
 } from './content';
+import { Glitch, Island, LetterBuddy, Tap, Tock } from './art';
 import { scoreSoundKeys, DEFAULTS } from './score';
 
 interface SKProgress extends Progress { lesson?: number; done?: number[]; seed?: number }
 
 export const soundKeys: LessonModule = {
   id: 'sound-keys',
-  title: 'Sound Keys',
-  tagline: 'Learn a sound, a letter and a finger',
-  description: 'A complete beginner course in reading sounds and touch typing together, 39 lessons. Each lesson teaches one sound, its letter, and the finger that types it, then uses it in real words and in typing from hearing. Calm and predictable: same steps every lesson, never timed, no buzzers, gentle hints. Verified automatically.',
+  title: 'Letter Rescue',
+  tagline: 'Free the letters from Glitch — learn sounds and typing',
+  description: 'A complete beginner reading-and-typing adventure in 39 lessons. Glitch has trapped the letters; each lesson rescues one by learning its sound, its key and the finger that types it, then using it in balloon pops, real words, listening games and short phrases. Guided by Tap (left hand) and Tock (right hand). Calm and predictable: same steps every lesson, never timed, no buzzers, gentle hints. Verified automatically.',
   icon: '🔤',
   verification: 'in_app',
   defaults: DEFAULTS,
@@ -77,6 +78,41 @@ function speak(text: string, o: Opts): Promise<void> {
     } catch { res(); }
   });
 }
+/** Small, soft synthesized effects (no files). Quiet on purpose. */
+let actx: AudioContext | null = null;
+function sfx(kind: 'pop' | 'chime' | 'charge' | 'free', o: Opts, n = 0) {
+  if (!o.sound) return;
+  try {
+    actx ??= new AudioContext();
+    const t = actx.currentTime;
+    const note = (freq: number, at: number, dur: number, type: OscillatorType = 'sine', to?: number) => {
+      const osc = actx!.createOscillator(); const g = actx!.createGain();
+      osc.type = type; osc.frequency.setValueAtTime(freq, t + at);
+      if (to) osc.frequency.exponentialRampToValueAtTime(to, t + at + dur);
+      g.gain.setValueAtTime(0.0001, t + at); g.gain.exponentialRampToValueAtTime(0.07, t + at + 0.01); g.gain.exponentialRampToValueAtTime(0.0001, t + at + dur);
+      osc.connect(g).connect(actx!.destination); osc.start(t + at); osc.stop(t + at + dur + 0.02);
+    };
+    if (kind === 'pop') note(700, 0, 0.12, 'triangle', 220);
+    if (kind === 'charge') note(330 + n * 70, 0, 0.18, 'triangle');
+    if (kind === 'chime') { note(660, 0, 0.25); note(990, 0.1, 0.3); }
+    if (kind === 'free') { note(523, 0, 0.2); note(659, 0.12, 0.2); note(784, 0.24, 0.35); }
+  } catch { /* audio not available */ }
+}
+
+/** Tap guides the left hand, Tock the right. */
+function Guide({ ch, text, talking = true }: { ch: string; text: string; talking?: boolean }) {
+  const f = KEY_FINGER[(ch ?? '').toLowerCase()];
+  const right = f?.startsWith('R');
+  return (
+    <div class={'sk-guide' + (right ? ' right' : '')}>
+      {right ? <Tock size={78} talking={talking} /> : <Tap size={78} talking={talking} />}
+      <div class="sk-say">{text}</div>
+    </div>
+  );
+}
+
+const buddyColor = (id: string | undefined) => (id && SOUNDS[id] ? FINGER_COLOR[KEY_FINGER[SOUNDS[id].keys[0]]] : '#fde047');
+
 /** Split a word into sound units so typing "ship" plays /sh/ /i/ /p/, not /s/ /h/ /i/ /p/. Returns the unit that ENDS at each index (or null). */
 function unitEnds(word: string): (string | null)[] {
   const out: (string | null)[] = Array(word.length).fill(null);
@@ -121,38 +157,51 @@ function SoundKeys({ activity, ctx }: { activity: Activity; ctx: ActivityContext
   );
 }
 
+const ISLAND_COLORS = ['#14b8a6', '#f59e0b', '#8b5cf6', '#ef4444', '#22c55e', '#3b82f6', '#ec4899', '#eab308'];
+
 function LessonMap({ current, done, o, onPick, onBack }: { current: number; done: number[]; o: Opts; onPick: (id: number) => void; onBack: () => void }) {
   const units = [...new Set(LESSONS.map((l) => l.unit))];
   const next = LESSONS.find((l) => l.id === current)!;
+  const rescued = LESSONS.filter((l) => l.sound && (done.includes(l.id) || l.id < current)).length;
+  const totalLetters = LESSONS.filter((l) => l.sound).length;
+  useEffect(() => {
+    const h = (e: KeyboardEvent) => { if (e.key === 'Enter') onPick(current); };
+    window.addEventListener('keydown', h); return () => window.removeEventListener('keydown', h);
+  }, []);
   return (
-    <div class={'sk' + (o.calm ? ' calm' : '')}>
+    <div class={'sk lr' + (o.calm ? ' calm' : '')}>
       <div class="sk-head">
         <button class="ghost" onClick={onBack}>← Back</button>
-        <h2>Sound Keys</h2>
-        <span class="muted">{done.length} of {LESSONS.length} lessons</span>
+        <h2>Letter Rescue</h2>
+        <span class="lr-count">🫧 {rescued} / {totalLetters} letters rescued</span>
       </div>
-      <button class="sk-next" onClick={() => onPick(current)}>
-        <span class="sk-next-label">Next lesson</span>
-        <span class="sk-next-title">{next.sound ? <><b style={{ color: FINGER_COLOR[KEY_FINGER[SOUNDS[next.sound].keys[0]]] }}>{next.sound}</b> {SOUNDS[next.sound].emoji}</> : next.title}</span>
-        <span class="sk-next-go">Start ▶</span>
+      <button class="sk-next lr-next" onClick={() => onPick(current)}>
+        {next.sound ? <LetterBuddy letter={SOUNDS[next.sound].keys} color={buddyColor(next.sound)} size={84} trapped happy={false} /> : <Glitch size={84} />}
+        <span class="lr-next-text">
+          <span class="sk-next-label">{next.sound ? 'Next rescue' : next.kind === 'review' ? 'Boss level' : 'Next mission'}</span>
+          <span class="sk-next-title">{next.sound ? <>Free <b style={{ color: buddyColor(next.sound) }}>{SOUNDS[next.sound].keys}</b> {SOUNDS[next.sound].emoji}</> : next.title}</span>
+        </span>
+        <span class="sk-next-go">Go ▶ <small class="muted">(Enter)</small></span>
       </button>
-      {units.map((u) => (
-        <div class="sk-unit">
-          <h3>{u}</h3>
-          <div class="sk-path">
-            {LESSONS.filter((l) => l.unit === u).map((l) => {
-              const state = done.includes(l.id) ? 'done' : l.id === current ? 'now' : l.id < current ? 'done' : 'locked';
-              const color = l.sound ? FINGER_COLOR[KEY_FINGER[SOUNDS[l.sound].keys[0]]] : undefined;
-              return (
-                <button class={'sk-stone ' + state} disabled={state === 'locked'} onClick={() => onPick(l.id)} title={l.title}>
-                  <span class="sk-stone-letter" style={color ? { color } : {}}>{l.sound ?? (l.kind === 'review' ? '★' : 'Aa')}</span>
-                  {state === 'done' && <span class="sk-check">✓</span>}
-                </button>
-              );
-            })}
-          </div>
-        </div>
-      ))}
+      <div class="lr-islands">
+        {units.map((u, ui) => (
+          <Island color={ISLAND_COLORS[ui % ISLAND_COLORS.length]} width={460}>
+            <h3>{u}</h3>
+            <div class="sk-path">
+              {LESSONS.filter((l) => l.unit === u).map((l) => {
+                const state = done.includes(l.id) ? 'done' : l.id === current ? 'now' : l.id < current ? 'done' : 'locked';
+                return (
+                  <button class={'lr-stone ' + state} disabled={state === 'locked'} onClick={() => onPick(l.id)} title={l.title}>
+                    {l.sound
+                      ? <LetterBuddy letter={SOUNDS[l.sound].keys} color={state === 'locked' ? '#64748b' : buddyColor(l.sound)} size={54} trapped={state !== 'done'} happy={state === 'done'} />
+                      : <span class="lr-boss">{l.kind === 'review' ? (state === 'done' ? '🏆' : '🌀') : 'Aa'}</span>}
+                  </button>
+                );
+              })}
+            </div>
+          </Island>
+        ))}
+      </div>
     </div>
   );
 }
@@ -160,11 +209,14 @@ function LessonMap({ current, done, o, onPick, onBack }: { current: number; done
 // ---------------------------------------------------------------- the lesson
 
 const STEP_INFO: Record<StepKind, { icon: string; name: string; tell: string }> = {
-  meet: { icon: '👋', name: 'Meet', tell: 'Listen to the sound. Press the key 3 times.' },
+  meet: { icon: '⚡', name: 'Charge the key', tell: 'Press the glowing key to charge it up!' },
   keys: { icon: '⌨️', name: 'Keys', tell: 'Press the key you see.' },
-  listen: { icon: '👂', name: 'Listen', tell: 'Listen. Press the key that makes that sound.' },
-  words: { icon: '📖', name: 'Words', tell: 'Type the word. Each letter makes its sound.' },
-  spell: { icon: '✏️', name: 'Spell', tell: 'Listen to the word. Type it.' },
+  listen: { icon: '👂', name: 'Sound echo', tell: 'Listen. Which key makes that sound?' },
+  blaster: { icon: '🎈', name: 'Balloon pop', tell: 'Pop the lowest balloon by pressing its letter.' },
+  words: { icon: '🧱', name: 'Build words', tell: 'Type the word. Each letter says its sound.' },
+  spell: { icon: '✏️', name: 'Word echo', tell: 'Listen to the word. Type it.' },
+  read: { icon: '📖', name: 'Read & type', tell: 'Read it, then type it. Space is your thumb.' },
+  boss: { icon: '🌀', name: "Glitch's scramble", tell: 'Glitch mixed up the letters! Type the real word.' },
   sentence: { icon: '📝', name: 'Sentences', tell: 'Type it exactly. Hold Shift for a capital letter.' },
 };
 
@@ -193,8 +245,8 @@ function LessonPlayer({ lesson, steps, o, error, onQuit, onComplete }: {
   return (
     <div class={'sk' + (o.calm ? ' calm' : '')}>
       <Schedule steps={steps} stepIdx={stepIdx} itemIdx={itemIdx} onQuit={onQuit} />
-      <p class="sk-tell">{STEP_INFO[step.kind].tell}</p>
-      <ItemPlayer key={`${stepIdx}-${itemIdx}`} kind={step.kind} target={item} lesson={lesson} o={o} onDone={next} />
+      <Guide ch={item[0]} text={STEP_INFO[step.kind].tell} talking={itemIdx === 0} />
+      <ItemPlayer key={`${stepIdx}-${itemIdx}`} kind={step.kind} target={item} items={step.items} itemIdx={itemIdx} lesson={lesson} o={o} onDone={next} />
       {error && <p class="error">{error}</p>}
     </div>
   );
@@ -208,14 +260,24 @@ function LessonIntro({ lesson, steps, o, onStart, onQuit }: { lesson: Lesson; st
     const h = (e: KeyboardEvent) => { if (e.key === 'Enter') onStart(); };
     window.addEventListener('keydown', h); return () => window.removeEventListener('keydown', h);
   }, []);
+  const story = unit
+    ? `Glitch trapped the letter ${unit.keys.toUpperCase()}! Learn its sound and its key to set it free.`
+    : lesson.kind === 'review' ? 'Glitch is back with a whole wave of scrambled letters. Show what you know!'
+    : 'Big letters and full sentences — the final missions.';
   return (
-    <div class={'sk' + (o.calm ? ' calm' : '')}>
+    <div class={'sk lr' + (o.calm ? ' calm' : '')}>
       <div class="sk-head"><button class="ghost" onClick={onQuit}>← Map</button><h2>{lesson.title}</h2><span /></div>
+      <div class="lr-story">
+        <Glitch size={90} />
+        <p>{story}</p>
+        {unit && <LetterBuddy letter={unit.keys} color={FINGER_COLOR[finger!]} size={90} trapped happy={false} />}
+      </div>
       <div class="sk-intro">
         {unit && (
           <div class="sk-meet-card" style={{ borderColor: FINGER_COLOR[finger!] }}>
             <div class="sk-big-letter" style={{ color: FINGER_COLOR[finger!] }}>{unit.keys}</div>
             <div class="sk-keyword">{unit.emoji} {unit.keyword}</div>
+            <p class="sk-finger" style={{ color: FINGER_COLOR[finger!] }}>Your {FINGER_NAME[finger!]} types it.</p>
             <button class="secondary" onClick={() => playSound(unit.id, o).then(() => speak(unit.say, o))}>🔊 Hear it</button>
           </div>
         )}
@@ -247,26 +309,28 @@ function Schedule({ steps, stepIdx, itemIdx, onQuit }: { steps: Step[]; stepIdx:
 
 // ---------------------------------------------------------------- one item: the heart of it
 
-function ItemPlayer({ kind, target, lesson, o, onDone }: { kind: StepKind; target: string; lesson: Lesson; o: Opts; onDone: (firstTry: boolean) => void }) {
+function ItemPlayer({ kind, target, items, itemIdx, lesson, o, onDone }: {
+  kind: StepKind; target: string; items: string[]; itemIdx: number; lesson: Lesson; o: Opts; onDone: (firstTry: boolean) => void;
+}) {
   const [pos, setPos] = useState(0);
   const [missed, setMissed] = useState(false);
-  const [hint, setHint] = useState(kind === 'meet' || kind === 'keys' || kind === 'words' || kind === 'sentence');
+  const [hint, setHint] = useState(kind === 'meet' || kind === 'keys' || kind === 'words' || kind === 'sentence' || kind === 'read' || kind === 'blaster');
   const [wrongKey, setWrongKey] = useState<string | null>(null);
   const [finished, setFinished] = useState(false);
   const ends = useMemo(() => unitEnds(target), [target]);
-  const hidden = kind === 'listen' || kind === 'spell';
-  const unitId = kind === 'listen' || kind === 'meet' || kind === 'keys' ? (SOUNDS[target] ? target : null) : null;
+  const hidden = kind === 'listen' || kind === 'spell' || kind === 'boss';
+  const unitId = kind === 'listen' || kind === 'meet' || kind === 'keys' || kind === 'blaster' ? (SOUNDS[target] ? target : null) : null;
+  const mixed = useMemo(() => (kind === 'boss' ? scramble(target, rng(target.length * 131 + itemIdx)) : ''), [target]);
 
   // Say what to type when the item appears.
   const announce = () => {
-    if (kind === 'listen' && unitId) return playSound(unitId, o);
-    if (kind === 'spell') return speak(target, o);
-    if (kind === 'meet' && unitId) return playSound(unitId, o);
+    if ((kind === 'listen' || kind === 'meet') && unitId) return playSound(unitId, o);
+    if (kind === 'spell' || kind === 'boss') return speak(target, o);
     return Promise.resolve();
   };
   useEffect(() => { announce(); }, []);
 
-  // Timed hint for listen/spell (never a timer the child has to beat — it only ever helps).
+  // Timed hint for hidden items (never a timer the child has to beat — it only ever helps).
   useEffect(() => {
     if (hint || !hidden || !isFinite(o.hintMs)) return;
     const t = setTimeout(() => setHint(true), o.hintMs);
@@ -284,13 +348,16 @@ function ItemPlayer({ kind, target, lesson, o, onDone }: { kind: StepKind; targe
       if (e.key === want) {
         setWrongKey(null);
         const u = ends[pos];
-        if (u && (kind === 'words' || kind === 'spell' || kind === 'keys' || kind === 'meet')) playSound(u, o);
+        if (kind === 'meet') sfx('charge', o, itemIdx);
+        else if (u && kind !== 'sentence' && kind !== 'listen') playSound(u, o);
         if (pos + 1 >= target.length) {
           setFinished(true);
           const finish = () => onDone(!missed);
-          if (kind === 'words' || kind === 'spell') speak(target, o).then(() => setTimeout(finish, 250));
+          if (kind === 'blaster') { sfx('pop', o); setTimeout(finish, 280); }
+          else if (kind === 'meet' && itemIdx === items.length - 1) { sfx('free', o); setTimeout(finish, 900); }
+          else if (kind === 'words' || kind === 'spell' || kind === 'boss' || kind === 'read') { sfx('chime', o); speak(target, o).then(() => setTimeout(finish, 250)); }
           else if (kind === 'sentence') setTimeout(finish, 350);
-          else setTimeout(finish, kind === 'meet' ? 500 : 250);
+          else setTimeout(finish, kind === 'meet' ? 450 : 250);
         }
         setPos(pos + 1);
       } else {
@@ -306,27 +373,54 @@ function ItemPlayer({ kind, target, lesson, o, onDone }: { kind: StepKind; targe
 
   const want = target[pos] ?? '';
   const finger = KEY_FINGER[want.toLowerCase()];
-  const picture = kind === 'words' || kind === 'spell' ? pictureFor(target) : kind === 'listen' && hint && unitId ? SOUNDS[unitId].emoji : '';
+  const picture = kind === 'words' || kind === 'spell' || kind === 'boss' ? pictureFor(target)
+    : kind === 'read' ? target.split(' ').map(pictureFor).filter(Boolean).join(' ')
+    : kind === 'listen' && hint && unitId ? SOUNDS[unitId].emoji : '';
+
+  const letters = (
+    <div class={'sk-target' + (target.length > 3 ? ' long' : '') + (target.length > 12 ? ' phrase' : '')}>
+      {[...target].map((ch, i) => {
+        const show = !hidden || i < pos || (hint && i === pos);
+        const f = KEY_FINGER[ch.toLowerCase()];
+        return (
+          <span class={'sk-ch' + (i < pos ? ' typed' : i === pos ? ' cur' : '') + (show ? '' : ' blank') + (ch === ' ' ? ' space' : '')}
+            style={i === pos && show && f ? { color: FINGER_COLOR[f], borderColor: FINGER_COLOR[f] } : {}}>
+            {show ? (ch === ' ' ? '␣' : ch) : '_'}
+          </span>
+        );
+      })}
+    </div>
+  );
 
   return (
     <div class="sk-item">
       <div class="sk-stage">
-        {picture && <div class="sk-picture">{picture}</div>}
-        {kind === 'listen' || kind === 'spell'
-          ? <button class="sk-hear" onClick={announce} title="Hear it again (Enter)">🔊</button>
-          : null}
-        <div class={'sk-target' + (target.length > 3 ? ' long' : '')}>
-          {[...target].map((ch, i) => {
-            const show = !hidden || i < pos || (hint && i === pos);
-            const f = KEY_FINGER[ch.toLowerCase()];
-            return (
-              <span class={'sk-ch' + (i < pos ? ' typed' : i === pos ? ' cur' : '') + (show ? '' : ' blank') + (ch === ' ' ? ' space' : '')}
-                style={i === pos && show && f ? { color: FINGER_COLOR[f], borderColor: FINGER_COLOR[f] } : {}}>
-                {show ? (ch === ' ' ? '␣' : ch) : '_'}
-              </span>
-            );
-          })}
-        </div>
+        {kind === 'meet' && (
+          <div class="lr-charge">
+            <LetterBuddy letter={target} color={FINGER_COLOR[finger] ?? '#fde047'} size={110} trapped={!(finished && itemIdx === items.length - 1)} happy={finished && itemIdx === items.length - 1} />
+            <div class="lr-meter">{items.map((_, i) => <span class={i < itemIdx || (i === itemIdx && finished) ? 'on' : ''} style={{ '--fc': FINGER_COLOR[finger] } as any} />)}</div>
+            {finished && itemIdx === items.length - 1 && <p class="lr-freed">Free! 🎉</p>}
+          </div>
+        )}
+        {kind === 'blaster' && (
+          <div class="lr-balloons">
+            {items.slice(itemIdx, itemIdx + 6).map((k, i) => (
+              <div class={'lr-balloon' + (i === 0 ? ' cur' : '') + (i === 0 && finished ? ' popped' : '')} style={{ '--fc': FINGER_COLOR[KEY_FINGER[k[0]]], '--i': i, left: `calc(50% - 38px + ${i === 0 ? 0 : (i % 2 ? 1 : -1) * (60 + i * 18)}px)`, bottom: `${i * 22}px`, zIndex: 10 - i } as any}>
+                <span>{k}</span>
+              </div>
+            ))}
+            <div class="lr-left muted small">{items.length - itemIdx - (finished ? 1 : 0)} balloons left</div>
+          </div>
+        )}
+        {kind === 'boss' && (
+          <div class="lr-boss-row">
+            <Glitch size={70} mood={finished ? 'oops' : 'sly'} />
+            <div class="lr-tiles">{[...mixed].map((c) => <span class="lr-tile">{c}</span>)}</div>
+          </div>
+        )}
+        {picture && <div class={'sk-picture' + (kind === 'read' ? ' small' : '')}>{picture}</div>}
+        {hidden && <button class="sk-hear" onClick={announce} title="Hear it again (Enter)">🔊</button>}
+        {kind !== 'blaster' && kind !== 'meet' && letters}
         {kind === 'listen' && !hint && <p class="muted">Not sure? Wait a moment, or press 🔊 to hear it again.</p>}
         {wrongKey && <p class="sk-gentle">That was <b>{wrongKey === ' ' ? 'space' : wrongKey}</b>. Look for the glowing key.</p>}
         {hint && want && finger && <p class="sk-finger" style={{ color: FINGER_COLOR[finger] }}>Use your {FINGER_NAME[finger]}{want !== want.toLowerCase() ? ' — and hold Shift with your other pinky' : ''}.</p>}
@@ -393,7 +487,7 @@ export function Hands({ finger }: { finger: Finger | null }) {
 
 function Finished({ outcome, lesson, o, onDone }: { outcome: { coins: number; detail: string }; lesson: Lesson; o: Opts; onDone: () => void }) {
   const repeat = outcome.detail.includes('practise again');
-  useEffect(() => { speak(repeat ? 'Good work. We will practise this one again.' : 'You did it!', o); }, []);
+  useEffect(() => { if (!repeat) sfx('free', o); speak(repeat ? 'Good work. We will practise this one again.' : lesson.sound ? `You rescued ${SOUNDS[lesson.sound].keys}!` : 'You did it!', o); }, []);
   useEffect(() => {
     const h = (e: KeyboardEvent) => { if (e.key === 'Enter') onDone(); };
     window.addEventListener('keydown', h); return () => window.removeEventListener('keydown', h);
@@ -401,8 +495,10 @@ function Finished({ outcome, lesson, o, onDone }: { outcome: { coins: number; de
   return (
     <div class={'sk' + (o.calm ? ' calm' : '')}>
       <div class="activity-result">
+        {lesson.sound && !repeat && <LetterBuddy letter={SOUNDS[lesson.sound].keys} color={buddyColor(lesson.sound)} size={130} happy />}
+        {!lesson.sound && !repeat && <div class="lr-duo"><Tap size={90} wave /><Tock size={90} wave /></div>}
         <div class="coins-earned">{outcome.coins} 🪙</div>
-        <h2>{repeat ? 'Good work. Next time we practise this again.' : `You finished "${lesson.title}"`}</h2>
+        <h2>{repeat ? 'Good work. Next time we practise this again.' : lesson.sound ? `You rescued ${SOUNDS[lesson.sound].keys.toUpperCase()}!` : `You beat "${lesson.title}"!`}</h2>
         <p class="muted">{outcome.detail}</p>
         <button class="primary big" onClick={onDone}>Done <span class="muted small">(Enter)</span></button>
       </div>

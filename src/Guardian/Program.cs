@@ -33,6 +33,7 @@ builder.Services.AddSingleton<NetLock>();
 builder.Services.AddSingleton<UnlockManager>();
 builder.Services.AddSingleton<YouTubeService>();
 builder.Services.AddSingleton<FlashpointService>();
+builder.Services.AddSingleton<ClassicsStocker>();
 builder.Services.AddSingleton<ProcessEnforcer>();
 builder.Services.AddSingleton<UpdateChecker>();
 builder.Services.AddSingleton<RequestRouter>();

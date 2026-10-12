@@ -139,7 +139,7 @@ export class MockGuardian {
       case 'youtube.check': return ok({ allowed: this.unlocks.some((u) => u.kind === 'youTube') });
       case 'parent.youtubeResolve': return ok({ id: 'UC' + Math.random().toString(36).slice(2).padEnd(22, 'x').slice(0, 22), title: String(p.url).split('@')[1] ?? 'Channel', url: p.url });
       case 'parent.arcadeCatalog': { const l = (await this.handle({ id: 'x', op: 'arcade.list' })).payload as any; return ok({ games: l.games, settings: this.child.arcade }); }
-      case 'parent.fpStatus': return ok({ installed: true, root: 'C:\\Flashpoint', clifp: true, installerUrl: '' });
+      case 'parent.fpStatus': case 'parent.fpStockNow': return ok({ installed: true, root: 'C:\\Flashpoint', clifp: true, installerUrl: '', autoClassics: true, approved: 84, stock: { stage: 'downloading', approved: 84, downloaded: 31, queued: 53 } });
       case 'parent.fpSuggest': return ok(['Gravity Guy', 'Fancy Pants Adventures', 'Bloons Tower Defense 4', 'Learn to Fly 2', 'Raft Wars', 'Stick War', 'Fireboy and Watergirl in The Forest Temple'].map((t, i) => ({ pick: { search: t, genre: 'Classic', strategy: 3 }, game: { id: '11111111-0000-0000-0000-00000000000' + (i + 1), title: t, developer: '', publisher: '', platform: 'Flash', tags: 'Action', series: '', releaseDate: '2009', description: '' }, approved: i < 5 })));
       case 'parent.fpSearch': return ok([]);
       case 'parent.fpThumbs': return ok({});

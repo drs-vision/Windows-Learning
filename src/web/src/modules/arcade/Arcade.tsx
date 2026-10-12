@@ -38,7 +38,7 @@ function Cover({ game, big }: { game: Game; big?: boolean }) {
   );
 }
 
-const GENRE_ICON: Record<string, string> = { Racing: '🏎️', Strategy: '♟️', 'Tower defense': '🏰', Platformer: '🏃', Puzzle: '🧩', Launch: '🚀', Artillery: '💥', Sports: '⚽', Arcade: '👾', Fighting: '🥋', 'Choose your path': '🕵️', Cooking: '🍕', Creative: '✏️', Runner: '🏃' };
+const GENRE_ICON: Record<string, string> = { Racing: '🏎️', Strategy: '♟️', 'Tower defense': '🏰', Platformer: '🏃', Puzzle: '🧩', Launch: '🚀', Artillery: '💥', Sports: '⚽', Arcade: '👾', Fighting: '🥋', 'Choose your path': '🕵️', Cooking: '🍕', Creative: '✏️', Runner: '🏃', 'Board games': '♞', Adventure: '🗺️', Action: '💣', Training: '🦆' };
 function genreKey(g: string): string {
   const l = g.toLowerCase();
   if (l.includes('racing') || l.includes('driv')) return 'Racing';
@@ -53,7 +53,11 @@ function genreKey(g: string): string {
   if (l.includes('fight')) return 'Fighting';
   if (l.includes('path')) return 'Choose your path';
   if (l.includes('cook')) return 'Cooking';
-  if (l.includes('creat')) return 'Creative';
+  if (l.includes('creat') || l.includes('sandbox')) return 'Creative';
+  if (l.includes('board')) return 'Board games';
+  if (l.includes('adventure')) return 'Adventure';
+  if (l.includes('action')) return 'Action';
+  if (l.includes('training') || l.includes('mining')) return 'Training';
   return 'Arcade';
 }
 

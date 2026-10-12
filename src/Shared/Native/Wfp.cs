@@ -18,6 +18,7 @@ public static class Wfp
     static readonly Guid LayerAleAuthConnectV6 = new("4a72393b-319f-44bc-84c3-ba54dcb3b6b4");
     static readonly Guid ConditionAleUserId = new("af043a0a-b34d-4f86-979c-c90371af6e66");
     static readonly Guid ConditionFlags = new("632ce23b-5167-435c-86d7-e903684aa80c");
+    static readonly Guid ConditionAleAppId = new("d78e1e87-8644-4ea5-9437-d809ecefc971");
 
     /// <summary>CoinQuest's own sublayer, so our block can't be overridden by ordinary "allow" rules.</summary>
     public static readonly Guid SubLayerKey = new("6c0f2e7a-3c1e-4c1b-9a77-c01a9e57a001");
@@ -25,7 +26,11 @@ public static class Wfp
     const uint RPC_C_AUTHN_WINNT = 10;
     const uint FWPM_FILTER_FLAG_PERSISTENT = 0x1;
     const ushort FWPM_SUBLAYER_FLAG_PERSISTENT = 0x1;
-    const uint FWP_ACTION_BLOCK = 0x1001;
+    const uint FWP_ACTION_BLOCK = 0x1001, FWP_ACTION_PERMIT = 0x1002;
+    const uint FWP_UINT8 = 1, FWP_BYTE_BLOB_TYPE = 12;
+    const byte BlockWeight = 1, PermitWeight = 10;
+    /// <summary>Max programs that may pass the lock per account (slots are fixed so removal needs no bookkeeping).</summary>
+    public const int MaxPermits = 16;
     const uint FWP_UINT32 = 3, FWP_SECURITY_DESCRIPTOR_TYPE = 14, FWP_EMPTY = 0;
     const int FWP_MATCH_EQUAL = 0, FWP_MATCH_FLAGS_NONE_SET = 8;
     const uint FWP_CONDITION_FLAG_IS_LOOPBACK = 0x1;
@@ -90,6 +95,8 @@ public static class Wfp
     [DllImport("fwpuclnt.dll")] static extern uint FwpmSubLayerDeleteByKey0(IntPtr engine, ref Guid key);
     [DllImport("fwpuclnt.dll")] static extern uint FwpmFilterAdd0(IntPtr engine, ref Filter filter, IntPtr sd, out ulong id);
     [DllImport("fwpuclnt.dll")] static extern uint FwpmFilterDeleteByKey0(IntPtr engine, ref Guid key);
+    [DllImport("fwpuclnt.dll", CharSet = CharSet.Unicode)] static extern uint FwpmGetAppIdFromFileName0(string fileName, out IntPtr appId);
+    [DllImport("fwpuclnt.dll")] static extern void FwpmFreeMemory0(ref IntPtr p);
     [DllImport("advapi32.dll", CharSet = CharSet.Unicode, SetLastError = true)]
     static extern bool ConvertStringSecurityDescriptorToSecurityDescriptorW(string sddl, uint revision, out IntPtr sd, out uint size);
     [DllImport("kernel32.dll")] static extern IntPtr LocalFree(IntPtr p);
@@ -101,8 +108,11 @@ public static class Wfp
         return new Guid(h);
     }
 
-    /// <summary>Block all non-loopback outbound traffic for this account. Safe to call repeatedly.</summary>
-    public static void BlockAccount(string sid)
+    /// <summary>
+    /// Block all non-loopback outbound traffic for this account, except from the listed programs (full paths) —
+    /// used only for Flashpoint's game downloader/server, never browsers. Safe to call repeatedly.
+    /// </summary>
+    public static void BlockAccount(string sid, IReadOnlyList<string>? permitPrograms = null)
     {
         Check(FwpmEngineOpen0(null, RPC_C_AUTHN_WINNT, IntPtr.Zero, IntPtr.Zero, out var engine), "open WFP engine");
         try
@@ -145,13 +155,51 @@ public static class Wfp
                             flags = FWPM_FILTER_FLAG_PERSISTENT,
                             layerKey = layers[i],
                             subLayerKey = SubLayerKey,
-                            weight = new Value { type = FWP_EMPTY },
+                            weight = new Value { type = FWP_UINT8, value = (IntPtr)BlockWeight },
                             numFilterConditions = 2,
                             filterCondition = conds,
                             action = new Action { type = FWP_ACTION_BLOCK },
                         };
                         Check(FwpmFilterAdd0(engine, ref f, IntPtr.Zero, out _), "add filter");
                     }
+
+                    // Programs allowed through (higher weight than the block, same sublayer, same account only).
+                    var apps = (permitPrograms ?? Array.Empty<string>()).Where(File.Exists).Take(MaxPermits).ToList();
+                    var conds3 = Marshal.AllocHGlobal(Marshal.SizeOf<FilterCondition>() * 3);
+                    try
+                    {
+                        for (var slot = 0; slot < MaxPermits; slot++)
+                            for (var i = 0; i < layers.Length; i++)
+                            {
+                                var key = FilterKey(sid, 100 + slot * 2 + i);
+                                var del = FwpmFilterDeleteByKey0(engine, ref key);
+                                if (del != 0 && del != FWP_E_FILTER_NOT_FOUND) Check(del, "replace permit");
+                                if (slot >= apps.Count) continue;
+                                Check(FwpmGetAppIdFromFileName0(apps[slot], out var appId), "read program id");
+                                try
+                                {
+                                    Marshal.StructureToPtr(userCond, conds3, false);
+                                    Marshal.StructureToPtr(notLoopback, conds3 + Marshal.SizeOf<FilterCondition>(), false);
+                                    Marshal.StructureToPtr(new FilterCondition { fieldKey = ConditionAleAppId, matchType = FWP_MATCH_EQUAL, conditionValue = new Value { type = FWP_BYTE_BLOB_TYPE, value = appId } },
+                                        conds3 + Marshal.SizeOf<FilterCondition>() * 2, false);
+                                    var f = new Filter
+                                    {
+                                        filterKey = key,
+                                        displayData = new DisplayData { name = "CoinQuest internet lock — allowed program", description = apps[slot] },
+                                        flags = FWPM_FILTER_FLAG_PERSISTENT,
+                                        layerKey = layers[i],
+                                        subLayerKey = SubLayerKey,
+                                        weight = new Value { type = FWP_UINT8, value = (IntPtr)PermitWeight },
+                                        numFilterConditions = 3,
+                                        filterCondition = conds3,
+                                        action = new Action { type = FWP_ACTION_PERMIT },
+                                    };
+                                    Check(FwpmFilterAdd0(engine, ref f, IntPtr.Zero, out _), "add permit");
+                                }
+                                finally { FwpmFreeMemory0(ref appId); }
+                            }
+                    }
+                    finally { Marshal.FreeHGlobal(conds3); }
                 }
                 finally
                 {
@@ -173,6 +221,7 @@ public static class Wfp
         try
         {
             for (var i = 0; i < 2; i++) { var key = FilterKey(sid, i); FwpmFilterDeleteByKey0(engine, ref key); }
+            for (var i = 0; i < MaxPermits * 2; i++) { var key = FilterKey(sid, 100 + i); FwpmFilterDeleteByKey0(engine, ref key); }
             var sub = SubLayerKey;
             var r = FwpmSubLayerDeleteByKey0(engine, ref sub);
             _ = r == 0 || r == FWP_E_SUBLAYER_NOT_FOUND || r == FWP_E_IN_USE; // in use = another child still locked

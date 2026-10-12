@@ -22,6 +22,7 @@ public sealed class GuardianWorker : BackgroundService
     private readonly UpdateChecker _updates;
     private readonly HouseholdStore _store;
     private readonly FlashpointService _fp;
+    private readonly ClassicsStocker _stocker;
     private readonly NetGate _gate;
     private readonly NetLock _netLock;
     private readonly ILogger<GuardianWorker> _log;
@@ -29,9 +30,9 @@ public sealed class GuardianWorker : BackgroundService
     private readonly List<(DateTime closeAt, uint session, List<string> keywords)> _graceCloses = new();
 
     public GuardianWorker(SessionMonitor session, ProcessEnforcer enforcer, BrowserPolicy policy, UnlockManager unlocks, PipeServer pipe,
-        RequestRouter router, UpdateChecker updates, HouseholdStore store, FlashpointService fp, NetGate gate, NetLock netLock, ILogger<GuardianWorker> log)
+        RequestRouter router, UpdateChecker updates, HouseholdStore store, FlashpointService fp, ClassicsStocker stocker, NetGate gate, NetLock netLock, ILogger<GuardianWorker> log)
     {
-        _fp = fp; _gate = gate; _netLock = netLock;
+        _fp = fp; _stocker = stocker; _gate = gate; _netLock = netLock;
         _session = session; _enforcer = enforcer; _policy = policy; _unlocks = unlocks; _pipe = pipe; _router = router; _updates = updates; _store = store; _log = log;
     }
 
@@ -85,6 +86,7 @@ public sealed class GuardianWorker : BackgroundService
                 Step("scholar", () => EnsureScholarRunning(s));
             }
             Step("grace", RunGraceCloses);
+            Step("classics", () => _stocker.Tick());
             if ((DateTime.UtcNow - _lastHeartbeatLog).TotalMinutes >= 5)
             {
                 _lastHeartbeatLog = DateTime.UtcNow;

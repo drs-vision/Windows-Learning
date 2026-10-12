@@ -89,5 +89,35 @@ public static class Classics
         new("Johnny Upgrade", "Launch & upgrade", 3), new("Kitten Cannon", "Launch & upgrade", 2), new("Penguin Launch", "Launch & upgrade", 2),
         new("Flight", "Launch & upgrade", 3), new("Rocket Car", "Launch & upgrade", 3), new("Platform Racing 2", "Platformer", 2),
         new("Super Mario Flash", "Platformer", 2), new("Mario Combat", "Fighting", 1), new("Stick Run", "Runner", 1), new("Snowboard Stunts", "Sports", 2),
+        // tanks & artillery (the "Tanks" family)
+        new("Tank Trouble", "Artillery", 3), new("Awesome Tanks", "Action", 2), new("Awesome Tanks 2", "Action", 2), new("Tank Wars", "Artillery", 3),
+        new("Tanks 2", "Artillery", 3), new("Tank 2008", "Artillery", 3), new("Indestructotank", "Action", 2), new("Tank Destroyer", "Action", 2),
+        // stick figures & choose-your-path
+        new("Henry Stickmin: Infiltrating the Airship", "Choose your path", 4), new("Fleeing the Complex", "Choose your path", 4),
+        new("Stick War: Legacy", "Strategy", 4), new("Stickman Hook", "Physics", 2), new("Electric Man", "Fighting", 1, "Stick-figure fighting, no blood"),
+        // more platformers & runners
+        new("Fireboy and Watergirl 3: In the Ice Temple", "Puzzle platformer", 4), new("Fireboy and Watergirl 4: In the Crystal Temple", "Puzzle platformer", 4),
+        new("Achievement Unlocked 2", "Platformer", 3), new("Super Mario Bros. Crossover", "Platformer", 2), new("Ultimate Flash Sonic", "Platformer", 1),
+        new("Robot Unicorn Attack", "Runner", 1), new("Canabalt", "Runner", 1), new("Dino Run", "Runner", 1), new("Vex", "Platformer", 2), new("Vex 2", "Platformer", 2),
+        new("The World's Hardest Game", "Arcade", 3), new("The World's Hardest Game 2", "Arcade", 3), new("Pixel Quest", "Platformer", 2), new("Red Ball", "Platformer", 3),
+        new("Red Ball 2", "Platformer", 3), new("Red Ball 3", "Platformer", 3), new("Bob the Robber", "Puzzle", 4), new("Bad Ice-Cream", "Arcade", 3),
+        new("Bad Ice-Cream 2", "Arcade", 3), new("Bad Ice-Cream 3", "Arcade", 3), new("Wheely", "Puzzle", 4), new("Wheely 2", "Puzzle", 4), new("Wheely 3", "Puzzle", 4),
+        new("Fancy Pants Adventure: World 1", "Platformer", 2), new("Raze", "Action", 2, "Cartoon sci-fi shooter — preview"), new("Strike Force Kitty", "Launch & upgrade", 2),
+        new("Helicopter Game", "Arcade", 1), new("Cubefield", "Arcade", 1), new("Curveball", "Sports", 1), new("QWOP", "Sports", 1),
+        // more thinking games
+        new("Riddle School", "Adventure", 5), new("Riddle School 2", "Adventure", 5), new("Riddle School 3", "Adventure", 5), new("Riddle School 4", "Adventure", 5),
+        new("Riddle School 5", "Adventure", 5), new("Sushi Cat", "Puzzle", 4), new("Cut the Rope", "Puzzle", 5), new("Bloxorz 2", "Puzzle", 5),
+        new("Sugar, Sugar 2", "Puzzle", 5), new("Sugar, Sugar 3", "Puzzle", 5), new("Doodle God 2", "Puzzle", 5), new("Electric Box 2", "Puzzle", 5),
+        new("Factory Balls 2", "Puzzle", 5), new("Red Remover 2", "Puzzle", 5), new("Totem Destroyer 2", "Puzzle", 5), new("Civiballs", "Puzzle", 5),
+        new("Gemcraft Labyrinth", "Tower defense", 5), new("Bloons Super Monkey", "Arcade", 2), new("Plants vs. Zombies", "Tower defense", 5, "Cartoon zombies — preview"),
+        new("Papa's Freezeria", "Cooking", 4), new("Papa's Taco Mia", "Cooking", 4), new("Papa's Hot Doggeria", "Cooking", 4), new("Papa's Pancakeria", "Cooking", 4),
+        new("Duck Life 2", "Training", 3), new("Duck Life 3", "Training", 3), new("Learn to Fly 3", "Launch & upgrade", 3), new("Flight 2", "Launch & upgrade", 3),
+        new("Interactive Buddy", "Sandbox", 3, "Sandbox with cartoon weapons — preview"), new("Sandspiel", "Sandbox", 4), new("Powder Game", "Sandbox", 4),
+        new("Chess", "Board games", 5), new("Checkers", "Board games", 5), new("Mahjong", "Board games", 5), new("Solitaire", "Board games", 4),
+        new("Minesweeper", "Board games", 5), new("Tetris", "Arcade", 3), new("Pac-Man", "Arcade", 2), new("Snake", "Arcade", 2), new("2048", "Puzzle", 5),
+        // more racing
+        new("Moto X3M 2", "Racing", 2), new("Moto X3M 3", "Racing", 2), new("Moto X3M Pool Party", "Racing", 2), new("Drift Hunters", "Racing", 1),
+        new("Madalin Stunt Cars 2", "Racing", 1), new("Smart Racer", "Racing", 1), new("Neon Rider", "Racing", 2), new("Free Rider", "Racing", 2),
+        new("Bike Mania 2", "Racing", 2), new("Turbo Spirit", "Racing", 1), new("Super Bikes Track Stars", "Racing", 1), new("Wheelers", "Racing", 2),
     };
 }

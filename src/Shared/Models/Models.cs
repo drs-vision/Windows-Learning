@@ -82,6 +82,10 @@ public sealed record ArcadeSettings
     public List<FlashpointGame> Flashpoint { get; init; } = new();
     /// <summary>Where Flashpoint is installed, if the parent picked it; otherwise it's found automatically.</summary>
     public string? FlashpointRoot { get; init; }
+    /// <summary>When Flashpoint is found, add CoinQuest's curated kid-safe classics automatically (parents can still remove any).</summary>
+    public bool AutoClassics { get; init; } = true;
+    /// <summary>Curated picks already added once — so a game a parent removed is never re-added.</summary>
+    public List<string> StockedPicks { get; init; } = new();
 
     public static int DefaultPrice(int strategy) => Math.Clamp(strategy, 1, 5) switch { 5 => 4, 4 => 6, 3 => 9, 2 => 12, _ => 15 };
 }

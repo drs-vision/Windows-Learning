@@ -1,7 +1,7 @@
-import { useEffect, useState } from 'preact/hooks';
+import { useEffect, useRef, useState } from 'preact/hooks';
 import type { Child, FlashpointGame, FpCatalogGame, Game, ParentState, Prize, WebGame } from '../core/types';
 import { defaultArcadePrice } from '../core/types';
-import { bridge } from '../core/bridge';
+import { bridge, type FpStatus } from '../core/bridge';
 import { MODULES } from '../modules/registry';
 import { SetupWizard } from './SetupWizard';
 import { fmt } from '../modules/arcade/Arcade';
@@ -61,7 +61,7 @@ export function ParentConsole({ embedded, onClose }: { embedded?: boolean; onClo
       {error && <p class="error">{error}</p>}
       <section class="tab-body">
         {!child && <p class="muted">No child set up yet.</p>}
-        {child && tab === 'today' && <Today state={state} child={child} onChange={refresh} />}
+        {child && tab === 'today' && <Today state={state} child={child} onChange={refresh} onGo={setTab} />}
         {child && tab === 'approvals' && <Approvals state={state} onChange={refresh} />}
         {child && tab === 'allowed' && <Allowed child={child} onSave={(c) => save(c, refresh, setError)} />}
         {child && tab === 'shop' && <ShopEditor child={child} onSave={(c) => save(c, refresh, setError)} />}
@@ -95,13 +95,28 @@ function PinGate({ onOk, onCancel }: { onOk: () => void; onCancel?: () => void }
 
 // ---------------------------------------------------------------- Today
 
-function Today({ state, child, onChange }: { state: ParentState; child: Child; onChange: () => void }) {
+function ClassicsNudge({ child, onGo }: { child: Child; onGo: () => void }) {
+  const [st, setSt] = useState<FpStatus | null>(null);
+  useEffect(() => { bridge.parentFpStatus().then(setSt).catch(() => undefined); }, []);
+  if (!st || (st.installed && (st.approved ?? 0) > 0)) return null;
+  return (
+    <div class="card nudge">
+      <div class="row between">
+        <span>🕹️ <b>{child.displayName}'s arcade only has the small built-in set.</b> One 5-minute install adds ~100 real 2000s classics (Fancy Pants, Bloons TD, Learn to Fly, Stick War…).</span>
+        <button class="primary" onClick={onGo}>Set up classic games</button>
+      </div>
+    </div>
+  );
+}
+
+function Today({ state, child, onChange, onGo }: { state: ParentState; child: Child; onChange: () => void; onGo: (t: Tab) => void }) {
   const pc = state.perChild[child.id];
   const earned = pc.today.filter((e) => e.delta > 0).reduce((s, e) => s + e.delta, 0);
   const spent = -pc.today.filter((e) => e.delta < 0).reduce((s, e) => s + e.delta, 0);
   return (
     <div class="today">
       <LockStatus state={state} child={child} />
+      <ClassicsNudge child={child} onGo={() => { onGo('shop'); setTimeout(() => document.querySelector('.fp-panel')?.scrollIntoView({ behavior: 'smooth' }), 300); }} />
       <div class="stat-row">
         <div class="stat"><small>{child.displayName}'s balance</small><b>🪙 {pc.balance}</b></div>
         <div class="stat"><small>Earned today</small><b>+{earned}</b></div>
@@ -373,7 +388,7 @@ function genreFromTags(tags: string, fallback = ''): string {
 }
 
 function FlashpointPanel({ child, onSave, onChanged }: { child: Child; onSave: (c: Child) => void; onChanged: () => void }) {
-  const [st, setSt] = useState<{ installed: boolean; root?: string | null; clifp: boolean } | null>(null);
+  const [st, setSt] = useState<FpStatus | null>(null);
   const [sugg, setSugg] = useState<Awaited<ReturnType<typeof bridge.parentFpSuggest>> | null>(null);
   const [q, setQ] = useState('');
   const [results, setResults] = useState<FpCatalogGame[] | null>(null);
@@ -383,7 +398,10 @@ function FlashpointPanel({ child, onSave, onChanged }: { child: Child; onSave: (
   const approved = new Set((arcade.flashpoint ?? []).map((f) => f.id));
 
   const check = () => bridge.parentFpStatus().then(setSt).catch((e) => setMsg(e.message));
-  useEffect(() => { check(); }, []);
+  // Keep checking while this panel is open: it notices the Flashpoint install by itself and shows download progress.
+  useEffect(() => { check(); const t = setInterval(check, 8000); return () => clearInterval(t); }, []);
+  const lastApproved = useRef(0);
+  useEffect(() => { if (st?.approved && st.approved !== lastApproved.current) { if (lastApproved.current) onChanged(); lastApproved.current = st.approved; } }, [st?.approved]);
   useEffect(() => { if (st?.installed && st.clifp && !sugg) bridge.parentFpSuggest().then(setSugg).catch((e) => setMsg(e.message)); }, [st]);
 
   function approve(list: { game: FpCatalogGame; genre?: string; strategy?: number }[]) {
@@ -393,10 +411,9 @@ function FlashpointPanel({ child, onSave, onChanged }: { child: Child; onSave: (
     }));
     if (!add.length) return;
     onSave({ ...child, arcade: { ...arcade, flashpoint: [...(arcade.flashpoint ?? []), ...add] } });
-    setMsg(`Added ${add.length} game${add.length > 1 ? 's' : ''}. Fetching pictures and downloading in the background…`);
+    setMsg(`Added ${add.length} game${add.length > 1 ? 's' : ''}. Pictures and downloads happen in the background.`);
     bridge.parentFpThumbs(add.map((a) => a.id)).then(onChanged).catch(() => undefined);
-    // Download each game now, so the first play is instant. (Runs Flashpoint's own launcher from this account.)
-    if (st?.root) for (const a of add.slice(0, 12)) bridge.flashpoint(st.root, a.id, 'prepare').catch(() => undefined);
+    setTimeout(() => bridge.parentFpStockNow().then(setSt).catch(() => undefined), 1500); // CoinQuest downloads them ahead of time
   }
   const remove = (id: string) => onSave({ ...child, arcade: { ...arcade, flashpoint: (arcade.flashpoint ?? []).filter((f) => f.id !== id) } });
 
@@ -412,12 +429,30 @@ function FlashpointPanel({ child, onSave, onChanged }: { child: Child; onSave: (
       <h4>🏆 Classic Flash games (Flashpoint Archive)</h4>
       {!st && <p class="muted">Checking…</p>}
       {st && !st.installed && (
-        <div>
-          <p>The 2000s classics — Fancy Pants, Gravity Guy, Bloons TD, Learn to Fly, Raft Wars and thousands more — come from <b>Flashpoint Archive</b>, the free preservation project. Games download one at a time as they're added, so it doesn't take much space.</p>
-          <div class="row"><button class="primary" disabled={busy} onClick={install}>Install Flashpoint</button><button class="ghost" onClick={check}>Check again</button></div>
+        <div class="fp-setup">
+          <p>Right now the arcade only has the small built-in set. The real 2000s classics — Fancy Pants, Gravity Guy, Bloons TD, Learn to Fly, Raft Wars, Stick War, Henry Stickmin, Papa's Pizzeria and about 100 more — come from <b>Flashpoint Archive</b>, the free game-preservation project. It's a one-time install, about 5 minutes:</p>
+          <ol class="fp-steps">
+            <li>Press <b>Install Flashpoint</b> below. Its installer opens.</li>
+            <li>Choose <b>Flashpoint Infinity</b> (the small one — games download as needed) and install it to the suggested folder.</li>
+            <li>That's it. CoinQuest notices it within a minute, adds the curated classics to {child.displayName}'s arcade and downloads them for him. Nothing marked adult ever appears.</li>
+          </ol>
+          <div class="row"><button class="primary big" disabled={busy} onClick={install}>Install Flashpoint</button><button class="ghost" onClick={check}>Check again</button></div>
         </div>
       )}
-      {st?.installed && !st.clifp && (
+      {st?.installed && st.stock && (
+        <div class={'fp-progress ' + st.stock.stage}>
+          <b>{st.approved ?? 0} classic games in {child.displayName}'s arcade</b>
+          {st.stock.stage === 'installing-launcher' && <span> · finishing Flashpoint setup…</span>}
+          {st.stock.stage === 'downloading' && <span> · {st.stock.downloaded} ready, downloading {st.stock.queued} more in the background (any not downloaded yet still play — they just take a moment the first time)</span>}
+          {st.stock.stage === 'ready' && <span> · all downloaded ✓</span>}
+          {st.stock.error && <div class="muted small">Last problem: {st.stock.error}</div>}
+          <div class="row">
+            <label class="check"><input type="checkbox" checked={arcade.autoClassics !== false} onChange={(e) => onSave({ ...child, arcade: { ...arcade, autoClassics: (e.target as HTMLInputElement).checked } })} /> Add CoinQuest's kid-safe classics automatically</label>
+            <button class="ghost small" onClick={() => bridge.parentFpStockNow().then(setSt).catch((e) => setMsg(e.message))}>Add / download now</button>
+          </div>
+        </div>
+      )}
+      {st?.installed && !st.clifp && (st.stock?.error || st.stock?.stage !== 'installing-launcher') && (
         <div>
           <p>Flashpoint found at <code>{st.root}</code>. One more step lets CoinQuest start games for {child.displayName} directly.</p>
           <button class="primary" disabled={busy} onClick={() => { setBusy(true); bridge.parentFpInstallClifp().then(setSt).catch((e) => setMsg(e.message)).finally(() => setBusy(false)); }}>Finish setup</button>

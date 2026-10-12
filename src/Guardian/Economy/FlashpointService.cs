@@ -144,6 +144,49 @@ public sealed class FlashpointService
         return r.Read() ? new FpGame(r.GetString(0), r.GetString(1), S(r, 2), S(r, 3), S(r, 4), S(r, 5), S(r, 6), S(r, 7), Trim(S(r, 8), 300)) : null;
     }
 
+    /// <summary>
+    /// True when the game's files are already on disk (Flashpoint's game_data table), false when they still need
+    /// downloading, null when this Flashpoint version doesn't say.
+    /// </summary>
+    public bool? IsDownloaded(string root, string id)
+    {
+        try
+        {
+            using var db = Open(root);
+            using var cmd = db.CreateCommand();
+            cmd.CommandText = "SELECT presentOnDisk FROM game_data WHERE gameId = $id ORDER BY dateAdded DESC LIMIT 1";
+            cmd.Parameters.AddWithValue("$id", id);
+            var v = cmd.ExecuteScalar();
+            if (v is null || v is DBNull) return null;
+            return Convert.ToInt64(v) != 0;
+        }
+        catch { return null; }
+    }
+
+    /// <summary>
+    /// Programs inside Flashpoint that fetch game files from the internet: CLIFp (downloads a game the first time)
+    /// and Flashpoint's local game server (fetches older "legacy" games' files on demand). These — and only these —
+    /// get through the child's internet lock. Browsers and players bundled with Flashpoint are deliberately excluded.
+    /// </summary>
+    public IReadOnlyList<string> NetworkHelpers(string root)
+    {
+        var list = new List<string>();
+        var clifp = Path.Combine(root, "CLIFp.exe");
+        if (File.Exists(clifp)) list.Add(clifp);
+        var server = Path.Combine(root, "Server");
+        if (Directory.Exists(server))
+            try
+            {
+                list.AddRange(Directory.EnumerateFiles(server, "*.exe", SearchOption.AllDirectories)
+                    .Where(f => !BrowserLike.Any(b => Path.GetFileName(f).Contains(b, StringComparison.OrdinalIgnoreCase)))
+                    .Take(12));
+            }
+            catch { }
+        return list;
+    }
+
+    private static readonly string[] BrowserLike = { "basilisk", "firefox", "chrome", "browser", "navigator", "flashplayer", "projector", "electron" };
+
     private static string S(SqliteDataReader r, int i) => r.IsDBNull(i) ? "" : Convert.ToString(r.GetValue(i)) ?? "";
     private static string Trim(string s, int n) => s.Length <= n ? s : s[..n] + "…";
 

@@ -77,6 +77,7 @@ public static class Ops
     public const string ParentFpSuggest = "parent.fpSuggest";           // curated classics matched against the catalog
     public const string ParentFpInstallClifp = "parent.fpInstallClifp";
     public const string ParentFpDownloadInstaller = "parent.fpDownloadInstaller";
+    public const string ParentFpStockNow = "parent.fpStockNow";         // add the curated classics + download them now
     public const string ParentFpThumbs = "parent.fpThumbs";             // { ids }
 
     // first-run setup — only honoured while no PIN exists AND caller is a local Administrator

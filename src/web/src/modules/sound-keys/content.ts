@@ -137,8 +137,39 @@ export function rng(seed: number): () => number {
 const pick = <T,>(r: () => number, xs: T[]) => xs[Math.floor(r() * xs.length)];
 function shuffle<T>(r: () => number, xs: T[]): T[] { const a = [...xs]; for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(r() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; }
 
-export type StepKind = 'meet' | 'keys' | 'listen' | 'words' | 'spell' | 'sentence';
+export type StepKind = 'meet' | 'listen' | 'blaster' | 'words' | 'spell' | 'read' | 'boss' | 'sentence' | 'keys';
 export interface Step { kind: StepKind; items: string[] }
+
+/**
+ * Short, decodable phrases for "Read & Type". Lowercase, no punctuation until the capitals lessons.
+ * A phrase is used only once every letter in it has been taught.
+ */
+export const PHRASES: string[] = [
+  'a sad dad', 'dad asks', 'a lad falls', 'add a salad', 'ask dad', 'a glad lad', 'dad has a flag', 'a lad has a hat',
+  'a red sled', 'his leg is red', 'a kid hid', 'the egg is hot', 'a rat sat', 'a fish is in the dish', 'a big red truck',
+  'the dog dug', 'a hot pot', 'the frog is on a log', 'the sun is hot', 'a bug on a rug', 'run to the hut',
+  'a wet dog', 'the pig is pink', 'a pup on a rug', 'yes it is', 'a big web', 'quit it', 'the duck can quack',
+  'a man and a van', 'ten nuts', 'a cat in a cap', 'mom has a mug', 'a vet and a pup', 'a bat in a box', 'the fox can run',
+  'six red ants', 'a zebra can run', 'buzz said the bug', 'the ship is big', 'a fish and chips', 'the moth is on the path',
+  'the king can sing', 'a duck and a chick', 'the bell rang', 'jump on the bed', 'the ox can pull a cart',
+];
+
+export function phrasesFor(known: string[]): string[] {
+  const keys = knownKeys(known);
+  keys.add(' ');
+  return PHRASES.filter((p) => {
+    if (![...p].every((c) => keys.has(c))) return false;
+    for (const team of ['sh', 'ch', 'th', 'ng', 'ck']) if (p.includes(team) && !known.includes(team)) return false;
+    return true;
+  });
+}
+
+/** Scramble a word for Glitch's boss level (never returns the word itself when it has 3+ different letters). */
+export function scramble(word: string, r: () => number): string {
+  if (new Set(word).size < 2) return word;
+  for (let t = 0; t < 10; t++) { const s = shuffle(r, [...word]).join(''); if (s !== word) return s; }
+  return [...word].reverse().join('');
+}
 
 /** The exact list of things the child will type in a lesson. Same (lessonId, seed) → same steps. */
 export function buildLesson(lessonId: number, seed: number): Step[] {
@@ -148,37 +179,42 @@ export function buildLesson(lessonId: number, seed: number): Step[] {
   const steps: Step[] = [];
   const singles = lesson.known.filter((s) => SOUNDS[s].keys.length === 1 && s !== 'q');
   const sound = lesson.sound ? SOUNDS[lesson.sound] : undefined;
+  const wordPoolAll = wordsFor(lesson.known).map(([w]) => w);
+  const phrases = phrasesFor(lesson.known);
 
   if (lesson.kind === 'new' && sound) {
-    steps.push({ kind: 'meet', items: Array(3).fill(sound.keys) });
-    // Mix the new sound with ones already learned; at least half are the new one.
+    // 1. Charge the key: press the new key 5 times.
+    steps.push({ kind: 'meet', items: Array(5).fill(sound.keys) });
+    // 2. Sound echo: hear a sound, find its key. Mostly the new one.
+    const listenPool = lesson.known.filter((s) => s !== 'ck' && s !== sound.id);
+    steps.push({ kind: 'listen', items: shuffle(r, [sound.id, sound.id, sound.id, ...shuffle(r, listenPool).slice(0, 3)]).map((s) => SOUNDS[s].keys) });
+    // 3. Balloon blaster: pop letters in the order they rise. Half are the new letter.
     const others = singles.filter((s) => s !== sound.id);
-    const mix: string[] = [];
-    for (let i = 0; i < 10; i++) mix.push(i % 2 === 0 || others.length === 0 ? sound.keys : SOUNDS[pick(r, others)].keys);
-    steps.push({ kind: 'keys', items: shuffle(r, mix) });
-    const listenPool = lesson.known.filter((s) => s !== 'ck');
-    const listen = [sound.id, sound.id, ...shuffle(r, listenPool).slice(0, 4)];
-    steps.push({ kind: 'listen', items: shuffle(r, listen).map((s) => SOUNDS[s].keys) });
+    const pops: string[] = [];
+    for (let i = 0; i < 12; i++) pops.push(i % 2 === 0 || others.length === 0 || sound.keys.length > 1 ? sound.keys : SOUNDS[pick(r, others)].keys);
+    steps.push({ kind: 'blaster', items: shuffle(r, pops) });
+    // 4–6. Words, spelling, reading — as soon as there are words to make.
     const withNew = wordsFor(lesson.known, sound.keys).map(([w]) => w);
-    const any = wordsFor(lesson.known).map(([w]) => w);
-    const wordPool = withNew.length >= 3 ? withNew : any;
-    if (wordPool.length >= 2) {
-      const words = shuffle(r, wordPool).slice(0, 5);
-      steps.push({ kind: 'words', items: words });
-      steps.push({ kind: 'spell', items: shuffle(r, wordPool).slice(0, Math.min(4, wordPool.length)) });
+    const pool = withNew.length >= 3 ? withNew : wordPoolAll;
+    if (pool.length >= 2) {
+      steps.push({ kind: 'words', items: shuffle(r, pool).slice(0, 4) });
+      steps.push({ kind: 'spell', items: shuffle(r, pool).slice(0, Math.min(3, pool.length)) });
     }
+    const withNewPhrase = phrases.filter((p) => p.includes(sound.keys));
+    const ph = withNewPhrase.length ? withNewPhrase : phrases;
+    if (ph.length) steps.push({ kind: 'read', items: shuffle(r, ph).slice(0, 2) });
   } else if (lesson.kind === 'review') {
-    steps.push({ kind: 'keys', items: Array.from({ length: 14 }, () => SOUNDS[pick(r, singles)].keys) });
-    steps.push({ kind: 'listen', items: shuffle(r, lesson.known.filter((s) => s !== 'ck')).slice(0, 8).map((s) => SOUNDS[s].keys) });
-    const pool = wordsFor(lesson.known).map(([w]) => w);
-    if (pool.length) {
-      steps.push({ kind: 'words', items: shuffle(r, pool).slice(0, 6) });
-      steps.push({ kind: 'spell', items: shuffle(r, pool).slice(0, 5) });
+    // Boss level: pop a big wave, then fix the words Glitch scrambled, then spell and read.
+    steps.push({ kind: 'blaster', items: Array.from({ length: 16 }, () => SOUNDS[pick(r, singles)].keys) });
+    if (wordPoolAll.length) {
+      steps.push({ kind: 'boss', items: shuffle(r, wordPoolAll.filter((w) => w.length >= 3)).slice(0, 5) });
+      steps.push({ kind: 'spell', items: shuffle(r, wordPoolAll).slice(0, 4) });
     }
+    if (phrases.length) steps.push({ kind: 'read', items: shuffle(r, phrases).slice(0, 3) });
   } else {
     // Capitals + sentences: short, literal, predictable sentences from decodable words.
     const sentences = lessonId === LESSONS[LESSONS.length - 2].id
-      ? ['Dad', 'Mom', 'Sam', 'Max', 'Ben', 'Liz'].map((w) => w)
+      ? ['Dad', 'Mom', 'Sam', 'Max', 'Ben', 'Liz', 'I am Max.', 'I can jump.']
       : shuffle(r, ['The cat sat.', 'A dog can run.', 'I got a red hat.', 'The fox is in the box.', 'Mom has a cup.', 'The ship is big.', 'I can jump.', 'The sun is hot.']).slice(0, 5);
     steps.push({ kind: 'sentence', items: sentences });
   }

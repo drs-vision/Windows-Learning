@@ -26,6 +26,7 @@ public sealed class RequestRouter
     private readonly UpdateChecker _updates;
     private readonly YouTubeService _youtube;
     private readonly FlashpointService _fp;
+    private readonly ClassicsStocker _stocker;
     private readonly NetLock _netLock;
     private readonly ILogger<RequestRouter> _log;
     private readonly Dictionary<string, (string account, DateTimeOffset expires)> _tokens = new();
@@ -34,8 +35,8 @@ public sealed class RequestRouter
     public event Action? ApprovalsChanged;  // something a parent UI should refresh
 
     public RequestRouter(HouseholdStore store, Ledger ledger, ScoreEngine scorer, UnlockManager unlocks, SessionMonitor session,
-        BrowserPolicy policy, UpdateChecker updates, YouTubeService youtube, FlashpointService fp, NetLock netLock, ILogger<RequestRouter> log)
-    { _fp = fp; _netLock = netLock; _store = store; _ledger = ledger; _scorer = scorer; _unlocks = unlocks; _session = session; _policy = policy; _updates = updates; _youtube = youtube; _log = log; }
+        BrowserPolicy policy, UpdateChecker updates, YouTubeService youtube, FlashpointService fp, ClassicsStocker stocker, NetLock netLock, ILogger<RequestRouter> log)
+    { _fp = fp; _stocker = stocker; _netLock = netLock; _store = store; _ledger = ledger; _scorer = scorer; _unlocks = unlocks; _session = session; _policy = policy; _updates = updates; _youtube = youtube; _log = log; }
 
     public Task<Response> Handle(Request req, PipeServer.Client client)
     {
@@ -72,10 +73,11 @@ public sealed class RequestRouter
             Ops.ParentArcadeCatalog => Parent(req, client, child, () => FirstChild() is { } c ? new { games = Arcade.Catalog(c), settings = c.Arcade } : new { games = new List<Arcade.Game>(), settings = new ArcadeSettings() }),
             Ops.ParentArcadeUpload => Parent(req, client, child, () => Arcade.Upload(FirstChild() ?? throw new InvalidOperationException("set up a child first"),
                 Str(req, "fileName"), Str(req, "data"), req.Payload?["title"]?.GetValue<string>(), req.Payload?["strategy"]?.GetValue<int>() ?? 3)),
-            Ops.ParentFpStatus => Parent(req, client, child, () => _fp.Status(FirstChild()?.Arcade.FlashpointRoot)),
+            Ops.ParentFpStatus => Parent(req, client, child, () => FpStatus()),
+            Ops.ParentFpStockNow => Parent(req, client, child, () => { _stocker.Tick(force: true); return FpStatus(); }),
             Ops.ParentFpSearch => Parent(req, client, child, () => _fp.Search(FpRoot(), Str(req, "q"))),
             Ops.ParentFpSuggest => Parent(req, client, child, () => FpSuggest()),
-            Ops.ParentFpInstallClifp => Parent(req, client, child, () => { _fp.InstallClifp(FpRoot()).GetAwaiter().GetResult(); return _fp.Status(FirstChild()?.Arcade.FlashpointRoot); }),
+            Ops.ParentFpInstallClifp => Parent(req, client, child, () => { _fp.InstallClifp(FpRoot()).GetAwaiter().GetResult(); _stocker.Tick(force: true); return FpStatus(); }),
             Ops.ParentFpDownloadInstaller => Parent(req, client, child, () => DownloadFpInstaller()),
             Ops.ParentFpThumbs => Parent(req, client, child, () =>
             {
@@ -194,6 +196,17 @@ public sealed class RequestRouter
         return Response.Success(req.Id, new { games, minutesPerPlay = child.Arcade.MinutesPerPlay, flashpointRoot = child.Arcade.Flashpoint.Count > 0 ? _fp.Root(child.Arcade.FlashpointRoot) : null });
     }
 
+    private object FpStatus()
+    {
+        var c = FirstChild();
+        var root = _fp.Root(c?.Arcade.FlashpointRoot);
+        return new
+        {
+            installed = root is not null, root, clifp = root is not null && _fp.HasClifp(root), installerUrl = FlashpointService.InstallerUrl,
+            autoClassics = c?.Arcade.AutoClassics ?? true, approved = c?.Arcade.Flashpoint.Count ?? 0, stock = _stocker.Status,
+        };
+    }
+
     private Child? FirstChild() => _store.Current.Children.FirstOrDefault();
 
     private string FpRoot() => _fp.Root(FirstChild()?.Arcade.FlashpointRoot) ?? throw new InvalidOperationException("Flashpoint isn't installed yet.");
@@ -204,8 +217,7 @@ public sealed class RequestRouter
         var approved = FirstChild()?.Arcade.Flashpoint.Select(f => f.Id).ToHashSet() ?? new();
         return Classics.List.Select(p =>
         {
-            var hit = _fp.Search(root, p.Search, 5).FirstOrDefault(g => g.Title.Equals(p.Search, StringComparison.OrdinalIgnoreCase))
-                      ?? _fp.Search(root, p.Search, 1).FirstOrDefault();
+            var hit = _stocker.Match(root, p);
             return new { pick = p, game = hit, approved = hit is not null && approved.Contains(hit.Id) };
         }).Where(x => x.game is not null).ToList();
     }
