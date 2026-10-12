@@ -12,7 +12,9 @@ internal static class Wts
     private enum WTS_INFO_CLASS { WTSUserName = 5, WTSDomainName = 7, WTSConnectState = 8 }
 
     [DllImport("kernel32.dll")] private static extern uint WTSGetActiveConsoleSessionId();
-    [DllImport("wtsapi32.dll", SetLastError = true)]
+    // Must be the Unicode (W) entry point: the result is read with PtrToStringUni. (The ANSI default garbled every
+    // account name, so name-based matching never worked; SID matching is the primary path now anyway.)
+    [DllImport("wtsapi32.dll", SetLastError = true, CharSet = CharSet.Unicode, EntryPoint = "WTSQuerySessionInformationW")]
     private static extern bool WTSQuerySessionInformation(IntPtr hServer, uint sessionId, WTS_INFO_CLASS info, out IntPtr buffer, out uint bytes);
     [DllImport("wtsapi32.dll")] private static extern void WTSFreeMemory(IntPtr p);
     [DllImport("wtsapi32.dll", SetLastError = true)]

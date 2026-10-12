@@ -150,7 +150,7 @@ jobs:
           Restart-Service CoinQuestGuardian
           Start-Sleep 5
           Get-Service CoinQuestGuardian
-          query user
+          exit 0
       - uses: actions/setup-node@v4
         with:
           node-version: 22
@@ -179,7 +179,8 @@ jobs:
           git config user.name "coinquest-ci"; git config user.email "ci@users.noreply.github.com"
           git fetch origin e2e-results:e2e-results 2>/dev/null || true
           mkdir -p /tmp/e2e && cp -r e2e-shots/. /tmp/e2e/
-          if git rev-parse --verify e2e-results >/dev/null 2>&1; then git checkout -f e2e-results; else git checkout --orphan e2e-results; git rm -rf . >/dev/null; fi
+          if git rev-parse --verify e2e-results >/dev/null 2>&1; then git checkout -f e2e-results; else git checkout --orphan e2e-results; git rm -rf -q . ; fi
+          git clean -fdxq   # never commit the build or anything else lying around
           rm -rf "runs/$RUN" latest && mkdir -p "runs/$RUN" && cp -r /tmp/e2e/. "runs/$RUN/" && cp -r /tmp/e2e latest
           git add -A && git commit -qm "e2e $RUN" && git push -q origin e2e-results
           # Summary as annotations, readable without downloading anything
