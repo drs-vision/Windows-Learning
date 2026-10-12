@@ -5,6 +5,7 @@ import { bridge, type FpStatus } from '../core/bridge';
 import { MODULES } from '../modules/registry';
 import { SetupWizard } from './SetupWizard';
 import { fmt } from '../modules/arcade/Arcade';
+import { merge3 } from '../core/merge';
 
 type Tab = 'today' | 'approvals' | 'allowed' | 'shop' | 'quests' | 'settings';
 
@@ -63,18 +64,33 @@ export function ParentConsole({ embedded, onClose }: { embedded?: boolean; onClo
         {!child && <p class="muted">No child set up yet.</p>}
         {child && tab === 'today' && <Today state={state} child={child} onChange={refresh} onGo={setTab} />}
         {child && tab === 'approvals' && <Approvals state={state} onChange={refresh} />}
-        {child && tab === 'allowed' && <Allowed child={child} onSave={(c) => save(c, refresh, setError)} />}
-        {child && tab === 'shop' && <ShopEditor child={child} onSave={(c) => save(c, refresh, setError)} />}
-        {child && tab === 'quests' && <Quests child={child} onSave={(c) => save(c, refresh, setError)} />}
-        {child && tab === 'settings' && <Settings state={state} child={child} onSave={(c) => save(c, refresh, setError)} onChange={refresh} />}
+        {child && tab === 'allowed' && <Allowed child={child} onSave={(c) => save(child, c, refresh, setError)} />}
+        {child && tab === 'shop' && <ShopEditor child={child} onSave={(c) => save(child, c, refresh, setError)} />}
+        {child && tab === 'quests' && <Quests child={child} onSave={(c) => save(child, c, refresh, setError)} />}
+        {child && tab === 'settings' && <Settings state={state} child={child} onSave={(c) => save(child, c, refresh, setError)} onChange={refresh} />}
       </section>
     </div>
   );
 }
 
-async function save(child: Child, refresh: () => void, setError: (s: string) => void) {
-  try { await bridge.parentUpdateChild(child); refresh(); } catch (e) { setError((e as Error).message); }
+/**
+ * Saves never overwrite each other. Each screen edits the copy of the child it was showing (`base`); a save that lands
+ * after another one (e.g. a YouTube channel that took a few seconds to look up, while a website was added) used to
+ * send that older copy whole and wipe the other change out. Now saves run one at a time, each re-reads the latest
+ * settings from the Guardian and applies only what this screen actually changed.
+ */
+let saveChain: Promise<unknown> = Promise.resolve();
+function save(base: Child, mine: Child, refresh: () => void, setError: (s: string) => void) {
+  saveChain = saveChain.then(async () => {
+    try {
+      const latest = (await bridge.parentState()).household.children.find((c) => c.id === base.id) ?? base;
+      await bridge.parentUpdateChild(merge3(base, mine, latest) as Child);
+      refresh();
+    } catch (e) { setError((e as Error).message); }
+  });
+  return saveChain;
 }
+
 
 function PinGate({ onOk, onCancel }: { onOk: () => void; onCancel?: () => void }) {
   const [pin, setPin] = useState('');
