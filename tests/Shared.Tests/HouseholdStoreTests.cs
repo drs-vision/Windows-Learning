@@ -41,3 +41,20 @@ public class HouseholdStoreTests
         Assert.Equal("Squires", new HouseholdStore(path).Current.Name);
     }
 }
+
+public class SafeFileTests
+{
+    [Fact]
+    public void Writes_even_when_target_is_held_open_without_delete_sharing()
+    {
+        var path = Path.Combine(Path.GetTempPath(), "cq-safe-" + Guid.NewGuid().ToString("N") + ".json");
+        File.WriteAllText(path, "old");
+        // Simulate antivirus/indexer: an open handle that blocks rename-over (no FILE_SHARE_DELETE) but allows writes.
+        using (var holder = new FileStream(path, FileMode.Open, FileAccess.Read, FileShare.ReadWrite))
+        {
+            CoinQuest.Shared.Config.SafeFile.WriteAllText(path, "new");
+        }
+        Assert.Equal("new", File.ReadAllText(path));
+        Assert.Empty(Directory.EnumerateFiles(Path.GetDirectoryName(path)!, Path.GetFileName(path) + ".*.tmp"));
+    }
+}

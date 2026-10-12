@@ -25,6 +25,7 @@ public sealed class HouseholdStore
     public HouseholdStore(string? path = null)
     {
         _path = path ?? Paths.HouseholdFile;
+        if (Directory.Exists(Path.GetDirectoryName(_path))) SafeFile.CleanTemps(Path.GetDirectoryName(_path)!);
         _current = Load();
     }
 
@@ -84,10 +85,7 @@ public sealed class HouseholdStore
         lock (_gate)
         {
             next = mutate(_current);
-            var tmp = _path + ".tmp";
-            Directory.CreateDirectory(Path.GetDirectoryName(_path)!);
-            File.WriteAllText(tmp, JsonSerializer.Serialize(next, Json));
-            File.Move(tmp, _path, overwrite: true);
+            SafeFile.WriteAllText(_path, JsonSerializer.Serialize(next, Json));
             _current = next;
         }
         Changed?.Invoke(next);

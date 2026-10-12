@@ -97,9 +97,7 @@ public sealed class UnlockManager
     {
         try
         {
-            var tmp = Paths.UnlocksFile + ".tmp";
-            File.WriteAllText(tmp, JsonSerializer.Serialize(_unlocks, HouseholdStore.Json));
-            File.Move(tmp, Paths.UnlocksFile, overwrite: true);
+            SafeFile.WriteAllText(Paths.UnlocksFile, JsonSerializer.Serialize(_unlocks, HouseholdStore.Json));
         }
         catch (Exception ex) { _log.LogWarning(ex, "Could not save unlocks.json"); }
     }

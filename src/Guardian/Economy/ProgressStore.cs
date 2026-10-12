@@ -43,8 +43,7 @@ public static class ProgressStore
         {
             Directory.CreateDirectory(Dir(childId));
             var f = File_(childId, moduleId);
-            File.WriteAllText(f + ".tmp", progress.ToJsonString(new JsonSerializerOptions { WriteIndented = true }));
-            File.Move(f + ".tmp", f, overwrite: true);
+            SafeFile.WriteAllText(f, progress.ToJsonString(new JsonSerializerOptions { WriteIndented = true }));
         }
     }
 

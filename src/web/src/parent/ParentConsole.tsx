@@ -194,14 +194,14 @@ function Allowed({ child, onSave }: { child: Child; onSave: (c: Child) => void }
       <YouTubeChannels child={child} onSave={onSave} />
       <div class="card">
         <h3>Websites</h3>
-        <p class="muted">Everything is blocked except these. Prizes (like YouTube) unlock extra sites temporarily.</p>
+        <p class="muted">These are the only websites that open (inside CoinQuest's locked browser). Everything else is blocked.</p>
         <div class="row"><input value={site} placeholder="e.g. duolingo.com" onInput={(e) => setSite((e.target as HTMLInputElement).value)} onKeyDown={(e) => e.key === 'Enter' && addSite()} /><button class="primary" onClick={addSite}>Add</button></div>
         <div class="chips">{sites.map((s) => <span class="chip">{s}<button onClick={() => setSites(sites.filter((x) => x !== s))}>✕</button></span>)}</div>
         <div class="presets">{Object.entries(SITE_PRESETS).map(([name, list]) => <button class="ghost small" onClick={() => setSites([...new Set([...sites, ...list])])}>+ {name}</button>)}</div>
       </div>
       <div class="card">
         <h3>Apps</h3>
-        <p class="muted">Anything not listed is closed the moment it opens. Browsers and CoinQuest are always included.</p>
+        <p class="muted">Anything not listed is closed the moment it opens. Web browsers never run on this account — websites open inside CoinQuest instead.</p>
         <div class="chips">{appList.map((a) => <span class="chip">{a.split('\\').pop()}<button onClick={() => setApps2(appList.filter((x) => x !== a))}>✕</button></span>)}</div>
         <button class="secondary" onClick={() => { setShowApps(!showApps); if (!apps) bridge.parentInstalledApps().then(setApps).catch(() => setApps([])); }}>{showApps ? 'Hide' : 'Add from apps on this computer'}</button>
         {showApps && (
