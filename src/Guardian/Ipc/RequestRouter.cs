@@ -108,7 +108,8 @@ public sealed class RequestRouter
             child = new { child.Id, child.DisplayName },
             balance = _ledger.Balance(child.Id),
             unlocks = _unlocks.ActiveFor(child.Id).Select(u => new { u.Id, u.Kind, u.Targets, u.PrizeName, u.ExpiresAt, u.SecondsLeft }),
-            prizes = child.Prizes.Where(p => p.Enabled).Select(p => new { p.Id, p.Name, p.Cost, p.Kind, p.Minutes, p.DailyCap, boughtToday = _ledger.PurchasesToday(child.Id, p.Id) }),
+            prizes = child.Prizes.Where(p => p.Enabled).Select(p => new { p.Id, p.Name, p.Cost, p.Kind, p.Minutes, p.DailyCap, boughtToday = _ledger.PurchasesToday(child.Id, p.Id),
+                blockPrice = p.Kind == PrizeKind.YouTube ? YouTubeBlockPrice(child, p) : (int?)null, blockMinutes = ArcadeSettings.BlockMinutes }),
             modules = child.Modules.ToDictionary(kv => kv.Key, kv => new { kv.Value.Enabled, kv.Value.CoinsPerActivity, kv.Value.DailyCap, kv.Value.RequireApproval, kv.Value.Options, earnedToday = _ledger.EarnedToday(child.Id, kv.Key) }),
             recent = _ledger.Recent(child.Id, 30, new DateTimeOffset(today)),
             pendingClaims = _ledger.PendingClaims(child.Id),
@@ -161,6 +162,12 @@ public sealed class RequestRouter
         var prizeId = Str(req, "prizeId");
         var prize = child.Prizes.FirstOrDefault(p => p.Id == prizeId && p.Enabled);
         if (prize is null) return Response.Fail(req.Id, "that prize isn't available");
+        if (prize.Kind == PrizeKind.YouTube)
+        {
+            // Like the arcade: "+" buys 5-minute blocks (priced above the arcade).
+            var blocks = Math.Clamp(req.Payload?["blocks"]?.GetValue<int>() ?? Math.Max(1, prize.Minutes / ArcadeSettings.BlockMinutes), 1, ArcadeSettings.MaxBlocks);
+            prize = prize with { Cost = YouTubeBlockPrice(child, prize) * blocks, Minutes = blocks * ArcadeSettings.BlockMinutes, Name = $"{blocks * ArcadeSettings.BlockMinutes} minutes of YouTube" };
+        }
         var balance = _ledger.Balance(child.Id);
         if (balance < prize.Cost) return Response.Fail(req.Id, $"you need {prize.Cost - balance} more coins");
         if (prize.DailyCap > 0 && _ledger.PurchasesToday(child.Id, prizeId) >= prize.DailyCap) return Response.Fail(req.Id, "you've had that one enough for today");
@@ -173,6 +180,9 @@ public sealed class RequestRouter
         AfterChange();
         return Response.Success(req.Id, new { balance = _ledger.Balance(child.Id), unlock });
     }
+
+    private int YouTubeBlockPrice(Child child, Prize p) =>
+        ArcadeSettings.YouTubeBlockPrice(p, Arcade.Catalog(child).Where(g => !g.Hidden && g.Available).Select(g => g.Price));
 
     /// <summary>"*" = sampler pass (any game).</summary>
     private Unlock? ArcadeTime(Child child, string gameId) =>

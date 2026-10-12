@@ -3,7 +3,7 @@
 
 import type { Child, ChildState, LedgerEntry, ParentState, PendingClaim, Prize, Unlock } from './types';
 import { scoreModule } from '../scorers';
-import { autoSamplerPrice, defaultArcadePrice } from './types';
+import { autoSamplerPrice, defaultArcadePrice, youTubeBlockPrice } from './types';
 import type { Ev } from './bridge';
 
 const STARTER_PRIZES: Prize[] = [
@@ -78,7 +78,8 @@ export class MockGuardian {
       child: { id: this.child.id, displayName: this.child.displayName },
       balance: this.balance(),
       unlocks: this.unlocks,
-      prizes: this.child.prizes.filter((p) => p.enabled !== false).map((p) => ({ ...p, boughtToday: this.boughtToday(p.id) })),
+      prizes: this.child.prizes.filter((p) => p.enabled !== false).map((p) => ({ ...p, boughtToday: this.boughtToday(p.id), blockMinutes: 5,
+        blockPrice: p.kind === 'youTube' ? youTubeBlockPrice(p.cost, p.minutes, [6]) : null })),
       modules: Object.fromEntries(Object.entries(this.child.modules).map(([k, v]) => [k, { ...v, earnedToday: this.earnedToday(k) }])),
       recent: this.ledger.filter((e) => e.at >= t).slice(-30).reverse(),
       pendingClaims: this.claims,
@@ -180,15 +181,19 @@ export class MockGuardian {
         return ok({ coins, pending: false, capped: coins < out.coins, detail: out.detail, balance: this.balance() });
       }
       case 'buy': {
-        const prize = this.child.prizes.find((x) => x.id === p.prizeId);
+        let prize = this.child.prizes.find((x) => x.id === p.prizeId);
         if (!prize) return fail("that prize isn't available");
+        if (prize.kind === 'youTube') {
+          const blocks = Math.max(1, Math.min(12, Number(p.blocks ?? prize.minutes / 5)));
+          prize = { ...prize, cost: youTubeBlockPrice(prize.cost, prize.minutes, [6]) * blocks, minutes: blocks * 5, name: `${blocks * 5} minutes of YouTube` };
+        }
         if (this.balance() < prize.cost) return fail(`you need ${prize.cost - this.balance()} more coins`);
         if (prize.dailyCap > 0 && this.boughtToday(prize.id) >= prize.dailyCap) return fail("you've had that one enough for today");
         this.append('spend', -prize.cost, prize.id, prize.name);
         let unlock: Unlock | undefined;
         if (prize.kind === 'youTube' && !(this.child.youTubeChannels?.length)) return fail('no YouTube channels are set up yet — ask a parent');
         if (prize.minutes > 0 && prize.kind !== 'realWorld') {
-          const existing = this.unlocks.find((u) => u.kind === prize.kind && u.prizeName === prize.name);
+          const existing = this.unlocks.find((u) => u.kind === prize!.kind && (u.prizeName === prize!.name || u.kind === 'youTube'));
           if (existing) { existing.expiresAt = new Date(Date.parse(existing.expiresAt) + prize.minutes * 60000).toISOString(); unlock = existing; }
           else { unlock = { id: 'u' + Date.now(), kind: prize.kind, targets: prize.targets ?? [], prizeName: prize.name, expiresAt: new Date(Date.now() + prize.minutes * 60000).toISOString(), secondsLeft: prize.minutes * 60 }; this.unlocks.push(unlock); }
         }

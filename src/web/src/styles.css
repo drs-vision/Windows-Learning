@@ -350,3 +350,5 @@ button.big { font-size: 1.1em; padding: .7em 1.4em; }
 .sampler.on { justify-content: center; background: linear-gradient(90deg, #7c3aed, #db2777); border-style: solid; font-size: 1.25rem; }
 .coin-btn.small { font-size: 1.05rem; padding: .5em .9em; }
 .countdown { font-family: var(--mono); font-weight: 800; }
+.yt-buy { display: flex; align-items: center; gap: 1em; flex-wrap: wrap; background: var(--panel-2); border-radius: 12px; padding: .5em 1em; margin-bottom: .8em; }
+.yt-buy .stepper { margin: 0; }

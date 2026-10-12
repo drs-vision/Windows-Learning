@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from 'preact/hooks';
 import type { Game, Unlock } from '../../core/types';
 import { BLOCK_MINUTES } from '../../core/types';
+import { TimeStepper } from '../../core/TimeStepper';
 import { bridge } from '../../core/bridge';
 
 declare global { interface Window { RufflePlayer?: any } }
@@ -205,12 +206,7 @@ function TimeBuyer({ game, balance, blocks, maxBlocks, setBlocks, left, busy, on
   return (
     <div class="time-buyer">
       <p class="muted small">🪙 {game.price} for every {BLOCK_MINUTES} minutes{left > 0 ? <> · <b>{fmt(left)}</b> already on the clock</> : ''}</p>
-      <div class="stepper">
-        <button class="step" disabled={blocks <= minBlocks} onClick={() => setBlocks(blocks - 1)} aria-label="less time">−</button>
-        <div class="step-time"><b>{blocks * BLOCK_MINUTES}</b><small>{left > 0 ? 'more min' : 'min'}</small></div>
-        <button class="step plus" disabled={blocks >= maxBlocks || balance < game.price * (blocks + 1)} onClick={() => setBlocks(blocks + 1)} aria-label="more time">+</button>
-        <div class="step-cost">🪙 {cost}</div>
-      </div>
+      <TimeStepper price={game.price} blocks={blocks} setBlocks={setBlocks} min={minBlocks} max={maxBlocks} balance={balance} more={left > 0} />
       <button class="coin-btn" disabled={busy || !canAfford || (blocks === 0 && left <= 0)} onClick={() => onPlay(blocks)}>
         {!canAfford ? `Need ${cost - balance} more coins` : blocks === 0 ? <>▶ PLAY</> : left > 0 ? <>ADD TIME & PLAY <b>🪙 {cost}</b></> : <>▶ PLAY <b>🪙 {cost}</b></>}
       </button>

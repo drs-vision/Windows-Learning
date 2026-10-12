@@ -98,6 +98,17 @@ public sealed record ArcadeSettings
     /// <summary>Coins per 5-minute block. More thinking = cheaper.</summary>
     public static int DefaultPrice(int strategy) => Math.Clamp(strategy, 1, 5) switch { 5 => 2, 4 => 3, 3 => 4, 2 => 5, _ => 6 };
 
+    /// <summary>
+    /// YouTube costs more than the arcade (games beat videos). Per 5 minutes: the prize's own rate, but always at
+    /// least 2 coins above the priciest arcade game.
+    /// </summary>
+    public static int YouTubeBlockPrice(Prize prize, IEnumerable<int> arcadePrices)
+    {
+        var own = prize.Minutes > 0 ? (int)Math.Ceiling(prize.Cost / (prize.Minutes / (double)BlockMinutes)) : prize.Cost;
+        var floor = arcadePrices.DefaultIfEmpty(DefaultPrice(1)).Max() + 2;
+        return Math.Max(own, floor);
+    }
+
     /// <summary>Automatic sampler price: a bit more than the same time on the most expensive single game.</summary>
     public static int AutoSamplerPrice(IEnumerable<int> prices, int samplerMinutes)
     {

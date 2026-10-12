@@ -66,10 +66,10 @@ export function Scholar() {
       <main>
         {view.name === 'home' && <Home state={state} arcadeUnlock={arcadeUnlock} ytUnlock={ytUnlock} onQuest={(id) => setView({ name: 'quest', moduleId: id })} onArcade={() => setView({ name: 'arcade' })} onYouTube={() => setView({ name: 'youtube' })} onWeb={() => setView({ name: 'web' })} onShop={() => setView({ name: 'shop' })} />}
         {view.name === 'quest' && <QuestRunner module={moduleById(view.moduleId)!} state={state} onExit={() => { setView({ name: 'home' }); refresh(); }} />}
-        {view.name === 'shop' && <Shop state={state} onBought={(msg) => { setToast(msg); refresh(); }} onExit={() => setView({ name: 'home' })} />}
+        {view.name === 'shop' && <Shop state={state} onBought={(msg) => { setToast(msg); refresh(); }} onExit={() => setView({ name: 'home' })} onYouTube={() => setView({ name: 'youtube' })} />}
         {view.name === 'arcade' && <Arcade unlocks={unlocks} balance={state.balance} onChanged={refresh} onExit={() => setView({ name: 'home' })} />}
         {view.name === 'web' && <Websites state={state} onExit={() => setView({ name: 'home' })} />}
-        {view.name === 'youtube' && <YouTube unlock={ytUnlock} onExit={() => setView({ name: 'home' })} onShop={() => setView({ name: 'shop' })} />}
+        {view.name === 'youtube' && <YouTube unlock={ytUnlock} onExit={() => setView({ name: 'home' })} prize={state.prizes.find((p) => p.kind === 'youTube')} balance={state.balance} onBought={refresh} />}
         {view.name === 'parent' && <ParentConsole embedded onClose={() => { setView({ name: 'home' }); refresh(); }} />}
       </main>
       {toast && <div class="toast">{toast}</div>}
@@ -163,7 +163,7 @@ function QuestRunner({ module, state, onExit }: { module: LessonModule; state: C
   return <div class="quest-host" ref={host} />;
 }
 
-function Shop({ state, onBought, onExit }: { state: ChildState; onBought: (msg: string) => void; onExit: () => void }) {
+function Shop({ state, onBought, onExit, onYouTube }: { state: ChildState; onBought: (msg: string) => void; onExit: () => void; onYouTube: () => void }) {
   const [busy, setBusy] = useState('');
   const [error, setError] = useState('');
   async function buy(p: Prize) {
@@ -179,6 +179,15 @@ function Shop({ state, onBought, onExit }: { state: ChildState; onBought: (msg: 
       <div class="prize-grid">
         {state.prizes.map((p) => {
           const soldOut = p.dailyCap > 0 && p.boughtToday >= p.dailyCap;
+          if (p.kind === 'youTube' && p.blockPrice) return (
+            <div class={'prize-card' + (soldOut ? ' soldout' : '')}>
+              <div class="prize-icon">{ICON[p.kind]}</div>
+              <b>YouTube time</b>
+              <div class="price">🪙 {p.blockPrice} <small>/ 5 min</small></div>
+              <small class="muted">Press + for more minutes</small>
+              <button class="primary" disabled={soldOut} onClick={onYouTube}>{soldOut ? 'Tomorrow' : 'Choose time'}</button>
+            </div>
+          );
           const canAfford = state.balance >= p.cost;
           return (
             <div class={'prize-card' + (soldOut ? ' soldout' : '') + (!canAfford ? ' poor' : '')}>

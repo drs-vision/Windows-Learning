@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'preact/hooks';
 import type { Child, FlashpointGame, FpCatalogGame, Game, ParentState, Prize, WebGame } from '../core/types';
-import { BLOCK_MINUTES, autoSamplerPrice, defaultArcadePrice } from '../core/types';
+import { BLOCK_MINUTES, autoSamplerPrice, defaultArcadePrice, youTubeBlockPrice } from '../core/types';
 import { bridge, type FpStatus } from '../core/bridge';
 import { MODULES } from '../modules/registry';
 import { SetupWizard } from './SetupWizard';
@@ -283,6 +283,7 @@ function ShopEditor({ child, onSave }: { child: Child; onSave: (c: Child) => voi
           <div class="row">
             <label>Cost 🪙<input type="number" value={editing.cost} min={1} onInput={(e) => setEditing({ ...editing, cost: Number((e.target as HTMLInputElement).value) })} /></label>
             {editing.kind !== 'realWorld' && <label>Minutes<input type="number" value={editing.minutes} min={1} onInput={(e) => setEditing({ ...editing, minutes: Number((e.target as HTMLInputElement).value) })} /></label>}
+            {editing.kind === 'youTube' && <p class="muted small" style={{ flexBasis: '100%' }}>{child.displayName} buys YouTube with + in 5-minute steps at <b>🪙 {youTubeBlockPrice(editing.cost, editing.minutes, [defaultArcadePrice(1)])} per 5 min</b> (this cost ÷ minutes, but never cheaper than 2 coins above the priciest arcade game — games beat videos). "Max per day" counts how many times he buys.</p>}
             <label>Max per day (0 = no limit)<input type="number" value={editing.dailyCap} min={0} onInput={(e) => setEditing({ ...editing, dailyCap: Number((e.target as HTMLInputElement).value) })} /></label>
           </div>
           <label class="check"><input type="checkbox" checked={editing.enabled !== false} onChange={(e) => setEditing({ ...editing, enabled: (e.target as HTMLInputElement).checked })} /> Show in shop</label>

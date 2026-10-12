@@ -86,7 +86,7 @@ export interface ChildState {
   child: { id: string; displayName: string };
   balance: number;
   unlocks: Unlock[];
-  prizes: Prize[];
+  prizes: (Prize & { boughtToday: number; blockPrice?: number | null; blockMinutes?: number })[];
   modules: Record<string, ModuleSettings & { earnedToday: number }>;
   recent: LedgerEntry[];
   pendingClaims: PendingClaim[];
@@ -155,6 +155,11 @@ export interface FpCatalogGame { id: string; title: string; developer: string; p
 /** Coins per 5 minutes of a game (must match ArcadeSettings.DefaultPrice). More thinking = cheaper. */
 export const defaultArcadePrice = (strategy: number) => ({ 5: 2, 4: 3, 3: 4, 2: 5 } as Record<number, number>)[Math.max(1, Math.min(5, Math.round(strategy)))] ?? 6;
 export const BLOCK_MINUTES = 5;
+/** Must match ArcadeSettings.YouTubeBlockPrice: YouTube always costs more than the priciest arcade game. */
+export function youTubeBlockPrice(cost: number, minutes: number, arcadePrices: number[]) {
+  const own = minutes > 0 ? Math.ceil(cost / (minutes / BLOCK_MINUTES)) : cost;
+  return Math.max(own, (arcadePrices.length ? Math.max(...arcadePrices) : defaultArcadePrice(1)) + 2);
+}
 /** Must match ArcadeSettings.AutoSamplerPrice. */
 export function autoSamplerPrice(prices: number[], minutes: number) {
   const max = prices.length ? Math.max(...prices) : defaultArcadePrice(1);

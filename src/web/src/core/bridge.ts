@@ -66,7 +66,7 @@ class Bridge {
   hello() { return this.call<{ version: string; account: string; isAdmin: boolean; childId?: string; setupNeeded: boolean }>('hello'); }
   state() { return this.call<ChildState>('state'); }
   submit(moduleId: string, activity: unknown, result: unknown) { return this.call<{ coins: number; pending: boolean; capped: boolean; detail: string; balance: number }>('submit', { moduleId, activity, result }); }
-  buy(prizeId: string) { return this.call<{ balance: number; unlock?: unknown }>('buy', { prizeId }); }
+  buy(prizeId: string, blocks?: number) { return this.call<{ balance: number; unlock?: unknown }>('buy', { prizeId, blocks }); }
   saveProgress(moduleId: string, progress: unknown) { return this.call('progress', { moduleId, progress }); }
   arcade() { return this.call<{ games: Game[]; blockMinutes?: number; maxBlocks?: number; sampler?: { minutes: number; price: number }; flashpointRoot?: string | null }>('arcade.list'); }
   /** blocks × 5 minutes of one game; blocks 0 = jump back in with time already bought (or a sampler pass). */

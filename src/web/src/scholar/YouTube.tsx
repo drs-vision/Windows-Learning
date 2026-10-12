@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'preact/hooks';
-import type { Unlock, Video } from '../core/types';
+import type { ChildState, Unlock, Video } from '../core/types';
+import { TimeStepper } from '../core/TimeStepper';
 import { bridge } from '../core/bridge';
 import { fmt } from '../modules/arcade/Arcade';
 
@@ -7,7 +8,20 @@ import { fmt } from '../modules/arcade/Arcade';
  * YouTube, but only the channels a parent approved. Videos come from the Guardian (channel feeds), play in a
  * privacy-enhanced embed with related videos limited to the same channel, and stop when YouTube time runs out.
  */
-export function YouTube({ unlock, onExit, onShop }: { unlock?: Unlock; onExit: () => void; onShop: () => void }) {
+export function YouTube({ unlock, onExit, prize, balance, onBought }: {
+  unlock?: Unlock; onExit: () => void; prize?: ChildState['prizes'][number]; balance: number; onBought: () => void;
+}) {
+  const [blocks, setBlocks] = useState(1);
+  const [busy, setBusy] = useState(false);
+  const price = prize?.blockPrice ?? 0;
+  async function buy() {
+    if (!prize) return;
+    setBusy(true); setError('');
+    try { await bridge.buy(prize.id, blocks); setBlocks(1); onBought(); }
+    catch (e) { setError((e as Error).message); }
+    finally { setBusy(false); }
+  }
+  const soldOut = !!prize && prize.dailyCap > 0 && prize.boughtToday >= prize.dailyCap;
   const [lib, setLib] = useState<{ channels: { id: string; title: string }[]; videos: Video[]; errors: string[] } | null>(null);
   const [channel, setChannel] = useState<string>('all');
   const [playing, setPlaying] = useState<Video | null>(null);
@@ -20,7 +34,7 @@ export function YouTube({ unlock, onExit, onShop }: { unlock?: Unlock; onExit: (
     setError('');
     try {
       const r = await bridge.youtubeCheck(v.id);
-      if (!r.allowed) { setError(unlock ? "That video isn't from an approved channel." : 'Buy YouTube time in the shop first.'); return; }
+      if (!r.allowed) { setError(unlock ? "That video isn't from an approved channel." : 'Press + to add YouTube time first.'); return; }
       setPlaying(v);
     } catch (e) { setError((e as Error).message); }
   }
@@ -43,9 +57,20 @@ export function YouTube({ unlock, onExit, onShop }: { unlock?: Unlock; onExit: (
     <div class="arcade">
       <header>
         <h2>▶️ YouTube</h2>
-        {unlock ? <span class="countdown">{fmt(unlock.secondsLeft)} left</span> : <button class="primary" onClick={onShop}>Buy YouTube time</button>}
+        {unlock && <span class="countdown">{fmt(unlock.secondsLeft)} left</span>}
         <button class="ghost" onClick={onExit}>Back</button>
       </header>
+      {prize && price > 0 && (
+        <div class="yt-buy">
+          <span class="muted small">🪙 {price} for every 5 minutes{soldOut ? ' · that’s enough YouTube for today' : ''}</span>
+          {!soldOut && <>
+            <TimeStepper price={price} blocks={blocks} setBlocks={setBlocks} balance={balance} more={!!unlock} />
+            <button class="coin-btn small" disabled={busy || balance < price * blocks} onClick={buy}>
+              {balance < price * blocks ? `Need ${price * blocks - balance} more coins` : unlock ? <>ADD TIME <b>🪙 {price * blocks}</b></> : <>▶ WATCH <b>🪙 {price * blocks}</b></>}
+            </button>
+          </>}
+        </div>
+      )}
       {error && <p class="error">{error}</p>}
       {!lib && !error && <p class="muted">Loading videos…</p>}
       {lib && lib.channels.length === 0 && <p class="muted">No channels yet. A parent can add channels in the Parent Console → Allowed.</p>}
