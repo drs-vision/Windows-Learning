@@ -36,7 +36,30 @@ public sealed class NetGate
     public static readonly string[] YouTubeHosts =
     {
         "youtube-nocookie.com", "youtube.com", "ytimg.com", "googlevideo.com", "ggpht.com", "gstatic.com", "googleapis.com", "youtubei.googleapis.com",
+        // The embedded player's anti-bot check and start-up calls. Without these YouTube shows a blank player or
+        // "Sign in to confirm you're not a bot". Only during YouTube time, and only as the player's own requests.
+        "www.google.com", "play.google.com", "googleusercontent.com", "static.doubleclick.net", "googleads.g.doubleclick.net",
     };
+
+    /// <summary>
+    /// Behind-the-scenes hosts that popular learning sites load their pages from (their own CDNs). Allowed only
+    /// when the site itself is on the child's list. Anything else a site needs shows up under "Recently blocked"
+    /// in the Parent Console, where one click allows it.
+    /// </summary>
+    public static readonly Dictionary<string, string[]> Companions = new(StringComparer.OrdinalIgnoreCase)
+    {
+        ["duolingo.com"] = new[] { "d35aaqx5ub95lt.cloudfront.net", "d2pur3iezf4d1j.cloudfront.net", "d1btvuu4dwu627.cloudfront.net", "d1vq87e9lcf771.cloudfront.net", "d3h7m4lydt9vf9.cloudfront.net", "duolingo-images.s3.amazonaws.com", "duolingo.cn" },
+        ["khanacademy.org"] = new[] { "kastatic.org", "kasandbox.org", "khan.github.io" },
+        ["typing.com"] = new[] { "cdn.typing.com" },
+        ["scratch.mit.edu"] = new[] { "scratch.mit.edu", "cdn.scratch.mit.edu", "cdn2.scratch.mit.edu", "assets.scratch.mit.edu", "uploads.scratch.mit.edu" },
+    };
+
+    /// <summary>Hosts the gate refused recently (newest first) — the Parent Console offers to allow them.</summary>
+    public List<(string Host, DateTime At, string Reason)> RecentlyBlocked()
+    {
+        lock (_recentDenied) return _recentDenied.OrderByDescending(kv => kv.Value).Take(60).Select(kv => (kv.Key, kv.Value, _denyReason.GetValueOrDefault(kv.Key) ?? "")).ToList();
+    }
+    private readonly Dictionary<string, string> _denyReason = new(StringComparer.OrdinalIgnoreCase);
 
     public sealed record Decision(bool Allowed, string Reason);
 
@@ -52,6 +75,9 @@ public sealed class NetGate
 
         if (Infrastructure.Any(Match)) return new(true, "infrastructure");
         if (children.Any(c => c.Allowlist.Sites.Any(Match))) return new(true, "allowed site");
+        foreach (var c in children)
+            foreach (var site in c.Allowlist.Sites)
+                if (Companions.TryGetValue(site.Trim().ToLowerInvariant().Replace("www.", ""), out var extra) && extra.Any(Match)) return new(true, $"needed by {site}");
         var active = children.SelectMany(c => _unlocks.ActiveFor(c.Id)).ToList();
         if (active.Any(u => u.Kind == PrizeKind.SiteUnlock && u.Targets.Any(Match))) return new(true, "site unlock");
         if (active.Any(u => u.Kind == PrizeKind.YouTube) && YouTubeHosts.Any(Match)) return new(true, "YouTube time");
@@ -124,8 +150,9 @@ public sealed class NetGate
                     if (!_recentDenied.TryGetValue(host, out var t) || (DateTime.UtcNow - t).TotalMinutes > 10)
                     {
                         _recentDenied[host] = DateTime.UtcNow;
+                        _denyReason[host] = d.Reason;
                         _log.LogInformation("Gatekeeper blocked {Host} ({Reason})", host, d.Reason);
-                        if (_recentDenied.Count > 2000) _recentDenied.Clear();
+                        if (_recentDenied.Count > 2000) { _recentDenied.Clear(); _denyReason.Clear(); }
                     }
                 await Deny(cs, $"{host} is not allowed", ct);
                 return;

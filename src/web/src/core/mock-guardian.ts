@@ -161,6 +161,7 @@ export class MockGuardian {
       case 'parent.fpStatus': case 'parent.fpStockNow': return ok({ installed: true, root: 'C:\\Flashpoint', clifp: true, installerUrl: '', autoClassics: true, approved: 84, stock: { stage: 'downloading', approved: 84, downloaded: 31, queued: 53 } });
       case 'parent.fpSuggest': return ok(['Gravity Guy', 'Fancy Pants Adventures', 'Bloons Tower Defense 4', 'Learn to Fly 2', 'Raft Wars', 'Stick War', 'Fireboy and Watergirl in The Forest Temple'].map((t, i) => ({ pick: { search: t, genre: 'Classic', strategy: 3 }, game: { id: '11111111-0000-0000-0000-00000000000' + (i + 1), title: t, developer: '', publisher: '', platform: 'Flash', tags: 'Action', series: '', releaseDate: '2009', description: '' }, approved: i < 5 })));
       case 'parent.fpSearch': return ok([]);
+      case 'parent.blocked': return ok([{ host: 'd35aaqx5ub95lt.cloudfront.net', at: new Date().toISOString(), reason: 'not on the list' }]);
       case 'parent.fpThumbs': return ok({});
       case 'submit': {
         const settings = this.child.modules[p.moduleId];

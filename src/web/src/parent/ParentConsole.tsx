@@ -213,6 +213,7 @@ function Allowed({ child, onSave }: { child: Child; onSave: (c: Child) => void }
         <div class="row"><input value={site} placeholder="e.g. duolingo.com" onInput={(e) => setSite((e.target as HTMLInputElement).value)} onKeyDown={(e) => e.key === 'Enter' && addSite()} /><button class="primary" onClick={addSite}>Add</button></div>
         <div class="chips">{sites.map((s) => <span class="chip">{s}<button onClick={() => setSites(sites.filter((x) => x !== s))}>✕</button></span>)}</div>
         <div class="presets">{Object.entries(SITE_PRESETS).map(([name, list]) => <button class="ghost small" onClick={() => setSites([...new Set([...sites, ...list])])}>+ {name}</button>)}</div>
+        <RecentlyBlocked sites={sites} onAllow={(h) => setSites([...new Set([...sites, h])])} />
       </div>
       <div class="card">
         <h3>Apps</h3>
@@ -226,6 +227,30 @@ function Allowed({ child, onSave }: { child: Child; onSave: (c: Child) => void }
           </div>
         )}
       </div>
+    </div>
+  );
+}
+
+/**
+ * A site that opens blank usually loads its pictures and code from other addresses (its "CDN"). Those show up here
+ * as they're blocked; one click allows them. Open the site in the child's account first, then refresh this list.
+ */
+function RecentlyBlocked({ sites, onAllow }: { sites: string[]; onAllow: (host: string) => void }) {
+  const [list, setList] = useState<{ host: string; at: string; reason: string }[] | null>(null);
+  const load = () => bridge.parentBlocked().then(setList).catch(() => setList([]));
+  useEffect(() => { load(); const t = setInterval(load, 10000); return () => clearInterval(t); }, []);
+  const shown = (list ?? []).filter((b) => !sites.some((s) => b.host === s || b.host.endsWith('.' + s))).slice(0, 25);
+  return (
+    <div class="blocked">
+      <h4>Recently blocked <button class="ghost small" onClick={load}>↻</button></h4>
+      <p class="muted small">If an allowed site opens blank, open it once in the child's account, then allow the addresses it needed here (they appear within a few seconds).</p>
+      {list && shown.length === 0 && <p class="muted small">Nothing blocked recently.</p>}
+      {shown.map((b) => (
+        <div class="row between blocked-row">
+          <span><code>{b.host}</code> <small class="muted">{new Date(b.at).toLocaleTimeString([], { hour: 'numeric', minute: '2-digit' })}</small></span>
+          <button class="secondary small" onClick={() => onAllow(b.host)}>Allow</button>
+        </div>
+      ))}
     </div>
   );
 }

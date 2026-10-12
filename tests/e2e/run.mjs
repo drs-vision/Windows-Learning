@@ -4,7 +4,7 @@
 // Every step saves a screenshot of the app and of the whole desktop to e2e-shots/. Exit code != 0 on any failure.
 import { chromium } from 'playwright-core';
 import { execFileSync, spawn } from 'node:child_process';
-import { mkdirSync, writeFileSync, appendFileSync } from 'node:fs';
+import { mkdirSync, writeFileSync, appendFileSync, readFileSync } from 'node:fs';
 import { join } from 'node:path';
 
 const OUT = process.env.E2E_OUT ?? 'e2e-shots';
@@ -95,6 +95,13 @@ await check('parent adds a YouTube channel', async () => {
   await parent.waitForSelector('.chip', { timeout: 30000 });
   await shot(parent, 'parent-youtube');
 });
+await check('parent allows duolingo.com', async () => {
+  await parent.click('nav.tabs >> text=Allowed');
+  await parent.fill('input[placeholder="e.g. duolingo.com"]', 'duolingo.com');
+  await parent.locator('.card', { hasText: 'Websites' }).locator('button.primary', { hasText: 'Add' }).click();
+  await sleep(800);
+  await shot(parent, 'parent-sites');
+});
 await check('Flashpoint panel shows install steps', async () => {
   await parent.click('nav.tabs >> text=Shop');
   await sleep(1500);
@@ -181,9 +188,32 @@ await check('YouTube: + buys time and a video plays', async () => {
   await sleep(10000);
   await shot(kid, 'youtube-playing'); desktop('youtube-playing');
   expect(await kid.locator('.player iframe').count() > 0, 'no player');
+  for (const f of kid.frames()) {
+    const t = await f.textContent('body').catch(() => '');
+    if (/not a bot/i.test(t ?? '')) log('  note: YouTube asked "confirm you are not a bot" (it does this for data-centre connections like this test machine)');
+  }
   await kid.click('text=← Videos');
   await kid.click('.arcade header button.ghost');
 });
+
+// ---------- an allowed website (opens in CoinQuest's locked window) ----------
+log('== Websites');
+await check('Duolingo opens with content (not blank)', async () => {
+  await kid.click('text=/Websites/');
+  await sleep(1500);
+  await shot(kid, 'websites');
+  await kid.locator('.site-card', { hasText: /duolingo/i }).first().click();
+  const { browser: sb, page: site } = await attach(9224, 'site window');
+  await sleep(15000);
+  await shot(site, 'duolingo'); desktop('duolingo');
+  const text = (await site.textContent('body').catch(() => '')) ?? '';
+  log(`  duolingo page text: ${text.replace(/\s+/g, ' ').slice(0, 160)}`);
+  await sb.close().catch(() => undefined);
+  try { execFileSync('powershell', ['-NoProfile', '-Command', "$w = New-Object -ComObject WScript.Shell; [void]$w.AppActivate('Duolingo'); Start-Sleep -Milliseconds 300; $w.SendKeys('{ESC}')"], { stdio: 'ignore' }); } catch { /* */ }
+  expect(text.replace(/\s+/g, '').length > 200, 'Duolingo page is (nearly) blank');
+});
+await kid.click('.topbar .brand').catch(() => undefined);
+await sleep(800);
 
 // ---------- Letter Rescue lesson 1 ----------
 log('== Letter Rescue');
@@ -247,6 +277,11 @@ await check('Scripture passage typed and paid', async () => {
   expect(/[1-9]/.test(c), 'no coins: ' + c);
 });
 
+// What the internet gate refused during the run (sites that open blank show up here).
+try {
+  const lines = readFileSync('C:\\ProgramData\\CoinQuest\\logs\\guardian.log', 'utf8').split('\n').filter((l) => l.includes('Gatekeeper blocked'));
+  log(`== Gatekeeper blocked ${lines.length} host(s):`); for (const l of lines.slice(-40)) log('  ' + l.replace(/^.*Gatekeeper blocked /, ''));
+} catch (e) { log('  (could not read guardian.log: ' + e.message + ')'); }
 writeFileSync(join(OUT, 'RESULT.txt'), failures ? `${failures} FAILED` : 'ALL PASSED');
 log(failures ? `\n${failures} check(s) FAILED` : '\nALL CHECKS PASSED');
 await kb.close().catch(() => undefined);

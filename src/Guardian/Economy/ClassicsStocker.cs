@@ -136,7 +136,7 @@ public sealed class ClassicsStocker
     private async Task<bool> RunClifp(string root, string verb, string id, TimeSpan timeout)
     {
         var psi = new ProcessStartInfo(Path.Combine(root, "CLIFp.exe")) { WorkingDirectory = root, UseShellExecute = false, CreateNoWindow = true };
-        psi.ArgumentList.Add(verb); psi.ArgumentList.Add("-i"); psi.ArgumentList.Add(id); psi.ArgumentList.Add("-q");
+        psi.ArgumentList.Add("-q"); psi.ArgumentList.Add(verb); psi.ArgumentList.Add("-i"); psi.ArgumentList.Add(id); // global option first
         using var p = Process.Start(psi);
         if (p is null) return false;
         using var cts = new CancellationTokenSource(timeout);

@@ -27,7 +27,9 @@ export function YouTube({ unlock, onExit, prize, balance, onBought }: {
   const [playing, setPlaying] = useState<Video | null>(null);
   const [error, setError] = useState('');
 
-  useEffect(() => { bridge.youtubeLibrary().then(setLib).catch((e) => setError(e.message)); }, []);
+  const [loading, setLoading] = useState(true);
+  const loadLib = () => { setLoading(true); setError(''); bridge.youtubeLibrary().then(setLib).catch((e) => setError(e.message)).finally(() => setLoading(false)); };
+  useEffect(() => { loadLib(); }, []);
   useEffect(() => { if (!unlock) setPlaying(null); }, [unlock]);
 
   async function watch(v: Video) {
@@ -71,8 +73,12 @@ export function YouTube({ unlock, onExit, prize, balance, onBought }: {
           </>}
         </div>
       )}
-      {error && <p class="error">{error}</p>}
-      {!lib && !error && <p class="muted">Loading videos…</p>}
+      {loading && <p class="muted">Loading videos…</p>}
+      {!loading && lib && (lib.errors?.length ?? 0) > 0 && (
+        <p class="error">Couldn't get videos from {lib.errors.join(', ')} right now. <button class="ghost small" onClick={loadLib}>Try again</button></p>
+      )}
+      {!loading && lib && lib.channels.length > 0 && lib.videos.length === 0 && (lib.errors?.length ?? 0) === 0 && <p class="muted">No videos found yet. <button class="ghost small" onClick={loadLib}>Try again</button></p>}
+      {error && <p class="error">{error} <button class="ghost small" onClick={loadLib}>Try again</button></p>}
       {lib && lib.channels.length === 0 && <p class="muted">No channels yet. A parent can add channels in the Parent Console → Allowed.</p>}
       {lib && lib.channels.length > 1 && (
         <div class="segmented small yt-channels">

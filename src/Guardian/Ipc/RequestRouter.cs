@@ -27,6 +27,7 @@ public sealed class RequestRouter
     private readonly YouTubeService _youtube;
     private readonly FlashpointService _fp;
     private readonly ClassicsStocker _stocker;
+    private readonly NetGate _gate;
     private readonly NetLock _netLock;
     private readonly ILogger<RequestRouter> _log;
     private readonly Dictionary<string, (string account, DateTimeOffset expires)> _tokens = new();
@@ -35,8 +36,8 @@ public sealed class RequestRouter
     public event Action? ApprovalsChanged;  // something a parent UI should refresh
 
     public RequestRouter(HouseholdStore store, Ledger ledger, ScoreEngine scorer, UnlockManager unlocks, SessionMonitor session,
-        BrowserPolicy policy, UpdateChecker updates, YouTubeService youtube, FlashpointService fp, ClassicsStocker stocker, NetLock netLock, ILogger<RequestRouter> log)
-    { _fp = fp; _stocker = stocker; _netLock = netLock; _store = store; _ledger = ledger; _scorer = scorer; _unlocks = unlocks; _session = session; _policy = policy; _updates = updates; _youtube = youtube; _log = log; }
+        BrowserPolicy policy, UpdateChecker updates, YouTubeService youtube, FlashpointService fp, ClassicsStocker stocker, NetGate gate, NetLock netLock, ILogger<RequestRouter> log)
+    { _fp = fp; _stocker = stocker; _gate = gate; _netLock = netLock; _store = store; _ledger = ledger; _scorer = scorer; _unlocks = unlocks; _session = session; _policy = policy; _updates = updates; _youtube = youtube; _log = log; }
 
     public Task<Response> Handle(Request req, PipeServer.Client client)
     {
@@ -74,6 +75,7 @@ public sealed class RequestRouter
             Ops.ParentArcadeCatalog => Parent(req, client, child, () => FirstChild() is { } c ? new { games = Arcade.Catalog(c), settings = c.Arcade } : new { games = new List<Arcade.Game>(), settings = new ArcadeSettings() }),
             Ops.ParentArcadeUpload => Parent(req, client, child, () => Arcade.Upload(FirstChild() ?? throw new InvalidOperationException("set up a child first"),
                 Str(req, "fileName"), Str(req, "data"), req.Payload?["title"]?.GetValue<string>(), req.Payload?["strategy"]?.GetValue<int>() ?? 3)),
+            Ops.ParentBlocked => Parent(req, client, child, () => _gate.RecentlyBlocked().Select(b => new { host = b.Host, at = b.At, reason = b.Reason })),
             Ops.ParentFpStatus => Parent(req, client, child, () => FpStatus()),
             Ops.ParentFpStockNow => Parent(req, client, child, () => { _stocker.Tick(force: true); return FpStatus(); }),
             Ops.ParentFpSearch => Parent(req, client, child, () => _fp.Search(FpRoot(), Str(req, "q"))),

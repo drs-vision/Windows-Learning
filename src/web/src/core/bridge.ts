@@ -95,6 +95,7 @@ class Bridge {
   parentArcadeUpload(fileName: string, data: string, title: string, strategy: number) { return this.call<Game>('parent.arcadeUpload', { fileName, data, title, strategy }, { parent: true }); }
   parentArcadeRemove(gameId: string) { return this.call('parent.arcadeRemove', { gameId }, { parent: true }); }
   parentFpStatus() { return this.call<FpStatus>('parent.fpStatus', undefined, { parent: true }); }
+  parentBlocked() { return this.call<{ host: string; at: string; reason: string }[]>('parent.blocked', undefined, { parent: true }); }
   parentFpStockNow() { return this.call<FpStatus>('parent.fpStockNow', undefined, { parent: true }); }
   parentFpSearch(q: string) { return this.call<FpCatalogGame[]>('parent.fpSearch', { q }, { parent: true }); }
   parentFpSuggest() { return this.call<{ pick: { search: string; genre: string; strategy: number; note?: string | null }; game: FpCatalogGame; approved: boolean }[]>('parent.fpSuggest', undefined, { parent: true }); }

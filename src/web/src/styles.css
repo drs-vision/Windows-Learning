@@ -535,3 +535,5 @@ button.big { font-size: 1.1em; padding: .7em 1.4em; }
   .lr .sk-target { font-size: 3.4rem; }
 }
 .lr-typer .fk { width: fit-content; }
+.blocked { margin-top: 1em; border-top: 1px dashed var(--muted); padding-top: .6em; } .blocked h4 { margin: 0 0 .2em; }
+.blocked-row { padding: .25em 0; } .blocked-row code { font-size: .95em; }
