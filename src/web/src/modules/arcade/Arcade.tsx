@@ -12,7 +12,7 @@ function loadRuffle(): Promise<void> {
   if (!ruffleLoading) {
     ruffleLoading = new Promise((resolve, reject) => {
       window.RufflePlayer = window.RufflePlayer || {};
-      window.RufflePlayer.config = { autoplay: 'on', unmuteOverlay: 'hidden', letterbox: 'on', splashScreen: false, allowScriptAccess: false, publicPath: './vendor/ruffle/' };
+      window.RufflePlayer.config = { autoplay: 'on', unmuteOverlay: 'hidden', letterbox: 'on', scale: 'showAll', forceScale: true, salign: '', forceAlign: true, splashScreen: false, allowScriptAccess: false, publicPath: './vendor/ruffle/' };
       const s = document.createElement('script');
       s.src = './vendor/ruffle/ruffle.js';
       s.onload = () => resolve();
