@@ -358,7 +358,7 @@ public sealed class RequestRouter
         if (req.Token is not null)
             lock (_tokens) ok = _tokens.TryGetValue(req.Token, out var t) && t.account == client.Account && t.expires > DateTimeOffset.UtcNow;
         if (!ok && client.IsAdmin && callerIsChild is null) ok = true;
-        if (!ok) return Response.Fail(req.Id, "parent PIN required");
+        if (!ok) { _log.LogInformation("Parent request {Op} refused: PIN required ({Account})", req.Op, client.Account); return Response.Fail(req.Id, "parent PIN required"); }
         return Response.Success(req.Id, action());
     }
 
@@ -408,6 +408,8 @@ public sealed class RequestRouter
         });
         _policy.Invalidate();
         AfterChange();
+        _log.LogInformation("Settings saved for {Child}: {Sites} sites, {Apps} apps, {Channels} channels, {Classics} classics",
+            incoming.DisplayName, incoming.Allowlist.Sites.Count, incoming.Allowlist.Apps.Count, incoming.YouTubeChannels.Count, incoming.Arcade.Flashpoint.Count);
         return new { ok = true };
     }
 

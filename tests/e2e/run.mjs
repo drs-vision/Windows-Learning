@@ -102,6 +102,8 @@ await check('parent allows duolingo.com', async () => {
   await sleep(1500);
   await parent.locator('.chip', { hasText: 'duolingo.com' }).first().scrollIntoViewIfNeeded().catch(() => undefined);
   await shot(parent, 'parent-sites');
+  const errs = await parent.locator('.error').allTextContents();
+  if (errs.length) log('  parent errors: ' + errs.join(' / '));
   expect(await parent.locator('.chip', { hasText: 'duolingo.com' }).count() > 0, 'duolingo.com chip not shown after adding');
 });
 await check('Flashpoint panel shows install steps', async () => {
