@@ -141,7 +141,8 @@ jobs:
       - name: Create the kid account and install CoinQuest
         shell: pwsh
         run: |
-          net user kid 'Kid-Pass-2026!' /add /y
+          net user kid 'Pl4y-Learn-2026!' /add /y
+          if ($LASTEXITCODE -ne 0) { throw 'could not create the kid account' }
           $setup = Get-ChildItem dist/CoinQuest-Setup-*.exe | Select-Object -First 1
           $p = Start-Process $setup.FullName -ArgumentList '/VERYSILENT','/SUPPRESSMSGBOXES','/NORESTART','/LOG=install.log' -PassThru
           $p.WaitForExit(600000) | Out-Null

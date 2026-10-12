@@ -9,7 +9,7 @@ import { join } from 'node:path';
 
 const OUT = process.env.E2E_OUT ?? 'e2e-shots';
 const INSTALL = process.env.CQ_INSTALL ?? 'C:\\Program Files\\CoinQuest';
-const KID = process.env.KID_USER ?? 'kid', KID_PW = process.env.KID_PW ?? 'Kid-Pass-2026!';
+const KID = process.env.KID_USER ?? 'kid', KID_PW = process.env.KID_PW ?? 'Pl4y-Learn-2026!';
 mkdirSync(OUT, { recursive: true });
 let n = 0, failures = 0;
 const log = (s) => { console.log(s); appendFileSync(join(OUT, 'log.txt'), s + '\n'); };
