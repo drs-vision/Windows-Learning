@@ -79,6 +79,9 @@ public sealed class ClassicLibrary
                 Directory.CreateDirectory(tmp);
 
                 var packed = await FromLocalFlashpoint(id, tmp) || await FromDataPack(id, tmp);
+                try { await EnsureEntry(); } catch { MarkUnavailable(id); throw new InvalidOperationException("This game's files aren't available from the archive right now."); }
+                async Task EnsureEntry()
+                {
                 var entry = Path.Combine(tmp, "content", lu.Host, Uri.UnescapeDataString(lu.AbsolutePath).TrimStart('/').Replace('/', Path.DirectorySeparatorChar));
                 if (!File.Exists(entry))
                 {
@@ -86,6 +89,7 @@ public sealed class ClassicLibrary
                     Directory.CreateDirectory(Path.GetDirectoryName(entry)!);
                     var bytes = await _http.GetByteArrayAsync(LegacyHtdocs + lu.Host + lu.AbsolutePath);
                     await File.WriteAllBytesAsync(entry, bytes);
+                }
                 }
                 await File.WriteAllTextAsync(Path.Combine(tmp, "meta.json"), JsonSerializer.Serialize(new { launch, platform, packed }));
                 if (Directory.Exists(dir)) Directory.Delete(dir, true);
@@ -102,6 +106,25 @@ public sealed class ClassicLibrary
     }
 
     public bool IsReady(string id) => File.Exists(Path.Combine(Dir, id, "meta.json"));
+
+    // Games whose files couldn't be fetched are kept out of the arcade (retried after a week).
+    private static readonly string FailedFile = Path.Combine(Dir, "unavailable.json");
+    private static Dictionary<string, DateTime>? _failed;
+    private static Dictionary<string, DateTime> FailedMap()
+    {
+        if (_failed is not null) return _failed;
+        try { _failed = JsonSerializer.Deserialize<Dictionary<string, DateTime>>(File.ReadAllText(FailedFile)) ?? new(); } catch { _failed = new(); }
+        return _failed;
+    }
+    public static bool IsUnavailable(string id) { lock (FailedFile) return FailedMap().TryGetValue(id, out var at) && DateTime.UtcNow - at < TimeSpan.FromDays(7); }
+    private static void MarkUnavailable(string id)
+    {
+        lock (FailedFile)
+        {
+            FailedMap()[id] = DateTime.UtcNow;
+            try { File.WriteAllText(FailedFile, JsonSerializer.Serialize(_failed)); } catch { }
+        }
+    }
 
     private async Task<bool> FromDataPack(string id, string into)
     {

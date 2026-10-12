@@ -65,7 +65,7 @@ public static class Arcade
             var thumb = File.Exists(Path.Combine(Paths.DataRoot, "thumbs", f.Id + ".png")) ? $"https://coinquest-thumbs.local/{f.Id}.png" : "";
             // "classic": played in CoinQuest's own Ruffle player from files fetched via the Flashpoint Archive.
             games.Add(new Game("fp-" + f.Id, f.Title, f.Developer, "classic", "via Flashpoint Archive", f.Id, f.Genre, f.Strategy,
-                Price("fp-" + f.Id, f.Strategy), s.Hidden.Contains("fp-" + f.Id), true, "flashpoint") { Thumbnail = thumb });
+                Price("fp-" + f.Id, f.Strategy), s.Hidden.Contains("fp-" + f.Id), !CoinQuest.Guardian.Economy.ClassicLibrary.IsUnavailable(f.Id), "flashpoint") { Thumbnail = thumb });
         }
 
         foreach (var w in s.WebGames)

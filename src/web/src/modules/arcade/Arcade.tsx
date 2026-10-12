@@ -259,7 +259,8 @@ function Player({ game, onBack, secondsLeft, sampler }: { game: Game & { base?: 
       player.tabIndex = 0;
       host.current!.appendChild(player);
       // Classics ask for their files at their original web addresses; send those to the local copy instead.
-      const rewrite = game.rewritePrefix ? { urlRewriteRules: [[/^https?:\/\//, game.rewritePrefix]] } : {};
+      // (Not the local copy itself — rewriting that again would double the address.)
+      const rewrite = game.rewritePrefix ? { urlRewriteRules: [[/^https?:\/\/(?!coinquest-[a-z]+\.local\/)/, game.rewritePrefix]] } : {};
       player.ruffle().load({ url: game.url, base: game.base ?? game.url.slice(0, game.url.lastIndexOf('/') + 1), allowScriptAccess: false, ...rewrite })
         .then(() => player.focus()).catch((e: Error) => setErr(e.message));
     }).catch((e) => setErr(e.message));
