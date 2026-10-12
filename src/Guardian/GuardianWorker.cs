@@ -22,14 +22,16 @@ public sealed class GuardianWorker : BackgroundService
     private readonly UpdateChecker _updates;
     private readonly HouseholdStore _store;
     private readonly FlashpointService _fp;
+    private readonly NetGate _gate;
+    private readonly NetLock _netLock;
     private readonly ILogger<GuardianWorker> _log;
     private DateTime _lastScholarLaunch = DateTime.MinValue;
     private readonly List<(DateTime closeAt, uint session, List<string> keywords)> _graceCloses = new();
 
     public GuardianWorker(SessionMonitor session, ProcessEnforcer enforcer, BrowserPolicy policy, UnlockManager unlocks, PipeServer pipe,
-        RequestRouter router, UpdateChecker updates, HouseholdStore store, FlashpointService fp, ILogger<GuardianWorker> log)
+        RequestRouter router, UpdateChecker updates, HouseholdStore store, FlashpointService fp, NetGate gate, NetLock netLock, ILogger<GuardianWorker> log)
     {
-        _fp = fp;
+        _fp = fp; _gate = gate; _netLock = netLock;
         _session = session; _enforcer = enforcer; _policy = policy; _unlocks = unlocks; _pipe = pipe; _router = router; _updates = updates; _store = store; _log = log;
     }
 
@@ -62,6 +64,10 @@ public sealed class GuardianWorker : BackgroundService
             else { _policy.Invalidate(); _policy.Apply(s.Child); }
         };
 
+        // The gatekeeper must be listening before the lock goes on, so allowed sites keep working.
+        var gateTask = _gate.RunAsync(ct);
+        Step("internet lock", () => _netLock.Ensure(force: true));
+        _store.Changed += _ => Step("internet lock", () => _netLock.Ensure());
         var pipeTask = _pipe.RunAsync(ct);
         var updateTask = _updates.RunAsync(ct);
 
@@ -82,12 +88,13 @@ public sealed class GuardianWorker : BackgroundService
             if ((DateTime.UtcNow - _lastHeartbeatLog).TotalMinutes >= 5)
             {
                 _lastHeartbeatLog = DateTime.UtcNow;
-                _log.LogInformation("Heartbeat: console={Account} managedChild={Child} browserLock={Lock}",
-                    _session.ConsoleAccount ?? "(none)", _session.Current?.Child.DisplayName ?? "no", _policy.Status);
+                _log.LogInformation("Heartbeat: console={Account} managedChild={Child} internetLock={Net} browserLock={Lock}",
+                    _session.ConsoleAccount ?? "(none)", _session.Current?.Child.DisplayName ?? "no", _netLock.Status, _policy.Status);
+                Step("internet lock", () => _netLock.Ensure(force: true)); // re-assert every 5 minutes
             }
         }
 
-        try { await Task.WhenAll(pipeTask, updateTask); } catch (OperationCanceledException) { }
+        try { await Task.WhenAll(pipeTask, updateTask, gateTask); } catch (OperationCanceledException) { }
     }
 
     private DateTime _lastHeartbeatLog = DateTime.MinValue;

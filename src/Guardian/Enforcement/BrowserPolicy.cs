@@ -82,6 +82,20 @@ public sealed class BrowserPolicy
             }
         }
 
+        // Point every proxy-aware program on this account at the gatekeeper. (Programs that ignore it just get no
+        // internet — the WFP rule blocks direct connections — so changing this setting can't open anything up.)
+        try
+        {
+            using var inet = userRoot.CreateSubKey(@"Software\Microsoft\Windows\CurrentVersion\Internet Settings", writable: true)!;
+            inet.SetValue("ProxyEnable", 1, RegistryValueKind.DWord);
+            inet.SetValue("ProxyServer", $"127.0.0.1:{NetGate.Port}", RegistryValueKind.String);
+            inet.SetValue("ProxyOverride", "<local>", RegistryValueKind.String);
+            using var conns = inet.OpenSubKey("Connections", writable: true);
+            conns?.DeleteValue("DefaultConnectionSettings", throwOnMissingValue: false);
+            conns?.DeleteValue("SavedLegacySettings", throwOnMissingValue: false);
+        }
+        catch (Exception ex) { error ??= "proxy: " + ex.Message; }
+
         _lastWritten = error is null ? signature : null;
         Status = new PolicyStatus(DateTimeOffset.UtcNow, allow.Count, error, child.WindowsSid);
         _log.LogInformation("Browser allowlist for {Child}: {N} entries", child.DisplayName, allow.Count);
@@ -99,6 +113,16 @@ public sealed class BrowserPolicy
         {
             try { userRoot.DeleteSubKeyTree(basePath, throwOnMissingSubKey: false); } catch { }
         }
+        try
+        {
+            using var inet = userRoot.OpenSubKey(@"Software\Microsoft\Windows\CurrentVersion\Internet Settings", writable: true);
+            if (inet?.GetValue("ProxyServer") is string ps && ps.StartsWith("127.0.0.1:"))
+            {
+                inet.SetValue("ProxyEnable", 0, RegistryValueKind.DWord);
+                inet.DeleteValue("ProxyServer", false);
+            }
+        }
+        catch { }
     }
 
     public void Invalidate() => _lastWritten = null;

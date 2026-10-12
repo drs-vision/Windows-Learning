@@ -46,7 +46,7 @@ public sealed class GameWindow : Window
         Loaded += async (_, _) =>
         {
             var userData = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "CoinQuest", "WebView2-games");
-            var env = await CoreWebView2Environment.CreateAsync(null, userData);
+            var env = await CoreWebView2Environment.CreateAsync(null, userData, WebShellWindow.ProxyOptions());
             await _web.EnsureCoreWebView2Async(env);
             var core = _web.CoreWebView2;
             core.Settings.AreDevToolsEnabled = false;

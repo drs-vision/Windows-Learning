@@ -23,6 +23,12 @@ public class WebShellWindow : Window
     private readonly string _app;        // "scholar" | "parent"
     private readonly bool _kiosk;
     private GameWindow? _game;
+
+    /// <summary>True when this window belongs to a managed child account (all traffic goes through the gatekeeper).</summary>
+    public static bool ManagedChild { get; private set; }
+    public const int GatePort = 47123;
+    public static CoreWebView2EnvironmentOptions? ProxyOptions() =>
+        ManagedChild ? new CoreWebView2EnvironmentOptions($"--proxy-server=http://127.0.0.1:{GatePort}") : null;
     private Process? _fpProcess;
 
     public WebShellWindow(string app, bool kiosk)
@@ -48,7 +54,15 @@ public class WebShellWindow : Window
     private async Task InitAsync()
     {
         var userData = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "CoinQuest", "WebView2");
-        var env = await CoreWebView2Environment.CreateAsync(null, userData);
+        // A managed child's account has no direct internet; WebView2 must go through the Guardian's gatekeeper.
+        await TryConnectAsync();
+        try
+        {
+            var hello = await _pipe.SendAsync(Ops.Hello);
+            ManagedChild = hello.Ok && hello.Payload?["childId"] is not null;
+        }
+        catch { ManagedChild = _kiosk; }
+        var env = await CoreWebView2Environment.CreateAsync(null, userData, ProxyOptions());
         await _web.EnsureCoreWebView2Async(env);
         var core = _web.CoreWebView2;
 

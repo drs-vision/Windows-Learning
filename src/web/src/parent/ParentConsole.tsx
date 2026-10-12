@@ -129,19 +129,19 @@ function Today({ state, child, onChange }: { state: ParentState; child: Child; o
 function LockStatus({ state, child }: { state: ParentState; child: Child }) {
   const e = state.enforcement;
   if (!e) return null;
-  const lock = e.browserLock;
-  const at = lock.appliedAt ? new Date(lock.appliedAt).toLocaleTimeString([], { hour: 'numeric', minute: '2-digit' }) : null;
-  const ok = e.childAtKeyboard && at && !lock.error;
+  const net = e.internetLock;
+  const netOk = !!net?.applied && !net.error;
   return (
-    <div class={'card lock-status ' + (ok ? 'ok' : e.childAtKeyboard ? 'bad' : 'idle')}>
+    <div class={'card lock-status ' + (netOk ? 'ok' : 'bad')}>
       <div class="lock-dot" />
       <div>
-        <b>{e.childAtKeyboard ? `${child.displayName} is using the computer` : `${child.displayName} is not logged in`}</b>
+        <b>{netOk ? `Internet lock is ON for ${child.displayName}'s account` : `Internet lock is NOT active`}</b>
         <p class="muted small">
-          {e.childAtKeyboard
-            ? (lock.error ? `Browser lock problem: ${lock.error}` : at ? `Browser lock applied at ${at} (${lock.entries} allowed sites). Apps not on the list close automatically.` : 'Applying the browser lock…')
-            : `Restrictions switch on when the Windows account "${child.windowsAccount}" logs in. Right now "${e.consoleAccount ?? 'nobody'}" is at the keyboard — that account is not restricted.`}
+          {netOk
+            ? `Every program on "${child.windowsAccount}" is blocked from the internet except the sites on your Allowed list (and YouTube channels you approved, during YouTube time). Your account is not affected.`
+            : `Problem: ${net?.error ?? 'not applied yet'}. Send guardian.log if this stays red.`}
         </p>
+        <p class="muted small">{e.childAtKeyboard ? `${child.displayName} is using the computer right now.` : `Right now "${e.consoleAccount ?? 'nobody'}" is at the keyboard.`}</p>
       </div>
     </div>
   );

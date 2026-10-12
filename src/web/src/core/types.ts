@@ -128,6 +128,7 @@ export interface ParentState {
     childAccount?: string | null;
     childSid?: string | null;
     browserLock: { appliedAt?: string | null; entries: number; error?: string | null; sid?: string | null };
+    internetLock?: { applied: boolean; at?: string | null; error?: string | null };
   };
 }
 

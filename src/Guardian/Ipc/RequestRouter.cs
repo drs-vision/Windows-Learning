@@ -26,6 +26,7 @@ public sealed class RequestRouter
     private readonly UpdateChecker _updates;
     private readonly YouTubeService _youtube;
     private readonly FlashpointService _fp;
+    private readonly NetLock _netLock;
     private readonly ILogger<RequestRouter> _log;
     private readonly Dictionary<string, (string account, DateTimeOffset expires)> _tokens = new();
 
@@ -33,8 +34,8 @@ public sealed class RequestRouter
     public event Action? ApprovalsChanged;  // something a parent UI should refresh
 
     public RequestRouter(HouseholdStore store, Ledger ledger, ScoreEngine scorer, UnlockManager unlocks, SessionMonitor session,
-        BrowserPolicy policy, UpdateChecker updates, YouTubeService youtube, FlashpointService fp, ILogger<RequestRouter> log)
-    { _fp = fp; _store = store; _ledger = ledger; _scorer = scorer; _unlocks = unlocks; _session = session; _policy = policy; _updates = updates; _youtube = youtube; _log = log; }
+        BrowserPolicy policy, UpdateChecker updates, YouTubeService youtube, FlashpointService fp, NetLock netLock, ILogger<RequestRouter> log)
+    { _fp = fp; _netLock = netLock; _store = store; _ledger = ledger; _scorer = scorer; _unlocks = unlocks; _session = session; _policy = policy; _updates = updates; _youtube = youtube; _log = log; }
 
     public Task<Response> Handle(Request req, PipeServer.Client client)
     {
@@ -288,6 +289,7 @@ public sealed class RequestRouter
                 childAccount = h.Children.FirstOrDefault()?.WindowsAccount,
                 childSid = h.Children.FirstOrDefault()?.WindowsSid,
                 browserLock = _policy.Status,
+                internetLock = _netLock.Status,
             },
         };
     }

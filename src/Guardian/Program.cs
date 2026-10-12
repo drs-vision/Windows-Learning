@@ -15,6 +15,7 @@ if (args.Contains("--clear-policies"))
     var store = new HouseholdStore();
     foreach (var child in store.Current.Children)
         if (!string.IsNullOrEmpty(child.WindowsSid)) BrowserPolicy.ClearStatic(child.WindowsSid);
+    NetLock.RemoveAll(store.Current.Children.Select(c => c.WindowsSid).Where(s => !string.IsNullOrEmpty(s)));
     return;
 }
 
@@ -27,6 +28,8 @@ builder.Services.AddSingleton(sp => new Ledger());
 builder.Services.AddSingleton(sp => new ScoreEngine());
 builder.Services.AddSingleton<SessionMonitor>();
 builder.Services.AddSingleton<BrowserPolicy>();
+builder.Services.AddSingleton<NetGate>();
+builder.Services.AddSingleton<NetLock>();
 builder.Services.AddSingleton<UnlockManager>();
 builder.Services.AddSingleton<YouTubeService>();
 builder.Services.AddSingleton<FlashpointService>();
