@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'preact/hooks';
-import type { Child, ParentState, Prize } from '../core/types';
+import type { Child, FlashpointGame, FpCatalogGame, Game, ParentState, Prize, WebGame } from '../core/types';
+import { defaultArcadePrice } from '../core/types';
 import { bridge } from '../core/bridge';
 import { MODULES } from '../modules/registry';
 import { SetupWizard } from './SetupWizard';
@@ -100,6 +101,7 @@ function Today({ state, child, onChange }: { state: ParentState; child: Child; o
   const spent = -pc.today.filter((e) => e.delta < 0).reduce((s, e) => s + e.delta, 0);
   return (
     <div class="today">
+      <LockStatus state={state} child={child} />
       <div class="stat-row">
         <div class="stat"><small>{child.displayName}'s balance</small><b>🪙 {pc.balance}</b></div>
         <div class="stat"><small>Earned today</small><b>+{earned}</b></div>
@@ -120,6 +122,27 @@ function Today({ state, child, onChange }: { state: ParentState; child: Child; o
         </ul>
       </div>
       {!state.ledgerIntact && <p class="error">⚠️ The coin ledger failed its integrity check. Someone may have edited it directly.</p>}
+    </div>
+  );
+}
+
+function LockStatus({ state, child }: { state: ParentState; child: Child }) {
+  const e = state.enforcement;
+  if (!e) return null;
+  const lock = e.browserLock;
+  const at = lock.appliedAt ? new Date(lock.appliedAt).toLocaleTimeString([], { hour: 'numeric', minute: '2-digit' }) : null;
+  const ok = e.childAtKeyboard && at && !lock.error;
+  return (
+    <div class={'card lock-status ' + (ok ? 'ok' : e.childAtKeyboard ? 'bad' : 'idle')}>
+      <div class="lock-dot" />
+      <div>
+        <b>{e.childAtKeyboard ? `${child.displayName} is using the computer` : `${child.displayName} is not logged in`}</b>
+        <p class="muted small">
+          {e.childAtKeyboard
+            ? (lock.error ? `Browser lock problem: ${lock.error}` : at ? `Browser lock applied at ${at} (${lock.entries} allowed sites). Apps not on the list close automatically.` : 'Applying the browser lock…')
+            : `Restrictions switch on when the Windows account "${child.windowsAccount}" logs in. Right now "${e.consoleAccount ?? 'nobody'}" is at the keyboard — that account is not restricted.`}
+        </p>
+      </div>
     </div>
   );
 }
@@ -168,6 +191,7 @@ function Allowed({ child, onSave }: { child: Child; onSave: (c: Child) => void }
 
   return (
     <div class="allowed two-col">
+      <YouTubeChannels child={child} onSave={onSave} />
       <div class="card">
         <h3>Websites</h3>
         <p class="muted">Everything is blocked except these. Prizes (like YouTube) unlock extra sites temporarily.</p>
@@ -191,9 +215,35 @@ function Allowed({ child, onSave }: { child: Child; onSave: (c: Child) => void }
   );
 }
 
+function YouTubeChannels({ child, onSave }: { child: Child; onSave: (c: Child) => void }) {
+  const [url, setUrl] = useState('');
+  const [busy, setBusy] = useState(false);
+  const [err, setErr] = useState('');
+  const list = child.youTubeChannels ?? [];
+  async function add() {
+    setBusy(true); setErr('');
+    try {
+      const ch = await bridge.parentYouTubeResolve(url.trim());
+      if (!list.some((c) => c.id === ch.id)) onSave({ ...child, youTubeChannels: [...list, ch] });
+      setUrl('');
+    } catch (e) { setErr((e as Error).message); }
+    finally { setBusy(false); }
+  }
+  return (
+    <div class="card" style={{ gridColumn: '1 / -1' }}>
+      <h3>▶️ YouTube channels</h3>
+      <p class="muted">youtube.com itself stays blocked. Inside CoinQuest, {child.displayName} can watch recent videos from these channels only, during YouTube time. Paste a channel link (for example youtube.com/@MarkRober).</p>
+      <div class="row"><input style={{ flex: 1 }} value={url} placeholder="https://www.youtube.com/@channel" onInput={(e) => setUrl((e.target as HTMLInputElement).value)} onKeyDown={(e) => e.key === 'Enter' && url && add()} /><button class="primary" disabled={!url || busy} onClick={add}>{busy ? 'Finding…' : 'Add channel'}</button></div>
+      {err && <p class="error">{err}</p>}
+      <div class="chips">{list.map((c) => <span class="chip">{c.title}<button onClick={() => onSave({ ...child, youTubeChannels: list.filter((x) => x.id !== c.id) })}>✕</button></span>)}</div>
+      {list.length === 0 && <p class="muted small">No channels yet — the YouTube button won't appear for {child.displayName} until you add one.</p>}
+    </div>
+  );
+}
+
 // ---------------------------------------------------------------- Shop editor
 
-const KINDS: [Prize['kind'], string][] = [['siteUnlock', 'Unlock a website for N minutes'], ['arcadeUnlock', 'Arcade minutes'], ['appUnlock', 'Unlock an app for N minutes'], ['screenTimeExtension', 'Extra screen time tonight'], ['realWorld', 'Real-world reward (just logged)']];
+const KINDS: [Prize['kind'], string][] = [['youTube', 'YouTube time (approved channels only)'], ['siteUnlock', 'Unlock a website for N minutes'], ['arcadeUnlock', 'Arcade time (any game)'], ['appUnlock', 'Unlock an app for N minutes'], ['screenTimeExtension', 'Extra screen time tonight'], ['realWorld', 'Real-world reward (just logged)']];
 
 function ShopEditor({ child, onSave }: { child: Child; onSave: (c: Child) => void }) {
   const [editing, setEditing] = useState<Prize | null>(null);
@@ -205,9 +255,10 @@ function ShopEditor({ child, onSave }: { child: Child; onSave: (c: Child) => voi
     <div class="shop-editor">
       <p class="muted">What coins can buy. Tap one to change it.</p>
       <div class="prize-list">
-        {prizes.map((p) => <button class={'prize-row' + (p.enabled === false ? ' off' : '')} onClick={() => setEditing({ ...p })}><span class="icon">{{ siteUnlock: '▶️', arcadeUnlock: '🕹️', appUnlock: '💻', screenTimeExtension: '⏰', realWorld: '🎁' }[p.kind]}</span><b>{p.name}</b><span>🪙 {p.cost}</span><small class="muted">{p.minutes ? `${p.minutes} min` : ''}{p.dailyCap ? ` · max ${p.dailyCap}/day` : ''}{p.enabled === false ? ' · hidden' : ''}</small></button>)}
+        {prizes.map((p) => <button class={'prize-row' + (p.enabled === false ? ' off' : '')} onClick={() => setEditing({ ...p })}><span class="icon">{{ youTube: '▶️', siteUnlock: '🌐', arcadeUnlock: '🕹️', appUnlock: '💻', screenTimeExtension: '⏰', realWorld: '🎁' }[p.kind]}</span><b>{p.name}</b><span>🪙 {p.cost}</span><small class="muted">{p.minutes ? `${p.minutes} min` : ''}{p.dailyCap ? ` · max ${p.dailyCap}/day` : ''}{p.enabled === false ? ' · hidden' : ''}</small></button>)}
       </div>
       <button class="secondary" onClick={() => setEditing(blank())}>+ New prize</button>
+      <ArcadeManager child={child} onSave={onSave} />
       {editing && (
         <div class="modal"><div class="card form">
           <h3>{prizes.some((p) => p.id === editing.id) ? 'Edit prize' : 'New prize'}</h3>
@@ -228,6 +279,199 @@ function ShopEditor({ child, onSave }: { child: Child; onSave: (c: Child) => voi
         </div></div>
       )}
     </div>
+  );
+}
+
+function ArcadeManager({ child, onSave }: { child: Child; onSave: (c: Child) => void }) {
+  const [games, setGames] = useState<Game[] | null>(null);
+  const [err, setErr] = useState('');
+  const [web, setWeb] = useState<WebGame>({ id: '', title: '', url: '', strategy: 3 });
+  const [upload, setUpload] = useState<{ file: File; title: string; strategy: number } | null>(null);
+  const settings = child.arcade ?? { minutesPerPlay: 10, priceOverrides: {}, hidden: [], webGames: [] };
+  const reload = () => bridge.parentArcadeCatalog().then((r) => setGames(r.games)).catch((e) => setErr(e.message));
+  useEffect(() => { reload(); }, [child]);
+  const saveArcade = (a: typeof settings) => onSave({ ...child, arcade: a });
+
+  async function doUpload() {
+    if (!upload) return;
+    setErr('');
+    try {
+      const buf = new Uint8Array(await upload.file.arrayBuffer());
+      let bin = ''; for (let i = 0; i < buf.length; i += 0x8000) bin += String.fromCharCode(...buf.subarray(i, i + 0x8000));
+      await bridge.parentArcadeUpload(upload.file.name, btoa(bin), upload.title || upload.file.name.replace(/\.swf$/i, ''), upload.strategy);
+      setUpload(null); reload();
+    } catch (e) { setErr((e as Error).message); }
+  }
+
+  return (
+    <div class="card arcade-manager">
+      <h3>🕹️ Arcade</h3>
+      <FlashpointPanel child={child} onSave={onSave} onChanged={reload} />
+      <h4>Prices</h4>
+      <p class="muted">Every game costs coins per play, like quarters in a machine. A play lasts until he leaves the game. Games that take more thinking (🧠) cost less. Change any price below.</p>
+      <label class="row">Longest a single play can last (minutes) <input type="number" min={1} max={120} value={settings.minutesPerPlay} onChange={(e) => saveArcade({ ...settings, minutesPerPlay: Number((e.target as HTMLInputElement).value) || 15 })} style={{ width: '6em' }} /></label>
+      {err && <p class="error">{err}</p>}
+      <table class="arcade-table">
+        <thead><tr><th>Game</th><th>Thinking</th><th>Price 🪙</th><th>Show</th><th /></tr></thead>
+        <tbody>
+          {(games ?? []).filter((g) => g.available).map((g) => {
+            const hidden = settings.hidden.includes(g.id);
+            return (
+              <tr class={hidden ? 'off' : ''}>
+                <td><b>{g.title}</b><br /><small class="muted">{g.source === 'web' ? g.author : g.source === 'uploaded' ? 'added by you' : g.license}</small></td>
+                <td>{'🧠'.repeat(g.strategy)}</td>
+                <td><input type="number" min={0} value={g.price} style={{ width: '5em' }}
+                  onChange={(e) => { const v = Number((e.target as HTMLInputElement).value); const o = { ...settings.priceOverrides }; if (v === defaultArcadePrice(g.strategy)) delete o[g.id]; else o[g.id] = v; saveArcade({ ...settings, priceOverrides: o }); }} /></td>
+                <td><input type="checkbox" checked={!hidden} onChange={(e) => saveArcade({ ...settings, hidden: (e.target as HTMLInputElement).checked ? settings.hidden.filter((x) => x !== g.id) : [...settings.hidden, g.id] })} /></td>
+                <td>{g.source === 'uploaded' && <button class="ghost small danger" onClick={() => bridge.parentArcadeRemove(g.id).then(reload)}>Remove</button>}
+                  {g.source === 'web' && <button class="ghost small danger" onClick={() => saveArcade({ ...settings, webGames: settings.webGames.filter((w) => w.id !== g.id) })}>Remove</button>}</td>
+              </tr>
+            );
+          })}
+        </tbody>
+      </table>
+
+      <div class="two-col">
+        <div>
+          <h4>Add a Flash game file (.swf)</h4>
+          <p class="muted small">For games you own or that the author lets you download.</p>
+          <input type="file" accept=".swf" onChange={(e) => { const f = (e.target as HTMLInputElement).files?.[0]; if (f) setUpload({ file: f, title: f.name.replace(/\.swf$/i, ''), strategy: 3 }); }} />
+          {upload && <div class="form">
+            <label>Name<input value={upload.title} onInput={(e) => setUpload({ ...upload, title: (e.target as HTMLInputElement).value })} /></label>
+            <StrategyPicker value={upload.strategy} onChange={(v) => setUpload({ ...upload, strategy: v })} />
+            <button class="primary" onClick={doUpload}>Add to arcade</button>
+          </div>}
+        </div>
+        <div>
+          <h4>Add a game from its official website</h4>
+          <p class="muted small">Paste the page where the maker or publisher hosts it (e.g. Armor Games, Newgrounds). It opens in a locked window that can't leave that site.</p>
+          <div class="form">
+            <label>Name<input value={web.title} placeholder="Fancy Pants Adventures" onInput={(e) => setWeb({ ...web, title: (e.target as HTMLInputElement).value })} /></label>
+            <label>Link<input value={web.url} placeholder="https://…" onInput={(e) => setWeb({ ...web, url: (e.target as HTMLInputElement).value })} /></label>
+            <StrategyPicker value={web.strategy} onChange={(v) => setWeb({ ...web, strategy: v })} />
+            <button class="primary" disabled={!web.title || !/^https?:\/\//.test(web.url)} onClick={() => { saveArcade({ ...settings, webGames: [...settings.webGames, { ...web, id: 'web-' + Math.random().toString(36).slice(2, 10) }] }); setWeb({ id: '', title: '', url: '', strategy: 3 }); }}>Add to arcade</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+/** Guess how much thinking a Flashpoint game takes from its tags (parents can change the price anyway). */
+function strategyFromTags(tags: string): number {
+  const t = tags.toLowerCase();
+  if (/tower defen|strategy|puzzle|logic|point.and.click|escape|word|trivia|chess|board/.test(t)) return 5;
+  if (/simulation|management|cooking|rpg|role.playing|adventure/.test(t)) return 4;
+  if (/physics|artillery|upgrade|launch|platform/.test(t)) return 3;
+  if (/racing|driving|sports|runner|endless/.test(t)) return 2;
+  return 2;
+}
+function genreFromTags(tags: string, fallback = ''): string {
+  const t = tags.split(';').map((x) => x.trim()).filter(Boolean);
+  const pref = ['Tower Defense', 'Racing', 'Strategy', 'Puzzle', 'Platformer', 'Sports', 'Physics', 'Shooter', 'Adventure', 'Arcade', 'Action'];
+  return pref.find((p) => t.some((x) => x.toLowerCase() === p.toLowerCase())) ?? t[0] ?? fallback;
+}
+
+function FlashpointPanel({ child, onSave, onChanged }: { child: Child; onSave: (c: Child) => void; onChanged: () => void }) {
+  const [st, setSt] = useState<{ installed: boolean; root?: string | null; clifp: boolean } | null>(null);
+  const [sugg, setSugg] = useState<Awaited<ReturnType<typeof bridge.parentFpSuggest>> | null>(null);
+  const [q, setQ] = useState('');
+  const [results, setResults] = useState<FpCatalogGame[] | null>(null);
+  const [msg, setMsg] = useState('');
+  const [busy, setBusy] = useState(false);
+  const arcade = child.arcade ?? { minutesPerPlay: 15, priceOverrides: {}, hidden: [], webGames: [] };
+  const approved = new Set((arcade.flashpoint ?? []).map((f) => f.id));
+
+  const check = () => bridge.parentFpStatus().then(setSt).catch((e) => setMsg(e.message));
+  useEffect(() => { check(); }, []);
+  useEffect(() => { if (st?.installed && st.clifp && !sugg) bridge.parentFpSuggest().then(setSugg).catch((e) => setMsg(e.message)); }, [st]);
+
+  function approve(list: { game: FpCatalogGame; genre?: string; strategy?: number }[]) {
+    const add: FlashpointGame[] = list.filter((x) => !approved.has(x.game.id)).map((x) => ({
+      id: x.game.id, title: x.game.title, developer: x.game.developer,
+      genre: x.genre ?? genreFromTags(x.game.tags), strategy: x.strategy ?? strategyFromTags(x.game.tags),
+    }));
+    if (!add.length) return;
+    onSave({ ...child, arcade: { ...arcade, flashpoint: [...(arcade.flashpoint ?? []), ...add] } });
+    setMsg(`Added ${add.length} game${add.length > 1 ? 's' : ''}. Fetching pictures and downloading in the background…`);
+    bridge.parentFpThumbs(add.map((a) => a.id)).then(onChanged).catch(() => undefined);
+    // Download each game now, so the first play is instant. (Runs Flashpoint's own launcher from this account.)
+    if (st?.root) for (const a of add.slice(0, 12)) bridge.flashpoint(st.root, a.id, 'prepare').catch(() => undefined);
+  }
+  const remove = (id: string) => onSave({ ...child, arcade: { ...arcade, flashpoint: (arcade.flashpoint ?? []).filter((f) => f.id !== id) } });
+
+  async function install() {
+    setBusy(true); setMsg('Downloading the Flashpoint installer…');
+    try { const r = await bridge.parentFpDownloadInstaller(); await bridge.launch(r.path); setMsg('The Flashpoint installer is open. Install "Flashpoint Infinity", open Flashpoint once when it finishes, then press "Check again".'); }
+    catch (e) { setMsg((e as Error).message); }
+    finally { setBusy(false); }
+  }
+
+  return (
+    <div class="fp-panel">
+      <h4>🏆 Classic Flash games (Flashpoint Archive)</h4>
+      {!st && <p class="muted">Checking…</p>}
+      {st && !st.installed && (
+        <div>
+          <p>The 2000s classics — Fancy Pants, Gravity Guy, Bloons TD, Learn to Fly, Raft Wars and thousands more — come from <b>Flashpoint Archive</b>, the free preservation project. Games download one at a time as they're added, so it doesn't take much space.</p>
+          <div class="row"><button class="primary" disabled={busy} onClick={install}>Install Flashpoint</button><button class="ghost" onClick={check}>Check again</button></div>
+        </div>
+      )}
+      {st?.installed && !st.clifp && (
+        <div>
+          <p>Flashpoint found at <code>{st.root}</code>. One more step lets CoinQuest start games for {child.displayName} directly.</p>
+          <button class="primary" disabled={busy} onClick={() => { setBusy(true); bridge.parentFpInstallClifp().then(setSt).catch((e) => setMsg(e.message)).finally(() => setBusy(false)); }}>Finish setup</button>
+        </div>
+      )}
+      {st?.installed && st.clifp && (
+        <div>
+          <p class="muted small">Flashpoint at <code>{st.root}</code> · {approved.size} games approved. Adult content (Flashpoint's "Extreme" tag) never shows up here.</p>
+          {sugg && (
+            <div class="fp-sugg">
+              <div class="row between"><b>Suggested classics ({sugg.length})</b><button class="primary" title="Approves everything except the ones marked 'preview'" onClick={() => approve(sugg.filter((x) => !x.pick.note?.includes('preview')).map((x) => ({ game: x.game, genre: x.pick.genre, strategy: x.pick.strategy })))}>Approve all</button></div>
+              <div class="fp-list">
+                {sugg.map((x) => (
+                  <label class={'fp-row' + (approved.has(x.game.id) ? ' on' : '')}>
+                    <input type="checkbox" checked={approved.has(x.game.id)} onChange={(e) => (e.target as HTMLInputElement).checked ? approve([{ game: x.game, genre: x.pick.genre, strategy: x.pick.strategy }]) : remove(x.game.id)} />
+                    <span><b>{x.game.title}</b> <small class="muted">{x.pick.genre} · {x.game.developer}{x.pick.note ? ` · ${x.pick.note}` : ''}</small></span>
+                  </label>
+                ))}
+              </div>
+            </div>
+          )}
+          <h4>Find more</h4>
+          <div class="row">
+            <input style={{ flex: 1 }} value={q} placeholder="Search Flashpoint by name, e.g. Stick War" onInput={(e) => setQ((e.target as HTMLInputElement).value)}
+              onKeyDown={(e) => e.key === 'Enter' && q && bridge.parentFpSearch(q).then(setResults).catch((er) => setMsg(er.message))} />
+            <button class="secondary" disabled={!q} onClick={() => bridge.parentFpSearch(q).then(setResults).catch((er) => setMsg(er.message))}>Search</button>
+          </div>
+          <div class="presets">{['Racing', 'Tower Defense', 'Strategy', 'Puzzle', 'Platformer', 'Sports', 'Physics', 'Simulation'].map((t) =>
+            <button class="ghost small" onClick={() => { setQ('tag:' + t); bridge.parentFpSearch('tag:' + t).then(setResults).catch((er) => setMsg(er.message)); }}>{t}</button>)}</div>
+          {results && (
+            <div class="fp-list">
+              {results.length === 0 && <p class="muted">Nothing found.</p>}
+              {results.map((g) => (
+                <label class={'fp-row' + (approved.has(g.id) ? ' on' : '')}>
+                  <input type="checkbox" checked={approved.has(g.id)} onChange={(e) => (e.target as HTMLInputElement).checked ? approve([{ game: g }]) : remove(g.id)} />
+                  <span><b>{g.title}</b> <small class="muted">{[g.developer, g.releaseDate?.slice(0, 4), g.platform].filter(Boolean).join(' · ')}</small><br /><small class="muted">{g.tags.split(';').slice(0, 5).join(', ')}</small></span>
+                </label>
+              ))}
+            </div>
+          )}
+        </div>
+      )}
+      {msg && <p class="muted">{msg}</p>}
+    </div>
+  );
+}
+
+function StrategyPicker({ value, onChange }: { value: number; onChange: (v: number) => void }) {
+  return (
+    <label>How much thinking? <span class="muted small">(more thinking = cheaper: {defaultArcadePrice(value)} 🪙)</span>
+      <select value={value} onChange={(e) => onChange(Number((e.target as HTMLSelectElement).value))}>
+        {[[1, 'Just reflexes'], [2, 'A little'], [3, 'Some planning'], [4, 'Lots of planning'], [5, 'Pure strategy / puzzle']].map(([v, l]) => <option value={v}>{'🧠'.repeat(v as number)} {l}</option>)}
+      </select>
+    </label>
   );
 }
 
@@ -258,6 +502,17 @@ function Quests({ child, onSave }: { child: Child; onSave: (c: Child) => void })
               <label>Daily limit (0 = none)<input type="number" min={0} value={s.dailyCap} onChange={(e) => setMod(m.id, { dailyCap: Number((e.target as HTMLInputElement).value) })} /></label>
               <label class="check"><input type="checkbox" checked={s.requireApproval || m.verification === 'parent_approved'} disabled={m.verification === 'parent_approved'} onChange={(e) => setMod(m.id, { requireApproval: (e.target as HTMLInputElement).checked })} /> Needs my OK</label>
             </div>
+            {m.options && s.enabled && (
+              <div class="row module-options">
+                {m.options.map((o) => (
+                  <label title={o.help}>{o.label}
+                    <select value={s.options?.[o.key] ?? o.default} onChange={(e) => setMod(m.id, { options: { ...(s.options ?? {}), [o.key]: (e.target as HTMLSelectElement).value } })}>
+                      {o.choices.map(([v, l]) => <option value={v}>{l}</option>)}
+                    </select>
+                  </label>
+                ))}
+              </div>
+            )}
           </div>
         );
       })}

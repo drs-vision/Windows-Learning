@@ -22,13 +22,18 @@ public class WebShellWindow : Window
     private readonly PipeClient _pipe = new();
     private readonly string _app;        // "scholar" | "parent"
     private readonly bool _kiosk;
+    private GameWindow? _game;
+    private Process? _fpProcess;
 
     public WebShellWindow(string app, bool kiosk)
     {
         _app = app; _kiosk = kiosk;
         Title = app == "scholar" ? "CoinQuest" : "CoinQuest Parent Console";
         Content = _web;
-        Width = 1200; Height = 800;
+        // Fit the screen: 90% of the usable area, never bigger than 1280×860 (small laptops are 1366×768).
+        var area = SystemParameters.WorkArea;
+        Width = Math.Min(1280, area.Width * 0.9);
+        Height = Math.Min(860, area.Height * 0.9);
         WindowStartupLocation = WindowStartupLocation.CenterScreen;
         if (kiosk)
         {
@@ -48,7 +53,11 @@ public class WebShellWindow : Window
         var core = _web.CoreWebView2;
 
         core.SetVirtualHostNameToFolderMapping("coinquest.local", Paths.InstallRoot, CoreWebView2HostResourceAccessKind.Allow);
-        core.SetVirtualHostNameToFolderMapping("coinquest-arcade.local", Paths.ArcadeDropFolder, CoreWebView2HostResourceAccessKind.Allow);
+        if (Directory.Exists(Paths.ArcadeDropFolder))
+            core.SetVirtualHostNameToFolderMapping("coinquest-arcade.local", Paths.ArcadeDropFolder, CoreWebView2HostResourceAccessKind.Allow);
+        var thumbs = Path.Combine(Paths.DataRoot, "thumbs");
+        if (Directory.Exists(thumbs))
+            core.SetVirtualHostNameToFolderMapping("coinquest-thumbs.local", thumbs, CoreWebView2HostResourceAccessKind.Allow);
 
         core.Settings.AreDefaultContextMenusEnabled = false;
         core.Settings.AreDevToolsEnabled = !_kiosk || Environment.GetEnvironmentVariable("COINQUEST_DEV") == "1";
@@ -131,6 +140,60 @@ public class WebShellWindow : Window
                 var exe = payload?["exe"]?.GetValue<string>() ?? "";
                 try { Process.Start(new ProcessStartInfo(exe) { UseShellExecute = true }); return Response.Success("", new { ok = true }); }
                 catch (Exception ex) { return Response.Fail("", ex.Message); }
+            }
+            case "shell.openGame":
+            {
+                var url = payload?["url"]?.GetValue<string>() ?? "";
+                if (!url.StartsWith("https://") && !url.StartsWith("http://")) return Response.Fail("", "bad url");
+                Dispatcher.Invoke(() =>
+                {
+                    _game?.Close();
+                    _game = new GameWindow(url, payload?["title"]?.GetValue<string>() ?? "Game", _kiosk) { Owner = this };
+                    _game.Closed += (_, _) => { _game = null; _web.CoreWebView2?.PostWebMessageAsString("{\"name\":\"gameClosed\"}"); };
+                    _game.Show();
+                });
+                return Response.Success("", new { ok = true });
+            }
+            case "shell.openSite":
+            {
+                // CoinQuest's locked browser: the only way a managed child reaches the web.
+                var url = payload?["url"]?.GetValue<string>() ?? "";
+                var allow = payload?["allow"]?.AsArray().Select(n => n!.GetValue<string>()).ToList() ?? new();
+                if (!url.StartsWith("https://") && !url.StartsWith("http://")) url = "https://" + url;
+                Dispatcher.Invoke(() =>
+                {
+                    _game?.Close();
+                    _game = new GameWindow(url, payload?["title"]?.GetValue<string>() ?? "Website", _kiosk, allow) { Owner = this };
+                    _game.Closed += (_, _) => { _game = null; };
+                    _game.Show();
+                });
+                return Response.Success("", new { ok = true });
+            }
+            case "shell.closeGame":
+                Dispatcher.Invoke(() => _game?.Close());
+                try { if (_fpProcess is { HasExited: false }) _fpProcess.Kill(true); } catch { }
+                return Response.Success("", new { ok = true });
+            case "shell.flashpoint":
+            {
+                // CLIFp = Flashpoint's command-line launcher. "play" starts one game (downloading it if needed);
+                // "prepare" just downloads it (used by the Parent Console when a game is approved).
+                var root = payload?["root"]?.GetValue<string>() ?? "";
+                var id = payload?["id"]?.GetValue<string>() ?? "";
+                var verb = payload?["verb"]?.GetValue<string>() == "prepare" ? "prepare" : "play";
+                var exe = Path.Combine(root, "CLIFp.exe");
+                if (!File.Exists(exe)) return Response.Fail("", "Flashpoint's game launcher (CLIFp) isn't installed yet — ask a parent.");
+                if (!Guid.TryParse(id, out _)) return Response.Fail("", "bad game id");
+                var psi = new ProcessStartInfo(exe) { WorkingDirectory = root, UseShellExecute = false, CreateNoWindow = true };
+                psi.ArgumentList.Add(verb); psi.ArgumentList.Add("-i"); psi.ArgumentList.Add(id); psi.ArgumentList.Add("-q");
+                var proc = Process.Start(psi)!;
+                Log($"CLIFp {verb} {id} pid {proc.Id}");
+                if (verb == "play")
+                {
+                    _fpProcess = proc;
+                    proc.EnableRaisingEvents = true;
+                    proc.Exited += (_, _) => Dispatcher.Invoke(() => { _web.CoreWebView2?.PostWebMessageAsString("{\"name\":\"gameClosed\"}"); Activate(); });
+                }
+                return Response.Success("", new { ok = true });
             }
             case "shell.minimize":
                 Dispatcher.Invoke(() => WindowState = WindowState.Minimized);

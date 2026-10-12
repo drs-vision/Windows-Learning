@@ -2,7 +2,7 @@
 // Inside the Windows shell: window.chrome.webview.postMessage → C# → named pipe → Guardian.
 // In a plain browser (npm run dev): an in-memory mock Guardian so the whole UI can be developed and demoed.
 
-import type { ChildState, Game, ParentState } from './types';
+import type { ArcadeSettings, ChildState, FpCatalogGame, Game, ParentState, Unlock, Video, YouTubeChannel } from './types';
 import { MockGuardian } from './mock-guardian';
 
 interface Req { id: string; op: string; token?: string; payload?: unknown }
@@ -68,7 +68,12 @@ class Bridge {
   submit(moduleId: string, activity: unknown, result: unknown) { return this.call<{ coins: number; pending: boolean; capped: boolean; detail: string; balance: number }>('submit', { moduleId, activity, result }); }
   buy(prizeId: string) { return this.call<{ balance: number; unlock?: unknown }>('buy', { prizeId }); }
   saveProgress(moduleId: string, progress: unknown) { return this.call('progress', { moduleId, progress }); }
-  arcade() { return this.call<{ games: Game[] }>('arcade.list'); }
+  arcade() { return this.call<{ games: Game[]; minutesPerPlay: number; flashpointRoot?: string | null }>('arcade.list'); }
+  arcadePlay(gameId: string) { return this.call<{ balance: number; unlock?: Unlock; game: Game; flashpointRoot?: string | null; alreadyPlaying?: boolean }>('arcade.play', { gameId }); }
+  arcadeQuit(gameId: string) { return this.call('arcade.quit', { gameId }).catch(() => undefined); }
+  flashpoint(root: string, id: string, verb: 'play' | 'prepare' = 'play') { return this.call('shell.flashpoint', { root, id, verb }); }
+  youtubeLibrary() { return this.call<{ channels: { id: string; title: string }[]; videos: Video[]; errors: string[] }>('youtube.library'); }
+  youtubeCheck(videoId: string) { return this.call<{ allowed: boolean }>('youtube.check', { videoId }); }
 
   async parentLogin(pin: string) {
     const r = await this.call<{ token: string }>('parent.login', { pin });
@@ -83,11 +88,25 @@ class Bridge {
   parentInstalledApps() { return this.call<{ name: string; exe: string; path: string }[]>('parent.installedApps', undefined, { parent: true }); }
   parentCheckUpdate() { return this.call<ParentState['updateStatus']>('parent.checkUpdate', undefined, { parent: true }); }
   parentEndUnlock(unlockId: string) { return this.call('parent.endUnlock', { unlockId }, { parent: true }); }
+  parentYouTubeResolve(url: string) { return this.call<YouTubeChannel>('parent.youtubeResolve', { url }, { parent: true }); }
+  parentArcadeCatalog() { return this.call<{ games: Game[]; settings: ArcadeSettings }>('parent.arcadeCatalog', undefined, { parent: true }); }
+  parentArcadeUpload(fileName: string, data: string, title: string, strategy: number) { return this.call<Game>('parent.arcadeUpload', { fileName, data, title, strategy }, { parent: true }); }
+  parentArcadeRemove(gameId: string) { return this.call('parent.arcadeRemove', { gameId }, { parent: true }); }
+  parentFpStatus() { return this.call<{ installed: boolean; root?: string | null; clifp: boolean; installerUrl: string }>('parent.fpStatus', undefined, { parent: true }); }
+  parentFpSearch(q: string) { return this.call<FpCatalogGame[]>('parent.fpSearch', { q }, { parent: true }); }
+  parentFpSuggest() { return this.call<{ pick: { search: string; genre: string; strategy: number; note?: string | null }; game: FpCatalogGame; approved: boolean }[]>('parent.fpSuggest', undefined, { parent: true }); }
+  parentFpInstallClifp() { return this.call<{ installed: boolean; root?: string | null; clifp: boolean }>('parent.fpInstallClifp', undefined, { parent: true }); }
+  parentFpDownloadInstaller() { return this.call<{ path: string }>('parent.fpDownloadInstaller', undefined, { parent: true }); }
+  parentFpThumbs(ids: string[]) { return this.call<Record<string, string>>('parent.fpThumbs', { ids }, { parent: true }); }
+  launch(exe: string) { return this.call('shell.launch', { exe }); }
   setupAccounts() { return this.call<{ name: string; fullName: string; isAdmin: boolean; disabled: boolean; sid: string }[]>('setup.accounts'); }
   setupComplete(pin: string, child: { displayName: string; windowsAccount: string }, preset: string) { return this.call('setup.complete', { pin, child, preset }); }
 
   // shell-local
   openBrowser(url: string) { return this.call('shell.openBrowser', { url }); }
+  openSite(url: string, title: string, allow: string[]) { return this.call('shell.openSite', { url, title, allow }); }
+  openGame(url: string, title: string) { return this.call('shell.openGame', { url, title }); }
+  closeGame() { return this.call('shell.closeGame').catch(() => undefined); }
   shellInfo() { return this.call<{ app: string; kiosk: boolean; version: string; account: string }>('shell.info'); }
 }
 

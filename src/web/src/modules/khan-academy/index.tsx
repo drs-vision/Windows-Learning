@@ -54,7 +54,7 @@ function KhanView({ ctx }: { activity: Activity; ctx: ActivityContext }) {
     <div class="activity-intro">
       <h2>Khan Academy</h2>
       <p>Do your work on Khan Academy, then come back here and tell us what you finished.</p>
-      <button class="secondary" onClick={() => bridge.openBrowser('https://www.khanacademy.org/')}>Open Khan Academy ↗</button>
+      <button class="secondary" onClick={() => bridge.openSite('https://www.khanacademy.org/', 'Khan Academy', ['khanacademy.org', 'kastatic.org', 'kasandbox.org'])}>Open Khan Academy ↗</button>
       <div class="form">
         <label>What did you finish?<input value={topic} onInput={(e) => setTopic((e.target as HTMLInputElement).value)} placeholder="e.g. Multiplying fractions" maxLength={120} /></label>
         <div class="segmented">

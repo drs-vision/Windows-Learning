@@ -24,6 +24,8 @@ export interface LessonModule {
   verification: Verification;
   defaults: { coinsPerActivity: number; dailyCap: number };
   requiredSites?: string[];
+  /** Parent-facing settings shown on the Quests screen. Stored as strings in ModuleSettings.options. */
+  options?: { key: string; label: string; help?: string; choices: [string, string][]; default: string }[];
 
   nextActivity(progress: Progress, rng: () => number): Activity;
   /** Mount the activity UI. Return a cleanup function. */
@@ -71,5 +73,6 @@ export function settingsOrDefault(s: Partial<ModuleSettings> | undefined, d: { c
     coinsPerActivity: s?.coinsPerActivity ?? d.coinsPerActivity,
     dailyCap: s?.dailyCap ?? d.dailyCap,
     requireApproval: s?.requireApproval ?? false,
+    options: s?.options ?? {},
   };
 }

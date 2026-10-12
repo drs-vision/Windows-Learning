@@ -8,6 +8,8 @@ export interface ModuleSettings {
   coinsPerActivity: number;
   dailyCap: number;
   requireApproval: boolean;
+  /** Module-specific parent settings (see LessonModule.options). */
+  options?: Record<string, string>;
 }
 
 /** A thing the child is asked to do. Produced by nextActivity(); echoed back with the result. */
@@ -43,7 +45,7 @@ export type Progress = Record<string, unknown>;
 
 export interface Unlock {
   id: string;
-  kind: 'siteUnlock' | 'arcadeUnlock' | 'appUnlock' | 'screenTimeExtension' | 'realWorld';
+  kind: 'siteUnlock' | 'arcadeUnlock' | 'appUnlock' | 'screenTimeExtension' | 'realWorld' | 'youTube';
   targets: string[];
   prizeName: string;
   expiresAt: string;
@@ -90,7 +92,14 @@ export interface ChildState {
   pendingClaims: PendingClaim[];
   progress: Record<string, Progress | null>;
   sites: string[];
+  youtubeChannels?: number;
+  arcadeMinutesPerPlay?: number;
 }
+
+export interface YouTubeChannel { id: string; title: string; url: string }
+export interface WebGame { id: string; title: string; url: string; strategy: number }
+export interface ArcadeSettings { minutesPerPlay: number; priceOverrides: Record<string, number>; hidden: string[]; webGames: WebGame[]; flashpoint?: FlashpointGame[]; flashpointRoot?: string | null }
+export interface Video { id: string; title: string; channelId: string; channelTitle: string; published: string; thumbnail: string }
 
 export interface Child {
   id: string;
@@ -101,6 +110,8 @@ export interface Child {
   prizes: Prize[];
   modules: Record<string, ModuleSettings>;
   dailyScreenTimeCapMinutes?: number | null;
+  youTubeChannels?: YouTubeChannel[];
+  arcade?: ArcadeSettings;
 }
 
 export interface ParentState {
@@ -111,15 +122,33 @@ export interface ParentState {
   version: string;
   updateStatus: { current: string; latest?: string | null; state: string; message?: string | null; lastChecked?: string | null };
   ledgerIntact: boolean;
+  enforcement?: {
+    consoleAccount?: string | null;
+    childAtKeyboard: boolean;
+    childAccount?: string | null;
+    childSid?: string | null;
+    browserLock: { appliedAt?: string | null; entries: number; error?: string | null; sid?: string | null };
+  };
 }
 
 export interface Game {
   id: string;
   title: string;
   author: string;
-  kind: 'swf' | 'html5';
+  kind: 'swf' | 'html5' | 'web' | 'flashpoint';
   license: string;
   url: string;
   genre: string;
   available: boolean;
+  strategy: number;
+  price: number;
+  hidden?: boolean;
+  source?: 'bundled' | 'uploaded' | 'web' | 'flashpoint';
+  thumbnail?: string;
+  plays?: number;
 }
+export interface FlashpointGame { id: string; title: string; developer: string; genre: string; strategy: number }
+export interface FpCatalogGame { id: string; title: string; developer: string; publisher: string; platform: string; tags: string; series: string; releaseDate: string; description: string }
+
+/** More thinking = cheaper. Mirrors ArcadeSettings.DefaultPrice in Models.cs. */
+export const defaultArcadePrice = (strategy: number) => ({ 5: 4, 4: 6, 3: 9, 2: 12 } as Record<number, number>)[Math.max(1, Math.min(5, Math.round(strategy)))] ?? 15;

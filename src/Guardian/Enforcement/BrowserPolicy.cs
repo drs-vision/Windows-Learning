@@ -15,6 +15,10 @@ public sealed class BrowserPolicy
     private readonly ILogger<BrowserPolicy> _log;
     private string? _lastWritten;
 
+    /// <summary>What the Parent Console shows under "Browser lock".</summary>
+    public sealed record PolicyStatus(DateTimeOffset? AppliedAt, int Entries, string? Error, string? Sid);
+    public PolicyStatus Status { get; private set; } = new(null, 0, null, null);
+
     private static readonly string[] Browsers = { @"Software\Policies\Microsoft\Edge", @"Software\Policies\Google\Chrome" };
 
     /// <summary>Always allowed: internal pages the browser needs, and the services Khan/YouTube embed depends on.</summary>
@@ -45,8 +49,10 @@ public sealed class BrowserPolicy
         if (userRoot is null)
         {
             // Hive isn't loaded (child not logged in yet). We'll be called again on the next poll.
+            Status = Status with { Error = "Waiting for the child to log in", Sid = child.WindowsSid };
             return;
         }
+        string? error = null;
 
         foreach (var basePath in Browsers)
         {
@@ -72,10 +78,12 @@ public sealed class BrowserPolicy
             catch (Exception ex)
             {
                 _log.LogWarning(ex, "Could not write policy under {Path}", basePath);
+                error = $"{basePath}: {ex.Message}";
             }
         }
 
-        _lastWritten = signature;
+        _lastWritten = error is null ? signature : null;
+        Status = new PolicyStatus(DateTimeOffset.UtcNow, allow.Count, error, child.WindowsSid);
         _log.LogInformation("Browser allowlist for {Child}: {N} entries", child.DisplayName, allow.Count);
     }
 

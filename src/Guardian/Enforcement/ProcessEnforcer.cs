@@ -33,11 +33,34 @@ public sealed class ProcessEnforcer
         "svchost.exe", "csrss.exe", "wininit.exe", "services.exe", "lsass.exe", "spoolsv.exe", "msiexec.exe",
         "coinquest.scholar.exe", "coinquest.parentconsole.exe", "coinquest.updater.exe",
         "crashpadhandler.exe", "chrome_crashpad_handler.exe", "nvcontainer.exe", "igfxem.exe",
-        "msedge_proxy.exe", "microsoftedgeupdate.exe", "googleupdate.exe"
+        "microsoftedgeupdate.exe", "googleupdate.exe"
     };
 
-    public ProcessEnforcer(SessionMonitor session, UnlockManager unlocks, ILogger<ProcessEnforcer> log)
-    { _session = session; _unlocks = unlocks; _log = log; }
+    private readonly FlashpointService _fp;
+
+    public ProcessEnforcer(SessionMonitor session, UnlockManager unlocks, FlashpointService fp, ILogger<ProcessEnforcer> log)
+    { _session = session; _unlocks = unlocks; _fp = fp; _log = log; }
+
+    /// <summary>Flashpoint folder, if a Flashpoint game play is running right now (its launcher, server and player must be allowed).</summary>
+    private string? ActiveFlashpointRoot(SessionMonitor.ActiveSession s) =>
+        _unlocks.ActiveFor(s.Child.Id).Any(u => u.Kind == PrizeKind.ArcadeUnlock && u.Targets.Any(t => t.StartsWith("fp-")))
+            ? _fp.Root(s.Child.Arcade.FlashpointRoot) : null;
+
+    /// <summary>Close everything running from a folder in a session (used when a Flashpoint play ends).</summary>
+    public void KillUnder(uint sessionId, string root)
+    {
+        foreach (var p in Process.GetProcesses())
+        {
+            try
+            {
+                if (p.SessionId != sessionId) continue;
+                var path = p.MainModule?.FileName;
+                if (path is not null && path.StartsWith(root, StringComparison.OrdinalIgnoreCase)) { p.Kill(true); _log.LogInformation("Play over: closed {Exe}", path); }
+            }
+            catch { }
+            finally { p.Dispose(); }
+        }
+    }
 
     public void Sweep()
     {
@@ -49,6 +72,7 @@ public sealed class ProcessEnforcer
         foreach (var u in _unlocks.ActiveFor(s.Child.Id)) if (u.Kind == PrizeKind.AppUnlock) foreach (var t in u.Targets) allowed.Add(Path.GetFileName(t));
 
         var fullPaths = new HashSet<string>(s.Child.Allowlist.Apps.Where(a => a.Contains('\\')), StringComparer.OrdinalIgnoreCase);
+        var fpRoot = ActiveFlashpointRoot(s);
 
         foreach (var p in Process.GetProcesses())
         {
@@ -56,11 +80,13 @@ public sealed class ProcessEnforcer
             {
                 if (p.SessionId != s.SessionId) continue;
                 var exe = p.ProcessName + ".exe";
-                if (SystemSafe.Contains(exe) || allowed.Contains(exe)) continue;
+                var isBrowser = Allowlist.Browsers.Contains(exe, StringComparer.OrdinalIgnoreCase);
+                if (!isBrowser && (SystemSafe.Contains(exe) || allowed.Contains(exe))) continue;
 
                 string? path = null;
                 try { path = p.MainModule?.FileName; } catch { /* access denied for some protected processes */ }
-                if (path is not null && fullPaths.Contains(path)) continue;
+                if (!isBrowser && path is not null && fullPaths.Contains(path)) continue;
+                if (path is not null && fpRoot is not null && path.StartsWith(fpRoot, StringComparison.OrdinalIgnoreCase)) continue;
                 // Anything living under Windows\SystemApps or Windows\System32 that we didn't list is treated as safe.
                 if (path is not null && (path.StartsWith(@"C:\Windows\SystemApps", StringComparison.OrdinalIgnoreCase) ||
                                          path.StartsWith(@"C:\Windows\ImmersiveControlPanel", StringComparison.OrdinalIgnoreCase))) continue;

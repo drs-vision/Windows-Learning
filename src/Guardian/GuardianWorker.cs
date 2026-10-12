@@ -21,13 +21,15 @@ public sealed class GuardianWorker : BackgroundService
     private readonly RequestRouter _router;
     private readonly UpdateChecker _updates;
     private readonly HouseholdStore _store;
+    private readonly FlashpointService _fp;
     private readonly ILogger<GuardianWorker> _log;
     private DateTime _lastScholarLaunch = DateTime.MinValue;
     private readonly List<(DateTime closeAt, uint session, List<string> keywords)> _graceCloses = new();
 
     public GuardianWorker(SessionMonitor session, ProcessEnforcer enforcer, BrowserPolicy policy, UnlockManager unlocks, PipeServer pipe,
-        RequestRouter router, UpdateChecker updates, HouseholdStore store, ILogger<GuardianWorker> log)
+        RequestRouter router, UpdateChecker updates, HouseholdStore store, FlashpointService fp, ILogger<GuardianWorker> log)
     {
+        _fp = fp;
         _session = session; _enforcer = enforcer; _policy = policy; _unlocks = unlocks; _pipe = pipe; _router = router; _updates = updates; _store = store; _log = log;
     }
 
@@ -46,6 +48,8 @@ public sealed class GuardianWorker : BackgroundService
             {
                 _policy.Apply(s.Child);
                 _pipe.Broadcast(Ops.EvUnlockEnded, new { unlockId = u.Id, prizeName = u.PrizeName }, s.Account);
+                if (u.Kind == PrizeKind.ArcadeUnlock && u.Targets.Any(t => t.StartsWith("fp-")) && _fp.Root(s.Child.Arcade.FlashpointRoot) is { } root)
+                    _enforcer.KillUnder(s.SessionId, root);
                 if (u.Kind == PrizeKind.SiteUnlock)
                     lock (_graceCloses) _graceCloses.Add((DateTime.UtcNow.AddSeconds(30), s.SessionId, KeywordsFor(u.Targets)));
             }
@@ -65,22 +69,42 @@ public sealed class GuardianWorker : BackgroundService
         while (!ct.IsCancellationRequested)
         {
             try { if (!await timer.WaitForNextTickAsync(ct)) break; } catch (OperationCanceledException) { break; }
-            try
+            // Each duty is isolated: a failure in one (e.g. a registry error) must never stop the others.
+            Step("session", _session.Poll);
+            Step("unlocks", _unlocks.Tick);
+            if (_session.Current is { } s)
             {
-                _session.Poll();
-                _unlocks.Tick();
-                if (_session.Current is { } s)
-                {
-                    _policy.Apply(s.Child);     // no-op unless something changed or the hive just became available
-                    _enforcer.Sweep();
-                    EnsureScholarRunning(s);
-                }
-                RunGraceCloses();
+                Step("browser policy", () => _policy.Apply(s.Child)); // belt and braces; real browsers are also closed outright
+                Step("apps", _enforcer.Sweep);
+                Step("scholar", () => EnsureScholarRunning(s));
             }
-            catch (Exception ex) { _log.LogError(ex, "Heartbeat error"); }
+            Step("grace", RunGraceCloses);
+            if ((DateTime.UtcNow - _lastHeartbeatLog).TotalMinutes >= 5)
+            {
+                _lastHeartbeatLog = DateTime.UtcNow;
+                _log.LogInformation("Heartbeat: console={Account} managedChild={Child} browserLock={Lock}",
+                    _session.ConsoleAccount ?? "(none)", _session.Current?.Child.DisplayName ?? "no", _policy.Status);
+            }
         }
 
         try { await Task.WhenAll(pipeTask, updateTask); } catch (OperationCanceledException) { }
+    }
+
+    private DateTime _lastHeartbeatLog = DateTime.MinValue;
+    private readonly Dictionary<string, DateTime> _lastStepError = new();
+
+    private void Step(string name, Action a)
+    {
+        try { a(); }
+        catch (Exception ex)
+        {
+            // Log each failing duty at most once a minute so the log stays readable.
+            if (!_lastStepError.TryGetValue(name, out var t) || (DateTime.UtcNow - t).TotalMinutes >= 1)
+            {
+                _lastStepError[name] = DateTime.UtcNow;
+                _log.LogError(ex, "Heartbeat step '{Step}' failed", name);
+            }
+        }
     }
 
     private void PushState()

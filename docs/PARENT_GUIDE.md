@@ -39,13 +39,23 @@ Open **Parent Console** from the Start menu (your account) or press `Ctrl+Shift+
 - Daily limits stop grinding. Defaults are sensible; change them in Quests.
 - Coins never expire. The ledger can't be edited from your child's account — not even by a determined 11-year-old.
 
+## Websites and YouTube
+
+Real web browsers (Edge, Chrome, Firefox…) don't run on your child's account at all — they close the moment they open. Websites open inside CoinQuest's own locked browser, which can only reach the sites on the **Allowed** screen.
+
+YouTube is never reachable as a website. Instead, add channels you trust on the **Allowed** screen; your child can watch those channels' recent videos inside CoinQuest, only while YouTube time is running.
+
 ## Prizes that unlock things
 
 When your child buys "20 minutes of YouTube", YouTube is allowed in the browser for 20 minutes. A countdown shows in the corner. At zero, YouTube is locked again and any open tab is closed. Same for the arcade.
 
 ## The arcade
 
-Classic Flash-era games (run through Ruffle, no internet needed) and open-source browser games. Every bundled game is legally redistributable and listed with its license in the app. To add your own Flash game, drop the `.swf` file into `C:\ProgramData\CoinQuest\arcade\`.
+Pay-per-play, like quarters in a machine: each game has a coin price, and a play lasts until your child leaves the game (with a safety cap you set). Games that take more thinking cost less; you can change any price under **Shop → Arcade**.
+
+**Classic 2000s Flash games** (Fancy Pants, Gravity Guy, Bloons TD, Learn to Fly, Raft Wars…) come from [Flashpoint Archive](https://flashpointarchive.org), the free preservation project. In **Shop → Arcade**, press **Install Flashpoint**, then **Finish setup**, then approve games from the suggested list (or search Flashpoint for more). Only games you approve appear, and Flashpoint's adult-tagged games never show up in the search.
+
+You can also add a `.swf` file you own, or a link to a game on its maker's website.
 
 ## Updates
 

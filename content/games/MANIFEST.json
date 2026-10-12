@@ -1,5 +1,5 @@
 {
-  "_about": "Every game here is redistributable under the license listed. Prebuilt .swf files and HTML5 games are fetched by scripts/fetch-games.mjs at build time (they are not committed). Each game's license file is placed next to it. GPL games: source is at the upstream URL. Smoke-test each SWF in Ruffle before shipping a release. 'sidecars' lists extra files a SWF loads at runtime (downloaded next to it). Ruffle is given the SWF's folder as its base URL.",
+  "_about": "Every game here is redistributable under the license listed. Prebuilt .swf files and HTML5 games are fetched by scripts/fetch-games.mjs at build time (they are not committed). Each game's license file is placed next to it. GPL games: source is at the upstream URL. Smoke-test each SWF in Ruffle before shipping a release. 'sidecars' lists extra files a SWF loads at runtime (downloaded next to it). Ruffle is given the SWF's folder as its base URL. 'strategy' is 1 (pure reflex) to 5 (heavy planning); default per-play price is cheaper for higher strategy. Parents can override prices.",
   "games": [
     {
       "id": "5b",
@@ -16,7 +16,8 @@
       "notes": "ActionScript 2, SWF v8 \u2014 Ruffle's strongest territory.",
       "sidecars": {
         "levels.txt": "https://raw.githubusercontent.com/carykh/5b/main/levels.txt"
-      }
+      },
+      "strategy": 3
     },
     {
       "id": "ending",
@@ -30,7 +31,8 @@
       "source": "https://github.com/st33d/Ending",
       "download": "https://raw.githubusercontent.com/st33d/Ending/master/bin/game.swf",
       "path": "swf/ending.swf",
-      "notes": "AS3, SWF v15. Uses SharedObject for saves."
+      "notes": "AS3, SWF v15. Uses SharedObject for saves.",
+      "strategy": 5
     },
     {
       "id": "red-rogue",
@@ -45,7 +47,8 @@
       "download": "https://raw.githubusercontent.com/st33d/red-rogue/master/bin/game.swf",
       "path": "swf/red-rogue.swf",
       "notes": "Dark-fantasy pixel art with cartoon blood \u2014 parents may want to preview. Disabled by default.",
-      "enabled": false
+      "enabled": false,
+      "strategy": 4
     },
     {
       "id": "2048",
@@ -59,7 +62,8 @@
       "source": "https://github.com/gabrielecirulli/2048",
       "download": "https://github.com/gabrielecirulli/2048/archive/refs/heads/master.zip",
       "unzipRoot": "2048-master",
-      "path": "html5/2048/index.html"
+      "path": "html5/2048/index.html",
+      "strategy": 4
     },
     {
       "id": "hextris",
@@ -73,7 +77,8 @@
       "source": "https://github.com/Hextris/hextris",
       "download": "https://github.com/Hextris/hextris/archive/refs/heads/gh-pages.zip",
       "unzipRoot": "hextris-gh-pages",
-      "path": "html5/hextris/index.html"
+      "path": "html5/hextris/index.html",
+      "strategy": 2
     },
     {
       "id": "clumsy-bird",
@@ -87,7 +92,8 @@
       "source": "https://github.com/ellisonleao/clumsy-bird",
       "download": "https://github.com/ellisonleao/clumsy-bird/archive/refs/heads/master.zip",
       "unzipRoot": "clumsy-bird-master",
-      "path": "html5/clumsy-bird/index.html"
+      "path": "html5/clumsy-bird/index.html",
+      "strategy": 1
     },
     {
       "id": "hexgl",
@@ -102,7 +108,8 @@
       "download": "https://github.com/BKcore/HexGL/archive/refs/heads/master.zip",
       "unzipRoot": "HexGL-master",
       "path": "html5/hexgl/index.html",
-      "notes": "The best-looking reward in the set. Needs a GPU that can do WebGL \u2014 any machine from the last decade."
+      "notes": "The best-looking reward in the set. Needs a GPU that can do WebGL \u2014 any machine from the last decade.",
+      "strategy": 1
     },
     {
       "id": "t-rex-runner",
@@ -116,7 +123,8 @@
       "source": "https://github.com/wayou/t-rex-runner",
       "download": "https://github.com/wayou/t-rex-runner/archive/refs/heads/gh-pages.zip",
       "unzipRoot": "t-rex-runner-gh-pages",
-      "path": "html5/t-rex-runner/index.html"
+      "path": "html5/t-rex-runner/index.html",
+      "strategy": 1
     },
     {
       "id": "underrun",
@@ -131,7 +139,8 @@
       "download": "https://github.com/phoboslab/underrun/archive/refs/heads/master.zip",
       "unzipRoot": "underrun-master",
       "path": "html5/underrun/build/index.html",
-      "notes": "Pixel sci-fi shooter. Mild."
+      "notes": "Pixel sci-fi shooter. Mild.",
+      "strategy": 2
     },
     {
       "id": "micropolis",
@@ -146,7 +155,8 @@
       "download": "https://github.com/graememcc/micropolisJS/archive/refs/heads/master.zip",
       "unzipRoot": "micropolisJS-master",
       "path": "html5/micropolis/dist/index.html",
-      "notes": "Requires a build step upstream (dist/). The fetch script builds it if npm is available; otherwise it's skipped."
+      "notes": "Requires a build step upstream (dist/). The fetch script builds it if npm is available; otherwise it's skipped.",
+      "strategy": 5
     },
     {
       "id": "astray",
@@ -160,7 +170,8 @@
       "source": "https://github.com/wwwtyro/Astray",
       "download": "https://github.com/wwwtyro/Astray/archive/refs/heads/master.zip",
       "unzipRoot": "Astray-master",
-      "path": "html5/astray/index.html"
+      "path": "html5/astray/index.html",
+      "strategy": 3
     },
     {
       "id": "blockrain",
@@ -174,7 +185,8 @@
       "source": "https://github.com/Aerolab/blockrain.js",
       "download": "https://github.com/Aerolab/blockrain.js/archive/refs/heads/master.zip",
       "unzipRoot": "blockrain.js-master",
-      "path": "html5/blockrain/index.html"
+      "path": "html5/blockrain/index.html",
+      "strategy": 3
     },
     {
       "id": "space-invaders",
@@ -188,7 +200,8 @@
       "source": "https://github.com/dwmkerr/spaceinvaders",
       "download": "https://github.com/dwmkerr/spaceinvaders/archive/refs/heads/master.zip",
       "unzipRoot": "spaceinvaders-master",
-      "path": "html5/space-invaders/index.html"
+      "path": "html5/space-invaders/index.html",
+      "strategy": 1
     }
   ],
   "_candidates_needing_a_build": [

@@ -51,7 +51,11 @@ public static class Ops
     public const string Submit = "submit";             // { moduleId, activity, result }
     public const string Buy = "buy";                   // { prizeId }
     public const string Progress = "progress";         // { moduleId, progress } save module progress
-    public const string ArcadeList = "arcade.list";    // games available
+    public const string ArcadeList = "arcade.list";    // games available, with prices
+    public const string ArcadePlay = "arcade.play";    // { gameId } → spends coins, starts a play
+    public const string ArcadeQuit = "arcade.quit";    // { gameId } → the play is over
+    public const string YouTubeLibrary = "youtube.library"; // approved channels' recent videos
+    public const string YouTubeCheck = "youtube.check";     // { videoId } → allowed?
 
     // parent — needs token from parent.login
     public const string ParentLogin = "parent.login";  // { pin } -> { token }
@@ -64,6 +68,16 @@ public static class Ops
     public const string ParentCheckUpdate = "parent.checkUpdate";
     public const string ParentEndUnlock = "parent.endUnlock";       // { unlockId }
     public const string ParentVersion = "parent.version";
+    public const string ParentYouTubeResolve = "parent.youtubeResolve"; // { url } → channel
+    public const string ParentArcadeCatalog = "parent.arcadeCatalog";
+    public const string ParentArcadeUpload = "parent.arcadeUpload";     // { fileName, data(base64), title, strategy }
+    public const string ParentArcadeRemove = "parent.arcadeRemove";     // { gameId }
+    public const string ParentFpStatus = "parent.fpStatus";
+    public const string ParentFpSearch = "parent.fpSearch";             // { q }
+    public const string ParentFpSuggest = "parent.fpSuggest";           // curated classics matched against the catalog
+    public const string ParentFpInstallClifp = "parent.fpInstallClifp";
+    public const string ParentFpDownloadInstaller = "parent.fpDownloadInstaller";
+    public const string ParentFpThumbs = "parent.fpThumbs";             // { ids }
 
     // first-run setup — only honoured while no PIN exists AND caller is a local Administrator
     public const string SetupAccounts = "setup.accounts";

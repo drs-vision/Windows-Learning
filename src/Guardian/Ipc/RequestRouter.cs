@@ -24,6 +24,8 @@ public sealed class RequestRouter
     private readonly SessionMonitor _session;
     private readonly BrowserPolicy _policy;
     private readonly UpdateChecker _updates;
+    private readonly YouTubeService _youtube;
+    private readonly FlashpointService _fp;
     private readonly ILogger<RequestRouter> _log;
     private readonly Dictionary<string, (string account, DateTimeOffset expires)> _tokens = new();
 
@@ -31,8 +33,8 @@ public sealed class RequestRouter
     public event Action? ApprovalsChanged;  // something a parent UI should refresh
 
     public RequestRouter(HouseholdStore store, Ledger ledger, ScoreEngine scorer, UnlockManager unlocks, SessionMonitor session,
-        BrowserPolicy policy, UpdateChecker updates, ILogger<RequestRouter> log)
-    { _store = store; _ledger = ledger; _scorer = scorer; _unlocks = unlocks; _session = session; _policy = policy; _updates = updates; _log = log; }
+        BrowserPolicy policy, UpdateChecker updates, YouTubeService youtube, FlashpointService fp, ILogger<RequestRouter> log)
+    { _fp = fp; _store = store; _ledger = ledger; _scorer = scorer; _unlocks = unlocks; _session = session; _policy = policy; _updates = updates; _youtube = youtube; _log = log; }
 
     public Task<Response> Handle(Request req, PipeServer.Client client)
     {
@@ -46,7 +48,13 @@ public sealed class RequestRouter
             Ops.Submit => child is null ? Response.Fail(req.Id, "not a managed account") : Submit(req, child, client.Account),
             Ops.Buy => child is null ? Response.Fail(req.Id, "not a managed account") : Buy(req, child, client.Account),
             Ops.Progress => child is null ? Response.Fail(req.Id, "not a managed account") : SaveProgress(req, child),
-            Ops.ArcadeList => Response.Success(req.Id, Arcade.List()),
+            Ops.ArcadeList => child is null ? Response.Success(req.Id, new { games = Array.Empty<object>() })
+                : ArcadeList(req, child),
+            Ops.ArcadeQuit => child is null ? Response.Fail(req.Id, "not a managed account") : ArcadeQuit(req, child),
+            Ops.ArcadePlay => child is null ? Response.Fail(req.Id, "not a managed account") : ArcadePlay(req, child, client.Account),
+            Ops.YouTubeLibrary => child is null ? Response.Fail(req.Id, "not a managed account") : Response.Success(req.Id, _youtube.Library(child).GetAwaiter().GetResult()),
+            Ops.YouTubeCheck => child is null ? Response.Fail(req.Id, "not a managed account")
+                : Response.Success(req.Id, new { allowed = _unlocks.ActiveFor(child.Id).Any(u => u.Kind == PrizeKind.YouTube) && _youtube.IsAllowed(child, Str(req, "videoId")).GetAwaiter().GetResult() }),
 
             // ---- parent ----
             Ops.ParentLogin => ParentLogin(req, client),
@@ -59,6 +67,22 @@ public sealed class RequestRouter
             Ops.ParentCheckUpdate => Parent(req, client, child, () => _updates.CheckNow().GetAwaiter().GetResult()),
             Ops.ParentEndUnlock => Parent(req, client, child, () => { var ok = _unlocks.End(Str(req, "unlockId")); AfterChange(); return new { ok }; }),
             Ops.ParentVersion => Response.Success(req.Id, new { version = Version, status = _updates.Status }),
+            Ops.ParentYouTubeResolve => Parent(req, client, child, () => _youtube.Resolve(Str(req, "url")).GetAwaiter().GetResult()),
+            Ops.ParentArcadeCatalog => Parent(req, client, child, () => FirstChild() is { } c ? new { games = Arcade.Catalog(c), settings = c.Arcade } : new { games = new List<Arcade.Game>(), settings = new ArcadeSettings() }),
+            Ops.ParentArcadeUpload => Parent(req, client, child, () => Arcade.Upload(FirstChild() ?? throw new InvalidOperationException("set up a child first"),
+                Str(req, "fileName"), Str(req, "data"), req.Payload?["title"]?.GetValue<string>(), req.Payload?["strategy"]?.GetValue<int>() ?? 3)),
+            Ops.ParentFpStatus => Parent(req, client, child, () => _fp.Status(FirstChild()?.Arcade.FlashpointRoot)),
+            Ops.ParentFpSearch => Parent(req, client, child, () => _fp.Search(FpRoot(), Str(req, "q"))),
+            Ops.ParentFpSuggest => Parent(req, client, child, () => FpSuggest()),
+            Ops.ParentFpInstallClifp => Parent(req, client, child, () => { _fp.InstallClifp(FpRoot()).GetAwaiter().GetResult(); return _fp.Status(FirstChild()?.Arcade.FlashpointRoot); }),
+            Ops.ParentFpDownloadInstaller => Parent(req, client, child, () => DownloadFpInstaller()),
+            Ops.ParentFpThumbs => Parent(req, client, child, () =>
+            {
+                var root = FpRoot();
+                var ids = req.Payload?["ids"]?.AsArray().Select(n => n!.GetValue<string>()).ToList() ?? new();
+                return ids.ToDictionary(id => id, id => _fp.Thumb(root, id).GetAwaiter().GetResult() is { } f ? $"https://coinquest-thumbs.local/{f}" : "");
+            }),
+            Ops.ParentArcadeRemove => Parent(req, client, child, () => { Arcade.RemoveUpload(Str(req, "gameId")); return new { ok = true }; }),
 
             // ---- setup ----
             Ops.SetupAccounts => Setup(req, client, () => LocalAccounts.List()),
@@ -81,11 +105,13 @@ public sealed class RequestRouter
             balance = _ledger.Balance(child.Id),
             unlocks = _unlocks.ActiveFor(child.Id).Select(u => new { u.Id, u.Kind, u.Targets, u.PrizeName, u.ExpiresAt, u.SecondsLeft }),
             prizes = child.Prizes.Where(p => p.Enabled).Select(p => new { p.Id, p.Name, p.Cost, p.Kind, p.Minutes, p.DailyCap, boughtToday = _ledger.PurchasesToday(child.Id, p.Id) }),
-            modules = child.Modules.ToDictionary(kv => kv.Key, kv => new { kv.Value.Enabled, kv.Value.CoinsPerActivity, kv.Value.DailyCap, kv.Value.RequireApproval, earnedToday = _ledger.EarnedToday(child.Id, kv.Key) }),
+            modules = child.Modules.ToDictionary(kv => kv.Key, kv => new { kv.Value.Enabled, kv.Value.CoinsPerActivity, kv.Value.DailyCap, kv.Value.RequireApproval, kv.Value.Options, earnedToday = _ledger.EarnedToday(child.Id, kv.Key) }),
             recent = _ledger.Recent(child.Id, 30, new DateTimeOffset(today)),
             pendingClaims = _ledger.PendingClaims(child.Id),
             progress = ProgressStore.LoadAll(child.Id),
             sites = child.Allowlist.Sites,
+            youtubeChannels = child.YouTubeChannels.Count,
+            arcadeMinutesPerPlay = child.Arcade.MinutesPerPlay,
         };
     }
 
@@ -134,6 +160,7 @@ public sealed class RequestRouter
         var balance = _ledger.Balance(child.Id);
         if (balance < prize.Cost) return Response.Fail(req.Id, $"you need {prize.Cost - balance} more coins");
         if (prize.DailyCap > 0 && _ledger.PurchasesToday(child.Id, prizeId) >= prize.DailyCap) return Response.Fail(req.Id, "you've had that one enough for today");
+        if (prize.Kind == PrizeKind.YouTube && child.YouTubeChannels.Count == 0) return Response.Fail(req.Id, "no YouTube channels are set up yet — ask a parent");
 
         _ledger.Append(child.Id, LedgerKind.Spend, -prize.Cost, prize.Id, prize.Name, account);
         Unlock? unlock = null;
@@ -141,6 +168,65 @@ public sealed class RequestRouter
         if (prize.Kind == PrizeKind.RealWorld) ApprovalsChanged?.Invoke();
         AfterChange();
         return Response.Success(req.Id, new { balance = _ledger.Balance(child.Id), unlock });
+    }
+
+    private Response ArcadePlay(Request req, Child child, string account)
+    {
+        var gameId = Str(req, "gameId");
+        var game = Arcade.Catalog(child).FirstOrDefault(g => g.Id == gameId && !g.Hidden && g.Available);
+        if (game is null) return Response.Fail(req.Id, "that game isn't in the arcade");
+        if (_unlocks.ActiveFor(child.Id).Any(u => u.Kind == PrizeKind.ArcadeUnlock && u.Targets.Contains(game.Id)))
+            return Response.Success(req.Id, new { balance = _ledger.Balance(child.Id), game, alreadyPlaying = true });
+        var balance = _ledger.Balance(child.Id);
+        if (balance < game.Price) return Response.Fail(req.Id, $"you need {game.Price - balance} more coins");
+        _ledger.Append(child.Id, LedgerKind.Spend, -game.Price, "arcade:" + game.Id, $"Arcade: 1 play of {game.Title}", account);
+        var unlock = _unlocks.Start(child, new Prize { Id = "arcade:" + game.Id, Name = game.Title, Kind = PrizeKind.ArcadeUnlock, Targets = new() { game.Id }, Minutes = child.Arcade.MinutesPerPlay });
+        AfterChange();
+        var fpRoot = game.Kind == "flashpoint" ? _fp.Root(child.Arcade.FlashpointRoot) : null;
+        return Response.Success(req.Id, new { balance = _ledger.Balance(child.Id), unlock, game, flashpointRoot = fpRoot });
+    }
+
+    private Response ArcadeList(Request req, Child child)
+    {
+        var plays = _ledger.ArcadePlays(child.Id);
+        var games = Arcade.Catalog(child).Where(g => !g.Hidden && g.Available).Select(g => g with { Plays = plays.GetValueOrDefault(g.Id) });
+        return Response.Success(req.Id, new { games, minutesPerPlay = child.Arcade.MinutesPerPlay, flashpointRoot = child.Arcade.Flashpoint.Count > 0 ? _fp.Root(child.Arcade.FlashpointRoot) : null });
+    }
+
+    private Child? FirstChild() => _store.Current.Children.FirstOrDefault();
+
+    private string FpRoot() => _fp.Root(FirstChild()?.Arcade.FlashpointRoot) ?? throw new InvalidOperationException("Flashpoint isn't installed yet.");
+
+    private object FpSuggest()
+    {
+        var root = FpRoot();
+        var approved = FirstChild()?.Arcade.Flashpoint.Select(f => f.Id).ToHashSet() ?? new();
+        return Classics.List.Select(p =>
+        {
+            var hit = _fp.Search(root, p.Search, 5).FirstOrDefault(g => g.Title.Equals(p.Search, StringComparison.OrdinalIgnoreCase))
+                      ?? _fp.Search(root, p.Search, 1).FirstOrDefault();
+            return new { pick = p, game = hit, approved = hit is not null && approved.Contains(hit.Id) };
+        }).Where(x => x.game is not null).ToList();
+    }
+
+    private object DownloadFpInstaller()
+    {
+        var dir = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.CommonDocuments), "..", "Downloads");
+        dir = Path.GetFullPath(dir);
+        Directory.CreateDirectory(dir);
+        var path = Path.Combine(dir, "FlashpointInstaller.exe");
+        using var http = new HttpClient();
+        File.WriteAllBytes(path, http.GetByteArrayAsync(FlashpointService.InstallerUrl).GetAwaiter().GetResult());
+        return new { path };
+    }
+
+    private Response ArcadeQuit(Request req, Child child)
+    {
+        var gameId = Str(req, "gameId");
+        foreach (var u in _unlocks.ActiveFor(child.Id).Where(u => u.Kind == PrizeKind.ArcadeUnlock && u.Targets.Contains(gameId)))
+            _unlocks.End(u.Id);
+        AfterChange();
+        return Response.Success(req.Id, new { ok = true });
     }
 
     private Response SaveProgress(Request req, Child child)
@@ -195,6 +281,14 @@ public sealed class RequestRouter
             version = Version,
             updateStatus = _updates.Status,
             ledgerIntact = _ledger.Verify() is null,
+            enforcement = new
+            {
+                consoleAccount = _session.ConsoleAccount,
+                childAtKeyboard = _session.Current is not null,
+                childAccount = h.Children.FirstOrDefault()?.WindowsAccount,
+                childSid = h.Children.FirstOrDefault()?.WindowsSid,
+                browserLock = _policy.Status,
+            },
         };
     }
 

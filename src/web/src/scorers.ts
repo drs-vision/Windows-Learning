@@ -5,10 +5,12 @@
 import type { Activity, ModuleSettings, Result, ScoreOutcome } from './core/types';
 import { settingsOrDefault } from './core/module';
 import { scoreTypingQuest, DEFAULTS as TQ } from './modules/typing-quest/score';
+import { scoreSoundKeys, DEFAULTS as SK } from './modules/sound-keys/score';
 import { scoreBibleTyping, DEFAULTS as BT } from './modules/bible-typing/score';
 import { scoreKhanAcademy, DEFAULTS as KA } from './modules/khan-academy/score';
 
 const scorers: Record<string, { fn: (a: Activity, r: Result, s: ModuleSettings) => ScoreOutcome; defaults: { coinsPerActivity: number; dailyCap: number } }> = {
+  'sound-keys': { fn: scoreSoundKeys, defaults: SK },
   'typing-quest': { fn: scoreTypingQuest, defaults: TQ },
   'bible-typing': { fn: scoreBibleTyping, defaults: BT },
   'khan-academy': { fn: scoreKhanAcademy, defaults: KA },

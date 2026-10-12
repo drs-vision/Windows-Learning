@@ -37,7 +37,7 @@ public sealed class HouseholdStore
         if (!File.Exists(_path)) return new Household();
         try
         {
-            return JsonSerializer.Deserialize<Household>(File.ReadAllText(_path), Json) ?? new Household();
+            return Migrate(JsonSerializer.Deserialize<Household>(File.ReadAllText(_path), Json) ?? new Household());
         }
         catch
         {
@@ -45,6 +45,37 @@ public sealed class HouseholdStore
             File.Copy(_path, _path + ".corrupt." + DateTime.UtcNow.Ticks, overwrite: true);
             return new Household();
         }
+    }
+
+    public const int CurrentSchema = 3;
+
+    /// <summary>Upgrade data written by older versions. Runs on every load; must be idempotent.</summary>
+    public static Household Migrate(Household h)
+    {
+        var children = h.Children.Select(c =>
+        {
+            // New modules appear for existing children with their defaults.
+            var modules = new Dictionary<string, ModuleSettings>(c.Modules);
+            foreach (var (id, d) in ModuleSettings.Defaults()) modules.TryAdd(id, d);
+            var prizes = c.Prizes;
+            if (h.SchemaVersion < 2)
+            {
+                // v2: YouTube moves from "unlock youtube.com in the browser" to the in-app channel allowlist,
+                // and the arcade becomes pay-per-play (no blanket arcade-time prize).
+                prizes = c.Prizes
+                    .Where(p => p.Kind != PrizeKind.ArcadeUnlock)
+                    .Select(p => p.Kind == PrizeKind.SiteUnlock && p.Targets.Any(t => t.Contains("youtube", StringComparison.OrdinalIgnoreCase))
+                        ? p with { Kind = PrizeKind.YouTube, Targets = new() } : p)
+                    .ToList();
+                // A child who has never started typing should begin with Sound Keys, not the fluency course.
+                if (modules.TryGetValue("typing-quest", out var tq)) modules["typing-quest"] = tq with { Enabled = false };
+            }
+            var allow = c.Allowlist;
+            if (h.SchemaVersion < 3)
+                allow = allow with { Apps = allow.Apps.Where(a => !Allowlist.Browsers.Contains(Path.GetFileName(a), StringComparer.OrdinalIgnoreCase)).ToList() };
+            return c with { Modules = modules, Prizes = prizes, Allowlist = allow };
+        }).ToList();
+        return h with { Children = children, SchemaVersion = CurrentSchema };
     }
 
     public void Update(Func<Household, Household> mutate)

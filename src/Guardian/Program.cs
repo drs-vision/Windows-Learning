@@ -28,6 +28,8 @@ builder.Services.AddSingleton(sp => new ScoreEngine());
 builder.Services.AddSingleton<SessionMonitor>();
 builder.Services.AddSingleton<BrowserPolicy>();
 builder.Services.AddSingleton<UnlockManager>();
+builder.Services.AddSingleton<YouTubeService>();
+builder.Services.AddSingleton<FlashpointService>();
 builder.Services.AddSingleton<ProcessEnforcer>();
 builder.Services.AddSingleton<UpdateChecker>();
 builder.Services.AddSingleton<RequestRouter>();

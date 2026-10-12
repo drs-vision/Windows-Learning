@@ -108,6 +108,18 @@ public sealed class Ledger : IDisposable
         return Convert.ToInt32(cmd.ExecuteScalar());
     }
 
+    /// <summary>How many times each arcade game was bought ("arcade:&lt;gameId&gt;" → count), for "Most played".</summary>
+    public Dictionary<string, int> ArcadePlays(string childId)
+    {
+        using var cmd = _db.CreateCommand();
+        cmd.CommandText = "SELECT source, COUNT(*) FROM ledger WHERE child=$c AND kind='Spend' AND source LIKE 'arcade:%' GROUP BY source";
+        cmd.Parameters.AddWithValue("$c", childId);
+        var d = new Dictionary<string, int>();
+        using var r = cmd.ExecuteReader();
+        while (r.Read()) d[r.GetString(0)[7..]] = r.GetInt32(1);
+        return d;
+    }
+
     public List<LedgerEntry> Recent(string childId, int limit = 50, DateTimeOffset? since = null)
     {
         using var cmd = _db.CreateCommand();

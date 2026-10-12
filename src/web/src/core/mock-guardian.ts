@@ -3,11 +3,11 @@
 
 import type { Child, ChildState, LedgerEntry, ParentState, PendingClaim, Prize, Unlock } from './types';
 import { scoreModule } from '../scorers';
+import { defaultArcadePrice } from './types';
 import type { Ev } from './bridge';
 
 const STARTER_PRIZES: Prize[] = [
-  { id: 'p-yt', name: '20 minutes of YouTube', cost: 40, kind: 'siteUnlock', minutes: 20, dailyCap: 3, boughtToday: 0, targets: ['youtube.com'] },
-  { id: 'p-arc', name: '30 minutes of Arcade', cost: 50, kind: 'arcadeUnlock', minutes: 30, dailyCap: 2, boughtToday: 0, targets: [] },
+  { id: 'p-yt', name: '20 minutes of YouTube', cost: 40, kind: 'youTube', minutes: 20, dailyCap: 3, boughtToday: 0, targets: [] },
   { id: 'p-ext', name: 'Extra 15 minutes tonight', cost: 30, kind: 'screenTimeExtension', minutes: 15, dailyCap: 1, boughtToday: 0, targets: [] },
   { id: 'p-movie', name: "Pick Friday's movie", cost: 150, kind: 'realWorld', minutes: 0, dailyCap: 1, boughtToday: 0, targets: [] },
 ];
@@ -19,8 +19,20 @@ export class MockGuardian {
     id: 'c1', displayName: 'Sam', windowsAccount: 'sam', windowsSid: 'S-1-5-21-mock',
     allowlist: { apps: ['msedge.exe', 'chrome.exe', 'calc.exe'], sites: ['khanacademy.org', 'wikipedia.org'] },
     prizes: STARTER_PRIZES,
+    youTubeChannels: [{ id: 'UCY1kMZp36IQSyNx_9h4mpCg', title: 'Mark Rober', url: 'https://www.youtube.com/@MarkRober' }],
+    arcade: { minutesPerPlay: 15, priceOverrides: {}, hidden: [], webGames: [], flashpoint: [
+      { id: '11111111-0000-0000-0000-000000000001', title: 'Gravity Guy', developer: 'Miniclip', genre: 'Runner', strategy: 1 },
+      { id: '11111111-0000-0000-0000-000000000002', title: 'Fancy Pants Adventures', developer: 'Brad Borne', genre: 'Platformer', strategy: 2 },
+      { id: '11111111-0000-0000-0000-000000000003', title: 'Bloons Tower Defense 4', developer: 'Ninja Kiwi', genre: 'Tower defense', strategy: 5 },
+      { id: '11111111-0000-0000-0000-000000000004', title: 'Learn to Fly 2', developer: 'Light Bringer Games', genre: 'Launch & upgrade', strategy: 3 },
+      { id: '11111111-0000-0000-0000-000000000005', title: 'Raft Wars', developer: 'Martijn Kunst', genre: 'Artillery', strategy: 3 },
+      { id: '11111111-0000-0000-0000-000000000006', title: 'Cyclomaniacs', developer: 'Max Games', genre: 'Racing', strategy: 2 },
+      { id: '11111111-0000-0000-0000-000000000007', title: 'Henry Stickmin: Breaking the Bank', developer: 'PuffballsUnited', genre: 'Choose your path', strategy: 4 },
+      { id: '11111111-0000-0000-0000-000000000008', title: 'Age of War', developer: 'Max Games', genre: 'Strategy', strategy: 4 },
+    ] },
     modules: {
-      'typing-quest': { enabled: true, coinsPerActivity: 10, dailyCap: 80, requireApproval: false },
+      'sound-keys': { enabled: true, coinsPerActivity: 12, dailyCap: 100, requireApproval: false, options: {} },
+      'typing-quest': { enabled: false, coinsPerActivity: 10, dailyCap: 80, requireApproval: false },
       'bible-typing': { enabled: true, coinsPerActivity: 15, dailyCap: 60, requireApproval: false },
       'khan-academy': { enabled: true, coinsPerActivity: 35, dailyCap: 140, requireApproval: true },
     },
@@ -85,10 +97,11 @@ export class MockGuardian {
       version: '0.1.0-dev',
       updateStatus: { current: '0.1.0-dev', latest: null, state: 'upToDate', lastChecked: new Date().toISOString() },
       ledgerIntact: true,
+      enforcement: { consoleAccount: 'DESKTOP\\you', childAtKeyboard: false, childAccount: this.child.windowsAccount, browserLock: { entries: 0 } },
     };
   }
 
-  async handle(req: { id: string; op: string; token?: string; payload?: any }) {
+  async handle(req: { id: string; op: string; token?: string; payload?: any }): Promise<{ id: string; ok: boolean; payload?: any; error?: string }> {
     const ok = (payload?: unknown) => ({ id: req.id, ok: true, payload });
     const fail = (error: string) => ({ id: req.id, ok: false, error });
     const p = req.payload ?? {};
@@ -100,7 +113,36 @@ export class MockGuardian {
       case 'shell.openBrowser': window.open(p.url, '_blank'); return ok({ ok: true });
       case 'state': return ok(this.childState());
       case 'progress': this.progress[p.moduleId] = p.progress; this.persist(); return ok();
-      case 'arcade.list': return ok({ games: (await (await fetch('./content/games/MANIFEST.json').catch(() => null))?.json().catch(() => null))?.games?.map((g: any) => ({ ...g, url: './content/games/' + g.path, available: true })) ?? [] });
+      case 'arcade.list': {
+        const a = this.child.arcade!;
+        const price = (id: string, st: number) => a.priceOverrides[id] ?? defaultArcadePrice(st);
+        const plays = (id: string) => this.ledger.filter((e) => e.source === 'arcade:' + id).length;
+        const bundled = ((await (await fetch('./content/games/MANIFEST.json').catch(() => null))?.json().catch(() => null))?.games ?? [])
+          .filter((g: any) => g.enabled !== false)
+          .map((g: any) => ({ ...g, url: './content/games/' + g.path, available: true, price: price(g.id, g.strategy ?? 2), plays: plays(g.id), source: 'bundled' }));
+        const fp = (a.flashpoint ?? []).map((f) => ({ id: 'fp-' + f.id, title: f.title, author: f.developer, kind: 'flashpoint', license: 'via Flashpoint', url: f.id, genre: f.genre, strategy: f.strategy, price: price('fp-' + f.id, f.strategy), available: true, plays: plays('fp-' + f.id), source: 'flashpoint' }));
+        return ok({ games: [...fp, ...bundled], minutesPerPlay: a.minutesPerPlay, flashpointRoot: 'C:\\Flashpoint' });
+      }
+      case 'arcade.play': {
+        const list = (await this.handle({ id: 'x', op: 'arcade.list' })).payload as any;
+        const g = list.games.find((x: any) => x.id === p.gameId);
+        if (!g) return fail("that game isn't in the arcade");
+        if (this.balance() < g.price) return fail(`you need ${g.price - this.balance()} more coins`);
+        this.append('spend', -g.price, 'arcade:' + g.id, `Arcade: 1 play of ${g.title}`);
+        const unlock: Unlock = { id: 'u' + Date.now(), kind: 'arcadeUnlock', targets: [g.id], prizeName: g.title, expiresAt: new Date(Date.now() + this.child.arcade!.minutesPerPlay * 60000).toISOString(), secondsLeft: this.child.arcade!.minutesPerPlay * 60 };
+        this.unlocks.push(unlock); this.emit({ name: 'state' });
+        return ok({ balance: this.balance(), unlock, game: g, flashpointRoot: 'C:\\Flashpoint' });
+      }
+      case 'arcade.quit': this.unlocks = this.unlocks.filter((u) => !(u.kind === 'arcadeUnlock' && u.targets.includes(p.gameId))); this.emit({ name: 'state' }); return ok({ ok: true });
+      case 'shell.flashpoint': case 'shell.openGame': case 'shell.openSite': case 'shell.closeGame': case 'shell.launch': return ok({ ok: true });
+      case 'youtube.library': return ok({ channels: this.child.youTubeChannels, errors: [], videos: Array.from({ length: 9 }, (_, i) => ({ id: 'dQw4w9WgXcQ', title: `Amazing science video #${i + 1}`, channelId: this.child.youTubeChannels![0].id, channelTitle: 'Mark Rober', published: new Date().toISOString(), thumbnail: '' })) });
+      case 'youtube.check': return ok({ allowed: this.unlocks.some((u) => u.kind === 'youTube') });
+      case 'parent.youtubeResolve': return ok({ id: 'UC' + Math.random().toString(36).slice(2).padEnd(22, 'x').slice(0, 22), title: String(p.url).split('@')[1] ?? 'Channel', url: p.url });
+      case 'parent.arcadeCatalog': { const l = (await this.handle({ id: 'x', op: 'arcade.list' })).payload as any; return ok({ games: l.games, settings: this.child.arcade }); }
+      case 'parent.fpStatus': return ok({ installed: true, root: 'C:\\Flashpoint', clifp: true, installerUrl: '' });
+      case 'parent.fpSuggest': return ok(['Gravity Guy', 'Fancy Pants Adventures', 'Bloons Tower Defense 4', 'Learn to Fly 2', 'Raft Wars', 'Stick War', 'Fireboy and Watergirl in The Forest Temple'].map((t, i) => ({ pick: { search: t, genre: 'Classic', strategy: 3 }, game: { id: '11111111-0000-0000-0000-00000000000' + (i + 1), title: t, developer: '', publisher: '', platform: 'Flash', tags: 'Action', series: '', releaseDate: '2009', description: '' }, approved: i < 5 })));
+      case 'parent.fpSearch': return ok([]);
+      case 'parent.fpThumbs': return ok({});
       case 'submit': {
         const settings = this.child.modules[p.moduleId];
         if (!settings?.enabled) return fail("that quest isn't turned on");
@@ -126,6 +168,7 @@ export class MockGuardian {
         if (prize.dailyCap > 0 && this.boughtToday(prize.id) >= prize.dailyCap) return fail("you've had that one enough for today");
         this.append('spend', -prize.cost, prize.id, prize.name);
         let unlock: Unlock | undefined;
+        if (prize.kind === 'youTube' && !(this.child.youTubeChannels?.length)) return fail('no YouTube channels are set up yet — ask a parent');
         if (prize.minutes > 0 && prize.kind !== 'realWorld') {
           const existing = this.unlocks.find((u) => u.kind === prize.kind && u.prizeName === prize.name);
           if (existing) { existing.expiresAt = new Date(Date.parse(existing.expiresAt) + prize.minutes * 60000).toISOString(); unlock = existing; }

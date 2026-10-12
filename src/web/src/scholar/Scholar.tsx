@@ -4,9 +4,11 @@ import { bridge } from '../core/bridge';
 import { MODULES, moduleById } from '../modules/registry';
 import { Arcade, fmt } from '../modules/arcade/Arcade';
 import { ParentConsole } from '../parent/ParentConsole';
+import { YouTube } from './YouTube';
+import { Websites } from './Websites';
 import type { LessonModule } from '../core/module';
 
-type View = { name: 'home' } | { name: 'quest'; moduleId: string } | { name: 'shop' } | { name: 'arcade' } | { name: 'parent' };
+type View = { name: 'home' } | { name: 'quest'; moduleId: string } | { name: 'shop' } | { name: 'arcade' } | { name: 'youtube' } | { name: 'web' } | { name: 'parent' };
 
 /** The child's whole world: home base, quests, shop, arcade. */
 export function Scholar() {
@@ -39,15 +41,18 @@ export function Scholar() {
   // Recompute secondsLeft locally between server pushes so countdowns are smooth.
   const unlocks = state.unlocks.map((u) => ({ ...u, secondsLeft: Math.max(0, Math.round((Date.parse(u.expiresAt) - Date.now()) / 1000)) }));
   const arcadeUnlock = unlocks.find((u) => u.kind === 'arcadeUnlock' && u.secondsLeft > 0);
+  const ytUnlock = unlocks.find((u) => u.kind === 'youTube' && u.secondsLeft > 0);
 
   return (
     <div class="scholar">
       {view.name !== 'parent' && <TopBar state={state} unlocks={unlocks} onHome={() => setView({ name: 'home' })} onShop={() => setView({ name: 'shop' })} />}
       <main>
-        {view.name === 'home' && <Home state={state} arcadeUnlock={arcadeUnlock} onQuest={(id) => setView({ name: 'quest', moduleId: id })} onArcade={() => setView({ name: 'arcade' })} onShop={() => setView({ name: 'shop' })} />}
+        {view.name === 'home' && <Home state={state} arcadeUnlock={arcadeUnlock} ytUnlock={ytUnlock} onQuest={(id) => setView({ name: 'quest', moduleId: id })} onArcade={() => setView({ name: 'arcade' })} onYouTube={() => setView({ name: 'youtube' })} onWeb={() => setView({ name: 'web' })} onShop={() => setView({ name: 'shop' })} />}
         {view.name === 'quest' && <QuestRunner module={moduleById(view.moduleId)!} state={state} onExit={() => { setView({ name: 'home' }); refresh(); }} />}
         {view.name === 'shop' && <Shop state={state} onBought={(msg) => { setToast(msg); refresh(); }} onExit={() => setView({ name: 'home' })} />}
-        {view.name === 'arcade' && <Arcade unlock={arcadeUnlock} onExit={() => setView({ name: 'home' })} />}
+        {view.name === 'arcade' && <Arcade unlocks={unlocks} balance={state.balance} onChanged={refresh} onExit={() => setView({ name: 'home' })} />}
+        {view.name === 'web' && <Websites state={state} onExit={() => setView({ name: 'home' })} />}
+        {view.name === 'youtube' && <YouTube unlock={ytUnlock} onExit={() => setView({ name: 'home' })} onShop={() => setView({ name: 'shop' })} />}
         {view.name === 'parent' && <ParentConsole embedded onClose={() => { setView({ name: 'home' }); refresh(); }} />}
       </main>
       {toast && <div class="toast">{toast}</div>}
@@ -67,7 +72,7 @@ function TopBar({ state, unlocks, onHome, onShop }: { state: ChildState; unlocks
   );
 }
 
-function Home({ state, arcadeUnlock, onQuest, onArcade, onShop }: { state: ChildState; arcadeUnlock?: Unlock; onQuest: (id: string) => void; onArcade: () => void; onShop: () => void }) {
+function Home({ state, arcadeUnlock, ytUnlock, onQuest, onArcade, onYouTube, onWeb, onShop }: { state: ChildState; arcadeUnlock?: Unlock; ytUnlock?: Unlock; onQuest: (id: string) => void; onArcade: () => void; onYouTube: () => void; onWeb: () => void; onShop: () => void }) {
   const quests = MODULES.filter((m) => state.modules[m.id]?.enabled);
   const pending = state.pendingClaims.length;
   return (
@@ -93,6 +98,8 @@ function Home({ state, arcadeUnlock, onQuest, onArcade, onShop }: { state: Child
       <aside class="side">
         <button class="big-btn" onClick={onShop}>🛒 Shop</button>
         <button class={'big-btn' + (arcadeUnlock ? ' live' : '')} onClick={onArcade}>🕹️ Arcade {arcadeUnlock && <small>{fmt(arcadeUnlock.secondsLeft)}</small>}</button>
+        <button class="big-btn" onClick={onWeb}>🌐 Websites</button>
+        {(state.youtubeChannels ?? 0) > 0 && <button class={'big-btn' + (ytUnlock ? ' live' : '')} onClick={onYouTube}>▶️ YouTube {ytUnlock && <small>{fmt(ytUnlock.secondsLeft)}</small>}</button>}
         {pending > 0 && <div class="note">⏳ {pending} claim{pending > 1 ? 's' : ''} waiting for a parent</div>}
         <Recent state={state} />
       </aside>
@@ -102,6 +109,7 @@ function Home({ state, arcadeUnlock, onQuest, onArcade, onShop }: { state: Child
 
 function ProgressLine({ moduleId, state }: { moduleId: string; state: ChildState }) {
   const p = (state.progress[moduleId] ?? {}) as Record<string, any>;
+  if (moduleId === 'sound-keys') return <small class="muted">{p.done?.length ? `${p.done.length} of 39 lessons` : 'Start here — lesson 1'}</small>;
   if (moduleId === 'typing-quest') return <small class="muted">{p.placed ? `Row ${(p.lane ?? 0) + 1} · best ${p.bestWpm ?? 0} WPM` : 'Start with a placement test'}</small>;
   if (moduleId === 'bible-typing') return <small class="muted">{(p.done?.length ?? 0)} passages · {p.totalWords ?? 0} words</small>;
   return null;
@@ -143,7 +151,7 @@ function Shop({ state, onBought, onExit }: { state: ChildState; onBought: (msg: 
   const [error, setError] = useState('');
   async function buy(p: Prize) {
     setBusy(p.id); setError('');
-    try { await bridge.buy(p.id); onBought(p.kind === 'realWorld' ? `🎉 ${p.name} — tell your parent!` : `✅ ${p.name} started`); }
+    try { await bridge.buy(p.id); onBought(p.kind === 'realWorld' ? `🎉 ${p.name} — tell your parent!` : p.kind === 'youTube' ? `✅ ${p.name} started — open YouTube from home` : `✅ ${p.name} started`); }
     catch (e) { setError((e as Error).message); }
     finally { setBusy(''); }
   }
@@ -170,4 +178,4 @@ function Shop({ state, onBought, onExit }: { state: ChildState; onBought: (msg: 
   );
 }
 
-const ICON: Record<string, string> = { siteUnlock: '▶️', arcadeUnlock: '🕹️', appUnlock: '💻', screenTimeExtension: '⏰', realWorld: '🎁' };
+const ICON: Record<string, string> = { youTube: '▶️', siteUnlock: '🌐', arcadeUnlock: '🕹️', appUnlock: '💻', screenTimeExtension: '⏰', realWorld: '🎁' };
