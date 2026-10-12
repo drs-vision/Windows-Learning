@@ -80,7 +80,8 @@ export function Arcade({ unlocks, balance, onExit, onChanged }: { unlocks: Unloc
   const [q, setQ] = useState('');
   const [cat, setCat] = useState('All');
   const [sel, setSel] = useState<Game | null>(null);
-  const [playing, setPlaying] = useState<Game | null>(null);
+  const [playing, setPlaying] = useState<(Game & { base?: string; rewritePrefix?: string }) | null>(null);
+  const [preparing, setPreparing] = useState('');
   // When the current play's time runs out, from the purchase itself. The shared state (unlocks) arrives a moment
   // later; until it does, this is what keeps the game open (and the countdown right).
   const [until, setUntil] = useState(0);
@@ -126,6 +127,10 @@ export function Arcade({ unlocks, balance, onExit, onChanged }: { unlocks: Unloc
     setError(''); setBusy(true);
     try {
       if (playing && playing.id !== g.id) { bridge.closeGame(); setPlaying(null); }
+      // Classics: get the game's files ready first (a few seconds the first time), so no coins are spent on a
+      // game that can't start.
+      let classic: { url: string; base: string; prefix: string } | null = null;
+      if (g.kind === 'classic') { setPreparing(g.title); classic = await bridge.arcadePrepare(g.id).finally(() => setPreparing('')); }
       const r = await bridge.arcadePlay(g.id, n);
       startedAt.current = Date.now();
       setUntil(r.unlock?.expiresAt ? Date.parse(r.unlock.expiresAt) : Date.now() + 5 * 60_000);
@@ -138,7 +143,7 @@ export function Arcade({ unlocks, balance, onExit, onChanged }: { unlocks: Unloc
         await bridge.openGame(g.url, g.title);
       }
       setSel(null);
-      setPlaying(g);
+      setPlaying(classic ? { ...g, kind: 'swf', url: classic.url, base: classic.base, rewritePrefix: classic.prefix } : g);
     } catch (e) { setError((e as Error).message); }
     finally { setBusy(false); }
   }
@@ -162,6 +167,7 @@ export function Arcade({ unlocks, balance, onExit, onChanged }: { unlocks: Unloc
         <button class="ghost" onClick={onExit}>✕</button>
       </header>
       {error && <p class="error">{error}</p>}
+      {preparing && <div class="now-playing"><span>⏳ Getting <b>{preparing}</b> ready… (the first time takes a few seconds)</span></div>}
       {sampler && (
         pass
           ? <div class="sampler on">🎟️ <b>Sampler pass</b> — play ANY game! <span class="countdown">{fmt(pass.secondsLeft)}</span> left</div>
@@ -240,7 +246,7 @@ function Tile({ g, onClick, balance, left }: { g: Game; onClick: () => void; bal
   );
 }
 
-function Player({ game, onBack, secondsLeft, sampler }: { game: Game; onBack: () => void; secondsLeft: number; sampler?: boolean }) {
+function Player({ game, onBack, secondsLeft, sampler }: { game: Game & { base?: string; rewritePrefix?: string }; onBack: () => void; secondsLeft: number; sampler?: boolean }) {
   const host = useRef<HTMLDivElement>(null);
   const [err, setErr] = useState('');
 
@@ -252,7 +258,9 @@ function Player({ game, onBack, secondsLeft, sampler }: { game: Game; onBack: ()
       player.style.width = '100%'; player.style.height = '100%';
       player.tabIndex = 0;
       host.current!.appendChild(player);
-      player.ruffle().load({ url: game.url, base: game.url.slice(0, game.url.lastIndexOf('/') + 1), allowScriptAccess: false })
+      // Classics ask for their files at their original web addresses; send those to the local copy instead.
+      const rewrite = game.rewritePrefix ? { urlRewriteRules: [[/^https?:\/\//, game.rewritePrefix]] } : {};
+      player.ruffle().load({ url: game.url, base: game.base ?? game.url.slice(0, game.url.lastIndexOf('/') + 1), allowScriptAccess: false, ...rewrite })
         .then(() => player.focus()).catch((e: Error) => setErr(e.message));
     }).catch((e) => setErr(e.message));
     return () => { try { player?.remove(); } catch { } };

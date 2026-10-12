@@ -197,14 +197,14 @@ public sealed class FlashpointService
     /// Ensure a logo for the game is cached in ProgramData\CoinQuest\thumbs (served to the UI as coinquest-thumbs.local).
     /// Uses the copy in the Flashpoint folder if present, otherwise downloads from the image server Flashpoint itself uses.
     /// </summary>
-    public async Task<string?> Thumb(string root, string id)
+    public async Task<string?> Thumb(string? root, string id)
     {
         Directory.CreateDirectory(ThumbDir);
         var dest = Path.Combine(ThumbDir, id + ".png");
         if (File.Exists(dest)) return Path.GetFileName(dest);
         var rel = Path.Combine("Logos", id[..2], id.Substring(2, 2), id + ".png");
-        var local = Path.Combine(root, "Data", "Images", rel);
-        if (File.Exists(local)) { File.Copy(local, dest, true); return Path.GetFileName(dest); }
+        var local = root is null ? "" : Path.Combine(root, "Data", "Images", rel);
+        if (root is not null && File.Exists(local)) { File.Copy(local, dest, true); return Path.GetFileName(dest); }
         try
         {
             var url = ImagesBase(root) + rel.Replace('\\', '/');
@@ -215,8 +215,9 @@ public sealed class FlashpointService
         catch (Exception ex) { _log.LogInformation("No thumbnail for {Id}: {Msg}", id, ex.Message); return null; }
     }
 
-    private static string ImagesBase(string root)
+    private static string ImagesBase(string? root)
     {
+        if (root is null) return DefaultImagesBase;
         // Read Flashpoint's own setting rather than guessing, so this keeps working if their server moves.
         foreach (var file in new[] { "preferences.json", "config.json" })
         {

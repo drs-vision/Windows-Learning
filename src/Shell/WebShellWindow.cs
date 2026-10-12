@@ -81,6 +81,12 @@ public class WebShellWindow : Window
         if (Directory.Exists(thumbs))
             core.SetVirtualHostNameToFolderMapping("coinquest-thumbs.local", thumbs, CoreWebView2HostResourceAccessKind.Allow);
 
+        // Classic Flash games, unpacked by the Guardian and played in CoinQuest's own Ruffle player.
+        var classics = Path.Combine(Paths.DataRoot, "classics");
+        try { Directory.CreateDirectory(classics); } catch { /* the child can't create it; the Guardian does */ }
+        if (Directory.Exists(classics))
+            core.SetVirtualHostNameToFolderMapping("coinquest-classics.local", classics, CoreWebView2HostResourceAccessKind.Allow);
+
         core.Settings.AreDefaultContextMenusEnabled = false;
         core.Settings.AreDevToolsEnabled = !_kiosk || Environment.GetEnvironmentVariable("COINQUEST_DEV") == "1";
         core.Settings.IsStatusBarEnabled = false;

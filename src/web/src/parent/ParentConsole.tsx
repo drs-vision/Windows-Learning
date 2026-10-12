@@ -503,15 +503,9 @@ function FlashpointPanel({ child, onSave, onChanged }: { child: Child; onSave: (
           </div>
         </div>
       )}
-      {st?.installed && !st.clifp && (st.stock?.error || st.stock?.stage !== 'installing-launcher') && (
-        <div>
-          <p>Flashpoint found at <code>{st.root}</code>. One more step lets CoinQuest start games for {child.displayName} directly.</p>
-          <button class="primary" disabled={busy} onClick={() => { setBusy(true); bridge.parentFpInstallClifp().then(setSt).catch((e) => setMsg(e.message)).finally(() => setBusy(false)); }}>Finish setup</button>
-        </div>
-      )}
       {st?.installed && st.clifp && (
         <div>
-          <p class="muted small">Flashpoint at <code>{st.root}</code> · {approved.size} games approved. Adult content (Flashpoint's "Extreme" tag) never shows up here.</p>
+          <p class="muted small">{st.root ? <>Using your Flashpoint install at <code>{st.root}</code></> : <>Straight from the Flashpoint Archive online — nothing to install</>} · {approved.size} games in the arcade · they play inside CoinQuest. Adult content (Flashpoint's "Extreme" tag) never shows up here.</p>
           {sugg && (
             <div class="fp-sugg">
               <div class="row between"><b>Suggested classics ({sugg.length})</b><button class="primary" title="Approves everything except the ones marked 'preview'" onClick={() => approve(sugg.filter((x) => !x.pick.note?.includes('preview')).map((x) => ({ game: x.game, genre: x.pick.genre, strategy: x.pick.strategy })))}>Approve all</button></div>

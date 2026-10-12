@@ -179,6 +179,37 @@ for (const title of titles) {
     await sleep(800);
   });
 }
+await check('classic Flash game (Flashpoint Archive) appears, downloads and plays', async () => {
+  // The Guardian adds the curated classics in the background; give it a few minutes on a fresh machine.
+  let tile = null;
+  for (let i = 0; i < 24 && !tile; i++) {
+    await kid.click('.portal-head button.ghost').catch(() => undefined); await sleep(500);
+    await kid.click('text=/Arcade/'); await sleep(2500);
+    const t = kid.locator('.tile', { hasText: /Fancy Pants|Gravity Guy|Bloons|Learn to Fly|Raft Wars|Stick War/ }).first();
+    if (await t.count()) tile = t; else await sleep(10000);
+  }
+  await shot(kid, 'arcade-with-classics');
+  log(`  classics visible: ${(await kid.locator('.tile .tile-title').allTextContents()).filter((x) => !titles.includes(x)).slice(0, 12).join(', ')}`);
+  expect(tile, 'no classic games appeared in the arcade');
+  const name = (await tile.locator('.tile-title').textContent()).trim();
+  await tile.click();
+  await kid.click('.time-buyer .coin-btn');
+  for (let i = 0; i < 60 && !(await kid.locator('.player, .portal .error').count()); i++) await sleep(1000);
+  await sleep(8000);
+  await shot(kid, `classic-${name}-loaded`); desktop(`classic-${name}-loaded`);
+  const err = await kid.locator('.portal .error, .player .error').allTextContents();
+  expect(!err.length, 'error: ' + err.join(' / '));
+  expect(await kid.locator('.player').count(), 'the classic did not open');
+  const box = await kid.locator('.player-host').first().boundingBox();
+  if (box) {
+    await kid.mouse.click(box.x + box.width / 2, box.y + box.height / 2); await sleep(1500);
+    for (const k of ['Space', 'Enter', 'ArrowRight', 'ArrowRight', 'ArrowRight', 'ArrowUp', 'ArrowRight', 'Space']) { await kid.keyboard.press(k); await sleep(400); }
+    await kid.mouse.click(box.x + box.width / 2, box.y + box.height * 0.6); await sleep(3000);
+    await shot(kid, `classic-${name}-PLAYING-after-input`); desktop(`classic-${name}-PLAYING-after-input`);
+  }
+  await kid.locator('.player header button').first().click().catch(() => undefined);
+  await sleep(800);
+});
 await check('sampler pass: buy and play any game', async () => {
   const btn = kid.locator('text=GET PASS');
   expect(await btn.count(), 'no sampler button');

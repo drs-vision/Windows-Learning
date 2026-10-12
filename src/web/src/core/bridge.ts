@@ -71,6 +71,7 @@ class Bridge {
   arcade() { return this.call<{ games: Game[]; blockMinutes?: number; maxBlocks?: number; sampler?: { minutes: number; price: number }; flashpointRoot?: string | null }>('arcade.list'); }
   /** blocks × 5 minutes of one game; blocks 0 = jump back in with time already bought (or a sampler pass). */
   arcadePlay(gameId: string, blocks: number) { return this.call<{ balance: number; unlock?: Unlock; game: Game; flashpointRoot?: string | null; alreadyPlaying?: boolean }>('arcade.play', { gameId, blocks }); }
+  arcadePrepare(gameId: string) { return this.call<{ url: string; base: string; prefix: string; platform: string }>('arcade.prepare', { gameId }); }
   arcadeSampler() { return this.call<{ balance: number; unlock: Unlock }>('arcade.sampler'); }
   arcadeQuit(gameId: string) { return this.call('arcade.quit', { gameId }).catch(() => undefined); }
   flashpoint(root: string, id: string, verb: 'play' | 'prepare' = 'play') { return this.call('shell.flashpoint', { root, id, verb }); }
@@ -119,7 +120,7 @@ export const bridge = new Bridge();
 
 export interface FpStatus {
   installed: boolean; root?: string | null; clifp: boolean; installerUrl: string;
-  autoClassics?: boolean; approved?: number;
+  autoClassics?: boolean; approved?: number; online?: boolean;
   /** stage: idle | not-installed | installing-launcher | downloading | ready */
   stock?: { stage: string; approved: number; downloaded: number; queued: number; error?: string | null };
 }

@@ -28,6 +28,7 @@ public sealed class RequestRouter
     private readonly FlashpointService _fp;
     private readonly ClassicsStocker _stocker;
     private readonly NetGate _gate;
+    private readonly ClassicLibrary _lib;
     private readonly NetLock _netLock;
     private readonly ILogger<RequestRouter> _log;
     private readonly Dictionary<string, (string account, DateTimeOffset expires)> _tokens = new();
@@ -36,8 +37,8 @@ public sealed class RequestRouter
     public event Action? ApprovalsChanged;  // something a parent UI should refresh
 
     public RequestRouter(HouseholdStore store, Ledger ledger, ScoreEngine scorer, UnlockManager unlocks, SessionMonitor session,
-        BrowserPolicy policy, UpdateChecker updates, YouTubeService youtube, FlashpointService fp, ClassicsStocker stocker, NetGate gate, NetLock netLock, ILogger<RequestRouter> log)
-    { _fp = fp; _stocker = stocker; _gate = gate; _netLock = netLock; _store = store; _ledger = ledger; _scorer = scorer; _unlocks = unlocks; _session = session; _policy = policy; _updates = updates; _youtube = youtube; _log = log; }
+        BrowserPolicy policy, UpdateChecker updates, YouTubeService youtube, FlashpointService fp, ClassicsStocker stocker, ClassicLibrary lib, NetGate gate, NetLock netLock, ILogger<RequestRouter> log)
+    { _fp = fp; _stocker = stocker; _gate = gate; _lib = lib; _netLock = netLock; _store = store; _ledger = ledger; _scorer = scorer; _unlocks = unlocks; _session = session; _policy = policy; _updates = updates; _youtube = youtube; _log = log; }
 
     /// <summary>
     /// Requests that wait on the network or the disk run side by side; everything else (ledger, settings, timers)
@@ -45,7 +46,7 @@ public sealed class RequestRouter
     /// </summary>
     private static readonly HashSet<string> Slow = new()
     {
-        Ops.YouTubeLibrary, Ops.YouTubeCheck, Ops.ParentYouTubeResolve, Ops.ParentCheckUpdate, Ops.ParentInstalledApps, Ops.SetupAccounts,
+        Ops.ArcadePrepare, Ops.YouTubeLibrary, Ops.YouTubeCheck, Ops.ParentYouTubeResolve, Ops.ParentCheckUpdate, Ops.ParentInstalledApps, Ops.SetupAccounts,
         Ops.ParentFpStatus, Ops.ParentFpSearch, Ops.ParentFpSuggest, Ops.ParentFpInstallClifp, Ops.ParentFpDownloadInstaller, Ops.ParentFpThumbs, Ops.ParentFpStockNow, Ops.ParentBlocked, Ops.ParentDiagnostics,
     };
     private readonly object _sync = new();
@@ -72,6 +73,7 @@ public sealed class RequestRouter
                 : ArcadeList(req, child),
             Ops.ArcadeQuit => child is null ? Response.Fail(req.Id, "not a managed account") : ArcadeQuit(req, child),
             Ops.ArcadePlay => child is null ? Response.Fail(req.Id, "not a managed account") : ArcadePlay(req, child, client.Account),
+            Ops.ArcadePrepare => child is null ? Response.Fail(req.Id, "not a managed account") : ArcadePrepare(req, child),
             Ops.ArcadeSampler => child is null ? Response.Fail(req.Id, "not a managed account") : ArcadeSampler(req, child, client.Account),
             Ops.YouTubeLibrary => child is null ? Response.Fail(req.Id, "not a managed account") : Response.Success(req.Id, _youtube.Library(child).GetAwaiter().GetResult()),
             Ops.YouTubeCheck => child is null ? Response.Fail(req.Id, "not a managed account")
@@ -96,13 +98,14 @@ public sealed class RequestRouter
             Ops.ParentBlocked => Parent(req, client, child, () => _gate.RecentlyBlocked().Select(b => new { host = b.Host, at = b.At, reason = b.Reason })),
             Ops.ParentFpStatus => Parent(req, client, child, () => FpStatus()),
             Ops.ParentFpStockNow => Parent(req, client, child, () => { _stocker.Tick(force: true); return FpStatus(); }),
-            Ops.ParentFpSearch => Parent(req, client, child, () => _fp.Search(FpRoot(), Str(req, "q"))),
+            Ops.ParentFpSearch => Parent(req, client, child, () => _fp.Root(FirstChild()?.Arcade.FlashpointRoot) is { } r ? _fp.Search(r, Str(req, "q"))
+                : _lib.Search(Str(req, "q"), 40).GetAwaiter().GetResult().Where(g => g.Platform == "Flash").ToList()),
             Ops.ParentFpSuggest => Parent(req, client, child, () => FpSuggest()),
             Ops.ParentFpInstallClifp => Parent(req, client, child, () => { _fp.InstallClifp(FpRoot()).GetAwaiter().GetResult(); _stocker.Tick(force: true); return FpStatus(); }),
             Ops.ParentFpDownloadInstaller => Parent(req, client, child, () => DownloadFpInstaller()),
             Ops.ParentFpThumbs => Parent(req, client, child, () =>
             {
-                var root = FpRoot();
+                var root = _fp.Root(FirstChild()?.Arcade.FlashpointRoot);
                 var ids = req.Payload?["ids"]?.AsArray().Select(n => n!.GetValue<string>()).ToList() ?? new();
                 return ids.ToDictionary(id => id, id => _fp.Thumb(root, id).GetAwaiter().GetResult() is { } f ? $"https://coinquest-thumbs.local/{f}" : "");
             }),
@@ -250,6 +253,16 @@ public sealed class RequestRouter
         return Response.Success(req.Id, new { balance = _ledger.Balance(child.Id), unlock });
     }
 
+    /// <summary>Get a classic's files ready (downloads them the first time) and say where the player loads it from.</summary>
+    private Response ArcadePrepare(Request req, Child child)
+    {
+        var gameId = Str(req, "gameId");
+        var game = Arcade.Catalog(child).FirstOrDefault(g => g.Id == gameId && !g.Hidden && g.Kind == "classic");
+        if (game is null) return Response.Fail(req.Id, "that game isn't in the arcade");
+        try { return Response.Success(req.Id, _lib.Prepare(game.Url).GetAwaiter().GetResult()); }
+        catch (Exception ex) { _log.LogWarning(ex, "Couldn't get {Title} ready", game.Title); return Response.Fail(req.Id, $"Couldn't get {game.Title} ready: {ex.Message}"); }
+    }
+
     private Response ArcadeList(Request req, Child child)
     {
         var plays = _ledger.ArcadePlays(child.Id);
@@ -268,7 +281,7 @@ public sealed class RequestRouter
         var root = _fp.Root(c?.Arcade.FlashpointRoot);
         return new
         {
-            installed = root is not null, root, clifp = root is not null && _fp.HasClifp(root), installerUrl = FlashpointService.InstallerUrl,
+            installed = true, online = root is null, root, clifp = true, installerUrl = FlashpointService.InstallerUrl,
             autoClassics = c?.Arcade.AutoClassics ?? true, approved = c?.Arcade.Flashpoint.Count ?? 0, stock = _stocker.Status,
         };
     }
@@ -279,7 +292,17 @@ public sealed class RequestRouter
 
     private object FpSuggest()
     {
-        var root = FpRoot();
+        var root = _fp.Root(FirstChild()?.Arcade.FlashpointRoot);
+        if (root is null)
+        {
+            // Online catalog: list what's already in the arcade (the stocker adds the curated picks by itself).
+            return (FirstChild()?.Arcade.Flashpoint ?? new()).Select(f => new
+            {
+                pick = new Classics.Pick(f.Title, f.Genre, f.Strategy),
+                game = new FlashpointService.FpGame(f.Id, f.Title, f.Developer, "", "Flash", "", "", "", ""),
+                approved = true,
+            }).ToList();
+        }
         var approved = FirstChild()?.Arcade.Flashpoint.Select(f => f.Id).ToHashSet() ?? new();
         return Classics.List.Select(p =>
         {

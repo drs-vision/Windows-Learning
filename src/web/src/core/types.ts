@@ -136,7 +136,7 @@ export interface Game {
   id: string;
   title: string;
   author: string;
-  kind: 'swf' | 'html5' | 'web' | 'flashpoint';
+  kind: 'swf' | 'html5' | 'web' | 'flashpoint' | 'classic';
   license: string;
   url: string;
   genre: string;

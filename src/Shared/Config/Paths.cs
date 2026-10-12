@@ -35,5 +35,6 @@ public static class Paths
         Directory.CreateDirectory(LogDir);
         Directory.CreateDirectory(ArcadeDropFolder);
         Directory.CreateDirectory(Path.Combine(DataRoot, "thumbs"));
+        Directory.CreateDirectory(Path.Combine(DataRoot, "classics"));
     }
 }
