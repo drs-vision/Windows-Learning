@@ -49,7 +49,7 @@ async function attach(port, label) {
 
 /** Start a CoinQuest shell as another Windows account (the kid), with the test debugging port. */
 function startAs(user, pw, exe, port) {
-  const ps = `$p = New-Object System.Diagnostics.ProcessStartInfo '${exe}'; $p.UseShellExecute=$false; $p.UserName='${user}'; $p.Password=(ConvertTo-SecureString '${pw}' -AsPlainText -Force); $p.LoadUserProfile=$true; $p.WorkingDirectory='${INSTALL}'; $p.Environment['COINQUEST_DEBUG_PORT']='${port}'; [System.Diagnostics.Process]::Start($p) | Out-Null`;
+  const ps = `$p = New-Object System.Diagnostics.ProcessStartInfo '${exe}'; $p.UseShellExecute=$false; $p.UserName='${user}'; $s=New-Object System.Security.SecureString; foreach($c in '${pw}'.ToCharArray()){ $s.AppendChar($c) }; $p.Password=$s; $p.LoadUserProfile=$true; $p.WorkingDirectory='${INSTALL}'; $p.Environment['COINQUEST_DEBUG_PORT']='${port}'; [System.Diagnostics.Process]::Start($p) | Out-Null`;
   try { const out = execFileSync('powershell', ['-NoProfile', '-Command', ps], { encoding: 'utf8' }); if (out.trim()) log('  start: ' + out.trim()); }
   catch (e) { log('  start failed: ' + (e.stderr || e.message)); throw e; }
 }
