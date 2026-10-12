@@ -31,3 +31,10 @@ Windows software that locks a child's account to an allowlist (apps + websites),
 1. Install `CoinQuest-Setup-0.1.N.exe` on the child's machine from an admin account; run the 3-step setup wizard. Report anything that doesn't behave — this is the first run on real Windows.
 2. Preview the arcade games; enable Red Rogue if acceptable.
 3. Phase 5: Khan Academy browser extension for automatic verification.
+
+## 2026-10-12 — v0.1.6
+- Web lock rebuilt: real browsers are closed on the child account; websites open only in CoinQuest's locked browser. (Browser policies alone were not honored on the home PC.)
+- YouTube: channel allowlist, in-app player, only during YouTube time.
+- Arcade: 2000s portal, pay-per-play (price by strategy, parent overrides). Classic Flash games via a local Flashpoint Archive install + CLIFp; ~70 curated search picks, parent approval required.
+- Sound Keys: 39-lesson phonics + typing course for a beginner (child is autistic, no typing experience): errorless, untimed, calm mode, finger colours, espeak-ng phoneme clips. Parent-voice recording is a candidate next step.
+- Open: first Flashpoint launch on real hardware untested; confirm the "stick man / glow monkey / choose your weapon" game title.
