@@ -27,8 +27,15 @@ public class WebShellWindow : Window
     /// <summary>True when this window belongs to a managed child account (all traffic goes through the gatekeeper).</summary>
     public static bool ManagedChild { get; private set; }
     public const int GatePort = 47123;
-    public static CoreWebView2EnvironmentOptions? ProxyOptions() =>
-        ManagedChild ? new CoreWebView2EnvironmentOptions($"--proxy-server=http://127.0.0.1:{GatePort}") : null;
+    public static CoreWebView2EnvironmentOptions? ProxyOptions()
+    {
+        var args = new List<string>();
+        if (ManagedChild) args.Add($"--proxy-server=http://127.0.0.1:{GatePort}");
+        // CI end-to-end tests drive the real UI over the DevTools protocol. Only on machines marked as test machines.
+        if (Paths.E2ETestMode && int.TryParse(Environment.GetEnvironmentVariable("COINQUEST_DEBUG_PORT"), out var port))
+            args.Add($"--remote-debugging-port={port}");
+        return args.Count > 0 ? new CoreWebView2EnvironmentOptions(string.Join(' ', args)) : null;
+    }
     private Process? _fpProcess;
 
     public WebShellWindow(string app, bool kiosk)

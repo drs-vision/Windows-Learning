@@ -4,6 +4,8 @@ using System.Net.Http.Headers;
 using System.Security.Cryptography;
 using System.Text.Json.Nodes;
 using CoinQuest.Shared.Config;
+using CoinQuest.Shared.Models;
+using CoinQuest.Guardian.Economy;
 
 namespace CoinQuest.Guardian.Updates;
 
@@ -15,6 +17,8 @@ namespace CoinQuest.Guardian.Updates;
 public sealed class UpdateChecker
 {
     private readonly SessionMonitor _session;
+    private readonly UnlockManager _unlocks;
+    private DateTimeOffset? _stagedAt;
     private readonly ILogger<UpdateChecker> _log;
     private readonly HttpClient _http;
     private readonly SemaphoreSlim _gate = new(1, 1);
@@ -22,14 +26,16 @@ public sealed class UpdateChecker
     private string? _stagedDir;
 
     public const string AssetName = "CoinQuest-win-x64.zip";
-    public static readonly TimeSpan Interval = TimeSpan.FromHours(6);
+    public static readonly TimeSpan Interval = TimeSpan.FromMinutes(30);
+    /// <summary>An update waiting this long installs even in the middle of paid game/YouTube time (the time itself is kept).</summary>
+    public static readonly TimeSpan MaxWait = TimeSpan.FromHours(2);
 
     public sealed record UpdateStatus(string Current, string? Latest, string State, string? Message, DateTimeOffset? LastChecked);
     public UpdateStatus Status { get; private set; }
 
-    public UpdateChecker(SessionMonitor session, ILogger<UpdateChecker> log)
+    public UpdateChecker(SessionMonitor session, UnlockManager unlocks, ILogger<UpdateChecker> log)
     {
-        _session = session; _log = log;
+        _session = session; _unlocks = unlocks; _log = log;
         _http = new HttpClient { Timeout = TimeSpan.FromMinutes(5) };
         _http.DefaultRequestHeaders.UserAgent.Add(new ProductInfoHeaderValue("CoinQuest", Current));
         _http.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/vnd.github+json"));
@@ -41,6 +47,7 @@ public sealed class UpdateChecker
     public async Task RunAsync(CancellationToken ct)
     {
         await Task.Delay(TimeSpan.FromMinutes(2), ct); // let the machine settle after boot
+        if (CoinQuest.Shared.Config.Paths.E2ETestMode) { _log.LogInformation("Test machine: self-update off"); return; }
         while (!ct.IsCancellationRequested)
         {
             try { await CheckNow(ct); } catch (Exception ex) { _log.LogWarning(ex, "Update check failed"); }
@@ -105,12 +112,12 @@ public sealed class UpdateChecker
                 var extractDir = Path.Combine(Paths.UpdateStaging, "v" + latest);
                 if (Directory.Exists(extractDir)) Directory.Delete(extractDir, true);
                 ZipFile.ExtractToDirectory(zipPath, extractDir);
-                _stagedVersion = latest; _stagedDir = extractDir;
+                _stagedVersion = latest; _stagedDir = extractDir; _stagedAt = DateTimeOffset.UtcNow;
                 _log.LogInformation("Update {Latest} staged at {Dir}", latest, extractDir);
             }
 
             Status = new UpdateStatus(Current, latest, "readyToApply", null, DateTimeOffset.UtcNow);
-            if (applyEvenIfChildActive || _session.Current is null) Apply();
+            if (applyEvenIfChildActive || GoodMoment()) Apply();
             return Status;
         }
         catch (Exception ex)
@@ -119,6 +126,17 @@ public sealed class UpdateChecker
             throw;
         }
         finally { _gate.Release(); }
+    }
+
+    /// <summary>
+    /// Install now unless the child is in the middle of paid game or YouTube time (then wait — at most two hours).
+    /// A lesson in progress just restarts the app for a few seconds; progress and coins are kept by the service.
+    /// </summary>
+    private bool GoodMoment()
+    {
+        if (_session.Current is not { } s) return true;
+        if (_stagedAt is { } at && DateTimeOffset.UtcNow - at > MaxWait) return true;
+        return !_unlocks.ActiveFor(s.Child.Id).Any(u => u.Kind is PrizeKind.ArcadeUnlock or PrizeKind.YouTube);
     }
 
     /// <summary>Called by the worker when a child logs off and an update is waiting.</summary>

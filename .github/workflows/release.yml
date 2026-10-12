@@ -19,6 +19,8 @@ concurrency:
 jobs:
   build:
     runs-on: windows-latest
+    outputs:
+      version: ${{ steps.ver.outputs.version }}
     env:
       DOTNET_NOLOGO: 1
       DOTNET_CLI_TELEMETRY_OPTOUT: 1
@@ -121,3 +123,55 @@ jobs:
           NOTES="Automated build of ${GITHUB_SHA::7}: $(git log -1 --pretty=%s)"
           gh release create "$V" dist/CoinQuest-win-x64.zip dist/CoinQuest-win-x64.zip.sha256 dist/CoinQuest-Setup-*.exe \
             --title "CoinQuest $V" --notes "$NOTES" --latest
+
+  # ---------- end-to-end test of the real installed app, with screenshots ----------
+  # Installs the release on a clean Windows machine, sets it up through the Parent Console, then plays it as a
+  # separate standard "kid" account (internet-locked like a real child): arcade, sampler, YouTube, Letter Rescue,
+  # Scripture typing. Screenshots and logs are uploaded as the "e2e-screens" artifact.
+  e2e:
+    needs: build
+    runs-on: windows-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          name: coinquest-${{ needs.build.outputs.version }}
+          path: dist
+      - name: Create the kid account and install CoinQuest
+        shell: pwsh
+        run: |
+          net user kid 'Kid-Pass-2026!' /add /y
+          $setup = Get-ChildItem dist/CoinQuest-Setup-*.exe | Select-Object -First 1
+          Start-Process $setup.FullName -ArgumentList '/VERYSILENT','/SUPPRESSMSGBOXES','/NORESTART' -Wait
+          New-Item -ItemType File -Force 'C:\ProgramData\CoinQuest\e2e-test-mode' | Out-Null
+          Restart-Service CoinQuestGuardian
+          Start-Sleep 5
+          Get-Service CoinQuestGuardian
+          query user
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Play it
+        shell: pwsh
+        working-directory: tests/e2e
+        run: |
+          npm init -y | Out-Null
+          npm i playwright-core@1.48.2 --no-audit --no-fund | Out-Null
+          node run.mjs
+        env:
+          E2E_OUT: ${{ github.workspace }}/e2e-shots
+      - name: Collect logs
+        if: always()
+        shell: pwsh
+        run: |
+          New-Item -ItemType Directory -Force e2e-shots/logs | Out-Null
+          Copy-Item C:\ProgramData\CoinQuest\logs\* e2e-shots/logs/ -ErrorAction SilentlyContinue
+          Copy-Item C:\Users\kid\AppData\Local\CoinQuest\shell.log e2e-shots/logs/kid-shell.log -ErrorAction SilentlyContinue
+          Copy-Item $env:LOCALAPPDATA\CoinQuest\shell.log e2e-shots/logs/parent-shell.log -ErrorAction SilentlyContinue
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: e2e-screens
+          path: e2e-shots
+          retention-days: 14
