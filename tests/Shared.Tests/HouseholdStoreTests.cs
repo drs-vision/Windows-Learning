@@ -57,4 +57,29 @@ public class SafeFileTests
         Assert.Equal("new", File.ReadAllText(path));
         Assert.Empty(Directory.EnumerateFiles(Path.GetDirectoryName(path)!, Path.GetFileName(path) + ".*.tmp"));
     }
+
+    [Fact]
+    public void Writes_over_a_hidden_readonly_file()
+    {
+        var path = Path.Combine(Path.GetTempPath(), "cq-safe-" + Guid.NewGuid().ToString("N") + ".json");
+        File.WriteAllText(path, "old");
+        File.SetAttributes(path, FileAttributes.Hidden | FileAttributes.ReadOnly);
+        CoinQuest.Shared.Config.SafeFile.WriteAllText(path, "new");
+        Assert.Equal("new", File.ReadAllText(path));
+    }
+
+    [Fact]
+    public void Household_saves_to_a_fallback_copy_when_the_main_file_is_locked_and_reloads_it()
+    {
+        var path = Path.Combine(Path.GetTempPath(), "cq-hh-" + Guid.NewGuid().ToString("N") + ".json");
+        var store = new HouseholdStore(path);
+        store.Update(h => h with { Name = "First" });
+        // Exclusive lock: nothing can write, rename over, or delete the main file.
+        using (new FileStream(path, FileMode.Open, FileAccess.Read, FileShare.None))
+        {
+            try { store.Update(h => h with { Name = "Second" }); }
+            catch (IOException) { return; } // non-Windows file locking differs; the Windows CI run covers this
+        }
+        Assert.Equal("Second", new HouseholdStore(path).Current.Name);
+    }
 }

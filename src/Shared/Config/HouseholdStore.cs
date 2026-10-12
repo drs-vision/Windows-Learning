@@ -33,18 +33,58 @@ public sealed class HouseholdStore
 
     public event Action<Household>? Changed;
 
+    /// <summary>
+    /// Fallback copies ("household-&lt;ticks&gt;.json") written when Windows refuses the main file. The newest readable
+    /// file always wins, so settings are never lost to a stuck file.
+    /// </summary>
+    private IEnumerable<string> Alternates()
+    {
+        var dir = Path.GetDirectoryName(_path)!;
+        if (!Directory.Exists(dir)) return Array.Empty<string>();
+        return Directory.EnumerateFiles(dir, Path.GetFileNameWithoutExtension(_path) + "-*" + Path.GetExtension(_path));
+    }
+
+    /// <summary>Set when the last save had to use a fallback copy (shown in the Parent Console's log only).</summary>
+    public string? LastSaveProblem { get; private set; }
+
     private Household Load()
     {
-        if (!File.Exists(_path)) return new Household();
+        var candidates = new[] { _path }.Concat(Alternates()).Where(File.Exists)
+            .OrderByDescending(f => File.GetLastWriteTimeUtc(f)).ToList();
+        if (candidates.Count == 0) return new Household();
+        foreach (var file in candidates)
+        {
+            try
+            {
+                var h = JsonSerializer.Deserialize<Household>(File.ReadAllText(file), Json);
+                if (h is not null) return Migrate(h);
+            }
+            catch
+            {
+                // Corrupt file: keep a copy for diagnosis and try the next newest.
+                try { File.Copy(file, file + ".corrupt." + DateTime.UtcNow.Ticks, overwrite: true); } catch { }
+            }
+        }
+        return new Household(); // fail safe: empty household = everything locked
+    }
+
+    private void Save(Household h)
+    {
+        var json = JsonSerializer.Serialize(h, Json);
         try
         {
-            return Migrate(JsonSerializer.Deserialize<Household>(File.ReadAllText(_path), Json) ?? new Household());
+            SafeFile.WriteAllText(_path, json);
+            LastSaveProblem = null;
+            foreach (var alt in Alternates()) { try { File.Delete(alt); } catch { } }
         }
-        catch
+        catch (UnauthorizedAccessException ex)
         {
-            // Corrupt file: keep a copy for diagnosis and fail safe (empty household = everything locked).
-            File.Copy(_path, _path + ".corrupt." + DateTime.UtcNow.Ticks, overwrite: true);
-            return new Household();
+            // Windows won't let us touch the main file (antivirus lock, damaged permissions, pending delete…).
+            // Save a fresh copy beside it instead; Load() picks the newest. Old copies are tidied as we go.
+            var alt = Path.Combine(Path.GetDirectoryName(_path)!, $"{Path.GetFileNameWithoutExtension(_path)}-{DateTime.UtcNow.Ticks}{Path.GetExtension(_path)}");
+            SafeFile.WriteAllText(alt, json);
+            LastSaveProblem = ex.Message;
+            foreach (var old in Alternates().Where(a => a != alt)) { try { File.Delete(old); } catch { } }
         }
     }
 
@@ -87,7 +127,7 @@ public sealed class HouseholdStore
         lock (_gate)
         {
             next = mutate(_current);
-            SafeFile.WriteAllText(_path, JsonSerializer.Serialize(next, Json));
+            Save(next);
             _current = next;
         }
         Changed?.Invoke(next);
