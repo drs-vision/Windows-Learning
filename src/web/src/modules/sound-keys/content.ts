@@ -137,7 +137,10 @@ export function rng(seed: number): () => number {
 const pick = <T,>(r: () => number, xs: T[]) => xs[Math.floor(r() * xs.length)];
 function shuffle<T>(r: () => number, xs: T[]): T[] { const a = [...xs]; for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(r() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; }
 
-export type StepKind = 'meet' | 'listen' | 'blaster' | 'words' | 'spell' | 'read' | 'boss' | 'sentence' | 'keys';
+export type StepKind = 'meet' | 'home' | 'listen' | 'blaster' | 'words' | 'spell' | 'read' | 'boss' | 'sentence' | 'keys';
+
+/** 1–3 stars from the share of items typed right the first time. Below 80% the lesson comes round again. */
+export function starsFor(ratio: number): number { return ratio >= 0.95 ? 3 : ratio >= 0.8 ? 2 : 1; }
 export interface Step { kind: StepKind; items: string[] }
 
 /**
@@ -185,6 +188,8 @@ export function buildLesson(lessonId: number, seed: number): Step[] {
   if (lesson.kind === 'new' && sound) {
     // 1. Charge the key: press the new key 5 times.
     steps.push({ kind: 'meet', items: Array(5).fill(sound.keys) });
+    // Very first lesson: find home base — the bumps on F and J, one pointer finger each.
+    if (lessonId === 1) steps.push({ kind: 'home', items: ['f', 'j', 'f', 'j', 'f', 'j', 'f', 'j'] });
     // 2. Sound echo: hear a sound, find its key. Mostly the new one.
     const listenPool = lesson.known.filter((s) => s !== 'ck' && s !== sound.id);
     steps.push({ kind: 'listen', items: shuffle(r, [sound.id, sound.id, sound.id, ...shuffle(r, listenPool).slice(0, 3)]).map((s) => SOUNDS[s].keys) });

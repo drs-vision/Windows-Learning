@@ -8,8 +8,13 @@ export interface TypingDone { typed: string; startedAt: number; finishedAt: numb
  * character right/wrong, shows live WPM and accuracy, and calls onDone when the last character is typed
  * (or Enter is pressed after the text is complete). Backspace is allowed — accuracy counts the final text.
  */
-export function TypingBox({ text, onDone, highlightKeys, big }: { text: string; onDone: (d: TypingDone) => void; highlightKeys?: string; big?: boolean }) {
+/**
+ * errorless: a wrong key doesn't go in (the right key just stays lit), so there is nothing to "get wrong" and no
+ * speed or accuracy to worry about; the stats bar is hidden too.
+ */
+export function TypingBox({ text, onDone, highlightKeys, big, errorless }: { text: string; onDone: (d: TypingDone) => void; highlightKeys?: string; big?: boolean; errorless?: boolean }) {
   const [typed, setTyped] = useState('');
+  const [miss, setMiss] = useState<string | null>(null);
   const [startedAt, setStartedAt] = useState<number | null>(null);
   const [now, setNow] = useState(Date.now());
   const inputRef = useRef<HTMLTextAreaElement>(null);
@@ -32,13 +37,23 @@ export function TypingBox({ text, onDone, highlightKeys, big }: { text: string; 
   function onInput(e: Event) {
     const v = (e.target as HTMLTextAreaElement).value;
     if (!startedAt && v.length > 0) setStartedAt(Date.now());
+    if (errorless) {
+      // Accept exactly one correct new character at a time (also blocks pasting).
+      const ok = v.length === typed.length + 1 && v.startsWith(typed) && v[v.length - 1] === text[typed.length];
+      if (!ok) { if (v.length > typed.length) setMiss(v[v.length - 1]); (e.target as HTMLTextAreaElement).value = typed; return; }
+      setMiss(null);
+      setTyped(v);
+      if (v.length >= text.length) finish(v);
+      return;
+    }
     const next = v.slice(0, text.length);
     setTyped(next);
     if (next.length >= text.length) finish(next);
   }
 
   function onKey(e: KeyboardEvent) {
-    if (e.key === 'Enter') { e.preventDefault(); if (typed.length >= text.length * 0.9) finish(typed); }
+    if (e.key === 'Enter') { e.preventDefault(); if (!errorless && typed.length >= text.length * 0.9) finish(typed); }
+    if (errorless && e.key === 'Backspace') e.preventDefault();
     if (e.key === 'Tab') e.preventDefault();
   }
 
@@ -53,11 +68,13 @@ export function TypingBox({ text, onDone, highlightKeys, big }: { text: string; 
         })}
       </div>
       <textarea ref={inputRef} class="typing-input" value={typed} onInput={onInput} onKeyDown={onKey} spellcheck={false} autocomplete="off" autocapitalize="off" aria-label="type here" />
-      <div class="typing-stats">
-        <span>{Math.round(wpm)} <small>WPM</small></span>
-        <span>{Math.round(accuracy * 100)}% <small>accuracy</small></span>
-        <span>{Math.round(elapsed / 1000)}<small>s</small></span>
-      </div>
+      {errorless
+        ? <div class="typing-stats"><span>{typed.length} / {text.length} <small>letters</small></span>{miss && <span class="muted">That was “{miss === ' ' ? 'space' : miss}” — look for the lit key{nextChar !== nextChar.toLowerCase() ? ' (hold Shift)' : ''}.</span>}</div>
+        : <div class="typing-stats">
+            <span>{Math.round(wpm)} <small>WPM</small></span>
+            <span>{Math.round(accuracy * 100)}% <small>accuracy</small></span>
+            <span>{Math.round(elapsed / 1000)}<small>s</small></span>
+          </div>}
       {highlightKeys !== undefined && <Keyboard next={nextChar} lane={highlightKeys} />}
     </div>
   );

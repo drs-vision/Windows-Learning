@@ -1,6 +1,6 @@
 import type { Activity, Result, ModuleSettings, ScoreOutcome } from '../../core/types';
 import { invalid } from '../../core/module';
-import { LESSONS, buildLesson, totalItems } from './content';
+import { LESSONS, buildLesson, starsFor, totalItems } from './content';
 
 export const DEFAULTS = { coinsPerActivity: 12, dailyCap: 100 };
 /** First-try share needed to move on. Below it, the lesson repeats (with a fresh shuffle) — never a "fail" screen. */
@@ -31,6 +31,9 @@ export function scoreSoundKeys(activity: Activity, result: Result, settings: Mod
   const coins = Math.round(settings.coinsPerActivity * (0.5 + 0.5 * ratio)) + (mastered && lesson.kind === 'review' ? Math.round(settings.coinsPerActivity / 2) : 0);
   const last = LESSONS[LESSONS.length - 1].id;
   const done = Array.isArray(activity.data.done) ? (activity.data.done as number[]) : [];
+  const prevStars = (activity.data.stars && typeof activity.data.stars === 'object' ? activity.data.stars : {}) as Record<string, number>;
+  const stars = starsFor(ratio);
+  const best = Math.max(stars, Number(prevStars[String(lessonId)] ?? 0));
   return {
     valid: true, coins, needsApproval: false,
     detail: `${lesson.title} · ${Math.round(ratio * 100)}% first try${mastered ? '' : ' · will practise again'}`,
@@ -39,6 +42,8 @@ export function scoreSoundKeys(activity: Activity, result: Result, settings: Mod
       done: mastered && !done.includes(lessonId) ? [...done, lessonId] : done,
       seed: seed + 1,
       lastRatio: Math.round(ratio * 100),
+      lastStars: stars,
+      stars: { ...prevStars, [String(lessonId)]: best },
     },
   };
 }

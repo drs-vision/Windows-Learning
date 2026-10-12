@@ -85,6 +85,10 @@ public class WebShellWindow : Window
         _pipe.Disconnected += () => { Log("Guardian disconnected"); Dispatcher.Invoke(() => core.PostWebMessageAsString("{\"name\":\"disconnected\"}")); };
         await TryConnectAsync();
 
+        // Keyboard games need the keyboard: give the page focus as soon as it loads and whenever the window comes back.
+        core.NavigationCompleted += (_, _) => Dispatcher.BeginInvoke(() => _web.Focus());
+        Activated += (_, _) => _web.Focus();
+
         var dev = Environment.GetEnvironmentVariable("COINQUEST_WEB_DEV"); // e.g. http://localhost:5173 during development
         core.Navigate(dev is not null ? $"{dev}/?app={_app}" : $"https://coinquest.local/web/index.html?app={_app}");
     }

@@ -15,7 +15,7 @@ export const bibleTyping: LessonModule = {
   id: 'bible-typing',
   title: 'Scripture Typing',
   tagline: 'Type a passage, keep it forever',
-  description: 'Type passages from the King James Bible (public domain). Coins scale with passage length and accuracy — 90% or better for full credit. Every passage typed accurately is added to the child\'s collection. Verified automatically.',
+  description: 'Type passages from the King James Bible (public domain). Coins scale with passage length only — no speed or accuracy targets. Typing is errorless: a wrong key simply doesn\'t go in and the right key stays lit, so every finished passage is typed correctly and added to the child\'s collection. Verified automatically.',
   icon: '📖',
   verification: 'in_app',
   defaults: DEFAULTS,
@@ -66,7 +66,7 @@ function BibleView({ activity, ctx }: { activity: Activity; ctx: ActivityContext
           </button>
         ))}
       </div>
-      <p class="muted">Longer passages pay more. Keep accuracy at 90% or better for full coins.</p>
+      <p class="muted">Longer passages pay more. Take your time — there's no clock, and only the right key goes in.</p>
       <button class="primary" onClick={() => setPhase('type')}>Type {passage.ref}</button>
       <button class="ghost" onClick={ctx.exit}>Back</button>
     </div>
@@ -75,7 +75,7 @@ function BibleView({ activity, ctx }: { activity: Activity; ctx: ActivityContext
   if (phase === 'type') return (
     <div class="activity">
       <h3 class="passage-ref">{passage.ref}</h3>
-      <TypingBox text={passage.text} onDone={onTyped} />
+      <TypingBox text={passage.text} onDone={onTyped} errorless highlightKeys="" />
       {error && <p class="error">{error} <button class="ghost small" onClick={() => { setError(''); setPhase('pick'); }}>Try again</button></p>}
       {!error && <button class="ghost small" onClick={() => setPhase('pick')}>Quit</button>}
     </div>
@@ -84,7 +84,7 @@ function BibleView({ activity, ctx }: { activity: Activity; ctx: ActivityContext
   return (
     <div class="activity-result">
       <div class="coins-earned">{outcome?.coins ?? 0} 🪙</div>
-      <h2>{(stats?.accuracy ?? 0) >= 0.9 ? 'Added to your collection' : 'Keep practicing'}</h2>
+      <h2>{outcome && outcome.coins > 0 ? 'Added to your collection' : 'Keep practicing'}</h2>
       <p>{outcome?.detail}</p>
       <button class="primary" onClick={ctx.exit}>Continue</button>
     </div>
