@@ -171,6 +171,19 @@ jobs:
           Copy-Item C:\ProgramData\CoinQuest\logs\* e2e-shots/logs/ -ErrorAction SilentlyContinue
           Copy-Item C:\Users\kid\AppData\Local\CoinQuest\shell.log e2e-shots/logs/kid-shell.log -ErrorAction SilentlyContinue
           Copy-Item $env:LOCALAPPDATA\CoinQuest\shell.log e2e-shots/logs/parent-shell.log -ErrorAction SilentlyContinue
+      - name: Publish screenshots to the e2e-results branch
+        if: always()
+        shell: bash
+        run: |
+          RUN="${{ needs.build.outputs.version }}"
+          git config user.name "coinquest-ci"; git config user.email "ci@users.noreply.github.com"
+          git fetch origin e2e-results:e2e-results 2>/dev/null || true
+          mkdir -p /tmp/e2e && cp -r e2e-shots/. /tmp/e2e/
+          if git rev-parse --verify e2e-results >/dev/null 2>&1; then git checkout -f e2e-results; else git checkout --orphan e2e-results; git rm -rf . >/dev/null; fi
+          rm -rf "runs/$RUN" latest && mkdir -p "runs/$RUN" && cp -r /tmp/e2e/. "runs/$RUN/" && cp -r /tmp/e2e latest
+          git add -A && git commit -qm "e2e $RUN" && git push -q origin e2e-results
+          # Summary as annotations, readable without downloading anything
+          while IFS= read -r line; do echo "::notice title=e2e::$line"; done < <(grep -E "PASS|FAIL|ALL|games:|finish:|error" /tmp/e2e/log.txt | head -40)
       - uses: actions/upload-artifact@v4
         if: always()
         with:
