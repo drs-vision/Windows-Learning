@@ -72,8 +72,12 @@ public sealed record YouTubeChannel
 /// </summary>
 public sealed record ArcadeSettings
 {
-    /// <summary>A play lasts until the child leaves the game; this is only the safety cap for one play.</summary>
+    /// <summary>Old pay-per-play cap; unused since arcade time is bought in 5-minute blocks.</summary>
     public int MinutesPerPlay { get; init; } = 15;
+    /// <summary>Sampler pass: any game, for this many minutes.</summary>
+    public int SamplerMinutes { get; init; } = 10;
+    /// <summary>Sampler pass price; 0 = automatic (a little more than 10 minutes of the priciest game).</summary>
+    public int SamplerPrice { get; init; }
     public Dictionary<string, int> PriceOverrides { get; init; } = new();
     public List<string> Hidden { get; init; } = new();
     /// <summary>Games hosted on the web by their makers/publishers, played in a locked window.</summary>
@@ -87,7 +91,20 @@ public sealed record ArcadeSettings
     /// <summary>Curated picks already added once — so a game a parent removed is never re-added.</summary>
     public List<string> StockedPicks { get; init; } = new();
 
-    public static int DefaultPrice(int strategy) => Math.Clamp(strategy, 1, 5) switch { 5 => 4, 4 => 6, 3 => 9, 2 => 12, _ => 15 };
+    /// <summary>Arcade time is bought in blocks of this many minutes ("+" adds one block).</summary>
+    public const int BlockMinutes = 5;
+    public const int MaxBlocks = 12;
+
+    /// <summary>Coins per 5-minute block. More thinking = cheaper.</summary>
+    public static int DefaultPrice(int strategy) => Math.Clamp(strategy, 1, 5) switch { 5 => 2, 4 => 3, 3 => 4, 2 => 5, _ => 6 };
+
+    /// <summary>Automatic sampler price: a bit more than the same time on the most expensive single game.</summary>
+    public static int AutoSamplerPrice(IEnumerable<int> prices, int samplerMinutes)
+    {
+        var max = prices.DefaultIfEmpty(DefaultPrice(1)).Max();
+        var blocks = Math.Max(1, (int)Math.Ceiling(samplerMinutes / (double)BlockMinutes));
+        return max * blocks + Math.Max(2, max * blocks / 5);
+    }
 }
 
 public sealed record FlashpointGame

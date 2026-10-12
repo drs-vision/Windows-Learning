@@ -43,7 +43,7 @@ public sealed class ProcessEnforcer
 
     /// <summary>Flashpoint folder, if a Flashpoint game play is running right now (its launcher, server and player must be allowed).</summary>
     private string? ActiveFlashpointRoot(SessionMonitor.ActiveSession s) =>
-        _unlocks.ActiveFor(s.Child.Id).Any(u => u.Kind == PrizeKind.ArcadeUnlock && u.Targets.Any(t => t.StartsWith("fp-")))
+        _unlocks.ActiveFor(s.Child.Id).Any(u => u.Kind == PrizeKind.ArcadeUnlock && u.Targets.Any(t => t.StartsWith("fp-") || t == "*"))
             ? _fp.Root(s.Child.Arcade.FlashpointRoot) : null;
 
     /// <summary>Close everything running from a folder in a session (used when a Flashpoint play ends).</summary>

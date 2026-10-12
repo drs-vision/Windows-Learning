@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useRef, useState } from 'preact/hooks';
 import type { Game, Unlock } from '../../core/types';
+import { BLOCK_MINUTES } from '../../core/types';
 import { bridge } from '../../core/bridge';
 
 declare global { interface Window { RufflePlayer?: any } }
@@ -21,8 +22,11 @@ function loadRuffle(): Promise<void> {
   return ruffleLoading;
 }
 
+/** Time he can play this game right now: its own time, or a sampler pass ("*"), whichever lasts longer. */
 const unlockFor = (unlocks: Unlock[], gameId: string) =>
-  unlocks.find((u) => u.kind === 'arcadeUnlock' && u.secondsLeft > 0 && (u.targets.length === 0 || u.targets.includes(gameId)));
+  unlocks.filter((u) => u.kind === 'arcadeUnlock' && u.secondsLeft > 0 && (u.targets.length === 0 || u.targets.includes(gameId) || u.targets.includes('*')))
+    .sort((a, b) => b.secondsLeft - a.secondsLeft)[0];
+const samplerFor = (unlocks: Unlock[]) => unlocks.find((u) => u.kind === 'arcadeUnlock' && u.secondsLeft > 0 && u.targets.includes('*'));
 
 /** Deterministic, colourful cover art for games without a thumbnail. */
 function Cover({ game, big }: { game: Game; big?: boolean }) {
@@ -61,11 +65,17 @@ function genreKey(g: string): string {
   return 'Arcade';
 }
 
-/** A 2000s-style game portal. Every game is pay-per-play: insert coins, play until you leave the game. */
+/**
+ * A 2000s-style game portal. Time is bought like quarters: press + to add 5 minutes of a game, then Play.
+ * Or save up for a sampler pass: any game, for 10 minutes. Time keeps counting once started; leaving a game
+ * and coming back is free while time is left.
+ */
 export function Arcade({ unlocks, balance, onExit, onChanged }: { unlocks: Unlock[]; balance: number; onExit: () => void; onChanged: () => void }) {
   const [games, setGames] = useState<Game[]>([]);
   const [fpRoot, setFpRoot] = useState<string | null>(null);
-  const [cap, setCap] = useState(15);
+  const [sampler, setSampler] = useState<{ minutes: number; price: number } | null>(null);
+  const [maxBlocks, setMaxBlocks] = useState(12);
+  const [blocks, setBlocks] = useState(1);
   const [q, setQ] = useState('');
   const [cat, setCat] = useState('All');
   const [sel, setSel] = useState<Game | null>(null);
@@ -74,9 +84,9 @@ export function Arcade({ unlocks, balance, onExit, onChanged }: { unlocks: Unloc
   const [busy, setBusy] = useState(false);
 
   useEffect(() => {
-    bridge.arcade().then((r) => { setGames(r.games); setCap(r.minutesPerPlay ?? 15); setFpRoot(r.flashpointRoot ?? null); }).catch((e) => setError(e.message));
+    bridge.arcade().then((r) => { setGames(r.games); setSampler(r.sampler ?? null); setMaxBlocks(r.maxBlocks ?? 12); setFpRoot(r.flashpointRoot ?? null); }).catch((e) => setError(e.message));
   }, []);
-  // The play's safety cap ran out (or a parent ended it): close whatever is open.
+  // Time ran out (or a parent ended it): close whatever is open.
   useEffect(() => { if (playing && !unlockFor(unlocks, playing.id)) { bridge.closeGame(); setPlaying(null); } }, [unlocks, playing]);
   // The child closed the game window: the play is over.
   useEffect(() => bridge.on((ev) => {
@@ -87,10 +97,21 @@ export function Arcade({ unlocks, balance, onExit, onChanged }: { unlocks: Unloc
   const shown = games.filter((g) => (cat === 'All' || genreKey(g.genre) === cat) && (!q || g.title.toLowerCase().includes(q.toLowerCase())));
   const hot = [...games].filter((g) => (g.plays ?? 0) > 0).sort((a, b) => (b.plays ?? 0) - (a.plays ?? 0)).slice(0, 6);
 
-  async function insertCoin(g: Game) {
+  const pass = samplerFor(unlocks);
+  const open = (g: Game) => { setSel(g); setBlocks(unlockFor(unlocks, g.id) ? 0 : 1); };
+
+  async function buySampler() {
+    setError(''); setBusy(true);
+    try { await bridge.arcadeSampler(); onChanged(); }
+    catch (e) { setError((e as Error).message); }
+    finally { setBusy(false); }
+  }
+
+  async function insertCoin(g: Game, n: number) {
     setError(''); setBusy(true);
     try {
-      const r = await bridge.arcadePlay(g.id);
+      if (playing && playing.id !== g.id) { bridge.closeGame(); setPlaying(null); }
+      const r = await bridge.arcadePlay(g.id, n);
       onChanged();
       if (g.kind === 'flashpoint') {
         const root = r.flashpointRoot ?? fpRoot;
@@ -113,7 +134,7 @@ export function Arcade({ unlocks, balance, onExit, onChanged }: { unlocks: Unloc
 
   if (playing && (playing.kind === 'swf' || playing.kind === 'html5')) {
     const u = unlockFor(unlocks, playing.id);
-    return <Player game={playing} onBack={quit} secondsLeft={u?.secondsLeft ?? 0} />;
+    return <Player game={playing} onBack={quit} secondsLeft={u?.secondsLeft ?? 0} sampler={!!pass && !unlocks.some((x) => x.targets.includes(playing.id) && x.secondsLeft > 0)} />;
   }
 
   return (
@@ -125,9 +146,19 @@ export function Arcade({ unlocks, balance, onExit, onChanged }: { unlocks: Unloc
         <button class="ghost" onClick={onExit}>✕</button>
       </header>
       {error && <p class="error">{error}</p>}
+      {sampler && (
+        pass
+          ? <div class="sampler on">🎟️ <b>Sampler pass</b> — play ANY game! <span class="countdown">{fmt(pass.secondsLeft)}</span> left</div>
+          : <div class="sampler">
+              <span>🎟️ <b>Sampler pass</b> — any game, as many as you want, for <b>{sampler.minutes} minutes</b></span>
+              <button class="coin-btn small" disabled={busy || balance < sampler.price} onClick={buySampler}>
+                {balance >= sampler.price ? <>GET PASS <b>🪙 {sampler.price}</b></> : `Save up: ${sampler.price - balance} more 🪙`}
+              </button>
+            </div>
+      )}
       {playing && (
         <div class="now-playing">
-          <span>🎮 Now playing <b>{playing.title}</b> — {playing.kind === 'flashpoint' ? 'it opens in its own window (the first time it may take a moment to download).' : 'it is open in its own window.'}</span>
+          <span>🎮 Now playing <b>{playing.title}</b> · <span class="countdown">{fmt(unlockFor(unlocks, playing.id)?.secondsLeft ?? 0)}</span> left — {playing.kind === 'flashpoint' ? 'it opens in its own window (the first time it may take a moment to download).' : 'it is open in its own window.'}</span>
           <button class="primary" onClick={quit}>I'm done playing</button>
         </div>
       )}
@@ -135,14 +166,14 @@ export function Arcade({ unlocks, balance, onExit, onChanged }: { unlocks: Unloc
 
       {!q && cat === 'All' && hot.length > 0 && (
         <section><h3 class="portal-h">🔥 Your most played</h3>
-          <div class="tile-row">{hot.map((g) => <Tile g={g} onClick={() => setSel(g)} balance={balance} />)}</div>
+          <div class="tile-row">{hot.map((g) => <Tile g={g} onClick={() => open(g)} balance={balance} left={unlockFor(unlocks, g.id)?.secondsLeft} />)}</div>
         </section>
       )}
 
       <section>
         <h3 class="portal-h">{q ? `Results for "${q}"` : cat === 'All' ? '🕹️ All games' : `${GENRE_ICON[cat] ?? ''} ${cat}`} <small class="muted">· {shown.length}</small></h3>
         {games.length === 0 && <p class="muted">No games yet. A parent can add games in the Parent Console → Shop → Arcade.</p>}
-        <div class="tile-grid">{shown.map((g) => <Tile g={g} onClick={() => setSel(g)} balance={balance} />)}</div>
+        <div class="tile-grid">{shown.map((g) => <Tile g={g} onClick={() => open(g)} balance={balance} left={unlockFor(unlocks, g.id)?.secondsLeft} />)}</div>
       </section>
 
       {sel && (
@@ -153,10 +184,8 @@ export function Arcade({ unlocks, balance, onExit, onChanged }: { unlocks: Unloc
               <h2>{sel.title}</h2>
               <p class="muted">{[sel.genre, sel.author].filter(Boolean).join(' · ')}</p>
               <p><span class="brains">{'🧠'.repeat(Math.max(1, sel.strategy))}</span> <small class="muted">thinking games cost less</small></p>
-              <p class="muted small">1 play lasts until you leave the game (max {cap} min).</p>
-              <button class="coin-btn" disabled={busy || balance < sel.price || !!playing} onClick={() => insertCoin(sel)}>
-                {balance >= sel.price ? <>INSERT COIN <b>🪙 {sel.price}</b></> : `Need ${sel.price - balance} more coins`}
-              </button>
+              <TimeBuyer game={sel} balance={balance} blocks={blocks} maxBlocks={maxBlocks} setBlocks={setBlocks} busy={busy}
+                left={unlockFor(unlocks, sel.id)?.secondsLeft ?? 0} onPlay={(n) => insertCoin(sel, n)} />
               <button class="ghost" onClick={() => setSel(null)}>Back</button>
             </div>
           </div>
@@ -166,18 +195,41 @@ export function Arcade({ unlocks, balance, onExit, onChanged }: { unlocks: Unloc
   );
 }
 
-function Tile({ g, onClick, balance }: { g: Game; onClick: () => void; balance: number }) {
+/** + / − in 5-minute steps, then Play. Time already running (own or sampler) can be used for free, and topped up. */
+function TimeBuyer({ game, balance, blocks, maxBlocks, setBlocks, left, busy, onPlay }: {
+  game: Game; balance: number; blocks: number; maxBlocks: number; setBlocks: (n: number) => void; left: number; busy: boolean; onPlay: (blocks: number) => void;
+}) {
+  const cost = game.price * blocks;
+  const minBlocks = left > 0 ? 0 : 1;
+  const canAfford = balance >= cost;
   return (
-    <button class={'tile' + (balance < g.price ? ' poor' : '')} onClick={onClick}>
+    <div class="time-buyer">
+      <p class="muted small">🪙 {game.price} for every {BLOCK_MINUTES} minutes{left > 0 ? <> · <b>{fmt(left)}</b> already on the clock</> : ''}</p>
+      <div class="stepper">
+        <button class="step" disabled={blocks <= minBlocks} onClick={() => setBlocks(blocks - 1)} aria-label="less time">−</button>
+        <div class="step-time"><b>{blocks * BLOCK_MINUTES}</b><small>{left > 0 ? 'more min' : 'min'}</small></div>
+        <button class="step plus" disabled={blocks >= maxBlocks || balance < game.price * (blocks + 1)} onClick={() => setBlocks(blocks + 1)} aria-label="more time">+</button>
+        <div class="step-cost">🪙 {cost}</div>
+      </div>
+      <button class="coin-btn" disabled={busy || !canAfford || (blocks === 0 && left <= 0)} onClick={() => onPlay(blocks)}>
+        {!canAfford ? `Need ${cost - balance} more coins` : blocks === 0 ? <>▶ PLAY</> : left > 0 ? <>ADD TIME & PLAY <b>🪙 {cost}</b></> : <>▶ PLAY <b>🪙 {cost}</b></>}
+      </button>
+    </div>
+  );
+}
+
+function Tile({ g, onClick, balance, left }: { g: Game; onClick: () => void; balance: number; left?: number }) {
+  return (
+    <button class={'tile' + (balance < g.price && !left ? ' poor' : '')} onClick={onClick}>
       <Cover game={g} />
-      <span class="tile-price">🪙 {g.price}</span>
+      {left ? <span class="tile-price time">⏱ {fmt(left)}</span> : <span class="tile-price">🪙 {g.price}<small>/5m</small></span>}
       <b class="tile-title">{g.title}</b>
       <small class="tile-sub">{g.genre || g.author}</small>
     </button>
   );
 }
 
-function Player({ game, onBack, secondsLeft }: { game: Game; onBack: () => void; secondsLeft: number }) {
+function Player({ game, onBack, secondsLeft, sampler }: { game: Game; onBack: () => void; secondsLeft: number; sampler?: boolean }) {
   const host = useRef<HTMLDivElement>(null);
   const [err, setErr] = useState('');
 
@@ -198,9 +250,9 @@ function Player({ game, onBack, secondsLeft }: { game: Game; onBack: () => void;
   return (
     <div class="player">
       <header>
-        <button class="ghost" onClick={onBack}>← I'm done</button>
+        <button class="ghost" onClick={onBack}>{sampler ? '← Pick another game' : '← Back to arcade'}</button>
         <b>{game.title}</b>
-        <span class="countdown" title="Longest a single play can last">{fmt(secondsLeft)}</span>
+        <span class="countdown" title={sampler ? 'Sampler pass time left' : 'Time left on this game'}>{sampler ? '🎟️ ' : '⏱ '}{fmt(secondsLeft)}</span>
       </header>
       {err && <p class="error">{err}</p>}
       {game.kind === 'swf'

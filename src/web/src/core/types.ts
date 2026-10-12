@@ -98,7 +98,7 @@ export interface ChildState {
 
 export interface YouTubeChannel { id: string; title: string; url: string }
 export interface WebGame { id: string; title: string; url: string; strategy: number }
-export interface ArcadeSettings { minutesPerPlay: number; priceOverrides: Record<string, number>; hidden: string[]; webGames: WebGame[]; flashpoint?: FlashpointGame[]; flashpointRoot?: string | null; autoClassics?: boolean; stockedPicks?: string[] }
+export interface ArcadeSettings { minutesPerPlay: number; samplerMinutes?: number; samplerPrice?: number; priceOverrides: Record<string, number>; hidden: string[]; webGames: WebGame[]; flashpoint?: FlashpointGame[]; flashpointRoot?: string | null; autoClassics?: boolean; stockedPicks?: string[] }
 export interface Video { id: string; title: string; channelId: string; channelTitle: string; published: string; thumbnail: string }
 
 export interface Child {
@@ -152,4 +152,12 @@ export interface FlashpointGame { id: string; title: string; developer: string; 
 export interface FpCatalogGame { id: string; title: string; developer: string; publisher: string; platform: string; tags: string; series: string; releaseDate: string; description: string }
 
 /** More thinking = cheaper. Mirrors ArcadeSettings.DefaultPrice in Models.cs. */
-export const defaultArcadePrice = (strategy: number) => ({ 5: 4, 4: 6, 3: 9, 2: 12 } as Record<number, number>)[Math.max(1, Math.min(5, Math.round(strategy)))] ?? 15;
+/** Coins per 5 minutes of a game (must match ArcadeSettings.DefaultPrice). More thinking = cheaper. */
+export const defaultArcadePrice = (strategy: number) => ({ 5: 2, 4: 3, 3: 4, 2: 5 } as Record<number, number>)[Math.max(1, Math.min(5, Math.round(strategy)))] ?? 6;
+export const BLOCK_MINUTES = 5;
+/** Must match ArcadeSettings.AutoSamplerPrice. */
+export function autoSamplerPrice(prices: number[], minutes: number) {
+  const max = prices.length ? Math.max(...prices) : defaultArcadePrice(1);
+  const blocks = Math.max(1, Math.ceil(minutes / BLOCK_MINUTES));
+  return max * blocks + Math.max(2, Math.floor((max * blocks) / 5));
+}

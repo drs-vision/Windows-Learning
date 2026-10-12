@@ -68,8 +68,10 @@ class Bridge {
   submit(moduleId: string, activity: unknown, result: unknown) { return this.call<{ coins: number; pending: boolean; capped: boolean; detail: string; balance: number }>('submit', { moduleId, activity, result }); }
   buy(prizeId: string) { return this.call<{ balance: number; unlock?: unknown }>('buy', { prizeId }); }
   saveProgress(moduleId: string, progress: unknown) { return this.call('progress', { moduleId, progress }); }
-  arcade() { return this.call<{ games: Game[]; minutesPerPlay: number; flashpointRoot?: string | null }>('arcade.list'); }
-  arcadePlay(gameId: string) { return this.call<{ balance: number; unlock?: Unlock; game: Game; flashpointRoot?: string | null; alreadyPlaying?: boolean }>('arcade.play', { gameId }); }
+  arcade() { return this.call<{ games: Game[]; blockMinutes?: number; maxBlocks?: number; sampler?: { minutes: number; price: number }; flashpointRoot?: string | null }>('arcade.list'); }
+  /** blocks × 5 minutes of one game; blocks 0 = jump back in with time already bought (or a sampler pass). */
+  arcadePlay(gameId: string, blocks: number) { return this.call<{ balance: number; unlock?: Unlock; game: Game; flashpointRoot?: string | null; alreadyPlaying?: boolean }>('arcade.play', { gameId, blocks }); }
+  arcadeSampler() { return this.call<{ balance: number; unlock: Unlock }>('arcade.sampler'); }
   arcadeQuit(gameId: string) { return this.call('arcade.quit', { gameId }).catch(() => undefined); }
   flashpoint(root: string, id: string, verb: 'play' | 'prepare' = 'play') { return this.call('shell.flashpoint', { root, id, verb }); }
   youtubeLibrary() { return this.call<{ channels: { id: string; title: string }[]; videos: Video[]; errors: string[] }>('youtube.library'); }

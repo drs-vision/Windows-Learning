@@ -332,3 +332,21 @@ button.big { font-size: 1.1em; padding: .7em 1.4em; }
 .sk-picture.small { font-size: 2.6rem; }
 .sk-target.phrase .sk-ch { font-size: 2rem; min-width: 1.1em; }
 .lr-duo { display: flex; justify-content: center; gap: 1em; }
+
+/* ---------------------------------------------------------------- arcade time: + / − and sampler pass */
+.tile-price small { font-size: .7em; opacity: .8; margin-left: 1px; }
+.tile-price.time { color: #4ade80; border-color: rgba(74,222,128,.6); }
+.time-buyer { margin: .6em 0; }
+.stepper { display: flex; align-items: center; gap: .6em; margin: .4em 0 .8em; }
+.stepper .step { width: 56px; height: 56px; border-radius: 50%; font-size: 2rem; font-weight: 900; line-height: 1; padding: 0; background: var(--panel-2); color: var(--ink); border: 3px solid rgba(255,255,255,.2); }
+.stepper .step.plus { background: #f59e0b; color: #1a1400; border-color: #fbbf24; box-shadow: 0 4px 0 #b45309; }
+.stepper .step.plus:active { transform: translateY(3px); box-shadow: 0 1px 0 #b45309; }
+.stepper .step:disabled { opacity: .35; box-shadow: none; }
+.step-time { min-width: 76px; text-align: center; display: flex; flex-direction: column; font-family: var(--display); }
+.step-time b { font-size: 2.2rem; line-height: 1; } .step-time small { color: var(--muted); }
+.step-cost { font-family: var(--display); font-size: 1.4rem; font-weight: 900; color: var(--gold); margin-left: .4em; }
+.sampler { display: flex; align-items: center; justify-content: space-between; gap: 1em; padding: .7em 1em; margin-bottom: .8em; border-radius: 12px;
+  background: repeating-linear-gradient(135deg, #4c1d95 0 18px, #5b21b6 18px 36px); border: 2px dashed #c4b5fd; font-size: 1.1rem; }
+.sampler.on { justify-content: center; background: linear-gradient(90deg, #7c3aed, #db2777); border-style: solid; font-size: 1.25rem; }
+.coin-btn.small { font-size: 1.05rem; padding: .5em .9em; }
+.countdown { font-family: var(--mono); font-weight: 800; }

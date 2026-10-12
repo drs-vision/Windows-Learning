@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'preact/hooks';
 import type { Child, FlashpointGame, FpCatalogGame, Game, ParentState, Prize, WebGame } from '../core/types';
-import { defaultArcadePrice } from '../core/types';
+import { BLOCK_MINUTES, autoSamplerPrice, defaultArcadePrice } from '../core/types';
 import { bridge, type FpStatus } from '../core/bridge';
 import { MODULES } from '../modules/registry';
 import { SetupWizard } from './SetupWizard';
@@ -323,11 +323,16 @@ function ArcadeManager({ child, onSave }: { child: Child; onSave: (c: Child) => 
       <h3>🕹️ Arcade</h3>
       <FlashpointPanel child={child} onSave={onSave} onChanged={reload} />
       <h4>Prices</h4>
-      <p class="muted">Every game costs coins per play, like quarters in a machine. A play lasts until he leaves the game. Games that take more thinking (🧠) cost less. Change any price below.</p>
-      <label class="row">Longest a single play can last (minutes) <input type="number" min={1} max={120} value={settings.minutesPerPlay} onChange={(e) => saveArcade({ ...settings, minutesPerPlay: Number((e.target as HTMLInputElement).value) || 15 })} style={{ width: '6em' }} /></label>
+      <p class="muted">Like quarters in a machine: each <b>+</b> buys {BLOCK_MINUTES} more minutes of a game, then he presses Play. Games that take more thinking (🧠) cost less. Prices below are <b>coins per {BLOCK_MINUTES} minutes</b>. Time keeps counting once it starts; he can leave a game and come back while time is left.</p>
+      <div class="row">
+        <label>🎟️ Sampler pass — any game, for <input type="number" min={5} max={60} step={5} value={settings.samplerMinutes ?? 10} style={{ width: '4.5em' }}
+          onChange={(e) => saveArcade({ ...settings, samplerMinutes: Number((e.target as HTMLInputElement).value) || 10 })} /> minutes</label>
+        <label>costs <input type="number" min={0} value={settings.samplerPrice || ''} placeholder={String(autoSamplerPrice((games ?? []).filter((g) => !g.hidden).map((g) => g.price), settings.samplerMinutes ?? 10))} style={{ width: '5em' }}
+          onChange={(e) => saveArcade({ ...settings, samplerPrice: Number((e.target as HTMLInputElement).value) || 0 })} /> 🪙 <span class="muted small">(blank = automatic: a little more than the same time on the priciest game)</span></label>
+      </div>
       {err && <p class="error">{err}</p>}
       <table class="arcade-table">
-        <thead><tr><th>Game</th><th>Thinking</th><th>Price 🪙</th><th>Show</th><th /></tr></thead>
+        <thead><tr><th>Game</th><th>Thinking</th><th>🪙 per {BLOCK_MINUTES} min</th><th>Show</th><th /></tr></thead>
         <tbody>
           {(games ?? []).filter((g) => g.available).map((g) => {
             const hidden = settings.hidden.includes(g.id);

@@ -55,6 +55,12 @@ public sealed class NetGate
         var active = children.SelectMany(c => _unlocks.ActiveFor(c.Id)).ToList();
         if (active.Any(u => u.Kind == PrizeKind.SiteUnlock && u.Targets.Any(Match))) return new(true, "site unlock");
         if (active.Any(u => u.Kind == PrizeKind.YouTube) && YouTubeHosts.Any(Match)) return new(true, "YouTube time");
+        // Web-hosted arcade games: their site opens only while time on that game (or a sampler pass) is running.
+        foreach (var c in children)
+            foreach (var w in c.Arcade.WebGames)
+                if (Uri.TryCreate(w.Url, UriKind.Absolute, out var wu) && Match(wu.Host)
+                    && _unlocks.ActiveFor(c.Id).Any(u => u.Kind == PrizeKind.ArcadeUnlock && (u.Targets.Contains(w.Id) || u.Targets.Contains("*"))))
+                    return new(true, "arcade time");
         return new(false, "not on the list");
     }
 

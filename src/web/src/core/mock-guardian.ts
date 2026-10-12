@@ -3,7 +3,7 @@
 
 import type { Child, ChildState, LedgerEntry, ParentState, PendingClaim, Prize, Unlock } from './types';
 import { scoreModule } from '../scorers';
-import { defaultArcadePrice } from './types';
+import { autoSamplerPrice, defaultArcadePrice } from './types';
 import type { Ev } from './bridge';
 
 const STARTER_PRIZES: Prize[] = [
@@ -121,19 +121,37 @@ export class MockGuardian {
           .filter((g: any) => g.enabled !== false)
           .map((g: any) => ({ ...g, url: './content/games/' + g.path, available: true, price: price(g.id, g.strategy ?? 2), plays: plays(g.id), source: 'bundled' }));
         const fp = (a.flashpoint ?? []).map((f) => ({ id: 'fp-' + f.id, title: f.title, author: f.developer, kind: 'flashpoint', license: 'via Flashpoint', url: f.id, genre: f.genre, strategy: f.strategy, price: price('fp-' + f.id, f.strategy), available: true, plays: plays('fp-' + f.id), source: 'flashpoint' }));
-        return ok({ games: [...fp, ...bundled], minutesPerPlay: a.minutesPerPlay, flashpointRoot: 'C:\\Flashpoint' });
+        const games = [...fp, ...bundled];
+        const sm = a.samplerMinutes ?? 10;
+        return ok({ games, blockMinutes: 5, maxBlocks: 12, sampler: { minutes: sm, price: a.samplerPrice || autoSamplerPrice(games.map((g: any) => g.price), sm) }, flashpointRoot: 'C:\\Flashpoint' });
       }
       case 'arcade.play': {
         const list = (await this.handle({ id: 'x', op: 'arcade.list' })).payload as any;
         const g = list.games.find((x: any) => x.id === p.gameId);
         if (!g) return fail("that game isn't in the arcade");
-        if (this.balance() < g.price) return fail(`you need ${g.price - this.balance()} more coins`);
-        this.append('spend', -g.price, 'arcade:' + g.id, `Arcade: 1 play of ${g.title}`);
-        const unlock: Unlock = { id: 'u' + Date.now(), kind: 'arcadeUnlock', targets: [g.id], prizeName: g.title, expiresAt: new Date(Date.now() + this.child.arcade!.minutesPerPlay * 60000).toISOString(), secondsLeft: this.child.arcade!.minutesPerPlay * 60 };
-        this.unlocks.push(unlock); this.emit({ name: 'state' });
+        const blocks = Number(p.blocks ?? 1);
+        const running = this.unlocks.find((u) => u.kind === 'arcadeUnlock' && (u.targets.includes(g.id) || u.targets.includes('*')));
+        if (blocks === 0) { if (!running) return fail('add some time first (press +)'); return ok({ balance: this.balance(), unlock: running, game: g, alreadyPlaying: true }); }
+        const cost = g.price * blocks;
+        if (this.balance() < cost) return fail(`you need ${cost - this.balance()} more coins`);
+        this.append('spend', -cost, 'arcade:' + g.id, `Arcade: ${blocks * 5} min of ${g.title}`);
+        const own = this.unlocks.find((u) => u.kind === 'arcadeUnlock' && u.targets.includes(g.id));
+        const unlock: Unlock = own ?? { id: 'u' + Date.now(), kind: 'arcadeUnlock', targets: [g.id], prizeName: g.title, expiresAt: new Date().toISOString(), secondsLeft: 0 };
+        unlock.secondsLeft += blocks * 300; unlock.expiresAt = new Date(Date.now() + unlock.secondsLeft * 1000).toISOString();
+        if (!own) this.unlocks.push(unlock);
+        this.emit({ name: 'state' });
         return ok({ balance: this.balance(), unlock, game: g, flashpointRoot: 'C:\\Flashpoint' });
       }
-      case 'arcade.quit': this.unlocks = this.unlocks.filter((u) => !(u.kind === 'arcadeUnlock' && u.targets.includes(p.gameId))); this.emit({ name: 'state' }); return ok({ ok: true });
+      case 'arcade.quit': return ok({ ok: true }); // paid time keeps counting; he can jump back in
+      case 'arcade.sampler': {
+        const list = (await this.handle({ id: 'x', op: 'arcade.list' })).payload as any;
+        const { minutes, price } = list.sampler;
+        if (this.balance() < price) return fail(`you need ${price - this.balance()} more coins`);
+        this.append('spend', -price, 'arcade:sampler', `Arcade: ${minutes}-minute sampler pass`);
+        const unlock: Unlock = { id: 'u' + Date.now(), kind: 'arcadeUnlock', targets: ['*'], prizeName: 'Sampler pass', expiresAt: new Date(Date.now() + minutes * 60000).toISOString(), secondsLeft: minutes * 60 };
+        this.unlocks.push(unlock); this.emit({ name: 'state' });
+        return ok({ balance: this.balance(), unlock });
+      }
       case 'shell.flashpoint': case 'shell.openGame': case 'shell.openSite': case 'shell.closeGame': case 'shell.launch': return ok({ ok: true });
       case 'youtube.library': return ok({ channels: this.child.youTubeChannels, errors: [], videos: Array.from({ length: 9 }, (_, i) => ({ id: 'dQw4w9WgXcQ', title: `Amazing science video #${i + 1}`, channelId: this.child.youTubeChannels![0].id, channelTitle: 'Mark Rober', published: new Date().toISOString(), thumbnail: '' })) });
       case 'youtube.check': return ok({ allowed: this.unlocks.some((u) => u.kind === 'youTube') });

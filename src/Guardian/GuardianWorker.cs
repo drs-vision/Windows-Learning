@@ -51,7 +51,9 @@ public sealed class GuardianWorker : BackgroundService
             {
                 _policy.Apply(s.Child);
                 _pipe.Broadcast(Ops.EvUnlockEnded, new { unlockId = u.Id, prizeName = u.PrizeName }, s.Account);
-                if (u.Kind == PrizeKind.ArcadeUnlock && u.Targets.Any(t => t.StartsWith("fp-")) && _fp.Root(s.Child.Arcade.FlashpointRoot) is { } root)
+                if (u.Kind == PrizeKind.ArcadeUnlock && u.Targets.Any(t => t.StartsWith("fp-") || t == "*")
+                    && !_unlocks.ActiveFor(s.Child.Id).Any(x => x.Kind == PrizeKind.ArcadeUnlock && x.Targets.Any(t => t.StartsWith("fp-") || t == "*"))
+                    && _fp.Root(s.Child.Arcade.FlashpointRoot) is { } root)
                     _enforcer.KillUnder(s.SessionId, root);
                 if (u.Kind == PrizeKind.SiteUnlock)
                     lock (_graceCloses) _graceCloses.Add((DateTime.UtcNow.AddSeconds(30), s.SessionId, KeywordsFor(u.Targets)));

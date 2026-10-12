@@ -88,7 +88,7 @@ public sealed class HouseholdStore
         }
     }
 
-    public const int CurrentSchema = 4;
+    public const int CurrentSchema = 5;
 
     /// <summary>Upgrade data written by older versions. Runs on every load; must be idempotent.</summary>
     public static Household Migrate(Household h)
@@ -113,10 +113,12 @@ public sealed class HouseholdStore
             }
             // v4: Khan Academy pays automatically for observed work; hand claims still always need approval (enforced by the scorer).
             if (h.SchemaVersion < 4 && modules.TryGetValue("khan-academy", out var ka)) modules["khan-academy"] = ka with { RequireApproval = false };
+            // v5: arcade prices became "per 5 minutes"; old per-play overrides would be far too expensive.
+            var arcade = h.SchemaVersion < 5 ? c.Arcade with { PriceOverrides = new() } : c.Arcade;
             var allow = c.Allowlist;
             if (h.SchemaVersion < 3)
                 allow = allow with { Apps = allow.Apps.Where(a => !Allowlist.Browsers.Contains(Path.GetFileName(a), StringComparer.OrdinalIgnoreCase)).ToList() };
-            return c with { Modules = modules, Prizes = prizes, Allowlist = allow };
+            return c with { Modules = modules, Prizes = prizes, Allowlist = allow, Arcade = arcade };
         }).ToList();
         return h with { Children = children, SchemaVersion = CurrentSchema };
     }

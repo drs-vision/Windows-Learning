@@ -52,7 +52,8 @@ public static class Ops
     public const string Buy = "buy";                   // { prizeId }
     public const string Progress = "progress";         // { moduleId, progress } save module progress
     public const string ArcadeList = "arcade.list";    // games available, with prices
-    public const string ArcadePlay = "arcade.play";    // { gameId } → spends coins, starts a play
+    public const string ArcadePlay = "arcade.play";    // { gameId, blocks } → buys blocks×5 min of that game (blocks 0 = resume / use sampler)
+    public const string ArcadeSampler = "arcade.sampler"; // buys the sampler pass: any game for a few minutes
     public const string ArcadeQuit = "arcade.quit";    // { gameId } → the play is over
     public const string YouTubeLibrary = "youtube.library"; // approved channels' recent videos
     public const string YouTubeCheck = "youtube.check";     // { videoId } → allowed?

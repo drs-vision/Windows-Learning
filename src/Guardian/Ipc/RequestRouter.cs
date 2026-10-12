@@ -54,6 +54,7 @@ public sealed class RequestRouter
                 : ArcadeList(req, child),
             Ops.ArcadeQuit => child is null ? Response.Fail(req.Id, "not a managed account") : ArcadeQuit(req, child),
             Ops.ArcadePlay => child is null ? Response.Fail(req.Id, "not a managed account") : ArcadePlay(req, child, client.Account),
+            Ops.ArcadeSampler => child is null ? Response.Fail(req.Id, "not a managed account") : ArcadeSampler(req, child, client.Account),
             Ops.YouTubeLibrary => child is null ? Response.Fail(req.Id, "not a managed account") : Response.Success(req.Id, _youtube.Library(child).GetAwaiter().GetResult()),
             Ops.YouTubeCheck => child is null ? Response.Fail(req.Id, "not a managed account")
                 : Response.Success(req.Id, new { allowed = _unlocks.ActiveFor(child.Id).Any(u => u.Kind == PrizeKind.YouTube) && _youtube.IsAllowed(child, Str(req, "videoId")).GetAwaiter().GetResult() }),
@@ -173,27 +174,62 @@ public sealed class RequestRouter
         return Response.Success(req.Id, new { balance = _ledger.Balance(child.Id), unlock });
     }
 
+    /// <summary>"*" = sampler pass (any game).</summary>
+    private Unlock? ArcadeTime(Child child, string gameId) =>
+        _unlocks.ActiveFor(child.Id).Where(u => u.Kind == PrizeKind.ArcadeUnlock && (u.Targets.Contains(gameId) || u.Targets.Contains("*")))
+            .OrderByDescending(u => u.ExpiresAt).FirstOrDefault();
+
+    private int SamplerPrice(Child child) =>
+        child.Arcade.SamplerPrice > 0 ? child.Arcade.SamplerPrice
+            : ArcadeSettings.AutoSamplerPrice(Arcade.Catalog(child).Where(g => !g.Hidden && g.Available).Select(g => g.Price), child.Arcade.SamplerMinutes);
+
+    /// <summary>Buy blocks × 5 minutes of one game (or resume time already bought / use a running sampler pass).</summary>
     private Response ArcadePlay(Request req, Child child, string account)
     {
         var gameId = Str(req, "gameId");
+        var blocks = Math.Clamp(req.Payload?["blocks"]?.GetValue<int>() ?? 1, 0, ArcadeSettings.MaxBlocks);
         var game = Arcade.Catalog(child).FirstOrDefault(g => g.Id == gameId && !g.Hidden && g.Available);
         if (game is null) return Response.Fail(req.Id, "that game isn't in the arcade");
-        if (_unlocks.ActiveFor(child.Id).Any(u => u.Kind == PrizeKind.ArcadeUnlock && u.Targets.Contains(game.Id)))
-            return Response.Success(req.Id, new { balance = _ledger.Balance(child.Id), game, alreadyPlaying = true });
-        var balance = _ledger.Balance(child.Id);
-        if (balance < game.Price) return Response.Fail(req.Id, $"you need {game.Price - balance} more coins");
-        _ledger.Append(child.Id, LedgerKind.Spend, -game.Price, "arcade:" + game.Id, $"Arcade: 1 play of {game.Title}", account);
-        var unlock = _unlocks.Start(child, new Prize { Id = "arcade:" + game.Id, Name = game.Title, Kind = PrizeKind.ArcadeUnlock, Targets = new() { game.Id }, Minutes = child.Arcade.MinutesPerPlay });
-        AfterChange();
         var fpRoot = game.Kind == "flashpoint" ? _fp.Root(child.Arcade.FlashpointRoot) : null;
+
+        var running = ArcadeTime(child, game.Id);
+        if (blocks == 0)
+        {
+            if (running is null) return Response.Fail(req.Id, "add some time first (press +)");
+            return Response.Success(req.Id, new { balance = _ledger.Balance(child.Id), unlock = running, game, flashpointRoot = fpRoot, alreadyPlaying = true });
+        }
+        var cost = game.Price * blocks;
+        var balance = _ledger.Balance(child.Id);
+        if (balance < cost) return Response.Fail(req.Id, $"you need {cost - balance} more coins");
+        var minutes = blocks * ArcadeSettings.BlockMinutes;
+        _ledger.Append(child.Id, LedgerKind.Spend, -cost, "arcade:" + game.Id, $"Arcade: {minutes} min of {game.Title}", account);
+        // Same game again = more time on the same clock.
+        var unlock = _unlocks.Start(child, new Prize { Id = "arcade:" + game.Id, Name = game.Title, Kind = PrizeKind.ArcadeUnlock, Targets = new() { game.Id }, Minutes = minutes });
+        AfterChange();
         return Response.Success(req.Id, new { balance = _ledger.Balance(child.Id), unlock, game, flashpointRoot = fpRoot });
+    }
+
+    private Response ArcadeSampler(Request req, Child child, string account)
+    {
+        var cost = SamplerPrice(child);
+        var balance = _ledger.Balance(child.Id);
+        if (balance < cost) return Response.Fail(req.Id, $"you need {cost - balance} more coins");
+        _ledger.Append(child.Id, LedgerKind.Spend, -cost, "arcade:sampler", $"Arcade: {child.Arcade.SamplerMinutes}-minute sampler pass", account);
+        var unlock = _unlocks.Start(child, new Prize { Id = "arcade:sampler", Name = "Sampler pass", Kind = PrizeKind.ArcadeUnlock, Targets = new() { "*" }, Minutes = child.Arcade.SamplerMinutes });
+        AfterChange();
+        return Response.Success(req.Id, new { balance = _ledger.Balance(child.Id), unlock });
     }
 
     private Response ArcadeList(Request req, Child child)
     {
         var plays = _ledger.ArcadePlays(child.Id);
         var games = Arcade.Catalog(child).Where(g => !g.Hidden && g.Available).Select(g => g with { Plays = plays.GetValueOrDefault(g.Id) });
-        return Response.Success(req.Id, new { games, minutesPerPlay = child.Arcade.MinutesPerPlay, flashpointRoot = child.Arcade.Flashpoint.Count > 0 ? _fp.Root(child.Arcade.FlashpointRoot) : null });
+        return Response.Success(req.Id, new
+        {
+            games, blockMinutes = ArcadeSettings.BlockMinutes, maxBlocks = ArcadeSettings.MaxBlocks,
+            sampler = new { minutes = child.Arcade.SamplerMinutes, price = SamplerPrice(child) },
+            flashpointRoot = child.Arcade.Flashpoint.Count > 0 ? _fp.Root(child.Arcade.FlashpointRoot) : null,
+        });
     }
 
     private object FpStatus()
@@ -233,11 +269,9 @@ public sealed class RequestRouter
         return new { path };
     }
 
+    /// <summary>Leaving a game doesn't throw away time already paid for: it keeps counting down and he can jump back in.</summary>
     private Response ArcadeQuit(Request req, Child child)
     {
-        var gameId = Str(req, "gameId");
-        foreach (var u in _unlocks.ActiveFor(child.Id).Where(u => u.Kind == PrizeKind.ArcadeUnlock && u.Targets.Contains(gameId)))
-            _unlocks.End(u.Id);
         AfterChange();
         return Response.Success(req.Id, new { ok = true });
     }
