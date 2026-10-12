@@ -124,23 +124,51 @@ public sealed class UpdateChecker
     /// <summary>Called by the worker when a child logs off and an update is waiting.</summary>
     public void ApplyIfStaged() { if (_stagedDir is not null) Apply(); }
 
+    private DateTimeOffset? _applyStarted;
+
     private void Apply()
     {
         if (_stagedDir is null) return;
+        // An earlier attempt is still running (or hung): give it 3 minutes, then report what its log says and retry.
+        if (_applyStarted is { } started)
+        {
+            if (DateTimeOffset.UtcNow - started < TimeSpan.FromMinutes(3)) { Status = Status with { State = "applying" }; return; }
+            foreach (var p in Process.GetProcessesByName("CoinQuest.Updater")) { try { p.Kill(true); } catch { } }
+        }
         var updater = Path.Combine(_stagedDir, "CoinQuest.Updater.exe");
         if (!File.Exists(updater)) updater = Path.Combine(Paths.InstallRoot, "CoinQuest.Updater.exe");
         // Run the updater from a copy outside the install dir so it can overwrite everything, including itself.
-        var runFrom = Path.Combine(Paths.UpdateStaging, "updater-run");
+        // A fresh folder each time, so a stuck earlier copy can never block the next attempt.
+        foreach (var old in Directory.EnumerateDirectories(Paths.UpdateStaging, "updater-run*"))
+            try { Directory.Delete(old, true); } catch { }
+        var runFrom = Path.Combine(Paths.UpdateStaging, "updater-run-" + DateTime.UtcNow.Ticks);
         Directory.CreateDirectory(runFrom);
         foreach (var f in Directory.EnumerateFiles(Path.GetDirectoryName(updater)!, "CoinQuest.Updater.*"))
             File.Copy(f, Path.Combine(runFrom, Path.GetFileName(f)), overwrite: true);
         var exe = Path.Combine(runFrom, "CoinQuest.Updater.exe");
+        var log = Path.Combine(Paths.LogDir, "updater.log");
         _log.LogInformation("Applying update {Version}: launching {Exe}", _stagedVersion, exe);
-        Status = Status with { State = "applying" };
-        Process.Start(new ProcessStartInfo(exe)
+        _applyStarted = DateTimeOffset.UtcNow;
+        Status = Status with { State = "applying", Message = null };
+        var proc = Process.Start(new ProcessStartInfo(exe)
         {
-            ArgumentList = { "--source", _stagedDir, "--target", Paths.InstallRoot, "--service", Paths.ServiceName, "--log", Path.Combine(Paths.LogDir, "updater.log") },
+            ArgumentList = { "--source", _stagedDir, "--target", Paths.InstallRoot, "--service", Paths.ServiceName, "--log", log },
             UseShellExecute = false, CreateNoWindow = true,
         });
+        // If we're still alive when the updater exits, the update didn't take: say why instead of "applying" forever.
+        if (proc is not null)
+        {
+            proc.EnableRaisingEvents = true;
+            proc.Exited += (_, _) =>
+            {
+                string tail = "";
+                try { tail = string.Join(" | ", File.ReadLines(log).TakeLast(3)); } catch { }
+                _applyStarted = null;
+                Status = Status with { State = "error", Message = $"the updater stopped (exit {SafeExit(proc)}) without installing {_stagedVersion}. {tail}".Trim() };
+                _log.LogWarning("Updater exited without restarting us: {Msg}", Status.Message);
+            };
+        }
     }
+
+    private static string SafeExit(Process p) { try { return p.ExitCode.ToString(); } catch { return "?"; } }
 }

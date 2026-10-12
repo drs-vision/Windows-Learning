@@ -1,8 +1,9 @@
 using System.Diagnostics;
-using System.ServiceProcess;
 
 // CoinQuest.Updater — swaps the install directory with a staged release and restarts the service.
 // Launched by the Guardian (as SYSTEM) from a copy OUTSIDE the install dir so every file can be replaced.
+// Deliberately depends on nothing but the base .NET runtime (it runs from a folder holding only its own files):
+// services are controlled with sc.exe, not System.ServiceProcess.
 //   --source <stagedDir> --target <installDir> --service <name> --log <file>
 
 var a = ParseArgs(args);
@@ -14,13 +15,15 @@ try
     Log($"Updating {target} from {source}");
 
     // 1. Stop the service (which also stops the heartbeat that would relaunch Scholar).
-    using (var sc = new ServiceController(service))
+    //    If it won't stop within 45 s, end its process — the files must be released either way.
+    Sc($"stop {service}");
+    var deadline = DateTime.UtcNow.AddSeconds(45);
+    while (ServiceState(service) != "STOPPED" && DateTime.UtcNow < deadline) Thread.Sleep(1000);
+    if (ServiceState(service) != "STOPPED")
     {
-        if (sc.Status != ServiceControllerStatus.Stopped)
-        {
-            sc.Stop();
-            sc.WaitForStatus(ServiceControllerStatus.Stopped, TimeSpan.FromSeconds(60));
-        }
+        Log("Service did not stop in time; ending CoinQuest.Guardian");
+        foreach (var p in Process.GetProcessesByName("CoinQuest.Guardian")) { try { p.Kill(true); p.WaitForExit(10000); } catch { } }
+        Thread.Sleep(2000);
     }
     Log("Service stopped");
 
@@ -63,14 +66,30 @@ catch (Exception ex)
 }
 finally
 {
+    Sc($"start {service}");
+    var deadline = DateTime.UtcNow.AddSeconds(60);
+    while (ServiceState(service) != "RUNNING" && DateTime.UtcNow < deadline) Thread.Sleep(1000);
+    Log("Service state after start: " + ServiceState(service));
+}
+
+string Sc(string arguments)
+{
     try
     {
-        using var sc = new ServiceController(service);
-        sc.Start();
-        sc.WaitForStatus(ServiceControllerStatus.Running, TimeSpan.FromSeconds(60));
-        Log("Service started");
+        var psi = new ProcessStartInfo("sc.exe", arguments) { UseShellExecute = false, CreateNoWindow = true, RedirectStandardOutput = true };
+        using var p = Process.Start(psi)!;
+        var output = p.StandardOutput.ReadToEnd();
+        p.WaitForExit(30000);
+        return output;
     }
-    catch (Exception ex) { Log("Could not start service: " + ex.Message); }
+    catch (Exception ex) { Log($"sc {arguments}: {ex.Message}"); return ""; }
+}
+
+string ServiceState(string name)
+{
+    var output = Sc($"query {name}");
+    foreach (var st in new[] { "STOPPED", "START_PENDING", "STOP_PENDING", "RUNNING" }) if (output.Contains(st)) return st;
+    return "UNKNOWN";
 }
 
 static void CopyTree(string from, string to, Action<string> log)
