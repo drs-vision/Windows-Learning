@@ -178,7 +178,8 @@ public class WebShellWindow : Window
                 {
                     _game?.Close();
                     _game = new GameWindow(url, payload?["title"]?.GetValue<string>() ?? "Website", _kiosk, allow) { Owner = this };
-                    _game.Closed += (_, _) => { _game = null; };
+                    _game.OnKhanEvent += kind => _web.CoreWebView2?.PostWebMessageAsString($"{{\"name\":\"khan\",\"payload\":{{\"kind\":\"{kind}\"}}}}");
+                    _game.Closed += (_, _) => { _game = null; _web.CoreWebView2?.PostWebMessageAsString("{\"name\":\"siteClosed\"}"); };
                     _game.Show();
                 });
                 return Response.Success("", new { ok = true });

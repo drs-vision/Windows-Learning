@@ -22,7 +22,7 @@ export function scoreModule(moduleId: string, activity: Activity, result: Result
   try {
     const out = s.fn(activity, result, settingsOrDefault(settings, s.defaults));
     // Belt and braces: never mint more than 5× the base per activity, never negative.
-    const cap = settingsOrDefault(settings, s.defaults).coinsPerActivity * 5;
+    const cap = Math.max(settingsOrDefault(settings, s.defaults).coinsPerActivity * 5, moduleId === 'khan-academy' ? 200 : 0);
     return { ...out, coins: Math.max(0, Math.min(cap, Math.round(out.coins || 0))) };
   } catch (e) {
     return { valid: false, reason: 'scorer error: ' + (e as Error).message, coins: 0, needsApproval: false, detail: '' };

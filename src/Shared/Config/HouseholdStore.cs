@@ -48,7 +48,7 @@ public sealed class HouseholdStore
         }
     }
 
-    public const int CurrentSchema = 3;
+    public const int CurrentSchema = 4;
 
     /// <summary>Upgrade data written by older versions. Runs on every load; must be idempotent.</summary>
     public static Household Migrate(Household h)
@@ -71,6 +71,8 @@ public sealed class HouseholdStore
                 // A child who has never started typing should begin with Sound Keys, not the fluency course.
                 if (modules.TryGetValue("typing-quest", out var tq)) modules["typing-quest"] = tq with { Enabled = false };
             }
+            // v4: Khan Academy pays automatically for observed work; hand claims still always need approval (enforced by the scorer).
+            if (h.SchemaVersion < 4 && modules.TryGetValue("khan-academy", out var ka)) modules["khan-academy"] = ka with { RequireApproval = false };
             var allow = c.Allowlist;
             if (h.SchemaVersion < 3)
                 allow = allow with { Apps = allow.Apps.Where(a => !Allowlist.Browsers.Contains(Path.GetFileName(a), StringComparer.OrdinalIgnoreCase)).ToList() };

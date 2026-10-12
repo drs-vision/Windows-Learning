@@ -140,7 +140,7 @@ public sealed record ModuleSettings
         ["sound-keys"] = new() { CoinsPerActivity = 12, DailyCap = 100 },
         ["typing-quest"] = new() { Enabled = false, CoinsPerActivity = 10, DailyCap = 80 },
         ["bible-typing"] = new() { CoinsPerActivity = 15, DailyCap = 60 },
-        ["khan-academy"] = new() { CoinsPerActivity = 35, DailyCap = 140, RequireApproval = true },
+        ["khan-academy"] = new() { CoinsPerActivity = 35, DailyCap = 150 },
     };
 }
 

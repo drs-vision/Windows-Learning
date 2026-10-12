@@ -9,9 +9,13 @@ export const khanAcademy: LessonModule = {
   id: 'khan-academy',
   title: 'Khan Academy',
   tagline: 'Finish a lesson, claim your coins',
-  description: 'The child works on Khan Academy in the browser, then tells CoinQuest what they finished. The claim shows up in Approvals for a parent to confirm. Lessons pay the base amount; quizzes pay 1.5×, unit tests 2×. A browser extension that verifies completions automatically is planned.',
+  description: 'Coins arrive automatically while the child works on Khan Academy inside CoinQuest: every correct answer and every finished video pays (set below). The daily limit still applies. The child can also claim a finished lesson, quiz or unit test by hand; those claims wait for your OK in Approvals.',
   icon: '🎓',
-  verification: 'parent_approved',
+  verification: 'observed',
+  options: [
+    { key: 'perAnswer', label: 'Coins per correct answer', choices: [['1', '1'], ['2', '2'], ['3', '3'], ['5', '5']], default: '2' },
+    { key: 'perVideo', label: 'Coins per finished video', choices: [['0', 'None'], ['3', '3'], ['5', '5'], ['10', '10']], default: '5' },
+  ],
   defaults: DEFAULTS,
   requiredSites: ['khanacademy.org', 'kastatic.org', 'kasandbox.org'],
 
@@ -53,7 +57,7 @@ function KhanView({ ctx }: { activity: Activity; ctx: ActivityContext }) {
   return (
     <div class="activity-intro">
       <h2>Khan Academy</h2>
-      <p>Do your work on Khan Academy, then come back here and tell us what you finished.</p>
+      <p>Every correct answer and finished video on Khan Academy earns coins automatically — {ctx.settings.options?.perAnswer ?? 2} 🪙 per correct answer. Finished a whole unit test? Claim the bonus below.</p>
       <button class="secondary" onClick={() => bridge.openSite('https://www.khanacademy.org/', 'Khan Academy', ['khanacademy.org', 'kastatic.org', 'kasandbox.org'])}>Open Khan Academy ↗</button>
       <div class="form">
         <label>What did you finish?<input value={topic} onInput={(e) => setTopic((e.target as HTMLInputElement).value)} placeholder="e.g. Multiplying fractions" maxLength={120} /></label>

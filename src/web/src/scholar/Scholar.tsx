@@ -19,6 +19,16 @@ export function Scholar() {
   const [tick, setTick] = useState(0);
 
   const refresh = () => bridge.state().then(setState).catch((e) => setError(e.message));
+  const khan = useRef({ correct: 0, videos: 0, timer: 0 as any });
+  const flushKhan = () => {
+    const k = khan.current; clearTimeout(k.timer);
+    if (!k.correct && !k.videos) return;
+    const result = { startedAt: Date.now() - 1000, finishedAt: Date.now(), data: { correct: k.correct, videos: k.videos } };
+    k.correct = 0; k.videos = 0;
+    bridge.submit('khan-academy', { moduleId: 'khan-academy', kind: 'observed', data: {}, issuedAt: Date.now() }, result)
+      .then((r) => { if (r.coins > 0) setToast(`🎓 +${r.coins} 🪙 from Khan Academy!`); refresh(); })
+      .catch(() => undefined);
+  };
 
   useEffect(() => {
     refresh();
@@ -27,6 +37,13 @@ export function Scholar() {
       if (ev.name === 'unlockEnded') { setToast(`⏰ ${ev.payload?.prizeName ?? 'Your time'} is up`); if (view.name === 'arcade') setView({ name: 'home' }); }
       if (ev.name === 'blocked') setToast(`🚫 ${ev.payload?.exe ?? 'That app'} isn't on your list`);
       if (ev.name === 'openParent') setView({ name: 'parent' });
+      if (ev.name === 'khan') {
+        const k = khan.current;
+        if (ev.payload?.kind === 'video') k.videos++; else k.correct++;
+        clearTimeout(k.timer);
+        if (k.correct >= 5 || k.videos >= 1) flushKhan(); else k.timer = setTimeout(flushKhan, 8000);
+      }
+      if (ev.name === 'siteClosed') flushKhan();
       if (ev.name === 'disconnected') setError('Lost connection to the Guardian — reconnecting…');
     });
     const t = setInterval(() => setTick((n) => n + 1), 1000);

@@ -36,21 +36,28 @@ public sealed partial class YouTubeService
         var uri = new Uri(s);
         if (!uri.Host.EndsWith("youtube.com") && uri.Host != "youtu.be") throw new ArgumentException("That isn't a YouTube channel link.");
 
+        string html;
+        try { html = await _http.GetStringAsync(uri); }
+        catch (HttpRequestException ex) when (ex.StatusCode == System.Net.HttpStatusCode.NotFound)
+        { throw new ArgumentException("YouTube says that channel doesn't exist. Open the channel in a browser and copy the address bar."); }
         var direct = Regex.Match(uri.AbsolutePath, @"/channel/(UC[\w-]{22})");
-        if (direct.Success) return await WithTitle(new YouTubeChannel { Id = direct.Groups[1].Value, Url = s });
-
-        var html = await _http.GetStringAsync(uri);
-        var m = Regex.Match(html, @"""(?:externalId|channelId|browseId)""\s*:\s*""(UC[\w-]{22})""");
+        var m = direct.Success ? direct : Regex.Match(html, @"""(?:externalId|channelId|browseId)""\s*:\s*""(UC[\w-]{22})""");
         if (!m.Success) m = Regex.Match(html, @"youtube\.com/channel/(UC[\w-]{22})");
         if (!m.Success) throw new ArgumentException("Couldn't find that channel. Paste the link from the channel's page (it starts with youtube.com/@).");
-        return await WithTitle(new YouTubeChannel { Id = m.Groups[1].Value, Url = s });
+        var title = Regex.Match(html, @"<meta property=""og:title"" content=""([^""]+)""").Groups[1].Value;
+        if (string.IsNullOrEmpty(title)) title = Regex.Match(html, @"<title>([^<]+?)(?: - YouTube)?</title>").Groups[1].Value;
+        return new YouTubeChannel { Id = m.Groups[1].Value, Url = s, Title = System.Net.WebUtility.HtmlDecode(string.IsNullOrWhiteSpace(title) ? m.Groups[1].Value : title) };
     }
 
     private async Task<YouTubeChannel> WithTitle(YouTubeChannel c)
     {
-        var feed = await Feed(c.Id, force: true);
-        var title = feed.FirstOrDefault()?.ChannelTitle;
-        return c with { Title = string.IsNullOrEmpty(title) ? c.Id : title };
+        try
+        {
+            var html = await _http.GetStringAsync($"https://www.youtube.com/channel/{c.Id}");
+            var title = Regex.Match(html, @"<meta property=""og:title"" content=""([^""]+)""").Groups[1].Value;
+            return c with { Title = string.IsNullOrEmpty(title) ? c.Id : System.Net.WebUtility.HtmlDecode(title) };
+        }
+        catch { return c with { Title = c.Id }; }
     }
 
     /// <summary>Recent uploads for a channel (YouTube's feed returns the latest 15). Cached for 30 minutes.</summary>
@@ -59,6 +66,26 @@ public sealed partial class YouTubeService
         lock (_cache)
             if (!force && _cache.TryGetValue(channelId, out var hit) && DateTimeOffset.UtcNow - hit.at < TimeSpan.FromMinutes(30)) return hit.videos;
 
+        List<Video> videos;
+        try { videos = await FromRss(channelId); }
+        catch (Exception ex)
+        {
+            _log.LogInformation("RSS for {Channel} failed ({Msg}); reading the channel page instead", channelId, ex.Message);
+            try { videos = await FromChannelPage(channelId); }
+            catch (Exception ex2)
+            {
+                _log.LogWarning(ex2, "Channel page for {Channel} failed too; using the last saved list", channelId);
+                videos = LoadSaved(channelId);
+                if (videos.Count == 0) throw;
+            }
+        }
+        if (videos.Count > 0) Save(channelId, videos);
+        lock (_cache) _cache[channelId] = (DateTimeOffset.UtcNow, videos);
+        return videos;
+    }
+
+    private async Task<List<Video>> FromRss(string channelId)
+    {
         var xml = await _http.GetStringAsync($"https://www.youtube.com/feeds/videos.xml?channel_id={channelId}");
         XNamespace atom = "http://www.w3.org/2005/Atom", yt = "http://www.youtube.com/xml/schemas/2015", media = "http://search.yahoo.com/mrss/";
         var doc = XDocument.Parse(xml);
@@ -73,8 +100,40 @@ public sealed partial class YouTubeService
         // Shorts are vertical, endless and not what a parent approved a channel for; the feed marks them by URL.
         .Where(v => v.Id.Length == 11)
         .ToList() ?? new();
-        lock (_cache) _cache[channelId] = (DateTimeOffset.UtcNow, videos);
         return videos;
+    }
+
+    /// <summary>YouTube's RSS endpoint has frequent 404 outages (2026). The Videos tab carries the same list in its page data.</summary>
+    private async Task<List<Video>> FromChannelPage(string channelId)
+    {
+        var html = await _http.GetStringAsync($"https://www.youtube.com/channel/{channelId}/videos");
+        var channelTitle = System.Net.WebUtility.HtmlDecode(Regex.Match(html, @"<meta property=""og:title"" content=""([^""]+)""").Groups[1].Value);
+        var list = new List<Video>();
+        var seen = new HashSet<string>();
+        foreach (Match m in Regex.Matches(html, @"""videoId"":""([\w-]{11})""(.{0,1500}?)""(?:title|headline)"":\{""(?:runs"":\[\{""text|simpleText|content)"":""((?:[^""\\]|\\.)+)"""))
+        {
+            var id = m.Groups[1].Value;
+            if (!seen.Add(id)) continue;
+            var title = Regex.Unescape(m.Groups[3].Value);
+            list.Add(new Video(id, title, channelId, channelTitle, DateTimeOffset.UtcNow.AddMinutes(-list.Count), $"https://i.ytimg.com/vi/{id}/mqdefault.jpg"));
+            if (list.Count >= 30) break;
+        }
+        if (list.Count == 0)
+            foreach (Match m in Regex.Matches(html, @"""videoId"":""([\w-]{11})"""))
+                if (seen.Add(m.Groups[1].Value) && list.Count < 30)
+                    list.Add(new Video(m.Groups[1].Value, "Video", channelId, channelTitle, DateTimeOffset.UtcNow.AddMinutes(-list.Count), $"https://i.ytimg.com/vi/{m.Groups[1].Value}/mqdefault.jpg"));
+        if (list.Count == 0) throw new InvalidOperationException("no videos found on the channel page");
+        return list;
+    }
+
+    private static string SavedPath(string channelId) => Path.Combine(CoinQuest.Shared.Config.Paths.DataRoot, "youtube", channelId + ".json");
+    private static void Save(string channelId, List<Video> v)
+    {
+        try { CoinQuest.Shared.Config.SafeFile.WriteAllText(SavedPath(channelId), System.Text.Json.JsonSerializer.Serialize(v)); } catch { }
+    }
+    private static List<Video> LoadSaved(string channelId)
+    {
+        try { return System.Text.Json.JsonSerializer.Deserialize<List<Video>>(File.ReadAllText(SavedPath(channelId))) ?? new(); } catch { return new(); }
     }
 
     /// <summary>All approved channels' recent videos, newest first. Channels that fail are skipped, not fatal.</summary>

@@ -51,18 +51,28 @@ public sealed class GameWindow : Window
             var core = _web.CoreWebView2;
             core.Settings.AreDevToolsEnabled = false;
             core.Settings.AreDefaultContextMenusEnabled = false;
-            core.NewWindowRequested += (_, e) => e.Handled = true;
+            // Pop-ups never open a second window; an allowed one (e.g. a sign-in page) loads here instead.
+            core.NewWindowRequested += (_, e) => { e.Handled = true; if (Uri.TryCreate(e.Uri, UriKind.Absolute, out var nu) && Allowed(nu)) core.Navigate(e.Uri); };
+            if (_sites.Any(d => d.EndsWith("khanacademy.org"))) KhanObserver.Attach(core, OnKhan);
             core.NavigationStarting += (_, e) =>
             {
                 if (!Uri.TryCreate(e.Uri, UriKind.Absolute, out var u)) { e.Cancel = true; return; }
                 if (u.Scheme is "about" or "data" or "blob") return;
-                var host = u.Host.ToLowerInvariant();
-                var ok = _sites.Any(d => host == d || host.EndsWith("." + d)) || AuthSites.Contains(host);
-                if (!ok) { e.Cancel = true; WebShellWindow.Log($"locked window blocked navigation to {u.Host}"); }
+                if (!Allowed(u)) { e.Cancel = true; WebShellWindow.Log($"locked window blocked navigation to {u.Host}"); }
             };
             core.DownloadStarting += (_, e) => e.Cancel = true;
             core.Navigate(_start.ToString());
         };
+    }
+
+    /// <summary>Raised for Khan Academy progress seen in this window ("correct", "video").</summary>
+    public event Action<string>? OnKhanEvent;
+    private void OnKhan(string kind) => Dispatcher.Invoke(() => OnKhanEvent?.Invoke(kind));
+
+    private bool Allowed(Uri u)
+    {
+        var host = u.Host.ToLowerInvariant();
+        return _sites.Any(d => host == d || host.EndsWith("." + d)) || AuthSites.Contains(host);
     }
 
     /// <summary>"cache.armorgames.com" → "armorgames.com". Good enough for the sites parents will paste.</summary>
