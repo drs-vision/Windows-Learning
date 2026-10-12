@@ -20,6 +20,8 @@ const log = (s) => { console.log(s); appendFileSync(join(OUT, 'log.txt'), s + '\
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
 function desktop(name) {
+  // Bring CoinQuest to the front first (the CI runner's own console window sits on top otherwise).
+  try { execFileSync('powershell', ['-NoProfile', '-Command', "$w = New-Object -ComObject WScript.Shell; [void]$w.AppActivate('CoinQuest'); Start-Sleep -Milliseconds 400"], { stdio: 'ignore' }); } catch { /* best effort */ }
   const file = join(OUT, `${String(++n).padStart(2, '0')}-${name}-DESKTOP.png`);
   try {
     execFileSync('powershell', ['-NoProfile', '-Command',
@@ -124,7 +126,7 @@ await sleep(1500);
 await shot(kid, 'arcade'); desktop('arcade');
 const titles = await kid.locator('.tile .tile-title').allTextContents();
 log(`  ${titles.length} games: ${titles.join(', ')}`);
-for (const title of titles.slice(0, 4)) {
+for (const title of titles) {
   await check(`arcade: "${title}" opens and stays open after Play`, async () => {
     await kid.locator('.tile', { hasText: title }).first().click();
     await kid.waitForSelector('.game-detail', { timeout: 10000 });

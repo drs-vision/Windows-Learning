@@ -82,7 +82,14 @@ function TopBar({ state, unlocks, onHome, onShop }: { state: ChildState; unlocks
     <header class="topbar">
       <button class="brand" onClick={onHome}>🏠 <span>Hi, {state.child.displayName}</span></button>
       <div class="unlock-pills">
-        {unlocks.filter((u) => u.secondsLeft > 0).map((u) => <span class="pill">{u.prizeName.replace(/^\d+ minutes of /, '')} · {fmt(u.secondsLeft)}</span>)}
+        {(() => {
+          // Busy days can have many timers; show the three ending soonest and a count for the rest.
+          const live = unlocks.filter((u) => u.secondsLeft > 0).sort((a, b) => a.secondsLeft - b.secondsLeft);
+          return <>
+            {live.slice(0, 3).map((u) => <span class="pill">{u.prizeName.replace(/^\d+ minutes of /, '')} · {fmt(u.secondsLeft)}</span>)}
+            {live.length > 3 && <span class="pill">+{live.length - 3} more</span>}
+          </>;
+        })()}
       </div>
       <button class="wallet" onClick={onShop}>🪙 <b>{state.balance}</b></button>
     </header>
