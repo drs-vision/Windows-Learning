@@ -347,6 +347,19 @@ public class WebShellWindow : Window
                 return LaunchRwt(payload);
             case "shell.launchProgram":
                 return LaunchProgram(payload);
+            case "shell.runSetup":
+            {
+                // Parent Console only: run a disc's own installer (it may ask for administrator permission).
+                if (_app != "parent") return Response.Fail("", "only from the Parent Console");
+                var path = payload?["path"]?.GetValue<string>() ?? "";
+                if (!File.Exists(path)) return Response.Fail("", "The installer isn't there — is the disc still in the virtual drive?");
+                try
+                {
+                    Process.Start(new ProcessStartInfo(path) { UseShellExecute = true, WorkingDirectory = Path.GetDirectoryName(path)! });
+                    return Response.Success("", new { ok = true });
+                }
+                catch (Exception ex) { return Response.Fail("", "Couldn't start the installer: " + ex.Message); }
+            }
             case "shell.minimize":
                 Dispatcher.Invoke(() => WindowState = WindowState.Minimized);
                 return Response.Success("", new { ok = true });
@@ -449,6 +462,21 @@ public class WebShellWindow : Window
 
     private Process? _program;
 
+    /// <summary>Only programs CoinQuest set up: its own copies, or a game a parent installed from an imported disc.</summary>
+    private static bool IsDiscGameProgram(string exe)
+    {
+        var root = Path.Combine(Paths.DataRoot, "discgames");
+        if (exe.StartsWith(root + Path.DirectorySeparatorChar, StringComparison.OrdinalIgnoreCase)) return true;
+        try
+        {
+            foreach (var f in Directory.EnumerateFiles(root, "game.json", SearchOption.AllDirectories))
+                if (JsonNode.Parse(File.ReadAllText(f))?["InstallDir"]?.GetValue<string>() is { Length: > 0 } dir
+                    && exe.StartsWith(dir.TrimEnd('\\') + "\\", StringComparison.OrdinalIgnoreCase)) return true;
+        }
+        catch { }
+        return false;
+    }
+
     /// <summary>A classic CD game (32-bit Windows program in CoinQuest's own folder) runs in its own window.</summary>
     private Response LaunchProgram(JsonNode? p)
     {
@@ -456,8 +484,9 @@ public class WebShellWindow : Window
         {
             if (_program is { HasExited: false }) return Response.Success("", new { ok = true, already = true });
             var exe = p?["exe"]?.GetValue<string>() ?? ""; var cwd = p?["cwd"]?.GetValue<string>() ?? ""; var id = p?["id"]?.GetValue<string>() ?? "";
-            if (!File.Exists(exe) || !exe.StartsWith(Path.Combine(Paths.DataRoot, "discgames") + Path.DirectorySeparatorChar, StringComparison.OrdinalIgnoreCase))
+            if (!File.Exists(exe) || !IsDiscGameProgram(exe))
                 return Response.Fail("", "That game isn't set up on this computer yet");
+            var kind = p?["kind"]?.GetValue<string>() ?? "pe"; var args = p?["args"]?.GetValue<string>() ?? ""; var otvdm = p?["otvdm"]?.GetValue<string>() ?? "";
             // Newer titles read their INI (where the "CD" is) from this account's Application Data.
             var ini = p?["ini"]?.GetValue<string>() ?? ""; var userDir = p?["userDir"]?.GetValue<string>() ?? "";
             if (userDir.Length > 0 && File.Exists(ini))
@@ -469,7 +498,15 @@ public class WebShellWindow : Window
                         File.Copy(ini, Path.Combine(d, Path.GetFileName(ini)), true);
                     }
                     catch (Exception ex) { Log("Couldn't copy the game's INI: " + ex.Message); }
-            var psi = new ProcessStartInfo(exe) { UseShellExecute = false, WorkingDirectory = cwd };
+            ProcessStartInfo psi;
+            if (kind == "ne" && File.Exists(otvdm))
+            {
+                // A 16-bit Windows 3.x program: through otvdm, like Read, Write & Type!.
+                psi = new ProcessStartInfo(otvdm) { UseShellExecute = false, WorkingDirectory = Directory.Exists(cwd) ? cwd : Path.GetDirectoryName(exe)! };
+                psi.ArgumentList.Add(exe);
+                foreach (var a in args.Split(' ', StringSplitOptions.RemoveEmptyEntries)) psi.ArgumentList.Add(a);
+            }
+            else psi = new ProcessStartInfo(exe, args) { UseShellExecute = false, WorkingDirectory = Directory.Exists(cwd) ? cwd : Path.GetDirectoryName(exe)! };
             _program = Process.Start(psi)!;
             _program.EnableRaisingEvents = true;
             var proc = _program;

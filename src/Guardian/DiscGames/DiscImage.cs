@@ -13,7 +13,8 @@ public static class DiscImage
     private static readonly string[] ImageExts = { ".iso", ".img", ".bin" };
 
     /// <summary>Unpack every file of the disc into <paramref name="dest"/>; returns the number of files and bytes.</summary>
-    public static (int Files, long Bytes) ExtractAll(string source, string dest, string tmpDir, Action<string>? progress = null)
+    /// <param name="isoOut">Also save the disc as a plain .iso there (Windows can open that as a virtual CD drive).</param>
+    public static (int Files, long Bytes) ExtractAll(string source, string dest, string tmpDir, Action<string>? progress = null, string? isoOut = null)
     {
         Directory.CreateDirectory(dest);
         if (Directory.Exists(source)) return CopyFolder(source, dest);
@@ -32,6 +33,14 @@ public static class DiscImage
                 temp = Path.Combine(tmpDir, "disc" + Path.GetExtension(entry.Name));
                 entry.ExtractToFile(temp, true);
                 image = temp;
+            }
+            if (isoOut is not null)
+            {
+                progress?.Invoke("Saving the disc image…");
+                Directory.CreateDirectory(Path.GetDirectoryName(isoOut)!);
+                using var sectors = OpenSectors(image);
+                using var o = File.Create(isoOut);
+                sectors.CopyTo(o, 1 << 20);
             }
             progress?.Invoke("Copying the disc…");
             using var iso = new Iso9660(OpenSectors(image));

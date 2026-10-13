@@ -15,7 +15,7 @@ namespace CoinQuest.Guardian.DiscGames;
 /// These are 32-bit Windows programs and run directly. Coins come from the players' save files: the game keeps
 /// "playerName / playerLevel / playerScore" for each player, and a higher level or score means real progress.
 /// </summary>
-public sealed class DiscGameService
+public sealed partial class DiscGameService
 {
     private readonly ILogger<DiscGameService> _log;
     private readonly object _gate = new();
@@ -37,7 +37,15 @@ public sealed class DiscGameService
 
     /// <param name="UserDir">Newer titles keep their INI and players' saves under Application Data
     /// ("The Learning Company\The ClueFinders 4th Grade Adventures"); null for ones that keep them beside the program.</param>
-    public sealed record Game(string Id, string Title, string Exe, string Ini, string? UserDir = null);
+    /// <param name="Mode">"copy": CoinQuest set it up from the disc's files (titles it knows the pattern of);
+    /// "pending": imported, waiting for a parent to run the disc's own installer; "installed": installed by its installer
+    /// (<paramref name="ExePath"/>, <paramref name="InstallDir"/>), played with the disc image opened as a virtual CD drive.</param>
+    public sealed record Game(string Id, string Title, string Exe, string Ini, string? UserDir = null,
+        string Mode = "copy", string? Iso = null, string? InstallDir = null, string? ExePath = null, string? Cwd = null, string? Args = null);
+
+    /// <summary>The program to start.</summary>
+    public static string ProgramPath(Game g) => g.Mode == "installed" ? g.ExePath! : Path.Combine(Root, g.Id, "app", g.Exe);
+    public static string WorkDir(Game g) => g.Mode == "installed" ? (g.Cwd is { Length: > 0 } c ? c : Path.GetDirectoryName(g.ExePath!)!) : Path.Combine(Root, g.Id, "app");
 
     /// <summary>Friendly names for titles we know; anything else uses the name in its own INI file.</summary>
     private static readonly Dictionary<string, string> KnownTitles = new(StringComparer.OrdinalIgnoreCase)
@@ -57,6 +65,8 @@ public sealed class DiscGameService
             Directory.CreateDirectory(Root);
             foreach (var g in Games())
             {
+                if (g.Mode == "installed" && g.InstallDir is { } idir) { OpenUp(idir); continue; }
+                if (g.Mode != "copy") continue;
                 var app = Path.Combine(Root, g.Id, "app");
                 Directory.CreateDirectory(Path.Combine(app, "Users")); // 6th Grade keeps players in app\Users (its installer made it)
                 OpenUp(app);
@@ -65,7 +75,7 @@ public sealed class DiscGameService
             }
             StartWatching();
             // Newer titles save under each account's Application Data, which isn't watched: look once a minute too.
-            _poll = new Timer(_ => { try { if (Games().Any(g => g.UserDir is not null)) CheckProgress(); } catch { } }, null, TimeSpan.FromMinutes(1), TimeSpan.FromMinutes(1));
+            _poll = new Timer(_ => { try { if (Games().Any(g => g.UserDir is not null || g.Mode == "installed")) CheckProgress(); } catch { } }, null, TimeSpan.FromMinutes(1), TimeSpan.FromMinutes(1));
         }
         catch (Exception ex) { _log.LogWarning(ex, "Classic CD games: couldn't start"); }
     }
@@ -79,7 +89,8 @@ public sealed class DiscGameService
             try
             {
                 var f = Path.Combine(dir, "game.json");
-                if (File.Exists(f) && JsonSerializer.Deserialize<Game>(File.ReadAllText(f)) is { } g && File.Exists(Path.Combine(dir, "app", g.Exe))) list.Add(g);
+                if (File.Exists(f) && JsonSerializer.Deserialize<Game>(File.ReadAllText(f)) is { } g
+                    && (g.Mode == "pending" ? File.Exists(g.Iso) : File.Exists(ProgramPath(g)))) list.Add(g);
             }
             catch { }
         }
@@ -94,7 +105,7 @@ public sealed class DiscGameService
         message = Message,
         games = Games().Select(g => new
         {
-            g.Id, g.Title,
+            g.Id, g.Title, g.Mode,
             players = Players(g).Select(p => new { p.Name, p.Level, p.Score }),
         }),
         root = Root,
@@ -124,16 +135,18 @@ public sealed class DiscGameService
                 if (Directory.Exists(temp)) Directory.Delete(temp, true);
                 var local = isLink ? await Download(source, temp) : source;
                 var discs = FindDiscs(local, temp);
-                var done = new List<string>(); var failed = new List<string>();
+                var done = new List<string>(); var failed = new List<string>(); var needSetup = new List<string>();
                 for (int i = 0; i < discs.Count; i++)
                 {
                     var name = Path.GetFileNameWithoutExtension(discs[i]);
                     var prefix = discs.Count > 1 ? $"[{i + 1}/{discs.Count}] {name}: " : "";
-                    try { done.Add(Install(discs[i], m => Message = prefix + m).Title); }
+                    try { var g = Install(discs[i], m => Message = prefix + m); (g.Mode == "pending" ? needSetup : done).Add(g.Title); }
                     catch (Exception ex) { failed.Add($"{name} ({ex.Message})"); _log.LogWarning(ex, "Classic CD game import failed: {Disc}", discs[i]); }
                 }
-                Message = (done.Count > 0 ? $"Imported {string.Join(", ", done)}. " : "") + (failed.Count > 0 ? $"Couldn't import: {string.Join("; ", failed)}" : "The disc images aren't needed any more.");
-                Stage = done.Count == 0 ? "error" : "idle";
+                Message = (done.Count > 0 ? $"Imported {string.Join(", ", done)}. " : "")
+                        + (needSetup.Count > 0 ? $"Ready to install: {string.Join(", ", needSetup)} — press \"Set up\" to run its installer once. " : "")
+                        + (failed.Count > 0 ? $"Couldn't import: {string.Join("; ", failed)}" : "");
+                Stage = done.Count + needSetup.Count == 0 ? "error" : "idle";
                 _log.LogInformation("Classic CD import: {Done} done, {Failed} failed", done.Count, failed.Count);
             }
             catch (Exception ex)
@@ -218,7 +231,8 @@ public sealed class DiscGameService
         var work = Path.Combine(Root, ".import");
         if (Directory.Exists(work)) Directory.Delete(work, true);
         var cd = Path.Combine(work, "cd");
-        var (files, bytes) = DiscImage.ExtractAll(source, cd, Path.Combine(work, "tmp"), progress);
+        var isoTmp = Directory.Exists(source) ? null : Path.Combine(work, "disc.iso");
+        var (files, bytes) = DiscImage.ExtractAll(source, cd, Path.Combine(work, "tmp"), progress, isoTmp);
         try { Directory.Delete(Path.Combine(work, "tmp"), true); } catch { }
         progress("Finding the program on the disc…");
 
@@ -234,8 +248,9 @@ public sealed class DiscGameService
             .ToList();
         if (candidates.Count == 0)
         {
-            var exes = Directory.EnumerateFiles(cd, "*.exe", Deep).Select(e => Path.GetRelativePath(cd, e)).Take(12);
-            throw new InvalidOperationException("CoinQuest doesn't know how to run this disc yet (no Learning Company program folder found). Programs on it: " + string.Join(", ", exes));
+            // Not a layout CoinQuest knows: keep the disc and let its own installer set it up (a parent runs it once).
+            if (isoTmp is null) throw new InvalidOperationException("CoinQuest doesn't recognise this folder. Import the disc image (.iso/.img/.bin/.zip) instead, so its installer can run.");
+            return KeepForSetup(source, work, isoTmp, progress);
         }
         // Several can match (e.g. a demo of another title); prefer the 32-bit program in the folder the installer copies
         // (95INSTAL, INSTALL\HD …), then the biggest program.
@@ -267,7 +282,7 @@ public sealed class DiscGameService
         CopyIniToProgramData(game);
         Directory.CreateDirectory(Path.Combine(app, "Users")); // some titles (6th Grade) save players to Users\ beside the program
         OpenUp(app);
-        try { Directory.Delete(work, true); } catch { }
+        try { Directory.Delete(work, true); } catch { } // (the plain .iso isn't needed for games CoinQuest sets up itself)
         _log.LogInformation("Disc {Id}: {Files} files, {MB} MB; program {Exe}", id, files, bytes / 1048576, exe);
         return game;
     }
@@ -378,7 +393,14 @@ public sealed class DiscGameService
         var files = new List<string>();
         foreach (var d in dirs.Where(Directory.Exists))
             try { files.AddRange(Directory.EnumerateFiles(d, "*.dat", Flat)); } catch { }
-        return files;
+        if (g.Mode == "installed" && g.InstallDir is { } idir && Directory.Exists(idir))
+            try
+            {
+                files.AddRange(Directory.EnumerateFiles(idir, "*", new EnumerationOptions { RecurseSubdirectories = true, MaxRecursionDepth = 3 })
+                    .Where(f => SaveExts.Contains(Path.GetExtension(f).ToLowerInvariant())));
+            }
+            catch { }
+        return files.Distinct(StringComparer.OrdinalIgnoreCase).ToList();
     }
 
     /// <summary>"The Learning Company\The ClueFinders 4th Grade Adventures" when the program keeps data in Application Data.</summary>
@@ -393,6 +415,10 @@ public sealed class DiscGameService
         }
         catch { return null; }
     }
+
+    /// <summary>File types old games commonly keep players' progress in.</summary>
+    private static readonly HashSet<string> SaveExts = new(StringComparer.OrdinalIgnoreCase)
+        { ".dat", ".sav", ".usr", ".plr", ".ply", ".sgm", ".gam", ".dta", ".stu", ".rec", ".prf", ".pro", ".mem" };
 
     public static List<Player> ParsePlayers(string s)
     {
@@ -438,7 +464,12 @@ public sealed class DiscGameService
         lock (_gate) { _debounce?.Dispose(); _debounce = new Timer(_ => { try { CheckProgress(); } catch (Exception ex) { _log.LogWarning(ex, "Classic CD game progress check failed"); } }, null, 5000, Timeout.Infinite); }
     }
 
-    private sealed class ProgressState { public Dictionary<string, int[]> Players { get; set; } = new(); public DateTimeOffset LastPaid { get; set; } }
+    private sealed class ProgressState
+    {
+        public Dictionary<string, int[]> Players { get; set; } = new();
+        public Dictionary<string, string> Files { get; set; } = new(); // save file → hash (games without player records)
+        public DateTimeOffset LastPaid { get; set; }
+    }
 
     /// <summary>Pay when a known player's level or score went up (a finished puzzle or activity).</summary>
     public void CheckProgress()
@@ -476,7 +507,20 @@ public sealed class DiscGameService
                     else if (p.Level > 0 || p.Score > 0) changed.Add($"{g.Title}: {p.Name} score {p.Score}"); // first time we see real progress
                     st.Players[key] = new[] { Math.Max(p.Level, was?[0] ?? 0), Math.Max(p.Score, was?[1] ?? 0) };
                 }
-            if (changed.Count > 0 && DateTimeOffset.UtcNow - st.LastPaid > TimeSpan.FromMinutes(1))
+            // Games whose saves CoinQuest can't read yet: a save file that changes means the game recorded progress.
+            var generic = false;
+            foreach (var g in Games().Where(g => g.Mode == "installed" && Players(g).Count == 0))
+                foreach (var f in SaveFiles(g))
+                {
+                    string h;
+                    try { h = Convert.ToHexString(System.Security.Cryptography.SHA256.HashData(File.ReadAllBytes(f))); } catch { continue; }
+                    var key = g.Id + "|" + f;
+                    if (st.Files.TryGetValue(key, out var old) && old != h) { changed.Add($"{g.Title}: progress saved"); generic = true; }
+                    st.Files[key] = h;
+                }
+            var gap = generic && changed.All(c => c.EndsWith("progress saved")) ? TimeSpan.FromMinutes(3) : TimeSpan.FromMinutes(1);
+            changed = changed.Distinct().ToList();
+            if (changed.Count > 0 && DateTimeOffset.UtcNow - st.LastPaid > gap)
             {
                 st.LastPaid = DateTimeOffset.UtcNow;
                 ProgressSaved?.Invoke(changed);

@@ -657,15 +657,42 @@ function DiscImport() {
     try { if (link.trim()) { setSt(await bridge.parentDiscImport(link.trim())); setLink(''); } } catch (e) { setErr((e as Error).message); }
   }
   async function tryIt(id: string) { setErr(''); try { await bridge.playDisc(id); } catch (e) { setErr((e as Error).message); } }
+  const [setup, setSetup] = useState<{ id: string; title: string; drive: string; installer: string } | null>(null);
+  const [setupMsg, setSetupMsg] = useState('');
+  async function beginSetup(id: string) {
+    setErr(''); setSetupMsg('Putting the disc in the virtual drive…');
+    try { const s = await bridge.parentDiscSetupBegin(id); setSetup(s); await bridge.runSetup(s.installer); setSetupMsg(''); }
+    catch (e) { setErr((e as Error).message); setSetupMsg(''); }
+  }
+  async function finishSetup() {
+    if (!setup) return;
+    setErr('');
+    try { const r = await bridge.parentDiscSetupFinish(setup.id); setSetup(null); setSetupMsg(`✅ ${r.title} is installed (${r.exe}). Press "Try it" to check it runs.`); load(); }
+    catch (e) { setErr((e as Error).message); }
+  }
   if (!st) return <p class="muted small">Checking…</p>;
   return (
     <div class="rwt-import">
       {st.games.length > 0 && <ul class="disc-games">{st.games.map((g) => (
         <li><b>{g.title}</b>{g.players.length > 0 ? <span class="muted small"> — {g.players.map((p) => `${p.name} (level ${p.level}, score ${p.score})`).join(', ')}</span> : <span class="muted small"> — no players yet</span>}
-          {' '}<button class="ghost small" onClick={() => tryIt(g.id)}>Try it</button></li>))}</ul>}
+          {' '}{g.mode === 'pending'
+            ? <button class="secondary small" onClick={() => beginSetup(g.id)}>Set up (run its installer)</button>
+            : <button class="ghost small" onClick={() => tryIt(g.id)}>Try it</button>}</li>))}</ul>}
+      {setup && (
+        <div class="card nudge" style="text-align:left">
+          <b>Installing {setup.title}</b>
+          <ol class="small">
+            <li>The disc is in the virtual drive <b>{setup.drive}</b> and its installer has opened (Windows may ask for permission first).</li>
+            <li>Click through it with the normal choices. If it offers extras (Acrobat Reader, AOL, registration, DirectX), you can skip them.</li>
+            <li>When it says it's finished (don't start the game from it), come back here:</li>
+          </ol>
+          <div class="row" style="gap:.5em"><button class="primary" onClick={finishSetup}>Done installing</button><button class="ghost small" onClick={() => bridge.runSetup(setup.installer)}>Open the installer again</button><button class="ghost small" onClick={() => setSetup(null)}>Cancel</button></div>
+        </div>
+      )}
+      {setupMsg && <p class="muted small">{setupMsg}</p>}
       {st.stage === 'importing' ? <p>⏳ {st.message ?? 'Importing…'}</p>
         : <>
-            <p class="small">Add your discs: choose one image (<code>.zip</code>, <code>.iso</code>, <code>.img</code> or <code>.bin</code>), a whole folder of them, or paste a Dropbox link to a file or folder. CoinQuest copies each game inside itself; the images aren't needed afterwards. Works with ClueFinders and other Learning Company titles of that era.</p>
+            <p class="small">Add your discs: choose one image (<code>.zip</code>, <code>.iso</code>, <code>.img</code> or <code>.bin</code>), a whole folder of them, or paste a Dropbox link to a file or folder. ClueFinders and similar Learning Company titles are set up automatically. Any other disc is kept as a virtual CD: press <b>Set up</b> once to run its own installer, and Play puts the disc in the virtual drive each time.</p>
             <div class="row" style="flex-wrap:wrap;gap:.5em">
               <button class={st.games.length ? 'secondary' : 'primary'} onClick={pick}>Import a disc…</button>
               <button class="secondary" onClick={pickDir}>Import a folder…</button>

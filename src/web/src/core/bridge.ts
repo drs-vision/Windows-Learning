@@ -114,6 +114,9 @@ class Bridge {
   /** Read, Write & Type!: ask the Guardian where it lives, then have the shell start it through otvdm. */
   parentDiscStatus() { return this.call<DiscStatus>('parent.discStatus', undefined, { parent: true }); }
   parentDiscImport(path: string) { return this.call<DiscStatus>('parent.discImport', { path }, { parent: true }); }
+  parentDiscSetupBegin(id: string) { return this.call<{ id: string; title: string; drive: string; installer: string; kind: string }>('parent.discSetupBegin', { id }, { parent: true }); }
+  parentDiscSetupFinish(id: string) { return this.call<{ id: string; title: string; exe: string; installDir: string }>('parent.discSetupFinish', { id }, { parent: true }); }
+  runSetup(path: string) { return this.call<{ ok: boolean }>('shell.runSetup', { path }); }
   async playDisc(id: string) { const info = await this.call<Record<string, string>>('disc.launch', { id }); return this.call<{ ok: boolean }>('shell.launchProgram', info); }
   async playRwt() { const info = await this.call<Record<string, string>>('rwt.launch'); return this.call<{ ok: boolean }>('shell.launchRwt', info); }
   setupAccounts() { return this.call<{ name: string; fullName: string; isAdmin: boolean; disabled: boolean; sid: string }[]>('setup.accounts'); }
@@ -129,7 +132,7 @@ class Bridge {
 
 export const bridge = new Bridge();
 
-export type DiscStatus = { stage: 'idle' | 'importing' | 'error'; message?: string; games: { id: string; title: string; players: { name: string; level: number; score: number }[] }[]; root: string };
+export type DiscStatus = { stage: 'idle' | 'importing' | 'error'; message?: string; games: { id: string; title: string; mode?: 'copy' | 'pending' | 'installed'; players: { name: string; level: number; score: number }[] }[]; root: string };
 export type RwtStatus = { installed: boolean; otvdm: boolean; stage: 'idle' | 'importing' | 'ready' | 'error'; message?: string; patches: string[]; players: string[]; root: string };
 export interface FpStatus {
   installed: boolean; root?: string | null; clifp: boolean; installerUrl: string;

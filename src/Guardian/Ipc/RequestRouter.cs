@@ -49,7 +49,7 @@ public sealed class RequestRouter
     private static readonly HashSet<string> Slow = new()
     {
         Ops.ArcadePrepare, Ops.ArcadeClassicFile, Ops.YouTubeLibrary, Ops.YouTubeCheck, Ops.YouTubeChannel, Ops.ParentYouTubeResolve, Ops.ParentCheckUpdate, Ops.ParentInstalledApps, Ops.SetupAccounts,
-        Ops.ParentFpStatus, Ops.ParentFpSearch, Ops.ParentFpSuggest, Ops.ParentFpInstallClifp, Ops.ParentFpDownloadInstaller, Ops.ParentFpThumbs, Ops.ParentFpStockNow, Ops.ParentBlocked, Ops.ParentDiagnostics, Ops.ParentRwtImport, Ops.RwtLaunch, Ops.ParentDiscImport,
+        Ops.ParentFpStatus, Ops.ParentFpSearch, Ops.ParentFpSuggest, Ops.ParentFpInstallClifp, Ops.ParentFpDownloadInstaller, Ops.ParentFpThumbs, Ops.ParentFpStockNow, Ops.ParentBlocked, Ops.ParentDiagnostics, Ops.ParentRwtImport, Ops.RwtLaunch, Ops.ParentDiscImport, Ops.ParentDiscSetupBegin, Ops.ParentDiscSetupFinish, Ops.DiscLaunch,
     };
     private readonly object _sync = new();
 
@@ -105,6 +105,8 @@ public sealed class RequestRouter
             Ops.RwtLaunch => RwtLaunch(req, child),
             Ops.ParentDiscStatus => Parent(req, client, child, () => _discs.Status()),
             Ops.ParentDiscImport => Parent(req, client, child, () => { _discs.StartImport(Str(req, "path")); return _discs.Status(); }),
+            Ops.ParentDiscSetupBegin => Parent(req, client, child, () => _discs.BeginSetup(Str(req, "id"))),
+            Ops.ParentDiscSetupFinish => Parent(req, client, child, () => _discs.FinishSetup(Str(req, "id"))),
             Ops.DiscLaunch => DiscLaunch(req, child),
             Ops.ParentDiagnostics => Parent(req, client, child, () => new { version = Version, problems = CoinQuest.Guardian.FileLoggerProvider.Recent(), blocked = _gate.RecentlyBlocked().Take(20).Select(b => b.Host), internetLock = _netLock.Status, net = NetCheck().GetAwaiter().GetResult() }),
             Ops.ParentBlocked => Parent(req, client, child, () => _gate.RecentlyBlocked().Select(b => new { host = b.Host, at = b.At, reason = b.Reason })),
@@ -152,7 +154,7 @@ public sealed class RequestRouter
             sites = child.Allowlist.Sites,
             youtubeChannels = child.YouTubeChannels.Count,
             rwtInstalled = CoinQuest.Guardian.Rwt.RwtService.Installed,
-            discGames = CoinQuest.Guardian.DiscGames.DiscGameService.Games().Select(g => new { g.Id, g.Title }),
+            discGames = CoinQuest.Guardian.DiscGames.DiscGameService.Games().Where(g => g.Mode != "pending").Select(g => new { g.Id, g.Title }),
             arcadeMinutesPerPlay = child.Arcade.MinutesPerPlay,
         };
     }
@@ -298,10 +300,32 @@ public sealed class RequestRouter
     {
         var g = CoinQuest.Guardian.DiscGames.DiscGameService.Find(Str(req, "id"));
         if (g is null) return Response.Fail(req.Id, "That game isn't imported on this computer — a parent can add it in the Parent Console → Quests.");
+        if (g.Mode == "pending") return Response.Fail(req.Id, $"{g.Title} needs setting up first — a parent can do it in the Parent Console → Quests → Classic CD games.");
         if (child is not null && child.Modules.GetValueOrDefault("discgames") is { Enabled: false }) return Response.Fail(req.Id, "Classic CD games are switched off — ask a parent");
+        var exe = CoinQuest.Guardian.DiscGames.DiscGameService.ProgramPath(g);
+        string? drive = null;
+        if (g.Mode == "installed" && g.Iso is { } iso && File.Exists(iso))
+        {
+            try { drive = CoinQuest.Guardian.DiscGames.DiscGameService.Mount(iso); } // "put the disc in the drive"
+            catch (Exception ex) { return Response.Fail(req.Id, "Couldn't put the game's disc in the virtual drive: " + ex.Message); }
+        }
+        var kind = CoinQuest.Guardian.DiscGames.DiscGameService.ExeKind(exe);
+        if (kind == "dos") return Response.Fail(req.Id, $"{g.Title} is a DOS program — CoinQuest can't run those yet.");
+        string? otvdm = null;
+        if (kind == "ne")
+        {
+            otvdm = CoinQuest.Guardian.Rwt.RwtService.Otvdm;
+            if (otvdm is null)
+                try { _rwt.EnsureOtvdm().GetAwaiter().GetResult(); otvdm = CoinQuest.Guardian.Rwt.RwtService.Otvdm; }
+                catch (Exception ex) { return Response.Fail(req.Id, "Couldn't get the 16-bit helper (otvdm): " + ex.Message); }
+        }
+        _log.LogInformation("{Title} started ({Who}) {Kind}{Drive}", g.Title, child?.DisplayName ?? "parent", kind, drive is null ? "" : " disc in " + drive);
         var app = Path.Combine(CoinQuest.Guardian.DiscGames.DiscGameService.Root, g.Id, "app");
-        _log.LogInformation("{Title} started ({Who})", g.Title, child?.DisplayName ?? "parent");
-        return Response.Success(req.Id, new { id = g.Id, title = g.Title, exe = Path.Combine(app, g.Exe), cwd = app, ini = Path.Combine(app, g.Ini), userDir = g.UserDir ?? "" });
+        return Response.Success(req.Id, new
+        {
+            id = g.Id, title = g.Title, exe, cwd = CoinQuest.Guardian.DiscGames.DiscGameService.WorkDir(g), args = g.Args ?? "", kind, otvdm = otvdm ?? "",
+            ini = g.Mode == "copy" ? Path.Combine(app, g.Ini) : "", userDir = g.UserDir ?? "",
+        });
     }
 
     private void PayDisc(List<string> what)

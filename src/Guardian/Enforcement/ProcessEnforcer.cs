@@ -109,6 +109,7 @@ public sealed class ProcessEnforcer
                 if (path is not null && path.StartsWith(CoinQuest.Guardian.Rwt.RwtService.OtvdmDir + Path.DirectorySeparatorChar, StringComparison.OrdinalIgnoreCase)) continue;
                 // The family's classic CD games (CoinQuest's own copies).
                 if (path is not null && path.StartsWith(CoinQuest.Guardian.DiscGames.DiscGameService.Root + Path.DirectorySeparatorChar, StringComparison.OrdinalIgnoreCase)) continue;
+                if (path is not null && CoinQuest.Guardian.DiscGames.DiscGameService.InstalledDirs().Any(d => path.StartsWith(d, StringComparison.OrdinalIgnoreCase))) continue;
                 // Anything living under Windows\SystemApps is treated as safe.
                 if (path is not null && (path.StartsWith(@"C:\Windows\SystemApps", StringComparison.OrdinalIgnoreCase) ||
                                          path.StartsWith(@"C:\Windows\ImmersiveControlPanel", StringComparison.OrdinalIgnoreCase))) continue;
