@@ -308,8 +308,8 @@ await check('YouTube: pick a creator and scroll through all their videos', async
   await shot(kid, 'youtube-creator-scrolled'); desktop('youtube-creator-scrolled');
   const more = await kid.locator('.yt-more').textContent().catch(() => '');
   log(`  creator videos: ${first} at first, ${after} after scrolling · ${String(more).trim()}`);
-  expect(after > first, `still ${after} videos after scrolling — older ones did not load`);
   await kid.click('.arcade header button.ghost');
+  expect(after > first, `still ${after} videos after scrolling — older ones did not load`);
 });
 
 // ---------- an allowed website (opens in CoinQuest's locked window) ----------
