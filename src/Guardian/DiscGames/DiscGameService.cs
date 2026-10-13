@@ -58,6 +58,7 @@ public sealed class DiscGameService
             foreach (var g in Games())
             {
                 var app = Path.Combine(Root, g.Id, "app");
+                Directory.CreateDirectory(Path.Combine(app, "Users")); // 6th Grade keeps players in app\Users (its installer made it)
                 OpenUp(app);
                 // Fixes ship with updates: re-point each game's INI at where its scripts and pictures really are.
                 try { PointIniAtDisc(Path.Combine(app, g.Ini), DataRootOnDisc(Path.Combine(Root, g.Id, "cd"), app)); CopyIniToProgramData(g); } catch { }
@@ -264,6 +265,7 @@ public sealed class DiscGameService
         var game = new Game(id, title, Path.GetFileName(exe!), iniName, UserDirOf(Path.Combine(app, Path.GetFileName(exe!))));
         File.WriteAllText(Path.Combine(dest, "game.json"), JsonSerializer.Serialize(game));
         CopyIniToProgramData(game);
+        Directory.CreateDirectory(Path.Combine(app, "Users")); // some titles (6th Grade) save players to Users\ beside the program
         OpenUp(app);
         try { Directory.Delete(work, true); } catch { }
         _log.LogInformation("Disc {Id}: {Files} files, {MB} MB; program {Exe}", id, files, bytes / 1048576, exe);
@@ -358,7 +360,7 @@ public sealed class DiscGameService
     /// <summary>Every save file the game may use: beside the program, and (newer titles) in each account's Application Data.</summary>
     public static List<string> SaveFiles(Game g)
     {
-        var dirs = new List<string> { Path.Combine(Root, g.Id, "app") };
+        var dirs = new List<string> { Path.Combine(Root, g.Id, "app"), Path.Combine(Root, g.Id, "app", "Users") };
         if (g.UserDir is { Length: > 0 } ud)
         {
             dirs.Add(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.CommonApplicationData), ud));
@@ -448,7 +450,7 @@ public sealed class DiscGameService
             var changed = new List<string>();
             // Keep every saved version (small) so payouts can be tuned per activity once more saves are seen.
             foreach (var g in Games())
-                foreach (var f in Directory.EnumerateFiles(Path.Combine(Root, g.Id, "app"), "*.dat", Flat))
+                foreach (var f in SaveFiles(g))
                     try
                     {
                         var hist = Path.Combine(Root, g.Id, "history");
