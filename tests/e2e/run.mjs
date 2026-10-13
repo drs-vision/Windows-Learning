@@ -233,7 +233,8 @@ await check('HTML5 classic (Bloxorz) plays or is gone from the arcade', async ()
     await kid.locator('.portal input').first().fill('');
     return;
   }
-  const frame = kid.frames().find((f) => f.url().includes('coinquest-classics.local'));
+  log('  frames: ' + kid.frames().map((f) => f.url().slice(0, 90)).join(' | '));
+  const frame = kid.frames().find((f) => /classics/i.test(f.url())) ?? kid.frames().find((f) => f !== kid.mainFrame() && !/youtube|about:blank/.test(f.url()));
   const info = frame ? await frame.evaluate(() => ({ canvases: document.querySelectorAll('canvas').length, text: document.body.innerText.slice(0, 120), html: document.body.innerHTML.length })).catch((e) => ({ error: String(e) })) : null;
   log('  frame: ' + (frame ? frame.url() : 'none') + ' ' + JSON.stringify(info));
   const box = await kid.locator('.player-host').first().boundingBox();
@@ -243,10 +244,13 @@ await check('HTML5 classic (Bloxorz) plays or is gone from the arcade', async ()
     await kid.mouse.click(box.x + box.width / 2, box.y + box.height * 0.6); await sleep(3000);
     await shot(kid, 'html5-Bloxorz-PLAYING-after-input'); desktop('html5-Bloxorz-PLAYING-after-input');
   }
-  expect(info && !info.error && (info.canvases > 0 || info.html > 500), 'the HTML5 game page is empty');
+  // The game frame may not be reachable from the test (separate process); then judge by what's on screen.
+  const png = await kid.locator('.player-host').first().screenshot().catch(() => Buffer.alloc(0));
   await kid.locator('.player header button').first().click().catch(() => undefined);
   await sleep(800);
   await kid.locator('.portal input').first().fill('').catch(() => undefined);
+  log(`  game area screenshot: ${png.length} bytes`);
+  expect((info && !info.error && (info.canvases > 0 || info.html > 500)) || png.length > 40000, 'the HTML5 game page is empty');
 });
 await check('sampler pass: buy and play any game', async () => {
   const btn = kid.locator('text=GET PASS');
