@@ -89,3 +89,13 @@ A young child cannot get around this. A technically determined teenager with phy
 - **Child's apps won't open:** check Allowed. The app may be blocked by design.
 - **Forgot the PIN:** open Parent Console from your own administrator account → Settings → Reset PIN.
 - **Everything else:** open an issue at the project's GitHub page with what you expected and what happened.
+
+## Read, Write & Type! (your own copy)
+
+Parent Console → **Quests** → *Read, Write & Type!* → **Import disc image…** and pick your `.iso` (or the `.zip` it came in). CoinQuest copies the game into `C:\ProgramData\CoinQuest\rwt` and downloads otvdm, the free helper that runs 1995-era Windows programs on 64-bit Windows. After that the image and the disc are never needed again — the game stays part of CoinQuest through restarts and updates.
+
+- **Try it now** (in the Parent Console) starts it on your own account so you can check it.
+- On your child's account it appears as a quest tile; it opens in its own window.
+- Coins: every time the game saves a player's progress (at most once every few minutes), up to the daily limit you set.
+- CoinQuest makes three small changes to its copy of the game program so it runs on today's PCs (the original is kept as `RWTWINCD.ORG`): it no longer insists on a 256-colour screen or a palette display driver, and its clock starts right away.
+- Nothing from the game is ever uploaded anywhere.
