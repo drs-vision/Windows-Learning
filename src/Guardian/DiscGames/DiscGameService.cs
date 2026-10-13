@@ -133,7 +133,7 @@ public sealed partial class DiscGameService
             var temp = Path.Combine(Root, ".incoming");
             try
             {
-                if (Directory.Exists(temp)) Directory.Delete(temp, true);
+                if (Directory.Exists(temp)) DeleteDir(temp);
                 var local = isLink ? await Download(source, temp) : source;
                 var discs = FindDiscs(local, temp);
                 var done = new List<string>(); var failed = new List<string>(); var needSetup = new List<string>();
@@ -155,7 +155,7 @@ public sealed partial class DiscGameService
                 _log.LogWarning(ex, "Classic CD game import failed");
                 Stage = "error"; Message = ex.Message;
             }
-            finally { try { if (Directory.Exists(temp)) Directory.Delete(temp, true); } catch { } }
+            finally { try { if (Directory.Exists(temp)) DeleteDir(temp); } catch { } }
         });
     }
 
@@ -230,11 +230,11 @@ public sealed partial class DiscGameService
     private Game Install(string source, Action<string> progress, bool useInstaller = false)
     {
         var work = Path.Combine(Root, ".import");
-        if (Directory.Exists(work)) Directory.Delete(work, true);
+        if (Directory.Exists(work)) DeleteDir(work);
         var cd = Path.Combine(work, "cd");
         var isoTmp = Directory.Exists(source) ? null : Path.Combine(work, "disc.iso");
         var (files, bytes) = DiscImage.ExtractAll(source, cd, Path.Combine(work, "tmp"), progress, isoTmp);
-        try { Directory.Delete(Path.Combine(work, "tmp"), true); } catch { }
+        try { DeleteDir(Path.Combine(work, "tmp")); } catch { }
         progress("Finding the program on the disc…");
 
         // Learning Company titles of this era ship their 32-bit program in a folder (e.g. 95INSTAL) beside an INI
@@ -262,7 +262,7 @@ public sealed partial class DiscGameService
                 {
                     var old = Path.Combine(Root, Path.GetFileNameWithoutExtension(c.Exe!).ToLowerInvariant());
                     if (File.Exists(Path.Combine(old, "game.json")) && Find(Path.GetFileName(old)) is { Mode: "copy" })
-                        try { Directory.Delete(old, true); } catch { }
+                        try { DeleteDir(old); } catch { }
                 }
             }
             return KeepForSetup(source, work, isoTmp, progress, knownTitle);
@@ -283,13 +283,14 @@ public sealed partial class DiscGameService
         // Keep any players from an earlier import of the same game.
         var keep = new Dictionary<string, byte[]>();
         if (Directory.Exists(app))
-            foreach (var f in Directory.EnumerateFiles(app, "*.dat", Flat)) keep[Path.GetFileName(f)] = File.ReadAllBytes(f);
-        if (Directory.Exists(dest)) Directory.Delete(dest, true);
+            foreach (var f in Directory.EnumerateFiles(app, "*.dat", Deep).Where(f => !f.Contains(Path.DirectorySeparatorChar + "history" + Path.DirectorySeparatorChar)))
+                try { keep[Path.GetRelativePath(app, f)] = File.ReadAllBytes(f); } catch { }
+        if (Directory.Exists(dest)) DeleteDir(dest);
         Directory.CreateDirectory(dest);
         Directory.Move(cd, Path.Combine(dest, "cd"));
         var programDir = Path.Combine(dest, "cd", Path.GetRelativePath(cd, Path.GetDirectoryName(ini)!));
         CopyFolder(programDir, app);
-        foreach (var (name, data) in keep) File.WriteAllBytes(Path.Combine(app, name), data);
+        foreach (var (name, data) in keep) { var to = Path.Combine(app, name); Directory.CreateDirectory(Path.GetDirectoryName(to)!); File.WriteAllBytes(to, data); }
         var iniName = Path.GetFileName(ini);
         PointIniAtDisc(Path.Combine(app, iniName), DataRootOnDisc(Path.Combine(dest, "cd"), app));
         var game = new Game(id, title, Path.GetFileName(exe!), iniName, UserDirOf(Path.Combine(app, Path.GetFileName(exe!))));
@@ -297,7 +298,7 @@ public sealed partial class DiscGameService
         CopyIniToProgramData(game);
         Directory.CreateDirectory(Path.Combine(app, "Users")); // some titles (6th Grade) save players to Users\ beside the program
         OpenUp(app);
-        try { Directory.Delete(work, true); } catch { } // (the plain .iso isn't needed for games CoinQuest sets up itself)
+        try { DeleteDir(work); } catch { } // (the plain .iso isn't needed for games CoinQuest sets up itself)
         _log.LogInformation("Disc {Id}: {Files} files, {MB} MB; program {Exe}", id, files, bytes / 1048576, exe);
         return game;
     }
@@ -341,6 +342,17 @@ public sealed partial class DiscGameService
         var i = lines.FindIndex(l => l.TrimStart().StartsWith("CDDrive", StringComparison.OrdinalIgnoreCase));
         if (i >= 0) lines[i] = value; else lines.Insert(Math.Min(1, lines.Count), value);
         File.WriteAllLines(iniPath, lines);
+    }
+
+    /// <summary>Delete a folder even when files in it are read-only (files that came off a CD, and copies of them, often are).</summary>
+    internal static void DeleteDir(string dir)
+    {
+        if (!Directory.Exists(dir)) return;
+        foreach (var f in Directory.EnumerateFiles(dir, "*", SearchOption.AllDirectories))
+            try { File.SetAttributes(f, FileAttributes.Normal); } catch { }
+        foreach (var d in Directory.EnumerateDirectories(dir, "*", SearchOption.AllDirectories))
+            try { new DirectoryInfo(d).Attributes = FileAttributes.Directory; } catch { }
+        Directory.Delete(dir, true);
     }
 
     private static string SafeRead(string f) { try { return File.ReadAllText(f, Encoding.Latin1); } catch { return ""; } }
@@ -503,7 +515,7 @@ public sealed partial class DiscGameService
                         Directory.CreateDirectory(hist);
                         var stamp = File.GetLastWriteTime(f).ToString("yyyyMMdd-HHmmss");
                         var copy = Path.Combine(hist, $"{stamp}-{Path.GetFileName(f)}");
-                        if (!File.Exists(copy)) File.Copy(f, copy);
+                        if (!File.Exists(copy)) { File.Copy(f, copy); File.SetAttributes(copy, FileAttributes.Normal); }
                     }
                     catch { }
             foreach (var g in Games())

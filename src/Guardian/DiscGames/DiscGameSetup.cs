@@ -35,7 +35,7 @@ public sealed partial class DiscGameService
         var keepIso = Path.Combine(dest, "disc.iso");
         if (File.Exists(keepIso)) { Unmount(keepIso); File.Delete(keepIso); }
         File.Move(iso, keepIso);
-        try { Directory.Delete(work, true); } catch { }
+        try { DeleteDir(work); } catch { }
         var game = before is { Mode: "installed" } ? before with { Iso = keepIso } : new Game(id, title, "", "", Mode: "pending", Iso: keepIso);
         File.WriteAllText(Path.Combine(dest, "game.json"), JsonSerializer.Serialize(game));
         _log.LogInformation("Disc {Id} kept for its installer ({Mode})", id, game.Mode);
@@ -62,7 +62,7 @@ public sealed partial class DiscGameService
         var dir = Path.Combine(Root, g.Id);
         for (int i = 0; i < 5; i++)
         {
-            try { if (Directory.Exists(dir)) Directory.Delete(dir, true); break; }
+            try { if (Directory.Exists(dir)) DeleteDir(dir); break; }
             catch (IOException) when (i < 4) { Thread.Sleep(1000); } // the virtual drive takes a moment to let go
         }
         _dirsCache = (DateTime.MinValue, new());
