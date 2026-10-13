@@ -81,11 +81,8 @@ public class WebShellWindow : Window
         if (Directory.Exists(thumbs))
             core.SetVirtualHostNameToFolderMapping("coinquest-thumbs.local", thumbs, CoreWebView2HostResourceAccessKind.Allow);
 
-        // Classic Flash games, unpacked by the Guardian and played in CoinQuest's own Ruffle player.
-        var classics = Path.Combine(Paths.DataRoot, "classics");
-        try { Directory.CreateDirectory(classics); } catch { /* the child can't create it; the Guardian does */ }
-        if (Directory.Exists(classics))
-            core.SetVirtualHostNameToFolderMapping("coinquest-classics.local", classics, CoreWebView2HostResourceAccessKind.Allow);
+        // Classic games (unpacked by the Guardian) are served by OnClassicResource below — not a folder mapping —
+        // so files a game's local copy is missing can be fetched on demand.
 
         if (_app == "scholar")
         {
@@ -134,8 +131,7 @@ public class WebShellWindow : Window
             if (u.Host.Equals(ClassicsHost, StringComparison.OrdinalIgnoreCase))
             {
                 var seg = u.AbsolutePath.TrimStart('/').Split('/', 4);
-                if (seg.Length < 4 || seg[1] != "content") return;
-                if (File.Exists(LocalPath(seg[0], seg[2], seg[3]) ?? "")) return; // the folder mapping serves it
+                if (seg.Length < 4 || seg[1] != "content") { e.Response = env.CreateWebResourceResponse(null, 404, "Not Found", ""); return; }
                 (id, host, path) = (seg[0], seg[2], seg[3]);
             }
             if (id is null || host is null || path is null || !Guid.TryParse(id, out _)) return;
@@ -149,6 +145,7 @@ public class WebShellWindow : Window
                 {
                     var resp = await _pipe.SendAsync(Ops.ArcadeClassicFile, new { fpId = id, host, path = "/" + Uri.UnescapeDataString(path) }, timeoutMs: 40000);
                     if (resp.Ok && File.Exists(local)) e.Response = FileResponse(env, local);
+                    else { e.Response = env.CreateWebResourceResponse(null, 404, "Not Found", "Access-Control-Allow-Origin: *"); Log($"classic {id}: no {host}/{path}"); }
                 }
                 catch (Exception ex) { Log($"classic file {host}/{path}: {ex.Message}"); }
                 finally { deferral.Complete(); }

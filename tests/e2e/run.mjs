@@ -258,7 +258,7 @@ await check('HTML5 classic (Miniclip Bloxorz) plays from the local copy', async 
     await kid.locator('.portal input').first().fill('Bloxorz'); await sleep(800);
   }
   expect(found, 'the HTML5 (Miniclip) Bloxorz is not in the arcade');
-  await sleep(15000);
+  await sleep(45000); // first play: the game's files come down from the archive one by one
   await shot(kid, 'html5-Bloxorz-loaded'); desktop('html5-Bloxorz-loaded');
   const err = await kid.locator('.portal .error, .player .error').allTextContents();
   const box = await kid.locator('.player-host').first().boundingBox();
@@ -282,7 +282,7 @@ await check('HTML5 classic (Miniclip Bloxorz) plays from the local copy', async 
     log('  files: ' + files.slice(0, 30).join(' | '));
     const idx = files.map((f) => f.split(' ')[0]).find((f) => /index\.html$/.test(f));
     if (idx) log('  index.html: ' + readFileSync(gd + idx, 'utf8').replace(/\s+/g, ' ').slice(0, 1500));
-    const sl = readFileSync(join(process.env.LOCALAPPDATA, 'CoinQuest', 'shell.log'), 'utf8').split('\n').filter((l) => /classic/i.test(l)).slice(-10);
+    const sl = readFileSync(join(process.env.LOCALAPPDATA, 'CoinQuest', 'shell.log'), 'utf8').split('\n').filter((l) => /classic/i.test(l)).slice(-15);
     for (const l of sl) log('  shell: ' + l.slice(0, 200));
   } catch (e) { log('  diag: ' + e.message); }
   log(`  game area screenshot: ${png.length} bytes; errors: ${err.join(' / ') || 'none'}`);
