@@ -339,6 +339,10 @@ public class WebShellWindow : Window
     [System.Runtime.InteropServices.DllImport("kernel32", CharSet = System.Runtime.InteropServices.CharSet.Unicode, SetLastError = true)]
     private static extern bool DefineDosDevice(int flags, string device, string? target);
     private Process? _rwt;
+    [System.Runtime.InteropServices.DllImport("user32", CharSet = System.Runtime.InteropServices.CharSet.Unicode)]
+    private static extern IntPtr FindWindow(string? cls, string? title);
+    [System.Runtime.InteropServices.DllImport("user32")]
+    private static extern bool InvalidateRect(IntPtr hwnd, IntPtr rect, bool erase);
 
     /// <summary>
     /// Read, Write &amp; Type! is a 1995 Windows 3.1 program: it runs through otvdm, wants short DOS-style paths and a small
@@ -368,6 +372,16 @@ public class WebShellWindow : Window
             psi.Environment["PATH"] = Environment.GetFolderPath(Environment.SpecialFolder.System) + ";" + Path.GetDirectoryName(otvdm);
             _rwt = Process.Start(psi)!;
             _rwt.EnableRaisingEvents = true;
+            var game = _rwt;
+            // Ask the game to repaint a few times a second, so fades and scene changes show up straight away.
+            new System.Threading.Thread(() =>
+            {
+                while (!game.HasExited)
+                {
+                    try { var h = FindWindow("FingersWndClass", null); if (h != IntPtr.Zero) InvalidateRect(h, IntPtr.Zero, false); } catch { }
+                    System.Threading.Thread.Sleep(400);
+                }
+            }) { IsBackground = true, Name = "rwt-repaint" }.Start();
             Log($"RWT started: {otvdm} {drive}\\{exe} {drive}\\{data} (pid {_rwt.Id})");
             _rwt.Exited += (_, _) =>
             {

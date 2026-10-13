@@ -31,6 +31,9 @@ public static class RwtInstaller
         ("palette reserved colours 2", 0x638bf, "99 2b c2 d1 f8", "b8 0a 00 90 90"),
         ("palette reserved colours 3", 0x63c01, "8b 46 fe 99 2b c2 d1 f8", "b8 0a 00 90 90 90 90 90"),
         ("palette reserved colours 4", 0x64709, "8b c7 99 2b c2 d1 f8", "b8 0a 00 90 90 90 90"),
+        // On true-colour screens a palette fade doesn't recolour pixels already drawn, so scenes stayed black until each
+        // part redrew itself. Let every repaint redraw the whole scene (the game only did that while in the background).
+        ("full redraw on repaint", 0x4bc4, "0b c0 75 15 6a 00", "0b c0 90 90 6a 00"),
     };
 
     public static Result Install(string source, string root, Action<string>? progress = null)
