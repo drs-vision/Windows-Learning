@@ -107,6 +107,7 @@ public sealed partial class DiscGameService
     /// <summary>Open the disc image as a CD drive (if it isn't already); returns e.g. "E:".</summary>
     public static string Mount(string iso)
     {
+        try { DiscImage.Neutralize(iso); } catch { } // discs imported before this check may still carry DSSAgent
         var letter = Ps($"$i = Get-DiskImage -ImagePath '{iso.Replace("'", "''")}'; if (-not $i.Attached) {{ $i = Mount-DiskImage -ImagePath '{iso.Replace("'", "''")}' -PassThru }}; " +
                         "Start-Sleep -Milliseconds 500; ($i | Get-Volume).DriveLetter").Trim();
         if (letter.Length != 1 || !char.IsLetter(letter[0])) throw new InvalidOperationException("Windows couldn't open the disc image as a CD drive" + (letter.Length > 0 ? ": " + letter : ""));

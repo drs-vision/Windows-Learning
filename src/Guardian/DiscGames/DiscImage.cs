@@ -38,9 +38,10 @@ public static class DiscImage
             {
                 progress?.Invoke("Saving the disc image…");
                 Directory.CreateDirectory(Path.GetDirectoryName(isoOut)!);
-                using var sectors = OpenSectors(image);
-                using var o = File.Create(isoOut);
-                sectors.CopyTo(o, 1 << 20);
+                using (var sectors = OpenSectors(image))
+                using (var o = File.Create(isoOut))
+                    sectors.CopyTo(o, 1 << 20);
+                Neutralize(isoOut, progress);
             }
             progress?.Invoke("Copying the disc…");
             using var iso = new Iso9660(OpenSectors(image));
@@ -49,6 +50,7 @@ public static class DiscImage
             {
                 var path = Path.Combine(dest, e.Path.Replace('\\', Path.DirectorySeparatorChar));
                 if (e.IsDir) { Directory.CreateDirectory(path); continue; }
+                if (IsUnwanted(e.Path)) continue; // see Neutralize
                 Directory.CreateDirectory(Path.GetDirectoryName(path)!);
                 iso.CopyTo(e, path);
                 files++; bytes += e.Size;
@@ -57,6 +59,33 @@ public static class DiscImage
             return (files, bytes);
         }
         finally { if (temp is not null) try { File.Delete(temp); } catch { } }
+    }
+
+    /// <summary>
+    /// "Broadcast DSSAgent" (INSTALL\BRODCAST\DSSAGENT.EXE on Learning Company / Mattel discs of 1999–2002) reports
+    /// usage home; Windows Defender calls it spyware and then refuses to open the whole disc image as a drive.
+    /// The games never need it.
+    /// </summary>
+    public static bool IsUnwanted(string discPath) =>
+        Path.GetFileName(discPath).StartsWith("DSSAGENT", StringComparison.OrdinalIgnoreCase)
+        || discPath.Contains("BRODCAST\\", StringComparison.OrdinalIgnoreCase);
+
+    /// <summary>Blank out unwanted files inside a saved .iso (same size, all zeros), so the image stays clean.</summary>
+    public static int Neutralize(string iso, Action<string>? progress = null)
+    {
+        List<Iso9660.Entry> bad;
+        using (var r = new Iso9660(new FileStream(iso, FileMode.Open, FileAccess.Read, FileShare.ReadWrite)))
+            bad = r.Files().Where(e => !e.IsDir && IsUnwanted(e.Path)).ToList();
+        if (bad.Count == 0) return 0;
+        progress?.Invoke("Removing the old usage-reporting program from the disc image…");
+        using var f = new FileStream(iso, FileMode.Open, FileAccess.Write, FileShare.Read);
+        var zeros = new byte[1 << 16];
+        foreach (var e in bad)
+        {
+            f.Position = e.Lba * 2048;
+            for (long left = e.Size; left > 0; left -= zeros.Length) f.Write(zeros, 0, (int)Math.Min(zeros.Length, left));
+        }
+        return bad.Count;
     }
 
     /// <summary>A stream of 2048-byte data sectors, whatever the image's sector layout.</summary>
