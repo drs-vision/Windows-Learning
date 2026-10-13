@@ -315,22 +315,6 @@ await check('HTML5 classic (Miniclip Bloxorz) plays, or is taken out of the arca
   }
   expect(png.length > 40000, 'the HTML5 game area is (nearly) blank');
 });
-await check('sampler pass: buy and play any game', async () => {
-  if (!(await kid.locator('.portal').count())) { await kid.click('text=/Arcade/').catch(() => undefined); await sleep(2500); }
-  const btn = kid.locator('text=GET PASS');
-  expect(await btn.count(), 'no sampler button');
-  await btn.click();
-  await sleep(1500);
-  await shot(kid, 'arcade-sampler');
-  const last = titles[titles.length - 1];
-  await kid.locator('.tile', { hasText: last }).first().click();
-  await kid.click('.time-buyer .coin-btn');
-  await sleep(6000);
-  await shot(kid, 'arcade-sampler-playing'); desktop('arcade-sampler-playing');
-  expect(await kid.locator('.player, .now-playing').count() > 0, 'sampler game did not open');
-  const back = kid.locator('.player header button').first();
-  if (await back.count()) await back.click(); else await kid.click('text=I\'m done playing');
-});
 await check('"Broken?" takes a game out of the arcade and refunds its coins', async () => {
   if (!(await kid.locator('.portal').count())) { await kid.click('text=/Arcade/').catch(() => undefined); await sleep(2500); }
   const tile = kid.locator('.tile', { hasText: /Shifty Knight|This Is The Only Level|Achievement Unlocked|Meat Boy/ }).first();
@@ -357,6 +341,22 @@ await check('"Broken?" takes a game out of the arcade and refunds its coins', as
   expect(paid > 0, 'nothing was charged');
   expect(after === before, `refund missing: balance ${after}, expected ${before}`);
   expect(still === 0, 'the game is still in the arcade');
+});
+await check('sampler pass: buy and play any game', async () => {
+  if (!(await kid.locator('.portal').count())) { await kid.click('text=/Arcade/').catch(() => undefined); await sleep(2500); }
+  const btn = kid.locator('text=GET PASS');
+  expect(await btn.count(), 'no sampler button');
+  await btn.click();
+  await sleep(1500);
+  await shot(kid, 'arcade-sampler');
+  const last = titles[titles.length - 1];
+  await kid.locator('.tile', { hasText: last }).first().click();
+  await kid.click('.time-buyer .coin-btn');
+  await sleep(6000);
+  await shot(kid, 'arcade-sampler-playing'); desktop('arcade-sampler-playing');
+  expect(await kid.locator('.player, .now-playing').count() > 0, 'sampler game did not open');
+  const back = kid.locator('.player header button').first();
+  if (await back.count()) await back.click(); else await kid.click('text=I\'m done playing');
 });
 await kid.click('.portal-head button.ghost').catch(() => undefined);
 await sleep(800);
