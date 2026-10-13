@@ -212,31 +212,38 @@ await check('classic Flash game (Flashpoint Archive) appears, downloads and play
   await kid.locator('.player header button').first().click().catch(() => undefined);
   await sleep(800);
 });
-await check('HTML5 classic (Bloxorz) plays or is gone from the arcade', async () => {
-  const search = kid.locator('.portal input[type=search], .portal input').first();
-  await search.fill('Bloxorz'); await sleep(1200);
-  const tile = kid.locator('.tile', { hasText: /Bloxorz/ }).first();
-  if (!(await tile.count())) { log('  Bloxorz not in this arcade (not stocked here) — nothing to check'); await search.fill(''); return; }
-  await tile.click();
-  await kid.click('.time-buyer .coin-btn');
-  for (let i = 0; i < 60 && !(await kid.locator('.player, .portal .error').count()); i++) await sleep(1000);
-  await sleep(8000);
+await check('HTML5 classic (Miniclip Bloxorz) plays from the local copy', async () => {
+  // Approve the HTML5 version in the Parent Console (the arcade's own pick is the Flash version).
+  await parent.click('nav.tabs >> text=Shop');
+  await parent.waitForSelector('input[placeholder^="Search Flashpoint"]', { timeout: 60000 });
+  await parent.fill('input[placeholder^="Search Flashpoint"]', 'Bloxorz');
+  await parent.press('input[placeholder^="Search Flashpoint"]', 'Enter');
+  await parent.waitForSelector('.fp-row', { timeout: 30000 }).catch(() => undefined);
+  const row = parent.locator('.fp-row', { hasText: /HTML5/ }).first();
+  expect(await row.count(), 'no HTML5 Bloxorz in the Flashpoint search');
+  if (!(await row.locator('input').isChecked())) await row.locator('input').check();
+  await sleep(4000);
+  await shot(parent, 'parent-approved-html5-bloxorz');
+  // Find it in the arcade (there are two Bloxorz: Flash and HTML5).
+  await kid.click('.portal-head button.ghost').catch(() => undefined); await sleep(500);
+  await kid.click('text=/Arcade/'); await sleep(2500);
+  await kid.locator('.portal input').first().fill('Bloxorz'); await sleep(1200);
+  const n = await kid.locator('.tile', { hasText: /Bloxorz/ }).count();
+  log(`  ${n} Bloxorz tile(s)`);
+  let found = false;
+  for (let i = 0; i < n && !found; i++) {
+    await kid.locator('.tile', { hasText: /Bloxorz/ }).nth(i).click();
+    await kid.click('.time-buyer .coin-btn');
+    for (let t = 0; t < 60 && !(await kid.locator('.player, .portal .error').count()); t++) await sleep(1000);
+    const foot = await kid.locator('.player footer').textContent().catch(() => '');
+    if (/miniclip/i.test(foot ?? '')) { found = true; break; }
+    await kid.locator('.player header button').first().click().catch(() => undefined); await sleep(800);
+    await kid.locator('.portal input').first().fill('Bloxorz'); await sleep(800);
+  }
+  expect(found, 'the HTML5 (Miniclip) Bloxorz is not in the arcade');
+  await sleep(15000);
   await shot(kid, 'html5-Bloxorz-loaded'); desktop('html5-Bloxorz-loaded');
   const err = await kid.locator('.portal .error, .player .error').allTextContents();
-  if (err.length) {
-    log('  error: ' + err.join(' / '));
-    // Then it must have been taken out of the arcade.
-    await kid.click('.portal-head button.ghost').catch(() => undefined); await sleep(500);
-    await kid.click('text=/Arcade/'); await sleep(2500);
-    await kid.locator('.portal input').first().fill('Bloxorz'); await sleep(1200);
-    expect(!(await kid.locator('.tile', { hasText: /Bloxorz/ }).count()), 'Bloxorz failed but is still in the arcade');
-    await kid.locator('.portal input').first().fill('');
-    return;
-  }
-  log('  frames: ' + kid.frames().map((f) => f.url().slice(0, 90)).join(' | '));
-  const frame = kid.frames().find((f) => /classics/i.test(f.url())) ?? kid.frames().find((f) => f !== kid.mainFrame() && !/youtube|about:blank/.test(f.url()));
-  const info = frame ? await frame.evaluate(() => ({ canvases: document.querySelectorAll('canvas').length, text: document.body.innerText.slice(0, 120), html: document.body.innerHTML.length })).catch((e) => ({ error: String(e) })) : null;
-  log('  frame: ' + (frame ? frame.url() : 'none') + ' ' + JSON.stringify(info));
   const box = await kid.locator('.player-host').first().boundingBox();
   if (box) {
     await kid.mouse.click(box.x + box.width / 2, box.y + box.height / 2); await sleep(1500);
@@ -244,13 +251,17 @@ await check('HTML5 classic (Bloxorz) plays or is gone from the arcade', async ()
     await kid.mouse.click(box.x + box.width / 2, box.y + box.height * 0.6); await sleep(3000);
     await shot(kid, 'html5-Bloxorz-PLAYING-after-input'); desktop('html5-Bloxorz-PLAYING-after-input');
   }
-  // The game frame may not be reachable from the test (separate process); then judge by what's on screen.
   const png = await kid.locator('.player-host').first().screenshot().catch(() => Buffer.alloc(0));
   await kid.locator('.player header button').first().click().catch(() => undefined);
   await sleep(800);
   await kid.locator('.portal input').first().fill('').catch(() => undefined);
-  log(`  game area screenshot: ${png.length} bytes`);
-  expect((info && !info.error && (info.canvases > 0 || info.html > 500)) || png.length > 40000, 'the HTML5 game page is empty');
+  try {
+    const lines = readFileSync('C:\\ProgramData\\CoinQuest\\logs\\guardian.log', 'utf8').split('\n').filter((l) => /Classic .*(no copy|ready)/.test(l) && /123f54dc|no copy/.test(l));
+    for (const l of lines.slice(-8)) log('  ' + l.slice(20, 220));
+  } catch { /* */ }
+  log(`  game area screenshot: ${png.length} bytes; errors: ${err.join(' / ') || 'none'}`);
+  expect(!err.length, 'error: ' + err.join(' / '));
+  expect(png.length > 40000, 'the HTML5 game area is (nearly) blank');
 });
 await check('sampler pass: buy and play any game', async () => {
   const btn = kid.locator('text=GET PASS');
