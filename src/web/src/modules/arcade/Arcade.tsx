@@ -285,7 +285,7 @@ function Player({ game, onBack, secondsLeft, sampler }: { game: Game & { base?: 
         <button class="ghost" onClick={onBack}>{sampler ? '← Pick another game' : '← Back to arcade'}</button>
         <b>{game.title}</b>
         <span class="row">
-          <button class="ghost small" title="Hides this game from the arcade. A parent can bring it back." onClick={() => { if (confirm(`Doesn't ${game.title} work? It will be taken out of the arcade.`)) bridge.arcadeReportBroken(game.id).then(onBack).catch((e) => setErr((e as Error).message)); }}>⚠️ Broken?</button>
+          <button class="ghost small" title="Hides this game from the arcade and gives back the coins paid for its time. A parent can bring it back." onClick={() => { if (confirm(`Doesn't ${game.title} work? It will be taken out of the arcade and you get your coins back.`)) bridge.arcadeReportBroken(game.id).then((r) => { if (r.refund) alert(`🪙 ${r.refund} coins are back in your wallet.`); onBack(); }).catch((e) => setErr((e as Error).message)); }}>⚠️ Broken?</button>
           <span class="countdown" title={sampler ? 'Sampler pass time left' : 'Time left on this game'}>{sampler ? '🎟️ ' : '⏱ '}{fmt(secondsLeft)}</span>
         </span>
       </header>

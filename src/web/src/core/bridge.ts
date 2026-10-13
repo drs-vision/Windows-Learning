@@ -72,7 +72,7 @@ class Bridge {
   /** blocks × 5 minutes of one game; blocks 0 = jump back in with time already bought (or a sampler pass). */
   arcadePlay(gameId: string, blocks: number) { return this.call<{ balance: number; unlock?: Unlock; game: Game; flashpointRoot?: string | null; alreadyPlaying?: boolean }>('arcade.play', { gameId, blocks }); }
   arcadePrepare(gameId: string) { return this.call<{ url: string; base: string; prefix: string; platform: string }>('arcade.prepare', { gameId }); }
-  arcadeReportBroken(gameId: string) { return this.call<{ ok: boolean }>('arcade.reportBroken', { gameId }); }
+  arcadeReportBroken(gameId: string) { return this.call<{ ok: boolean; refund?: number; balance?: number }>('arcade.reportBroken', { gameId }); }
   arcadeSampler() { return this.call<{ balance: number; unlock: Unlock }>('arcade.sampler'); }
   arcadeQuit(gameId: string) { return this.call('arcade.quit', { gameId }).catch(() => undefined); }
   flashpoint(root: string, id: string, verb: 'play' | 'prepare' = 'play') { return this.call('shell.flashpoint', { root, id, verb }); }

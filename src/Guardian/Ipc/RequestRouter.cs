@@ -75,7 +75,7 @@ public sealed class RequestRouter
             Ops.ArcadePlay => child is null ? Response.Fail(req.Id, "not a managed account") : ArcadePlay(req, child, client.Account),
             Ops.ArcadePrepare => child is null ? Response.Fail(req.Id, "not a managed account") : ArcadePrepare(req, child),
             Ops.ArcadeClassicFile => child is null ? Response.Fail(req.Id, "not a managed account") : ClassicFile(req, child),
-            Ops.ArcadeReportBroken => child is null ? Response.Fail(req.Id, "not a managed account") : ReportBroken(req, child),
+            Ops.ArcadeReportBroken => child is null ? Response.Fail(req.Id, "not a managed account") : ReportBroken(req, child, client),
             Ops.ArcadeSampler => child is null ? Response.Fail(req.Id, "not a managed account") : ArcadeSampler(req, child, client.Account),
             Ops.YouTubeLibrary => child is null ? Response.Fail(req.Id, "not a managed account") : Response.Success(req.Id, _youtube.Library(child).GetAwaiter().GetResult()),
             Ops.YouTubeChannel => child is null ? Response.Fail(req.Id, "not a managed account")
@@ -277,15 +277,27 @@ public sealed class RequestRouter
     }
 
     /// <summary>"This game doesn't work": hide it from the arcade. It shows as hidden in the Parent Console, which can bring it back.</summary>
-    private Response ReportBroken(Request req, Child child)
+    private Response ReportBroken(Request req, Child child, PipeServer.Client client)
     {
         var gameId = Str(req, "gameId");
         var game = Arcade.Catalog(child).FirstOrDefault(g => g.Id == gameId);
         if (game is null) return Response.Fail(req.Id, "no such game");
         _store.Update(h => h with { Children = h.Children.Select(c => c.Id != child.Id || c.Arcade.Hidden.Contains(gameId) ? c : c with { Arcade = c.Arcade with { Hidden = c.Arcade.Hidden.Append(gameId).ToList() } }).ToList() });
-        _log.LogWarning("Reported broken and hidden from the arcade: {Title} ({Id})", game.Title, gameId);
+
+        // Give back what was paid for this game's current time: it didn't work, so it shouldn't cost anything.
+        // (A sampler pass isn't refunded — it still works for every other game.)
+        var refund = 0;
+        var running = _unlocks.ActiveFor(child.Id).FirstOrDefault(u => u.Kind == PrizeKind.ArcadeUnlock && u.Targets.Contains(gameId));
+        if (running is not null)
+        {
+            refund = -_ledger.Recent(child.Id, 200, running.StartedAt.AddSeconds(-5))
+                .Where(e => e.Kind == LedgerKind.Spend && e.Source == "arcade:" + gameId).Sum(e => e.Delta);
+            _unlocks.End(running.Id);
+            if (refund > 0) _ledger.Append(child.Id, LedgerKind.Adjust, refund, "arcade:" + gameId, $"Refund: {game.Title} didn't work", client.Account);
+        }
+        _log.LogWarning("Reported broken and hidden from the arcade: {Title} ({Id}); refunded {Refund}", game.Title, gameId, refund);
         AfterChange();
-        return Response.Success(req.Id, new { ok = true });
+        return Response.Success(req.Id, new { ok = true, refund, balance = _ledger.Balance(child.Id) });
     }
 
     private Response ArcadeList(Request req, Child child)
