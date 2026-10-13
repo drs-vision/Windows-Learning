@@ -8,7 +8,7 @@ namespace CoinQuest.Guardian.Rwt;
 ///   rwt\cd\        the CD's Windows files + the files its installer would have unpacked (SPD.PRS, TCEXTRA.PRS…)
 ///   rwt\SIGNIN\    the game's player/progress files (writable by the child)
 ///   rwt\RWTWINCD.INI
-/// The game program is adjusted (three small patches, original kept as RWTWINCD.ORG) so it runs on today's PCs.
+/// The game program is adjusted (a few small patches, original kept as RWTWINCD.ORG) so it runs on today's PCs.
 /// Nothing from the game is ever uploaded anywhere.
 /// </summary>
 public static class RwtInstaller
@@ -24,6 +24,13 @@ public static class RwtInstaller
         ("palette support", 0x60e5e, "25 00 01", "b8 00 01"),
         // The game clock only ran after Windows activated the (still hidden) window; let it run from the start.
         ("game clock runs from the start", 0x5de4c, "8b 46 06 f7 d8 1b c0 40", "b8 01 00 90 90 90 90 90"),
+        // Palette set-up assumes a 256-colour screen's 20 reserved colours (GetDeviceCaps NUMCOLORS). On today's screens
+        // that call returns a huge number and the loop runs off the end of its 256-entry table (otvdm: "Interrupt 0D #GP
+        // … mov eax,es:[bx+4h]"). Use the 256-colour value: 10 reserved at each end.
+        ("palette reserved colours 1", 0x634de, "99 2b c2 d1 f8", "b8 0a 00 90 90"),
+        ("palette reserved colours 2", 0x638bf, "99 2b c2 d1 f8", "b8 0a 00 90 90"),
+        ("palette reserved colours 3", 0x63c01, "8b 46 fe 99 2b c2 d1 f8", "b8 0a 00 90 90 90 90 90"),
+        ("palette reserved colours 4", 0x64709, "8b c7 99 2b c2 d1 f8", "b8 0a 00 90 90 90 90"),
     };
 
     public static Result Install(string source, string root, Action<string>? progress = null)

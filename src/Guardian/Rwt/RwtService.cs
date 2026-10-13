@@ -38,7 +38,14 @@ public sealed class RwtService
         _log = log;
         _http = new HttpClient(new HttpClientHandler { UseProxy = false }) { Timeout = TimeSpan.FromMinutes(5) };
         _http.DefaultRequestHeaders.UserAgent.Add(new ProductInfoHeaderValue("CoinQuest", "1.0"));
-        if (Installed) { Stage = "ready"; StartWatching(); }
+        if (Installed)
+        {
+            Stage = "ready";
+            // New fixes ship with updates: re-apply the current set to the original program (kept as RWTWINCD.ORG).
+            try { LastPatches = RwtInstaller.PatchExe(Path.Combine(Root, "cd", "RWTWINCD.EXE")); _log.LogInformation("RWT fixes: {P}", string.Join(", ", LastPatches)); }
+            catch (Exception ex) { _log.LogWarning(ex, "Couldn't refresh Read, Write & Type fixes"); }
+            StartWatching();
+        }
     }
 
     public static bool Installed => File.Exists(Path.Combine(Root, "cd", "RWTWINCD.EXE"));
