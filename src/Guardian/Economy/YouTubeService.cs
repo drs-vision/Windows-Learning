@@ -127,7 +127,7 @@ public sealed partial class YouTubeService
             if (id is null || id.Length != 11 || !seen.Add(id)) return;
             list.Add(new Video(id, t ?? "Video", channelId, title, DateTimeOffset.UtcNow.AddMinutes(-list.Count), $"https://i.ytimg.com/vi/{id}/mqdefault.jpg"));
         }
-        void Walk(JsonNode? n)
+        void Walk(JsonNode? n, bool inGrid)
         {
             switch (n)
             {
@@ -148,15 +148,19 @@ public sealed partial class YouTubeService
                     if (o["continuationItemRenderer"] is JsonObject ci)
                     {
                         var tok = ci["continuationEndpoint"]?["continuationCommand"]?["token"] ?? Find(ci, "token");
-                        if (tok is JsonValue tv) next = tv.GetValue<string>();
+                        if (tok is JsonValue tv && inGrid) next = tv.GetValue<string>();
                         return;
                     }
-                    foreach (var kv in o) Walk(kv.Value);
+                    foreach (var kv in o)
+                    {
+                        if (kv.Key is "header" or "engagementPanels" or "topbar" or "frameworkUpdates" or "microformat" or "metadata") continue;
+                        Walk(kv.Value, inGrid || kv.Key is "richGridRenderer" or "appendContinuationItemsAction" or "reloadContinuationItemsCommand" or "gridRenderer");
+                    }
                     break;
-                case JsonArray a: foreach (var x in a) Walk(x); break;
+                case JsonArray a: foreach (var x in a) Walk(x, inGrid); break;
             }
         }
-        Walk(root);
+        Walk(root, false);
         Remember(list);
         _log.LogInformation("YouTube browse {Channel} ({Kind}): {Count} videos, {More}", channelId, continuation is null ? "first page" : "more", list.Count, next is null ? "no more pages" : "more pages available");
         if (list.Count == 0) next = null;
