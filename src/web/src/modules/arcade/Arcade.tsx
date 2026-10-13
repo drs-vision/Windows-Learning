@@ -92,9 +92,8 @@ export function Arcade({ unlocks, balance, onExit, onChanged }: { unlocks: Unloc
   const [error, setError] = useState('');
   const [busy, setBusy] = useState(false);
 
-  useEffect(() => {
-    bridge.arcade().then((r) => { setGames(r.games); setSampler(r.sampler ?? null); setMaxBlocks(r.maxBlocks ?? 12); setFpRoot(r.flashpointRoot ?? null); }).catch((e) => setError(e.message));
-  }, []);
+  const loadGames = () => bridge.arcade().then((r) => { setGames(r.games); setSampler(r.sampler ?? null); setMaxBlocks(r.maxBlocks ?? 12); setFpRoot(r.flashpointRoot ?? null); }).catch((e) => setError(e.message));
+  useEffect(() => { loadGames(); }, []);
   // Time ran out (or a parent ended it): close whatever is open.
   useEffect(() => {
     if (!playing) return;
@@ -155,7 +154,7 @@ export function Arcade({ unlocks, balance, onExit, onChanged }: { unlocks: Unloc
   }
 
   if (playing && (playing.kind === 'swf' || playing.kind === 'html5')) {
-    return <Player game={playing} onBack={quit} secondsLeft={secondsLeft(playing)} sampler={!!pass && !unlocks.some((x) => x.targets.includes(playing.id) && x.secondsLeft > 0)} />;
+    return <Player game={playing} onBack={quit} onBroken={() => { quit(); loadGames(); onChanged(); }} secondsLeft={secondsLeft(playing)} sampler={!!pass && !unlocks.some((x) => x.targets.includes(playing.id) && x.secondsLeft > 0)} />;
   }
 
   return (
@@ -246,7 +245,7 @@ function Tile({ g, onClick, balance, left }: { g: Game; onClick: () => void; bal
   );
 }
 
-function Player({ game, onBack, secondsLeft, sampler }: { game: Game & { base?: string; rewritePrefix?: string }; onBack: () => void; secondsLeft: number; sampler?: boolean }) {
+function Player({ game, onBack, onBroken, secondsLeft, sampler }: { game: Game & { base?: string; rewritePrefix?: string }; onBack: () => void; onBroken: () => void; secondsLeft: number; sampler?: boolean }) {
   const host = useRef<HTMLDivElement>(null);
   const [err, setErr] = useState('');
 
@@ -285,7 +284,7 @@ function Player({ game, onBack, secondsLeft, sampler }: { game: Game & { base?: 
         <button class="ghost" onClick={onBack}>{sampler ? '← Pick another game' : '← Back to arcade'}</button>
         <b>{game.title}</b>
         <span class="row">
-          <button class="ghost small" title="Hides this game from the arcade and gives back the coins paid for its time. A parent can bring it back." onClick={() => { if (confirm(`Doesn't ${game.title} work? It will be taken out of the arcade and you get your coins back.`)) bridge.arcadeReportBroken(game.id).then((r) => { if (r.refund) alert(`🪙 ${r.refund} coins are back in your wallet.`); onBack(); }).catch((e) => setErr((e as Error).message)); }}>⚠️ Broken?</button>
+          <button class="ghost small" title="Hides this game from the arcade and gives back the coins paid for its time. A parent can bring it back." onClick={() => { if (confirm(`Doesn't ${game.title} work? It will be taken out of the arcade and you get your coins back.`)) bridge.arcadeReportBroken(game.id).then((r) => { if (r.refund) alert(`🪙 ${r.refund} coins are back in your wallet.`); onBroken(); }).catch((e) => setErr((e as Error).message)); }}>⚠️ Broken?</button>
           <span class="countdown" title={sampler ? 'Sampler pass time left' : 'Time left on this game'}>{sampler ? '🎟️ ' : '⏱ '}{fmt(secondsLeft)}</span>
         </span>
       </header>
