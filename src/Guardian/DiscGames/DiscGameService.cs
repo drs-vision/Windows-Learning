@@ -213,8 +213,7 @@ public sealed class DiscGameService
         // Learning Company titles of this era ship their 32-bit program in a folder (e.g. 95INSTAL) beside an INI
         // that says where the CD is ("CDDrive="). That folder is what their installer copies to the hard disk.
         var candidates = Directory.EnumerateFiles(cd, "*.ini", Deep)
-            .Where(i => !i.Contains(Path.DirectorySeparatorChar + "DEMOS" + Path.DirectorySeparatorChar, StringComparison.OrdinalIgnoreCase)
-                     && !i.Contains(Path.DirectorySeparatorChar + "INSTALL" + Path.DirectorySeparatorChar, StringComparison.OrdinalIgnoreCase))
+            .Where(i => !i.Contains(Path.DirectorySeparatorChar + "DEMOS" + Path.DirectorySeparatorChar, StringComparison.OrdinalIgnoreCase))
             .Select(i => (Ini: i, Text: SafeRead(i)))
             .Where(x => x.Text.Contains("CDDrive", StringComparison.OrdinalIgnoreCase))
             .Select(x => (x.Ini, x.Text, Exe: PickExe(Path.GetDirectoryName(x.Ini)!)))
@@ -225,7 +224,12 @@ public sealed class DiscGameService
             var exes = Directory.EnumerateFiles(cd, "*.exe", Deep).Select(e => Path.GetRelativePath(cd, e)).Take(12);
             throw new InvalidOperationException("CoinQuest doesn't know how to run this disc yet (no Learning Company program folder found). Programs on it: " + string.Join(", ", exes));
         }
-        var (ini, text, exe) = candidates.OrderByDescending(c => c.Exe!.Contains("32", StringComparison.OrdinalIgnoreCase)).First();
+        // Several can match (e.g. a demo of another title); prefer the 32-bit program in the folder the installer copies
+        // (95INSTAL, INSTALL\HD …), then the biggest program.
+        var (ini, text, exe) = candidates
+            .OrderByDescending(c => Path.GetFileNameWithoutExtension(c.Exe!).EndsWith("32", StringComparison.OrdinalIgnoreCase))
+            .ThenByDescending(c => new FileInfo(c.Exe!).Length)
+            .First();
         var id = Path.GetFileNameWithoutExtension(exe!).ToLowerInvariant();
         var section = text.Split('\n').Select(l => l.Trim()).FirstOrDefault(l => l.StartsWith('[') && l.EndsWith(']'))?.Trim('[', ']') ?? id;
         var title = KnownTitles.TryGetValue(id, out var t) ? t : section.Replace(" - CD", "").Trim();
