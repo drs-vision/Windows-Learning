@@ -10,6 +10,10 @@ using CoinQuest.Shared.Scoring;
 Paths.EnsureDirectories();
 // Some requests wait on the network (YouTube, updates). Plenty of ready threads keeps everything else instant meanwhile.
 ThreadPool.SetMinThreads(64, 64);
+// The Guardian (SYSTEM) always talks to the internet directly. CoinQuest points the CHILD account's proxy setting at
+// its own gatekeeper; if Windows hands that setting to the service too (seen on a home PC: updates, YouTube lists and
+// game downloads all failed with "proxy tunnel ... 403"), the Guardian would be refused by its own gate.
+System.Net.Http.HttpClient.DefaultProxy = new System.Net.WebProxy();
 
 // `CoinQuest.Guardian.exe --clear-policies` — run by the uninstaller so the child's browser isn't left locked down.
 if (args.Contains("--clear-policies"))

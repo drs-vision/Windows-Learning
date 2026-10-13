@@ -27,7 +27,7 @@ public sealed class ClassicLibrary
     public ClassicLibrary(FlashpointService fp, ILogger<ClassicLibrary> log)
     {
         _fp = fp; _log = log;
-        _http = new HttpClient(new HttpClientHandler { AllowAutoRedirect = true, AutomaticDecompression = DecompressionMethods.All }) { Timeout = TimeSpan.FromMinutes(4) };
+        _http = new HttpClient(new HttpClientHandler { AllowAutoRedirect = true, AutomaticDecompression = DecompressionMethods.All, UseProxy = false }) { Timeout = TimeSpan.FromMinutes(4) };
         _http.DefaultRequestHeaders.UserAgent.Add(new ProductInfoHeaderValue("CoinQuest", "1.0"));
         Directory.CreateDirectory(Dir);
     }
