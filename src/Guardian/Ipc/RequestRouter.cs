@@ -353,7 +353,15 @@ public sealed class RequestRouter
     private List<string> SystemCheck()
     {
         var lines = new List<string>();
-        try { var id = System.Security.Principal.WindowsIdentity.GetCurrent(); lines.Add($"service runs as {id.Name} ({id.User?.Value}){(id.IsSystem ? "" : " — NOT the system account")}"); } catch (Exception ex) { lines.Add("identity: " + ex.Message); }
+        try
+        {
+            using (var imp = System.Security.Principal.WindowsIdentity.GetCurrent(true))
+                if (imp is not null) lines.Add($"this request was acting as {imp.Name} — switching back");
+            PipeServer.RevertToSelf();
+            using var id = System.Security.Principal.WindowsIdentity.GetCurrent();
+            lines.Add($"service runs as {id.Name} ({id.User?.Value}){(id.IsSystem ? "" : " — NOT the system account (check Services → CoinQuest Guardian → Log On: Local System)")}");
+        }
+        catch (Exception ex) { lines.Add("identity: " + ex.Message); }
         try
         {
             var probe = Path.Combine(CoinQuest.Shared.Config.Paths.DataRoot, "write-test.tmp");

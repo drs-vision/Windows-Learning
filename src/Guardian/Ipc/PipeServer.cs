@@ -70,12 +70,26 @@ public sealed class PipeServer
                     string account = "?"; bool isAdmin = false;
                     try
                     {
-                        pipe.RunAsClient(() =>
+                        // Impersonate on a throwaway thread: if the impersonation ever outlived the call on a pool
+                        // thread, later work on that thread (saving unlocks, closing games, internet requests) would
+                        // run as the child — denied files, unkillable processes, and the child's own internet block.
+                        Exception? err = null;
+                        var t = new Thread(() =>
                         {
-                            using var id = WindowsIdentity.GetCurrent();
-                            account = id.Name;
-                            isAdmin = id.Groups?.Any(g => g.Value == "S-1-5-32-544") == true;
-                        });
+                            try
+                            {
+                                pipe.RunAsClient(() =>
+                                {
+                                    using var id = WindowsIdentity.GetCurrent();
+                                    account = id.Name;
+                                    isAdmin = id.Groups?.Any(g => g.Value == "S-1-5-32-544") == true;
+                                });
+                            }
+                            catch (Exception ex) { err = ex; }
+                            finally { RevertToSelf(); }
+                        }) { IsBackground = true };
+                        t.Start(); t.Join();
+                        if (err is not null) throw err;
                         // A non-elevated admin's token carries Administrators as deny-only, which .NET's Groups omits —
                         // so ask the local group directly. The service is SYSTEM; this is cheap and cached.
                         if (!isAdmin) isAdmin = LocalAccounts.IsLocalAdmin(account);
@@ -95,6 +109,7 @@ public sealed class PipeServer
                 var c = client;
                 _ = Task.Run(async () =>
                 {
+                    RevertToSelf(); // always act as the service itself, never as a client
                     Response resp;
                     Request? req = null;
                     try
@@ -137,4 +152,7 @@ public sealed class PipeServer
         lock (_clients) targets = _clients.Where(c => onlyAccount is null || string.Equals(c.Account, onlyAccount, StringComparison.OrdinalIgnoreCase)).ToList();
         foreach (var c in targets) _ = Send(c, ev);
     }
+
+    [System.Runtime.InteropServices.DllImport("advapi32.dll", SetLastError = true)]
+    internal static extern bool RevertToSelf();
 }
