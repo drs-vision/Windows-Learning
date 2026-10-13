@@ -1,0 +1,9 @@
+/* Windows 10's emoji font has no 🪙 (it shows a square). When that's the case, main.tsx sets data-coinfont and this
+   small colour font draws the coin instead — only for that one character. */
+@font-face { font-family: "CQCoin"; src: url("./assets/coin.ttf") format("truetype"); unicode-range: U+1FA99; }
+html[data-coinfont] {
+  --font: "CQCoin", "Segoe UI Variable Display", "Segoe UI", system-ui, -apple-system, sans-serif;
+  --mono: "CQCoin", "Cascadia Code", "Consolas", ui-monospace, monospace;
+  --display: "CQCoin", "Bahnschrift", "Segoe UI Black", "Arial Black", system-ui, sans-serif;
+}
+html[data-coinfont] button, html[data-coinfont] input, html[data-coinfont] select, html[data-coinfont] textarea { font-family: inherit; }

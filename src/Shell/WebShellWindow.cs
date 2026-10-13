@@ -74,6 +74,21 @@ public class WebShellWindow : Window
         await _web.EnsureCoreWebView2Async(env);
         var core = _web.CoreWebView2;
 
+        // After an update, drop WebView2's cached copy of the old screens (otherwise an account can keep showing the
+        // previous version until its cache happens to expire).
+        var ver = typeof(WebShellWindow).Assembly.GetName().Version?.ToString(3) ?? "0";
+        try
+        {
+            var marker = Path.Combine(userData, "coinquest-version.txt");
+            if (!File.Exists(marker) || File.ReadAllText(marker).Trim() != ver)
+            {
+                await core.Profile.ClearBrowsingDataAsync(CoreWebView2BrowsingDataKinds.DiskCache | CoreWebView2BrowsingDataKinds.CacheStorage | CoreWebView2BrowsingDataKinds.ServiceWorkers);
+                File.WriteAllText(marker, ver);
+                Log($"New version {ver}: cleared the web cache");
+            }
+        }
+        catch (Exception ex) { Log("Couldn't clear the web cache: " + ex.Message); }
+
         core.SetVirtualHostNameToFolderMapping("coinquest.local", Paths.InstallRoot, CoreWebView2HostResourceAccessKind.Allow);
         if (Directory.Exists(Paths.ArcadeDropFolder))
             core.SetVirtualHostNameToFolderMapping("coinquest-arcade.local", Paths.ArcadeDropFolder, CoreWebView2HostResourceAccessKind.Allow);
@@ -109,7 +124,7 @@ public class WebShellWindow : Window
         Activated += (_, _) => _web.Focus();
 
         var dev = Environment.GetEnvironmentVariable("COINQUEST_WEB_DEV"); // e.g. http://localhost:5173 during development
-        core.Navigate(dev is not null ? $"{dev}/?app={_app}" : $"https://coinquest.local/web/index.html?app={_app}");
+        core.Navigate(dev is not null ? $"{dev}/?app={_app}" : $"https://coinquest.local/web/index.html?app={_app}&v={ver}");
     }
 
     private const string ClassicsHost = "coinquest-classics.local";

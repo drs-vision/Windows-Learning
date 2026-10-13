@@ -38,6 +38,21 @@ public sealed class ProcessEnforcer
         "credentialuibroker.exe", "credentialenrollmentmanager.exe", "wwahost.exe", "pickerhost.exe", "useroobebroker.exe"
     };
 
+    /// <summary>Windows tools that are never let through by the "background helper in System32" rule.</summary>
+    private static readonly HashSet<string> NeverAllow = new(StringComparer.OrdinalIgnoreCase)
+    {
+        "cmd.exe", "powershell.exe", "pwsh.exe", "powershell_ise.exe", "wscript.exe", "cscript.exe", "mshta.exe",
+        "taskmgr.exe", "regedit.exe", "regedt32.exe", "mmc.exe", "control.exe", "msconfig.exe", "wsl.exe", "bash.exe",
+        "net.exe", "net1.exe", "sc.exe", "taskkill.exe", "schtasks.exe", "reg.exe", "runas.exe", "shutdown.exe",
+    };
+
+    private static bool IsWindowsFolder(string path)
+    {
+        var win = Environment.GetFolderPath(Environment.SpecialFolder.Windows);
+        return path.StartsWith(Path.Combine(win, "System32") + Path.DirectorySeparatorChar, StringComparison.OrdinalIgnoreCase)
+            || path.StartsWith(Path.Combine(win, "SysWOW64") + Path.DirectorySeparatorChar, StringComparison.OrdinalIgnoreCase);
+    }
+
     private readonly FlashpointService _fp;
 
     public ProcessEnforcer(SessionMonitor session, UnlockManager unlocks, FlashpointService fp, ILogger<ProcessEnforcer> log)
@@ -92,9 +107,13 @@ public sealed class ProcessEnforcer
                 if (path is not null && fpRoot is not null && path.StartsWith(fpRoot, StringComparison.OrdinalIgnoreCase)) continue;
                 // otvdm: the 16-bit helper that runs Read, Write & Type! (only CoinQuest's own copy).
                 if (path is not null && path.StartsWith(CoinQuest.Guardian.Rwt.RwtService.OtvdmDir + Path.DirectorySeparatorChar, StringComparison.OrdinalIgnoreCase)) continue;
-                // Anything living under Windows\SystemApps or Windows\System32 that we didn't list is treated as safe.
+                // Anything living under Windows\SystemApps is treated as safe.
                 if (path is not null && (path.StartsWith(@"C:\Windows\SystemApps", StringComparison.OrdinalIgnoreCase) ||
                                          path.StartsWith(@"C:\Windows\ImmersiveControlPanel", StringComparison.OrdinalIgnoreCase))) continue;
+                // Background helpers that come with Windows or the computer's drivers (audio, touchpad, graphics…) live in
+                // System32 / SysWOW64 / DriverStore and have no window. Allow those — but never the tools a child could
+                // use to get around CoinQuest, and nothing from there that opens a window (apps stay on the allow list).
+                if (path is not null && !NeverAllow.Contains(exe) && IsWindowsFolder(path) && p.MainWindowHandle == IntPtr.Zero) continue;
 
                 if (_recentlyKilled.TryGetValue(p.Id, out var when) && (DateTime.UtcNow - when).TotalSeconds < 10) continue;
                 _log.LogInformation("Blocking {Exe} ({Path}) in session {Sid}", exe, path ?? "?", s.SessionId);
