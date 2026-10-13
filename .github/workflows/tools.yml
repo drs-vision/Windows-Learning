@@ -1,0 +1,24 @@
+name: Fetch tools
+# Puts third-party open-source tools on the `tools` branch so a dev session without GitHub-release access can use them.
+on:
+  workflow_dispatch:
+  push:
+    paths: ['.github/workflows/tools.yml']
+permissions:
+  contents: write
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: otvdm (winevdm, GPL-2.0) latest release
+        env: { GH_TOKEN: "${{ github.token }}" }
+        run: |
+          mkdir -p /tmp/tools
+          url=$(curl -sS -H "Authorization: Bearer $GH_TOKEN" https://api.github.com/repos/otya128/winevdm/releases/latest | python3 -c "import json,sys;d=json.load(sys.stdin);print([a['browser_download_url'] for a in d['assets'] if a['name'].startswith('otvdm') and a['name'].endswith('.zip')][0])")
+          echo "$url"; curl -sSL -o /tmp/tools/otvdm.zip "$url"; ls -la /tmp/tools
+      - name: Publish
+        run: |
+          git config user.name "coinquest-ci"; git config user.email "ci@users.noreply.github.com"
+          git checkout --orphan tools-new && git rm -rf -q . && git clean -fdxq
+          cp /tmp/tools/* . && git add -A && git commit -qm "tools" && git push -qf origin HEAD:tools
