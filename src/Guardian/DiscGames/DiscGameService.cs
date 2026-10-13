@@ -1,3 +1,4 @@
+using System.IO.Compression;
 using System.Security.AccessControl;
 using System.Security.Principal;
 using System.Text;
@@ -89,28 +90,115 @@ public sealed class DiscGameService
 
     // ---- import -------------------------------------------------------------------------------------------------
 
+    /// <summary>
+    /// Import from a disc image (.zip/.iso/.img/.bin), a folder copied from a disc, a folder (or .zip) holding several
+    /// disc images, or a share link to one (a Dropbox file or folder link is downloaded first). Runs in the background.
+    /// </summary>
     public void StartImport(string source)
     {
+        source = source.Trim().Trim('"');
+        var isLink = source.StartsWith("http://", StringComparison.OrdinalIgnoreCase) || source.StartsWith("https://", StringComparison.OrdinalIgnoreCase);
         lock (_gate)
         {
-            if (Stage == "importing") throw new InvalidOperationException("already importing a disc — wait for it to finish");
-            if (!File.Exists(source) && !Directory.Exists(source)) throw new FileNotFoundException("CoinQuest can't see that file. Put it somewhere like Downloads or Documents and try again.");
+            if (Stage == "importing") throw new InvalidOperationException("already importing — wait for it to finish");
+            if (!isLink && !File.Exists(source) && !Directory.Exists(source)) throw new FileNotFoundException("CoinQuest can't see that file or folder. Put it somewhere like Downloads or Documents and try again.");
             Stage = "importing"; Message = "Starting…";
         }
-        _ = Task.Run(() =>
+        _ = Task.Run(async () =>
         {
+            var temp = Path.Combine(Root, ".incoming");
             try
             {
-                var g = Install(source, m => Message = m);
-                Stage = "idle"; Message = $"Imported {g.Title}. The disc image isn't needed any more.";
-                _log.LogInformation("Classic CD game imported: {Title} ({Id})", g.Title, g.Id);
+                if (Directory.Exists(temp)) Directory.Delete(temp, true);
+                var local = isLink ? await Download(source, temp) : source;
+                var discs = FindDiscs(local, temp);
+                var done = new List<string>(); var failed = new List<string>();
+                for (int i = 0; i < discs.Count; i++)
+                {
+                    var name = Path.GetFileNameWithoutExtension(discs[i]);
+                    var prefix = discs.Count > 1 ? $"[{i + 1}/{discs.Count}] {name}: " : "";
+                    try { done.Add(Install(discs[i], m => Message = prefix + m).Title); }
+                    catch (Exception ex) { failed.Add($"{name} ({ex.Message})"); _log.LogWarning(ex, "Classic CD game import failed: {Disc}", discs[i]); }
+                }
+                Message = (done.Count > 0 ? $"Imported {string.Join(", ", done)}. " : "") + (failed.Count > 0 ? $"Couldn't import: {string.Join("; ", failed)}" : "The disc images aren't needed any more.");
+                Stage = done.Count == 0 ? "error" : "idle";
+                _log.LogInformation("Classic CD import: {Done} done, {Failed} failed", done.Count, failed.Count);
             }
             catch (Exception ex)
             {
                 _log.LogWarning(ex, "Classic CD game import failed");
                 Stage = "error"; Message = ex.Message;
             }
+            finally { try { if (Directory.Exists(temp)) Directory.Delete(temp, true); } catch { } }
         });
+    }
+
+    private static readonly string[] DiscExts = { ".zip", ".iso", ".img", ".bin" };
+
+    /// <summary>The disc images to import from what the parent picked.</summary>
+    private List<string> FindDiscs(string source, string temp)
+    {
+        if (Directory.Exists(source))
+        {
+            var images = Directory.EnumerateFiles(source, "*", new EnumerationOptions { RecurseSubdirectories = true, MaxRecursionDepth = 2 })
+                .Where(f => DiscExts.Contains(Path.GetExtension(f).ToLowerInvariant())).OrderBy(f => f).ToList();
+            var looksLikeDisc = Directory.EnumerateFiles(source, "*.ini", Deep).Any(i => SafeRead(i).Contains("CDDrive", StringComparison.OrdinalIgnoreCase));
+            return looksLikeDisc || images.Count == 0 ? new List<string> { source } : images;
+        }
+        if (source.EndsWith(".zip", StringComparison.OrdinalIgnoreCase))
+        {
+            // A .zip of several discs (what a Dropbox folder link downloads as): unpack the inner archives/images.
+            using var zip = ZipFile.OpenRead(source);
+            var inner = zip.Entries.Where(e => DiscExts.Contains(Path.GetExtension(e.Name).ToLowerInvariant())).ToList();
+            var innerZips = inner.Where(e => e.Name.EndsWith(".zip", StringComparison.OrdinalIgnoreCase)).ToList();
+            if (innerZips.Count > 0)
+            {
+                Directory.CreateDirectory(temp);
+                var list = new List<string>();
+                foreach (var e in innerZips)
+                {
+                    Message = $"Unpacking {e.Name}…";
+                    var dest = Path.Combine(temp, Path.GetFileName(e.Name));
+                    e.ExtractToFile(dest, true);
+                    list.Add(dest);
+                }
+                return list;
+            }
+        }
+        return new List<string> { source };
+    }
+
+    private async Task<string> Download(string url, string temp)
+    {
+        var u = url;
+        if (u.Contains("dropbox.com", StringComparison.OrdinalIgnoreCase))
+        {
+            u = System.Text.RegularExpressions.Regex.Replace(u, @"([?&])dl=0", "$1dl=1");
+            if (!u.Contains("dl=1")) u += (u.Contains('?') ? "&" : "?") + "dl=1";
+        }
+        else if (u.Contains("drive.google.com", StringComparison.OrdinalIgnoreCase) || u.Contains("onedrive", StringComparison.OrdinalIgnoreCase) || u.Contains("1drv.ms", StringComparison.OrdinalIgnoreCase))
+            throw new InvalidOperationException("Links from that service can't be downloaded directly — download the file(s) first, then import the file or folder. (Dropbox links work.)");
+        Directory.CreateDirectory(temp);
+        var dest = Path.Combine(temp, "download.zip");
+        using var http = new HttpClient { Timeout = Timeout.InfiniteTimeSpan };
+        http.DefaultRequestHeaders.UserAgent.ParseAdd("CoinQuest/1.0");
+        using var resp = await http.GetAsync(u, HttpCompletionOption.ResponseHeadersRead);
+        if (!resp.IsSuccessStatusCode) throw new InvalidOperationException($"The link didn't download (HTTP {(int)resp.StatusCode}). Check that it's shared as \"anyone with the link\".");
+        var name = resp.Content.Headers.ContentDisposition?.FileNameStar ?? resp.Content.Headers.ContentDisposition?.FileName;
+        if (name is not null) { name = Path.GetFileName(name.Trim('"')); if (DiscExts.Contains(Path.GetExtension(name).ToLowerInvariant())) dest = Path.Combine(temp, name); }
+        var total = resp.Content.Headers.ContentLength;
+        await using (var src = await resp.Content.ReadAsStreamAsync())
+        await using (var f = File.Create(dest))
+        {
+            var buf = new byte[1 << 20]; long got = 0; int n; var last = DateTime.MinValue;
+            while ((n = await src.ReadAsync(buf)) > 0)
+            {
+                await f.WriteAsync(buf.AsMemory(0, n)); got += n;
+                if (DateTime.UtcNow - last > TimeSpan.FromSeconds(1)) { last = DateTime.UtcNow; Message = total > 0 ? $"Downloading… {got / 1048576} of {total / 1048576} MB" : $"Downloading… {got / 1048576} MB"; }
+            }
+        }
+        _log.LogInformation("Downloaded {MB} MB from the share link", new FileInfo(dest).Length / 1048576);
+        return dest;
     }
 
     private Game Install(string source, Action<string> progress)

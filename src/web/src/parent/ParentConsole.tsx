@@ -644,6 +644,18 @@ function DiscImport() {
       if (r.path) setSt(await bridge.parentDiscImport(r.path));
     } catch (e) { setErr((e as Error).message); }
   }
+  const [link, setLink] = useState('');
+  async function pickDir() {
+    setErr('');
+    try {
+      const r = await bridge.pickFolder('Choose a folder of game discs (every disc image inside is imported)');
+      if (r.path) setSt(await bridge.parentDiscImport(r.path));
+    } catch (e) { setErr((e as Error).message); }
+  }
+  async function fromLink() {
+    setErr('');
+    try { if (link.trim()) { setSt(await bridge.parentDiscImport(link.trim())); setLink(''); } } catch (e) { setErr((e as Error).message); }
+  }
   async function tryIt(id: string) { setErr(''); try { await bridge.playDisc(id); } catch (e) { setErr((e as Error).message); } }
   if (!st) return <p class="muted small">Checking…</p>;
   return (
@@ -653,8 +665,15 @@ function DiscImport() {
           {' '}<button class="ghost small" onClick={() => tryIt(g.id)}>Try it</button></li>))}</ul>}
       {st.stage === 'importing' ? <p>⏳ {st.message ?? 'Importing…'}</p>
         : <>
-            <p class="small">Add one of your discs: choose its image (<code>.zip</code>, <code>.iso</code>, <code>.img</code> or <code>.bin</code>). CoinQuest copies the game inside itself; the image isn't needed afterwards. Works with ClueFinders and other Learning Company titles of that era.</p>
-            <button class={st.games.length ? 'secondary' : 'primary'} onClick={pick}>Import a disc…</button>
+            <p class="small">Add your discs: choose one image (<code>.zip</code>, <code>.iso</code>, <code>.img</code> or <code>.bin</code>), a whole folder of them, or paste a Dropbox link to a file or folder. CoinQuest copies each game inside itself; the images aren't needed afterwards. Works with ClueFinders and other Learning Company titles of that era.</p>
+            <div class="row" style="flex-wrap:wrap;gap:.5em">
+              <button class={st.games.length ? 'secondary' : 'primary'} onClick={pick}>Import a disc…</button>
+              <button class="secondary" onClick={pickDir}>Import a folder…</button>
+            </div>
+            <div class="row" style="gap:.5em;margin-top:.5em">
+              <input type="url" placeholder="…or paste a Dropbox link" value={link} onInput={(e) => setLink((e.target as HTMLInputElement).value)} style="flex:1" />
+              <button class="secondary" onClick={fromLink} disabled={!link.trim()}>Import from link</button>
+            </div>
           </>}
       {st.message && st.stage !== 'importing' && <p class={st.stage === 'error' ? 'error small' : 'muted small'}>{st.message}</p>}
       {err && <p class="error">{err}</p>}

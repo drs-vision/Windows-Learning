@@ -333,6 +333,16 @@ public class WebShellWindow : Window
                 });
                 return Response.Success("", new { path = picked });
             }
+            case "shell.pickFolder":
+            {
+                string? picked = null;
+                Dispatcher.Invoke(() =>
+                {
+                    var dlg = new Microsoft.Win32.OpenFolderDialog { Title = payload?["title"]?.GetValue<string>() ?? "Choose a folder" };
+                    if (dlg.ShowDialog(this) == true) picked = dlg.FolderName;
+                });
+                return Response.Success("", new { path = picked });
+            }
             case "shell.launchRwt":
                 return LaunchRwt(payload);
             case "shell.launchProgram":

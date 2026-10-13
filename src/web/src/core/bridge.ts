@@ -107,6 +107,7 @@ class Bridge {
   parentFpDownloadInstaller() { return this.call<{ path: string }>('parent.fpDownloadInstaller', undefined, { parent: true }); }
   parentFpThumbs(ids: string[]) { return this.call<Record<string, string>>('parent.fpThumbs', { ids }, { parent: true }); }
   launch(exe: string) { return this.call('shell.launch', { exe }); }
+  pickFolder(title: string) { return this.call<{ path: string | null }>('shell.pickFolder', { title }); }
   pickFile(title: string, filter: string) { return this.call<{ path: string | null }>('shell.pickFile', { title, filter }); }
   parentRwtStatus() { return this.call<RwtStatus>('parent.rwtStatus', undefined, { parent: true }); }
   parentRwtImport(path: string) { return this.call<RwtStatus>('parent.rwtImport', { path }, { parent: true }); }
