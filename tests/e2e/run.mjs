@@ -129,7 +129,7 @@ let { browser: kb, page: kid } = await attach(9223, 'scholar');
 await kid.waitForSelector('text=/Hi,/', { timeout: 90000 });
 await sleep(1500);
 await shot(kid, 'kid-home'); desktop('kid-home');
-const balance = async () => Number((await kid.locator('.wallet, .coins, .topbar').first().textContent()).replace(/\D+/g, '') || 0);
+const balance = async () => Number(((await kid.locator('.wallet').first().textContent().catch(() => '')) ?? '').replace(/\D+/g, '') || 0);
 
 await check('kid sees 400 coins', async () => {
   const t = await kid.textContent('body');
