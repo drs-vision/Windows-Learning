@@ -82,6 +82,14 @@ public sealed class ClassicLibrary
                 Directory.CreateDirectory(tmp);
 
                 var packed = await FromLocalFlashpoint(id, tmp) || await FromDataPack(id, tmp);
+                if (IsHtml5(platform) && !packed)
+                {
+                    // An HTML5 game without a data pack is only its first page; the rest (often a Unity build) isn't
+                    // archived anywhere, so it would sit on a black screen. Take it out of the arcade instead.
+                    try { Directory.Delete(tmp, true); } catch { }
+                    MarkUnavailable(id);
+                    throw new InvalidOperationException("This game isn't fully saved in the archive, so it can't play. It's been taken out of the arcade.");
+                }
                 try { await EnsureEntry(); } catch { MarkUnavailable(id); throw new InvalidOperationException("This game's files aren't available from the archive right now."); }
                 async Task EnsureEntry()
                 {
@@ -101,6 +109,12 @@ public sealed class ClassicLibrary
                 _log.LogInformation("Classic {Id} ready ({Kind})", id, packed ? "data pack" : "legacy file");
             }
             var meta = JsonNode.Parse(await File.ReadAllTextAsync(metaPath))!;
+            if (IsHtml5(meta["platform"]?.ToString()) && meta["packed"]?.GetValue<bool>() == false)
+            {
+                MarkUnavailable(id);
+                try { Directory.Delete(dir, true); } catch { }
+                throw new InvalidOperationException("This game isn't fully saved in the archive, so it can't play. It's been taken out of the arcade.");
+            }
             if (IsHtml5(meta["platform"]?.ToString()) && meta["rewritten"] is null)
             {
                 // Copies made before addresses were rewritten (v0.1.54 and earlier).
@@ -148,6 +162,9 @@ public sealed class ClassicLibrary
             {
                 using var resp = await _http.GetAsync(url);
                 if (!resp.IsSuccessStatusCode) continue;
+                // A web page instead of the file asked for = the site's "not found" page dressed up as a success.
+                var wantsPage = Path.GetExtension(path).ToLowerInvariant() is ".html" or ".htm" or "";
+                if (!wantsPage && resp.Content.Headers.ContentType?.MediaType == "text/html") continue;
                 var bytes = await resp.Content.ReadAsByteArrayAsync();
                 if (bytes.Length == 0) continue;
                 Directory.CreateDirectory(Path.GetDirectoryName(dest)!);

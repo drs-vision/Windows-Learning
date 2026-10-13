@@ -212,7 +212,7 @@ await check('classic Flash game (Flashpoint Archive) appears, downloads and play
   await kid.locator('.player header button').first().click().catch(() => undefined);
   await sleep(800);
 });
-await check('HTML5 classic (Miniclip Bloxorz) plays from the local copy', async () => {
+await check('HTML5 classic (Miniclip Bloxorz) plays, or is taken out of the arcade if the archive lacks its files', async () => {
   // Approve the HTML5 version in the Parent Console (the arcade's own pick is the Flash version).
   // The parent view inside the child app (what Ctrl+Shift+P opens), behind the PIN.
   await kid.evaluate(() => window.chrome.webview.dispatchEvent(new MessageEvent('message', { data: JSON.stringify({ name: 'openParent' }) }))).catch((e) => log('  dispatch: ' + e.message));
@@ -286,7 +286,18 @@ await check('HTML5 classic (Miniclip Bloxorz) plays from the local copy', async 
     for (const l of sl) log('  shell: ' + l.slice(0, 200));
   } catch (e) { log('  diag: ' + e.message); }
   log(`  game area screenshot: ${png.length} bytes; errors: ${err.join(' / ') || 'none'}`);
-  expect(!err.length, 'error: ' + err.join(' / '));
+  if (err.length) {
+    // Not fully archived: it must be gone from the arcade now (the Flash Bloxorz stays).
+    await kid.click('.portal-head button.ghost').catch(() => undefined); await sleep(500);
+    await kid.click('text=/Arcade/'); await sleep(2500);
+    await kid.locator('.portal input').first().fill('Bloxorz'); await sleep(1200);
+    const left = await kid.locator('.tile', { hasText: /Bloxorz/ }).count();
+    await shot(kid, 'html5-Bloxorz-removed');
+    log(`  Bloxorz tiles after: ${left}`);
+    await kid.locator('.portal input').first().fill('');
+    expect(left === n - 1, 'the unplayable HTML5 Bloxorz is still in the arcade');
+    return;
+  }
   expect(png.length > 40000, 'the HTML5 game area is (nearly) blank');
 });
 await check('sampler pass: buy and play any game', async () => {
