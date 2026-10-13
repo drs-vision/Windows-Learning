@@ -90,7 +90,8 @@ public class WebShellWindow : Window
         if (_app == "scholar")
         {
             // Classic games: files missing from the local copy are fetched on demand (like Flashpoint's game server).
-            core.AddWebResourceRequestedFilter("*", CoreWebView2WebResourceContext.All);
+            // All request sources: HTML5 games run in an iframe, and the plain overload only sees the main page's requests.
+            core.AddWebResourceRequestedFilter("*", CoreWebView2WebResourceContext.All, CoreWebView2WebResourceRequestSourceKinds.All);
             core.WebResourceRequested += (s, e) => OnClassicResource(core, env, e);
         }
 

@@ -276,6 +276,15 @@ await check('HTML5 classic (Miniclip Bloxorz) plays from the local copy', async 
     const lines = readFileSync('C:\\ProgramData\\CoinQuest\\logs\\guardian.log', 'utf8').split('\n').filter((l) => /Classic .*(no copy|ready)/.test(l) && /123f54dc|no copy/.test(l));
     for (const l of lines.slice(-8)) log('  ' + l.slice(20, 220));
   } catch { /* */ }
+  try {
+    const gd = 'C:\\ProgramData\\CoinQuest\\classics\\123f54dc-6631-8caf-554f-9c3ce4915781';
+    const files = []; const walk = (d) => { for (const f of readdirSync(d)) { const p = join(d, f); if (statSync(p).isDirectory()) walk(p); else files.push(p.slice(gd.length) + ' ' + statSync(p).size); } }; walk(gd);
+    log('  files: ' + files.slice(0, 30).join(' | '));
+    const idx = files.map((f) => f.split(' ')[0]).find((f) => /index\.html$/.test(f));
+    if (idx) log('  index.html: ' + readFileSync(gd + idx, 'utf8').replace(/\s+/g, ' ').slice(0, 1500));
+    const sl = readFileSync(join(process.env.LOCALAPPDATA, 'CoinQuest', 'shell.log'), 'utf8').split('\n').filter((l) => /classic/i.test(l)).slice(-10);
+    for (const l of sl) log('  shell: ' + l.slice(0, 200));
+  } catch (e) { log('  diag: ' + e.message); }
   log(`  game area screenshot: ${png.length} bytes; errors: ${err.join(' / ') || 'none'}`);
   expect(!err.length, 'error: ' + err.join(' / '));
   expect(png.length > 40000, 'the HTML5 game area is (nearly) blank');
