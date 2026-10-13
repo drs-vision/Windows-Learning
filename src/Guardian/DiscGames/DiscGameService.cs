@@ -64,6 +64,7 @@ public sealed partial class DiscGameService
         try
         {
             Directory.CreateDirectory(Root);
+            try { var trash = Path.Combine(Root, ".trash"); if (Directory.Exists(trash)) DeleteDir(trash); } catch { }
             foreach (var g in Games())
             {
                 if (g.Mode == "installed" && g.InstallDir is { } idir) { OpenUp(idir); continue; }
@@ -285,7 +286,8 @@ public sealed partial class DiscGameService
         if (Directory.Exists(app))
             foreach (var f in Directory.EnumerateFiles(app, "*.dat", Deep).Where(f => !f.Contains(Path.DirectorySeparatorChar + "history" + Path.DirectorySeparatorChar)))
                 try { keep[Path.GetRelativePath(app, f)] = File.ReadAllBytes(f); } catch { }
-        if (Directory.Exists(dest)) DeleteDir(dest);
+        // Replace the program and disc copy; keep the save history (a file there may be open by a virus scanner).
+        foreach (var sub in new[] { "cd", "app" }) DeleteDir(Path.Combine(dest, sub));
         Directory.CreateDirectory(dest);
         Directory.Move(cd, Path.Combine(dest, "cd"));
         var programDir = Path.Combine(dest, "cd", Path.GetRelativePath(cd, Path.GetDirectoryName(ini)!));
@@ -352,7 +354,19 @@ public sealed partial class DiscGameService
             try { File.SetAttributes(f, FileAttributes.Normal); } catch { }
         foreach (var d in Directory.EnumerateDirectories(dir, "*", SearchOption.AllDirectories))
             try { new DirectoryInfo(d).Attributes = FileAttributes.Directory; } catch { }
-        Directory.Delete(dir, true);
+        for (int i = 0; ; i++)
+        {
+            try { Directory.Delete(dir, true); return; }
+            catch (Exception) when (i < 4) { Thread.Sleep(750); } // a virus scanner or the game may still hold a file
+            catch (Exception) when (i == 4)
+            {
+                // Still busy: move it out of the way so the import can go on; it's cleaned up next time.
+                var trash = Path.Combine(Root, ".trash", Path.GetFileName(dir) + "-" + DateTime.UtcNow.Ticks);
+                Directory.CreateDirectory(Path.GetDirectoryName(trash)!);
+                Directory.Move(dir, trash);
+                return;
+            }
+        }
     }
 
     private static string SafeRead(string f) { try { return File.ReadAllText(f, Encoding.Latin1); } catch { return ""; } }

@@ -7,6 +7,11 @@ using CoinQuest.Shared.Config;
 using CoinQuest.Shared.Ledgers;
 using CoinQuest.Shared.Scoring;
 
+// Use IPv4 for the service's own internet traffic. On a network whose IPv6 is broken, YouTube, the game catalogue
+// (db-api.unstable.life) and other dual-stack sites failed with "A socket operation was attempted to an unreachable
+// network" because .NET tried their IPv6 address and never fell back (github.com, IPv4-only, kept working).
+AppContext.SetSwitch("System.Net.DisableIPv6", true);
+
 Paths.EnsureDirectories();
 // Some requests wait on the network (YouTube, updates). Plenty of ready threads keeps everything else instant meanwhile.
 ThreadPool.SetMinThreads(64, 64);
