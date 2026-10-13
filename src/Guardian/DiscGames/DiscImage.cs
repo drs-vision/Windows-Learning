@@ -38,10 +38,25 @@ public static class DiscImage
             {
                 progress?.Invoke("Saving the disc image…");
                 Directory.CreateDirectory(Path.GetDirectoryName(isoOut)!);
+                // Leave unwanted files out while writing: Windows Defender inspects the new file as soon as it's
+                // written and locks it if the spyware is inside, so blanking it afterwards is too late.
+                List<(long Start, long End)> skip;
+                using (var r = new Iso9660(OpenSectors(image)))
+                    skip = r.Files().Where(e => !e.IsDir && IsUnwanted(e.Path)).Select(e => (e.Lba * 2048, e.Lba * 2048 + e.Size)).ToList();
                 using (var sectors = OpenSectors(image))
                 using (var o = File.Create(isoOut))
-                    sectors.CopyTo(o, 1 << 20);
-                Neutralize(isoOut, progress);
+                {
+                    var buf = new byte[1 << 20]; long pos = 0; int n;
+                    while ((n = sectors.Read(buf, 0, buf.Length)) > 0)
+                    {
+                        foreach (var (a, b) in skip)
+                        {
+                            long s0 = Math.Max(a, pos), e0 = Math.Min(b, pos + n);
+                            if (s0 < e0) Array.Clear(buf, (int)(s0 - pos), (int)(e0 - s0));
+                        }
+                        o.Write(buf, 0, n); pos += n;
+                    }
+                }
             }
             progress?.Invoke("Copying the disc…");
             using var iso = new Iso9660(OpenSectors(image));

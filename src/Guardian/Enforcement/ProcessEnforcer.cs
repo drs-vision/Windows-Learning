@@ -35,7 +35,9 @@ public sealed class ProcessEnforcer
         "crashpadhandler.exe", "chrome_crashpad_handler.exe", "nvcontainer.exe", "igfxem.exe",
         "microsoftedgeupdate.exe", "googleupdate.exe",
         // Windows sign-in helpers a website can call up: passkeys / security keys (Windows Hello), Microsoft account.
-        "credentialuibroker.exe", "credentialenrollmentmanager.exe", "wwahost.exe", "pickerhost.exe", "useroobebroker.exe"
+        "credentialuibroker.exe", "credentialenrollmentmanager.exe", "wwahost.exe", "pickerhost.exe", "useroobebroker.exe",
+        // Touch keyboard / handwriting panel and other input helpers.
+        "tabtip.exe", "tabtip32.exe", "inputapp.exe", "gameinputsvc.exe", "gameinput.exe"
     };
 
     /// <summary>Windows tools that are never let through by the "background helper in System32" rule.</summary>
@@ -117,6 +119,8 @@ public sealed class ProcessEnforcer
                 // System32 / SysWOW64 / DriverStore and have no window. Allow those — but never the tools a child could
                 // use to get around CoinQuest, and nothing from there that opens a window (apps stay on the allow list).
                 if (path is not null && !NeverAllow.Contains(exe) && IsWindowsFolder(path) && p.MainWindowHandle == IntPtr.Zero) continue;
+                // Windows' own shared components (touch keyboard, ink, etc.) live under Common Files\microsoft shared.
+                if (path is not null && path.Contains(@"\Common Files\microsoft shared\", StringComparison.OrdinalIgnoreCase)) continue;
 
                 if (_recentlyKilled.TryGetValue(p.Id, out var when) && (DateTime.UtcNow - when).TotalSeconds < 10) continue;
                 _log.LogInformation("Blocking {Exe} ({Path}) in session {Sid}", exe, path ?? "?", s.SessionId);
