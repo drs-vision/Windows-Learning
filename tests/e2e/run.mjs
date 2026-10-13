@@ -234,7 +234,7 @@ await check('HTML5 classic (Miniclip Bloxorz) plays from the local copy', async 
   await row.waitFor({ timeout: 45000 }).catch(() => undefined);
   if (!(await row.count())) await shot(parent, 'parent-search-bloxorz');
   expect(await row.count(), 'no HTML5 Bloxorz in the Flashpoint search');
-  if (!(await row.locator('input').isChecked())) await row.locator('input').check();
+  if (!(await row.locator('input').isChecked())) await row.locator('input').click();
   await sleep(4000);
   await shot(parent, 'parent-approved-html5-bloxorz');
   } finally {
