@@ -331,6 +331,33 @@ await check('sampler pass: buy and play any game', async () => {
   const back = kid.locator('.player header button').first();
   if (await back.count()) await back.click(); else await kid.click('text=I\'m done playing');
 });
+await check('"Broken?" takes a game out of the arcade and refunds its coins', async () => {
+  if (!(await kid.locator('.portal').count())) { await kid.click('text=/Arcade/').catch(() => undefined); await sleep(2500); }
+  const tile = kid.locator('.tile', { hasText: /Shifty Knight|This Is The Only Level|Achievement Unlocked|Meat Boy/ }).first();
+  expect(await tile.count(), 'no classic to test with');
+  const name = (await tile.locator('.tile-title').textContent()).trim();
+  await tile.click();
+  const before = await balance();
+  await kid.click('.time-buyer .coin-btn');
+  for (let t = 0; t < 60 && !(await kid.locator('.player, .portal .error').count()); t++) await sleep(1000);
+  await sleep(3000);
+  const paid = before - (await balance());
+  const dialogs = [];
+  const onDialog = (d) => { dialogs.push(d.message()); d.accept().catch(() => undefined); };
+  kid.on('dialog', onDialog);
+  await kid.click('text=Broken?');
+  await sleep(4000);
+  kid.off('dialog', onDialog);
+  await shot(kid, 'broken-refunded');
+  const after = await balance();
+  log(`  ${name}: paid ${paid}, balance ${before} → ${before - paid} → ${after} · dialogs: ${dialogs.join(' | ')}`);
+  await kid.locator('.portal input').first().fill(name); await sleep(1200);
+  const still = await kid.locator('.tile', { hasText: name }).count();
+  await kid.locator('.portal input').first().fill('');
+  expect(paid > 0, 'nothing was charged');
+  expect(after === before, `refund missing: balance ${after}, expected ${before}`);
+  expect(still === 0, 'the game is still in the arcade');
+});
 await kid.click('.portal-head button.ghost').catch(() => undefined);
 await sleep(800);
 
