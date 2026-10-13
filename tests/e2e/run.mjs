@@ -252,6 +252,8 @@ await check('HTML5 classic (Miniclip Bloxorz) plays, or is taken out of the arca
     await kid.locator('.tile', { hasText: /Bloxorz/ }).nth(i).click();
     await kid.click('.time-buyer .coin-btn');
     for (let t = 0; t < 60 && !(await kid.locator('.player, .portal .error').count()); t++) await sleep(1000);
+    const e1 = (await kid.locator('.portal .error').allTextContents()).join(' ');
+    if (/fully saved/i.test(e1)) { found = true; log('  ' + e1.trim()); break; }
     const foot = await kid.locator('.player footer').textContent().catch(() => '');
     if (/miniclip/i.test(foot ?? '')) { found = true; break; }
     await kid.locator('.player header button').first().click().catch(() => undefined); await sleep(800);
