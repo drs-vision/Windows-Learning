@@ -158,6 +158,7 @@ public sealed partial class YouTubeService
         }
         Walk(root);
         Remember(list);
+        _log.LogInformation("YouTube browse {Channel} ({Kind}): {Count} videos, {More}", channelId, continuation is null ? "first page" : "more", list.Count, next is null ? "no more pages" : "more pages available");
         if (list.Count == 0) next = null;
         return new Page(list, next);
     }
