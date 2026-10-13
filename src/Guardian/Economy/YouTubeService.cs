@@ -25,7 +25,8 @@ public sealed partial class YouTubeService
     {
         _log = log;
         _http = new HttpClient { Timeout = TimeSpan.FromSeconds(25) };
-        _http.DefaultRequestHeaders.UserAgent.Add(new ProductInfoHeaderValue("Mozilla", "5.0"));
+        // A full browser identity: YouTube answers a bare "Mozilla/5.0" with fewer results (or none).
+        _http.DefaultRequestHeaders.TryAddWithoutValidation("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0.0.0 Safari/537.36");
         _http.DefaultRequestHeaders.AcceptLanguage.ParseAdd("en-US,en;q=0.8");
     }
 
@@ -104,21 +105,65 @@ public sealed partial class YouTubeService
     public sealed record Page(List<Video> Videos, string? Next);
     private const string VideosTab = "EgZ2aWRlb3PyBgQKAjoA";
 
-    /// <summary>One page of a channel's uploads (about 30), newest first. Pass the previous page's <c>Next</c> for more.</summary>
-    public async Task<Page> Browse(string channelId, string? continuation)
+    // YouTube's web client settings (version, visitor id), read from a real channel page and refreshed every few hours.
+    private (string Version, string? Visitor, DateTime At) _cfg = ("2.20261013.00.00", null, DateTime.MinValue);
+
+    private async Task<JsonNode?> ChannelPageData(string channelId)
     {
-        var client = new JsonObject { ["clientName"] = "WEB", ["clientVersion"] = "2.20250312.04.00", ["hl"] = "en", ["gl"] = "US" };
+        var html = await _http.GetStringAsync($"https://www.youtube.com/channel/{channelId}/videos?hl=en&persist_hl=1");
+        var ver = Regex.Match(html, "\"INNERTUBE_CLIENT_VERSION\":\"([^\"]+)\"");
+        var vis = Regex.Match(html, "\"VISITOR_DATA\":\"([^\"]+)\"");
+        if (ver.Success) _cfg = (ver.Groups[1].Value, vis.Success ? vis.Groups[1].Value : _cfg.Visitor, DateTime.UtcNow);
+        var start = html.IndexOf("var ytInitialData = ", StringComparison.Ordinal);
+        if (start < 0) return null;
+        start += "var ytInitialData = ".Length;
+        var end = html.IndexOf(";</script>", start, StringComparison.Ordinal);
+        return end > start ? JsonNode.Parse(html[start..end]) : null;
+    }
+
+    private async Task<JsonNode?> Post(string channelId, string? continuation)
+    {
+        var client = new JsonObject { ["clientName"] = "WEB", ["clientVersion"] = _cfg.Version, ["hl"] = "en", ["gl"] = "US" };
+        if (_cfg.Visitor is not null) client["visitorData"] = _cfg.Visitor;
         var body = new JsonObject { ["context"] = new JsonObject { ["client"] = client } };
         if (continuation is null) { body["browseId"] = channelId; body["params"] = VideosTab; }
         else body["continuation"] = continuation;
         using var req = new HttpRequestMessage(HttpMethod.Post, "https://www.youtube.com/youtubei/v1/browse?prettyPrint=false")
         { Content = new StringContent(body.ToJsonString(), Encoding.UTF8, "application/json") };
         req.Headers.Add("X-YouTube-Client-Name", "1");
-        req.Headers.Add("X-YouTube-Client-Version", "2.20250312.04.00");
+        req.Headers.Add("X-YouTube-Client-Version", _cfg.Version);
+        if (_cfg.Visitor is not null) req.Headers.Add("X-Goog-Visitor-Id", _cfg.Visitor);
         req.Headers.Add("Origin", "https://www.youtube.com");
         using var resp = await _http.SendAsync(req);
-        resp.EnsureSuccessStatusCode();
-        var root = JsonNode.Parse(await resp.Content.ReadAsStringAsync());
+        var text = await resp.Content.ReadAsStringAsync();
+        if (!resp.IsSuccessStatusCode) throw new HttpRequestException($"YouTube said {(int)resp.StatusCode}: {text[..Math.Min(200, text.Length)]}");
+        return JsonNode.Parse(text);
+    }
+
+    /// <summary>One page of a channel's uploads (about 30), newest first. Pass the previous page's <c>Next</c> for more.</summary>
+    public async Task<Page> Browse(string channelId, string? continuation)
+    {
+        if (DateTime.UtcNow - _cfg.At > TimeSpan.FromHours(6))
+            try { if (continuation is null) { var first = await ChannelPageData(channelId); if (first is not null) return Parse(first, channelId, null); } }
+            catch (Exception ex) { _log.LogWarning(ex, "YouTube channel page for {Channel} failed; trying the API", channelId); }
+        try { return Parse(await Post(channelId, continuation), channelId, continuation); }
+        catch (Exception ex) when (continuation is null)
+        {
+            // The API refused (often an old client version): read the channel's own page, which also refreshes the settings.
+            _log.LogWarning(ex, "YouTube browse for {Channel} failed; reading the channel page instead", channelId);
+            return Parse(await ChannelPageData(channelId), channelId, null);
+        }
+        catch (Exception ex)
+        {
+            _log.LogWarning(ex, "YouTube 'more videos' for {Channel} failed; refreshing settings and retrying", channelId);
+            _cfg = (_cfg.Version, _cfg.Visitor, DateTime.MinValue);
+            try { await ChannelPageData(channelId); } catch { }
+            return Parse(await Post(channelId, continuation), channelId, continuation);
+        }
+    }
+
+    private Page Parse(JsonNode? root, string channelId, string? continuation)
+    {
         var title = root?["metadata"]?["channelMetadataRenderer"]?["title"]?.GetValue<string>()
                     ?? CachedTitle(channelId) ?? "";
         var list = new List<Video>(); var seen = new HashSet<string>(); string? next = null;
@@ -163,7 +208,7 @@ public sealed partial class YouTubeService
         Walk(root, false);
         Remember(list);
         _log.LogInformation("YouTube browse {Channel} ({Kind}): {Count} videos, {More}", channelId, continuation is null ? "first page" : "more", list.Count, next is null ? "no more pages" : "more pages available");
-        if (list.Count == 0) next = null;
+        if (list.Count == 0) { if (continuation is null) throw new InvalidOperationException("YouTube returned no videos"); next = null; }
         return new Page(list, next);
     }
 
