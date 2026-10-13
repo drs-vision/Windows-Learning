@@ -174,6 +174,7 @@ public sealed record ModuleSettings
         ["bible-typing"] = new() { CoinsPerActivity = 15, DailyCap = 60 },
         ["khan-academy"] = new() { CoinsPerActivity = 5, DailyCap = 80, Options = new() { ["perAnswer"] = "1", ["perVideo"] = "3" } },
         ["duolingo"] = new() { Enabled = false, CoinsPerActivity = 5, DailyCap = 50 },
+        ["rwt"] = new() { Enabled = true, CoinsPerActivity = 5, DailyCap = 60 },
     };
 }
 

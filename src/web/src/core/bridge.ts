@@ -107,6 +107,11 @@ class Bridge {
   parentFpDownloadInstaller() { return this.call<{ path: string }>('parent.fpDownloadInstaller', undefined, { parent: true }); }
   parentFpThumbs(ids: string[]) { return this.call<Record<string, string>>('parent.fpThumbs', { ids }, { parent: true }); }
   launch(exe: string) { return this.call('shell.launch', { exe }); }
+  pickFile(title: string, filter: string) { return this.call<{ path: string | null }>('shell.pickFile', { title, filter }); }
+  parentRwtStatus() { return this.call<RwtStatus>('parent.rwtStatus', undefined, { parent: true }); }
+  parentRwtImport(path: string) { return this.call<RwtStatus>('parent.rwtImport', { path }, { parent: true }); }
+  /** Read, Write & Type!: ask the Guardian where it lives, then have the shell start it through otvdm. */
+  async playRwt() { const info = await this.call<Record<string, string>>('rwt.launch'); return this.call<{ ok: boolean }>('shell.launchRwt', info); }
   setupAccounts() { return this.call<{ name: string; fullName: string; isAdmin: boolean; disabled: boolean; sid: string }[]>('setup.accounts'); }
   setupComplete(pin: string, child: { displayName: string; windowsAccount: string }, preset: string) { return this.call('setup.complete', { pin, child, preset }); }
 
@@ -120,6 +125,7 @@ class Bridge {
 
 export const bridge = new Bridge();
 
+export type RwtStatus = { installed: boolean; otvdm: boolean; stage: 'idle' | 'importing' | 'ready' | 'error'; message?: string; patches: string[]; players: string[]; root: string };
 export interface FpStatus {
   installed: boolean; root?: string | null; clifp: boolean; installerUrl: string;
   autoClassics?: boolean; approved?: number; online?: boolean;

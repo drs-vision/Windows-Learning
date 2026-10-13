@@ -303,6 +303,23 @@ public class WebShellWindow : Window
                 }
                 return Response.Success("", new { ok = true });
             }
+            case "shell.pickFile":
+            {
+                string? picked = null;
+                Dispatcher.Invoke(() =>
+                {
+                    var dlg = new Microsoft.Win32.OpenFileDialog
+                    {
+                        Title = payload?["title"]?.GetValue<string>() ?? "Choose a file",
+                        Filter = payload?["filter"]?.GetValue<string>() ?? "All files|*.*",
+                        CheckFileExists = true,
+                    };
+                    if (dlg.ShowDialog(this) == true) picked = dlg.FileName;
+                });
+                return Response.Success("", new { path = picked });
+            }
+            case "shell.launchRwt":
+                return LaunchRwt(payload);
             case "shell.minimize":
                 Dispatcher.Invoke(() => WindowState = WindowState.Minimized);
                 return Response.Success("", new { ok = true });
@@ -317,6 +334,52 @@ public class WebShellWindow : Window
             default:
                 return Response.Fail("", "unknown shell op");
         }
+    }
+
+    [System.Runtime.InteropServices.DllImport("kernel32", CharSet = System.Runtime.InteropServices.CharSet.Unicode, SetLastError = true)]
+    private static extern bool DefineDosDevice(int flags, string device, string? target);
+    private Process? _rwt;
+
+    /// <summary>
+    /// Read, Write &amp; Type! is a 1995 Windows 3.1 program: it runs through otvdm, wants short DOS-style paths and a small
+    /// environment. A private drive letter (this logon only) points at CoinQuest's copy, so every path is short.
+    /// </summary>
+    private Response LaunchRwt(JsonNode? p)
+    {
+        try
+        {
+            if (_rwt is { HasExited: false }) return Response.Success("", new { ok = true, already = true });
+            var otvdm = p?["otvdm"]?.GetValue<string>() ?? ""; var root = p?["root"]?.GetValue<string>() ?? "";
+            var exe = p?["exe"]?.GetValue<string>() ?? ""; var data = p?["data"]?.GetValue<string>() ?? ""; var cwd = p?["cwd"]?.GetValue<string>() ?? "";
+            if (!File.Exists(otvdm) || !Directory.Exists(root)) return Response.Fail("", "Read, Write & Type! isn't set up on this computer yet");
+            var used = DriveInfo.GetDrives().Select(d => char.ToUpperInvariant(d.Name[0])).ToHashSet();
+            var letter = "RWTQPONMLKJ".FirstOrDefault(c => !used.Contains(c));
+            if (letter == default) return Response.Fail("", "no free drive letter for the game");
+            var drive = letter + ":";
+            DefineDosDevice(0, drive, root);
+            var psi = new ProcessStartInfo(otvdm) { UseShellExecute = false, WorkingDirectory = $@"{drive}\{cwd}" };
+            psi.ArgumentList.Add($@"{drive}\{exe}");
+            psi.ArgumentList.Add($@"{drive}\{data}");
+            // 16-bit programs copy the whole environment into 64 KB of memory; today's is often too big for that.
+            var keep = new[] { "SystemRoot", "windir", "SystemDrive", "TEMP", "TMP", "USERPROFILE", "USERNAME", "COMPUTERNAME", "APPDATA", "LOCALAPPDATA", "ProgramData", "NUMBER_OF_PROCESSORS", "PROCESSOR_ARCHITECTURE" };
+            var envCopy = keep.Select(k => (k, Environment.GetEnvironmentVariable(k))).Where(x => x.Item2 is not null).ToList();
+            psi.Environment.Clear();
+            foreach (var (k, v) in envCopy) psi.Environment[k] = v;
+            psi.Environment["PATH"] = Environment.GetFolderPath(Environment.SpecialFolder.System) + ";" + Path.GetDirectoryName(otvdm);
+            _rwt = Process.Start(psi)!;
+            _rwt.EnableRaisingEvents = true;
+            Log($"RWT started: {otvdm} {drive}\\{exe} {drive}\\{data} (pid {_rwt.Id})");
+            _rwt.Exited += (_, _) =>
+            {
+                var code = 0; try { code = _rwt.ExitCode; } catch { }
+                Log($"RWT exited ({code})");
+                try { DefineDosDevice(2 /* DDD_REMOVE_DEFINITION */, drive, root); } catch { }
+                Dispatcher.Invoke(() => { _web.CoreWebView2?.PostWebMessageAsString("{\"name\":\"rwtClosed\"}"); WindowState = _kiosk ? WindowState.Maximized : WindowState.Normal; Activate(); });
+            };
+            if (_kiosk) Dispatcher.Invoke(() => WindowState = WindowState.Minimized);
+            return Response.Success("", new { ok = true, drive });
+        }
+        catch (Exception ex) { Log("RWT launch failed: " + ex); return Response.Fail("", "Couldn't start Read, Write & Type!: " + ex.Message); }
     }
 
     private void OnKey(object sender, KeyEventArgs e)

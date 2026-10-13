@@ -54,6 +54,7 @@ builder.Services.AddSingleton<YouTubeService>();
 builder.Services.AddSingleton<FlashpointService>();
 builder.Services.AddSingleton<ClassicLibrary>();
 builder.Services.AddSingleton<ClassicsStocker>();
+builder.Services.AddSingleton<CoinQuest.Guardian.Rwt.RwtService>();
 builder.Services.AddSingleton<ProcessEnforcer>();
 builder.Services.AddSingleton<UpdateChecker>();
 builder.Services.AddSingleton<RequestRouter>();

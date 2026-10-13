@@ -90,6 +90,8 @@ public sealed class ProcessEnforcer
                 try { path = p.MainModule?.FileName; } catch { /* access denied for some protected processes */ }
                 if (!isBrowser && path is not null && fullPaths.Contains(path)) continue;
                 if (path is not null && fpRoot is not null && path.StartsWith(fpRoot, StringComparison.OrdinalIgnoreCase)) continue;
+                // otvdm: the 16-bit helper that runs Read, Write & Type! (only CoinQuest's own copy).
+                if (path is not null && path.StartsWith(CoinQuest.Guardian.Rwt.RwtService.OtvdmDir + Path.DirectorySeparatorChar, StringComparison.OrdinalIgnoreCase)) continue;
                 // Anything living under Windows\SystemApps or Windows\System32 that we didn't list is treated as safe.
                 if (path is not null && (path.StartsWith(@"C:\Windows\SystemApps", StringComparison.OrdinalIgnoreCase) ||
                                          path.StartsWith(@"C:\Windows\ImmersiveControlPanel", StringComparison.OrdinalIgnoreCase))) continue;

@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'preact/hooks';
 import type { Child, FlashpointGame, FpCatalogGame, Game, ParentState, Prize, WebGame } from '../core/types';
 import { BLOCK_MINUTES, autoSamplerPrice, defaultArcadePrice, youTubeBlockPrice } from '../core/types';
-import { bridge, type FpStatus } from '../core/bridge';
+import { bridge, type FpStatus, type RwtStatus } from '../core/bridge';
 import { MODULES } from '../modules/registry';
 import { SetupWizard } from './SetupWizard';
 import { fmt } from '../modules/arcade/Arcade';
@@ -600,6 +600,7 @@ function Quests({ child, onSave }: { child: Child; onSave: (c: Child) => void })
               <label class="switch"><input type="checkbox" checked={s.enabled} onChange={(e) => setMod(m.id, { enabled: (e.target as HTMLInputElement).checked })} /><span>{s.enabled ? 'On' : 'Off'}</span></label>
             </div>
             <p class="muted">{m.description}</p>
+            {m.id === 'rwt' && <RwtImport />}
             <div class="row">
               <label>Coins per activity<input type="number" min={0} value={s.coinsPerActivity} onChange={(e) => setMod(m.id, { coinsPerActivity: Number((e.target as HTMLInputElement).value) })} /></label>
               <label>Daily limit (0 = none)<input type="number" min={0} value={s.dailyCap} onChange={(e) => setMod(m.id, { dailyCap: Number((e.target as HTMLInputElement).value) })} /></label>
@@ -622,6 +623,40 @@ function Quests({ child, onSave }: { child: Child; onSave: (c: Child) => void })
           </div>
         );
       })}
+    </div>
+  );
+}
+
+/** Bring the family's own Read, Write & Type! disc image into CoinQuest, once. */
+function RwtImport() {
+  const [st, setSt] = useState<RwtStatus | null>(null);
+  const [err, setErr] = useState('');
+  const load = () => bridge.parentRwtStatus().then(setSt).catch((e) => setErr(e.message));
+  useEffect(() => { load(); }, []);
+  useEffect(() => { if (st?.stage === 'importing') { const t = setTimeout(load, 1500); return () => clearTimeout(t); } }, [st]);
+  async function pick() {
+    setErr('');
+    try {
+      const r = await bridge.pickFile('Choose your Read, Write & Type! disc image', 'Disc image (*.iso, *.zip)|*.iso;*.zip|All files|*.*');
+      if (r.path) setSt(await bridge.parentRwtImport(r.path));
+    } catch (e) { setErr((e as Error).message); }
+  }
+  async function tryIt() { setErr(''); try { await bridge.playRwt(); } catch (e) { setErr((e as Error).message); } }
+  if (!st) return <p class="muted small">Checking…</p>;
+  return (
+    <div class="rwt-import">
+      {st.stage === 'importing' ? <p>⏳ {st.message ?? 'Importing…'}</p>
+        : st.installed ? <>
+            <p>✅ Imported — it's part of CoinQuest now (no disc or image needed).{st.players.length > 0 && <> Players: {st.players.join(', ')}.</>}</p>
+            <div class="row"><button class="secondary" onClick={tryIt}>Try it now (on this account)</button><button class="ghost small" onClick={pick}>Import again…</button></div>
+          </>
+        : <>
+            <p>Bring in your own copy once: choose its disc image (<code>.iso</code>, or the <code>.zip</code> it came in). CoinQuest copies the game inside itself and gets the free helper that runs 1995 Windows programs (otvdm). After that the image isn't needed.</p>
+            <button class="primary" onClick={pick}>Import disc image…</button>
+          </>}
+      {st.message && st.stage !== 'importing' && <p class="muted small">{st.message}</p>}
+      {st.patches.some((p) => p.includes('NOT APPLIED')) && <p class="error small">This copy is a different version than expected: {st.patches.filter((p) => p.includes('NOT')).join('; ')}</p>}
+      {err && <p class="error">{err}</p>}
     </div>
   );
 }

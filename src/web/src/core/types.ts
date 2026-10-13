@@ -93,6 +93,7 @@ export interface ChildState {
   progress: Record<string, Progress | null>;
   sites: string[];
   youtubeChannels?: number;
+  rwtInstalled?: boolean;
   arcadeMinutesPerPlay?: number;
 }
 

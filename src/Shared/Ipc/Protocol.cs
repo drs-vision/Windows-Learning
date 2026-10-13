@@ -82,7 +82,10 @@ public static class Ops
     public const string ParentFpSuggest = "parent.fpSuggest";           // curated classics matched against the catalog
     public const string ParentFpInstallClifp = "parent.fpInstallClifp";
     public const string ParentFpDownloadInstaller = "parent.fpDownloadInstaller";
-    public const string ParentDiagnostics = "parent.diagnostics";     // recent warnings/errors + blocked hosts
+    public const string ParentDiagnostics = "parent.diagnostics";
+    public const string ParentRwtStatus = "parent.rwtStatus";         // Read, Write & Type: imported? otvdm? import progress
+    public const string ParentRwtImport = "parent.rwtImport";         // { path } → import the family's disc image (background)
+    public const string RwtLaunch = "rwt.launch";                     // → where otvdm and the game live (child or parent)     // recent warnings/errors + blocked hosts
     public const string ParentBlocked = "parent.blocked";             // hosts the internet gate refused recently
     public const string ParentFpStockNow = "parent.fpStockNow";         // add the curated classics + download them now
     public const string ParentFpThumbs = "parent.fpThumbs";             // { ids }

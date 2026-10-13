@@ -106,7 +106,7 @@ function TopBar({ state, unlocks, onHome, onShop }: { state: ChildState; unlocks
 }
 
 function Home({ state, arcadeUnlock, ytUnlock, onQuest, onArcade, onYouTube, onWeb, onShop }: { state: ChildState; arcadeUnlock?: Unlock; ytUnlock?: Unlock; onQuest: (id: string) => void; onArcade: () => void; onYouTube: () => void; onWeb: () => void; onShop: () => void }) {
-  const quests = MODULES.filter((m) => state.modules[m.id]?.enabled);
+  const quests = MODULES.filter((m) => state.modules[m.id]?.enabled && (m.id !== 'rwt' || state.rwtInstalled));
   const pending = state.pendingClaims.length;
   return (
     <div class="home">
