@@ -186,7 +186,10 @@ public sealed class RwtService
                 var who = PlayerName(Path.GetDirectoryName(rel)!);
                 var lvl = LevelOf(bytes);
                 _log.LogInformation("RWT progress saved for {Player} (level {Level})", who, lvl);
-                if (!isNew) changed.Add(lvl > 0 ? $"{who}, level {lvl}" : who);
+                // A player's file first appears when they finish their first activity (signing in alone writes nothing
+                // there), so a brand-new file counts too, unless it is old (found when tracking first started).
+                var fresh = DateTime.Now - File.GetLastWriteTime(f) < TimeSpan.FromMinutes(30);
+                if (!isNew || fresh) changed.Add(lvl > 0 ? $"{who}, level {lvl}" : who);
             }
             if (changed.Count > 0 && DateTimeOffset.UtcNow - st.LastPaid > TimeSpan.FromMinutes(2))
             {

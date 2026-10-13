@@ -339,10 +339,15 @@ public class WebShellWindow : Window
     [System.Runtime.InteropServices.DllImport("kernel32", CharSet = System.Runtime.InteropServices.CharSet.Unicode, SetLastError = true)]
     private static extern bool DefineDosDevice(int flags, string device, string? target);
     private Process? _rwt;
-    [System.Runtime.InteropServices.DllImport("user32", CharSet = System.Runtime.InteropServices.CharSet.Unicode)]
-    private static extern IntPtr FindWindow(string? cls, string? title);
+    private delegate bool EnumWindowsProc(IntPtr hwnd, IntPtr lParam);
     [System.Runtime.InteropServices.DllImport("user32")]
-    private static extern bool InvalidateRect(IntPtr hwnd, IntPtr rect, bool erase);
+    private static extern bool EnumWindows(EnumWindowsProc cb, IntPtr lParam);
+    [System.Runtime.InteropServices.DllImport("user32", CharSet = System.Runtime.InteropServices.CharSet.Unicode)]
+    private static extern int GetClassName(IntPtr hwnd, System.Text.StringBuilder buf, int max);
+    [System.Runtime.InteropServices.DllImport("user32", CharSet = System.Runtime.InteropServices.CharSet.Unicode)]
+    private static extern int GetWindowText(IntPtr hwnd, System.Text.StringBuilder buf, int max);
+    [System.Runtime.InteropServices.DllImport("user32")]
+    private static extern bool RedrawWindow(IntPtr hwnd, IntPtr rect, IntPtr rgn, uint flags);
 
     /// <summary>
     /// Read, Write &amp; Type! is a 1995 Windows 3.1 program: it runs through otvdm, wants short DOS-style paths and a small
@@ -373,13 +378,32 @@ public class WebShellWindow : Window
             _rwt = Process.Start(psi)!;
             _rwt.EnableRaisingEvents = true;
             var game = _rwt;
-            // Ask the game to repaint a few times a second, so fades and scene changes show up straight away.
+            // Ask the game to repaint a few times a second, so fades and scene changes show up straight away. The game's
+            // windows are found by class or title (otvdm may run the program in a helper process with another id).
             new System.Threading.Thread(() =>
             {
+                var logged = false;
                 while (!game.HasExited)
                 {
-                    try { var h = FindWindow("FingersWndClass", null); if (h != IntPtr.Zero) InvalidateRect(h, IntPtr.Zero, false); } catch { }
-                    System.Threading.Thread.Sleep(400);
+                    try
+                    {
+                        var found = 0;
+                        EnumWindows((h, _) =>
+                        {
+                            var cls = new System.Text.StringBuilder(64); GetClassName(h, cls, cls.Capacity);
+                            var title = new System.Text.StringBuilder(64); GetWindowText(h, title, title.Capacity);
+                            if (cls.ToString().Contains("FingersWnd") || title.ToString().StartsWith("Read, Write"))
+                            {
+                                RedrawWindow(h, IntPtr.Zero, IntPtr.Zero, 0x1 /* INVALIDATE */ | 0x80 /* ALLCHILDREN */);
+                                if (!logged) Log($"RWT window: class '{cls}', title '{title}'");
+                                found++;
+                            }
+                            return true;
+                        }, IntPtr.Zero);
+                        if (found > 0) logged = true;
+                    }
+                    catch { }
+                    System.Threading.Thread.Sleep(300);
                 }
             }) { IsBackground = true, Name = "rwt-repaint" }.Start();
             Log($"RWT started: {otvdm} {drive}\\{exe} {drive}\\{data} (pid {_rwt.Id})");
