@@ -80,3 +80,11 @@ Windows software that locks a child's account to an allowlist (apps + websites),
 - Updates: each download uses a fresh file name; "access denied" while an install runs shows "installing…" instead of an error.
 - Parent Console → Settings → Advanced (collapsed) holds Troubleshooting, recent problems and recently blocked addresses (with Allow).
 - v0.1.54 e2e: ALL PASSED, incl. Bloxorz, Up next switching videos, creator scroll 30→131.
+
+## 2026-10-13 — v0.1.55 → v0.1.70
+- Sign-in with 2-step verification (Google, Microsoft, Apple): sign-in pop-ups ("Continue with Google") now open as a real linked window instead of replacing the site; a page calling window.close() can't close the site window; Google's post-password pages (2-step verification, "is this you?", the accounts.youtube.com cookie hand-off, recaptcha) are allowed; Windows passkey/security-key helpers aren't blocked. Tested: Khan → Continue with Google opens Google sign-in and Khan stays open. Real 2-step verification needs David's account (not testable on the test machine).
+- Flash classics keep their own stage size and are scaled as a picture (forcing Ruffle to rescale the stage is the likely cause of Sugar, Sugar's red filter acting as a platform; unverified on that exact game).
+- Classics are served by CoinQuest itself; any file a game's local copy is missing is fetched on demand (Flashpoint legacy server, then the original site; "not found" pages are never saved). HTML5 classics have their addresses rewritten to the local copy. HTML5 classics with no archive data pack (e.g. Miniclip's HTML5 Bloxorz, a Unity build the archive lacks) are removed from the arcade automatically; the Flash Bloxorz stays and plays.
+- "⚠️ Broken?" button in the game player hides a game (parent can restore in Shop → Arcade).
+- YouTube "Newest from all" keeps loading older videos from every creator as you scroll.
+- v0.1.70 e2e: ALL PASSED.
