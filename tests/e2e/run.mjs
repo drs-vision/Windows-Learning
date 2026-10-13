@@ -230,8 +230,8 @@ await check('HTML5 classic (Miniclip Bloxorz) plays from the local copy', async 
   await parent.waitForSelector('input[placeholder^="Search Flashpoint"]', { timeout: 60000 });
   await parent.fill('input[placeholder^="Search Flashpoint"]', 'Bloxorz');
   await parent.press('input[placeholder^="Search Flashpoint"]', 'Enter');
-  await parent.waitForSelector('.fp-row', { timeout: 30000 }).catch(() => undefined);
   const row = parent.locator('.fp-row', { hasText: /HTML5/ }).first();
+  await row.waitFor({ timeout: 45000 }).catch(() => undefined);
   if (!(await row.count())) await shot(parent, 'parent-search-bloxorz');
   expect(await row.count(), 'no HTML5 Bloxorz in the Flashpoint search');
   if (!(await row.locator('input').isChecked())) await row.locator('input').check();
@@ -281,6 +281,7 @@ await check('HTML5 classic (Miniclip Bloxorz) plays from the local copy', async 
   expect(png.length > 40000, 'the HTML5 game area is (nearly) blank');
 });
 await check('sampler pass: buy and play any game', async () => {
+  if (!(await kid.locator('.portal').count())) { await kid.click('text=/Arcade/').catch(() => undefined); await sleep(2500); }
   const btn = kid.locator('text=GET PASS');
   expect(await btn.count(), 'no sampler button');
   await btn.click();
