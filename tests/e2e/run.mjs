@@ -247,19 +247,32 @@ await check('HTML5 classic (Miniclip Bloxorz) plays, or is taken out of the arca
   await kid.locator('.portal input').first().fill('Bloxorz'); await sleep(1200);
   const n = await kid.locator('.tile', { hasText: /Bloxorz/ }).count();
   log(`  ${n} Bloxorz tile(s)`);
-  let found = false;
+  let found = false, removed = false;
   for (let i = 0; i < n && !found; i++) {
     await kid.locator('.tile', { hasText: /Bloxorz/ }).nth(i).click();
     await kid.click('.time-buyer .coin-btn');
     for (let t = 0; t < 60 && !(await kid.locator('.player, .portal .error').count()); t++) await sleep(1000);
     const e1 = (await kid.locator('.portal .error').allTextContents()).join(' ');
-    if (/fully saved/i.test(e1)) { found = true; log('  ' + e1.trim()); break; }
+    if (/fully saved/i.test(e1)) { found = true; removed = true; log('  ' + e1.trim()); break; }
     const foot = await kid.locator('.player footer').textContent().catch(() => '');
     if (/miniclip/i.test(foot ?? '')) { found = true; break; }
     await kid.locator('.player header button').first().click().catch(() => undefined); await sleep(800);
     await kid.locator('.portal input').first().fill('Bloxorz'); await sleep(800);
   }
   expect(found, 'the HTML5 (Miniclip) Bloxorz is not in the arcade');
+  if (removed) {
+    // Not fully archived: it must be gone from the arcade now (the Flash Bloxorz stays).
+    await kid.locator('.game-detail button.ghost').click().catch(() => undefined); await sleep(500);
+    await kid.click('.portal-head button.ghost').catch(() => undefined); await sleep(500);
+    await kid.click('text=/Arcade/').catch(() => undefined); await sleep(2500);
+    await kid.locator('.portal input').first().fill('Bloxorz'); await sleep(1200);
+    const left = await kid.locator('.tile', { hasText: /Bloxorz/ }).count();
+    await shot(kid, 'html5-Bloxorz-removed');
+    log(`  Bloxorz tiles after: ${left}`);
+    await kid.locator('.portal input').first().fill('');
+    expect(left === n - 1, 'the unplayable HTML5 Bloxorz is still in the arcade');
+    return;
+  }
   await sleep(45000); // first play: the game's files come down from the archive one by one
   await shot(kid, 'html5-Bloxorz-loaded'); desktop('html5-Bloxorz-loaded');
   const err = await kid.locator('.portal .error, .player .error').allTextContents();
