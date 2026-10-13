@@ -15,6 +15,19 @@ ThreadPool.SetMinThreads(64, 64);
 // game downloads all failed with "proxy tunnel ... 403"), the Guardian would be refused by its own gate.
 System.Net.Http.HttpClient.DefaultProxy = new System.Net.WebProxy();
 
+// The gatekeeper proxy belongs on the child's account only. If it ever ended up on the service accounts, take it off.
+foreach (var sysSid in new[] { "S-1-5-18", ".DEFAULT", "S-1-5-19", "S-1-5-20" })
+{
+    try
+    {
+        using var hku = Microsoft.Win32.RegistryKey.OpenBaseKey(Microsoft.Win32.RegistryHive.Users, Microsoft.Win32.RegistryView.Default);
+        using var inet = hku.OpenSubKey(sysSid + @"\Software\Microsoft\Windows\CurrentVersion\Internet Settings", writable: true);
+        if (inet?.GetValue("ProxyServer") is string ps && ps.StartsWith("127.0.0.1:"))
+        { inet.SetValue("ProxyEnable", 0, Microsoft.Win32.RegistryValueKind.DWord); inet.DeleteValue("ProxyServer", false); }
+    }
+    catch { }
+}
+
 // `CoinQuest.Guardian.exe --clear-policies` — run by the uninstaller so the child's browser isn't left locked down.
 if (args.Contains("--clear-policies"))
 {
