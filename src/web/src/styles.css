@@ -553,3 +553,4 @@ button.big { font-size: 1.1em; padding: .7em 1.4em; }
 .yt-more { text-align: center; padding: 16px; }
 .yt-channels { flex-wrap: wrap; }
 @media (max-width: 900px) { .yt-watch-body { flex-direction: column; } .yt-upnext { width: auto; max-height: 40vh; } }
+.swf-host { position: relative; overflow: hidden; }

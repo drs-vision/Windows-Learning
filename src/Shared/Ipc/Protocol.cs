@@ -53,6 +53,8 @@ public static class Ops
     public const string Progress = "progress";         // { moduleId, progress } save module progress
     public const string ArcadeList = "arcade.list";    // games available, with prices
     public const string ArcadePlay = "arcade.play";    // { gameId, blocks } → buys blocks×5 min of that game (blocks 0 = resume / use sampler)
+    public const string ArcadeClassicFile = "arcade.classicFile"; // { fpId, host, path } → fetch a file a classic needs → { ok }
+    public const string ArcadeReportBroken = "arcade.reportBroken"; // { gameId } → hide a game that doesn't work (parent can restore)
     public const string ArcadePrepare = "arcade.prepare"; // { gameId } → downloads a classic if needed; where to load it from
     public const string ArcadeSampler = "arcade.sampler"; // buys the sampler pass: any game for a few minutes
     public const string ArcadeQuit = "arcade.quit";    // { gameId } → the play is over

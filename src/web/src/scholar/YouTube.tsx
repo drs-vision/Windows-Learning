@@ -46,12 +46,14 @@ export function YouTube({ unlock, onExit, prize, balance, onBought }: {
       .catch((e) => setPages((p) => ({ ...p, [id]: { videos: p[id]?.videos ?? [], next: null, loading: false, error: (e as Error).message } })));
   }
   useEffect(() => { if (channel !== 'all' && !pages[channel]) loadMore(channel); }, [channel]);
+  // "Newest from all": scrolling down keeps going — the next page from every creator.
+  const loadMoreAll = () => { for (const c of lib?.channels ?? []) loadMore(c.id); };
 
   // Load the next page when the bottom of the list scrolls into view.
   const sentinel = useRef<HTMLDivElement>(null);
   useEffect(() => {
-    if (!sentinel.current || channel === 'all') return;
-    const io = new IntersectionObserver((es) => { if (es.some((e) => e.isIntersecting)) loadMore(channel); }, { rootMargin: '400px' });
+    if (!sentinel.current) return;
+    const io = new IntersectionObserver((es) => { if (es.some((e) => e.isIntersecting)) { if (channel === 'all') loadMoreAll(); else loadMore(channel); } }, { rootMargin: '400px' });
     io.observe(sentinel.current);
     return () => io.disconnect();
   });
@@ -101,7 +103,11 @@ export function YouTube({ unlock, onExit, prize, balance, onBought }: {
   }
 
   const page = channel === 'all' ? null : pages[channel];
-  const shown = channel === 'all' ? (lib?.videos ?? [])
+  const dedupe = (list: Video[]) => { const seen = new Set<string>(); return list.filter((v) => !seen.has(v.id) && (seen.add(v.id), true)); };
+  const allPages = Object.values(pages);
+  const allMore = (lib?.channels ?? []).some((c) => !pages[c.id] || pages[c.id].next);
+  const allLoading = allPages.some((p) => p.loading);
+  const shown = channel === 'all' ? dedupe([...(lib?.videos ?? []), ...allPages.flatMap((p) => p.videos)])
     : (page?.videos.length ? page.videos : (lib?.videos ?? []).filter((v) => v.channelId === channel));
   return (
     <div class="arcade">
@@ -143,6 +149,9 @@ export function YouTube({ unlock, onExit, prize, balance, onBought }: {
           </button>
         ))}
       </div>
+      {channel === 'all' && lib && lib.channels.length > 0 && <div ref={sentinel} class="yt-more">
+        {allLoading ? <p class="muted">Loading more videos…</p> : allMore ? <button class="ghost" onClick={loadMoreAll}>More videos</button> : <p class="muted small">That's every video from your creators.</p>}
+      </div>}
       {page && <div ref={sentinel} class="yt-more">
         {page.loading ? <p class="muted">Loading more videos…</p> : page.next ? <button class="ghost" onClick={() => loadMore(channel)}>More videos</button> : page.error ? <p class="error">{page.error}</p> : <p class="muted small">That's every video from this creator.</p>}
       </div>}

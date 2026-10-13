@@ -46,7 +46,7 @@ public sealed class RequestRouter
     /// </summary>
     private static readonly HashSet<string> Slow = new()
     {
-        Ops.ArcadePrepare, Ops.YouTubeLibrary, Ops.YouTubeCheck, Ops.YouTubeChannel, Ops.ParentYouTubeResolve, Ops.ParentCheckUpdate, Ops.ParentInstalledApps, Ops.SetupAccounts,
+        Ops.ArcadePrepare, Ops.ArcadeClassicFile, Ops.YouTubeLibrary, Ops.YouTubeCheck, Ops.YouTubeChannel, Ops.ParentYouTubeResolve, Ops.ParentCheckUpdate, Ops.ParentInstalledApps, Ops.SetupAccounts,
         Ops.ParentFpStatus, Ops.ParentFpSearch, Ops.ParentFpSuggest, Ops.ParentFpInstallClifp, Ops.ParentFpDownloadInstaller, Ops.ParentFpThumbs, Ops.ParentFpStockNow, Ops.ParentBlocked, Ops.ParentDiagnostics,
     };
     private readonly object _sync = new();
@@ -74,6 +74,8 @@ public sealed class RequestRouter
             Ops.ArcadeQuit => child is null ? Response.Fail(req.Id, "not a managed account") : ArcadeQuit(req, child),
             Ops.ArcadePlay => child is null ? Response.Fail(req.Id, "not a managed account") : ArcadePlay(req, child, client.Account),
             Ops.ArcadePrepare => child is null ? Response.Fail(req.Id, "not a managed account") : ArcadePrepare(req, child),
+            Ops.ArcadeClassicFile => child is null ? Response.Fail(req.Id, "not a managed account") : ClassicFile(req, child),
+            Ops.ArcadeReportBroken => child is null ? Response.Fail(req.Id, "not a managed account") : ReportBroken(req, child),
             Ops.ArcadeSampler => child is null ? Response.Fail(req.Id, "not a managed account") : ArcadeSampler(req, child, client.Account),
             Ops.YouTubeLibrary => child is null ? Response.Fail(req.Id, "not a managed account") : Response.Success(req.Id, _youtube.Library(child).GetAwaiter().GetResult()),
             Ops.YouTubeChannel => child is null ? Response.Fail(req.Id, "not a managed account")
@@ -263,6 +265,27 @@ public sealed class RequestRouter
         if (game is null) return Response.Fail(req.Id, "that game isn't in the arcade");
         try { return Response.Success(req.Id, _lib.Prepare(game.Url).GetAwaiter().GetResult()); }
         catch (Exception ex) { _log.LogWarning(ex, "Couldn't get {Title} ready", game.Title); return Response.Fail(req.Id, $"Couldn't get {game.Title} ready: {ex.Message}"); }
+    }
+
+    /// <summary>The player asks for a file a classic needs that isn't on disk yet. Only for classics in this child's arcade.</summary>
+    private Response ClassicFile(Request req, Child child)
+    {
+        var fpId = Str(req, "fpId");
+        if (!child.Arcade.Flashpoint.Any(f => f.Id == fpId)) return Response.Fail(req.Id, "not in the arcade");
+        var local = _lib.FetchFile(fpId, Str(req, "host"), Str(req, "path")).GetAwaiter().GetResult();
+        return Response.Success(req.Id, new { ok = local is not null });
+    }
+
+    /// <summary>"This game doesn't work": hide it from the arcade. It shows as hidden in the Parent Console, which can bring it back.</summary>
+    private Response ReportBroken(Request req, Child child)
+    {
+        var gameId = Str(req, "gameId");
+        var game = Arcade.Catalog(child).FirstOrDefault(g => g.Id == gameId);
+        if (game is null) return Response.Fail(req.Id, "no such game");
+        _store.Update(h => h with { Children = h.Children.Select(c => c.Id != child.Id || c.Arcade.Hidden.Contains(gameId) ? c : c with { Arcade = c.Arcade with { Hidden = c.Arcade.Hidden.Append(gameId).ToList() } }).ToList() });
+        _log.LogWarning("Reported broken and hidden from the arcade: {Title} ({Id})", game.Title, gameId);
+        AfterChange();
+        return Response.Success(req.Id, new { ok = true });
     }
 
     private Response ArcadeList(Request req, Child child)

@@ -16,7 +16,14 @@ public sealed class GameWindow : Window
     private readonly HashSet<string> _sites;
 
     /// <summary>Sign-in pages the allowed sites need (Khan Academy uses Google/Microsoft/Apple sign-in).</summary>
-    private static readonly string[] AuthSites = { "accounts.google.com", "login.microsoftonline.com", "login.live.com", "appleid.apple.com" };
+    /// Includes the pages Google's sign-in passes through after the password: 2-step verification, the "is this you?"
+    /// interstitials, and accounts.youtube.com (Google sets its sign-in cookie there before returning to the site).
+    private static readonly string[] AuthSites =
+    {
+        "accounts.google.com", "accounts.youtube.com", "myaccount.google.com", "gds.google.com", "ogs.google.com",
+        "login.microsoftonline.com", "login.live.com", "account.live.com", "appleid.apple.com", "idmsa.apple.com",
+    };
+    private CoreWebView2Environment? _env;
 
     /// <param name="allowed">Domains this window may navigate to. Null = only the start URL's own site (a game).</param>
     public GameWindow(string url, string title, bool kiosk, IEnumerable<string>? allowed = null)
@@ -46,13 +53,30 @@ public sealed class GameWindow : Window
         Loaded += async (_, _) =>
         {
             var userData = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "CoinQuest", "WebView2-games");
-            var env = await CoreWebView2Environment.CreateAsync(null, userData, WebShellWindow.ProxyOptions(portOffset: 1));
+            var env = _env = await CoreWebView2Environment.CreateAsync(null, userData, WebShellWindow.ProxyOptions(portOffset: 1));
             await _web.EnsureCoreWebView2Async(env);
             var core = _web.CoreWebView2;
             core.Settings.AreDevToolsEnabled = false;
             core.Settings.AreDefaultContextMenusEnabled = false;
             // Pop-ups never open a second window; an allowed one (e.g. a sign-in page) loads here instead.
-            core.NewWindowRequested += (_, e) => { e.Handled = true; if (Uri.TryCreate(e.Uri, UriKind.Absolute, out var nu) && Allowed(nu)) core.Navigate(e.Uri); };
+            // Sign-in pop-ups ("Continue with Google") open as a real small window that stays linked to the site, so
+            // the site hears back when sign-in (including 2-step verification) finishes and the pop-up closes itself.
+            core.NewWindowRequested += async (_, e) =>
+            {
+                e.Handled = true;
+                if (!Uri.TryCreate(e.Uri, UriKind.Absolute, out var nu) || !Allowed(nu)) { WebShellWindow.Log($"pop-up blocked: {e.Uri}"); return; }
+                var deferral = e.GetDeferral();
+                try
+                {
+                    var popup = new PopupWindow(Allowed, kiosk) { Owner = this };
+                    popup.Show();
+                    e.NewWindow = await popup.InitAsync(_env!);
+                }
+                catch (Exception ex) { WebShellWindow.Log("pop-up failed: " + ex.Message); core.Navigate(e.Uri); }
+                finally { deferral.Complete(); }
+            };
+            // A page calling window.close() must not take CoinQuest's window with it.
+            core.WindowCloseRequested += (_, _) => WebShellWindow.Log("site asked to close the window; ignored");
             if (_sites.Any(d => d.EndsWith("khanacademy.org") || d.EndsWith("duolingo.com"))) LearningObserver.Attach(core, OnLearn);
             core.NavigationStarting += (_, e) =>
             {
@@ -69,7 +93,7 @@ public sealed class GameWindow : Window
     public event Action<string>? OnLearnEvent;
     private void OnLearn(string kind) => Dispatcher.Invoke(() => OnLearnEvent?.Invoke(kind));
 
-    private bool Allowed(Uri u)
+    internal bool Allowed(Uri u)
     {
         var host = u.Host.ToLowerInvariant();
         return _sites.Any(d => host == d || host.EndsWith("." + d)) || AuthSites.Contains(host);
@@ -83,5 +107,40 @@ public sealed class GameWindow : Window
         var twoLevelTlds = new[] { "co.uk", "com.au", "co.nz", "co.jp" };
         var last2 = string.Join('.', parts[^2..]);
         return twoLevelTlds.Contains(last2) && parts.Length >= 3 ? string.Join('.', parts[^3..]) : last2;
+    }
+}
+
+/// <summary>A sign-in pop-up opened by an allowed site. Same rules as its parent window; closes when the page says so.</summary>
+public sealed class PopupWindow : Window
+{
+    private readonly WebView2 _web = new();
+    private readonly Func<Uri, bool> _allowed;
+
+    public PopupWindow(Func<Uri, bool> allowed, bool kiosk)
+    {
+        _allowed = allowed;
+        Title = "Sign in";
+        Width = 520; Height = 680;
+        WindowStartupLocation = WindowStartupLocation.CenterOwner;
+        if (kiosk) Topmost = true;
+        Content = _web;
+    }
+
+    public async Task<CoreWebView2> InitAsync(CoreWebView2Environment env)
+    {
+        await _web.EnsureCoreWebView2Async(env);
+        var core = _web.CoreWebView2;
+        core.Settings.AreDevToolsEnabled = false;
+        core.Settings.AreDefaultContextMenusEnabled = false;
+        core.NavigationStarting += (_, e) =>
+        {
+            if (!Uri.TryCreate(e.Uri, UriKind.Absolute, out var u)) { e.Cancel = true; return; }
+            if (u.Scheme is "about" or "data" or "blob") return;
+            if (!_allowed(u)) { e.Cancel = true; WebShellWindow.Log($"sign-in window blocked navigation to {u.Host}"); }
+        };
+        core.NewWindowRequested += (_, e) => { e.Handled = true; if (Uri.TryCreate(e.Uri, UriKind.Absolute, out var u) && _allowed(u)) core.Navigate(e.Uri); };
+        core.WindowCloseRequested += (_, _) => Dispatcher.BeginInvoke(Close);
+        core.DownloadStarting += (_, e) => e.Cancel = true;
+        return core;
     }
 }

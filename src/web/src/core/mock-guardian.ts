@@ -163,6 +163,7 @@ export class MockGuardian {
       case 'parent.fpSuggest': return ok(['Gravity Guy', 'Fancy Pants Adventures', 'Bloons Tower Defense 4', 'Learn to Fly 2', 'Raft Wars', 'Stick War', 'Fireboy and Watergirl in The Forest Temple'].map((t, i) => ({ pick: { search: t, genre: 'Classic', strategy: 3 }, game: { id: '11111111-0000-0000-0000-00000000000' + (i + 1), title: t, developer: '', publisher: '', platform: 'Flash', tags: 'Action', series: '', releaseDate: '2009', description: '' }, approved: i < 5 })));
       case 'parent.fpSearch': return ok([]);
       case 'arcade.prepare': return ok({ url: './content/games/swf/ending.swf', base: './content/games/swf/', prefix: './content/games/swf/', platform: 'Flash' });
+      case 'arcade.reportBroken': return ok({ ok: true });
       case 'parent.diagnostics': return ok({ version: '0.0.0-mock', problems: ['10-12 21:40 YouTubeService: Feed failed for Mark Rober — HttpRequestException: example'], blocked: ['d35aaqx5ub95lt.cloudfront.net'], internetLock: { applied: true } });
       case 'parent.blocked': return ok([{ host: 'd35aaqx5ub95lt.cloudfront.net', at: new Date().toISOString(), reason: 'not on the list' }]);
       case 'parent.fpThumbs': return ok({});

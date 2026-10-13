@@ -94,12 +94,20 @@ public sealed class ClassicLibrary
                     await File.WriteAllBytesAsync(entry, bytes);
                 }
                 }
-                await File.WriteAllTextAsync(Path.Combine(tmp, "meta.json"), JsonSerializer.Serialize(new { launch, platform, packed }));
+                if (IsHtml5(platform)) RewriteTree(Path.Combine(tmp, "content"), id);
+                await File.WriteAllTextAsync(Path.Combine(tmp, "meta.json"), JsonSerializer.Serialize(new { launch, platform, packed, rewritten = true }));
                 if (Directory.Exists(dir)) Directory.Delete(dir, true);
                 Directory.Move(tmp, dir);
                 _log.LogInformation("Classic {Id} ready ({Kind})", id, packed ? "data pack" : "legacy file");
             }
             var meta = JsonNode.Parse(await File.ReadAllTextAsync(metaPath))!;
+            if (IsHtml5(meta["platform"]?.ToString()) && meta["rewritten"] is null)
+            {
+                // Copies made before addresses were rewritten (v0.1.54 and earlier).
+                RewriteTree(Path.Combine(dir, "content"), id);
+                meta["rewritten"] = true;
+                await File.WriteAllTextAsync(metaPath, meta.ToJsonString());
+            }
             var u = new Uri(meta["launch"]!.ToString());
             var prefix = $"https://coinquest-classics.local/{id}/content/";
             var url = prefix + u.Host + u.AbsolutePath;
@@ -110,6 +118,78 @@ public sealed class ClassicLibrary
 
     /// <summary>Flash plays in Ruffle; HTML5 games play as a web page from the local copy.</summary>
     public static bool Playable(string platform) => platform.Equals("Flash", StringComparison.OrdinalIgnoreCase) || platform.Equals("HTML5", StringComparison.OrdinalIgnoreCase);
+
+    private static readonly System.Text.RegularExpressions.Regex HostRx = new(@"^[a-z0-9]([a-z0-9-]*[a-z0-9])?(\.[a-z0-9]([a-z0-9-]*[a-z0-9])?)+$");
+    private readonly System.Collections.Concurrent.ConcurrentDictionary<string, DateTime> _missing = new();
+
+    /// <summary>
+    /// A file a classic asked for that isn't in its local copy (games without a data pack load their pictures,
+    /// scripts and levels one by one). Fetched like Flashpoint's own game server does — from the archive's
+    /// "legacy" web server, then the game's original address — and saved beside the game, so it's local next time.
+    /// Returns the local path, or null if neither has it.
+    /// </summary>
+    public async Task<string?> FetchFile(string id, string host, string path)
+    {
+        if (!Guid.TryParse(id, out _)) return null;
+        host = host.ToLowerInvariant();
+        if (!HostRx.IsMatch(host) || host.EndsWith(".local")) return null;
+        path = "/" + Uri.UnescapeDataString(path.Split('?', '#')[0]).TrimStart('/');
+        if (path.Contains("..") || path.Contains('\\') || path.Length > 400) return null;
+        var root = Path.GetFullPath(Path.Combine(Dir, id, "content")) + Path.DirectorySeparatorChar;
+        var dest = Path.GetFullPath(Path.Combine(root, host, path.TrimStart('/').Replace('/', Path.DirectorySeparatorChar)));
+        if (!dest.StartsWith(root, StringComparison.OrdinalIgnoreCase)) return null;
+        if (File.Exists(dest)) return dest;
+        var key = host + path;
+        if (_missing.TryGetValue(key, out var at) && DateTime.UtcNow - at < TimeSpan.FromHours(6)) return null;
+        var escaped = string.Join('/', path.Split('/').Select(Uri.EscapeDataString));
+        foreach (var url in new[] { LegacyHtdocs + host + escaped, "https://" + host + escaped, "http://" + host + escaped })
+        {
+            try
+            {
+                using var resp = await _http.GetAsync(url);
+                if (!resp.IsSuccessStatusCode) continue;
+                var bytes = await resp.Content.ReadAsByteArrayAsync();
+                if (bytes.Length == 0) continue;
+                Directory.CreateDirectory(Path.GetDirectoryName(dest)!);
+                if (IsHtml5(PlatformOf(id)) && Rewritable(dest)) bytes = System.Text.Encoding.UTF8.GetBytes(Rewrite(System.Text.Encoding.UTF8.GetString(bytes), id));
+                await File.WriteAllBytesAsync(dest, bytes);
+                return dest;
+            }
+            catch { /* next source */ }
+        }
+        _missing[key] = DateTime.UtcNow;
+        _log.LogInformation("Classic {Id}: no copy of {Host}{Path} anywhere", id, host, path);
+        return null;
+    }
+
+    private static bool IsHtml5(string? platform) => string.Equals(platform, "HTML5", StringComparison.OrdinalIgnoreCase);
+    private static string? PlatformOf(string id)
+    {
+        try { return JsonNode.Parse(File.ReadAllText(Path.Combine(Dir, id, "meta.json")))?["platform"]?.ToString(); } catch { return null; }
+    }
+    private static bool Rewritable(string file) => Path.GetExtension(file).ToLowerInvariant() is ".html" or ".htm" or ".js" or ".css" or ".json" or ".xml";
+    private static readonly System.Text.RegularExpressions.Regex AbsUrl = new(@"(?<![\w.])(?:https?:)?//((?:[a-z0-9-]+\.)+[a-z]{2,})(?=[/""'\s?#)])", System.Text.RegularExpressions.RegexOptions.IgnoreCase);
+
+    /// <summary>
+    /// HTML5 games name their files by full web address (http://www.miniclip.com/…). Point those at the local copy
+    /// instead, so everything loads from CoinQuest (missing files are fetched on demand) — the same idea as Ruffle's
+    /// address rewriting for Flash games.
+    /// </summary>
+    public static string Rewrite(string text, string id) =>
+        AbsUrl.Replace(text, m => KeepAsIs(m.Groups[1].Value) ? m.Value : $"https://coinquest-classics.local/{id}/content/{m.Groups[1].Value.ToLowerInvariant()}");
+
+    // XML/SVG namespace names look like addresses but are only labels — rewriting them would break the page.
+    private static bool KeepAsIs(string host) => host.EndsWith(".local", StringComparison.OrdinalIgnoreCase)
+        || host.ToLowerInvariant() is "www.w3.org" or "w3.org" or "ns.adobe.com" or "purl.org" or "schemas.microsoft.com" or "schemas.xmlsoap.org" or "xmlns.com" or "www.adobe.com";
+
+    private static void RewriteTree(string dir, string id)
+    {
+        if (!Directory.Exists(dir)) return;
+        foreach (var f in Directory.EnumerateFiles(dir, "*", SearchOption.AllDirectories).Where(Rewritable))
+        {
+            try { var t = File.ReadAllText(f); var r = Rewrite(t, id); if (r != t) File.WriteAllText(f, r); } catch { }
+        }
+    }
 
     public bool IsReady(string id) => File.Exists(Path.Combine(Dir, id, "meta.json"));
 

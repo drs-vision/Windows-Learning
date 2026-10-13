@@ -12,7 +12,7 @@ function loadRuffle(): Promise<void> {
   if (!ruffleLoading) {
     ruffleLoading = new Promise((resolve, reject) => {
       window.RufflePlayer = window.RufflePlayer || {};
-      window.RufflePlayer.config = { autoplay: 'on', unmuteOverlay: 'hidden', letterbox: 'on', scale: 'showAll', forceScale: true, salign: '', forceAlign: true, splashScreen: false, allowScriptAccess: false, publicPath: './vendor/ruffle/' };
+      window.RufflePlayer.config = { autoplay: 'on', unmuteOverlay: 'hidden', letterbox: 'on', splashScreen: false, allowScriptAccess: false, publicPath: './vendor/ruffle/' };
       const s = document.createElement('script');
       s.src = './vendor/ruffle/ruffle.js';
       s.onload = () => resolve();
@@ -261,10 +261,22 @@ function Player({ game, onBack, secondsLeft, sampler }: { game: Game & { base?: 
       // Classics ask for their files at their original web addresses; send those to the local copy instead.
       // (Not the local copy itself — rewriting that again would double the address.)
       const rewrite = game.rewritePrefix ? { urlRewriteRules: [[/^https?:\/\/(?!coinquest-[a-z]+\.local\/)/, game.rewritePrefix]] } : {};
+      // Fill the play area WITHOUT changing the game's own stage: the player keeps the game's native size and is
+      // scaled up as a picture. (Forcing Ruffle to rescale the stage broke games that read their own pixels, e.g. Sugar, Sugar.)
+      const fit = () => {
+        const m = player?.ruffle?.().metadata; const box = host.current;
+        if (!m?.width || !m?.height || !box) return;
+        const k = Math.min(box.clientWidth / m.width, box.clientHeight / m.height);
+        Object.assign(player.style, { position: 'absolute', width: m.width + 'px', height: m.height + 'px', transformOrigin: '0 0',
+          transform: `scale(${k})`, left: (box.clientWidth - m.width * k) / 2 + 'px', top: (box.clientHeight - m.height * k) / 2 + 'px' });
+      };
+      player.addEventListener('loadedmetadata', fit);
+      ro = new ResizeObserver(fit); ro.observe(host.current!);
       player.ruffle().load({ url: game.url, base: game.base ?? game.url.slice(0, game.url.lastIndexOf('/') + 1), allowScriptAccess: false, ...rewrite })
-        .then(() => player.focus()).catch((e: Error) => setErr(e.message));
+        .then(() => { fit(); player.focus(); }).catch((e: Error) => setErr(e.message));
     }).catch((e) => setErr(e.message));
-    return () => { try { player?.remove(); } catch { } };
+    let ro: ResizeObserver | null = null;
+    return () => { try { ro?.disconnect(); player?.remove(); } catch { } };
   }, [game]);
 
   return (
@@ -272,11 +284,14 @@ function Player({ game, onBack, secondsLeft, sampler }: { game: Game & { base?: 
       <header>
         <button class="ghost" onClick={onBack}>{sampler ? '← Pick another game' : '← Back to arcade'}</button>
         <b>{game.title}</b>
-        <span class="countdown" title={sampler ? 'Sampler pass time left' : 'Time left on this game'}>{sampler ? '🎟️ ' : '⏱ '}{fmt(secondsLeft)}</span>
+        <span class="row">
+          <button class="ghost small" title="Hides this game from the arcade. A parent can bring it back." onClick={() => { if (confirm(`Doesn't ${game.title} work? It will be taken out of the arcade.`)) bridge.arcadeReportBroken(game.id).then(onBack).catch((e) => setErr((e as Error).message)); }}>⚠️ Broken?</button>
+          <span class="countdown" title={sampler ? 'Sampler pass time left' : 'Time left on this game'}>{sampler ? '🎟️ ' : '⏱ '}{fmt(secondsLeft)}</span>
+        </span>
       </header>
       {err && <p class="error">{err}</p>}
       {game.kind === 'swf'
-        ? <div class="player-host" ref={host} />
+        ? <div class="player-host swf-host" ref={host} />
         : <iframe class="player-host" src={game.url} sandbox="allow-scripts allow-same-origin allow-pointer-lock" title={game.title} ref={(el) => el?.focus()} />}
       <footer class="muted small">{game.title}{game.author ? ` by ${game.author}` : ''} · {game.license}</footer>
     </div>

@@ -33,7 +33,9 @@ public sealed class ProcessEnforcer
         "svchost.exe", "csrss.exe", "wininit.exe", "services.exe", "lsass.exe", "spoolsv.exe", "msiexec.exe",
         "coinquest.scholar.exe", "coinquest.parentconsole.exe", "coinquest.updater.exe",
         "crashpadhandler.exe", "chrome_crashpad_handler.exe", "nvcontainer.exe", "igfxem.exe",
-        "microsoftedgeupdate.exe", "googleupdate.exe"
+        "microsoftedgeupdate.exe", "googleupdate.exe",
+        // Windows sign-in helpers a website can call up: passkeys / security keys (Windows Hello), Microsoft account.
+        "credentialuibroker.exe", "credentialenrollmentmanager.exe", "wwahost.exe", "pickerhost.exe", "useroobebroker.exe"
     };
 
     private readonly FlashpointService _fp;

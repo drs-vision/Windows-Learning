@@ -87,6 +87,13 @@ public class WebShellWindow : Window
         if (Directory.Exists(classics))
             core.SetVirtualHostNameToFolderMapping("coinquest-classics.local", classics, CoreWebView2HostResourceAccessKind.Allow);
 
+        if (_app == "scholar")
+        {
+            // Classic games: files missing from the local copy are fetched on demand (like Flashpoint's game server).
+            core.AddWebResourceRequestedFilter("*", CoreWebView2WebResourceContext.All);
+            core.WebResourceRequested += (s, e) => OnClassicResource(core, env, e);
+        }
+
         core.Settings.AreDefaultContextMenusEnabled = false;
         core.Settings.AreDevToolsEnabled = !_kiosk || Environment.GetEnvironmentVariable("COINQUEST_DEV") == "1";
         core.Settings.IsStatusBarEnabled = false;
@@ -105,6 +112,75 @@ public class WebShellWindow : Window
 
         var dev = Environment.GetEnvironmentVariable("COINQUEST_WEB_DEV"); // e.g. http://localhost:5173 during development
         core.Navigate(dev is not null ? $"{dev}/?app={_app}" : $"https://coinquest.local/web/index.html?app={_app}");
+    }
+
+    private const string ClassicsHost = "coinquest-classics.local";
+    private static string ClassicsDir => Path.Combine(Paths.DataRoot, "classics");
+
+    /// <summary>
+    /// A classic asked for a file. If it's in the local copy, serve it; if not, ask the Guardian to fetch it from the
+    /// Flashpoint Archive (then the game's original site) and serve that. Covers:
+    /// Every classic asks for its files at https://coinquest-classics.local/&lt;id&gt;/content/&lt;host&gt;/&lt;path&gt;
+    /// (Ruffle rewrites Flash games' addresses there; HTML5 games' pages are rewritten by the Guardian).
+    /// Anything else passes through untouched.
+    /// </summary>
+    private async void OnClassicResource(CoreWebView2 core, CoreWebView2Environment env, CoreWebView2WebResourceRequestedEventArgs e)
+    {
+        try
+        {
+            if (!Uri.TryCreate(e.Request.Uri, UriKind.Absolute, out var u)) return;
+            string? id = null, host = null, path = null;
+            if (u.Host.Equals(ClassicsHost, StringComparison.OrdinalIgnoreCase))
+            {
+                var seg = u.AbsolutePath.TrimStart('/').Split('/', 4);
+                if (seg.Length < 4 || seg[1] != "content") return;
+                if (File.Exists(LocalPath(seg[0], seg[2], seg[3]) ?? "")) return; // the folder mapping serves it
+                (id, host, path) = (seg[0], seg[2], seg[3]);
+            }
+            if (id is null || host is null || path is null || !Guid.TryParse(id, out _)) return;
+
+            var local = LocalPath(id, host, path);
+            if (local is null) return;
+            if (!File.Exists(local))
+            {
+                var deferral = e.GetDeferral();
+                try
+                {
+                    var resp = await _pipe.SendAsync(Ops.ArcadeClassicFile, new { fpId = id, host, path = "/" + Uri.UnescapeDataString(path) }, timeoutMs: 40000);
+                    if (resp.Ok && File.Exists(local)) e.Response = FileResponse(env, local);
+                }
+                catch (Exception ex) { Log($"classic file {host}/{path}: {ex.Message}"); }
+                finally { deferral.Complete(); }
+                return;
+            }
+            e.Response = FileResponse(env, local);
+        }
+        catch (Exception ex) { Log("classic resource: " + ex.Message); }
+    }
+
+    private static string? LocalPath(string id, string host, string path)
+    {
+        if (!Guid.TryParse(id, out _)) return null;
+        var root = Path.GetFullPath(Path.Combine(ClassicsDir, id, "content")) + Path.DirectorySeparatorChar;
+        string full;
+        try { full = Path.GetFullPath(Path.Combine(root, host.ToLowerInvariant(), Uri.UnescapeDataString(path.Split('?', '#')[0]).Replace('/', Path.DirectorySeparatorChar))); }
+        catch { return null; }
+        return full.StartsWith(root, StringComparison.OrdinalIgnoreCase) ? full : null;
+    }
+
+    private static CoreWebView2WebResourceResponse FileResponse(CoreWebView2Environment env, string file)
+    {
+        var mime = Path.GetExtension(file).ToLowerInvariant() switch
+        {
+            ".html" or ".htm" => "text/html", ".js" => "text/javascript", ".css" => "text/css", ".json" => "application/json",
+            ".png" => "image/png", ".jpg" or ".jpeg" => "image/jpeg", ".gif" => "image/gif", ".svg" => "image/svg+xml", ".webp" => "image/webp",
+            ".mp3" => "audio/mpeg", ".ogg" => "audio/ogg", ".wav" => "audio/wav", ".m4a" => "audio/mp4", ".mp4" => "video/mp4",
+            ".swf" => "application/x-shockwave-flash", ".xml" => "text/xml", ".wasm" => "application/wasm", ".txt" => "text/plain",
+            ".woff" => "font/woff", ".woff2" => "font/woff2", ".ttf" => "font/ttf",
+            _ => "application/octet-stream",
+        };
+        var stream = new FileStream(file, FileMode.Open, FileAccess.Read, FileShare.ReadWrite);
+        return env.CreateWebResourceResponse(stream, 200, "OK", $"Content-Type: {mime}\r\nAccess-Control-Allow-Origin: *");
     }
 
     private async Task TryConnectAsync()

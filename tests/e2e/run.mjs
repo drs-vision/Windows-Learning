@@ -4,7 +4,7 @@
 // Every step saves a screenshot of the app and of the whole desktop to e2e-shots/. Exit code != 0 on any failure.
 import { chromium } from 'playwright-core';
 import { execFileSync, spawn } from 'node:child_process';
-import { mkdirSync, writeFileSync, appendFileSync, readFileSync } from 'node:fs';
+import { mkdirSync, writeFileSync, appendFileSync, readFileSync, readdirSync, existsSync, statSync } from 'node:fs';
 import { join } from 'node:path';
 
 const OUT = process.env.E2E_OUT ?? 'e2e-shots';
@@ -327,6 +327,47 @@ await check('Duolingo opens with content (not blank)', async () => {
   await sb.close().catch(() => undefined);
   try { execFileSync('powershell', ['-NoProfile', '-Command', "$w = New-Object -ComObject WScript.Shell; [void]$w.AppActivate('Duolingo'); Start-Sleep -Milliseconds 300; $w.SendKeys('{ESC}')"], { stdio: 'ignore' }); } catch { /* */ }
   expect(text.replace(/\s+/g, '').length > 200, 'Duolingo page is (nearly) blank');
+});
+await check('Sign-in pop-up (Khan Academy → Continue with Google) opens in its own window and the site stays open', async () => {
+  await kid.click('text=/Websites/').catch(() => undefined);
+  await sleep(1500);
+  const card = kid.locator('.site-card', { hasText: /khan/i }).first();
+  if (!(await card.count())) { log('  Khan Academy not on the list here — skipped'); await kid.click('.arcade header button.ghost').catch(() => undefined); return; }
+  await card.click();
+  const { browser: sb, page: site } = await attach(9224, 'site window');
+  try {
+    await site.goto('https://www.khanacademy.org/login', { waitUntil: 'domcontentloaded', timeout: 45000 }).catch((e) => log('  goto: ' + e.message));
+    await sleep(8000);
+    const g = site.locator('button, a', { hasText: /continue with google|google/i }).first();
+    if (!(await g.count())) { await shot(site, 'khan-login-no-google'); log('  no Google button found on the Khan login page'); return; }
+    await g.click();
+    await sleep(8000);
+    const pages = sb.contexts().flatMap((c) => c.pages());
+    log('  pages: ' + pages.map((p) => p.url().slice(0, 80)).join(' | '));
+    const popup = pages.find((p) => /accounts\.google\.com/.test(p.url()));
+    if (popup) { await shot(popup, 'khan-google-signin-popup'); }
+    desktop('khan-google-signin-popup');
+    expect(pages.some((p) => /khanacademy\.org/.test(p.url())), 'the Khan Academy window closed');
+    expect(popup, 'Google sign-in did not open');
+  } finally {
+    await sb.close().catch(() => undefined);
+    try { execFileSync('powershell', ['-NoProfile', '-Command', "$w = New-Object -ComObject WScript.Shell; foreach ($t in 'Sign in','Khan Academy') { if ($w.AppActivate($t)) { Start-Sleep -Milliseconds 300; $w.SendKeys('%{F4}') } }"], { stdio: 'ignore' }); } catch { /* */ }
+    await sleep(1500);
+  }
+});
+await check('HTML5 classic copy points at CoinQuest, not the internet (works with the internet lock on)', async () => {
+  const dir = 'C:\\ProgramData\\CoinQuest\\classics';
+  if (!existsSync(dir)) { log('  no classics folder'); return; }
+  let html5 = 0, left = [];
+  for (const id of readdirSync(dir)) {
+    const meta = join(dir, id, 'meta.json');
+    if (!existsSync(meta) || !/HTML5/i.test(readFileSync(meta, 'utf8'))) continue;
+    html5++;
+    const walk = (d) => { for (const f of readdirSync(d)) { const p = join(d, f); if (statSync(p).isDirectory()) walk(p); else if (/\.(html?|js|css)$/i.test(f)) { const m = readFileSync(p, 'utf8').match(/(?<![\w.])(?:https?:)?\/\/(?!coinquest-|www\.w3\.org|w3\.org|ns\.adobe|purl\.org|schemas\.|xmlns\.com|www\.adobe\.com)[a-z0-9-]+(?:\.[a-z0-9-]+)+\//gi); if (m) left.push(`${f}: ${[...new Set(m)].slice(0, 3).join(' ')}`); } } };
+    walk(join(dir, id, 'content'));
+  }
+  log(`  ${html5} HTML5 classic(s) on disk; external addresses left: ${left.length ? left.slice(0, 5).join(' / ') : 'none'}`);
+  expect(left.length === 0, 'some files still load from the internet');
 });
 await kid.click('.topbar .brand').catch(() => undefined);
 await sleep(800);

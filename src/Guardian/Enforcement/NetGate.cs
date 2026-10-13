@@ -28,6 +28,11 @@ public sealed class NetGate
     {
         "fonts.googleapis.com", "fonts.gstatic.com", "ajax.googleapis.com", "cdnjs.cloudflare.com", "cdn.jsdelivr.net", "unpkg.com",
         "accounts.google.com", "ssl.gstatic.com", "www.gstatic.com", "login.microsoftonline.com", "login.live.com", "appleid.apple.com",
+        // The rest of a Google / Microsoft / Apple sign-in: 2-step verification, "is this you?" pages, the cookie
+        // hand-off to accounts.youtube.com, Google's sign-in script and robot check. (The locked window still only
+        // lets these open as part of signing in to an allowed site.)
+        "accounts.youtube.com", "myaccount.google.com", "gds.google.com", "ogs.google.com", "apis.google.com", "oauth2.googleapis.com",
+        "www.recaptcha.net", "recaptcha.net", "account.live.com", "logincdn.msauth.net", "aadcdn.msftauth.net", "idmsa.apple.com", "appleid.cdn-apple.com",
         "i.ytimg.com", // video thumbnails in CoinQuest's YouTube list (pictures only)
         "flashpointarchive.org", "unstable.life", // Flashpoint game downloads, if its launcher uses the proxy
     };
@@ -48,7 +53,7 @@ public sealed class NetGate
     /// </summary>
     public static readonly Dictionary<string, string[]> Companions = new(StringComparer.OrdinalIgnoreCase)
     {
-        ["duolingo.com"] = new[] { "d35aaqx5ub95lt.cloudfront.net", "d2pur3iezf4d1j.cloudfront.net", "d1btvuu4dwu627.cloudfront.net", "d1vq87e9lcf771.cloudfront.net", "d3h7m4lydt9vf9.cloudfront.net", "duolingo-images.s3.amazonaws.com", "duolingo.cn" },
+        ["duolingo.com"] = new[] { "d35aaqx5ub95lt.cloudfront.net", "d2pur3iezf4d1j.cloudfront.net", "d1btvuu4dwu627.cloudfront.net", "d1vq87e9lcf771.cloudfront.net", "d3h7m4lydt9vf9.cloudfront.net", "duolingo-images.s3.amazonaws.com", "duolingo.cn", "cdn.cookielaw.org", "geolocation.onetrust.com" },
         ["khanacademy.org"] = new[] { "kastatic.org", "kasandbox.org", "khan.github.io" },
         ["typing.com"] = new[] { "cdn.typing.com" },
         ["scratch.mit.edu"] = new[] { "scratch.mit.edu", "cdn.scratch.mit.edu", "cdn2.scratch.mit.edu", "assets.scratch.mit.edu", "uploads.scratch.mit.edu" },
