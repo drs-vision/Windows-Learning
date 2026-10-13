@@ -2,24 +2,24 @@
 # Network probes run on GitHub's machines (this session can't reach these hosts). Output goes to annotations.
 set +e
 note() { while IFS= read -r l; do echo "::notice title=probe::$l"; done; }
-python3 - <<'PY' | note
-import json, urllib.request
-def post(body):
-    req=urllib.request.Request("https://www.youtube.com/youtubei/v1/browse?prettyPrint=false", data=json.dumps(body).encode(), headers={'Content-Type':'application/json','User-Agent':'Mozilla/5.0','X-YouTube-Client-Name':'1','X-YouTube-Client-Version':'2.20250312.04.00','Origin':'https://www.youtube.com'})
-    return json.load(urllib.request.urlopen(req, timeout=30))
-ctx={"client":{"clientName":"WEB","clientVersion":"2.20250312.04.00","hl":"en","gl":"US"}}
-d=post({"context":ctx,"browseId":"UCY1kMZp36IQSyNx_9h4mpCg","params":"EgZ2aWRlb3PyBgQKAjoA"})
-grid=d['contents']['twoColumnBrowseResultsRenderer']['tabs'][1]['tabRenderer']['content']['richGridRenderer']['contents']
-tok=grid[-1]['continuationItemRenderer']['continuationEndpoint']['continuationCommand']['token']
-print('visitorData', d.get('responseContext',{}).get('visitorData','')[:40])
-c=post({"context":ctx,"continuation":tok})
-print('keys', list(c.keys()))
-s=json.dumps(c)
-print('len', len(s), 'lockups', s.count('"lockupViewModel"'), 'videoIds', s.count('"videoId"'), 'contentId', s.count('"contentId"'))
-print(s[:1500])
-i=s.find('"lockupViewModel"'); print('LOCKUP', s[i:i+700])
-# with visitorData
-ctx2={"client":dict(ctx["client"], visitorData=d.get('responseContext',{}).get('visitorData',''))}
-c2=post({"context":ctx2,"continuation":tok}); s2=json.dumps(c2)
-print('with visitorData: len', len(s2), 'lockups', s2.count('"lockupViewModel"'))
+for q in Bloxorz "Sugar, Sugar"; do
+python3 - "$q" <<'PY' | note
+import json, sys, urllib.request, urllib.parse, zipfile, io, re
+q=sys.argv[1]
+u="https://db-api.unstable.life/search?smartSearch="+urllib.parse.quote(q)+"&filter=true&limit=5&fields=id,title,platform,launchCommand,library"
+r=json.load(urllib.request.urlopen(u,timeout=30))
+for g in r: print('GAME', g['id'], g['title'], g['platform'], g.get('launchCommand'))
+g=[x for x in r if x['title'].lower().startswith(q.lower()[:5])][0]
+data=urllib.request.urlopen("https://db-api.unstable.life/get?id="+g['id'],timeout=60).read()
+print('pack bytes', len(data))
+try:
+  z=zipfile.ZipFile(io.BytesIO(data))
+  names=z.namelist(); print('files', len(names)); [print(' ', n) for n in names[:40]]
+  for n in names:
+    if n.endswith(('.html','.htm','.js')) and len(z.read(n))<400000:
+      t=z.read(n).decode('utf8','ignore')
+      urls=sorted(set(re.findall(r'https?://[^\s"\'<>)]+', t)))[:25]
+      print('URLS in', n, urls)
+except Exception as e: print('not zip', e, data[:200])
 PY
+done
