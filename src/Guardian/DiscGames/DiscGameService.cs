@@ -52,7 +52,13 @@ public sealed class DiscGameService
         try
         {
             Directory.CreateDirectory(Root);
-            foreach (var g in Games()) OpenUp(Path.Combine(Root, g.Id, "app"));
+            foreach (var g in Games())
+            {
+                var app = Path.Combine(Root, g.Id, "app");
+                OpenUp(app);
+                // Fixes ship with updates: re-point each game's INI at where its scripts and pictures really are.
+                try { PointIniAtDisc(Path.Combine(app, g.Ini), DataRootOnDisc(Path.Combine(Root, g.Id, "cd"), app)); } catch { }
+            }
             StartWatching();
         }
         catch (Exception ex) { _log.LogWarning(ex, "Classic CD games: couldn't start"); }
@@ -248,7 +254,7 @@ public sealed class DiscGameService
         CopyFolder(programDir, app);
         foreach (var (name, data) in keep) File.WriteAllBytes(Path.Combine(app, name), data);
         var iniName = Path.GetFileName(ini);
-        PointIniAtDisc(Path.Combine(app, iniName), Path.Combine(dest, "cd"));
+        PointIniAtDisc(Path.Combine(app, iniName), DataRootOnDisc(Path.Combine(dest, "cd"), app));
         var game = new Game(id, title, Path.GetFileName(exe!), iniName);
         File.WriteAllText(Path.Combine(dest, "game.json"), JsonSerializer.Serialize(game));
         OpenUp(app);
@@ -265,6 +271,20 @@ public sealed class DiscGameService
     }
 
     /// <summary>Set CDDrive= to CoinQuest's copy of the disc (a folder path works as well as a drive letter).</summary>
+    /// <summary>
+    /// The folder the game treats as "the CD": the one holding its SCRIPTS\STARTUP.MPS (and RSC). Usually the disc's
+    /// root, but some discs keep the game's data in a subfolder.
+    /// </summary>
+    private static string DataRootOnDisc(string cd, string app)
+    {
+        var startups = Directory.EnumerateFiles(cd, "startup.mps", Deep)
+            .Where(f => !f.Contains(Path.DirectorySeparatorChar + "DEMOS" + Path.DirectorySeparatorChar, StringComparison.OrdinalIgnoreCase))
+            .Select(f => Path.GetDirectoryName(Path.GetDirectoryName(f)!)!)
+            .OrderBy(d => d.Length)
+            .ToList();
+        return startups.FirstOrDefault() ?? cd;
+    }
+
     private static void PointIniAtDisc(string iniPath, string cdDir)
     {
         var lines = File.ReadAllLines(iniPath).ToList();
