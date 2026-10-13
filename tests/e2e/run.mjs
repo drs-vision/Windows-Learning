@@ -214,9 +214,15 @@ await check('classic Flash game (Flashpoint Archive) appears, downloads and play
 });
 await check('HTML5 classic (Miniclip Bloxorz) plays from the local copy', async () => {
   // Approve the HTML5 version in the Parent Console (the arcade's own pick is the Flash version).
-  const pp = spawn(join(INSTALL, 'CoinQuest.ParentConsole.exe'), [], { env: { ...process.env, COINQUEST_DEBUG_PORT: '9222' }, detached: true, stdio: 'ignore' });
-  const { browser: pb2, page: parent } = await attach(9222, 'parent again');
-  await parent.waitForSelector('nav.tabs, form.pin-gate', { timeout: 60000 });
+  // The parent view inside the child app (what Ctrl+Shift+P opens), behind the PIN.
+  await kid.evaluate(() => window.chrome.webview.dispatchEvent(new MessageEvent('message', { data: JSON.stringify({ name: 'openParent' }) }))).catch((e) => log('  dispatch: ' + e.message));
+  await sleep(1500);
+  if (!(await kid.locator('form.pin-gate, nav.tabs').count())) {
+    try { execFileSync('powershell', ['-NoProfile', '-Command', "$w = New-Object -ComObject WScript.Shell; [void]$w.AppActivate('CoinQuest'); Start-Sleep -Milliseconds 400; $w.SendKeys('^+p')"], { stdio: 'ignore' }); } catch { /* */ }
+    await sleep(1500);
+  }
+  const parent = kid;
+  await parent.waitForSelector('nav.tabs, form.pin-gate', { timeout: 20000 });
   if (await parent.locator('form.pin-gate').count()) { await parent.fill('form.pin-gate input', '2468'); await parent.click('form.pin-gate button[type=submit]'); }
   await parent.waitForSelector('nav.tabs', { timeout: 30000 });
   await parent.click('nav.tabs >> text=Shop');
@@ -229,9 +235,8 @@ await check('HTML5 classic (Miniclip Bloxorz) plays from the local copy', async 
   if (!(await row.locator('input').isChecked())) await row.locator('input').check();
   await sleep(4000);
   await shot(parent, 'parent-approved-html5-bloxorz');
-  await pb2.close().catch(() => undefined);
-  try { process.kill(pp.pid); } catch { /* gone */ }
-  try { execFileSync('taskkill', ['/IM', 'CoinQuest.ParentConsole.exe', '/F'], { stdio: 'ignore' }); } catch { /* */ }
+  await kid.click('button.close').catch(() => undefined);
+  await sleep(1000);
   // Find it in the arcade (there are two Bloxorz: Flash and HTML5).
   await kid.click('.portal-head button.ghost').catch(() => undefined); await sleep(500);
   await kid.click('text=/Arcade/'); await sleep(2500);
