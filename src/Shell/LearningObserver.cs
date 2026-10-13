@@ -25,6 +25,28 @@ public static class LearningObserver
     private static readonly Regex DuoSession = new(@"duolingo\.com/\d{4}-\d{2}-\d{2}/sessions/[A-Za-z0-9_-]+(?:\?|$)", RegexOptions.Compiled | RegexOptions.IgnoreCase);
     private static readonly Regex DuoStory = new(@"duolingo\.com/api2/stories/[^/]+/complete", RegexOptions.Compiled | RegexOptions.IgnoreCase);
     private static readonly HashSet<string> Paid = new();
+    private static readonly Regex VideoId = new(@"""(?:videoId|contentId|readableId|youtubeId)""\s*:\s*""([^""]+)""", RegexOptions.Compiled);
+    private static readonly PaidSet PaidVideos = new("khan-videos.txt");
+
+    /// <summary>Things already paid for, remembered across restarts (in this account's CoinQuest folder).</summary>
+    private sealed class PaidSet
+    {
+        private readonly string _file; private readonly HashSet<string> _set;
+        public PaidSet(string name)
+        {
+            _file = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "CoinQuest", name);
+            try { _set = File.Exists(_file) ? new HashSet<string>(File.ReadAllLines(_file).Where(l => l.Length > 0)) : new(); } catch { _set = new(); }
+        }
+        public bool Add(string key)
+        {
+            lock (_set)
+            {
+                if (key.Length == 0 || !_set.Add(key)) return false;
+                try { Directory.CreateDirectory(Path.GetDirectoryName(_file)!); File.AppendAllText(_file, key + Environment.NewLine); } catch { }
+                return true;
+            }
+        }
+    }
 
     public static void Attach(CoreWebView2 core, Action<string> raise)
     {
@@ -54,7 +76,17 @@ public static class LearningObserver
                     if (Correct.IsMatch(body)) { raise("khan:correct"); WebShellWindow.Log($"khan: correct answer ({op})"); }
                     if (TaskDone.IsMatch(body)) { raise("khan:done"); WebShellWindow.Log($"khan: task finished ({op})"); }
                 }
-                else if (isVideo && VideoDone.IsMatch(body)) { raise("khan:video"); WebShellWindow.Log($"khan: video finished ({op})"); }
+                else if (isVideo && VideoDone.IsMatch(body))
+                {
+                    // Khan keeps reporting progress (and "completed") while a finished video plays on or is replayed, so
+                    // each video pays once — ever. It's identified by the id in the request or reply, else the page.
+                    string? reqBody = null;
+                    try { using var rs = e.Request.Content; if (rs is not null) { if (rs.CanSeek) rs.Position = 0; } if (rs is not null) reqBody = await new StreamReader(rs).ReadToEndAsync(); } catch { }
+                    var idm = VideoId.Match(reqBody ?? ""); if (!idm.Success) idm = VideoId.Match(body);
+                    var key = idm.Success ? idm.Groups[1].Value : (core.Source ?? "").Split('?', '#')[0];
+                    if (!PaidVideos.Add(key)) return;
+                    raise("khan:video"); WebShellWindow.Log($"khan: video finished ({op}, {key})");
+                }
                 else if (isTaskOp) { raise("khan:done"); WebShellWindow.Log($"khan: task finished ({op})"); }
             }
             catch (Exception ex) { WebShellWindow.Log("learning observer: " + ex.Message); }
