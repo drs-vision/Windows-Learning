@@ -301,7 +301,7 @@ public sealed class RequestRouter
         if (child is not null && child.Modules.GetValueOrDefault("discgames") is { Enabled: false }) return Response.Fail(req.Id, "Classic CD games are switched off — ask a parent");
         var app = Path.Combine(CoinQuest.Guardian.DiscGames.DiscGameService.Root, g.Id, "app");
         _log.LogInformation("{Title} started ({Who})", g.Title, child?.DisplayName ?? "parent");
-        return Response.Success(req.Id, new { id = g.Id, title = g.Title, exe = Path.Combine(app, g.Exe), cwd = app });
+        return Response.Success(req.Id, new { id = g.Id, title = g.Title, exe = Path.Combine(app, g.Exe), cwd = app, ini = Path.Combine(app, g.Ini), userDir = g.UserDir ?? "" });
     }
 
     private void PayDisc(List<string> what)

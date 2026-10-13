@@ -458,6 +458,17 @@ public class WebShellWindow : Window
             var exe = p?["exe"]?.GetValue<string>() ?? ""; var cwd = p?["cwd"]?.GetValue<string>() ?? ""; var id = p?["id"]?.GetValue<string>() ?? "";
             if (!File.Exists(exe) || !exe.StartsWith(Path.Combine(Paths.DataRoot, "discgames") + Path.DirectorySeparatorChar, StringComparison.OrdinalIgnoreCase))
                 return Response.Fail("", "That game isn't set up on this computer yet");
+            // Newer titles read their INI (where the "CD" is) from this account's Application Data.
+            var ini = p?["ini"]?.GetValue<string>() ?? ""; var userDir = p?["userDir"]?.GetValue<string>() ?? "";
+            if (userDir.Length > 0 && File.Exists(ini))
+                foreach (var root in new[] { Environment.SpecialFolder.ApplicationData, Environment.SpecialFolder.LocalApplicationData })
+                    try
+                    {
+                        var d = Path.Combine(Environment.GetFolderPath(root), userDir);
+                        Directory.CreateDirectory(d);
+                        File.Copy(ini, Path.Combine(d, Path.GetFileName(ini)), true);
+                    }
+                    catch (Exception ex) { Log("Couldn't copy the game's INI: " + ex.Message); }
             var psi = new ProcessStartInfo(exe) { UseShellExecute = false, WorkingDirectory = cwd };
             _program = Process.Start(psi)!;
             _program.EnableRaisingEvents = true;

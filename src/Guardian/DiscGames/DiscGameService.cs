@@ -21,6 +21,7 @@ public sealed class DiscGameService
     private readonly object _gate = new();
     private FileSystemWatcher? _watch;
     private Timer? _debounce;
+    private Timer? _poll;
 
     public static string Root => Path.Combine(Paths.DataRoot, "discgames");
     private static string StateFile => Path.Combine(Root, "coinquest-progress.json");
@@ -34,7 +35,9 @@ public sealed class DiscGameService
     private static readonly EnumerationOptions Flat = new() { MatchCasing = MatchCasing.CaseInsensitive };
     private static readonly EnumerationOptions Deep = new() { MatchCasing = MatchCasing.CaseInsensitive, RecurseSubdirectories = true };
 
-    public sealed record Game(string Id, string Title, string Exe, string Ini);
+    /// <param name="UserDir">Newer titles keep their INI and players' saves under Application Data
+    /// ("The Learning Company\The ClueFinders 4th Grade Adventures"); null for ones that keep them beside the program.</param>
+    public sealed record Game(string Id, string Title, string Exe, string Ini, string? UserDir = null);
 
     /// <summary>Friendly names for titles we know; anything else uses the name in its own INI file.</summary>
     private static readonly Dictionary<string, string> KnownTitles = new(StringComparer.OrdinalIgnoreCase)
@@ -57,9 +60,11 @@ public sealed class DiscGameService
                 var app = Path.Combine(Root, g.Id, "app");
                 OpenUp(app);
                 // Fixes ship with updates: re-point each game's INI at where its scripts and pictures really are.
-                try { PointIniAtDisc(Path.Combine(app, g.Ini), DataRootOnDisc(Path.Combine(Root, g.Id, "cd"), app)); } catch { }
+                try { PointIniAtDisc(Path.Combine(app, g.Ini), DataRootOnDisc(Path.Combine(Root, g.Id, "cd"), app)); CopyIniToProgramData(g); } catch { }
             }
             StartWatching();
+            // Newer titles save under each account's Application Data, which isn't watched: look once a minute too.
+            _poll = new Timer(_ => { try { if (Games().Any(g => g.UserDir is not null)) CheckProgress(); } catch { } }, null, TimeSpan.FromMinutes(1), TimeSpan.FromMinutes(1));
         }
         catch (Exception ex) { _log.LogWarning(ex, "Classic CD games: couldn't start"); }
     }
@@ -221,7 +226,8 @@ public sealed class DiscGameService
         var candidates = Directory.EnumerateFiles(cd, "*.ini", Deep)
             .Where(i => !i.Contains(Path.DirectorySeparatorChar + "DEMOS" + Path.DirectorySeparatorChar, StringComparison.OrdinalIgnoreCase))
             .Select(i => (Ini: i, Text: SafeRead(i)))
-            .Where(x => x.Text.Contains("CDDrive", StringComparison.OrdinalIgnoreCase))
+            // "CDDrive=" names the CD; some titles (4th Grade, 2002) leave it out and only have the "[… - CD]" section.
+            .Where(x => x.Text.Contains("CDDrive", StringComparison.OrdinalIgnoreCase) || x.Text.Contains(" - CD]", StringComparison.OrdinalIgnoreCase))
             .Select(x => (x.Ini, x.Text, Exe: PickExe(Path.GetDirectoryName(x.Ini)!)))
             .Where(x => x.Exe is not null)
             .ToList();
@@ -255,8 +261,9 @@ public sealed class DiscGameService
         foreach (var (name, data) in keep) File.WriteAllBytes(Path.Combine(app, name), data);
         var iniName = Path.GetFileName(ini);
         PointIniAtDisc(Path.Combine(app, iniName), DataRootOnDisc(Path.Combine(dest, "cd"), app));
-        var game = new Game(id, title, Path.GetFileName(exe!), iniName);
+        var game = new Game(id, title, Path.GetFileName(exe!), iniName, UserDirOf(Path.Combine(app, Path.GetFileName(exe!))));
         File.WriteAllText(Path.Combine(dest, "game.json"), JsonSerializer.Serialize(game));
+        CopyIniToProgramData(game);
         OpenUp(app);
         try { Directory.Delete(work, true); } catch { }
         _log.LogInformation("Disc {Id}: {Files} files, {MB} MB; program {Exe}", id, files, bytes / 1048576, exe);
@@ -283,6 +290,16 @@ public sealed class DiscGameService
             .OrderBy(d => d.Length)
             .ToList();
         return startups.FirstOrDefault() ?? cd;
+    }
+
+    /// <summary>Titles that read their INI from Application Data get a copy there (the shell adds one in the child's own).</summary>
+    private static void CopyIniToProgramData(Game g)
+    {
+        if (g.UserDir is null) return;
+        var dir = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.CommonApplicationData), g.UserDir);
+        Directory.CreateDirectory(dir);
+        File.Copy(Path.Combine(Root, g.Id, "app", g.Ini), Path.Combine(dir, g.Ini), true);
+        OpenUp(dir);
     }
 
     private static void PointIniAtDisc(string iniPath, string cdDir)
@@ -329,15 +346,50 @@ public sealed class DiscGameService
     public static List<Player> Players(Game g)
     {
         var list = new List<Player>();
-        var app = Path.Combine(Root, g.Id, "app");
-        if (!Directory.Exists(app)) return list;
-        foreach (var f in Directory.EnumerateFiles(app, "*.dat", Flat))
+        foreach (var f in SaveFiles(g))
         {
             string s;
             try { s = Encoding.Latin1.GetString(File.ReadAllBytes(f)); } catch { continue; }
             list.AddRange(ParsePlayers(s));
         }
         return list;
+    }
+
+    /// <summary>Every save file the game may use: beside the program, and (newer titles) in each account's Application Data.</summary>
+    public static List<string> SaveFiles(Game g)
+    {
+        var dirs = new List<string> { Path.Combine(Root, g.Id, "app") };
+        if (g.UserDir is { Length: > 0 } ud)
+        {
+            dirs.Add(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.CommonApplicationData), ud));
+            try
+            {
+                var users = Path.GetDirectoryName(Environment.GetFolderPath(Environment.SpecialFolder.CommonDocuments)) ?? @"C:\Users";
+                foreach (var home in Directory.EnumerateDirectories(users))
+                {
+                    dirs.Add(Path.Combine(home, "AppData", "Roaming", ud));
+                    dirs.Add(Path.Combine(home, "AppData", "Local", ud));
+                }
+            }
+            catch { }
+        }
+        var files = new List<string>();
+        foreach (var d in dirs.Where(Directory.Exists))
+            try { files.AddRange(Directory.EnumerateFiles(d, "*.dat", Flat)); } catch { }
+        return files;
+    }
+
+    /// <summary>"The Learning Company\The ClueFinders 4th Grade Adventures" when the program keeps data in Application Data.</summary>
+    private static string? UserDirOf(string exe)
+    {
+        try
+        {
+            var text = Encoding.Latin1.GetString(File.ReadAllBytes(exe));
+            if (!text.Contains("SHGetFolderPath", StringComparison.Ordinal)) return null;
+            var m = System.Text.RegularExpressions.Regex.Match(text, @"\\(The Learning Company)\0+\\(The [ -~]{3,80}?)\0");
+            return m.Success ? Path.Combine(m.Groups[1].Value, m.Groups[2].Value) : null;
+        }
+        catch { return null; }
     }
 
     public static List<Player> ParsePlayers(string s)
