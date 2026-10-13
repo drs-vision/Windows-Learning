@@ -117,7 +117,7 @@ public sealed partial class DiscGameService
     /// Import from a disc image (.zip/.iso/.img/.bin), a folder copied from a disc, a folder (or .zip) holding several
     /// disc images, or a share link to one (a Dropbox file or folder link is downloaded first). Runs in the background.
     /// </summary>
-    public void StartImport(string source)
+    public void StartImport(string source, bool useInstaller = false)
     {
         source = source.Trim().Trim('"');
         var isLink = source.StartsWith("http://", StringComparison.OrdinalIgnoreCase) || source.StartsWith("https://", StringComparison.OrdinalIgnoreCase);
@@ -140,7 +140,7 @@ public sealed partial class DiscGameService
                 {
                     var name = Path.GetFileNameWithoutExtension(discs[i]);
                     var prefix = discs.Count > 1 ? $"[{i + 1}/{discs.Count}] {name}: " : "";
-                    try { var g = Install(discs[i], m => Message = prefix + m); (g.Mode == "pending" ? needSetup : done).Add(g.Title); }
+                    try { var g = Install(discs[i], m => Message = prefix + m, useInstaller); (g.Mode == "pending" ? needSetup : done).Add(g.Title); }
                     catch (Exception ex) { failed.Add($"{name} ({ex.Message})"); _log.LogWarning(ex, "Classic CD game import failed: {Disc}", discs[i]); }
                 }
                 Message = (done.Count > 0 ? $"Imported {string.Join(", ", done)}. " : "")
@@ -226,7 +226,7 @@ public sealed partial class DiscGameService
         return dest;
     }
 
-    private Game Install(string source, Action<string> progress)
+    private Game Install(string source, Action<string> progress, bool useInstaller = false)
     {
         var work = Path.Combine(Root, ".import");
         if (Directory.Exists(work)) Directory.Delete(work, true);
@@ -246,11 +246,25 @@ public sealed partial class DiscGameService
             .Select(x => (x.Ini, x.Text, Exe: PickExe(Path.GetDirectoryName(x.Ini)!)))
             .Where(x => x.Exe is not null)
             .ToList();
-        if (candidates.Count == 0)
+        if (candidates.Count == 0 || useInstaller)
         {
-            // Not a layout CoinQuest knows: keep the disc and let its own installer set it up (a parent runs it once).
+            // Not a layout CoinQuest knows (or the parent asked for the real installer): keep the disc and let its own
+            // installer set it up (a parent runs it once).
             if (isoTmp is null) throw new InvalidOperationException("CoinQuest doesn't recognise this folder. Import the disc image (.iso/.img/.bin/.zip) instead, so its installer can run.");
-            return KeepForSetup(source, work, isoTmp, progress);
+            string? knownTitle = null;
+            if (candidates.Count > 0)
+            {
+                // Replace CoinQuest's own copy of this title with the installer's version.
+                var copyId = Path.GetFileNameWithoutExtension(candidates[0].Exe!).ToLowerInvariant();
+                if (KnownTitles.TryGetValue(copyId, out var kt)) knownTitle = kt;
+                foreach (var c in candidates)
+                {
+                    var old = Path.Combine(Root, Path.GetFileNameWithoutExtension(c.Exe!).ToLowerInvariant());
+                    if (File.Exists(Path.Combine(old, "game.json")) && Find(Path.GetFileName(old)) is { Mode: "copy" })
+                        try { Directory.Delete(old, true); } catch { }
+                }
+            }
+            return KeepForSetup(source, work, isoTmp, progress, knownTitle);
         }
         // Several can match (e.g. a demo of another title); prefer the 32-bit program in the folder the installer copies
         // (95INSTAL, INSTALL\HD …), then the biggest program.

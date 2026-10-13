@@ -104,7 +104,7 @@ public sealed class RequestRouter
             Ops.ParentRwtImport => Parent(req, client, child, () => { _rwt.StartImport(Str(req, "path")); return _rwt.Status(); }),
             Ops.RwtLaunch => RwtLaunch(req, child),
             Ops.ParentDiscStatus => Parent(req, client, child, () => _discs.Status()),
-            Ops.ParentDiscImport => Parent(req, client, child, () => { _discs.StartImport(Str(req, "path")); return _discs.Status(); }),
+            Ops.ParentDiscImport => Parent(req, client, child, () => { _discs.StartImport(Str(req, "path"), req.Payload?["useInstaller"]?.GetValue<bool>() == true); return _discs.Status(); }),
             Ops.ParentDiscSetupBegin => Parent(req, client, child, () => _discs.BeginSetup(Str(req, "id"))),
             Ops.ParentDiscSetupFinish => Parent(req, client, child, () => _discs.FinishSetup(Str(req, "id"))),
             Ops.DiscLaunch => DiscLaunch(req, child),

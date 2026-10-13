@@ -113,7 +113,7 @@ class Bridge {
   parentRwtImport(path: string) { return this.call<RwtStatus>('parent.rwtImport', { path }, { parent: true }); }
   /** Read, Write & Type!: ask the Guardian where it lives, then have the shell start it through otvdm. */
   parentDiscStatus() { return this.call<DiscStatus>('parent.discStatus', undefined, { parent: true }); }
-  parentDiscImport(path: string) { return this.call<DiscStatus>('parent.discImport', { path }, { parent: true }); }
+  parentDiscImport(path: string, useInstaller = false) { return this.call<DiscStatus>('parent.discImport', { path, useInstaller }, { parent: true }); }
   parentDiscSetupBegin(id: string) { return this.call<{ id: string; title: string; drive: string; installer: string; kind: string }>('parent.discSetupBegin', { id }, { parent: true }); }
   parentDiscSetupFinish(id: string) { return this.call<{ id: string; title: string; exe: string; installDir: string }>('parent.discSetupFinish', { id }, { parent: true }); }
   runSetup(path: string) { return this.call<{ ok: boolean }>('shell.runSetup', { path }); }

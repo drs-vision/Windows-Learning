@@ -18,9 +18,9 @@ public sealed partial class DiscGameService
     private readonly Dictionary<string, Snapshot> _snapshots = new();
 
     /// <summary>Not a layout CoinQuest knows: keep the disc image for its own installer.</summary>
-    private Game KeepForSetup(string source, string work, string iso, Action<string> progress)
+    private Game KeepForSetup(string source, string work, string iso, Action<string> progress, string? knownTitle = null)
     {
-        var name = Path.GetFileNameWithoutExtension(source.TrimEnd('\\', '/'));
+        var name = knownTitle ?? Path.GetFileNameWithoutExtension(source.TrimEnd('\\', '/'));
         var title = Regex.Replace(name.Replace('_', ' '), @"\b(Win|Win95|Mac|ROM|ISO|EN|CD\d?|\(\d{4}\)|\d{4})\b", "", RegexOptions.IgnoreCase);
         title = Regex.Replace(title, @"\s+", " ").Trim(' ', '-');
         if (title.Length == 0) title = "Classic CD game";

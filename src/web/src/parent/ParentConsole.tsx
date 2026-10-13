@@ -641,20 +641,28 @@ function DiscImport() {
     setErr('');
     try {
       const r = await bridge.pickFile('Choose a game disc image', 'Disc image (*.zip, *.iso, *.img, *.bin)|*.zip;*.iso;*.img;*.bin|All files|*.*');
-      if (r.path) setSt(await bridge.parentDiscImport(r.path));
+      if (r.path) setSt(await bridge.parentDiscImport(r.path, useInst));
     } catch (e) { setErr((e as Error).message); }
   }
   const [link, setLink] = useState('');
+  const [useInst, setUseInst] = useState(false);
+  async function viaInstaller(title: string) {
+    setErr('');
+    try {
+      const r = await bridge.pickFile(`Choose the disc image for ${title}`, 'Disc image (*.zip, *.iso, *.img, *.bin)|*.zip;*.iso;*.img;*.bin|All files|*.*');
+      if (r.path) setSt(await bridge.parentDiscImport(r.path, true));
+    } catch (e) { setErr((e as Error).message); }
+  }
   async function pickDir() {
     setErr('');
     try {
       const r = await bridge.pickFolder('Choose a folder of game discs (every disc image inside is imported)');
-      if (r.path) setSt(await bridge.parentDiscImport(r.path));
+      if (r.path) setSt(await bridge.parentDiscImport(r.path, useInst));
     } catch (e) { setErr((e as Error).message); }
   }
   async function fromLink() {
     setErr('');
-    try { if (link.trim()) { setSt(await bridge.parentDiscImport(link.trim())); setLink(''); } } catch (e) { setErr((e as Error).message); }
+    try { if (link.trim()) { setSt(await bridge.parentDiscImport(link.trim(), useInst)); setLink(''); } } catch (e) { setErr((e as Error).message); }
   }
   async function tryIt(id: string) { setErr(''); try { await bridge.playDisc(id); } catch (e) { setErr((e as Error).message); } }
   const [setup, setSetup] = useState<{ id: string; title: string; drive: string; installer: string } | null>(null);
@@ -677,7 +685,8 @@ function DiscImport() {
         <li><b>{g.title}</b>{g.players.length > 0 ? <span class="muted small"> — {g.players.map((p) => `${p.name} (level ${p.level}, score ${p.score})`).join(', ')}</span> : <span class="muted small"> — no players yet</span>}
           {' '}{g.mode === 'pending'
             ? <button class="secondary small" onClick={() => beginSetup(g.id)}>Set up (run its installer)</button>
-            : <button class="ghost small" onClick={() => tryIt(g.id)}>Try it</button>}</li>))}</ul>}
+            : <><button class="ghost small" onClick={() => tryIt(g.id)}>Try it</button>
+                {g.mode === 'copy' && <button class="ghost small" title="If it crashes or misbehaves: re-import it and run the disc's own installer instead" onClick={() => viaInstaller(g.title)}>Problems? Use its installer…</button>}</>}</li>))}</ul>}
       {setup && (
         <div class="card nudge" style="text-align:left">
           <b>Installing {setup.title}</b>
@@ -697,6 +706,7 @@ function DiscImport() {
               <button class={st.games.length ? 'secondary' : 'primary'} onClick={pick}>Import a disc…</button>
               <button class="secondary" onClick={pickDir}>Import a folder…</button>
             </div>
+            <label class="check small" style="margin-top:.4em"><input type="checkbox" checked={useInst} onChange={(e) => setUseInst((e.target as HTMLInputElement).checked)} /> Always use the disc's own installer (even for games CoinQuest knows)</label>
             <div class="row" style="gap:.5em;margin-top:.5em">
               <input type="url" placeholder="…or paste a Dropbox link" value={link} onInput={(e) => setLink((e.target as HTMLInputElement).value)} style="flex:1" />
               <button class="secondary" onClick={fromLink} disabled={!link.trim()}>Import from link</button>
