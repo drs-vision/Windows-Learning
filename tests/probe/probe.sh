@@ -3,8 +3,9 @@
 set +e
 note() { while IFS= read -r l; do echo "::notice title=probe::$l"; done; }
 for q in Bloxorz "Sugar, Sugar"; do
-python3 - "$q" <<'PY' | note
+python3 - "$q" 2>&1 <<'PY' | note
 import json, sys, urllib.request, urllib.parse, zipfile, io, re
+opener=urllib.request.build_opener(); opener.addheaders=[('User-Agent','CoinQuest/1.0')]; urllib.request.install_opener(opener)
 q=sys.argv[1]
 u="https://db-api.unstable.life/search?smartSearch="+urllib.parse.quote(q)+"&filter=true&limit=5&fields=id,title,platform,launchCommand,library"
 r=json.load(urllib.request.urlopen(u,timeout=30))
