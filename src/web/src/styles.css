@@ -554,3 +554,6 @@ button.big { font-size: 1.1em; padding: .7em 1.4em; }
 .yt-channels { flex-wrap: wrap; }
 @media (max-width: 900px) { .yt-watch-body { flex-direction: column; } .yt-upnext { width: auto; max-height: 40vh; } }
 .swf-host { position: relative; overflow: hidden; }
+.disc-games { list-style: none; padding: 0; margin: .4em 0 .8em; display: grid; gap: .5em; }
+.disc-games > li { padding: .6em .8em; border-radius: 10px; background: var(--panel-2); }
+.disc-games > li.off b { opacity: .55; text-decoration: line-through; }

@@ -646,6 +646,9 @@ function DiscImport() {
   }
   const [link, setLink] = useState('');
   const [useInst, setUseInst] = useState(false);
+  const [removing, setRemoving] = useState<string | null>(null);
+  async function hide(id: string, hidden: boolean) { setErr(''); try { setSt(await bridge.parentDiscHide(id, hidden)); } catch (e) { setErr((e as Error).message); } }
+  async function remove(id: string) { setErr(''); try { setSt(await bridge.parentDiscRemove(id)); setRemoving(null); } catch (e) { setErr((e as Error).message); } }
   async function viaInstaller(title: string) {
     setErr('');
     try {
@@ -682,11 +685,27 @@ function DiscImport() {
   return (
     <div class="rwt-import">
       {st.games.length > 0 && <ul class="disc-games">{st.games.map((g) => (
-        <li><b>{g.title}</b>{g.players.length > 0 ? <span class="muted small"> — {g.players.map((p) => `${p.name} (level ${p.level}, score ${p.score})`).join(', ')}</span> : <span class="muted small"> — no players yet</span>}
-          {' '}{g.mode === 'pending'
-            ? <button class="secondary small" onClick={() => beginSetup(g.id)}>Set up (run its installer)</button>
-            : <><button class="ghost small" onClick={() => tryIt(g.id)}>Try it</button>
-                {g.mode === 'copy' && <button class="ghost small" title="If it crashes or misbehaves: re-import it and run the disc's own installer instead" onClick={() => viaInstaller(g.title)}>Problems? Use its installer…</button>}</>}</li>))}</ul>}
+        <li class={g.hidden ? 'off' : ''}>
+          <div class="row between" style="gap:.6em;align-items:center">
+            <div style="flex:1;min-width:0">
+              <b>{g.title}</b>
+              {g.mode === 'pending' ? <span class="muted small"> — not installed yet</span>
+                : g.players.length > 0 ? <span class="muted small"> — {g.players.map((p) => `${p.name} (level ${p.level}, score ${p.score})`).join(', ')}</span>
+                : <span class="muted small"> — no players yet</span>}
+              <div class="row" style="gap:.4em;margin-top:.3em;flex-wrap:wrap">
+                {g.mode === 'pending'
+                  ? <button class="secondary small" onClick={() => beginSetup(g.id)}>Set up (run its installer)</button>
+                  : <><button class="ghost small" onClick={() => tryIt(g.id)}>Try it</button>
+                      {g.mode === 'copy' && <button class="ghost small" title="If it crashes or misbehaves: re-import it and run the disc's own installer instead" onClick={() => viaInstaller(g.title)}>Problems? Use its installer…</button>}</>}
+                {removing === g.id
+                  ? <><button class="danger small" onClick={() => remove(g.id)}>Yes, remove {g.title}</button><button class="ghost small" onClick={() => setRemoving(null)}>Keep it</button></>
+                  : <button class="ghost small" title="Delete CoinQuest's copy of this game and its disc image" onClick={() => setRemoving(g.id)}>🗑 Remove</button>}
+              </div>
+              {removing === g.id && <p class="muted small">Players' progress in this game is deleted too.{g.mode === 'installed' ? ' The installed program stays on the PC — uninstall it from Windows Settings → Apps if you want it gone completely.' : ''}</p>}
+            </div>
+            {g.mode !== 'pending' && <label class="switch" title={g.hidden ? 'Hidden from the kids' : 'Shown to the kids'}><input type="checkbox" checked={!g.hidden} onChange={(e) => hide(g.id, !(e.target as HTMLInputElement).checked)} /><span>{g.hidden ? 'Off' : 'On'}</span></label>}
+          </div>
+        </li>))}</ul>}
       {setup && (
         <div class="card nudge" style="text-align:left">
           <b>Installing {setup.title}</b>

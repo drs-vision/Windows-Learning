@@ -44,6 +44,32 @@ public sealed partial class DiscGameService
 
     private static void Save(Game g) => File.WriteAllText(Path.Combine(Root, g.Id, "game.json"), JsonSerializer.Serialize(g));
 
+    /// <summary>Show or hide a game on the child's screen (it stays imported).</summary>
+    public object SetHidden(string id, bool hidden)
+    {
+        var g = Find(id) ?? throw new InvalidOperationException("That game isn't imported");
+        Save(g with { Hidden = hidden });
+        _log.LogInformation("{Title} {State} for the child", g.Title, hidden ? "hidden" : "shown");
+        return Status();
+    }
+
+    /// <summary>Remove a game from CoinQuest: its copy, its disc image and its CoinQuest settings. A game installed by its
+    /// own installer stays in its folder (uninstall it from Windows Settings → Apps if you want it gone completely).</summary>
+    public object Remove(string id)
+    {
+        var g = Find(id) ?? throw new InvalidOperationException("That game isn't imported");
+        if (g.Iso is { } iso) Unmount(iso);
+        var dir = Path.Combine(Root, g.Id);
+        for (int i = 0; i < 5; i++)
+        {
+            try { if (Directory.Exists(dir)) Directory.Delete(dir, true); break; }
+            catch (IOException) when (i < 4) { Thread.Sleep(1000); } // the virtual drive takes a moment to let go
+        }
+        _dirsCache = (DateTime.MinValue, new());
+        _log.LogInformation("Removed {Title} from CoinQuest", g.Title);
+        return Status();
+    }
+
     // ---- virtual CD drive ---------------------------------------------------------------------------------------
 
     /// <summary>Open the disc image as a CD drive (if it isn't already); returns e.g. "E:".</summary>

@@ -41,7 +41,8 @@ public sealed partial class DiscGameService
     /// "pending": imported, waiting for a parent to run the disc's own installer; "installed": installed by its installer
     /// (<paramref name="ExePath"/>, <paramref name="InstallDir"/>), played with the disc image opened as a virtual CD drive.</param>
     public sealed record Game(string Id, string Title, string Exe, string Ini, string? UserDir = null,
-        string Mode = "copy", string? Iso = null, string? InstallDir = null, string? ExePath = null, string? Cwd = null, string? Args = null);
+        string Mode = "copy", string? Iso = null, string? InstallDir = null, string? ExePath = null, string? Cwd = null, string? Args = null,
+        bool Hidden = false);
 
     /// <summary>The program to start.</summary>
     public static string ProgramPath(Game g) => g.Mode == "installed" ? g.ExePath! : Path.Combine(Root, g.Id, "app", g.Exe);
@@ -105,7 +106,7 @@ public sealed partial class DiscGameService
         message = Message,
         games = Games().Select(g => new
         {
-            g.Id, g.Title, g.Mode,
+            g.Id, g.Title, g.Mode, g.Hidden,
             players = Players(g).Select(p => new { p.Name, p.Level, p.Score }),
         }),
         root = Root,

@@ -49,7 +49,7 @@ public sealed class RequestRouter
     private static readonly HashSet<string> Slow = new()
     {
         Ops.ArcadePrepare, Ops.ArcadeClassicFile, Ops.YouTubeLibrary, Ops.YouTubeCheck, Ops.YouTubeChannel, Ops.ParentYouTubeResolve, Ops.ParentCheckUpdate, Ops.ParentInstalledApps, Ops.SetupAccounts,
-        Ops.ParentFpStatus, Ops.ParentFpSearch, Ops.ParentFpSuggest, Ops.ParentFpInstallClifp, Ops.ParentFpDownloadInstaller, Ops.ParentFpThumbs, Ops.ParentFpStockNow, Ops.ParentBlocked, Ops.ParentDiagnostics, Ops.ParentRwtImport, Ops.RwtLaunch, Ops.ParentDiscImport, Ops.ParentDiscSetupBegin, Ops.ParentDiscSetupFinish, Ops.DiscLaunch,
+        Ops.ParentFpStatus, Ops.ParentFpSearch, Ops.ParentFpSuggest, Ops.ParentFpInstallClifp, Ops.ParentFpDownloadInstaller, Ops.ParentFpThumbs, Ops.ParentFpStockNow, Ops.ParentBlocked, Ops.ParentDiagnostics, Ops.ParentRwtImport, Ops.RwtLaunch, Ops.ParentDiscImport, Ops.ParentDiscSetupBegin, Ops.ParentDiscSetupFinish, Ops.DiscLaunch, Ops.ParentDiscRemove,
     };
     private readonly object _sync = new();
 
@@ -107,6 +107,8 @@ public sealed class RequestRouter
             Ops.ParentDiscImport => Parent(req, client, child, () => { _discs.StartImport(Str(req, "path"), req.Payload?["useInstaller"]?.GetValue<bool>() == true); return _discs.Status(); }),
             Ops.ParentDiscSetupBegin => Parent(req, client, child, () => _discs.BeginSetup(Str(req, "id"))),
             Ops.ParentDiscSetupFinish => Parent(req, client, child, () => _discs.FinishSetup(Str(req, "id"))),
+            Ops.ParentDiscHide => Parent(req, client, child, () => _discs.SetHidden(Str(req, "id"), req.Payload?["hidden"]?.GetValue<bool>() == true)),
+            Ops.ParentDiscRemove => Parent(req, client, child, () => _discs.Remove(Str(req, "id"))),
             Ops.DiscLaunch => DiscLaunch(req, child),
             Ops.ParentDiagnostics => Parent(req, client, child, () => new { version = Version, problems = CoinQuest.Guardian.FileLoggerProvider.Recent(), blocked = _gate.RecentlyBlocked().Take(20).Select(b => b.Host), internetLock = _netLock.Status, net = NetCheck().GetAwaiter().GetResult() }),
             Ops.ParentBlocked => Parent(req, client, child, () => _gate.RecentlyBlocked().Select(b => new { host = b.Host, at = b.At, reason = b.Reason })),
@@ -154,7 +156,7 @@ public sealed class RequestRouter
             sites = child.Allowlist.Sites,
             youtubeChannels = child.YouTubeChannels.Count,
             rwtInstalled = CoinQuest.Guardian.Rwt.RwtService.Installed,
-            discGames = CoinQuest.Guardian.DiscGames.DiscGameService.Games().Where(g => g.Mode != "pending").Select(g => new { g.Id, g.Title }),
+            discGames = CoinQuest.Guardian.DiscGames.DiscGameService.Games().Where(g => g.Mode != "pending" && !g.Hidden).Select(g => new { g.Id, g.Title }),
             arcadeMinutesPerPlay = child.Arcade.MinutesPerPlay,
         };
     }
@@ -300,6 +302,7 @@ public sealed class RequestRouter
     {
         var g = CoinQuest.Guardian.DiscGames.DiscGameService.Find(Str(req, "id"));
         if (g is null) return Response.Fail(req.Id, "That game isn't imported on this computer — a parent can add it in the Parent Console → Quests.");
+        if (child is not null && g.Hidden) return Response.Fail(req.Id, $"{g.Title} is switched off — ask a parent");
         if (g.Mode == "pending") return Response.Fail(req.Id, $"{g.Title} needs setting up first — a parent can do it in the Parent Console → Quests → Classic CD games.");
         if (child is not null && child.Modules.GetValueOrDefault("discgames") is { Enabled: false }) return Response.Fail(req.Id, "Classic CD games are switched off — ask a parent");
         var exe = CoinQuest.Guardian.DiscGames.DiscGameService.ProgramPath(g);

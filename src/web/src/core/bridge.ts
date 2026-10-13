@@ -116,6 +116,8 @@ class Bridge {
   parentDiscImport(path: string, useInstaller = false) { return this.call<DiscStatus>('parent.discImport', { path, useInstaller }, { parent: true }); }
   parentDiscSetupBegin(id: string) { return this.call<{ id: string; title: string; drive: string; installer: string; kind: string }>('parent.discSetupBegin', { id }, { parent: true }); }
   parentDiscSetupFinish(id: string) { return this.call<{ id: string; title: string; exe: string; installDir: string }>('parent.discSetupFinish', { id }, { parent: true }); }
+  parentDiscHide(id: string, hidden: boolean) { return this.call<DiscStatus>('parent.discHide', { id, hidden }, { parent: true }); }
+  parentDiscRemove(id: string) { return this.call<DiscStatus>('parent.discRemove', { id }, { parent: true }); }
   runSetup(path: string) { return this.call<{ ok: boolean }>('shell.runSetup', { path }); }
   async playDisc(id: string) { const info = await this.call<Record<string, string>>('disc.launch', { id }); return this.call<{ ok: boolean }>('shell.launchProgram', info); }
   async playRwt() { const info = await this.call<Record<string, string>>('rwt.launch'); return this.call<{ ok: boolean }>('shell.launchRwt', info); }
@@ -132,7 +134,7 @@ class Bridge {
 
 export const bridge = new Bridge();
 
-export type DiscStatus = { stage: 'idle' | 'importing' | 'error'; message?: string; games: { id: string; title: string; mode?: 'copy' | 'pending' | 'installed'; players: { name: string; level: number; score: number }[] }[]; root: string };
+export type DiscStatus = { stage: 'idle' | 'importing' | 'error'; message?: string; games: { id: string; title: string; mode?: 'copy' | 'pending' | 'installed'; hidden?: boolean; players: { name: string; level: number; score: number }[] }[]; root: string };
 export type RwtStatus = { installed: boolean; otvdm: boolean; stage: 'idle' | 'importing' | 'ready' | 'error'; message?: string; patches: string[]; players: string[]; root: string };
 export interface FpStatus {
   installed: boolean; root?: string | null; clifp: boolean; installerUrl: string;
