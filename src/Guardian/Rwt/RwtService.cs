@@ -44,6 +44,7 @@ public sealed class RwtService
             // New fixes ship with updates: re-apply the current set to the original program (kept as RWTWINCD.ORG).
             try { LastPatches = RwtInstaller.PatchExe(Path.Combine(Root, "cd", "RWTWINCD.EXE")); _log.LogInformation("RWT fixes: {P}", string.Join(", ", LastPatches)); }
             catch (Exception ex) { _log.LogWarning(ex, "Couldn't refresh Read, Write & Type fixes"); }
+            OpenUp(SigninDir); // the game (running as the child) writes each player's progress here
             StartWatching();
         }
     }
@@ -58,7 +59,7 @@ public sealed class RwtService
         stage = Stage,
         message = Message,
         patches = LastPatches,
-        players = Directory.Exists(SigninDir) ? Directory.EnumerateFiles(SigninDir, "*.dat").Select(Path.GetFileNameWithoutExtension).Where(n => !n!.Equals("RWTWINCD", StringComparison.OrdinalIgnoreCase)).ToList() : new List<string?>(),
+        players = Players().Select(p => p.Level > 0 ? $"{p.Name} (level {p.Level})" : p.Name).ToList(),
         root = Root,
     };
 
@@ -134,7 +135,7 @@ public sealed class RwtService
         {
             Directory.CreateDirectory(SigninDir);
             _watch?.Dispose();
-            _watch = new FileSystemWatcher(SigninDir, "*.*") { IncludeSubdirectories = false, NotifyFilter = NotifyFilters.LastWrite | NotifyFilters.Size | NotifyFilters.FileName };
+            _watch = new FileSystemWatcher(SigninDir, "*.*") { IncludeSubdirectories = true, NotifyFilter = NotifyFilters.LastWrite | NotifyFilters.Size | NotifyFilters.FileName };
             _watch.Changed += (_, _) => Debounce();
             _watch.Created += (_, _) => Debounce();
             _watch.Renamed += (_, _) => Debounce();
@@ -163,30 +164,67 @@ public sealed class RwtService
             ProgressState st;
             try { st = JsonSerializer.Deserialize<ProgressState>(File.ReadAllText(StateFile)) ?? new(); } catch { st = new(); }
             var changed = new List<string>();
-            foreach (var f in Directory.EnumerateFiles(SigninDir, "*.dat"))
+            foreach (var f in Directory.EnumerateFiles(SigninDir, "*.dat", SearchOption.AllDirectories))
             {
+                var rel = Path.GetRelativePath(SigninDir, f);
+                // SIGNIN\RWTWINCD.DAT is only the sign-in list; each player's progress is SIGNIN\<name><n>\RWTWINCD.DAT,
+                // which the game rewrites after every finished activity.
+                if (!rel.Contains(Path.DirectorySeparatorChar)) continue;
                 byte[] bytes;
                 try { bytes = File.ReadAllBytes(f); } catch { continue; } // still being written; the next change will catch it
                 var h = Convert.ToHexString(SHA256.HashData(bytes));
-                var name = Path.GetFileName(f);
-                if (st.Hashes.TryGetValue(name, out var old) && old == h) continue;
-                var isNew = !st.Hashes.ContainsKey(name);
-                st.Hashes[name] = h;
+                if (st.Hashes.TryGetValue(rel, out var old) && old == h) continue;
+                var isNew = !st.Hashes.ContainsKey(rel);
+                st.Hashes[rel] = h;
                 try
                 {
                     var hist = Path.Combine(Root, "history", DateTime.Now.ToString("yyyyMMdd-HHmmss"));
                     Directory.CreateDirectory(hist);
-                    File.WriteAllBytes(Path.Combine(hist, name), bytes);
+                    File.WriteAllBytes(Path.Combine(hist, rel.Replace(Path.DirectorySeparatorChar, '_')), bytes);
                 }
                 catch { }
-                if (!isNew && !name.Equals("RWTWINCD.DAT", StringComparison.OrdinalIgnoreCase)) changed.Add(Path.GetFileNameWithoutExtension(name));
+                var who = PlayerName(Path.GetDirectoryName(rel)!);
+                var lvl = LevelOf(bytes);
+                _log.LogInformation("RWT progress saved for {Player} (level {Level})", who, lvl);
+                if (!isNew) changed.Add(lvl > 0 ? $"{who}, level {lvl}" : who);
             }
-            if (changed.Count > 0 && DateTimeOffset.UtcNow - st.LastPaid > TimeSpan.FromMinutes(4))
+            if (changed.Count > 0 && DateTimeOffset.UtcNow - st.LastPaid > TimeSpan.FromMinutes(2))
             {
                 st.LastPaid = DateTimeOffset.UtcNow;
                 ProgressSaved?.Invoke(changed);
             }
             File.WriteAllText(StateFile, JsonSerializer.Serialize(st));
         }
+    }
+
+    public sealed record Player(string Name, int Level);
+
+    /// <summary>Signed-in players: one folder per player (name, first 6 letters, plus a number), each with its progress file.</summary>
+    public static List<Player> Players()
+    {
+        var list = new List<Player>();
+        if (!Directory.Exists(SigninDir)) return list;
+        foreach (var dir in Directory.EnumerateDirectories(SigninDir))
+        {
+            var f = Path.Combine(dir, "RWTWINCD.DAT");
+            int lvl = 0;
+            try { if (File.Exists(f)) lvl = LevelOf(File.ReadAllBytes(f)); } catch { }
+            list.Add(new Player(PlayerName(Path.GetFileName(dir)), lvl));
+        }
+        return list;
+    }
+
+    private static string PlayerName(string dir) => dir.TrimEnd('0', '1', '2', '3', '4', '5', '6', '7', '8', '9').Replace('_', ' ');
+
+    /// <summary>
+    /// A player's file starts with a 0x16C-byte header: format version (0x102+), the lesson stage (0–39) and the step
+    /// within it (3 = stage finished). The game shows "Level n" as stage/4 + 1 — ten levels.
+    /// </summary>
+    public static int LevelOf(byte[] b)
+    {
+        if (b.Length < 0x16C || BitConverter.ToUInt16(b, 0) < 0x102) return 0;
+        int stage = BitConverter.ToUInt16(b, 2), step = BitConverter.ToUInt16(b, 4);
+        if (step == 3) stage++;
+        return Math.Min(stage, 39) / 4 + 1;
     }
 }

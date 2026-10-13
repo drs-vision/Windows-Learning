@@ -647,7 +647,7 @@ function RwtImport() {
     <div class="rwt-import">
       {st.stage === 'importing' ? <p>⏳ {st.message ?? 'Importing…'}</p>
         : st.installed ? <>
-            <p>✅ Imported — it's part of CoinQuest now (no disc or image needed).{st.players.length > 0 && <> Players: {st.players.join(', ')}.</>}</p>
+            <p>✅ Imported — it's part of CoinQuest now (no disc or image needed).{st.players.length > 0 && <> Players: {st.players.join(', ')}.</>}{st.players.length === 0 && <> No players signed in yet — progress is only saved (and paid) for a signed-in player.</>}</p>
             <div class="row"><button class="secondary" onClick={tryIt}>Try it now (on this account)</button><button class="ghost small" onClick={pick}>Import again…</button></div>
           </>
         : <>

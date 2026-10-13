@@ -34,8 +34,16 @@ function RwtView({ ctx }: { activity: Activity; ctx: ActivityContext }) {
   return (
     <div class="activity-intro">
       <h2>⌨️ Read, Write & Type!</h2>
-      <p>Help Vowel and the letters escape Lefty! Every time the game saves your progress you earn <b>{ctx.settings.coinsPerActivity} 🪙</b>.</p>
-      {playing ? <p class="muted">The game is open in its own window. Close it (or press Alt+F4) to come back here.</p>
+      <p>Rescue the letters! Every activity you finish earns <b>{ctx.settings.coinsPerActivity} 🪙</b>.</p>
+      <div class="card nudge" style="text-align:left">
+        <b>✍️ Always sign in first</b> — the game only remembers your progress (and only pays coins) when you're signed in.
+        <ol class="small">
+          <li>On the <b>Sign-In</b> screen, click your name in the list and press <b>PLAY</b>.</li>
+          <li>First time only: type your name and press <b>SIGN-IN NEW PLAYER</b>. Don't make a new player again next time — just pick your name.</li>
+          <li>Skipped it? Click the little tag in the top-right corner of the game → <b>SIGN-IN</b>.</li>
+        </ol>
+      </div>
+      {playing ? <p class="muted">The game is open in its own window. To finish, click the corner tag → <b>EXIT</b> → <b>YES</b>.</p>
         : <button class="primary big" onClick={play}>▶ Play</button>}
       {msg && <p class="muted">{msg}</p>}
       <button class="ghost" onClick={ctx.exit}>Back</button>
