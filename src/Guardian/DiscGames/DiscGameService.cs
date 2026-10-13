@@ -65,6 +65,7 @@ public sealed partial class DiscGameService
         {
             Directory.CreateDirectory(Root);
             try { var trash = Path.Combine(Root, ".trash"); if (Directory.Exists(trash)) DeleteDir(trash); } catch { }
+            if (Games().Any(g => g.Mode == "installed")) RemoveDssAgent(_log);
             foreach (var g in Games())
             {
                 if (g.Mode == "installed" && g.InstallDir is { } idir) { OpenUp(idir); continue; }

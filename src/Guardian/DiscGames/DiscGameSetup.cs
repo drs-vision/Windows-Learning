@@ -70,6 +70,38 @@ public sealed partial class DiscGameService
         return Status();
     }
 
+    /// <summary>
+    /// Learning Company / Mattel installers of 1999–2002 slip in "Broadcast DSSAgent", a background program that reports
+    /// usage home (Windows Defender flags it as Spyware:Win32/BrodcastDSSAGENT). The games don't need it: remove its
+    /// start-up entries and files after every install (and at start, in case an earlier install left it).
+    /// </summary>
+    public static void RemoveDssAgent(ILogger<DiscGameService> log)
+    {
+        static bool IsDss(object? v) => v is string s && (s.Contains("dssagent", StringComparison.OrdinalIgnoreCase) || s.Contains(@"\Brodcast\", StringComparison.OrdinalIgnoreCase));
+        void CleanRun(RegistryKey? root, string path)
+        {
+            try
+            {
+                using var k = root?.OpenSubKey(path, writable: true);
+                if (k is null) return;
+                foreach (var n in k.GetValueNames())
+                    if (n.Contains("DSSAgent", StringComparison.OrdinalIgnoreCase) || IsDss(k.GetValue(n))) { k.DeleteValue(n, false); log.LogInformation("Removed start-up entry {Name} (Broadcast DSSAgent)", n); }
+            }
+            catch { }
+        }
+        foreach (var path in new[] { @"SOFTWARE\Microsoft\Windows\CurrentVersion\Run", @"SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Run" })
+        {
+            CleanRun(Registry.LocalMachine, path);
+            try { foreach (var sid in Registry.Users.GetSubKeyNames()) { using var u = Registry.Users.OpenSubKey(sid); CleanRun(Registry.Users, sid + "\\" + path); } } catch { }
+        }
+        foreach (var p in Process.GetProcessesByName("DSSAgent")) { try { p.Kill(); } catch { } finally { p.Dispose(); } }
+        foreach (var common in new[] { Environment.GetFolderPath(Environment.SpecialFolder.CommonProgramFilesX86), Environment.GetFolderPath(Environment.SpecialFolder.CommonProgramFiles) })
+        {
+            var dir = Path.Combine(common, "Mattel", "Brodcast");
+            if (Directory.Exists(dir)) try { DeleteDir(dir); log.LogInformation("Removed {Dir} (Broadcast DSSAgent)", dir); } catch { }
+        }
+    }
+
     // ---- virtual CD drive ---------------------------------------------------------------------------------------
 
     /// <summary>Open the disc image as a CD drive (if it isn't already); returns e.g. "E:".</summary>
@@ -143,6 +175,7 @@ public sealed partial class DiscGameService
         var installDir = newDirs.Where(d => exe.StartsWith(d.TrimEnd('\\') + "\\", StringComparison.OrdinalIgnoreCase)).OrderBy(d => d.Length).FirstOrDefault()
                          ?? Path.GetDirectoryName(exe)!;
         OpenUp(installDir); // the game saves players beside itself; the child's account must be able to write there
+        RemoveDssAgent(_log);
         var done = g with { Mode = "installed", ExePath = exe, InstallDir = installDir, Cwd = cwd, Args = args, Exe = Path.GetFileName(exe) };
         Save(done);
         lock (_snapshots) _snapshots.Remove(g.Id);
