@@ -30,7 +30,14 @@ public sealed class NetLock
     public void Ensure(bool force = false)
     {
         if (Paths.E2ETestMode) { Status = new(false, DateTimeOffset.UtcNow, "test machine: internet lock off"); return; } // the CI runner itself plays the child
+        // Only real person accounts (local "S-1-5-21-…", Microsoft/Azure accounts "S-1-12-1-…"). A system or group SID here
+        // would lock the internet for the whole computer, CoinQuest's own service included.
         var sids = _store.Current.Children.Select(c => c.WindowsSid).Where(s => !string.IsNullOrEmpty(s)).Distinct().OrderBy(s => s).ToList();
+        foreach (var bad in sids.Where(s => !(s.StartsWith("S-1-5-21-") || s.StartsWith("S-1-12-1-"))).ToList())
+        {
+            _log.LogWarning("Not locking {Sid}: it isn't a person's account", bad);
+            sids.Remove(bad);
+        }
         var permits = Permits();
         var sig = string.Join(",", sids) + "|" + string.Join(",", permits);
         if (!force && sig == _applied) return;

@@ -110,7 +110,7 @@ public sealed class RequestRouter
             Ops.ParentDiscHide => Parent(req, client, child, () => _discs.SetHidden(Str(req, "id"), req.Payload?["hidden"]?.GetValue<bool>() == true)),
             Ops.ParentDiscRemove => Parent(req, client, child, () => _discs.Remove(Str(req, "id"))),
             Ops.DiscLaunch => DiscLaunch(req, child),
-            Ops.ParentDiagnostics => Parent(req, client, child, () => new { version = Version, problems = CoinQuest.Guardian.FileLoggerProvider.Recent(), blocked = _gate.RecentlyBlocked().Take(20).Select(b => b.Host), internetLock = _netLock.Status, net = NetCheck().GetAwaiter().GetResult() }),
+            Ops.ParentDiagnostics => Parent(req, client, child, () => new { version = Version, problems = CoinQuest.Guardian.FileLoggerProvider.Recent(), blocked = _gate.RecentlyBlocked().Take(20).Select(b => b.Host), internetLock = _netLock.Status, net = NetCheck().GetAwaiter().GetResult(), system = SystemCheck() }),
             Ops.ParentBlocked => Parent(req, client, child, () => _gate.RecentlyBlocked().Select(b => new { host = b.Host, at = b.At, reason = b.Reason })),
             Ops.ParentFpStatus => Parent(req, client, child, () => FpStatus()),
             Ops.ParentFpStockNow => Parent(req, client, child, () => { _stocker.Tick(force: true); return FpStatus(); }),
@@ -346,6 +346,35 @@ public sealed class RequestRouter
             _log.LogInformation("Classic CD progress for {Child}: +{Coins}", child.DisplayName, coins);
             AfterChange();
         }
+    }
+
+    /// <summary>Facts for troubleshooting "access denied": who the service runs as, whether it can write its own folder,
+    /// and which accounts the internet lock covers.</summary>
+    private List<string> SystemCheck()
+    {
+        var lines = new List<string>();
+        try { var id = System.Security.Principal.WindowsIdentity.GetCurrent(); lines.Add($"service runs as {id.Name} ({id.User?.Value}){(id.IsSystem ? "" : " — NOT the system account")}"); } catch (Exception ex) { lines.Add("identity: " + ex.Message); }
+        try
+        {
+            var probe = Path.Combine(CoinQuest.Shared.Config.Paths.DataRoot, "write-test.tmp");
+            File.WriteAllText(probe, DateTime.Now.ToString("o")); File.Delete(probe);
+            lines.Add("can write C:\\ProgramData\\CoinQuest: yes");
+        }
+        catch (Exception ex) { lines.Add("can write C:\\ProgramData\\CoinQuest: NO — " + ex.Message); }
+        try
+        {
+            var f = Path.Combine(CoinQuest.Shared.Config.Paths.DataRoot, "unlocks.json");
+            if (File.Exists(f)) lines.Add("unlocks.json: " + new FileInfo(f).Attributes + " · " + new FileInfo(f).GetAccessControl().GetSecurityDescriptorSddlForm(System.Security.AccessControl.AccessControlSections.Access));
+        }
+        catch (Exception ex) { lines.Add("unlocks.json: " + ex.Message); }
+        foreach (var c in _store.Current.Children) lines.Add($"internet lock covers {c.DisplayName}: {c.WindowsAccount} {c.WindowsSid}");
+        try
+        {
+            using var key = Microsoft.Win32.Registry.LocalMachine.OpenSubKey(@"SOFTWARE\Microsoft\Windows Defender\Windows Defender Exploit Guard\Controlled Folder Access");
+            if (key?.GetValue("EnableControlledFolderAccess") is int cfa) lines.Add("Windows ransomware protection (Controlled folder access): " + (cfa == 1 ? "ON" : cfa == 2 ? "audit" : "off"));
+        }
+        catch { }
+        return lines;
     }
 
     /// <summary>Can this computer's CoinQuest service reach the sites YouTube, the arcade and RWT need?</summary>
