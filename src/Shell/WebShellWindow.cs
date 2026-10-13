@@ -335,6 +335,8 @@ public class WebShellWindow : Window
             }
             case "shell.launchRwt":
                 return LaunchRwt(payload);
+            case "shell.launchProgram":
+                return LaunchProgram(payload);
             case "shell.minimize":
                 Dispatcher.Invoke(() => WindowState = WindowState.Minimized);
                 return Response.Success("", new { ok = true });
@@ -433,6 +435,38 @@ public class WebShellWindow : Window
             return Response.Success("", new { ok = true, drive });
         }
         catch (Exception ex) { Log("RWT launch failed: " + ex); return Response.Fail("", "Couldn't start Read, Write & Type!: " + ex.Message); }
+    }
+
+    private Process? _program;
+
+    /// <summary>A classic CD game (32-bit Windows program in CoinQuest's own folder) runs in its own window.</summary>
+    private Response LaunchProgram(JsonNode? p)
+    {
+        try
+        {
+            if (_program is { HasExited: false }) return Response.Success("", new { ok = true, already = true });
+            var exe = p?["exe"]?.GetValue<string>() ?? ""; var cwd = p?["cwd"]?.GetValue<string>() ?? ""; var id = p?["id"]?.GetValue<string>() ?? "";
+            if (!File.Exists(exe) || !exe.StartsWith(Path.Combine(Paths.DataRoot, "discgames") + Path.DirectorySeparatorChar, StringComparison.OrdinalIgnoreCase))
+                return Response.Fail("", "That game isn't set up on this computer yet");
+            var psi = new ProcessStartInfo(exe) { UseShellExecute = false, WorkingDirectory = cwd };
+            _program = Process.Start(psi)!;
+            _program.EnableRaisingEvents = true;
+            var proc = _program;
+            Log($"Program started: {exe} (pid {proc.Id})");
+            proc.Exited += (_, _) =>
+            {
+                var code = 0; try { code = proc.ExitCode; } catch { }
+                Log($"Program exited ({code}): {exe}");
+                Dispatcher.Invoke(() =>
+                {
+                    _web.CoreWebView2?.PostWebMessageAsString(JsonSerializer.Serialize(new { name = "programClosed", id }));
+                    WindowState = _kiosk ? WindowState.Maximized : WindowState.Normal; Activate();
+                });
+            };
+            if (_kiosk) Dispatcher.Invoke(() => WindowState = WindowState.Minimized);
+            return Response.Success("", new { ok = true });
+        }
+        catch (Exception ex) { Log("Program launch failed: " + ex); return Response.Fail("", "Couldn't start the game: " + ex.Message); }
     }
 
     private void OnKey(object sender, KeyEventArgs e)

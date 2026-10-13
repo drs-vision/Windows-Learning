@@ -111,6 +111,9 @@ class Bridge {
   parentRwtStatus() { return this.call<RwtStatus>('parent.rwtStatus', undefined, { parent: true }); }
   parentRwtImport(path: string) { return this.call<RwtStatus>('parent.rwtImport', { path }, { parent: true }); }
   /** Read, Write & Type!: ask the Guardian where it lives, then have the shell start it through otvdm. */
+  parentDiscStatus() { return this.call<DiscStatus>('parent.discStatus', undefined, { parent: true }); }
+  parentDiscImport(path: string) { return this.call<DiscStatus>('parent.discImport', { path }, { parent: true }); }
+  async playDisc(id: string) { const info = await this.call<Record<string, string>>('disc.launch', { id }); return this.call<{ ok: boolean }>('shell.launchProgram', info); }
   async playRwt() { const info = await this.call<Record<string, string>>('rwt.launch'); return this.call<{ ok: boolean }>('shell.launchRwt', info); }
   setupAccounts() { return this.call<{ name: string; fullName: string; isAdmin: boolean; disabled: boolean; sid: string }[]>('setup.accounts'); }
   setupComplete(pin: string, child: { displayName: string; windowsAccount: string }, preset: string) { return this.call('setup.complete', { pin, child, preset }); }
@@ -125,6 +128,7 @@ class Bridge {
 
 export const bridge = new Bridge();
 
+export type DiscStatus = { stage: 'idle' | 'importing' | 'error'; message?: string; games: { id: string; title: string; players: { name: string; level: number; score: number }[] }[]; root: string };
 export type RwtStatus = { installed: boolean; otvdm: boolean; stage: 'idle' | 'importing' | 'ready' | 'error'; message?: string; patches: string[]; players: string[]; root: string };
 export interface FpStatus {
   installed: boolean; root?: string | null; clifp: boolean; installerUrl: string;

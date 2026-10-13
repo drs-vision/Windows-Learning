@@ -94,6 +94,7 @@ export interface ChildState {
   sites: string[];
   youtubeChannels?: number;
   rwtInstalled?: boolean;
+  discGames?: { id: string; title: string }[];
   arcadeMinutesPerPlay?: number;
 }
 

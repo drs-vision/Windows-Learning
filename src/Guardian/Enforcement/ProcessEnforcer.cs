@@ -107,6 +107,8 @@ public sealed class ProcessEnforcer
                 if (path is not null && fpRoot is not null && path.StartsWith(fpRoot, StringComparison.OrdinalIgnoreCase)) continue;
                 // otvdm: the 16-bit helper that runs Read, Write & Type! (only CoinQuest's own copy).
                 if (path is not null && path.StartsWith(CoinQuest.Guardian.Rwt.RwtService.OtvdmDir + Path.DirectorySeparatorChar, StringComparison.OrdinalIgnoreCase)) continue;
+                // The family's classic CD games (CoinQuest's own copies).
+                if (path is not null && path.StartsWith(CoinQuest.Guardian.DiscGames.DiscGameService.Root + Path.DirectorySeparatorChar, StringComparison.OrdinalIgnoreCase)) continue;
                 // Anything living under Windows\SystemApps is treated as safe.
                 if (path is not null && (path.StartsWith(@"C:\Windows\SystemApps", StringComparison.OrdinalIgnoreCase) ||
                                          path.StartsWith(@"C:\Windows\ImmersiveControlPanel", StringComparison.OrdinalIgnoreCase))) continue;

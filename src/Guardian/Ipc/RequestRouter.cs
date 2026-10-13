@@ -31,6 +31,7 @@ public sealed class RequestRouter
     private readonly ClassicLibrary _lib;
     private readonly NetLock _netLock;
     private readonly CoinQuest.Guardian.Rwt.RwtService _rwt;
+    private readonly CoinQuest.Guardian.DiscGames.DiscGameService _discs;
     private readonly ILogger<RequestRouter> _log;
     private readonly Dictionary<string, (string account, DateTimeOffset expires)> _tokens = new();
 
@@ -38,8 +39,8 @@ public sealed class RequestRouter
     public event Action? ApprovalsChanged;  // something a parent UI should refresh
 
     public RequestRouter(HouseholdStore store, Ledger ledger, ScoreEngine scorer, UnlockManager unlocks, SessionMonitor session,
-        BrowserPolicy policy, UpdateChecker updates, YouTubeService youtube, FlashpointService fp, ClassicsStocker stocker, ClassicLibrary lib, NetGate gate, NetLock netLock, CoinQuest.Guardian.Rwt.RwtService rwt, ILogger<RequestRouter> log)
-    { _rwt = rwt; rwt.ProgressSaved += PayRwt; _fp = fp; _stocker = stocker; _gate = gate; _lib = lib; _netLock = netLock; _store = store; _ledger = ledger; _scorer = scorer; _unlocks = unlocks; _session = session; _policy = policy; _updates = updates; _youtube = youtube; _log = log; }
+        BrowserPolicy policy, UpdateChecker updates, YouTubeService youtube, FlashpointService fp, ClassicsStocker stocker, ClassicLibrary lib, NetGate gate, NetLock netLock, CoinQuest.Guardian.Rwt.RwtService rwt, CoinQuest.Guardian.DiscGames.DiscGameService discs, ILogger<RequestRouter> log)
+    { _rwt = rwt; rwt.ProgressSaved += PayRwt; _discs = discs; discs.ProgressSaved += PayDisc; _fp = fp; _stocker = stocker; _gate = gate; _lib = lib; _netLock = netLock; _store = store; _ledger = ledger; _scorer = scorer; _unlocks = unlocks; _session = session; _policy = policy; _updates = updates; _youtube = youtube; _log = log; }
 
     /// <summary>
     /// Requests that wait on the network or the disk run side by side; everything else (ledger, settings, timers)
@@ -48,7 +49,7 @@ public sealed class RequestRouter
     private static readonly HashSet<string> Slow = new()
     {
         Ops.ArcadePrepare, Ops.ArcadeClassicFile, Ops.YouTubeLibrary, Ops.YouTubeCheck, Ops.YouTubeChannel, Ops.ParentYouTubeResolve, Ops.ParentCheckUpdate, Ops.ParentInstalledApps, Ops.SetupAccounts,
-        Ops.ParentFpStatus, Ops.ParentFpSearch, Ops.ParentFpSuggest, Ops.ParentFpInstallClifp, Ops.ParentFpDownloadInstaller, Ops.ParentFpThumbs, Ops.ParentFpStockNow, Ops.ParentBlocked, Ops.ParentDiagnostics, Ops.ParentRwtImport, Ops.RwtLaunch,
+        Ops.ParentFpStatus, Ops.ParentFpSearch, Ops.ParentFpSuggest, Ops.ParentFpInstallClifp, Ops.ParentFpDownloadInstaller, Ops.ParentFpThumbs, Ops.ParentFpStockNow, Ops.ParentBlocked, Ops.ParentDiagnostics, Ops.ParentRwtImport, Ops.RwtLaunch, Ops.ParentDiscImport,
     };
     private readonly object _sync = new();
 
@@ -102,6 +103,9 @@ public sealed class RequestRouter
             Ops.ParentRwtStatus => Parent(req, client, child, () => _rwt.Status()),
             Ops.ParentRwtImport => Parent(req, client, child, () => { _rwt.StartImport(Str(req, "path")); return _rwt.Status(); }),
             Ops.RwtLaunch => RwtLaunch(req, child),
+            Ops.ParentDiscStatus => Parent(req, client, child, () => _discs.Status()),
+            Ops.ParentDiscImport => Parent(req, client, child, () => { _discs.StartImport(Str(req, "path")); return _discs.Status(); }),
+            Ops.DiscLaunch => DiscLaunch(req, child),
             Ops.ParentDiagnostics => Parent(req, client, child, () => new { version = Version, problems = CoinQuest.Guardian.FileLoggerProvider.Recent(), blocked = _gate.RecentlyBlocked().Take(20).Select(b => b.Host), internetLock = _netLock.Status, net = NetCheck().GetAwaiter().GetResult() }),
             Ops.ParentBlocked => Parent(req, client, child, () => _gate.RecentlyBlocked().Select(b => new { host = b.Host, at = b.At, reason = b.Reason })),
             Ops.ParentFpStatus => Parent(req, client, child, () => FpStatus()),
@@ -148,6 +152,7 @@ public sealed class RequestRouter
             sites = child.Allowlist.Sites,
             youtubeChannels = child.YouTubeChannels.Count,
             rwtInstalled = CoinQuest.Guardian.Rwt.RwtService.Installed,
+            discGames = CoinQuest.Guardian.DiscGames.DiscGameService.Games().Select(g => new { g.Id, g.Title }),
             arcadeMinutesPerPlay = child.Arcade.MinutesPerPlay,
         };
     }
@@ -286,6 +291,34 @@ public sealed class RequestRouter
         if (otvdm is null) return Response.Fail(req.Id, "the 16-bit helper (otvdm) is missing");
         _log.LogInformation("Read, Write & Type! started ({Who})", child?.DisplayName ?? "parent");
         return Response.Success(req.Id, new { otvdm, root = CoinQuest.Guardian.Rwt.RwtService.Root, exe = @"cd\RWTWINCD.EXE", data = "SIGNIN", cwd = "cd" });
+    }
+
+    /// <summary>Where a classic CD game's program is, for the shell to start it. Child (if the quest is on) or parent.</summary>
+    private Response DiscLaunch(Request req, Child? child)
+    {
+        var g = CoinQuest.Guardian.DiscGames.DiscGameService.Find(Str(req, "id"));
+        if (g is null) return Response.Fail(req.Id, "That game isn't imported on this computer — a parent can add it in the Parent Console → Quests.");
+        if (child is not null && child.Modules.GetValueOrDefault("discgames") is { Enabled: false }) return Response.Fail(req.Id, "Classic CD games are switched off — ask a parent");
+        var app = Path.Combine(CoinQuest.Guardian.DiscGames.DiscGameService.Root, g.Id, "app");
+        _log.LogInformation("{Title} started ({Who})", g.Title, child?.DisplayName ?? "parent");
+        return Response.Success(req.Id, new { id = g.Id, title = g.Title, exe = Path.Combine(app, g.Exe), cwd = app });
+    }
+
+    private void PayDisc(List<string> what)
+    {
+        lock (_sync)
+        {
+            var child = _session.Current?.Child ?? _store.Current.Children.FirstOrDefault();
+            if (child is null) return;
+            var s = child.Modules.GetValueOrDefault("discgames") ?? new ModuleSettings { CoinsPerActivity = 5, DailyCap = 60 };
+            if (!s.Enabled) return;
+            var room = s.DailyCap > 0 ? Math.Max(0, s.DailyCap - _ledger.EarnedToday(child.Id, "discgames")) : s.CoinsPerActivity;
+            var coins = Math.Min(s.CoinsPerActivity, room);
+            if (coins <= 0) return;
+            _ledger.Append(child.Id, LedgerKind.Earn, coins, "discgames", string.Join("; ", what), "discgames");
+            _log.LogInformation("Classic CD progress for {Child}: +{Coins}", child.DisplayName, coins);
+            AfterChange();
+        }
     }
 
     /// <summary>Can this computer's CoinQuest service reach the sites YouTube, the arcade and RWT need?</summary>

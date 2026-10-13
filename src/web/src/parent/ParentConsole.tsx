@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'preact/hooks';
 import type { Child, FlashpointGame, FpCatalogGame, Game, ParentState, Prize, WebGame } from '../core/types';
 import { BLOCK_MINUTES, autoSamplerPrice, defaultArcadePrice, youTubeBlockPrice } from '../core/types';
-import { bridge, type FpStatus, type RwtStatus } from '../core/bridge';
+import { bridge, type DiscStatus, type FpStatus, type RwtStatus } from '../core/bridge';
 import { MODULES } from '../modules/registry';
 import { SetupWizard } from './SetupWizard';
 import { fmt } from '../modules/arcade/Arcade';
@@ -603,6 +603,7 @@ function Quests({ child, onSave }: { child: Child; onSave: (c: Child) => void })
             </div>
             <p class="muted">{m.description}</p>
             {m.id === 'rwt' && <RwtImport />}
+            {m.id === 'discgames' && <DiscImport />}
             <div class="row">
               <label>Coins per activity<input type="number" min={0} value={s.coinsPerActivity} onChange={(e) => setMod(m.id, { coinsPerActivity: Number((e.target as HTMLInputElement).value) })} /></label>
               <label>Daily limit (0 = none)<input type="number" min={0} value={s.dailyCap} onChange={(e) => setMod(m.id, { dailyCap: Number((e.target as HTMLInputElement).value) })} /></label>
@@ -630,6 +631,37 @@ function Quests({ child, onSave }: { child: Child; onSave: (c: Child) => void })
 }
 
 /** Bring the family's own Read, Write & Type! disc image into CoinQuest, once. */
+function DiscImport() {
+  const [st, setSt] = useState<DiscStatus | null>(null);
+  const [err, setErr] = useState('');
+  const load = () => bridge.parentDiscStatus().then(setSt).catch((e) => setErr(e.message));
+  useEffect(() => { load(); }, []);
+  useEffect(() => { if (st?.stage !== 'importing') return; const t = setInterval(load, 2000); return () => clearInterval(t); }, [st?.stage]);
+  async function pick() {
+    setErr('');
+    try {
+      const r = await bridge.pickFile('Choose a game disc image', 'Disc image (*.zip, *.iso, *.img, *.bin)|*.zip;*.iso;*.img;*.bin|All files|*.*');
+      if (r.path) setSt(await bridge.parentDiscImport(r.path));
+    } catch (e) { setErr((e as Error).message); }
+  }
+  async function tryIt(id: string) { setErr(''); try { await bridge.playDisc(id); } catch (e) { setErr((e as Error).message); } }
+  if (!st) return <p class="muted small">Checking…</p>;
+  return (
+    <div class="rwt-import">
+      {st.games.length > 0 && <ul class="disc-games">{st.games.map((g) => (
+        <li><b>{g.title}</b>{g.players.length > 0 ? <span class="muted small"> — {g.players.map((p) => `${p.name} (level ${p.level}, score ${p.score})`).join(', ')}</span> : <span class="muted small"> — no players yet</span>}
+          {' '}<button class="ghost small" onClick={() => tryIt(g.id)}>Try it</button></li>))}</ul>}
+      {st.stage === 'importing' ? <p>⏳ {st.message ?? 'Importing…'}</p>
+        : <>
+            <p class="small">Add one of your discs: choose its image (<code>.zip</code>, <code>.iso</code>, <code>.img</code> or <code>.bin</code>). CoinQuest copies the game inside itself; the image isn't needed afterwards. Works with ClueFinders and other Learning Company titles of that era.</p>
+            <button class={st.games.length ? 'secondary' : 'primary'} onClick={pick}>Import a disc…</button>
+          </>}
+      {st.message && st.stage !== 'importing' && <p class={st.stage === 'error' ? 'error small' : 'muted small'}>{st.message}</p>}
+      {err && <p class="error">{err}</p>}
+    </div>
+  );
+}
+
 function RwtImport() {
   const [st, setSt] = useState<RwtStatus | null>(null);
   const [err, setErr] = useState('');

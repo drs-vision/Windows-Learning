@@ -86,6 +86,9 @@ public static class Ops
     public const string ParentRwtStatus = "parent.rwtStatus";         // Read, Write & Type: imported? otvdm? import progress
     public const string ParentRwtImport = "parent.rwtImport";         // { path } → import the family's disc image (background)
     public const string RwtLaunch = "rwt.launch";                     // → where otvdm and the game live (child or parent)     // recent warnings/errors + blocked hosts
+    public const string ParentDiscStatus = "parent.discStatus";       // classic CD games: imported titles + players, import progress
+    public const string ParentDiscImport = "parent.discImport";       // { path } → import a disc image (.iso/.img/.bin/.zip) in the background
+    public const string DiscLaunch = "disc.launch";                   // { id } → where the game's program lives (child or parent)
     public const string ParentBlocked = "parent.blocked";             // hosts the internet gate refused recently
     public const string ParentFpStockNow = "parent.fpStockNow";         // add the curated classics + download them now
     public const string ParentFpThumbs = "parent.fpThumbs";             // { ids }
