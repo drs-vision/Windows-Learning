@@ -102,7 +102,7 @@ public sealed class RequestRouter
             Ops.ParentRwtStatus => Parent(req, client, child, () => _rwt.Status()),
             Ops.ParentRwtImport => Parent(req, client, child, () => { _rwt.StartImport(Str(req, "path")); return _rwt.Status(); }),
             Ops.RwtLaunch => RwtLaunch(req, child),
-            Ops.ParentDiagnostics => Parent(req, client, child, () => new { version = Version, problems = CoinQuest.Guardian.FileLoggerProvider.Recent(), blocked = _gate.RecentlyBlocked().Take(20).Select(b => b.Host), internetLock = _netLock.Status }),
+            Ops.ParentDiagnostics => Parent(req, client, child, () => new { version = Version, problems = CoinQuest.Guardian.FileLoggerProvider.Recent(), blocked = _gate.RecentlyBlocked().Take(20).Select(b => b.Host), internetLock = _netLock.Status, net = NetCheck().GetAwaiter().GetResult() }),
             Ops.ParentBlocked => Parent(req, client, child, () => _gate.RecentlyBlocked().Select(b => new { host = b.Host, at = b.At, reason = b.Reason })),
             Ops.ParentFpStatus => Parent(req, client, child, () => FpStatus()),
             Ops.ParentFpStockNow => Parent(req, client, child, () => { _stocker.Tick(force: true); return FpStatus(); }),
@@ -286,6 +286,33 @@ public sealed class RequestRouter
         if (otvdm is null) return Response.Fail(req.Id, "the 16-bit helper (otvdm) is missing");
         _log.LogInformation("Read, Write & Type! started ({Who})", child?.DisplayName ?? "parent");
         return Response.Success(req.Id, new { otvdm, root = CoinQuest.Guardian.Rwt.RwtService.Root, exe = @"cd\RWTWINCD.EXE", data = "SIGNIN", cwd = "cd" });
+    }
+
+    /// <summary>Can this computer's CoinQuest service reach the sites YouTube, the arcade and RWT need?</summary>
+    private static async Task<List<object>> NetCheck()
+    {
+        var sites = new (string Name, string Url)[]
+        {
+            ("YouTube", "https://www.youtube.com/"), ("Arcade games", "https://infinity.flashpointarchive.org/"),
+            ("Game search", "https://db-api.unstable.life/"), ("Updates & RWT helper", "https://api.github.com/"),
+        };
+        using var http = new HttpClient { Timeout = TimeSpan.FromSeconds(10) };
+        http.DefaultRequestHeaders.UserAgent.ParseAdd("CoinQuest/1.0");
+        var tasks = sites.Select(async s =>
+        {
+            var sw = System.Diagnostics.Stopwatch.StartNew();
+            try
+            {
+                using var r = await http.GetAsync(s.Url, HttpCompletionOption.ResponseHeadersRead);
+                return (object)new { site = s.Name, ok = (int)r.StatusCode < 500, detail = $"HTTP {(int)r.StatusCode} in {sw.ElapsedMilliseconds} ms" };
+            }
+            catch (Exception ex)
+            {
+                var e = ex; while (e.InnerException is not null) e = e.InnerException;
+                return new { site = s.Name, ok = false, detail = $"{ex.GetType().Name}: {e.Message}" };
+            }
+        });
+        return (await Task.WhenAll(tasks)).ToList();
     }
 
     private void PayRwt(List<string> players)

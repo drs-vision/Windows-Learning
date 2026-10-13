@@ -291,6 +291,8 @@ function Troubleshooting() {
       {err && <p class="error">{err}</p>}
       {d && <>
         <p class="muted small">Version {d.version} · internet lock {d.internetLock?.applied ? 'on' : 'OFF' + (d.internetLock?.error ? ` (${d.internetLock.error})` : '')}</p>
+        <h4>Internet check (from the CoinQuest service)</h4>
+        <ul class="problems">{(d.net ?? []).map((n) => <li>{n.ok ? '✅' : '❌'} {n.site} — <code>{n.detail}</code></li>)}</ul>
         <h4>Recent problems</h4>
         {d.problems.length === 0 ? <p class="muted small">None. 👍</p> : <ul class="problems">{d.problems.map((p) => <li><code>{p}</code></li>)}</ul>}
       </>}
