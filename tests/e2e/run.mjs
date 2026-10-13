@@ -225,18 +225,22 @@ await check('HTML5 classic (Miniclip Bloxorz) plays from the local copy', async 
   await parent.waitForSelector('nav.tabs, form.pin-gate', { timeout: 20000 });
   if (await parent.locator('form.pin-gate').count()) { await parent.fill('form.pin-gate input', '2468'); await parent.click('form.pin-gate button[type=submit]'); }
   await parent.waitForSelector('nav.tabs', { timeout: 30000 });
+  try {
   await parent.click('nav.tabs >> text=Shop');
   await parent.waitForSelector('input[placeholder^="Search Flashpoint"]', { timeout: 60000 });
   await parent.fill('input[placeholder^="Search Flashpoint"]', 'Bloxorz');
   await parent.press('input[placeholder^="Search Flashpoint"]', 'Enter');
   await parent.waitForSelector('.fp-row', { timeout: 30000 }).catch(() => undefined);
   const row = parent.locator('.fp-row', { hasText: /HTML5/ }).first();
+  if (!(await row.count())) await shot(parent, 'parent-search-bloxorz');
   expect(await row.count(), 'no HTML5 Bloxorz in the Flashpoint search');
   if (!(await row.locator('input').isChecked())) await row.locator('input').check();
   await sleep(4000);
   await shot(parent, 'parent-approved-html5-bloxorz');
-  await kid.click('button.close').catch(() => undefined);
-  await sleep(1000);
+  } finally {
+    await kid.click('button.close').catch(() => undefined);
+    await sleep(1000);
+  }
   // Find it in the arcade (there are two Bloxorz: Flash and HTML5).
   await kid.click('.portal-head button.ghost').catch(() => undefined); await sleep(500);
   await kid.click('text=/Arcade/'); await sleep(2500);

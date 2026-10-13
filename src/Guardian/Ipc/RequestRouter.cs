@@ -103,7 +103,7 @@ public sealed class RequestRouter
             Ops.ParentFpStatus => Parent(req, client, child, () => FpStatus()),
             Ops.ParentFpStockNow => Parent(req, client, child, () => { _stocker.Tick(force: true); return FpStatus(); }),
             Ops.ParentFpSearch => Parent(req, client, child, () => _fp.Root(FirstChild()?.Arcade.FlashpointRoot) is { } r ? _fp.Search(r, Str(req, "q"))
-                : _lib.Search(Str(req, "q"), 40).GetAwaiter().GetResult().Where(g => g.Platform == "Flash").ToList()),
+                : _lib.Search(Str(req, "q"), 40).GetAwaiter().GetResult().Where(g => ClassicLibrary.Playable(g.Platform)).ToList()),
             Ops.ParentFpSuggest => Parent(req, client, child, () => FpSuggest()),
             Ops.ParentFpInstallClifp => Parent(req, client, child, () => { _fp.InstallClifp(FpRoot()).GetAwaiter().GetResult(); _stocker.Tick(force: true); return FpStatus(); }),
             Ops.ParentFpDownloadInstaller => Parent(req, client, child, () => DownloadFpInstaller()),
