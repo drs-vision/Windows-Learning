@@ -1,26 +1,22 @@
 #!/usr/bin/env bash
-# Network probes run on GitHub's machines (this session can't reach these hosts). Output goes to annotations.
 set +e
 note() { while IFS= read -r l; do echo "::notice title=probe::$l"; done; }
-for q in Bloxorz "Sugar, Sugar"; do
-python3 - "$q" 2>&1 <<'PY' | note
-import json, sys, urllib.request, urllib.parse, zipfile, io, re
-opener=urllib.request.build_opener(); opener.addheaders=[('User-Agent','CoinQuest/1.0')]; urllib.request.install_opener(opener)
-q=sys.argv[1]
-u="https://db-api.unstable.life/search?smartSearch="+urllib.parse.quote(q)+"&filter=true&limit=5&fields=id,title,platform,launchCommand,library"
-r=json.load(urllib.request.urlopen(u,timeout=30))
-for g in r: print('GAME', g['id'], g['title'], g['platform'], g.get('launchCommand'))
-g=[x for x in r if x['title'].lower().startswith(q.lower()[:5])][0]
-data=urllib.request.urlopen("https://db-api.unstable.life/get?id="+g['id'],timeout=60).read()
-print('pack bytes', len(data))
-try:
-  z=zipfile.ZipFile(io.BytesIO(data))
-  names=z.namelist(); print('files', len(names)); [print(' ', n) for n in names[:40]]
-  for n in names:
-    if n.endswith(('.html','.htm','.js')) and len(z.read(n))<400000:
-      t=z.read(n).decode('utf8','ignore')
-      urls=sorted(set(re.findall(r'https?://[^\s"\'<>)]+', t)))[:25]
-      print('URLS in', n, urls)
-except Exception as e: print('not zip', e, data[:200])
+python3 2>&1 <<'PY' | note
+import json, urllib.request, zipfile, io, re
+o=urllib.request.build_opener(); o.addheaders=[('User-Agent','CoinQuest/1.0')]; urllib.request.install_opener(o)
+out=[]
+for gid in ['123f54dc-6631-8caf-554f-9c3ce4915781']:
+  try:
+    data=urllib.request.urlopen("https://db-api.unstable.life/get?id="+gid,timeout=60).read()
+    z=zipfile.ZipFile(io.BytesIO(data)); names=z.namelist()
+    out.append('files %d: %s' % (len(names), ' '.join(n.replace('content/','') for n in names[:25])))
+    urls=set()
+    for n in names:
+      if n.endswith(('.html','.htm','.js','.json')):
+        t=z.read(n).decode('utf8','ignore'); urls|=set(re.findall(r'https?://[a-zA-Z0-9.-]+', t))
+    out.append('hosts referenced: '+' '.join(sorted(urls))[:900])
+  except Exception as e: out.append('ERR %r' % e)
+r=json.load(urllib.request.urlopen("https://db-api.unstable.life/search?smartSearch=sugar%20sugar&filter=true&limit=6&fields=id,title,platform,launchCommand",timeout=30))
+out.append('SUGAR '+' | '.join('%s %s %s %s' % (g['id'][:8], g['title'], g['platform'], g['launchCommand']) for g in r))
+print('\n'.join(out))
 PY
-done
