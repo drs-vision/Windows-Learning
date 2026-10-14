@@ -14,7 +14,7 @@ namespace CoinQuest.Guardian.DiscGames;
 /// </summary>
 public sealed partial class DiscGameService
 {
-    private sealed record Snapshot(HashSet<string> Links, HashSet<string> Uninstall, HashSet<string> Dirs);
+    private sealed record Snapshot(HashSet<string> Links, HashSet<string> Uninstall, HashSet<string> Dirs, DateTime TakenUtc);
     private readonly Dictionary<string, Snapshot> _snapshots = new();
 
     /// <summary>Not a layout CoinQuest knows: keep the disc image for its own installer.</summary>
@@ -145,22 +145,45 @@ public sealed partial class DiscGameService
     }
 
     /// <summary>The installer is done: find what it added and remember how to start the game.</summary>
-    public object FinishSetup(string id)
+    /// <param name="folder">Where the parent says it installed — for when CoinQuest can't tell on its own.</param>
+    public object FinishSetup(string id, string? folder = null)
     {
         var g = Find(id) ?? throw new InvalidOperationException("That game isn't imported");
         Snapshot? before;
         lock (_snapshots) _snapshots.TryGetValue(g.Id, out before);
-        if (before is null) throw new InvalidOperationException("Start the setup first (CoinQuest notes what's on the computer before the installer runs)");
+        if (before is null && folder is null) throw new InvalidOperationException("Start the setup first (CoinQuest notes what's on the computer before the installer runs)");
         var after = TakeSnapshot();
-        var newDirs = after.Dirs.Except(before.Dirs, StringComparer.OrdinalIgnoreCase).ToList();
-        foreach (var key in after.Uninstall.Except(before.Uninstall, StringComparer.OrdinalIgnoreCase))
-            if (UninstallLocation(key) is { } loc && Directory.Exists(loc)) newDirs.Add(loc);
+        before ??= after with { Links = new(StringComparer.OrdinalIgnoreCase), TakenUtc = DateTime.MaxValue };
+        List<string> newDirs;
+        if (folder is not null)
+        {
+            if (!Directory.Exists(folder)) throw new InvalidOperationException("That folder doesn't exist");
+            newDirs = new() { folder.TrimEnd('\\') };
+        }
+        else
+        {
+            newDirs = after.Dirs.Except(before.Dirs, StringComparer.OrdinalIgnoreCase).ToList();
+            foreach (var key in after.Uninstall.Except(before.Uninstall, StringComparer.OrdinalIgnoreCase))
+                if (UninstallLocation(key) is { } loc && Directory.Exists(loc)) newDirs.Add(loc);
+        }
 
-        // The new Start-menu shortcut says what to start (and where, with what arguments).
-        var links = after.Links.Except(before.Links, StringComparer.OrdinalIgnoreCase)
+        // The new Start-menu shortcut says what to start (and where, with what arguments). Installing over an earlier
+        // try leaves the same shortcuts and folders, so ones the installer rewrote count as new too.
+        var cutoff = before.TakenUtc.AddSeconds(-5);
+        var changed = after.Links.Where(l => !before.Links.Contains(l) || Touched(l, cutoff)).ToList();
+        if (folder is null && newDirs.Count == 0)
+        {
+            // Nothing new: the game may have gone into a folder that was there before — find it by the shortcut, or by name.
+            foreach (var l in changed) if (ReadShortcut(l) is { } i && File.Exists(i.Target)) newDirs.Add(Path.GetDirectoryName(i.Target)!);
+            var words = TitleWords(g.Title);
+            if (words.Length > 0)
+                newDirs.AddRange(after.Dirs.Where(d => words.All(w => Path.GetFileName(d).Contains(w, StringComparison.OrdinalIgnoreCase))));
+        }
+        var links = (folder is null ? changed : after.Links.ToList())
             .Select(l => (Link: l, Info: ReadShortcut(l)))
             .Where(x => x.Info is { } i && i.Target.EndsWith(".exe", StringComparison.OrdinalIgnoreCase) && File.Exists(i.Target) && !IsHelper(i.Target))
             .Select(x => x.Info!)
+            .Where(i => folder is null || i.Target.StartsWith(folder.TrimEnd('\\') + "\\", StringComparison.OrdinalIgnoreCase))
             .ToList();
         var pick = links.OrderByDescending(i => newDirs.Any(d => i.Target.StartsWith(d, StringComparison.OrdinalIgnoreCase)))
                         .ThenByDescending(i => new FileInfo(i.Target).Length).FirstOrDefault();
@@ -171,7 +194,8 @@ public sealed partial class DiscGameService
             exe = newDirs.Where(Directory.Exists)
                 .SelectMany(d => Directory.EnumerateFiles(d, "*.exe", new EnumerationOptions { RecurseSubdirectories = true, MaxRecursionDepth = 3, MatchCasing = MatchCasing.CaseInsensitive }))
                 .Where(e => !IsHelper(e)).OrderByDescending(e => new FileInfo(e).Length).FirstOrDefault()
-                ?? throw new InvalidOperationException("Couldn't tell where the installer put the game. Did it finish? If it did, tell the person who set up CoinQuest which folder it installed to.");
+                ?? throw new InvalidOperationException(folder is not null ? "No game program in that folder — choose the folder the game itself is in"
+                    : "Couldn't tell where the installer put the game. If it finished, press \"Choose its folder…\" and pick the folder it installed to.");
         }
         var installDir = newDirs.Where(d => exe.StartsWith(d.TrimEnd('\\') + "\\", StringComparison.OrdinalIgnoreCase)).OrderBy(d => d.Length).FirstOrDefault()
                          ?? Path.GetDirectoryName(exe)!;
@@ -183,6 +207,16 @@ public sealed partial class DiscGameService
         _log.LogInformation("Installed {Id}: {Exe} in {Dir}", g.Id, exe, installDir);
         return new { id = g.Id, title = g.Title, exe, installDir };
     }
+
+    private static bool Touched(string file, DateTime sinceUtc)
+    {
+        try { return File.GetLastWriteTimeUtc(file) >= sinceUtc || File.GetCreationTimeUtc(file) >= sinceUtc; } catch { return false; }
+    }
+
+    /// <summary>The distinctive words of a title ("The ClueFinders 6th Grade Adventures" → ClueFinders, 6th, Grade).</summary>
+    private static string[] TitleWords(string title) =>
+        Regex.Split(title, @"[^A-Za-z0-9]+").Where(w => w.Length >= 3 || w.Any(char.IsDigit))
+            .Where(w => !new[] { "the", "and", "adventures", "adventure", "deluxe", "edition" }.Contains(w.ToLowerInvariant())).ToArray();
 
     private static readonly Regex Helper = new(@"unins|uninst|setup|instal|readme|help|regist|ereg|acro|aol|web|update|config|dxsetup|directx|quicktime|qtinst", RegexOptions.IgnoreCase);
     private static bool IsHelper(string exe) => Helper.IsMatch(Path.GetFileNameWithoutExtension(exe));
@@ -237,7 +271,7 @@ public sealed partial class DiscGameService
                 }
             }
             catch { }
-        return new Snapshot(links, un, dirs);
+        return new Snapshot(links, un, dirs, DateTime.UtcNow);
     }
 
     private static readonly string[] UninstallRoots =

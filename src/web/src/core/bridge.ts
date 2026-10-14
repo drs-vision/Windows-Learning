@@ -115,7 +115,7 @@ class Bridge {
   parentDiscStatus() { return this.call<DiscStatus>('parent.discStatus', undefined, { parent: true }); }
   parentDiscImport(path: string, useInstaller = false) { return this.call<DiscStatus>('parent.discImport', { path, useInstaller }, { parent: true }); }
   parentDiscSetupBegin(id: string) { return this.call<{ id: string; title: string; drive: string; installer: string; kind: string }>('parent.discSetupBegin', { id }, { parent: true }); }
-  parentDiscSetupFinish(id: string) { return this.call<{ id: string; title: string; exe: string; installDir: string }>('parent.discSetupFinish', { id }, { parent: true }); }
+  parentDiscSetupFinish(id: string, folder?: string) { return this.call<{ id: string; title: string; exe: string; installDir: string }>('parent.discSetupFinish', folder ? { id, folder } : { id }, { parent: true }); }
   parentDiscHide(id: string, hidden: boolean) { return this.call<DiscStatus>('parent.discHide', { id, hidden }, { parent: true }); }
   parentDiscRemove(id: string) { return this.call<DiscStatus>('parent.discRemove', { id }, { parent: true }); }
   runSetup(path: string) { return this.call<{ ok: boolean }>('shell.runSetup', { path }); }

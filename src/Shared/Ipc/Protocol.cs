@@ -89,7 +89,7 @@ public static class Ops
     public const string ParentDiscStatus = "parent.discStatus";       // classic CD games: imported titles + players, import progress
     public const string ParentDiscImport = "parent.discImport";       // { path } → import a disc image (.iso/.img/.bin/.zip) in the background
     public const string ParentDiscSetupBegin = "parent.discSetupBegin";   // { id } → disc in the virtual drive; which installer to run
-    public const string ParentDiscSetupFinish = "parent.discSetupFinish"; // { id } → the installer finished: learn where the game is
+    public const string ParentDiscSetupFinish = "parent.discSetupFinish"; // { id, folder? } → the installer finished: learn where the game is
     public const string ParentDiscHide = "parent.discHide";           // { id, hidden } → show/hide a game for the child
     public const string ParentDiscRemove = "parent.discRemove";       // { id } → delete CoinQuest's copy and disc image
     public const string DiscLaunch = "disc.launch";                   // { id } → where the game's program lives (child or parent)

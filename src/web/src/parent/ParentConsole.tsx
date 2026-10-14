@@ -677,10 +677,23 @@ function DiscImport() {
     try { const s = await bridge.parentDiscSetupBegin(id); setSetup(s); await bridge.runSetup(s.installer); setSetupMsg(''); }
     catch (e) { setErr((e as Error).message); setSetupMsg(''); }
   }
-  async function finishSetup() {
+  async function finishSetup(pick = false) {
     if (!setup) return;
     setErr('');
-    try { const r = await bridge.parentDiscSetupFinish(setup.id); setSetup(null); setSetupMsg(`✅ ${r.title} is installed (${r.exe}). Press "Try it" to check it runs.`); load(); }
+    let folder: string | undefined;
+    if (pick) {
+      const r = await bridge.pickFolder(`Choose the folder ${setup.title} installed to (e.g. in C:\\Program Files (x86))`);
+      if (!r.path) return;
+      folder = r.path;
+    }
+    try { const r = await bridge.parentDiscSetupFinish(setup.id, folder); setSetup(null); setSetupMsg(`✅ ${r.title} is installed (${r.exe}). Press "Try it" to check it runs.`); load(); }
+    catch (e) { setErr((e as Error).message); }
+  }
+  async function alreadyInstalled(id: string, title: string) {
+    setErr('');
+    const p = await bridge.pickFolder(`Choose the folder ${title} installed to (e.g. in C:\\Program Files (x86))`);
+    if (!p.path) return;
+    try { const r = await bridge.parentDiscSetupFinish(id, p.path); setSetup(null); setSetupMsg(`✅ ${r.title} is installed (${r.exe}). Press "Try it" to check it runs.`); load(); }
     catch (e) { setErr((e as Error).message); }
   }
   if (!st) return <p class="muted small">Checking…</p>;
@@ -696,7 +709,8 @@ function DiscImport() {
                 : <span class="muted small"> — no players yet</span>}
               <div class="row" style="gap:.4em;margin-top:.3em;flex-wrap:wrap">
                 {g.mode === 'pending'
-                  ? <button class="secondary small" onClick={() => beginSetup(g.id)}>Set up (run its installer)</button>
+                  ? <><button class="secondary small" onClick={() => beginSetup(g.id)}>Set up (run its installer)</button>
+                      <button class="ghost small" onClick={() => alreadyInstalled(g.id, g.title)}>Already installed? Choose its folder…</button></>
                   : <><button class="ghost small" onClick={() => tryIt(g.id)}>Try it</button>
                       {g.mode === 'copy' && <button class="ghost small" title="If it crashes or misbehaves: re-import it and run the disc's own installer instead" onClick={() => viaInstaller(g.title)}>Problems? Use its installer…</button>}</>}
                 {removing === g.id
@@ -716,7 +730,7 @@ function DiscImport() {
             <li>Click through it with the normal choices. If it offers extras (Acrobat Reader, AOL, registration, DirectX), you can skip them.</li>
             <li>When it says it's finished (don't start the game from it), come back here:</li>
           </ol>
-          <div class="row" style="gap:.5em"><button class="primary" onClick={finishSetup}>Done installing</button><button class="ghost small" onClick={() => bridge.runSetup(setup.installer)}>Open the installer again</button><button class="ghost small" onClick={() => setSetup(null)}>Cancel</button></div>
+          <div class="row" style="gap:.5em"><button class="primary" onClick={() => finishSetup()}>Done installing</button><button class="ghost small" onClick={() => finishSetup(true)}>Choose its folder…</button><button class="ghost small" onClick={() => bridge.runSetup(setup.installer)}>Open the installer again</button><button class="ghost small" onClick={() => setSetup(null)}>Cancel</button></div>
         </div>
       )}
       {setupMsg && <p class="muted small">{setupMsg}</p>}
