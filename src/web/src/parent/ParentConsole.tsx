@@ -957,7 +957,7 @@ function Settings({ state, child, onSave, onChange }: { state: ParentState; chil
       <PhoneControl />
       <div class="card">
         <h3>Updates</h3>
-        <p>Version <b>{u.current}</b> — {u.state === 'upToDate' ? 'up to date' : u.state === 'readyToApply' ? `version ${u.latest} is downloaded and installs as soon as ${child.displayName} isn't in paid game or YouTube time` : u.state === 'installing' || u.state === 'applying' ? `installing ${u.latest ? 'version ' + u.latest : 'an update'}… CoinQuest restarts by itself` : u.state === 'downloading' ? `downloading ${u.latest}…` : u.state === 'error' ? `couldn't check (${u.message})` : u.state}</p>
+        <p>Version <b>{u.current}</b> — {u.state === 'upToDate' ? 'up to date' : u.state === 'readyToApply' ? `version ${u.latest} is downloaded and installs as soon as ${child.displayName} isn't in paid game or YouTube time` : u.state === 'installing' || u.state === 'applying' ? `installing ${u.latest ? 'version ' + u.latest : 'an update'}… CoinQuest restarts by itself` : u.state === 'downloading' ? `downloading ${u.latest}…` : u.state === 'error' ? `couldn't check (${u.message})` : u.state === 'idle' ? 'not checked yet' : u.state}</p>
         {u.lastChecked && <p class="muted small">Last checked {when(u.lastChecked)}</p>}
         <button class="secondary" onClick={() => bridge.parentCheckUpdate().then(setUpd).catch((e) => setUpd({ ...u, state: 'error', message: e.message }))}>Check now</button>
       </div>
