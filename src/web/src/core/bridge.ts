@@ -134,7 +134,7 @@ class Bridge {
 
 export const bridge = new Bridge();
 
-export type DiscStatus = { stage: 'idle' | 'importing' | 'error'; message?: string; games: { id: string; title: string; mode?: 'copy' | 'pending' | 'installed'; hidden?: boolean; players: { name: string; level: number; score: number }[] }[]; root: string };
+export type DiscStatus = { stage: 'idle' | 'importing' | 'error'; message?: string; games: { id: string; title: string; mode?: 'copy' | 'pending' | 'installed'; hidden?: boolean; runs?: string | null; players: { name: string; level: number; score: number }[] }[]; root: string };
 export type RwtStatus = { installed: boolean; otvdm: boolean; stage: 'idle' | 'importing' | 'ready' | 'error'; message?: string; patches: string[]; players: string[]; root: string };
 export interface FpStatus {
   installed: boolean; root?: string | null; clifp: boolean; installerUrl: string;

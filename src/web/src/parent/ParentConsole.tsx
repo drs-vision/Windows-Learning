@@ -707,12 +707,14 @@ function DiscImport() {
               {g.mode === 'pending' ? <span class="muted small"> — not installed yet</span>
                 : g.players.length > 0 ? <span class="muted small"> — {g.players.map((p) => `${p.name} (level ${p.level}, score ${p.score})`).join(', ')}</span>
                 : <span class="muted small"> — no players yet</span>}
+              {g.runs && <div class="muted small" style="overflow-wrap:anywhere">Runs: {g.runs}</div>}
               <div class="row" style="gap:.4em;margin-top:.3em;flex-wrap:wrap">
                 {g.mode === 'pending'
                   ? <><button class="secondary small" onClick={() => beginSetup(g.id)}>Set up (run its installer)</button>
                       <button class="ghost small" onClick={() => alreadyInstalled(g.id, g.title)}>Already installed? Choose its folder…</button></>
                   : <><button class="ghost small" onClick={() => tryIt(g.id)}>Try it</button>
-                      {g.mode === 'copy' && <button class="ghost small" title="If it crashes or misbehaves: re-import it and run the disc's own installer instead" onClick={() => viaInstaller(g.title)}>Problems? Use its installer…</button>}</>}
+                      {g.mode === 'copy' && <button class="ghost small" title="If it crashes or misbehaves: re-import it and run the disc's own installer instead" onClick={() => viaInstaller(g.title)}>Problems? Use its installer…</button>}
+                      {g.mode === 'installed' && <button class="ghost small" title="If it starts the wrong thing: point CoinQuest at the folder the game is installed in" onClick={() => alreadyInstalled(g.id, g.title)}>Wrong program? Choose its folder…</button>}</>}
                 {removing === g.id
                   ? <><button class="danger small" onClick={() => remove(g.id)}>Yes, remove {g.title}</button><button class="ghost small" onClick={() => setRemoving(null)}>Keep it</button></>
                   : <button class="ghost small" title="Delete CoinQuest's copy of this game and its disc image" onClick={() => setRemoving(g.id)}>🗑 Remove</button>}

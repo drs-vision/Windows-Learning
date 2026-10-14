@@ -109,6 +109,7 @@ public sealed partial class DiscGameService
         games = Games().Select(g => new
         {
             g.Id, g.Title, g.Mode, g.Hidden,
+            runs = g.Mode == "installed" ? g.ExePath : g.Mode == "copy" ? g.Exe : null,
             players = Players(g).Select(p => new { p.Name, p.Level, p.Score }),
         }),
         root = Root,
@@ -249,6 +250,15 @@ public sealed partial class DiscGameService
             .Select(x => (x.Ini, x.Text, Exe: PickExe(Path.GetDirectoryName(x.Ini)!)))
             .Where(x => x.Exe is not null)
             .ToList();
+        // The parent asked for the real installer, but a 16-bit installer can't run on 64-bit Windows: copy instead.
+        if (useInstaller && candidates.Count > 0 && FindInstaller(cd + Path.DirectorySeparatorChar) is var inst && (inst is null || ExeKind(inst) != "pe"))
+        {
+            progress("This disc's installer is 16-bit (it won't run on 64-bit Windows) — CoinQuest will set it up itself…");
+            useInstaller = false;
+        }
+        if (candidates.Count == 0 && FindInstaller(cd + Path.DirectorySeparatorChar) is { } only && ExeKind(only) != "pe"
+            && Directory.EnumerateFiles(cd, "RWT*.EXE", Deep).Any())
+            throw new InvalidOperationException("That's Read, Write & Type! — add it under the Read, Write & Type section instead.");
         if (candidates.Count == 0 || useInstaller)
         {
             // Not a layout CoinQuest knows (or the parent asked for the real installer): keep the disc and let its own

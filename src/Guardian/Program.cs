@@ -40,6 +40,7 @@ if (args.Contains("--clear-policies"))
     foreach (var child in store.Current.Children)
         if (!string.IsNullOrEmpty(child.WindowsSid)) BrowserPolicy.ClearStatic(child.WindowsSid);
     NetLock.RemoveAll(store.Current.Children.Select(c => c.WindowsSid).Where(s => !string.IsNullOrEmpty(s)));
+    CoinQuest.Guardian.DiscGames.DiscGameService.RestoreAutoPlay();
     return;
 }
 

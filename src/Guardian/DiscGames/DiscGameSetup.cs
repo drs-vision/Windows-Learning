@@ -108,11 +108,34 @@ public sealed partial class DiscGameService
     public static string Mount(string iso)
     {
         try { DiscImage.Neutralize(iso); } catch { } // discs imported before this check may still carry DSSAgent
+        TurnOffAutoPlay();
         var letter = Ps($"$i = Get-DiskImage -ImagePath '{iso.Replace("'", "''")}'; if (-not $i.Attached) {{ $i = Mount-DiskImage -ImagePath '{iso.Replace("'", "''")}' -PassThru }}; " +
                         "Start-Sleep -Milliseconds 500; ($i | Get-Volume).DriveLetter").Trim();
         if (letter.Length != 1 || !char.IsLetter(letter[0])) throw new InvalidOperationException("Windows couldn't open the disc image as a CD drive" + (letter.Length > 0 ? ": " + letter : ""));
         return letter + ":";
     }
+
+    /// <summary>
+    /// A mounted disc would otherwise open File Explorer or start the disc's own menu (which offers to install again) —
+    /// on the child's screen, outside CoinQuest. Off for every drive, for every account; the uninstaller turns it back on.
+    /// </summary>
+    public static void TurnOffAutoPlay()
+    {
+        try
+        {
+            using var k = Registry.LocalMachine.CreateSubKey(AutoPlayKey);
+            if (k.GetValue("NoDriveTypeAutoRun") is not int v || v != 0xFF) k.SetValue("NoDriveTypeAutoRun", 0xFF, RegistryValueKind.DWord);
+            if (k.GetValue("NoAutorun") is not int a || a != 1) k.SetValue("NoAutorun", 1, RegistryValueKind.DWord);
+        }
+        catch { }
+    }
+
+    public static void RestoreAutoPlay()
+    {
+        try { using var k = Registry.LocalMachine.OpenSubKey(AutoPlayKey, true); k?.DeleteValue("NoDriveTypeAutoRun", false); k?.DeleteValue("NoAutorun", false); } catch { }
+    }
+
+    private const string AutoPlayKey = @"SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer";
 
     public static void Unmount(string iso)
     {
@@ -188,7 +211,14 @@ public sealed partial class DiscGameService
         var pick = links.OrderByDescending(i => newDirs.Any(d => i.Target.StartsWith(d, StringComparison.OrdinalIgnoreCase)))
                         .ThenByDescending(i => new FileInfo(i.Target).Length).FirstOrDefault();
         string exe; string? cwd = null, args = null;
-        if (pick is not null) { exe = pick.Target; cwd = pick.WorkDir; args = pick.Args; }
+        // Learning Company titles: the real program sits beside an INI that names the CD; their shortcuts can point at a
+        // launcher that offers to (re)install instead of starting the game.
+        var tlc = newDirs.Where(Directory.Exists)
+            .SelectMany(d => Directory.EnumerateFiles(d, "*.ini", new EnumerationOptions { RecurseSubdirectories = true, MaxRecursionDepth = 3, MatchCasing = MatchCasing.CaseInsensitive }))
+            .Where(i => SafeRead(i) is var t && (t.Contains("CDDrive", StringComparison.OrdinalIgnoreCase) || t.Contains(" - CD]", StringComparison.OrdinalIgnoreCase)))
+            .Select(i => PickExe(Path.GetDirectoryName(i)!)).Where(e => e is not null && !IsHelper(e)).FirstOrDefault();
+        if (tlc is not null) { exe = tlc; cwd = Path.GetDirectoryName(tlc); }
+        else if (pick is not null) { exe = pick.Target; cwd = pick.WorkDir; args = pick.Args; }
         else
         {
             exe = newDirs.Where(Directory.Exists)

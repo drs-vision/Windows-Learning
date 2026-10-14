@@ -460,7 +460,8 @@ public class WebShellWindow : Window
         catch (Exception ex) { Log("RWT launch failed: " + ex); return Response.Fail("", "Couldn't start Read, Write & Type!: " + ex.Message); }
     }
 
-    private Process? _program;
+    private Process? _program; private string _programTitle = "";
+    [System.Runtime.InteropServices.DllImport("user32")] private static extern bool SetForegroundWindow(IntPtr hWnd);
 
     /// <summary>Only programs CoinQuest set up: its own copies, or a game a parent installed from an imported disc.</summary>
     private static bool IsDiscGameProgram(string exe)
@@ -482,7 +483,15 @@ public class WebShellWindow : Window
     {
         try
         {
-            if (_program is { HasExited: false }) return Response.Success("", new { ok = true, already = true });
+            if (_program is { HasExited: false } running)
+            {
+                // Don't silently do nothing: bring it forward, and say so if a different game was asked for.
+                try { if (running.MainWindowHandle != IntPtr.Zero) SetForegroundWindow(running.MainWindowHandle); } catch { }
+                var wanted = p?["title"]?.GetValue<string>() ?? "";
+                if (wanted.Length > 0 && wanted != _programTitle)
+                    return Response.Fail("", $"{(_programTitle.Length > 0 ? _programTitle : "Another game")} is still open — close it first");
+                return Response.Success("", new { ok = true, already = true });
+            }
             var exe = p?["exe"]?.GetValue<string>() ?? ""; var cwd = p?["cwd"]?.GetValue<string>() ?? ""; var id = p?["id"]?.GetValue<string>() ?? "";
             if (!File.Exists(exe) || !IsDiscGameProgram(exe))
                 return Response.Fail("", "That game isn't set up on this computer yet");
@@ -508,6 +517,7 @@ public class WebShellWindow : Window
             }
             else psi = new ProcessStartInfo(exe, args) { UseShellExecute = false, WorkingDirectory = Directory.Exists(cwd) ? cwd : Path.GetDirectoryName(exe)! };
             _program = Process.Start(psi)!;
+            _programTitle = p?["title"]?.GetValue<string>() ?? "";
             _program.EnableRaisingEvents = true;
             var proc = _program;
             Log($"Program started: {exe} (pid {proc.Id})");
