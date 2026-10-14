@@ -36,38 +36,40 @@ public class PhoneWireTests(ITestOutputHelper output)
     }
 
     /// <summary>
-    /// The public relay behaves as PhoneLinkService expects: POST a message to a topic, then read it back from the
-    /// streaming JSON endpoint with several topics and "since". Skipped quietly when the relay can't be reached.
+    /// The public relay behaves as PhoneLinkService expects: listening on several topics at once (as the PC does for
+    /// all linked phones), a message posted to one of them arrives, unchanged. (The relay writes its history a moment
+    /// after delivering live, so — like the PC — listen first, then post.) Skipped when the relay can't be reached.
     /// </summary>
     [Fact, Trait("Category", "Live")]
     public async Task Relay_publish_and_stream()
     {
-        using var http = new HttpClient { Timeout = TimeSpan.FromSeconds(30) };
+        using var http = new HttpClient { Timeout = Timeout.InfiniteTimeSpan };
         http.DefaultRequestHeaders.UserAgent.ParseAdd("CoinQuest-tests");
         var a = PhoneWire.NewTopic(); var b = PhoneWire.NewTopic();
         var key = PhoneWire.NewKey();
         var part = PhoneWire.Split(PhoneWire.Seal(key, new JsonObject { ["hi"] = "relay" }))[0];
-        try
+        using var cts = new CancellationTokenSource(TimeSpan.FromSeconds(40));
+        HttpResponseMessage resp;
+        try { resp = await http.GetAsync($"https://ntfy.sh/{a},{b}/json?since=1m", HttpCompletionOption.ResponseHeadersRead, cts.Token); resp.EnsureSuccessStatusCode(); }
+        catch (Exception ex) when (ex is HttpRequestException or TaskCanceledException) { output.WriteLine("relay unreachable, skipped: " + ex.Message); return; }
+        using (resp)
         {
-            using (var r = await http.PostAsync($"https://ntfy.sh/{b}", new StringContent(part, Encoding.UTF8, "text/plain"))) r.EnsureSuccessStatusCode();
+            using var reader = new StreamReader(await resp.Content.ReadAsStreamAsync(cts.Token));
+            var first = JsonNode.Parse((await reader.ReadLineAsync(cts.Token))!)!;
+            Assert.Equal("open", first["event"]!.GetValue<string>());
+            using (var post = await http.PostAsync($"https://ntfy.sh/{b}", new StringContent(part, Encoding.UTF8, "text/plain"), cts.Token)) post.EnsureSuccessStatusCode();
+            while (await reader.ReadLineAsync(cts.Token) is { } line)
+            {
+                var ev = JsonNode.Parse(line)!;
+                if (ev["event"]?.GetValue<string>() != "message") continue;
+                Assert.Equal(b, ev["topic"]!.GetValue<string>());
+                Assert.False(string.IsNullOrEmpty(ev["id"]?.GetValue<string>()));
+                var whole = new PhoneWire.Assembler().Add(ev["message"]!.GetValue<string>());
+                Assert.Equal("relay", PhoneWire.Open(key, whole!)!["hi"]!.GetValue<string>());
+                output.WriteLine("relay round trip OK");
+                return;
+            }
         }
-        catch (HttpRequestException ex) { output.WriteLine("relay unreachable, skipped: " + ex.Message); return; }
-        catch (TaskCanceledException) { output.WriteLine("relay timed out, skipped"); return; }
-
-        using var cts = new CancellationTokenSource(TimeSpan.FromSeconds(30));
-        using var resp = await http.GetAsync($"https://ntfy.sh/{a},{b}/json?since=5m", HttpCompletionOption.ResponseHeadersRead, cts.Token);
-        resp.EnsureSuccessStatusCode();
-        using var reader = new StreamReader(await resp.Content.ReadAsStreamAsync(cts.Token));
-        while (await reader.ReadLineAsync(cts.Token) is { } line)
-        {
-            var ev = JsonNode.Parse(line)!;
-            if (ev["event"]?.GetValue<string>() != "message") continue;
-            Assert.Equal(b, ev["topic"]!.GetValue<string>());
-            Assert.False(string.IsNullOrEmpty(ev["id"]?.GetValue<string>()));
-            var whole = new PhoneWire.Assembler().Add(ev["message"]!.GetValue<string>());
-            Assert.Equal("relay", PhoneWire.Open(key, whole!)!["hi"]!.GetValue<string>());
-            return;
-        }
-        Assert.Fail("the relay never sent the message back");
+        Assert.Fail("the relay never delivered the message");
     }
 }
