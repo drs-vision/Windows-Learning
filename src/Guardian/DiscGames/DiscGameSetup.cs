@@ -227,6 +227,17 @@ public sealed partial class DiscGameService
                 ?? throw new InvalidOperationException(folder is not null ? "No game program in that folder — choose the folder the game itself is in"
                     : "Couldn't tell where the installer put the game. If it finished, press \"Choose its folder…\" and pick the folder it installed to.");
         }
+        // A disc launcher ("PLAY.EXE", AUTORUN, …) checks for the CD and offers to install; start the game itself if it's there.
+        if (Launcher.IsMatch(Path.GetFileNameWithoutExtension(exe)))
+        {
+            var dir = newDirs.Where(d => exe.StartsWith(d.TrimEnd('\\') + "\\", StringComparison.OrdinalIgnoreCase)).OrderBy(d => d.Length).FirstOrDefault()
+                      ?? newDirs.FirstOrDefault(d => Directory.Exists(d) && new DriveInfo(d).DriveType != DriveType.CDRom);
+            var real = dir is null ? null : Directory.EnumerateFiles(dir, "*.exe", new EnumerationOptions { RecurseSubdirectories = true, MaxRecursionDepth = 3, MatchCasing = MatchCasing.CaseInsensitive })
+                .Where(e => !IsHelper(e) && !Launcher.IsMatch(Path.GetFileNameWithoutExtension(e)) && ExeKind(e) == "pe")
+                .OrderByDescending(e => Path.GetFileNameWithoutExtension(e).EndsWith("32", StringComparison.OrdinalIgnoreCase))
+                .ThenByDescending(e => new FileInfo(e).Length).FirstOrDefault();
+            if (real is not null) { exe = real; cwd = Path.GetDirectoryName(real); args = null; }
+        }
         var installDir = newDirs.Where(d => exe.StartsWith(d.TrimEnd('\\') + "\\", StringComparison.OrdinalIgnoreCase)).OrderBy(d => d.Length).FirstOrDefault()
                          ?? Path.GetDirectoryName(exe)!;
         OpenUp(installDir); // the game saves players beside itself; the child's account must be able to write there
@@ -248,6 +259,7 @@ public sealed partial class DiscGameService
         Regex.Split(title, @"[^A-Za-z0-9]+").Where(w => w.Length >= 3 || w.Any(char.IsDigit))
             .Where(w => !new[] { "the", "and", "adventures", "adventure", "deluxe", "edition" }.Contains(w.ToLowerInvariant())).ToArray();
 
+    private static readonly Regex Launcher = new(@"^(play|autorun|auto|launch|launcher|start|menu|run)\d*$", RegexOptions.IgnoreCase);
     private static readonly Regex Helper = new(@"unins|uninst|setup|instal|readme|help|regist|ereg|acro|aol|web|update|config|dxsetup|directx|quicktime|qtinst", RegexOptions.IgnoreCase);
     private static bool IsHelper(string exe) => Helper.IsMatch(Path.GetFileNameWithoutExtension(exe));
 
