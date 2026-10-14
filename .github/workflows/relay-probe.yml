@@ -1,0 +1,22 @@
+# Checks the public ntfy relay the phone link uses, from a GitHub runner; results show as annotations.
+name: relay probe
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths: ['.github/workflows/relay-probe.yml']
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Probe ntfy.sh like the PC and the phone do
+        run: |
+          note() { echo "::notice title=$1::$2"; }
+          T1="cqprobe$RANDOM$RANDOM"; T2="cqprobe$RANDOM$RANDOM"
+          R=$(curl -s -m 20 -o /tmp/p.json -w "%{http_code}" -X POST -H "Origin: https://drs-vision.github.io" -d "cq1:x:1/1:hello" "https://ntfy.sh/$T2"); note post "HTTP $R $(head -c 300 /tmp/p.json)"
+          curl -s -m 20 -D /tmp/h.txt -o /dev/null -X POST -H "Origin: https://drs-vision.github.io" -d "cq1:y:1/1:hello2" "https://ntfy.sh/$T2"; note cors "$(grep -i 'access-control' /tmp/h.txt | tr -d '\r' | tr '\n' ' ')"
+          note poll "$(curl -s -m 20 "https://ntfy.sh/$T1,$T2/json?poll=1&since=5m" | head -c 600)"
+          note stream "$(curl -s -m 6 "https://ntfy.sh/$T1,$T2/json?since=5m" | head -c 600)"
+          ID=$(head -c 300 /tmp/p.json | sed -n 's/.*"id":"\([^"]*\)".*/\1/p'); note sinceId "id=$ID → $(curl -s -m 6 "https://ntfy.sh/$T1,$T2/json?since=$ID" | head -c 400)"
+          note sse "$(curl -s -m 6 -H "Origin: https://drs-vision.github.io" "https://ntfy.sh/$T2/sse?since=$(( $(date +%s) - 120 ))" | head -c 500 | tr '\n' ' ')"
+          note health "$(curl -s -m 10 -w ' HTTP %{http_code}' https://ntfy.sh/v1/health)"
