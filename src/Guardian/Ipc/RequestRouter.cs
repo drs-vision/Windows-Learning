@@ -585,6 +585,8 @@ public sealed class RequestRouter
     /// </summary>
     private object? HandlePhone(string op, System.Text.Json.Nodes.JsonObject args, string actor)
     {
+        // Looking up a YouTube channel waits on the internet: do it before taking the lock.
+        YouTubeChannel? channel = op == "addChannel" ? _youtube.Resolve(args["url"]?.GetValue<string>() ?? "").GetAwaiter().GetResult() : null;
         lock (_sync)
         {
             var req = new Request { Id = "phone", Op = op, Payload = args.DeepClone() };
@@ -594,12 +596,126 @@ public sealed class RequestRouter
                 "adjust" => Adjust(req, actor),
                 "claim" => ResolveClaim(req, actor),
                 "endUnlock" => new { ok = _unlocks.End(Str(req, "unlockId")) },
+                "config" => PhoneConfig(),
+                "history" => PhoneHistory(Str(req, "childId"), req.Payload?["before"]?.GetValue<long>()),
+                "setQuest" => PhoneSetQuest(req),
+                "setPrize" => PhoneSetPrize(req),
+                "deletePrize" => PhoneEditChild(Str(req, "childId"), c => c with { Prizes = c.Prizes.Where(p => p.Id != Str(req, "id")).ToList() }),
+                "setSites" => PhoneSetSites(req),
+                "addChannel" => PhoneEditChild(Str(req, "childId"), c => c.YouTubeChannels.Any(x => x.Id == channel!.Id) ? c : c with { YouTubeChannels = c.YouTubeChannels.Append(channel!).ToList() }),
+                "removeChannel" => PhoneEditChild(Str(req, "childId"), c => c with { YouTubeChannels = c.YouTubeChannels.Where(x => x.Id != Str(req, "id")).ToList() }),
                 _ => throw new InvalidOperationException("CoinQuest on the PC doesn't know that yet — update it"),
             };
             if (op == "endUnlock") AfterChange();
             if (op != "state") _log.LogInformation("Phone ({Actor}): {Op}", actor, op);
             return new { result, state = PhoneState() };
         }
+    }
+
+    // ---- phone: settings a parent can change from anywhere (never the PIN, internet lock, apps or updates) ----
+
+    private object PhoneConfig() => new
+    {
+        children = _store.Current.Children.Select(c => new
+        {
+            id = c.Id,
+            name = c.DisplayName,
+            modules = c.Modules.Select(kv => new { id = kv.Key, enabled = kv.Value.Enabled, coinsPerActivity = kv.Value.CoinsPerActivity, dailyCap = kv.Value.DailyCap, requireApproval = kv.Value.RequireApproval, options = kv.Value.Options, earnedToday = _ledger.EarnedToday(c.Id, kv.Key) }).ToList(),
+            prizes = c.Prizes.Select(p => new { id = p.Id, name = p.Name, cost = p.Cost, kind = p.Kind.ToString(), minutes = p.Minutes, dailyCap = p.DailyCap, enabled = p.Enabled }).ToList(),
+            sites = c.Allowlist.Sites,
+            channels = c.YouTubeChannels.Select(y => new { id = y.Id, title = y.Title, url = y.Url }).ToList(),
+        }).ToList(),
+    };
+
+    private object PhoneHistory(string childId, long? before)
+    {
+        var page = _ledger.Page(childId, before, 40);
+        return new
+        {
+            entries = page.Select(e => new { seq = e.Seq, at = e.At, kind = e.Kind.ToString(), delta = e.Delta, source = e.Source, detail = e.Detail, actor = e.ActorAccount }).ToList(),
+            more = page.Count == 40,
+        };
+    }
+
+    private object PhoneEditChild(string childId, Func<Child, Child> change)
+    {
+        if (_store.Current.Children.All(c => c.Id != childId)) throw new ArgumentException("That child isn't on this PC");
+        _store.Update(h => h with { Children = h.Children.Select(c => c.Id == childId ? change(c) : c).ToList() });
+        _policy.Invalidate();
+        AfterChange();
+        return PhoneConfig();
+    }
+
+    private object PhoneSetQuest(Request req)
+    {
+        var moduleId = Str(req, "moduleId");
+        var p = req.Payload!;
+        int? Int(string k) => p[k] is System.Text.Json.Nodes.JsonValue v && v.TryGetValue<int>(out var i) ? i : null;
+        bool? Bool(string k) => p[k] is System.Text.Json.Nodes.JsonValue v && v.TryGetValue<bool>(out var b) ? b : null;
+        return PhoneEditChild(Str(req, "childId"), c =>
+        {
+            if (!c.Modules.TryGetValue(moduleId, out var m)) throw new ArgumentException("That quest isn't on this PC");
+            var options = new Dictionary<string, string>(m.Options);
+            if (p["options"] is System.Text.Json.Nodes.JsonObject o)
+                foreach (var (k, v) in o) if (options.ContainsKey(k) && v is System.Text.Json.Nodes.JsonValue jv) options[k] = jv.ToString();
+            var next = m with
+            {
+                Enabled = Bool("enabled") ?? m.Enabled,
+                CoinsPerActivity = Int("coinsPerActivity") is { } cpa ? Math.Clamp(cpa, -1000, 1000) : m.CoinsPerActivity,
+                DailyCap = Int("dailyCap") is { } cap ? Math.Clamp(cap, 0, 100000) : m.DailyCap,
+                RequireApproval = Bool("requireApproval") ?? m.RequireApproval,
+                Options = options,
+            };
+            return c with { Modules = new Dictionary<string, ModuleSettings>(c.Modules) { [moduleId] = next } };
+        });
+    }
+
+    private object PhoneSetPrize(Request req)
+    {
+        var p = req.Payload?["prize"] as System.Text.Json.Nodes.JsonObject ?? throw new ArgumentException("prize required");
+        var id = p["id"]?.GetValue<string>();
+        var name = (p["name"]?.GetValue<string>() ?? "").Trim();
+        if (name.Length == 0) throw new ArgumentException("Give the prize a name");
+        var cost = Math.Clamp(p["cost"]?.GetValue<int>() ?? 0, 0, 100000);
+        var minutes = Math.Clamp(p["minutes"]?.GetValue<int>() ?? 0, 0, 600);
+        var cap = Math.Clamp(p["dailyCap"]?.GetValue<int>() ?? 0, 0, 100);
+        var enabled = p["enabled"]?.GetValue<bool>() ?? true;
+        return PhoneEditChild(Str(req, "childId"), c =>
+        {
+            var list = c.Prizes.ToList();
+            var i = id is null ? -1 : list.FindIndex(x => x.Id == id);
+            if (i >= 0) list[i] = list[i] with { Name = name, Cost = cost, Minutes = minutes, DailyCap = cap, Enabled = enabled };
+            else
+            {
+                // New prizes from the phone are the kinds that need no website or app picked: a real-world treat,
+                // YouTube time or extra screen time.
+                var kind = Enum.TryParse<PrizeKind>(p["kind"]?.GetValue<string>(), true, out var k) && k is PrizeKind.RealWorld or PrizeKind.YouTube or PrizeKind.ScreenTimeExtension ? k : PrizeKind.RealWorld;
+                list.Add(new Prize { Name = name, Cost = cost, Kind = kind, Minutes = kind == PrizeKind.RealWorld ? 0 : Math.Max(5, minutes), DailyCap = cap, Enabled = enabled });
+            }
+            return c with { Prizes = list };
+        });
+    }
+
+    private object PhoneSetSites(Request req)
+    {
+        static string Domain(string s)
+        {
+            s = s.Trim().ToLowerInvariant();
+            if (s.Contains("://")) s = s[(s.IndexOf("://", StringComparison.Ordinal) + 3)..];
+            s = s.Split('/', '?', '#')[0].Split(':')[0];
+            if (s.StartsWith("www.")) s = s[4..];
+            if (s.Length < 3 || !s.Contains('.') || s.Any(ch => !(char.IsLetterOrDigit(ch) || ch is '.' or '-'))) throw new ArgumentException("That doesn't look like a website address");
+            return s;
+        }
+        var add = req.Payload?["add"]?.GetValue<string>();
+        var remove = req.Payload?["remove"]?.GetValue<string>();
+        return PhoneEditChild(Str(req, "childId"), c =>
+        {
+            var sites = c.Allowlist.Sites.ToList();
+            if (add is { Length: > 0 }) { var d = Domain(add); if (!sites.Contains(d)) sites.Add(d); }
+            if (remove is { Length: > 0 }) sites.RemoveAll(x => x.Equals(remove, StringComparison.OrdinalIgnoreCase));
+            return c with { Allowlist = c.Allowlist with { Sites = sites } };
+        });
     }
 
     /// <summary>What the phone shows: each child's coins, today's coins in and out, time running, and requests waiting.</summary>

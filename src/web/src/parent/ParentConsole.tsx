@@ -101,12 +101,17 @@ function PinGate({ onOk, onCancel }: { onOk: () => void; onCancel?: () => void }
     try { await bridge.parentLogin(pin); onOk(); } catch (ex) { setErr((ex as Error).message); setPin(''); }
   }
   return (
-    <form class="screen center pin-gate" onSubmit={go}>
-      <h2>Parent PIN</h2>
-      <input type="password" inputMode="numeric" autofocus value={pin} onInput={(e) => setPin((e.target as HTMLInputElement).value)} maxLength={8} />
-      {err && <p class="error">{err}</p>}
-      <div class="row"><button class="primary" type="submit" disabled={pin.length < 4}>Open</button>{onCancel && <button class="ghost" type="button" onClick={onCancel}>Cancel</button>}</div>
-    </form>
+    <div class="screen center">
+      <form class="card pin-gate" onSubmit={go}>
+        <div class="pin-icon" aria-hidden="true">🔒</div>
+        <h2>Parent PIN</h2>
+        <p class="muted small">Enter your PIN to open the parent controls.</p>
+        <input type="password" inputMode="numeric" autocomplete="off" aria-label="Parent PIN" autofocus value={pin} onInput={(e) => setPin((e.target as HTMLInputElement).value.replace(/\D/g, ''))} maxLength={8} />
+        {err && <p class="error small">{err === 'wrong PIN' ? "That PIN isn't right — try again." : err}</p>}
+        <button class="primary wide" type="submit" disabled={pin.length < 4}>Open</button>
+        {onCancel && <button class="ghost wide" type="button" onClick={onCancel}>Cancel</button>}
+      </form>
+    </div>
   );
 }
 

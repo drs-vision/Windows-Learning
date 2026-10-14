@@ -1,5 +1,8 @@
 // CoinQuest on a parent's phone. Linked by scanning the QR code in the parent app on the PC (no account).
 // Talks to the PC through the relay with messages scrambled by wire.js; see src/Guardian/Phone/PhoneLinkService.cs.
+// From here a parent can: see coins and requests, give/take coins, approve, end game time, read the full history,
+// and change quests (coins, limits, on/off), shop prizes, allowed websites and YouTube channels. The parent PIN,
+// internet lock, allowed apps, updates and CD games stay on the PC.
 import * as w from './wire.js';
 
 const app = document.getElementById('app');
@@ -21,10 +24,13 @@ let link = fromHash ? links.find((l) => l.topicIn === fromHash.topicIn) : links.
 let key = null, source = null, asm = null;
 const waiting = new Map();
 let state = null, status = 'wait', error = '', updatedAt = 0;
+let tab = 'home', kidId = null;               // which screen, which child (for per-child screens)
+let config = null;                             // quests, prizes, websites, channels (loaded when needed)
+let hist = { kid: null, entries: [], more: false, loading: false };
 
 async function connect() {
   if (source) source.close();
-  waiting.clear(); state = null; error = '';
+  waiting.clear(); state = null; config = null; error = ''; hist = { kid: null, entries: [], more: false, loading: false };
   if (!link) { render(); return; }
   store.set('cq.current', link.topicIn);
   if (location.hash.slice(1) !== link.raw) history.replaceState(null, '', '#' + link.raw);
@@ -41,6 +47,7 @@ async function connect() {
     const reply = await w.open(key, whole);
     if (!reply) return;
     if (reply.ok && reply.d?.state) { state = reply.d.state; status = 'on'; updatedAt = Date.now(); }
+    if (reply.ok && reply.d?.result?.children?.[0]?.modules) config = reply.d.result;
     const p = waiting.get(reply.re);
     if (p) { waiting.delete(reply.re); reply.ok ? p.resolve(reply.d) : p.reject(new Error(reply.e || 'The PC said no')); }
     render();
@@ -57,7 +64,7 @@ function send(op, args = {}) {
       if (!waiting.has(id)) return;
       waiting.delete(id);
       reject(new Error("The PC didn't answer. It may be off, asleep or offline — what you sent will reach it when it's back (within 12 hours)."));
-    }, 25000);
+    }, 30000);
   });
   (async () => {
     for (const part of w.split(await w.seal(key, { id, ts: Date.now(), op, a: args }))) {
@@ -70,17 +77,36 @@ function send(op, args = {}) {
 
 async function refresh() {
   status = 'wait'; error = ''; render();
-  try { await send('state'); }
-  catch (e) { status = 'off'; error = e.message; render(); }
+  try {
+    await send('state');
+    if (tab === 'rewards' || tab === 'shop' || tab === 'allowed') await loadConfig();
+    if (tab === 'history') await loadHistory(true);
+  } catch (e) { status = 'off'; error = e.message; render(); }
 }
 
 async function act(op, args, label) {
   error = ''; status = 'wait'; render();
-  try { await send(op, args); toast(label); }
-  catch (e) { error = e.message; status = 'off'; render(); }
+  try { const d = await send(op, args); if (label) toast(label); return d; }
+  catch (e) { error = e.message; status = 'off'; render(); return null; }
 }
 
-// ---- screens -----------------------------------------------------------------------------------------------------
+async function loadConfig() { if (!config) await send('config'); }
+
+async function loadHistory(reset) {
+  const k = kid();
+  if (!k) return;
+  if (reset || hist.kid !== k.id) hist = { kid: k.id, entries: [], more: false, loading: false };
+  hist.loading = true; render();
+  try {
+    const before = hist.entries.length ? hist.entries[hist.entries.length - 1].seq : undefined;
+    const d = await send('history', before ? { childId: k.id, before } : { childId: k.id });
+    const seen = new Set(hist.entries.map((x) => x.seq));
+    hist.entries.push(...(d.result?.entries ?? []).filter((x) => !seen.has(x.seq))); hist.more = !!d.result?.more;
+  } catch (e) { error = e.message; }
+  hist.loading = false; render();
+}
+
+// ---- helpers -----------------------------------------------------------------------------------------------------
 
 const ago = (iso) => {
   const s = Math.max(0, (Date.now() - new Date(iso).getTime()) / 1000);
@@ -88,10 +114,45 @@ const ago = (iso) => {
   if (s < 3600) return `${Math.floor(s / 60)} min ago`;
   return new Date(iso).toLocaleTimeString([], { hour: 'numeric', minute: '2-digit' });
 };
+const dayLabel = (iso) => {
+  const d = new Date(iso), t = new Date(); const day = (x) => new Date(x.getFullYear(), x.getMonth(), x.getDate()).getTime();
+  const diff = Math.round((day(t) - day(d)) / 86400000);
+  return diff === 0 ? 'Today' : diff === 1 ? 'Yesterday' : d.toLocaleDateString([], { weekday: 'long', month: 'short', day: 'numeric' });
+};
+const clock = (iso) => new Date(iso).toLocaleTimeString([], { hour: 'numeric', minute: '2-digit' });
 const mins = (sec) => (sec >= 3600 ? `${Math.floor(sec / 3600)} h ${Math.round((sec % 3600) / 60)} min` : `${Math.max(1, Math.round(sec / 60))} min`);
 const coins = (n) => `<span class="coin"></span>${n}`;
+const signed = (n) => (n > 0 ? `+${n}` : n < 0 ? `−${Math.abs(n)}` : '0');
+const num = (v) => { const n = Math.round(Number(String(v).replace(/[−–]/g, '-').replace(/[^0-9-]/g, '').replace(/(?!^)-/g, ''))); return Number.isFinite(n) ? n : 0; };
 
+function kid() {
+  const list = (config?.children ?? state?.children ?? []);
+  return list.find((k) => k.id === kidId) ?? list[0] ?? null;
+}
+const kidConfig = () => config?.children.find((k) => k.id === (kid()?.id)) ?? null;
+
+const QUESTS = {
+  'sound-keys': ['🔤', 'Letter Rescue'], 'typing-quest': ['⌨️', 'TypingQuest'], 'bible-typing': ['📖', 'Scripture Typing'],
+  'khan-academy': ['🎓', 'Khan Academy'], duolingo: ['🦉', 'Duolingo'], rwt: ['✏️', 'Read, Write & Type!'], discgames: ['💿', 'Classic CD games'],
+};
+const OPTION_LABELS = { perAnswer: 'Coins per correct answer', perVideo: 'Coins per finished video', perStory: 'Coins per finished story' };
+const quest = (id) => QUESTS[id] ?? ['⭐', id.charAt(0).toUpperCase() + id.slice(1).replace(/[-_]/g, ' ')];
+const KINDS = { RealWorld: ['🎁', 'Treat'], YouTube: ['▶️', 'YouTube time'], ScreenTimeExtension: ['⏰', 'Extra screen time'], SiteUnlock: ['🌐', 'Website time'], ArcadeUnlock: ['🕹️', 'Arcade time'], AppUnlock: ['💻', 'App time'] };
+const SOURCES = { parent: 'Parent', arcade: 'Arcade', youtube: 'YouTube', discgames: 'Classic CD games', rwt: 'Read, Write & Type!' };
+const sourceName = (s) => QUESTS[s]?.[1] ?? SOURCES[s] ?? s;
+
+// Don't redraw under a parent's thumb while they're typing.
 function render() {
+  const a = document.activeElement;
+  if (a && app.contains(a) && (a.tagName === 'INPUT' || a.tagName === 'SELECT')) { pendingRender = true; return; }
+  pendingRender = false; draw();
+}
+let pendingRender = false;
+app.addEventListener('focusout', () => setTimeout(() => { if (pendingRender) render(); }, 0));
+
+// ---- screens -----------------------------------------------------------------------------------------------------
+
+function draw() {
   if (!link) {
     app.innerHTML = `
       <header><img src="icon-192.png" alt=""><h1>CoinQuest</h1></header>
@@ -99,7 +160,7 @@ function render() {
         <h2>Link this phone to your kids' PC</h2>
         <ol>
           <li>On the kids' PC, open the <b>parent app</b> (enter your parent PIN).</li>
-          <li>Go to <b>Settings</b> and press <b>Control from my phone</b>.</li>
+          <li>Go to <b>Settings</b> and press <b>Show the code</b> under <b>Control from my phone</b>.</li>
           <li>Point this phone's camera at the code that appears.</li>
         </ol>
         <p class="note">No account or password — the code is the key. You can remove this phone from the PC any time.</p>
@@ -107,69 +168,148 @@ function render() {
     return;
   }
   const pcs = links.length > 1
-    ? `<div class="pcs">${links.map((l, i) => `<button data-pc="${i}" class="${l === link ? 'on' : ''}">${esc(l.household)}</button>`).join('')}</div>` : '';
+    ? `<div class="pills">${links.map((l, i) => `<button data-pc="${i}" class="${l === link ? 'on' : ''}">${esc(l.household)}</button>`).join('')}</div>` : '';
+  const kids = (config?.children ?? state?.children ?? []);
+  const kidPicker = tab !== 'home' && kids.length > 1
+    ? `<div class="pills">${kids.map((k) => `<button data-kid="${esc(k.id)}" class="${k.id === kid()?.id ? 'on' : ''}">${esc(k.name)}</button>`).join('')}</div>` : '';
   const standalone = matchMedia('(display-mode: standalone)').matches || navigator.standalone;
-  const hint = !standalone && !store.get('cq.hintDone', false)
+  const hint = tab === 'home' && !standalone && !store.get('cq.hintDone', false)
     ? `<div class="hint"><div><b>Tip:</b> add this to your home screen so it opens like an app — in Safari tap <b>Share → Add to Home Screen</b>; in Chrome tap <b>⋮ → Add to Home screen</b>.</div><button data-hint aria-label="Dismiss">×</button></div>` : '';
   const statusText = status === 'on' ? `PC answered ${ago(new Date(updatedAt).toISOString())}` : status === 'wait' ? 'Asking the PC…' : 'Not connected to the PC';
-  let body = '';
-  if (state) {
-    const claims = state.claims || [];
-    body += claims.length ? `<h2>Waiting for you</h2>` + claims.map((c) => `
-      <div class="card claim">
-        <div><span class="who">${esc(c.child)}</span> <span class="t">${ago(c.at)}</span></div>
-        <p>${esc(c.what)} · ${coins(c.coins)}</p>
-        <div class="row"><button class="give" data-claim="${c.seq}" data-ok="1">Approve</button><button class="take" data-claim="${c.seq}" data-ok="0">Not this time</button></div>
-      </div>`).join('') : '';
-    body += (state.children || []).map((k) => `
-      <div class="card">
-        <div class="kid-top">
-          <p class="kid-name">${esc(k.name)}${state.atKeyboard === k.id ? '<span class="here">at the PC</span>' : ''}</p>
-          <div class="balance">${coins(k.balance)}</div>
-        </div>
-        <div class="today">Today: <span class="plus">+${k.earnedToday}</span> earned · <span class="minus">${k.spentToday ? "−" + k.spentToday : "0"}</span> spent</div>
-        <div class="row"><button class="give" data-give="${esc(k.id)}">＋ Give</button><button class="take" data-take="${esc(k.id)}">－ Take</button></div>
-        ${(k.unlocks || []).map((u) => `<div class="unlock"><span>▶ ${esc(u.name)} · ${mins(u.secondsLeft)} left</span><button data-end="${esc(u.id)}">End now</button></div>`).join('')}
-        ${k.recent?.length ? `<details><summary>Today's activity</summary><ul class="feed">${k.recent.map((e) => `<li><span class="what">${esc(e.what)}<br><span class="t">${ago(e.at)}</span></span><span class="${e.delta >= 0 ? 'plus' : 'minus'}">${e.delta >= 0 ? '+' : '−'}${Math.abs(e.delta)}</span></li>`).join('')}</ul></details>` : ''}
-      </div>`).join('');
-    if (!(state.children || []).length) body += `<div class="card empty"><p>No children are set up on this PC yet.</p></div>`;
-  } else if (status !== 'off') {
-    body = `<div class="card empty"><p>Asking the PC…</p></div>`;
-  }
+  const body = { home: homeScreen, history: historyScreen, rewards: rewardsScreen, shop: shopScreen, allowed: allowedScreen }[tab]();
+  const tabs = [['home', '🏠', 'Home'], ['history', '🧾', 'History'], ['rewards', '⭐', 'Rewards'], ['shop', '🛍️', 'Shop'], ['allowed', '🌐', 'Allowed']];
   app.innerHTML = `
     <header><img src="icon-192.png" alt=""><h1>${esc(state?.household || link.household)}</h1><button class="icon" data-refresh aria-label="Refresh">↻</button></header>
     ${pcs}
     <div class="status"><span class="dot ${status}"></span>${statusText}</div>
     ${hint}
     ${error ? `<div class="err">${esc(error)}</div>` : ''}
+    ${kidPicker}
     ${body}
-    <p class="note">Linked as “${esc(link.phone)}”. To unlink, remove this phone in the parent app on the PC.<br><button data-forget style="min-height:0;padding:6px 10px;margin-top:8px;font-size:13px">Forget this PC on this phone</button></p>`;
+    <nav class="tabbar">${tabs.map(([id, icon, label]) => `<button data-tab="${id}" class="${tab === id ? 'on' : ''}" aria-label="${label}"><span>${icon}</span>${label}${id === 'home' && state?.claims?.length ? `<i>${state.claims.length}</i>` : ''}</button>`).join('')}</nav>`;
 }
 
+function homeScreen() {
+  if (!state) return status !== 'off' ? `<div class="card empty"><p>Asking the PC…</p></div>` : '';
+  const claims = state.claims || [];
+  let out = claims.length ? `<h2>Waiting for you</h2>` + claims.map((c) => `
+      <div class="card claim">
+        <div><span class="who">${esc(c.child)}</span> <span class="t">${ago(c.at)}</span></div>
+        <p>${esc(c.what)} · ${coins(c.coins)}</p>
+        <div class="row"><button class="give" data-claim="${c.seq}" data-ok="1">Approve</button><button class="take" data-claim="${c.seq}" data-ok="0">Not this time</button></div>
+      </div>`).join('') : '';
+  out += (state.children || []).map((k) => `
+      <div class="card">
+        <div class="kid-top">
+          <p class="kid-name">${esc(k.name)}${state.atKeyboard === k.id ? '<span class="here">at the PC</span>' : ''}</p>
+          <div class="balance">${coins(k.balance)}</div>
+        </div>
+        <div class="today">Today: <span class="plus">+${k.earnedToday}</span> earned · <span class="minus">${k.spentToday ? '−' + k.spentToday : '0'}</span> spent</div>
+        <div class="row"><button class="give" data-give="${esc(k.id)}">＋ Give</button><button class="take" data-take="${esc(k.id)}">－ Take</button></div>
+        ${(k.unlocks || []).map((u) => `<div class="unlock"><span>▶ ${esc(u.name)} · ${mins(u.secondsLeft)} left</span><button data-end="${esc(u.id)}">End now</button></div>`).join('')}
+        ${k.recent?.length ? `<details><summary>Today's activity</summary><ul class="feed">${k.recent.map((e) => `<li><span class="what">${esc(e.what)}<br><span class="t">${ago(e.at)}</span></span><span class="${e.delta >= 0 ? 'plus' : 'minus'}">${signed(e.delta)}</span></li>`).join('')}</ul><button class="link" data-tab="history" data-kidgo="${esc(k.id)}">See all history →</button></details>` : ''}
+      </div>`).join('');
+  if (!(state.children || []).length) out += `<div class="card empty"><p>No children are set up on this PC yet.</p></div>`;
+  return out + `<p class="note">Linked as “${esc(link.phone)}”. To unlink, remove this phone in the parent app on the PC.<br><button data-forget class="small">Forget this PC on this phone</button></p>`;
+}
+
+function historyScreen() {
+  const k = kid();
+  if (!k) return `<div class="card empty"><p>Asking the PC…</p></div>`;
+  if (hist.kid !== k.id && !hist.loading) { setTimeout(() => loadHistory(true), 0); return `<div class="card empty"><p>Loading history…</p></div>`; }
+  if (!hist.entries.length) return hist.loading ? `<div class="card empty"><p>Loading history…</p></div>` : `<div class="card empty"><p>Nothing yet.</p></div>`;
+  let out = '', day = '';
+  for (const e of hist.entries) {
+    const d = dayLabel(e.at);
+    if (d !== day) { out += `${day ? '</ul></div>' : ''}<h2>${esc(d)}</h2><div class="card list"><ul class="feed">`; day = d; }
+    const pending = e.kind === 'Claim';
+    const who = e.source === 'parent' && e.actor ? (String(e.actor).startsWith('phone:') ? ` · ${esc(String(e.actor).slice(6))}` : ' · on the PC') : '';
+    out += `<li><span class="what">${esc(e.detail || sourceName(e.source))}<br><span class="t">${clock(e.at)} · ${esc(sourceName(e.source))}${who}${pending ? ' · waiting for you' : e.kind === 'ClaimDenied' ? ' · declined' : ''}</span></span><span class="${pending ? 't' : e.delta >= 0 ? 'plus' : 'minus'}">${pending ? '⏳' : signed(e.delta)}</span></li>`;
+  }
+  out += '</ul></div>';
+  if (hist.more) out += `<button class="wide" data-more ${hist.loading ? 'disabled' : ''}>${hist.loading ? 'Loading…' : 'Show older'}</button>`;
+  return out;
+}
+
+const field = (label, attrs, hint = '') => `<label class="field"><span>${label}${hint ? `<small>${hint}</small>` : ''}</span><input ${attrs}></label>`;
+const toggle = (on, attrs) => `<label class="switch"><input type="checkbox" ${on ? 'checked' : ''} ${attrs}><span></span></label>`;
+
+function rewardsScreen() {
+  const kc = kidConfig();
+  if (!kc) { if (status !== 'off') setTimeout(() => loadConfig().catch((e) => { error = e.message; render(); }), 0); return `<div class="card empty"><p>Loading quests…</p></div>`; }
+  return `<p class="lead">Coins ${esc(kc.name)} earns for each quest. A negative number takes coins away instead. Changes save as you go.</p>` +
+    kc.modules.map((m) => {
+      const [icon, title] = quest(m.id);
+      const opts = Object.entries(m.options || {}).filter(([k]) => OPTION_LABELS[k]);
+      return `
+      <div class="card quest ${m.enabled ? '' : 'off'}">
+        <div class="quest-top"><p class="kid-name">${icon} ${esc(title)}</p>${toggle(m.enabled, `data-q="${esc(m.id)}" data-f="enabled" aria-label="${esc(title)} on or off"`)}</div>
+        ${m.enabled ? `
+        <div class="grid2">
+          ${field(m.id === 'discgames' ? 'Coins per progress' : m.id === 'rwt' ? 'Coins per level' : 'Coins per activity', `type="text" inputmode="numeric" value="${m.coinsPerActivity}" data-q="${esc(m.id)}" data-f="coinsPerActivity"`)}
+          ${field('Daily limit', `type="text" inputmode="numeric" value="${m.dailyCap}" data-q="${esc(m.id)}" data-f="dailyCap"`, '0 = none')}
+          ${opts.map(([k, v]) => field(OPTION_LABELS[k], `type="text" inputmode="numeric" value="${esc(v)}" data-q="${esc(m.id)}" data-opt="${esc(k)}"`)).join('')}
+        </div>
+        <div class="row between"><span>Needs my OK first</span>${toggle(m.requireApproval, `data-q="${esc(m.id)}" data-f="requireApproval" aria-label="Needs my OK"`)}</div>
+        <p class="t">Earned today: ${signed(m.earnedToday)}</p>` : ''}
+      </div>`;
+    }).join('');
+}
+
+function shopScreen() {
+  const kc = kidConfig();
+  if (!kc) { if (status !== 'off') setTimeout(() => loadConfig().catch((e) => { error = e.message; render(); }), 0); return `<div class="card empty"><p>Loading the shop…</p></div>`; }
+  return `<p class="lead">What ${esc(kc.name)} can buy with coins. Tap one to change it.</p>
+    <div class="card list"><ul class="prizes">${kc.prizes.map((p) => `
+      <li><button data-prize="${esc(p.id)}" class="${p.enabled ? '' : 'off'}"><span class="pi">${(KINDS[p.kind] ?? ['🎁'])[0]}</span><span class="what"><b>${esc(p.name)}</b><br><span class="t">${[p.minutes ? `${p.minutes} min` : '', p.dailyCap ? `max ${p.dailyCap}/day` : '', p.enabled ? '' : 'hidden'].filter(Boolean).join(' · ') || (KINDS[p.kind] ?? ['', ''])[1]}</span></span><span class="price">${coins(p.cost)}</span></button></li>`).join('')}
+    </ul></div>
+    <button class="wide primary" data-newprize>＋ New prize</button>
+    <p class="note">Website, app and arcade prizes, and arcade prices, are set up on the PC.</p>`;
+}
+
+function allowedScreen() {
+  const kc = kidConfig();
+  if (!kc) { if (status !== 'off') setTimeout(() => loadConfig().catch((e) => { error = e.message; render(); }), 0); return `<div class="card empty"><p>Loading…</p></div>`; }
+  return `
+    <h2>Websites</h2>
+    <div class="card">
+      <p class="t" style="margin-top:0">The only websites that open for ${esc(kc.name)} (inside CoinQuest's locked browser).</p>
+      <div class="chips">${kc.sites.map((s) => `<span class="chip">${esc(s)}<button data-unsite="${esc(s)}" aria-label="Remove ${esc(s)}">×</button></span>`).join('') || '<span class="t">None yet.</span>'}</div>
+      <form class="row" data-addsite><input type="text" inputmode="url" autocapitalize="off" autocomplete="off" placeholder="e.g. duolingo.com" name="site"><button class="primary" type="submit">Add</button></form>
+    </div>
+    <h2>YouTube channels</h2>
+    <div class="card">
+      <p class="t" style="margin-top:0">During YouTube time, ${esc(kc.name)} sees recent videos from these channels only.</p>
+      <ul class="feed">${kc.channels.map((c) => `<li><span class="what">${esc(c.title || c.url)}</span><button class="small" data-unchan="${esc(c.id)}">Remove</button></li>`).join('') || '<li><span class="t">None yet.</span></li>'}</ul>
+      <form class="row" data-addchan style="margin-top:10px"><input type="text" inputmode="url" autocapitalize="off" autocomplete="off" placeholder="Paste a channel link, e.g. youtube.com/@MarkRober" name="chan"><button class="primary" type="submit">Add</button></form>
+    </div>
+    <p class="note">Allowed apps, the internet lock and the parent PIN are only changed on the PC.</p>`;
+}
+
+// ---- sheets ------------------------------------------------------------------------------------------------------
+
 function giveSheet(childId, sign) {
-  const kid = state.children.find((c) => c.id === childId);
+  const k = state.children.find((c) => c.id === childId);
   let amount = 5;
   const presets = [1, 5, 10, 25];
   sheet.innerHTML = `
     <form method="dialog">
-      <h3>${sign > 0 ? 'Give coins to' : 'Take coins from'} ${esc(kid.name)}</h3>
+      <h3>${sign > 0 ? 'Give coins to' : 'Take coins from'} ${esc(k.name)}</h3>
       <div class="amounts">${presets.map((n) => `<button type="button" data-amt="${n}" class="${n === amount ? 'sel' : ''}">${n}</button>`).join('')}</div>
       <div class="row" style="gap:8px;margin-bottom:10px"><input type="text" inputmode="numeric" autocomplete="off" placeholder="Other amount (can be negative)" id="amt" style="margin:0;flex:1"><button type="button" data-sign style="flex:none;min-width:56px" aria-label="Make negative or positive">±</button></div>
       <input type="text" id="why" maxlength="80" placeholder="${sign > 0 ? 'What for? (e.g. Helped with dishes)' : 'Why? (optional)'}">
       <div class="row"><button type="button" data-cancel>Cancel</button><button type="submit" class="${sign > 0 ? 'give' : 'take'}" data-ok>${sign > 0 ? 'Give' : 'Take'} <span id="amtLabel">${amount}</span></button></div>
     </form>`;
   const label = sheet.querySelector('#amtLabel');
+  const amt = sheet.querySelector('#amt');
   sheet.querySelectorAll('[data-amt]').forEach((b) => b.addEventListener('click', () => {
-    amount = +b.dataset.amt; label.textContent = amount; sheet.querySelector('#amt').value = '';
+    amount = +b.dataset.amt; label.textContent = amount; amt.value = '';
     sheet.querySelectorAll('[data-amt]').forEach((x) => x.classList.toggle('sel', x === b));
   }));
-  const amt = sheet.querySelector('#amt');
-  const fromField = () => {
-    const v = Math.round(Number(amt.value.replace(/[−–]/g, '-').replace(/[^0-9-]/g, '').replace(/(?!^)-/g, '')));
-    if (Number.isFinite(v) && v !== 0) { amount = Math.max(-1000, Math.min(1000, v)); label.textContent = amount; sheet.querySelectorAll('[data-amt]').forEach((x) => x.classList.remove('sel')); }
-  };
-  amt.addEventListener('input', fromField);
-  // Phone number pads often have no minus key: ± flips the sign.
+  amt.addEventListener('input', () => {
+    const v = num(amt.value);
+    if (v !== 0) { amount = Math.max(-1000, Math.min(1000, v)); label.textContent = amount; sheet.querySelectorAll('[data-amt]').forEach((x) => x.classList.remove('sel')); }
+  });
   sheet.querySelector('[data-sign]').addEventListener('click', () => {
     amount = -amount; amt.value = String(amount); label.textContent = amount;
     sheet.querySelectorAll('[data-amt]').forEach((x) => x.classList.toggle('sel', +x.dataset.amt === amount));
@@ -178,7 +318,40 @@ function giveSheet(childId, sign) {
   sheet.querySelector('form').addEventListener('submit', () => {
     const why = sheet.querySelector('#why').value.trim();
     act('adjust', { childId, delta: sign * amount, reason: why || (sign > 0 ? 'From a parent (phone)' : 'Taken by a parent (phone)') },
-      `${sign > 0 ? 'Gave' : 'Took'} ${amount} ${sign > 0 ? 'to' : 'from'} ${kid.name}`);
+      `${sign > 0 ? 'Gave' : 'Took'} ${amount} ${sign > 0 ? 'to' : 'from'} ${k.name}`).then(() => { if (tab === 'history') loadHistory(true); });
+  });
+  sheet.showModal();
+}
+
+function prizeSheet(p) {
+  const kc = kidConfig();
+  const isNew = !p;
+  p = p ?? { name: '', cost: 30, kind: 'RealWorld', minutes: 15, dailyCap: 1, enabled: true };
+  sheet.innerHTML = `
+    <form method="dialog">
+      <h3>${isNew ? 'New prize' : 'Edit prize'}</h3>
+      ${isNew ? `<label class="field"><span>Kind</span><select id="pk">${['RealWorld', 'YouTube', 'ScreenTimeExtension'].map((k) => `<option value="${k}">${KINDS[k][0]} ${KINDS[k][1]}</option>`).join('')}</select></label>` : `<p class="t">${(KINDS[p.kind] ?? ['', ''])[0]} ${(KINDS[p.kind] ?? ['', 'Prize'])[1]}</p>`}
+      ${field('Name', `type="text" id="pn" maxlength="60" value="${esc(p.name)}" placeholder="e.g. Pick Friday's movie"`)}
+      <div class="grid2">
+        ${field('Price', `type="text" inputmode="numeric" id="pc" value="${p.cost}"`, 'coins')}
+        ${field('Max per day', `type="text" inputmode="numeric" id="pd" value="${p.dailyCap}"`, '0 = no limit')}
+        <span id="pmw" ${p.kind === 'RealWorld' ? 'hidden' : ''}>${field('Minutes', `type="text" inputmode="numeric" id="pm" value="${p.minutes || 15}"`)}</span>
+      </div>
+      <div class="row between" style="margin:6px 0 14px"><span>Shown in the shop</span>${toggle(p.enabled, 'id="pe"')}</div>
+      <div class="row">${isNew ? '' : '<button type="button" class="take" data-del>Delete</button>'}<button type="button" data-cancel>Cancel</button><button type="submit" class="give">Save</button></div>
+    </form>`;
+  const kindSel = sheet.querySelector('#pk');
+  kindSel?.addEventListener('change', () => { sheet.querySelector('#pmw').hidden = kindSel.value === 'RealWorld'; });
+  sheet.querySelector('[data-cancel]').addEventListener('click', () => sheet.close());
+  sheet.querySelector('[data-del]')?.addEventListener('click', () => {
+    sheet.close();
+    act('deletePrize', { childId: kc.id, id: p.id }, `Removed “${p.name}”`);
+  });
+  sheet.querySelector('form').addEventListener('submit', (e) => {
+    const name = sheet.querySelector('#pn').value.trim();
+    if (!name) { e.preventDefault(); sheet.querySelector('#pn').focus(); return; }
+    const prize = { id: isNew ? undefined : p.id, kind: kindSel?.value ?? p.kind, name, cost: Math.max(0, num(sheet.querySelector('#pc').value)), dailyCap: Math.max(0, num(sheet.querySelector('#pd').value)), minutes: Math.max(0, num(sheet.querySelector('#pm').value)), enabled: sheet.querySelector('#pe').checked };
+    act('setPrize', { childId: kc.id, prize }, isNew ? `Added “${name}”` : 'Saved');
   });
   sheet.showModal();
 }
@@ -186,23 +359,33 @@ function giveSheet(childId, sign) {
 let toastTimer;
 function toast(text) {
   let t = document.getElementById('toast');
-  if (!t) {
-    t = document.createElement('div'); t.id = 'toast';
-    t.style.cssText = 'position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom));transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:10px 16px;border-radius:99px;font-size:14px;z-index:9;max-width:90vw';
-    document.body.appendChild(t);
-  }
+  if (!t) { t = document.createElement('div'); t.id = 'toast'; document.body.appendChild(t); }
   t.textContent = '✓ ' + text; t.style.display = 'block';
   clearTimeout(toastTimer); toastTimer = setTimeout(() => (t.style.display = 'none'), 2500);
 }
 
+// ---- events ------------------------------------------------------------------------------------------------------
+
 app.addEventListener('click', (e) => {
   const b = e.target.closest('button');
-  if (!b) return;
-  if (b.dataset.refresh !== undefined) refresh();
+  if (!b || (b.type === 'submit' && b.form)) return;
+  if (b.dataset.refresh !== undefined) { if (tab !== 'home') config = null; refresh(); }
+  else if (b.dataset.tab) {
+    if (b.dataset.kidgo) kidId = b.dataset.kidgo;
+    tab = b.dataset.tab; error = ''; window.scrollTo(0, 0);
+    if (tab === 'history') hist.kid = null; // the screen loads the newest page itself
+    render();
+  }
+  else if (b.dataset.kid) { kidId = b.dataset.kid; render(); }
   else if (b.dataset.give) giveSheet(b.dataset.give, +1);
   else if (b.dataset.take) giveSheet(b.dataset.take, -1);
   else if (b.dataset.claim) act('claim', { seq: +b.dataset.claim, approve: b.dataset.ok === '1' }, b.dataset.ok === '1' ? 'Approved' : 'Declined');
   else if (b.dataset.end) act('endUnlock', { unlockId: b.dataset.end }, 'Game time ended');
+  else if (b.dataset.more !== undefined) loadHistory(false);
+  else if (b.dataset.prize) prizeSheet(kidConfig().prizes.find((p) => p.id === b.dataset.prize));
+  else if (b.dataset.newprize !== undefined) prizeSheet(null);
+  else if (b.dataset.unsite) act('setSites', { childId: kidConfig().id, remove: b.dataset.unsite }, `Removed ${b.dataset.unsite}`);
+  else if (b.dataset.unchan) act('removeChannel', { childId: kidConfig().id, id: b.dataset.unchan }, 'Channel removed');
   else if (b.dataset.pc) { link = links[+b.dataset.pc]; connect(); }
   else if (b.dataset.hint !== undefined) { store.set('cq.hintDone', true); render(); }
   else if (b.dataset.forget !== undefined) {
@@ -211,7 +394,31 @@ app.addEventListener('click', (e) => {
   }
 });
 
+// Quest settings save when a field is finished (or a switch flipped).
+app.addEventListener('change', (e) => {
+  const el = e.target;
+  if (!el.dataset?.q) return;
+  const args = { childId: kidConfig().id, moduleId: el.dataset.q };
+  if (el.dataset.opt) args.options = { [el.dataset.opt]: String(num(el.value)) };
+  else if (el.type === 'checkbox') args[el.dataset.f] = el.checked;
+  else args[el.dataset.f] = el.dataset.f === 'dailyCap' ? Math.max(0, num(el.value)) : num(el.value);
+  el.blur();
+  act('setQuest', args, 'Saved');
+});
+
+app.addEventListener('submit', (e) => {
+  const f = e.target;
+  e.preventDefault();
+  if (f.dataset.addsite !== undefined) {
+    const v = f.site.value.trim(); if (!v) return;
+    f.site.blur(); act('setSites', { childId: kidConfig().id, add: v }, `Added ${v}`);
+  } else if (f.dataset.addchan !== undefined) {
+    const v = f.chan.value.trim(); if (!v) return;
+    f.chan.blur(); act('addChannel', { childId: kidConfig().id, url: v }, 'Channel added');
+  }
+});
+
 document.addEventListener('visibilitychange', () => { if (document.visibilityState === 'visible' && link) refresh(); });
-setInterval(() => { if (status === 'on') render(); }, 30000); // keep "answered … ago" fresh
+setInterval(() => { if (status === 'on' && tab === 'home') render(); }, 30000); // keep "answered … ago" fresh
 
 connect();

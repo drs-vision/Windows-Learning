@@ -119,3 +119,8 @@ Windows software that locks a child's account to an allowlist (apps + websites),
 ## 2026-10-14 — negatives + parent UI polish (v0.1.120–0.1.123)
 - Coin amounts a parent sets can be negative (quest rates and Khan/Duolingo sub-rates, per-game/RWT rates, claim approvals, Give/Take, phone ± key). Negative amounts are charged in full; daily limits cap only earning; EarnedToday sums positive deltas only. Prices stay ≥ 0 (a negative price would let kids farm coins).
 - Parent app polish pass (checked by screenshots at 1280 and 720 px): Settings in two columns; approvals show quest names, "Today 9:41 PM" times and aligned coin boxes; sampler pass on one line; styled file picker; consistent number widths; checkboxes aligned with fields; real minus signs; no stray "·"; visible keyboard focus. e2e selector updated (Give button).
+
+## 2026-10-14 — phone control panel (v0.1.125+)
+- Phone app has a tab bar: Home (coins, requests, give/take, end game time), History (full ledger, paged 40 at a time, grouped by day, shows who on which phone), Rewards (each quest's on/off, coins, daily limit, needs-my-OK, Khan/Duolingo sub-rates; saves per field), Shop (edit price/limit/minutes/shown, delete; add Treat / YouTube time / Extra screen time prizes), Allowed (websites add/remove, YouTube channels add by link/remove).
+- Guardian phone ops added: config, history, setQuest, setPrize, deletePrize, setSites, addChannel (resolved outside the lock), removeChannel. Still PC-only: parent PIN, internet lock, allowed apps, updates, CD games, arcade prices, website/app/arcade prizes. Ledger.Page(child, beforeSeq, limit).
+- Parent app: PIN screen redesigned (card, hint, friendly wrong-PIN message, digits only); focus outlines; Advanced section spacing.

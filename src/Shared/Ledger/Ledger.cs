@@ -120,6 +120,20 @@ public sealed class Ledger : IDisposable
         return d;
     }
 
+    /// <summary>One page of a child's history, newest first, older than <paramref name="beforeSeq"/> (null: from the newest).</summary>
+    public List<LedgerEntry> Page(string childId, long? beforeSeq, int limit)
+    {
+        using var cmd = _db.CreateCommand();
+        cmd.CommandText = "SELECT seq,at,household,child,kind,delta,source,detail,actor,prev_hash,hash FROM ledger WHERE child=$c AND seq<$b ORDER BY seq DESC LIMIT $l";
+        cmd.Parameters.AddWithValue("$c", childId);
+        cmd.Parameters.AddWithValue("$b", beforeSeq ?? long.MaxValue);
+        cmd.Parameters.AddWithValue("$l", limit);
+        var list = new List<LedgerEntry>();
+        using var r = cmd.ExecuteReader();
+        while (r.Read()) list.Add(Read(r));
+        return list;
+    }
+
     public List<LedgerEntry> Recent(string childId, int limit = 50, DateTimeOffset? since = null)
     {
         using var cmd = _db.CreateCommand();

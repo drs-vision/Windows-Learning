@@ -150,7 +150,7 @@ html[data-app="scholar"] .parent input, html[data-app="scholar"] .parent select 
 .prize-row { display: grid; grid-template-columns: 2em 1fr auto; gap: .2em .8em; align-items: center; text-align: left; background: var(--panel); } .prize-row small { grid-column: 2 / 4; } .prize-row.off { opacity: .55; }
 .quest-settings.off { opacity: .6; }
 .switch input { width: 2.6em; height: 1.4em; appearance: none; background: #c9cfe3; border-radius: 999px; position: relative; cursor: pointer; } .switch input::after { content: ""; position: absolute; top: 2px; left: 2px; width: 1.1em; height: 1.1em; background: #fff; border-radius: 50%; transition: left .15s; } .switch input:checked { background: var(--green); } .switch input:checked::after { left: 1.3em; }
-.pin-gate input { font-size: 2rem; letter-spacing: .4em; text-align: center; width: 9em; }
+.pin-gate input { width: 100%; }
 
 /* wizard */
 .wizard { max-width: 720px; margin: 3em auto; padding: 0 1em; }
@@ -596,3 +596,10 @@ button.big { font-size: 1.1em; padding: .7em 1.4em; }
 @media (max-width: 760px) { .parent .claim { flex-direction: column; align-items: stretch; } .parent .claim-actions { justify-content: flex-end; } }
 /* Keyboard users can always see where they are. */
 .parent :is(button, input, select, textarea, summary, a):focus-visible { outline: 2px solid var(--blue); outline-offset: 2px; }
+.pin-gate { width: min(360px, 92vw); display: flex; flex-direction: column; align-items: stretch; gap: .6em; text-align: center; padding: 1.8em 1.6em; }
+.pin-gate h2 { margin: .1em 0 0; } .pin-gate p { margin: 0 0 .4em; }
+.pin-gate .pin-icon { font-size: 2rem; }
+.pin-gate input { font-size: 1.6rem; letter-spacing: .4em; text-align: center; padding: .45em .6em; }
+.pin-gate button.wide { width: 100%; }
+:is(input, select, textarea):focus-visible { outline: 2px solid var(--blue); outline-offset: 1px; }
+.parent .advanced[open] > summary { margin-bottom: .8em; padding-bottom: .6em; border-bottom: 1px solid rgba(127,140,200,.2); }
