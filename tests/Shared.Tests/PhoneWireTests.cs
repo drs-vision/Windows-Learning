@@ -39,7 +39,7 @@ public class PhoneWireTests(ITestOutputHelper output)
     /// The public relay behaves as PhoneLinkService expects: POST a message to a topic, then read it back from the
     /// streaming JSON endpoint with several topics and "since". Skipped quietly when the relay can't be reached.
     /// </summary>
-    [Fact]
+    [Fact, Trait("Category", "Live")]
     public async Task Relay_publish_and_stream()
     {
         using var http = new HttpClient { Timeout = TimeSpan.FromSeconds(30) };
