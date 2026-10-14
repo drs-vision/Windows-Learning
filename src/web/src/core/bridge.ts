@@ -116,6 +116,7 @@ class Bridge {
   parentDiscImport(path: string, useInstaller = false) { return this.call<DiscStatus>('parent.discImport', { path, useInstaller }, { parent: true }); }
   parentDiscSetupBegin(id: string) { return this.call<{ id: string; title: string; drive: string; installer: string; kind: string }>('parent.discSetupBegin', { id }, { parent: true }); }
   parentDiscSetupFinish(id: string, folder?: string, program?: string) { return this.call<{ id: string; title: string; exe: string; installDir: string }>('parent.discSetupFinish', program ? { id, program } : folder ? { id, folder } : { id }, { parent: true }); }
+  parentDiscCoins(id: string, coins: number | null) { return this.call<DiscStatus>('parent.discCoins', { id, coins }, { parent: true }); }
   parentDiscHide(id: string, hidden: boolean) { return this.call<DiscStatus>('parent.discHide', { id, hidden }, { parent: true }); }
   parentDiscRemove(id: string) { return this.call<DiscStatus>('parent.discRemove', { id }, { parent: true }); }
   runSetup(path: string) { return this.call<{ ok: boolean }>('shell.runSetup', { path }); }
@@ -134,7 +135,7 @@ class Bridge {
 
 export const bridge = new Bridge();
 
-export type DiscStatus = { stage: 'idle' | 'importing' | 'error'; message?: string; games: { id: string; title: string; mode?: 'copy' | 'pending' | 'installed'; hidden?: boolean; runs?: string | null; players: { name: string; level: number; score: number }[] }[]; root: string };
+export type DiscStatus = { stage: 'idle' | 'importing' | 'error'; message?: string; games: { id: string; title: string; mode?: 'copy' | 'pending' | 'installed'; hidden?: boolean; coins?: number | null; runs?: string | null; players: { name: string; level: number; score: number }[] }[]; root: string };
 export type RwtStatus = { installed: boolean; otvdm: boolean; stage: 'idle' | 'importing' | 'ready' | 'error'; message?: string; patches: string[]; players: string[]; root: string };
 export interface FpStatus {
   installed: boolean; root?: string | null; clifp: boolean; installerUrl: string;

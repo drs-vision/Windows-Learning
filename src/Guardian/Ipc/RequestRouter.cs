@@ -40,7 +40,7 @@ public sealed class RequestRouter
 
     public RequestRouter(HouseholdStore store, Ledger ledger, ScoreEngine scorer, UnlockManager unlocks, SessionMonitor session,
         BrowserPolicy policy, UpdateChecker updates, YouTubeService youtube, FlashpointService fp, ClassicsStocker stocker, ClassicLibrary lib, NetGate gate, NetLock netLock, CoinQuest.Guardian.Rwt.RwtService rwt, CoinQuest.Guardian.DiscGames.DiscGameService discs, ILogger<RequestRouter> log)
-    { _rwt = rwt; rwt.ProgressSaved += PayRwt; _discs = discs; discs.ProgressSaved += PayDisc; _fp = fp; _stocker = stocker; _gate = gate; _lib = lib; _netLock = netLock; _store = store; _ledger = ledger; _scorer = scorer; _unlocks = unlocks; _session = session; _policy = policy; _updates = updates; _youtube = youtube; _log = log; }
+    { _rwt = rwt; rwt.ProgressSaved += PayRwt; _discs = discs; discs.ProgressSaved += PayDisc; discs.RwtImporter = rwt.ImportNow; _fp = fp; _stocker = stocker; _gate = gate; _lib = lib; _netLock = netLock; _store = store; _ledger = ledger; _scorer = scorer; _unlocks = unlocks; _session = session; _policy = policy; _updates = updates; _youtube = youtube; _log = log; }
 
     /// <summary>
     /// Requests that wait on the network or the disk run side by side; everything else (ledger, settings, timers)
@@ -107,6 +107,7 @@ public sealed class RequestRouter
             Ops.ParentDiscImport => Parent(req, client, child, () => { _discs.StartImport(Str(req, "path"), req.Payload?["useInstaller"]?.GetValue<bool>() == true); return _discs.Status(); }),
             Ops.ParentDiscSetupBegin => Parent(req, client, child, () => _discs.BeginSetup(Str(req, "id"))),
             Ops.ParentDiscSetupFinish => Parent(req, client, child, () => _discs.FinishSetup(Str(req, "id"), OptStr(req, "folder"), OptStr(req, "program"))),
+            Ops.ParentDiscCoins => Parent(req, client, child, () => _discs.SetCoins(Str(req, "id"), req.Payload?["coins"] is System.Text.Json.Nodes.JsonValue cv && cv.TryGetValue<int>(out var c) ? c : null)),
             Ops.ParentDiscHide => Parent(req, client, child, () => _discs.SetHidden(Str(req, "id"), req.Payload?["hidden"]?.GetValue<bool>() == true)),
             Ops.ParentDiscRemove => Parent(req, client, child, () => _discs.Remove(Str(req, "id"))),
             Ops.DiscLaunch => DiscLaunch(req, child),
@@ -340,8 +341,12 @@ public sealed class RequestRouter
             if (child is null) return;
             var s = child.Modules.GetValueOrDefault("discgames") ?? new ModuleSettings { CoinsPerActivity = 5, DailyCap = 60 };
             if (!s.Enabled) return;
-            var room = s.DailyCap > 0 ? Math.Max(0, s.DailyCap - _ledger.EarnedToday(child.Id, "discgames")) : s.CoinsPerActivity;
-            var coins = Math.Min(s.CoinsPerActivity, room);
+            // Each game pays its own rate (set per game by a parent), else the Classic CD games rate.
+            var games = CoinQuest.Guardian.DiscGames.DiscGameService.Games();
+            var due = what.Select(w => games.FirstOrDefault(g => w.StartsWith(g.Title + ":", StringComparison.Ordinal)))
+                          .GroupBy(g => g?.Id).Sum(grp => grp.First()?.Coins ?? s.CoinsPerActivity);
+            var room = s.DailyCap > 0 ? Math.Max(0, s.DailyCap - _ledger.EarnedToday(child.Id, "discgames")) : due;
+            var coins = Math.Min(due, room);
             if (coins <= 0) return;
             _ledger.Append(child.Id, LedgerKind.Earn, coins, "discgames", string.Join("; ", what), "discgames");
             _log.LogInformation("Classic CD progress for {Child}: +{Coins}", child.DisplayName, coins);

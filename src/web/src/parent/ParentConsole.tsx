@@ -596,6 +596,8 @@ function Quests({ child, onSave }: { child: Child; onSave: (c: Child) => void })
   return (
     <div class="quests-editor">
       {MODULES.map((m) => {
+        // Read, Write & Type! is listed (with its own switch and coins) among the Classic CD games.
+        if (m.id === 'rwt' && MODULES.some((x) => x.id === 'discgames')) return null;
         const s = child.modules[m.id] ?? { enabled: false, requireApproval: false, ...m.defaults };
         return (
           <div class={'card quest-settings' + (s.enabled ? '' : ' off')}>
@@ -605,7 +607,7 @@ function Quests({ child, onSave }: { child: Child; onSave: (c: Child) => void })
             </div>
             <p class="muted">{m.description}</p>
             {m.id === 'rwt' && <RwtImport />}
-            {m.id === 'discgames' && <DiscImport />}
+            {m.id === 'discgames' && <DiscImport rwt={{ s: child.modules.rwt ?? { enabled: false, requireApproval: false, ...MODULES.find((x) => x.id === 'rwt')!.defaults }, set: (p) => setMod('rwt', p) }} />}
             <div class="row">
               <label>Coins per activity<input type="number" min={0} value={s.coinsPerActivity} onChange={(e) => setMod(m.id, { coinsPerActivity: Number((e.target as HTMLInputElement).value) })} /></label>
               <label>Daily limit (0 = none)<input type="number" min={0} value={s.dailyCap} onChange={(e) => setMod(m.id, { dailyCap: Number((e.target as HTMLInputElement).value) })} /></label>
@@ -633,8 +635,25 @@ function Quests({ child, onSave }: { child: Child; onSave: (c: Child) => void })
 }
 
 /** Bring the family's own Read, Write & Type! disc image into CoinQuest, once. */
-function DiscImport() {
+type ModSettings = Child['modules'][string];
+function DiscImport({ rwt }: { rwt: { s: ModSettings; set: (p: Partial<ModSettings>) => void } }) {
   const [st, setSt] = useState<DiscStatus | null>(null);
+  const [rw, setRw] = useState<RwtStatus | null>(null);
+  const loadRw = () => bridge.parentRwtStatus().then(setRw).catch(() => {});
+  useEffect(() => { loadRw(); }, [st?.stage]);
+  useEffect(() => { if (rw?.stage === 'importing') { const t = setTimeout(loadRw, 1500); return () => clearTimeout(t); } }, [rw]);
+  async function rwtPick() {
+    setErr('');
+    try {
+      const r = await bridge.pickFile('Choose your Read, Write & Type! disc image', 'Disc image (*.iso, *.zip)|*.iso;*.zip|All files|*.*');
+      if (r.path) setRw(await bridge.parentRwtImport(r.path));
+    } catch (e) { setErr((e as Error).message); }
+  }
+  async function rwtTry() { setErr(''); try { await bridge.playRwt(); } catch (e) { setErr((e as Error).message); } }
+  async function setCoins(id: string, v: string) {
+    setErr('');
+    try { setSt(await bridge.parentDiscCoins(id, v.trim() === '' ? null : Math.max(0, Math.round(Number(v) || 0)))); } catch (e) { setErr((e as Error).message); }
+  }
   const [err, setErr] = useState('');
   const load = () => bridge.parentDiscStatus().then(setSt).catch((e) => setErr(e.message));
   useEffect(() => { load(); }, []);
@@ -672,6 +691,18 @@ function DiscImport() {
   async function tryIt(id: string) { setErr(''); try { const r = await bridge.playDisc(id); setSetupMsg(r.drive ? `Started — its disc is in drive ${r.drive}.` : 'Started.'); } catch (e) { setErr((e as Error).message); } }
   const [setup, setSetup] = useState<{ id: string; title: string; drive: string; installer: string } | null>(null);
   const [setupMsg, setSetupMsg] = useState('');
+  // While an installer runs, CoinQuest finishes by itself once it closes — watch for that.
+  useEffect(() => {
+    if (!setup) return;
+    const t = setInterval(async () => {
+      try {
+        const s = await bridge.parentDiscStatus();
+        const g = s.games.find((x) => x.id === setup.id);
+        if (g?.mode === 'installed') { clearInterval(t); setSetup(null); setSt(s); setSetupMsg(`✅ ${g.title} is installed${g.runs ? ` (${g.runs})` : ''}. Press "Try it" to check it runs.`); }
+      } catch { /* keep waiting */ }
+    }, 5000);
+    return () => clearInterval(t);
+  }, [setup]);
   async function beginSetup(id: string) {
     setErr(''); setSetupMsg('Putting the disc in the virtual drive…');
     try { const s = await bridge.parentDiscSetupBegin(id); setSetup(s); await bridge.runSetup(s.installer); setSetupMsg(''); }
@@ -707,7 +738,29 @@ function DiscImport() {
   if (!st) return <p class="muted small">Checking…</p>;
   return (
     <div class="rwt-import">
-      {st.games.length > 0 && <ul class="disc-games">{st.games.map((g) => (
+      <ul class="disc-games">
+        {rw && (
+          <li class={rwt.s.enabled ? '' : 'off'}>
+            <div class="row between" style="gap:.6em;align-items:center">
+              <div style="flex:1;min-width:0">
+                <b>Read, Write &amp; Type!</b>
+                {rw.stage === 'importing' ? <span class="muted small"> — ⏳ {rw.message ?? 'importing…'}</span>
+                  : !rw.installed ? <span class="muted small"> — not added yet (include its disc in an import, or choose it below)</span>
+                  : <span class="muted small"> — {rw.players.length ? rw.players.join(', ') : 'no players yet (progress is saved for a signed-in player)'}</span>}
+                <div class="row" style="gap:.4em;margin-top:.3em;flex-wrap:wrap;align-items:center">
+                  {rw.installed ? <button class="ghost small" onClick={rwtTry}>Try it</button> : null}
+                  <button class="ghost small" onClick={rwtPick}>{rw.installed ? 'Import again…' : 'Import its disc…'}</button>
+                  <label class="small inline-num">🪙 per level<input type="number" min={0} value={rwt.s.coinsPerActivity} onChange={(e) => rwt.set({ coinsPerActivity: Number((e.target as HTMLInputElement).value) })} /></label>
+                  <label class="small inline-num">daily limit<input type="number" min={0} value={rwt.s.dailyCap} onChange={(e) => rwt.set({ dailyCap: Number((e.target as HTMLInputElement).value) })} /></label>
+                  <label class="check small"><input type="checkbox" checked={rwt.s.requireApproval} onChange={(e) => rwt.set({ requireApproval: (e.target as HTMLInputElement).checked })} /> Needs my OK</label>
+                </div>
+                {rw.patches.some((p) => p.includes('NOT APPLIED')) && <p class="error small">This copy is a different version than expected: {rw.patches.filter((p) => p.includes('NOT')).join('; ')}</p>}
+              </div>
+              <label class="switch" title={rwt.s.enabled ? 'Shown to the kids' : 'Hidden from the kids'}><input type="checkbox" checked={rwt.s.enabled} onChange={(e) => rwt.set({ enabled: (e.target as HTMLInputElement).checked })} /><span>{rwt.s.enabled ? 'On' : 'Off'}</span></label>
+            </div>
+          </li>
+        )}
+        {st.games.map((g) => (
         <li class={g.hidden ? 'off' : ''}>
           <div class="row between" style="gap:.6em;align-items:center">
             <div style="flex:1;min-width:0">
@@ -726,19 +779,21 @@ function DiscImport() {
                 {removing === g.id
                   ? <><button class="danger small" onClick={() => remove(g.id)}>Yes, remove {g.title}</button><button class="ghost small" onClick={() => setRemoving(null)}>Keep it</button></>
                   : <button class="ghost small" title="Delete CoinQuest's copy of this game and its disc image" onClick={() => setRemoving(g.id)}>🗑 Remove</button>}
+                {g.mode !== 'pending' && <label class="small inline-num" title="Coins for each level-up or saved progress in this game (blank: the Classic CD games setting below)">🪙 per progress<input type="number" min={0} placeholder="default" value={g.coins ?? ''} onChange={(e) => setCoins(g.id, (e.target as HTMLInputElement).value)} /></label>}
               </div>
               {removing === g.id && <p class="muted small">Players' progress in this game is deleted too.{g.mode === 'installed' ? ' The installed program stays on the PC — uninstall it from Windows Settings → Apps if you want it gone completely.' : ''}</p>}
             </div>
             {g.mode !== 'pending' && <label class="switch" title={g.hidden ? 'Hidden from the kids' : 'Shown to the kids'}><input type="checkbox" checked={!g.hidden} onChange={(e) => hide(g.id, !(e.target as HTMLInputElement).checked)} /><span>{g.hidden ? 'Off' : 'On'}</span></label>}
           </div>
-        </li>))}</ul>}
+        </li>))}
+      </ul>
       {setup && (
         <div class="card nudge" style="text-align:left">
           <b>Installing {setup.title}</b>
           <ol class="small">
             <li>The disc is in the virtual drive <b>{setup.drive}</b> and its installer has opened (Windows may ask for permission first).</li>
             <li>Click through it with the normal choices. If it offers extras (Acrobat Reader, AOL, registration, DirectX), you can skip them.</li>
-            <li>When it says it's finished (don't start the game from it), come back here:</li>
+            <li>When it's finished (don't start the game from it), CoinQuest notices by itself within a minute. If it doesn't, press "Done installing":</li>
           </ol>
           <div class="row" style="gap:.5em"><button class="primary" onClick={() => finishSetup()}>Done installing</button><button class="ghost small" onClick={() => finishSetup(true)}>Choose its folder…</button><button class="ghost small" onClick={() => bridge.runSetup(setup.installer)}>Open the installer again</button><button class="ghost small" onClick={() => setSetup(null)}>Cancel</button></div>
         </div>
@@ -746,7 +801,7 @@ function DiscImport() {
       {setupMsg && <p class="muted small">{setupMsg}</p>}
       {st.stage === 'importing' ? <p>⏳ {st.message ?? 'Importing…'}</p>
         : <>
-            <p class="small">Add your discs: choose one image (<code>.zip</code>, <code>.iso</code>, <code>.img</code> or <code>.bin</code>), a whole folder of them, or paste a Dropbox link to a file or folder. ClueFinders and similar Learning Company titles are set up automatically. Any other disc is kept as a virtual CD: press <b>Set up</b> once to run its own installer, and Play puts the disc in the virtual drive each time.</p>
+            <p class="small">Add your discs: choose one image (<code>.zip</code>, <code>.iso</code>, <code>.img</code> or <code>.bin</code>), a whole folder of them, or paste a Dropbox link to a file or folder. ClueFinders and similar Learning Company titles, and Read, Write &amp; Type!, are set up automatically. Any other disc is kept as a virtual CD: press <b>Set up</b> once to run its own installer (CoinQuest notices when it's done), and Play puts the disc in the virtual drive each time.</p>
             <div class="row" style="flex-wrap:wrap;gap:.5em">
               <button class={st.games.length ? 'secondary' : 'primary'} onClick={pick}>Import a disc…</button>
               <button class="secondary" onClick={pickDir}>Import a folder…</button>

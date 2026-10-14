@@ -76,14 +76,8 @@ public sealed class RwtService
         {
             try
             {
-                var r = RwtInstaller.Install(source, Root, m => Message = m);
-                LastPatches = r.Patches;
-                OpenUp(SigninDir);
-                _log.LogInformation("Read, Write & Type imported: {Files} files, {MB} MB; patches: {P}", r.Files, r.Bytes / 1048576, string.Join(", ", r.Patches));
-                Message = "Getting the 16-bit Windows helper (otvdm)…";
-                await EnsureOtvdm();
-                Stage = "ready"; Message = $"Imported ({r.Bytes / 1048576} MB). The disc image isn't needed any more.";
-                StartWatching();
+                var mb = await ImportNow(source, m => Message = m);
+                Stage = "ready"; Message = $"Imported ({mb} MB). The disc image isn't needed any more.";
             }
             catch (Exception ex)
             {
@@ -91,6 +85,23 @@ public sealed class RwtService
                 Stage = Installed ? "ready" : "error"; Message = ex.Message;
             }
         });
+    }
+
+    /// <summary>
+    /// Set the game up from a disc image or a folder copied off the disc (also used when the disc turns up in a
+    /// Classic CD games import). Players' progress (SIGNIN) is kept. Returns the size in MB.
+    /// </summary>
+    public async Task<long> ImportNow(string source, Action<string> progress)
+    {
+        var r = RwtInstaller.Install(source, Root, progress);
+        LastPatches = r.Patches;
+        OpenUp(SigninDir);
+        _log.LogInformation("Read, Write & Type imported: {Files} files, {MB} MB; patches: {P}", r.Files, r.Bytes / 1048576, string.Join(", ", r.Patches));
+        progress("Getting the 16-bit Windows helper (otvdm)…");
+        await EnsureOtvdm();
+        StartWatching();
+        if (Stage != "importing") { Stage = "ready"; Message = $"Imported ({r.Bytes / 1048576} MB)."; }
+        return r.Bytes / 1048576;
     }
 
     /// <summary>otvdm (github.com/otya128/winevdm, GPL-2.0): runs 16-bit Windows programs on 64-bit Windows.</summary>

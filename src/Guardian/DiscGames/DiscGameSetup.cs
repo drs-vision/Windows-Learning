@@ -53,6 +53,14 @@ public sealed partial class DiscGameService
         return Status();
     }
 
+    /// <summary>Coins for each bit of progress in this game (null: the Classic CD games setting).</summary>
+    public object SetCoins(string id, int? coins)
+    {
+        var g = Find(id) ?? throw new InvalidOperationException("That game isn't imported");
+        Save(g with { Coins = coins is null ? null : Math.Clamp(coins.Value, 0, 1000) });
+        return Status();
+    }
+
     /// <summary>Remove a game from CoinQuest: its copy, its disc image and its CoinQuest settings. A game installed by its
     /// own installer stays in its folder (uninstall it from Windows Settings → Apps if you want it gone completely).</summary>
     public object Remove(string id)
@@ -234,8 +242,45 @@ public sealed partial class DiscGameService
         var installer = FindInstaller(drive + "\\") ?? throw new InvalidOperationException($"Couldn't find an installer on the disc (drive {drive}). Open the drive in File Explorer to look.");
         lock (_snapshots) _snapshots[g.Id] = TakeSnapshot();
         _log.LogInformation("Setup for {Id}: disc in {Drive}, installer {Installer}", g.Id, drive, installer);
+        _ = Task.Run(() => FinishWhenInstallerCloses(g.Id, drive));
         return new { id = g.Id, title = g.Title, drive, installer, kind = ExeKind(installer) };
     }
+
+    /// <summary>
+    /// Finish by itself once the installer has closed: nothing is running from the disc and no installer-looking
+    /// program is running, for 15 seconds, and the PC has a new program to start. ("Done installing" still works.)
+    /// </summary>
+    private async Task FinishWhenInstallerCloses(string id, string drive)
+    {
+        var started = DateTime.UtcNow; int quiet = 0;
+        var root = drive.TrimEnd('\\') + "\\";
+        while (DateTime.UtcNow - started < TimeSpan.FromHours(3))
+        {
+            await Task.Delay(5000);
+            lock (_snapshots) if (!_snapshots.ContainsKey(id)) return; // finished by hand, or cancelled
+            if (DateTime.UtcNow - started < TimeSpan.FromSeconds(20)) continue; // give the installer time to start
+            bool busy = false;
+            foreach (var p in Process.GetProcesses())
+                using (p)
+                {
+                    string name = "", file = "";
+                    try { name = p.ProcessName; } catch { }
+                    try { file = p.MainModule?.FileName ?? ""; } catch { }
+                    if (InstallerProcess.IsMatch(name) || file.StartsWith(root, StringComparison.OrdinalIgnoreCase)) { busy = true; break; }
+                }
+            quiet = busy ? 0 : quiet + 1;
+            if (quiet < 3) continue;
+            try
+            {
+                FinishSetup(id);
+                _log.LogInformation("Setup for {Id} finished by itself after the installer closed", id);
+                return;
+            }
+            catch { quiet = 0; } // nothing installed yet (the disc's menu may not have been used) — keep waiting
+        }
+    }
+
+    private static readonly Regex InstallerProcess = new(@"^(setup|install|_ins|_isdel|isetup|ikernel|_setup|setup32|inst32|instmsi|isscript|consent)", RegexOptions.IgnoreCase);
 
     /// <summary>The installer is done: find what it added and remember how to start the game.</summary>
     /// <param name="folder">Where the parent says it installed — for when CoinQuest can't tell on its own.</param>
@@ -270,7 +315,7 @@ public sealed partial class DiscGameService
         if (before is null && folder is null) throw new InvalidOperationException("Start the setup first (CoinQuest notes what's on the computer before the installer runs)");
         var after = TakeSnapshot();
         before ??= after with { Links = new(StringComparer.OrdinalIgnoreCase), TakenUtc = DateTime.MaxValue };
-        List<string> newDirs;
+        List<string> newDirs; var iconExes = new List<string>();
         if (folder is not null)
         {
             if (!Directory.Exists(folder)) throw new InvalidOperationException("That folder doesn't exist");
@@ -280,7 +325,10 @@ public sealed partial class DiscGameService
         {
             newDirs = after.Dirs.Except(before.Dirs, StringComparer.OrdinalIgnoreCase).ToList();
             foreach (var key in after.Uninstall.Except(before.Uninstall, StringComparer.OrdinalIgnoreCase))
+            {
                 if (UninstallLocation(key) is { } loc && Directory.Exists(loc)) newDirs.Add(loc);
+                if (UninstallIcon(key) is { } ico) { iconExes.Add(ico); newDirs.Add(Path.GetDirectoryName(ico)!); }
+            }
         }
 
         // The new Start-menu shortcut says what to start (and where, with what arguments). Installing over an earlier
@@ -310,7 +358,13 @@ public sealed partial class DiscGameService
             .SelectMany(d => Directory.EnumerateFiles(d, "*.ini", new EnumerationOptions { RecurseSubdirectories = true, MaxRecursionDepth = 3, MatchCasing = MatchCasing.CaseInsensitive }))
             .Where(i => SafeRead(i) is var t && (t.Contains("CDDrive", StringComparison.OrdinalIgnoreCase) || t.Contains(" - CD]", StringComparison.OrdinalIgnoreCase)))
             .Select(i => PickExe(Path.GetDirectoryName(i)!)).Where(e => e is not null && !IsHelper(e)).FirstOrDefault();
-        if (tlc is not null) { exe = tlc; cwd = Path.GetDirectoryName(tlc); }
+        // 1. A recipe: titles CoinQuest has already worked out. 2. A Learning Company program beside its INI.
+        // 3. The program Windows shows as the game's icon in Apps (the uninstall entry). 4. The new shortcut. 5. The biggest program.
+        var recipe = RecipeExe(g.Title, newDirs);
+        var icon = iconExes.FirstOrDefault(e => File.Exists(e) && !IsHelper(e) && !Launcher.IsMatch(Path.GetFileNameWithoutExtension(e)) && ExeKind(e) is "pe" or "ne");
+        if (recipe is not null) { exe = recipe; cwd = Path.GetDirectoryName(recipe); }
+        else if (tlc is not null) { exe = tlc; cwd = Path.GetDirectoryName(tlc); }
+        else if (icon is not null) { exe = icon; cwd = Path.GetDirectoryName(icon); }
         else if (pick is not null) { exe = pick.Target; cwd = pick.WorkDir; args = pick.Args; }
         else
         {
@@ -419,6 +473,45 @@ public sealed partial class DiscGameService
     {
         @"SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall", @"SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Uninstall",
     };
+
+    /// <summary>The program Windows uses as the app's icon ("C:\\…\\GAME.EXE,0") — usually the game itself.</summary>
+    private static string? UninstallIcon(string key)
+    {
+        try
+        {
+            using var k = Registry.LocalMachine.OpenSubKey(key);
+            var v = (k?.GetValue("DisplayIcon") as string)?.Trim();
+            if (string.IsNullOrEmpty(v)) return null;
+            var m = Regex.Match(v, "^\"?([^\",]+\\.exe)", RegexOptions.IgnoreCase);
+            return m.Success && File.Exists(m.Groups[1].Value) ? m.Groups[1].Value : null;
+        }
+        catch { return null; }
+    }
+
+    /// <summary>
+    /// Titles CoinQuest has already worked out: which program in the installed folder is the game. Matched on the
+    /// title, or on the folder the installer made (a regional edition may be named differently).
+    /// </summary>
+    private static readonly (Regex Match, string[] Exes)[] Recipes =
+    {
+        (new(@"ClueFinders.*6th\s*Grade", RegexOptions.IgnoreCase), new[] { "CF6.EXE" }),
+        (new(@"ClueFinders.*(3rd\s*Grade|Years\s*3)", RegexOptions.IgnoreCase), new[] { "PLAY.EXE" }),
+        (new(@"ClueFinders.*(Reading|Missing\s*Amulet)", RegexOptions.IgnoreCase), new[] { "PLAY.EXE" }),
+    };
+
+    private static string? RecipeExe(string title, IEnumerable<string> dirs)
+    {
+        var list = dirs.Where(Directory.Exists).Distinct(StringComparer.OrdinalIgnoreCase).ToList();
+        foreach (var (match, exes) in Recipes)
+        {
+            var hit = match.IsMatch(title) ? list : list.Where(d => match.IsMatch(d)).ToList();
+            foreach (var d in hit)
+                foreach (var name in exes)
+                    if (Directory.EnumerateFiles(d, name, new EnumerationOptions { RecurseSubdirectories = true, MaxRecursionDepth = 3, MatchCasing = MatchCasing.CaseInsensitive }).FirstOrDefault() is { } f)
+                        return f;
+        }
+        return null;
+    }
 
     private static string? UninstallLocation(string key)
     {

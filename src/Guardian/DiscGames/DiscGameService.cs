@@ -32,6 +32,9 @@ public sealed partial class DiscGameService
     /// <summary>Real progress was saved: (game title, player, what changed). The router pays, under its lock.</summary>
     public event Action<List<string>>? ProgressSaved;
 
+    /// <summary>Sets up Read, Write &amp; Type! from a folder copied off its disc (it has its own section and patches).</summary>
+    public Func<string, Action<string>, Task<long>>? RwtImporter { get; set; }
+
     private static readonly EnumerationOptions Flat = new() { MatchCasing = MatchCasing.CaseInsensitive };
     private static readonly EnumerationOptions Deep = new() { MatchCasing = MatchCasing.CaseInsensitive, RecurseSubdirectories = true };
 
@@ -42,7 +45,7 @@ public sealed partial class DiscGameService
     /// (<paramref name="ExePath"/>, <paramref name="InstallDir"/>), played with the disc image opened as a virtual CD drive.</param>
     public sealed record Game(string Id, string Title, string Exe, string Ini, string? UserDir = null,
         string Mode = "copy", string? Iso = null, string? InstallDir = null, string? ExePath = null, string? Cwd = null, string? Args = null,
-        bool Hidden = false);
+        bool Hidden = false, int? Coins = null);
 
     /// <summary>The program to start.</summary>
     public static string ProgramPath(Game g) => g.Mode == "installed" ? g.ExePath! : Path.Combine(Root, g.Id, "app", g.Exe);
@@ -108,7 +111,7 @@ public sealed partial class DiscGameService
         message = Message,
         games = Games().Select(g => new
         {
-            g.Id, g.Title, g.Mode, g.Hidden,
+            g.Id, g.Title, g.Mode, g.Hidden, g.Coins,
             runs = g.Mode == "installed" ? g.ExePath : g.Mode == "copy" ? g.Exe : null,
             players = Players(g).Select(p => new { p.Name, p.Level, p.Score }),
         }),
@@ -146,6 +149,7 @@ public sealed partial class DiscGameService
                     var prefix = discs.Count > 1 ? $"[{i + 1}/{discs.Count}] {name}: " : "";
                     try { var g = Install(discs[i], m => Message = prefix + m, useInstaller); (g.Mode == "pending" ? needSetup : done).Add(g.Title); }
                     catch (SkipException ex) { skipped.Add(ex.Message); }
+                    catch (DoneElsewhereException ex) { done.Add(ex.Message); }
                     catch (Exception ex) { failed.Add($"{name} ({ex.Message})"); _log.LogWarning(ex, "Classic CD game import failed: {Disc}", discs[i]); }
                 }
                 Message = (done.Count > 0 ? $"Imported {string.Join(", ", done)}. " : "")
@@ -258,9 +262,14 @@ public sealed partial class DiscGameService
             progress("This disc's installer is 16-bit (it won't run on 64-bit Windows) — CoinQuest will set it up itself…");
             useInstaller = false;
         }
-        if (candidates.Count == 0 && FindInstaller(cd + Path.DirectorySeparatorChar) is { } only && ExeKind(only) != "pe"
-            && Directory.EnumerateFiles(cd, "RWT*.EXE", Deep).Any())
-            throw new SkipException("Read, Write & Type! has its own section — skipped here");
+        if (candidates.Count == 0 && Directory.EnumerateFiles(cd, "RWTWINCD.EXE", Deep).Any())
+        {
+            // Read, Write & Type! — CoinQuest has its own setup for it (16-bit, with fixes); players are kept.
+            if (RwtImporter is null) throw new SkipException("Read, Write & Type! — add it under its own section");
+            RwtImporter(cd, progress).GetAwaiter().GetResult();
+            try { DeleteDir(work); } catch { }
+            throw new DoneElsewhereException("Read, Write & Type!");
+        }
         if (candidates.Count == 0 || useInstaller)
         {
             // Not a layout CoinQuest knows (or the parent asked for the real installer): keep the disc and let its own
@@ -599,3 +608,6 @@ public sealed partial class DiscGameService
 
 /// <summary>A disc that belongs elsewhere (not an error).</summary>
 public sealed class SkipException(string message) : Exception(message);
+
+/// <summary>A disc that was set up by another part of CoinQuest (e.g. Read, Write &amp; Type!).</summary>
+public sealed class DoneElsewhereException(string title) : Exception(title);
