@@ -35,12 +35,13 @@ public sealed class RequestRouter
     private readonly ILogger<RequestRouter> _log;
     private readonly Dictionary<string, (string account, DateTimeOffset expires)> _tokens = new();
 
+    private readonly CoinQuest.Guardian.Phone.PhoneLinkService _phones;
     public event Action? StateChanged;      // something a child UI should refresh
     public event Action? ApprovalsChanged;  // something a parent UI should refresh
 
     public RequestRouter(HouseholdStore store, Ledger ledger, ScoreEngine scorer, UnlockManager unlocks, SessionMonitor session,
-        BrowserPolicy policy, UpdateChecker updates, YouTubeService youtube, FlashpointService fp, ClassicsStocker stocker, ClassicLibrary lib, NetGate gate, NetLock netLock, CoinQuest.Guardian.Rwt.RwtService rwt, CoinQuest.Guardian.DiscGames.DiscGameService discs, ILogger<RequestRouter> log)
-    { _rwt = rwt; rwt.ProgressSaved += PayRwt; _discs = discs; discs.ProgressSaved += PayDisc; discs.RwtImporter = rwt.ImportNow; _fp = fp; _stocker = stocker; _gate = gate; _lib = lib; _netLock = netLock; _store = store; _ledger = ledger; _scorer = scorer; _unlocks = unlocks; _session = session; _policy = policy; _updates = updates; _youtube = youtube; _log = log; }
+        BrowserPolicy policy, UpdateChecker updates, YouTubeService youtube, FlashpointService fp, ClassicsStocker stocker, ClassicLibrary lib, NetGate gate, NetLock netLock, CoinQuest.Guardian.Rwt.RwtService rwt, CoinQuest.Guardian.DiscGames.DiscGameService discs, CoinQuest.Guardian.Phone.PhoneLinkService phones, ILogger<RequestRouter> log)
+    { _phones = phones; phones.Handler = HandlePhone; _rwt = rwt; rwt.ProgressSaved += PayRwt; _discs = discs; discs.ProgressSaved += PayDisc; discs.RwtImporter = rwt.ImportNow; _fp = fp; _stocker = stocker; _gate = gate; _lib = lib; _netLock = netLock; _store = store; _ledger = ledger; _scorer = scorer; _unlocks = unlocks; _session = session; _policy = policy; _updates = updates; _youtube = youtube; _log = log; }
 
     /// <summary>
     /// Requests that wait on the network or the disk run side by side; everything else (ledger, settings, timers)
@@ -107,6 +108,9 @@ public sealed class RequestRouter
             Ops.ParentDiscImport => Parent(req, client, child, () => { _discs.StartImport(Str(req, "path"), req.Payload?["useInstaller"]?.GetValue<bool>() == true); return _discs.Status(); }),
             Ops.ParentDiscSetupBegin => Parent(req, client, child, () => _discs.BeginSetup(Str(req, "id"))),
             Ops.ParentDiscSetupFinish => Parent(req, client, child, () => _discs.FinishSetup(Str(req, "id"), OptStr(req, "folder"), OptStr(req, "program"))),
+            Ops.ParentPhoneLink => Parent(req, client, child, () => _phones.Create(OptStr(req, "name") ?? "Phone", _store.Current.Name)),
+            Ops.ParentPhoneLinks => Parent(req, client, child, () => _phones.List()),
+            Ops.ParentPhoneUnlink => Parent(req, client, child, () => _phones.Remove(Str(req, "id"))),
             Ops.ParentDiscCoins => Parent(req, client, child, () => _discs.SetCoins(Str(req, "id"), req.Payload?["coins"] is System.Text.Json.Nodes.JsonValue cv && cv.TryGetValue<int>(out var c) ? c : null)),
             Ops.ParentDiscHide => Parent(req, client, child, () => _discs.SetHidden(Str(req, "id"), req.Payload?["hidden"]?.GetValue<bool>() == true)),
             Ops.ParentDiscRemove => Parent(req, client, child, () => _discs.Remove(Str(req, "id"))),
@@ -397,7 +401,7 @@ public sealed class RequestRouter
         var sites = new (string Name, string Url)[]
         {
             ("YouTube", "https://www.youtube.com/"), ("Arcade games", "https://infinity.flashpointarchive.org/"),
-            ("Game search", "https://db-api.unstable.life/"), ("Updates & RWT helper", "https://api.github.com/"),
+            ("Game search", "https://db-api.unstable.life/"), ("Updates & RWT helper", "https://api.github.com/"), ("Phone link relay", CoinQuest.Guardian.Phone.PhoneLinkService.Relay + "/v1/health"),
         };
         using var http = new HttpClient { Timeout = TimeSpan.FromSeconds(10) };
         http.DefaultRequestHeaders.UserAgent.ParseAdd("CoinQuest/1.0");
@@ -565,6 +569,64 @@ public sealed class RequestRouter
         if (!ok && client.IsAdmin && callerIsChild is null) ok = true;
         if (!ok) { _log.LogInformation("Parent request {Op} refused: PIN required ({Account})", req.Op, client.Account); return Response.Fail(req.Id, "parent PIN required"); }
         return Response.Success(req.Id, action());
+    }
+
+    /// <summary>
+    /// A request from a linked parent phone (already unscrambled with that phone's key, so it is the parent).
+    /// Only these few operations are possible from a phone: see coins and requests, give or take coins, answer a
+    /// request, end running game time. Nothing that changes settings, the internet lock, or what runs on the PC.
+    /// </summary>
+    private object? HandlePhone(string op, System.Text.Json.Nodes.JsonObject args, string actor)
+    {
+        lock (_sync)
+        {
+            var req = new Request { Id = "phone", Op = op, Payload = args.DeepClone() };
+            object? result = op switch
+            {
+                "state" => null,
+                "adjust" => Adjust(req, actor),
+                "claim" => ResolveClaim(req, actor),
+                "endUnlock" => new { ok = _unlocks.End(Str(req, "unlockId")) },
+                _ => throw new InvalidOperationException("CoinQuest on the PC doesn't know that yet — update it"),
+            };
+            if (op == "endUnlock") AfterChange();
+            if (op != "state") _log.LogInformation("Phone ({Actor}): {Op}", actor, op);
+            return new { result, state = PhoneState() };
+        }
+    }
+
+    /// <summary>What the phone shows: each child's coins, today's coins in and out, time running, and requests waiting.</summary>
+    private object PhoneState()
+    {
+        var h = _store.Current;
+        var today = new DateTimeOffset(DateTimeOffset.Now.Date);
+        return new
+        {
+            household = h.Name,
+            version = Version,
+            at = DateTimeOffset.UtcNow,
+            atKeyboard = _session.Current?.Child.Id,
+            children = h.Children.Select(c =>
+            {
+                var recent = _ledger.Recent(c.Id, 200, today);
+                return new
+                {
+                    id = c.Id,
+                    name = c.DisplayName,
+                    balance = _ledger.Balance(c.Id),
+                    earnedToday = recent.Where(e => e.Delta > 0).Sum(e => e.Delta),
+                    spentToday = -recent.Where(e => e.Delta < 0).Sum(e => e.Delta),
+                    unlocks = _unlocks.ActiveFor(c.Id).Select(u => new { id = u.Id, name = u.PrizeName, secondsLeft = u.SecondsLeft }).ToList(),
+                    recent = recent.OrderByDescending(e => e.Seq).Take(12)
+                        .Select(e => new { at = e.At, delta = e.Delta, what = e.Detail.Length > 0 ? e.Detail : e.Source }).ToList(),
+                };
+            }).ToList(),
+            claims = _ledger.PendingClaims().Select(p => new
+            {
+                seq = p.LedgerSeq, childId = p.ChildId, child = h.Children.FirstOrDefault(c => c.Id == p.ChildId)?.DisplayName ?? "",
+                coins = p.Coins, what = p.Detail.Length > 0 ? p.Detail : p.ModuleId, at = p.At,
+            }).ToList(),
+        };
     }
 
     private object ParentState()

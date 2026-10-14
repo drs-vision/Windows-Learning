@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#101828">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="CoinQuest">
+<meta name="referrer" content="no-referrer">
+<title>CoinQuest Parent</title>
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<style>
+  :root {
+    --bg: #f4f1ea; --panel: #ffffff; --panel-2: #f8f6f1; --ink: #1d2433; --muted: #6b7280; --line: #e6e1d6;
+    --gold: #e0a100; --gold-ink: #6b4a00; --gold-soft: #fff4d1; --good: #1f8a4c; --good-soft: #e3f5ea; --bad: #c2410c; --bad-soft: #fdeadf;
+    --accent: #2f5bd3; --shadow: 0 1px 2px rgba(16,24,40,.06), 0 4px 16px rgba(16,24,40,.06);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg: #0e1320; --panel: #171e2e; --panel-2: #1d2538; --ink: #eef1f7; --muted: #98a2b3; --line: #2a3349;
+      --gold: #f2b92d; --gold-ink: #ffd772; --gold-soft: #3a2f12; --good: #4ade80; --good-soft: #12301f; --bad: #fb923c; --bad-soft: #3a1f12;
+      --accent: #7aa2ff; --shadow: none; }
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; background: var(--bg); color: var(--ink); font: 16px/1.4 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; -webkit-text-size-adjust: 100%; }
+  body { padding: env(safe-area-inset-top) 0 env(safe-area-inset-bottom); }
+  main { max-width: 560px; margin: 0 auto; padding: 12px 16px 40px; }
+  header { display: flex; align-items: center; gap: 10px; padding: 8px 0 14px; }
+  header img { width: 34px; height: 34px; border-radius: 9px; }
+  header h1 { font-size: 19px; margin: 0; flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .status { font-size: 13px; color: var(--muted); display: flex; align-items: center; gap: 6px; margin: -6px 0 12px; }
+  .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--muted); flex: none; }
+  .dot.on { background: var(--good); } .dot.off { background: var(--bad); } .dot.wait { background: var(--gold); animation: pulse 1s infinite alternate; }
+  @keyframes pulse { to { opacity: .35; } }
+  button { font: inherit; border: 0; border-radius: 12px; padding: 10px 14px; cursor: pointer; background: var(--panel-2); color: var(--ink); min-height: 44px; }
+  button:active { transform: scale(.98); }
+  button.primary { background: var(--accent); color: #fff; font-weight: 600; }
+  button.give { background: var(--good-soft); color: var(--good); font-weight: 600; }
+  button.take { background: var(--bad-soft); color: var(--bad); font-weight: 600; }
+  button.icon { min-width: 44px; padding: 8px; background: transparent; font-size: 20px; }
+  button:disabled { opacity: .5; }
+  .card { background: var(--panel); border-radius: 18px; box-shadow: var(--shadow); padding: 16px; margin-bottom: 14px; border: 1px solid var(--line); }
+  .kid-top { display: flex; align-items: baseline; justify-content: space-between; gap: 10px; }
+  .kid-name { font-size: 20px; font-weight: 700; margin: 0; }
+  .here { font-size: 12px; color: var(--good); background: var(--good-soft); border-radius: 99px; padding: 2px 8px; margin-left: 6px; vertical-align: middle; font-weight: 600; }
+  .balance { font-size: 34px; font-weight: 800; color: var(--gold-ink); white-space: nowrap; font-variant-numeric: tabular-nums; }
+  .coin { display: inline-block; width: .8em; height: .8em; border-radius: 50%; background: radial-gradient(circle at 35% 30%, #ffe08a, var(--gold) 60%, #b37d00); vertical-align: -.05em; margin-right: .15em; box-shadow: inset 0 0 0 .07em rgba(0,0,0,.15); }
+  .today { color: var(--muted); font-size: 14px; margin: 2px 0 12px; }
+  .row { display: flex; gap: 10px; }
+  .row > button { flex: 1; }
+  .unlock { display: flex; align-items: center; justify-content: space-between; gap: 10px; background: var(--gold-soft); border-radius: 12px; padding: 8px 8px 8px 12px; margin-top: 10px; font-size: 14px; }
+  details { margin-top: 10px; }
+  summary { color: var(--muted); font-size: 14px; cursor: pointer; padding: 6px 0; }
+  ul.feed { list-style: none; margin: 4px 0 0; padding: 0; font-size: 14px; }
+  ul.feed li { display: flex; justify-content: space-between; gap: 12px; padding: 7px 0; border-top: 1px solid var(--line); }
+  ul.feed .what { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .plus { color: var(--good); font-weight: 700; font-variant-numeric: tabular-nums; } .minus { color: var(--bad); font-weight: 700; font-variant-numeric: tabular-nums; }
+  .t { color: var(--muted); font-size: 12px; }
+  h2 { font-size: 15px; text-transform: uppercase; letter-spacing: .04em; color: var(--muted); margin: 22px 4px 10px; }
+  .claim .who { font-weight: 700; } .claim p { margin: 4px 0 12px; }
+  .empty { text-align: center; padding: 28px 18px; }
+  .empty h2 { text-transform: none; letter-spacing: 0; font-size: 22px; color: var(--ink); margin: 12px 0 8px; }
+  .empty ol { text-align: left; color: var(--muted); padding-left: 22px; }
+  .note { color: var(--muted); font-size: 13px; text-align: center; margin-top: 18px; }
+  .err { background: var(--bad-soft); color: var(--bad); border-radius: 12px; padding: 10px 12px; font-size: 14px; margin-bottom: 12px; }
+  dialog { border: 0; border-radius: 22px 22px 0 0; padding: 18px 16px calc(18px + env(safe-area-inset-bottom)); width: 100%; max-width: 560px; margin: auto auto 0; background: var(--panel); color: var(--ink); }
+  dialog::backdrop { background: rgba(10,14,24,.45); }
+  dialog h3 { margin: 0 0 12px; font-size: 19px; }
+  .amounts { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin-bottom: 10px; }
+  .amounts button.sel { outline: 2px solid var(--accent); }
+  input[type=number], input[type=text] { font: inherit; width: 100%; padding: 12px; border-radius: 12px; border: 1px solid var(--line); background: var(--panel-2); color: var(--ink); margin-bottom: 10px; min-height: 44px; }
+  .hint { background: var(--gold-soft); color: var(--gold-ink); border-radius: 14px; padding: 12px 14px; font-size: 14px; margin-bottom: 14px; display: flex; gap: 10px; align-items: flex-start; }
+  .hint button { min-height: 0; padding: 2px 8px; background: transparent; color: inherit; font-size: 18px; }
+  .pcs { display: flex; gap: 8px; overflow-x: auto; margin: -4px 0 12px; }
+  .pcs button { white-space: nowrap; min-height: 36px; padding: 6px 12px; font-size: 14px; }
+  .pcs button.on { background: var(--accent); color: #fff; }
+</style>
+</head>
+<body>
+<main id="app"><p class="note">Loading…</p></main>
+<dialog id="sheet"></dialog>
+<script type="module" src="app.js"></script>
+</body>
+</html>

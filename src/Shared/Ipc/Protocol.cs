@@ -90,6 +90,9 @@ public static class Ops
     public const string ParentDiscImport = "parent.discImport";       // { path } → import a disc image (.iso/.img/.bin/.zip) in the background
     public const string ParentDiscSetupBegin = "parent.discSetupBegin";   // { id } → disc in the virtual drive; which installer to run
     public const string ParentDiscSetupFinish = "parent.discSetupFinish"; // { id, folder? } → the installer finished: learn where the game is
+    public const string ParentPhoneLink = "parent.phoneLink";         // { name } → { id, url } for the QR code
+    public const string ParentPhoneLinks = "parent.phoneLinks";       // linked phones + relay status
+    public const string ParentPhoneUnlink = "parent.phoneUnlink";     // { id } → that phone can't control the PC any more
     public const string ParentDiscCoins = "parent.discCoins";         // { id, coins|null } → coins per bit of progress in that game
     public const string ParentDiscHide = "parent.discHide";           // { id, hidden } → show/hide a game for the child
     public const string ParentDiscRemove = "parent.discRemove";       // { id } → delete CoinQuest's copy and disc image

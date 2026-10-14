@@ -64,6 +64,8 @@ builder.Services.AddSingleton<CoinQuest.Guardian.Rwt.RwtService>();
 builder.Services.AddSingleton<CoinQuest.Guardian.DiscGames.DiscGameService>();
 builder.Services.AddSingleton<ProcessEnforcer>();
 builder.Services.AddSingleton<UpdateChecker>();
+builder.Services.AddSingleton<CoinQuest.Guardian.Phone.PhoneLinkService>();
+builder.Services.AddHostedService(sp => sp.GetRequiredService<CoinQuest.Guardian.Phone.PhoneLinkService>());
 builder.Services.AddSingleton<RequestRouter>();
 builder.Services.AddSingleton<PipeServer>();
 builder.Services.AddHostedService<GuardianWorker>();

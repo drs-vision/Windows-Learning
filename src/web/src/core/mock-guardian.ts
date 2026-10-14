@@ -164,6 +164,9 @@ export class MockGuardian {
       case 'parent.fpSearch': return ok([]);
       case 'arcade.prepare': return ok({ url: './content/games/swf/ending.swf', base: './content/games/swf/', prefix: './content/games/swf/', platform: 'Flash' });
       case 'arcade.reportBroken': return ok({ ok: true, refund: 6 });
+      case 'parent.phoneLinks':
+      case 'parent.phoneUnlink': return ok({ relay: 'https://ntfy.sh', status: 'no phones linked', phones: [] });
+      case 'parent.phoneLink': return ok({ id: 'demo', name: 'Phone', url: 'https://drs-vision.github.io/Windows-Learning/#demo' });
       case 'parent.discCoins':
       case 'parent.discStatus': return ok({ stage: 'idle', games: [], root: 'C:\\ProgramData\\CoinQuest\\discgames' });
       case 'parent.rwtStatus': return ok({ installed: false, otvdm: false, stage: 'idle', patches: [], players: [], root: 'C:\\ProgramData\\CoinQuest\\rwt' });

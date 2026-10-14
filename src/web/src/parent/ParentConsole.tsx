@@ -1,7 +1,8 @@
 import { useEffect, useRef, useState } from 'preact/hooks';
 import type { Child, FlashpointGame, FpCatalogGame, Game, ParentState, Prize, WebGame } from '../core/types';
 import { BLOCK_MINUTES, autoSamplerPrice, defaultArcadePrice, youTubeBlockPrice } from '../core/types';
-import { bridge, type DiscStatus, type FpStatus, type RwtStatus } from '../core/bridge';
+import { bridge, type DiscStatus, type FpStatus, type PhoneLinks, type RwtStatus } from '../core/bridge';
+import qrcode from 'qrcode-generator';
 import { MODULES } from '../modules/registry';
 import { SetupWizard } from './SetupWizard';
 import { fmt } from '../modules/arcade/Arcade';
@@ -853,6 +854,64 @@ function RwtImport() {
 
 // ---------------------------------------------------------------- Settings
 
+/** "Control from my phone": a QR code a parent scans once; then coins and requests from their phone, anywhere. */
+function PhoneControl() {
+  const [st, setSt] = useState<PhoneLinks | null>(null);
+  const [name, setName] = useState('');
+  const [qr, setQr] = useState<{ name: string; svg: string } | null>(null);
+  const [err, setErr] = useState('');
+  const [removing, setRemoving] = useState<string | null>(null);
+  const load = () => bridge.parentPhoneLinks().then(setSt).catch((e) => setErr(e.message));
+  useEffect(() => { load(); }, []);
+  // While the code is showing, watch for the phone's first visit so the card can say it worked.
+  useEffect(() => { if (!qr) return; const t = setInterval(load, 4000); return () => clearInterval(t); }, [qr]);
+  async function link() {
+    setErr('');
+    try {
+      const r = await bridge.parentPhoneLink(name.trim() || 'Phone');
+      const q = qrcode(0, 'M'); q.addData(r.url); q.make();
+      setQr({ name: r.name, svg: q.createSvgTag({ cellSize: 5, margin: 2, scalable: true }) });
+      setName(''); load();
+    } catch (e) { setErr((e as Error).message); }
+  }
+  async function unlink(id: string) { setErr(''); try { setSt(await bridge.parentPhoneUnlink(id)); setRemoving(null); } catch (e) { setErr((e as Error).message); } }
+  const linkedNow = qr && st?.phones.find((p) => p.name === qr.name && p.lastSeen);
+  return (
+    <div class="card phone-control">
+      <h3>📱 Control from my phone</h3>
+      {qr ? (
+        <div class="qr-box">
+          {linkedNow
+            ? <p>✅ <b>{qr.name}</b> is linked. You can close this.</p>
+            : <p>Point your phone's camera at this code, then tap the link that appears. Add the page to your home screen so it opens like an app.</p>}
+          <div class="qr" dangerouslySetInnerHTML={{ __html: qr.svg }} />
+          <p class="muted small">Anyone with this code can give or take coins, so don't share a photo of it.</p>
+          <button class="secondary" onClick={() => { setQr(null); load(); }}>Done</button>
+        </div>
+      ) : (
+        <>
+          <p class="muted">See coins, give or take them, answer requests, and end game time from your phone, anywhere. No account or password: the code is the key.</p>
+          <div class="row"><input placeholder="Whose phone? (e.g. Mom)" value={name} onInput={(e) => setName((e.target as HTMLInputElement).value)} maxLength={30} /><button class="primary" onClick={link}>Show the code</button></div>
+        </>
+      )}
+      {st && st.phones.length > 0 && (
+        <ul class="phones">
+          {st.phones.map((p) => (
+            <li>
+              <span><b>{p.name}</b> <span class="muted small">{p.lastSeen ? `last used ${new Date(p.lastSeen).toLocaleString()}` : 'not used yet'}</span></span>
+              {removing === p.id
+                ? <span><button class="danger small" onClick={() => unlink(p.id)}>Yes, remove</button> <button class="ghost small" onClick={() => setRemoving(null)}>Keep</button></span>
+                : <button class="ghost small" onClick={() => setRemoving(p.id)}>Remove</button>}
+            </li>
+          ))}
+        </ul>
+      )}
+      {st && st.phones.length > 0 && <p class="muted small">Connection: {st.status}</p>}
+      {err && <p class="error small">{err}</p>}
+    </div>
+  );
+}
+
 function Settings({ state, child, onSave, onChange }: { state: ParentState; child: Child; onSave: (c: Child) => void; onChange: () => void }) {
   const [pin, setPin] = useState(''); const [pinMsg, setPinMsg] = useState('');
   const [adj, setAdj] = useState(0); const [reason, setReason] = useState('');
@@ -867,6 +926,7 @@ function Settings({ state, child, onSave, onChange }: { state: ParentState; chil
         <h3>Give or take coins</h3>
         <div class="row"><input type="number" value={adj} onInput={(e) => setAdj(Number((e.target as HTMLInputElement).value))} /><input placeholder="Reason (e.g. Cleaned room)" value={reason} onInput={(e) => setReason((e.target as HTMLInputElement).value)} /><button class="primary" disabled={!adj} onClick={() => bridge.parentAdjust(child.id, adj, reason || 'Parent adjustment').then(() => { setAdj(0); setReason(''); onChange(); })}>Apply</button></div>
       </div>
+      <PhoneControl />
       <div class="card">
         <h3>Parent PIN</h3>
         <div class="row"><input type="password" inputMode="numeric" placeholder="New PIN (4–8 digits)" value={pin} onInput={(e) => setPin((e.target as HTMLInputElement).value)} /><button class="primary" disabled={!/^\d{4,8}$/.test(pin)} onClick={() => bridge.parentSetPin(pin).then(() => { setPin(''); setPinMsg('PIN changed.'); }).catch((e) => setPinMsg(e.message))}>Change</button></div>

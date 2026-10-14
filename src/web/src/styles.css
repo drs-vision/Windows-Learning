@@ -557,5 +557,10 @@ button.big { font-size: 1.1em; padding: .7em 1.4em; }
 .disc-games { list-style: none; padding: 0; margin: .4em 0 .8em; display: grid; gap: .5em; }
 .disc-games > li { padding: .6em .8em; border-radius: 10px; background: var(--panel-2); }
 .disc-games > li.off b { opacity: .55; text-decoration: line-through; }
+.phone-control .qr-box { text-align: center; }
+.phone-control .qr { width: 280px; max-width: 100%; margin: .6em auto; background: #fff; padding: 8px; border-radius: 12px; }
+.phone-control .qr svg { display: block; width: 100%; height: auto; }
+.phone-control ul.phones { list-style: none; padding: 0; margin: .8em 0 0; }
+.phone-control ul.phones li { display: flex; justify-content: space-between; align-items: center; gap: .6em; padding: .45em 0; border-top: 1px solid var(--line, rgba(127,127,127,.25)); }
 .disc-games .inline-num { display: inline-flex; align-items: center; gap: .35em; margin: 0; }
 .disc-games .inline-num input { width: 4.5em; padding: .2em .4em; }
