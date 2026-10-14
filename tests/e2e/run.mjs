@@ -84,7 +84,7 @@ await check('parent gives 400 coins', async () => {
   await parent.click('nav.tabs >> text=Settings');
   await parent.fill('input[placeholder^="Reason"]', 'E2E test');
   await parent.locator('input[type=number]').first().fill('400');
-  await parent.click('text=Apply');
+  await parent.click('button:text-is("Give")');
   await sleep(1000);
   await shot(parent, 'parent-coins');
 });
