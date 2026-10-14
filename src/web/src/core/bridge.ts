@@ -108,14 +108,14 @@ class Bridge {
   parentFpThumbs(ids: string[]) { return this.call<Record<string, string>>('parent.fpThumbs', { ids }, { parent: true }); }
   launch(exe: string) { return this.call('shell.launch', { exe }); }
   pickFolder(title: string) { return this.call<{ path: string | null }>('shell.pickFolder', { title }); }
-  pickFile(title: string, filter: string) { return this.call<{ path: string | null }>('shell.pickFile', { title, filter }); }
+  pickFile(title: string, filter: string, dir?: string) { return this.call<{ path: string | null }>('shell.pickFile', { title, filter, dir: dir ?? '' }); }
   parentRwtStatus() { return this.call<RwtStatus>('parent.rwtStatus', undefined, { parent: true }); }
   parentRwtImport(path: string) { return this.call<RwtStatus>('parent.rwtImport', { path }, { parent: true }); }
   /** Read, Write & Type!: ask the Guardian where it lives, then have the shell start it through otvdm. */
   parentDiscStatus() { return this.call<DiscStatus>('parent.discStatus', undefined, { parent: true }); }
   parentDiscImport(path: string, useInstaller = false) { return this.call<DiscStatus>('parent.discImport', { path, useInstaller }, { parent: true }); }
   parentDiscSetupBegin(id: string) { return this.call<{ id: string; title: string; drive: string; installer: string; kind: string }>('parent.discSetupBegin', { id }, { parent: true }); }
-  parentDiscSetupFinish(id: string, folder?: string) { return this.call<{ id: string; title: string; exe: string; installDir: string }>('parent.discSetupFinish', folder ? { id, folder } : { id }, { parent: true }); }
+  parentDiscSetupFinish(id: string, folder?: string, program?: string) { return this.call<{ id: string; title: string; exe: string; installDir: string }>('parent.discSetupFinish', program ? { id, program } : folder ? { id, folder } : { id }, { parent: true }); }
   parentDiscHide(id: string, hidden: boolean) { return this.call<DiscStatus>('parent.discHide', { id, hidden }, { parent: true }); }
   parentDiscRemove(id: string) { return this.call<DiscStatus>('parent.discRemove', { id }, { parent: true }); }
   runSetup(path: string) { return this.call<{ ok: boolean }>('shell.runSetup', { path }); }

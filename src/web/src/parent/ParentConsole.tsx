@@ -689,6 +689,14 @@ function DiscImport() {
     try { const r = await bridge.parentDiscSetupFinish(setup.id, folder); setSetup(null); setSetupMsg(`✅ ${r.title} is installed (${r.exe}). Press "Try it" to check it runs.`); load(); }
     catch (e) { setErr((e as Error).message); }
   }
+  async function chooseProgram(id: string, title: string, runs?: string | null) {
+    setErr('');
+    const dir = runs ? runs.replace(/\\[^\\]*$/, '') : 'C:\\Program Files (x86)';
+    const p = await bridge.pickFile(`Choose the program that starts ${title} (the game itself, not an installer or launcher)`, 'Programs (*.exe)|*.exe', dir);
+    if (!p.path) return;
+    try { const r = await bridge.parentDiscSetupFinish(id, undefined, p.path); setSetup(null); setSetupMsg(`✅ ${r.title} will start ${r.exe}. Press "Try it" to check it runs.`); load(); }
+    catch (e) { setErr((e as Error).message); }
+  }
   async function alreadyInstalled(id: string, title: string) {
     setErr('');
     const p = await bridge.pickFolder(`Choose the folder ${title} installed to (e.g. in C:\\Program Files (x86))`);
@@ -714,7 +722,7 @@ function DiscImport() {
                       <button class="ghost small" onClick={() => alreadyInstalled(g.id, g.title)}>Already installed? Choose its folder…</button></>
                   : <><button class="ghost small" onClick={() => tryIt(g.id)}>Try it</button>
                       {g.mode === 'copy' && <button class="ghost small" title="If it crashes or misbehaves: re-import it and run the disc's own installer instead" onClick={() => viaInstaller(g.title)}>Problems? Use its installer…</button>}
-                      {g.mode === 'installed' && <button class="ghost small" title="If it starts the wrong thing: point CoinQuest at the folder the game is installed in" onClick={() => alreadyInstalled(g.id, g.title)}>Wrong program? Choose its folder…</button>}</>}
+                      {g.mode === 'installed' && <button class="ghost small" title="If it starts the wrong thing (an installer or launcher): pick the game's own program" onClick={() => chooseProgram(g.id, g.title, g.runs)}>Wrong program? Choose it…</button>}</>}
                 {removing === g.id
                   ? <><button class="danger small" onClick={() => remove(g.id)}>Yes, remove {g.title}</button><button class="ghost small" onClick={() => setRemoving(null)}>Keep it</button></>
                   : <button class="ghost small" title="Delete CoinQuest's copy of this game and its disc image" onClick={() => setRemoving(g.id)}>🗑 Remove</button>}

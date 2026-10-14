@@ -169,8 +169,31 @@ public sealed partial class DiscGameService
 
     /// <summary>The installer is done: find what it added and remember how to start the game.</summary>
     /// <param name="folder">Where the parent says it installed — for when CoinQuest can't tell on its own.</param>
-    public object FinishSetup(string id, string? folder = null)
+    /// <param name="program">The game's program, chosen by the parent — used as is.</param>
+    public object FinishSetup(string id, string? folder = null, string? program = null)
     {
+        if (program is not null)
+        {
+            var pg = Find(id) ?? throw new InvalidOperationException("That game isn't imported");
+            if (!File.Exists(program) || ExeKind(program) is not ("pe" or "ne")) throw new InvalidOperationException("That isn't a Windows program — choose the game's .exe");
+            if (new DriveInfo(program).DriveType == DriveType.CDRom) throw new InvalidOperationException("That's on the disc — choose the program in the folder the game installed to");
+            var dir = Path.GetDirectoryName(program)!;
+            // The install folder is the game's top folder (e.g. "…\The Learning Company\The ClueFinders 6th Grade Adventures").
+            var top = dir;
+            foreach (var root in new[] { Environment.GetFolderPath(Environment.SpecialFolder.ProgramFilesX86), Environment.GetFolderPath(Environment.SpecialFolder.ProgramFiles) })
+                if (root.Length > 0 && dir.StartsWith(root + "\\", StringComparison.OrdinalIgnoreCase))
+                {
+                    var parts = Path.GetRelativePath(root, dir).Split('\\');
+                    top = Path.Combine(root, string.Join("\\", parts.Take(Math.Min(parts.Length, 2))));
+                }
+            OpenUp(top);
+            var chosen = pg with { Mode = "installed", ExePath = program, InstallDir = top, Cwd = dir, Args = null, Exe = Path.GetFileName(program) };
+            Save(chosen);
+            lock (_snapshots) _snapshots.Remove(pg.Id);
+            _dirsCache = (DateTime.MinValue, new());
+            _log.LogInformation("Parent chose {Exe} for {Id}", program, pg.Id);
+            return new { id = pg.Id, title = pg.Title, exe = program, installDir = top };
+        }
         var g = Find(id) ?? throw new InvalidOperationException("That game isn't imported");
         Snapshot? before;
         lock (_snapshots) _snapshots.TryGetValue(g.Id, out before);
@@ -228,6 +251,12 @@ public sealed partial class DiscGameService
                     : "Couldn't tell where the installer put the game. If it finished, press \"Choose its folder…\" and pick the folder it installed to.");
         }
         // A disc launcher ("PLAY.EXE", AUTORUN, …) checks for the CD and offers to install; start the game itself if it's there.
+        if (Launcher.IsMatch(Path.GetFileNameWithoutExtension(exe)) && args is { Length: > 0 })
+            foreach (var tok in Regex.Matches(args, "\"([^\"]+\\.exe)\"|(\\S+\\.exe)", RegexOptions.IgnoreCase).Select(m => m.Groups[1].Success ? m.Groups[1].Value : m.Groups[2].Value))
+            {
+                var full = Path.IsPathRooted(tok) ? tok : Path.Combine(cwd is { Length: > 0 } && Directory.Exists(cwd) ? cwd : Path.GetDirectoryName(exe)!, tok);
+                if (File.Exists(full) && !Launcher.IsMatch(Path.GetFileNameWithoutExtension(full))) { exe = full; cwd = Path.GetDirectoryName(full); args = null; break; }
+            }
         if (Launcher.IsMatch(Path.GetFileNameWithoutExtension(exe)))
         {
             var dir = newDirs.Where(d => exe.StartsWith(d.TrimEnd('\\') + "\\", StringComparison.OrdinalIgnoreCase)).OrderBy(d => d.Length).FirstOrDefault()
@@ -259,8 +288,8 @@ public sealed partial class DiscGameService
         Regex.Split(title, @"[^A-Za-z0-9]+").Where(w => w.Length >= 3 || w.Any(char.IsDigit))
             .Where(w => !new[] { "the", "and", "adventures", "adventure", "deluxe", "edition" }.Contains(w.ToLowerInvariant())).ToArray();
 
-    private static readonly Regex Launcher = new(@"^(play|autorun|auto|launch|launcher|start|menu|run)\d*$", RegexOptions.IgnoreCase);
-    private static readonly Regex Helper = new(@"unins|uninst|setup|instal|readme|help|regist|ereg|acro|aol|web|update|config|dxsetup|directx|quicktime|qtinst", RegexOptions.IgnoreCase);
+    private static readonly Regex Launcher = new(@"^(play|autorun|auto|launch|launcher|start|menu|run|tlcrun|tlclaunch|tlcplay)\d*$", RegexOptions.IgnoreCase);
+    private static readonly Regex Helper = new(@"unins|uninst|setup|instal|readme|help|regist|ereg|acro|aol|web|update|config|dxsetup|directx|quicktime|qtinst|assess|demo|tour|preview", RegexOptions.IgnoreCase);
     private static bool IsHelper(string exe) => Helper.IsMatch(Path.GetFileNameWithoutExtension(exe));
 
     /// <summary>The disc's installer: what AUTORUN.INF opens, else a 32-bit SETUP (the 16-bit ones don't run on 64-bit Windows).</summary>

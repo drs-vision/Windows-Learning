@@ -328,6 +328,7 @@ public class WebShellWindow : Window
                         Title = payload?["title"]?.GetValue<string>() ?? "Choose a file",
                         Filter = payload?["filter"]?.GetValue<string>() ?? "All files|*.*",
                         CheckFileExists = true,
+                        InitialDirectory = payload?["dir"]?.GetValue<string>() is { Length: > 0 } d && Directory.Exists(d) ? d : "",
                     };
                     if (dlg.ShowDialog(this) == true) picked = dlg.FileName;
                 });

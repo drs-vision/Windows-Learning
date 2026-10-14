@@ -106,7 +106,7 @@ public sealed class RequestRouter
             Ops.ParentDiscStatus => Parent(req, client, child, () => _discs.Status()),
             Ops.ParentDiscImport => Parent(req, client, child, () => { _discs.StartImport(Str(req, "path"), req.Payload?["useInstaller"]?.GetValue<bool>() == true); return _discs.Status(); }),
             Ops.ParentDiscSetupBegin => Parent(req, client, child, () => _discs.BeginSetup(Str(req, "id"))),
-            Ops.ParentDiscSetupFinish => Parent(req, client, child, () => _discs.FinishSetup(Str(req, "id"), OptStr(req, "folder"))),
+            Ops.ParentDiscSetupFinish => Parent(req, client, child, () => _discs.FinishSetup(Str(req, "id"), OptStr(req, "folder"), OptStr(req, "program"))),
             Ops.ParentDiscHide => Parent(req, client, child, () => _discs.SetHidden(Str(req, "id"), req.Payload?["hidden"]?.GetValue<bool>() == true)),
             Ops.ParentDiscRemove => Parent(req, client, child, () => _discs.Remove(Str(req, "id"))),
             Ops.DiscLaunch => DiscLaunch(req, child),
