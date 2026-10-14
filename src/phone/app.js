@@ -21,7 +21,9 @@ if (fromHash && !links.some((l) => l.topicIn === fromHash.topicIn)) links.push(f
 store.set('cq.links', links.map((l) => l.raw));
 let link = fromHash ? links.find((l) => l.topicIn === fromHash.topicIn) : links.find((l) => l.topicIn === store.get('cq.current', '')) ?? links[0];
 
-let key = null, source = null, asm = null;
+let key = null, source = null, sock = null, asm = null;
+let cqRelay = null;                            // CoinQuest's own relay (from relay.json); ntfy.sh stays as the fallback
+let stateAt = 0;                               // when the shown state was made (a snapshot can be older)
 const waiting = new Map();
 let state = null, status = 'wait', error = '', updatedAt = 0;
 let tab = 'home', kidId = null;               // which screen, which child (for per-child screens)
@@ -30,30 +32,63 @@ let hist = { kid: null, entries: [], more: false, loading: false };
 
 async function connect() {
   if (source) source.close();
-  waiting.clear(); state = null; config = null; error = ''; hist = { kid: null, entries: [], more: false, loading: false };
+  if (sock) { sock.onclose = null; sock.close(); sock = null; }
+  waiting.clear(); state = null; config = null; error = ''; stateAt = 0; hist = { kid: null, entries: [], more: false, loading: false };
   if (!link) { render(); return; }
   store.set('cq.current', link.topicIn);
   if (location.hash.slice(1) !== link.raw) history.replaceState(null, '', '#' + link.raw);
   key = await w.importKey(link.key);
   asm = w.assembler();
+  // What this phone last saw, so the screen isn't empty while we ask.
+  const cached = store.get('cq.state.' + link.topicIn, null);
+  if (cached?.state) { state = cached.state; stateAt = cached.at; }
   render();
-  // Answers from the PC arrive on our own topic; listen first, then ask.
-  source = new EventSource(`${link.relay}/${link.topicOut}/sse?since=${Math.floor(Date.now() / 1000) - 5}`);
-  source.onmessage = async (ev) => {
-    let m; try { m = JSON.parse(ev.data); } catch { return; }
-    if (m.event !== 'message' || typeof m.message !== 'string') return;
-    const whole = asm.add(m.message);
-    if (!whole) return;
-    const reply = await w.open(key, whole);
-    if (!reply) return;
-    if (reply.ok && reply.d?.state) { state = reply.d.state; status = 'on'; updatedAt = Date.now(); }
-    if (reply.ok && reply.d?.result?.children?.[0]?.modules) config = reply.d.result;
-    const p = waiting.get(reply.re);
-    if (p) { waiting.delete(reply.re); reply.ok ? p.resolve(reply.d) : p.reject(new Error(reply.e || 'The PC said no')); }
-    render();
-  };
-  source.onerror = () => { if (status !== 'on') { status = 'off'; render(); } };
+  try { cqRelay = ((await (await fetch('relay.json', { cache: 'no-store' })).json()).relays ?? []).map((r) => r.url?.replace(/\/+$/, '')).find((u) => u && !u.startsWith(link.relay)) ?? null; }
+  catch { cqRelay = null; }
+  // Answers from the PC arrive on our own topic; listen first (on both relays), then ask.
+  const since = Math.floor(Date.now() / 1000) - 5;
+  source = new EventSource(`${link.relay}/${link.topicOut}/sse?since=${since}`);
+  source.onmessage = (ev) => onRelayMessage(ev.data);
+  source.onerror = () => { if (status !== 'on' && !sock) { status = 'off'; render(); } };
+  if (cqRelay) { openSocket(since); loadSnapshot(); }
   refresh();
+}
+
+function openSocket(since) {
+  const ws = new WebSocket(`${cqRelay.replace(/^http/, 'ws')}/${link.topicOut}/ws?since=${since}`);
+  sock = ws;
+  ws.onmessage = (ev) => { if (ev.data !== 'pong') onRelayMessage(ev.data); };
+  ws.onclose = () => { if (sock === ws) { sock = null; setTimeout(() => { if (!sock && link) openSocket(Math.floor(Date.now() / 1000) - 30); }, 5000); } };
+  const ping = setInterval(() => { if (ws.readyState === 1) ws.send('ping'); else clearInterval(ping); }, 30000);
+}
+
+/** The PC's latest snapshot on CoinQuest's relay: coins and requests even while the PC is off. */
+async function loadSnapshot() {
+  try {
+    const r = await fetch(`${cqRelay}/${link.topicOut}-snap/latest`, { cache: 'no-store' });
+    if (!r.ok) return;
+    const m = await r.json();
+    const sealed = w.assembler().add(m.message);
+    const snap = sealed && await w.open(key, sealed);
+    if (snap?.d?.state && m.time * 1000 > stateAt) { state = snap.d.state; stateAt = m.time * 1000; render(); }
+  } catch { /* not there yet */ }
+}
+
+async function onRelayMessage(data) {
+  let m; try { m = JSON.parse(data); } catch { return; }
+  if (m.event !== 'message' || typeof m.message !== 'string') return;
+  const whole = asm.add(m.message);
+  if (!whole) return;
+  const reply = await w.open(key, whole);
+  if (!reply) return;
+  if (reply.ok && reply.d?.state) {
+    state = reply.d.state; status = 'on'; updatedAt = stateAt = Date.now();
+    store.set('cq.state.' + link.topicIn, { state, at: stateAt });
+  }
+  if (reply.ok && reply.d?.result?.children?.[0]?.modules) config = reply.d.result;
+  const p = waiting.get(reply.re);
+  if (p) { waiting.delete(reply.re); reply.ok ? p.resolve(reply.d) : p.reject(new Error(reply.e || 'The PC said no')); }
+  render();
 }
 
 function send(op, args = {}) {
@@ -63,13 +98,22 @@ function send(op, args = {}) {
     setTimeout(() => {
       if (!waiting.has(id)) return;
       waiting.delete(id);
-      reject(new Error("The PC didn't answer. It may be off, asleep or offline — what you sent will reach it when it's back (within 12 hours)."));
+      reject(new Error(op === 'state' || op === 'config' || op === 'history'
+        ? "The PC isn't answering — it may be off, asleep or offline."
+        : `The PC isn't answering right now — this will happen when it's back online (within ${cqRelay ? '7 days' : '12 hours'}).`));
     }, 30000);
   });
   (async () => {
-    for (const part of w.split(await w.seal(key, { id, ts: Date.now(), op, a: args }))) {
-      const r = await fetch(`${link.relay}/${link.topicIn}`, { method: 'POST', body: part });
-      if (!r.ok) throw new Error(r.status === 429 ? 'Too many messages right now — try again in a minute.' : `The relay said ${r.status}.`);
+    const parts = w.split(await w.seal(key, { id, ts: Date.now(), op, a: args }));
+    // CoinQuest's own relay first; the public one if that can't be reached.
+    for (const relay of cqRelay ? [cqRelay, link.relay] : [link.relay]) {
+      try {
+        for (const part of parts) {
+          const r = await fetch(`${relay}/${link.topicIn}`, { method: 'POST', body: part });
+          if (!r.ok) throw new Error(r.status === 429 ? 'Too many messages right now — wait a minute and try again.' : `The relay said ${r.status}.`);
+        }
+        return;
+      } catch (e) { if (relay === link.relay || !cqRelay) throw e; }
     }
   })().catch((e) => { const p = waiting.get(id); if (p) { waiting.delete(id); p.reject(e); } });
   return done;
@@ -81,7 +125,7 @@ async function refresh() {
     await send('state');
     if (tab === 'rewards' || tab === 'shop' || tab === 'allowed') await loadConfig();
     if (tab === 'history') await loadHistory(true);
-  } catch (e) { status = 'off'; error = e.message; render(); }
+  } catch (e) { status = 'off'; error = state ? '' : e.message; render(); }
 }
 
 async function act(op, args, label) {
@@ -175,7 +219,10 @@ function draw() {
   const standalone = matchMedia('(display-mode: standalone)').matches || navigator.standalone;
   const hint = tab === 'home' && !standalone && !store.get('cq.hintDone', false)
     ? `<div class="hint"><div><b>Tip:</b> add this to your home screen so it opens like an app — in Safari tap <b>Share → Add to Home Screen</b>; in Chrome tap <b>⋮ → Add to Home screen</b>.</div><button data-hint aria-label="Dismiss">×</button></div>` : '';
-  const statusText = status === 'on' ? `PC answered ${ago(new Date(updatedAt).toISOString())}` : status === 'wait' ? 'Asking the PC…' : 'Not connected to the PC';
+  const asOf = stateAt ? new Date(stateAt).toLocaleString([], { weekday: 'short', hour: 'numeric', minute: '2-digit' }) : '';
+  const statusText = status === 'on' ? `PC answered ${ago(new Date(updatedAt).toISOString())}`
+    : status === 'wait' ? (state && asOf ? `Asking the PC… (showing ${asOf})` : 'Asking the PC…')
+    : state && asOf ? `PC is offline — showing what it last sent (${asOf})` : 'Not connected to the PC';
   const body = { home: homeScreen, history: historyScreen, rewards: rewardsScreen, shop: shopScreen, allowed: allowedScreen }[tab]();
   const tabs = [['home', '🏠', 'Home'], ['history', '🧾', 'History'], ['rewards', '⭐', 'Rewards'], ['shop', '🛍️', 'Shop'], ['allowed', '🌐', 'Allowed']];
   app.innerHTML = `
@@ -418,7 +465,7 @@ app.addEventListener('submit', (e) => {
   }
 });
 
-document.addEventListener('visibilitychange', () => { if (document.visibilityState === 'visible' && link) refresh(); });
+document.addEventListener('visibilitychange', () => { if (document.visibilityState === 'visible' && link && Date.now() - updatedAt > 20000) refresh(); });
 setInterval(() => { if (status === 'on' && tab === 'home') render(); }, 30000); // keep "answered … ago" fresh
 
 connect();

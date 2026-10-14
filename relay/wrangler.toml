@@ -1,0 +1,14 @@
+# CoinQuest's own relay for "Control from my phone" (Cloudflare Workers + Durable Objects, free tier).
+# Deployed by .github/workflows/phone.yml when the repository has CLOUDFLARE_API_TOKEN and CLOUDFLARE_ACCOUNT_ID.
+name = "coinquest-relay"
+main = "src/index.js"
+compatibility_date = "2025-09-01"
+workers_dev = true
+
+[[durable_objects.bindings]]
+name = "TOPIC"
+class_name = "Topic"
+
+[[migrations]]
+tag = "v1"
+new_sqlite_classes = ["Topic"]

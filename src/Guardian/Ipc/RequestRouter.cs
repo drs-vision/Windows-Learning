@@ -41,7 +41,7 @@ public sealed class RequestRouter
 
     public RequestRouter(HouseholdStore store, Ledger ledger, ScoreEngine scorer, UnlockManager unlocks, SessionMonitor session,
         BrowserPolicy policy, UpdateChecker updates, YouTubeService youtube, FlashpointService fp, ClassicsStocker stocker, ClassicLibrary lib, NetGate gate, NetLock netLock, CoinQuest.Guardian.Rwt.RwtService rwt, CoinQuest.Guardian.DiscGames.DiscGameService discs, CoinQuest.Guardian.Phone.PhoneLinkService phones, ILogger<RequestRouter> log)
-    { _phones = phones; phones.Handler = HandlePhone; _rwt = rwt; rwt.ProgressSaved += PayRwt; _discs = discs; discs.ProgressSaved += PayDisc; discs.RwtImporter = rwt.ImportNow; _fp = fp; _stocker = stocker; _gate = gate; _lib = lib; _netLock = netLock; _store = store; _ledger = ledger; _scorer = scorer; _unlocks = unlocks; _session = session; _policy = policy; _updates = updates; _youtube = youtube; _log = log; }
+    { _phones = phones; phones.Handler = HandlePhone; StateChanged += phones.NoteChange; ApprovalsChanged += phones.NoteChange; _rwt = rwt; rwt.ProgressSaved += PayRwt; _discs = discs; discs.ProgressSaved += PayDisc; discs.RwtImporter = rwt.ImportNow; _fp = fp; _stocker = stocker; _gate = gate; _lib = lib; _netLock = netLock; _store = store; _ledger = ledger; _scorer = scorer; _unlocks = unlocks; _session = session; _policy = policy; _updates = updates; _youtube = youtube; _log = log; }
 
     /// <summary>
     /// Requests that wait on the network or the disk run side by side; everything else (ledger, settings, timers)
