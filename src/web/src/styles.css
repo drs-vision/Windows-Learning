@@ -562,5 +562,37 @@ button.big { font-size: 1.1em; padding: .7em 1.4em; }
 .phone-control .qr svg { display: block; width: 100%; height: auto; }
 .phone-control ul.phones { list-style: none; padding: 0; margin: .8em 0 0; }
 .phone-control ul.phones li { display: flex; justify-content: space-between; align-items: center; gap: .6em; padding: .45em 0; border-top: 1px solid var(--line, rgba(127,127,127,.25)); }
-.disc-games .inline-num { display: inline-flex; align-items: center; gap: .35em; margin: 0; }
+/* ---- parent app polish ---- */
+.parent .card h3 { margin: 0 0 .5em; }
+.parent .card > * + h3, .parent .card h3:not(:first-child) { margin-top: 1.3em; }
+.parent .card h4 { margin: 1.2em 0 .5em; }
+.parent .card p:last-child { margin-bottom: 0; }
+.parent label.check { min-height: 2.65em; }                 /* lines up with the inputs beside it */
+.parent .row.nowrap { flex-wrap: nowrap; align-items: center; }
+.parent .row > .grow, .parent .row .grow { flex: 1; min-width: 0; }
+.parent .settings-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 1em; align-items: start; }
+.parent .settings-col { display: flex; flex-direction: column; } .parent .settings-col > .card { margin-bottom: 1em; }
+@media (max-width: 900px) { .parent .settings-cols { grid-template-columns: 1fr; gap: 0; } }
+.parent .coin-field input { font-size: 1rem; }
+.parent .quest-settings .row input[type=number], .parent .quest-settings .module-options input[type=number] { width: 8em; }
+.parent .quest-settings .row select { min-width: 8em; }
+.parent .phone-control .row input { flex: 1; min-width: 0; }
+.parent .coin-field { flex-direction: row; align-items: center; gap: .35em; color: var(--ink); }
+.parent .coin-field span { font-size: 1.1em; line-height: 1; }
+.parent .claim-text { min-width: 0; } .parent .claim-text p { overflow-wrap: anywhere; }
+.parent .claim-actions { display: flex; align-items: center; gap: .6em; flex: none; }
+.parent .section-actions { margin: .2em 0 1.2em; }
+.parent .sentence { display: flex; align-items: center; flex-wrap: wrap; gap: .5em; margin: .4em 0 .2em; }
+.parent .sentence .num { width: 5em; }
+.parent .file-pick { flex-direction: row; align-items: center; gap: .7em; cursor: pointer; }
+.parent .file-pick input[type=file] { position: absolute; width: 1px; height: 1px; opacity: 0; pointer-events: none; }
+.parent .file-pick .button { display: inline-block; border-radius: 12px; padding: .6em 1.1em; background: var(--blue); color: #fff; font-weight: 600; }
+.parent .file-pick:focus-within .button { outline: 2px solid var(--blue); outline-offset: 2px; }
+.parent .module-coins { margin-top: 1em; padding-top: 1em; border-top: 1px dashed rgba(60,70,120,.2); }
+.parent .rwt-import .row { align-items: center; }
+.disc-games .inline-num { display: inline-flex; flex-direction: row; align-items: center; gap: .35em; margin: 0; }
 .disc-games .inline-num input { width: 4.5em; padding: .2em .4em; }
+.parent .disc-games .inline-num input[type=number] { width: 4.5em; }
+@media (max-width: 760px) { .parent .claim { flex-direction: column; align-items: stretch; } .parent .claim-actions { justify-content: flex-end; } }
+/* Keyboard users can always see where they are. */
+.parent :is(button, input, select, textarea, summary, a):focus-visible { outline: 2px solid var(--blue); outline-offset: 2px; }

@@ -150,7 +150,7 @@ function Today({ state, child, onChange, onGo }: { state: ParentState; child: Ch
         <h3>Today's activity</h3>
         {pc.today.length === 0 && <p class="muted">Nothing yet today.</p>}
         <ul class="ledger">
-          {pc.today.map((e) => <li class={e.kind}><span class="time">{new Date(e.at).toLocaleTimeString([], { hour: 'numeric', minute: '2-digit' })}</span><span class="delta">{e.kind === 'claim' ? '⏳' : (e.delta > 0 ? '+' : '') + e.delta}</span><span>{e.detail}</span></li>)}
+          {pc.today.map((e) => <li class={e.kind}><span class="time">{new Date(e.at).toLocaleTimeString([], { hour: 'numeric', minute: '2-digit' })}</span><span class="delta">{e.kind === 'claim' ? '⏳' : signed(e.delta)}</span><span>{e.detail}</span></li>)}
         </ul>
       </div>
       {!state.ledgerIntact && <p class="error">⚠️ The coin ledger failed its integrity check. Someone may have edited it directly.</p>}
@@ -188,9 +188,9 @@ function Approvals({ state, onChange }: { state: ParentState; onChange: () => vo
     <div class="approvals">
       {state.pendingClaims.map((c) => (
         <div class="card claim">
-          <div><b>{labelFor(c.moduleId)}</b><p>{c.detail}</p><small class="muted">{new Date(c.at).toLocaleString()}</small></div>
-          <div class="row">
-            <input type="number" class="coins-input" value={coins[c.ledgerSeq] ?? c.coins} min={-500} max={500} onInput={(e) => setCoins({ ...coins, [c.ledgerSeq]: Number((e.target as HTMLInputElement).value) })} /> 🪙
+          <div class="claim-text"><b>{labelFor(c.moduleId)}</b><p>{c.detail}</p><small class="muted">{when(c.at)}</small></div>
+          <div class="claim-actions">
+            <label class="coin-field" title="Coins to give (can be negative)"><input type="number" class="coins-input" value={coins[c.ledgerSeq] ?? c.coins} min={-500} max={500} onInput={(e) => setCoins({ ...coins, [c.ledgerSeq]: Number((e.target as HTMLInputElement).value) })} /><span>🪙</span></label>
             <button class="primary" onClick={() => bridge.parentResolveClaim(c.ledgerSeq, true, coins[c.ledgerSeq] ?? c.coins).then(onChange)}>Approve</button>
             <button class="ghost" onClick={() => bridge.parentResolveClaim(c.ledgerSeq, false).then(onChange)}>Deny</button>
           </div>
@@ -200,7 +200,17 @@ function Approvals({ state, onChange }: { state: ParentState; onChange: () => vo
   );
 }
 
-const labelFor = (id: string) => MODULES.find((m) => m.id === id)?.title ?? id;
+const labelFor = (id: string) => MODULES.find((m) => m.id === id)?.title ?? (id.charAt(0).toUpperCase() + id.slice(1)).replace(/[-_]/g, ' ');
+
+/** "Today 9:41 PM", "Yesterday 8:02 AM", "Oct 12, 3:15 PM". */
+function when(iso: string) {
+  const d = new Date(iso), now = new Date();
+  const time = d.toLocaleTimeString([], { hour: 'numeric', minute: '2-digit' });
+  const day = (x: Date) => new Date(x.getFullYear(), x.getMonth(), x.getDate()).getTime();
+  const diff = Math.round((day(now) - day(d)) / 86400000);
+  return diff === 0 ? `Today ${time}` : diff === 1 ? `Yesterday ${time}` : `${d.toLocaleDateString([], { month: 'short', day: 'numeric' })}, ${time}`;
+}
+const signed = (n: number) => (n > 0 ? '+' + n : n < 0 ? '−' + Math.abs(n) : '0');
 
 // ---------------------------------------------------------------- Allowed
 
@@ -343,9 +353,9 @@ function ShopEditor({ child, onSave }: { child: Child; onSave: (c: Child) => voi
     <div class="shop-editor">
       <p class="muted">What coins can buy. Tap one to change it.</p>
       <div class="prize-list">
-        {prizes.map((p) => <button class={'prize-row' + (p.enabled === false ? ' off' : '')} onClick={() => setEditing({ ...p })}><span class="icon">{{ youTube: '▶️', siteUnlock: '🌐', arcadeUnlock: '🕹️', appUnlock: '💻', screenTimeExtension: '⏰', realWorld: '🎁' }[p.kind]}</span><b>{p.name}</b><span>🪙 {p.cost}</span><small class="muted">{p.minutes ? `${p.minutes} min` : ''}{p.dailyCap ? ` · max ${p.dailyCap}/day` : ''}{p.enabled === false ? ' · hidden' : ''}</small></button>)}
+        {prizes.map((p) => <button class={'prize-row' + (p.enabled === false ? ' off' : '')} onClick={() => setEditing({ ...p })}><span class="icon">{{ youTube: '▶️', siteUnlock: '🌐', arcadeUnlock: '🕹️', appUnlock: '💻', screenTimeExtension: '⏰', realWorld: '🎁' }[p.kind]}</span><b>{p.name}</b><span>🪙 {p.cost}</span><small class="muted">{[p.minutes ? `${p.minutes} min` : '', p.dailyCap ? `max ${p.dailyCap}/day` : '', p.enabled === false ? 'hidden' : ''].filter(Boolean).join(' · ')}</small></button>)}
       </div>
-      <button class="secondary" onClick={() => setEditing(blank())}>+ New prize</button>
+      <div class="section-actions"><button class="secondary" onClick={() => setEditing(blank())}>+ New prize</button></div>
       <ArcadeManager child={child} onSave={onSave} />
       {editing && (
         <div class="modal"><div class="card form">
@@ -398,12 +408,16 @@ function ArcadeManager({ child, onSave }: { child: Child; onSave: (c: Child) => 
       <FlashpointPanel child={child} onSave={onSave} onChanged={reload} />
       <h4>Prices</h4>
       <p class="muted">Like quarters in a machine: each <b>+</b> buys {BLOCK_MINUTES} more minutes of a game, then he presses Play. Games that take more thinking (🧠) cost less. Prices below are <b>coins per {BLOCK_MINUTES} minutes</b>. Time keeps counting once it starts; he can leave a game and come back while time is left.</p>
-      <div class="row">
-        <label>🎟️ Sampler pass — any game, for <input type="number" min={5} max={60} step={5} value={settings.samplerMinutes ?? 10} style={{ width: '4.5em' }}
-          onChange={(e) => saveArcade({ ...settings, samplerMinutes: Number((e.target as HTMLInputElement).value) || 10 })} /> minutes</label>
-        <label>costs <input type="number" min={0} value={settings.samplerPrice || ''} placeholder={String(autoSamplerPrice((games ?? []).filter((g) => !g.hidden).map((g) => g.price), settings.samplerMinutes ?? 10))} style={{ width: '5em' }}
-          onChange={(e) => saveArcade({ ...settings, samplerPrice: Number((e.target as HTMLInputElement).value) || 0 })} /> 🪙 <span class="muted small">(blank = automatic: a little more than the same time on the priciest game)</span></label>
+      <div class="sentence">
+        <span>🎟️ <b>Sampler pass</b> — any game for</span>
+        <input type="number" min={5} max={60} step={5} value={settings.samplerMinutes ?? 10} class="num"
+          onChange={(e) => saveArcade({ ...settings, samplerMinutes: Number((e.target as HTMLInputElement).value) || 10 })} />
+        <span>minutes, costs</span>
+        <input type="number" min={0} value={settings.samplerPrice || ''} class="num" placeholder={String(autoSamplerPrice((games ?? []).filter((g) => !g.hidden).map((g) => g.price), settings.samplerMinutes ?? 10))}
+          onChange={(e) => saveArcade({ ...settings, samplerPrice: Number((e.target as HTMLInputElement).value) || 0 })} />
+        <span>🪙</span>
       </div>
+      <p class="muted small">Leave the price blank to set it automatically (a little more than the same time on the priciest game).</p>
       {err && <p class="error">{err}</p>}
       <table class="arcade-table">
         <thead><tr><th>Game</th><th>Thinking</th><th>🪙 per {BLOCK_MINUTES} min</th><th>Show</th><th /></tr></thead>
@@ -429,7 +443,7 @@ function ArcadeManager({ child, onSave }: { child: Child; onSave: (c: Child) => 
         <div>
           <h4>Add a Flash game file (.swf)</h4>
           <p class="muted small">For games you own or that the author lets you download.</p>
-          <input type="file" accept=".swf" onChange={(e) => { const f = (e.target as HTMLInputElement).files?.[0]; if (f) setUpload({ file: f, title: f.name.replace(/\.swf$/i, ''), strategy: 3 }); }} />
+          <label class="file-pick"><input type="file" accept=".swf" onChange={(e) => { const f = (e.target as HTMLInputElement).files?.[0]; if (f) setUpload({ file: f, title: f.name.replace(/\.swf$/i, ''), strategy: 3 }); }} /><span class="button secondary">Choose a .swf file…</span>{upload && <span class="muted small">{upload.file.name}</span>}</label>
           {upload && <div class="form">
             <label>Name<input value={upload.title} onInput={(e) => setUpload({ ...upload, title: (e.target as HTMLInputElement).value })} /></label>
             <StrategyPicker value={upload.strategy} onChange={(v) => setUpload({ ...upload, strategy: v })} />
@@ -541,7 +555,7 @@ function FlashpointPanel({ child, onSave, onChanged }: { child: Child; onSave: (
                 {sugg.map((x) => (
                   <label class={'fp-row' + (approved.has(x.game.id) ? ' on' : '')}>
                     <input type="checkbox" checked={approved.has(x.game.id)} onChange={(e) => (e.target as HTMLInputElement).checked ? approve([{ game: x.game, genre: x.pick.genre, strategy: x.pick.strategy }]) : remove(x.game.id)} />
-                    <span><b>{x.game.title}</b> <small class="muted">{x.pick.genre} · {x.game.developer}{x.pick.note ? ` · ${x.pick.note}` : ''}</small></span>
+                    <span><b>{x.game.title}</b> <small class="muted">{[x.pick.genre, x.game.developer, x.pick.note].filter(Boolean).join(' · ')}</small></span>
                   </label>
                 ))}
               </div>
@@ -609,8 +623,8 @@ function Quests({ child, onSave }: { child: Child; onSave: (c: Child) => void })
             <p class="muted">{m.description}</p>
             {m.id === 'rwt' && <RwtImport />}
             {m.id === 'discgames' && <DiscImport rwt={{ s: child.modules.rwt ?? { enabled: false, requireApproval: false, ...MODULES.find((x) => x.id === 'rwt')!.defaults }, set: (p) => setMod('rwt', p) }} />}
-            <div class="row">
-              <label>Coins per activity<input type="number" value={s.coinsPerActivity} onChange={(e) => setMod(m.id, { coinsPerActivity: Number((e.target as HTMLInputElement).value) })} /></label>
+            <div class={'row' + (m.id === 'discgames' ? ' module-coins' : '')}>
+              <label>{m.id === 'discgames' ? 'Default coins per progress' : 'Coins per activity'}<input type="number" value={s.coinsPerActivity} onChange={(e) => setMod(m.id, { coinsPerActivity: Number((e.target as HTMLInputElement).value) })} /></label>
               <label>Daily limit (0 = none)<input type="number" min={0} value={s.dailyCap} onChange={(e) => setMod(m.id, { dailyCap: Number((e.target as HTMLInputElement).value) })} /></label>
               <label class="check"><input type="checkbox" checked={s.requireApproval || m.verification === 'parent_approved'} disabled={m.verification === 'parent_approved'} onChange={(e) => setMod(m.id, { requireApproval: (e.target as HTMLInputElement).checked })} /> Needs my OK</label>
             </div>
@@ -898,7 +912,7 @@ function PhoneControl() {
         <ul class="phones">
           {st.phones.map((p) => (
             <li>
-              <span><b>{p.name}</b> <span class="muted small">{p.lastSeen ? `last used ${new Date(p.lastSeen).toLocaleString()}` : 'not used yet'}</span></span>
+              <span><b>{p.name}</b> <span class="muted small">{p.lastSeen ? `last used ${when(p.lastSeen)}` : 'not used yet'}</span></span>
               {removing === p.id
                 ? <span><button class="danger small" onClick={() => unlink(p.id)}>Yes, remove</button> <button class="ghost small" onClick={() => setRemoving(null)}>Keep</button></span>
                 : <button class="ghost small" onClick={() => setRemoving(p.id)}>Remove</button>}
@@ -918,26 +932,38 @@ function Settings({ state, child, onSave, onChange }: { state: ParentState; chil
   const [upd, setUpd] = useState(state.updateStatus);
   const u = upd;
   return (
-    <div class="settings two-col">
+    <div class="settings">
+      <div class="settings-cols">
+        <div class="settings-col">
       <div class="card">
         <h3>Child</h3>
         <label>Name<input value={child.displayName} onChange={(e) => onSave({ ...child, displayName: (e.target as HTMLInputElement).value })} /></label>
         <p class="muted">Windows account: <code>{child.windowsAccount}</code></p>
         <h3>Give or take coins</h3>
-        <div class="row"><input type="number" value={adj} onInput={(e) => setAdj(Number((e.target as HTMLInputElement).value))} /><input placeholder="Reason (e.g. Cleaned room)" value={reason} onInput={(e) => setReason((e.target as HTMLInputElement).value)} /><button class="primary" disabled={!adj} onClick={() => bridge.parentAdjust(child.id, adj, reason || 'Parent adjustment').then(() => { setAdj(0); setReason(''); onChange(); })}>Apply</button></div>
+        <p class="muted small">Use a negative number to take coins away.</p>
+        <div class="row nowrap"><label class="coin-field" title="Coins (negative takes them away)"><input type="number" class="coins-input" value={adj} onInput={(e) => setAdj(Number((e.target as HTMLInputElement).value))} /><span>🪙</span></label><input class="grow" placeholder="Reason (e.g. Cleaned room)" value={reason} onInput={(e) => setReason((e.target as HTMLInputElement).value)} /><button class="primary" disabled={!adj} onClick={() => bridge.parentAdjust(child.id, adj, reason || 'Parent adjustment').then(() => { setAdj(0); setReason(''); onChange(); })}>{adj < 0 ? 'Take' : 'Give'}</button></div>
       </div>
-      <PhoneControl />
       <div class="card">
         <h3>Parent PIN</h3>
-        <div class="row"><input type="password" inputMode="numeric" placeholder="New PIN (4–8 digits)" value={pin} onInput={(e) => setPin((e.target as HTMLInputElement).value)} /><button class="primary" disabled={!/^\d{4,8}$/.test(pin)} onClick={() => bridge.parentSetPin(pin).then(() => { setPin(''); setPinMsg('PIN changed.'); }).catch((e) => setPinMsg(e.message))}>Change</button></div>
+        <div class="row nowrap"><input class="grow" type="password" inputMode="numeric" placeholder="New PIN (4–8 digits)" value={pin} onInput={(e) => setPin((e.target as HTMLInputElement).value)} /><button class="primary" disabled={!/^\d{4,8}$/.test(pin)} onClick={() => bridge.parentSetPin(pin).then(() => { setPin(''); setPinMsg('PIN changed.'); }).catch((e) => setPinMsg(e.message))}>Change</button></div>
         {pinMsg && <p class="muted">{pinMsg}</p>}
-        <h3>Updates</h3>
-        <p>Version <b>{u.current}</b> — {u.state === 'upToDate' ? 'up to date' : u.state === 'readyToApply' ? `version ${u.latest} is downloaded and installs as soon as ${child.displayName} isn't in paid game or YouTube time` : u.state === 'installing' || u.state === 'applying' ? `installing ${u.latest ? 'version ' + u.latest : 'an update'}… CoinQuest restarts by itself` : u.state === 'downloading' ? `downloading ${u.latest}…` : u.state === 'error' ? `couldn't check (${u.message})` : u.state}{u.lastChecked && <small class="muted"> · checked {new Date(u.lastChecked).toLocaleString()}</small>}</p>
-        <button class="secondary" onClick={() => bridge.parentCheckUpdate().then(setUpd).catch((e) => setUpd({ ...u, state: 'error', message: e.message }))}>Check now</button>
+      </div>
+      <div class="card">
         <h3>Honest limits</h3>
         <p class="muted small">A young child can't get around this. A determined teenager with physical access could boot from USB or reinstall Windows; BitLocker plus a BIOS password closes that.</p>
       </div>
-      <details class="card advanced" style={{ gridColumn: '1 / -1' }}>
+        </div>
+        <div class="settings-col">
+      <PhoneControl />
+      <div class="card">
+        <h3>Updates</h3>
+        <p>Version <b>{u.current}</b> — {u.state === 'upToDate' ? 'up to date' : u.state === 'readyToApply' ? `version ${u.latest} is downloaded and installs as soon as ${child.displayName} isn't in paid game or YouTube time` : u.state === 'installing' || u.state === 'applying' ? `installing ${u.latest ? 'version ' + u.latest : 'an update'}… CoinQuest restarts by itself` : u.state === 'downloading' ? `downloading ${u.latest}…` : u.state === 'error' ? `couldn't check (${u.message})` : u.state}</p>
+        {u.lastChecked && <p class="muted small">Last checked {when(u.lastChecked)}</p>}
+        <button class="secondary" onClick={() => bridge.parentCheckUpdate().then(setUpd).catch((e) => setUpd({ ...u, state: 'error', message: e.message }))}>Check now</button>
+      </div>
+        </div>
+      </div>
+      <details class="card advanced">
         <summary><b>Advanced</b> <span class="muted small">— troubleshooting, recent problems, blocked addresses</span></summary>
         <Troubleshooting />
         <RecentlyBlocked sites={child.allowlist.sites} onAllow={(h) => onSave({ ...child, allowlist: { ...child.allowlist, sites: [...new Set([...child.allowlist.sites, h])] } })} />

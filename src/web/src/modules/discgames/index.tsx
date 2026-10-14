@@ -13,7 +13,7 @@ export const discGames: LessonModule = {
   id: 'discgames',
   title: 'Classic CD games',
   tagline: 'ClueFinders and other classic learning adventures',
-  description: 'Your family\'s own classic learning CDs (like The ClueFinders), imported once from their disc images and kept inside CoinQuest. Coins arrive automatically when a player\'s saved level or score goes up ("coins per activity" each, at most once a minute), up to the daily limit.',
+  description: 'Your family\'s own classic learning CDs (like The ClueFinders), imported once from their disc images and kept inside CoinQuest. Coins arrive automatically when a player\'s saved level or score goes up (the coins you set for that game, or the default, at most once a minute), up to the daily limit.',
   icon: '💿',
   verification: 'observed',
   defaults: { coinsPerActivity: 5, dailyCap: 60 },
