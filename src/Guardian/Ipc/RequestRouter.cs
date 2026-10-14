@@ -311,6 +311,7 @@ public sealed class RequestRouter
         {
             try { drive = CoinQuest.Guardian.DiscGames.DiscGameService.Mount(iso); } // "put the disc in the drive"
             catch (Exception ex) { return Response.Fail(req.Id, "Couldn't put the game's disc in the virtual drive: " + ex.Message); }
+            try { _discs.PointAtDrive(g, drive); } catch (Exception ex) { _log.LogWarning(ex, "Couldn't point {Id} at {Drive}", g.Id, drive); }
         }
         var kind = CoinQuest.Guardian.DiscGames.DiscGameService.ExeKind(exe);
         if (kind == "dos") return Response.Fail(req.Id, $"{g.Title} is a DOS program — CoinQuest can't run those yet.");
@@ -326,7 +327,7 @@ public sealed class RequestRouter
         var app = Path.Combine(CoinQuest.Guardian.DiscGames.DiscGameService.Root, g.Id, "app");
         return Response.Success(req.Id, new
         {
-            id = g.Id, title = g.Title, exe, cwd = CoinQuest.Guardian.DiscGames.DiscGameService.WorkDir(g), args = g.Args ?? "", kind, otvdm = otvdm ?? "",
+            id = g.Id, title = g.Title, exe, cwd = CoinQuest.Guardian.DiscGames.DiscGameService.WorkDir(g), args = g.Args ?? "", kind, otvdm = otvdm ?? "", drive = drive ?? "",
             ini = g.Mode == "copy" ? Path.Combine(app, g.Ini) : "", userDir = g.UserDir ?? "",
         });
     }

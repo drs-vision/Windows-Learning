@@ -139,18 +139,20 @@ public sealed partial class DiscGameService
                 if (Directory.Exists(temp)) DeleteDir(temp);
                 var local = isLink ? await Download(source, temp) : source;
                 var discs = FindDiscs(local, temp);
-                var done = new List<string>(); var failed = new List<string>(); var needSetup = new List<string>();
+                var done = new List<string>(); var failed = new List<string>(); var skipped = new List<string>(); var needSetup = new List<string>();
                 for (int i = 0; i < discs.Count; i++)
                 {
                     var name = Path.GetFileNameWithoutExtension(discs[i]);
                     var prefix = discs.Count > 1 ? $"[{i + 1}/{discs.Count}] {name}: " : "";
                     try { var g = Install(discs[i], m => Message = prefix + m, useInstaller); (g.Mode == "pending" ? needSetup : done).Add(g.Title); }
+                    catch (SkipException ex) { skipped.Add(ex.Message); }
                     catch (Exception ex) { failed.Add($"{name} ({ex.Message})"); _log.LogWarning(ex, "Classic CD game import failed: {Disc}", discs[i]); }
                 }
                 Message = (done.Count > 0 ? $"Imported {string.Join(", ", done)}. " : "")
                         + (needSetup.Count > 0 ? $"Ready to install: {string.Join(", ", needSetup)} — press \"Set up\" to run its installer once. " : "")
-                        + (failed.Count > 0 ? $"Couldn't import: {string.Join("; ", failed)}" : "");
-                Stage = done.Count + needSetup.Count == 0 ? "error" : "idle";
+                        + (failed.Count > 0 ? $"Couldn't import: {string.Join("; ", failed)}. " : "")
+                        + (skipped.Count > 0 ? $"({string.Join("; ", skipped)}.)" : "");
+                Stage = done.Count + needSetup.Count == 0 && failed.Count > 0 ? "error" : "idle";
                 _log.LogInformation("Classic CD import: {Done} done, {Failed} failed", done.Count, failed.Count);
             }
             catch (Exception ex)
@@ -258,7 +260,7 @@ public sealed partial class DiscGameService
         }
         if (candidates.Count == 0 && FindInstaller(cd + Path.DirectorySeparatorChar) is { } only && ExeKind(only) != "pe"
             && Directory.EnumerateFiles(cd, "RWT*.EXE", Deep).Any())
-            throw new InvalidOperationException("That's Read, Write & Type! — add it under the Read, Write & Type section instead.");
+            throw new SkipException("Read, Write & Type! has its own section — skipped here");
         if (candidates.Count == 0 || useInstaller)
         {
             // Not a layout CoinQuest knows (or the parent asked for the real installer): keep the disc and let its own
@@ -427,6 +429,16 @@ public sealed partial class DiscGameService
     /// <summary>Every save file the game may use: beside the program, and (newer titles) in each account's Application Data.</summary>
     public static List<string> SaveFiles(Game g)
     {
+        var dirs = SaveDirs(g);
+        var files = new List<string>();
+        foreach (var d in dirs.Where(Directory.Exists))
+            try { files.AddRange(Directory.EnumerateFiles(d, "*.dat", Flat)); } catch { }
+        return SaveFilesInstalled(g, files);
+    }
+
+    /// <summary>Folders a game keeps players and settings in, other than its install folder.</summary>
+    public static List<string> SaveDirs(Game g)
+    {
         var dirs = new List<string> { Path.Combine(Root, g.Id, "app"), Path.Combine(Root, g.Id, "app", "Users") };
         if (g.UserDir is { Length: > 0 } ud)
         {
@@ -442,9 +454,11 @@ public sealed partial class DiscGameService
             }
             catch { }
         }
-        var files = new List<string>();
-        foreach (var d in dirs.Where(Directory.Exists))
-            try { files.AddRange(Directory.EnumerateFiles(d, "*.dat", Flat)); } catch { }
+        return dirs;
+    }
+
+    private static List<string> SaveFilesInstalled(Game g, List<string> files)
+    {
         if (g.Mode == "installed" && g.InstallDir is { } idir && Directory.Exists(idir))
             try
             {
@@ -582,3 +596,6 @@ public sealed partial class DiscGameService
         }
     }
 }
+
+/// <summary>A disc that belongs elsewhere (not an error).</summary>
+public sealed class SkipException(string message) : Exception(message);

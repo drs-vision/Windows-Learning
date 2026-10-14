@@ -119,7 +119,7 @@ class Bridge {
   parentDiscHide(id: string, hidden: boolean) { return this.call<DiscStatus>('parent.discHide', { id, hidden }, { parent: true }); }
   parentDiscRemove(id: string) { return this.call<DiscStatus>('parent.discRemove', { id }, { parent: true }); }
   runSetup(path: string) { return this.call<{ ok: boolean }>('shell.runSetup', { path }); }
-  async playDisc(id: string) { const info = await this.call<Record<string, string>>('disc.launch', { id }); return this.call<{ ok: boolean }>('shell.launchProgram', info); }
+  async playDisc(id: string) { const info = await this.call<Record<string, string>>('disc.launch', { id }); const r = await this.call<{ ok: boolean }>('shell.launchProgram', info); return { ...r, drive: info.drive ?? '' }; }
   async playRwt() { const info = await this.call<Record<string, string>>('rwt.launch'); return this.call<{ ok: boolean }>('shell.launchRwt', info); }
   setupAccounts() { return this.call<{ name: string; fullName: string; isAdmin: boolean; disabled: boolean; sid: string }[]>('setup.accounts'); }
   setupComplete(pin: string, child: { displayName: string; windowsAccount: string }, preset: string) { return this.call('setup.complete', { pin, child, preset }); }

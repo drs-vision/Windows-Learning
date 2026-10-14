@@ -119,6 +119,76 @@ public sealed partial class DiscGameService
     /// A mounted disc would otherwise open File Explorer or start the disc's own menu (which offers to install again) —
     /// on the child's screen, outside CoinQuest. Off for every drive, for every account; the uninstaller turns it back on.
     /// </summary>
+    /// <summary>
+    /// Installed games remember the CD's drive letter from when they were installed ("CDDrive=F:\data\" in their INI,
+    /// a path in the registry). The virtual drive can come back as another letter, and the game then says "insert the
+    /// CD" — so point those at the drive the disc is in now.
+    /// </summary>
+    public void PointAtDrive(Game g, string drive)
+    {
+        var letter = char.ToUpperInvariant(drive[0]);
+        bool IsOldCd(char c) => char.ToUpperInvariant(c) != letter && (!Directory.Exists(c + ":\\") || new DriveInfo(c + ":").DriveType == DriveType.CDRom);
+        int changed = 0;
+
+        // INI files: the game's own folder, its Application Data folder, and Windows (older titles write there).
+        var inis = new List<string>(); var shared = new List<string>();
+        if (g.InstallDir is { } dir && Directory.Exists(dir))
+            inis.AddRange(Directory.EnumerateFiles(dir, "*.ini", new EnumerationOptions { RecurseSubdirectories = true, MaxRecursionDepth = 3, MatchCasing = MatchCasing.CaseInsensitive }));
+        foreach (var d in SaveDirs(g)) if (Directory.Exists(d)) try { inis.AddRange(Directory.EnumerateFiles(d, "*.ini")); } catch { }
+        // A game run without administrator rights writes "C:\Windows\x.ini" to each account's VirtualStore instead.
+        try
+        {
+            var users = Path.GetDirectoryName(Environment.GetFolderPath(Environment.SpecialFolder.CommonDocuments)) ?? @"C:\Users";
+            foreach (var home in Directory.EnumerateDirectories(users))
+            {
+                var vs = Path.Combine(home, @"AppData\Local\VirtualStore");
+                if (!Directory.Exists(vs)) continue;
+                try { shared.AddRange(Directory.EnumerateFiles(Path.Combine(vs, "Windows"), "*.ini")); } catch { }
+                if (g.InstallDir is { Length: > 3 } idir)
+                    try { inis.AddRange(Directory.EnumerateFiles(Path.Combine(vs, idir[3..]), "*.ini", SearchOption.AllDirectories)); } catch { }
+            }
+        }
+        catch { }
+        // Windows' own folder is shared by everything: only touch INIs there that name a CD drive.
+        var exeName = Path.GetFileNameWithoutExtension(g.ExePath ?? g.Exe);
+        foreach (var ini in shared.Concat(SafeList(() => Directory.EnumerateFiles(Environment.GetFolderPath(Environment.SpecialFolder.Windows), "*.ini"))))
+            if (SafeRead(ini) is var t && t.Contains("CDDrive", StringComparison.OrdinalIgnoreCase)
+                || Path.GetFileNameWithoutExtension(ini).Equals(exeName, StringComparison.OrdinalIgnoreCase))
+                inis.Add(ini);
+        var line = new Regex(@"^(\s*[^=;\r\n]*(?:cd|source|disc|disk)[^=\r\n]*=\s*""?)([A-Za-z])(:)", RegexOptions.IgnoreCase | RegexOptions.Multiline);
+        foreach (var ini in inis.Distinct(StringComparer.OrdinalIgnoreCase))
+            try
+            {
+                var text = File.ReadAllText(ini, Encoding.Latin1);
+                var fixedText = line.Replace(text, m => IsOldCd(m.Groups[2].Value[0]) ? m.Groups[1].Value + letter + m.Groups[3].Value : m.Value);
+                if (fixedText != text) { File.SetAttributes(ini, FileAttributes.Normal); File.WriteAllText(ini, fixedText, Encoding.Latin1); changed++; }
+            }
+            catch { }
+
+        // Registry: the publishers' keys (32-bit programs write under WOW6432Node).
+        foreach (var vendor in new[] { "The Learning Company", "TLC", "Learning Company", "Mattel", "Mattel Interactive", "DK Multimedia", "Dorling Kindersley", "Broderbund", "SoftKey", "Humongous Entertainment" })
+            foreach (var root in new[] { @"SOFTWARE\WOW6432Node\", @"SOFTWARE\" })
+                try { using var k = Registry.LocalMachine.OpenSubKey(root + vendor, true); if (k is not null) changed += FixKey(k, letter, IsOldCd); } catch { }
+        if (changed > 0) _log.LogInformation("{Id}: pointed {N} CD settings at {Drive}", g.Id, changed, drive);
+    }
+
+    private static IEnumerable<string> SafeList(Func<IEnumerable<string>> f) { try { return f().ToList(); } catch { return Array.Empty<string>(); } }
+
+    private static int FixKey(RegistryKey k, char letter, Func<char, bool> isOldCd, int depth = 0)
+    {
+        int n = 0;
+        foreach (var name in k.GetValueNames())
+            if (k.GetValue(name, null, RegistryValueOptions.DoNotExpandEnvironmentNames) is string v && v.Length >= 3 && char.IsLetter(v[0]) && v[1] == ':' && v[2] == '\\'
+                && Regex.IsMatch(name, "cd|source|disc|disk|drive", RegexOptions.IgnoreCase) && isOldCd(v[0]))
+            {
+                try { k.SetValue(name, letter + v[1..]); n++; } catch { }
+            }
+        if (depth < 4)
+            foreach (var sub in k.GetSubKeyNames())
+                try { using var s = k.OpenSubKey(sub, true); if (s is not null) n += FixKey(s, letter, isOldCd, depth + 1); } catch { }
+        return n;
+    }
+
     public static void TurnOffAutoPlay()
     {
         try
@@ -288,7 +358,7 @@ public sealed partial class DiscGameService
         Regex.Split(title, @"[^A-Za-z0-9]+").Where(w => w.Length >= 3 || w.Any(char.IsDigit))
             .Where(w => !new[] { "the", "and", "adventures", "adventure", "deluxe", "edition" }.Contains(w.ToLowerInvariant())).ToArray();
 
-    private static readonly Regex Launcher = new(@"^(play|autorun|auto|launch|launcher|start|menu|run|tlcrun|tlclaunch|tlcplay)\d*$", RegexOptions.IgnoreCase);
+    private static readonly Regex Launcher = new(@"^(autorun|launch|launcher|menu|tlcrun|tlclaunch)\d*$", RegexOptions.IgnoreCase);
     private static readonly Regex Helper = new(@"unins|uninst|setup|instal|readme|help|regist|ereg|acro|aol|web|update|config|dxsetup|directx|quicktime|qtinst|assess|demo|tour|preview", RegexOptions.IgnoreCase);
     private static bool IsHelper(string exe) => Helper.IsMatch(Path.GetFileNameWithoutExtension(exe));
 

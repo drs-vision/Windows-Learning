@@ -669,7 +669,7 @@ function DiscImport() {
     setErr('');
     try { if (link.trim()) { setSt(await bridge.parentDiscImport(link.trim(), useInst)); setLink(''); } } catch (e) { setErr((e as Error).message); }
   }
-  async function tryIt(id: string) { setErr(''); try { await bridge.playDisc(id); } catch (e) { setErr((e as Error).message); } }
+  async function tryIt(id: string) { setErr(''); try { const r = await bridge.playDisc(id); setSetupMsg(r.drive ? `Started — its disc is in drive ${r.drive}.` : 'Started.'); } catch (e) { setErr((e as Error).message); } }
   const [setup, setSetup] = useState<{ id: string; title: string; drive: string; installer: string } | null>(null);
   const [setupMsg, setSetupMsg] = useState('');
   async function beginSetup(id: string) {
