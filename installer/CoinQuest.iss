@@ -38,6 +38,8 @@ Source: "{#Stage}\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs crea
 ; Prerequisites, staged by CI. Extracted to {tmp} and run only when the machine needs them.
 Source: "{#Redist}\windowsdesktop-runtime-win-x64.exe"; DestDir: "{tmp}"; Flags: deleteafterinstall skipifsourcedoesntexist
 Source: "{#Redist}\MicrosoftEdgeWebview2Setup.exe"; DestDir: "{tmp}"; Flags: deleteafterinstall skipifsourcedoesntexist
+Source: "{#Redist}\vc_redist.x86.exe"; DestDir: "{tmp}"; Flags: deleteafterinstall skipifsourcedoesntexist
+Source: "{#Redist}\vc_redist.x64.exe"; DestDir: "{tmp}"; Flags: deleteafterinstall skipifsourcedoesntexist
 
 [Dirs]
 ; Data folder: SYSTEM + Administrators full control, Users read-only. The child can't touch the ledger or config.
@@ -55,6 +57,9 @@ Name: "{commondesktop}\CoinQuest Parent Console"; Filename: "{app}\CoinQuest.Par
 Filename: "{tmp}\windowsdesktop-runtime-win-x64.exe"; Parameters: "/install /quiet /norestart"; StatusMsg: "Installing the .NET 8 runtime (one time, about a minute)..."; Flags: waituntilterminated skipifdoesntexist; Check: NeedsDotNet
 ; WebView2 runtime is on every supported Windows 10/11 machine; install it if it's somehow missing.
 Filename: "{tmp}\MicrosoftEdgeWebview2Setup.exe"; Parameters: "/silent /install"; StatusMsg: "Installing WebView2 runtime..."; Flags: waituntilterminated skipifdoesntexist; Check: NeedsWebView2
+; Microsoft Visual C++ runtime: the 16-bit helper (otvdm) for Read, Write & Type! and other 16-bit discs needs it.
+Filename: "{tmp}\vc_redist.x86.exe"; Parameters: "/install /quiet /norestart"; StatusMsg: "Installing the Microsoft Visual C++ runtime..."; Flags: waituntilterminated skipifdoesntexist; Check: NeedsVcRuntime('{syswow64}')
+Filename: "{tmp}\vc_redist.x64.exe"; Parameters: "/install /quiet /norestart"; StatusMsg: "Installing the Microsoft Visual C++ runtime..."; Flags: waituntilterminated skipifdoesntexist; Check: NeedsVcRuntime('{sys}')
 Filename: "sc.exe"; Parameters: "stop CoinQuestGuardian"; Flags: runhidden waituntilterminated; Check: ServiceExists
 Filename: "sc.exe"; Parameters: "delete CoinQuestGuardian"; Flags: runhidden waituntilterminated; Check: ServiceExists
 Filename: "sc.exe"; Parameters: "create CoinQuestGuardian binPath= ""{app}\CoinQuest.Guardian.exe"" start= auto DisplayName= ""CoinQuest Guardian"" obj= LocalSystem"; Flags: runhidden waituntilterminated
@@ -73,6 +78,11 @@ function ServiceExists: Boolean;
 var R: Integer;
 begin
   Result := Exec('sc.exe', 'query CoinQuestGuardian', '', SW_HIDE, ewWaitUntilTerminated, R) and (R = 0);
+end;
+
+function NeedsVcRuntime(Dir: String): Boolean;
+begin
+  Result := not (FileExists(ExpandConstant(Dir) + '\vcruntime140.dll') and FileExists(ExpandConstant(Dir) + '\msvcp140.dll'));
 end;
 
 function NeedsWebView2: Boolean;

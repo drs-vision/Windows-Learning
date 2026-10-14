@@ -299,6 +299,9 @@ public sealed class RequestRouter
             catch (Exception ex) { return Response.Fail(req.Id, "Couldn't get the 16-bit helper (otvdm): " + ex.Message); }
         }
         if (otvdm is null) return Response.Fail(req.Id, "the 16-bit helper (otvdm) is missing");
+        if (!CoinQuest.Guardian.Rwt.VcRuntime.Present)
+            try { _rwt.EnsureRuntime().GetAwaiter().GetResult(); }
+            catch (Exception ex) { return Response.Fail(req.Id, "Read, Write & Type! needs a Microsoft component that couldn't be installed: " + ex.Message); }
         _log.LogInformation("Read, Write & Type! started ({Who})", child?.DisplayName ?? "parent");
         return Response.Success(req.Id, new { otvdm, root = CoinQuest.Guardian.Rwt.RwtService.Root, exe = @"cd\RWTWINCD.EXE", data = "SIGNIN", cwd = "cd" });
     }
@@ -328,6 +331,9 @@ public sealed class RequestRouter
             if (otvdm is null)
                 try { _rwt.EnsureOtvdm().GetAwaiter().GetResult(); otvdm = CoinQuest.Guardian.Rwt.RwtService.Otvdm; }
                 catch (Exception ex) { return Response.Fail(req.Id, "Couldn't get the 16-bit helper (otvdm): " + ex.Message); }
+            if (!CoinQuest.Guardian.Rwt.VcRuntime.Present)
+                try { _rwt.EnsureRuntime().GetAwaiter().GetResult(); }
+                catch (Exception ex) { return Response.Fail(req.Id, "This 16-bit game needs a Microsoft component that couldn't be installed: " + ex.Message); }
         }
         _log.LogInformation("{Title} started ({Who}) {Kind}{Drive}", g.Title, child?.DisplayName ?? "parent", kind, drive is null ? "" : " disc in " + drive);
         var app = Path.Combine(CoinQuest.Guardian.DiscGames.DiscGameService.Root, g.Id, "app");

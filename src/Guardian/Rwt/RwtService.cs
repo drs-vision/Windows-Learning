@@ -47,7 +47,13 @@ public sealed class RwtService
             OpenUp(SigninDir); // the game (running as the child) writes each player's progress here
             StartWatching();
         }
+        // The 16-bit helper needs Microsoft's Visual C++ runtime; get it now rather than when a child presses Play.
+        if (Installed || Otvdm is not null)
+            _ = Task.Run(async () => { try { await EnsureRuntime(); } catch (Exception ex) { _log.LogWarning(ex, "Visual C++ runtime"); } });
     }
+
+    /// <summary>The Microsoft Visual C++ runtime otvdm needs (installed silently if missing).</summary>
+    public Task EnsureRuntime() => VcRuntime.EnsureAsync(_http, _log);
 
     public static bool Installed => File.Exists(Path.Combine(Root, "cd", "RWTWINCD.EXE"));
     public static string? Otvdm => new[] { "otvdmw.exe", "otvdm.exe" }.Select(n => Directory.Exists(OtvdmDir) ? Directory.EnumerateFiles(OtvdmDir, n, SearchOption.AllDirectories).FirstOrDefault() : null).FirstOrDefault(p => p is not null);
@@ -99,6 +105,7 @@ public sealed class RwtService
         _log.LogInformation("Read, Write & Type imported: {Files} files, {MB} MB; patches: {P}", r.Files, r.Bytes / 1048576, string.Join(", ", r.Patches));
         progress("Getting the 16-bit Windows helper (otvdm)…");
         await EnsureOtvdm();
+        if (!VcRuntime.Present) { progress("Installing the Microsoft Visual C++ runtime it needs (one time)…"); await EnsureRuntime(); }
         StartWatching();
         if (Stage != "importing") { Stage = "ready"; Message = $"Imported ({r.Bytes / 1048576} MB)."; }
         return r.Bytes / 1048576;
