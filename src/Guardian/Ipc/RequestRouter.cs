@@ -182,7 +182,8 @@ public sealed class RequestRouter
 
         var earnedToday = _ledger.EarnedToday(child.Id, moduleId);
         var room = settings.DailyCap > 0 ? Math.Max(0, settings.DailyCap - earnedToday) : int.MaxValue;
-        var coins = Math.Min(outcome.Coins, room);
+        // The daily limit caps earning; a negative amount (a parent's negative rate) is charged in full.
+        var coins = outcome.Coins < 0 ? outcome.Coins : Math.Min(outcome.Coins, room);
         var capped = coins < outcome.Coins;
 
         object result;
@@ -194,7 +195,7 @@ public sealed class RequestRouter
         }
         else
         {
-            if (coins > 0) _ledger.Append(child.Id, LedgerKind.Earn, coins, moduleId, outcome.Detail, account);
+            if (coins != 0) _ledger.Append(child.Id, LedgerKind.Earn, coins, moduleId, outcome.Detail, account);
             result = new { coins, pending = false, capped, detail = outcome.Detail, balance = _ledger.Balance(child.Id) };
         }
 
@@ -350,8 +351,8 @@ public sealed class RequestRouter
             var due = what.Select(w => games.FirstOrDefault(g => w.StartsWith(g.Title + ":", StringComparison.Ordinal)))
                           .GroupBy(g => g?.Id).Sum(grp => grp.First()?.Coins ?? s.CoinsPerActivity);
             var room = s.DailyCap > 0 ? Math.Max(0, s.DailyCap - _ledger.EarnedToday(child.Id, "discgames")) : due;
-            var coins = Math.Min(due, room);
-            if (coins <= 0) return;
+            var coins = due < 0 ? due : Math.Min(due, room); // negative rates (a parent's choice) are charged in full
+            if (coins == 0) return;
             _ledger.Append(child.Id, LedgerKind.Earn, coins, "discgames", string.Join("; ", what), "discgames");
             _log.LogInformation("Classic CD progress for {Child}: +{Coins}", child.DisplayName, coins);
             AfterChange();
@@ -431,8 +432,8 @@ public sealed class RequestRouter
             var s = child.Modules.GetValueOrDefault("rwt") ?? new ModuleSettings { CoinsPerActivity = 5, DailyCap = 60 };
             if (!s.Enabled) return;
             var room = s.DailyCap > 0 ? Math.Max(0, s.DailyCap - _ledger.EarnedToday(child.Id, "rwt")) : s.CoinsPerActivity;
-            var coins = Math.Min(s.CoinsPerActivity, room);
-            if (coins <= 0) return;
+            var coins = s.CoinsPerActivity < 0 ? s.CoinsPerActivity : Math.Min(s.CoinsPerActivity, room);
+            if (coins == 0) return;
             _ledger.Append(child.Id, LedgerKind.Earn, coins, "rwt", $"Read, Write & Type!: progress saved ({string.Join(", ", players)})", "rwt");
             _log.LogInformation("RWT progress for {Child}: +{Coins}", child.DisplayName, coins);
             AfterChange();

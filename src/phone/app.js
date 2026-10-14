@@ -154,7 +154,7 @@ function giveSheet(childId, sign) {
     <form method="dialog">
       <h3>${sign > 0 ? 'Give coins to' : 'Take coins from'} ${esc(kid.name)}</h3>
       <div class="amounts">${presets.map((n) => `<button type="button" data-amt="${n}" class="${n === amount ? 'sel' : ''}">${n}</button>`).join('')}</div>
-      <input type="number" inputmode="numeric" min="1" max="1000" placeholder="Other amount" id="amt">
+      <div class="row" style="gap:8px;margin-bottom:10px"><input type="text" inputmode="numeric" autocomplete="off" placeholder="Other amount (can be negative)" id="amt" style="margin:0;flex:1"><button type="button" data-sign style="flex:none;min-width:56px" aria-label="Make negative or positive">±</button></div>
       <input type="text" id="why" maxlength="80" placeholder="${sign > 0 ? 'What for? (e.g. Helped with dishes)' : 'Why? (optional)'}">
       <div class="row"><button type="button" data-cancel>Cancel</button><button type="submit" class="${sign > 0 ? 'give' : 'take'}" data-ok>${sign > 0 ? 'Give' : 'Take'} <span id="amtLabel">${amount}</span></button></div>
     </form>`;
@@ -163,9 +163,16 @@ function giveSheet(childId, sign) {
     amount = +b.dataset.amt; label.textContent = amount; sheet.querySelector('#amt').value = '';
     sheet.querySelectorAll('[data-amt]').forEach((x) => x.classList.toggle('sel', x === b));
   }));
-  sheet.querySelector('#amt').addEventListener('input', (e) => {
-    const v = Math.round(+e.target.value);
-    if (v > 0) { amount = Math.min(1000, v); label.textContent = amount; sheet.querySelectorAll('[data-amt]').forEach((x) => x.classList.remove('sel')); }
+  const amt = sheet.querySelector('#amt');
+  const fromField = () => {
+    const v = Math.round(Number(amt.value.replace(/[−–]/g, '-').replace(/[^0-9-]/g, '').replace(/(?!^)-/g, '')));
+    if (Number.isFinite(v) && v !== 0) { amount = Math.max(-1000, Math.min(1000, v)); label.textContent = amount; sheet.querySelectorAll('[data-amt]').forEach((x) => x.classList.remove('sel')); }
+  };
+  amt.addEventListener('input', fromField);
+  // Phone number pads often have no minus key: ± flips the sign.
+  sheet.querySelector('[data-sign]').addEventListener('click', () => {
+    amount = -amount; amt.value = String(amount); label.textContent = amount;
+    sheet.querySelectorAll('[data-amt]').forEach((x) => x.classList.toggle('sel', +x.dataset.amt === amount));
   });
   sheet.querySelector('[data-cancel]').addEventListener('click', () => sheet.close());
   sheet.querySelector('form').addEventListener('submit', () => {

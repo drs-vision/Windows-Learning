@@ -28,7 +28,9 @@ export function scoreBibleTyping(activity: Activity, result: Result, settings: M
 
   const words = text.split(/\s+/).filter(Boolean).length;
   const lengthFactor = clamp(words / 40, 0.25, 3);
-  const coins = Math.max(1, Math.round(settings.coinsPerActivity * lengthFactor));
+  // A negative rate (set by a parent) charges coins instead; a positive one always pays at least 1.
+  const raw = Math.round(settings.coinsPerActivity * lengthFactor);
+  const coins = settings.coinsPerActivity < 0 ? Math.min(-1, raw) : Math.max(1, raw);
 
   const done = Array.isArray(activity.data.done) ? (activity.data.done as string[]) : [];
   const nowDone = !done.includes(ref) ? [...done, ref] : done;

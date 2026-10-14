@@ -90,7 +90,7 @@ public sealed class Ledger : IDisposable
     {
         var start = (now ?? DateTimeOffset.Now).Date;
         using var cmd = _db.CreateCommand();
-        cmd.CommandText = "SELECT COALESCE(SUM(delta),0) FROM ledger WHERE child=$c AND source=$s AND kind IN ('Earn','ClaimApproved') AND at>=$a";
+        cmd.CommandText = "SELECT COALESCE(SUM(CASE WHEN delta > 0 THEN delta ELSE 0 END),0) FROM ledger WHERE child=$c AND source=$s AND kind IN ('Earn','ClaimApproved') AND at>=$a";
         cmd.Parameters.AddWithValue("$c", childId);
         cmd.Parameters.AddWithValue("$s", source);
         cmd.Parameters.AddWithValue("$a", new DateTimeOffset(start).ToUniversalTime().ToString("O"));

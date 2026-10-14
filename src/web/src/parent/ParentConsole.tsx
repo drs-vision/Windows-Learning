@@ -190,7 +190,7 @@ function Approvals({ state, onChange }: { state: ParentState; onChange: () => vo
         <div class="card claim">
           <div><b>{labelFor(c.moduleId)}</b><p>{c.detail}</p><small class="muted">{new Date(c.at).toLocaleString()}</small></div>
           <div class="row">
-            <input type="number" class="coins-input" value={coins[c.ledgerSeq] ?? c.coins} min={0} max={500} onInput={(e) => setCoins({ ...coins, [c.ledgerSeq]: Number((e.target as HTMLInputElement).value) })} /> 🪙
+            <input type="number" class="coins-input" value={coins[c.ledgerSeq] ?? c.coins} min={-500} max={500} onInput={(e) => setCoins({ ...coins, [c.ledgerSeq]: Number((e.target as HTMLInputElement).value) })} /> 🪙
             <button class="primary" onClick={() => bridge.parentResolveClaim(c.ledgerSeq, true, coins[c.ledgerSeq] ?? c.coins).then(onChange)}>Approve</button>
             <button class="ghost" onClick={() => bridge.parentResolveClaim(c.ledgerSeq, false).then(onChange)}>Deny</button>
           </div>
@@ -610,7 +610,7 @@ function Quests({ child, onSave }: { child: Child; onSave: (c: Child) => void })
             {m.id === 'rwt' && <RwtImport />}
             {m.id === 'discgames' && <DiscImport rwt={{ s: child.modules.rwt ?? { enabled: false, requireApproval: false, ...MODULES.find((x) => x.id === 'rwt')!.defaults }, set: (p) => setMod('rwt', p) }} />}
             <div class="row">
-              <label>Coins per activity<input type="number" min={0} value={s.coinsPerActivity} onChange={(e) => setMod(m.id, { coinsPerActivity: Number((e.target as HTMLInputElement).value) })} /></label>
+              <label>Coins per activity<input type="number" value={s.coinsPerActivity} onChange={(e) => setMod(m.id, { coinsPerActivity: Number((e.target as HTMLInputElement).value) })} /></label>
               <label>Daily limit (0 = none)<input type="number" min={0} value={s.dailyCap} onChange={(e) => setMod(m.id, { dailyCap: Number((e.target as HTMLInputElement).value) })} /></label>
               <label class="check"><input type="checkbox" checked={s.requireApproval || m.verification === 'parent_approved'} disabled={m.verification === 'parent_approved'} onChange={(e) => setMod(m.id, { requireApproval: (e.target as HTMLInputElement).checked })} /> Needs my OK</label>
             </div>
@@ -653,7 +653,7 @@ function DiscImport({ rwt }: { rwt: { s: ModSettings; set: (p: Partial<ModSettin
   async function rwtTry() { setErr(''); try { await bridge.playRwt(); } catch (e) { setErr((e as Error).message); } }
   async function setCoins(id: string, v: string) {
     setErr('');
-    try { setSt(await bridge.parentDiscCoins(id, v.trim() === '' ? null : Math.max(0, Math.round(Number(v) || 0)))); } catch (e) { setErr((e as Error).message); }
+    try { setSt(await bridge.parentDiscCoins(id, v.trim() === '' ? null : Math.round(Number(v) || 0))); } catch (e) { setErr((e as Error).message); }
   }
   const [err, setErr] = useState('');
   const load = () => bridge.parentDiscStatus().then(setSt).catch((e) => setErr(e.message));
@@ -751,7 +751,7 @@ function DiscImport({ rwt }: { rwt: { s: ModSettings; set: (p: Partial<ModSettin
                 <div class="row" style="gap:.4em;margin-top:.3em;flex-wrap:wrap;align-items:center">
                   {rw.installed ? <button class="ghost small" onClick={rwtTry}>Try it</button> : null}
                   <button class="ghost small" onClick={rwtPick}>{rw.installed ? 'Import again…' : 'Import its disc…'}</button>
-                  <label class="small inline-num">🪙 per level<input type="number" min={0} value={rwt.s.coinsPerActivity} onChange={(e) => rwt.set({ coinsPerActivity: Number((e.target as HTMLInputElement).value) })} /></label>
+                  <label class="small inline-num">🪙 per level<input type="number" value={rwt.s.coinsPerActivity} onChange={(e) => rwt.set({ coinsPerActivity: Number((e.target as HTMLInputElement).value) })} /></label>
                   <label class="small inline-num">daily limit<input type="number" min={0} value={rwt.s.dailyCap} onChange={(e) => rwt.set({ dailyCap: Number((e.target as HTMLInputElement).value) })} /></label>
                   <label class="check small"><input type="checkbox" checked={rwt.s.requireApproval} onChange={(e) => rwt.set({ requireApproval: (e.target as HTMLInputElement).checked })} /> Needs my OK</label>
                 </div>
@@ -780,7 +780,7 @@ function DiscImport({ rwt }: { rwt: { s: ModSettings; set: (p: Partial<ModSettin
                 {removing === g.id
                   ? <><button class="danger small" onClick={() => remove(g.id)}>Yes, remove {g.title}</button><button class="ghost small" onClick={() => setRemoving(null)}>Keep it</button></>
                   : <button class="ghost small" title="Delete CoinQuest's copy of this game and its disc image" onClick={() => setRemoving(g.id)}>🗑 Remove</button>}
-                {g.mode !== 'pending' && <label class="small inline-num" title="Coins for each level-up or saved progress in this game (blank: the Classic CD games setting below)">🪙 per progress<input type="number" min={0} placeholder="default" value={g.coins ?? ''} onChange={(e) => setCoins(g.id, (e.target as HTMLInputElement).value)} /></label>}
+                {g.mode !== 'pending' && <label class="small inline-num" title="Coins for each level-up or saved progress in this game (blank: the Classic CD games setting below)">🪙 per progress<input type="number" placeholder="default" value={g.coins ?? ''} onChange={(e) => setCoins(g.id, (e.target as HTMLInputElement).value)} /></label>}
               </div>
               {removing === g.id && <p class="muted small">Players' progress in this game is deleted too.{g.mode === 'installed' ? ' The installed program stays on the PC — uninstall it from Windows Settings → Apps if you want it gone completely.' : ''}</p>}
             </div>

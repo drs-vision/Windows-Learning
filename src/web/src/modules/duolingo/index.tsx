@@ -13,7 +13,7 @@ export const duolingo: LessonModule = {
   description: 'Coins arrive automatically for every Duolingo lesson or story finished inside CoinQuest (CoinQuest sees Duolingo save the finished lesson). Nothing to approve. The daily limit still applies. Lessons done on a phone or another browser are not counted.',
   icon: '🦉',
   verification: 'observed',
-  options: [{ key: 'perStory', label: 'Coins per finished story', number: { min: 0, max: 50 }, default: '5' }],
+  options: [{ key: 'perStory', label: 'Coins per finished story', number: { min: -50, max: 50 }, default: '5' }],
   defaults: DEFAULTS,
   requiredSites: SITES,
   nextActivity(): Activity { return { moduleId: 'duolingo', kind: 'observed', data: {}, issuedAt: 0 }; },

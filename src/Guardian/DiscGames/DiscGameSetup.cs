@@ -57,7 +57,7 @@ public sealed partial class DiscGameService
     public object SetCoins(string id, int? coins)
     {
         var g = Find(id) ?? throw new InvalidOperationException("That game isn't imported");
-        Save(g with { Coins = coins is null ? null : Math.Clamp(coins.Value, 0, 1000) });
+        Save(g with { Coins = coins is null ? null : Math.Clamp(coins.Value, -1000, 1000) });
         return Status();
     }
 

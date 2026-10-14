@@ -14,8 +14,8 @@ export const khanAcademy: LessonModule = {
   icon: '🎓',
   verification: 'observed',
   options: [
-    { key: 'perAnswer', label: 'Coins per correct answer', number: { min: 0, max: 20 }, default: '1' },
-    { key: 'perVideo', label: 'Coins per finished video', number: { min: 0, max: 50 }, default: '3' },
+    { key: 'perAnswer', label: 'Coins per correct answer', number: { min: -20, max: 20 }, default: '1' },
+    { key: 'perVideo', label: 'Coins per finished video', number: { min: -50, max: 50 }, default: '3' },
   ],
   defaults: DEFAULTS,
   requiredSites: SITES,
