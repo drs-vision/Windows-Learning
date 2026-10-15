@@ -79,7 +79,6 @@
   .pills { display: flex; gap: 8px; overflow-x: auto; margin: -4px 0 12px; scrollbar-width: none; }
   .pills button { white-space: nowrap; min-height: 36px; padding: 6px 14px; font-size: 14px; border-radius: 99px; }
   .pills button.on { background: var(--accent); color: #fff; }
-  .pills button.quiet:not(.on) { opacity: .6; }
   .tabbar { position: fixed; left: 0; right: 0; bottom: 0; z-index: 5; display: grid; grid-template-columns: repeat(5, 1fr); background: var(--panel); border-top: 1px solid var(--line); padding: 6px 4px calc(6px + env(safe-area-inset-bottom)); }
   .tabbar button { background: transparent; border-radius: 10px; min-height: 52px; padding: 4px 2px; font-size: 11px; color: var(--muted); display: flex; flex-direction: column; align-items: center; gap: 2px; position: relative; }
   .tabbar button span { font-size: 20px; line-height: 1; filter: grayscale(1); opacity: .7; }

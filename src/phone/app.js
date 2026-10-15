@@ -17,9 +17,9 @@ const store = {
 // The link lives in the address after '#' (so a home-screen icon keeps it) and in this phone's storage.
 // Scanning a PC's QR code again replaces the older link to that same PC (and an old QR, say from an old home-screen
 // icon, never replaces a newer one). Links the PC has since removed, or that never answer while another link to
-// a PC of the same name does, are tidied away (see tidyLinks).
+// a PC of the same name does, are removed (see tidyLinks).
 let links = store.get('cq.links', []).map((r) => w.parseLink(r)).filter(Boolean);
-const meta = store.get('cq.meta', {});        // per topicIn: { pc, pcName, ok, fails: [days], probed }
+const meta = store.get('cq.meta', {});        // per topicIn: { pc, pcName, ok }
 let forgot = store.get('cq.forgot', []);      // links tidied away or forgotten: an old icon mustn't bring them back
 const pcOf = (l) => l.pc || meta[l.topicIn]?.pc || null;
 const saveLinks = () => { store.set('cq.links', links.map((l) => l.raw)); store.set('cq.meta', meta); store.set('cq.forgot', forgot.slice(-100)); };
@@ -44,31 +44,36 @@ const hashLink = fromHash ? addLink(fromHash) : null;
 saveLinks();
 let link = hashLink ?? links.find((l) => l.topicIn === store.get('cq.current', '')) ?? links[0] ?? null;
 
-/** The PC answered on this link: note which PC it is, and drop other links to it and links it has removed. */
+/**
+ * The PC answered on this link, so it works. Every other link to a PC of the same family name is checked right
+ * away: links the PC says it still has or has removed go, and so does any that doesn't answer within 25 seconds
+ * while this one does (an old link from before a re-scan). Works with any PC version; newer PCs say more.
+ */
+const checked = new Set();
 async function tidyLinks(l, pc) {
-  if (!pc?.id) return;
-  meta[l.topicIn] = { ...meta[l.topicIn], pc: pc.id, pcName: pc.name || '', ok: Date.now(), fails: [] };
-  let changed = false;
-  for (const o of links.filter((x) => x !== l)) {
-    const t = await w.tag(o.topicIn);
-    if (pcOf(o) === pc.id || (pc.live || []).includes(t) || (pc.gone || []).includes(t)) { dropLink(o); changed = true; }
-    else if (!pcOf(o) && o.household === l.household) probe(o); // a PC of the same name, or an old dead link?
-  }
+  if (pc?.id) meta[l.topicIn] = { ...meta[l.topicIn], pc: pc.id, pcName: pc.name || '', ok: Date.now() };
+  else meta[l.topicIn] = { ...meta[l.topicIn], ok: Date.now() };
   saveLinks();
-  if (changed) render();
+  for (const o of links.filter((x) => x !== l && !checked.has(x.topicIn))) {
+    const t = await w.tag(o.topicIn);
+    const samePc = pc?.id && (pcOf(o) === pc.id || (pc.live || []).includes(t) || (pc.gone || []).includes(t));
+    if (samePc) { dropLink(o); render(); continue; }
+    if (o.household !== l.household && pcOf(o)) continue; // a different PC: leave it be
+    checked.add(o.topicIn);
+    probe(o, l);
+  }
 }
 
-/** Ask a link we're not using whether its PC is there (at most every 6 hours). Two tries with no answer ever, and it goes. */
-async function probe(o) {
-  const m = meta[o.topicIn] = meta[o.topicIn] ?? { fails: [] };
-  if (!cqRelay || Date.now() - (m.probed || 0) < 6 * 3600e3) return;
-  m.probed = Date.now(); saveLinks();
+/** Ask another link whether its PC is there. No answer (while `working` does) → it's an old link: remove it. */
+async function probe(o, working) {
+  if (!cqRelay) return;
   const k = await w.importKey(o.key), a = w.assembler();
   const id = w.b64url(crypto.getRandomValues(new Uint8Array(9)));
   const answered = await new Promise((resolve) => {
-    const ws = new WebSocket(`${cqRelay.replace(/^http/, 'ws')}/${o.topicOut}/ws?since=${Math.floor(Date.now() / 1000) - 5}`);
+    let ws;
     const end = (v) => { clearTimeout(timer); try { ws.close(); } catch { } resolve(v); };
     const timer = setTimeout(() => end(null), 25000);
+    try { ws = new WebSocket(`${cqRelay.replace(/^http/, 'ws')}/${o.topicOut}/ws?since=${Math.floor(Date.now() / 1000) - 5}`); } catch { end(undefined); return; }
     ws.onmessage = async (ev) => {
       let msg; try { msg = JSON.parse(ev.data); } catch { return; }
       const whole = msg.event === 'message' && a.add(msg.message);
@@ -77,14 +82,19 @@ async function probe(o) {
     };
     ws.onerror = () => end(undefined);
     ws.onopen = async () => {
-      try { for (const part of w.split(await w.seal(k, { id, ts: Date.now(), op: 'state', a: {} }))) await fetch(`${cqRelay}/${o.topicIn}`, { method: 'POST', body: part }); }
+      try { for (const part of w.split(await w.seal(k, { id, ts: Date.now(), op: 'state', a: {} }))) { const r = await fetch(`${cqRelay}/${o.topicIn}`, { method: 'POST', body: part }); if (!r.ok) throw new Error(); } }
       catch { end(undefined); }
     };
   });
-  if (answered === undefined) return; // couldn't ask (offline): no verdict
-  if (answered) { Object.assign(m, { pc: answered.pc?.id ?? m.pc, pcName: answered.pc?.name ?? m.pcName, ok: Date.now(), fails: [] }); if (answered.pc?.id && answered.pc.id === pcOf(link) && o !== link) dropLink(o); }
-  else m.fails.push(Date.now());
-  if (!m.ok && m.fails.length >= 2 && o !== link) dropLink(o);
+  if (answered === undefined || o === link || !links.includes(o)) return; // couldn't ask (offline), or in use now
+  if (!answered) {
+    if (o.household === working.household) { dropLink(o); saveLinks(); render(); }
+    return;
+  }
+  // It works too. The same PC twice → keep the one in use; a different PC → keep it and remember which it is.
+  const id2 = answered.pc?.id;
+  if (id2 && id2 === pcOf(working)) dropLink(o);
+  else meta[o.topicIn] = { ...meta[o.topicIn], pc: id2 ?? pcOf(o), pcName: answered.pc?.name ?? '', ok: Date.now() };
   saveLinks(); render();
 }
 
@@ -137,7 +147,6 @@ async function loadSnapshot() {
     const m = await r.json();
     const sealed = w.assembler().add(m.message);
     const snap = sealed && await w.open(key, sealed);
-    if (snap?.pc) tidyLinks(link, snap.pc);
     if (snap?.d?.state && m.time * 1000 > stateAt) { state = snap.d.state; stateAt = m.time * 1000; render(); }
   } catch { /* not there yet */ }
 }
@@ -149,7 +158,7 @@ async function onRelayMessage(data) {
   if (!whole) return;
   const reply = await w.open(key, whole);
   if (!reply) return;
-  if (reply.pc) tidyLinks(link, reply.pc);
+  if (reply.ok && reply.re && waiting.has(reply.re)) tidyLinks(link, reply.pc);
   if (reply.ok && reply.d?.state) {
     state = reply.d.state; status = 'on'; updatedAt = stateAt = Date.now();
     store.set('cq.state.' + link.topicIn, { state, at: stateAt });
@@ -281,7 +290,7 @@ function draw() {
     return;
   }
   const pcs = links.length > 1
-    ? `<div class="pills">${links.map((l, i) => { const m = meta[l.topicIn] || {}; const pcName = m.pcName || l.pcName; const quiet = !m.ok && (m.fails || []).length; return `<button data-pc="${i}" class="${l === link ? 'on' : ''}${quiet ? ' quiet' : ''}">${esc(l.household)}${pcName && links.some((x) => x !== l && x.household === l.household) ? ` · ${esc(pcName)}` : ''}${quiet ? ' · not answering' : ''}</button>`; }).join('')}</div>` : '';
+    ? `<div class="pills">${links.map((l, i) => { const pcName = meta[l.topicIn]?.pcName || l.pcName; return `<button data-pc="${i}" class="${l === link ? 'on' : ''}">${esc(pcName && links.some((x) => x !== l && x.household === l.household) ? pcName : l.household)}</button>`; }).join('')}</div>` : '';
   const kids = (config?.children ?? state?.children ?? []);
   const kidPicker = tab !== 'home' && kids.length > 1
     ? `<div class="pills">${kids.map((k) => `<button data-kid="${esc(k.id)}" class="${k.id === kid()?.id ? 'on' : ''}">${esc(k.name)}</button>`).join('')}</div>` : '';
