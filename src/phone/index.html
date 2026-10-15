@@ -72,7 +72,7 @@
   dialog .field { margin-bottom: 10px; } dialog .grid2 { margin-top: 0; }
   .amounts { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin-bottom: 10px; }
   .amounts button.sel { outline: 2px solid var(--accent); }
-  input[type=number], input[type=text] { font: inherit; width: 100%; padding: 12px; border-radius: 12px; border: 1px solid var(--line); background: var(--panel-2); color: var(--ink); margin-bottom: 10px; min-height: 44px; }
+  input[type=number], input[type=text], input[type=search] { font: inherit; width: 100%; padding: 12px; border-radius: 12px; border: 1px solid var(--line); background: var(--panel-2); color: var(--ink); margin-bottom: 10px; min-height: 44px; }
   .hint { background: var(--gold-soft); color: var(--gold-ink); border-radius: 14px; padding: 12px 14px; font-size: 14px; margin-bottom: 14px; display: flex; gap: 10px; align-items: flex-start; }
   .hint button { min-height: 0; padding: 2px 8px; background: transparent; color: inherit; font-size: 18px; }
   main { padding-bottom: calc(84px + env(safe-area-inset-bottom)); }
@@ -101,6 +101,12 @@
   .switch span::after { content: ""; position: absolute; top: 3px; left: 3px; width: 26px; height: 26px; border-radius: 50%; background: #fff; box-shadow: 0 1px 3px rgba(0,0,0,.25); transition: transform .15s; }
   .switch input:checked + span { background: var(--good); } .switch input:checked + span::after { transform: translateX(20px); }
   .switch input:focus-visible + span { outline: 2px solid var(--accent); outline-offset: 2px; }
+  ul.applist { list-style: none; margin: 8px 0 10px; padding: 0; max-height: 38vh; overflow-y: auto; border: 1px solid var(--line); border-radius: 12px; }
+  ul.applist li { border-top: 1px solid var(--line); padding: 0 12px; } ul.applist li:first-child { border-top: 0; }
+  ul.applist li.t { padding: 12px; }
+  label.pick { display: flex; align-items: center; gap: 12px; padding: 9px 0; font-size: 15px; cursor: pointer; }
+  label.pick input { width: 22px; height: 22px; margin: 0; flex: none; accent-color: var(--accent, #4f7cff); }
+  label.pick b { font-weight: 600; }
   .chips { display: flex; flex-wrap: wrap; gap: 8px; margin: 10px 0 12px; }
   .chip { display: inline-flex; align-items: center; gap: 2px; background: var(--panel-2); border: 1px solid var(--line); border-radius: 99px; padding: 2px 2px 2px 12px; font-size: 14px; }
   .chip button { min-height: 32px; min-width: 32px; padding: 0; background: transparent; color: var(--muted); font-size: 18px; border-radius: 99px; }

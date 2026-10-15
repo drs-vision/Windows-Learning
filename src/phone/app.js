@@ -1,8 +1,8 @@
 // CoinQuest on a parent's phone. Linked by scanning the QR code in the parent app on the PC (no account).
 // Talks to the PC through the relay with messages scrambled by wire.js; see src/Guardian/Phone/PhoneLinkService.cs.
 // From here a parent can: see coins and requests, give/take coins, approve, end game time, read the full history,
-// and change quests (coins, limits, on/off), shop prizes, allowed websites and YouTube channels. The parent PIN,
-// internet lock, allowed apps, updates and CD games stay on the PC.
+// and change quests (coins, limits, on/off), shop prizes (incl. website and app time), allowed websites, apps and YouTube channels. The parent PIN,
+// internet lock, arcade, updates and CD games stay on the PC.
 import * as w from './wire.js';
 
 const app = document.getElementById('app');
@@ -33,7 +33,7 @@ let hist = { kid: null, entries: [], more: false, loading: false };
 async function connect() {
   if (source) source.close();
   if (sock) { sock.onclose = null; sock.close(); sock = null; }
-  waiting.clear(); state = null; config = null; error = ''; stateAt = 0; hist = { kid: null, entries: [], more: false, loading: false };
+  waiting.clear(); state = null; config = null; pcApps = null; error = ''; stateAt = 0; hist = { kid: null, entries: [], more: false, loading: false };
   if (!link) { render(); return; }
   store.set('cq.current', link.topicIn);
   if (location.hash.slice(1) !== link.raw) history.replaceState(null, '', '#' + link.raw);
@@ -98,7 +98,7 @@ function send(op, args = {}) {
     setTimeout(() => {
       if (!waiting.has(id)) return;
       waiting.delete(id);
-      reject(new Error(op === 'state' || op === 'config' || op === 'history'
+      reject(new Error(op === 'state' || op === 'config' || op === 'history' || op === 'apps'
         ? "The PC isn't answering — it may be off, asleep or offline."
         : `The PC isn't answering right now — this will happen when it's back online (within ${cqRelay ? '7 days' : '12 hours'}).`));
     }, 30000);
@@ -308,10 +308,10 @@ function shopScreen() {
   if (!kc) { if (status !== 'off') setTimeout(() => loadConfig().catch((e) => { error = e.message; render(); }), 0); return `<div class="card empty"><p>Loading the shop…</p></div>`; }
   return `<p class="lead">What ${esc(kc.name)} can buy with coins. Tap one to change it.</p>
     <div class="card list"><ul class="prizes">${kc.prizes.map((p) => `
-      <li><button data-prize="${esc(p.id)}" class="${p.enabled ? '' : 'off'}"><span class="pi">${(KINDS[p.kind] ?? ['🎁'])[0]}</span><span class="what"><b>${esc(p.name)}</b><br><span class="t">${[p.minutes ? `${p.minutes} min` : '', p.dailyCap ? `max ${p.dailyCap}/day` : '', p.enabled ? '' : 'hidden'].filter(Boolean).join(' · ') || (KINDS[p.kind] ?? ['', ''])[1]}</span></span><span class="price">${coins(p.cost)}</span></button></li>`).join('')}
+      <li><button data-prize="${esc(p.id)}" class="${p.enabled ? '' : 'off'}"><span class="pi">${(KINDS[p.kind] ?? ['🎁'])[0]}</span><span class="what"><b>${esc(p.name)}</b><br><span class="t">${[p.minutes ? `${p.minutes} min` : '', (p.targets || []).length ? targetText(p) : '', p.dailyCap ? `max ${p.dailyCap}/day` : '', p.enabled ? '' : 'hidden'].filter(Boolean).join(' · ') || (KINDS[p.kind] ?? ['', ''])[1]}</span></span><span class="price">${coins(p.cost)}</span></button></li>`).join('')}
     </ul></div>
     <button class="wide primary" data-newprize>＋ New prize</button>
-    <p class="note">Website, app and arcade prizes, and arcade prices, are set up on the PC.</p>`;
+    <p class="note">Arcade prizes and prices are set up on the PC.</p>`;
 }
 
 function allowedScreen() {
@@ -324,13 +324,19 @@ function allowedScreen() {
       <div class="chips">${kc.sites.map((s) => `<span class="chip">${esc(s)}<button data-unsite="${esc(s)}" aria-label="Remove ${esc(s)}">×</button></span>`).join('') || '<span class="t">None yet.</span>'}</div>
       <form class="row" data-addsite><input type="text" inputmode="url" autocapitalize="off" autocomplete="off" placeholder="e.g. duolingo.com" name="site"><button class="primary" type="submit">Add</button></form>
     </div>
+    <h2>Apps</h2>
+    <div class="card">
+      <p class="t" style="margin-top:0">Programs ${esc(kc.name)} can always open, on top of CoinQuest's own.</p>
+      <div class="chips">${(kc.apps || []).map((a) => `<span class="chip">${esc(appName(a))}<button data-unapp="${esc(a)}" aria-label="Remove ${esc(a)}">×</button></span>`).join('') || '<span class="t">None yet.</span>'}</div>
+      <button class="wide primary" data-addapp>＋ Add an app</button>
+    </div>
     <h2>YouTube channels</h2>
     <div class="card">
       <p class="t" style="margin-top:0">During YouTube time, ${esc(kc.name)} sees recent videos from these channels only.</p>
       <ul class="feed">${kc.channels.map((c) => `<li><span class="what">${esc(c.title || c.url)}</span><button class="small" data-unchan="${esc(c.id)}">Remove</button></li>`).join('') || '<li><span class="t">None yet.</span></li>'}</ul>
       <form class="row" data-addchan style="margin-top:10px"><input type="text" inputmode="url" autocapitalize="off" autocomplete="off" placeholder="Paste a channel link, e.g. youtube.com/@MarkRober" name="chan"><button class="primary" type="submit">Add</button></form>
     </div>
-    <p class="note">Allowed apps, the internet lock and the parent PIN are only changed on the PC.</p>`;
+    <p class="note">The internet lock and the parent PIN are only changed on the PC.</p>`;
 }
 
 // ---- sheets ------------------------------------------------------------------------------------------------------
@@ -370,34 +376,129 @@ function giveSheet(childId, sign) {
   sheet.showModal();
 }
 
+// ---- apps on the PC (for app prizes and allowed apps) ------------------------------------------------------------
+let pcApps = null; // [{ name, exe }] from the PC's Start menu, loaded once
+const appName = (exe) => pcApps?.find((a) => a.exe.toLowerCase() === exe.toLowerCase())?.name ?? exe.replace(/\.exe$/i, '');
+const targetText = (p) => p.targets.map((t) => p.kind === 'AppUnlock' ? appName(t) : t).join(', ');
+async function loadApps() {
+  if (!pcApps) { const d = await send('apps'); pcApps = Array.isArray(d?.result) ? d.result : []; }
+  return pcApps;
+}
+
+/** A searchable list of the PC's apps with tick boxes, plus "another program" by name. Calls back with the ticked exes. */
+function appPicker(host, chosen, onChange) {
+  const draw = (q = '') => {
+    // Programs already picked that aren't in the Start menu (typed by name) are listed too, so they can be unticked.
+    const extra = chosen.filter((c) => !(pcApps || []).some((a) => a.exe.toLowerCase() === c.toLowerCase())).map((c) => ({ name: c.replace(/\.exe$/i, ''), exe: c }));
+    const list = [...extra, ...(pcApps || [])].filter((a) => !q || (a.name + ' ' + a.exe).toLowerCase().includes(q.toLowerCase()));
+    host.querySelector('.applist').innerHTML = pcApps === null ? '<li class="t">Asking the PC for its apps…</li>'
+      : list.map((a) => `<li><label class="pick"><input type="checkbox" value="${esc(a.exe)}" ${chosen.some((c) => c.toLowerCase() === a.exe.toLowerCase()) ? 'checked' : ''}><span><b>${esc(a.name)}</b><br><span class="t">${esc(a.exe)}</span></span></label></li>`).join('')
+        || '<li class="t">No apps match. Type the program name below instead.</li>';
+  };
+  host.innerHTML = `<input type="search" placeholder="Search apps on the PC" class="appq" autocomplete="off">
+    <ul class="applist"></ul>
+    <div class="row" style="gap:8px"><input type="text" class="appother" autocapitalize="off" autocomplete="off" placeholder="Another program, e.g. Minecraft.exe" style="margin:0;flex:1"><button type="button" class="appadd" style="flex:none">Add</button></div>`;
+  const q = host.querySelector('.appq');
+  q.addEventListener('input', () => draw(q.value));
+  host.querySelector('.applist').addEventListener('change', (e) => {
+    const exe = e.target.value;
+    if (e.target.checked) { if (!chosen.includes(exe)) chosen.push(exe); } else if (chosen.includes(exe)) chosen.splice(chosen.indexOf(exe), 1);
+    onChange(chosen);
+  });
+  host.querySelector('.appadd').addEventListener('click', () => {
+    const o = host.querySelector('.appother'); let v = o.value.trim().split(/[\\/]/).pop();
+    if (!v) return; if (!/\.exe$/i.test(v)) v += '.exe';
+    if (!chosen.some((c) => c.toLowerCase() === v.toLowerCase())) chosen.push(v);
+    o.value = ''; onChange(chosen); draw(q.value);
+  });
+  draw();
+  loadApps().then(() => draw(q.value)).catch(() => { pcApps = []; draw(q.value); });
+}
+
+function addAppSheet() {
+  const kc = kidConfig();
+  const chosen = [];
+  sheet.innerHTML = `
+    <form method="dialog">
+      <h3>Add apps for ${esc(kc.name)}</h3>
+      <p class="t">Ticked programs open any time. Web browsers stay blocked; add websites instead.</p>
+      <div id="picker"></div>
+      <div class="row"><button type="button" data-cancel>Cancel</button><button type="submit" class="give" id="ok" disabled>Add</button></div>
+    </form>`;
+  const ok = sheet.querySelector('#ok');
+  appPicker(sheet.querySelector('#picker'), chosen, (c) => { ok.disabled = c.length === 0; ok.textContent = c.length > 1 ? `Add ${c.length}` : 'Add'; });
+  sheet.querySelector('[data-cancel]').addEventListener('click', () => sheet.close());
+  sheet.querySelector('form').addEventListener('submit', (e) => {
+    if (!chosen.length) { e.preventDefault(); return; }
+    act('setApps', { childId: kc.id, add: chosen }, chosen.length > 1 ? `Added ${chosen.length} apps` : `Added ${appName(chosen[0])}`);
+  });
+  sheet.showModal();
+}
+
+const NEW_KINDS = ['RealWorld', 'YouTube', 'ScreenTimeExtension', 'SiteUnlock', 'AppUnlock'];
+
 function prizeSheet(p) {
   const kc = kidConfig();
   const isNew = !p;
-  p = p ?? { name: '', cost: 30, kind: 'RealWorld', minutes: 15, dailyCap: 1, enabled: true };
+  p = p ?? { name: '', cost: 30, kind: 'RealWorld', minutes: 15, dailyCap: 1, enabled: true, targets: [] };
+  let kind = p.kind;
+  const targets = [...(p.targets || [])];
+  const timed = (k) => k !== 'RealWorld';
+  const hasTargets = (k) => k === 'SiteUnlock' || k === 'AppUnlock';
   sheet.innerHTML = `
     <form method="dialog">
       <h3>${isNew ? 'New prize' : 'Edit prize'}</h3>
-      ${isNew ? `<label class="field"><span>Kind</span><select id="pk">${['RealWorld', 'YouTube', 'ScreenTimeExtension'].map((k) => `<option value="${k}">${KINDS[k][0]} ${KINDS[k][1]}</option>`).join('')}</select></label>` : `<p class="t">${(KINDS[p.kind] ?? ['', ''])[0]} ${(KINDS[p.kind] ?? ['', 'Prize'])[1]}</p>`}
+      ${isNew ? `<label class="field"><span>Kind</span><select id="pk">${NEW_KINDS.map((k) => `<option value="${k}">${KINDS[k][0]} ${KINDS[k][1]}</option>`).join('')}</select></label>` : `<p class="t">${(KINDS[p.kind] ?? ['', ''])[0]} ${(KINDS[p.kind] ?? ['', 'Prize'])[1]}</p>`}
       ${field('Name', `type="text" id="pn" maxlength="60" value="${esc(p.name)}" placeholder="e.g. Pick Friday's movie"`)}
+      <div id="ptw"></div>
       <div class="grid2">
         ${field('Price', `type="text" inputmode="numeric" id="pc" value="${p.cost}"`, 'coins')}
         ${field('Max per day', `type="text" inputmode="numeric" id="pd" value="${p.dailyCap}"`, '0 = no limit')}
-        <span id="pmw" ${p.kind === 'RealWorld' ? 'hidden' : ''}>${field('Minutes', `type="text" inputmode="numeric" id="pm" value="${p.minutes || 15}"`)}</span>
+        <span id="pmw" ${timed(kind) ? '' : 'hidden'}>${field('Minutes', `type="text" inputmode="numeric" id="pm" value="${p.minutes || 15}"`)}</span>
       </div>
       <div class="row between" style="margin:6px 0 14px"><span>Shown in the shop</span>${toggle(p.enabled, 'id="pe"')}</div>
+      ${!isNew && timed(kind) ? `<button type="button" class="wide" data-grant>▶ Start it now, free</button>` : ''}
       <div class="row">${isNew ? '' : '<button type="button" class="take" data-del>Delete</button>'}<button type="button" data-cancel>Cancel</button><button type="submit" class="give">Save</button></div>
     </form>`;
+  const ptw = sheet.querySelector('#ptw');
+  const drawTargets = () => {
+    if (!hasTargets(kind)) { ptw.innerHTML = ''; return; }
+    if (kind === 'SiteUnlock') {
+      ptw.innerHTML = `<label class="field"><span>Websites it opens</span></label>
+        <div class="chips">${targets.map((t, i) => `<span class="chip">${esc(t)}<button type="button" data-untarget="${i}" aria-label="Remove ${esc(t)}">×</button></span>`).join('') || '<span class="t">None yet.</span>'}</div>
+        <div class="row" style="gap:8px;margin-bottom:10px"><input type="text" inputmode="url" autocapitalize="off" autocomplete="off" id="psite" placeholder="e.g. minecraft.net" style="margin:0;flex:1"><button type="button" id="psadd" style="flex:none">Add</button></div>`;
+      const add = () => { const i = ptw.querySelector('#psite'); const v = i.value.trim().toLowerCase().replace(/^https?:\/\//, '').replace(/^www\./, '').split(/[/?#]/)[0]; if (v && !targets.includes(v)) targets.push(v); drawTargets(); ptw.querySelector('#psite').focus(); };
+      ptw.querySelector('#psadd').addEventListener('click', add);
+      ptw.querySelector('#psite').addEventListener('keydown', (e) => { if (e.key === 'Enter') { e.preventDefault(); add(); } });
+    } else {
+      ptw.innerHTML = `<label class="field"><span>Apps it opens</span></label><div id="pp"></div>`;
+      appPicker(ptw.querySelector('#pp'), targets, () => {});
+    }
+    ptw.querySelectorAll('[data-untarget]').forEach((b) => b.addEventListener('click', () => { targets.splice(+b.dataset.untarget, 1); drawTargets(); }));
+  };
+  drawTargets();
   const kindSel = sheet.querySelector('#pk');
-  kindSel?.addEventListener('change', () => { sheet.querySelector('#pmw').hidden = kindSel.value === 'RealWorld'; });
+  kindSel?.addEventListener('change', () => {
+    kind = kindSel.value; targets.length = 0;
+    sheet.querySelector('#pmw').hidden = !timed(kind);
+    drawTargets();
+  });
   sheet.querySelector('[data-cancel]').addEventListener('click', () => sheet.close());
   sheet.querySelector('[data-del]')?.addEventListener('click', () => {
     sheet.close();
     act('deletePrize', { childId: kc.id, id: p.id }, `Removed “${p.name}”`);
   });
+  sheet.querySelector('[data-grant]')?.addEventListener('click', () => {
+    const minutes = Math.max(1, num(sheet.querySelector('#pm').value));
+    sheet.close();
+    act('grant', { childId: kc.id, prizeId: p.id, minutes }, `${p.name}: ${minutes} min started for ${kc.name}`);
+  });
   sheet.querySelector('form').addEventListener('submit', (e) => {
     const name = sheet.querySelector('#pn').value.trim();
     if (!name) { e.preventDefault(); sheet.querySelector('#pn').focus(); return; }
-    const prize = { id: isNew ? undefined : p.id, kind: kindSel?.value ?? p.kind, name, cost: Math.max(0, num(sheet.querySelector('#pc').value)), dailyCap: Math.max(0, num(sheet.querySelector('#pd').value)), minutes: Math.max(0, num(sheet.querySelector('#pm').value)), enabled: sheet.querySelector('#pe').checked };
+    if (hasTargets(kind) && !targets.length) { e.preventDefault(); (ptw.querySelector('#psite') || ptw.querySelector('.appq'))?.focus(); return; }
+    const prize = { id: isNew ? undefined : p.id, kind, name, cost: Math.max(0, num(sheet.querySelector('#pc').value)), dailyCap: Math.max(0, num(sheet.querySelector('#pd').value)), minutes: Math.max(0, num(sheet.querySelector('#pm').value)), enabled: sheet.querySelector('#pe').checked };
+    if (hasTargets(kind)) prize.targets = targets;
     act('setPrize', { childId: kc.id, prize }, isNew ? `Added “${name}”` : 'Saved');
   });
   sheet.showModal();
@@ -431,6 +532,8 @@ app.addEventListener('click', (e) => {
   else if (b.dataset.more !== undefined) loadHistory(false);
   else if (b.dataset.prize) prizeSheet(kidConfig().prizes.find((p) => p.id === b.dataset.prize));
   else if (b.dataset.newprize !== undefined) prizeSheet(null);
+  else if (b.dataset.addapp !== undefined) addAppSheet();
+  else if (b.dataset.unapp) act('setApps', { childId: kidConfig().id, remove: b.dataset.unapp }, `Removed ${appName(b.dataset.unapp)}`);
   else if (b.dataset.unsite) act('setSites', { childId: kidConfig().id, remove: b.dataset.unsite }, `Removed ${b.dataset.unsite}`);
   else if (b.dataset.unchan) act('removeChannel', { childId: kidConfig().id, id: b.dataset.unchan }, 'Channel removed');
   else if (b.dataset.pc) { link = links[+b.dataset.pc]; connect(); }

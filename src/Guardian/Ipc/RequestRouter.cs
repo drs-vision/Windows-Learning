@@ -580,13 +580,18 @@ public sealed class RequestRouter
 
     /// <summary>
     /// A request from a linked parent phone (already unscrambled with that phone's key, so it is the parent).
-    /// Only these few operations are possible from a phone: see coins and requests, give or take coins, answer a
-    /// request, end running game time. Nothing that changes settings, the internet lock, or what runs on the PC.
+    /// A phone can see coins and history, give or take coins, answer requests, start or end time, and change quests,
+    /// shop prizes (including website and app time), allowed websites, apps and YouTube channels. Never the parent
+    /// PIN, the internet lock, updates, or who is a managed child.
     /// </summary>
     private object? HandlePhone(string op, System.Text.Json.Nodes.JsonObject args, string actor)
     {
         // Looking up a YouTube channel waits on the internet: do it before taking the lock.
         YouTubeChannel? channel = op == "addChannel" ? _youtube.Resolve(args["url"]?.GetValue<string>() ?? "").GetAwaiter().GetResult() : null;
+        // Reading the Start menu takes a moment and touches no CoinQuest state: no lock either.
+        if (op == "apps")
+            return new { result = InstalledApps.Scan().Where(a => !Allowlist.Browsers.Contains(a.Exe, StringComparer.OrdinalIgnoreCase))
+                .GroupBy(a => a.Exe, StringComparer.OrdinalIgnoreCase).Select(g => new { name = g.First().Name, exe = g.Key }).OrderBy(a => a.name).ToList() };
         lock (_sync)
         {
             var req = new Request { Id = "phone", Op = op, Payload = args.DeepClone() };
@@ -602,6 +607,8 @@ public sealed class RequestRouter
                 "setPrize" => PhoneSetPrize(req),
                 "deletePrize" => PhoneEditChild(Str(req, "childId"), c => c with { Prizes = c.Prizes.Where(p => p.Id != Str(req, "id")).ToList() }),
                 "setSites" => PhoneSetSites(req),
+                "setApps" => PhoneSetApps(req),
+                "grant" => PhoneGrant(req, actor),
                 "addChannel" => PhoneEditChild(Str(req, "childId"), c => c.YouTubeChannels.Any(x => x.Id == channel!.Id) ? c : c with { YouTubeChannels = c.YouTubeChannels.Append(channel!).ToList() }),
                 "removeChannel" => PhoneEditChild(Str(req, "childId"), c => c with { YouTubeChannels = c.YouTubeChannels.Where(x => x.Id != Str(req, "id")).ToList() }),
                 _ => throw new InvalidOperationException("CoinQuest on the PC doesn't know that yet — update it"),
@@ -621,8 +628,9 @@ public sealed class RequestRouter
             id = c.Id,
             name = c.DisplayName,
             modules = c.Modules.Select(kv => new { id = kv.Key, enabled = kv.Value.Enabled, coinsPerActivity = kv.Value.CoinsPerActivity, dailyCap = kv.Value.DailyCap, requireApproval = kv.Value.RequireApproval, options = kv.Value.Options, earnedToday = _ledger.EarnedToday(c.Id, kv.Key) }).ToList(),
-            prizes = c.Prizes.Select(p => new { id = p.Id, name = p.Name, cost = p.Cost, kind = p.Kind.ToString(), minutes = p.Minutes, dailyCap = p.DailyCap, enabled = p.Enabled }).ToList(),
+            prizes = c.Prizes.Select(p => new { id = p.Id, name = p.Name, cost = p.Cost, kind = p.Kind.ToString(), minutes = p.Minutes, dailyCap = p.DailyCap, enabled = p.Enabled, targets = p.Targets }).ToList(),
             sites = c.Allowlist.Sites,
+            apps = c.Allowlist.Apps.Select(a => Path.GetFileName(a)).ToList(),
             channels = c.YouTubeChannels.Select(y => new { id = y.Id, title = y.Title, url = y.Url }).ToList(),
         }).ToList(),
     };
@@ -680,39 +688,89 @@ public sealed class RequestRouter
         var minutes = Math.Clamp(p["minutes"]?.GetValue<int>() ?? 0, 0, 600);
         var cap = Math.Clamp(p["dailyCap"]?.GetValue<int>() ?? 0, 0, 100);
         var enabled = p["enabled"]?.GetValue<bool>() ?? true;
+        var targetsIn = p["targets"] is System.Text.Json.Nodes.JsonArray ta ? ta.Select(x => x?.GetValue<string>() ?? "").Where(x => x.Trim().Length > 0).ToList() : null;
+        List<string> Targets(PrizeKind kind)
+        {
+            var t = (targetsIn ?? new()).Select(x => kind == PrizeKind.SiteUnlock ? SiteDomain(x) : AppExe(x)).Distinct(StringComparer.OrdinalIgnoreCase).Take(30).ToList();
+            if (t.Count == 0) throw new ArgumentException(kind == PrizeKind.SiteUnlock ? "Add at least one website" : "Pick at least one app");
+            return t;
+        }
         return PhoneEditChild(Str(req, "childId"), c =>
         {
             var list = c.Prizes.ToList();
             var i = id is null ? -1 : list.FindIndex(x => x.Id == id);
-            if (i >= 0) list[i] = list[i] with { Name = name, Cost = cost, Minutes = minutes, DailyCap = cap, Enabled = enabled };
+            if (i >= 0)
+            {
+                var old = list[i];
+                var targets = old.Kind is PrizeKind.SiteUnlock or PrizeKind.AppUnlock && targetsIn is not null ? Targets(old.Kind) : old.Targets;
+                list[i] = old with { Name = name, Cost = cost, Minutes = old.Kind == PrizeKind.RealWorld ? old.Minutes : Math.Max(1, minutes), DailyCap = cap, Enabled = enabled, Targets = targets };
+            }
             else
             {
-                // New prizes from the phone are the kinds that need no website or app picked: a real-world treat,
-                // YouTube time or extra screen time.
-                var kind = Enum.TryParse<PrizeKind>(p["kind"]?.GetValue<string>(), true, out var k) && k is PrizeKind.RealWorld or PrizeKind.YouTube or PrizeKind.ScreenTimeExtension ? k : PrizeKind.RealWorld;
-                list.Add(new Prize { Name = name, Cost = cost, Kind = kind, Minutes = kind == PrizeKind.RealWorld ? 0 : Math.Max(5, minutes), DailyCap = cap, Enabled = enabled });
+                // Arcade prizes stay on the PC (they need the game list); everything else can be made here.
+                var kind = Enum.TryParse<PrizeKind>(p["kind"]?.GetValue<string>(), true, out var k) && k != PrizeKind.ArcadeUnlock ? k : PrizeKind.RealWorld;
+                var targets = kind is PrizeKind.SiteUnlock or PrizeKind.AppUnlock ? Targets(kind) : new List<string>();
+                list.Add(new Prize { Name = name, Cost = cost, Kind = kind, Minutes = kind == PrizeKind.RealWorld ? 0 : Math.Max(5, minutes), DailyCap = cap, Enabled = enabled, Targets = targets });
             }
             return c with { Prizes = list };
         });
     }
 
+    /// <summary>"https://www.Duolingo.com/learn" → "duolingo.com".</summary>
+    private static string SiteDomain(string s)
+    {
+        s = s.Trim().ToLowerInvariant();
+        if (s.Contains("://")) s = s[(s.IndexOf("://", StringComparison.Ordinal) + 3)..];
+        s = s.Split('/', '?', '#')[0].Split(':')[0];
+        if (s.StartsWith("www.")) s = s[4..];
+        if (s.Length < 3 || !s.Contains('.') || s.Any(ch => !(char.IsLetterOrDigit(ch) || ch is '.' or '-'))) throw new ArgumentException($"“{s}” doesn't look like a website address");
+        return s;
+    }
+
+    /// <summary>"Minecraft", "minecraft.exe" or a full path → "Minecraft.exe". Web browsers are refused (they'd get round the internet lock).</summary>
+    private static string AppExe(string s)
+    {
+        s = Path.GetFileName(s.Trim().Trim('"'));
+        if (!s.EndsWith(".exe", StringComparison.OrdinalIgnoreCase)) s += ".exe";
+        if (s.Length < 5 || s.IndexOfAny(Path.GetInvalidFileNameChars()) >= 0) throw new ArgumentException($"“{s}” doesn't look like a program name");
+        if (Allowlist.Browsers.Contains(s, StringComparer.OrdinalIgnoreCase)) throw new ArgumentException($"{s} is a web browser — those stay blocked so the internet lock holds. Add websites instead.");
+        return s;
+    }
+
+    private object PhoneSetApps(Request req)
+    {
+        var add = req.Payload?["add"] is System.Text.Json.Nodes.JsonArray a ? a.Select(x => AppExe(x?.GetValue<string>() ?? "")).ToList() : new();
+        var remove = req.Payload?["remove"]?.GetValue<string>();
+        return PhoneEditChild(Str(req, "childId"), c =>
+        {
+            var apps = c.Allowlist.Apps.ToList();
+            foreach (var x in add) if (!apps.Any(y => Path.GetFileName(y).Equals(x, StringComparison.OrdinalIgnoreCase))) apps.Add(x);
+            if (remove is { Length: > 0 }) apps.RemoveAll(y => Path.GetFileName(y).Equals(remove, StringComparison.OrdinalIgnoreCase));
+            return c with { Allowlist = c.Allowlist with { Apps = apps } };
+        });
+    }
+
+    /// <summary>Start a prize's time right now, free (a parent's gift) — or add to it if it's already running.</summary>
+    private object PhoneGrant(Request req, string actor)
+    {
+        var child = _store.Current.Children.FirstOrDefault(c => c.Id == Str(req, "childId")) ?? throw new ArgumentException("That child isn't on this PC");
+        var prize = child.Prizes.FirstOrDefault(p => p.Id == Str(req, "prizeId")) ?? throw new ArgumentException("That prize isn't on this PC any more");
+        if (prize.Kind == PrizeKind.RealWorld) throw new ArgumentException("Treats don't run on the PC");
+        var minutes = Math.Clamp(req.Payload?["minutes"]?.GetValue<int>() ?? prize.Minutes, 1, 600);
+        var unlock = _unlocks.Start(child, prize with { Minutes = minutes });
+        _log.LogInformation("Phone ({Actor}) started {Prize} for {Child}: {Minutes} min, free", actor, prize.Name, child.DisplayName, minutes);
+        AfterChange();
+        return new { unlockId = unlock.Id };
+    }
+
     private object PhoneSetSites(Request req)
     {
-        static string Domain(string s)
-        {
-            s = s.Trim().ToLowerInvariant();
-            if (s.Contains("://")) s = s[(s.IndexOf("://", StringComparison.Ordinal) + 3)..];
-            s = s.Split('/', '?', '#')[0].Split(':')[0];
-            if (s.StartsWith("www.")) s = s[4..];
-            if (s.Length < 3 || !s.Contains('.') || s.Any(ch => !(char.IsLetterOrDigit(ch) || ch is '.' or '-'))) throw new ArgumentException("That doesn't look like a website address");
-            return s;
-        }
         var add = req.Payload?["add"]?.GetValue<string>();
         var remove = req.Payload?["remove"]?.GetValue<string>();
         return PhoneEditChild(Str(req, "childId"), c =>
         {
             var sites = c.Allowlist.Sites.ToList();
-            if (add is { Length: > 0 }) { var d = Domain(add); if (!sites.Contains(d)) sites.Add(d); }
+            if (add is { Length: > 0 }) { var d = SiteDomain(add); if (!sites.Contains(d)) sites.Add(d); }
             if (remove is { Length: > 0 }) sites.RemoveAll(x => x.Equals(remove, StringComparison.OrdinalIgnoreCase));
             return c with { Allowlist = c.Allowlist with { Sites = sites } };
         });
