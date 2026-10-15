@@ -1,3 +1,4 @@
+using System.Security.Cryptography;
 using System.Net.WebSockets;
 using System.Security.AccessControl;
 using System.Security.Principal;
@@ -43,6 +44,36 @@ public sealed class PhoneLinkService : BackgroundService
         public Dictionary<string, string> SinceCq { get; set; } = new();
         /// <summary>CoinQuest's own relay (from relay.json), remembered for when GitHub can't be reached.</summary>
         public string? CqRelay { get; set; }
+        /// <summary>This PC's own id, so a phone can tell two links to the same PC apart from links to two PCs.</summary>
+        public string? PcId { get; set; }
+        /// <summary>Fingerprints of links removed here, so phones holding them can tidy them away.</summary>
+        public List<string> Gone { get; set; } = new();
+    }
+
+    /// <summary>A short fingerprint of a link's topic (phones compare these; the topic itself stays private).</summary>
+    public static string Tag(string topicIn) => Convert.ToHexString(SHA256.HashData(Encoding.UTF8.GetBytes(topicIn)))[..16].ToLowerInvariant();
+
+    private string PcId()
+    {
+        lock (_gate)
+        {
+            if (_store.PcId is null) { _store.PcId = PhoneWire.NewTopic()[..16]; try { Save(); } catch { } }
+            return _store.PcId;
+        }
+    }
+
+    /// <summary>Sent with every answer: which PC this is and which of its links still work, so a phone can drop old copies.</summary>
+    private JsonObject PcInfo()
+    {
+        var id = PcId();
+        lock (_gate)
+            return new JsonObject
+            {
+                ["id"] = id,
+                ["name"] = Environment.MachineName,
+                ["live"] = new JsonArray(_store.Links.Select(l => (JsonNode)Tag(l.TopicIn)).ToArray()),
+                ["gone"] = new JsonArray(_store.Gone.Select(g => (JsonNode)g).ToArray()),
+            };
     }
 
     private static string FilePath => Path.Combine(Paths.DataRoot, "phone-links.json");
@@ -105,7 +136,8 @@ public sealed class PhoneLinkService : BackgroundService
             PhoneWire.NewTopic(), PhoneWire.NewTopic(), PhoneWire.B64Url(PhoneWire.NewKey()), DateTimeOffset.UtcNow);
         lock (_gate) { _store.Links.Add(link); Save(); }
         Restart();
-        var payload = new JsonObject { ["v"] = 1, ["r"] = Relay, ["i"] = link.TopicIn, ["o"] = link.TopicOut, ["k"] = link.Key, ["n"] = household, ["p"] = link.Name };
+        var payload = new JsonObject { ["v"] = 1, ["r"] = Relay, ["i"] = link.TopicIn, ["o"] = link.TopicOut, ["k"] = link.Key, ["n"] = household, ["p"] = link.Name,
+            ["h"] = PcId(), ["c"] = Environment.MachineName, ["t"] = link.Created.ToUnixTimeSeconds() };
         var url = PhoneAppUrl + "#" + PhoneWire.B64Url(Encoding.UTF8.GetBytes(payload.ToJsonString()));
         _log.LogInformation("Phone link {Id} created ({Name})", link.Id, link.Name);
         NoteChange();
@@ -119,7 +151,12 @@ public sealed class PhoneLinkService : BackgroundService
 
     public object Remove(string id)
     {
-        lock (_gate) { _store.Links.RemoveAll(l => l.Id == id); Save(); }
+        lock (_gate)
+        {
+            foreach (var l in _store.Links.Where(l => l.Id == id)) _store.Gone.Add(Tag(l.TopicIn));
+            if (_store.Gone.Count > 200) _store.Gone.RemoveRange(0, _store.Gone.Count - 200);
+            _store.Links.RemoveAll(l => l.Id == id); Save();
+        }
         Restart();
         _log.LogInformation("Phone link {Id} removed", id);
         return List();
@@ -320,6 +357,7 @@ public sealed class PhoneLinkService : BackgroundService
                 reply = new JsonObject { ["re"] = id, ["ok"] = true, ["d"] = JsonSerializer.SerializeToNode(result, Json) };
             }
             catch (Exception ex) { reply = new JsonObject { ["re"] = id, ["ok"] = false, ["e"] = ex.Message }; }
+        reply["pc"] = PcInfo();
         lock (_gate)
         {
             var i = _store.Links.FindIndex(l => l.Id == link.Id);
@@ -353,7 +391,7 @@ public sealed class PhoneLinkService : BackgroundService
         var node = JsonSerializer.SerializeToNode(state, Json);
         foreach (var l in links)
         {
-            var snap = new JsonObject { ["snap"] = true, ["d"] = node?.DeepClone() };
+            var snap = new JsonObject { ["snap"] = true, ["d"] = node?.DeepClone(), ["pc"] = PcInfo() };
             // One message, so the relay's "latest" is the whole snapshot (it accepts up to 8 KB).
             var body = "cq1:snap:1/1:" + PhoneWire.Seal(PhoneWire.FromB64Url(l.Key), snap);
             if (body.Length > 8000) { _log.LogInformation("Snapshot too large for the relay ({N} chars)", body.Length); continue; }

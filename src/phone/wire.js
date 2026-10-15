@@ -76,11 +76,17 @@ export function assembler() {
 }
 
 /** The link in the QR code: everything after '#' (never sent to any web server). */
+/** A short fingerprint of a link's topic, the same as the PC's PhoneLinkService.Tag. */
+export async function tag(topicIn) {
+  const h = new Uint8Array(await crypto.subtle.digest('SHA-256', new TextEncoder().encode(topicIn)));
+  return [...h.slice(0, 8)].map((b) => b.toString(16).padStart(2, '0')).join('');
+}
+
 export function parseLink(fragment) {
   try {
     const j = JSON.parse(new TextDecoder().decode(fromB64url(fragment.replace(/^#/, ''))));
     if (j.v !== 1 || !j.r || !j.i || !j.o || !j.k) return null;
-    return { relay: String(j.r).replace(/\/+$/, ''), topicIn: j.i, topicOut: j.o, key: j.k, household: j.n || 'CoinQuest', phone: j.p || 'Phone', raw: fragment.replace(/^#/, '') };
+    return { relay: String(j.r).replace(/\/+$/, ''), topicIn: j.i, topicOut: j.o, key: j.k, household: j.n || 'CoinQuest', phone: j.p || 'Phone', pc: j.h || null, pcName: j.c || '', made: +j.t || 0, raw: fragment.replace(/^#/, '') };
   } catch {
     return null;
   }
