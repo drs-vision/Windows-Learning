@@ -1,0 +1,91 @@
+2026-10-15 02:25:22 [INFO] Lifetime: Application started. Hosting environment: Production; Content root path: C:\Program Files\CoinQuest\
+2026-10-15 02:25:22 [INFO] GuardianWorker: CoinQuest Guardian 0.1.130 starting. Data: C:\ProgramData\CoinQuest
+2026-10-15 02:25:22 [INFO] NetGate: Gatekeeper listening on 127.0.0.1:47123
+2026-10-15 02:25:22 [INFO] NetLock: Internet lock in place for 0 child account(s); programs allowed through: none
+2026-10-15 02:25:23 [INFO] PhoneLinkService: Phone relay: https://coinquest-relay.lukesquires.workers.dev
+2026-10-15 02:25:24 [INFO] GuardianWorker: Heartbeat: console=runnervmfi6oq\runneradmin managedChild=no internetLock=LockStatus { Applied = False, At = 10/15/2026 2:25:22 AM +00:00, Error =  } browserLock=PolicyStatus { AppliedAt = , Entries = 0, Error = , Sid =  }
+2026-10-15 02:25:24 [INFO] Lifetime: Application is shutting down...
+2026-10-15 02:25:25 [INFO] GuardianWorker: CoinQuest Guardian 0.1.130 starting. Data: C:\ProgramData\CoinQuest
+2026-10-15 02:25:25 [INFO] Lifetime: Application started. Hosting environment: Production; Content root path: C:\Program Files\CoinQuest\
+2026-10-15 02:25:25 [INFO] NetGate: Gatekeeper listening on 127.0.0.1:47123
+2026-10-15 02:25:26 [INFO] GuardianWorker: Heartbeat: console=runnervmfi6oq\runneradmin managedChild=no internetLock=LockStatus { Applied = False, At = 10/15/2026 2:25:25 AM +00:00, Error = test machine: internet lock off } browserLock=PolicyStatus { AppliedAt = , Entries = 0, Error = , Sid =  }
+2026-10-15 02:25:58 [INFO] PipeServer: Client connected: runnervmfi6oq\runneradmin admin=True
+2026-10-15 02:27:25 [INFO] UpdateChecker: Test machine: self-update off
+2026-10-15 02:27:30 [INFO] RequestRouter: Setup complete for runneradmin (runneradmin)
+2026-10-15 02:27:30 [INFO] SessionMonitor: Console session 2 user runnervmfi6oq\runneradmin (S-1-5-21-1643835476-1616584234-1346609752-500) managed=True. Children: runneradmin=runneradmin/S-1-5-21-1643835476-1616584234-1346609752-500
+2026-10-15 02:27:30 [INFO] GuardianWorker: Launched Scholar in session 2
+2026-10-15 02:27:30 [INFO] PipeServer: Client connected: runnervmfi6oq\runneradmin admin=True
+2026-10-15 02:27:33 [INFO] RequestRouter: Settings saved for runneradmin: 7 sites, 5 apps, 0 channels, 0 classics
+2026-10-15 02:27:33 [INFO] RequestRouter: Settings saved for runneradmin: 7 sites, 5 apps, 1 channels, 0 classics
+2026-10-15 02:27:46 [INFO] GuardianWorker: Launched Scholar in session 2
+2026-10-15 02:27:46 [INFO] PipeServer: Client connected: runnervmfi6oq\runneradmin admin=True
+2026-10-15 02:27:47 [INFO] NetGate: Gatekeeper blocked config.edge.skype.com (not on the list)
+2026-10-15 02:27:47 [INFO] NetGate: Gatekeeper blocked nav-edge.smartscreen.microsoft.com (not on the list)
+2026-10-15 02:27:53 [INFO] UnlockManager: Unlock started: Ending for runneradmin until 10/15/2026 02:32:53 +00:00
+2026-10-15 02:28:19 [INFO] UnlockManager: Unlock started: 2048 for runneradmin until 10/15/2026 02:33:19 +00:00
+2026-10-15 02:28:43 [INFO] UnlockManager: Unlock started: Hextris for runneradmin until 10/15/2026 02:33:43 +00:00
+2026-10-15 02:28:43 [INFO] NetGate: Gatekeeper blocked www.google-analytics.com (not on the list)
+2026-10-15 02:28:43 [INFO] NetGate: Gatekeeper blocked pagead2.googlesyndication.com (not on the list)
+2026-10-15 02:28:47 [INFO] NetGate: Gatekeeper blocked edge.microsoft.com (not on the list)
+2026-10-15 02:29:07 [INFO] UnlockManager: Unlock started: Clumsy Bird for runneradmin until 10/15/2026 02:34:07 +00:00
+2026-10-15 02:29:32 [INFO] UnlockManager: Unlock started: HexGL for runneradmin until 10/15/2026 02:34:32 +00:00
+2026-10-15 02:29:32 [INFO] NetGate: Gatekeeper blocked ssl.google-analytics.com (not on the list)
+2026-10-15 02:30:15 [INFO] UnlockManager: Unlock started: T-Rex Runner for runneradmin until 10/15/2026 02:35:15 +00:00
+2026-10-15 02:30:27 [INFO] GuardianWorker: Heartbeat: console=runnervmfi6oq\runneradmin managedChild=runneradmin internetLock=LockStatus { Applied = False, At = 10/15/2026 2:27:33 AM +00:00, Error = test machine: internet lock off } browserLock=PolicyStatus { AppliedAt = , Entries = 0, Error = , Sid =  }
+2026-10-15 02:30:35 [INFO] ClassicsStocker: Added 137 classic games to the arcade automatically
+2026-10-15 02:30:41 [INFO] UnlockManager: Unlock started: Astray for runneradmin until 10/15/2026 02:35:41 +00:00
+2026-10-15 02:31:09 [INFO] UnlockManager: Unlock started: Blockrain for runneradmin until 10/15/2026 02:36:09 +00:00
+2026-10-15 02:31:34 [INFO] UnlockManager: Unlock started: Space Invaders for runneradmin until 10/15/2026 02:36:34 +00:00
+2026-10-15 02:31:34 [INFO] NetGate: Gatekeeper blocked www.googletagmanager.com (not on the list)
+2026-10-15 02:31:53 [INFO] ClassicLibrary: Classic 13804696-e07e-374f-5b14-52dcf7bb27ec ready (data pack)
+2026-10-15 02:31:55 [INFO] ClassicLibrary: Classic 62a45085-51cd-443c-af15-a85ce7b06574 ready (data pack)
+2026-10-15 02:31:57 [INFO] ClassicLibrary: Classic f609c3ad-2a77-46f3-a2ee-d296f1e1a177 ready (data pack)
+2026-10-15 02:31:59 [INFO] ClassicLibrary: Classic 16b04977-f714-4239-b343-b759e16a33af ready (data pack)
+2026-10-15 02:32:00 [INFO] ClassicLibrary: Classic 03f32453-438e-4567-b1d7-371a693a6faa ready (data pack)
+2026-10-15 02:32:01 [INFO] ClassicLibrary: Classic 74fb96ca-00aa-46cc-96a8-26c250cfed93 ready (data pack)
+2026-10-15 02:32:03 [INFO] UnlockManager: Unlock started: Gravity Guy for runneradmin until 10/15/2026 02:37:03 +00:00
+2026-10-15 02:32:03 [INFO] ClassicLibrary: Classic e0059b62-ad8a-4d5e-bdc9-c59acffc954e ready (data pack)
+2026-10-15 02:32:04 [INFO] ClassicLibrary: Classic a3cfa640-3f47-4e18-ba44-e5083db99d6b ready (data pack)
+2026-10-15 02:32:06 [INFO] ClassicLibrary: Classic 0112d5e7-9a5a-40bb-8062-e68c84b8e117 ready (data pack)
+2026-10-15 02:32:08 [INFO] ClassicLibrary: Classic 080243d3-bb5f-409f-b0db-0d977886216f ready (data pack)
+2026-10-15 02:32:09 [INFO] ClassicLibrary: Classic 9632e30f-6acc-4ed7-be2f-9f3858832dfe ready (data pack)
+2026-10-15 02:32:10 [INFO] ClassicLibrary: Classic 140c4ef1-4661-400b-8973-9dd7362a1158 ready (data pack)
+2026-10-15 02:32:11 [INFO] ClassicLibrary: Classic 12333b48-b1e8-4c2a-b21e-d408b485aae9 ready (data pack)
+2026-10-15 02:32:12 [INFO] ClassicLibrary: Classic b5a7c7f7-d49a-4ab5-b8db-3ceb93c26b1d ready (data pack)
+2026-10-15 02:32:14 [INFO] ClassicsStocker: Couldn't pre-download Learn to Fly: This game's files aren't available from the archive right now.
+2026-10-15 02:32:16 [INFO] ClassicsStocker: Couldn't pre-download Burrito Bison: This game's files aren't available from the archive right now.
+2026-10-15 02:32:18 [INFO] ClassicLibrary: Classic 13804696-e07e-374f-5b14-52dcf7bb27ec: no copy of ads.miniclip.com/RealMedia/ads/adstream_sx.ads/miniclip.com/Gravityguy_play/511769@x01 anywhere
+2026-10-15 02:32:26 [INFO] RequestRouter: Settings saved for runneradmin: 7 sites, 5 apps, 1 channels, 138 classics
+2026-10-15 02:32:49 [INFO] ClassicLibrary: Classic 8c4877a3-76d1-492e-84ba-5fa2d4bdadca ready (legacy file)
+2026-10-15 02:32:54 [INFO] UnlockManager: Unlock expired: Ending
+2026-10-15 02:33:07 [INFO] ClassicLibrary: Classic bda1e0d7-145f-4c64-b354-bafbc68ccb75 ready (data pack)
+2026-10-15 02:33:07 [INFO] UnlockManager: Unlock started: Bloxorz for runneradmin until 10/15/2026 02:38:07 +00:00
+2026-10-15 02:33:10 [WARN] RequestRouter: Couldn't get Bloxorz ready
+System.InvalidOperationException: This game isn't fully saved in the archive, so it can't play. It's been taken out of the arcade.
+   at CoinQuest.Guardian.Economy.ClassicLibrary.Prepare(String id) in D:\a\Windows-Learning\Windows-Learning\src\Guardian\Economy\ClassicLibrary.cs:line 91
+   at CoinQuest.Guardian.Ipc.RequestRouter.ArcadePrepare(Request req, Child child) in D:\a\Windows-Learning\Windows-Learning\src\Guardian\Ipc\RequestRouter.cs:line 286
+2026-10-15 02:33:16 [INFO] UnlockManager: Unlock started: Meat Boy for runneradmin until 10/15/2026 02:38:16 +00:00
+2026-10-15 02:33:16 [INFO] NetGate: Gatekeeper blocked coinquest-classics.local (not on the list)
+2026-10-15 02:33:19 [INFO] UnlockManager: Unlock expired: 2048
+2026-10-15 02:33:20 [WARN] RequestRouter: Reported broken and hidden from the arcade: Meat Boy (fp-0112d5e7-9a5a-40bb-8062-e68c84b8e117); refunded 8
+2026-10-15 02:33:25 [INFO] UnlockManager: Unlock started: Sampler pass for runneradmin until 10/15/2026 02:43:25 +00:00
+2026-10-15 02:33:35 [INFO] YouTubeService: RSS for UCY1kMZp36IQSyNx_9h4mpCg failed (Response status code does not indicate success: 404 (Not Found).); asking YouTube's own app API instead
+2026-10-15 02:33:36 [INFO] YouTubeService: YouTube browse UCY1kMZp36IQSyNx_9h4mpCg (first page): 30 videos, more pages available
+2026-10-15 02:33:40 [INFO] UnlockManager: Unlock started: 5 minutes of YouTube for runneradmin until 10/15/2026 02:38:40 +00:00
+2026-10-15 02:33:43 [INFO] UnlockManager: Unlock expired: Hextris
+2026-10-15 02:34:01 [INFO] YouTubeService: YouTube browse UCY1kMZp36IQSyNx_9h4mpCg (first page): 30 videos, more pages available
+2026-10-15 02:34:06 [INFO] YouTubeService: YouTube browse UCY1kMZp36IQSyNx_9h4mpCg (more): 30 videos, more pages available
+2026-10-15 02:34:08 [INFO] UnlockManager: Unlock expired: Clumsy Bird
+2026-10-15 02:34:09 [INFO] YouTubeService: YouTube browse UCY1kMZp36IQSyNx_9h4mpCg (more): 30 videos, more pages available
+2026-10-15 02:34:11 [INFO] YouTubeService: YouTube browse UCY1kMZp36IQSyNx_9h4mpCg (more): 30 videos, more pages available
+2026-10-15 02:34:14 [INFO] YouTubeService: YouTube browse UCY1kMZp36IQSyNx_9h4mpCg (more): 11 videos, no more pages
+2026-10-15 02:34:33 [INFO] UnlockManager: Unlock expired: HexGL
+2026-10-15 02:34:44 [INFO] NetGate: Gatekeeper blocked privacyportal-eu.onetrust.com (not on the list)
+2026-10-15 02:34:44 [INFO] NetGate: Gatekeeper blocked consent.trustarc.com (not on the list)
+2026-10-15 02:34:46 [INFO] NetGate: Gatekeeper blocked connect.facebook.net (not on the list)
+2026-10-15 02:35:15 [INFO] UnlockManager: Unlock expired: T-Rex Runner
+2026-10-15 02:35:28 [INFO] GuardianWorker: Heartbeat: console=runnervmfi6oq\runneradmin managedChild=runneradmin internetLock=LockStatus { Applied = False, At = 10/15/2026 2:33:20 AM +00:00, Error = test machine: internet lock off } browserLock=PolicyStatus { AppliedAt = , Entries = 0, Error = , Sid =  }
+2026-10-15 02:35:42 [INFO] UnlockManager: Unlock expired: Astray
+2026-10-15 02:36:09 [INFO] UnlockManager: Unlock expired: Blockrain
+2026-10-15 02:36:35 [INFO] UnlockManager: Unlock expired: Space Invaders
+2026-10-15 02:37:03 [INFO] UnlockManager: Unlock expired: Gravity Guy
