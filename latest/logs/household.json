@@ -1,0 +1,1248 @@
+{
+  "id": "local",
+  "name": "My family",
+  "schemaVersion": 0,
+  "children": [
+    {
+      "id": "f7dc42e619f24fde8481a750980b2da1",
+      "displayName": "runneradmin",
+      "windowsAccount": "runneradmin",
+      "windowsSid": "S-1-5-21-4239583824-265399229-1323058055-500",
+      "allowlist": {
+        "apps": [
+          "CoinQuest.Scholar.exe",
+          "CoinQuest.ParentConsole.exe",
+          "calc.exe",
+          "notepad.exe",
+          "mspaint.exe"
+        ],
+        "sites": [
+          "khanacademy.org",
+          "kastatic.org",
+          "kasandbox.org",
+          "merriam-webster.com",
+          "wikipedia.org",
+          "wikimedia.org",
+          "duolingo.com"
+        ]
+      },
+      "prizes": [
+        {
+          "id": "bcd30c8d325f49bfb392ab8899638f24",
+          "name": "20 minutes of YouTube",
+          "cost": 48,
+          "kind": "youTube",
+          "targets": [],
+          "minutes": 20,
+          "dailyCap": 3,
+          "enabled": true
+        },
+        {
+          "id": "29f6f1117676415c9c591ff2e8b65680",
+          "name": "Extra 15 minutes tonight",
+          "cost": 30,
+          "kind": "screenTimeExtension",
+          "targets": [],
+          "minutes": 15,
+          "dailyCap": 1,
+          "enabled": true
+        },
+        {
+          "id": "9304713da6534489b471b5d19fce965a",
+          "name": "Pick Friday\u0027s movie",
+          "cost": 150,
+          "kind": "realWorld",
+          "targets": [],
+          "minutes": 0,
+          "dailyCap": 1,
+          "enabled": true
+        }
+      ],
+      "modules": {
+        "sound-keys": {
+          "enabled": true,
+          "coinsPerActivity": 12,
+          "dailyCap": 100,
+          "requireApproval": false,
+          "options": {}
+        },
+        "typing-quest": {
+          "enabled": false,
+          "coinsPerActivity": 10,
+          "dailyCap": 80,
+          "requireApproval": false,
+          "options": {}
+        },
+        "bible-typing": {
+          "enabled": true,
+          "coinsPerActivity": 15,
+          "dailyCap": 60,
+          "requireApproval": false,
+          "options": {
+            "wordsPer": "0",
+            "repeatsPerDay": "1"
+          }
+        },
+        "khan-academy": {
+          "enabled": true,
+          "coinsPerActivity": 5,
+          "dailyCap": 80,
+          "requireApproval": false,
+          "options": {
+            "perAnswer": "1",
+            "perVideo": "3"
+          }
+        },
+        "duolingo": {
+          "enabled": true,
+          "coinsPerActivity": 5,
+          "dailyCap": 50,
+          "requireApproval": false,
+          "options": {}
+        },
+        "rwt": {
+          "enabled": true,
+          "coinsPerActivity": 5,
+          "dailyCap": 60,
+          "requireApproval": false,
+          "options": {}
+        },
+        "discgames": {
+          "enabled": true,
+          "coinsPerActivity": 5,
+          "dailyCap": 60,
+          "requireApproval": false,
+          "options": {}
+        }
+      },
+      "youTubeChannels": [
+        {
+          "id": "UCY1kMZp36IQSyNx_9h4mpCg",
+          "title": "Mark Rober",
+          "url": "https://www.youtube.com/@MarkRober"
+        }
+      ],
+      "arcade": {
+        "minutesPerPlay": 15,
+        "samplerMinutes": 10,
+        "samplerPrice": 0,
+        "priceOverrides": {},
+        "hidden": [
+          "fp-0112d5e7-9a5a-40bb-8062-e68c84b8e117"
+        ],
+        "webGames": [],
+        "flashpoint": [
+          {
+            "id": "13804696-e07e-374f-5b14-52dcf7bb27ec",
+            "title": "Gravity Guy",
+            "developer": "Miniclip; Vasco Freitas; Nuno Barreiros; Vasco Pires / Commissaire; Vitor Marques; Joana Lafuente; Andrew Gomez / DNG",
+            "genre": "Runner",
+            "strategy": 1
+          },
+          {
+            "id": "62a45085-51cd-443c-af15-a85ce7b06574",
+            "title": "The Fancy Pants Adventures: World 2",
+            "developer": "Brad Borne / Borne Games / DrNeroCF",
+            "genre": "Platformer",
+            "strategy": 2
+          },
+          {
+            "id": "f609c3ad-2a77-46f3-a2ee-d296f1e1a177",
+            "title": "The Fancy Pants Adventure: World 2 Demo",
+            "developer": "DrNeroCF; BreatheOut",
+            "genre": "Platformer",
+            "strategy": 2
+          },
+          {
+            "id": "16b04977-f714-4239-b343-b759e16a33af",
+            "title": "Super Mario 63",
+            "developer": "Runouw",
+            "genre": "Platformer",
+            "strategy": 2
+          },
+          {
+            "id": "03f32453-438e-4567-b1d7-371a693a6faa",
+            "title": "Red Ball 4: Volume 1",
+            "developer": "Evgeniy Fedoseev",
+            "genre": "Platformer",
+            "strategy": 3
+          },
+          {
+            "id": "74fb96ca-00aa-46cc-96a8-26c250cfed93",
+            "title": "Stick War",
+            "developer": "Crazy Jay",
+            "genre": "Strategy",
+            "strategy": 4
+          },
+          {
+            "id": "e0059b62-ad8a-4d5e-bdc9-c59acffc954e",
+            "title": "Fireboy and Watergirl in The Forest Temple",
+            "developer": "Oslo Albet; Jan Villanueva",
+            "genre": "Puzzle platformer",
+            "strategy": 4
+          },
+          {
+            "id": "a3cfa640-3f47-4e18-ba44-e5083db99d6b",
+            "title": "Fireboy and Watergirl 2: In The Light Temple",
+            "developer": "Oslo Albet; Jan Villanueva",
+            "genre": "Puzzle platformer",
+            "strategy": 4
+          },
+          {
+            "id": "0112d5e7-9a5a-40bb-8062-e68c84b8e117",
+            "title": "Meat Boy",
+            "developer": "Edmund McMillen / Bluebaby; Jonathan McEntee",
+            "genre": "Platformer",
+            "strategy": 1
+          },
+          {
+            "id": "080243d3-bb5f-409f-b0db-0d977886216f",
+            "title": "Shifty Knight",
+            "developer": "",
+            "genre": "Puzzle platformer",
+            "strategy": 4
+          },
+          {
+            "id": "9632e30f-6acc-4ed7-be2f-9f3858832dfe",
+            "title": "This Is The Only Level",
+            "developer": "John Cooney / jmtb02",
+            "genre": "Puzzle platformer",
+            "strategy": 4
+          },
+          {
+            "id": "140c4ef1-4661-400b-8973-9dd7362a1158",
+            "title": "Achievement Unlocked",
+            "developer": "John Cooney / jmtb02",
+            "genre": "Platformer",
+            "strategy": 3
+          },
+          {
+            "id": "12333b48-b1e8-4c2a-b21e-d408b485aae9",
+            "title": "Bubble Trouble",
+            "developer": "",
+            "genre": "Arcade",
+            "strategy": 1
+          },
+          {
+            "id": "b5a7c7f7-d49a-4ab5-b8db-3ceb93c26b1d",
+            "title": "Hedgehog Launch",
+            "developer": "John Cooney / jmtb02",
+            "genre": "Launch",
+            "strategy": 2
+          },
+          {
+            "id": "11ee16a3-dadb-4d54-84dd-a3dcf124ee1d",
+            "title": "Learn to Fly",
+            "developer": "Light Bringer",
+            "genre": "Launch \u0026 upgrade",
+            "strategy": 3
+          },
+          {
+            "id": "0b3c1c87-cee8-41dd-8681-7d8f2443f13a",
+            "title": "Burrito Bison",
+            "developer": "Juicy Beast",
+            "genre": "Launch \u0026 upgrade",
+            "strategy": 2
+          },
+          {
+            "id": "8c4877a3-76d1-492e-84ba-5fa2d4bdadca",
+            "title": "Raft Wars",
+            "developer": "Martijn Kunst",
+            "genre": "Artillery",
+            "strategy": 3
+          },
+          {
+            "id": "a15fe1e9-7c83-46a9-b608-dc62f3fe42e4",
+            "title": "Raft Wars 2",
+            "developer": "Martijn Kunst",
+            "genre": "Artillery",
+            "strategy": 3
+          },
+          {
+            "id": "1bcc6eba-48b4-408a-ab31-5f530cbabd8a",
+            "title": "Territory War",
+            "developer": "Afro Ninja Productions",
+            "genre": "Artillery",
+            "strategy": 3
+          },
+          {
+            "id": "2d0071b4-8ea9-40b1-a642-c970ca260cb2",
+            "title": "Bowman",
+            "developer": "f1ash",
+            "genre": "Artillery",
+            "strategy": 3
+          },
+          {
+            "id": "a9c12944-f679-4aca-a803-8846d54b2f99",
+            "title": "Crush the Castle",
+            "developer": "Joey Betz; Chris Condon / ConArtist",
+            "genre": "Physics",
+            "strategy": 4
+          },
+          {
+            "id": "2d21f724-00d5-49cd-bb48-0cf0a0abfea5",
+            "title": "MotherLoad",
+            "developer": "XGen Studios",
+            "genre": "Mining",
+            "strategy": 4
+          },
+          {
+            "id": "c85ff4e3-1e2d-4b4e-8c4f-958d9db4aff2",
+            "title": "Age of War",
+            "developer": "Louissi; Kyriacos Omerou / CyprusX",
+            "genre": "Strategy",
+            "strategy": 4
+          },
+          {
+            "id": "07921a2f-26fd-4364-9671-ee0c8d256ec1",
+            "title": "Bloons TD 5",
+            "developer": "Ninja Kiwi",
+            "genre": "Puzzle",
+            "strategy": 4
+          },
+          {
+            "id": "0f691c8b-57ff-45e3-a063-f807d2365c26",
+            "title": "Desktop Tower Defense",
+            "developer": "HandDrawnGames.com",
+            "genre": "Tower defense",
+            "strategy": 5
+          },
+          {
+            "id": "22dbcb0d-7c9d-4b5c-8133-681be739ba04",
+            "title": "GemCraft",
+            "developer": "Game in a Bottle",
+            "genre": "Tower defense",
+            "strategy": 5
+          },
+          {
+            "id": "c1470589-a415-4754-974a-2effb090e243",
+            "title": "Kingdom Rush",
+            "developer": "Ironhide Game Studio",
+            "genre": "Tower defense",
+            "strategy": 5
+          },
+          {
+            "id": "b0d2b9a9-ab00-465e-b5a3-56031b92f070",
+            "title": "Portal: The Flash Version",
+            "developer": "We Create Stuff",
+            "genre": "Puzzle",
+            "strategy": 5
+          },
+          {
+            "id": "bda1e0d7-145f-4c64-b354-bafbc68ccb75",
+            "title": "Bloxorz",
+            "developer": "Damien Clarke; DX Interactive",
+            "genre": "Puzzle",
+            "strategy": 5
+          },
+          {
+            "id": "17f7d182-76de-4c25-ba86-3e0a6ed4a70a",
+            "title": "Doodle God",
+            "developer": "Avaloid / JoyBits",
+            "genre": "Puzzle",
+            "strategy": 5
+          },
+          {
+            "id": "69a05ae8-a7a6-4fa8-a123-4653a745e27a",
+            "title": "Cursor*10",
+            "developer": "NEKOGAMES / Yoshio Ishii",
+            "genre": "Puzzle",
+            "strategy": 5
+          },
+          {
+            "id": "69f65e50-3775-4e30-a137-8612daa09042",
+            "title": "Electric Box",
+            "developer": "Twinkle Star Games; Funtank",
+            "genre": "Puzzle",
+            "strategy": 5
+          },
+          {
+            "id": "72a5171a-bd03-4771-a4da-be49bf09c356",
+            "title": "Line Rider Zada",
+            "developer": "Idog",
+            "genre": "Creative",
+            "strategy": 5
+          },
+          {
+            "id": "279b23ca-c7f3-4f56-a02f-3752ec7c5c5d",
+            "title": "Papa\u0027s Pizzeria",
+            "developer": "Tony Solary; Matt Neff",
+            "genre": "Cooking",
+            "strategy": 4
+          },
+          {
+            "id": "f55d6576-1aee-414a-bd1e-b7678d697dcf",
+            "title": "Papa\u0027s Burgeria",
+            "developer": "Flipline Studios",
+            "genre": "Cooking",
+            "strategy": 4
+          },
+          {
+            "id": "0377a23c-bfde-26b7-2520-8fe3048d23b1",
+            "title": "Monkey Go Happy Four Worlds",
+            "developer": "Pencilkids",
+            "genre": "Puzzle",
+            "strategy": 5
+          },
+          {
+            "id": "8222f881-c300-de7f-1398-0f918f30c8db",
+            "title": "Snail Bob",
+            "developer": "Andrey Kovalishin; Maxim Yurchenko; Dmitry Petyakin",
+            "genre": "Puzzle",
+            "strategy": 5
+          },
+          {
+            "id": "26ac7a58-02f8-4b5e-990a-1405ad0fb59d",
+            "title": "Cyclomaniacs",
+            "developer": "LongAnimals",
+            "genre": "Racing",
+            "strategy": 2
+          },
+          {
+            "id": "708e84e9-4ce4-4ab8-b8bb-4506ccef1c9b",
+            "title": "Cyclomaniacs 2",
+            "developer": "Turbo Nuke",
+            "genre": "Racing",
+            "strategy": 2
+          },
+          {
+            "id": "3e1f8f2e-b183-1653-678e-25ccd037da24",
+            "title": "Uphill Rush",
+            "developer": "AGAME",
+            "genre": "Racing",
+            "strategy": 2
+          },
+          {
+            "id": "94d9411e-e39b-4066-8264-015eee42e71b",
+            "title": "Coaster Racer",
+            "developer": "LongAnimals",
+            "genre": "Racing",
+            "strategy": 1
+          },
+          {
+            "id": "252614ff-9355-e64b-f6ae-c03d6490d68a",
+            "title": "Coaster Racer 2",
+            "developer": "LongAnimals; asute",
+            "genre": "Racing",
+            "strategy": 1
+          },
+          {
+            "id": "19c8528f-d57e-6102-3601-638b382deb15",
+            "title": "Heat Rush",
+            "developer": "LongAnimals",
+            "genre": "Racing",
+            "strategy": 1
+          },
+          {
+            "id": "28ac50ff-eec9-ed53-0139-547a1156d66d",
+            "title": "Drift Runners",
+            "developer": "LongAnimals",
+            "genre": "Racing",
+            "strategy": 1
+          },
+          {
+            "id": "bdd748f8-47a5-8d45-48cb-e5a61a6cdbb4",
+            "title": "Hill Climb Racing",
+            "developer": "Lushpigan Alexandr / ViZgl; Egor Fedotov",
+            "genre": "Racing",
+            "strategy": 2
+          },
+          {
+            "id": "caca58e2-8297-fab7-d02d-c7633e8c300f",
+            "title": "Truck Loader",
+            "developer": "Flazm; Alexey Davydov; Anton Subochev; Gennady Kovshenin",
+            "genre": "Puzzle",
+            "strategy": 5
+          },
+          {
+            "id": "54d203f6-0c3a-9ae8-3517-3e77340bf394",
+            "title": "Monster Truck Destroyer",
+            "developer": "Peter Kaspar; Gametornado",
+            "genre": "Racing",
+            "strategy": 1
+          },
+          {
+            "id": "021cace3-95d8-4575-9a9f-046e9323c728",
+            "title": "Bike Mania",
+            "developer": "Flash Games 247",
+            "genre": "Racing",
+            "strategy": 2
+          },
+          {
+            "id": "312e482f-390f-3b89-f71e-cf53d6f341ad",
+            "title": "Big Head Football",
+            "developer": "Football Games Site",
+            "genre": "Sports",
+            "strategy": 2
+          },
+          {
+            "id": "01a28f80-4dbf-4291-8d32-989c242a371a",
+            "title": "Basketball Legends",
+            "developer": "MadPuffers",
+            "genre": "Sports",
+            "strategy": 2
+          },
+          {
+            "id": "9bc3047e-8769-4030-9fc6-39f231a2b162",
+            "title": "Penalty Fever",
+            "developer": "FlashFooty.com",
+            "genre": "Sports",
+            "strategy": 2
+          },
+          {
+            "id": "0959985b-f539-43bc-b381-7c36e2999b0b",
+            "title": "Bowling With Lefty",
+            "developer": "",
+            "genre": "Sports",
+            "strategy": 2
+          },
+          {
+            "id": "3c97fc70-ce38-41b6-b8ff-8a577a1217f4",
+            "title": "Doyu Golf",
+            "developer": "Doyu Games",
+            "genre": "Sports",
+            "strategy": 3
+          },
+          {
+            "id": "cc779eb6-424b-4377-bda6-e5af9643ee55",
+            "title": "Kingdom Rush Frontiers",
+            "developer": "Ironhide Game Studio",
+            "genre": "Tower defense",
+            "strategy": 5
+          },
+          {
+            "id": "07748ae4-cab6-440b-81b7-45f65b1894eb",
+            "title": "The Cursed Treasure",
+            "developer": "Top10NewGames",
+            "genre": "Tower defense",
+            "strategy": 5
+          },
+          {
+            "id": "99a5f9ed-1c00-498a-8341-4d4a62d84750",
+            "title": "Bloons 2",
+            "developer": "Ninja Kiwi",
+            "genre": "Puzzle",
+            "strategy": 4
+          },
+          {
+            "id": "e6f95de6-7e12-4b07-80cc-ecd5d4eea1aa",
+            "title": "Warlords: Call to Arms",
+            "developer": "Ben Olding",
+            "genre": "Strategy",
+            "strategy": 4
+          },
+          {
+            "id": "7fd0ed3e-ae8c-42bd-acfc-9c7ef42055aa",
+            "title": "Epic War",
+            "developer": "ArtLogic Games",
+            "genre": "Strategy",
+            "strategy": 4
+          },
+          {
+            "id": "48475bd0-225a-1c0a-d4d8-61b01f98d3ed",
+            "title": "Clash of the Olympians",
+            "developer": "IRONHIDEGAMES",
+            "genre": "Strategy",
+            "strategy": 4
+          },
+          {
+            "id": "da033318-11cc-420c-8742-e67d326414d4",
+            "title": "Factory Balls",
+            "developer": "Bart Bonte",
+            "genre": "Puzzle",
+            "strategy": 5
+          },
+          {
+            "id": "657858dc-4f70-4811-8b10-96b12ffd0a6c",
+            "title": "Red Remover",
+            "developer": "Gaz Thomas",
+            "genre": "Puzzle",
+            "strategy": 5
+          },
+          {
+            "id": "5575dbda-fb43-fbd9-fd75-09d1414b8e2c",
+            "title": "Cover Orange",
+            "developer": "Johnny-K",
+            "genre": "Puzzle",
+            "strategy": 5
+          },
+          {
+            "id": "cc1efd2d-fa4c-4c35-8ddb-4ab6153ef714",
+            "title": "Totem Destroyer",
+            "developer": "Gabs.tv",
+            "genre": "Puzzle",
+            "strategy": 5
+          },
+          {
+            "id": "bb913405-2f59-4caa-aa52-55f3ff99ff6f",
+            "title": "Wake Up the Box",
+            "developer": "Eugene Karataev",
+            "genre": "Puzzle",
+            "strategy": 5
+          },
+          {
+            "id": "1702941a-9978-49b5-95ed-104fb1778a3c",
+            "title": "Magic Pen",
+            "developer": "Alejandro Guillen / AleGui",
+            "genre": "Puzzle",
+            "strategy": 5
+          },
+          {
+            "id": "72928f24-c791-4155-ae4a-78f0f5e1ba08",
+            "title": "Swords and Sandals: Gladiator",
+            "developer": "3rd Sense Australia",
+            "genre": "Strategy",
+            "strategy": 4
+          },
+          {
+            "id": "33e42f54-82f1-42ad-a301-c461eaad1218",
+            "title": "Gold Miner: Vegas",
+            "developer": "Grab Games",
+            "genre": "Arcade",
+            "strategy": 3
+          },
+          {
+            "id": "53c978f6-9ddb-4dc5-bf6e-c06f1052bd7f",
+            "title": "Super Smash Flash",
+            "developer": "McLeodGaming",
+            "genre": "Fighting",
+            "strategy": 1
+          },
+          {
+            "id": "2e75a735-af7a-48c0-8197-0dd61f9a8987",
+            "title": "Ragdoll Cannon",
+            "developer": "Johnny-K",
+            "genre": "Physics",
+            "strategy": 4
+          },
+          {
+            "id": "630cb611-143b-4c0d-9ecf-3fb61ad4ac5a",
+            "title": "Rocket Car",
+            "developer": "Corky Surprise, Ollie The Magic Hobo",
+            "genre": "Launch \u0026 upgrade",
+            "strategy": 3
+          },
+          {
+            "id": "093d797a-6481-4624-9d67-06c1cb7d66a2",
+            "title": "Super Mario Flash",
+            "developer": "Pouetpu",
+            "genre": "Platformer",
+            "strategy": 2
+          },
+          {
+            "id": "854e76b4-63b5-4508-96c5-2f6a9fb511a0",
+            "title": "Mario Combat",
+            "developer": "Sun Studios",
+            "genre": "Fighting",
+            "strategy": 1
+          },
+          {
+            "id": "62aebbe7-8a1c-d012-047a-301603216984",
+            "title": "Stick Run",
+            "developer": "Blobzone",
+            "genre": "Runner",
+            "strategy": 1
+          },
+          {
+            "id": "7aa18d42-703f-212c-c209-051d94a3ca2a",
+            "title": "Snowboard Stunts",
+            "developer": "Mateusz Skutnik",
+            "genre": "Sports",
+            "strategy": 2
+          },
+          {
+            "id": "1efa7186-01cd-4307-8662-74500c655eac",
+            "title": "Awesome Tanks",
+            "developer": "Alexander Gette; Jurij Krivonos; Christian M. Krogsvold",
+            "genre": "Action",
+            "strategy": 2
+          },
+          {
+            "id": "a2449172-de63-8dd4-416f-407192bf9ab5",
+            "title": "Awesome Tanks 2",
+            "developer": "EmitterCritter",
+            "genre": "Action",
+            "strategy": 2
+          },
+          {
+            "id": "138a053d-b575-2612-a5fe-e46fc838059c",
+            "title": "Tank Wars",
+            "developer": "",
+            "genre": "Artillery",
+            "strategy": 3
+          },
+          {
+            "id": "a467f94c-3f1d-4fe3-bcbe-9aa9be74392c",
+            "title": "Tanks 2",
+            "developer": "Epicman34",
+            "genre": "Artillery",
+            "strategy": 3
+          },
+          {
+            "id": "c2d6774e-251b-b668-b9a6-8ec4d51921c4",
+            "title": "Tank 2008",
+            "developer": "Tremor-_-. Zenon",
+            "genre": "Artillery",
+            "strategy": 3
+          },
+          {
+            "id": "6652fca2-a3d7-a3c7-9728-04ce29464b7b",
+            "title": "Indestructotank! Launch",
+            "developer": "Antony Lavelle / Tony / The-EXP",
+            "genre": "Action",
+            "strategy": 2
+          },
+          {
+            "id": "251cc3de-ee20-462e-abee-0d259d5d02d7",
+            "title": "Tank Destroyer",
+            "developer": "Andriy Pidvirnyy / Pidvirniy Andrey / FreeS",
+            "genre": "Action",
+            "strategy": 2
+          },
+          {
+            "id": "1aeb3e51-7601-4fc5-a3a2-a3498a6a824d",
+            "title": "Fleeing the Complex",
+            "developer": "Puffballs United",
+            "genre": "Choose your path",
+            "strategy": 4
+          },
+          {
+            "id": "eb9a27b0-834a-4982-af0e-f30aebb4eed3",
+            "title": "Fireboy and Watergirl 3: In The Ice Temple",
+            "developer": "Oslo Albet; Jan Villanueva",
+            "genre": "Puzzle platformer",
+            "strategy": 4
+          },
+          {
+            "id": "aedea00b-4e68-446d-b847-cad06d9d49b0",
+            "title": "Fireboy and Watergirl 4: In The Crystal Temple",
+            "developer": "Oslo Albet; Jan Villanueva",
+            "genre": "Puzzle platformer",
+            "strategy": 4
+          },
+          {
+            "id": "b0d5a215-c9f3-41f4-9e3d-871d1281190c",
+            "title": "Achievement Unlocked 2",
+            "developer": "John Cooney / jmtb02",
+            "genre": "Platformer",
+            "strategy": 3
+          },
+          {
+            "id": "b0ce771e-7c02-4317-8528-ba48139e2688",
+            "title": "Super Mario Bros. Crossover",
+            "developer": "Exploding Rabbit",
+            "genre": "Platformer",
+            "strategy": 2
+          },
+          {
+            "id": "aab8ff04-e593-47c9-8186-a9e7c72f668e",
+            "title": "Ultimate Flash Sonic",
+            "developer": "Menace.ch / Dennis-Gid",
+            "genre": "Platformer",
+            "strategy": 1
+          },
+          {
+            "id": "2e541149-d67f-466b-8748-7d1ff6d0c229",
+            "title": "Robot Unicorn Attack",
+            "developer": "Spiritonin Media",
+            "genre": "Runner",
+            "strategy": 1
+          },
+          {
+            "id": "ca5c0488-f894-4f2f-b92c-95ec4f836eaa",
+            "title": "Canabalt",
+            "developer": "Adam Saltsman / Adam Atomic",
+            "genre": "Runner",
+            "strategy": 1
+          },
+          {
+            "id": "982d3b8e-1a40-4f55-8f08-2ee169ea19f4",
+            "title": "Dino Run",
+            "developer": "PixelJam Games",
+            "genre": "Runner",
+            "strategy": 1
+          },
+          {
+            "id": "0a83de59-4fe0-462e-8d19-b1ae20754d6a",
+            "title": "Convex Lenses",
+            "developer": "",
+            "genre": "Platformer",
+            "strategy": 2
+          },
+          {
+            "id": "b618e0dd-7246-40bb-8020-85d42780c31e",
+            "title": "Vex 2",
+            "developer": "Amazing Adam",
+            "genre": "Platformer",
+            "strategy": 2
+          },
+          {
+            "id": "bdcaed29-7db2-4bfc-a384-9de911984d81",
+            "title": "The World\u0027s Hardest Game",
+            "developer": "Stephen Critoph",
+            "genre": "Arcade",
+            "strategy": 3
+          },
+          {
+            "id": "a5bbe0f0-add5-4a13-bc57-7bf6b87de202",
+            "title": "Red Ball 2: The King",
+            "developer": "Evgeniy Fedoseev",
+            "genre": "Platformer",
+            "strategy": 3
+          },
+          {
+            "id": "08b3587a-9e10-4674-a17d-96e74123d1ba",
+            "title": "Red Ball 3",
+            "developer": "Evgeniy Fedoseev",
+            "genre": "Platformer",
+            "strategy": 3
+          },
+          {
+            "id": "b14aa5c8-edfe-3278-2dd6-a8f1cfcd5c32",
+            "title": "Bob the Robber",
+            "developer": "Flazm; Alexey Davydov; George Studenikin; Darya Kulichkova; Alexander Ahura / Ahuraster",
+            "genre": "Puzzle",
+            "strategy": 4
+          },
+          {
+            "id": "88c67f07-03e8-d6e7-4931-6e3306188693",
+            "title": "Wheely",
+            "developer": "Pegas Games",
+            "genre": "Puzzle",
+            "strategy": 4
+          },
+          {
+            "id": "37e477c7-7b36-ffb4-915d-1e41137e645d",
+            "title": "Wheely 2",
+            "developer": "Pegas Games",
+            "genre": "Puzzle",
+            "strategy": 4
+          },
+          {
+            "id": "c87ef761-5954-78d8-24fa-2d5391f50d8e",
+            "title": "Wheely 3",
+            "developer": "Pegas Games",
+            "genre": "Puzzle",
+            "strategy": 4
+          },
+          {
+            "id": "286a74e2-a85d-4c6d-a1b9-0d57551035d5",
+            "title": "Helicopter Game",
+            "developer": "SeeThru.co.uk",
+            "genre": "Arcade",
+            "strategy": 1
+          },
+          {
+            "id": "8de9681d-f820-4421-b18c-9d59416ab807",
+            "title": "Cubefield",
+            "developer": "Max Abernethy",
+            "genre": "Arcade",
+            "strategy": 1
+          },
+          {
+            "id": "887fa483-b9f9-489d-ac5f-7c88335c7946",
+            "title": "Curveball",
+            "developer": "FreeWorldGroup.com",
+            "genre": "Sports",
+            "strategy": 1
+          },
+          {
+            "id": "d0dee3fc-6bce-49c8-8408-06c763b1109a",
+            "title": "QWOP",
+            "developer": "Bennett Foddy",
+            "genre": "Sports",
+            "strategy": 1
+          },
+          {
+            "id": "90bc0495-1394-4d37-b7cc-d719595bc083",
+            "title": "Riddle School 2",
+            "developer": "Jonochrome / JonBro / TehJonBro",
+            "genre": "Adventure",
+            "strategy": 5
+          },
+          {
+            "id": "56e5ae13-cce7-4ef1-9b3d-1997262d15fe",
+            "title": "Riddle School 3",
+            "developer": "Jonochrome / JonBro / TehJonBro",
+            "genre": "Adventure",
+            "strategy": 5
+          },
+          {
+            "id": "a8359b10-2a95-4e70-a5e9-532f0fedcf6a",
+            "title": "Riddle School 4",
+            "developer": "Jonochrome / JonBro / TehJonBro",
+            "genre": "Adventure",
+            "strategy": 5
+          },
+          {
+            "id": "3559a164-c432-4ae4-b087-bf36ad716483",
+            "title": "Riddle School 5",
+            "developer": "Jonochrome / JonBro / TehJonBro",
+            "genre": "Adventure",
+            "strategy": 5
+          },
+          {
+            "id": "59041e00-c77d-4cc1-a00e-5a1161d84cea",
+            "title": "Sushi Cat",
+            "developer": "Joey Betz; James Pearmain / Jimp",
+            "genre": "Puzzle",
+            "strategy": 4
+          },
+          {
+            "id": "6683e73a-fe4d-408a-a701-29730065a606",
+            "title": "Cut The Rope HD (17yy.com)",
+            "developer": "",
+            "genre": "Puzzle",
+            "strategy": 5
+          },
+          {
+            "id": "491883da-9de2-9670-e0ba-3aa95788f2bb",
+            "title": "Sugar, Sugar 2",
+            "developer": "Bart Bonte",
+            "genre": "Puzzle",
+            "strategy": 5
+          },
+          {
+            "id": "f1a6ac14-0f46-aa91-0fa0-97884788239c",
+            "title": "Sugar, Sugar 3",
+            "developer": "Bart Bonte",
+            "genre": "Puzzle",
+            "strategy": 5
+          },
+          {
+            "id": "62320c13-81a7-416b-b654-15ffc8518192",
+            "title": "Doodle God 2",
+            "developer": "JoyBits",
+            "genre": "Puzzle",
+            "strategy": 5
+          },
+          {
+            "id": "3e32d758-fb0f-4ea8-b513-0154ebf5341e",
+            "title": "Electric Box 2",
+            "developer": "Twinkle Star Games Studios",
+            "genre": "Puzzle",
+            "strategy": 5
+          },
+          {
+            "id": "a896606c-fc60-450d-b264-3389b5963e69",
+            "title": "Factory Balls 2",
+            "developer": "Bart Bonte",
+            "genre": "Puzzle",
+            "strategy": 5
+          },
+          {
+            "id": "18bdf077-8457-41d9-981c-736d560cbed5",
+            "title": "Civiballs",
+            "developer": "Andrey Kovalishin",
+            "genre": "Puzzle",
+            "strategy": 5
+          },
+          {
+            "id": "b53fcf3c-d5ee-4c9a-b231-a2000cc572c2",
+            "title": "Bloons Super Monkey",
+            "developer": "Ninja Kiwi",
+            "genre": "Arcade",
+            "strategy": 2
+          },
+          {
+            "id": "92ba2d91-e041-2bd4-49ea-21758df711ff",
+            "title": "Papa\u0027s Freezeria",
+            "developer": "Flipline Studios",
+            "genre": "Cooking",
+            "strategy": 4
+          },
+          {
+            "id": "6a7c068c-71bc-93f8-0c2b-708bf910359a",
+            "title": "Papa\u0027s Taco Mia!",
+            "developer": "Flipline Studios",
+            "genre": "Cooking",
+            "strategy": 4
+          },
+          {
+            "id": "92781aea-6ad0-2bdb-a963-7131c49b7d07",
+            "title": "Papa\u0027s Hot Doggeria",
+            "developer": "Flipline Studios",
+            "genre": "Cooking",
+            "strategy": 4
+          },
+          {
+            "id": "9525910d-72b8-4e84-b668-43a267e00d9c",
+            "title": "Papa\u0027s Pancakeria",
+            "developer": "Flipline Studios",
+            "genre": "Cooking",
+            "strategy": 4
+          },
+          {
+            "id": "37011093-bd46-4385-98d1-4cda53724620",
+            "title": "Duck Life 3: Evolution",
+            "developer": "Wix Games",
+            "genre": "Training",
+            "strategy": 3
+          },
+          {
+            "id": "95b9df8c-59ce-45d1-ae0b-696e190d9e14",
+            "title": "Learn to Fly 3",
+            "developer": "Light Bringer Games",
+            "genre": "Launch \u0026 upgrade",
+            "strategy": 3
+          },
+          {
+            "id": "00f70421-1dc6-4857-b8ae-e01e418f10a3",
+            "title": "Chess Game",
+            "developer": "EyeGrid",
+            "genre": "Board games",
+            "strategy": 5
+          },
+          {
+            "id": "006fa334-2616-4137-bf2b-5f978f9c521a",
+            "title": "Checkers / Draughts 3D",
+            "developer": "pitanello",
+            "genre": "Board games",
+            "strategy": 5
+          },
+          {
+            "id": "0286f08b-712c-4200-9471-3a934fcfd591",
+            "title": "Mahjong Soliter",
+            "developer": "Miro Mand\u00E1k",
+            "genre": "Board games",
+            "strategy": 5
+          },
+          {
+            "id": "0ecea02c-6440-48b9-bf90-edfa9fac9682",
+            "title": "Minesweeper",
+            "developer": "",
+            "genre": "Board games",
+            "strategy": 5
+          },
+          {
+            "id": "01164ac5-3ef9-4d62-9fee-aa91ba32f960",
+            "title": "Tetris",
+            "developer": "Klas Kroon",
+            "genre": "Arcade",
+            "strategy": 3
+          },
+          {
+            "id": "1bae4689-5b90-4354-96e2-ebce7b1d7476",
+            "title": "Pac-Man",
+            "developer": "",
+            "genre": "Arcade",
+            "strategy": 2
+          },
+          {
+            "id": "0242a410-ffed-43be-b7b2-087c26770d81",
+            "title": "Snake Fruit!",
+            "developer": "ZukeArmada",
+            "genre": "Arcade",
+            "strategy": 2
+          },
+          {
+            "id": "d678610a-4034-4535-88b1-6a7747260db5",
+            "title": "Moto X3M 2",
+            "developer": "Mad Puffers",
+            "genre": "Racing",
+            "strategy": 2
+          },
+          {
+            "id": "93096afd-530f-41cf-9fbb-be30b1f6f64a",
+            "title": "Moto X3M 3",
+            "developer": "Mad Puffers",
+            "genre": "Racing",
+            "strategy": 2
+          },
+          {
+            "id": "6a724774-959a-3628-d867-2b754442a728",
+            "title": "Neon Rider",
+            "developer": "Louissi",
+            "genre": "Racing",
+            "strategy": 2
+          },
+          {
+            "id": "8cf43adf-878d-0e45-0736-66f49080414e",
+            "title": "Free Rider",
+            "developer": "onemorelevel",
+            "genre": "Racing",
+            "strategy": 2
+          },
+          {
+            "id": "609d817d-a54a-2e6c-0951-7d8d50781527",
+            "title": "Bike Mania 2",
+            "developer": "Flash Games 247",
+            "genre": "Racing",
+            "strategy": 2
+          },
+          {
+            "id": "018b24ff-ba1f-bf58-bf1d-110704de232c",
+            "title": "Turbo Spirit",
+            "developer": "Neodelight",
+            "genre": "Racing",
+            "strategy": 1
+          },
+          {
+            "id": "b8445321-7c60-4cbc-ae1d-195301bf2bb9",
+            "title": "Super Bikes Track Stars",
+            "developer": "LongAnimals",
+            "genre": "Racing",
+            "strategy": 1
+          },
+          {
+            "id": "42b6b423-1a23-e038-6a22-6b1e51491705",
+            "title": "Wheelers",
+            "developer": "",
+            "genre": "Racing",
+            "strategy": 2
+          },
+          {
+            "id": "123f54dc-6631-8caf-554f-9c3ce4915781",
+            "title": "Bloxorz",
+            "developer": "Miniclip",
+            "genre": "Puzzle",
+            "strategy": 5
+          }
+        ],
+        "autoClassics": true,
+        "stockedPicks": [
+          "Gravity Guy",
+          "Fancy Pants Adventures",
+          "Fancy Pants Adventure: World 2",
+          "Super Mario 63",
+          "Red Ball 4",
+          "Stick War",
+          "Fireboy and Watergirl in The Forest Temple",
+          "Fireboy and Watergirl 2: In the Light Temple",
+          "Meat Boy",
+          "Shift",
+          "This is the Only Level",
+          "Achievement Unlocked",
+          "Bubble Trouble",
+          "Hedgehog Launch",
+          "Learn to Fly",
+          "Burrito Bison",
+          "Raft Wars",
+          "Raft Wars 2",
+          "Territory War",
+          "Bowman",
+          "Crush the Castle",
+          "Motherload",
+          "Age of War",
+          "Bloons",
+          "Desktop Tower Defense",
+          "GemCraft",
+          "Kingdom Rush",
+          "Portal: The Flash Version",
+          "Bloxorz",
+          "Doodle God",
+          "Cursor*10",
+          "Electric Box",
+          "Line Rider",
+          "Papa\u0027s Pizzeria",
+          "Papa\u0027s Burgeria",
+          "Monkey GO Happy",
+          "Snail Bob",
+          "Cyclomaniacs",
+          "Cyclomaniacs 2",
+          "Uphill Rush",
+          "Coaster Racer",
+          "Coaster Racer 2",
+          "Heat Rush",
+          "Drift Runners",
+          "Hill Climb Racing",
+          "Truck Loader",
+          "Monster Truck Destroyer",
+          "Bike Mania",
+          "Big Head Football",
+          "Basketball Legends",
+          "Penalty Fever",
+          "Bowling",
+          "Doyu Golf",
+          "Kingdom Rush Frontiers",
+          "Cursed Treasure",
+          "Bloons 2",
+          "Warlords: Call to Arms",
+          "Epic War",
+          "Clash of the Olympians",
+          "Factory Balls",
+          "Red Remover",
+          "Cover Orange",
+          "Totem Destroyer",
+          "Wake Up the Box",
+          "Magic Pen",
+          "Swords and Sandals",
+          "Gold Miner",
+          "Super Smash Flash",
+          "Ragdoll Cannon",
+          "Rocket Car",
+          "Super Mario Flash",
+          "Mario Combat",
+          "Stick Run",
+          "Snowboard Stunts",
+          "Awesome Tanks",
+          "Awesome Tanks 2",
+          "Tank Wars",
+          "Tanks 2",
+          "Tank 2008",
+          "Indestructotank",
+          "Tank Destroyer",
+          "Fleeing the Complex",
+          "Fireboy and Watergirl 3: In the Ice Temple",
+          "Fireboy and Watergirl 4: In the Crystal Temple",
+          "Achievement Unlocked 2",
+          "Super Mario Bros. Crossover",
+          "Ultimate Flash Sonic",
+          "Robot Unicorn Attack",
+          "Canabalt",
+          "Dino Run",
+          "Vex",
+          "Vex 2",
+          "The World\u0027s Hardest Game",
+          "Red Ball 2",
+          "Red Ball 3",
+          "Bob the Robber",
+          "Wheely",
+          "Wheely 2",
+          "Wheely 3",
+          "Helicopter Game",
+          "Cubefield",
+          "Curveball",
+          "QWOP",
+          "Riddle School 2",
+          "Riddle School 3",
+          "Riddle School 4",
+          "Riddle School 5",
+          "Sushi Cat",
+          "Cut the Rope",
+          "Sugar, Sugar 2",
+          "Sugar, Sugar 3",
+          "Doodle God 2",
+          "Electric Box 2",
+          "Factory Balls 2",
+          "Civiballs",
+          "Bloons Super Monkey",
+          "Papa\u0027s Freezeria",
+          "Papa\u0027s Taco Mia",
+          "Papa\u0027s Hot Doggeria",
+          "Papa\u0027s Pancakeria",
+          "Duck Life 3",
+          "Learn to Fly 3",
+          "Chess",
+          "Checkers",
+          "Mahjong",
+          "Minesweeper",
+          "Tetris",
+          "Pac-Man",
+          "Snake",
+          "Moto X3M 2",
+          "Moto X3M 3",
+          "Neon Rider",
+          "Free Rider",
+          "Bike Mania 2",
+          "Turbo Spirit",
+          "Super Bikes Track Stars",
+          "Wheelers"
+        ]
+      }
+    }
+  ],
+  "pinHash": "105JqzYNXHHOClp\u002BPvJDlUKLvYp/1fy01PdZfo28dG4=",
+  "pinSalt": "YS10kzDYjZoVVVvucEUyRA==",
+  "pinFailures": 0
+}

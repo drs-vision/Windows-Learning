@@ -1,0 +1,69 @@
+== Parent Console: first-run setup
+PASS  setup wizard completes with the kid account
+PASS  parent gives 400 coins
+PASS  parent adds a YouTube channel
+PASS  parent allows duolingo.com
+PASS  Flashpoint panel shows install steps
+PASS  settings survive switching tabs (duolingo.com still allowed)
+== Scholar (started by the Guardian in the child's session, as at home)
+PASS  kid sees 400 coins
+== Arcade
+  9 games: Ending, 2048, Hextris, Clumsy Bird, HexGL, T-Rex Runner, Astray, Blockrain, Space Invaders
+PASS  arcade: "Ending" opens and stays open after Play
+PASS  arcade: "2048" opens and stays open after Play
+PASS  arcade: "Hextris" opens and stays open after Play
+PASS  arcade: "Clumsy Bird" opens and stays open after Play
+PASS  arcade: "HexGL" opens and stays open after Play
+PASS  arcade: "T-Rex Runner" opens and stays open after Play
+PASS  arcade: "Astray" opens and stays open after Play
+PASS  arcade: "Blockrain" opens and stays open after Play
+PASS  arcade: "Space Invaders" opens and stays open after Play
+  classics visible: Gravity Guy, The Fancy Pants Adventures: World 2, The Fancy Pants Adventure: World 2 Demo, Super Mario 63, Red Ball 4: Volume 1, Stick War, Fireboy and Watergirl in The Forest Temple, Fireboy and Watergirl 2: In The Light Temple, Meat Boy, Shifty Knight, This Is The Only Level, Achievement Unlocked
+PASS  classic Flash game (Flashpoint Archive) appears, downloads and plays
+  2 Bloxorz tile(s)
+  Couldn't get Bloxorz ready: This game isn't fully saved in the archive, so it can't play. It's been taken out of the arcade.
+  Bloxorz tiles after: 1
+PASS  HTML5 classic (Miniclip Bloxorz) plays, or is taken out of the arcade if the archive lacks its files
+  Meat Boy: paid 8, balance 328 → 320 → 328 · dialogs: Doesn't Meat Boy work? It will be taken out of the arcade and you get your coins back. | 🪙 8 coins are back in your wallet.
+PASS  "Broken?" takes a game out of the arcade and refunds its coins
+PASS  sampler pass: buy and play any game
+== YouTube
+  note: YouTube asked "confirm you are not a bot" (it does this for data-centre connections like this test machine)
+  up next: 14 approved videos beside the player
+PASS  YouTube: + buys time and a video plays
+  creator videos: 30 at first, 131 after scrolling · That's every video from this creator.
+PASS  YouTube: pick a creator and scroll through all their videos
+== Websites
+  duolingo page text: <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TX6Z97C" height="0" width="0" style="display:none;visibility:hidden"></iframe>{ "@type": "Organizat
+PASS  Duolingo opens with content (not blank)
+  [site window page error] Failed to load https://consent.trustarc.com/v2/notice/rjk7t3.
+  [site window page error] Failed to load https://consent.trustarc.com/v2/notice/rjk7t3.
+  pages: https://accounts.google.com/v3/signin/identifier?opparams=%253Fgislp%253D1%2526r | https://www.khanacademy.org/
+  (screenshot failed: page.screenshot: Timeout 30000ms exceeded.
+Call log:
+  [2m- taking page screenshot[22m
+[2m  - waiting for fonts to load...[22m
+[2m  - fonts loaded[22m
+)
+PASS  Sign-in pop-up (Khan Academy → Continue with Google) opens in its own window and the site stays open
+  0 HTML5 classic(s) on disk; external addresses left: none
+PASS  HTML5 classic copy points at CoinQuest, not the internet (works with the internet lock on)
+== Letter Rescue
+  finish: F is free! +12 🪙
+PASS  Letter Rescue lesson 1 plays to the end and the Guardian pays coins
+== Scripture typing
+PASS  Scripture passage typed and paid
+== Gatekeeper blocked 11 host(s):
+  config.edge.skype.com (not on the list)
+  nav-edge.smartscreen.microsoft.com (not on the list)
+  pagead2.googlesyndication.com (not on the list)
+  www.google-analytics.com (not on the list)
+  edge.microsoft.com (not on the list)
+  ssl.google-analytics.com (not on the list)
+  www.googletagmanager.com (not on the list)
+  coinquest-classics.local (not on the list)
+  privacyportal-eu.onetrust.com (not on the list)
+  consent.trustarc.com (not on the list)
+  connect.facebook.net (not on the list)
+
+ALL CHECKS PASSED
