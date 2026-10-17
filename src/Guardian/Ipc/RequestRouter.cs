@@ -180,6 +180,16 @@ public sealed class RequestRouter
             return Response.Fail(req.Id, outcome.Reason ?? "that didn't check out");
         }
 
+        // "Each passage pays N times a day": after that it still counts as practice, without coins.
+        var repeatLimited = false;
+        if (outcome.RepeatKey is { Length: > 0 } rk && outcome.Coins > 0
+            && settings.Options.TryGetValue("repeatsPerDay", out var rs) && int.TryParse(rs, out var perDay) && perDay > 0
+            && _ledger.TimesToday(child.Id, moduleId, rk + " ·") >= perDay)
+        {
+            repeatLimited = true;
+            outcome = outcome with { Coins = 0, Detail = $"{outcome.Detail} · already earned {(perDay == 1 ? "once" : perDay == 2 ? "twice" : perDay + " times")} today" };
+        }
+
         var earnedToday = _ledger.EarnedToday(child.Id, moduleId);
         var room = settings.DailyCap > 0 ? Math.Max(0, settings.DailyCap - earnedToday) : int.MaxValue;
         // The daily limit caps earning; a negative amount (a parent's negative rate) is charged in full.
@@ -187,7 +197,7 @@ public sealed class RequestRouter
         var capped = coins < outcome.Coins;
 
         object result;
-        if (outcome.NeedsApproval || settings.RequireApproval)
+        if ((outcome.NeedsApproval || settings.RequireApproval) && !repeatLimited)
         {
             var claim = _ledger.FileClaim(child.Id, moduleId, coins, outcome.Detail, account);
             ApprovalsChanged?.Invoke();

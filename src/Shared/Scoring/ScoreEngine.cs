@@ -6,7 +6,8 @@ using Jint.Native;
 
 namespace CoinQuest.Shared.Scoring;
 
-public sealed record ScoreOutcome(int Coins, bool NeedsApproval, string Detail, JsonNode? ProgressDelta, bool Valid, string? Reason);
+/// <param name="RepeatKey">What was done (e.g. a passage), for "pays N times a day" limits; Detail starts with it.</param>
+public sealed record ScoreOutcome(int Coins, bool NeedsApproval, string Detail, JsonNode? ProgressDelta, bool Valid, string? Reason, string? RepeatKey = null);
 
 /// <summary>
 /// Runs the SAME scoring code the child's UI runs (web/dist/scorers.js, built by Vite in library mode)
@@ -49,6 +50,7 @@ public sealed class ScoreEngine
             Detail: node["detail"]?.GetValue<string>() ?? "",
             ProgressDelta: node["progressDelta"],
             Valid: node["valid"]?.GetValue<bool>() ?? true,
-            Reason: node["reason"]?.GetValue<string>());
+            Reason: node["reason"]?.GetValue<string>(),
+            RepeatKey: node["repeatKey"]?.GetValue<string>());
     }
 }

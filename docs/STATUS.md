@@ -53,7 +53,8 @@ Windows software that locks a child's account to an allowlist (apps + websites),
 - YouTube uses the same "+" 5-minute blocks; always ≥2 coins per 5 min above the priciest arcade game (arcade > YouTube).
 - Scoring sandbox now receives data as JSON parsed inside Jint (CLR lists could fail Array.isArray); CI test scores all 39 Letter Rescue lessons through the shipped bundle.
 - **Letter Rescue** rebuilt as a full game: title screen, story scenes (Tap, Tock, Glitch), world map with 1–3 stars, mini-games (charge the key, home base F/J, echo cave, balloon pop, word bridge, mystery box, secret message, Glitch battle, sky writer), finish screen, Buddy Book, Talking Typewriter (free play, reads back what he types). Headless bot played all 39 lessons through the UI to completion.
-- Typing (Typing Quest, Sound Keys, Scripture): every finished drill, lesson or passage pays the parent's set amount — no speed bonus, length scaling or accuracy discount (per Luke). Accuracy only decides whether the next drill unlocks; key-mashing (under 50% right) in Typing Quest pays 0.
+- Typing Quest and Sound Keys: every finished drill or lesson pays the parent's set amount — no speed bonus, length scaling or accuracy discount (per Luke). Accuracy only decides whether the next drill unlocks; key-mashing (under 50% right) in Typing Quest pays 0.
+- Scripture typing: parent picks "same for every passage" or "per 10/20/25/50 words", and how often each passage can earn per day (once by default; the Guardian enforces it from today's ledger, so the same short passage can't be farmed). Shown on the PC and the phone.
 
 ## 2026-10-12 — v0.1.20 → v0.1.33
 - Arcade games closing right after Play: the screen closed any game it couldn't yet see time for; now uses the purchase's own end time (v0.1.20).

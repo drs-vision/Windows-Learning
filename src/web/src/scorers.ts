@@ -23,10 +23,15 @@ export function scoreModule(moduleId: string, activity: Activity, result: Result
   const s = scorers[moduleId];
   if (!s) return { valid: false, reason: `unknown module ${moduleId}`, coins: 0, needsApproval: false, detail: '' };
   try {
-    const out = s.fn(activity, result, settingsOrDefault(settings, s.defaults));
-    // Belt and braces: never mint more than 5× the base per activity, never negative.
-    const cap = Math.max(settingsOrDefault(settings, s.defaults).coinsPerActivity * 5, moduleId === 'khan-academy' ? 60 : 0);
-    return { ...out, coins: Math.max(0, Math.min(cap, Math.round(out.coins || 0))) };
+    const st = settingsOrDefault(settings, s.defaults);
+    const out = s.fn(activity, result, st);
+    // Belt and braces: never more than 5× the set amount per activity, either way (a parent's negative rate charges).
+    // Scripture paid per N words may go higher: up to what the passage's length allows.
+    let times = 5;
+    const per = Number(st.options?.wordsPer ?? 0);
+    if (moduleId === 'bible-typing' && per > 0) times = Math.max(5, Math.ceil(String(activity?.data?.text ?? '').split(/\s+/).filter(Boolean).length / per) + 1);
+    const cap = Math.max(Math.abs(st.coinsPerActivity) * times, moduleId === 'khan-academy' ? 60 : 0);
+    return { ...out, coins: Math.max(-cap, Math.min(cap, Math.round(out.coins || 0))) };
   } catch (e) {
     return { valid: false, reason: 'scorer error: ' + (e as Error).message, coins: 0, needsApproval: false, detail: '' };
   }

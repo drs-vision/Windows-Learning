@@ -79,6 +79,20 @@ describe('bible-typing', () => {
     const words = p.text.split(/\s+/).length;
     expect(out.coins).toBe(15); void words;
     expect(out.progressDelta?.done).toEqual([p.ref]);
+    expect(out.repeatKey).toBe(p.ref);
+    expect(out.detail.startsWith(p.ref + ' ·')).toBe(true); // the Guardian's daily-limit count relies on this
+  });
+
+  it('can pay per N words instead', () => {
+    const words = p.text.split(/\s+/).filter(Boolean).length;
+    const out = scoreModule('bible-typing', act, typeIt(p.text, p.text, 120000), { ...s, coinsPerActivity: 2, options: { wordsPer: '10' } });
+    expect(out.coins).toBe(Math.round(2 * words / 10));
+  });
+
+  it('counts how often each passage was typed today', () => {
+    const first = scoreModule('bible-typing', act, typeIt(p.text, p.text, 120000), s);
+    const again = scoreModule('bible-typing', { ...act, data: { ...act.data, today: first.progressDelta?.today } }, typeIt(p.text, p.text, 120000), s);
+    expect((again.progressDelta?.today as any).counts[p.ref]).toBe(2);
   });
 
   it('rejects a passage not in the bundle', () => {

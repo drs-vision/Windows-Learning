@@ -22,6 +22,18 @@ public class LedgerTests : IDisposable
     }
 
     [Fact]
+    public void TimesToday_counts_paid_passages_by_their_detail()
+    {
+        _ledger.Append("c1", LedgerKind.Earn, 15, "bible-typing", "Psalm 23 · 118 words");
+        _ledger.Append("c1", LedgerKind.Earn, 15, "bible-typing", "Psalm 23 · 118 words");
+        _ledger.Append("c1", LedgerKind.Earn, 15, "bible-typing", "Psalm 100 · 52 words");
+        _ledger.Append("c1", LedgerKind.Earn, 15, "typing-quest", "Psalm 23 · not this module");
+        Assert.Equal(2, _ledger.TimesToday("c1", "bible-typing", "Psalm 23 ·"));
+        Assert.Equal(1, _ledger.TimesToday("c1", "bible-typing", "Psalm 100 ·"));
+        Assert.Equal(0, _ledger.TimesToday("c1", "bible-typing", "John 3 ·"));
+    }
+
+    [Fact]
     public void Hash_chain_is_intact_and_detects_tampering()
     {
         _ledger.Append("c1", LedgerKind.Earn, 10, "m", "a");

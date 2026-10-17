@@ -98,6 +98,14 @@ public sealed class HouseholdStore
             // New modules appear for existing children with their defaults.
             var modules = new Dictionary<string, ModuleSettings>(c.Modules);
             foreach (var (id, d) in ModuleSettings.Defaults()) modules.TryAdd(id, d);
+            // New settings on an existing module appear with their defaults (the parent's own values are kept).
+            foreach (var (id, d) in ModuleSettings.Defaults())
+                if (modules.TryGetValue(id, out var have) && d.Options.Keys.Any(k => !have.Options.ContainsKey(k)))
+                {
+                    var o = new Dictionary<string, string>(have.Options);
+                    foreach (var (k, v) in d.Options) o.TryAdd(k, v);
+                    modules[id] = have with { Options = o };
+                }
             var prizes = c.Prizes;
             if (h.SchemaVersion < 2)
             {

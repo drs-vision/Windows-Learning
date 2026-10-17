@@ -629,7 +629,7 @@ function Quests({ child, onSave }: { child: Child; onSave: (c: Child) => void })
             {m.id === 'rwt' && <RwtImport />}
             {m.id === 'discgames' && <DiscImport rwt={{ s: child.modules.rwt ?? { enabled: false, requireApproval: false, ...MODULES.find((x) => x.id === 'rwt')!.defaults }, set: (p) => setMod('rwt', p) }} />}
             <div class={'row' + (m.id === 'discgames' ? ' module-coins' : '')}>
-              <label>{m.id === 'discgames' ? 'Default coins per progress' : 'Coins per activity'}<input type="number" value={s.coinsPerActivity} onChange={(e) => setMod(m.id, { coinsPerActivity: Number((e.target as HTMLInputElement).value) })} /></label>
+              <label>{m.id === 'discgames' ? 'Default coins per progress' : m.id === 'bible-typing' ? (Number(s.options?.wordsPer ?? 0) > 0 ? `Coins per ${s.options?.wordsPer} words` : 'Coins per passage') : 'Coins per activity'}<input type="number" value={s.coinsPerActivity} onChange={(e) => setMod(m.id, { coinsPerActivity: Number((e.target as HTMLInputElement).value) })} /></label>
               <label>Daily limit (0 = none)<input type="number" min={0} value={s.dailyCap} onChange={(e) => setMod(m.id, { dailyCap: Number((e.target as HTMLInputElement).value) })} /></label>
               <label class="check"><input type="checkbox" checked={s.requireApproval || m.verification === 'parent_approved'} disabled={m.verification === 'parent_approved'} onChange={(e) => setMod(m.id, { requireApproval: (e.target as HTMLInputElement).checked })} /> Needs my OK</label>
             </div>

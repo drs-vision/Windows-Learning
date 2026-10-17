@@ -99,7 +99,7 @@ label.check, label.switch { flex-direction: row; align-items: center; gap: .5em;
 .option { display: flex; flex-direction: row; align-items: center; gap: .6em; padding: .5em .8em; border-radius: 10px; cursor: pointer; } .option.picked { background: var(--panel-2); }
 .passage-ref { text-align: center; color: var(--gold); margin-top: 1em; }
 .passage-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: .6em; margin: 1em 0; max-height: 50vh; overflow: auto; }
-.passage { display: flex; flex-direction: column; text-align: left; gap: .2em; border: 2px solid transparent; } .passage.picked { border-color: var(--gold); } .passage.done { opacity: .7; }
+.passage { display: flex; flex-direction: column; text-align: left; gap: .2em; border: 2px solid transparent; } .passage.picked { border-color: var(--gold); } .passage.done { opacity: .7; } .passage.used { opacity: .5; }
 
 /* typing surface */
 .typing-box { background: var(--panel); border-radius: var(--radius); padding: 1.5em 2em; margin-top: 1em; position: relative; }

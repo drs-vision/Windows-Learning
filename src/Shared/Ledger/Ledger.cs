@@ -97,6 +97,19 @@ public sealed class Ledger : IDisposable
         return Convert.ToInt32(cmd.ExecuteScalar());
     }
 
+    /// <summary>How many times today something (whose ledger detail starts with <paramref name="detailPrefix"/>) has paid or been put up for approval.</summary>
+    public int TimesToday(string childId, string source, string detailPrefix, DateTimeOffset? now = null)
+    {
+        var start = (now ?? DateTimeOffset.Now).Date;
+        using var cmd = _db.CreateCommand();
+        cmd.CommandText = "SELECT COUNT(*) FROM ledger WHERE child=$c AND source=$s AND at>=$a AND ((kind='Earn' AND delta>0) OR kind='Claim') AND substr(detail,1,length($p))=$p";
+        cmd.Parameters.AddWithValue("$c", childId);
+        cmd.Parameters.AddWithValue("$s", source);
+        cmd.Parameters.AddWithValue("$a", new DateTimeOffset(start).ToUniversalTime().ToString("O"));
+        cmd.Parameters.AddWithValue("$p", detailPrefix);
+        return Convert.ToInt32(cmd.ExecuteScalar());
+    }
+
     public int PurchasesToday(string childId, string prizeId, DateTimeOffset? now = null)
     {
         var start = (now ?? DateTimeOffset.Now).Date;
