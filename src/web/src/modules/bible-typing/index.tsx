@@ -15,7 +15,7 @@ export const bibleTyping: LessonModule = {
   id: 'bible-typing',
   title: 'Scripture Typing',
   tagline: 'Type a passage, keep it forever',
-  description: 'Type passages from the King James Bible (public domain). Coins scale with passage length only — no speed or accuracy targets. Typing is errorless: a wrong key simply doesn\'t go in and the right key stays lit, so every finished passage is typed correctly and added to the child\'s collection. Verified automatically.',
+  description: 'Type passages from the King James Bible (public domain). Every finished passage earns the same coins, short or long — no speed or accuracy targets. Typing is errorless: a wrong key simply doesn\'t go in and the right key stays lit, so every finished passage is typed correctly and added to the child\'s collection. Verified automatically.',
   icon: '📖',
   verification: 'in_app',
   defaults: DEFAULTS,

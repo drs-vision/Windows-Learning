@@ -1,5 +1,5 @@
 import type { Activity, Result, ModuleSettings, ScoreOutcome } from '../../core/types';
-import { clamp, invalid, typingAccuracy, wordsPerMinute } from '../../core/module';
+import { invalid, typingAccuracy, wordsPerMinute } from '../../core/module';
 import { LANES, laneForPlacement } from './content';
 
 export const DEFAULTS = { coinsPerActivity: 10, dailyCap: 80 };
@@ -25,7 +25,7 @@ export function scoreTypingQuest(activity: Activity, result: Result, settings: M
   if (activity.kind === 'placement') {
     const lane = laneForPlacement(wpm, accuracy);
     return {
-      valid: true, coins: Math.round(base / 2), needsApproval: false,
+      valid: true, coins: base, needsApproval: false,
       detail: `Placement test · ${Math.round(wpm)} WPM · ${Math.round(accuracy * 100)}%`,
       progressDelta: { placed: true, lane, drill: 0, bestWpm: Math.round(wpm), placementWpm: Math.round(wpm) },
     };
@@ -52,9 +52,10 @@ export function scoreTypingQuest(activity: Activity, result: Result, settings: M
   }
 
   const passed = passedAccuracy && passedSpeed && qScore >= 0.5;
-  let coins = passed ? base : Math.round(base * 0.3);
-  if (passed && isTimed && wpm >= lane.targetWpm * 1.25) coins += Math.round(base * 0.5); // speed bonus
-  if (questions?.length) coins = Math.round(coins * clamp(qScore, 0.5, 1));
+  // Every finished drill pays the parent's set amount — the same whether it was fast, slow, passed or repeated.
+  // Passing only decides whether the next drill unlocks. Mashing keys (under half right) pays nothing.
+  const typedForReal = accuracy >= 0.5;
+  const coins = typedForReal ? base : 0;
 
   const prevBest = Number((activity.data.bestWpm as number) ?? 0);
   const bestWpm = Math.max(prevBest, Math.round(wpm));
@@ -66,7 +67,7 @@ export function scoreTypingQuest(activity: Activity, result: Result, settings: M
     if (nextDrill >= lane.drills.length) { nextLane = Math.min(laneIdx + 1, LANES.length - 1); nextDrill = nextLane === laneIdx ? drillIdx : 0; }
   }
 
-  const detail = `${lane.name} ${drillIdx + 1}/${lane.drills.length} · ${Math.round(wpm)} WPM · ${Math.round(accuracy * 100)}%${passed ? '' : ' · try again'}`;
+  const detail = `${lane.name} ${drillIdx + 1}/${lane.drills.length} · ${Math.round(wpm)} WPM · ${Math.round(accuracy * 100)}%${passed ? '' : typedForReal ? ' · try again to move on' : ' · try again'}`;
   return {
     valid: true, coins, needsApproval: false, detail,
     progressDelta: { lane: nextLane, drill: nextDrill, bestWpm, lastAccuracy: Math.round(accuracy * 100), completed: passed ? ((activity.data.completed as number) ?? 0) + 1 : (activity.data.completed as number) ?? 0 },

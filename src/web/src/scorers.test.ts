@@ -17,12 +17,18 @@ describe('typing-quest', () => {
     expect(out.progressDelta).toMatchObject({ lane: 0, drill: 1 });
   });
 
-  it('sloppy drill pays a little and does not advance', () => {
+  it('a finished drill below the accuracy target pays the same but does not advance', () => {
     const text = LANES[0].drills[0].text;
-    const typed = text.replace(/f/g, 'g'); // lots of errors
+    const typed = [...text].map((c, i) => (i % 4 === 0 && c !== ' ' ? 'x' : c)).join(''); // ~1 in 4 wrong
     const out = scoreModule('typing-quest', act(0, 0), typeIt(text, typed, 20000), settings);
-    expect(out.coins).toBe(3);
+    expect(out.coins).toBe(10);
     expect(out.progressDelta).toMatchObject({ lane: 0, drill: 0 });
+  });
+
+  it('mashing keys pays nothing', () => {
+    const text = LANES[0].drills[0].text;
+    const out = scoreModule('typing-quest', act(0, 0), typeIt(text, 'z'.repeat(text.length), 20000), settings);
+    expect(out.coins).toBe(0);
   });
 
   it('rejects tampered text', () => {
@@ -42,7 +48,7 @@ describe('typing-quest', () => {
     expect(typeof out.progressDelta?.lane).toBe('number');
   });
 
-  it('passage requires answers and scales by correctness', () => {
+  it('passage requires answers; pays the set amount either way', () => {
     const lane = LANES.findIndex((l) => l.id === 'fluency');
     const text = LANES[lane].drills[0].text;
     const a = act(lane, 0);
@@ -51,14 +57,14 @@ describe('typing-quest', () => {
     const right = scoreModule('typing-quest', a, { ...typeIt(text, text, 120000), data: { typed: text, answers: [1, 0] } }, settings);
     expect(right.coins).toBe(10);
     const wrong = scoreModule('typing-quest', a, { ...typeIt(text, text, 120000), data: { typed: text, answers: [0, 1] } }, settings);
-    expect(wrong.coins).toBeLessThan(right.coins);
+    expect(wrong.coins).toBe(right.coins);
   });
 
-  it('timed drill speed bonus', () => {
+  it('a fast timed drill pays the set amount', () => {
     const drill = LANES[0].drills.findIndex((d) => d.kind === 'timed');
     const text = LANES[0].drills[drill].text;
     const fast = scoreModule('typing-quest', act(0, drill), typeIt(text, text, 8000), settings); // ~ 60 WPM
-    expect(fast.coins).toBe(15);
+    expect(fast.coins).toBe(10); // no speed bonus: every drill pays the set amount
   });
 });
 
@@ -67,11 +73,11 @@ describe('bible-typing', () => {
   const act = { moduleId: 'bible-typing', kind: 'passage', data: { ref: p.ref, text: p.text, done: [], totalWords: 0 }, issuedAt: 0 };
   const s = { ...settings, coinsPerActivity: 15 };
 
-  it('full accuracy scales with length', () => {
+  it('a finished passage pays the set amount', () => {
     const out = scoreModule('bible-typing', act, typeIt(p.text, p.text, 120000), s);
     expect(out.valid).toBe(true);
     const words = p.text.split(/\s+/).length;
-    expect(out.coins).toBe(Math.round(15 * Math.min(3, words / 40)));
+    expect(out.coins).toBe(15); void words;
     expect(out.progressDelta?.done).toEqual([p.ref]);
   });
 
@@ -86,11 +92,11 @@ describe('bible-typing', () => {
     expect(out.progressDelta).toBeUndefined();
   });
 
-  it('never exceeds 5x base', () => {
+  it('a long passage pays the same as a short one', () => {
     const big = (starter as any).passages.find((x: any) => x.ref.startsWith('Exodus'));
     const a = { ...act, data: { ...act.data, ref: big.ref, text: big.text } };
     const out = scoreModule('bible-typing', a, typeIt(big.text, big.text, 600000), s);
-    expect(out.coins).toBeLessThanOrEqual(75);
+    expect(out.coins).toBe(15);
   });
 });
 

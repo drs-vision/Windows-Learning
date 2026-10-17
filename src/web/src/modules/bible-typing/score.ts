@@ -1,5 +1,5 @@
 import type { Activity, Result, ModuleSettings, ScoreOutcome } from '../../core/types';
-import { clamp, invalid, typingAccuracy, wordsPerMinute } from '../../core/module';
+import { invalid, typingAccuracy, wordsPerMinute } from '../../core/module';
 import starter from '../../../../../content/bible/kjv-starter.json';
 
 const KNOWN: Record<string, string> = Object.fromEntries((starter as { passages: { ref: string; text: string }[] }).passages.map((p) => [p.ref, p.text]));
@@ -7,7 +7,7 @@ const KNOWN: Record<string, string> = Object.fromEntries((starter as { passages:
 export const DEFAULTS = { coinsPerActivity: 15, dailyCap: 60 };
 
 /**
- * Coins scale with passage length only (base = a 40-word passage). No speed or accuracy targets: the typing screen
+ * Every finished passage pays the set amount, short or long. No speed or accuracy targets: the typing screen
  * is errorless, so a finished passage is the whole passage, typed. The only checks are that it really was typed.
  */
 export function scoreBibleTyping(activity: Activity, result: Result, settings: ModuleSettings): ScoreOutcome {
@@ -27,10 +27,8 @@ export function scoreBibleTyping(activity: Activity, result: Result, settings: M
   if (!finished) return { valid: true, coins: 0, needsApproval: false, detail: `${ref} · not finished yet` };
 
   const words = text.split(/\s+/).filter(Boolean).length;
-  const lengthFactor = clamp(words / 40, 0.25, 3);
-  // A negative rate (set by a parent) charges coins instead; a positive one always pays at least 1.
-  const raw = Math.round(settings.coinsPerActivity * lengthFactor);
-  const coins = settings.coinsPerActivity < 0 ? Math.min(-1, raw) : Math.max(1, raw);
+  // Every finished passage pays the parent's set amount, whatever its length.
+  const coins = settings.coinsPerActivity;
 
   const done = Array.isArray(activity.data.done) ? (activity.data.done as string[]) : [];
   const nowDone = !done.includes(ref) ? [...done, ref] : done;

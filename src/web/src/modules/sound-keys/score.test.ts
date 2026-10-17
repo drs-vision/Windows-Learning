@@ -35,10 +35,10 @@ describe('sound-keys scoring', () => {
     expect(out.coins).toBe(12);
     expect(out.progressDelta).toMatchObject({ lesson: 5, done: [4], seed: 1 });
   });
-  it('a rough lesson still pays a little and repeats — never a fail', () => {
+  it('a rough lesson pays the same and repeats — never a fail', () => {
     const out = scoreModule('sound-keys', act(4), result(4, 0, 0.5), settings);
     expect(out.valid).toBe(true);
-    expect(out.coins).toBe(9);
+    expect(out.coins).toBe(12);
     expect(out.progressDelta).toMatchObject({ lesson: 4 });
   });
   it('redoing an old lesson never moves progress backwards', () => {

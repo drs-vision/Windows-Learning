@@ -28,7 +28,8 @@ export function scoreSoundKeys(activity: Activity, result: Result, settings: Mod
 
   const ratio = firstTry.filter(Boolean).length / expected.length;
   const mastered = ratio >= MASTERY;
-  const coins = Math.round(settings.coinsPerActivity * (0.5 + 0.5 * ratio)) + (mastered && lesson.kind === 'review' ? Math.round(settings.coinsPerActivity / 2) : 0);
+  // Every finished lesson pays the parent's set amount; first-try accuracy only decides whether it repeats.
+  const coins = settings.coinsPerActivity;
   const last = LESSONS[LESSONS.length - 1].id;
   const done = Array.isArray(activity.data.done) ? (activity.data.done as number[]) : [];
   const prevStars = (activity.data.stars && typeof activity.data.stars === 'object' ? activity.data.stars : {}) as Record<string, number>;
