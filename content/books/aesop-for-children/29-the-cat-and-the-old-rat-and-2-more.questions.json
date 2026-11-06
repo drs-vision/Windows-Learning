@@ -1,0 +1,110 @@
+{
+  "book": "aesop-for-children",
+  "chapter": 29,
+  "questions": [
+    {
+      "id": "aesop-for-children-29-01",
+      "type": "detail",
+      "q": "In 'The Cat and the Old Rat', what was the Cat's first trick?",
+      "choices": [
+        "He hung from a shelf as if he were dead",
+        "He hid in a shoe",
+        "He pretended to sleep by the door",
+        "He rolled in mud"
+      ],
+      "answer": 0,
+      "evidence": "he climbed up on a shelf and hung from it, head downward, as if he were dead"
+    },
+    {
+      "id": "aesop-for-children-29-02",
+      "type": "detail",
+      "q": "In 'The Cat and the Old Rat', what did the Cat cover himself with for his second trick?",
+      "choices": [
+        "Flour",
+        "Leaves",
+        "Mud",
+        "Snow"
+      ],
+      "answer": 0,
+      "evidence": "Rolling himself in flour"
+    },
+    {
+      "id": "aesop-for-children-29-03",
+      "type": "character",
+      "q": "In 'The Cat and the Old Rat', why was the old Rat not fooled?",
+      "choices": [
+        "He had much experience with Cats and traps",
+        "He could smell cheese",
+        "He saw the Cat move",
+        "Another Mouse warned him"
+      ],
+      "answer": 0,
+      "evidence": "who had had much experience with Cats and traps"
+    },
+    {
+      "id": "aesop-for-children-29-04",
+      "type": "main-idea",
+      "q": "What is the lesson of 'The Cat and the Old Rat'?",
+      "choices": [
+        "The wise do not let themselves be tricked a second time",
+        "Cats are always hungry",
+        "Never go near flour",
+        "Rats are braver than mice"
+      ],
+      "answer": 0,
+      "evidence": "The wise do not let themselves be tricked a second time."
+    },
+    {
+      "id": "aesop-for-children-29-05",
+      "type": "character",
+      "q": "In 'The Fox and the Crow', how did the Fox get the cheese?",
+      "choices": [
+        "He flattered the Crow so she opened her beak to sing",
+        "He climbed the tree and grabbed it",
+        "He traded her some meat",
+        "He scared her with a loud bark"
+      ],
+      "answer": 0,
+      "evidence": "she opened her beak wide to utter her loudest caw"
+    },
+    {
+      "id": "aesop-for-children-29-06",
+      "type": "main-idea",
+      "q": "What is the lesson of 'The Fox and the Crow'?",
+      "choices": [
+        "The flatterer lives at the expense of those who will listen to him",
+        "Crows have lovely voices",
+        "Always share your breakfast",
+        "Foxes do not like cheese"
+      ],
+      "answer": 0,
+      "evidence": "The flatterer lives at the expense of those who will listen to him."
+    },
+    {
+      "id": "aesop-for-children-29-07",
+      "type": "detail",
+      "q": "In 'The Ass and Its Shadow', why did the Traveler and the Driver quarrel?",
+      "choices": [
+        "They both wanted to rest in the Ass's shadow",
+        "They both wanted to ride the Ass",
+        "They got lost",
+        "The Traveler would not pay"
+      ],
+      "answer": 0,
+      "evidence": "he had hired the Ass and not the shadow it cast"
+    },
+    {
+      "id": "aesop-for-children-29-08",
+      "type": "sequence",
+      "q": "In 'The Ass and Its Shadow', what happened while the two men were fighting?",
+      "choices": [
+        "The Ass ran away",
+        "The Sun went down",
+        "A storm came",
+        "The Ass fell asleep"
+      ],
+      "answer": 0,
+      "evidence": "the Ass took to its heels"
+    }
+  ]
+}

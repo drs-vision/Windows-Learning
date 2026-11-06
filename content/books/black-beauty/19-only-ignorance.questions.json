@@ -1,0 +1,70 @@
+{
+  "book": "black-beauty",
+  "chapter": 19,
+  "questions": [
+    {
+      "id": "black-beauty-19-01",
+      "type": "detail",
+      "q": "Who came every day to treat Black Beauty while he was ill?",
+      "choices": ["Mr. Bond, the horse-doctor", "Dr. White", "The squire", "James Howard"],
+      "answer": 0,
+      "evidence": "Mr. Bond, the horse-doctor, came every day"
+    },
+    {
+      "id": "black-beauty-19-02",
+      "type": "detail",
+      "q": "Why were Ginger and Merrylegs moved into the other stable?",
+      "choices": ["So Beauty could be quiet while he had a fever", "So they would not catch Beauty's sickness", "Because their stable was being painted", "Because they kept fighting"],
+      "answer": 0,
+      "evidence": "Ginger and Merrylegs had been moved into the other stable, so that I might be quiet"
+    },
+    {
+      "id": "black-beauty-19-03",
+      "type": "character",
+      "q": "How was Joe feeling, according to his father Tom Green?",
+      "choices": ["Broken-hearted and sure it was all his fault", "Angry at John for blaming him", "Happy that Beauty was getting better", "Bored with his stable work"],
+      "answer": 0,
+      "evidence": "The boy is quite broken-hearted"
+    },
+    {
+      "id": "black-beauty-19-04",
+      "type": "character",
+      "q": "Why did John say he had been hard on Joe?",
+      "choices": ["Beauty was the pride of his heart and he was sore about it", "He thought Joe was a bad boy", "Joe had been lazy for weeks", "The master told him to be strict"],
+      "answer": 0,
+      "evidence": "that horse is the pride of my heart"
+    },
+    {
+      "id": "black-beauty-19-05",
+      "type": "vocabulary",
+      "q": "John and Tom talk about \"ignorance.\" What does ignorance mean in this chapter?",
+      "choices": ["Not knowing what is right or safe to do", "Being mean on purpose", "Being too tired to work", "Being very brave"],
+      "answer": 0,
+      "evidence": "Oh! I did not know, I did not mean any harm"
+    },
+    {
+      "id": "black-beauty-19-06",
+      "type": "main-idea",
+      "q": "What is John's main point about ignorance?",
+      "choices": ["Not knowing can cause as much harm as being wicked", "Ignorance is fine if you mean well", "Only children are ignorant", "Ignorance never hurts anyone"],
+      "answer": 0,
+      "evidence": "it is the worst thing in the world, next to wickedness"
+    },
+    {
+      "id": "black-beauty-19-07",
+      "type": "detail",
+      "q": "What happened to Tom's plants when the young ladies left the hothouse door open?",
+      "choices": ["The frosty wind killed his tender cuttings", "Goats got in and ate them", "They grew too fast", "The rain washed them away"],
+      "answer": 0,
+      "evidence": "there was not one of the tender cuttings that was not nipped off"
+    },
+    {
+      "id": "black-beauty-19-08",
+      "type": "sequence",
+      "q": "What happened to Beauty after the medicine did its work that night?",
+      "choices": ["He fell asleep and felt much better in the morning", "He got worse and needed the doctor again", "He was taken out for a gallop", "He was moved to Merrylegs' stall"],
+      "answer": 0,
+      "evidence": "in the morning I felt much better"
+    }
+  ]
+}

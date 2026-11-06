@@ -1,0 +1,86 @@
+{
+  "book": "black-beauty",
+  "chapter": 17,
+  "questions": [
+    {
+      "id": "black-beauty-17-01",
+      "type": "detail",
+      "q": "According to the kind coachman, what is one of the hardest things to do when there is a fire or flood?",
+      "choices": ["Get horses out of a stable", "Find water to put it out", "Wake up the people in the house", "Keep the carriage dry"],
+      "answer": 0,
+      "evidence": "it is one of the hardest things in the world to get horses out of a stable when there is either fire or flood"
+    },
+    {
+      "id": "black-beauty-17-02",
+      "type": "detail",
+      "q": "Who did John say was coming to take James's place?",
+      "choices": ["Little Joe Green from the lodge", "The gardener's son", "Old Norman", "A bigger boy from the village"],
+      "answer": 0,
+      "evidence": "Little Joe Green at the lodge"
+    },
+    {
+      "id": "black-beauty-17-03",
+      "type": "character",
+      "q": "Why did James worry about Joe Green taking his place?",
+      "choices": ["He thought Joe was too small and young to be much use", "He thought Joe was lazy", "He thought Joe was unkind to horses", "He wanted the job for his brother"],
+      "answer": 0,
+      "evidence": "it will be six months before he can be of much use"
+    },
+    {
+      "id": "black-beauty-17-04",
+      "type": "detail",
+      "q": "How long did John agree to try Joe Green before deciding?",
+      "choices": ["Six weeks", "Six months", "Two weeks", "One year"],
+      "answer": 0,
+      "evidence": "I was quite agreeable to try him for six weeks"
+    },
+    {
+      "id": "black-beauty-17-05",
+      "type": "detail",
+      "q": "What happened to John when he was about Joe's age?",
+      "choices": ["His parents died of fever and left him with his sister Nelly", "He ran away to London", "He won a horse race", "He was sent to the workhouse"],
+      "answer": 0,
+      "evidence": "my father and mother died of the fever within ten days of each other"
+    },
+    {
+      "id": "black-beauty-17-06",
+      "type": "character",
+      "q": "How did the mistress help John's sister Nelly?",
+      "choices": ["She hired a room for her and gave her work and food", "She sent her to a school in town", "She took her to live in the big house", "She found her a job as a cook"],
+      "answer": 0,
+      "evidence": "She went and hired a room for her with old Widow Mallet"
+    },
+    {
+      "id": "black-beauty-17-07",
+      "type": "vocabulary",
+      "q": "John calls the saying \"take care of number one\" selfish. In this saying, what does \"number one\" mean?",
+      "choices": ["Yourself", "The best horse", "The master", "The first job of the day"],
+      "answer": 0,
+      "evidence": "Everybody look after himself, and take care of number one"
+    },
+    {
+      "id": "black-beauty-17-08",
+      "type": "main-idea",
+      "q": "What is the main lesson John teaches James in this chapter?",
+      "choices": ["Do a kindness when you have the chance, because others were kind to you", "Always work for the highest wages", "Never trust a young boy with horses", "Look after yourself first"],
+      "answer": 0,
+      "evidence": "there's nothing like doing a kindness when 'tis put in your way"
+    },
+    {
+      "id": "black-beauty-17-09",
+      "type": "sequence",
+      "q": "Since Joe was too short to groom Ginger and Beauty, which horse did James teach him on?",
+      "choices": ["Merrylegs", "Ginger", "The doctor's horse", "Captain"],
+      "answer": 0,
+      "evidence": "James taught him upon Merrylegs"
+    },
+    {
+      "id": "black-beauty-17-10",
+      "type": "inference",
+      "q": "How did Merrylegs act after James left?",
+      "choices": ["He missed James and stopped eating well for several days", "He was glad James was gone", "He kicked Joe Green", "He ran away from the stable"],
+      "answer": 0,
+      "evidence": "he pined after him for several days, and went quite off his appetite"
+    }
+  ]
+}

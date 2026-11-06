@@ -1,0 +1,118 @@
+{
+  "book": "treasure-island",
+  "chapter": 6,
+  "questions": [
+    {
+      "id": "treasure-island-06-01",
+      "type": "detail",
+      "q": "Where was Dr. Livesey when Jim and Mr. Dance arrived at his house?",
+      "choices": ["At the hall, dining with the squire", "Visiting a patient in Bristol", "Asleep upstairs", "At the Admiral Benbow"],
+      "answer": 0,
+      "evidence": "gone up to the hall to dine and pass the evening with the squire"
+    },
+    {
+      "id": "treasure-island-06-02",
+      "type": "character",
+      "q": "What did the squire's black, quick-moving eyebrows suggest about him?",
+      "choices": ["A quick and high temper", "A gentle, shy nature", "Great wisdom", "Deep sadness"],
+      "answer": 0,
+      "evidence": "this gave him a look of some temper, not bad, you would say, but quick and high"
+    },
+    {
+      "id": "treasure-island-06-03",
+      "type": "detail",
+      "q": "What was the squire's name?",
+      "choices": ["Mr. Trelawney", "Mr. Dance", "Mr. Dogger", "Mr. Redruth"],
+      "answer": 0,
+      "evidence": "Mr. Trelawney (that, you will remember, was the squire's name)"
+    },
+    {
+      "id": "treasure-island-06-04",
+      "type": "character",
+      "q": "How did the squire react when he heard how Jim's mother went back to the inn?",
+      "choices": ["He cried \"Bravo!\" and broke his pipe against the grate", "He scolded her for being foolish", "He fell asleep by the fire", "He sent for the police"],
+      "answer": 0,
+      "evidence": "the squire cried \"Bravo!\" and broke his long pipe against the grate"
+    },
+    {
+      "id": "treasure-island-06-05",
+      "type": "sequence",
+      "q": "What did the doctor do right after Jim handed him the oilskin packet?",
+      "choices": ["Put it quietly in his coat pocket without opening it", "Tore it open at once", "Threw it in the fire", "Gave it to Mr. Dance"],
+      "answer": 0,
+      "evidence": "he put it quietly in the pocket of his coat"
+    },
+    {
+      "id": "treasure-island-06-06",
+      "type": "detail",
+      "q": "How did the squire describe Flint?",
+      "choices": ["The bloodthirstiest buccaneer that sailed", "A kind sailor who was wrongly accused", "A Spanish admiral", "A poor fisherman"],
+      "answer": 0,
+      "evidence": "He was the bloodthirstiest buccaneer that sailed."
+    },
+    {
+      "id": "treasure-island-06-07",
+      "type": "vocabulary",
+      "q": "The doctor calls the squire \"hot-headed and exclamatory.\" What does \"exclamatory\" mean?",
+      "choices": ["Always crying out loudly and excitedly", "Very calm and quiet", "Good at solving puzzles", "Easily tired"],
+      "answer": 0,
+      "evidence": "you are so confoundedly hot-headed and exclamatory"
+    },
+    {
+      "id": "treasure-island-06-08",
+      "type": "detail",
+      "q": "What two things were inside the oilskin packet?",
+      "choices": ["A book and a sealed paper", "A map and a key", "A pistol and a letter", "Gold coins and a compass"],
+      "answer": 0,
+      "evidence": "It contained two things--a book and a sealed paper."
+    },
+    {
+      "id": "treasure-island-06-09",
+      "type": "inference",
+      "q": "According to the squire, what did the crosses in the captain's book stand for?",
+      "choices": ["Ships or towns the pirates sank or plundered", "Men the captain had buried", "Days spent at sea", "Bottles of rum he drank"],
+      "answer": 0,
+      "evidence": "These crosses stand for the names of ships or towns that they sank or plundered."
+    },
+    {
+      "id": "treasure-island-06-10",
+      "type": "inference",
+      "q": "Why did the amounts in the account-book grow larger over time?",
+      "choices": ["The captain rose in rank among the pirates", "Prices went up every year", "He stopped spending money", "He added interest to his savings"],
+      "answer": 0,
+      "evidence": "the amounts increase, you see, as he rose in rank"
+    },
+    {
+      "id": "treasure-island-06-11",
+      "type": "detail",
+      "q": "What was the island on the map said to be shaped like?",
+      "choices": ["A fat dragon standing up", "A crescent moon", "A sleeping cat", "A horseshoe"],
+      "answer": 0,
+      "evidence": "shaped, you might say, like a fat dragon standing up"
+    },
+    {
+      "id": "treasure-island-06-12",
+      "type": "detail",
+      "q": "What was written beside the red cross in the southwest of the island?",
+      "choices": ["\"Bulk of treasure here.\"", "\"Bones, his pile.\"", "\"No more rum.\"", "\"The arms are here.\""],
+      "answer": 0,
+      "evidence": "Bulk of treasure here."
+    },
+    {
+      "id": "treasure-island-06-13",
+      "type": "detail",
+      "q": "What job did the squire say Jim would have on the voyage?",
+      "choices": ["Cabin-boy", "Cook", "Ship's doctor", "Lookout"],
+      "answer": 0,
+      "evidence": "Hawkins shall come as cabin-boy."
+    },
+    {
+      "id": "treasure-island-06-14",
+      "type": "character",
+      "q": "Whom did Dr. Livesey say he was afraid of, and why?",
+      "choices": ["The squire, because he could not hold his tongue", "Pew, because he might come back", "Mr. Dance, because he might steal the map", "Jim, because he was too young"],
+      "answer": 0,
+      "evidence": "\"You,\" replied the doctor; \"for you cannot hold your tongue."
+    }
+  ]
+}

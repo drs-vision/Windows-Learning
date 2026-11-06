@@ -1,0 +1,240 @@
+{
+  "book": "treasure-island",
+  "chapter": 28,
+  "questions": [
+    {
+      "id": "treasure-island-28-01",
+      "type": "inference",
+      "q": "When the torch was lit, why did Jim at first fear his friends were all dead?",
+      "choices": [
+        "The pirates held the house and there was no sign of any prisoner",
+        "He saw his friends' bodies on the floor",
+        "Silver told him they had been shot",
+        "The doctor's bag was lying in the fire"
+      ],
+      "answer": 0,
+      "evidence": "not a sign of any prisoner"
+    },
+    {
+      "id": "treasure-island-28-02",
+      "type": "detail",
+      "q": "How many pirates were left alive in the block house?",
+      "choices": [
+        "Six",
+        "Ten",
+        "Three",
+        "Nineteen"
+      ],
+      "answer": 0,
+      "evidence": "There were six of the buccaneers, all told"
+    },
+    {
+      "id": "treasure-island-28-03",
+      "type": "detail",
+      "q": "How did Silver's fine broadcloth suit look now?",
+      "choices": [
+        "Daubed with clay and torn by briers",
+        "Clean and freshly pressed",
+        "Soaked with sea-water",
+        "Burned by the fire"
+      ],
+      "answer": 0,
+      "evidence": "daubed with clay and torn with the sharp briers of the wood"
+    },
+    {
+      "id": "treasure-island-28-04",
+      "type": "character",
+      "q": "How did Jim appear on the outside while Silver talked, compared to how he felt inside?",
+      "choices": [
+        "He looked brave but felt black despair",
+        "He looked terrified but felt calm",
+        "He looked angry but felt happy",
+        "He looked bored but felt curious"
+      ],
+      "answer": 0,
+      "evidence": "with black despair in my heart"
+    },
+    {
+      "id": "treasure-island-28-05",
+      "type": "detail",
+      "q": "According to Silver, why couldn't Jim go back to his own friends?",
+      "choices": [
+        "They were angry at him and would not have him",
+        "They had sailed away home",
+        "They had all been killed",
+        "They had joined the pirates"
+      ],
+      "answer": 0,
+      "evidence": "you can't go back to your own lot, for they won't have you"
+    },
+    {
+      "id": "treasure-island-28-06",
+      "type": "inference",
+      "q": "Why was Jim more relieved than upset by Silver's speech?",
+      "choices": [
+        "It told him his friends were still alive",
+        "It meant he would get a share of the treasure",
+        "It meant Silver would set him free",
+        "It proved the doctor still liked him"
+      ],
+      "answer": 0,
+      "evidence": "My friends, then, were still alive"
+    },
+    {
+      "id": "treasure-island-28-07",
+      "type": "sequence",
+      "q": "According to Silver, what happened when Doctor Livesey came with a flag of truce?",
+      "choices": [
+        "He told them the ship was gone, and they bargained for the block house",
+        "He surrendered the treasure",
+        "He attacked the pirates' camp",
+        "He asked Silver to give up Jim"
+      ],
+      "answer": 0,
+      "evidence": "'Cap'n Silver, you're sold out. Ship's gone.'"
+    },
+    {
+      "id": "treasure-island-28-08",
+      "type": "detail",
+      "q": "What did Jim confess to having done in the apple barrel?",
+      "choices": [
+        "Overheard the pirates' plans and reported them",
+        "Hidden the treasure map",
+        "Stolen apples for Ben Gunn",
+        "Slept through the first night ashore"
+      ],
+      "answer": 0,
+      "evidence": "I was in the apple barrel the night we sighted land"
+    },
+    {
+      "id": "treasure-island-28-09",
+      "type": "character",
+      "q": "What deal did Jim offer the pirates in his bold speech?",
+      "choices": [
+        "If they spared him, he would help save them in court",
+        "If they freed him, he would give them the ship",
+        "If they fed him, he would show them the treasure",
+        "If they let him go, he would never return"
+      ],
+      "answer": 0,
+      "evidence": "spare me and keep a witness to save you from the gallows"
+    },
+    {
+      "id": "treasure-island-28-10",
+      "type": "detail",
+      "q": "How did the pirates react when Jim finished speaking?",
+      "choices": [
+        "They sat staring at him like sheep",
+        "They laughed at him",
+        "They cheered and shook his hand",
+        "They tied him up at once"
+      ],
+      "answer": 0,
+      "evidence": "all sat staring at me like as many sheep"
+    },
+    {
+      "id": "treasure-island-28-11",
+      "type": "detail",
+      "q": "Which pirate sprang up with his knife to attack Jim?",
+      "choices": [
+        "Tom Morgan",
+        "Dick Johnson",
+        "Israel Hands",
+        "George Merry"
+      ],
+      "answer": 0,
+      "evidence": "said Morgan with an oath"
+    },
+    {
+      "id": "treasure-island-28-12",
+      "type": "character",
+      "q": "How did Silver stop the other pirates from harming Jim?",
+      "choices": [
+        "He dared any of them to fight him and said he was captain",
+        "He paid them in gold",
+        "He threatened to burn the block house",
+        "He gave them more brandy"
+      ],
+      "answer": 0,
+      "evidence": "Take a cutlass, him that dares"
+    },
+    {
+      "id": "treasure-island-28-13",
+      "type": "vocabulary",
+      "q": "Silver says he is \"cap'n here by 'lection.\" What does he mean?",
+      "choices": [
+        "The crew chose him by vote",
+        "He was born to be captain",
+        "He bought the job",
+        "Captain Smollett appointed him"
+      ],
+      "answer": 0,
+      "evidence": "I'm cap'n here by 'lection"
+    },
+    {
+      "id": "treasure-island-28-14",
+      "type": "detail",
+      "q": "Why did the pirates leave the block house?",
+      "choices": [
+        "To hold a forecastle council about Silver",
+        "To look for the missing ship",
+        "To fetch water from the spring",
+        "To chase Ben Gunn"
+      ],
+      "answer": 0,
+      "evidence": "steps outside for a council"
+    },
+    {
+      "id": "treasure-island-28-15",
+      "type": "inference",
+      "q": "Why did Silver decide to stand by Jim once they were alone?",
+      "choices": [
+        "He knew all was lost and needed Jim as a witness to save his neck",
+        "He wanted Jim to cook for him",
+        "He had always secretly been loyal to the squire",
+        "He feared Jim's pistols"
+      ],
+      "answer": 0,
+      "evidence": "You save your witness, and he'll save your neck!"
+    },
+    {
+      "id": "treasure-island-28-16",
+      "type": "vocabulary",
+      "q": "Silver warns Jim he is \"within half a plank of death.\" What does this mean?",
+      "choices": [
+        "Jim is very close to being killed",
+        "Jim is standing on a broken plank",
+        "Jim will be made to walk the plank tomorrow",
+        "Jim is half asleep"
+      ],
+      "answer": 0,
+      "evidence": "you're within half a plank of death"
+    },
+    {
+      "id": "treasure-island-28-17",
+      "type": "detail",
+      "q": "What puzzled Silver that he asked Jim about at the end?",
+      "choices": [
+        "Why the doctor had given him the chart",
+        "Where Ben Gunn was hiding",
+        "How Jim had learned to sail",
+        "Why the parrot had squawked"
+      ],
+      "answer": 0,
+      "evidence": "why did that doctor give me the chart, Jim?"
+    },
+    {
+      "id": "treasure-island-28-18",
+      "type": "main-idea",
+      "q": "What is the most important thing that happens in this chapter?",
+      "choices": [
+        "Captured Jim boldly confesses, and Silver secretly agrees to protect him in return for help",
+        "Jim escapes from the block house at night",
+        "The pirates find the treasure",
+        "Silver is killed by his own crew"
+      ],
+      "answer": 0,
+      "evidence": "It's a bargain!"
+    }
+  ]
+}

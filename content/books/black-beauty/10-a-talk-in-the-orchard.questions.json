@@ -1,0 +1,201 @@
+{
+  "book": "black-beauty",
+  "chapter": 10,
+  "questions": [
+    {
+      "id": "black-beauty-10-01",
+      "type": "detail",
+      "q": "Why were Ginger and Black Beauty good for both riding and driving?",
+      "choices": [
+        "They had racing blood and were about fifteen and a half hands high",
+        "They were very old and calm",
+        "They were cart-horses",
+        "They had been trained in London"
+      ],
+      "answer": 0,
+      "evidence": "We stood about fifteen and a half hands high"
+    },
+    {
+      "id": "black-beauty-10-02",
+      "type": "detail",
+      "q": "Who rode Black Beauty on the riding parties?",
+      "choices": [
+        "The mistress",
+        "The master",
+        "Miss Jessie",
+        "James"
+      ],
+      "answer": 0,
+      "evidence": "the mistress on me"
+    },
+    {
+      "id": "black-beauty-10-03",
+      "type": "vocabulary",
+      "q": "Black Beauty says a \"light hand\" is a comfort to horses. What is a light hand?",
+      "choices": [
+        "A rider who holds the reins gently",
+        "A rider who weighs very little",
+        "A rider who carries a lamp",
+        "A rider who uses a short whip"
+      ],
+      "answer": 0,
+      "evidence": "her hand was so light on the rein that I was guided almost without feeling it"
+    },
+    {
+      "id": "black-beauty-10-04",
+      "type": "character",
+      "q": "Why did Ginger say her mouth was not as perfect as Black Beauty's?",
+      "choices": [
+        "Because of her breaking in and the gag bit in London",
+        "Because she had eaten bad hay",
+        "Because she was older",
+        "Because Merrylegs bit her"
+      ],
+      "answer": 0,
+      "evidence": "it was all the fault of breaking in, and the gag bit in London"
+    },
+    {
+      "id": "black-beauty-10-05",
+      "type": "detail",
+      "q": "What was unusual about Sir Oliver's tail?",
+      "choices": [
+        "It was only six or seven inches long",
+        "It was pure white",
+        "It was braided with ribbons",
+        "It was longer than his body"
+      ],
+      "answer": 0,
+      "evidence": "it really was only six or seven inches long"
+    },
+    {
+      "id": "black-beauty-10-06",
+      "type": "character",
+      "q": "How did Sir Oliver feel when Black Beauty asked what accident took his tail?",
+      "choices": [
+        "Angry, because it was a cruel act and no accident",
+        "Happy to tell a funny story",
+        "Embarrassed and silent",
+        "Confused because he did not remember"
+      ],
+      "answer": 0,
+      "evidence": "it was no accident! it was a cruel, shameful, cold-blooded act!"
+    },
+    {
+      "id": "black-beauty-10-07",
+      "type": "inference",
+      "q": "Why was losing his tail a lifelong problem for Sir Oliver?",
+      "choices": [
+        "He could never brush the flies off his sides again",
+        "He could no longer run fast",
+        "He could not keep warm in winter",
+        "Other horses laughed at him"
+      ],
+      "answer": 0,
+      "evidence": "how could I ever brush the flies off my sides"
+    },
+    {
+      "id": "black-beauty-10-08",
+      "type": "main-idea",
+      "q": "In the orchard talk, what do the horses blame for docked tails, tight bits, and blinkers?",
+      "choices": [
+        "Fashion",
+        "Bad weather",
+        "Lazy grooms",
+        "Wild dogs"
+      ],
+      "answer": 0,
+      "evidence": "For fashion!"
+    },
+    {
+      "id": "black-beauty-10-09",
+      "type": "sequence",
+      "q": "What happened to the puppies of Sir Oliver's friend Skye?",
+      "choices": [
+        "Their tails and ear flaps were cut off",
+        "They were sold to a lady",
+        "They ran away into the woods",
+        "They were drowned in the pond"
+      ],
+      "answer": 0,
+      "evidence": "they had all had a piece of their tails cut off"
+    },
+    {
+      "id": "black-beauty-10-10",
+      "type": "character",
+      "q": "How did Merrylegs cool everyone down when they began talking against men?",
+      "choices": [
+        "He reminded them that their master, John, and James were always good to them",
+        "He told them to go to sleep",
+        "He started a race",
+        "He said all men were cruel"
+      ],
+      "answer": 0,
+      "evidence": "You know that master, and John and James are always good to us"
+    },
+    {
+      "id": "black-beauty-10-11",
+      "type": "detail",
+      "q": "According to Justice, what are blinkers supposed to do?",
+      "choices": [
+        "Prevent horses from shying and getting frightened",
+        "Keep the sun out of a horse's eyes",
+        "Make horses look handsome",
+        "Help horses see in the dark"
+      ],
+      "answer": 0,
+      "evidence": "to prevent horses from shying and starting"
+    },
+    {
+      "id": "black-beauty-10-12",
+      "type": "inference",
+      "q": "Why did Sir Oliver think blinkers were dangerous at night?",
+      "choices": [
+        "Horses see better in the dark than men and need full use of their eyes",
+        "Blinkers glow in the dark and scare horses",
+        "Blinkers get wet and heavy",
+        "Blinkers fall off easily at night"
+      ],
+      "answer": 0,
+      "evidence": "we horses can see much better in the dark than men can"
+    },
+    {
+      "id": "black-beauty-10-13",
+      "type": "detail",
+      "q": "What happened to the hearse near Farmer Sparrow's house?",
+      "choices": [
+        "It overturned into the pond and both horses drowned",
+        "It lost a wheel in the road",
+        "It crashed into a tree",
+        "It was struck by lightning"
+      ],
+      "answer": 0,
+      "evidence": "the hearse was overturned into the water"
+    },
+    {
+      "id": "black-beauty-10-14",
+      "type": "detail",
+      "q": "What secret did Merrylegs share about John?",
+      "choices": [
+        "John does not approve of blinkers",
+        "John was going to leave Birtwick",
+        "John wanted to buy Ginger",
+        "John was afraid of horses"
+      ],
+      "answer": 0,
+      "evidence": "I believe John does not approve of blinkers"
+    },
+    {
+      "id": "black-beauty-10-15",
+      "type": "sequence",
+      "q": "How did the long talk in the orchard end?",
+      "choices": [
+        "The horses ran off to eat apples the wind had blown down",
+        "The master called them in to work",
+        "A storm began",
+        "Sir Oliver fell asleep"
+      ],
+      "answer": 0,
+      "evidence": "munching some very sweet apples"
+    }
+  ]
+}

@@ -1,0 +1,118 @@
+{
+  "book": "treasure-island",
+  "chapter": 19,
+  "questions": [
+    {
+      "id": "treasure-island-19-01",
+      "type": "inference",
+      "q": "Why was Ben Gunn sure the flag over the stockade belonged to Jim's friends?",
+      "choices": ["Silver would have flown the Jolly Roger instead", "He could see the doctor's face", "He had heard the squire's voice", "The pirates never used flags"],
+      "answer": 0,
+      "evidence": "Silver would fly the Jolly Roger, you don't make no doubt of that"
+    },
+    {
+      "id": "treasure-island-19-02",
+      "type": "detail",
+      "q": "According to Ben Gunn, who built the old stockade years ago?",
+      "choices": ["Flint", "Silver", "Billy Bones", "The squire"],
+      "answer": 0,
+      "evidence": "as was made years and years ago by Flint"
+    },
+    {
+      "id": "treasure-island-19-03",
+      "type": "detail",
+      "q": "How did Ben Gunn say the person who comes to meet him must come?",
+      "choices": ["Alone, with a white thing in his hand", "At midnight, carrying a lantern", "With Jim and two pistols", "By boat from the ship"],
+      "answer": 0,
+      "evidence": "him that comes is to have a white thing in his hand, and he's to come alone"
+    },
+    {
+      "id": "treasure-island-19-04",
+      "type": "sequence",
+      "q": "What made Jim and Ben Gunn suddenly run off in different directions?",
+      "choices": ["A cannonball crashed into the sand nearby", "Silver appeared from the trees", "A snake struck at them", "They heard the ship's bell"],
+      "answer": 0,
+      "evidence": "a cannonball came tearing through the trees and pitched in the sand"
+    },
+    {
+      "id": "treasure-island-19-05",
+      "type": "detail",
+      "q": "What flag did Jim see flying from the HISPANIOLA at sunset?",
+      "choices": ["The Jolly Roger, the black flag of piracy", "The Union Jack", "A white flag of truce", "No flag at all"],
+      "answer": 0,
+      "evidence": "there was the Jolly Roger--the black flag of piracy--flying from her peak"
+    },
+    {
+      "id": "treasure-island-19-06",
+      "type": "inference",
+      "q": "Why did Jim take note of the tall white rock on the sandy spit?",
+      "choices": ["It might be where Ben Gunn kept his boat", "It marked where the treasure was buried", "It was a good place to hide from cannonballs", "It was where Silver camped"],
+      "answer": 0,
+      "evidence": "this might be the white rock of which Ben Gunn had spoken"
+    },
+    {
+      "id": "treasure-island-19-07",
+      "type": "detail",
+      "q": "What was used as a basin for the spring under the porch of the log-house?",
+      "choices": ["A great iron ship's kettle with the bottom knocked out", "A barrel cut in half", "A stone bowl carved by Flint", "An old sea-chest"],
+      "answer": 0,
+      "evidence": "a great ship's kettle of iron, with the bottom knocked out"
+    },
+    {
+      "id": "treasure-island-19-08",
+      "type": "detail",
+      "q": "What two things made life inside the log-house uncomfortable that evening?",
+      "choices": ["Blowing sand and smoke that would not go out the roof", "Rain and mosquitoes", "Snakes and rats", "Loud music from the ship"],
+      "answer": 0,
+      "evidence": "There was sand in our eyes, sand in our teeth, sand in our suppers"
+    },
+    {
+      "id": "treasure-island-19-09",
+      "type": "character",
+      "q": "How did Captain Smollett keep the tired party from falling into low spirits?",
+      "choices": ["He gave everyone jobs and went around helping and encouraging them", "He let them all rest and sleep", "He told stories about past voyages", "He gave them all extra brandy"],
+      "answer": 0,
+      "evidence": "If we had been allowed to sit idle, we should all have fallen in the blues"
+    },
+    {
+      "id": "treasure-island-19-10",
+      "type": "detail",
+      "q": "What did Dr. Livesey secretly carry in his snuff-box?",
+      "choices": ["A piece of Parmesan cheese", "Gold coins", "A copy of the treasure map", "Medicine for fever"],
+      "answer": 0,
+      "evidence": "in my snuff-box I carry a piece of Parmesan cheese"
+    },
+    {
+      "id": "treasure-island-19-11",
+      "type": "vocabulary",
+      "q": "Jim says he is \"not very sure whether he's sane\" about Ben Gunn. \"Sane\" means:",
+      "choices": ["Having a healthy, sound mind", "Kind and generous", "Strong and healthy", "Honest and truthful"],
+      "answer": 0,
+      "evidence": "I am not very sure whether he's sane"
+    },
+    {
+      "id": "treasure-island-19-12",
+      "type": "inference",
+      "q": "What were the \"two able allies\" the leaders counted on to weaken the pirates?",
+      "choices": ["Rum and the unhealthy climate", "Ben Gunn and the ship's cannon", "Hunger and cold", "The tide and the wind"],
+      "answer": 0,
+      "evidence": "we had two able allies--rum and the climate"
+    },
+    {
+      "id": "treasure-island-19-13",
+      "type": "sequence",
+      "q": "What woke Jim the next morning?",
+      "choices": ["People shouting about a flag of truce and Silver himself", "A cannonball hitting the roof", "Ben Gunn calling his name", "The captain ringing a bell"],
+      "answer": 0,
+      "evidence": "\"Flag of truce!\" I heard someone say"
+    },
+    {
+      "id": "treasure-island-19-14",
+      "type": "main-idea",
+      "q": "What is this chapter mostly about?",
+      "choices": ["Jim leaves Ben Gunn, rejoins his friends, and the group settles into life in the stockade", "Jim captures the HISPANIOLA by himself", "The pirates storm and capture the log-house", "Ben Gunn leads the doctor to the treasure"],
+      "answer": 0,
+      "evidence": "was soon warmly welcomed by the faithful party"
+    }
+  ]
+}

@@ -1,0 +1,70 @@
+{
+  "book": "black-beauty",
+  "chapter": 26,
+  "questions": [
+    {
+      "id": "black-beauty-26-01",
+      "type": "detail",
+      "q": "How did Beauty know who was coming down the road near midnight?",
+      "choices": ["He could tell it was Ginger's step", "He saw the lantern of the dog-cart", "He heard York calling", "He smelled the men"],
+      "answer": 0,
+      "evidence": "I was almost sure I could distinguish Ginger's step"
+    },
+    {
+      "id": "black-beauty-26-02",
+      "type": "detail",
+      "q": "What had happened to Reuben Smith when the men found him?",
+      "choices": ["He was dead", "He was asleep", "He had a broken arm", "He had walked home"],
+      "answer": 0,
+      "evidence": "He's dead"
+    },
+    {
+      "id": "black-beauty-26-03",
+      "type": "inference",
+      "q": "Why did Robert think \"it hasn't been all right with Reuben\"?",
+      "choices": ["No sober man would ride a horse over those stones without a shoe", "Reuben had left a note", "Reuben was carrying a bottle", "Reuben had never ridden before"],
+      "answer": 0,
+      "evidence": "Just think of his riding a horse over these stones without a shoe!"
+    },
+    {
+      "id": "black-beauty-26-04",
+      "type": "character",
+      "q": "What did Ginger do while the men put the body into the dog-cart?",
+      "choices": ["Stood as still as a stone", "Pulled away and ran home", "Kicked at the cart", "Neighed the whole time"],
+      "answer": 0,
+      "evidence": "stood as still as a stone"
+    },
+    {
+      "id": "black-beauty-26-05",
+      "type": "sequence",
+      "q": "How did Robert help Beauty get home?",
+      "choices": ["He bound his foot with a handkerchief and led him slowly", "He rode him home at a gallop", "He put him in the dog-cart", "He left him to rest by the road until morning"],
+      "answer": 0,
+      "evidence": "he took his handkerchief and bound it closely round, and so he led me home"
+    },
+    {
+      "id": "black-beauty-26-06",
+      "type": "detail",
+      "q": "What did the farrier say would happen to Beauty's knees?",
+      "choices": ["He would never lose the blemish", "They would heal with no mark", "He could never work again", "They would need to be bandaged forever"],
+      "answer": 0,
+      "evidence": "I should never lose the blemish"
+    },
+    {
+      "id": "black-beauty-26-07",
+      "type": "vocabulary",
+      "q": "An \"inquest\" was held because Smith died suddenly. What is an inquest?",
+      "choices": ["An official inquiry to find out how someone died", "A funeral service", "A horse auction", "A kind of medicine"],
+      "answer": 0,
+      "evidence": "As Smith's death had been so sudden, and no one was there to see it, there was an inquest held."
+    },
+    {
+      "id": "black-beauty-26-08",
+      "type": "main-idea",
+      "q": "What lesson does this chapter show about drinking?",
+      "choices": ["Drink brought death to Reuben and ruin to his family", "Drinking makes people better riders", "Only horses are hurt by drink", "Drinking is fine if you are clever"],
+      "answer": 0,
+      "evidence": "It was all that cursed drink"
+    }
+  ]
+}

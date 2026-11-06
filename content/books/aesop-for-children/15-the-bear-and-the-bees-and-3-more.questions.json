@@ -1,0 +1,78 @@
+{
+  "book": "aesop-for-children",
+  "chapter": 15,
+  "questions": [
+    {
+      "id": "aesop-for-children-15-01",
+      "type": "sequence",
+      "q": "In 'The Bear and the Bees', what did the Bear do right after one Bee stung him?",
+      "choices": ["Attacked the log to destroy the nest", "Ran away into the woods", "Ate the honey quietly", "Went back to looking for berries"],
+      "answer": 0,
+      "evidence": "sprang upon the log tooth and claw, to destroy the nest"
+    },
+    {
+      "id": "aesop-for-children-15-02",
+      "type": "detail",
+      "q": "In 'The Bear and the Bees', how did the Bear finally save himself from the swarm?",
+      "choices": ["He dove into a pool of water", "He climbed a tall tree", "He hid inside a cave", "He rolled in the mud"],
+      "answer": 0,
+      "evidence": "he was able to save himself only by diving into a pool of water"
+    },
+    {
+      "id": "aesop-for-children-15-03",
+      "type": "main-idea",
+      "q": "What is the lesson of 'The Bear and the Bees'?",
+      "choices": ["It is wiser to put up with one hurt than to get angry and cause many more", "Honey is worth any danger", "Bees are stronger than bears", "Always look for berries, not honey"],
+      "answer": 0,
+      "evidence": "It is wiser to bear a single injury in silence than to provoke a thousand by flying into a rage."
+    },
+    {
+      "id": "aesop-for-children-15-04",
+      "type": "detail",
+      "q": "In 'The Fox and the Leopard', what was the Leopard proud of?",
+      "choices": ["His glossy, spotted coat", "His bushy tail", "His sharp mind", "His loud roar"],
+      "answer": 0,
+      "evidence": "The Leopard was very proud of his glossy, spotted coat"
+    },
+    {
+      "id": "aesop-for-children-15-05",
+      "type": "main-idea",
+      "q": "What did the Fox say was real beauty in 'The Fox and the Leopard'?",
+      "choices": ["Having smartness inside your head", "Having a spotted coat", "Having a white-tipped tail", "Eating a big dinner"],
+      "answer": 0,
+      "evidence": "if you had a little more smartness inside your head"
+    },
+    {
+      "id": "aesop-for-children-15-06",
+      "type": "character",
+      "q": "In 'The Heron', why did the Heron end up eating only a tiny Snail?",
+      "choices": ["He was too picky, and the fish swam away to deep water", "He did not like fish at all", "The Perch bit his beak", "Another bird took his fish"],
+      "answer": 0,
+      "evidence": "The Heron saw no more fish, and very glad was he at last to breakfast on a tiny Snail."
+    },
+    {
+      "id": "aesop-for-children-15-07",
+      "type": "detail",
+      "q": "In 'The Cock and the Fox', what 'wonderful news' did the Fox tell the Cock?",
+      "choices": ["All the animals had agreed to live in peace", "There was a feast in the barnyard", "The Dogs had gone away", "The farmer had left the gate open"],
+      "answer": 0,
+      "evidence": "agreed to forget their differences and live in peace and friendship"
+    },
+    {
+      "id": "aesop-for-children-15-08",
+      "type": "inference",
+      "q": "In 'The Cock and the Fox', how did the Cock trick the Fox into leaving?",
+      "choices": ["He said he saw Dogs coming", "He flew down and pecked him", "He crowed to wake the farmer", "He said the news was false"],
+      "answer": 0,
+      "evidence": "it looks to me like a couple of Dogs coming this way"
+    },
+    {
+      "id": "aesop-for-children-15-09",
+      "type": "main-idea",
+      "q": "What is the lesson of 'The Cock and the Fox'?",
+      "choices": ["The trickster is easily tricked", "Always believe good news", "Never sleep in a tree", "Dogs and foxes are friends"],
+      "answer": 0,
+      "evidence": "The trickster is easily tricked."
+    }
+  ]
+}

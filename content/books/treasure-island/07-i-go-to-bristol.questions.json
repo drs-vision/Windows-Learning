@@ -1,0 +1,110 @@
+{
+  "book": "treasure-island",
+  "chapter": 7,
+  "questions": [
+    {
+      "id": "treasure-island-07-01",
+      "type": "detail",
+      "q": "Who looked after Jim at the hall while the doctor and squire were away?",
+      "choices": ["Old Redruth, the gamekeeper", "Mr. Dance", "Jim's mother", "Blandly"],
+      "answer": 0,
+      "evidence": "under the charge of old Redruth, the gamekeeper"
+    },
+    {
+      "id": "treasure-island-07-02",
+      "type": "character",
+      "q": "How did Jim spend his time while waiting at the hall?",
+      "choices": ["Dreaming over the map and imagining adventures on the island", "Learning to sail on a nearby lake", "Working at the Admiral Benbow", "Studying medicine with the doctor"],
+      "answer": 0,
+      "evidence": "I brooded by the hour together over the map"
+    },
+    {
+      "id": "treasure-island-07-03",
+      "type": "detail",
+      "q": "What was the name of the ship the squire bought?",
+      "choices": ["The Hispaniola", "The Spy-glass", "The Royal George", "The Old Anchor"],
+      "answer": 0,
+      "evidence": "two hundred tons; name, HISPANIOLA"
+    },
+    {
+      "id": "treasure-island-07-04",
+      "type": "inference",
+      "q": "Why did Jim say Dr. Livesey would not like the squire's letter?",
+      "choices": ["It showed the squire had told people they were going after treasure", "The ship was too expensive", "The squire was ill", "The voyage was delayed"],
+      "answer": 0,
+      "evidence": "The squire has been talking, after all."
+    },
+    {
+      "id": "treasure-island-07-05",
+      "type": "vocabulary",
+      "q": "The squire calls the bad things people say about Blandly \"the most transparent calumnies.\" What are calumnies?",
+      "choices": ["False statements meant to damage someone's name", "Business deals", "Kind compliments", "Sailing instructions"],
+      "answer": 0,
+      "evidence": "the most transparent calumnies"
+    },
+    {
+      "id": "treasure-island-07-06",
+      "type": "detail",
+      "q": "What job did the squire give Long John Silver?",
+      "choices": ["Ship's cook", "Sailing master", "First mate", "Boatswain"],
+      "answer": 0,
+      "evidence": "I engaged him on the spot to be ship's cook"
+    },
+    {
+      "id": "treasure-island-07-07",
+      "type": "detail",
+      "q": "What did the squire say about Long John Silver's leg?",
+      "choices": ["He had lost it in his country's service", "He had lost it to a shark", "He had broken it falling from a mast", "It had been hurt in a tavern fight"],
+      "answer": 0,
+      "evidence": "he lost it in his country's service, under the immortal Hawke"
+    },
+    {
+      "id": "treasure-island-07-08",
+      "type": "inference",
+      "q": "Silver helped choose the crew and got rid of some men the squire had already hired. Why might a careful reader be suspicious of this?",
+      "choices": ["Jim was told to watch for a one-legged seaman, and Silver is now picking the crew", "Silver was too young to know sailors", "Silver wanted to be captain", "The squire had told Silver to do it"],
+      "answer": 0,
+      "evidence": "Long John even got rid of two out of the six or seven I had already engaged."
+    },
+    {
+      "id": "treasure-island-07-09",
+      "type": "detail",
+      "q": "Who found the competent man named Arrow to be the mate?",
+      "choices": ["Long John Silver", "Blandly", "Dr. Livesey", "Tom Redruth"],
+      "answer": 0,
+      "evidence": "Long John Silver unearthed a very competent man for a mate, a man named Arrow."
+    },
+    {
+      "id": "treasure-island-07-10",
+      "type": "detail",
+      "q": "What had the squire done for Jim's mother at the Admiral Benbow?",
+      "choices": ["Repaired the inn and found her a boy apprentice", "Sold the inn for her", "Moved her into the hall", "Given her the captain's treasure"],
+      "answer": 0,
+      "evidence": "He had found her a boy as an apprentice also"
+    },
+    {
+      "id": "treasure-island-07-11",
+      "type": "character",
+      "q": "How did Jim feel when he saw the boy who would take his place at home?",
+      "choices": ["He realized he was leaving home and cried for the first time", "He was glad someone would do his chores", "He was eager to teach the boy kindly", "He felt nothing at all"],
+      "answer": 0,
+      "evidence": "I had my first attack of tears"
+    },
+    {
+      "id": "treasure-island-07-12",
+      "type": "sequence",
+      "q": "How did Jim and Redruth travel to Bristol after leaving the inn?",
+      "choices": ["By the mail coach from the Royal George", "On horseback with Mr. Dance", "By ship along the coast", "On foot all the way"],
+      "answer": 0,
+      "evidence": "The mail picked us up about dusk at the Royal George on the heath."
+    },
+    {
+      "id": "treasure-island-07-13",
+      "type": "main-idea",
+      "q": "What is this chapter mostly about?",
+      "choices": ["Preparing for the voyage, leaving home, and arriving in Bristol", "The pirates attacking the hall", "Jim discovering the treasure", "The voyage across the ocean"],
+      "answer": 0,
+      "evidence": "The ship is bought and fitted."
+    }
+  ]
+}

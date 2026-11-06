@@ -1,0 +1,123 @@
+{
+  "book": "black-beauty",
+  "chapter": 1,
+  "questions": [
+    {
+      "id": "black-beauty-01-01",
+      "type": "detail",
+      "q": "What did Black Beauty live on when he was very young, before he could eat grass?",
+      "choices": [
+        "His mother's milk",
+        "Oats and hay",
+        "Bread from the master",
+        "Water from the pond"
+      ],
+      "answer": 0,
+      "evidence": "I lived upon my mother's milk"
+    },
+    {
+      "id": "black-beauty-01-02",
+      "type": "detail",
+      "q": "What kind of colts were the six other young colts in the meadow?",
+      "choices": [
+        "Cart-horse colts",
+        "Race-horse colts",
+        "Ponies",
+        "Hunting colts"
+      ],
+      "answer": 0,
+      "evidence": "they are cart-horse colts"
+    },
+    {
+      "id": "black-beauty-01-03",
+      "type": "character",
+      "q": "What did Black Beauty's mother tell him never to do, even in play?",
+      "choices": [
+        "Bite or kick",
+        "Gallop around the field",
+        "Drink from the pond",
+        "Eat blackberries"
+      ],
+      "answer": 0,
+      "evidence": "never bite or kick even in play"
+    },
+    {
+      "id": "black-beauty-01-04",
+      "type": "detail",
+      "q": "What was Black Beauty's mother's name?",
+      "choices": [
+        "Duchess",
+        "Ginger",
+        "Pet Darkie",
+        "Daisy"
+      ],
+      "answer": 0,
+      "evidence": "Her name was Duchess"
+    },
+    {
+      "id": "black-beauty-01-05",
+      "type": "detail",
+      "q": "Why did the master call the young horse Darkie?",
+      "choices": [
+        "Because he was a dull black",
+        "Because he was born at night",
+        "Because he hid in the dark shed",
+        "Because his father was named Dark"
+      ],
+      "answer": 0,
+      "evidence": "I was a dull black, so he called me Darkie"
+    },
+    {
+      "id": "black-beauty-01-06",
+      "type": "detail",
+      "q": "What did Dick the plowboy do to the colts for fun?",
+      "choices": [
+        "Threw stones and sticks at them",
+        "Rode them without a saddle",
+        "Fed them blackberries",
+        "Locked them in the shed"
+      ],
+      "answer": 0,
+      "evidence": "throwing stones and sticks at them"
+    },
+    {
+      "id": "black-beauty-01-07",
+      "type": "sequence",
+      "q": "What happened after the master caught Dick chasing the colts?",
+      "choices": [
+        "He boxed Dick's ear and sent him away for good",
+        "He gave Dick a second chance",
+        "He made Dick feed the horses",
+        "He asked old Daniel to watch Dick"
+      ],
+      "answer": 0,
+      "evidence": "I shall not want you on my farm again"
+    },
+    {
+      "id": "black-beauty-01-08",
+      "type": "inference",
+      "q": "Why did the mother say Black Beauty should behave better than the other colts?",
+      "choices": [
+        "He came from a well-bred family with a good name",
+        "He was the biggest colt in the meadow",
+        "The master would sell him if he kicked",
+        "The other colts were afraid of him"
+      ],
+      "answer": 0,
+      "evidence": "You have been well-bred and well-born"
+    },
+    {
+      "id": "black-beauty-01-09",
+      "type": "main-idea",
+      "q": "What is this chapter mostly about?",
+      "choices": [
+        "Black Beauty's happy early home and his mother's good advice",
+        "A horse race at Newmarket",
+        "How Black Beauty was sold to a new master",
+        "A hunt across the fields"
+      ],
+      "answer": 0,
+      "evidence": "I have never forgotten my mother's advice"
+    }
+  ]
+}

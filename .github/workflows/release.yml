@@ -50,6 +50,9 @@ jobs:
           npm run typecheck
           npm run build
 
+      - name: Books — check texts and question banks
+        run: node scripts/books/validate.mjs --allow-missing
+
       - name: Fetch arcade games (best effort)
         continue-on-error: true
         run: node scripts/fetch-games.mjs

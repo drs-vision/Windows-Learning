@@ -1,0 +1,162 @@
+{
+  "book": "black-beauty",
+  "chapter": 7,
+  "questions": [
+    {
+      "id": "black-beauty-07-01",
+      "type": "character",
+      "q": "What did Ginger think might have happened if she had had Black Beauty's bringing up?",
+      "choices": [
+        "She might have had as good a temper as he did",
+        "She would have become a racehorse",
+        "She would have been sold sooner",
+        "She would never have been broken in"
+      ],
+      "answer": 0,
+      "evidence": "I might have had as good a temper as you"
+    },
+    {
+      "id": "black-beauty-07-02",
+      "type": "detail",
+      "q": "When was Ginger taken from her mother?",
+      "choices": [
+        "As soon as she was weaned",
+        "When she was four years old",
+        "On the day she was born",
+        "After she was broken in"
+      ],
+      "answer": 0,
+      "evidence": "I was taken from my mother as soon as I was weaned"
+    },
+    {
+      "id": "black-beauty-07-03",
+      "type": "detail",
+      "q": "What did the boys who passed through Ginger's field do?",
+      "choices": [
+        "Threw stones to make the colts gallop",
+        "Fed the colts apples",
+        "Rode the colts bareback",
+        "Opened the gate to let them out"
+      ],
+      "answer": 0,
+      "evidence": "the great boys passing through would fling stones to make us gallop"
+    },
+    {
+      "id": "black-beauty-07-04",
+      "type": "sequence",
+      "q": "How did the men first get the halter and bit on Ginger?",
+      "choices": [
+        "They cornered her and forced her mouth open",
+        "They coaxed her gently with oats",
+        "They waited until she was asleep",
+        "Her mother led her into the stall"
+      ],
+      "answer": 0,
+      "evidence": "so by force they got on the halter and the bar into my mouth"
+    },
+    {
+      "id": "black-beauty-07-05",
+      "type": "character",
+      "q": "What kind of man was Samson, Mr. Ryder's son?",
+      "choices": [
+        "Hard, with a hard voice, hard eye, and hard hand",
+        "Gentle and patient like his father",
+        "Shy and afraid of horses",
+        "Kind but forgetful"
+      ],
+      "answer": 0,
+      "evidence": "a hard voice, a hard eye, a hard hand"
+    },
+    {
+      "id": "black-beauty-07-06",
+      "type": "inference",
+      "q": "What did Ginger believe Samson really wanted to do to her?",
+      "choices": [
+        "Wear all the spirit out of her",
+        "Teach her to win races",
+        "Make her his favorite horse",
+        "Sell her to a kind family"
+      ],
+      "answer": 0,
+      "evidence": "what he wanted was to wear all the spirit out of me"
+    },
+    {
+      "id": "black-beauty-07-07",
+      "type": "sequence",
+      "q": "What happened during the fight between Ginger and Samson on the training ground?",
+      "choices": [
+        "She threw him off backward and galloped away",
+        "He tied her up in the stable",
+        "She ran out through the gate",
+        "He gave up and patted her"
+      ],
+      "answer": 0,
+      "evidence": "I threw him off backward"
+    },
+    {
+      "id": "black-beauty-07-08",
+      "type": "detail",
+      "q": "What did Ginger have to put up with while standing alone in the hot field afterward?",
+      "choices": [
+        "Flies, hunger, thirst, and a tight saddle",
+        "Rain and cold wind",
+        "Barking dogs",
+        "Boys throwing stones"
+      ],
+      "answer": 0,
+      "evidence": "the flies swarmed round me and settled on my bleeding flanks"
+    },
+    {
+      "id": "black-beauty-07-09",
+      "type": "detail",
+      "q": "What did old Mr. Ryder bring when he came out to get Ginger at sunset?",
+      "choices": [
+        "A sieve with oats in it",
+        "A whip",
+        "A carrot and an apple",
+        "A new bridle"
+      ],
+      "answer": 0,
+      "evidence": "I saw the old master come out with a sieve in his hand"
+    },
+    {
+      "id": "black-beauty-07-10",
+      "type": "character",
+      "q": "What did old Mr. Ryder say to Samson about tempers?",
+      "choices": [
+        "A bad-tempered man will never make a good-tempered horse",
+        "Ginger is a vicious brute",
+        "Horses must always be whipped",
+        "Samson had done a fine day's work"
+      ],
+      "answer": 0,
+      "evidence": "a bad-tempered man will never make a good-tempered horse"
+    },
+    {
+      "id": "black-beauty-07-11",
+      "type": "detail",
+      "q": "Why did Mr. Ryder have a bran mash made for Ginger?",
+      "choices": [
+        "Her mouth was so sore she could not eat hay",
+        "She was too fat for oats",
+        "It was her birthday",
+        "She did not like grass"
+      ],
+      "answer": 0,
+      "evidence": "I could not eat the hay, the stalks hurt me"
+    },
+    {
+      "id": "black-beauty-07-12",
+      "type": "main-idea",
+      "q": "What is the main idea of Ginger's story in this chapter?",
+      "choices": [
+        "Being treated by force made her angry, but kindness took her fear away",
+        "Horses should always be kept in stables",
+        "Training horses is easy",
+        "Ginger was born with a bad temper"
+      ],
+      "answer": 0,
+      "evidence": "his voice took all my fear away"
+    }
+  ]
+}

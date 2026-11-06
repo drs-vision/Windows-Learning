@@ -1,0 +1,78 @@
+{
+  "book": "black-beauty",
+  "chapter": 38,
+  "questions": [
+    {
+      "id": "black-beauty-38-01",
+      "type": "detail",
+      "q": "What kind of weather made the worst traveling for the horses?",
+      "choices": ["Streets slippery with frost or snow", "Hot, sunny days", "Light spring rain", "Foggy mornings"],
+      "answer": 0,
+      "evidence": "When the streets were slippery with frost or snow that was the worst of all for us horses"
+    },
+    {
+      "id": "black-beauty-38-02",
+      "type": "inference",
+      "q": "Why did one mile on icy roads tire a horse more than four on a good road?",
+      "choices": ["Every muscle strained to keep balance, and the fear of falling wore them out", "The cabs were heavier in winter", "The horses had less food in winter", "Icy roads were much longer"],
+      "answer": 0,
+      "evidence": "the fear of falling is more exhausting than anything else"
+    },
+    {
+      "id": "black-beauty-38-03",
+      "type": "character",
+      "q": "What did Jerry believe was best to keep a cabman warm?",
+      "choices": ["Dry clothes, good food, cheerfulness, and a comfortable wife at home", "Beer and spirits from the tavern", "Sitting by the fire at the Rising Sun", "Working fewer hours"],
+      "answer": 0,
+      "evidence": "dry clothes, good food, cheerfulness, and a comfortable wife at home"
+    },
+    {
+      "id": "black-beauty-38-04",
+      "type": "detail",
+      "q": "What did little Dolly bring to her father on the stand?",
+      "choices": ["Hot soup or pudding that Polly had ready", "A warm coat", "Oats for Jack", "Letters from customers"],
+      "answer": 0,
+      "evidence": "some hot soup or pudding Polly had ready"
+    },
+    {
+      "id": "black-beauty-38-05",
+      "type": "sequence",
+      "q": "What did the gentleman tell Jerry to do when he came up to hire the cab?",
+      "choices": ["Finish his soup and set his little girl safely on the pavement", "Hurry because he was late", "Leave Dolly in the cab", "Drive him to the train station"],
+      "answer": 0,
+      "evidence": "finish your soup, my friend"
+    },
+    {
+      "id": "black-beauty-38-06",
+      "type": "character",
+      "q": "Why did Jerry call him \"a real gentleman\"?",
+      "choices": ["He had time and thought for a poor cabman and a little girl", "He wore very fine clothes", "He paid twice the fare", "He owned many horses"],
+      "answer": 0,
+      "evidence": "he has got time and thought for the comfort of a poor cabman and a little girl"
+    },
+    {
+      "id": "black-beauty-38-07",
+      "type": "detail",
+      "q": "What did the carter do when his horses started to move off without him?",
+      "choices": ["He beat them brutally, even about the head", "He gave them a treat", "He let them walk home", "He called the police"],
+      "answer": 0,
+      "evidence": "punished them brutally, even beating them about the head"
+    },
+    {
+      "id": "black-beauty-38-08",
+      "type": "vocabulary",
+      "q": "Mr. Wright talks about standing up for \"the oppressed.\" Who are the oppressed?",
+      "choices": ["Those who are treated cruelly or unfairly", "Those who are rich and powerful", "Those who are very busy", "Those who break the law"],
+      "answer": 0,
+      "evidence": "stand up for the oppressed"
+    },
+    {
+      "id": "black-beauty-38-09",
+      "type": "main-idea",
+      "q": "What is the gentleman's main belief about cruelty?",
+      "choices": ["If we can stop cruelty and do nothing, we share the guilt", "People should mind only their own business", "Only police should deal with cruel people", "Horses do not feel pain"],
+      "answer": 0,
+      "evidence": "we make ourselves sharers in the guilt"
+    }
+  ]
+}

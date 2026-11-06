@@ -1,0 +1,94 @@
+{
+  "book": "treasure-island",
+  "chapter": 18,
+  "questions": [
+    {
+      "id": "treasure-island-18-01",
+      "type": "detail",
+      "q": "Why did the doctor tell the captain to give his gun to Trelawney?",
+      "choices": ["Trelawney was the best shot and his own gun was useless", "The captain was hurt", "The captain did not know how to shoot", "Trelawney asked for it"],
+      "answer": 0,
+      "evidence": "Trelawney is the dead shot. Give him your gun; his own is useless."
+    },
+    {
+      "id": "treasure-island-18-02",
+      "type": "character",
+      "q": "What did Gray's handling of the cutlass show the others?",
+      "choices": ["That he was a good, useful fighter", "That he had never used a weapon", "That he was secretly a pirate", "That he was too scared to fight"],
+      "answer": 0,
+      "evidence": "our new hand was worth his salt"
+    },
+    {
+      "id": "treasure-island-18-03",
+      "type": "sequence",
+      "q": "What happened when the seven mutineers led by Job Anderson appeared at the corner of the stockade?",
+      "choices": ["The loyal party fired, one pirate fell, and the rest ran into the trees", "The pirates captured the stockade", "The loyal party surrendered", "The two sides agreed to a truce"],
+      "answer": 0,
+      "evidence": "one of the enemy actually fell, and the rest, without hesitation, turned and plunged into the trees"
+    },
+    {
+      "id": "treasure-island-18-04",
+      "type": "detail",
+      "q": "Who was shot by a pistol fired from the bushes?",
+      "choices": ["Tom Redruth", "Abraham Gray", "Captain Smollett", "Joyce"],
+      "answer": 0,
+      "evidence": "poor Tom Redruth stumbled and fell his length on the ground"
+    },
+    {
+      "id": "treasure-island-18-05",
+      "type": "character",
+      "q": "How did the squire act as Tom Redruth lay dying?",
+      "choices": ["He knelt, kissed Tom's hand, cried, and asked for forgiveness", "He ignored Tom and kept watch", "He blamed Tom for being careless", "He ran outside to chase the pirates"],
+      "answer": 0,
+      "evidence": "Tom,\" said the squire, \"say you forgive me, won't you?"
+    },
+    {
+      "id": "treasure-island-18-06",
+      "type": "detail",
+      "q": "What was Tom Redruth's last request?",
+      "choices": ["That somebody read a prayer", "That he be buried at sea", "That his wages go to his family", "That the squire avenge him"],
+      "answer": 0,
+      "evidence": "he said he thought somebody might read a prayer"
+    },
+    {
+      "id": "treasure-island-18-07",
+      "type": "detail",
+      "q": "What did the captain raise over the log-house?",
+      "choices": ["The British colours (flag)", "A white flag of surrender", "The pirates' black flag", "A signal lantern"],
+      "answer": 0,
+      "evidence": "climbing on the roof, he had with his own hand bent and run up the colours"
+    },
+    {
+      "id": "treasure-island-18-08",
+      "type": "inference",
+      "q": "Why did the captain say they were \"pretty close hauled\"?",
+      "choices": ["Their food rations were very short and help would not come for months", "The pirates had surrounded them completely", "They had run out of gunpowder", "The stockade walls were falling down"],
+      "answer": 0,
+      "evidence": "But the rations are short, very short"
+    },
+    {
+      "id": "treasure-island-18-09",
+      "type": "character",
+      "q": "Why did the captain refuse to take down the flag when the pirates aimed their cannon at it?",
+      "choices": ["It showed the enemy that they despised the cannon fire", "He had no other place to put it", "He thought the pirates could not see it", "He wanted the flag to be destroyed"],
+      "answer": 0,
+      "evidence": "showed our enemies that we despised their cannonade"
+    },
+    {
+      "id": "treasure-island-18-10",
+      "type": "vocabulary",
+      "q": "\"Captain,\" said the squire, \"the house is quite invisible from the ship.\" In this sentence, \"invisible\" means:",
+      "choices": ["Not able to be seen", "Very large", "Easy to attack", "Far away and quiet"],
+      "answer": 0,
+      "evidence": "the house is quite invisible from the ship"
+    },
+    {
+      "id": "treasure-island-18-11",
+      "type": "sequence",
+      "q": "What happened at the very end of the chapter, while the captain was writing in his log?",
+      "choices": ["Jim Hawkins called out and climbed over the stockade, safe and sound", "Silver came with a flag of truce", "The pirates set fire to the log-house", "Ben Gunn brought them food"],
+      "answer": 0,
+      "evidence": "Jim Hawkins, safe and sound, come climbing over the stockade"
+    }
+  ]
+}

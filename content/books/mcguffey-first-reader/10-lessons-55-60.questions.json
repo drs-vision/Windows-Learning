@@ -1,0 +1,110 @@
+{
+  "book": "mcguffey-first-reader",
+  "chapter": 10,
+  "questions": [
+    {
+      "id": "mcguffey-first-reader-10-01",
+      "type": "detail",
+      "q": "What did Willie and Rose find in the bush?",
+      "choices": [
+        "A bird's nest",
+        "A ball",
+        "A kitten",
+        "A whistle"
+      ],
+      "answer": 0,
+      "evidence": "a bird's nest!"
+    },
+    {
+      "id": "mcguffey-first-reader-10-02",
+      "type": "inference",
+      "q": "Why must they not take the nest?",
+      "choices": [
+        "They could not put it back in its place",
+        "It was too big",
+        "The bird would bite them",
+        "It had no eggs"
+      ],
+      "answer": 0,
+      "evidence": "we could not fasten it in its place again"
+    },
+    {
+      "id": "mcguffey-first-reader-10-03",
+      "type": "detail",
+      "q": "What is the nest made of?",
+      "choices": [
+        "Horse-hairs and dry grass",
+        "Moss and mud",
+        "Shells and sand",
+        "Bread and corn"
+      ],
+      "answer": 0,
+      "evidence": "some horse-hairs and some dry grass"
+    },
+    {
+      "id": "mcguffey-first-reader-10-04",
+      "type": "detail",
+      "q": "What did the little brown bird fly away with?",
+      "choices": [
+        "A crumb",
+        "A worm",
+        "A feather",
+        "An egg"
+      ],
+      "answer": 0,
+      "evidence": "away with a crumb in its bill"
+    },
+    {
+      "id": "mcguffey-first-reader-10-05",
+      "type": "detail",
+      "q": "What did the baby birds not have?",
+      "choices": [
+        "Feathers",
+        "Mouths",
+        "Eyes",
+        "Feet"
+      ],
+      "answer": 0,
+      "evidence": "no feathers"
+    },
+    {
+      "id": "mcguffey-first-reader-10-06",
+      "type": "detail",
+      "q": "What did the old bird bring in her bill?",
+      "choices": [
+        "A worm",
+        "A stone",
+        "A shell",
+        "A flower"
+      ],
+      "answer": 0,
+      "evidence": "with a worm in her bill"
+    },
+    {
+      "id": "mcguffey-first-reader-10-07",
+      "type": "character",
+      "q": "Who took care of Frank?",
+      "choices": [
+        "His grandma",
+        "His father",
+        "His teacher",
+        "His sister"
+      ],
+      "answer": 0,
+      "evidence": "old grandma took care of him"
+    },
+    {
+      "id": "mcguffey-first-reader-10-08",
+      "type": "detail",
+      "q": "What did Frank take out of his pocket?",
+      "choices": [
+        "A willow whistle",
+        "A ball",
+        "A top",
+        "An apple"
+      ],
+      "answer": 0,
+      "evidence": "willow whistle out of his pocket"
+    }
+  ]
+}

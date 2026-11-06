@@ -1,0 +1,150 @@
+{
+  "book": "wind-in-the-willows",
+  "chapter": 1,
+  "questions": [
+    {
+      "id": "wind-in-the-willows-01-01",
+      "type": "detail",
+      "q": "What was the Mole doing at the very start of the chapter?",
+      "choices": ["Spring-cleaning his little home", "Digging a new tunnel to the river", "Packing a picnic basket", "Sleeping through the winter"],
+      "answer": 0,
+      "evidence": "spring-cleaning his little home"
+    },
+    {
+      "id": "wind-in-the-willows-01-02",
+      "type": "character",
+      "q": "Why did the Mole suddenly throw down his brush and leave the house?",
+      "choices": ["Spring was calling him and he was tired of cleaning", "He heard the Rat calling him from the river", "His house had flooded", "He had run out of whitewash"],
+      "answer": 0,
+      "evidence": "'Hang spring-cleaning!' and bolted out of the house"
+    },
+    {
+      "id": "wind-in-the-willows-01-03",
+      "type": "detail",
+      "q": "What did the elderly rabbit at the gap in the hedge ask the Mole for?",
+      "choices": ["Sixpence to pass along the private road", "Directions to the river", "Some food to share", "His name and address"],
+      "answer": 0,
+      "evidence": "Sixpence for the privilege of passing by the private road!"
+    },
+    {
+      "id": "wind-in-the-willows-01-04",
+      "type": "vocabulary",
+      "q": "The Mole was \"bewitched, entranced, fascinated\" by the river. What does \"entranced\" mean here?",
+      "choices": ["Filled with wonder and delight", "Frightened and nervous", "Bored and sleepy", "Confused and lost"],
+      "answer": 0,
+      "evidence": "The Mole was bewitched, entranced, fascinated."
+    },
+    {
+      "id": "wind-in-the-willows-01-05",
+      "type": "detail",
+      "q": "What first caught the Mole's eye in the dark hole across the river?",
+      "choices": ["Something small and bright that twinkled, which turned out to be an eye", "A lantern hanging in the doorway", "A fish jumping out of the water", "A glow-worm resting on a leaf"],
+      "answer": 0,
+      "evidence": "it winked at him, and so declared itself to be an eye"
+    },
+    {
+      "id": "wind-in-the-willows-01-06",
+      "type": "detail",
+      "q": "How did the Rat bring the Mole across the river?",
+      "choices": ["In a little blue-and-white boat", "On his back while swimming", "Over a wooden bridge", "On a raft made of reeds"],
+      "answer": 0,
+      "evidence": "It was painted blue outside and white within"
+    },
+    {
+      "id": "wind-in-the-willows-01-07",
+      "type": "character",
+      "q": "According to the Rat, what is the thing most worth doing in the whole world?",
+      "choices": ["Simply messing about in boats", "Reading poetry by the fire", "Exploring the Wide World", "Having picnics with friends"],
+      "answer": 0,
+      "evidence": "half so much worth doing as simply messing about in boats"
+    },
+    {
+      "id": "wind-in-the-willows-01-08",
+      "type": "sequence",
+      "q": "What happened while the Rat was dreamily talking about messing about in boats?",
+      "choices": ["The boat struck the bank and the Rat fell over backwards", "The Otter popped up beside the boat", "The Mole fell into the water", "A storm began to blow"],
+      "answer": 0,
+      "evidence": "The boat struck the bank full tilt."
+    },
+    {
+      "id": "wind-in-the-willows-01-09",
+      "type": "detail",
+      "q": "What did the Rat bring out of his house before the two set off down the river?",
+      "choices": ["A fat wicker luncheon-basket", "A fishing rod and net", "A map of the river", "A warm coat for the Mole"],
+      "answer": 0,
+      "evidence": "staggering under a fat, wicker luncheon-basket"
+    },
+    {
+      "id": "wind-in-the-willows-01-10",
+      "type": "character",
+      "q": "How did the Rat answer when the Mole asked whether life by the river was dull?",
+      "choices": ["He said the bank was so crowded with busy animals that it was never dull", "He admitted it was very lonely", "He said he only had the river to talk to", "He said he was planning to move away"],
+      "answer": 0,
+      "evidence": "The bank is so crowded nowadays that many people are moving away altogether"
+    },
+    {
+      "id": "wind-in-the-willows-01-11",
+      "type": "inference",
+      "q": "From the way the Rat talks about the Wild Wood, what can you tell about it?",
+      "choices": ["It can be dangerous, because some of its animals cannot be trusted", "It is the Rat's favorite place to visit", "Nobody at all lives there", "It is where the Rat grew up"],
+      "answer": 0,
+      "evidence": "you can't really trust them, and that's the fact"
+    },
+    {
+      "id": "wind-in-the-willows-01-12",
+      "type": "detail",
+      "q": "What did the Rat tell the Mole about the Wide World beyond the Wild Wood?",
+      "choices": ["He had never been there and never meant to go", "He traveled there every summer", "It was full of friendly rabbits", "It was where Badger lived"],
+      "answer": 0,
+      "evidence": "I've never been there, and I'm never going"
+    },
+    {
+      "id": "wind-in-the-willows-01-13",
+      "type": "character",
+      "q": "What did the Badger do when the Rat called to him at the picnic?",
+      "choices": ["He grunted 'Company,' turned his back and left", "He sat down and joined them for lunch", "He scolded the Mole for being there", "He invited them all to his house"],
+      "answer": 0,
+      "evidence": "'H'm! Company,' and turned his back and disappeared from view."
+    },
+    {
+      "id": "wind-in-the-willows-01-14",
+      "type": "character",
+      "q": "What do the Rat and the Otter say Toad is like?",
+      "choices": ["He takes up a new hobby, gets tired of it, and starts something fresh", "He is shy and never leaves his house", "He is the best rower on the river", "He is mean and unkind to everyone"],
+      "answer": 0,
+      "evidence": "he gets tired of it, and starts on something fresh"
+    },
+    {
+      "id": "wind-in-the-willows-01-15",
+      "type": "vocabulary",
+      "q": "The Rat calls the picnic \"an impromptu affair.\" What does \"impromptu\" mean?",
+      "choices": ["Not planned ahead of time", "Very fancy and expensive", "Secret and private", "Long and boring"],
+      "answer": 0,
+      "evidence": "This was an impromptu affair"
+    },
+    {
+      "id": "wind-in-the-willows-01-16",
+      "type": "sequence",
+      "q": "What happened right after the Mole grabbed the sculls and tried to row?",
+      "choices": ["The boat tipped over and he fell into the river", "He rowed them safely home", "The Rat let him row the rest of the way", "They crashed into Toad's wager-boat"],
+      "answer": 0,
+      "evidence": "Over went the boat, and he found himself struggling in the river."
+    },
+    {
+      "id": "wind-in-the-willows-01-17",
+      "type": "character",
+      "q": "How did the Rat respond after the Mole apologized for upsetting the boat?",
+      "choices": ["He forgave him and invited him to stay and learn to row and swim", "He sent the Mole home angrily", "He said the Mole could never ride in his boat again", "He made the Mole pay for the lost basket"],
+      "answer": 0,
+      "evidence": "I really think you had better come and stop with me for a little time"
+    },
+    {
+      "id": "wind-in-the-willows-01-18",
+      "type": "main-idea",
+      "q": "What is this chapter mostly about?",
+      "choices": ["The Mole discovers the river and begins a new friendship with the Rat", "The Mole and the Rat get lost in the Wild Wood", "Toad wins a boat race on the river", "The Badger teaches the Mole to swim"],
+      "answer": 0,
+      "evidence": "This day was only the first of many similar ones for the emancipated Mole"
+    }
+  ]
+}

@@ -1,0 +1,78 @@
+{
+  "book": "black-beauty",
+  "chapter": 39,
+  "questions": [
+    {
+      "id": "black-beauty-39-01",
+      "type": "inference",
+      "q": "Why did Black Beauty say he was well off for a cab-horse?",
+      "choices": ["His driver was also his owner, so he wanted to treat him well", "He only worked on Sundays", "He lived in the country", "He pulled the lightest cab in London"],
+      "answer": 0,
+      "evidence": "my driver was my owner, and it was his interest to treat me well"
+    },
+    {
+      "id": "black-beauty-39-02",
+      "type": "detail",
+      "q": "What did the governor say to Seedy Sam when he came in with his worn-out horse?",
+      "choices": ["They looked more fit for the police station than the rank", "His horse was the finest on the stand", "He should take a holiday", "He should buy a new cab"],
+      "answer": 0,
+      "evidence": "You and your horse look more fit for the police station than for this rank"
+    },
+    {
+      "id": "black-beauty-39-03",
+      "type": "detail",
+      "q": "How much did Sam have to pay each day for a cab and two horses?",
+      "choices": ["Eighteen shillings", "Three shillings", "One sixpence", "Fifty shillings"],
+      "answer": 0,
+      "evidence": "eighteen shillings a day for the use of a cab and two horses"
+    },
+    {
+      "id": "black-beauty-39-04",
+      "type": "detail",
+      "q": "Who was the cab-owner Sam had to pay?",
+      "choices": ["Skinner", "Governor Gray", "Jerry", "Larry"],
+      "answer": 0,
+      "evidence": "I had to pledge my clock a week ago to pay Skinner"
+    },
+    {
+      "id": "black-beauty-39-05",
+      "type": "character",
+      "q": "Why did Sam say he had to push his tired horse with the whip?",
+      "choices": ["He had to earn enough to feed his wife and children", "He enjoyed being cruel", "His horse was lazy", "He wanted to win a race"],
+      "answer": 0,
+      "evidence": "you must put your wife and children before the horse"
+    },
+    {
+      "id": "black-beauty-39-06",
+      "type": "vocabulary",
+      "q": "Sam said he \"had to pledge my clock\" to pay. What does \"pledge\" mean here?",
+      "choices": ["Give it up as a promise for borrowed money", "Fix it", "Wind it up", "Promise to buy it"],
+      "answer": 0,
+      "evidence": "I had to pledge my clock a week ago"
+    },
+    {
+      "id": "black-beauty-39-07",
+      "type": "character",
+      "q": "How did the governor respond after hearing Sam's speech?",
+      "choices": ["He admitted Sam was right and said he would not mention the police again", "He laughed at Sam", "He reported Sam to the police", "He told Sam to sell his horse"],
+      "answer": 0,
+      "evidence": "You've beaten me, Sam,\" he said, \"for it's all true"
+    },
+    {
+      "id": "black-beauty-39-08",
+      "type": "sequence",
+      "q": "What happened to Sam a few days after his talk on the stand?",
+      "choices": ["He fell ill with a high fever and died", "He bought his own cab", "He moved to the country", "He became a coachman for a lord"],
+      "answer": 0,
+      "evidence": "he died at four o'clock this morning"
+    },
+    {
+      "id": "black-beauty-39-09",
+      "type": "main-idea",
+      "q": "What is this chapter mostly about?",
+      "choices": ["How unfair costs and no rest crushed poor cabmen and their horses", "How to win a cab race", "Why Sam was a cruel man", "How the governor became rich"],
+      "answer": 0,
+      "evidence": "It is hard lines for man and it is hard lines for beast"
+    }
+  ]
+}

@@ -1,0 +1,70 @@
+{
+  "book": "black-beauty",
+  "chapter": 23,
+  "questions": [
+    {
+      "id": "black-beauty-23-01",
+      "type": "detail",
+      "q": "Where did my lady want to be driven on the day of the trouble?",
+      "choices": ["To the Duchess of B----'s", "To the railway station", "To London", "To the vicarage"],
+      "answer": 0,
+      "evidence": "Drive to the Duchess of B----'s"
+    },
+    {
+      "id": "black-beauty-23-02",
+      "type": "sequence",
+      "q": "What did Ginger do when York took off her rein to shorten it?",
+      "choices": ["She reared up and began plunging and kicking", "She stood still and let him do it", "She ran away down the drive", "She lay down and refused to move"],
+      "answer": 0,
+      "evidence": "she took her opportunity and reared up so suddenly"
+    },
+    {
+      "id": "black-beauty-23-03",
+      "type": "detail",
+      "q": "How did York stop Ginger from struggling after she fell?",
+      "choices": ["He sat down flat on her head", "He tied her legs with rope", "He gave her some oats", "He whipped her"],
+      "answer": 0,
+      "evidence": "York promptly sat himself down flat on her head"
+    },
+    {
+      "id": "black-beauty-23-04",
+      "type": "character",
+      "q": "How did Beauty feel when he stood in his box with his head still strained up?",
+      "choices": ["Angry, sore, and miserable", "Calm and relieved", "Proud of Ginger", "Sleepy and content"],
+      "answer": 0,
+      "evidence": "I was very miserable and felt much inclined to kick the first person who came near me"
+    },
+    {
+      "id": "black-beauty-23-05",
+      "type": "detail",
+      "q": "What happened to Ginger after she was well again?",
+      "choices": ["One of Lord W----'s younger sons took her to be a hunter", "She was sold to a cab driver", "She went back to Birtwick", "She was put back in the carriage"],
+      "answer": 0,
+      "evidence": "he was sure she would make a good hunter"
+    },
+    {
+      "id": "black-beauty-23-06",
+      "type": "character",
+      "q": "What did Max say the tight rein was doing to him?",
+      "choices": ["Shortening his life", "Making him faster", "Helping him look handsome", "Keeping flies away"],
+      "answer": 0,
+      "evidence": "it is shortening my life"
+    },
+    {
+      "id": "black-beauty-23-07",
+      "type": "inference",
+      "q": "According to the dealer Max heard, why did dealers rein horses' heads high even though it hurt them?",
+      "choices": ["Buyers wanted it, so it was good for trade", "It made the horses healthier", "It was the law in London", "It helped the horses see the road"],
+      "answer": 0,
+      "evidence": "Of course it is very bad for the horses, but then it is good for trade"
+    },
+    {
+      "id": "black-beauty-23-08",
+      "type": "main-idea",
+      "q": "What is the main idea of this chapter?",
+      "choices": ["The tight check-rein causes horses great pain and harm", "Ginger is a bad-tempered horse who should be punished", "Garden parties are important to rich ladies", "York is the best coachman Beauty ever had"],
+      "answer": 0,
+      "evidence": "I felt worn and depressed"
+    }
+  ]
+}

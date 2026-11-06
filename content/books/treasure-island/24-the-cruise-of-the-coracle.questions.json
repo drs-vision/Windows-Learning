@@ -1,0 +1,214 @@
+{
+  "book": "treasure-island",
+  "chapter": 24,
+  "questions": [
+    {
+      "id": "treasure-island-24-01",
+      "type": "detail",
+      "q": "Where was Jim when he woke up in the coracle?",
+      "choices": [
+        "Off the south-west end of Treasure Island",
+        "Inside the North Inlet",
+        "Beside the stockade",
+        "Next to Skeleton Island"
+      ],
+      "answer": 0,
+      "evidence": "found myself tossing at the south-west end of Treasure Island"
+    },
+    {
+      "id": "treasure-island-24-02",
+      "type": "detail",
+      "q": "Why did Jim decide not to land near Haulbowline Head?",
+      "choices": [
+        "Breakers on the rocks could dash him to death",
+        "Pirates were camped on the beach",
+        "The tide had left no water there",
+        "His paddle had broken"
+      ],
+      "answer": 0,
+      "evidence": "dashed to death upon the rough shore"
+    },
+    {
+      "id": "treasure-island-24-03",
+      "type": "detail",
+      "q": "What were the \"huge slimy monsters\" Jim saw on the rocks?",
+      "choices": [
+        "Harmless sea lions",
+        "Giant sea snails",
+        "Sharks",
+        "Crocodiles"
+      ],
+      "answer": 0,
+      "evidence": "they were sea lions, and entirely harmless"
+    },
+    {
+      "id": "treasure-island-24-04",
+      "type": "vocabulary",
+      "q": "Jim fears \"spending my strength in vain to scale the beetling crags.\" What are beetling crags?",
+      "choices": [
+        "Steep, overhanging cliffs",
+        "Piles of loose sand",
+        "Swarms of insects",
+        "Thick, tangled woods"
+      ],
+      "answer": 0,
+      "evidence": "scale the beetling crags"
+    },
+    {
+      "id": "treasure-island-24-05",
+      "type": "detail",
+      "q": "What did Jim remember Silver saying that helped him decide where to go?",
+      "choices": [
+        "A current runs northward along the west coast",
+        "The wind always blows from the north",
+        "The south shore is the safest landing",
+        "Sea lions guard the treasure"
+      ],
+      "answer": 0,
+      "evidence": "the current that sets northward along the whole west coast"
+    },
+    {
+      "id": "treasure-island-24-06",
+      "type": "detail",
+      "q": "Which place did Jim hope to land on instead?",
+      "choices": [
+        "The Cape of the Woods",
+        "Haulbowline Head",
+        "Mizzen-mast Hill",
+        "Captain Kidd's anchorage"
+      ],
+      "answer": 0,
+      "evidence": "reserve my strength for an attempt to land upon the kindlier-looking Cape of the Woods"
+    },
+    {
+      "id": "treasure-island-24-07",
+      "type": "sequence",
+      "q": "What happened when Jim first sat up to try paddling?",
+      "choices": [
+        "The coracle ran down a wave and plunged its nose into the next one",
+        "He paddled straight to shore",
+        "The paddle was swept out of his hands",
+        "The coracle flipped completely over"
+      ],
+      "answer": 0,
+      "evidence": "struck her nose, with a spout of spray, deep into the side of the next wave"
+    },
+    {
+      "id": "treasure-island-24-08",
+      "type": "detail",
+      "q": "What did Jim use to bail the water out of the coracle?",
+      "choices": [
+        "His sea-cap",
+        "A tin cup",
+        "His shoe",
+        "His bare hands"
+      ],
+      "answer": 0,
+      "evidence": "baled out the coracle with my sea-cap"
+    },
+    {
+      "id": "treasure-island-24-09",
+      "type": "inference",
+      "q": "What did Jim learn about how the coracle moved through the waves?",
+      "choices": [
+        "Left alone, it found the low places between the steep parts of each wave",
+        "It only stayed afloat if he paddled hard",
+        "It rode best when he stood up",
+        "It moved fastest against the current"
+      ],
+      "answer": 0,
+      "evidence": "threaded, so to speak, her way through these lower parts"
+    },
+    {
+      "id": "treasure-island-24-10",
+      "type": "detail",
+      "q": "What began to torture Jim as he drew near the trees?",
+      "choices": [
+        "Thirst",
+        "Cold",
+        "A wound in his leg",
+        "Hunger for meat"
+      ],
+      "answer": 0,
+      "evidence": "I now began to be tortured with thirst"
+    },
+    {
+      "id": "treasure-island-24-11",
+      "type": "detail",
+      "q": "What did Jim suddenly see not half a mile in front of him?",
+      "choices": [
+        "The HISPANIOLA under sail",
+        "A boat full of pirates",
+        "Ben Gunn's boat",
+        "Captain Flint's old ship"
+      ],
+      "answer": 0,
+      "evidence": "I beheld the HISPANIOLA under sail"
+    },
+    {
+      "id": "treasure-island-24-12",
+      "type": "inference",
+      "q": "Why did the HISPANIOLA keep turning into the wind and stopping with flapping sails?",
+      "choices": [
+        "Nobody was steering her",
+        "The pirates were chasing Jim",
+        "Her mast was broken",
+        "She was stuck on a sandbank"
+      ],
+      "answer": 0,
+      "evidence": "It became plain to me that nobody was steering"
+    },
+    {
+      "id": "treasure-island-24-13",
+      "type": "character",
+      "q": "What did Jim hope he might do if he could get on board the schooner?",
+      "choices": [
+        "Return the ship to her captain",
+        "Sail home to England alone",
+        "Join the pirates",
+        "Search for the treasure map"
+      ],
+      "answer": 0,
+      "evidence": "I might return the vessel to her captain"
+    },
+    {
+      "id": "treasure-island-24-14",
+      "type": "detail",
+      "q": "What thought \"doubled\" Jim's courage as he chased the ship?",
+      "choices": [
+        "The water breaker on board",
+        "The treasure in the hold",
+        "Captain Smollett's praise",
+        "The guns in the cabin"
+      ],
+      "answer": 0,
+      "evidence": "the thought of the water breaker beside the fore companion doubled my growing courage"
+    },
+    {
+      "id": "treasure-island-24-15",
+      "type": "sequence",
+      "q": "How did Jim finally get onto the HISPANIOLA?",
+      "choices": [
+        "He leaped up and caught the jib-boom as the ship struck the coracle",
+        "He climbed a rope ladder over the side",
+        "He swam to the anchor chain",
+        "Israel Hands pulled him aboard"
+      ],
+      "answer": 0,
+      "evidence": "With one hand I caught the jib-boom"
+    },
+    {
+      "id": "treasure-island-24-16",
+      "type": "main-idea",
+      "q": "What is this chapter mostly about?",
+      "choices": [
+        "Jim drifts in the coracle, then chases and boards the drifting HISPANIOLA",
+        "Jim fights the pirates at the stockade",
+        "Jim finds the treasure in a cave",
+        "Jim is captured by Long John Silver"
+      ],
+      "answer": 0,
+      "evidence": "I was left without retreat on the HISPANIOLA"
+    }
+  ]
+}

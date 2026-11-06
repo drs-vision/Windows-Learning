@@ -1,0 +1,150 @@
+{
+  "book": "wind-in-the-willows",
+  "chapter": 5,
+  "questions": [
+    {
+      "id": "wind-in-the-willows-05-01",
+      "type": "detail",
+      "q": "Where were the Mole and the Rat coming back from at the start of the chapter?",
+      "choices": ["A long day's outing with Otter on the uplands", "A visit to Toad Hall", "A night at Badger's house", "A shopping trip in town"],
+      "answer": 0,
+      "evidence": "after a long day's outing with Otter"
+    },
+    {
+      "id": "wind-in-the-willows-05-02",
+      "type": "detail",
+      "q": "What did the two animals do as they passed through the village?",
+      "choices": ["Looked in through the lit cottage windows", "Knocked on doors asking for food", "Hid from the village dogs", "Bought supplies at the shop"],
+      "answer": 0,
+      "evidence": "we can have a look at them through their windows if you like"
+    },
+    {
+      "id": "wind-in-the-willows-05-03",
+      "type": "vocabulary",
+      "q": "The animals watched the villagers with \"something of wistfulness in their eyes.\" What does \"wistfulness\" mean?",
+      "choices": ["A sad, longing feeling", "Anger and jealousy", "Great fear", "Silly laughter"],
+      "answer": 0,
+      "evidence": "something of wistfulness in their eyes"
+    },
+    {
+      "id": "wind-in-the-willows-05-04",
+      "type": "detail",
+      "q": "What sense told the Mole that his old home was close by?",
+      "choices": ["His sense of smell", "His sense of hearing", "His eyesight", "His sense of touch"],
+      "answer": 0,
+      "evidence": "I've just come across the smell of it"
+    },
+    {
+      "id": "wind-in-the-willows-05-05",
+      "type": "inference",
+      "q": "Why did the Rat keep walking instead of stopping when the Mole first called to him?",
+      "choices": ["He was too far ahead to hear the Mole's pain and was worried about snow", "He was angry with the Mole", "He wanted to get to a party on time", "He did not like the Mole's old home"],
+      "answer": 0,
+      "evidence": "too far to catch the sharp note of painful appeal in his voice"
+    },
+    {
+      "id": "wind-in-the-willows-05-06",
+      "type": "character",
+      "q": "Why did the Mole follow the Rat instead of going to his home alone?",
+      "choices": ["His loyalty to his friend stood firm", "He was afraid of the dark", "He had forgotten the way", "The Rat ordered him to come"],
+      "answer": 0,
+      "evidence": "his loyalty to his friend stood firm"
+    },
+    {
+      "id": "wind-in-the-willows-05-07",
+      "type": "sequence",
+      "q": "What happened when the two friends sat down to rest on some tree-stumps?",
+      "choices": ["The Mole broke down and cried about his lost home", "The Rat fell asleep", "It began to snow very hard", "They met the field-mice"],
+      "answer": 0,
+      "evidence": "cried freely and helplessly and openly"
+    },
+    {
+      "id": "wind-in-the-willows-05-08",
+      "type": "character",
+      "q": "How did the Rat feel once he understood why the Mole was crying?",
+      "choices": ["Ashamed, calling himself a pig", "Annoyed at the delay", "Amused at the Mole", "Too tired to care"],
+      "answer": 0,
+      "evidence": "What a PIG I have been!"
+    },
+    {
+      "id": "wind-in-the-willows-05-09",
+      "type": "character",
+      "q": "What did the Rat decide to do after the Mole stopped crying?",
+      "choices": ["Go back and find the Mole's home, even if it took all night", "Hurry on to River Bank for supper", "Ask Badger for help", "Build a shelter right there"],
+      "answer": 0,
+      "evidence": "I'm going to find this place now, if I stay out all night"
+    },
+    {
+      "id": "wind-in-the-willows-05-10",
+      "type": "detail",
+      "q": "What name was painted over the Mole's front door?",
+      "choices": ["Mole End", "Mole Hall", "Mole Cottage", "The Burrow"],
+      "answer": 0,
+      "evidence": "'Mole End' painted, in Gothic lettering"
+    },
+    {
+      "id": "wind-in-the-willows-05-11",
+      "type": "character",
+      "q": "How did the Mole feel when he first looked around his dusty, neglected home?",
+      "choices": ["Miserable and sorry he had brought the Rat there", "Proud and excited to show it off", "Angry that someone had broken in", "Calm and ready for bed"],
+      "answer": 0,
+      "evidence": "why ever did I do it?"
+    },
+    {
+      "id": "wind-in-the-willows-05-12",
+      "type": "character",
+      "q": "How did the Rat help cheer the Mole up in his old house?",
+      "choices": ["He praised the little house and kept them both busy getting it ready", "He told him to stop crying and go to bed", "He took him straight back to River Bank", "He invited Toad to come and visit"],
+      "answer": 0,
+      "evidence": "What a capital little house this is!"
+    },
+    {
+      "id": "wind-in-the-willows-05-13",
+      "type": "detail",
+      "q": "What food did the friends find when they foraged in the Mole's cupboards?",
+      "choices": ["Sardines, captain's biscuits and a German sausage", "Bread, butter and jam", "Cold chicken and ham", "Apples and nuts"],
+      "answer": 0,
+      "evidence": "a tin of sardines--a box of captain's biscuits, nearly full--and a German sausage"
+    },
+    {
+      "id": "wind-in-the-willows-05-14",
+      "type": "detail",
+      "q": "Who arrived outside Mole End while the friends were about to eat?",
+      "choices": ["Field-mice who had come carol-singing", "The Otter and the Badger", "Weasels from the Wild Wood", "The hedgehog children"],
+      "answer": 0,
+      "evidence": "They go round carol-singing regularly at this time of the year."
+    },
+    {
+      "id": "wind-in-the-willows-05-15",
+      "type": "sequence",
+      "q": "What did the Rat do so there would be enough supper for the field-mice?",
+      "choices": ["He sent the field-mouse with the lantern to buy food at the shops", "He cooked the German sausage for everyone", "He went to the village himself", "He asked the field-mice to bring their own food"],
+      "answer": 0,
+      "evidence": "the field-mouse was provided with an ample basket for his purchases"
+    },
+    {
+      "id": "wind-in-the-willows-05-16",
+      "type": "detail",
+      "q": "What happened when the Mole asked a field-mouse to recite part of last year's play?",
+      "choices": ["He was so shy he could not say a word", "He gave a wonderful performance", "He sang a song instead", "He ran out of the house"],
+      "answer": 0,
+      "evidence": "nothing could overcome his stage-fright"
+    },
+    {
+      "id": "wind-in-the-willows-05-17",
+      "type": "vocabulary",
+      "q": "The Mole's old room received him back \"without rancour.\" What does \"rancour\" mean?",
+      "choices": ["Bitter, angry feelings", "Loud noise", "Bright light", "Cold air"],
+      "answer": 0,
+      "evidence": "smilingly received him back, without rancour"
+    },
+    {
+      "id": "wind-in-the-willows-05-18",
+      "type": "main-idea",
+      "q": "What does the Mole come to understand at the end of the chapter?",
+      "choices": ["He will go back to his new life, but it is good to have his own home to return to", "He must give up the river and live at Mole End forever", "His old home is worthless and he should sell it", "He wants to live with the field-mice"],
+      "answer": 0,
+      "evidence": "it was good to think he had this to come back to"
+    }
+  ]
+}

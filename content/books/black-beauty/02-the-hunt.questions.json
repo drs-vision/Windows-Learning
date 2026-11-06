@@ -1,0 +1,123 @@
+{
+  "book": "black-beauty",
+  "chapter": 2,
+  "questions": [
+    {
+      "id": "black-beauty-02-01",
+      "type": "detail",
+      "q": "What sound first told the colts that something was happening?",
+      "choices": [
+        "The cry of dogs in the distance",
+        "A church bell",
+        "A gunshot",
+        "Horses galloping on the road"
+      ],
+      "answer": 0,
+      "evidence": "what sounded like the cry of dogs"
+    },
+    {
+      "id": "black-beauty-02-02",
+      "type": "detail",
+      "q": "What animal were the hunters and dogs chasing?",
+      "choices": [
+        "A hare",
+        "A fox",
+        "A stag",
+        "A wild dog"
+      ],
+      "answer": 0,
+      "evidence": "They have found a hare"
+    },
+    {
+      "id": "black-beauty-02-03",
+      "type": "vocabulary",
+      "q": "When the old horse said the dogs \"have lost the scent,\" what did he mean?",
+      "choices": [
+        "They could no longer smell where the hare went",
+        "They had run out of breath",
+        "They had lost their way home",
+        "They had forgotten their names"
+      ],
+      "answer": 0,
+      "evidence": "They have lost the scent"
+    },
+    {
+      "id": "black-beauty-02-04",
+      "type": "sequence",
+      "q": "What happened to the hare in the end?",
+      "choices": [
+        "The dogs caught her near the fence",
+        "She escaped into the woods",
+        "She hid in the brook",
+        "A huntsman let her go"
+      ],
+      "answer": 0,
+      "evidence": "the dogs were upon her with their wild cries"
+    },
+    {
+      "id": "black-beauty-02-05",
+      "type": "detail",
+      "q": "What sad sight did Black Beauty see by the brook?",
+      "choices": [
+        "Two fine horses were down",
+        "The master's house was on fire",
+        "The colts were stuck in the mud",
+        "A dog had drowned"
+      ],
+      "answer": 0,
+      "evidence": "two fine horses were down"
+    },
+    {
+      "id": "black-beauty-02-06",
+      "type": "character",
+      "q": "How did Black Beauty's mother feel about men hunting?",
+      "choices": [
+        "She could not understand why men liked a sport that hurt people and horses",
+        "She thought it was the best sport of all",
+        "She wished she could join them",
+        "She thought only foxes should be hunted"
+      ],
+      "answer": 0,
+      "evidence": "I never yet could make out why men are so fond of this sport"
+    },
+    {
+      "id": "black-beauty-02-07",
+      "type": "detail",
+      "q": "Who was the young man who was badly hurt?",
+      "choices": [
+        "George Gordon, the squire's only son",
+        "Old Daniel",
+        "Mr. Bond, the farrier",
+        "Dick, the plowboy"
+      ],
+      "answer": 0,
+      "evidence": "it was young George Gordon, the squire's only son"
+    },
+    {
+      "id": "black-beauty-02-08",
+      "type": "inference",
+      "q": "Why was the black horse Rob Roy shot?",
+      "choices": [
+        "One of his legs was broken",
+        "He had bitten a rider",
+        "He was too old to work",
+        "He ran away from the hunt"
+      ],
+      "answer": 0,
+      "evidence": "one of his legs was broken"
+    },
+    {
+      "id": "black-beauty-02-09",
+      "type": "main-idea",
+      "q": "What lesson does the last line of the chapter suggest?",
+      "choices": [
+        "A young man and a good horse were lost just to catch one little hare",
+        "Hunting is a safe and happy sport",
+        "Horses should never jump over brooks",
+        "Dogs are smarter than horses"
+      ],
+      "answer": 0,
+      "evidence": "'twas all for one little hare"
+    }
+  ]
+}

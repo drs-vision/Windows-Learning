@@ -1,0 +1,150 @@
+{
+  "book": "wind-in-the-willows",
+  "chapter": 4,
+  "questions": [
+    {
+      "id": "wind-in-the-willows-04-01",
+      "type": "character",
+      "q": "How did the Badger's voice change when he learned who was at the door?",
+      "choices": ["It went from gruff and suspicious to warm and welcoming", "It went from friendly to angry", "It stayed cold and unfriendly", "It became frightened and quiet"],
+      "answer": 0,
+      "evidence": "exclaimed the Badger, in quite a different voice"
+    },
+    {
+      "id": "wind-in-the-willows-04-02",
+      "type": "detail",
+      "q": "What was the Badger wearing when he opened the door?",
+      "choices": ["A long dressing-gown and down-at-heel slippers", "A heavy winter coat and boots", "A smoking-suit of black velvet", "Nothing but his fur"],
+      "answer": 0,
+      "evidence": "The Badger, who wore a long dressing-gown"
+    },
+    {
+      "id": "wind-in-the-willows-04-03",
+      "type": "detail",
+      "q": "Which room did the Badger lead his cold visitors into first?",
+      "choices": ["A large fire-lit kitchen", "His study", "A cold stone cellar", "The bedroom loft"],
+      "answer": 0,
+      "evidence": "the glow and warmth of a large fire-lit kitchen"
+    },
+    {
+      "id": "wind-in-the-willows-04-04",
+      "type": "character",
+      "q": "Why did the Mole begin to feel very friendly toward the Badger during supper?",
+      "choices": ["The Badger listened without scolding or saying 'I told you so'", "The Badger gave him a present", "The Badger praised his bravery", "The Badger promised to visit him on the river"],
+      "answer": 0,
+      "evidence": "he never said, 'I told you so,'"
+    },
+    {
+      "id": "wind-in-the-willows-04-05",
+      "type": "detail",
+      "q": "According to the Rat, how was Toad getting on with his motor-cars?",
+      "choices": ["From bad to worse, with his seventh smash-up", "Very well, he had become a careful driver", "He had given up motor-cars for good", "He had won a motor-car race"],
+      "answer": 0,
+      "evidence": "This is the seventh."
+    },
+    {
+      "id": "wind-in-the-willows-04-06",
+      "type": "inference",
+      "q": "What did the Rat fear would happen to Toad if he kept driving?",
+      "choices": ["He would end up killed or ruined", "He would become too famous", "He would move away from the river", "He would forget his old friends"],
+      "answer": 0,
+      "evidence": "Killed or ruined--it's got to be one of the two things"
+    },
+    {
+      "id": "wind-in-the-willows-04-07",
+      "type": "detail",
+      "q": "Why did the Badger say he could not do anything about Toad right now?",
+      "choices": ["It was winter, when animals rest and are not expected to do anything active", "He was too old to help", "He did not care about Toad", "Toad had moved away"],
+      "answer": 0,
+      "evidence": "during the off-season of winter"
+    },
+    {
+      "id": "wind-in-the-willows-04-08",
+      "type": "inference",
+      "q": "Why did the Mole feel lively in Badger's house while the Rat kept falling asleep?",
+      "choices": ["The Mole was an underground animal, so the house suited him", "The Mole had drunk a lot of coffee", "The Rat had walked much further that day", "The Mole was afraid to fall asleep"],
+      "answer": 0,
+      "evidence": "he being naturally an underground animal by birth and breeding"
+    },
+    {
+      "id": "wind-in-the-willows-04-09",
+      "type": "detail",
+      "q": "Who were eating porridge at the Badger's table the next morning?",
+      "choices": ["Two young hedgehogs who had lost their way to school", "Two rabbits from the Wild Wood", "The Otter and his son", "Two weasels"],
+      "answer": 0,
+      "evidence": "we was trying to find our way to school"
+    },
+    {
+      "id": "wind-in-the-willows-04-10",
+      "type": "inference",
+      "q": "When the hedgehog said Mr. Badger was \"busy\" in his study, what was the Badger really doing?",
+      "choices": ["Napping in an arm-chair with a handkerchief over his face", "Writing a letter to Toad", "Counting his winter stores", "Planning an attack on the weasels"],
+      "answer": 0,
+      "evidence": "a red cotton handkerchief over his face"
+    },
+    {
+      "id": "wind-in-the-willows-04-11",
+      "type": "sequence",
+      "q": "Who arrived at Badger's front door while the friends were at breakfast?",
+      "choices": ["The Otter", "Toad", "The hedgehogs' mother", "A policeman"],
+      "answer": 0,
+      "evidence": "Billy returned in front of the Otter"
+    },
+    {
+      "id": "wind-in-the-willows-04-12",
+      "type": "character",
+      "q": "What did the Otter think of the rabbits for not helping the Mole?",
+      "choices": ["He was disgusted that so many of them did nothing", "He said they were wise to stay hidden", "He praised them for trying hard", "He did not care at all"],
+      "answer": 0,
+      "evidence": "\"What, US?\" he merely said: \"DO something? us rabbits?\""
+    },
+    {
+      "id": "wind-in-the-willows-04-13",
+      "type": "character",
+      "q": "What did the Mole and the Badger agree about at lunch?",
+      "choices": ["Living underground gives the most peace and security", "The river is the best place to live", "Toad Hall is the finest home of all", "Winter is the best season"],
+      "answer": 0,
+      "evidence": "There's no security, or peace and tranquillity, except underground."
+    },
+    {
+      "id": "wind-in-the-willows-04-14",
+      "type": "detail",
+      "q": "Who had built the great passages, halls and arches of Badger's home?",
+      "choices": ["People of an ancient city that once stood there", "The Badger himself, over many years", "The Badger's grandfather", "The weasels and stoats"],
+      "answer": 0,
+      "evidence": "there was a city--a city of people, you know"
+    },
+    {
+      "id": "wind-in-the-willows-04-15",
+      "type": "vocabulary",
+      "q": "The Badger says badgers \"are an enduring lot.\" What does \"enduring\" mean here?",
+      "choices": ["Lasting a long time and always coming back", "Easily tired", "Very wealthy", "Fond of travel"],
+      "answer": 0,
+      "evidence": "We are an enduring lot"
+    },
+    {
+      "id": "wind-in-the-willows-04-16",
+      "type": "character",
+      "q": "What did the Badger promise the Mole about the Wild Wood?",
+      "choices": ["He would pass the word around so the Mole would have no more trouble", "He would chase all the weasels away forever", "He would never let the Mole visit again", "He would build the Mole a house there"],
+      "answer": 0,
+      "evidence": "Any friend of MINE walks where he likes in this country"
+    },
+    {
+      "id": "wind-in-the-willows-04-17",
+      "type": "sequence",
+      "q": "How did the friends get out of the Wild Wood at the end of the visit?",
+      "choices": ["Through one of Badger's long tunnels to the edge of the wood", "Riding in Toad's motor-car", "By following the river in the Otter's boat", "Across the snow on a door-mat sled"],
+      "answer": 0,
+      "evidence": "you shall leave by one of my short cuts"
+    },
+    {
+      "id": "wind-in-the-willows-04-18",
+      "type": "main-idea",
+      "q": "What does the Mole realize about himself at the end of the chapter?",
+      "choices": ["He belongs to the pleasant fields and hedgerows, not the wild rough places", "He wants to live in the Wild Wood with Badger", "He wants to travel the Wide World", "He should learn to drive a motor-car"],
+      "answer": 0,
+      "evidence": "the Mole saw clearly that he was an animal of tilled field and hedge-row"
+    }
+  ]
+}

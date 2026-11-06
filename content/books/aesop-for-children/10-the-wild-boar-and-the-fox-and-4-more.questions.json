@@ -1,0 +1,70 @@
+{
+  "book": "aesop-for-children",
+  "chapter": 10,
+  "questions": [
+    {
+      "id": "aesop-for-children-10-01",
+      "type": "character",
+      "q": "In 'The Wild Boar and the Fox', why did the Boar sharpen his tusks when there was no danger?",
+      "choices": ["When danger comes there will be no time to get ready", "He was bored", "He wanted to scare the Fox", "His tusks were broken"],
+      "answer": 0,
+      "evidence": "when danger does come there will not be time for such work as this"
+    },
+    {
+      "id": "aesop-for-children-10-02",
+      "type": "detail",
+      "q": "In 'The Ass, the Fox, and the Lion', what did the Fox secretly promise the Lion?",
+      "choices": ["To lead the Ass into a pit", "To bring him a chicken", "To leave the forest", "To fight the Ass"],
+      "answer": 0,
+      "evidence": "I will lead that foolish creature yonder into a pit"
+    },
+    {
+      "id": "aesop-for-children-10-03",
+      "type": "main-idea",
+      "q": "What is the lesson of 'The Ass, the Fox, and the Lion'?",
+      "choices": ["Traitors may expect treachery", "Lions keep their promises", "Always hide in a pit", "Foxes are good friends"],
+      "answer": 0,
+      "evidence": "Traitors may expect treachery."
+    },
+    {
+      "id": "aesop-for-children-10-04",
+      "type": "character",
+      "q": "In 'The Birds, the Beasts, and the Bat', what did the Bats do during the war?",
+      "choices": ["Joined whichever side was winning", "Fought bravely for the Birds", "Fought bravely for the Beasts", "Tried to make peace"],
+      "answer": 0,
+      "evidence": "when they saw the Birds getting the better of it, they were Birds"
+    },
+    {
+      "id": "aesop-for-children-10-05",
+      "type": "inference",
+      "q": "In 'The Birds, the Beasts, and the Bat', why do Bats fly out only at night?",
+      "choices": ["Birds and Beasts drove them out for being deceitful", "They cannot see in daylight", "They like the moon", "They are hunting for Mice"],
+      "answer": 0,
+      "evidence": "Birds and Beasts made common cause to drive out the Bats"
+    },
+    {
+      "id": "aesop-for-children-10-06",
+      "type": "sequence",
+      "q": "In 'The Lion, the Bear, and the Fox', what happened after the Lion and Bear were too hurt to fight?",
+      "choices": ["A Fox ran off with the kid", "They shared the kid", "The kid ran home", "A hunter caught them"],
+      "answer": 0,
+      "evidence": "seizing the kid, made off with it"
+    },
+    {
+      "id": "aesop-for-children-10-07",
+      "type": "detail",
+      "q": "In 'The Wolf and the Lamb', why couldn't the Lamb have muddied the Wolf's water?",
+      "choices": ["The Lamb was downstream and the Wolf was upstream", "The Lamb was not drinking", "The water was too deep", "The Lamb was standing on a rock"],
+      "answer": 0,
+      "evidence": "you are upstream and I am downstream"
+    },
+    {
+      "id": "aesop-for-children-10-08",
+      "type": "main-idea",
+      "q": "What is a lesson of 'The Wolf and the Lamb'?",
+      "choices": ["The tyrant can always find an excuse for his tyranny", "Always drink upstream", "Wolves are fair judges", "Never tell lies about others"],
+      "answer": 0,
+      "evidence": "The tyrant can always find an excuse for his tyranny."
+    }
+  ]
+}

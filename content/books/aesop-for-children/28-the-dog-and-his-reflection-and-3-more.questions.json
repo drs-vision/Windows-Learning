@@ -1,0 +1,110 @@
+{
+  "book": "aesop-for-children",
+  "chapter": 28,
+  "questions": [
+    {
+      "id": "aesop-for-children-28-01",
+      "type": "detail",
+      "q": "In 'The Dog and His Reflection', what did the Dog think he saw in the water?",
+      "choices": [
+        "Another Dog with a bigger bone",
+        "A fish",
+        "A cat",
+        "The butcher"
+      ],
+      "answer": 0,
+      "evidence": "a real Dog carrying a bone much bigger than his own"
+    },
+    {
+      "id": "aesop-for-children-28-02",
+      "type": "main-idea",
+      "q": "What is the lesson of 'The Dog and His Reflection'?",
+      "choices": [
+        "It is very foolish to be greedy",
+        "Always look before you jump",
+        "Dogs cannot swim",
+        "Bridges are dangerous"
+      ],
+      "answer": 0,
+      "evidence": "It is very foolish to be greedy."
+    },
+    {
+      "id": "aesop-for-children-28-03",
+      "type": "character",
+      "q": "In 'The Hare and the Tortoise', why did the Hare lie down for a nap during the race?",
+      "choices": [
+        "To show the Tortoise how silly it was to race a Hare",
+        "Because he was sick",
+        "Because the Fox told him to",
+        "Because it was getting dark"
+      ],
+      "answer": 0,
+      "evidence": "he lay down beside the course to take a nap"
+    },
+    {
+      "id": "aesop-for-children-28-04",
+      "type": "sequence",
+      "q": "In 'The Hare and the Tortoise', what happened while the Hare was sleeping?",
+      "choices": [
+        "The Tortoise passed him",
+        "The Fox ended the race",
+        "The Tortoise gave up",
+        "It began to rain"
+      ],
+      "answer": 0,
+      "evidence": "passed the place where the Hare was sleeping"
+    },
+    {
+      "id": "aesop-for-children-28-05",
+      "type": "main-idea",
+      "q": "What is the lesson of 'The Hare and the Tortoise'?",
+      "choices": [
+        "The race is not always to the swift",
+        "Never take a nap",
+        "Foxes are fair judges",
+        "Tortoises are very fast"
+      ],
+      "answer": 0,
+      "evidence": "The race is not always to the swift."
+    },
+    {
+      "id": "aesop-for-children-28-06",
+      "type": "detail",
+      "q": "In 'The Bees and Wasps, and the Hornet', how did the wise old Bee say to settle the case?",
+      "choices": [
+        "Have both the Bees and the Wasps build a honey comb",
+        "Split the honey in half",
+        "Let the Ant decide",
+        "Have a race to the tree"
+      ],
+      "answer": 0,
+      "evidence": "build a honey comb"
+    },
+    {
+      "id": "aesop-for-children-28-07",
+      "type": "inference",
+      "q": "In 'The Bees and Wasps, and the Hornet', why did the Wasps protest loudly?",
+      "choices": [
+        "They knew they could not build a honey comb and fill it",
+        "They wanted more time",
+        "They did not like the Ant",
+        "They were afraid of the Hornet"
+      ],
+      "answer": 0,
+      "evidence": "They knew they could not build a honey comb and fill it with honey."
+    },
+    {
+      "id": "aesop-for-children-28-08",
+      "type": "character",
+      "q": "In 'The Lark and Her Young Ones', why did the Mother Lark decide to leave at last?",
+      "choices": [
+        "The Farmer said he and his son would do the work themselves",
+        "The wheat fell on the nest",
+        "The neighbors had arrived",
+        "The young Larks were hungry"
+      ],
+      "answer": 0,
+      "evidence": "Tomorrow we must set to work, ourselves."
+    }
+  ]
+}

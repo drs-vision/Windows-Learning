@@ -1,0 +1,70 @@
+{
+  "book": "aesop-for-children",
+  "chapter": 3,
+  "questions": [
+    {
+      "id": "aesop-for-children-03-01",
+      "type": "detail",
+      "q": "In 'The Boy and the Filberts', why couldn't the Boy get his hand out of the pitcher?",
+      "choices": ["He took too big a fistful of nuts", "The pitcher was too small for any hand", "His hand was stuck in honey", "His mother was holding the pitcher"],
+      "answer": 0,
+      "evidence": "he took such a great fistful that he could not draw his hand out again"
+    },
+    {
+      "id": "aesop-for-children-03-02",
+      "type": "main-idea",
+      "q": "What is the lesson of 'The Boy and the Filberts'?",
+      "choices": ["Do not attempt too much at once", "Always share your food", "Never cry about anything", "Nuts are bad for you"],
+      "answer": 0,
+      "evidence": "Do not attempt too much at once."
+    },
+    {
+      "id": "aesop-for-children-03-03",
+      "type": "character",
+      "q": "In 'Hercules and the Wagoner', what did the Farmer do at first when his wagon got stuck?",
+      "choices": ["Cursed his bad luck and called on Hercules", "Pushed hard on the wheel", "Went to find a stronger horse", "Unloaded the wagon"],
+      "answer": 0,
+      "evidence": "curse his bad luck and call loudly on Hercules"
+    },
+    {
+      "id": "aesop-for-children-03-04",
+      "type": "main-idea",
+      "q": "What lesson did the Farmer learn in 'Hercules and the Wagoner'?",
+      "choices": ["Self help is the best help", "Never drive after rain", "Horses are stronger than people", "Always wait for someone to help"],
+      "answer": 0,
+      "evidence": "Self help is the best help."
+    },
+    {
+      "id": "aesop-for-children-03-05",
+      "type": "inference",
+      "q": "In 'The Kid and the Wolf', why was the Kid brave enough to make faces at the Wolf?",
+      "choices": ["He was safe up on the roof", "He was bigger than the Wolf", "The herdsman was standing next to him", "The Wolf was asleep"],
+      "answer": 0,
+      "evidence": "When you are up there it is the roof that's talking, not you."
+    },
+    {
+      "id": "aesop-for-children-03-06",
+      "type": "detail",
+      "q": "In 'The Town Mouse and the Country Mouse', what did the Country Mouse serve for lunch?",
+      "choices": ["Wheat stalks, roots, and acorns", "Cheese and pastries", "Sweetmeats and jellies", "Bread and butter"],
+      "answer": 0,
+      "evidence": "wheat stalks, roots, and acorns"
+    },
+    {
+      "id": "aesop-for-children-03-07",
+      "type": "sequence",
+      "q": "In 'The Town Mouse and the Country Mouse', what happened just as the Country Mouse was about to eat the pastry?",
+      "choices": ["A Cat mewed and scratched at the door", "The Town Mouse ate it first", "It fell on the floor", "A servant took it away"],
+      "answer": 0,
+      "evidence": "she heard a Cat mew loudly and scratch at the door"
+    },
+    {
+      "id": "aesop-for-children-03-08",
+      "type": "character",
+      "q": "In 'The Town Mouse and the Country Mouse', why did the Country Mouse go back home?",
+      "choices": ["She preferred a simple life with peace and safety", "She did not like the taste of the city food", "The Town Mouse was rude to her", "She missed her family"],
+      "answer": 0,
+      "evidence": "I prefer my plain food and simple life in the country with the peace and security that go with it"
+    }
+  ]
+}

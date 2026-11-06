@@ -1,0 +1,136 @@
+{
+  "book": "black-beauty",
+  "chapter": 5,
+  "questions": [
+    {
+      "id": "black-beauty-05-01",
+      "type": "detail",
+      "q": "What was the name of the coachman at Birtwick?",
+      "choices": [
+        "John Manly",
+        "James Howard",
+        "Old Daniel",
+        "Mr. Bond"
+      ],
+      "answer": 0,
+      "evidence": "The name of the coachman was John Manly"
+    },
+    {
+      "id": "black-beauty-05-02",
+      "type": "character",
+      "q": "What did John do when he saw the first saddle was not broad enough for Black Beauty's back?",
+      "choices": [
+        "He went for another saddle that fitted nicely",
+        "He rode him anyway",
+        "He rode him with no saddle",
+        "He tightened the straps more"
+      ],
+      "answer": 0,
+      "evidence": "he saw it in a minute and went for another, which fitted nicely"
+    },
+    {
+      "id": "black-beauty-05-03",
+      "type": "detail",
+      "q": "How did Black Beauty behave when a gun went off close by near the Highwood?",
+      "choices": [
+        "He pulled up a little and looked, but did not stir a step",
+        "He bolted across the common",
+        "He threw John off",
+        "He reared up and kicked"
+      ],
+      "answer": 0,
+      "evidence": "did not stir a step to right or left"
+    },
+    {
+      "id": "black-beauty-05-04",
+      "type": "inference",
+      "q": "From the way Black Beauty behaved on the ride, what did John decide about his past?",
+      "choices": [
+        "He had not been frightened or ill-used while he was young",
+        "He had been a racehorse",
+        "He had been badly treated",
+        "He had never been ridden before"
+      ],
+      "answer": 0,
+      "evidence": "he has not been frightened or ill-used while he was young"
+    },
+    {
+      "id": "black-beauty-05-05",
+      "type": "sequence",
+      "q": "Which names did the mistress suggest before choosing \"Black Beauty\"?",
+      "choices": [
+        "Ebony and Blackbird",
+        "Darkie and Pet",
+        "Marengo and Pegasus",
+        "Rob Roy and Duchess"
+      ],
+      "answer": 0,
+      "evidence": "Would you like Ebony?"
+    },
+    {
+      "id": "black-beauty-05-06",
+      "type": "detail",
+      "q": "Why did the mistress want to call him Black Beauty?",
+      "choices": [
+        "He was really quite a beauty with a sweet, good-tempered face",
+        "He was named after the squire's uncle's horse",
+        "He was the fastest horse in the park",
+        "John asked for that name"
+      ],
+      "answer": 0,
+      "evidence": "he is really quite a beauty"
+    },
+    {
+      "id": "black-beauty-05-07",
+      "type": "detail",
+      "q": "What surprising news did Black Beauty learn about Rob Roy?",
+      "choices": [
+        "Rob Roy was his brother",
+        "Rob Roy was still alive",
+        "Rob Roy was Ginger's father",
+        "Rob Roy had belonged to John"
+      ],
+      "answer": 0,
+      "evidence": "poor Rob Roy who was killed at that hunt was my brother"
+    },
+    {
+      "id": "black-beauty-05-08",
+      "type": "character",
+      "q": "Why did Black Beauty grow very fond of John?",
+      "choices": [
+        "John was gentle and kind and seemed to know how a horse feels",
+        "John gave him extra oats every hour",
+        "John let him run free all day",
+        "John never made him work"
+      ],
+      "answer": 0,
+      "evidence": "he seemed to know just how a horse feels"
+    },
+    {
+      "id": "black-beauty-05-09",
+      "type": "detail",
+      "q": "What did Ginger do when they came to a hill while pulling the carriage?",
+      "choices": [
+        "She threw her weight into the collar and pulled straight up",
+        "She slowed down and stopped",
+        "She tried to bite Black Beauty",
+        "She refused to go on"
+      ],
+      "answer": 0,
+      "evidence": "she would throw her weight right into the collar"
+    },
+    {
+      "id": "black-beauty-05-10",
+      "type": "vocabulary",
+      "q": "\"Black Beauty and Ginger grew quite friendly and sociable.\" What does sociable mean here?",
+      "choices": [
+        "Friendly and enjoying each other's company",
+        "Tired and sleepy",
+        "Angry and cross",
+        "Shy and quiet"
+      ],
+      "answer": 0,
+      "evidence": "we grew quite friendly and sociable"
+    }
+  ]
+}

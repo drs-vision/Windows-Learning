@@ -1,0 +1,240 @@
+{
+  "book": "treasure-island",
+  "chapter": 26,
+  "questions": [
+    {
+      "id": "treasure-island-26-01",
+      "type": "detail",
+      "q": "Why did Jim and Hands have to wait before beaching the ship?",
+      "choices": [
+        "The tide had not yet risen far enough",
+        "The wind had died completely",
+        "Hands was too weak to give orders",
+        "They were waiting for Silver's signal"
+      ],
+      "answer": 0,
+      "evidence": "dared not beach her till the tide had flowed a good deal farther"
+    },
+    {
+      "id": "treasure-island-26-02",
+      "type": "detail",
+      "q": "What did Hands first ask Jim to do with O'Brien's body?",
+      "choices": [
+        "Heave it overboard",
+        "Bury it on shore",
+        "Carry it to the cabin",
+        "Cover it with a sail"
+      ],
+      "answer": 0,
+      "evidence": "s'pose you was to heave him overboard"
+    },
+    {
+      "id": "treasure-island-26-03",
+      "type": "detail",
+      "q": "What question did Hands ask Jim about O'Brien?",
+      "choices": [
+        "Whether a dead man is dead for good or comes alive again",
+        "Whether O'Brien had any family",
+        "Whether O'Brien had hidden any gold",
+        "Whether O'Brien could read"
+      ],
+      "answer": 0,
+      "evidence": "do you take it as a dead man is dead for good, or do he come alive again?"
+    },
+    {
+      "id": "treasure-island-26-04",
+      "type": "vocabulary",
+      "q": "Jim says Hands's request for wine \"was a pretext.\" What is a pretext?",
+      "choices": [
+        "A false reason given to hide the real one",
+        "A polite request",
+        "A medical treatment",
+        "A kind of strong drink"
+      ],
+      "answer": 0,
+      "evidence": "The whole story was a pretext"
+    },
+    {
+      "id": "treasure-island-26-05",
+      "type": "inference",
+      "q": "Why did Jim disbelieve Hands's request for wine?",
+      "choices": [
+        "Hands hesitated strangely and would not meet Jim's eyes",
+        "There was no wine left on the ship",
+        "Hands had said he hated wine",
+        "Jim had seen Hands hide the brandy"
+      ],
+      "answer": 0,
+      "evidence": "His eyes never met mine"
+    },
+    {
+      "id": "treasure-island-26-06",
+      "type": "sequence",
+      "q": "After going below noisily, what did Jim do next?",
+      "choices": [
+        "Slipped off his shoes and secretly watched Hands from the fore companion",
+        "Searched the cabin for a pistol",
+        "Hid in the cellar until Hands fell asleep",
+        "Climbed out the cabin window"
+      ],
+      "answer": 0,
+      "evidence": "popped my head out of the fore companion"
+    },
+    {
+      "id": "treasure-island-26-07",
+      "type": "detail",
+      "q": "What did Jim see Hands take from a coil of rope?",
+      "choices": [
+        "A short dirk stained with blood",
+        "A loaded pistol",
+        "A bottle of brandy",
+        "The treasure map"
+      ],
+      "answer": 0,
+      "evidence": "a long knife, or rather a short dirk, discoloured to the hilt with blood"
+    },
+    {
+      "id": "treasure-island-26-08",
+      "type": "inference",
+      "q": "Why did Jim believe Hands would not kill him right away?",
+      "choices": [
+        "They both needed the schooner beached safely first",
+        "Hands was too weak to stand",
+        "Hands wanted Jim to find the treasure",
+        "Hands was afraid of Captain Smollett"
+      ],
+      "answer": 0,
+      "evidence": "until that was done I considered that my life would certainly be spared"
+    },
+    {
+      "id": "treasure-island-26-09",
+      "type": "character",
+      "q": "What does Hands's speech about \"thirty years\" at sea show about his beliefs?",
+      "choices": [
+        "He thinks striking first is best and that goodness never pays",
+        "He regrets becoming a pirate",
+        "He believes in mercy for enemies",
+        "He wants to retire to a farm"
+      ],
+      "answer": 0,
+      "evidence": "Him as strikes first is my fancy; dead men don't bite"
+    },
+    {
+      "id": "treasure-island-26-10",
+      "type": "detail",
+      "q": "What did Jim and Hands see at the southern end of North Inlet?",
+      "choices": [
+        "An old wrecked ship covered in seaweed and flowering bushes",
+        "The pirates' campfire",
+        "Ben Gunn's cave",
+        "A second schooner at anchor"
+      ],
+      "answer": 0,
+      "evidence": "we saw the wreck of a ship in the last stages of dilapidation"
+    },
+    {
+      "id": "treasure-island-26-11",
+      "type": "detail",
+      "q": "How did Hands say they could get the ship off the beach later?",
+      "choices": [
+        "Run a line to a pine and pull her off at high water",
+        "Wait for a storm to wash her free",
+        "Dig away the sand with shovels",
+        "Tow her with the ship's boats"
+      ],
+      "answer": 0,
+      "evidence": "take a turn about one of them big pines"
+    },
+    {
+      "id": "treasure-island-26-12",
+      "type": "inference",
+      "q": "What made Jim forget to keep watching Hands?",
+      "choices": [
+        "The excitement of steering the ship to the shore",
+        "He fell asleep at the tiller",
+        "He was eating his dinner",
+        "He was reading the doctor's book"
+      ],
+      "answer": 0,
+      "evidence": "The excitement of these last manoeuvres had somewhat interfered with the watch"
+    },
+    {
+      "id": "treasure-island-26-13",
+      "type": "sequence",
+      "q": "What saved Jim when Hands first charged at him with the dirk?",
+      "choices": [
+        "The tiller swung and struck Hands across the chest",
+        "Jim shot him with a pistol",
+        "The ship struck the sand",
+        "Jim jumped into the sea"
+      ],
+      "answer": 0,
+      "evidence": "it struck Hands across the chest and stopped him"
+    },
+    {
+      "id": "treasure-island-26-14",
+      "type": "detail",
+      "q": "Why did Jim's pistol fail to fire the first time?",
+      "choices": [
+        "The priming was wet with sea-water",
+        "It was not loaded at all",
+        "Hands had stolen the bullets",
+        "The trigger was broken"
+      ],
+      "answer": 0,
+      "evidence": "the priming was useless with sea-water"
+    },
+    {
+      "id": "treasure-island-26-15",
+      "type": "sequence",
+      "q": "What happened when the HISPANIOLA struck the sand?",
+      "choices": [
+        "The ship tipped over and both of them rolled into the scuppers",
+        "The mast broke and fell",
+        "Hands was thrown into the sea",
+        "The ship floated free again"
+      ],
+      "answer": 0,
+      "evidence": "We were both of us capsized in a second"
+    },
+    {
+      "id": "treasure-island-26-16",
+      "type": "detail",
+      "q": "Where did Jim escape to after the ship tipped over?",
+      "choices": [
+        "Up the mizzen shrouds to the cross-trees",
+        "Down into the cabin",
+        "Onto the shore",
+        "Into the cellar"
+      ],
+      "answer": 0,
+      "evidence": "sprang into the mizzen shrouds"
+    },
+    {
+      "id": "treasure-island-26-17",
+      "type": "character",
+      "q": "How did Jim feel as Hands pretended to give up?",
+      "choices": [
+        "Proud and pleased with himself",
+        "Terrified and in tears",
+        "Sorry for Hands",
+        "Bored and sleepy"
+      ],
+      "answer": 0,
+      "evidence": "as conceited as a cock upon a wall"
+    },
+    {
+      "id": "treasure-island-26-18",
+      "type": "main-idea",
+      "q": "What is this chapter mostly about?",
+      "choices": [
+        "Hands secretly plots to kill Jim, and Jim survives his attack",
+        "Jim and Hands become loyal friends",
+        "Jim sails the ship back to Captain Smollett",
+        "Jim searches the ship for the treasure"
+      ],
+      "answer": 0,
+      "evidence": "it was plain that I was meant to be the victim"
+    }
+  ]
+}

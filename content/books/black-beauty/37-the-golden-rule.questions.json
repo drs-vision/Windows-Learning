@@ -1,0 +1,78 @@
+{
+  "book": "black-beauty",
+  "chapter": 37,
+  "questions": [
+    {
+      "id": "black-beauty-37-01",
+      "type": "detail",
+      "q": "What good news did Polly bring Jerry at the start of the chapter?",
+      "choices": ["Mrs. Briggs wanted him to drive her again", "Jerry had won a prize", "Harry had found a job", "A new horse was coming"],
+      "answer": 0,
+      "evidence": "Mrs. Briggs sent her servant this afternoon to ask you to take her out to-morrow at eleven o'clock"
+    },
+    {
+      "id": "black-beauty-37-02",
+      "type": "detail",
+      "q": "Why did Mrs. Briggs want Jerry's cab back?",
+      "choices": ["The other cabs drove badly and none were as nice and clean", "Jerry promised to drive on Sundays", "Jerry lowered his price", "Her own horse had died"],
+      "answer": 0,
+      "evidence": "there is not one of them so nice and clean as yours"
+    },
+    {
+      "id": "black-beauty-37-03",
+      "type": "detail",
+      "q": "Why did Dinah Brown need to travel on a Sunday?",
+      "choices": ["Her mother was dangerously ill", "She was going to a wedding", "She had to start a new job", "Her house had burned down"],
+      "answer": 0,
+      "evidence": "her mother is dangerously ill"
+    },
+    {
+      "id": "black-beauty-37-04",
+      "type": "inference",
+      "q": "Why could Dinah not simply take the train?",
+      "choices": ["She would still have four miles to walk, and she was weak with a new baby", "There were no trains on Sunday", "She had lost her ticket", "The train did not go to the country"],
+      "answer": 0,
+      "evidence": "she should still have four miles to walk"
+    },
+    {
+      "id": "black-beauty-37-05",
+      "type": "character",
+      "q": "What was Jerry's real worry about taking Dinah?",
+      "choices": ["Losing his Sunday when he and the horses were tired", "Not getting paid", "Getting lost in the country", "Breaking the law"],
+      "answer": 0,
+      "evidence": "It was not the money I was thinking about, but of losing our Sunday"
+    },
+    {
+      "id": "black-beauty-37-06",
+      "type": "main-idea",
+      "q": "What \"golden rule\" did Polly remind Jerry of?",
+      "choices": ["Do to other people as you would like them to do to you", "Never work on a Sunday for any reason", "Always get paid before you drive", "Early to bed, early to rise"],
+      "answer": 0,
+      "evidence": "we should do to other people as we should like they should do to us"
+    },
+    {
+      "id": "black-beauty-37-07",
+      "type": "sequence",
+      "q": "What did Jerry ask Polly to do before he left?",
+      "choices": ["Ask butcher Braydon to lend his light trap", "Buy new harness for Jack", "Send a letter to Dinah's mother", "Fetch the doctor"],
+      "answer": 0,
+      "evidence": "ask him if he would lend me his light trap"
+    },
+    {
+      "id": "black-beauty-37-08",
+      "type": "detail",
+      "q": "What did Jack do in the meadow at Dinah's family farm?",
+      "choices": ["He ate grass, rolled, rested, and galloped by turns", "He stayed tied in the cowshed", "He pulled a plow", "He slept the whole time"],
+      "answer": 0,
+      "evidence": "I did all by turns"
+    },
+    {
+      "id": "black-beauty-37-09",
+      "type": "character",
+      "q": "How did Jerry feel about the day when he got home?",
+      "choices": ["Happy; he felt he had not lost his Sunday after all", "Angry that he had worked so hard", "Sad because Dinah's mother had died", "Worried about the money"],
+      "answer": 0,
+      "evidence": "I have not lost my Sunday after all"
+    }
+  ]
+}

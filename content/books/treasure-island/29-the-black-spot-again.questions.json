@@ -1,0 +1,214 @@
+{
+  "book": "treasure-island",
+  "chapter": 29,
+  "questions": [
+    {
+      "id": "treasure-island-29-01",
+      "type": "detail",
+      "q": "Why did one of the pirates come back in to borrow the torch?",
+      "choices": [
+        "The fire outside had burned too low to see by",
+        "They wanted to burn the block house",
+        "They needed it to signal the ship",
+        "Silver had asked them to take it"
+      ],
+      "answer": 0,
+      "evidence": "I understood why these conspirators desired a torch"
+    },
+    {
+      "id": "treasure-island-29-02",
+      "type": "detail",
+      "q": "Through the loophole, what did Jim see the kneeling pirate holding?",
+      "choices": [
+        "A book and an open knife",
+        "A pistol and a map",
+        "A bottle and a cup",
+        "A rope and a lantern"
+      ],
+      "answer": 0,
+      "evidence": "he had a book as well as a knife in his hand"
+    },
+    {
+      "id": "treasure-island-29-03",
+      "type": "character",
+      "q": "Why did Jim step away from the loophole when the pirates came back?",
+      "choices": [
+        "He felt it was beneath his dignity to be caught watching",
+        "He was afraid they would shoot through it",
+        "Silver ordered him to sit down",
+        "He wanted to hide behind the door"
+      ],
+      "answer": 0,
+      "evidence": "it seemed beneath my dignity that they should find me watching them"
+    },
+    {
+      "id": "treasure-island-29-04",
+      "type": "detail",
+      "q": "What did the pirates hand to Silver?",
+      "choices": [
+        "The black spot",
+        "A loaded pistol",
+        "The treasure map",
+        "A bag of gold"
+      ],
+      "answer": 0,
+      "evidence": "The black spot! I thought so"
+    },
+    {
+      "id": "treasure-island-29-05",
+      "type": "inference",
+      "q": "Why did Silver and Morgan think the black spot was unlucky this time?",
+      "choices": [
+        "It had been cut out of a Bible",
+        "It was written in blood",
+        "It was handed over at midnight",
+        "It had been dropped in the fire"
+      ],
+      "answer": 0,
+      "evidence": "You've gone and cut this out of a Bible"
+    },
+    {
+      "id": "treasure-island-29-06",
+      "type": "vocabulary",
+      "q": "The word written on the black spot was \"Deposed.\" What does it mean here?",
+      "choices": [
+        "Removed from being captain",
+        "Sentenced to death",
+        "Promoted to a higher rank",
+        "Sent away from the island"
+      ],
+      "answer": 0,
+      "evidence": "'Deposed'--that's it, is it?"
+    },
+    {
+      "id": "treasure-island-29-07",
+      "type": "detail",
+      "q": "Who was the leader of the pirates who were turning against Silver?",
+      "choices": [
+        "George Merry",
+        "Tom Morgan",
+        "Dick Johnson",
+        "Israel Hands"
+      ],
+      "answer": 0,
+      "evidence": "you, George Merry"
+    },
+    {
+      "id": "treasure-island-29-08",
+      "type": "detail",
+      "q": "Which of these was one of George's complaints against Silver?",
+      "choices": [
+        "He let the enemy out of the trap for nothing",
+        "He drank all the brandy",
+        "He lost the parrot",
+        "He refused to share the food"
+      ],
+      "answer": 0,
+      "evidence": "you let the enemy out o' this here trap for nothing"
+    },
+    {
+      "id": "treasure-island-29-09",
+      "type": "character",
+      "q": "How did Silver answer the charge that he had ruined the cruise?",
+      "choices": [
+        "He blamed George, Hands and Anderson for forcing his hand",
+        "He admitted it and begged forgiveness",
+        "He blamed Jim for everything",
+        "He said Captain Smollett was at fault"
+      ],
+      "answer": 0,
+      "evidence": "it was Anderson, and Hands, and you, George Merry!"
+    },
+    {
+      "id": "treasure-island-29-10",
+      "type": "inference",
+      "q": "Why did Silver say it would be foolish to kill Jim?",
+      "choices": [
+        "Jim was a hostage who might be their last chance",
+        "Jim knew where the treasure was buried",
+        "Jim could sail the ship for them",
+        "Jim was Silver's nephew"
+      ],
+      "answer": 0,
+      "evidence": "isn't he a hostage?"
+    },
+    {
+      "id": "treasure-island-29-11",
+      "type": "detail",
+      "q": "What did Silver throw onto the floor to prove he had made a good bargain?",
+      "choices": [
+        "Flint's chart with the three red crosses",
+        "A bag of gold coins",
+        "The key to the ship",
+        "The doctor's medicine chest"
+      ],
+      "answer": 0,
+      "evidence": "the chart on yellow paper, with the three red crosses"
+    },
+    {
+      "id": "treasure-island-29-12",
+      "type": "detail",
+      "q": "How did the mutineers react when they saw the chart?",
+      "choices": [
+        "They leaped on it like cats upon a mouse",
+        "They burned it",
+        "They ignored it and kept arguing",
+        "They gave it back to Jim"
+      ],
+      "answer": 0,
+      "evidence": "They leaped upon it like cats upon a mouse"
+    },
+    {
+      "id": "treasure-island-29-13",
+      "type": "sequence",
+      "q": "What happened right after Silver said he would resign as captain?",
+      "choices": [
+        "The pirates cried out for him to stay captain",
+        "George Merry was chosen captain",
+        "The pirates attacked Jim",
+        "Silver left the block house"
+      ],
+      "answer": 0,
+      "evidence": "Barbecue for cap'n!"
+    },
+    {
+      "id": "treasure-island-29-14",
+      "type": "detail",
+      "q": "What words from the Bible page struck Jim sharply?",
+      "choices": [
+        "Without are dogs and murderers",
+        "Thou shalt not steal",
+        "The meek shall inherit the earth",
+        "Love thy neighbour"
+      ],
+      "answer": 0,
+      "evidence": "Without are dogs and murderers"
+    },
+    {
+      "id": "treasure-island-29-15",
+      "type": "character",
+      "q": "How did Jim feel about Silver as he lay awake that night?",
+      "choices": [
+        "His heart was sore for him, wicked as he was",
+        "He hated him and hoped he would hang",
+        "He trusted him completely",
+        "He did not think about him at all"
+      ],
+      "answer": 0,
+      "evidence": "my heart was sore for him, wicked as he was"
+    },
+    {
+      "id": "treasure-island-29-16",
+      "type": "main-idea",
+      "q": "What is this chapter mostly about?",
+      "choices": [
+        "The crew tries to depose Silver, but he wins them back and stays captain",
+        "Jim escapes and returns to his friends",
+        "The pirates dig up the treasure",
+        "Silver hands Jim over to George Merry"
+      ],
+      "answer": 0,
+      "evidence": "keeping the mutineers together with one hand"
+    }
+  ]
+}

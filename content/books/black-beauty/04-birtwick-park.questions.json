@@ -1,0 +1,110 @@
+{
+  "book": "black-beauty",
+  "chapter": 4,
+  "questions": [
+    {
+      "id": "black-beauty-04-01",
+      "type": "detail",
+      "q": "What did Black Beauty's first master say when he left?",
+      "choices": [
+        "\"Good-by, Darkie; be a good horse, and always do your best.\"",
+        "\"I will buy you back someday.\"",
+        "\"Never trust a new master.\"",
+        "\"Watch out for Ginger.\""
+      ],
+      "answer": 0,
+      "evidence": "be a good horse, and always do your best"
+    },
+    {
+      "id": "black-beauty-04-02",
+      "type": "vocabulary",
+      "q": "Why was the first stall called a \"loose box\"?",
+      "choices": [
+        "The horse in it was not tied up but left loose",
+        "Its gate was broken and loose",
+        "It held loose hay",
+        "Its boards were loose"
+      ],
+      "answer": 0,
+      "evidence": "because the horse that was put into it was not tied up, but left loose"
+    },
+    {
+      "id": "black-beauty-04-03",
+      "type": "detail",
+      "q": "What did Merrylegs look like?",
+      "choices": [
+        "A little fat gray pony with a thick mane and tail",
+        "A tall chestnut mare",
+        "A big black cart-horse",
+        "A brown racehorse"
+      ],
+      "answer": 0,
+      "evidence": "a little fat gray pony"
+    },
+    {
+      "id": "black-beauty-04-04",
+      "type": "detail",
+      "q": "What did Merrylegs say he did not like in a neighbor?",
+      "choices": [
+        "A horse that bites",
+        "A horse that snores",
+        "A horse that eats too much",
+        "A horse that is too handsome"
+      ],
+      "answer": 0,
+      "evidence": "I do not like any one next door who bites"
+    },
+    {
+      "id": "black-beauty-04-05",
+      "type": "character",
+      "q": "How did Ginger act toward Black Beauty when they first met?",
+      "choices": [
+        "She was cross and said he had turned her out of her box",
+        "She was friendly and welcomed him",
+        "She ignored him completely",
+        "She asked him to be her friend"
+      ],
+      "answer": 0,
+      "evidence": "So it is you who have turned me out of my box"
+    },
+    {
+      "id": "black-beauty-04-06",
+      "type": "detail",
+      "q": "Why were Miss Flora and Miss Jessie afraid to come into the stable?",
+      "choices": [
+        "Ginger had bitten James and made his arm bleed",
+        "Merrylegs kicked them",
+        "The stable was dark",
+        "The groom told them to stay away"
+      ],
+      "answer": 0,
+      "evidence": "she bit James in the arm and made it bleed"
+    },
+    {
+      "id": "black-beauty-04-07",
+      "type": "inference",
+      "q": "What did Merrylegs think was the reason Ginger bit and snapped?",
+      "choices": [
+        "She had been badly treated before she came",
+        "She was hungry all the time",
+        "She was jealous of Merrylegs",
+        "She was too young to know better"
+      ],
+      "answer": 0,
+      "evidence": "she must have been very ill-used before she came here"
+    },
+    {
+      "id": "black-beauty-04-08",
+      "type": "character",
+      "q": "What did Merrylegs think of Birtwick Park as a home for horses?",
+      "choices": [
+        "There was no better place for a horse in the whole country",
+        "It was too crowded",
+        "The grooms were unkind",
+        "It was the worst place he had lived"
+      ],
+      "answer": 0,
+      "evidence": "there is not a better place for a horse all round the country than this"
+    }
+  ]
+}

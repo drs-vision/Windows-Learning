@@ -1,0 +1,110 @@
+{
+  "book": "treasure-island",
+  "chapter": 16,
+  "questions": [
+    {
+      "id": "treasure-island-16-01",
+      "type": "detail",
+      "q": "Who tells the story in this chapter?",
+      "choices": ["Dr. Livesey", "Jim Hawkins", "Captain Smollett", "Squire Trelawney"],
+      "answer": 0,
+      "evidence": "The captain, the squire, and I were talking matters over in the cabin"
+    },
+    {
+      "id": "treasure-island-16-02",
+      "type": "inference",
+      "q": "Why couldn't the cabin party simply overpower the six mutineers and sail away?",
+      "choices": ["There was no wind", "The anchor was stuck", "They had no weapons", "The ship had a hole in it"],
+      "answer": 0,
+      "evidence": "But the wind was wanting"
+    },
+    {
+      "id": "treasure-island-16-03",
+      "type": "detail",
+      "q": "Who went ashore first with the doctor in the jolly-boat to look for information?",
+      "choices": ["Hunter", "Joyce", "Redruth", "Abraham Gray"],
+      "answer": 0,
+      "evidence": "Hunter and I should go ashore with the jolly-boat"
+    },
+    {
+      "id": "treasure-island-16-04",
+      "type": "detail",
+      "q": "What tune was one of the men guarding the gigs whistling?",
+      "choices": ["\"Lillibullero\"", "\"Fifteen men on the dead man's chest\"", "\"Rule Britannia\"", "\"Yankee Doodle\""],
+      "answer": 0,
+      "evidence": "One of them was whistling \"Lillibullero.\""
+    },
+    {
+      "id": "treasure-island-16-05",
+      "type": "detail",
+      "q": "What feature of the stockade especially pleased the doctor?",
+      "choices": ["A spring of clear water inside it", "A secret tunnel to the beach", "A cannon on the roof", "A store of food left by Flint"],
+      "answer": 0,
+      "evidence": "What particularly took my fancy was the spring"
+    },
+    {
+      "id": "treasure-island-16-06",
+      "type": "inference",
+      "q": "Why was the spring so important to the cabin party?",
+      "choices": ["They had no water on the ship", "Its water could cure fever", "It hid the treasure", "It was the only way off the island"],
+      "answer": 0,
+      "evidence": "we had no water"
+    },
+    {
+      "id": "treasure-island-16-07",
+      "type": "character",
+      "q": "When the doctor heard the death cry ringing over the island, what was his first thought?",
+      "choices": ["That Jim Hawkins was dead", "That the squire had been shot", "That Silver had been killed", "That a wild animal was attacking"],
+      "answer": 0,
+      "evidence": "\"Jim Hawkins is gone,\" was my first thought"
+    },
+    {
+      "id": "treasure-island-16-08",
+      "type": "detail",
+      "q": "Where did they post Redruth to guard against the six mutineers?",
+      "choices": ["In the gallery between the cabin and the forecastle, with loaded muskets", "At the top of the mast", "In the jolly-boat", "At the stockade gate"],
+      "answer": 0,
+      "evidence": "We put old Redruth in the gallery between the cabin and the forecastle"
+    },
+    {
+      "id": "treasure-island-16-09",
+      "type": "sequence",
+      "q": "What did the six mutineers do after the captain warned Mr. Hands?",
+      "choices": ["They went down the fore companion to attack from behind, but turned back when they saw Redruth", "They jumped overboard and swam ashore", "They surrendered and joined the captain", "They fired a gun to signal Silver"],
+      "answer": 0,
+      "evidence": "when they saw Redruth waiting for them in the sparred galley, they went about ship at once"
+    },
+    {
+      "id": "treasure-island-16-10",
+      "type": "detail",
+      "q": "What did the cabin party do with the extra arms and powder they could not carry?",
+      "choices": ["Dropped them overboard into the water", "Hid them in the hold", "Buried them on the beach", "Gave them to the six mutineers"],
+      "answer": 0,
+      "evidence": "The rest of the arms and powder we dropped overboard"
+    },
+    {
+      "id": "treasure-island-16-11",
+      "type": "vocabulary",
+      "q": "The doctor says they set out \"to provision the block house.\" To provision a place means to:",
+      "choices": ["Stock it with food and supplies", "Burn it down", "Paint and decorate it", "Leave it empty"],
+      "answer": 0,
+      "evidence": "set to provision the block house"
+    },
+    {
+      "id": "treasure-island-16-12",
+      "type": "character",
+      "q": "How did Abraham Gray show he chose to stay loyal to the captain?",
+      "choices": ["He fought his way out of the forecastle with a cut cheek and joined the captain", "He shouted a warning to Silver", "He refused to answer and stayed below", "He stole the jolly-boat"],
+      "answer": 0,
+      "evidence": "out burst Abraham Gray with a knife cut on the side of the cheek"
+    },
+    {
+      "id": "treasure-island-16-13",
+      "type": "main-idea",
+      "q": "What is the main thing that happens in this chapter?",
+      "choices": ["The loyal party moves supplies to the stockade and abandons the ship", "The loyal party wins back the ship from the pirates", "The doctor finds the treasure", "Silver makes peace with the captain"],
+      "answer": 0,
+      "evidence": "I am leaving this ship, and I order you to follow your captain"
+    }
+  ]
+}

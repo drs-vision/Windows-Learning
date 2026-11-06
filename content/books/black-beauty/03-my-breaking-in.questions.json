@@ -1,0 +1,162 @@
+{
+  "book": "black-beauty",
+  "chapter": 3,
+  "questions": [
+    {
+      "id": "black-beauty-03-01",
+      "type": "detail",
+      "q": "What white markings did Black Beauty have?",
+      "choices": [
+        "One white foot and a white star on his forehead",
+        "Four white socks",
+        "A white tail",
+        "A white stripe down his back"
+      ],
+      "answer": 0,
+      "evidence": "I had one white foot and a pretty white star on my forehead"
+    },
+    {
+      "id": "black-beauty-03-02",
+      "type": "detail",
+      "q": "How old was Black Beauty when Squire Gordon came to look at him?",
+      "choices": [
+        "Four years old",
+        "Two years old",
+        "One year old",
+        "Six years old"
+      ],
+      "answer": 0,
+      "evidence": "When I was four years old Squire Gordon came to look at me"
+    },
+    {
+      "id": "black-beauty-03-03",
+      "type": "vocabulary",
+      "q": "In this chapter, what does \"breaking in\" a horse mean?",
+      "choices": [
+        "Teaching a horse to wear a saddle and bridle and obey its rider",
+        "Breaking a horse's spirit with a whip",
+        "Letting a horse break out of its stable",
+        "Teaching a horse to race"
+      ],
+      "answer": 0,
+      "evidence": "It means to teach a horse to wear a saddle and bridle"
+    },
+    {
+      "id": "black-beauty-03-04",
+      "type": "character",
+      "q": "Why did the master decide to break in Black Beauty himself?",
+      "choices": [
+        "He did not want him to be frightened or hurt",
+        "He wanted to save money",
+        "Squire Gordon told him to",
+        "No one else knew how"
+      ],
+      "answer": 0,
+      "evidence": "as he should not like me to be frightened or hurt"
+    },
+    {
+      "id": "black-beauty-03-05",
+      "type": "detail",
+      "q": "How did Black Beauty feel about the bit when it was first put in his mouth?",
+      "choices": [
+        "He thought it was a nasty, very bad thing",
+        "He liked the taste of the steel",
+        "He did not notice it at all",
+        "He thought it was fun to chew"
+      ],
+      "answer": 0,
+      "evidence": "it was a nasty thing"
+    },
+    {
+      "id": "black-beauty-03-06",
+      "type": "detail",
+      "q": "What helped Black Beauty get used to wearing the bit and bridle?",
+      "choices": [
+        "Nice oats and his master's pats and kind words",
+        "Being whipped when he refused",
+        "Watching the cows",
+        "Being left alone in the field"
+      ],
+      "answer": 0,
+      "evidence": "what with the nice oats, and what with my master's pats, kind words, and gentle ways"
+    },
+    {
+      "id": "black-beauty-03-07",
+      "type": "sequence",
+      "q": "Which came after the bit and bridle in Black Beauty's training?",
+      "choices": [
+        "The saddle",
+        "The first train",
+        "Being sold to Squire Gordon",
+        "Meeting Merrylegs"
+      ],
+      "answer": 0,
+      "evidence": "Next came the saddle"
+    },
+    {
+      "id": "black-beauty-03-08",
+      "type": "detail",
+      "q": "Which piece of harness did Black Beauty hate because it doubled up his tail?",
+      "choices": [
+        "The crupper",
+        "The blinkers",
+        "The collar",
+        "The girth"
+      ],
+      "answer": 0,
+      "evidence": "I hated the crupper"
+    },
+    {
+      "id": "black-beauty-03-09",
+      "type": "vocabulary",
+      "q": "What were the blinkers?",
+      "choices": [
+        "Side-pieces on the bridle that stopped him from seeing to the sides",
+        "Lights on the front of a carriage",
+        "Iron shoes for his feet",
+        "Straps that went under his tail"
+      ],
+      "answer": 0,
+      "evidence": "great side-pieces against my eyes called blinkers"
+    },
+    {
+      "id": "black-beauty-03-10",
+      "type": "sequence",
+      "q": "How did Black Beauty react the very first time a train went by?",
+      "choices": [
+        "He galloped to the far side of the meadow, snorting with fear",
+        "He kept eating quietly like the cows",
+        "He jumped over the fence",
+        "He ran up to the train to look at it"
+      ],
+      "answer": 0,
+      "evidence": "I turned and galloped to the further side of the meadow"
+    },
+    {
+      "id": "black-beauty-03-11",
+      "type": "inference",
+      "q": "Why did the master send Black Beauty to a farm next to the railway?",
+      "choices": [
+        "So he would learn not to be afraid of trains",
+        "So he could eat better grass",
+        "So he could make friends with sheep",
+        "So the farmer could buy him"
+      ],
+      "answer": 0,
+      "evidence": "I am as fearless at railway stations as in my own stable"
+    },
+    {
+      "id": "black-beauty-03-12",
+      "type": "character",
+      "q": "What did Black Beauty's mother say about foolish, careless men?",
+      "choices": [
+        "They spoil more horses than all, just for want of sense",
+        "They are the kindest masters",
+        "They never own horses",
+        "They always use whips"
+      ],
+      "answer": 0,
+      "evidence": "these spoil more horses than all, just for want of sense"
+    }
+  ]
+}

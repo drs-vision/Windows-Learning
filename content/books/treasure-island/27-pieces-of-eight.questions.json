@@ -1,0 +1,214 @@
+{
+  "book": "treasure-island",
+  "chapter": 27,
+  "questions": [
+    {
+      "id": "treasure-island-27-01",
+      "type": "detail",
+      "q": "What happened to Israel Hands after he fell from the shrouds?",
+      "choices": [
+        "He sank and lay dead on the sand under the water",
+        "He swam to shore and escaped",
+        "He climbed back onto the ship",
+        "He was picked up by the pirates' boat"
+      ],
+      "answer": 0,
+      "evidence": "being both shot and drowned"
+    },
+    {
+      "id": "treasure-island-27-02",
+      "type": "character",
+      "q": "What frightened Jim most while he was pinned to the mast?",
+      "choices": [
+        "The thought of falling into the water beside the dead coxswain",
+        "The pain of the wound in his shoulder",
+        "The idea that Silver would arrive",
+        "The darkness coming on"
+      ],
+      "answer": 0,
+      "evidence": "it was the horror I had upon my mind of falling from the cross-trees"
+    },
+    {
+      "id": "treasure-island-27-03",
+      "type": "sequence",
+      "q": "How did Jim finally get free of the dirk?",
+      "choices": [
+        "A shudder tore away the pinch of skin holding him",
+        "He pulled the dirk out with both hands",
+        "He cut his sleeve with his own knife",
+        "The ship rocked and the dirk fell out"
+      ],
+      "answer": 0,
+      "evidence": "it held me by a mere pinch of skin, and this the shudder tore away"
+    },
+    {
+      "id": "treasure-island-27-04",
+      "type": "detail",
+      "q": "How serious was Jim's wound?",
+      "choices": [
+        "It bled freely but was neither deep nor dangerous",
+        "It broke his shoulder bone",
+        "It left him unable to use his arm",
+        "It was only a tiny scratch that did not bleed"
+      ],
+      "answer": 0,
+      "evidence": "it was neither deep nor dangerous"
+    },
+    {
+      "id": "treasure-island-27-05",
+      "type": "detail",
+      "q": "What did Jim do with O'Brien's body?",
+      "choices": [
+        "Tumbled it overboard",
+        "Buried it on the beach",
+        "Locked it in the cabin",
+        "Left it lying on deck"
+      ],
+      "answer": 0,
+      "evidence": "with one good heave, tumbled him overboard"
+    },
+    {
+      "id": "treasure-island-27-06",
+      "type": "inference",
+      "q": "Why was Jim no longer very afraid of the dead body?",
+      "choices": [
+        "He had grown used to tragic adventures",
+        "He did not know O'Brien was dead",
+        "The doctor had taught him not to fear the dead",
+        "It was too dark to see the body"
+      ],
+      "answer": 0,
+      "evidence": "the habit of tragical adventures had worn off almost all my terror for the dead"
+    },
+    {
+      "id": "treasure-island-27-07",
+      "type": "detail",
+      "q": "What did Jim do about the main-sail to protect the ship?",
+      "choices": [
+        "Cut the halyards so the sail dropped",
+        "Raised it to catch the wind",
+        "Folded it neatly on the deck",
+        "Tied it to a tree on shore"
+      ],
+      "answer": 0,
+      "evidence": "At last I got my knife and cut the halyards"
+    },
+    {
+      "id": "treasure-island-27-08",
+      "type": "detail",
+      "q": "How did Jim get from the ship to the shore?",
+      "choices": [
+        "He dropped overboard and waded in water up to his waist",
+        "He rowed a small boat",
+        "He swam a long way in deep water",
+        "He walked down a gangplank"
+      ],
+      "answer": 0,
+      "evidence": "The water scarcely reached my waist"
+    },
+    {
+      "id": "treasure-island-27-09",
+      "type": "character",
+      "q": "How did Jim expect Captain Smollett to react to his news?",
+      "choices": [
+        "He hoped the captain would admit Jim had not wasted his time",
+        "He feared the captain would send him home",
+        "He expected the captain to give him the treasure",
+        "He thought the captain would not care"
+      ],
+      "answer": 0,
+      "evidence": "I hoped that even Captain Smollett would confess I had not lost my time"
+    },
+    {
+      "id": "treasure-island-27-10",
+      "type": "vocabulary",
+      "q": "Near Ben Gunn's area, Jim \"walked more circumspectly.\" What does circumspectly mean?",
+      "choices": [
+        "Carefully, watching all around",
+        "Quickly and noisily",
+        "In a large circle",
+        "Happily, whistling as he went"
+      ],
+      "answer": 0,
+      "evidence": "I walked more circumspectly, keeping an eye on every side"
+    },
+    {
+      "id": "treasure-island-27-11",
+      "type": "inference",
+      "q": "What worried Jim about the glowing fire he saw between the two peaks?",
+      "choices": [
+        "Silver might see it too",
+        "It might spread to the stockade",
+        "It meant the ship was burning",
+        "It would scare away the animals"
+      ],
+      "answer": 0,
+      "evidence": "might it not reach the eyes of Silver himself"
+    },
+    {
+      "id": "treasure-island-27-12",
+      "type": "inference",
+      "q": "Why did the large fire near the block house make Jim fear something was wrong?",
+      "choices": [
+        "The captain had ordered them to be sparing with firewood",
+        "His friends never cooked at night",
+        "The fire was burning the stockade",
+        "Fires were forbidden by Ben Gunn"
+      ],
+      "answer": 0,
+      "evidence": "by the captain's orders, somewhat niggardly of firewood"
+    },
+    {
+      "id": "treasure-island-27-13",
+      "type": "detail",
+      "q": "What sound made Jim feel relieved as he crawled toward the house?",
+      "choices": [
+        "People snoring loudly in their sleep",
+        "The doctor's voice calling his name",
+        "A guard calling \"All's well\"",
+        "The parrot squawking"
+      ],
+      "answer": 0,
+      "evidence": "it was like music to hear my friends snoring together"
+    },
+    {
+      "id": "treasure-island-27-14",
+      "type": "character",
+      "q": "What did Jim plan to do once he was inside the dark block house?",
+      "choices": [
+        "Lie down in his own place and surprise everyone in the morning",
+        "Wake the captain to report at once",
+        "Search for food and water",
+        "Hide in a corner until daylight"
+      ],
+      "answer": 0,
+      "evidence": "I should lie down in my own place"
+    },
+    {
+      "id": "treasure-island-27-15",
+      "type": "detail",
+      "q": "Who announced Jim's arrival in the block house?",
+      "choices": [
+        "Silver's parrot, Captain Flint",
+        "Dick, the pirate on guard",
+        "The doctor",
+        "Ben Gunn"
+      ],
+      "answer": 0,
+      "evidence": "Silver's green parrot, Captain Flint!"
+    },
+    {
+      "id": "treasure-island-27-16",
+      "type": "main-idea",
+      "q": "What is the big surprise at the end of the chapter?",
+      "choices": [
+        "The block house is held by Silver's pirates, and Jim is caught",
+        "Jim's friends throw a party for him",
+        "Ben Gunn has captured the stockade",
+        "The HISPANIOLA has sailed away"
+      ],
+      "answer": 0,
+      "evidence": "the voice of Silver cried, \"Who goes?\""
+    }
+  ]
+}

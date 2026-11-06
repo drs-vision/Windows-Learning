@@ -1,0 +1,94 @@
+{
+  "book": "black-beauty",
+  "chapter": 36,
+  "questions": [
+    {
+      "id": "black-beauty-36-01",
+      "type": "detail",
+      "q": "What did Mr. Briggs want Jerry to do?",
+      "choices": ["Take Mrs. Briggs to church every Sunday morning", "Sell him his horse Jack", "Drive him to the train every day", "Work for him as a coachman"],
+      "answer": 0,
+      "evidence": "taking Mrs. Briggs regularly to church on Sunday mornings"
+    },
+    {
+      "id": "black-beauty-36-02",
+      "type": "detail",
+      "q": "Why could Jerry not legally take a fare on Sunday?",
+      "choices": ["He only had a six-days' license", "His cab was broken", "His horses were sick", "Cabs were not allowed in church streets"],
+      "answer": 0,
+      "evidence": "I have only taken out a six-days' license"
+    },
+    {
+      "id": "black-beauty-36-03",
+      "type": "character",
+      "q": "Why had Jerry given up his seven-days' license?",
+      "choices": ["The work was too hard for him and his horses, with no day of rest", "It cost too much money", "The police took it away", "He wanted to drive only at night"],
+      "answer": 0,
+      "evidence": "the work was too hard for me, and too hard for my horses"
+    },
+    {
+      "id": "black-beauty-36-04",
+      "type": "detail",
+      "q": "What good things did Jerry say came from having a day of rest?",
+      "choices": ["He was healthier, the horses were fresher, and he saved more money", "He became famous among cabmen", "He got a bigger cab", "He could work longer hours on Monday"],
+      "answer": 0,
+      "evidence": "I have laid by more money in the savings bank than ever I did before"
+    },
+    {
+      "id": "black-beauty-36-05",
+      "type": "inference",
+      "q": "Why was Jerry worried about refusing Mr. Briggs?",
+      "choices": ["The Briggses were good customers he might lose", "Mr. Briggs was a policeman", "Mr. Briggs owned Jerry's house", "He thought Mrs. Briggs would be angry at Polly"],
+      "answer": 0,
+      "evidence": "if I don't oblige her in this matter it is very likely we shall lose them altogether"
+    },
+    {
+      "id": "black-beauty-36-06",
+      "type": "character",
+      "q": "What did Polly think Jerry should do?",
+      "choices": ["Keep his Sundays even if it meant less money", "Get a seven-days' license right away", "Ask Mr. Briggs for more money", "Sell the cab and find other work"],
+      "answer": 0,
+      "evidence": "I would not have you a seven-days' cabman again"
+    },
+    {
+      "id": "black-beauty-36-07",
+      "type": "sequence",
+      "q": "What happened in the three weeks after Jerry refused Mr. Briggs?",
+      "choices": ["No order came from Mrs. Briggs, and work was harder", "Mrs. Briggs hired him every day", "Jerry bought a new horse", "Jerry changed his mind and drove on Sundays"],
+      "answer": 0,
+      "evidence": "Three weeks had passed away after this conversation, and no order had come from Mrs. Briggs"
+    },
+    {
+      "id": "black-beauty-36-08",
+      "type": "detail",
+      "q": "How did Polly cheer Jerry up during the hard weeks?",
+      "choices": ["She said a rhyme: Do your best, and leave the rest", "She baked him a cake", "She found him a new customer", "She took the cab out herself"],
+      "answer": 0,
+      "evidence": "'Do your best, And leave the rest"
+    },
+    {
+      "id": "black-beauty-36-09",
+      "type": "character",
+      "q": "Which cabman agreed with Jerry that workingmen should stick to their Sunday?",
+      "choices": ["Truman", "Larry", "Jones", "Mr. Briggs"],
+      "answer": 0,
+      "evidence": "If workingmen don't stick to their Sunday,\" said Truman"
+    },
+    {
+      "id": "black-beauty-36-10",
+      "type": "vocabulary",
+      "q": "Jerry says, \"If some men are shams and humbugs, that does not make religion untrue.\" What is a \"humbug\" here?",
+      "choices": ["A person who pretends to be good but is not", "A small buzzing insect", "A kind of candy", "A very religious person"],
+      "answer": 0,
+      "evidence": "If some men are shams and humbugs"
+    },
+    {
+      "id": "black-beauty-36-11",
+      "type": "main-idea",
+      "q": "What is this chapter mostly about?",
+      "choices": ["Jerry standing firm to keep his day of rest even when it costs him", "Jerry buying a faster horse", "A race between London cabs", "How to get a cab license"],
+      "answer": 0,
+      "evidence": "I can't give up my Sundays, sir, indeed I can't"
+    }
+  ]
+}

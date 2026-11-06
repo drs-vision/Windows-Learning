@@ -1,0 +1,134 @@
+{
+  "book": "treasure-island",
+  "chapter": 2,
+  "questions": [
+    {
+      "id": "treasure-island-02-01",
+      "type": "detail",
+      "q": "What season was it when the events of this chapter took place?",
+      "choices": ["A bitter cold winter", "A hot summer", "A rainy spring", "An early autumn"],
+      "answer": 0,
+      "evidence": "It was a bitter cold winter"
+    },
+    {
+      "id": "treasure-island-02-02",
+      "type": "detail",
+      "q": "What was unusual about the stranger's left hand?",
+      "choices": ["It was missing two fingers", "It was a metal hook", "It was badly burned", "It was tattooed with a skull"],
+      "answer": 0,
+      "evidence": "wanting two fingers of the left hand"
+    },
+    {
+      "id": "treasure-island-02-03",
+      "type": "detail",
+      "q": "What name did the stranger use for the captain?",
+      "choices": ["Bill", "Flint", "Tom", "Jack"],
+      "answer": 0,
+      "evidence": "Is this here table for my mate Bill?"
+    },
+    {
+      "id": "treasure-island-02-04",
+      "type": "vocabulary",
+      "q": "The stranger peered round the corner \"like a cat waiting for a mouse.\" What does this comparison suggest about him?",
+      "choices": ["He was lying in wait to ambush someone", "He was hungry for breakfast", "He was playful and friendly", "He was afraid of being caught"],
+      "answer": 0,
+      "evidence": "peering round the corner like a cat waiting for a mouse"
+    },
+    {
+      "id": "treasure-island-02-05",
+      "type": "character",
+      "q": "What happened when Jim stepped out into the road?",
+      "choices": ["The stranger angrily ordered him back in", "The stranger followed him outside", "The stranger gave him a coin", "The stranger ran away"],
+      "answer": 0,
+      "evidence": "he ordered me in with an oath that made me jump"
+    },
+    {
+      "id": "treasure-island-02-06",
+      "type": "inference",
+      "q": "What clue told Jim that the stranger was frightened himself while they hid behind the door?",
+      "choices": ["He kept swallowing as if he had a lump in his throat", "His hands were shaking so hard he dropped his cutlass", "He started to cry", "He kept trying to leave the inn"],
+      "answer": 0,
+      "evidence": "he kept swallowing as if he felt what we used to call a lump in the throat"
+    },
+    {
+      "id": "treasure-island-02-07",
+      "type": "character",
+      "q": "How did the captain look when he turned and saw the stranger?",
+      "choices": ["Like a man who sees a ghost", "Happy to see an old friend", "Bored and uninterested", "Angry but in control"],
+      "answer": 0,
+      "evidence": "he had the look of a man who sees a ghost"
+    },
+    {
+      "id": "treasure-island-02-08",
+      "type": "detail",
+      "q": "What was the stranger's name?",
+      "choices": ["Black Dog", "Pew", "Billy Bones", "Long John"],
+      "answer": 0,
+      "evidence": "\"Black Dog!\" said he."
+    },
+    {
+      "id": "treasure-island-02-09",
+      "type": "inference",
+      "q": "Why did Black Dog sit sideways next to the door?",
+      "choices": ["So he could watch the captain and also escape quickly", "So he could see the sea through the window", "Because the chair was broken", "So Jim could serve him rum more easily"],
+      "answer": 0,
+      "evidence": "one eye on his old shipmate and one, as I thought, on his retreat"
+    },
+    {
+      "id": "treasure-island-02-10",
+      "type": "sequence",
+      "q": "What happened after the voices in the parlour grew louder?",
+      "choices": ["The table went over and the two men fought with cutlasses", "Black Dog paid for his rum and left quietly", "The captain fell asleep", "Jim's mother came down and sent Black Dog away"],
+      "answer": 0,
+      "evidence": "the chair and table went over in a lump, a clash of steel followed"
+    },
+    {
+      "id": "treasure-island-02-11",
+      "type": "detail",
+      "q": "What stopped the captain's last tremendous cut at Black Dog?",
+      "choices": ["The inn's big signboard", "The door frame", "Jim's arm", "Black Dog's cutlass"],
+      "answer": 0,
+      "evidence": "intercepted by our big signboard of Admiral Benbow"
+    },
+    {
+      "id": "treasure-island-02-12",
+      "type": "sequence",
+      "q": "What happened to the captain soon after Black Dog escaped?",
+      "choices": ["He fell to the floor in the parlour", "He chased Black Dog over the hill", "He packed his sea-chest and left", "He sat down and ate his breakfast"],
+      "answer": 0,
+      "evidence": "beheld the captain lying full length upon the floor"
+    },
+    {
+      "id": "treasure-island-02-13",
+      "type": "detail",
+      "q": "According to Dr. Livesey, what was really wrong with the captain?",
+      "choices": ["He had had a stroke", "He had a deep sword wound", "He had been poisoned", "He had a broken leg"],
+      "answer": 0,
+      "evidence": "The man has had a stroke, as I warned him."
+    },
+    {
+      "id": "treasure-island-02-14",
+      "type": "detail",
+      "q": "Which picture was tattooed near the captain's shoulder?",
+      "choices": ["A gallows with a man hanging from it", "A ship in full sail", "A skull and crossbones", "A mermaid"],
+      "answer": 0,
+      "evidence": "a sketch of a gallows and a man hanging from it"
+    },
+    {
+      "id": "treasure-island-02-15",
+      "type": "vocabulary",
+      "q": "Dr. Livesey calls the gallows tattoo \"Prophetic.\" What does he mean?",
+      "choices": ["It may predict how the captain will end up", "It is very old", "It was drawn by a famous artist", "It is a religious symbol"],
+      "answer": 0,
+      "evidence": "\"Prophetic,\" said the doctor"
+    },
+    {
+      "id": "treasure-island-02-16",
+      "type": "character",
+      "q": "What warning did the doctor give the captain?",
+      "choices": ["That rum would kill him", "That Black Dog would return", "That he must leave the inn", "That he would be arrested"],
+      "answer": 0,
+      "evidence": "the name of rum for you is death"
+    }
+  ]
+}

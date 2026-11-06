@@ -1,0 +1,62 @@
+{
+  "book": "black-beauty",
+  "chapter": 41,
+  "questions": [
+    {
+      "id": "black-beauty-41-01",
+      "type": "main-idea",
+      "q": "What does Black Beauty say could have prevented much of the horses' trouble in London?",
+      "choices": ["A little common sense", "More money", "Bigger stables", "Faster carts"],
+      "answer": 0,
+      "evidence": "much of it might have been prevented by a little common sense"
+    },
+    {
+      "id": "black-beauty-41-02",
+      "type": "detail",
+      "q": "Which old friend did the little gray pony remind Black Beauty of?",
+      "choices": ["Merrylegs", "Ginger", "Captain", "Old Ba-a-ar Hoo's horse"],
+      "answer": 0,
+      "evidence": "so much like Merrylegs that if I had not been in harness I should have neighed to him"
+    },
+    {
+      "id": "black-beauty-41-03",
+      "type": "detail",
+      "q": "What condition was the butcher's horse in when the cart dashed up?",
+      "choices": ["Hot and exhausted, with heaving sides and trembling legs", "Fresh and calm", "Limping from a lost shoe", "Fast asleep"],
+      "answer": 0,
+      "evidence": "The horse was hot and much exhausted"
+    },
+    {
+      "id": "black-beauty-41-04",
+      "type": "character",
+      "q": "Why was the butcher angry with the lad?",
+      "choices": ["He drove the horse too hard, as he had ruined the last one", "He was late for dinner", "He lost the meat basket", "He gave meat away for free"],
+      "answer": 0,
+      "evidence": "You ruined the last horse and broke his wind"
+    },
+    {
+      "id": "black-beauty-41-05",
+      "type": "inference",
+      "q": "Who did the butcher's son blame for all the hurry?",
+      "choices": ["Customers who did not order their meat ahead of time", "The horse for being slow", "The police", "His mother"],
+      "answer": 0,
+      "evidence": "If the gentry would think of what they want, and order their meat the day before"
+    },
+    {
+      "id": "black-beauty-41-06",
+      "type": "vocabulary",
+      "q": "The coster-boy's pony was \"the cheerfullest and pluckiest little thing.\" What does \"pluckiest\" mean?",
+      "choices": ["Bravest and most spirited", "Smallest and weakest", "Laziest", "Most beautiful"],
+      "answer": 0,
+      "evidence": "the cheerfullest and pluckiest little thing I ever saw"
+    },
+    {
+      "id": "black-beauty-41-07",
+      "type": "detail",
+      "q": "What did Jerry nickname the young coster-boy?",
+      "choices": ["Prince Charlie", "Old Ba-a-ar Hoo", "Seedy Sam", "Little Jack"],
+      "answer": 0,
+      "evidence": "called him \"Prince Charlie\""
+    }
+  ]
+}

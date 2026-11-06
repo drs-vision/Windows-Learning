@@ -1,0 +1,70 @@
+{
+  "book": "black-beauty",
+  "chapter": 21,
+  "questions": [
+    {
+      "id": "black-beauty-21-01",
+      "type": "detail",
+      "q": "Why did the family have to leave their home?",
+      "choices": ["The mistress was ill and had to go to a warm country", "The master lost all his money", "The house burned down", "The master got a job in London"],
+      "answer": 0,
+      "evidence": "she must leave her home at once, and go to a warm country"
+    },
+    {
+      "id": "black-beauty-21-02",
+      "type": "detail",
+      "q": "Who were Black Beauty and Ginger sold to?",
+      "choices": ["The master's old friend, the Earl of W----", "The vicar", "Mr. Clay the brick-maker", "A horse dealer in London"],
+      "answer": 0,
+      "evidence": "Master had sold Ginger and me to his old friend, the Earl of W----"
+    },
+    {
+      "id": "black-beauty-21-03",
+      "type": "detail",
+      "q": "What promise came with giving Merrylegs to the vicar?",
+      "choices": ["He should never be sold", "He must be raced every year", "He must live with Ginger", "He must go to London"],
+      "answer": 0,
+      "evidence": "it was on the condition that he should never be sold"
+    },
+    {
+      "id": "black-beauty-21-04",
+      "type": "character",
+      "q": "What kind of work did John decide he wanted to do next?",
+      "choices": ["Work with a first-rate colt-breaker and horse-trainer", "Drive a cab in London", "Become a farmer", "Go abroad with the master"],
+      "answer": 0,
+      "evidence": "if I could get a situation with some first-rate colt-breaker and horse-trainer"
+    },
+    {
+      "id": "black-beauty-21-05",
+      "type": "character",
+      "q": "Why did John want to train young horses?",
+      "choices": ["To help them get a fair start instead of being frightened and spoiled", "Because it paid the highest wages", "Because he was tired of carriage driving", "Because the master ordered him to"],
+      "answer": 0,
+      "evidence": "Many young animals are frightened and spoiled by wrong treatment"
+    },
+    {
+      "id": "black-beauty-21-06",
+      "type": "sequence",
+      "q": "Who were the first of the family to leave?",
+      "choices": ["Miss Jessie and Flora with their governess", "The master and mistress", "The footman and the luggage", "John and Joe"],
+      "answer": 0,
+      "evidence": "The first of the party who went were Miss Jessie and Flora, with their governess"
+    },
+    {
+      "id": "black-beauty-21-07",
+      "type": "inference",
+      "q": "Why did Joe stand close up to the horses' heads at the station?",
+      "choices": ["To hide that he was crying", "To keep the horses from running off", "To feed them some oats", "To stay warm in the wind"],
+      "answer": 0,
+      "evidence": "he stood close up to our heads to hide his tears"
+    },
+    {
+      "id": "black-beauty-21-08",
+      "type": "main-idea",
+      "q": "What is this chapter mostly about?",
+      "choices": ["The sad breaking-up of Beauty's happy home", "Beauty's first trip on a train", "John buying a new horse", "A fire at the railway station"],
+      "answer": 0,
+      "evidence": "sad changes were about to come over us"
+    }
+  ]
+}

@@ -1,0 +1,78 @@
+{
+  "book": "aesop-for-children",
+  "chapter": 14,
+  "questions": [
+    {
+      "id": "aesop-for-children-14-01",
+      "type": "character",
+      "q": "In 'The Wolf and the Ass', why did the Ass pretend to be lame?",
+      "choices": ["To trick the Wolf so he could escape", "To get out of work", "To make the farmer feel sorry for him", "Because he really had a thorn in his foot"],
+      "answer": 0,
+      "evidence": "thought of a plan to save himself. So he pretended he was lame"
+    },
+    {
+      "id": "aesop-for-children-14-02",
+      "type": "sequence",
+      "q": "In 'The Wolf and the Ass', what happened while the Wolf looked for the thorn?",
+      "choices": ["The Ass kicked him and ran away", "The Wolf found the thorn and pulled it out", "The farmer came and chased the Wolf", "The Ass fell asleep"],
+      "answer": 0,
+      "evidence": "Just then the Ass kicked out with all his might"
+    },
+    {
+      "id": "aesop-for-children-14-03",
+      "type": "main-idea",
+      "q": "What is the lesson of 'The Wolf and the Ass'?",
+      "choices": ["Stick to your trade", "Always help those who are hurt", "Thorns are dangerous", "Never eat when you are in a hurry"],
+      "answer": 0,
+      "evidence": "Stick to your trade."
+    },
+    {
+      "id": "aesop-for-children-14-04",
+      "type": "detail",
+      "q": "In 'The Monkey and the Cat', what happened each time the Cat pulled a chestnut from the fire?",
+      "choices": ["The Monkey ate it up", "She ate it herself", "She saved it for the master", "She dropped it in the cinders"],
+      "answer": 0,
+      "evidence": "As fast as she pulled the chestnuts out of the fire, the Monkey ate them up."
+    },
+    {
+      "id": "aesop-for-children-14-05",
+      "type": "main-idea",
+      "q": "What is the lesson of 'The Monkey and the Cat'?",
+      "choices": ["A flatterer wants something from you at your cost", "Chestnuts are best when roasted", "Friends should always share", "Never play near a fire"],
+      "answer": 0,
+      "evidence": "The flatterer seeks some benefit at your expense."
+    },
+    {
+      "id": "aesop-for-children-14-06",
+      "type": "detail",
+      "q": "In 'The Dogs and the Fox', what were the Dogs tearing with their teeth?",
+      "choices": ["The skin of a dead Lion", "A sleeping Lion", "A piece of meat", "An old blanket"],
+      "answer": 0,
+      "evidence": "Some Dogs found the skin of a Lion"
+    },
+    {
+      "id": "aesop-for-children-14-07",
+      "type": "detail",
+      "q": "In 'The Dogs and the Hides', how did the Dogs try to reach the hides?",
+      "choices": ["By drinking up the river", "By diving to the bottom", "By building a dam", "By asking the Tanner for help"],
+      "answer": 0,
+      "evidence": "decided that the very best thing to do was to drink up the river"
+    },
+    {
+      "id": "aesop-for-children-14-08",
+      "type": "character",
+      "q": "In 'The Rabbit, the Weasel, and the Cat', why did the Cat tell them to come close?",
+      "choices": ["So she could catch them both", "Because she really was deaf", "So she could whisper a secret", "So they could all share the house"],
+      "answer": 0,
+      "evidence": "in an instant the Cat had them both under her claws"
+    },
+    {
+      "id": "aesop-for-children-14-09",
+      "type": "detail",
+      "q": "In 'The Rabbit, the Weasel, and the Cat', how did the Weasel get into the Rabbit's house?",
+      "choices": ["The Rabbit forgot to latch the door", "He dug a new tunnel", "The Cat let him in", "The Rabbit invited him to dinner"],
+      "answer": 0,
+      "evidence": "he forgot to latch the door of his house"
+    }
+  ]
+}

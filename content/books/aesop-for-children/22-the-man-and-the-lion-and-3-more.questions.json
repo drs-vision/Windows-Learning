@@ -1,0 +1,78 @@
+{
+  "book": "aesop-for-children",
+  "chapter": 22,
+  "questions": [
+    {
+      "id": "aesop-for-children-22-01",
+      "type": "detail",
+      "q": "In 'The Man and the Lion', what did the statue in the clearing show?",
+      "choices": ["Heracles tearing the jaws of a Lion", "A Lion chasing a Man", "A Lion and a Man as friends", "A King on a throne"],
+      "answer": 0,
+      "evidence": "Heracles in the act of tearing the jaws of the Nemean Lion"
+    },
+    {
+      "id": "aesop-for-children-22-02",
+      "type": "main-idea",
+      "q": "What is the lesson of 'The Man and the Lion'?",
+      "choices": ["It depends on the point of view and who tells the story", "Men are stronger than lions", "Never travel through the forest", "Statues tell the truth"],
+      "answer": 0,
+      "evidence": "It all depends on the point of view, and who tells the story."
+    },
+    {
+      "id": "aesop-for-children-22-03",
+      "type": "character",
+      "q": "In 'The Ass and the Lap Dog', why did the Ass go into the house and act like the Dog?",
+      "choices": ["He was jealous and wanted the Master's favor", "He was hungry for dinner", "He was scared of the stable", "The servants told him to"],
+      "answer": 0,
+      "evidence": "the jealous Ass got it into his silly head"
+    },
+    {
+      "id": "aesop-for-children-22-04",
+      "type": "sequence",
+      "q": "In 'The Ass and the Lap Dog', what happened after the Ass put his feet on the Master's knees?",
+      "choices": ["The chair tipped over and they fell into broken dishes", "The Master patted him kindly", "The Dog chased him out", "The Master gave him a treat"],
+      "answer": 0,
+      "evidence": "Ass and man rolled over together in the pile of broken dishes"
+    },
+    {
+      "id": "aesop-for-children-22-05",
+      "type": "main-idea",
+      "q": "What is one lesson of 'The Ass and the Lap Dog'?",
+      "choices": ["Do not try to win favor by acting against your own nature", "Dogs are better pets than donkeys", "Always stay in your stable", "Masters love clumsy animals"],
+      "answer": 0,
+      "evidence": "Do not try to gain favor by acting in a way that is contrary to your own nature and character."
+    },
+    {
+      "id": "aesop-for-children-22-06",
+      "type": "sequence",
+      "q": "In 'The Milkmaid and Her Pail', what did the Milkmaid plan to buy with the money from her butter?",
+      "choices": ["Eggs for hatching", "A new dress", "A cow", "A new milk pail"],
+      "answer": 0,
+      "evidence": "I will buy a lot of eggs for hatching"
+    },
+    {
+      "id": "aesop-for-children-22-07",
+      "type": "detail",
+      "q": "In 'The Milkmaid and Her Pail', why did the milk spill?",
+      "choices": ["She tossed her head and the pail fell", "She tripped on a rock", "A cow bumped into her", "The pail had a hole"],
+      "answer": 0,
+      "evidence": "she tossed her head scornfully, and down fell the pail of milk"
+    },
+    {
+      "id": "aesop-for-children-22-08",
+      "type": "main-idea",
+      "q": "What is the lesson of 'The Milkmaid and Her Pail'?",
+      "choices": ["Do not count your chickens before they are hatched", "Always carry milk in your hands", "Butter sells well at market", "Wear a new dress to the fair"],
+      "answer": 0,
+      "evidence": "Do not count your chickens before they are hatched."
+    },
+    {
+      "id": "aesop-for-children-22-09",
+      "type": "inference",
+      "q": "In 'The Wolf and the Shepherd' at the end of this chapter, what bothered the Wolf?",
+      "choices": ["People would chase him for eating a lamb, but they ate one themselves", "The Shepherd did not invite him to dinner", "The lamb was burned", "The family was too loud"],
+      "answer": 0,
+      "evidence": "had they caught me at just the very thing they are doing"
+    }
+  ]
+}

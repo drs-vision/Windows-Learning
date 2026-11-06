@@ -1,0 +1,110 @@
+{
+  "book": "aesop-for-children",
+  "chapter": 32,
+  "questions": [
+    {
+      "id": "aesop-for-children-32-01",
+      "type": "detail",
+      "q": "In 'The Mole and His Mother', what did the little Mole think the frankincense was?",
+      "choices": [
+        "A pebble",
+        "A piece of bread",
+        "A flower",
+        "A worm"
+      ],
+      "answer": 0,
+      "evidence": "Why, that's a pebble!"
+    },
+    {
+      "id": "aesop-for-children-32-02",
+      "type": "main-idea",
+      "q": "What is the lesson of 'The Mole and His Mother'?",
+      "choices": [
+        "Boast of one thing and you will be found lacking in that and other things too",
+        "Moles can see very well",
+        "Always listen to your mother",
+        "Frankincense smells bad"
+      ],
+      "answer": 0,
+      "evidence": "Boast of one thing and you will be found lacking"
+    },
+    {
+      "id": "aesop-for-children-32-03",
+      "type": "detail",
+      "q": "In 'The North Wind and the Sun', what contest did they agree on?",
+      "choices": [
+        "Whoever could make the Traveler take off his cloak",
+        "Whoever could blow down a tree",
+        "Whoever could make it rain",
+        "Whoever could reach the Traveler first"
+      ],
+      "answer": 0,
+      "evidence": "he is the stronger who can strip that Traveler of his cloak"
+    },
+    {
+      "id": "aesop-for-children-32-04",
+      "type": "sequence",
+      "q": "In 'The North Wind and the Sun', what did the Traveler do when the North Wind blew harder?",
+      "choices": [
+        "Held his cloak tighter",
+        "Took off his cloak",
+        "Ran into the woods",
+        "Sat under a tree"
+      ],
+      "answer": 0,
+      "evidence": "the tighter he held it to him"
+    },
+    {
+      "id": "aesop-for-children-32-05",
+      "type": "main-idea",
+      "q": "What is the lesson of 'The North Wind and the Sun'?",
+      "choices": [
+        "Gentleness and kind persuasion win where force fails",
+        "The Wind is always strongest",
+        "Always wear a cloak",
+        "The Sun is too hot"
+      ],
+      "answer": 0,
+      "evidence": "Gentleness and kind persuasion win where force and bluster fail."
+    },
+    {
+      "id": "aesop-for-children-32-06",
+      "type": "character",
+      "q": "In 'The Hare and His Ears', why did the Hare run away even though he had no horns?",
+      "choices": [
+        "He feared the Lion would say his long ears were horns",
+        "The Cricket told him to go",
+        "He wanted a new home",
+        "The Goat chased him"
+      ],
+      "answer": 0,
+      "evidence": "He will certainly make out that my ears are horns"
+    },
+    {
+      "id": "aesop-for-children-32-07",
+      "type": "character",
+      "q": "In 'The Wolves and the Sheep', how did the Wolves trick the Sheep?",
+      "choices": [
+        "They told the Sheep to send the Dogs away so they could be friends",
+        "They dressed up as Dogs",
+        "They hid in the grass",
+        "They brought the Sheep food"
+      ],
+      "answer": 0,
+      "evidence": "Send them away and you will see what good friends we shall become."
+    },
+    {
+      "id": "aesop-for-children-32-08",
+      "type": "inference",
+      "q": "In 'The Cock and the Fox', why did the Fox say he was going to visit a sick relative?",
+      "choices": [
+        "To trick the Cock so he would not tell anyone",
+        "Because it was true",
+        "To ask the Cock for help with medicine",
+        "To make the Cock feel sad"
+      ],
+      "answer": 0,
+      "evidence": "But please do not tell anybody about it."
+    }
+  ]
+}

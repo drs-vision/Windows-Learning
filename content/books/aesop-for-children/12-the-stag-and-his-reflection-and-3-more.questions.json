@@ -1,0 +1,78 @@
+{
+  "book": "aesop-for-children",
+  "chapter": 12,
+  "questions": [
+    {
+      "id": "aesop-for-children-12-01",
+      "type": "detail",
+      "q": "In 'The Stag and His Reflection', what part of himself was the Stag ashamed of?",
+      "choices": ["His thin legs", "His antlers", "His short tail", "His brown coat"],
+      "answer": 0,
+      "evidence": "he was very much ashamed of his spindling legs"
+    },
+    {
+      "id": "aesop-for-children-12-02",
+      "type": "inference",
+      "q": "In 'The Stag and His Reflection', why did the Panther catch the Stag?",
+      "choices": ["His antlers got caught in the tree branches", "His legs were too slow", "He stopped to drink water", "He fell asleep in the forest"],
+      "answer": 0,
+      "evidence": "his wide-spreading antlers caught in the branches of the trees"
+    },
+    {
+      "id": "aesop-for-children-12-03",
+      "type": "main-idea",
+      "q": "What is the lesson of 'The Stag and His Reflection'?",
+      "choices": ["We often value pretty things and look down on useful things", "Always drink from a clear spring", "Fast runners always win", "Never go into the forest alone"],
+      "answer": 0,
+      "evidence": "We often make much of the ornamental and despise the useful."
+    },
+    {
+      "id": "aesop-for-children-12-04",
+      "type": "detail",
+      "q": "In 'The Peacock', who gave the Peacock his beautiful feathers?",
+      "choices": ["Juno", "The Eagle", "The pheasant", "The farmer"],
+      "answer": 0,
+      "evidence": "These, Juno, whose favorite he was, granted to him"
+    },
+    {
+      "id": "aesop-for-children-12-05",
+      "type": "character",
+      "q": "In 'The Peacock', what happened when the Peacock tried to fly after seeing the Eagle?",
+      "choices": ["His heavy train of feathers held him down", "He flew higher than the Eagle", "Juno took his feathers away", "He crashed into a cloud"],
+      "answer": 0,
+      "evidence": "the weight of his magnificent train held him down"
+    },
+    {
+      "id": "aesop-for-children-12-06",
+      "type": "main-idea",
+      "q": "What is the lesson of 'The Peacock'?",
+      "choices": ["Do not give up your freedom just to look fancy", "Always ask for what you want", "Eagles are the best birds", "Beautiful birds can fly the highest"],
+      "answer": 0,
+      "evidence": "Do not sacrifice your freedom for the sake of pomp and show."
+    },
+    {
+      "id": "aesop-for-children-12-07",
+      "type": "detail",
+      "q": "In 'The Mice and the Weasels', why could the Mouse leaders not escape into their holes?",
+      "choices": ["Their tall head-dresses would not fit through", "They were too fat from eating", "The Weasels blocked the holes", "They forgot where the holes were"],
+      "answer": 0,
+      "evidence": "the Mouse leaders could not squeeze through the narrow openings because of their head-dresses"
+    },
+    {
+      "id": "aesop-for-children-12-08",
+      "type": "character",
+      "q": "In 'The Wolf and the Lean Dog', why did the Dog tell the Wolf to wait a few days before eating him?",
+      "choices": ["He said he would be fat after his master's wedding feast", "He said he was sick", "He said he had puppies to feed", "He said his master would bring the Wolf meat"],
+      "answer": 0,
+      "evidence": "You can guess how fine and fat I will grow on the scraps from the table"
+    },
+    {
+      "id": "aesop-for-children-12-09",
+      "type": "inference",
+      "q": "In 'The Wolf and the Lean Dog', who was the 'porter' the Dog said would open the door?",
+      "choices": ["A huge Dog that did not like wolves", "The master's daughter", "A kind old man", "The Wolf's friend"],
+      "answer": 0,
+      "evidence": "the \"porter\" was a huge Dog"
+    }
+  ]
+}

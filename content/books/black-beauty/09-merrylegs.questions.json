@@ -1,0 +1,110 @@
+{
+  "book": "black-beauty",
+  "chapter": 9,
+  "questions": [
+    {
+      "id": "black-beauty-09-01",
+      "type": "detail",
+      "q": "Who were the children who came to play and ride Merrylegs?",
+      "choices": [
+        "The vicar Mr. Blomefield's children",
+        "The squire's nephews",
+        "Children from London",
+        "John Manly's children"
+      ],
+      "answer": 0,
+      "evidence": "Mr. Blomefield, the vicar, had a large family of boys and girls"
+    },
+    {
+      "id": "black-beauty-09-02",
+      "type": "detail",
+      "q": "What did Merrylegs do to the boys who rode him too long?",
+      "choices": [
+        "He pitched them off backward",
+        "He bit them",
+        "He kicked them",
+        "He ran home without them"
+      ],
+      "answer": 0,
+      "evidence": "I just pitched them off backward"
+    },
+    {
+      "id": "black-beauty-09-03",
+      "type": "character",
+      "q": "How did Merrylegs treat the little children who were frightened on his back?",
+      "choices": [
+        "He went smooth and quiet until they were all right",
+        "He galloped faster to make them brave",
+        "He refused to let them ride",
+        "He threw them off gently"
+      ],
+      "answer": 0,
+      "evidence": "I go as smooth and as quiet as old pussy when she is after a bird"
+    },
+    {
+      "id": "black-beauty-09-04",
+      "type": "detail",
+      "q": "What did the boys use as riding-whips?",
+      "choices": [
+        "Hazel sticks they had cut",
+        "Their belts",
+        "James's whip",
+        "Long pieces of rope"
+      ],
+      "answer": 0,
+      "evidence": "They had each cut a great hazel stick for a riding-whip"
+    },
+    {
+      "id": "black-beauty-09-05",
+      "type": "inference",
+      "q": "What did Merrylegs mean when he said boys think a pony is like a steam-engine?",
+      "choices": [
+        "They think a pony never gets tired and has no feelings",
+        "They think a pony is very fast",
+        "They think a pony makes loud noises",
+        "They think a pony is made of metal"
+      ],
+      "answer": 0,
+      "evidence": "they never think that a pony can get tired, or have any feelings"
+    },
+    {
+      "id": "black-beauty-09-06",
+      "type": "sequence",
+      "q": "What did Merrylegs do before he finally made the boys slip off?",
+      "choices": [
+        "He stopped two or three times as a hint",
+        "He bit the boy's foot",
+        "He ran into the stable",
+        "He lay down in the grass"
+      ],
+      "answer": 0,
+      "evidence": "I stopped two or three times by way of a hint"
+    },
+    {
+      "id": "black-beauty-09-07",
+      "type": "character",
+      "q": "Why did Merrylegs refuse to kick the boys as Ginger said she would have done?",
+      "choices": [
+        "He did not want to anger the master or make James ashamed",
+        "He was too old and weak to kick",
+        "He was afraid of the boys",
+        "He did not know how to kick"
+      ],
+      "answer": 0,
+      "evidence": "as to anger our master or make James ashamed of me"
+    },
+    {
+      "id": "black-beauty-09-08",
+      "type": "main-idea",
+      "q": "What did Merrylegs mean by \"good places make good horses\"?",
+      "choices": [
+        "Horses that are treated kindly become good and trustworthy",
+        "Horses need big fields to grow strong",
+        "Only expensive stables are good",
+        "Horses should never be ridden by children"
+      ],
+      "answer": 0,
+      "evidence": "good places make good horses"
+    }
+  ]
+}

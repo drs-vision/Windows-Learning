@@ -1,0 +1,136 @@
+{
+  "book": "black-beauty",
+  "chapter": 12,
+  "questions": [
+    {
+      "id": "black-beauty-12-01",
+      "type": "detail",
+      "q": "What was Black Beauty pulling on the long business journey?",
+      "choices": [
+        "The dog-cart",
+        "The heavy carriage",
+        "A farm wagon",
+        "A hearse"
+      ],
+      "answer": 0,
+      "evidence": "I was put into the dog-cart"
+    },
+    {
+      "id": "black-beauty-12-02",
+      "type": "detail",
+      "q": "What did the man at the toll-gate say in the morning?",
+      "choices": [
+        "The river was rising fast",
+        "The bridge was broken",
+        "The road was closed",
+        "A tree had fallen"
+      ],
+      "answer": 0,
+      "evidence": "the river was rising fast"
+    },
+    {
+      "id": "black-beauty-12-03",
+      "type": "sequence",
+      "q": "What happened as they drove past the wood on the way home?",
+      "choices": [
+        "An oak tree crashed down across the road just before them",
+        "A wheel came off the dog-cart",
+        "Black Beauty lost a shoe",
+        "They met James on Justice"
+      ],
+      "answer": 0,
+      "evidence": "came an oak, torn up by the roots, and it fell right across the road just before us"
+    },
+    {
+      "id": "black-beauty-12-04",
+      "type": "character",
+      "q": "How did Black Beauty act when the tree fell?",
+      "choices": [
+        "He was frightened and stopped still, but did not run away",
+        "He bolted back to town",
+        "He jumped over the tree",
+        "He was not frightened at all"
+      ],
+      "answer": 0,
+      "evidence": "I stopped still, and I believe I trembled"
+    },
+    {
+      "id": "black-beauty-12-05",
+      "type": "detail",
+      "q": "Why did they have to go back to the four crossways?",
+      "choices": [
+        "They could not drive over or around the fallen tree",
+        "The master forgot something in town",
+        "John wanted a shorter road",
+        "The horse was too tired"
+      ],
+      "answer": 0,
+      "evidence": "we can't drive over that tree, nor yet get round it"
+    },
+    {
+      "id": "black-beauty-12-06",
+      "type": "sequence",
+      "q": "What did Black Beauty do the moment his feet touched the bridge?",
+      "choices": [
+        "He made a dead stop and would not go forward",
+        "He galloped across",
+        "He turned and ran",
+        "He lay down"
+      ],
+      "answer": 0,
+      "evidence": "I made a dead stop"
+    },
+    {
+      "id": "black-beauty-12-07",
+      "type": "inference",
+      "q": "Why did Black Beauty refuse to cross the bridge even when the master used the whip?",
+      "choices": [
+        "He knew the bridge was not safe",
+        "He was afraid of the dark",
+        "He was too tired",
+        "He wanted to go home another way"
+      ],
+      "answer": 0,
+      "evidence": "I knew very well that the bridge was not safe"
+    },
+    {
+      "id": "black-beauty-12-08",
+      "type": "detail",
+      "q": "What did the toll-gate man shout to warn them?",
+      "choices": [
+        "The bridge was broken in the middle",
+        "The river was full of fish",
+        "The road ahead was flooded",
+        "A tree had fallen on his house"
+      ],
+      "answer": 0,
+      "evidence": "The bridge is broken in the middle"
+    },
+    {
+      "id": "black-beauty-12-09",
+      "type": "main-idea",
+      "q": "What did the master say God had given animals that saved them that night?",
+      "choices": [
+        "Knowledge that does not depend on reason",
+        "Strong legs for running",
+        "Good eyesight in the day",
+        "Loud voices to warn people"
+      ],
+      "answer": 0,
+      "evidence": "he had given animals knowledge which did not depend on reason"
+    },
+    {
+      "id": "black-beauty-12-10",
+      "type": "character",
+      "q": "How had the mistress felt while waiting for them at home?",
+      "choices": [
+        "Very anxious, fearing an accident",
+        "Happy and calm",
+        "Angry that they were late",
+        "She had not noticed they were gone"
+      ],
+      "answer": 0,
+      "evidence": "I have been so anxious, fancying all sorts of things"
+    }
+  ]
+}

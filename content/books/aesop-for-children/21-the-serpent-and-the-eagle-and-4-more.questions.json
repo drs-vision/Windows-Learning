@@ -1,0 +1,78 @@
+{
+  "book": "aesop-for-children",
+  "chapter": 21,
+  "questions": [
+    {
+      "id": "aesop-for-children-21-01",
+      "type": "detail",
+      "q": "In 'The Serpent and the Eagle', what did the Serpent do when he could not bite the Countryman?",
+      "choices": ["Put poison into the Countryman's drinking horn", "Wrapped around the Countryman's neck", "Hid in the Countryman's bag", "Chased the Eagle away"],
+      "answer": 0,
+      "evidence": "he struck at the drinking horn"
+    },
+    {
+      "id": "aesop-for-children-21-02",
+      "type": "character",
+      "q": "In 'The Serpent and the Eagle', why did the Eagle take the horn from the Countryman?",
+      "choices": ["To save him from drinking the poison", "Because the Eagle was thirsty", "To play a trick on him", "Because the horn was shiny"],
+      "answer": 0,
+      "evidence": "the Eagle seized the poisoned horn from out his savior's hands"
+    },
+    {
+      "id": "aesop-for-children-21-03",
+      "type": "main-idea",
+      "q": "What is the lesson of 'The Serpent and the Eagle'?",
+      "choices": ["An act of kindness is well repaid", "Never drink from a spring", "Eagles are stronger than serpents", "Stay away from snakes"],
+      "answer": 0,
+      "evidence": "An act of kindness is well repaid."
+    },
+    {
+      "id": "aesop-for-children-21-04",
+      "type": "sequence",
+      "q": "In 'The Wolf in Sheep's Clothing', what happened to the Wolf in the end?",
+      "choices": ["The Shepherd killed him, thinking he was a sheep", "He ran away with the Lamb", "He took off the skin and escaped", "The other Sheep chased him away"],
+      "answer": 0,
+      "evidence": "the first he laid hands on and killed was the Wolf"
+    },
+    {
+      "id": "aesop-for-children-21-05",
+      "type": "character",
+      "q": "In 'The Bull and the Goat', why did the Bull let the Goat butt him?",
+      "choices": ["The Lion was still outside the cave", "He was afraid of the Goat", "He liked the Goat", "He was too tired to fight"],
+      "answer": 0,
+      "evidence": "As the Lion was still prowling outside the entrance to the cave"
+    },
+    {
+      "id": "aesop-for-children-21-06",
+      "type": "character",
+      "q": "In 'The Eagle and the Beetle', why did the Beetle roll the Eagle's eggs out of the nest?",
+      "choices": ["The Eagle would not spare the Hare and knocked the Beetle away", "The Beetle was hungry", "Jupiter told her to", "The Eagle ate the Beetle's family"],
+      "answer": 0,
+      "evidence": "Furious at the disrespect shown her"
+    },
+    {
+      "id": "aesop-for-children-21-07",
+      "type": "main-idea",
+      "q": "What is the lesson of 'The Eagle and the Beetle'?",
+      "choices": ["Even the weakest may find a way to make up for a wrong", "Eagles should build nests on mountains", "Jupiter protects all birds", "Beetles sleep all winter"],
+      "answer": 0,
+      "evidence": "Even the weakest may find means to avenge a wrong."
+    },
+    {
+      "id": "aesop-for-children-21-08",
+      "type": "inference",
+      "q": "In 'The Old Lion and the Fox', why did the Fox stay outside the cave?",
+      "choices": ["He saw footprints going in but none coming out", "He was afraid of the dark", "He did not like the Lion", "The cave was too small"],
+      "answer": 0,
+      "evidence": "there are many footprints leading into your cave and none coming out"
+    },
+    {
+      "id": "aesop-for-children-21-09",
+      "type": "main-idea",
+      "q": "What is the lesson of 'The Old Lion and the Fox'?",
+      "choices": ["Take warning from the misfortunes of others", "Always visit friends who are sick", "Old lions are not dangerous", "Never go into a cave"],
+      "answer": 0,
+      "evidence": "Take warning from the misfortunes of others."
+    }
+  ]
+}

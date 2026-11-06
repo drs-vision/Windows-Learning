@@ -1,0 +1,70 @@
+{
+  "book": "aesop-for-children",
+  "chapter": 9,
+  "questions": [
+    {
+      "id": "aesop-for-children-09-01",
+      "type": "character",
+      "q": "In 'The Ass and the Load of Salt', why did the Ass fall in the river on purpose the second time?",
+      "choices": ["He remembered that the salt melted and his load got lighter", "He was very thirsty", "He wanted a bath", "He slipped on a rock"],
+      "answer": 0,
+      "evidence": "remembering what had happened at the ford, purposely let himself fall into the water"
+    },
+    {
+      "id": "aesop-for-children-09-02",
+      "type": "inference",
+      "q": "In 'The Ass and the Load of Salt', why was the load of sponges so much heavier after the Ass fell?",
+      "choices": ["The sponges soaked up the water", "The Merchant added more sponges", "The sponges turned into salt", "The Ass was too tired to carry them"],
+      "answer": 0,
+      "evidence": "a load ten times heavier than before"
+    },
+    {
+      "id": "aesop-for-children-09-03",
+      "type": "detail",
+      "q": "In 'The Lion and the Gnat', how did the Lion get hurt?",
+      "choices": ["He tore himself with his own claws trying to hit the Gnat", "The Gnat bit his tail", "He fell into a spider's web", "Another lion attacked him"],
+      "answer": 0,
+      "evidence": "only succeeded in tearing himself with his claws"
+    },
+    {
+      "id": "aesop-for-children-09-04",
+      "type": "sequence",
+      "q": "In 'The Lion and the Gnat', what happened to the Gnat after he beat the Lion?",
+      "choices": ["He flew into a spider's web", "He became the new king", "He went home to rest", "The Lion caught him"],
+      "answer": 0,
+      "evidence": "he flew straight into a spider's web"
+    },
+    {
+      "id": "aesop-for-children-09-05",
+      "type": "main-idea",
+      "q": "What is the lesson of 'The Leap at Rhodes'?",
+      "choices": ["Deeds count, not boasting words", "Travel to foreign lands", "Always bring witnesses", "Practice jumping every day"],
+      "answer": 0,
+      "evidence": "Deeds count, not boasting words."
+    },
+    {
+      "id": "aesop-for-children-09-06",
+      "type": "character",
+      "q": "In 'The Cock and the Jewel', what did the Cock say he would rather have than the jewel?",
+      "choices": ["A single grain of barleycorn", "A bigger jewel", "A new nest", "A drink of water"],
+      "answer": 0,
+      "evidence": "I would choose a single grain of barleycorn before all the jewels in the world"
+    },
+    {
+      "id": "aesop-for-children-09-07",
+      "type": "character",
+      "q": "In 'The Monkey and the Camel', why did the Camel start to dance?",
+      "choices": ["He was envious of the praise the Monkey got", "King Lion asked him to", "The Monkey dared him", "He wanted to scare the animals"],
+      "answer": 0,
+      "evidence": "The praise that was showered on the Monkey made the Camel envious."
+    },
+    {
+      "id": "aesop-for-children-09-08",
+      "type": "main-idea",
+      "q": "What is the lesson of 'The Monkey and the Camel'?",
+      "choices": ["Do not try to ape your betters", "Dancing is good for everyone", "Camels are good dancers", "Always obey the king"],
+      "answer": 0,
+      "evidence": "Do not try to ape your betters."
+    }
+  ]
+}

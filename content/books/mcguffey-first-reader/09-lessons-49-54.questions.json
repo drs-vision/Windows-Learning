@@ -1,0 +1,110 @@
+{
+  "book": "mcguffey-first-reader",
+  "chapter": 9,
+  "questions": [
+    {
+      "id": "mcguffey-first-reader-09-01",
+      "type": "detail",
+      "q": "Who does Henry draw on his sled?",
+      "choices": [
+        "His little sister",
+        "His dog",
+        "His father",
+        "A doll"
+      ],
+      "answer": 0,
+      "evidence": "draws his little sister"
+    },
+    {
+      "id": "mcguffey-first-reader-09-02",
+      "type": "inference",
+      "q": "How can you tell the boy who fell is not hurt?",
+      "choices": [
+        "He is laughing",
+        "He is crying",
+        "He is running home",
+        "He is asleep"
+      ],
+      "answer": 0,
+      "evidence": "he is not hurt, for he is laughing"
+    },
+    {
+      "id": "mcguffey-first-reader-09-03",
+      "type": "detail",
+      "q": "What does Fido have on when he sits in the chair?",
+      "choices": [
+        "A hat",
+        "Glasses",
+        "A bonnet",
+        "Skates"
+      ],
+      "answer": 0,
+      "evidence": "He sits up in a chair, with my hat on."
+    },
+    {
+      "id": "mcguffey-first-reader-09-04",
+      "type": "detail",
+      "q": "What does Fido say?",
+      "choices": [
+        "Bowwow",
+        "Peep, peep",
+        "Poor Poll",
+        "Ding, ding"
+      ],
+      "answer": 0,
+      "evidence": "Bowwow"
+    },
+    {
+      "id": "mcguffey-first-reader-09-05",
+      "type": "detail",
+      "q": "Who caught the rat?",
+      "choices": [
+        "The old cat",
+        "Nero",
+        "Frank",
+        "Hattie"
+      ],
+      "answer": 0,
+      "evidence": "Nero did not; but the old cat did."
+    },
+    {
+      "id": "mcguffey-first-reader-09-06",
+      "type": "detail",
+      "q": "Where was puss hid?",
+      "choices": [
+        "On a big box",
+        "Under a bed",
+        "In a basket",
+        "Up a tree"
+      ],
+      "answer": 0,
+      "evidence": "Puss was hid on a big box."
+    },
+    {
+      "id": "mcguffey-first-reader-09-07",
+      "type": "detail",
+      "q": "What does grandpa like to watch?",
+      "choices": [
+        "The big ships",
+        "The birds",
+        "The horses",
+        "The train"
+      ],
+      "answer": 0,
+      "evidence": "watch the big ships"
+    },
+    {
+      "id": "mcguffey-first-reader-09-08",
+      "type": "detail",
+      "q": "How many rabbits did Willie's father buy?",
+      "choices": [
+        "Four",
+        "Two",
+        "Three",
+        "Eight"
+      ],
+      "answer": 0,
+      "evidence": "four little white rabbits"
+    }
+  ]
+}

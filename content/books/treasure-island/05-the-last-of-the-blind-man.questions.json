@@ -1,0 +1,110 @@
+{
+  "book": "treasure-island",
+  "chapter": 5,
+  "questions": [
+    {
+      "id": "treasure-island-05-01",
+      "type": "character",
+      "q": "Why did Jim creep back up the bank instead of staying hidden under the bridge?",
+      "choices": ["His curiosity was stronger than his fear", "He wanted to fight the pirates", "He needed to fetch the pistol", "His mother told him to go"],
+      "answer": 0,
+      "evidence": "My curiosity, in a sense, was stronger than my fear"
+    },
+    {
+      "id": "treasure-island-05-02",
+      "type": "detail",
+      "q": "Who was giving orders to the pirates who rushed the inn?",
+      "choices": ["The blind beggar", "Black Dog", "The man with the lantern", "Dirk"],
+      "answer": 0,
+      "evidence": "the middle man of this trio was the blind beggar"
+    },
+    {
+      "id": "treasure-island-05-03",
+      "type": "detail",
+      "q": "What was the blind man's name?",
+      "choices": ["Pew", "Dirk", "Johnny", "Dance"],
+      "answer": 0,
+      "evidence": "\"Pew,\" he cried, \"they've been before us."
+    },
+    {
+      "id": "treasure-island-05-04",
+      "type": "inference",
+      "q": "When Pew asks for \"Flint's fist,\" what is he really looking for?",
+      "choices": ["Something written by Flint, not the money", "Flint's severed hand", "A gold ring Flint wore", "Flint's old cutlass"],
+      "answer": 0,
+      "evidence": "The blind man cursed the money."
+    },
+    {
+      "id": "treasure-island-05-05",
+      "type": "character",
+      "q": "Whom did Pew blame when the pirates could not find what they wanted?",
+      "choices": ["The people of the inn, especially the boy", "Black Dog", "Dirk", "The revenue officers"],
+      "answer": 0,
+      "evidence": "It's these people of the inn--it's that boy."
+    },
+    {
+      "id": "treasure-island-05-06",
+      "type": "detail",
+      "q": "What did the whistle from the hillside turn out to be?",
+      "choices": ["A signal warning the pirates of approaching danger", "Pew calling his crew to attack", "A shepherd calling his dog", "The lugger signalling from the sea"],
+      "answer": 0,
+      "evidence": "a signal to warn them of approaching danger"
+    },
+    {
+      "id": "treasure-island-05-07",
+      "type": "vocabulary",
+      "q": "Two pirates searched \"half-heartedly\" while the rest stood \"irresolute on the road.\" What does \"irresolute\" mean?",
+      "choices": ["Unsure what to do", "Very angry", "Ready to fight", "Badly hurt"],
+      "answer": 0,
+      "evidence": "the rest stood irresolute on the road"
+    },
+    {
+      "id": "treasure-island-05-08",
+      "type": "sequence",
+      "q": "What did Pew do when his men argued that they already had the money?",
+      "choices": ["Struck at them with his stick", "Gave up and walked home", "Offered them all a share", "Ran into the inn himself"],
+      "answer": 0,
+      "evidence": "he struck at them right and left in his blindness"
+    },
+    {
+      "id": "treasure-island-05-09",
+      "type": "character",
+      "q": "What happened to Pew when the horses and pistol-shot frightened the pirates away?",
+      "choices": ["His comrades deserted him", "His comrades carried him off", "He hid in the inn", "He escaped on the lugger"],
+      "answer": 0,
+      "evidence": "Him they had deserted"
+    },
+    {
+      "id": "treasure-island-05-10",
+      "type": "detail",
+      "q": "How did Pew die?",
+      "choices": ["He ran under a galloping horse and was trampled", "He was shot by a revenue officer", "He fell off the cliff", "He drowned in the cove"],
+      "answer": 0,
+      "evidence": "the four hoofs trampled and spurned him and passed by"
+    },
+    {
+      "id": "treasure-island-05-11",
+      "type": "detail",
+      "q": "Who were most of the riders who arrived?",
+      "choices": ["Revenue officers", "Pirates from the lugger", "Farmers from the hamlet", "Dr. Livesey's servants"],
+      "answer": 0,
+      "evidence": "the rest were revenue officers"
+    },
+    {
+      "id": "treasure-island-05-12",
+      "type": "sequence",
+      "q": "What happened when Supervisor Dance reached Kitt's Hole?",
+      "choices": ["The lugger was already sailing away and someone shot at him", "He captured the lugger and its crew", "He found the captain's money", "He found the pirates asleep on the beach"],
+      "answer": 0,
+      "evidence": "a bullet whistled close by his arm"
+    },
+    {
+      "id": "treasure-island-05-13",
+      "type": "inference",
+      "q": "Why did Jim want to take the packet to Dr. Livesey?",
+      "choices": ["He believed it was what the pirates wanted and wanted it kept safe", "He wanted to sell it to the doctor", "The doctor had asked for it earlier", "He thought it was medicine for his mother"],
+      "answer": 0,
+      "evidence": "I believe I have the thing in my breast pocket"
+    }
+  ]
+}
