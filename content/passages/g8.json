@@ -1,0 +1,830 @@
+{
+  "about": "Reading Quest paragraphs, grade 8 and up",
+  "passages": [
+    {
+      "id": "burgess-birds-ready-to-travel",
+      "title": "Birds Get Ready to Travel",
+      "kind": "facts",
+      "topic": "animals",
+      "text": "As autumn drew near Peter discovered that his friends were gathering in flocks, roaming here and there. It was one of the first signs that summer was nearly over, and it gave him just a little feeling of sadness. He heard few songs now, for the singing season was over. Also he discovered that many of the most beautifully dressed of his feathered friends had changed their finery for sober traveling suits in preparation for the long journey to the far South where they would spend the winter. In fact he actually failed to recognize some of them at first.",
+      "source": {
+        "name": "The Burgess Bird Book for Children (Thornton W. Burgess, 1919)",
+        "url": "https://www.gutenberg.org/ebooks/3074",
+        "license": "Public domain",
+        "author": "Thornton W. Burgess",
+        "note": "Paragraph from the book."
+      },
+      "question": {
+        "type": "vocabulary",
+        "q": "In this paragraph, \"sober traveling suits\" are most likely...",
+        "choices": [
+          "warm coats of thick fur",
+          "bags packed for a trip",
+          "bright new spring colors",
+          "plainer, duller feathers"
+        ],
+        "answer": 3,
+        "evidence": "changed their finery for sober traveling suits",
+        "explain": "The birds traded their bright \"finery\" for plain feathers, so Peter did not know them at first."
+      },
+      "readability": {
+        "grade": 9.2,
+        "fk": 8.6,
+        "cli": 9.2,
+        "ari": 9.8
+      }
+    },
+    {
+      "id": "baldwin-fitzwarrens-ship",
+      "title": "Mr. Fitzwarren's Ship",
+      "kind": "story",
+      "topic": "people",
+      "text": "Some time after that, a ship that belonged to Mr. Fitzwarren was about to start on a voyage across the sea. It was loaded with goods which were to be sold in lands far away. Mr. Fitzwarren wanted to give his servants a chance for good fortune too, and so he called all of them into the parlor, and asked if they had anything they would like to send out in the ship for trade.",
+      "source": {
+        "name": "Fifty Famous Stories Retold (James Baldwin, 1896)",
+        "url": "https://www.gutenberg.org/ebooks/18442",
+        "license": "Public domain",
+        "author": "James Baldwin",
+        "note": "Paragraph from the book."
+      },
+      "question": {
+        "type": "vocabulary",
+        "q": "In this paragraph, a \"voyage\" is...",
+        "choices": [
+          "a heavy load of goods",
+          "a sale in a far market",
+          "a long trip by sea",
+          "a crew of sailors"
+        ],
+        "answer": 2,
+        "evidence": "was about to start on a voyage across the sea",
+        "explain": "The ship was starting on a voyage across the sea, so a voyage is a long journey by water."
+      },
+      "readability": {
+        "grade": 8,
+        "fk": 8.5,
+        "cli": 6,
+        "ari": 9.5
+      }
+    },
+    {
+      "id": "burgess-chucks-home-between-roots",
+      "title": "A Safe Home Between the Roots",
+      "kind": "story",
+      "topic": "animals",
+      "text": "Johnny and Polly Chuck had made their home between the roots of an old apple-tree in the far corner of the Old Orchard. You know they have their bedroom way down in the ground, and it is reached by a long hall. They had dug their home between the roots of that old apple-tree because they had discovered that there was just room enough between those spreading roots for them to pass in and out, and there wasn't room to dig the entrance any larger. So they felt quite safe from Reddy Fox; and Bowser the Hound, either of whom would have delighted to dig them out but for those roots.",
+      "source": {
+        "name": "The Burgess Bird Book for Children (Thornton W. Burgess, 1919)",
+        "url": "https://www.gutenberg.org/ebooks/3074",
+        "license": "Public domain",
+        "author": "Thornton W. Burgess",
+        "note": "Paragraph from the book."
+      },
+      "question": {
+        "type": "cause-effect",
+        "q": "Why did Johnny and Polly Chuck feel safe in their home?",
+        "choices": [
+          "The roots kept the doorway too small to dig larger",
+          "Farmer Brown's dog Bowser guarded the orchard",
+          "Their bedroom was high up in the apple tree",
+          "Reddy Fox never came near the far corner of the orchard"
+        ],
+        "answer": 0,
+        "evidence": "there wasn't room to dig the entrance any larger",
+        "explain": "The roots made the doorway too small for Reddy Fox or Bowser to dig them out."
+      },
+      "readability": {
+        "grade": 9.7,
+        "fk": 9.5,
+        "cli": 7.6,
+        "ari": 12
+      }
+    },
+    {
+      "id": "asp-searching-for-the-spirit-of-spring",
+      "title": "Searching for the spirit of Spring",
+      "kind": "story",
+      "topic": "seasons",
+      "text": "The Winter cold had passed. Spring was coming to Nkanyezi's village. Soon the villagers would gather to celebrate the new season. Nkanyezi looked forward to the Spring festival more than any other day in the year. One warm morning, Nkanyezi overheard two village elders talking about the festival. \"The people of Ndlovu have lost their spirit of celebration,\" one sighed. \"How can we have a Spring festival in a village that has forgotten how to celebrate?\" asked another.",
+      "source": {
+        "name": "African Storybook",
+        "url": "https://github.com/global-asp/asp-source/blob/master/en/0203_searching-spirit-spring.md",
+        "license": "CC BY 4.0",
+        "author": "Mosa Mahlaba",
+        "note": "Excerpt (pages 1-2); spacing fixed."
+      },
+      "question": {
+        "type": "detail",
+        "q": "What problem do the elders talk about?",
+        "choices": [
+          "The winter cold will not go away this year",
+          "The people have forgotten how to celebrate",
+          "Nkanyezi does not want to go to the festival",
+          "There is not enough food for the festival"
+        ],
+        "answer": 1,
+        "evidence": "a village that has forgotten how to celebrate",
+        "explain": "The elders say the people have lost their spirit of celebration."
+      },
+      "readability": {
+        "grade": 7.6,
+        "fk": 6.5,
+        "cli": 9.8,
+        "ari": 6.4
+      }
+    },
+    {
+      "id": "burgess-pocket-mice",
+      "title": "Pocket Mice",
+      "kind": "facts",
+      "topic": "animals",
+      "text": "\"In habits all the Pocket Mice are much alike. They make burrows in the ground, often throwing up a little mound with several entrances which lead to a central passageway connecting with the bedroom and storerooms. By day the entrances are closed with earth from inside, for the Mice are active only at night. Sometimes the burrows are hidden under bushes, and sometimes they are right out in the open. Living as they do in a hot, dry country, the Pocket Mice have learned to get along without drinking water. Their food consists mainly of a variety of small seeds.",
+      "source": {
+        "name": "The Burgess Animal Book for Children (Thornton W. Burgess, 1920)",
+        "url": "https://www.gutenberg.org/ebooks/2441",
+        "license": "Public domain",
+        "author": "Thornton W. Burgess",
+        "note": "Paragraph from the book."
+      },
+      "question": {
+        "type": "detail",
+        "q": "How do Pocket Mice get along in their hot, dry country?",
+        "choices": [
+          "They sleep underground all summer",
+          "They store water in their underground rooms",
+          "They manage to live without drinking water",
+          "They only come out in the coolest part of day"
+        ],
+        "answer": 2,
+        "evidence": "the Pocket Mice have learned to get along without drinking water",
+        "explain": "The paragraph says they have learned to get along without drinking water."
+      },
+      "readability": {
+        "grade": 8.4,
+        "fk": 7.7,
+        "cli": 9.1,
+        "ari": 8.3
+      }
+    },
+    {
+      "id": "vanloon-fight-or-die",
+      "title": "A Time to Fight or Die",
+      "kind": "facts",
+      "topic": "history",
+      "text": "The peace of Rome was a thing of the remote past, a dream of the \"Good Old Days\" that were gone for ever. It was a question of \"fight or die,\" and quite naturally people preferred to fight. Forced by circumstances, Europe became an armed camp and there was a demand for strong leadership. Both King and Emperor were far away. The frontiersmen (and most of Europe in the year 1000 was \"frontier\") must help themselves. They willingly submitted to the representatives of the king who were sent to administer the outlying districts, PROVIDED THEY COULD PROTECT THEM AGAINST THEIR ENEMIES.",
+      "source": {
+        "name": "The Story of Mankind (Hendrik Willem van Loon, 1921)",
+        "url": "https://www.gutenberg.org/ebooks/754",
+        "license": "Public domain",
+        "author": "Hendrik Willem van Loon",
+        "note": "Paragraph from the book."
+      },
+      "question": {
+        "type": "cause-effect",
+        "q": "Why were people willing to obey the king's representatives?",
+        "choices": [
+          "They paid the people well for their work",
+          "They promised to bring back the old Roman peace",
+          "They promised to protect them from enemies",
+          "They lived close to the king and emperor"
+        ],
+        "answer": 2,
+        "evidence": "PROVIDED THEY COULD PROTECT THEM AGAINST THEIR ENEMIES",
+        "explain": "People had to fight or die, so they obeyed anyone who could protect them."
+      },
+      "readability": {
+        "grade": 8.6,
+        "fk": 7.4,
+        "cli": 9.6,
+        "ari": 8.7
+      }
+    },
+    {
+      "id": "burgess-mr-beaver-builds-a-dam",
+      "title": "Mr. Beaver's Dam",
+      "kind": "story",
+      "topic": "animals",
+      "text": "\"So Mr. Beaver built a dam at just the right place, while all the other little people laughed at him and made fun of him for working so hard. Just as he had thought it would do, the dam made a pond, and the pond grew bigger and bigger, until it reached the very place where his food trees grew. Mr. Beaver built him a big, comfortable house out in the pond, and then he went to work as hard as ever he could to cut down trees and then cut them up into the right sized pieces to store away in his big food pile for the winter.",
+      "source": {
+        "name": "Mother West Wind 'Why' Stories (Thornton W. Burgess, 1915)",
+        "url": "https://www.gutenberg.org/ebooks/14958",
+        "license": "Public domain",
+        "author": "Thornton W. Burgess",
+        "note": "Paragraph from the book."
+      },
+      "question": {
+        "type": "sequence",
+        "q": "What happened right after Mr. Beaver built his dam?",
+        "choices": [
+          "He built a big house out in the pond",
+          "The dam made a pond that kept growing",
+          "The other animals came to help him",
+          "He cut down trees for his winter food"
+        ],
+        "answer": 1,
+        "evidence": "the dam made a pond, and the pond grew bigger and bigger",
+        "explain": "First the dam made a growing pond; then he built his house and cut his food trees."
+      },
+      "readability": {
+        "grade": 10.6,
+        "fk": 12.4,
+        "cli": 5.2,
+        "ari": 14.2
+      }
+    },
+    {
+      "id": "fabre-the-earth-turns",
+      "title": "The Earth Turns",
+      "kind": "facts",
+      "topic": "space",
+      "text": "\"Then it is the earth that turns, and we turn with it,\" Claire again interposed. \"In consequence of this movement the sun and stars seem to us to move in the opposite direction, like trees and houses when we are on the train. Since the sun seems to go around the earth from east to west in twenty-four hours, it is a proof that the earth turns on its axis from west to east in twenty-four hours.\"",
+      "source": {
+        "name": "The Story-Book of Science (Jean-Henri Fabre, 1917)",
+        "url": "https://www.gutenberg.org/ebooks/56795",
+        "license": "Public domain",
+        "author": "Jean-Henri Fabre",
+        "note": "Paragraph from the book."
+      },
+      "question": {
+        "type": "inference",
+        "q": "Why does Claire mention trees and houses seen from a train?",
+        "choices": [
+          "to explain how fast trains can travel",
+          "to show how something still can seem to move",
+          "to prove that the earth is shaped like a ball",
+          "to describe what she saw on a trip"
+        ],
+        "answer": 1,
+        "evidence": "like trees and houses when we are on the train",
+        "explain": "From a moving train, still trees seem to move, just as the sun seems to move while the earth turns."
+      },
+      "readability": {
+        "grade": 8.5,
+        "fk": 8.8,
+        "cli": 6.5,
+        "ari": 10.2
+      }
+    },
+    {
+      "id": "burgess-mr-rabbit-puts-it-off",
+      "title": "Mr. Rabbit Puts It Off",
+      "kind": "story",
+      "topic": "animals",
+      "text": "\"Finally Mr. Rabbit had made the round of all his friends and neighbors, and he once more reached his tumble-down house. 'Oh, dear,' sighed Mr. Rabbit, as he looked at the tangle of brambles which almost hid the little old house, 'I never, never can clear away all this! It will be a lot easier to work when all my friends are here to help,' So he sighed once more and folded his arms, instead of beginning work as he should have done. And then, because the sun was bright and warm, and he was very, very comfortable, old Mr. Rabbit began to nod, and presently he was fast asleep.",
+      "source": {
+        "name": "Mother West Wind 'Why' Stories (Thornton W. Burgess, 1915)",
+        "url": "https://www.gutenberg.org/ebooks/14958",
+        "license": "Public domain",
+        "author": "Thornton W. Burgess",
+        "note": "Paragraph from the book."
+      },
+      "question": {
+        "type": "inference",
+        "q": "What does this paragraph show about Mr. Rabbit?",
+        "choices": [
+          "He works hardest when he is alone",
+          "He is too sick to clear the brambles",
+          "He puts off work he should be doing",
+          "He has no friends who will help him"
+        ],
+        "answer": 2,
+        "evidence": "instead of beginning work as he should have done",
+        "explain": "Instead of starting work, he folded his arms and fell asleep."
+      },
+      "readability": {
+        "grade": 9.4,
+        "fk": 10,
+        "cli": 6.9,
+        "ari": 11.4
+      }
+    },
+    {
+      "id": "pb-cat-in-the-ghat",
+      "title": "The Cat in the Ghat!",
+      "kind": "poem",
+      "topic": "animals",
+      "text": "Uncle Sandy didn't want to work in big offices, He wanted to take pictures of snakes, crocodiles and tortoises. So he decided to leave his family and friends behind, And took off to the jungles with freedom in mind. On his first expedition to the Western Ghats, He had his first encounter with a mysterious cat. Uncle Sandy has been on its trail ever since, Hoping to click a picture of it, for evidence.",
+      "source": {
+        "name": "Pratham Books (StoryWeaver)",
+        "url": "https://github.com/global-asp/pb-source/blob/master/en/0019_the-cat-in-the-ghat.md",
+        "license": "CC BY 4.0",
+        "author": "Ambika Rao",
+        "note": "Excerpt (page 3)."
+      },
+      "question": {
+        "type": "inference",
+        "q": "Why does Uncle Sandy want a picture of the cat?",
+        "choices": [
+          "to prove that the mysterious cat is real",
+          "to sell it to one of the big offices in town",
+          "to show his family where he lives now",
+          "to scare away the snakes and crocodiles"
+        ],
+        "answer": 0,
+        "evidence": "Hoping to click a picture of it, for evidence",
+        "explain": "He wants a picture \"for evidence,\" to show that the mysterious cat really exists."
+      },
+      "readability": {
+        "grade": 8.1,
+        "fk": 8.2,
+        "cli": 8,
+        "ari": 8.2
+      }
+    },
+    {
+      "id": "burgess-billy-mink-stops-boasting",
+      "title": "Billy Mink Stops Boasting",
+      "kind": "story",
+      "topic": "animals",
+      "text": "Once Billy Mink had boasted that he could do anything that any one else who wore fur could do, but boasters almost always come to grief, and Grandfather Frog had brought Billy to grief that time. He had invited every one to meet at the Smiling Pool and see Billy Mink do whatever any one else who wore fur could do, and then, when Billy had run and jumped and climbed and swum, Grandfather Frog had called Flitter the Bat. There was some one wearing fur who could fly, and of course Billy Mink couldn't do that. It cured Billy of boasting,--for a while, anyway.",
+      "source": {
+        "name": "Mother West Wind 'How' Stories (Thornton W. Burgess, 1916)",
+        "url": "https://www.gutenberg.org/ebooks/21286",
+        "license": "Public domain",
+        "author": "Thornton W. Burgess",
+        "note": "Paragraph from the book."
+      },
+      "question": {
+        "type": "main-idea",
+        "q": "What is the main idea of this paragraph?",
+        "choices": [
+          "Billy Mink's boasting got him into trouble",
+          "Billy Mink learned to fly from Flitter",
+          "Grandfather Frog was the best swimmer of all",
+          "Billy Mink beat everyone at the Smiling Pool"
+        ],
+        "answer": 0,
+        "evidence": "boasters almost always come to grief",
+        "explain": "Billy boasted he could do anything, but he could not fly like Flitter the Bat."
+      },
+      "readability": {
+        "grade": 9.6,
+        "fk": 9.6,
+        "cli": 7.8,
+        "ari": 11.5
+      }
+    },
+    {
+      "id": "baldwin-regulus",
+      "title": "Regulus Keeps His Word",
+      "kind": "story",
+      "topic": "history",
+      "text": "Among the Romans there was a brave general named Regulus,--a man of whom it was said that he never broke his word. It so happened after a while, that Regulus was taken prisoner and carried to Carthage. Ill and very lonely, he dreamed of his wife and little children so far away beyond the sea; and he had but little hope of ever seeing them again. He loved his home dearly, but he believed that his first duty was to his country; and so he had left all, to fight in this cruel war.",
+      "source": {
+        "name": "Fifty Famous Stories Retold (James Baldwin, 1896)",
+        "url": "https://www.gutenberg.org/ebooks/18442",
+        "license": "Public domain",
+        "author": "James Baldwin",
+        "note": "Paragraph from the book. Pronunciation hyphens removed."
+      },
+      "question": {
+        "type": "detail",
+        "q": "Why had Regulus left his home to fight?",
+        "choices": [
+          "He believed his first duty was to his country",
+          "He wanted very much to see the great city of Carthage",
+          "He had been ordered to leave by his wife",
+          "He hoped to become rich in the war"
+        ],
+        "answer": 0,
+        "evidence": "he believed that his first duty was to his country",
+        "explain": "He loved his home, but he believed his first duty was to his country."
+      },
+      "readability": {
+        "grade": 8.3,
+        "fk": 9.5,
+        "cli": 6.4,
+        "ari": 9.1
+      }
+    },
+    {
+      "id": "burgess-reddy-fox-gets-soaked",
+      "title": "Reddy Fox Gets Soaked",
+      "kind": "story",
+      "topic": "animals",
+      "text": "The water went into the eyes of Reddy Fox, and it went up his nose and he swallowed so much that he felt as if he never, never would want another drink of water. And his beautiful red coat, which old Mother Fox had told him to be very, very careful of because he couldn't have another for a whole year, was oh so wet! And his pants were wet and his beautiful bushy tail, of which he was so proud, was so full of water that he couldn't hold it up, but had to drag it up the bank after him as he crawled out of the Dear Little Pool.",
+      "source": {
+        "name": "Old Mother West Wind (Thornton W. Burgess, 1910)",
+        "url": "https://www.gutenberg.org/ebooks/2557",
+        "license": "Public domain",
+        "author": "Thornton W. Burgess",
+        "note": "Paragraph from the book."
+      },
+      "question": {
+        "type": "cause-effect",
+        "q": "Why did Reddy Fox have to drag his tail up the bank?",
+        "choices": [
+          "He had hurt it on a sharp rock",
+          "Mother Fox told him to keep it low",
+          "It was too full of water to hold up",
+          "It was caught in the weeds of the pool"
+        ],
+        "answer": 2,
+        "evidence": "was so full of water that he couldn't hold it up",
+        "explain": "His bushy tail was so full of water that he could not hold it up."
+      },
+      "readability": {
+        "grade": 11,
+        "fk": 13.7,
+        "cli": 5,
+        "ari": 14.3
+      }
+    },
+    {
+      "id": "asp-inyang-and-the-bird",
+      "title": "Inyang and the Bird",
+      "kind": "story",
+      "topic": "animals",
+      "text": "Inyang was an herds-boy. His father trusted him with the duty. He loved his only son for every evening the cows would come home with full stomachs. One day, Inyang requested his father to allow him migrate with other young men with cows in search of green pasture. This was a tradition practiced in their pastoralist community.",
+      "source": {
+        "name": "African Storybook",
+        "url": "https://github.com/global-asp/asp-source/blob/master/en/0145_inyang-and-the-bird.md",
+        "license": "CC BY 4.0",
+        "author": "Simon Ipoo",
+        "note": "Excerpt (pages 1-2), shortened; spacing fixed."
+      },
+      "question": {
+        "type": "detail",
+        "q": "What did Inyang ask his father?",
+        "choices": [
+          "to give him a larger herd of cows of his very own",
+          "to let him stay home from the cattle",
+          "to teach him how to care for the cows",
+          "to let him go with young men to find pasture"
+        ],
+        "answer": 3,
+        "evidence": "in search of green pasture",
+        "explain": "He asked to go with other young men and the cows to find green pasture."
+      },
+      "readability": {
+        "grade": 7,
+        "fk": 6,
+        "cli": 8.8,
+        "ari": 6.1
+      }
+    },
+    {
+      "id": "burgess-grandfather-frogs-pollywogs",
+      "title": "Grandfather Frog's Grandchildren",
+      "kind": "story",
+      "topic": "animals",
+      "text": "Down in the Smiling Pool were some of Grandfather Frog's great-great-great-great-great grandchildren. You wouldn't have known that they were his grandchildren unless some one told you. They didn't look the least bit like Grandfather Frog. They were round and fat and had long tails and perhaps this is why they were called Pollywogs.",
+      "source": {
+        "name": "Old Mother West Wind (Thornton W. Burgess, 1910)",
+        "url": "https://www.gutenberg.org/ebooks/2557",
+        "license": "Public domain",
+        "author": "Thornton W. Burgess",
+        "note": "Paragraph from the book."
+      },
+      "question": {
+        "type": "inference",
+        "q": "What are the Pollywogs in this paragraph?",
+        "choices": [
+          "small fish that live in the pool",
+          "baby turtles with long tails",
+          "young frogs, also called tadpoles",
+          "insects that swim near the lily pads"
+        ],
+        "answer": 2,
+        "evidence": "They were round and fat and had long tails",
+        "explain": "They are Grandfather Frog's grandchildren with round bodies and long tails, so they are young frogs, or tadpoles."
+      },
+      "readability": {
+        "grade": 8.8,
+        "fk": 5.2,
+        "cli": 11.9,
+        "ari": 9.2
+      }
+    },
+    {
+      "id": "baldwin-gautama-rides-out",
+      "title": "Gautama Rides Out",
+      "kind": "story",
+      "topic": "people",
+      "text": "The next morning, Gautama sat in his carriage and rode out from the palace into one of the streets of the city. He looked with wonder at the houses on either side, and at the faces of the children who stood in the doorways as he passed. At first he did not see anything that disturbed him; for word had gone before him to remove from sight everything that might be displeasing or painful.",
+      "source": {
+        "name": "Fifty Famous People (James Baldwin, 1912)",
+        "url": "https://www.gutenberg.org/ebooks/6168",
+        "license": "Public domain",
+        "author": "James Baldwin",
+        "note": "Paragraph from the book."
+      },
+      "question": {
+        "type": "inference",
+        "q": "Why did Gautama see nothing that disturbed him at first?",
+        "choices": [
+          "He rode by too fast to notice anything",
+          "The city had no sad or painful things at all in it",
+          "He kept his eyes closed in the carriage",
+          "Everything unpleasant had been hidden from him"
+        ],
+        "answer": 3,
+        "evidence": "word had gone before him to remove from sight everything that might be displeasing or painful",
+        "explain": "People had been told to hide anything painful before he passed."
+      },
+      "readability": {
+        "grade": 9.2,
+        "fk": 9.3,
+        "cli": 7.6,
+        "ari": 10.6
+      }
+    },
+    {
+      "id": "burgess-reddy-wishes-he-had-listened",
+      "title": "Reddy Fox Wishes He Had Listened",
+      "kind": "story",
+      "topic": "animals",
+      "text": "How Reddy did wish that he had minded Mother Fox! How safe and snug and warm was his home under the roots of the old hickory tree, and how he did wish that he was safely there! But it would never do to go there now, for that would tell Bowser where he lived, and Bowser would take Farmer Brown there, and that would be the end of Reddy Fox and of Mother Fox and of all the brother and sister foxes.",
+      "source": {
+        "name": "Mother West Wind's Children (Thornton W. Burgess, 1911)",
+        "url": "https://www.gutenberg.org/ebooks/20877",
+        "license": "Public domain",
+        "author": "Thornton W. Burgess",
+        "note": "Paragraph from the book."
+      },
+      "question": {
+        "type": "detail",
+        "q": "Why couldn't Reddy Fox run home?",
+        "choices": [
+          "Bowser would follow and find his family",
+          "His home under the tree had fallen in",
+          "Mother Fox had locked him out",
+          "He had forgotten the way back"
+        ],
+        "answer": 0,
+        "evidence": "that would tell Bowser where he lived",
+        "explain": "Going home would show Bowser where he lived and put the whole fox family in danger."
+      },
+      "readability": {
+        "grade": 8.1,
+        "fk": 9,
+        "cli": 5.3,
+        "ari": 10
+      }
+    },
+    {
+      "id": "vanloon-necker-and-the-money",
+      "title": "Necker and the French Money",
+      "kind": "facts",
+      "topic": "history",
+      "text": "Necker set to work with a fine display of zeal just as Turgot had done. In 1781 he published a careful review of the French finances. The king understood nothing of this \"Compte Rendu.\" He had just sent troops to America to help the colonists against their common enemies, the English. This expedition proved to be unexpectedly expensive and Necker was asked to find the necessary funds. When instead of producing revenue, he published more figures and made statistics and began to use the dreary warning about \"necessary economies\" his days were numbered. In the year 1781 he was dismissed as an incompetent servant.",
+      "source": {
+        "name": "The Story of Mankind (Hendrik Willem van Loon, 1921)",
+        "url": "https://www.gutenberg.org/ebooks/754",
+        "license": "Public domain",
+        "author": "Hendrik Willem van Loon",
+        "note": "Paragraph from the book."
+      },
+      "question": {
+        "type": "inference",
+        "q": "What did the king really want from Necker?",
+        "choices": [
+          "a long report full of careful numbers",
+          "a plan to send more ships to America",
+          "warnings about saving and spending less",
+          "money to pay for the costly war help"
+        ],
+        "answer": 3,
+        "evidence": "Necker was asked to find the necessary funds",
+        "explain": "The king needed money for the expensive American expedition, not more figures."
+      },
+      "readability": {
+        "grade": 9.3,
+        "fk": 8.8,
+        "cli": 10.6,
+        "ari": 8.6
+      }
+    },
+    {
+      "id": "pb-jungle-brew",
+      "title": "Jungle Brew",
+      "kind": "story",
+      "topic": "places",
+      "text": "Everybody in the village talked of Senseless Point. A few people from the neighbouring villages had been there but no one from her own village. From all the talk around, it seemed like a mysterious place promising an experience of a lifetime. Bulbuli believed that if she ever had the chance to go to Senseless Point, she would return to her hamlet and describe it to everyone. She would tell everyone about this mysterious place.",
+      "source": {
+        "name": "Pratham Books (StoryWeaver)",
+        "url": "https://github.com/global-asp/pb-source/blob/master/en/0027_jungle-brew.md",
+        "license": "CC BY 4.0",
+        "author": "Tanya Luther Agarwal",
+        "note": "Excerpt (page 3)."
+      },
+      "question": {
+        "type": "vocabulary",
+        "q": "In this paragraph, a \"hamlet\" is...",
+        "choices": [
+          "a kind of hat",
+          "a jungle animal",
+          "a long journey",
+          "a small village"
+        ],
+        "answer": 3,
+        "evidence": "she would return to her hamlet",
+        "explain": "Bulbuli lives in a village, and she would return to her hamlet, so a hamlet is a small village."
+      },
+      "readability": {
+        "grade": 8.6,
+        "fk": 8.2,
+        "cli": 9.6,
+        "ari": 8
+      }
+    },
+    {
+      "id": "fabre-where-rivers-come-from",
+      "title": "Where Rivers Come From",
+      "kind": "facts",
+      "topic": "water",
+      "text": "\"The heat of the sun causes water to evaporate; it reduces it to something invisible, to vapor that is dissipated in the air. Seas present a surface three times that of the dry land. Over these immensities there is constantly taking place an enormous evaporation, raising into the air a part of the waters of the sea. The vapor thus formed becomes clouds; the clouds are borne in all directions, letting down snow and rain; this rain and melted snow penetrate the ground, filter down and give birth to springs, which gradually, by their union, become brooks, streams, and rivers.\"",
+      "source": {
+        "name": "The Story-Book of Science (Jean-Henri Fabre, 1917)",
+        "url": "https://www.gutenberg.org/ebooks/56795",
+        "license": "Public domain",
+        "author": "Jean-Henri Fabre",
+        "note": "Paragraph from the book."
+      },
+      "question": {
+        "type": "sequence",
+        "q": "After the vapor becomes clouds, what happens next?",
+        "choices": [
+          "The sun dries the clouds away",
+          "The clouds let down snow and rain",
+          "The clouds turn into brooks",
+          "The vapor sinks back into the sea"
+        ],
+        "answer": 1,
+        "evidence": "the clouds are borne in all directions, letting down snow and rain",
+        "explain": "The clouds carry the water and let it down as snow and rain, which later feeds springs and rivers."
+      },
+      "readability": {
+        "grade": 11.4,
+        "fk": 11.2,
+        "cli": 10.2,
+        "ari": 12.9
+      }
+    },
+    {
+      "id": "baldwin-locusts-and-the-granary",
+      "title": "The Locusts and the Granary",
+      "kind": "story",
+      "topic": "animals",
+      "text": "\"Once upon a time a certain king seized upon all the corn in his country, and stored it away in a strong granary. But a swarm of locusts came over the land and saw where the grain had been put. After searching for many days they found on the east side of the granary a crevice that was just large enough for one locust to pass through at a time. So one locust went in and carried away a grain of corn; then another locust went in and carried away a grain of corn; then another locust went in and carried away a grain of corn.\"",
+      "source": {
+        "name": "Fifty Famous Stories Retold (James Baldwin, 1896)",
+        "url": "https://www.gutenberg.org/ebooks/18442",
+        "license": "Public domain",
+        "author": "James Baldwin",
+        "note": "Paragraph from the book. Pronunciation hyphens removed."
+      },
+      "question": {
+        "type": "sequence",
+        "q": "What did the locusts do after they found the crevice?",
+        "choices": [
+          "broke the granary open to get all the corn",
+          "went in one at a time and each took a grain",
+          "flew away over the land to find another field",
+          "waited outside for the king to open it"
+        ],
+        "answer": 1,
+        "evidence": "one locust went in and carried away a grain of corn",
+        "explain": "The crack fit one locust at a time, so each went in and carried away one grain."
+      },
+      "readability": {
+        "grade": 8.6,
+        "fk": 9.9,
+        "cli": 5.9,
+        "ari": 10.1
+      }
+    },
+    {
+      "id": "sbc-simbegwire-father-and-daughter",
+      "title": "Simbegwire",
+      "kind": "story",
+      "topic": "family",
+      "text": "When Simbegwire's mother died, she was very sad. Simbegwire's father did his best to take care of his daughter. Slowly, they learned to feel happy again, without Simbegwire's mother. Every morning they sat and talked about the day ahead. Every evening they made dinner together. After they washed the dishes, Simbegwire's father helped her with homework.",
+      "source": {
+        "name": "Storybooks Canada",
+        "url": "https://github.com/global-asp/sbc-source/blob/master/en/0052_simbegwire.md",
+        "license": "CC BY 4.0",
+        "author": "Rukia Nantale",
+        "note": "Excerpt (page 1)."
+      },
+      "question": {
+        "type": "main-idea",
+        "q": "What is this paragraph mostly about?",
+        "choices": [
+          "a girl and her father healing after a loss",
+          "a father teaching his daughter how to cook",
+          "a girl who does not like her homework",
+          "a mother who comes home after a long trip"
+        ],
+        "answer": 0,
+        "evidence": "Slowly, they learned to feel happy again",
+        "explain": "After Simbegwire's mother died, she and her father slowly learned to be happy again together."
+      },
+      "readability": {
+        "grade": 8.3,
+        "fk": 6.8,
+        "cli": 11,
+        "ari": 7.2
+      }
+    },
+    {
+      "id": "baldwin-aesop-in-samos",
+      "title": "Aesop in Samos",
+      "kind": "story",
+      "topic": "people",
+      "text": "In Samos the little slave soon became known for his wisdom and courage. He often amused his master and his master's friends by telling droll fables about birds and beasts that could talk. They saw that all these fables taught some great truth, and they wondered how Aesop could have thought of them.",
+      "source": {
+        "name": "Fifty Famous People (James Baldwin, 1912)",
+        "url": "https://www.gutenberg.org/ebooks/6168",
+        "license": "Public domain",
+        "author": "James Baldwin",
+        "note": "Paragraph from the book."
+      },
+      "question": {
+        "type": "vocabulary",
+        "q": "In this paragraph, \"droll\" most likely means...",
+        "choices": [
+          "frightening",
+          "amusing",
+          "boring",
+          "very old"
+        ],
+        "answer": 1,
+        "evidence": "He often amused his master and his master's friends by telling droll fables",
+        "explain": "Aesop amused people with his fables, so droll means funny or amusing."
+      },
+      "readability": {
+        "grade": 8.2,
+        "fk": 6.4,
+        "cli": 9.4,
+        "ari": 8.9
+      }
+    },
+    {
+      "id": "asp-young-palinyang",
+      "title": "Young Palinyang'",
+      "kind": "story",
+      "topic": "family",
+      "text": "During the meeting, Lokeyokoni, a very rich villager, adopted Palinyang'. Lokeyokoni had many sons and daughters. The daughters helped their mother with household chores while the sons went out to graze their father's big herd of cattle. Palinyang' grew up in this family and was very happy. He was loved and he loved everybody. He enjoyed grazing the animals in the fields.",
+      "source": {
+        "name": "African Storybook",
+        "url": "https://github.com/global-asp/asp-source/blob/master/en/0088_young-palinyang.md",
+        "license": "CC BY 4.0",
+        "author": "Gaspah Emukuru Juma",
+        "note": "Excerpt (pages 3-4)."
+      },
+      "question": {
+        "type": "main-idea",
+        "q": "What is the main idea of this paragraph?",
+        "choices": [
+          "Palinyang became the richest man in the village",
+          "Palinyang learned to do household chores",
+          "Palinyang lost his father's big herd of cattle",
+          "Palinyang found a happy, loving new family"
+        ],
+        "answer": 3,
+        "evidence": "Palinyang' grew up in this family and was very happy",
+        "explain": "He was adopted, loved everybody and was loved, and grew up very happy."
+      },
+      "readability": {
+        "grade": 8,
+        "fk": 7.7,
+        "cli": 9.9,
+        "ari": 6.6
+      }
+    },
+    {
+      "id": "burgess-grandfather-frog-on-luck",
+      "title": "Grandfather Frog on Luck",
+      "kind": "story",
+      "topic": "animals",
+      "text": "\"Chug-a-rum!\" says Grandfather Frog, \"Luck never just happens. What people call bad luck is just the result of their own foolishness or carelessness or both, and what people call good luck is just the result of their own wisdom and carefulness and common sense.\"",
+      "source": {
+        "name": "Mother West Wind 'How' Stories (Thornton W. Burgess, 1916)",
+        "url": "https://www.gutenberg.org/ebooks/21286",
+        "license": "Public domain",
+        "author": "Thornton W. Burgess",
+        "note": "Paragraph from the book."
+      },
+      "question": {
+        "type": "main-idea",
+        "q": "What does Grandfather Frog believe about luck?",
+        "choices": [
+          "Good luck comes to those who wish for it",
+          "Bad luck happens to everyone by chance",
+          "People make their own luck by how they act",
+          "Luck is something only the old and wise have"
+        ],
+        "answer": 2,
+        "evidence": "Luck never just happens",
+        "explain": "He says bad luck comes from foolishness and good luck comes from wisdom and care."
+      },
+      "readability": {
+        "grade": 8.5,
+        "fk": 7.3,
+        "cli": 10,
+        "ari": 8.2
+      }
+    }
+  ]
+}

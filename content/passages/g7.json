@@ -1,0 +1,995 @@
+{
+  "about": "Reading Quest paragraphs, about grade 7-8",
+  "passages": [
+    {
+      "id": "burgess-whitefoot-always-watchful",
+      "title": "Whitefoot the Wood Mouse",
+      "kind": "facts",
+      "topic": "animals",
+      "text": "Whitefoot the Wood Mouse is one of the smallest of the little people who live in the Green Forest. Being so small he is one of the most timid. You see, by day and by night sharp eyes are watching for Whitefoot and he knows it. Never one single instant, while he is outside where sharp eyes of hungry enemies may see him, does he forget that they are watching for him. To forget even for one little minute might mean--well, it might mean the end of little Whitefoot, but a dinner for some one with a liking for tender Mouse.",
+      "source": {
+        "name": "The Burgess Animal Book for Children (Thornton W. Burgess, 1920)",
+        "url": "https://www.gutenberg.org/ebooks/2441",
+        "license": "Public domain",
+        "author": "Thornton W. Burgess",
+        "note": "Paragraph from the book."
+      },
+      "question": {
+        "type": "main-idea",
+        "q": "What is the main idea of this paragraph?",
+        "choices": [
+          "Whitefoot must always watch out for hungry enemies",
+          "Whitefoot is the smallest animal in the Green Forest",
+          "Whitefoot likes to eat dinner with his neighbors",
+          "Whitefoot hides at night but plays in the day"
+        ],
+        "answer": 0,
+        "evidence": "Never one single instant, while he is outside where sharp eyes of hungry enemies may see him, does he forget that they are watching for him",
+        "explain": "The whole paragraph is about tiny Whitefoot never forgetting the hungry eyes watching for him."
+      },
+      "readability": {
+        "grade": 7.5,
+        "fk": 7.9,
+        "cli": 6.7,
+        "ari": 7.8
+      }
+    },
+    {
+      "id": "pb-lets-go-seed-collecting",
+      "title": "Let's Go Seed Collecting!",
+      "kind": "story",
+      "topic": "friendship",
+      "text": "Tooka and Poi love collecting things. Smooth pebbles from the riverside, twirly and tickly fern leaves, bright red buttons that have fallen from a school uniform -- Tooka and Poi pick them all up. Every day, they meet after school, near the bendy coconut tree by the river, and wait for their best friend. At five o' clock on the dot, Inji arrives, huffing and puffing like an old school bus. Inji is a friendly dog with eyes the colour of chocolate and a tail that never stops wagging.",
+      "source": {
+        "name": "Pratham Books (StoryWeaver)",
+        "url": "https://github.com/global-asp/pb-source/blob/master/en/0352_let-s-go-seed-collecting.md",
+        "license": "CC BY 4.0",
+        "author": "Neha Sumitran",
+        "note": "Excerpt (page 1)."
+      },
+      "question": {
+        "type": "vocabulary",
+        "q": "In this story, \"huffing and puffing\" tells us that Inji is...",
+        "choices": [
+          "barking at the two children",
+          "breathing hard from running",
+          "angry about being late",
+          "tired of waiting by the tree"
+        ],
+        "answer": 1,
+        "evidence": "huffing and puffing like an old school bus",
+        "explain": "Huffing and puffing means breathing hard, the way you do after running."
+      },
+      "readability": {
+        "grade": 7.8,
+        "fk": 7.4,
+        "cli": 8.1,
+        "ari": 7.9
+      }
+    },
+    {
+      "id": "burgess-sound-like-distant-thunder",
+      "title": "A Sound Like Distant Thunder",
+      "kind": "story",
+      "topic": "animals",
+      "text": "Peter Rabbit's intentions were of the best. Once safely away from that lonesome part of the Green Forest where was the home of Redtail the Hawk, he intended to go straight back to the dear Old Briar-patch. But he was not halfway there when from another direction in the Green Forest there came a sound that caused him to stop short and quite forget all about home. It was a sound very like distant thunder. It began slowly at first and then went faster and faster. Boom--Boom--Boom--Boom-Boom-Boom Boo-Boo-B-B-B-B-b-b-b-b-boom! It was like the long roll on a bass drum.",
+      "source": {
+        "name": "The Burgess Bird Book for Children (Thornton W. Burgess, 1919)",
+        "url": "https://www.gutenberg.org/ebooks/3074",
+        "license": "Public domain",
+        "author": "Thornton W. Burgess",
+        "note": "Paragraph from the book."
+      },
+      "question": {
+        "type": "inference",
+        "q": "What can you tell about Peter from this paragraph?",
+        "choices": [
+          "He is afraid of thunderstorms in the forest",
+          "He is easily pulled away by something curious",
+          "He never wanted to go back to the Briar-patch",
+          "He knows exactly what made the booming sound"
+        ],
+        "answer": 1,
+        "evidence": "caused him to stop short and quite forget all about home",
+        "explain": "One interesting sound was enough to make Peter forget his plan to go straight home."
+      },
+      "readability": {
+        "grade": 7.2,
+        "fk": 5.9,
+        "cli": 8.7,
+        "ari": 6.9
+      }
+    },
+    {
+      "id": "pb-hare-and-tortoise-again",
+      "title": "The Hare & the Tortoise (Again!)",
+      "kind": "story",
+      "topic": "animals",
+      "text": "Do you remember the Great Race between the hare and the tortoise? For a long time, no one in the entire animal kingdom could talk about anything but the Great Race and its two contestants. We all know that the rabbit was defeated because he was lazy and overconfident. We know that the tortoise won the race because he was slow and steady. The forest animals knew this too, and continued to respect both creatures equally.",
+      "source": {
+        "name": "Pratham Books (StoryWeaver)",
+        "url": "https://github.com/global-asp/pb-source/blob/master/en/0098_the-hare-the-tortoise-again.md",
+        "license": "CC BY 4.0",
+        "author": "Venkatramana Gowda",
+        "note": "Excerpt (pages 1-2). Translated by Divaspathy Hegde."
+      },
+      "question": {
+        "type": "main-idea",
+        "q": "What is the main idea of this paragraph?",
+        "choices": [
+          "The hare and the tortoise planned a second Great Race",
+          "The tortoise won because the hare took a long nap",
+          "Everyone remembered the race and respected both racers",
+          "The forest animals liked the tortoise better than the hare"
+        ],
+        "answer": 2,
+        "evidence": "continued to respect both creatures equally",
+        "explain": "Everyone talked about the Great Race, and the animals respected both racers equally."
+      },
+      "readability": {
+        "grade": 7.7,
+        "fk": 7.3,
+        "cli": 8.6,
+        "ari": 7.2
+      }
+    },
+    {
+      "id": "burgess-signs-of-winter",
+      "title": "Signs of Winter",
+      "kind": "story",
+      "topic": "seasons",
+      "text": "The leaves of the trees turned yellow and red and brown and then began to drop, a few at first, then more and more every day until all but the spruce-trees and the pine-trees and the hemlock-trees and the fir-trees and the cedar-trees were bare. By this time most of Peter's feathered friends of the summer had departed, and there were days when Peter had oh, such a lonely feeling. The fur of his coat was growing thicker. The grass of the Green Meadows had turned brown. All these things were signs which Peter knew well. He knew that rough Brother North Wind and Jack Frost were on their way down from the Far North.",
+      "source": {
+        "name": "The Burgess Bird Book for Children (Thornton W. Burgess, 1919)",
+        "url": "https://www.gutenberg.org/ebooks/3074",
+        "license": "Public domain",
+        "author": "Thornton W. Burgess",
+        "note": "Paragraph from the book."
+      },
+      "question": {
+        "type": "main-idea",
+        "q": "What is this paragraph mostly about?",
+        "choices": [
+          "how Peter's bird friends built their nests",
+          "why pine trees keep their leaves all year",
+          "the signs that told Peter winter was coming",
+          "a long trip Peter took to the Far North"
+        ],
+        "answer": 2,
+        "evidence": "All these things were signs which Peter knew well",
+        "explain": "Falling leaves, departed birds, a thicker coat and brown grass all told Peter winter was near."
+      },
+      "readability": {
+        "grade": 7.4,
+        "fk": 6.5,
+        "cli": 7.7,
+        "ari": 8.2
+      }
+    },
+    {
+      "id": "vanloon-land-between-the-rivers",
+      "title": "The Land Between the Rivers",
+      "kind": "facts",
+      "topic": "history",
+      "text": "I AM going to take you to the top of the highest pyramid and I am going to ask that you imagine yourself possessed of the eyes of a hawk. Way, way off, in the distance, far beyond the yellow sands of the desert, you will see something green and shimmering. It is a valley situated between two rivers. It is the Paradise of the Old Testament. It is the land of mystery and wonder which the Greeks called Mesopotamia--the \"country between the rivers.\"",
+      "source": {
+        "name": "The Story of Mankind (Hendrik Willem van Loon, 1921)",
+        "url": "https://www.gutenberg.org/ebooks/754",
+        "license": "Public domain",
+        "author": "Hendrik Willem van Loon",
+        "note": "Paragraph from the book."
+      },
+      "question": {
+        "type": "vocabulary",
+        "q": "What does the name \"Mesopotamia\" mean?",
+        "choices": [
+          "the land beyond the yellow pyramids",
+          "the green valley in the desert",
+          "the garden of the Greek gods",
+          "the country between the rivers"
+        ],
+        "answer": 3,
+        "evidence": "country between the rivers",
+        "explain": "The text says the Greeks called it Mesopotamia, \"the country between the rivers.\""
+      },
+      "readability": {
+        "grade": 7.1,
+        "fk": 7.5,
+        "cli": 7.1,
+        "ari": 6.8
+      }
+    },
+    {
+      "id": "burgess-peter-envies-bobby-coon",
+      "title": "Bobby Coon's Handsome Tail",
+      "kind": "story",
+      "topic": "animals",
+      "text": "Peter Rabbit would give Grandfather Frog no peace. Every day Peter visited the Smiling Pool to tease Grandfather Frog for a story--for one particular story. He wanted to know why it is that Bobby Coon wears rings on his tail. You see, Peter had admired Bobby Coon's tail for a long time. Peter has such a funny little tail himself, just a little white bunch of cotton, that such a handsome tail as Bobby Coon's sometimes stirs just a wee bit of envy in Peter's heart.",
+      "source": {
+        "name": "Mother West Wind 'Why' Stories (Thornton W. Burgess, 1915)",
+        "url": "https://www.gutenberg.org/ebooks/14958",
+        "license": "Public domain",
+        "author": "Thornton W. Burgess",
+        "note": "Paragraph from the book."
+      },
+      "question": {
+        "type": "inference",
+        "q": "Why did Peter keep asking about Bobby Coon's tail?",
+        "choices": [
+          "He wished his own tail were as handsome",
+          "He wanted to tease Bobby Coon about it",
+          "He had never seen a raccoon before",
+          "He thought Grandfather Frog had a tail"
+        ],
+        "answer": 0,
+        "evidence": "stirs just a wee bit of envy in Peter's heart",
+        "explain": "Peter has only a tiny cotton tail, so he envies Bobby Coon's handsome one."
+      },
+      "readability": {
+        "grade": 7.5,
+        "fk": 7.4,
+        "cli": 7.7,
+        "ari": 7.4
+      }
+    },
+    {
+      "id": "fabre-how-a-steam-engine-works",
+      "title": "How a Steam Engine Works",
+      "kind": "facts",
+      "topic": "energy",
+      "text": "\"Now you know what makes the locomotive and a great many other machines move. In a strong boiler, tightly closed, steam is formed by the action of a hot furnace. This steam, of an enormous power, makes every effort to escape. It presses particularly on a piece placed for that purpose, which it chases before it. From that a movement results that sets everything going, as you will see in the case of the locomotive. To conclude, let us remember that in every steam engine the essential thing, the generator of the force, is a boiler, a closed pot that boils.\"",
+      "source": {
+        "name": "The Story-Book of Science (Jean-Henri Fabre, 1917)",
+        "url": "https://www.gutenberg.org/ebooks/56795",
+        "license": "Public domain",
+        "author": "Jean-Henri Fabre",
+        "note": "Paragraph from the book."
+      },
+      "question": {
+        "type": "detail",
+        "q": "What is the essential part of every steam engine?",
+        "choices": [
+          "a boiler, a closed pot that boils",
+          "an open furnace that burns all day long",
+          "a piece that the steam chases",
+          "a set of wheels that turn fast"
+        ],
+        "answer": 0,
+        "evidence": "the generator of the force, is a boiler, a closed pot that boils",
+        "explain": "The last sentence names the boiler as the essential thing in every steam engine."
+      },
+      "readability": {
+        "grade": 7.9,
+        "fk": 7.9,
+        "cli": 8.2,
+        "ari": 7.6
+      }
+    },
+    {
+      "id": "burgess-johnny-chuck-wanders-off",
+      "title": "Johnny Chuck Wanders Off",
+      "kind": "story",
+      "topic": "animals",
+      "text": "One bright summer day Johnny Chuck was out looking for a good breakfast of nice tender clover. He had wandered quite a long way from his snug little house in the long meadow grass, although his mother had told him never to go out of sight of the door. But Johnny was like some little boys I know, and forgot all he had been told.",
+      "source": {
+        "name": "Old Mother West Wind (Thornton W. Burgess, 1910)",
+        "url": "https://www.gutenberg.org/ebooks/2557",
+        "license": "Public domain",
+        "author": "Thornton W. Burgess",
+        "note": "Paragraph from the book."
+      },
+      "question": {
+        "type": "detail",
+        "q": "What had Johnny Chuck's mother told him?",
+        "choices": [
+          "to stay away from the tender clover",
+          "to keep hidden in the tall meadow grass",
+          "to never go out of sight of the door",
+          "to be home again before it got dark"
+        ],
+        "answer": 2,
+        "evidence": "his mother had told him never to go out of sight of the door",
+        "explain": "His mother told him never to go out of sight of the door, but he forgot."
+      },
+      "readability": {
+        "grade": 7.3,
+        "fk": 7.4,
+        "cli": 6.4,
+        "ari": 8.2
+      }
+    },
+    {
+      "id": "pb-up-world-down-world-sunday",
+      "title": "Up World, Down World",
+      "kind": "story",
+      "topic": "family",
+      "text": "Fatima loved Sunday afternoons. After a lunch of beans and kofta, Maa would read the newspaper on her favourite chair and Baba would sneak away to take a nap. Fatima could patter away with her book into the lively green forest near her house. The forest creatures would be sleeping, so it would be just her, curled up in the quiet hug of the forest trees.",
+      "source": {
+        "name": "Pratham Books (StoryWeaver)",
+        "url": "https://github.com/global-asp/pb-source/blob/master/en/0391_up-world-down-world.md",
+        "license": "CC BY 4.0",
+        "author": "Padmaparna Ghosh",
+        "note": "Excerpt (pages 1-2)."
+      },
+      "question": {
+        "type": "detail",
+        "q": "What did Baba do on Sunday afternoons?",
+        "choices": [
+          "He read the paper in his chair",
+          "He sneaked off to take a long nap",
+          "He cooked beans and kofta for lunch",
+          "He walked with Fatima in the forest"
+        ],
+        "answer": 1,
+        "evidence": "Baba would sneak away to take a nap",
+        "explain": "The text says Baba would sneak away to take a nap."
+      },
+      "readability": {
+        "grade": 7.3,
+        "fk": 7.3,
+        "cli": 7.6,
+        "ari": 7
+      }
+    },
+    {
+      "id": "burgess-bubbles-in-the-smiling-pool",
+      "title": "Bubbles in the Smiling Pool",
+      "kind": "story",
+      "topic": "animals",
+      "text": "Way over beyond the Big Rock little bubbles in three long rows kept coming up to the top of the Smiling Pool. They showed just where Billy Mink, Little Joe Otter and Jerry Muskrat were swimming way down out of sight. It was the air from their lungs making the bubbles. Straight across the Smiling Pool went the lines of little bubbles and then way out on the farther side two little heads bobbed out of water close together. They were Billy Mink and Little Joe Otter. A moment later Jerry Muskrat bobbed up beside them.",
+      "source": {
+        "name": "Old Mother West Wind (Thornton W. Burgess, 1910)",
+        "url": "https://www.gutenberg.org/ebooks/2557",
+        "license": "Public domain",
+        "author": "Thornton W. Burgess",
+        "note": "Paragraph from the book."
+      },
+      "question": {
+        "type": "cause-effect",
+        "q": "What made the bubbles in the Smiling Pool?",
+        "choices": [
+          "fish feeding near the top",
+          "rain falling on the water",
+          "the wind blowing over the pool",
+          "air from the swimmers' lungs"
+        ],
+        "answer": 3,
+        "evidence": "It was the air from their lungs making the bubbles",
+        "explain": "The three animals were swimming underwater, and the air from their lungs made the bubbles."
+      },
+      "readability": {
+        "grade": 7.1,
+        "fk": 6.3,
+        "cli": 7.9,
+        "ari": 7
+      }
+    },
+    {
+      "id": "baldwin-androclus-in-the-arena",
+      "title": "Androclus and the Lion",
+      "kind": "story",
+      "topic": "history",
+      "text": "The people, who had expected to see the man killed by the lion, were filled with wonder. They saw Androclus put his arms around the lion's neck; they saw the lion lie down at his feet, and lick them lovingly; they saw the great beast rub his head against the slave's face as though he wanted to be petted. They could not understand what it all meant.",
+      "source": {
+        "name": "Fifty Famous Stories Retold (James Baldwin, 1896)",
+        "url": "https://www.gutenberg.org/ebooks/18442",
+        "license": "Public domain",
+        "author": "James Baldwin",
+        "note": "Paragraph from the book. Pronunciation hyphens removed."
+      },
+      "question": {
+        "type": "inference",
+        "q": "What does the lion's behavior suggest?",
+        "choices": [
+          "The lion was much too weak and sick to fight",
+          "The lion was afraid of the large crowd",
+          "The lion had just finished a big meal",
+          "The lion already knew and liked Androclus"
+        ],
+        "answer": 3,
+        "evidence": "as though he wanted to be petted",
+        "explain": "A lion that licks his feet and wants to be petted must already know and like him."
+      },
+      "readability": {
+        "grade": 7.6,
+        "fk": 6.9,
+        "cli": 6.9,
+        "ari": 9
+      }
+    },
+    {
+      "id": "burgess-chipmunk-wonders-about-miner",
+      "title": "Living Under the Ground",
+      "kind": "story",
+      "topic": "animals",
+      "text": "\"What a queer way of living!\" thought Striped Chipmunk. \"It's all very well to have a snug house under the ground, where one can sleep the long cold winter away and be perfectly safe, but what any one wants to live under the ground all the time for, in the beautiful springtime and summertime and autumntime, I can't understand. Just think of all that Miner misses--the sunshine, the flowers, the songs of the birds, and the Merry Little Breezes to play with! I wonder--\"",
+      "source": {
+        "name": "Mother West Wind 'Why' Stories (Thornton W. Burgess, 1915)",
+        "url": "https://www.gutenberg.org/ebooks/14958",
+        "license": "Public domain",
+        "author": "Thornton W. Burgess",
+        "note": "Paragraph from the book."
+      },
+      "question": {
+        "type": "main-idea",
+        "q": "What is Striped Chipmunk mostly thinking about?",
+        "choices": [
+          "how much Miner misses by living underground",
+          "where to build his own snug winter house",
+          "how he can find the way into Miner's tunnels",
+          "why the Merry Little Breezes like to play"
+        ],
+        "answer": 0,
+        "evidence": "Just think of all that Miner misses",
+        "explain": "He wonders why Miner lives underground and misses the sunshine, flowers and songs."
+      },
+      "readability": {
+        "grade": 7.4,
+        "fk": 6.6,
+        "cli": 8.1,
+        "ari": 7.5
+      }
+    },
+    {
+      "id": "vanloon-washington-stood-guard",
+      "title": "The War for Independence",
+      "kind": "facts",
+      "topic": "history",
+      "text": "The war between England and her American colonies lasted seven years. During most of that time, the final success of the rebels seemed very doubtful. A great number of the people, especially in the cities, had remained loyal to their king. They were in favour of a compromise, and would have been willing to sue for peace. But the great figure of Washington stood guard over the cause of the colonists.",
+      "source": {
+        "name": "The Story of Mankind (Hendrik Willem van Loon, 1921)",
+        "url": "https://www.gutenberg.org/ebooks/754",
+        "license": "Public domain",
+        "author": "Hendrik Willem van Loon",
+        "note": "Paragraph from the book."
+      },
+      "question": {
+        "type": "inference",
+        "q": "What does the paragraph suggest about Washington?",
+        "choices": [
+          "He wanted the colonists to make a quick peace with the king",
+          "He lived in the city among the king's loyal friends",
+          "He kept the colonists' cause going when many doubted",
+          "He won the war in its very first year of fighting"
+        ],
+        "answer": 2,
+        "evidence": "the great figure of Washington stood guard over the cause of the colonists",
+        "explain": "While many people wanted to give up, Washington guarded the colonists' cause."
+      },
+      "readability": {
+        "grade": 7.7,
+        "fk": 7.1,
+        "cli": 8.9,
+        "ari": 7.1
+      }
+    },
+    {
+      "id": "burgess-mr-toads-music-bag",
+      "title": "Mr. Toad's Music Bag",
+      "kind": "story",
+      "topic": "animals",
+      "text": "\"Sure enough, when the next spring came, Mr. Toad was filled with a great longing to go home. When he got there, he found that in his throat was a little music bag; and when he swelled it out, he had one of the sweetest voices in the world. And so it has been ever since with the Toad family. Old Mr. Toad is one of the sweetest singers in the Smiling Pool, but when it is time to go back to work he never grumbles, but is one of the most faithful workers in Mother Nature's garden,\" concluded Jerry Muskrat.",
+      "source": {
+        "name": "Mother West Wind 'How' Stories (Thornton W. Burgess, 1916)",
+        "url": "https://www.gutenberg.org/ebooks/21286",
+        "license": "Public domain",
+        "author": "Thornton W. Burgess",
+        "note": "Paragraph from the book."
+      },
+      "question": {
+        "type": "sequence",
+        "q": "What does Mr. Toad do when the singing time is over?",
+        "choices": [
+          "He stays in the Smiling Pool all year",
+          "He gives his music bag to his children",
+          "He goes back to work without grumbling",
+          "He goes to sleep for the whole summer"
+        ],
+        "answer": 2,
+        "evidence": "when it is time to go back to work he never grumbles",
+        "explain": "After singing in the Smiling Pool, Mr. Toad goes back to work in the garden without grumbling."
+      },
+      "readability": {
+        "grade": 7.9,
+        "fk": 8.5,
+        "cli": 5.8,
+        "ari": 9.4
+      }
+    },
+    {
+      "id": "fabre-shortest-days-of-winter",
+      "title": "The Shortest Days of the Year",
+      "kind": "facts",
+      "topic": "space",
+      "text": "\"On the 21st of December we have a state of affairs just the reverse of that observed in June. With us the sun rises at 8 o'clock in the morning; at four in the afternoon it has already set. That is eight hours of day for sixteen of night. Farther north there are now nights of 18, 20, 22 hours, and corresponding days of six, four, and two hours. In the neighborhood of the pole, the sun does not even show itself, and there is no longer any daylight; for six months there is the same darkness in the middle of the day as at midnight.\"",
+      "source": {
+        "name": "The Story-Book of Science (Jean-Henri Fabre, 1917)",
+        "url": "https://www.gutenberg.org/ebooks/56795",
+        "license": "Public domain",
+        "author": "Jean-Henri Fabre",
+        "note": "Paragraph from the book."
+      },
+      "question": {
+        "type": "detail",
+        "q": "What happens near the pole at this time of year?",
+        "choices": [
+          "The sun does not show itself at all",
+          "The sun shines for sixteen hours",
+          "Day and night are the same length",
+          "The sun rises at eight and sets at four"
+        ],
+        "answer": 0,
+        "evidence": "In the neighborhood of the pole, the sun does not even show itself",
+        "explain": "Near the pole the sun does not show itself, and it stays dark for six months."
+      },
+      "readability": {
+        "grade": 7,
+        "fk": 7.2,
+        "cli": 6.2,
+        "ari": 7.6
+      }
+    },
+    {
+      "id": "burgess-piggy-the-peccary",
+      "title": "Piggy the Peccary",
+      "kind": "facts",
+      "topic": "animals",
+      "text": "\"The home of Piggy the Peccary is in the hot southwestern part of this country, where live Jaguar and Ocelot, the beautiful spotted members of the Cat family. They are two of his enemies. He never likes to be alone, but lives with a band of his friends and they roam about together. He is found on the plains and among low hills, in swamps and dense forests, and among the thickets of cactus and other thorny plants that grow in dry regions. Plenty of food and shelter from the hot sun seem to be the main things with Piggy.\"",
+      "source": {
+        "name": "The Burgess Animal Book for Children (Thornton W. Burgess, 1920)",
+        "url": "https://www.gutenberg.org/ebooks/2441",
+        "license": "Public domain",
+        "author": "Thornton W. Burgess",
+        "note": "Paragraph from the book."
+      },
+      "question": {
+        "type": "detail",
+        "q": "What does Piggy the Peccary seem to need most?",
+        "choices": [
+          "plenty of food and shade from the sun",
+          "a cool, wet swamp far from the plains",
+          "a quiet place where he can live alone",
+          "tall trees to climb for safety"
+        ],
+        "answer": 0,
+        "evidence": "Plenty of food and shelter from the hot sun seem to be the main things with Piggy",
+        "explain": "The last sentence says food and shelter from the hot sun are the main things for Piggy."
+      },
+      "readability": {
+        "grade": 7.7,
+        "fk": 7.9,
+        "cli": 7.1,
+        "ari": 8.1
+      }
+    },
+    {
+      "id": "asp-silly-sizwe",
+      "title": "Silly Sizwe",
+      "kind": "story",
+      "topic": "people",
+      "text": "Once, long ago, there was a boy called Sizwe who lived with his mother near to the Chief's kraal. Now Sizwe did so many silly things, that everybody called him \"Silly Sizwe.\" The Chief, who lived in that kraal, had a daughter who never ever smiled or laughed, even when someone did something very funny or tickled her.",
+      "source": {
+        "name": "African Storybook",
+        "url": "https://github.com/global-asp/asp-source/blob/master/en/0097_silly-sizwe.md",
+        "license": "CC BY 4.0",
+        "author": "Val Morris",
+        "note": "Excerpt (pages 1-2)."
+      },
+      "question": {
+        "type": "vocabulary",
+        "q": "In this story, a \"kraal\" is most likely...",
+        "choices": [
+          "a wild animal that lives in the hills",
+          "a funny game that children play",
+          "a special song sung for the chief",
+          "a group of homes where people live"
+        ],
+        "answer": 3,
+        "evidence": "The Chief, who lived in that kraal",
+        "explain": "The Chief lived in the kraal and Sizwe lived near it, so it is a place where people live."
+      },
+      "readability": {
+        "grade": 7.9,
+        "fk": 7.2,
+        "cli": 7.9,
+        "ari": 8.5
+      }
+    },
+    {
+      "id": "pb-carpenters-last-job",
+      "title": "The Carpenter's last job",
+      "kind": "story",
+      "topic": "people",
+      "text": "Once there was a highly skilled and successful carpenter who wanted to retire as he had grown old. He told his employer of his plans to leave the house building business and live a more leisurely life with his family. The employer was sorry to see his good worker retire and asked if he could build just one more house as a personal favor. The carpenter agreed to do just this one last job for the sake of his employer. As he was in the mood of retiring, the carpenter did not have much interest in his work. He resorted to poor workmanship, and used inferior materials. So the end result was not as good as his previous ones.",
+      "source": {
+        "name": "Pratham Books (StoryWeaver)",
+        "url": "https://github.com/global-asp/pb-source/blob/master/en/0322_the-carpenter-s-last-job.md",
+        "license": "CC BY 4.0",
+        "author": "Rupa Prakash",
+        "note": "Excerpt (pages 1-2)."
+      },
+      "question": {
+        "type": "cause-effect",
+        "q": "Why was the last house not as good as the others?",
+        "choices": [
+          "The employer gave him too little time to build",
+          "The carpenter no longer cared much about his work",
+          "The carpenter had grown too old to use his tools",
+          "The family did not like the way it was planned"
+        ],
+        "answer": 1,
+        "evidence": "the carpenter did not have much interest in his work",
+        "explain": "He was thinking about retiring, so he did poor work and used poor materials."
+      },
+      "readability": {
+        "grade": 7.1,
+        "fk": 7.3,
+        "cli": 7.1,
+        "ari": 6.8
+      }
+    },
+    {
+      "id": "baldwin-antonio-canova",
+      "title": "Antonio Canova",
+      "kind": "story",
+      "topic": "people",
+      "text": "The very next day the Count sent for Antonio to come and live with him. The best artists in the land were employed to teach him the art in which he had shown so much skill; but now, instead of carving butter, he chiseled marble. In a few years, Antonio Canova became known as one of the greatest sculptors in the world.",
+      "source": {
+        "name": "Fifty Famous Stories Retold (James Baldwin, 1896)",
+        "url": "https://www.gutenberg.org/ebooks/18442",
+        "license": "Public domain",
+        "author": "James Baldwin",
+        "note": "Paragraph from the book. Pronunciation hyphens removed."
+      },
+      "question": {
+        "type": "vocabulary",
+        "q": "In this paragraph, a \"sculptor\" is someone who...",
+        "choices": [
+          "paints pictures on castle walls",
+          "teaches art in a big school",
+          "carves figures out of marble",
+          "builds fancy houses for counts"
+        ],
+        "answer": 2,
+        "evidence": "he chiseled marble",
+        "explain": "Canova chiseled marble, and a sculptor is an artist who carves statues."
+      },
+      "readability": {
+        "grade": 7.3,
+        "fk": 7.5,
+        "cli": 6.6,
+        "ari": 8
+      }
+    },
+    {
+      "id": "burgess-johnny-chuck-contentment",
+      "title": "Johnny Chuck Is Content",
+      "kind": "story",
+      "topic": "animals",
+      "text": "Johnny Chuck waddled down the Lone Little Path across the Green Meadows. Johnny Chuck was very fat and rolly-poly. His yellow brown coat fitted him so snugly that it seemed as if it must burst. Johnny Chuck was feeling very happy--very happy indeed, for you see Johnny Chuck long ago found the best thing in the world, which is contentment.",
+      "source": {
+        "name": "Mother West Wind's Children (Thornton W. Burgess, 1911)",
+        "url": "https://www.gutenberg.org/ebooks/20877",
+        "license": "Public domain",
+        "author": "Thornton W. Burgess",
+        "note": "Paragraph from the book."
+      },
+      "question": {
+        "type": "vocabulary",
+        "q": "What does \"contentment\" mean in this paragraph?",
+        "choices": [
+          "having more food than all the others",
+          "being the fastest on the meadow",
+          "living in a big new house",
+          "feeling happy with what you have"
+        ],
+        "answer": 3,
+        "evidence": "the best thing in the world, which is contentment",
+        "explain": "Johnny Chuck is happy just as he is; contentment means being happy with what you have."
+      },
+      "readability": {
+        "grade": 7.6,
+        "fk": 6.4,
+        "cli": 8.9,
+        "ari": 7.4
+      }
+    },
+    {
+      "id": "baldwin-the-learned-blacksmith",
+      "title": "The Learned Blacksmith",
+      "kind": "story",
+      "topic": "people",
+      "text": "All this happened many years ago in New Britain, Connecticut. Elihu Burritt was a poor boy who was determined to learn. He worked many years as a blacksmith and studied books whenever he had a spare moment. He learned many languages and became known all over the world as \"The Learned Blacksmith.\"",
+      "source": {
+        "name": "Fifty Famous People (James Baldwin, 1912)",
+        "url": "https://www.gutenberg.org/ebooks/6168",
+        "license": "Public domain",
+        "author": "James Baldwin",
+        "note": "Paragraph from the book."
+      },
+      "question": {
+        "type": "main-idea",
+        "q": "What is the main idea of this paragraph?",
+        "choices": [
+          "A blacksmith became famous for his strong arms",
+          "A boy moved to Connecticut to find work",
+          "A poor boy worked hard and taught himself a lot",
+          "A teacher helped a poor boy go to college"
+        ],
+        "answer": 2,
+        "evidence": "Elihu Burritt was a poor boy who was determined to learn",
+        "explain": "He studied in every spare moment, learned many languages and became \"The Learned Blacksmith.\""
+      },
+      "readability": {
+        "grade": 7.3,
+        "fk": 6.3,
+        "cli": 8.9,
+        "ari": 6.7
+      }
+    },
+    {
+      "id": "sbc-honeyguides-revenge",
+      "title": "The Honeyguide's revenge",
+      "kind": "story",
+      "topic": "animals",
+      "text": "This is the story of Ngede, the Honeyguide, and a greedy young man named Gingile. One day while Gingile was out hunting he heard the call of Ngede. Gingile's mouth began to water at the thought of honey. He stopped and listened carefully, searching until he saw the bird in the branches above his head. \"Chitik-chitik-chitik,\" the little bird rattled, as he flew to the next tree, and the next. \"Chitik, chitik, chitik,\" he called, stopping from time to time to be sure that Gingile followed.",
+      "source": {
+        "name": "Storybooks Canada",
+        "url": "https://github.com/global-asp/sbc-source/blob/master/en/0072_the-honeyguides-revenge.md",
+        "license": "CC BY 4.0",
+        "author": "Zulu folktale",
+        "note": "Excerpt (page 1)."
+      },
+      "question": {
+        "type": "inference",
+        "q": "What was Gingile hoping the bird would lead him to?",
+        "choices": [
+          "a herd of animals to hunt",
+          "the way back to his home",
+          "a nest of the bird's eggs",
+          "a bees' nest full of honey"
+        ],
+        "answer": 3,
+        "evidence": "Gingile's mouth began to water at the thought of honey",
+        "explain": "His mouth watered at the thought of honey when he heard the bird, so he followed it to find honey."
+      },
+      "readability": {
+        "grade": 7.3,
+        "fk": 6.6,
+        "cli": 8.4,
+        "ari": 6.8
+      }
+    },
+    {
+      "id": "asp-baboons-went-this-way-and-that",
+      "title": "The baboons that went this way and that",
+      "kind": "story",
+      "topic": "people",
+      "text": "There was much unhappiness in a village of small huts. The people who lived there had been happy before, but then wild animals had come and had begun to frighten them. These animals ate all their crops and from time to time they even carried off children who wandered away from their parents. It was not a good place to live any longer, and the people began to think of where they might go to lead a new life.",
+      "source": {
+        "name": "African Storybook",
+        "url": "https://github.com/global-asp/asp-source/blob/master/en/0255_the-baboons-that-went-this-way-and-that.md",
+        "license": "CC BY 4.0",
+        "author": "Southern African Folktale",
+        "note": "Excerpt (page 1)."
+      },
+      "question": {
+        "type": "cause-effect",
+        "q": "Why did the people begin to think about moving?",
+        "choices": [
+          "Their small huts were falling down in the wind",
+          "Wild animals ate their crops and scared them",
+          "The river near the village had dried up",
+          "Another village had more land for crops"
+        ],
+        "answer": 1,
+        "evidence": "wild animals had come and had begun to frighten them",
+        "explain": "Wild animals ate their crops and frightened them, so it was no longer a good place to live."
+      },
+      "readability": {
+        "grade": 7.3,
+        "fk": 7.2,
+        "cli": 6.9,
+        "ari": 7.8
+      }
+    },
+    {
+      "id": "vanloon-beethoven-and-napoleon",
+      "title": "Beethoven and Napoleon",
+      "kind": "facts",
+      "topic": "history",
+      "text": "Beethoven lived through the period of the great French Revolution. Full of hope for a new and glorious day, he had dedicated one of his symphonies to Napoleon. But he lived to regret the hour. When he died in the year 1827, Napoleon was gone and the French Revolution was gone, but the steam engine had come and was filling the world with a sound that had nothing in common with the dreams of the Third Symphony.",
+      "source": {
+        "name": "The Story of Mankind (Hendrik Willem van Loon, 1921)",
+        "url": "https://www.gutenberg.org/ebooks/754",
+        "license": "Public domain",
+        "author": "Hendrik Willem van Loon",
+        "note": "Paragraph from the book."
+      },
+      "question": {
+        "type": "inference",
+        "q": "Why did Beethoven \"live to regret\" honoring Napoleon?",
+        "choices": [
+          "Napoleon did not bring the new day he hoped for",
+          "Napoleon never came to hear the Third Symphony played",
+          "Napoleon said the symphony was too long",
+          "Napoleon paid him far too little for his symphony"
+        ],
+        "answer": 0,
+        "evidence": "But he lived to regret the hour",
+        "explain": "Beethoven hoped Napoleon would bring a glorious new day, and he was disappointed."
+      },
+      "readability": {
+        "grade": 7.9,
+        "fk": 7.7,
+        "cli": 7.8,
+        "ari": 8.2
+      }
+    },
+    {
+      "id": "fabre-butterfly-eyespots",
+      "title": "Eyespots on Butterfly Wings",
+      "kind": "facts",
+      "topic": "animals",
+      "text": "\"The pretty round spots that a great many butterflies have on their wings are not really eyes, although they are called by that name; they are ornaments, nothing more. Real eyes, eyes for seeing, are in the head. The Argus has two, neither more nor fewer than the other butterflies.\"",
+      "source": {
+        "name": "The Story-Book of Science (Jean-Henri Fabre, 1917)",
+        "url": "https://www.gutenberg.org/ebooks/56795",
+        "license": "Public domain",
+        "author": "Jean-Henri Fabre",
+        "note": "Paragraph from the book."
+      },
+      "question": {
+        "type": "detail",
+        "q": "What are the round spots on many butterflies' wings?",
+        "choices": [
+          "extra eyes for seeing danger",
+          "ornaments, not real eyes",
+          "holes worn in the wing",
+          "marks of an old injury"
+        ],
+        "answer": 1,
+        "evidence": "they are ornaments, nothing more",
+        "explain": "The spots are called eyes, but they are only ornaments; real eyes are in the head."
+      },
+      "readability": {
+        "grade": 7.9,
+        "fk": 7.2,
+        "cli": 8.6,
+        "ari": 7.9
+      }
+    },
+    {
+      "id": "pb-cloud-dragon",
+      "title": "The Cloud Dragon",
+      "kind": "story",
+      "topic": "weather",
+      "text": "Lord Indra told the blue dragon that he could make as many clouds as he wanted and could fly wherever he wanted to, but he needs to be careful that he doesn't come in contact with water. If that happens he will lose all his powers and become a human! Even a single drop of water could cost him his powers. Now, the blue dragon loved being the cloud breathing dragon, and was puzzled with this clause. How was he to avoid water, when bringing rain to the land was the primary task assigned to him!",
+      "source": {
+        "name": "Pratham Books (StoryWeaver)",
+        "url": "https://github.com/global-asp/pb-source/blob/master/en/0305_the-cloud-dragon.md",
+        "license": "CC BY 4.0",
+        "author": "Nidhi Jha",
+        "note": "Excerpt (page 3)."
+      },
+      "question": {
+        "type": "inference",
+        "q": "Why was the blue dragon puzzled?",
+        "choices": [
+          "He did not know how to make clouds in the sky",
+          "Lord Indra would not let him fly where he wanted",
+          "He wanted very much to become human but did not know how",
+          "Bringing rain was his job, yet water could ruin him"
+        ],
+        "answer": 3,
+        "evidence": "How was he to avoid water, when bringing rain to the land was the primary task assigned to him",
+        "explain": "His main job was bringing rain, but a single drop of water could cost him his powers."
+      },
+      "readability": {
+        "grade": 7,
+        "fk": 6.9,
+        "cli": 6.6,
+        "ari": 7.4
+      }
+    },
+    {
+      "id": "baldwin-bruce-in-hiding",
+      "title": "Robert Bruce in Hiding",
+      "kind": "story",
+      "topic": "history",
+      "text": "Battle after battle had been fought. Six times had Bruce led his brave little army against his foes; and six times had his men been beaten, and driven into flight. At last his army was scattered, and he was forced to hide himself in the woods and in lonely places among the mountains.",
+      "source": {
+        "name": "Fifty Famous Stories Retold (James Baldwin, 1896)",
+        "url": "https://www.gutenberg.org/ebooks/18442",
+        "license": "Public domain",
+        "author": "James Baldwin",
+        "note": "Paragraph from the book. Pronunciation hyphens removed."
+      },
+      "question": {
+        "type": "sequence",
+        "q": "What happened after Bruce's army was beaten the sixth time?",
+        "choices": [
+          "He led his army into a seventh battle",
+          "He hid in the woods and the mountains",
+          "He sailed away to another country",
+          "He made peace with his enemies"
+        ],
+        "answer": 1,
+        "evidence": "he was forced to hide himself in the woods",
+        "explain": "His army was scattered, so he had to hide in the woods and mountains."
+      },
+      "readability": {
+        "grade": 7.2,
+        "fk": 6.7,
+        "cli": 7.6,
+        "ari": 7.5
+      }
+    },
+    {
+      "id": "baldwin-cyrus-the-great",
+      "title": "Cyrus the Great",
+      "kind": "story",
+      "topic": "history",
+      "text": "When Cyrus became a man, he succeeded his father as king of Persia; he also succeeded his grandfather Astyages as king of Media. He was a very wise and powerful ruler, and he made his country the greatest of any that was then known. In history he is commonly called Cyrus the Great.",
+      "source": {
+        "name": "Fifty Famous People (James Baldwin, 1912)",
+        "url": "https://www.gutenberg.org/ebooks/6168",
+        "license": "Public domain",
+        "author": "James Baldwin",
+        "note": "Paragraph from the book."
+      },
+      "question": {
+        "type": "main-idea",
+        "q": "What is this paragraph mostly about?",
+        "choices": [
+          "how Cyrus fought his grandfather for Media",
+          "how Cyrus became a great and powerful king",
+          "why Persia was a small and weak country",
+          "what Cyrus learned from his father"
+        ],
+        "answer": 1,
+        "evidence": "In history he is commonly called Cyrus the Great",
+        "explain": "Cyrus became king of two lands and made his country the greatest then known."
+      },
+      "readability": {
+        "grade": 7.6,
+        "fk": 8,
+        "cli": 7.4,
+        "ari": 7.3
+      }
+    },
+    {
+      "id": "burgess-peters-big-jump",
+      "title": "Peter's Big Jump",
+      "kind": "story",
+      "topic": "animals",
+      "text": "Peter went back a little so as to get a good start. Then he ran as hard as he knew how, and when he reached the bank of the Laughing Brook, he jumped with all his might. It was a good jump--a splendid jump--but it wasn't quite enough of a jump, and Peter landed with a great splash in the water! Grandfather Frog opened his great mouth as wide as he could, which is very wide indeed, and laughed until the tears rolled down from his great, goggly eyes. Jerry Muskrat and Billy Mink rolled over and over on the bank, laughing until their sides ached. Even Spotty the Turtle smiled, which is very unusual for Spotty.",
+      "source": {
+        "name": "Mother West Wind 'How' Stories (Thornton W. Burgess, 1916)",
+        "url": "https://www.gutenberg.org/ebooks/21286",
+        "license": "Public domain",
+        "author": "Thornton W. Burgess",
+        "note": "Paragraph from the book."
+      },
+      "question": {
+        "type": "sequence",
+        "q": "What happened right after Peter jumped?",
+        "choices": [
+          "He landed with a splash in the water",
+          "He landed safely on the other bank",
+          "Grandfather Frog jumped in to help him",
+          "Spotty the Turtle laughed at him first"
+        ],
+        "answer": 0,
+        "evidence": "Peter landed with a great splash in the water",
+        "explain": "The jump was not quite long enough, so Peter landed in the water, and then everyone laughed."
+      },
+      "readability": {
+        "grade": 7.1,
+        "fk": 6.9,
+        "cli": 6.8,
+        "ari": 7.6
+      }
+    }
+  ]
+}
