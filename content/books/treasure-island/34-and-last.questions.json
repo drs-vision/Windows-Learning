@@ -1,0 +1,214 @@
+{
+  "book": "treasure-island",
+  "chapter": 34,
+  "questions": [
+    {
+      "id": "treasure-island-34-01",
+      "type": "detail",
+      "q": "What was Jim's job while the others carried the gold to the boat?",
+      "choices": [
+        "Packing the coins into bread-bags in the cave",
+        "Standing guard on the hill",
+        "Rowing the boat to the ship",
+        "Cooking meals for everyone"
+      ],
+      "answer": 0,
+      "evidence": "packing the minted money into bread-bags"
+    },
+    {
+      "id": "treasure-island-34-02",
+      "type": "inference",
+      "q": "Why does Jim compare the coins to \"autumn leaves\"?",
+      "choices": [
+        "There were so many of them",
+        "They were brown and crumbling",
+        "They blew away in the wind",
+        "They were found under the trees"
+      ],
+      "answer": 0,
+      "evidence": "they were like autumn leaves"
+    },
+    {
+      "id": "treasure-island-34-03",
+      "type": "detail",
+      "q": "What did the doctor and Jim hear from the darkness on the third night?",
+      "choices": [
+        "A noise between shrieking and singing from the mutineers",
+        "Ben Gunn calling for help",
+        "Cannon fire from another ship",
+        "The parrot screaming"
+      ],
+      "answer": 0,
+      "evidence": "a noise between shrieking and singing"
+    },
+    {
+      "id": "treasure-island-34-04",
+      "type": "character",
+      "q": "What did the doctor say he would do if he were sure the mutineers were raving with fever?",
+      "choices": [
+        "Go and help them with his medical skill, at any risk",
+        "Shoot them from the hill",
+        "Leave the island at once",
+        "Send Silver to fetch them"
+      ],
+      "answer": 0,
+      "evidence": "take them the assistance of my skill"
+    },
+    {
+      "id": "treasure-island-34-05",
+      "type": "character",
+      "q": "How did most of the group treat Silver after the treasure was found?",
+      "choices": [
+        "Coldly, hardly better than a dog",
+        "As a hero and friend",
+        "As their new captain",
+        "As a prisoner in chains"
+      ],
+      "answer": 0,
+      "evidence": "none treated him better than a dog"
+    },
+    {
+      "id": "treasure-island-34-06",
+      "type": "detail",
+      "q": "What was decided about the three surviving mutineers?",
+      "choices": [
+        "To leave them on the island with supplies",
+        "To take them home to be hanged",
+        "To hunt them down",
+        "To make them part of the crew"
+      ],
+      "answer": 0,
+      "evidence": "it was decided that we must desert them on the island"
+    },
+    {
+      "id": "treasure-island-34-07",
+      "type": "detail",
+      "q": "What did the doctor especially want left for the marooned men?",
+      "choices": [
+        "A handsome present of tobacco",
+        "A small boat",
+        "A share of the gold",
+        "A copy of the Bible"
+      ],
+      "answer": 0,
+      "evidence": "a handsome present of tobacco"
+    },
+    {
+      "id": "treasure-island-34-08",
+      "type": "sequence",
+      "q": "What did one of the marooned mutineers do as the ship sailed away?",
+      "choices": [
+        "Fired a musket shot over Silver's head and through the main-sail",
+        "Swam after the ship",
+        "Waved goodbye and cheered",
+        "Set fire to the stockade"
+      ],
+      "answer": 0,
+      "evidence": "sent a shot whistling over Silver's head and through the main-sail"
+    },
+    {
+      "id": "treasure-island-34-09",
+      "type": "inference",
+      "q": "Why did the HISPANIOLA sail first to a port in Spanish America instead of straight home?",
+      "choices": [
+        "They were too short of men to make the voyage home",
+        "They wanted to sell the treasure there",
+        "The captain needed a new ship",
+        "They had to drop off Silver"
+      ],
+      "answer": 0,
+      "evidence": "we could not risk the voyage home without fresh hands"
+    },
+    {
+      "id": "treasure-island-34-10",
+      "type": "detail",
+      "q": "What had happened when Jim, the doctor and the squire returned to the ship at daybreak?",
+      "choices": [
+        "Silver had escaped with a sack of coins",
+        "Ben Gunn had sailed away",
+        "The ship had been robbed of all its gold",
+        "Pirates had captured the ship"
+      ],
+      "answer": 0,
+      "evidence": "Silver was gone"
+    },
+    {
+      "id": "treasure-island-34-11",
+      "type": "character",
+      "q": "Why did Ben Gunn say he helped Silver escape?",
+      "choices": [
+        "To save their lives",
+        "Because Silver paid him",
+        "Because they were old friends",
+        "To get rid of the parrot"
+      ],
+      "answer": 0,
+      "evidence": "he had only done so to preserve our lives"
+    },
+    {
+      "id": "treasure-island-34-12",
+      "type": "vocabulary",
+      "q": "Ben Gunn \"had connived at\" Silver's escape. What does connived at mean here?",
+      "choices": [
+        "Secretly allowed or helped",
+        "Tried hard to stop",
+        "Slept through",
+        "Reported to the captain"
+      ],
+      "answer": 0,
+      "evidence": "The maroon had connived at his escape"
+    },
+    {
+      "id": "treasure-island-34-13",
+      "type": "detail",
+      "q": "How many of the men who sailed out returned on the HISPANIOLA?",
+      "choices": [
+        "Five",
+        "Seventy-five",
+        "Nineteen",
+        "Twelve"
+      ],
+      "answer": 0,
+      "evidence": "Five men only of those who had sailed returned with her"
+    },
+    {
+      "id": "treasure-island-34-14",
+      "type": "detail",
+      "q": "What did Ben Gunn do with his thousand pounds?",
+      "choices": [
+        "Spent or lost it in nineteen days",
+        "Bought a ship of his own",
+        "Saved it all in a bank",
+        "Gave it to the church"
+      ],
+      "answer": 0,
+      "evidence": "in nineteen days, for he was back begging on the twentieth"
+    },
+    {
+      "id": "treasure-island-34-15",
+      "type": "detail",
+      "q": "What became of Gray after the voyage?",
+      "choices": [
+        "He studied, became mate and part owner of a ship, and had a family",
+        "He went back to Treasure Island",
+        "He spent all his money",
+        "He joined the pirates"
+      ],
+      "answer": 0,
+      "evidence": "he is now mate and part owner of a fine full-rigged ship"
+    },
+    {
+      "id": "treasure-island-34-16",
+      "type": "main-idea",
+      "q": "How does Jim feel about Treasure Island at the end of the story?",
+      "choices": [
+        "He never wants to go back and still has bad dreams about it",
+        "He plans to return for the bar silver",
+        "He misses it and wants to live there",
+        "He has forgotten all about it"
+      ],
+      "answer": 0,
+      "evidence": "Oxen and wain-ropes would not bring me back again to that accursed island"
+    }
+  ]
+}
