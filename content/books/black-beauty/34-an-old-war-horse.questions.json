@@ -22,7 +22,7 @@
       "id": "black-beauty-34-03",
       "type": "detail",
       "q": "What part of army life did Captain say was dreadful?",
-      "choices": ["Being sent over the sea in a great ship", "Learning to turn with the other horses", "Hearing the trumpet sound", "Being groomed every morning"],
+      "choices": ["Being sent over the sea in a great ship", "Learning to wheel and turn with the other horses", "Hearing the trumpet sound early each morning", "Being groomed and polished every single day"],
       "answer": 0,
       "evidence": "when it came to being sent abroad over the sea in a great ship, he almost changed his mind"
     },
@@ -30,7 +30,7 @@
       "id": "black-beauty-34-04",
       "type": "detail",
       "q": "How were the horses put onto the ship?",
-      "choices": ["They were lifted with strong straps and swung through the air", "They walked up a wooden ramp", "They swam out to the ship", "They were led across a bridge"],
+      "choices": ["They were lifted in strong straps and swung aboard", "They walked up a long wooden ramp onto the deck", "They swam out to the ship behind small boats", "They were led one by one across a narrow bridge"],
       "answer": 0,
       "evidence": "they were obliged to put strong straps under our bodies"
     },
@@ -38,7 +38,7 @@
       "id": "black-beauty-34-05",
       "type": "character",
       "q": "Why did Captain say the horses were not afraid in battle?",
-      "choices": ["They felt their rider firm in the saddle and his hand steady", "They could not hear the guns", "They wore blinkers over their eyes", "They had never seen a cannon before"],
+      "choices": ["They felt their rider firm in the saddle and his hand steady", "They could not hear the guns over the trumpets", "They wore thick blinkers over their eyes in battle", "They had been fed extra oats the night before"],
       "answer": 0,
       "evidence": "so long as we felt our rider firm in the saddle, and his hand steady on the bridle"
     },
@@ -46,7 +46,7 @@
       "id": "black-beauty-34-06",
       "type": "character",
       "q": "How did Captain feel about his first master?",
-      "choices": ["He trusted and loved him completely", "He was afraid of him", "He thought he was too strict", "He hardly knew him"],
+      "choices": ["He trusted and loved him completely", "He was afraid of him and his sharp spurs", "He thought he was far too strict and harsh", "He hardly knew him at all"],
       "answer": 0,
       "evidence": "I had such perfect trust in him"
     },
@@ -62,7 +62,7 @@
       "id": "black-beauty-34-08",
       "type": "inference",
       "q": "The master stroked Captain's neck more than ever before, \"as if he were thinking of something else.\" What does this suggest?",
-      "choices": ["He sensed the day would be very dangerous", "He was bored and wanted to go home", "He was planning to sell Captain", "He was trying to fix a sore on Captain's neck"],
+      "choices": ["He sensed the day would be very dangerous", "He was bored and wanted to go back home", "He was planning to sell Captain after the war", "He was trying to find a sore on Captain's neck"],
       "answer": 0,
       "evidence": "He stroked my neck that morning more, I think, than he had ever done before"
     },
@@ -70,7 +70,7 @@
       "id": "black-beauty-34-09",
       "type": "sequence",
       "q": "What happened to Captain right after his master was struck and fell?",
-      "choices": ["The rush of the charge drove him away from the spot", "He stood guard over his master all day", "He galloped straight back to the stables", "He was shot and fell beside his master"],
+      "choices": ["The rush of the charge drove him away from the spot", "He stayed beside his master until the battle was over", "He galloped straight back to the stables alone", "He was shot himself and fell beside his master"],
       "answer": 0,
       "evidence": "by the force of their charge I was driven from the spot"
     },
@@ -78,7 +78,7 @@
       "id": "black-beauty-34-10",
       "type": "sequence",
       "q": "After Captain was left alone on the battlefield, what happened next?",
-      "choices": ["A soldier whose horse had been killed mounted him", "His master got up and rode him again", "He ran away into the woods", "A farrier took him back to camp"],
+      "choices": ["A soldier whose horse had been killed mounted him", "His master got up again and rode him back to camp", "He ran away into the woods and hid until night", "A farrier found him and led him back to camp"],
       "answer": 0,
       "evidence": "a soldier whose horse had been killed under him caught at my bridle and mounted me"
     },
@@ -86,7 +86,7 @@
       "id": "black-beauty-34-11",
       "type": "vocabulary",
       "q": "\"Our gallant company was cruelly overpowered.\" What does \"overpowered\" mean here?",
-      "choices": ["Beaten by a stronger force", "Given extra strength", "Made very tired from waiting", "Sent home early"],
+      "choices": ["Beaten by a stronger force", "Given extra strength and power", "Made very tired from waiting", "Sent home early from the war"],
       "answer": 0,
       "evidence": "our gallant company was cruelly overpowered"
     },
@@ -94,7 +94,7 @@
       "id": "black-beauty-34-12",
       "type": "detail",
       "q": "About how many horses from Captain's stables came back from that battle?",
-      "choices": ["About one in four", "Almost all of them", "About half", "None except Captain"],
+      "choices": ["About one in four", "Almost all of them", "About half of them", "None except Captain"],
       "answer": 0,
       "evidence": "In our stables there was only about one in four that returned"
     },
@@ -102,7 +102,7 @@
       "id": "black-beauty-34-13",
       "type": "main-idea",
       "q": "What is the main lesson Captain teaches Black Beauty about war?",
-      "choices": ["War may look fine on parade, but it is terrible when men and horses are killed", "War is the best way for a horse to become famous", "Army horses have the easiest life of all horses", "Horses understand why wars are fought"],
+      "choices": ["War looks fine on parade but is terrible in battle", "War is the best way for a horse to become famous", "Army horses have the easiest life of all horses", "Horses always understand why their wars are fought"],
       "answer": 0,
       "evidence": "when thousands of good brave men and horses are killed or crippled for life, it has a very different look"
     }

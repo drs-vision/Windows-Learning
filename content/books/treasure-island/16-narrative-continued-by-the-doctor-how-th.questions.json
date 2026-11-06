@@ -14,7 +14,7 @@
       "id": "treasure-island-16-02",
       "type": "inference",
       "q": "Why couldn't the cabin party simply overpower the six mutineers and sail away?",
-      "choices": ["There was no wind", "The anchor was stuck", "They had no weapons", "The ship had a hole in it"],
+      "choices": ["There was no wind", "The anchor was stuck fast", "They had no weapons", "The ship had a hole in it"],
       "answer": 0,
       "evidence": "But the wind was wanting"
     },
@@ -38,7 +38,7 @@
       "id": "treasure-island-16-05",
       "type": "detail",
       "q": "What feature of the stockade especially pleased the doctor?",
-      "choices": ["A spring of clear water inside it", "A secret tunnel to the beach", "A cannon on the roof", "A store of food left by Flint"],
+      "choices": ["A spring of clear water inside it", "A secret tunnel leading to the beach", "A cannon mounted on the roof", "A store of food left there by Flint"],
       "answer": 0,
       "evidence": "What particularly took my fancy was the spring"
     },
@@ -46,7 +46,7 @@
       "id": "treasure-island-16-06",
       "type": "inference",
       "q": "Why was the spring so important to the cabin party?",
-      "choices": ["They had no water on the ship", "Its water could cure fever", "It hid the treasure", "It was the only way off the island"],
+      "choices": ["They had no water on the ship", "Its water could cure the fever", "It was where the treasure was hidden", "It was the only way off the island"],
       "answer": 0,
       "evidence": "we had no water"
     },
@@ -62,7 +62,7 @@
       "id": "treasure-island-16-08",
       "type": "detail",
       "q": "Where did they post Redruth to guard against the six mutineers?",
-      "choices": ["In the gallery between the cabin and the forecastle, with loaded muskets", "At the top of the mast", "In the jolly-boat", "At the stockade gate"],
+      "choices": ["In the passage between cabin and forecastle, with loaded muskets", "At the top of the mainmast with a spy-glass and a pistol", "Sitting in the jolly-boat tied alongside the ship", "Standing guard at the gate of the stockade on shore with a cutlass"],
       "answer": 0,
       "evidence": "We put old Redruth in the gallery between the cabin and the forecastle"
     },
@@ -70,7 +70,7 @@
       "id": "treasure-island-16-09",
       "type": "sequence",
       "q": "What did the six mutineers do after the captain warned Mr. Hands?",
-      "choices": ["They went down the fore companion to attack from behind, but turned back when they saw Redruth", "They jumped overboard and swam ashore", "They surrendered and joined the captain", "They fired a gun to signal Silver"],
+      "choices": ["They started to come round from behind but turned back on seeing Redruth", "They jumped overboard and swam ashore to join Silver's men", "They threw down their weapons and joined the captain", "They fired a gun to signal to Silver on the island"],
       "answer": 0,
       "evidence": "when they saw Redruth waiting for them in the sparred galley, they went about ship at once"
     },
@@ -78,7 +78,7 @@
       "id": "treasure-island-16-10",
       "type": "detail",
       "q": "What did the cabin party do with the extra arms and powder they could not carry?",
-      "choices": ["Dropped them overboard into the water", "Hid them in the hold", "Buried them on the beach", "Gave them to the six mutineers"],
+      "choices": ["Dropped them overboard into the water", "Hid them deep in the hold under the sails", "Buried them in the sand on the beach", "Left them on deck for the mutineers"],
       "answer": 0,
       "evidence": "The rest of the arms and powder we dropped overboard"
     },
@@ -86,7 +86,7 @@
       "id": "treasure-island-16-11",
       "type": "vocabulary",
       "q": "The doctor says they set out \"to provision the block house.\" To provision a place means to:",
-      "choices": ["Stock it with food and supplies", "Burn it down", "Paint and decorate it", "Leave it empty"],
+      "choices": ["Stock it with food and supplies", "Burn it to the ground", "Paint and decorate it", "Leave it empty"],
       "answer": 0,
       "evidence": "set to provision the block house"
     },
@@ -94,7 +94,7 @@
       "id": "treasure-island-16-12",
       "type": "character",
       "q": "How did Abraham Gray show he chose to stay loyal to the captain?",
-      "choices": ["He fought his way out of the forecastle with a cut cheek and joined the captain", "He shouted a warning to Silver", "He refused to answer and stayed below", "He stole the jolly-boat"],
+      "choices": ["He fought his way out with a cut cheek and joined the captain", "He shouted a warning across the water to Silver on shore", "He refused to answer the captain and stayed below", "He stole the jolly-boat and rowed off to the island"],
       "answer": 0,
       "evidence": "out burst Abraham Gray with a knife cut on the side of the cheek"
     },
@@ -102,7 +102,7 @@
       "id": "treasure-island-16-13",
       "type": "main-idea",
       "q": "What is the main thing that happens in this chapter?",
-      "choices": ["The loyal party moves supplies to the stockade and abandons the ship", "The loyal party wins back the ship from the pirates", "The doctor finds the treasure", "Silver makes peace with the captain"],
+      "choices": ["The loyal party moves supplies to the stockade and leaves the ship", "The loyal party wins back the ship from the pirates", "The doctor finds the treasure in the stockade", "Silver rows out to the ship and makes peace with the captain and squire"],
       "answer": 0,
       "evidence": "I am leaving this ship, and I order you to follow your captain"
     }

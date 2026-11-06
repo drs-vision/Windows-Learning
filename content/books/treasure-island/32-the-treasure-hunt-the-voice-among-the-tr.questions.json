@@ -46,7 +46,7 @@
       "id": "treasure-island-32-06",
       "type": "character",
       "q": "What does Silver's speech about \"seven hundred thousand pound\" show about him?",
-      "choices": ["His greed was stronger than his fear", "He did not really believe in the treasure", "He wanted to give up the hunt and go home", "He was more afraid of the dead than any man"],
+      "choices": ["His greed was stronger than his fear", "He did not believe in the treasure", "He wanted to give up and go home", "He was more afraid of the dead"],
       "answer": 0,
       "evidence": "I'll not be beat by man or devil"
     },

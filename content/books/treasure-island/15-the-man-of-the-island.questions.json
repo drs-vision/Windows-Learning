@@ -6,7 +6,7 @@
       "id": "treasure-island-15-01",
       "type": "detail",
       "q": "What first made Jim notice the strange figure on the hillside?",
-      "choices": ["A spout of gravel fell rattling down the hill", "He heard it singing", "He smelled smoke from its fire", "It called out his name"],
+      "choices": ["Gravel fell rattling down the hill", "He heard it singing an old sea-song", "He smelled smoke from its campfire", "It called out his name from the trees"],
       "answer": 0,
       "evidence": "a spout of gravel was dislodged and fell rattling and bounding through the trees"
     },
@@ -14,7 +14,7 @@
       "id": "treasure-island-15-02",
       "type": "character",
       "q": "When Jim first saw the shaggy creature, why did he turn back toward the boats?",
-      "choices": ["He preferred the dangers he knew to the ones he did not", "He wanted to warn Silver", "He had left his pistol in the boat", "He was hungry and wanted food"],
+      "choices": ["He preferred the dangers he knew to the ones he did not", "He wanted to warn Silver about the wild man", "He had left his pistol behind in the boat", "He was hungry and wanted to find food"],
       "answer": 0,
       "evidence": "I began to prefer the dangers that I knew to those I knew not"
     },
@@ -22,7 +22,7 @@
       "id": "treasure-island-15-03",
       "type": "sequence",
       "q": "What gave Jim the courage to walk toward the man of the island?",
-      "choices": ["He remembered he had a pistol", "He saw the man was smiling", "He heard the ship's gun", "The man dropped his weapon"],
+      "choices": ["He remembered he had a pistol", "He saw that the man was smiling", "He heard the ship's gun fire", "The man dropped his weapon"],
       "answer": 0,
       "evidence": "the recollection of my pistol flashed into my mind"
     },
@@ -30,7 +30,7 @@
       "id": "treasure-island-15-04",
       "type": "detail",
       "q": "What did the man do when Jim walked toward him?",
-      "choices": ["He threw himself on his knees and clasped his hands", "He ran away up the hill", "He attacked Jim", "He climbed a tree"],
+      "choices": ["He threw himself on his knees and clasped his hands", "He turned and ran away up the hill", "He leapt out and attacked Jim", "He climbed up a tall tree to hide in the branches above"],
       "answer": 0,
       "evidence": "threw himself on his knees and held out his clasped hands in supplication"
     },
@@ -38,7 +38,7 @@
       "id": "treasure-island-15-05",
       "type": "vocabulary",
       "q": "Ben Gunn says he was \"marooned.\" As Jim explains, being marooned means:",
-      "choices": ["Being put ashore and left behind on a lonely island as punishment", "Being shipwrecked in a storm", "Being made captain of a ship", "Being lost at sea in a small boat"],
+      "choices": ["Being put ashore and left on a lonely island as punishment", "Being shipwrecked in a storm far out at sea", "Being made captain of a ship by the crew's vote", "Being lost at sea for many weeks in a small open boat with no food"],
       "answer": 0,
       "evidence": "left behind on some desolate and distant island"
     },
@@ -46,7 +46,7 @@
       "id": "treasure-island-15-06",
       "type": "detail",
       "q": "How long had Ben Gunn been alone on the island?",
-      "choices": ["Three years", "Three months", "Ten years", "One week"],
+      "choices": ["Three years", "Three months", "Ten long years", "One week"],
       "answer": 0,
       "evidence": "Marooned three years agone"
     },
@@ -54,7 +54,7 @@
       "id": "treasure-island-15-07",
       "type": "detail",
       "q": "What food had Ben Gunn dreamed about on many long nights?",
-      "choices": ["Cheese, mostly toasted", "Roast beef", "Fresh bread", "Apples"],
+      "choices": ["Cheese, mostly toasted", "Roast beef with thick gravy", "Fresh bread", "Apples"],
       "answer": 0,
       "evidence": "many's the long night I've dreamed of cheese--toasted, mostly"
     },
@@ -70,7 +70,7 @@
       "id": "treasure-island-15-09",
       "type": "character",
       "q": "When Ben whispered \"I'm rich,\" what did Jim think at first?",
-      "choices": ["That the poor fellow had gone crazy from being alone", "That Ben was lying to trick him", "That Ben was a famous lord", "That Ben had stolen the ship's money"],
+      "choices": ["That he had gone crazy from being alone", "That Ben was lying in order to trick him", "That Ben was secretly a famous lord", "That Ben had stolen the ship's money"],
       "answer": 0,
       "evidence": "I now felt sure that the poor fellow had gone crazy in his solitude"
     },
@@ -78,7 +78,7 @@
       "id": "treasure-island-15-10",
       "type": "inference",
       "q": "How did Ben Gunn react when he learned that Silver was on the ship?",
-      "choices": ["He was frightened and wrung Jim's wrist", "He laughed and said Silver was his friend", "He wanted to go and greet Silver", "He did not care at all"],
+      "choices": ["He was frightened and wrung Jim's wrist", "He laughed and said Silver was his friend", "He wanted to go and greet Silver at once", "He did not care at all"],
       "answer": 0,
       "evidence": "If you was sent by Long John,\" he said, \"I'm as good as pork"
     },
@@ -86,7 +86,7 @@
       "id": "treasure-island-15-11",
       "type": "detail",
       "q": "What two things did Ben Gunn want from the squire in exchange for his help?",
-      "choices": ["One thousand pounds and a passage home", "A new ship and a crew", "A house and a servant's uniform", "A barrel of rum and a pistol"],
+      "choices": ["A thousand pounds and a passage home", "A new ship of his own and a crew", "A house and a servant's uniform", "A barrel of rum and a pistol"],
       "answer": 0,
       "evidence": "AND a passage home?"
     },
@@ -94,7 +94,7 @@
       "id": "treasure-island-15-12",
       "type": "detail",
       "q": "According to Ben Gunn, how did Flint return after burying the treasure?",
-      "choices": ["Alone in a little boat, with all six of his men dead", "With all six men carrying gold", "Swimming back to the ship", "He never returned at all"],
+      "choices": ["Alone in a little boat, with all six men dead", "With all six of his men carrying bags of gold", "Swimming all the way back out to the ship", "He never came back to the ship at all"],
       "answer": 0,
       "evidence": "the six all dead--dead and buried"
     },
@@ -102,7 +102,7 @@
       "id": "treasure-island-15-13",
       "type": "sequence",
       "q": "Why was Ben Gunn left behind on the island by his second ship?",
-      "choices": ["His messmates searched twelve days for the treasure, found nothing, and blamed him", "He fell asleep and missed the boat", "He wanted to stay and live alone", "He had started a fight with the captain"],
+      "choices": ["His shipmates found no treasure in twelve days and blamed him", "He fell asleep under a tree on the beach and missed the last boat back", "He wanted to stay behind and live by himself", "He had started a fight with the captain"],
       "answer": 0,
       "evidence": "Twelve days they looked for it, and every day they had the worse word for me"
     },
@@ -110,7 +110,7 @@
       "id": "treasure-island-15-14",
       "type": "inference",
       "q": "Ben Gunn hints that most of his time on the island \"was took up with another matter.\" What is he most likely hinting about?",
-      "choices": ["He has found Flint's treasure", "He has built a large house", "He has been training goats", "He has been writing a book"],
+      "choices": ["He has found Flint's treasure", "He has built himself a large house", "He has been taming the wild goats", "He has been writing a book"],
       "answer": 0,
       "evidence": "the most part of his time was took up with another matter"
     },
@@ -118,7 +118,7 @@
       "id": "treasure-island-15-15",
       "type": "detail",
       "q": "What did Ben Gunn say he had that might get Jim back aboard?",
-      "choices": ["A boat he made himself, kept under the white rock", "A raft hidden in the swamp", "A secret tunnel to the anchorage", "A signal fire on the hill"],
+      "choices": ["A boat he made himself, kept under the white rock", "A raft hidden among the reeds in the swamp", "A secret tunnel leading to the anchorage", "A signal fire ready on the top of the hill"],
       "answer": 0,
       "evidence": "I keep her under the white rock"
     },
@@ -126,7 +126,7 @@
       "id": "treasure-island-15-16",
       "type": "main-idea",
       "q": "What is this chapter mostly about?",
-      "choices": ["Jim meets Ben Gunn, a marooned man who may become an ally", "Jim fights a wild bear in the woods", "Jim returns to the ship and warns the captain", "Silver captures Jim near the marsh"],
+      "choices": ["Jim meets Ben Gunn, a marooned man who may help", "Jim fights off a wild bear in the woods", "Jim gets back to the ship and warns the captain", "Silver catches Jim near the marsh"],
       "answer": 0,
       "evidence": "I began to believe that I had found an ally"
     }

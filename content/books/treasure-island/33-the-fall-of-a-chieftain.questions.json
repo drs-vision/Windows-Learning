@@ -6,12 +6,7 @@
       "id": "treasure-island-33-01",
       "type": "character",
       "q": "How did Silver react in the first moment after seeing the empty pit?",
-      "choices": [
-        "He kept his head and changed his plan at once",
-        "He fainted from shock",
-        "He jumped into the pit to dig",
-        "He blamed Jim and struck him"
-      ],
+      "choices": ["He kept his head and changed his plan at once", "He went white and fainted from the shock of it", "He jumped down into the pit and began to dig", "He blamed Jim for it and struck him with his crutch"],
       "answer": 0,
       "evidence": "he kept his head, found his temper, and changed his plan"
     },
@@ -19,12 +14,7 @@
       "id": "treasure-island-33-02",
       "type": "detail",
       "q": "What did Silver secretly hand to Jim?",
-      "choices": [
-        "A double-barrelled pistol",
-        "A bag of gold",
-        "A knife",
-        "The compass"
-      ],
+      "choices": ["A double-barrelled pistol", "A small bag of gold coins", "A sharp knife with a bone handle", "The brass compass from his pocket"],
       "answer": 0,
       "evidence": "And he passed me a double-barrelled pistol."
     },
@@ -32,12 +22,7 @@
       "id": "treasure-island-33-03",
       "type": "character",
       "q": "What did Jim whisper to Silver after seeing him move away from the pirates?",
-      "choices": [
-        "So you've changed sides again",
-        "Thank you for saving me",
-        "Let's run for the boats",
-        "Where is the treasure?"
-      ],
+      "choices": ["So you've changed sides again", "Thank you for saving my life", "Let's run for the boats now", "Where have they put the treasure?"],
       "answer": 0,
       "evidence": "So you've changed sides again"
     },
@@ -45,12 +30,7 @@
       "id": "treasure-island-33-04",
       "type": "detail",
       "q": "What did Morgan find while digging in the pit?",
-      "choices": [
-        "A two-guinea piece",
-        "A bar of gold",
-        "A skeleton's skull",
-        "A map"
-      ],
+      "choices": ["A two-guinea piece", "A heavy bar of gold", "A skeleton's skull", "A torn scrap of map"],
       "answer": 0,
       "evidence": "It was a two-guinea piece"
     },
@@ -58,12 +38,7 @@
       "id": "treasure-island-33-05",
       "type": "inference",
       "q": "What did George Merry accuse Silver of?",
-      "choices": [
-        "Knowing all along that the treasure was gone",
-        "Stealing the two-guinea piece",
-        "Being afraid of Flint's ghost",
-        "Letting Jim escape"
-      ],
+      "choices": ["Knowing all along that the treasure was gone", "Stealing the two-guinea piece and hiding it", "Being afraid of Flint's ghost", "Letting Jim slip away to warn the doctor"],
       "answer": 0,
       "evidence": "that man there knew it all along"
     },
@@ -71,12 +46,7 @@
       "id": "treasure-island-33-06",
       "type": "sequence",
       "q": "What happened just as Merry raised his arm to lead a charge?",
-      "choices": [
-        "Three musket-shots flashed out of the thicket",
-        "Silver threw down his crutch and ran",
-        "Jim fired his pistol in the air",
-        "The pirates surrendered"
-      ],
+      "choices": ["Three musket-shots flashed out of the thicket", "Silver threw down his crutch and ran for the trees", "Jim fired his pistol into the air as a warning", "The other pirates threw down their arms and gave up"],
       "answer": 0,
       "evidence": "three musket-shots flashed out of the thicket"
     },
@@ -84,12 +54,7 @@
       "id": "treasure-island-33-07",
       "type": "detail",
       "q": "Who came out of the nutmeg-trees with smoking muskets?",
-      "choices": [
-        "The doctor, Gray and Ben Gunn",
-        "The squire and Captain Smollett",
-        "Three pirates from the ship",
-        "Israel Hands and O'Brien"
-      ],
+      "choices": ["The doctor, Gray and Ben Gunn", "The squire and Captain Smollett", "Three pirates left on the ship", "Israel Hands and Tom Morgan"],
       "answer": 0,
       "evidence": "the doctor, Gray, and Ben Gunn joined us"
     },
@@ -97,12 +62,7 @@
       "id": "treasure-island-33-08",
       "type": "detail",
       "q": "Why did the doctor hurry everyone forward after the shooting?",
-      "choices": [
-        "To get between the surviving pirates and the boats",
-        "To find the treasure before dark",
-        "To catch Ben Gunn",
-        "To reach the stockade for food"
-      ],
+      "choices": ["To get between the surviving pirates and the boats", "To find the rest of the treasure before dark", "To catch Ben Gunn before he ran off", "To reach the stockade in time to fetch the food"],
       "answer": 0,
       "evidence": "We must head 'em off the boats"
     },
@@ -110,12 +70,7 @@
       "id": "treasure-island-33-09",
       "type": "detail",
       "q": "Who had really dug up and moved Flint's treasure?",
-      "choices": [
-        "Ben Gunn",
-        "Captain Smollett",
-        "Doctor Livesey",
-        "George Merry"
-      ],
+      "choices": ["Ben Gunn", "Captain Smollett", "Doctor Livesey", "George Merry"],
       "answer": 0,
       "evidence": "he had found the treasure; he had dug it up"
     },
@@ -123,12 +78,7 @@
       "id": "treasure-island-33-10",
       "type": "detail",
       "q": "Where had Ben Gunn hidden the treasure?",
-      "choices": [
-        "In his cave on the two-pointed hill",
-        "Inside the stockade",
-        "Aboard the HISPANIOLA",
-        "Under the tall pine"
-      ],
+      "choices": ["In his cave on the two-pointed hill", "Under the floor of the old stockade", "Down in the hold of the HISPANIOLA", "In a new pit beneath the tall pine"],
       "answer": 0,
       "evidence": "a cave he had on the two-pointed hill"
     },
@@ -136,12 +86,7 @@
       "id": "treasure-island-33-11",
       "type": "inference",
       "q": "Why had the doctor given Silver the chart?",
-      "choices": [
-        "It was now useless, and it bought them a safe move to the cave",
-        "He had been tricked by Silver",
-        "He wanted the pirates to find the gold",
-        "He had lost interest in the treasure"
-      ],
+      "choices": ["It was useless now, and it bought them a safe move to the cave", "Silver had tricked him into handing it over with a false story", "He wanted the pirates to find the gold and leave them in peace", "He had lost all interest in the treasure after the battle"],
       "answer": 0,
       "evidence": "given him the chart, which was now useless"
     },
@@ -149,12 +94,7 @@
       "id": "treasure-island-33-12",
       "type": "detail",
       "q": "How did Ben Gunn slow down the pirates before the doctor arrived?",
-      "choices": [
-        "He played on their superstitions with Flint's song and words",
-        "He set fire to the woods",
-        "He stole their boats",
-        "He fired warning shots"
-      ],
+      "choices": ["He played on their fears with Flint's song and words", "He set fire to the dry woods all along their path", "He crept down to the shore and stole their boats", "He fired warning shots from behind the rocks"],
       "answer": 0,
       "evidence": "it had occurred to him to work upon the superstitions of his former shipmates"
     },
@@ -162,12 +102,7 @@
       "id": "treasure-island-33-13",
       "type": "detail",
       "q": "What did they find just inside the mouth of North Inlet?",
-      "choices": [
-        "The HISPANIOLA, floating by herself",
-        "The pirates' camp",
-        "A second wrecked ship",
-        "The squire in a boat"
-      ],
+      "choices": ["The HISPANIOLA, floating by herself", "The pirates' old camp in the marsh", "A second wrecked ship on the rocks", "The squire waiting for them in a boat"],
       "answer": 0,
       "evidence": "what should we meet but the HISPANIOLA, cruising by herself?"
     },
@@ -175,12 +110,7 @@
       "id": "treasure-island-33-14",
       "type": "vocabulary",
       "q": "The squire calls Silver \"a prodigious villain and imposter.\" What does prodigious mean here?",
-      "choices": [
-        "Enormous, very great",
-        "Small and harmless",
-        "Clever and kind",
-        "Young and foolish"
-      ],
+      "choices": ["Enormous, very great", "Small and harmless", "Clever and very kind", "Young and foolish"],
       "answer": 0,
       "evidence": "you're a prodigious villain and imposter"
     },
@@ -188,12 +118,7 @@
       "id": "treasure-island-33-15",
       "type": "detail",
       "q": "What did Jim see in the far corner of the cave?",
-      "choices": [
-        "Heaps of coin and bars of gold",
-        "The bones of Flint's men",
-        "The pirates' black flag",
-        "Ben Gunn's goats"
-      ],
+      "choices": ["Heaps of coin and bars of gold", "The bones of Flint's six men", "The pirates' black flag, folded", "Ben Gunn's goats, penned in"],
       "answer": 0,
       "evidence": "great heaps of coin and quadrilaterals built of bars of gold"
     },
@@ -201,12 +126,7 @@
       "id": "treasure-island-33-16",
       "type": "main-idea",
       "q": "What is this chapter mostly about?",
-      "choices": [
-        "The mutineers are defeated, and Jim learns that Ben Gunn had moved the treasure to his cave",
-        "Silver escapes with the treasure",
-        "Jim and Silver fight the doctor",
-        "The pirates retake the HISPANIOLA"
-      ],
+      "choices": ["The mutineers are beaten, and Jim learns Ben Gunn moved the treasure to his cave", "Silver turns on Jim, grabs the treasure and escapes alone to the HISPANIOLA", "Jim and Silver are forced to fight the doctor and Gray at the empty pit", "The pirates race back to the shore, retake the HISPANIOLA and sail away"],
       "answer": 0,
       "evidence": "Ben Gunn, the half-idiot maroon, was the hero from beginning to end"
     }

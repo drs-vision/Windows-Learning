@@ -6,7 +6,7 @@
       "id": "treasure-island-14-01",
       "type": "character",
       "q": "How did Jim feel right after he escaped from Long John into the island?",
-      "choices": ["Pleased, and he began to enjoy exploring", "Terrified and ready to go back", "Angry at the captain", "Sad and lonely"],
+      "choices": ["Pleased, and he began to enjoy exploring", "Terrified and ready to go back to the ship", "Angry at the captain for letting him go", "Sad, lonely, and missing his mother"],
       "answer": 0,
       "evidence": "I now felt for the first time the joy of exploration"
     },
@@ -14,7 +14,7 @@
       "id": "treasure-island-14-02",
       "type": "detail",
       "q": "What did Jim not realize about the snake that hissed at him?",
-      "choices": ["It was a deadly rattlesnake", "It was someone's pet", "It was only a lizard", "It was guarding the treasure"],
+      "choices": ["It was a deadly rattlesnake", "It was someone's tame pet", "It was only a harmless lizard", "It was guarding the treasure"],
       "answer": 0,
       "evidence": "Little did I suppose that he was a deadly enemy and that the noise was the famous rattle"
     },
@@ -22,7 +22,7 @@
       "id": "treasure-island-14-03",
       "type": "inference",
       "q": "How did Jim know that some of his shipmates were coming near?",
-      "choices": ["A great cloud of birds rose screaming from the marsh", "He heard a gun fired", "He saw smoke from a fire", "He found their footprints in the sand"],
+      "choices": ["A cloud of birds rose screaming from the marsh", "He heard a musket fired somewhere in the woods nearby", "He saw smoke rising from a cooking fire", "He found fresh footprints in the sand"],
       "answer": 0,
       "evidence": "a great cloud of birds hung screaming and circling in the air"
     },
@@ -30,7 +30,7 @@
       "id": "treasure-island-14-04",
       "type": "detail",
       "q": "Where did Jim hide when he first heard the voices?",
-      "choices": ["Under the nearest live-oak", "Inside a hollow log", "Up in a tall pine tree", "In the river"],
+      "choices": ["Under the nearest live-oak", "Inside a hollow log", "Up in a tall pine tree", "In the cold river"],
       "answer": 0,
       "evidence": "I crawled under cover of the nearest live-oak"
     },
@@ -38,7 +38,7 @@
       "id": "treasure-island-14-05",
       "type": "character",
       "q": "Why did Jim decide to crawl closer to Silver and the other man?",
-      "choices": ["He felt it was his duty to overhear their plans", "He wanted to ask Silver for food", "He wanted to give himself up", "He thought they had found the treasure"],
+      "choices": ["He felt it was his duty to overhear their plans", "He wanted to ask Silver for something to eat and drink", "He had decided to give himself up to them", "He thought they had found the treasure"],
       "answer": 0,
       "evidence": "my plain and obvious duty was to draw as close as I could manage"
     },
@@ -46,7 +46,7 @@
       "id": "treasure-island-14-06",
       "type": "detail",
       "q": "Who was Silver talking with in the little green dell?",
-      "choices": ["Tom, one of the honest sailors", "Captain Smollett", "Anderson, the boatswain", "Ben Gunn"],
+      "choices": ["Tom, one of the honest sailors", "Captain Smollett", "Anderson, the boatswain", "Ben Gunn, the man who was marooned"],
       "answer": 0,
       "evidence": "where'd I be, Tom--now, tell me, where'd I be?"
     },
@@ -62,7 +62,7 @@
       "id": "treasure-island-14-08",
       "type": "sequence",
       "q": "What interrupted the talk between Silver and Tom?",
-      "choices": ["A cry of anger and a long, horrid scream from the marsh", "A cannon shot from the ship", "Jim sneezing in the bushes", "A sudden thunderstorm"],
+      "choices": ["An angry cry and a long, horrid scream from the marsh", "A cannon shot fired from the ship in the anchorage", "Jim sneezing loudly in the bushes nearby", "A sudden thunderstorm rolling over the hills"],
       "answer": 0,
       "evidence": "one horrid, long-drawn scream"
     },
@@ -70,7 +70,7 @@
       "id": "treasure-island-14-09",
       "type": "inference",
       "q": "When Silver said the scream was probably \"Alan,\" what did Tom understand?",
-      "choices": ["That the pirates had killed Alan, an honest seaman", "That Alan had found the treasure", "That Alan had been bitten by a snake", "That Alan was calling for help with the boats"],
+      "choices": ["That the pirates had killed Alan, an honest seaman", "That Alan had found the treasure and was shouting for joy", "That Alan had been bitten by a snake in the marsh", "That Alan was calling for help with the boats"],
       "answer": 0,
       "evidence": "You've killed Alan, have you?"
     },
@@ -78,7 +78,7 @@
       "id": "treasure-island-14-10",
       "type": "character",
       "q": "What did Tom do after refusing to be Silver's mate any more?",
-      "choices": ["Turned his back on Silver and walked toward the beach", "Attacked Silver with a knife", "Begged Silver for mercy", "Ran into the swamp to hide"],
+      "choices": ["Turned his back on Silver and walked toward the beach", "Pulled out a knife and attacked Silver", "Fell on his knees and begged Silver for mercy", "Ran off into the swamp to hide among the tall green reeds"],
       "answer": 0,
       "evidence": "turned his back directly on the cook and set off walking for the beach"
     },
@@ -86,7 +86,7 @@
       "id": "treasure-island-14-11",
       "type": "detail",
       "q": "What did Silver throw to knock Tom down?",
-      "choices": ["His crutch", "His knife", "A rock", "His hat"],
+      "choices": ["His crutch", "His knife", "A big rock", "His hat"],
       "answer": 0,
       "evidence": "whipped the crutch out of his armpit"
     },
@@ -94,7 +94,7 @@
       "id": "treasure-island-14-12",
       "type": "vocabulary",
       "q": "\"The monster had pulled himself together... cleansing his blood-stained knife.\" Here \"cleansing\" means:",
-      "choices": ["Wiping clean", "Sharpening", "Hiding", "Breaking"],
+      "choices": ["Wiping clean", "Sharpening", "Hiding away", "Breaking"],
       "answer": 0,
       "evidence": "cleansing his blood-stained knife the while upon a wisp of grass"
     },
@@ -102,7 +102,7 @@
       "id": "treasure-island-14-13",
       "type": "sequence",
       "q": "What did Silver do right after killing Tom that frightened Jim into running?",
-      "choices": ["He blew several blasts on a whistle", "He fired his pistol into the air", "He shouted Jim's name", "He started digging a hole"],
+      "choices": ["He blew several blasts on a whistle", "He fired his pistol into the air", "He shouted Jim's name into the trees", "He started digging a grave"],
       "answer": 0,
       "evidence": "brought out a whistle, and blew upon it several modulated blasts"
     },
@@ -110,7 +110,7 @@
       "id": "treasure-island-14-14",
       "type": "main-idea",
       "q": "What is the main event of this chapter?",
-      "choices": ["Jim secretly watches Silver murder Tom, an honest sailor, and flees in terror", "Jim makes friends with Silver on the island", "Jim finds the stockade and meets the doctor", "The pirates and the cabin party fight a battle on the ship"],
+      "choices": ["Jim secretly sees Silver murder Tom, an honest sailor, and flees", "Jim makes friends with Silver while they explore the island together", "Jim finds the stockade and meets the doctor and the squire there", "The pirates and the cabin party fight a battle on board the ship"],
       "answer": 0,
       "evidence": "I could scarce persuade myself that murder had been actually done"
     }

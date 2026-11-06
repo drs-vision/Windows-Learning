@@ -46,7 +46,7 @@
       "id": "treasure-island-20-06",
       "type": "character",
       "q": "What did Jim do during the meeting instead of guarding his eastern loophole?",
-      "choices": ["He crept up behind the captain to listen", "He lay down in a corner and went to sleep", "He slipped out the back to find Ben Gunn", "He aimed his musket at Silver through a loophole"],
+      "choices": ["He crept up behind the captain to listen", "He lay down and went to sleep", "He slipped out the back to find Ben Gunn", "He aimed his musket at Silver"],
       "answer": 0,
       "evidence": "I had already deserted my eastern loophole and crept up behind the captain"
     },
@@ -78,7 +78,7 @@
       "id": "treasure-island-20-10",
       "type": "detail",
       "q": "What did Silver demand from the captain?",
-      "choices": ["The chart to find the treasure", "The ship's long brass cannon", "All of the food and the brandy", "The doctor's medicine chest"],
+      "choices": ["The chart to find the treasure", "The ship's long brass cannon", "All of their food", "The doctor's medicine chest"],
       "answer": 0,
       "evidence": "we want your chart"
     },

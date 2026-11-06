@@ -6,7 +6,7 @@
       "id": "treasure-island-13-01",
       "type": "character",
       "q": "How did Jim feel about Treasure Island from his first look at it that morning?",
-      "choices": ["He hated the very thought of it", "He was thrilled and could not wait to land", "He felt calm and safe", "He was bored by it"],
+      "choices": ["He hated the very thought of it", "He was thrilled and could not wait to land", "He felt calm and safe", "He was bored by the sight of it"],
       "answer": 0,
       "evidence": "I hated the very thought of Treasure Island"
     },
@@ -14,7 +14,7 @@
       "id": "treasure-island-13-02",
       "type": "detail",
       "q": "What made the Spy-glass hill stand out from the other hills?",
-      "choices": ["It was the tallest and was cut off flat at the top like a pedestal", "It was covered in bright green grass", "It had smoke rising from its top", "It was the smallest hill on the island"],
+      "choices": ["It was the tallest and flat on top like a pedestal", "It was covered in bright green grass all the way up", "It had a thin line of smoke rising from its top", "It was the smallest and lowest hill on the island"],
       "answer": 0,
       "evidence": "cut off at the top like a pedestal to put a statue on"
     },
@@ -22,7 +22,7 @@
       "id": "treasure-island-13-03",
       "type": "detail",
       "q": "Why did the boats have to tow (warp) the ship to the anchorage?",
-      "choices": ["There was no sign of any wind", "The rudder was broken", "The sails had been torn in a storm", "The captain wanted to save the sails"],
+      "choices": ["There was no sign of any wind", "The ship's rudder had been broken", "The sails had been torn in a storm", "The captain wanted to save the sails"],
       "answer": 0,
       "evidence": "there was no sign of any wind"
     },
@@ -30,7 +30,7 @@
       "id": "treasure-island-13-04",
       "type": "inference",
       "q": "Why did Jim think Anderson's grumbling in the boat was a bad sign?",
-      "choices": ["The men had always worked willingly before, so the island was loosening discipline", "Anderson was usually the captain's best friend", "It meant the boat was about to sink", "Anderson had never spoken before"],
+      "choices": ["The men had always worked willingly, so discipline was slipping", "Anderson was usually the captain's most loyal and cheerful man", "It meant the boat was leaking and about to sink", "Anderson had never said a word on the whole voyage"],
       "answer": 0,
       "evidence": "the very sight of the island had relaxed the cords of discipline"
     },
@@ -38,7 +38,7 @@
       "id": "treasure-island-13-05",
       "type": "detail",
       "q": "Who guided the ship through the narrow passage without ever hesitating?",
-      "choices": ["Long John Silver", "Captain Smollett", "Squire Trelawney", "Anderson"],
+      "choices": ["Long John Silver", "Captain Smollett", "Squire Trelawney", "Job Anderson"],
       "answer": 0,
       "evidence": "John never hesitated once"
     },
@@ -46,7 +46,7 @@
       "id": "treasure-island-13-06",
       "type": "detail",
       "q": "What did Dr. Livesey think the bad smell at the anchorage meant?",
-      "choices": ["There was fever there", "The treasure was nearby", "A ship had sunk there", "Pirates were cooking nearby"],
+      "choices": ["There was fever there", "The treasure was buried close by", "A ship had sunk there", "Pirates were cooking on the shore"],
       "answer": 0,
       "evidence": "I'll stake my wig there's fever here"
     },
@@ -54,7 +54,7 @@
       "id": "treasure-island-13-07",
       "type": "vocabulary",
       "q": "\"Mutiny, it was plain, hung over us like a thunder-cloud.\" What is a mutiny?",
-      "choices": ["A rebellion of sailors against their officers", "A long period with no wind", "A sickness caught in swamps", "A celebration after reaching land"],
+      "choices": ["A rebellion of sailors against their officers", "A long, still spell at sea with no wind at all", "A sickness that sailors catch in swamps", "A celebration held after reaching land"],
       "answer": 0,
       "evidence": "Mutiny, it was plain, hung over us like a thunder-cloud."
     },
@@ -62,7 +62,7 @@
       "id": "treasure-island-13-08",
       "type": "character",
       "q": "How did Long John Silver behave while the rest of the crew was sulking?",
-      "choices": ["He was all smiles, obeyed orders cheerfully, and sang songs", "He growled and refused orders like the others", "He hid in the galley all afternoon", "He argued openly with the captain"],
+      "choices": ["He was all smiles, obeyed cheerfully, and sang songs", "He growled and refused orders just like the others", "He hid away in the galley all afternoon long", "He argued openly with the captain on deck"],
       "answer": 0,
       "evidence": "he was all smiles to everyone"
     },
@@ -70,7 +70,7 @@
       "id": "treasure-island-13-09",
       "type": "inference",
       "q": "Why did the captain say Silver was the one man they could rely on?",
-      "choices": ["Silver also wanted to keep things quiet for now and could calm the men", "Silver was secretly loyal to the squire", "Silver was the only one who knew where the treasure was", "Silver had promised to fight the other pirates"],
+      "choices": ["Silver also wanted to keep things quiet and could calm the men", "Silver was secretly loyal to the squire and hated all the other pirates", "Silver was the only one who knew where the treasure lay", "Silver had promised to fight the others if they rose up"],
       "answer": 0,
       "evidence": "he's as anxious as you and I to smother things up"
     },
@@ -78,7 +78,7 @@
       "id": "treasure-island-13-10",
       "type": "detail",
       "q": "What was the captain's plan to calm the restless crew?",
-      "choices": ["Let the men go ashore for the afternoon", "Give every man extra rum", "Lock the ringleaders in the hold", "Sail away from the island at once"],
+      "choices": ["Let the men go ashore for the afternoon", "Give every man an extra ration of rum", "Lock the ringleaders down in the hold", "Sail away from the island at once"],
       "answer": 0,
       "evidence": "Let's allow the men an afternoon ashore"
     },
@@ -86,7 +86,7 @@
       "id": "treasure-island-13-11",
       "type": "detail",
       "q": "Which three men were told about the danger and given the cabin party's trust?",
-      "choices": ["Hunter, Joyce, and Redruth", "Anderson, Silver, and Tom", "Hands, Merry, and Morgan", "Alan, Tom, and Anderson"],
+      "choices": ["Hunter, Joyce, and Redruth", "Anderson, Silver, and Tom", "Israel Hands, Merry, and Morgan", "Alan, Dick, and Anderson"],
       "answer": 0,
       "evidence": "Hunter, Joyce, and Redruth were taken into our confidence"
     },
@@ -94,7 +94,7 @@
       "id": "treasure-island-13-12",
       "type": "sequence",
       "q": "What happened right after the crew was split up, with six men staying on board?",
-      "choices": ["Jim slipped over the side and hid in one of the boats going ashore", "The captain fired a gun to call the men back", "Silver locked the cabin door", "The ship began sailing back out to sea"],
+      "choices": ["Jim slipped over the side into one of the boats going ashore", "The captain fired a gun to call the men back to the ship at once", "Silver locked the cabin door from the outside", "The ship began to sail back out to the open sea"],
       "answer": 0,
       "evidence": "In a jiffy I had slipped over the side and curled up in the fore-sheets of the nearest boat"
     },
@@ -102,7 +102,7 @@
       "id": "treasure-island-13-13",
       "type": "character",
       "q": "When did Jim first begin to regret going ashore?",
-      "choices": ["When Silver looked sharply over and called out to ask if it was him", "When he saw a snake", "When the boat almost tipped over", "When the captain fired the gun"],
+      "choices": ["When Silver called out to ask if it was him", "When he saw a snake coiled on the rocks", "When the boat almost tipped over in the surf", "When the captain fired the ship's gun"],
       "answer": 0,
       "evidence": "from that moment I began to regret what I had done"
     },
@@ -110,7 +110,7 @@
       "id": "treasure-island-13-14",
       "type": "main-idea",
       "q": "What is this chapter mostly about?",
-      "choices": ["The crew grows close to mutiny at the island, and Jim sneaks ashore with Silver's men", "Jim finds the treasure buried under a tree", "The ship is wrecked in a storm near the island", "The captain and Silver become good friends"],
+      "choices": ["The crew nears mutiny and Jim sneaks ashore with Silver's men", "Jim finds the treasure buried under a tall tree on the hill", "The ship is wrecked in a storm near the island and sinks", "The captain and Silver become good friends and trust each other"],
       "answer": 0,
       "evidence": "It occurred to me at once to go ashore."
     }

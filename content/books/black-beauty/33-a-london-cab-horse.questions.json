@@ -6,7 +6,7 @@
       "id": "black-beauty-33-01",
       "type": "detail",
       "q": "What was Beauty's new master's full name?",
-      "choices": ["Jeremiah Barker", "Harry Grant", "John Manly", "Gray Jones"],
+      "choices": ["Jeremiah Barker", "Jeremiah Grant", "Joseph Truman", "Jonathan Skinner"],
       "answer": 0,
       "evidence": "Jeremiah Barker was my new master's name"
     },
@@ -14,7 +14,7 @@
       "id": "black-beauty-33-02",
       "type": "character",
       "q": "How does Beauty describe the Barker family?",
-      "choices": ["The happiest, merriest family he ever knew", "Rich and proud", "Quarrelsome and loud", "Strict and unfriendly"],
+      "choices": ["The happiest, merriest family he ever knew", "Rich and proud, with servants to do the work", "Loud and quarrelsome, always arguing at meals", "Strict and unfriendly toward their horses"],
       "answer": 0,
       "evidence": "I never knew such a happy, merry family before or since"
     },
@@ -22,7 +22,7 @@
       "id": "black-beauty-33-03",
       "type": "detail",
       "q": "Where had Captain gone when he was young?",
-      "choices": ["To the Crimean War with a cavalry officer", "To the races at Newmarket", "To a farm in the country", "To a circus"],
+      "choices": ["To the Crimean War with a cavalry officer", "To the races at Newmarket with a jockey", "To a large farm in the north of England", "To a traveling circus that toured France"],
       "answer": 0,
       "evidence": "he went to the Crimean War"
     },
@@ -38,7 +38,7 @@
       "id": "black-beauty-33-05",
       "type": "inference",
       "q": "What did Jerry mean by giving Beauty \"the benefit of the doubt\" about his broken knees?",
-      "choices": ["He would not blame Beauty since nobody knew whose fault it was", "He would sell Beauty if he fell again", "He thought Beauty had fallen on purpose", "He would make Beauty work twice as hard"],
+      "choices": ["He would not blame Beauty, since no one knew the cause", "He would sell Beauty at once if he ever fell again", "He believed Beauty had fallen down on purpose", "He would only pay half price until the knees were checked"],
       "answer": 0,
       "evidence": "as long as I don't know I shall give him the benefit of the doubt"
     },
@@ -46,7 +46,7 @@
       "id": "black-beauty-33-06",
       "type": "sequence",
       "q": "How was Beauty harnessed when he was first put into Jerry's cab?",
-      "choices": ["With no check-rein and no curb, just a plain snaffle", "With a tight check-rein", "With blinkers and a curb", "With a heavy gag-bit"],
+      "choices": ["With no check-rein and no curb, just a plain snaffle", "With a tight check-rein to hold his head up high", "With blinkers and a curb like the other cab horses", "With a heavy gag-bit and a short bearing rein"],
       "answer": 0,
       "evidence": "There was no check-rein, no curb, nothing but a plain ring snaffle"
     },
@@ -54,7 +54,7 @@
       "id": "black-beauty-33-07",
       "type": "character",
       "q": "What did Governor Grant say after looking Beauty over?",
-      "choices": ["He was the right sort for Jerry and worth what he cost", "He would be good for a funeral", "He was too smart-looking", "He would soon go lame"],
+      "choices": ["He was the right sort and worth his price", "He would look well pulling a hearse at a funeral", "He was far too smart-looking for a London cab", "He would soon go lame on the hard London stones"],
       "answer": 0,
       "evidence": "He's the right sort for you, Jerry"
     },
@@ -62,7 +62,7 @@
       "id": "black-beauty-33-08",
       "type": "detail",
       "q": "What made Beauty's first week as a London cab horse so trying?",
-      "choices": ["The noise, hurry, and crowds of London", "Jerry's harsh whip", "Too little food", "Fighting with Captain"],
+      "choices": ["The noise, hurry, and crowds of London", "Jerry's harsh whip and his loud voice", "Too little food and a cold, damp stall", "Fighting with Captain over the hay rack"],
       "answer": 0,
       "evidence": "the noise, the hurry, the crowds of horses, carts, and carriages"
     },
@@ -70,7 +70,7 @@
       "id": "black-beauty-33-09",
       "type": "vocabulary",
       "q": "The stalls had two \"movable\" bars fixed across the back. What does \"movable\" mean here?",
-      "choices": ["Able to be put up or taken down", "Made of soft rope", "Painted bright colors", "Nailed down for good"],
+      "choices": ["Able to be put up or taken down", "Made of soft, thick rope", "Painted in bright colors", "Nailed down so they stay for good"],
       "answer": 0,
       "evidence": "he just took off our halters and put up the bars, and thus we could turn about"
     },
@@ -78,7 +78,7 @@
       "id": "black-beauty-33-10",
       "type": "main-idea",
       "q": "What does this chapter mostly show about Jerry?",
-      "choices": ["He is a good driver who cares for his horses as much as himself", "He is a strict master who works his horses too hard", "He is new to horses and makes many mistakes", "He only cares about earning money"],
+      "choices": ["He is a good driver who cares for his horses like himself", "He is a strict master who works his horses too hard", "He is new to horses and makes a lot of mistakes", "He only cares about how much money each fare brings"],
       "answer": 0,
       "evidence": "he took as much thought for his horses as he did for himself"
     }

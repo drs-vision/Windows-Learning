@@ -6,7 +6,7 @@
       "id": "black-beauty-40-01",
       "type": "detail",
       "q": "Where was Black Beauty waiting when he saw the shabby old cab?",
-      "choices": ["Outside one of the parks where music was playing", "At the railway station", "In Jerry's stable yard", "Outside a church"],
+      "choices": ["Outside one of the parks where music was playing", "At the railway station waiting for the train", "In Jerry's stable yard after a long day", "Outside a church where Mrs. Briggs was at the service"],
       "answer": 0,
       "evidence": "waiting outside one of the parks where music was playing"
     },
@@ -22,7 +22,7 @@
       "id": "black-beauty-40-03",
       "type": "inference",
       "q": "What does it show when Ginger picked up a little lock of Black Beauty's hay and looked for more?",
-      "choices": ["She was very hungry and poorly fed", "She did not like her own food", "She was playing a game", "She wanted to make him angry"],
+      "choices": ["She was very hungry and poorly fed", "She did not like the food she was given", "She was playing a game with him", "She wanted to make him angry"],
       "answer": 0,
       "evidence": "the poor creature put out her long thin neck and picked it up, and then turned and looked about for more"
     },
@@ -30,7 +30,7 @@
       "id": "black-beauty-40-04",
       "type": "sequence",
       "q": "What happened to Ginger after her year's rest at Earlshall?",
-      "choices": ["She was sold many times, always getting lower down", "She went back to the Countess", "She was sent to a quiet farm for life", "She won many races"],
+      "choices": ["She was sold many times, always getting lower down", "She went back to the Countess at Earlshall", "She was sent to a quiet farm for the rest of her life", "She won many races and was greatly admired"],
       "answer": 0,
       "evidence": "she changed hands several times, but always getting lower down"
     },
@@ -38,7 +38,7 @@
       "id": "black-beauty-40-05",
       "type": "character",
       "q": "Why had Ginger stopped standing up for herself?",
-      "choices": ["She felt men were strongest and it was no use", "She had grown to love her driver", "She was too busy to care", "Black Beauty told her to stop"],
+      "choices": ["She felt men were strongest and it was no use", "She had grown to love her cruel new driver", "She was far too busy working to care", "Black Beauty had told her to stop fighting"],
       "answer": 0,
       "evidence": "men are strongest, and if they are cruel and have no feeling, there is nothing that we can do"
     },
@@ -46,7 +46,7 @@
       "id": "black-beauty-40-06",
       "type": "character",
       "q": "What did Ginger say Black Beauty was to her?",
-      "choices": ["The only friend she ever had", "Her brother", "Her worst enemy", "Her new master"],
+      "choices": ["The only friend she ever had", "A brother she had lost long ago", "Her worst enemy from Earlshall", "The horse that had caused her ruin"],
       "answer": 0,
       "evidence": "You are the only friend I ever had"
     },
@@ -54,7 +54,7 @@
       "id": "black-beauty-40-07",
       "type": "main-idea",
       "q": "What does Black Beauty wish men would do, at the end of the chapter?",
-      "choices": ["Be more merciful and not let horses fall into such misery", "Build more cab-stands", "Buy more chestnut horses", "Let horses race in the parks"],
+      "choices": ["Be more merciful and not let horses fall into such misery", "Build more cab-stands with shelter from the rain", "Buy more chestnut horses for the London cabs", "Let tired horses race freely in the parks"],
       "answer": 0,
       "evidence": "if men were more merciful they would shoot us before we came to such misery"
     }

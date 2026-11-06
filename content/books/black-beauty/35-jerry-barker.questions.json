@@ -6,7 +6,7 @@
       "id": "black-beauty-35-01",
       "type": "character",
       "q": "What was Jerry, Black Beauty's new master, like?",
-      "choices": ["Kind, good, and merry", "Strict and bad-tempered", "Lazy and careless", "Shy and quiet"],
+      "choices": ["Kind, good, and merry", "Strict and bad-tempered", "Lazy and careless with horses", "Shy and very quiet"],
       "answer": 0,
       "evidence": "He was kind and good, and as strong for the right as John Manly"
     },
@@ -14,7 +14,7 @@
       "id": "black-beauty-35-02",
       "type": "detail",
       "q": "What did Jerry like to do for fun while he worked?",
-      "choices": ["Make up little songs and sing them", "Read the newspaper", "Play cards with the other cabmen", "Whistle for the birds"],
+      "choices": ["Make up little songs and sing them", "Read the newspaper on the cab stand", "Play cards with the other cabmen", "Whistle tunes for the birds in the park"],
       "answer": 0,
       "evidence": "He was very fond of making little songs, and singing them to himself"
     },
@@ -22,7 +22,7 @@
       "id": "black-beauty-35-03",
       "type": "detail",
       "q": "How did Polly and Dolly help with the cab in the mornings?",
-      "choices": ["They brushed the cushions and rubbed the glass", "They fed and watered the horses", "They drove the cab to the stand", "They counted the money"],
+      "choices": ["They brushed the cushions and rubbed the glass", "They fed and watered the horses in the stable", "They drove the cab to the stand for their father", "They counted the money from the day before"],
       "answer": 0,
       "evidence": "to brush and beat the cushions, and rub the glass"
     },
@@ -30,7 +30,7 @@
       "id": "black-beauty-35-04",
       "type": "main-idea",
       "q": "What is the message of Jerry's song about the morning?",
-      "choices": ["Time wasted early cannot be made up later", "Mornings are the best time to rest", "Hurrying always fixes being late", "It is fine to sleep in on cold days"],
+      "choices": ["Time wasted early cannot be made up later", "Mornings are the best time to rest and sleep", "Hurrying fast will always fix being late", "It is fine to sleep in on cold, dark days"],
       "answer": 0,
       "evidence": "You can't pick them up In the course of a day"
     },
@@ -38,7 +38,7 @@
       "id": "black-beauty-35-05",
       "type": "character",
       "q": "What made Jerry most nearly angry?",
-      "choices": ["People who were always late wanting the horse driven hard", "Customers who did not tip", "Rain on his clean cab", "Other cabmen singing"],
+      "choices": ["Late people who wanted the horse driven hard", "Customers who never gave him a tip for his trouble", "Rain falling on his clean, freshly polished cab", "Other cabmen singing his songs on the stand"],
       "answer": 0,
       "evidence": "people, who were always late, wanting a cab horse to be driven hard, to make up for their idleness"
     },
@@ -46,7 +46,7 @@
       "id": "black-beauty-35-06",
       "type": "detail",
       "q": "What did Jerry say when the two wild-looking young men offered a shilling extra to hurry?",
-      "choices": ["He would take them only at the regular pace", "He would gallop all the way", "He would take them for free", "He would go only if they paid two shillings"],
+      "choices": ["He would take them only at the regular pace", "He would gallop all the way for the extra shilling", "He would take them for free if they were late", "He would go only if they paid two shillings more"],
       "answer": 0,
       "evidence": "I will take you at the regular pace, gentlemen"
     },
@@ -54,7 +54,7 @@
       "id": "black-beauty-35-07",
       "type": "character",
       "q": "How did Larry treat his horse when he took the young men?",
-      "choices": ["He slashed his tired horse to make it go fast", "He let it walk slowly", "He gave it a rest first", "He patted it gently"],
+      "choices": ["He slashed his tired horse to make it go fast", "He let it walk slowly the whole way there", "He gave it a rest and some water first", "He patted it gently and spoke kindly to it"],
       "answer": 0,
       "evidence": "slashing his jaded horse, he set off as hard as he could"
     },
@@ -62,7 +62,7 @@
       "id": "black-beauty-35-08",
       "type": "detail",
       "q": "Why did the young man with the heavy portmanteau fall down?",
-      "choices": ["He stepped on a piece of orange peel", "A cab knocked him over", "He tripped over a dog", "He slipped on ice"],
+      "choices": ["He stepped on a piece of orange peel", "A cab knocked him over in the street", "He tripped over a little dog by the door", "He slipped on a patch of ice on the step"],
       "answer": 0,
       "evidence": "trod on a piece of orange peel which lay on the pavement"
     },
@@ -70,7 +70,7 @@
       "id": "black-beauty-35-09",
       "type": "vocabulary",
       "q": "Black Beauty says, \"I had a very good mouth.\" What does that mean in this chapter?",
-      "choices": ["He could be guided by the slightest touch of the rein", "He could eat very quickly", "He had very strong teeth", "He never bit anyone"],
+      "choices": ["The lightest touch of the rein would guide him", "He could eat his oats faster than any other horse", "He had very strong, white teeth for his age", "He never bit anyone, even when he was teased"],
       "answer": 0,
       "evidence": "I could be guided by the slightest touch of the rein"
     },
@@ -78,7 +78,7 @@
       "id": "black-beauty-35-10",
       "type": "inference",
       "q": "Why did Jerry hardly ever need to use the whip on Jack?",
-      "choices": ["Jack understood his voice and the rein", "Jerry had lost his whip", "Jack was too old to go fast", "The police did not allow whips"],
+      "choices": ["Jack understood his voice and the rein", "Jerry had lost his whip on the first day", "Jack was too old to go fast anymore", "The London police did not allow whips"],
       "answer": 0,
       "evidence": "I knew by his voice, and his click, click, when he wanted to get on fast"
     },
@@ -86,7 +86,7 @@
       "id": "black-beauty-35-11",
       "type": "sequence",
       "q": "What happened after the cab got stuck in a block at the bottom of Cheapside?",
-      "choices": ["The cart moved on and they raced to the station in time", "The young man got out and walked", "They missed the train", "A policeman made them turn back"],
+      "choices": ["The cart moved on and they raced to the station in time", "The young man got out and walked to the station", "They missed the train by only a few minutes", "A policeman stopped them and made them turn back"],
       "answer": 0,
       "evidence": "we whirled into the station with many more, just as the great clock pointed to eight minutes to twelve o'clock"
     },
@@ -94,7 +94,7 @@
       "id": "black-beauty-35-12",
       "type": "character",
       "q": "Why did Jerry refuse the extra half-crown?",
-      "choices": ["Seeing how glad the man was to catch the train was pay enough", "He thought the coin was fake", "He was angry at the young man", "The other cabmen told him not to take it"],
+      "choices": ["The man's joy at catching the train was pay enough", "He thought the half-crown coin was a fake one", "He was still angry at the rude young men", "The other cabmen had told him not to take extra money"],
       "answer": 0,
       "evidence": "'twas quite pay enough for me to see how glad he was to catch that train"
     },
@@ -102,7 +102,7 @@
       "id": "black-beauty-35-13",
       "type": "detail",
       "q": "According to Governor Gray, why would Larry die poor?",
-      "choices": ["He spent too much in whipcord", "He gave all his money away", "He never worked on Sundays", "He drove too slowly"],
+      "choices": ["He spent too much in whipcord", "He gave all his money away to beggars", "He never worked on Sundays or holidays", "He drove too slowly to get many fares"],
       "answer": 0,
       "evidence": "you'll die poor; you spend too much in whipcord"
     }

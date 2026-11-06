@@ -38,7 +38,7 @@
       "id": "treasure-island-19-05",
       "type": "detail",
       "q": "What flag did Jim see flying from the HISPANIOLA at sunset?",
-      "choices": ["The Jolly Roger, the black flag of piracy", "The Union Jack, the red, white and blue", "A white flag to ask for a truce with them", "No flag at all, only a bare and empty mast"],
+      "choices": ["The Jolly Roger, the black flag of piracy", "The Union Jack, the red, white and blue", "A white flag asking for a truce", "No flag at all, only a bare mast"],
       "answer": 0,
       "evidence": "there was the Jolly Roger--the black flag of piracy--flying from her peak"
     },
@@ -78,7 +78,7 @@
       "id": "treasure-island-19-10",
       "type": "detail",
       "q": "What did Dr. Livesey secretly carry in his snuff-box?",
-      "choices": ["A piece of Parmesan cheese", "A few gold coins from Bristol", "A small copy of the treasure map", "Medicine for the island fever"],
+      "choices": ["A piece of Parmesan cheese", "A few gold coins", "A copy of the map", "Medicine for fever"],
       "answer": 0,
       "evidence": "in my snuff-box I carry a piece of Parmesan cheese"
     },
@@ -94,7 +94,7 @@
       "id": "treasure-island-19-12",
       "type": "inference",
       "q": "What were the \"two able allies\" the leaders counted on to weaken the pirates?",
-      "choices": ["Rum and the unhealthy climate", "Ben Gunn and the ship's long gun", "Hunger and the cold night air", "The tide and the shifting wind"],
+      "choices": ["Rum and the unhealthy climate", "Ben Gunn and the cannon", "Hunger and the cold night air", "The tide and the shifting wind"],
       "answer": 0,
       "evidence": "we had two able allies--rum and the climate"
     },

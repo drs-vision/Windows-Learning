@@ -6,7 +6,7 @@
       "id": "treasure-island-17-01",
       "type": "detail",
       "q": "What was the first problem with this fifth trip in the jolly-boat?",
-      "choices": ["The boat was badly overloaded", "The boat had a hole in it", "There were no oars", "It was too dark to see"],
+      "choices": ["The boat was badly overloaded", "The boat had a hole in it", "They had forgotten the oars", "It was far too dark to see the shore"],
       "answer": 0,
       "evidence": "the little gallipot of a boat that we were in was gravely overloaded"
     },
@@ -14,7 +14,7 @@
       "id": "treasure-island-17-02",
       "type": "detail",
       "q": "What was the second danger the boat faced?",
-      "choices": ["A strong ebb current swept them off course", "A sudden storm blew in", "Sharks circled the boat", "Thick fog hid the shore"],
+      "choices": ["A strong ebb current swept them off course", "A sudden storm blew in from the sea", "Sharks began circling the boat", "Thick fog hid the shore"],
       "answer": 0,
       "evidence": "we were swept out of our true course"
     },
@@ -22,7 +22,7 @@
       "id": "treasure-island-17-03",
       "type": "inference",
       "q": "Why did the captain refuse to let the current carry them ashore wherever it wanted?",
-      "choices": ["They might land beside the pirates' gigs and be caught", "The beach there was full of rocks", "He wanted to reach the ship again", "The current would carry them out to sea forever"],
+      "choices": ["They might land beside the pirates' gigs and be caught", "The beach there was covered in sharp rocks", "He wanted to get back to the ship again", "The current would carry them far out to sea and drown them"],
       "answer": 0,
       "evidence": "besides the chance of being boarded by the gigs"
     },
@@ -38,7 +38,7 @@
       "id": "treasure-island-17-05",
       "type": "detail",
       "q": "What did the captain suddenly realize the pirates on the ship were preparing?",
-      "choices": ["The long nine cannon", "The ship's sails", "A second jolly-boat", "A raft"],
+      "choices": ["The long nine cannon", "The ship's sails", "A second jolly-boat to chase them", "A raft"],
       "answer": 0,
       "evidence": "We had entirely forgotten the long nine"
     },
@@ -54,7 +54,7 @@
       "id": "treasure-island-17-07",
       "type": "sequence",
       "q": "When Squire Trelawney fired at Israel Hands, what happened?",
-      "choices": ["Hands stooped down, and one of the other pirates was hit instead", "Hands was killed at once", "The squire's gun failed to fire", "The shot hit the ship's mast"],
+      "choices": ["Hands stooped, and another pirate was hit instead", "Hands was killed at once and fell from the ship's rail", "The squire's gun failed to fire", "The shot struck the ship's mast"],
       "answer": 0,
       "evidence": "just as Trelawney fired, down he stooped, the ball whistled over him"
     },
@@ -70,7 +70,7 @@
       "id": "treasure-island-17-09",
       "type": "sequence",
       "q": "What happened to the jolly-boat when the cannon fired?",
-      "choices": ["It sank by the stern in about three feet of water", "It was blown to pieces by the shot", "It drifted out to sea", "It reached the beach safely"],
+      "choices": ["It sank by the stern in about three feet of water", "It was blown to pieces by the cannon shot", "It drifted out to sea and was lost", "It reached the beach safely"],
       "answer": 0,
       "evidence": "the boat sank by the stern, quite gently, in three feet of water"
     },
@@ -86,7 +86,7 @@
       "id": "treasure-island-17-11",
       "type": "main-idea",
       "q": "What is this chapter mostly about?",
-      "choices": ["The overloaded jolly-boat's dangerous last trip, which ends with it sinking and the stores lost", "The pirates capture the stockade", "Jim and Ben Gunn row out to the ship", "The doctor makes peace with the mutineers"],
+      "choices": ["The overloaded jolly-boat's last trip ends with it sinking", "The pirates attack and capture the stockade from the woods", "Jim and Ben Gunn row out to the ship at night", "The doctor makes peace with the mutineers"],
       "answer": 0,
       "evidence": "leaving behind us the poor jolly-boat and a good half of all our powder and provisions"
     }

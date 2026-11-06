@@ -46,7 +46,7 @@
       "id": "treasure-island-18-06",
       "type": "detail",
       "q": "What was Tom Redruth's last request?",
-      "choices": ["That somebody read a prayer", "That he be buried at sea off the ship", "That his wages be sent to his old mother", "That the squire would punish the pirates"],
+      "choices": ["That somebody read a prayer", "That he be buried at sea", "That his wages go home", "That the squire avenge him"],
       "answer": 0,
       "evidence": "he said he thought somebody might read a prayer"
     },

@@ -6,7 +6,7 @@
       "id": "black-beauty-39-01",
       "type": "inference",
       "q": "Why did Black Beauty say he was well off for a cab-horse?",
-      "choices": ["His driver was also his owner, so he wanted to treat him well", "He only worked on Sundays", "He lived in the country", "He pulled the lightest cab in London"],
+      "choices": ["His driver owned him, so it paid to treat him well", "He only had to work on Sundays and holidays", "He lived out in the country away from London", "He pulled the lightest cab in all of London"],
       "answer": 0,
       "evidence": "my driver was my owner, and it was his interest to treat me well"
     },
@@ -14,7 +14,7 @@
       "id": "black-beauty-39-02",
       "type": "detail",
       "q": "What did the governor say to Seedy Sam when he came in with his worn-out horse?",
-      "choices": ["They looked more fit for the police station than the rank", "His horse was the finest on the stand", "He should take a holiday", "He should buy a new cab"],
+      "choices": ["They looked fitter for the police station than the rank", "His horse was the finest one on the whole stand", "He ought to take his horses for a week's rest in the country", "He should buy a new cab with the money he saved"],
       "answer": 0,
       "evidence": "You and your horse look more fit for the police station than for this rank"
     },
@@ -22,7 +22,7 @@
       "id": "black-beauty-39-03",
       "type": "detail",
       "q": "How much did Sam have to pay each day for a cab and two horses?",
-      "choices": ["Eighteen shillings", "Three shillings", "One sixpence", "Fifty shillings"],
+      "choices": ["Eighteen shillings", "Three shillings", "Twelve shillings", "Twenty-five shillings"],
       "answer": 0,
       "evidence": "eighteen shillings a day for the use of a cab and two horses"
     },
@@ -38,7 +38,7 @@
       "id": "black-beauty-39-05",
       "type": "character",
       "q": "Why did Sam say he had to push his tired horse with the whip?",
-      "choices": ["He had to earn enough to feed his wife and children", "He enjoyed being cruel", "His horse was lazy", "He wanted to win a race"],
+      "choices": ["He had to earn enough to feed his wife and children", "He enjoyed being cruel to the horses he drove", "His horse was lazy and would not go without it", "He wanted to beat the other cabs and win the best fares"],
       "answer": 0,
       "evidence": "you must put your wife and children before the horse"
     },
@@ -46,7 +46,7 @@
       "id": "black-beauty-39-06",
       "type": "vocabulary",
       "q": "Sam said he \"had to pledge my clock\" to pay. What does \"pledge\" mean here?",
-      "choices": ["Give it up as a promise for borrowed money", "Fix it", "Wind it up", "Promise to buy it"],
+      "choices": ["Give it up as a promise for borrowed money", "Take it to a clockmaker to be fixed", "Wind it up so it would keep good time", "Promise to buy it back from Skinner"],
       "answer": 0,
       "evidence": "I had to pledge my clock a week ago"
     },
@@ -54,7 +54,7 @@
       "id": "black-beauty-39-07",
       "type": "character",
       "q": "How did the governor respond after hearing Sam's speech?",
-      "choices": ["He admitted Sam was right and said he would not mention the police again", "He laughed at Sam", "He reported Sam to the police", "He told Sam to sell his horse"],
+      "choices": ["He said Sam was right and he would not mention the police again", "He laughed at Sam and told him to stop complaining", "He went straight to the police and reported Sam", "He told Sam to sell his tired horse and buy a younger, stronger one"],
       "answer": 0,
       "evidence": "You've beaten me, Sam,\" he said, \"for it's all true"
     },
@@ -62,7 +62,7 @@
       "id": "black-beauty-39-08",
       "type": "sequence",
       "q": "What happened to Sam a few days after his talk on the stand?",
-      "choices": ["He fell ill with a high fever and died", "He bought his own cab", "He moved to the country", "He became a coachman for a lord"],
+      "choices": ["He fell ill with a high fever and died", "He saved enough to buy his own cab", "He moved his family out to the country", "He became a coachman for a rich lord"],
       "answer": 0,
       "evidence": "he died at four o'clock this morning"
     },
@@ -70,7 +70,7 @@
       "id": "black-beauty-39-09",
       "type": "main-idea",
       "q": "What is this chapter mostly about?",
-      "choices": ["How unfair costs and no rest crushed poor cabmen and their horses", "How to win a cab race", "Why Sam was a cruel man", "How the governor became rich"],
+      "choices": ["How hard costs and no rest crushed cabmen and horses", "How Jerry won a cab race to the railway station", "Why Seedy Sam was a cruel man who hated horses", "How the governor grew rich by owning many cabs"],
       "answer": 0,
       "evidence": "It is hard lines for man and it is hard lines for beast"
     }
