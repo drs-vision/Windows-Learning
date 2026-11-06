@@ -1,0 +1,136 @@
+{
+  "book": "black-beauty",
+  "chapter": 16,
+  "questions": [
+    {
+      "id": "black-beauty-16-01",
+      "type": "detail",
+      "q": "What did the young man have in his mouth when he came into the stable?",
+      "choices": [
+        "A pipe",
+        "An apple",
+        "A whistle",
+        "A piece of straw"
+      ],
+      "answer": 0,
+      "evidence": "a young man with a pipe in his mouth lounged into the stable"
+    },
+    {
+      "id": "black-beauty-16-02",
+      "type": "detail",
+      "q": "What did the hostler ask Towler to do?",
+      "choices": [
+        "Put some hay down from the loft, after laying down his pipe",
+        "Lock the stable door",
+        "Water the horses",
+        "Clean the traveler's horse"
+      ],
+      "answer": 0,
+      "evidence": "only lay down your pipe"
+    },
+    {
+      "id": "black-beauty-16-03",
+      "type": "sequence",
+      "q": "What woke Black Beauty in the night?",
+      "choices": [
+        "Thick, choking smoke in the stable",
+        "James calling his name",
+        "A loud bell",
+        "Ginger kicking the wall"
+      ],
+      "answer": 0,
+      "evidence": "the stable seemed full of smoke"
+    },
+    {
+      "id": "black-beauty-16-04",
+      "type": "inference",
+      "q": "Why would the horses not go with the first frightened hostler?",
+      "choices": [
+        "He was in a hurry and so frightened that he frightened them more",
+        "They were tied with chains",
+        "They were asleep",
+        "The door was locked"
+      ],
+      "answer": 0,
+      "evidence": "he seemed in such a hurry and so frightened himself that he frightened me still more"
+    },
+    {
+      "id": "black-beauty-16-05",
+      "type": "detail",
+      "q": "What did James tie over Black Beauty's eyes to lead him out?",
+      "choices": [
+        "The scarf from his neck",
+        "A wet blanket",
+        "His cap",
+        "A feed bag"
+      ],
+      "answer": 0,
+      "evidence": "he took the scarf off his neck, and tied it lightly over my eyes"
+    },
+    {
+      "id": "black-beauty-16-06",
+      "type": "character",
+      "q": "How did James's voice sound when he came into the burning stable?",
+      "choices": [
+        "Quiet and cheery, as it always was",
+        "Loud and angry",
+        "Shaky and scared",
+        "Silent; he did not speak"
+      ],
+      "answer": 0,
+      "evidence": "James' voice, quiet and cheery, as it always was"
+    },
+    {
+      "id": "black-beauty-16-07",
+      "type": "inference",
+      "q": "Why did Ginger say Black Beauty's whinny was the best thing he could have done?",
+      "choices": [
+        "Hearing him outside gave her courage to come out",
+        "It warned the firemen",
+        "It woke up the master",
+        "It scared away the fire"
+      ],
+      "answer": 0,
+      "evidence": "had she not heard me outside she would never have had courage to come out"
+    },
+    {
+      "id": "black-beauty-16-08",
+      "type": "detail",
+      "q": "What did the master call James when he came out with Ginger?",
+      "choices": [
+        "\"My brave lad!\"",
+        "\"You foolish boy!\"",
+        "\"My clever horse!\"",
+        "\"Young Towler!\""
+      ],
+      "answer": 0,
+      "evidence": "My brave lad!"
+    },
+    {
+      "id": "black-beauty-16-09",
+      "type": "detail",
+      "q": "What arrived pulled by two horses as they were leaving the yard?",
+      "choices": [
+        "The fire-engine",
+        "The mistress in a carriage",
+        "A doctor's gig",
+        "A mail coach"
+      ],
+      "answer": 0,
+      "evidence": "'Tis the fire-engine!"
+    },
+    {
+      "id": "black-beauty-16-10",
+      "type": "main-idea",
+      "q": "What rule of John Manly's did Black Beauty think should be the rule everywhere?",
+      "choices": [
+        "Never allow a pipe in the stable",
+        "Always lock the stable door",
+        "Never travel at night",
+        "Always keep water in a bucket"
+      ],
+      "answer": 0,
+      "evidence": "never to allow a pipe in the stable"
+    }
+  ]
+}

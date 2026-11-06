@@ -1,0 +1,214 @@
+{
+  "book": "treasure-island",
+  "chapter": 30,
+  "questions": [
+    {
+      "id": "treasure-island-30-01",
+      "type": "detail",
+      "q": "Who woke everyone in the block house in the morning?",
+      "choices": [
+        "Doctor Livesey, calling from the edge of the wood",
+        "Captain Smollett, firing a gun",
+        "Ben Gunn, singing in the trees",
+        "The parrot, screaming"
+      ],
+      "answer": 0,
+      "evidence": "Here's the doctor."
+    },
+    {
+      "id": "treasure-island-30-02",
+      "type": "character",
+      "q": "Why was Jim's gladness at hearing the doctor mixed with other feelings?",
+      "choices": [
+        "He felt ashamed of sneaking away",
+        "He was afraid the doctor would shoot him",
+        "He was angry the doctor had left him",
+        "He did not recognize the doctor's voice"
+      ],
+      "answer": 0,
+      "evidence": "I felt ashamed to look him in the face"
+    },
+    {
+      "id": "treasure-island-30-03",
+      "type": "detail",
+      "q": "How did the doctor react when he learned Jim was there?",
+      "choices": [
+        "He stopped outright and could not move for a few seconds",
+        "He laughed and ran to hug Jim",
+        "He turned and walked away",
+        "He drew his pistol"
+      ],
+      "answer": 0,
+      "evidence": "The doctor stopped outright"
+    },
+    {
+      "id": "treasure-island-30-04",
+      "type": "inference",
+      "q": "How did the doctor behave while treating the pirates, even though he was in danger?",
+      "choices": [
+        "Calmly, as if on an ordinary visit to a quiet family",
+        "Nervously, with shaking hands",
+        "Rudely, refusing to touch them",
+        "Angrily, shouting at each man"
+      ],
+      "answer": 0,
+      "evidence": "as if he were paying an ordinary professional visit in a quiet English family"
+    },
+    {
+      "id": "treasure-island-30-05",
+      "type": "character",
+      "q": "Why did the doctor say he would not lose a single pirate patient?",
+      "choices": [
+        "He wanted to keep them alive for King George and the gallows",
+        "He hoped they would pay him in gold",
+        "He secretly wanted to join them",
+        "He feared Silver's anger"
+      ],
+      "answer": 0,
+      "evidence": "not to lose a man for King George (God bless him!) and the gallows"
+    },
+    {
+      "id": "treasure-island-30-06",
+      "type": "inference",
+      "q": "What did the doctor say was really causing the pirates' fever?",
+      "choices": [
+        "Camping in an unhealthy bog",
+        "Cutting a page from a Bible",
+        "Drinking too much water",
+        "Eating spoiled pork"
+      ],
+      "answer": 0,
+      "evidence": "Camp in a bog, would you?"
+    },
+    {
+      "id": "treasure-island-30-07",
+      "type": "vocabulary",
+      "q": "The doctor called the marsh \"a vile, pestiferous slough.\" What does pestiferous mean?",
+      "choices": [
+        "Full of disease",
+        "Dry and sandy",
+        "Beautiful and peaceful",
+        "Deep and cold"
+      ],
+      "answer": 0,
+      "evidence": "a vile, pestiferous slough"
+    },
+    {
+      "id": "treasure-island-30-08",
+      "type": "detail",
+      "q": "What did Silver ask of Jim before letting him talk to the doctor?",
+      "choices": [
+        "His word of honour not to escape",
+        "The location of the ship",
+        "A share of the treasure",
+        "His pistols"
+      ],
+      "answer": 0,
+      "evidence": "your word of honour not to slip your cable"
+    },
+    {
+      "id": "treasure-island-30-09",
+      "type": "detail",
+      "q": "What did the other pirates accuse Silver of after the doctor left?",
+      "choices": [
+        "Playing double and making a separate peace for himself",
+        "Stealing the treasure map",
+        "Being too cruel to Jim",
+        "Drinking all the brandy"
+      ],
+      "answer": 0,
+      "evidence": "Silver was roundly accused of playing double"
+    },
+    {
+      "id": "treasure-island-30-10",
+      "type": "character",
+      "q": "How did Silver seem when he talked to the doctor away from his men?",
+      "choices": [
+        "Changed, frightened and dead in earnest",
+        "Cheerful and joking",
+        "Proud and threatening",
+        "Sleepy and careless"
+      ],
+      "answer": 0,
+      "evidence": "Silver was a changed man once he was out there"
+    },
+    {
+      "id": "treasure-island-30-11",
+      "type": "detail",
+      "q": "What did the doctor call it when Jim left while Captain Smollett was ill?",
+      "choices": [
+        "Downright cowardly",
+        "Very brave",
+        "A clever plan",
+        "A lucky accident"
+      ],
+      "answer": 0,
+      "evidence": "it was downright cowardly!"
+    },
+    {
+      "id": "treasure-island-30-12",
+      "type": "sequence",
+      "q": "What did the doctor urge Jim to do after Jim admitted he feared torture?",
+      "choices": [
+        "Jump over the stockade and run for it",
+        "Tell Silver where the ship was",
+        "Fight the pirates with a knife",
+        "Hide in the block house"
+      ],
+      "answer": 0,
+      "evidence": "Whip over, and we'll run for it."
+    },
+    {
+      "id": "treasure-island-30-13",
+      "type": "character",
+      "q": "Why did Jim refuse to run away with the doctor?",
+      "choices": [
+        "He had given Silver his word",
+        "He was too badly hurt to run",
+        "He wanted the treasure for himself",
+        "He was afraid of the woods"
+      ],
+      "answer": 0,
+      "evidence": "Silver trusted me; I passed my word, and back I go."
+    },
+    {
+      "id": "treasure-island-30-14",
+      "type": "detail",
+      "q": "Where did Jim tell the doctor the ship was?",
+      "choices": [
+        "On the southern beach of North Inlet",
+        "At Captain Kidd's anchorage",
+        "Out at sea",
+        "Sunk near Skeleton Island"
+      ],
+      "answer": 0,
+      "evidence": "she lies in North Inlet, on the southern beach"
+    },
+    {
+      "id": "treasure-island-30-15",
+      "type": "detail",
+      "q": "What warning did the doctor give Silver about the treasure?",
+      "choices": [
+        "Look out for squalls when you find it",
+        "It is buried under the block house",
+        "It was spent by Flint long ago",
+        "Ben Gunn will guard it with a gun"
+      ],
+      "answer": 0,
+      "evidence": "look out for squalls when you find it"
+    },
+    {
+      "id": "treasure-island-30-16",
+      "type": "main-idea",
+      "q": "What is this chapter mostly about?",
+      "choices": [
+        "The doctor visits, Jim keeps his promise not to escape, and the doctor offers Silver hope",
+        "Jim escapes with the doctor into the woods",
+        "The pirates capture the doctor",
+        "Silver finds the treasure and sails away"
+      ],
+      "answer": 0,
+      "evidence": "if we both get alive out of this wolf-trap, I'll do my best to save you"
+    }
+  ]
+}

@@ -1,0 +1,118 @@
+{
+  "book": "treasure-island",
+  "chapter": 21,
+  "questions": [
+    {
+      "id": "treasure-island-21-01",
+      "type": "character",
+      "q": "Why was Captain Smollett angry right after Silver left?",
+      "choices": ["Everyone except Gray had left their posts", "Silver had stolen the chart", "Jim had run away again", "Someone had shot at Silver"],
+      "answer": 0,
+      "evidence": "found not a man of us at his post but Gray"
+    },
+    {
+      "id": "treasure-island-21-02",
+      "type": "inference",
+      "q": "Why did the captain say he had spoken so harshly (\"red-hot\") to Silver?",
+      "choices": ["He did it on purpose, knowing it would bring an attack", "He lost his temper by accident", "He wanted Silver to cry", "He hoped Silver would give up the ship"],
+      "answer": 0,
+      "evidence": "I pitched it in red-hot on purpose"
+    },
+    {
+      "id": "treasure-island-21-03",
+      "type": "detail",
+      "q": "How were the loaded muskets arranged for the defenders?",
+      "choices": ["On four piles of firewood, one near the middle of each side", "Hanging on the walls by the door", "In a locked chest in the centre", "Buried in the sand outside"],
+      "answer": 0,
+      "evidence": "the firewood had been built into four piles"
+    },
+    {
+      "id": "treasure-island-21-04",
+      "type": "detail",
+      "q": "Why did the captain order the fire to be tossed out?",
+      "choices": ["So smoke would not get in their eyes during the fight", "To save firewood for later", "Because the house might burn down", "To hide from the cannon on the ship"],
+      "answer": 0,
+      "evidence": "we mustn't have smoke in our eyes"
+    },
+    {
+      "id": "treasure-island-21-05",
+      "type": "detail",
+      "q": "Why did the captain put the squire and Gray on the long north side?",
+      "choices": ["It had five loopholes and was where the danger was", "It was the coolest side of the house", "It faced the ship", "It had the best view of the sea"],
+      "answer": 0,
+      "evidence": "it's there the danger is"
+    },
+    {
+      "id": "treasure-island-21-06",
+      "type": "character",
+      "q": "What job did the captain give Jim during the attack?",
+      "choices": ["To help load the muskets", "To guard the door with a pistol", "To fire from the north side", "To run for help"],
+      "answer": 0,
+      "evidence": "we'll stand by to load and bear a hand"
+    },
+    {
+      "id": "treasure-island-21-07",
+      "type": "sequence",
+      "q": "What started the shooting after the long, hot wait?",
+      "choices": ["Joyce fired his musket", "A cannonball hit the roof", "Silver blew his whistle", "Anderson shouted a war cry"],
+      "answer": 0,
+      "evidence": "suddenly Joyce whipped up his musket and fired"
+    },
+    {
+      "id": "treasure-island-21-08",
+      "type": "inference",
+      "q": "Why did the defenders decide the real attack would come from the north?",
+      "choices": ["Most of the first shots came from the north side", "The north side had no wall", "The doctor saw Silver there", "The wind was blowing from the north"],
+      "answer": 0,
+      "evidence": "It was plain, therefore, that the attack would be developed from the north"
+    },
+    {
+      "id": "treasure-island-21-09",
+      "type": "detail",
+      "q": "What happened to Hunter when a pirate reached his loophole?",
+      "choices": ["The pirate yanked away his musket and knocked him senseless", "He was shot through the head", "He ran out the door", "He was taken prisoner"],
+      "answer": 0,
+      "evidence": "laid the poor fellow senseless on the floor"
+    },
+    {
+      "id": "treasure-island-21-10",
+      "type": "vocabulary",
+      "q": "\"Our position was utterly reversed.\" Here \"reversed\" means:",
+      "choices": ["Turned the opposite way", "Made much stronger", "Kept exactly the same", "Hidden from sight"],
+      "answer": 0,
+      "evidence": "Our position was utterly reversed."
+    },
+    {
+      "id": "treasure-island-21-11",
+      "type": "sequence",
+      "q": "What happened when Jim came face to face with Anderson?",
+      "choices": ["Jim leaped aside, slipped in the soft sand, and rolled down the slope", "Jim cut Anderson down with his cutlass", "Anderson took Jim prisoner", "Jim ran back into the house"],
+      "answer": 0,
+      "evidence": "missing my foot in the soft sand, rolled headlong down the slope"
+    },
+    {
+      "id": "treasure-island-21-12",
+      "type": "detail",
+      "q": "Who cut down Job Anderson, the big boatswain?",
+      "choices": ["Gray", "Jim", "The doctor", "The squire"],
+      "answer": 0,
+      "evidence": "Gray, following close behind me, had cut down the big boatswain"
+    },
+    {
+      "id": "treasure-island-21-13",
+      "type": "detail",
+      "q": "What price did the loyal party pay for the victory?",
+      "choices": ["Joyce was killed, Hunter was stunned, and the captain was wounded", "The squire and the doctor were both killed", "They lost the stockade and the flag", "Gray was captured by the pirates"],
+      "answer": 0,
+      "evidence": "Joyce by his, shot through the head, never to move again"
+    },
+    {
+      "id": "treasure-island-21-14",
+      "type": "main-idea",
+      "q": "What is this chapter mostly about?",
+      "choices": ["The pirates attack the stockade and are driven off, but the loyal party suffers losses", "The loyal party sails away on the HISPANIOLA", "Silver and the captain agree to share the treasure", "Jim sneaks out to find Ben Gunn's boat"],
+      "answer": 0,
+      "evidence": "the fight was over and the victory was ours"
+    }
+  ]
+}

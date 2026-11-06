@@ -1,0 +1,110 @@
+{
+  "book": "black-beauty",
+  "chapter": 13,
+  "questions": [
+    {
+      "id": "black-beauty-13-01",
+      "type": "detail",
+      "q": "What was the boy trying to make the pony do?",
+      "choices": [
+        "Leap over a gate",
+        "Pull a cart",
+        "Cross a river",
+        "Run a race"
+      ],
+      "answer": 0,
+      "evidence": "we saw a boy trying to leap a pony over a gate"
+    },
+    {
+      "id": "black-beauty-13-02",
+      "type": "sequence",
+      "q": "What did the pony finally do after the boy kept whipping and kicking him?",
+      "choices": [
+        "Threw the boy into a thorn hedge and galloped home",
+        "Jumped the gate",
+        "Lay down in the road",
+        "Bit the boy"
+      ],
+      "answer": 0,
+      "evidence": "sent the boy neatly over into a broad quickset hedge"
+    },
+    {
+      "id": "black-beauty-13-03",
+      "type": "character",
+      "q": "Why did John refuse to help the boy out of the hedge?",
+      "choices": [
+        "He thought a little scratching would teach the boy a lesson",
+        "He was in too much of a hurry",
+        "He did not see the boy",
+        "He was afraid of the pony"
+      ],
+      "answer": 0,
+      "evidence": "maybe a little scratching will teach you not to leap a pony over a gate"
+    },
+    {
+      "id": "black-beauty-13-04",
+      "type": "inference",
+      "q": "Why did John decide to ride home by Farmer Bushby's?",
+      "choices": [
+        "He thought the boy might lie, so he wanted to tell what really happened",
+        "He needed to buy hay",
+        "He wanted to rest Black Beauty",
+        "The other road was flooded"
+      ],
+      "answer": 0,
+      "evidence": "that young fellow is a liar as well as a cruel one"
+    },
+    {
+      "id": "black-beauty-13-05",
+      "type": "character",
+      "q": "How did Farmer Bushby react when John told him what Bill had done?",
+      "choices": [
+        "He said Bill needed a lesson and he would stop it",
+        "He was angry at John",
+        "He laughed and did nothing",
+        "He said the pony should be sold"
+      ],
+      "answer": 0,
+      "evidence": "Bill wants a lesson about this, and I must see that he gets it"
+    },
+    {
+      "id": "black-beauty-13-06",
+      "type": "detail",
+      "q": "What cruel thing did James catch Bill doing at school?",
+      "choices": [
+        "Pulling the wings off flies",
+        "Throwing stones at birds",
+        "Kicking a dog",
+        "Stealing lunches"
+      ],
+      "answer": 0,
+      "evidence": "catching flies and pulling off their wings"
+    },
+    {
+      "id": "black-beauty-13-07",
+      "type": "vocabulary",
+      "q": "James said Bill would \"swagger about\" at school. What does swagger mean?",
+      "choices": [
+        "Walk and act in a proud, showing-off way",
+        "Hide in corners",
+        "Work very hard",
+        "Cry loudly"
+      ],
+      "answer": 0,
+      "evidence": "he used to swagger about and bully the little boys"
+    },
+    {
+      "id": "black-beauty-13-08",
+      "type": "main-idea",
+      "q": "What did the schoolmaster say was \"the devil's own trade-mark\"?",
+      "choices": [
+        "Cruelty",
+        "Laziness",
+        "Lying",
+        "Being late"
+      ],
+      "answer": 0,
+      "evidence": "cruelty was the devil's own trade-mark"
+    }
+  ]
+}

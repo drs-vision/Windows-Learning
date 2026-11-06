@@ -1,0 +1,110 @@
+{
+  "book": "black-beauty",
+  "chapter": 14,
+  "questions": [
+    {
+      "id": "black-beauty-14-01",
+      "type": "detail",
+      "q": "What was the master holding when he came into the stable?",
+      "choices": [
+        "An open letter",
+        "A new bridle",
+        "A bag of oats",
+        "A riding whip"
+      ],
+      "answer": 0,
+      "evidence": "held an open letter in his hand"
+    },
+    {
+      "id": "black-beauty-14-02",
+      "type": "character",
+      "q": "How did John answer when the master asked if James wasted time when out with the horses?",
+      "choices": [
+        "He strongly defended James as honest and steady",
+        "He agreed James was careless",
+        "He said he did not know",
+        "He said James should be sent away"
+      ],
+      "answer": 0,
+      "evidence": "a steadier, pleasanter, honester, smarter young fellow I never had in this stable"
+    },
+    {
+      "id": "black-beauty-14-03",
+      "type": "inference",
+      "q": "Why had the master asked John all those questions about James?",
+      "choices": [
+        "To quickly learn John's true opinion of James",
+        "Because he believed someone's bad report",
+        "Because he wanted to fire James",
+        "Because James had been rude to him"
+      ],
+      "answer": 0,
+      "evidence": "if I beat the bush on this side the birds would fly out"
+    },
+    {
+      "id": "black-beauty-14-04",
+      "type": "detail",
+      "q": "Who wrote the letter asking for a trustworthy young groom?",
+      "choices": [
+        "Sir Clifford Williams of Clifford Hall",
+        "Farmer Grey",
+        "Captain Langley",
+        "Mr. Blomefield"
+      ],
+      "answer": 0,
+      "evidence": "I have a letter from my brother-in-law, Sir Clifford Williams"
+    },
+    {
+      "id": "black-beauty-14-05",
+      "type": "detail",
+      "q": "How old would James be next May?",
+      "choices": [
+        "Nineteen",
+        "Twenty-one",
+        "Sixteen",
+        "Thirty"
+      ],
+      "answer": 0,
+      "evidence": "Nineteen next May, sir"
+    },
+    {
+      "id": "black-beauty-14-06",
+      "type": "character",
+      "q": "How did John feel about James possibly leaving?",
+      "choices": [
+        "He would miss him but would not stand in his way",
+        "He was glad to see him go",
+        "He begged the master to keep him",
+        "He was angry with Sir Clifford"
+      ],
+      "answer": 0,
+      "evidence": "I would not stand in his light for the world"
+    },
+    {
+      "id": "black-beauty-14-07",
+      "type": "sequence",
+      "q": "What happened after it was settled that James would go to Clifford Hall?",
+      "choices": [
+        "James drove the carriage often to get practice",
+        "James left the next morning",
+        "John stopped talking to James",
+        "Black Beauty was sold to Sir Clifford"
+      ],
+      "answer": 0,
+      "evidence": "in the meantime he was to get all the practice in driving"
+    },
+    {
+      "id": "black-beauty-14-08",
+      "type": "inference",
+      "q": "Why did the master drive through busy city streets and to the railway station on Saturdays?",
+      "choices": [
+        "To give James practice driving in hard places",
+        "To buy many things in the shops",
+        "To meet trains carrying friends",
+        "Because the country roads were closed"
+      ],
+      "answer": 0,
+      "evidence": "that bridge wanted good horses and good drivers"
+    }
+  ]
+}

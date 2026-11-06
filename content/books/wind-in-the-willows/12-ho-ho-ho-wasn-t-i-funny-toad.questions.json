@@ -1,0 +1,158 @@
+{
+  "book": "wind-in-the-willows",
+  "chapter": 12,
+  "questions": [
+    {
+      "id": "wind-in-the-willows-12-01",
+      "type": "character",
+      "q": "Why did Rat load everyone up with belts, swords, pistols and other gear?",
+      "choices": ["He did not want to be blamed later for forgetting anything", "Badger ordered him to", "He planned to sell the weapons", "He wanted to scare Toad"],
+      "answer": 0,
+      "evidence": "say I had forgotten ANYTHING"
+    },
+    {
+      "id": "wind-in-the-willows-12-02",
+      "type": "detail",
+      "q": "In what order did Badger tell the animals to follow him?",
+      "choices": ["Mole first, Rat next, Toad last", "Toad first, Rat next, Mole last", "Rat first, Toad next, Mole last", "All side by side"],
+      "answer": 0,
+      "evidence": "Mole first, 'cos I'm very pleased with him; Rat next; Toad last."
+    },
+    {
+      "id": "wind-in-the-willows-12-03",
+      "type": "sequence",
+      "q": "What happened when it was Toad's turn to swing into the hole in the river-bank?",
+      "choices": ["He slipped and fell into the water with a splash", "He got stuck in the hole", "He refused to go in", "He dropped the lantern"],
+      "answer": 0,
+      "evidence": "he managed to slip and fall into the water with a loud splash"
+    },
+    {
+      "id": "wind-in-the-willows-12-04",
+      "type": "detail",
+      "q": "Why did Badger nearly shoot Toad in the tunnel?",
+      "choices": ["Toad rushed forward and knocked everyone over, and Badger thought they were attacked from behind", "Toad tried to run back home", "Toad began singing loudly", "Badger mistook Toad for a weasel at the trap-door"],
+      "answer": 0,
+      "evidence": "The Badger thought they were being attacked from behind"
+    },
+    {
+      "id": "wind-in-the-willows-12-05",
+      "type": "detail",
+      "q": "Where did the secret passage come out inside Toad Hall?",
+      "choices": ["Under a trap-door into the butler's pantry", "In the boat-house", "Behind the kitchen fireplace", "In Toad's bedroom"],
+      "answer": 0,
+      "evidence": "the trap-door that led up into the butler's pantry"
+    },
+    {
+      "id": "wind-in-the-willows-12-06",
+      "type": "inference",
+      "q": "When the Chief Weasel called Toad \"GOOD Toad, MODEST Toad, HONEST Toad,\" what did he really mean?",
+      "choices": ["He was making fun of Toad", "He truly admired Toad", "He wanted Toad to come back", "He was thanking Toad for the house"],
+      "answer": 0,
+      "evidence": "(shrieks of merriment)"
+    },
+    {
+      "id": "wind-in-the-willows-12-07",
+      "type": "detail",
+      "q": "What did the weasels and ferrets do when the four friends burst in?",
+      "choices": ["Fled in panic through the windows and up the chimney", "Fought bravely and won", "Surrendered and asked for supper", "Hid in the secret passage"],
+      "answer": 0,
+      "evidence": "they broke and fled with squeals of terror and dismay"
+    },
+    {
+      "id": "wind-in-the-willows-12-08",
+      "type": "vocabulary",
+      "q": "In the hall, \"some dozen or so of the enemy\" lay \"prostrate\" on the floor. What does \"prostrate\" mean?",
+      "choices": ["Lying flat on the ground", "Running fast", "Singing loudly", "Standing at attention"],
+      "answer": 0,
+      "evidence": "on the floor lay prostrate some dozen or so of the enemy"
+    },
+    {
+      "id": "wind-in-the-willows-12-09",
+      "type": "detail",
+      "q": "What happened to the stoat-sentries outside, according to Mole?",
+      "choices": ["They fought with the fleeing weasels and most rolled into the river", "They captured Mole", "They marched in to help the weasels", "They stayed at their posts all night"],
+      "answer": 0,
+      "evidence": "till most of 'em rolled into the river"
+    },
+    {
+      "id": "wind-in-the-willows-12-10",
+      "type": "character",
+      "q": "What did Mole decide about giving the captured weasels a licking?",
+      "choices": ["He let them off, since they had had enough for one night, and gave them each a roll", "He beat each one soundly", "He locked them in the cellar", "He handed them to the police"],
+      "answer": 0,
+      "evidence": "they had had licking enough for one night"
+    },
+    {
+      "id": "wind-in-the-willows-12-11",
+      "type": "character",
+      "q": "How did Toad show he was a gentleman at supper after the battle?",
+      "choices": ["He put away his jealousy and thanked Mole warmly", "He made a long speech about himself", "He paid everyone a shilling", "He served everyone first and ate nothing"],
+      "answer": 0,
+      "evidence": "put all his jealousy from him"
+    },
+    {
+      "id": "wind-in-the-willows-12-12",
+      "type": "detail",
+      "q": "What job did Badger give Toad the next morning?",
+      "choices": ["Writing the invitations to a celebration Banquet", "Cleaning the banqueting-hall", "Cooking the Banquet", "Fixing the broken windows"],
+      "answer": 0,
+      "evidence": "the invitations will have to be written and got off at once, and you've got to write 'em"
+    },
+    {
+      "id": "wind-in-the-willows-12-13",
+      "type": "inference",
+      "q": "Why did Toad suddenly agree so happily to write the invitations?",
+      "choices": ["He planned to fill them with boasting and a program of his own speeches and songs", "He loved writing letters", "Badger promised him a reward", "He wanted to stay away from the others"],
+      "answer": 0,
+      "evidence": "A fine idea had occurred to him while he was talking."
+    },
+    {
+      "id": "wind-in-the-willows-12-14",
+      "type": "detail",
+      "q": "What did Rat and Badger tell Toad about the Banquet?",
+      "choices": ["There would be no speeches and no songs from him", "He could not attend", "He must pay for everything himself", "He must invite the weasels"],
+      "answer": 0,
+      "evidence": "there are going to be no speeches and no songs"
+    },
+    {
+      "id": "wind-in-the-willows-12-15",
+      "type": "vocabulary",
+      "q": "Rat said he \"confiscated\" Toad's boastful invitations. What does \"confiscated\" mean?",
+      "choices": ["Took them away so they could not be used", "Mailed them quickly", "Read them aloud", "Signed them"],
+      "answer": 0,
+      "evidence": "I confiscated the lot"
+    },
+    {
+      "id": "wind-in-the-willows-12-16",
+      "type": "sequence",
+      "q": "What did Toad do alone in his bedroom just before the Banquet?",
+      "choices": ["Sang a boastful song to an audience of empty chairs", "Wrote a letter to the gaoler's daughter", "Packed to run away", "Cried himself to sleep"],
+      "answer": 0,
+      "evidence": "collected all the chairs in the room and arranged them in a semicircle"
+    },
+    {
+      "id": "wind-in-the-willows-12-17",
+      "type": "character",
+      "q": "How did Toad behave at the Banquet?",
+      "choices": ["Modestly, giving credit to his friends and refusing to make a speech", "Loudly, singing songs all night", "Rudely, ignoring his guests", "Sadly, leaving early"],
+      "answer": 0,
+      "evidence": "He was indeed an altered Toad!"
+    },
+    {
+      "id": "wind-in-the-willows-12-18",
+      "type": "detail",
+      "q": "What did Toad send to the gaoler's daughter afterward?",
+      "choices": ["A gold chain and locket set with pearls, with a modest letter", "A new canary", "A motor-car", "A basket of buttered toast"],
+      "answer": 0,
+      "evidence": "a handsome gold chain and locket set with pearls"
+    },
+    {
+      "id": "wind-in-the-willows-12-19",
+      "type": "main-idea",
+      "q": "What is this chapter mostly about?",
+      "choices": ["The friends win back Toad Hall, and Toad learns to behave more modestly", "Toad is sent back to prison", "Rat sails away to the South", "Mole returns to his old home"],
+      "answer": 0,
+      "evidence": "won back by matchless valour"
+    }
+  ]
+}

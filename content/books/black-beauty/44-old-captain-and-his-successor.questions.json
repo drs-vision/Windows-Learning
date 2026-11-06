@@ -1,0 +1,94 @@
+{
+  "book": "black-beauty",
+  "chapter": 44,
+  "questions": [
+    {
+      "id": "black-beauty-44-01",
+      "type": "detail",
+      "q": "What caused the accident that hurt Captain?",
+      "choices": ["A drunk drayman lost control of his horses and crashed into the cab", "Captain slipped on ice", "A train frightened Captain", "Jerry fell asleep while driving"],
+      "answer": 0,
+      "evidence": "the man had no control over them"
+    },
+    {
+      "id": "black-beauty-44-02",
+      "type": "detail",
+      "q": "How was Captain hurt in the crash?",
+      "choices": ["A splintered shaft ran into his side", "He broke a leg", "He lost an eye", "He was burned"],
+      "answer": 0,
+      "evidence": "the shafts splintered, and one of them ran into his side"
+    },
+    {
+      "id": "black-beauty-44-03",
+      "type": "detail",
+      "q": "What happened to the drayman after the accident?",
+      "choices": ["He was proved to be drunk and was fined", "He went to prison for life", "He was never found", "He paid Jerry a hundred pounds"],
+      "answer": 0,
+      "evidence": "The drayman was proved to be very drunk, and was fined"
+    },
+    {
+      "id": "black-beauty-44-04",
+      "type": "character",
+      "q": "Why did Jerry say talk of \"compensation\" was nonsense?",
+      "choices": ["Money could not make up for losing a good horse that was like an old friend", "He did not need any money", "The brewer refused to pay", "He thought the accident was his own fault"],
+      "answer": 0,
+      "evidence": "losing a good horse that's like an old friend"
+    },
+    {
+      "id": "black-beauty-44-05",
+      "type": "detail",
+      "q": "How long had Jerry gone without tasting a drop of drink?",
+      "choices": ["Ten years", "Two days", "Several weeks", "One year"],
+      "answer": 0,
+      "evidence": "now for ten years I have not tasted a drop"
+    },
+    {
+      "id": "black-beauty-44-06",
+      "type": "detail",
+      "q": "What helped Jerry when the craving for drink came on?",
+      "choices": ["A cup of coffee, some peppermint, or reading his book", "Going to the tavern for one small glass", "Driving faster", "Sleeping in the stable"],
+      "answer": 0,
+      "evidence": "I used to get a cup of coffee, or some peppermint, or read a bit in my book"
+    },
+    {
+      "id": "black-beauty-44-07",
+      "type": "character",
+      "q": "Why would Jerry not sell old Captain for a few pounds?",
+      "choices": ["He would not sell a good old servant into hard work and misery", "No one wanted to buy him", "Captain was worth much more", "The governor told him not to"],
+      "answer": 0,
+      "evidence": "a few pounds got by selling a good old servant into hard work and misery would canker all the rest of his money"
+    },
+    {
+      "id": "black-beauty-44-08",
+      "type": "sequence",
+      "q": "What did Black Beauty find when he came back from getting new shoes?",
+      "choices": ["Captain was gone", "Captain was well again", "A new cab was waiting", "Jerry had sold the stable"],
+      "answer": 0,
+      "evidence": "when I returned Captain was gone"
+    },
+    {
+      "id": "black-beauty-44-09",
+      "type": "inference",
+      "q": "Why did the under-groom think Hotspur had run away?",
+      "choices": ["Tight harness, a check-rein, and a sharp curb hurt his tender mouth", "He was a vicious horse", "He was frightened by a dog", "He was very old and confused"],
+      "answer": 0,
+      "evidence": "It is my belief that it made the horse mad, being tender in the mouth and so full of spirit"
+    },
+    {
+      "id": "black-beauty-44-10",
+      "type": "vocabulary",
+      "q": "Jerry said \"it was an ill wind that blew nobody good.\" What does that saying mean here?",
+      "choices": ["Something bad for one person turned out good for another", "The weather was very windy", "Hotspur was sick from the cold", "Bad luck always follows good luck"],
+      "answer": 0,
+      "evidence": "it was an ill wind that blew nobody good"
+    },
+    {
+      "id": "black-beauty-44-11",
+      "type": "character",
+      "q": "How did Hotspur feel about being a cab-horse by the end of the week?",
+      "choices": ["An easy mouth and a free head made up for a great deal", "He hated it more than ever", "He wanted to go back to the nobleman", "He refused to pull the cab"],
+      "answer": 0,
+      "evidence": "an easy mouth and a free head made up for a great deal"
+    }
+  ]
+}

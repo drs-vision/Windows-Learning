@@ -1,0 +1,110 @@
+{
+  "book": "black-beauty",
+  "chapter": 15,
+  "questions": [
+    {
+      "id": "black-beauty-15-01",
+      "type": "detail",
+      "q": "How did James help the horses on long uphill roads?",
+      "choices": [
+        "He set the wheels a little across the road and gave them a breathing",
+        "He made them gallop faster",
+        "He got out and pushed the carriage",
+        "He took off their harness"
+      ],
+      "answer": 0,
+      "evidence": "he set the carriage wheels a little across the road"
+    },
+    {
+      "id": "black-beauty-15-02",
+      "type": "detail",
+      "q": "What did the head hostler at the hotel look like?",
+      "choices": [
+        "A pleasant, active little man with a crooked leg and yellow striped waistcoat",
+        "A tall, broad man with a beard",
+        "A young boy with a pipe",
+        "An old lady in an apron"
+      ],
+      "answer": 0,
+      "evidence": "with a crooked leg, and a yellow striped waistcoat"
+    },
+    {
+      "id": "black-beauty-15-03",
+      "type": "character",
+      "q": "What surprised James about the way the old hostler cleaned Black Beauty?",
+      "choices": [
+        "He was quick and thorough at the same time",
+        "He used cold water",
+        "He talked to the horse in French",
+        "He did not clean the feet"
+      ],
+      "answer": 0,
+      "evidence": "you do beat all I ever saw for being quick and thorough at the same time"
+    },
+    {
+      "id": "black-beauty-15-04",
+      "type": "vocabulary",
+      "q": "The hostler said \"practice makes perfect.\" What did he mean?",
+      "choices": [
+        "Doing something many times makes you good at it",
+        "You should never practice",
+        "Perfect people do not need practice",
+        "Practice is only for children"
+      ],
+      "answer": 0,
+      "evidence": "Practice makes perfect"
+    },
+    {
+      "id": "black-beauty-15-05",
+      "type": "sequence",
+      "q": "How did the hostler's job as a jockey come to an end?",
+      "choices": [
+        "His horse Larkspur fell at Goodwood and he broke his knee",
+        "He grew too tall",
+        "He was fired for being slow",
+        "He got tired of racing"
+      ],
+      "answer": 0,
+      "evidence": "my poor Larkspur got a fall, and I broke my knee"
+    },
+    {
+      "id": "black-beauty-15-06",
+      "type": "inference",
+      "q": "What did the hostler say he could tell after handling a horse for twenty minutes?",
+      "choices": [
+        "What sort of groom the horse has had",
+        "How old the horse is",
+        "How fast the horse can run",
+        "What the horse likes to eat"
+      ],
+      "answer": 0,
+      "evidence": "I'll tell you what sort of a groom he has had"
+    },
+    {
+      "id": "black-beauty-15-07",
+      "type": "character",
+      "q": "What did the hostler say about the leap where young Gordon was killed?",
+      "choices": [
+        "It was a bad place to leap, with no chance for a horse to see where it was going",
+        "It was an easy jump",
+        "The horse was to blame",
+        "The fence was too low"
+      ],
+      "answer": 0,
+      "evidence": "No chance for a horse to see where he is going"
+    },
+    {
+      "id": "black-beauty-15-08",
+      "type": "main-idea",
+      "q": "What is the old hostler's main lesson about horses?",
+      "choices": [
+        "Their tempers are made by how they are treated when young",
+        "Horses should be cleaned slowly",
+        "Only racehorses are well-mannered",
+        "Horses never remember how they were treated"
+      ],
+      "answer": 0,
+      "evidence": "their tempers are mostly made when they are young"
+    }
+  ]
+}

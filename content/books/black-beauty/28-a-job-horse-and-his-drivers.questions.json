@@ -1,0 +1,86 @@
+{
+  "book": "black-beauty",
+  "chapter": 28,
+  "questions": [
+    {
+      "id": "black-beauty-28-01",
+      "type": "vocabulary",
+      "q": "Beauty was a \"job horse.\" What does that mean in this chapter?",
+      "choices": ["A horse hired out to all sorts of people", "A horse that only pulls carts of bricks", "A horse used for racing", "A horse that works on a farm"],
+      "answer": 0,
+      "evidence": "I was a \"job horse\", and was let out to all sorts of people who wished to hire me"
+    },
+    {
+      "id": "black-beauty-28-02",
+      "type": "inference",
+      "q": "Why was Beauty often let out to ignorant drivers?",
+      "choices": ["He was gentle and could be depended upon", "He was the cheapest horse", "He was the fastest horse", "Nobody else wanted him"],
+      "answer": 0,
+      "evidence": "as I was good-tempered and gentle"
+    },
+    {
+      "id": "black-beauty-28-03",
+      "type": "detail",
+      "q": "What do tight-rein drivers do wrong?",
+      "choices": ["Hold the reins hard and never relax the pull on the horse's mouth", "Let the reins lie on the horse's back", "Never use a whip", "Drive too slowly"],
+      "answer": 0,
+      "evidence": "never relaxing the pull on the horse's mouth"
+    },
+    {
+      "id": "black-beauty-28-04",
+      "type": "detail",
+      "q": "What is the problem with loose-rein drivers?",
+      "choices": ["They have no control if something happens suddenly", "They pull too hard on the bit", "They whip the horse too much", "They drive only at night"],
+      "answer": 0,
+      "evidence": "such gentlemen have no control over a horse, if anything happens suddenly"
+    },
+    {
+      "id": "black-beauty-28-05",
+      "type": "character",
+      "q": "What did Squire Gordon say spoiling a horse was just as cruel as?",
+      "choices": ["Spoiling a child", "Whipping a dog", "Starving a cat", "Selling a friend"],
+      "answer": 0,
+      "evidence": "just as cruel as spoiling a child"
+    },
+    {
+      "id": "black-beauty-28-06",
+      "type": "sequence",
+      "q": "Why did Beauty get a stone in his foot on the phaeton trip?",
+      "choices": ["The driver was laughing and talking and not watching the road", "Beauty ran off the road on purpose", "The lady threw it", "A cart kicked it up"],
+      "answer": 0,
+      "evidence": "he never thought it worth while to keep an eye on his horse"
+    },
+    {
+      "id": "black-beauty-28-07",
+      "type": "character",
+      "q": "How did the careless driver react when he finally saw Beauty was lame?",
+      "choices": ["He blamed the stable for sending a lame horse", "He got down and checked Beauty's feet", "He apologized to Beauty", "He turned back home at once"],
+      "answer": 0,
+      "evidence": "Why, they have sent us out with a lame horse! What a shame!"
+    },
+    {
+      "id": "black-beauty-28-08",
+      "type": "detail",
+      "q": "Who took the stone out of Beauty's foot?",
+      "choices": ["A farmer riding a brown cob", "The lady in the carriage", "The driver", "A policeman"],
+      "answer": 0,
+      "evidence": "a farmer came riding up on a brown cob"
+    },
+    {
+      "id": "black-beauty-28-09",
+      "type": "detail",
+      "q": "What did the farmer use to get the wedged stone out?",
+      "choices": ["A stone-pick from his pocket", "His fingers alone", "The driver's whip", "A knife from the carriage"],
+      "answer": 0,
+      "evidence": "he drew a stone-pick out of his pocket"
+    },
+    {
+      "id": "black-beauty-28-10",
+      "type": "main-idea",
+      "q": "What is this chapter mostly about?",
+      "choices": ["How bad and ignorant drivers hurt job horses", "How Beauty won a race", "How to build a phaeton", "How farmers grow crops"],
+      "answer": 0,
+      "evidence": "all the different kinds of bad and ignorant driving to which we horses are subjected"
+    }
+  ]
+}

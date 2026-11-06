@@ -1,0 +1,150 @@
+{
+  "book": "wind-in-the-willows",
+  "chapter": 6,
+  "questions": [
+    {
+      "id": "wind-in-the-willows-06-01",
+      "type": "detail",
+      "q": "Who surprised the Mole and the Rat by knocking at their door one summer morning?",
+      "choices": ["Mr. Badger", "Toad", "The Otter", "A policeman"],
+      "answer": 0,
+      "evidence": "announced with much importance, 'Mr. Badger!'"
+    },
+    {
+      "id": "wind-in-the-willows-06-02",
+      "type": "detail",
+      "q": "What did the Badger mean when he said, \"The hour has come!\"?",
+      "choices": ["It was time to take Toad in hand and make him sensible", "It was time for the boating season to begin", "It was time for lunch", "It was time to fight the weasels"],
+      "answer": 0,
+      "evidence": "I said I would take him in hand as soon as the winter was well over"
+    },
+    {
+      "id": "wind-in-the-willows-06-03",
+      "type": "detail",
+      "q": "What was waiting in front of Toad Hall when the three friends arrived?",
+      "choices": ["A shiny new bright red motor-car", "A canary-yellow caravan", "A new rowing boat", "A police wagon"],
+      "answer": 0,
+      "evidence": "painted a bright red (Toad's favourite colour)"
+    },
+    {
+      "id": "wind-in-the-willows-06-04",
+      "type": "sequence",
+      "q": "What did the Badger order first once they had Toad inside the hall?",
+      "choices": ["That Toad take off his ridiculous motor-clothes", "That Toad be locked in the cellar", "That Toad pay all his fines", "That Toad sell his motor-cars"],
+      "answer": 0,
+      "evidence": "first of all, take those ridiculous things off!"
+    },
+    {
+      "id": "wind-in-the-willows-06-05",
+      "type": "detail",
+      "q": "What did the Badger say Toad was squandering?",
+      "choices": ["The money his father left him", "The food in his larder", "His friends' patience only", "The Rat's boats"],
+      "answer": 0,
+      "evidence": "squandering the money your father left you"
+    },
+    {
+      "id": "wind-in-the-willows-06-06",
+      "type": "inference",
+      "q": "Why did the Rat say that talking to Toad would never cure him?",
+      "choices": ["Toad would say anything to please someone, without meaning it", "Toad could not hear well", "Toad never listened to Badger", "Toad would fall asleep"],
+      "answer": 0,
+      "evidence": "He'll SAY anything."
+    },
+    {
+      "id": "wind-in-the-willows-06-07",
+      "type": "character",
+      "q": "What did Toad say when the Badger asked him to repeat his promise in front of his friends?",
+      "choices": ["He was not sorry at all, and his driving had been glorious", "He was very sorry and would never drive again", "He would only drive slowly from now on", "He would give his cars to the Badger"],
+      "answer": 0,
+      "evidence": "I'm NOT sorry. And it wasn't folly at all! It was simply glorious!"
+    },
+    {
+      "id": "wind-in-the-willows-06-08",
+      "type": "vocabulary",
+      "q": "The Badger called Toad a \"backsliding animal.\" What does \"backsliding\" mean here?",
+      "choices": ["Going back on a promise to behave better", "Sliding down the stairs", "Walking backwards", "Getting stronger and braver"],
+      "answer": 0,
+      "evidence": "You backsliding animal"
+    },
+    {
+      "id": "wind-in-the-willows-06-09",
+      "type": "sequence",
+      "q": "What did the friends do after Toad refused to promise to give up motor-cars?",
+      "choices": ["Locked him in his bedroom and took turns guarding him", "Sent him away to live with Badger", "Took him to the police", "Left him alone and went home"],
+      "answer": 0,
+      "evidence": "lock him up in his bedroom"
+    },
+    {
+      "id": "wind-in-the-willows-06-10",
+      "type": "detail",
+      "q": "What did Toad do with his bedroom chairs during his \"paroxysms\"?",
+      "choices": ["Arranged them like a motor-car and pretended to drive", "Built a ladder to climb out the window", "Threw them out the window", "Broke them up to make a fire"],
+      "answer": 0,
+      "evidence": "arrange bedroom chairs in rude resemblance of a motor-car"
+    },
+    {
+      "id": "wind-in-the-willows-06-11",
+      "type": "character",
+      "q": "What did the Badger warn the Rat about Toad being quiet and submissive?",
+      "choices": ["That is when Toad is at his most artful and up to something", "It means Toad is finally cured", "It means Toad is very ill", "It means Toad wants to go boating"],
+      "answer": 0,
+      "evidence": "then he's at his artfullest"
+    },
+    {
+      "id": "wind-in-the-willows-06-12",
+      "type": "inference",
+      "q": "Why did Toad ask the Rat to fetch both a doctor and a lawyer?",
+      "choices": ["To trick the Rat into leaving so he could escape", "Because he was truly dying", "Because he wanted to sue the Badger", "Because he wanted to sell Toad Hall"],
+      "answer": 0,
+      "evidence": "The Toad, who had hopped lightly out of bed as soon as he heard the key turned in the lock"
+    },
+    {
+      "id": "wind-in-the-willows-06-13",
+      "type": "detail",
+      "q": "How did Toad escape from his locked bedroom?",
+      "choices": ["He knotted his bed-sheets into a rope and climbed out the window", "He picked the lock with a hairpin", "He crawled through a secret tunnel", "He hid in the doctor's bag"],
+      "answer": 0,
+      "evidence": "knotting the sheets from his bed together"
+    },
+    {
+      "id": "wind-in-the-willows-06-14",
+      "type": "character",
+      "q": "How did Toad feel about himself as he walked away from Toad Hall?",
+      "choices": ["Very pleased and conceited about his own cleverness", "Guilty for tricking the Rat", "Afraid of being caught", "Sad to leave his friends"],
+      "answer": 0,
+      "evidence": "he almost danced along the road in his satisfaction and conceit"
+    },
+    {
+      "id": "wind-in-the-willows-06-15",
+      "type": "sequence",
+      "q": "What was Toad doing at the Red Lion inn when he heard a motor-car arrive?",
+      "choices": ["Eating lunch in the coffee-room", "Sleeping in a room upstairs", "Paying for a room for the night", "Reading a newspaper by the fire"],
+      "answer": 0,
+      "evidence": "ordered the best luncheon that could be provided"
+    },
+    {
+      "id": "wind-in-the-willows-06-16",
+      "type": "character",
+      "q": "What excuse did Toad give himself for going out to the inn-yard?",
+      "choices": ["That there could be no harm in only just looking at the car", "That he needed fresh air", "That he wanted to find the stable-helps", "That he had dropped his money there"],
+      "answer": 0,
+      "evidence": "in my only just LOOKING at it!"
+    },
+    {
+      "id": "wind-in-the-willows-06-17",
+      "type": "vocabulary",
+      "q": "The Chairman calls Toad an \"incorrigible rogue.\" What does \"incorrigible\" mean?",
+      "choices": ["Unable to be corrected or reformed", "Very wealthy", "Easily frightened", "Polite and well-mannered"],
+      "answer": 0,
+      "evidence": "the incorrigible rogue and hardened ruffian"
+    },
+    {
+      "id": "wind-in-the-willows-06-18",
+      "type": "main-idea",
+      "q": "What is the result of Toad's love of motor-cars by the end of this chapter?",
+      "choices": ["He steals a car and is sentenced to twenty years in a dungeon", "He becomes a famous racing driver", "He finally gives up motor-cars for good", "He buys a car and drives safely home"],
+      "answer": 0,
+      "evidence": "It's going to be twenty years for you this time."
+    }
+  ]
+}
