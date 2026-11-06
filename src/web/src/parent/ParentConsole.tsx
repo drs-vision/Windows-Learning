@@ -50,7 +50,8 @@ export function ParentConsole({ embedded, onClose }: { embedded?: boolean; onClo
     </div>
   );
   if (!hello) return <div class="screen center"><p class="muted">Connecting…</p></div>;
-  if (hello.setupNeeded) return <SetupWizard onDone={() => { setHello({ ...hello, setupNeeded: false }); setAuthed(true); }} />;
+  // After setup, ask the Guardian again who this is: an account that just became a kid's (or any non-admin) needs the PIN.
+  if (hello.setupNeeded) return <SetupWizard onDone={() => { setAuthed(false); setHello(null); sayHello(); }} />;
 
   // An admin account that isn't itself a managed child gets in without a PIN (it's the parent's own login).
   // Inside the child's session (embedded) the PIN is always required.
