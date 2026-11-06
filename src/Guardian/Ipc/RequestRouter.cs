@@ -315,6 +315,12 @@ public sealed class RequestRouter
         };
     }
 
+    private static string FlagFile => Path.Combine(Paths.DataRoot, "books-flagged.json");
+    private static List<JsonObject> FlaggedQuestions()
+    {
+        try { return File.Exists(FlagFile) ? JsonSerializer.Deserialize<List<JsonObject>>(File.ReadAllText(FlagFile)) ?? new() : new(); } catch { return new(); }
+    }
+
     /// <summary>Pay coins for a quest within its daily limit (or ask the parent first when the quest says so).</summary>
     private (int coins, bool pending) PayQuest(Child child, string moduleId, ModuleSettings s, int want, string detail, string account)
     {

@@ -1,10 +1,11 @@
 import { render } from 'preact';
-import { useEffect, useMemo, useState } from 'preact/hooks';
+import { useEffect, useMemo, useRef, useState } from 'preact/hooks';
 import type { Activity } from '../../core/types';
 import type { ActivityContext, LessonModule } from '../../core/module';
 import { invalid } from '../../core/module';
 import { bridge } from '../../core/bridge';
 import { TypingBox, type TypingDone } from '../../core/ui/TypingBox';
+import { applySelection, pieces, type Marks } from './highlights';
 
 /**
  * Reading: public-domain books on a shelf by reading level, 1 = easiest (content/books).
@@ -188,9 +189,57 @@ function ChapterView({ book, n, shelf, onBack, onNext }: { book: BookStatus; n: 
   return (
     <div class="reading">
       {head}
-      <article class="book-text">{data.text.split(/\n\s*\n/).map((p) => <p>{p.split('\n').map((l, i) => <>{i > 0 && <br />}{l}</>)}</p>)}</article>
+      <BookText key={`${book.id}/${n}`} text={data.text} store={`cq.books.marks.${book.id}/${n}`} />
       {quizBar}
     </div>
+  );
+}
+
+/**
+ * The chapter text, with highlighting: select words to highlight them, select highlighted words again to clear them.
+ * Highlights are kept per chapter on this PC, so they're still there when the child comes back to reread.
+ */
+function BookText({ text, store }: { text: string; store: string }) {
+  const paras = useMemo(() => text.split(/\n\s*\n/).map((p) => p.replace(/\s*\n\s*/g, ' ')), [text]);
+  const [marks, setMarks] = useState<Marks>(() => { try { return JSON.parse(localStorage.getItem(store) ?? '{}') as Marks; } catch { return {}; } });
+  const ref = useRef<HTMLElement>(null);
+  function offset(p: HTMLElement, node: Node, at: number) {
+    const r = document.createRange();
+    r.setStart(p, 0);
+    r.setEnd(node, at);
+    return r.toString().length;
+  }
+  function onSelect() {
+    const sel = window.getSelection();
+    if (!sel || sel.isCollapsed || !sel.rangeCount || !ref.current) return;
+    const range = sel.getRangeAt(0);
+    const parts: [number, number, number][] = [];
+    ref.current.querySelectorAll<HTMLElement>('p[data-p]').forEach((p) => {
+      if (!range.intersectsNode(p)) return;
+      const len = p.textContent?.length ?? 0;
+      let a = p.contains(range.startContainer) ? offset(p, range.startContainer, range.startOffset) : 0;
+      let b = p.contains(range.endContainer) ? offset(p, range.endContainer, range.endOffset) : len;
+      const t = p.textContent ?? '';
+      while (a < b && /\s/.test(t[a])) a++;
+      while (b > a && /\s/.test(t[b - 1])) b--;
+      // Snap to whole words: a drag that starts or ends mid-word takes the whole word.
+      const w = (c?: string) => !!c && /[A-Za-z0-9'-]/.test(c);
+      if (b > a) { while (a > 0 && w(t[a - 1]) && w(t[a])) a--; while (b < t.length && w(t[b]) && w(t[b - 1])) b++; }
+      if (b > a) parts.push([Number(p.dataset.p), a, b]);
+    });
+    if (!parts.length) return;
+    const next = applySelection(marks, parts);
+    setMarks(next);
+    try { localStorage.setItem(store, JSON.stringify(next)); } catch { /* fine */ }
+    sel.removeAllRanges();
+  }
+  return (
+    <>
+      <p class="muted small center book-tip">Tip: select words to highlight them. Select them again to clear.</p>
+      <article class="book-text" ref={ref} onMouseUp={onSelect} onTouchEnd={() => setTimeout(onSelect, 0)}>
+        {paras.map((p, i) => <p data-p={i}>{pieces(p, marks[i]).map((x) => (x.mark ? <mark>{x.text}</mark> : x.text))}</p>)}
+      </article>
+    </>
   );
 }
 

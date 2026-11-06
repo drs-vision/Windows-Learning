@@ -694,6 +694,9 @@ button.big { font-size: 1.1em; padding: .7em 1.4em; }
 .chapter-row.passed .ch-n { color: var(--green); } .chapter-row.next { outline: 2px solid var(--gold); }
 .book-text { background: #fbf7ee; color: #2a2418; border-radius: 14px; padding: 2em clamp(1.2em, 5vw, 3em); font-family: Georgia, "Times New Roman", serif; font-size: 1.25rem; line-height: 1.75; max-height: none; }
 .book-text p { margin: 0 0 1em; }
+.book-text mark { background: #ffe66d; color: inherit; border-radius: 3px; padding: 0 1px; box-shadow: 0 0 0 1px #f5d33f; }
+.book-text ::selection { background: #ffe66d99; }
+.book-tip { margin: 0 0 .6em; }
 .type-toggle { font-size: .95rem; white-space: nowrap; background: var(--panel-2); } .type-toggle.on { background: var(--gold); color: #1a1400; }
 .quiz-bar { text-align: center; margin: 1.4em 0; } .quiz-bar p { font-size: 1.1rem; }
 .quiz-bar button { margin: .3em; font-size: 1.1rem; }
