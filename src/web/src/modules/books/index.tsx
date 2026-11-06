@@ -58,33 +58,24 @@ function Reading({ ctx }: { activity: Activity; ctx: ActivityContext }) {
 }
 
 function ShelfView({ shelf, onOpen, onExit }: { shelf: Shelf; onOpen: (id: string) => void; onExit: () => void }) {
-  const groups = useMemo(() => {
-    const m = new Map<string, BookStatus[]>();
-    for (const b of shelf.books) m.set(b.grade.label, [...(m.get(b.grade.label) ?? []), b]);
-    return [...m.entries()];
-  }, [shelf]);
+  // One shelf, easiest books first (the Guardian sends them sorted by grade); each cover shows its grade.
   return (
     <div class="reading">
       <div class="reading-head"><button class="ghost" onClick={onExit}>← Back</button><h2>📚 Bookshelf</h2><span /></div>
       <p class="muted center">Read a chapter, then pass its quiz: <b>{shelf.perCorrect} 🪙</b> for every right answer.</p>
       {shelf.books.length === 0 && <p class="muted center">No books yet — ask a parent to pick some.</p>}
-      {groups.map(([label, list]) => (
-        <section class="shelf-group">
-          <h3>{label}</h3>
-          <div class="shelf">
-            {list.map((b) => {
-              const done = b.chapters.filter((c) => c.passed).length;
-              return (
-                <button class="book-card" onClick={() => onOpen(b.id)}>
-                  <span class="book-spine" style={{ background: spine(b.id) }}><b>{b.title}</b><small>{b.author}</small></span>
-                  <span class="book-meta">{done ? `${done} of ${b.chapters.length} chapters ✓` : `${b.chapters.length} chapter${b.chapters.length > 1 ? 's' : ''}`}</span>
-                  <span class="book-bar"><i style={{ width: `${Math.round(done / b.chapters.length * 100)}%` }} /></span>
-                </button>
-              );
-            })}
-          </div>
-        </section>
-      ))}
+      <div class="shelf">
+        {shelf.books.map((b) => {
+          const done = b.chapters.filter((c) => c.passed).length;
+          return (
+            <button class="book-card" onClick={() => onOpen(b.id)}>
+              <span class="book-spine" style={{ background: spine(b.id) }}><em class="book-grade">{b.grade.label}</em><b>{b.title}</b><small>{b.author}</small></span>
+              <span class="book-meta">{done ? `${done} of ${b.chapters.length} chapters ✓` : `${b.chapters.length} chapter${b.chapters.length > 1 ? 's' : ''}`}</span>
+              <span class="book-bar"><i style={{ width: `${Math.round(done / b.chapters.length * 100)}%` }} /></span>
+            </button>
+          );
+        })}
+      </div>
     </div>
   );
 }

@@ -189,7 +189,7 @@ export class MockGuardian {
         return ok({ childId: 'c1', kid: 'Sam', enabled: true, days });
       }
       // Reading, for the browser preview: one real book (Peter Rabbit). The real marking happens in the Guardian.
-      case 'parent.books': return ok({ flagged: 0, books: [{ id: 'peter-rabbit', title: 'The Tale of Peter Rabbit', author: 'Beatrix Potter', published: 1902, grade: { min: 0, max: 2, label: 'Grades K-2' }, summary: "Peter disobeys his mother, sneaks into Mr. McGregor's garden, and has to find his way out.", chapters: 1, words: 948, ready: 1 }] });
+      case 'parent.books': return ok({ flagged: 0, books: shelf.map((b) => ({ id: b.id, title: b.title, author: b.author, published: b.published, grade: b.grade, summary: b.summary, chapters: b.chapters.length, words: b.chapters.reduce((t, c) => t + c.words, 0), ready: b.chapters.length })) });
       case 'books.list': case 'books.chapter': case 'books.quiz': case 'books.grade': case 'books.bonus': case 'books.bonusAnswer': case 'books.typed': return ok(mockBooks(req.op, p));
       case 'parent.rwtStatus': return ok({ installed: false, otvdm: false, stage: 'idle', patches: [], players: [], root: 'C:\\ProgramData\\CoinQuest\\rwt' });
       case 'shell.pickFile': return ok({ path: null });
@@ -270,11 +270,17 @@ import prQs from '../../../../content/books/peter-rabbit/01-the-tale-of-peter-ra
 const mb = { passed: false, correct: 0, total: 0, attempts: 0, retakeAt: null as string | null, seen: [] as string[], bonusDone: [] as string[], quiz: null as null | { id: string; ids: string[]; orders: number[][] }, bonus: null as null | { id: string; order: number[] }, typed: 0 };
 const mbBank = (prQs as { questions: { id: string; q: string; choices: string[]; answer: number }[] }).questions;
 const mbParts = prText.trim().split(/\n\s*\n/).reduce((acc: string[], p) => { const last = acc[acc.length - 1]; if (last && (last + ' ' + p).split(' ').length <= 170) acc[acc.length - 1] = last + ' ' + p; else acc.push(p); return acc; }, []);
+type ShelfBook = { id: string; title: string; author: string; published: number; grade: { min: number; max: number; label: string }; summary: string; chapters: { n: number; title: string; words: number }[] };
+// Only the books' metadata (small): the preview can open Peter Rabbit, the other books list their chapters.
+const shelf = Object.values(import.meta.glob('../../../../content/books/*/book.json', { eager: true, import: 'default' }) as Record<string, ShelfBook>)
+  .sort((a, b) => a.grade.min - b.grade.min || a.grade.max - b.grade.max || a.title.localeCompare(b.title));
+const quizSize = (w: number) => Math.max(4, Math.min(10, Math.round(w / 250)));
 const shuffle = () => [0, 1, 2, 3].sort(() => Math.random() - 0.5);
 function mockBooks(op: string, p: any): any {
   const status = () => ({ n: 1, title: 'The Tale of Peter Rabbit', words: 948, quizSize: 4, hasQuiz: true, passed: mb.passed, correct: mb.correct, total: mb.total, attempts: mb.attempts, retakeAt: mb.retakeAt && Date.parse(mb.retakeAt) > Date.now() ? mb.retakeAt : null, bonusLeft: mb.passed ? mbBank.filter((q) => !mb.seen.includes(q.id) && !mb.bonusDone.includes(q.id)).length : 0, typed: mb.typed });
   const show = (id: string, order: number[]) => { const q = mbBank.find((x) => x.id === id)!; return { id, q: q.q, choices: order.map((i) => q.choices[i]) }; };
-  if (op === 'books.list') return { perCorrect: 1, wordsPer: 20, books: [{ id: 'peter-rabbit', title: 'The Tale of Peter Rabbit', author: 'Beatrix Potter', grade: { min: 0, max: 2, label: 'Grades K-2' }, summary: "Peter disobeys his mother and sneaks into Mr. McGregor's garden.", chapters: [status()] }] };
+  if (op === 'books.list') return { perCorrect: 1, wordsPer: 20, books: shelf.map((b) => ({ id: b.id, title: b.title, author: b.author, grade: b.grade, summary: b.summary, chapters: b.id === 'peter-rabbit' ? [status()] : b.chapters.map((c) => ({ n: c.n, title: c.title, words: c.words, quizSize: quizSize(c.words), hasQuiz: true, passed: false, correct: 0, total: 0, attempts: 0, retakeAt: null, bonusLeft: 0, typed: 0 })) })) };
+  if (op === 'books.chapter' && p.bookId !== 'peter-rabbit') { const b = shelf.find((x) => x.id === p.bookId)!; const c = b.chapters.find((x) => x.n === p.n)!; return { book: b.title, text: `(This preview only opens The Tale of Peter Rabbit. In CoinQuest, "${c.title}" opens here.)`, parts: [], status: { n: c.n, title: c.title, words: c.words, quizSize: quizSize(c.words), hasQuiz: false, passed: false, correct: 0, total: 0, attempts: 0, retakeAt: null, bonusLeft: 0, typed: 0 }, quiz: null }; }
   if (op === 'books.chapter') return { book: 'The Tale of Peter Rabbit', text: prText, parts: mbParts, status: status(), quiz: mb.quiz ? { id: mb.quiz.id, questions: mb.quiz.ids.map((id, i) => show(id, mb.quiz!.orders[i])) } : null };
   if (op === 'books.quiz') {
     if (mb.retakeAt && Date.parse(mb.retakeAt) > Date.now()) throw new Error('You can try again soon');
