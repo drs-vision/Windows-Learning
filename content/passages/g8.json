@@ -138,13 +138,13 @@
       "title": "Pocket Mice",
       "kind": "facts",
       "topic": "animals",
-      "text": "\"In habits all the Pocket Mice are much alike. They make burrows in the ground, often throwing up a little mound with several entrances which lead to a central passageway connecting with the bedroom and storerooms. By day the entrances are closed with earth from inside, for the Mice are active only at night. Sometimes the burrows are hidden under bushes, and sometimes they are right out in the open. Living as they do in a hot, dry country, the Pocket Mice have learned to get along without drinking water. Their food consists mainly of a variety of small seeds.",
+      "text": "In habits all the Pocket Mice are much alike. They make burrows in the ground, often throwing up a little mound with several entrances which lead to a central passageway connecting with the bedroom and storerooms. By day the entrances are closed with earth from inside, for the Mice are active only at night. Sometimes the burrows are hidden under bushes, and sometimes they are right out in the open. Living as they do in a hot, dry country, the Pocket Mice have learned to get along without drinking water. Their food consists mainly of a variety of small seeds.",
       "source": {
         "name": "The Burgess Animal Book for Children (Thornton W. Burgess, 1920)",
         "url": "https://www.gutenberg.org/ebooks/2441",
         "license": "Public domain",
         "author": "Thornton W. Burgess",
-        "note": "Paragraph from the book."
+        "note": "Paragraph from the book. Opening quotation mark removed (the speech continues in the book)."
       },
       "question": {
         "type": "detail",
@@ -204,13 +204,13 @@
       "title": "Mr. Beaver's Dam",
       "kind": "story",
       "topic": "animals",
-      "text": "\"So Mr. Beaver built a dam at just the right place, while all the other little people laughed at him and made fun of him for working so hard. Just as he had thought it would do, the dam made a pond, and the pond grew bigger and bigger, until it reached the very place where his food trees grew. Mr. Beaver built him a big, comfortable house out in the pond, and then he went to work as hard as ever he could to cut down trees and then cut them up into the right sized pieces to store away in his big food pile for the winter.",
+      "text": "So Mr. Beaver built a dam at just the right place, while all the other little people laughed at him and made fun of him for working so hard. Just as he had thought it would do, the dam made a pond, and the pond grew bigger and bigger, until it reached the very place where his food trees grew. Mr. Beaver built him a big, comfortable house out in the pond, and then he went to work as hard as ever he could to cut down trees and then cut them up into the right sized pieces to store away in his big food pile for the winter.",
       "source": {
         "name": "Mother West Wind 'Why' Stories (Thornton W. Burgess, 1915)",
         "url": "https://www.gutenberg.org/ebooks/14958",
         "license": "Public domain",
         "author": "Thornton W. Burgess",
-        "note": "Paragraph from the book."
+        "note": "Paragraph from the book. Opening quotation mark removed (the speech continues in the book)."
       },
       "question": {
         "type": "sequence",
@@ -243,7 +243,7 @@
         "url": "https://www.gutenberg.org/ebooks/56795",
         "license": "Public domain",
         "author": "Jean-Henri Fabre",
-        "note": "Paragraph from the book."
+        "note": "Paragraph from the book. Translated by Florence Constable Bicknell."
       },
       "question": {
         "type": "inference",
@@ -270,13 +270,13 @@
       "title": "Mr. Rabbit Puts It Off",
       "kind": "story",
       "topic": "animals",
-      "text": "\"Finally Mr. Rabbit had made the round of all his friends and neighbors, and he once more reached his tumble-down house. 'Oh, dear,' sighed Mr. Rabbit, as he looked at the tangle of brambles which almost hid the little old house, 'I never, never can clear away all this! It will be a lot easier to work when all my friends are here to help,' So he sighed once more and folded his arms, instead of beginning work as he should have done. And then, because the sun was bright and warm, and he was very, very comfortable, old Mr. Rabbit began to nod, and presently he was fast asleep.",
+      "text": "Finally Mr. Rabbit had made the round of all his friends and neighbors, and he once more reached his tumble-down house. 'Oh, dear,' sighed Mr. Rabbit, as he looked at the tangle of brambles which almost hid the little old house, 'I never, never can clear away all this! It will be a lot easier to work when all my friends are here to help,' So he sighed once more and folded his arms, instead of beginning work as he should have done. And then, because the sun was bright and warm, and he was very, very comfortable, old Mr. Rabbit began to nod, and presently he was fast asleep.",
       "source": {
         "name": "Mother West Wind 'Why' Stories (Thornton W. Burgess, 1915)",
         "url": "https://www.gutenberg.org/ebooks/14958",
         "license": "Public domain",
         "author": "Thornton W. Burgess",
-        "note": "Paragraph from the book."
+        "note": "Paragraph from the book. Opening quotation mark removed (the speech continues in the book)."
       },
       "question": {
         "type": "inference",
@@ -639,7 +639,7 @@
         "url": "https://www.gutenberg.org/ebooks/56795",
         "license": "Public domain",
         "author": "Jean-Henri Fabre",
-        "note": "Paragraph from the book."
+        "note": "Paragraph from the book. Translated by Florence Constable Bicknell."
       },
       "question": {
         "type": "sequence",

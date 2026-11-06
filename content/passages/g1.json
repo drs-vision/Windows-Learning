@@ -1590,17 +1590,17 @@
       "title": "A Good Dinner for the Lad",
       "kind": "story",
       "topic": "people",
-      "text": "\"Poor little fellow!\" said Mr. Fitz-war-ren. \"Come in, and I will see what I can do for you.\" And he ordered the cook to give the lad a good dinner, and then to find some light work for him to do.",
+      "text": "\"Poor little fellow!\" said Mr. Fitzwarren. \"Come in, and I will see what I can do for you.\" And he ordered the cook to give the lad a good dinner, and then to find some light work for him to do.",
       "source": {
         "name": "Fifty Famous Stories Retold (James Baldwin, 1896)",
         "url": "https://www.gutenberg.org/ebooks/18442",
         "license": "Public domain",
         "author": "James Baldwin",
-        "note": "Paragraph from the book."
+        "note": "Paragraph from the book. Pronunciation hyphens removed."
       },
       "question": {
         "type": "inference",
-        "q": "What kind of man is Mr. Fitz-war-ren?",
+        "q": "What kind of man is Mr. Fitzwarren?",
         "choices": [
           "Silly",
           "Angry",
@@ -1662,7 +1662,7 @@
         "url": "https://www.gutenberg.org/ebooks/56795",
         "license": "Public domain",
         "author": "Jean-Henri Fabre",
-        "note": "Paragraph from the book."
+        "note": "Paragraph from the book. Translated by Florence Constable Bicknell."
       },
       "question": {
         "type": "detail",
