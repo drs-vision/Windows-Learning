@@ -67,13 +67,21 @@ let { browser: pb, page: parent } = await attach(9222, 'parent');
 await parent.waitForSelector('button.account', { timeout: 60000 }).catch(() => undefined);
 await shot(parent, 'parent-wizard'); desktop('parent-wizard');
 await check('setup wizard completes with the kid account', async () => {
+  // Welcome → Your child (an account already on this PC) → PIN → Starting point → Check it works.
+  await parent.getByRole('button', { name: 'Start', exact: true }).click();
+  await parent.click('text=Account already on this PC');
   await parent.locator('button.account', { hasText: new RegExp(`^.*${KID}.*$`, 'i') }).first().click();
-  await parent.click('text=Next');
+  await parent.click('.kid-account button.primary');
+  await parent.waitForSelector('text=Choose a parent PIN');
   await parent.fill('input[type=password] >> nth=0', '2468');
   await parent.fill('input[type=password] >> nth=1', '2468');
   await parent.click('text=Next');
   await shot(parent, 'parent-wizard-preset');
-  await parent.click('text=Finish');
+  await parent.click('text=Set it up');
+  await parent.waitForSelector('text=Check it works', { timeout: 30000 });
+  await sleep(1500);
+  await shot(parent, 'parent-wizard-check');
+  await parent.click('text=Open the Parent Console');
   // This account is now the child, so the Parent Console asks for the PIN (as it would inside Daniel's account).
   await parent.waitForSelector('nav.tabs, form.pin-gate', { timeout: 30000 });
   if (await parent.locator('form.pin-gate').count()) { await parent.fill('form.pin-gate input', '2468'); await parent.click('form.pin-gate button[type=submit]'); }
