@@ -4,6 +4,7 @@ import type { Activity } from '../../core/types';
 import type { ActivityContext, LessonModule } from '../../core/module';
 import { invalid } from '../../core/module';
 import { bridge } from '../../core/bridge';
+import { pieces, toggle } from '../books/highlights';
 
 /**
  * Reading Quest: a bite-size paragraph (3-6 sentences) with one question right under it, one after another for as long
@@ -66,13 +67,43 @@ function StreakRing({ streak, every, best }: { streak: number; every: number; be
   );
 }
 
-/** The paragraph; the evidence is highlighted only after a second-look miss (the paragraph is retired, so nothing is given away). */
-function Paragraph({ text, mark }: { text: string; mark?: string }) {
-  if (!mark) return <p class="rq-text">{text}</p>;
-  const i = text.toLowerCase().replace(/\s+/g, ' ').indexOf(mark.toLowerCase().replace(/\s+/g, ' '));
-  const flat = text.replace(/\s+/g, ' ');
-  if (i < 0) return <p class="rq-text">{text}</p>;
-  return <p class="rq-text">{flat.slice(0, i)}<mark>{flat.slice(i, i + mark.length)}</mark>{flat.slice(i + mark.length)}</p>;
+/**
+ * The paragraph. While the question is open the child can highlight: select words to highlight them, select highlighted
+ * words again to clear them (same rules as Books). Highlights clear once the question is answered. After a second-look
+ * miss (the paragraph is retired) the supporting words are highlighted instead.
+ */
+function Paragraph({ text, reveal, canMark }: { text: string; reveal?: string; canMark: boolean }) {
+  const flat = text.replace(/\s+/g, ' ').trim();
+  const [marks, setMarks] = useState<[number, number][]>([]);
+  const ref = useRef<HTMLParagraphElement>(null);
+  useEffect(() => { if (!canMark) setMarks([]); }, [canMark]);
+
+  function onSelect() {
+    const el = ref.current, sel = window.getSelection();
+    if (!canMark || !el || !sel || sel.isCollapsed || !sel.rangeCount) return;
+    const range = sel.getRangeAt(0);
+    if (!range.intersectsNode(el)) return;
+    const at = (node: Node, off: number) => { const r = document.createRange(); r.setStart(el, 0); r.setEnd(node, off); return r.toString().length; };
+    let x = el.contains(range.startContainer) ? at(range.startContainer, range.startOffset) : 0;
+    let y = el.contains(range.endContainer) ? at(range.endContainer, range.endOffset) : flat.length;
+    while (x < y && /\s/.test(flat[x])) x++;
+    while (y > x && /\s/.test(flat[y - 1])) y--;
+    const w = (c?: string) => !!c && /[A-Za-z0-9'-]/.test(c); // a drag that starts or ends mid-word takes the whole word
+    if (y > x) { while (x > 0 && w(flat[x - 1]) && w(flat[x])) x--; while (y < flat.length && w(flat[y]) && w(flat[y - 1])) y++; }
+    if (y > x) setMarks((m) => toggle(m, x, y));
+    sel.removeAllRanges();
+  }
+
+  let list = marks;
+  if (reveal) {
+    const i = flat.toLowerCase().indexOf(reveal.replace(/\s+/g, ' ').trim().toLowerCase());
+    list = i < 0 ? [] : [[i, i + reveal.replace(/\s+/g, ' ').trim().length]];
+  }
+  return (
+    <p class={'rq-text' + (canMark ? ' markable' : '')} ref={ref} onMouseUp={onSelect} onTouchEnd={() => setTimeout(onSelect, 0)}>
+      {pieces(flat, list).map((x) => (x.mark ? <mark>{x.text}</mark> : x.text))}
+    </p>
+  );
 }
 
 function Quest({ ctx }: { activity: Activity; ctx: ActivityContext }) {
@@ -155,10 +186,10 @@ function QuestCard({ p, pick, r, openAt, head, trail, capped, err, toast, onAnsw
       )}
       <div class="rq-card">
         <h3 class="rq-title">{p.title}</h3>
-        <Paragraph text={p.text} mark={r && !r.right && r.evidence ? r.evidence : undefined} />
+        <Paragraph key={p.id} text={p.text} canMark={!r} reveal={r && !r.right && r.evidence ? r.evidence : undefined} />
         <p class="rq-credit">From {p.sourceName}{p.author ? `, by ${p.author}` : ''} · {p.license}</p>
         <div class="rq-q">{p.retry && <span class="rq-retry">Second look</span>}<b>{p.q}</b></div>
-        {locked && <div class="rq-wait" role="timer"><span class="rq-ring" style={{ '--p': `${Math.round((1 - wait / p.readSeconds) * 100)}` } as any}>{wait}</span> Read the paragraph first — the answers open in {wait} second{wait === 1 ? '' : 's'}.</div>}
+        {locked && <div class="rq-wait" role="timer"><span class="rq-ring" style={{ '--p': `${Math.round((1 - wait / p.readSeconds) * 100)}` } as any}>{wait}</span> Read the paragraph first — the answers open in {wait} second{wait === 1 ? '' : 's'}. Tip: select words to highlight them.</div>}
         <div class="rq-choices">
           {p.choices.map((c, k) => {
             const cls = !r ? (pick === k ? ' on' : '') : k === r.rightChoice ? ' right' : k === pick ? ' wrong' : ' dim'; // rightChoice is -1 when the paragraph comes back

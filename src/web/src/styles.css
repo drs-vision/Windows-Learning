@@ -788,6 +788,7 @@ button.big { font-size: 1.1em; padding: .7em 1.4em; }
 .rq-title { margin: 0 0 .5em; font-size: 1rem; color: var(--muted); font-weight: 600; }
 .rq-text { background: #fbf7ee; color: #2a2418; border-radius: 12px; padding: 1.1em 1.3em; margin: 0; font-family: Georgia, "Times New Roman", serif; font-size: 1.32rem; line-height: 1.7; }
 .rq-text mark { background: #ffe66d; color: inherit; border-radius: 3px; box-shadow: 0 0 0 2px #f5d33f; }
+.rq-text.markable { cursor: text; user-select: text; }
 .rq-credit { margin: .4em 0 1.1em; font-size: .75rem; color: var(--muted); }
 .rq-q { font-size: 1.2rem; margin: 0 0 .7em; }
 .rq-choices { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
