@@ -26,6 +26,10 @@ public sealed class PipeServer
         public required string Account { get; init; }
         public required bool IsAdmin { get; init; }
         public uint SessionId { get; init; }
+        /// <summary>The connecting program, when Windows says (full path). The child can't replace programs in the
+        /// install folder, so "CoinQuest's own kid app" can be told apart from anything the child runs.</summary>
+        public string? ExePath { get; init; }
+        public bool IsKidApp => ExePath is { } p && string.Equals(p, Path.Combine(CoinQuest.Shared.Config.Paths.InstallRoot, "CoinQuest.Scholar.exe"), StringComparison.OrdinalIgnoreCase);
         public readonly SemaphoreSlim WriteLock = new(1, 1);
     }
 
@@ -98,7 +102,14 @@ public sealed class PipeServer
                     {
                         _log.LogWarning(ex, "Could not identify pipe client");
                     }
-                    client = new Client { Pipe = pipe, Writer = new StreamWriter(pipe, new UTF8Encoding(false)) { AutoFlush = true }, Account = account, IsAdmin = isAdmin };
+                    string? exe = null;
+                    try
+                    {
+                        if (GetNamedPipeClientProcessId(pipe.SafePipeHandle, out var pid))
+                            using (var proc = System.Diagnostics.Process.GetProcessById((int)pid)) exe = proc.MainModule?.FileName;
+                    }
+                    catch (Exception ex) { _log.LogDebug(ex, "Could not see which program connected"); }
+                    client = new Client { Pipe = pipe, Writer = new StreamWriter(pipe, new UTF8Encoding(false)) { AutoFlush = true }, Account = account, IsAdmin = isAdmin, ExePath = exe };
                     lock (_clients) _clients.Add(client);
                     _log.LogInformation("Client connected: {Account} admin={Admin}", account, isAdmin);
                 }
@@ -155,4 +166,7 @@ public sealed class PipeServer
 
     [System.Runtime.InteropServices.DllImport("advapi32.dll", SetLastError = true)]
     internal static extern bool RevertToSelf();
+
+    [System.Runtime.InteropServices.DllImport("kernel32.dll", SetLastError = true)]
+    private static extern bool GetNamedPipeClientProcessId(Microsoft.Win32.SafeHandles.SafePipeHandle pipe, out uint clientProcessId);
 }

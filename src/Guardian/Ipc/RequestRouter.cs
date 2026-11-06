@@ -74,6 +74,10 @@ public sealed class RequestRouter
             Ops.BooksList or Ops.BooksChapter or Ops.BooksRead or Ops.BooksQuiz or Ops.BooksGrade or Ops.BooksBonus or Ops.BooksBonusAnswer or Ops.BooksTyped
                 => child is null ? Response.Fail(req.Id, "not a managed account") : Response.Success(req.Id, Books(req, child, client.Account)),
             Ops.ActivityTick => child is null ? Response.Success(req.Id, new { ok = false }) : ActivityTick(req, child),
+            // Only CoinQuest's own kid app (checked by its program file, which the child can't change) may open a page's parts.
+            Ops.PageParts => client.IsKidApp
+                ? Response.Success(req.Id, new { allowed = _gate.AllowPageParts(Str(req, "site"), (req.Payload?["hosts"] as JsonArray)?.Select(h => h?.GetValue<string>() ?? "") ?? Enumerable.Empty<string>()) })
+                : Response.Fail(req.Id, "only CoinQuest's own window can ask for that"),
             Ops.Buy => child is null ? Response.Fail(req.Id, "not a managed account") : Buy(req, child, client.Account),
             Ops.Progress => child is null ? Response.Fail(req.Id, "not a managed account") : SaveProgress(req, child),
             Ops.ArcadeList => child is null ? Response.Success(req.Id, new { games = Array.Empty<object>() })

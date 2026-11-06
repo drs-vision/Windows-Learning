@@ -57,6 +57,7 @@ public static class Ops
     public const string BooksBonusAnswer = "books.bonusAnswer"; // { bookId, n, qid, choice }
     public const string BooksRead = "books.read";        // { bookId, n, readMs } → the chapter was read to the end (quiz optional): { read, status }
     public const string BooksTyped = "books.typed";      // { bookId, n, part, typed, startedAt, finishedAt } typing mode
+    public const string PageParts = "shell.pageParts"; // { site, hosts[] } kid app only: hosts a page on an allowed site loads for itself → { allowed[] }
     public const string ActivityTick = "activity.tick"; // { kind, key, label, seconds } a minute of what the child is doing (from the CoinQuest window)
     public const string Buy = "buy";                   // { prizeId }
     public const string Progress = "progress";         // { moduleId, progress } save module progress

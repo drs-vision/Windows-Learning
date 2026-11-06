@@ -48,8 +48,8 @@ public sealed class NetGate
 
     /// <summary>
     /// Behind-the-scenes hosts that popular learning sites load their pages from (their own CDNs). Allowed only
-    /// when the site itself is on the child's list. Anything else a site needs shows up under "Recently blocked"
-    /// in the Parent Console, where one click allows it.
+    /// when the site itself is on the child's list. Other parts of an allowed page are opened as the page asks for
+    /// them (AllowPageParts); anything still refused shows under "Recently blocked" in the Parent Console.
     /// </summary>
     public static readonly Dictionary<string, string[]> Companions = new(StringComparer.OrdinalIgnoreCase)
     {
@@ -68,7 +68,44 @@ public sealed class NetGate
 
     public sealed record Decision(bool Allowed, string Reason);
 
-    public Decision Check(string host)
+    /// <summary>
+    /// Hosts that a page on an allowed site loaded for itself (its CDNs, images, video, APIs), as reported by
+    /// CoinQuest's own kid app (RequestRouter checks the program; see PipeServer.Client.IsKidApp). Without these most
+    /// modern sites load half-broken. They're not destinations: the kid app's site window never navigates to a host
+    /// that isn't on the list, so they're only fetched as parts of the allowed page. Each lasts 12 hours and only
+    /// while the site that needed it is still allowed.
+    /// </summary>
+    private readonly Dictionary<string, (string Site, DateTime Until)> _pageParts = new(StringComparer.OrdinalIgnoreCase);
+    public static readonly TimeSpan PagePartLife = TimeSpan.FromHours(12);
+
+    /// <summary>Allow hosts an allowed page needs. Returns the ones granted (nothing if the page's site isn't allowed).</summary>
+    public List<string> AllowPageParts(string site, IEnumerable<string> hosts)
+    {
+        site = site.Trim().TrimEnd('.').ToLowerInvariant();
+        var granted = new List<string>();
+        if (Uri.CheckHostName(site) != UriHostNameType.Dns || !GrantsParts(CheckCore(site, false))) return granted;
+        lock (_pageParts)
+        {
+            if (_pageParts.Count > 5000) foreach (var k in _pageParts.Where(kv => kv.Value.Until < DateTime.UtcNow).Select(kv => kv.Key).ToList()) _pageParts.Remove(k);
+            foreach (var raw in hosts.Take(64))
+            {
+                var h = raw.Trim().TrimEnd('.').ToLowerInvariant();
+                if (h.Length == 0 || h.Length > 253 || Uri.CheckHostName(h) == UriHostNameType.Unknown || h is "localhost" or "127.0.0.1" or "::1") continue;
+                _pageParts[h] = (site, DateTime.UtcNow + PagePartLife);
+                granted.Add(h);
+            }
+        }
+        if (granted.Count > 0) lock (_recentDenied) foreach (var h in granted) { _recentDenied.Remove(h); _denyReason.Remove(h); }
+        return granted;
+    }
+
+    public Decision Check(string host) => CheckCore(host, true);
+
+    /// <summary>Only a real destination the parent allowed (a listed site, a site unlock, an arcade game's site) can
+    /// bring in its page's parts; never CoinQuest's own pages, sign-in hosts or the YouTube player.</summary>
+    private static bool GrantsParts(Decision d) => d.Allowed && (d.Reason is "allowed site" or "site unlock" or "arcade time" || d.Reason.StartsWith("needed by "));
+
+    private Decision CheckCore(string host, bool pageParts)
     {
         host = host.Trim().TrimEnd('.').ToLowerInvariant();
         if (host is "localhost" or "127.0.0.1" or "::1" or "coinquest.local") return new(true, "local");
@@ -92,6 +129,14 @@ public sealed class NetGate
                 if (Uri.TryCreate(w.Url, UriKind.Absolute, out var wu) && Match(wu.Host)
                     && _unlocks.ActiveFor(c.Id).Any(u => u.Kind == PrizeKind.ArcadeUnlock && (u.Targets.Contains(w.Id) || u.Targets.Contains("*"))))
                     return new(true, "arcade time");
+        // Part of an allowed page (reported by the kid app), while that page's site is still allowed.
+        if (pageParts)
+        {
+            (string Site, DateTime Until) part;
+            bool found;
+            lock (_pageParts) found = _pageParts.TryGetValue(host, out part);
+            if (found && part.Until > DateTime.UtcNow && GrantsParts(CheckCore(part.Site, false))) return new(true, $"part of {part.Site}");
+        }
         return new(false, "not on the list");
     }
 
@@ -143,9 +188,15 @@ public sealed class NetGate
                 // Plain HTTP via proxy: "GET http://host/path HTTP/1.1" → rewrite to origin form.
                 if (!Uri.TryCreate(parts[1], UriKind.Absolute, out var uri)) { await Deny(cs, "bad request", ct); return; }
                 host = uri.Host; port = uri.Port;
+                // One request per connection: a kept-alive connection could otherwise carry a second request for a
+                // different site straight through without being checked. Proxy and keep-alive headers are dropped.
                 var rest = firstLineEnd < 0 ? "\r\n\r\n" : head[firstLineEnd..];
-                rest = string.Join("\r\n", rest.Split("\r\n").Where(l => !l.StartsWith("Proxy-", StringComparison.OrdinalIgnoreCase)));
-                forward = Encoding.ASCII.GetBytes($"{method} {uri.PathAndQuery} {parts[2]}{rest}");
+                var split = rest.IndexOf("\r\n\r\n", StringComparison.Ordinal);
+                var headers = split < 0 ? rest : rest[..split];
+                var body = split < 0 ? "\r\n\r\n" : rest[split..];
+                headers = string.Join("\r\n", headers.Split("\r\n").Where(l => !l.StartsWith("Proxy-", StringComparison.OrdinalIgnoreCase)
+                    && !l.StartsWith("Connection:", StringComparison.OrdinalIgnoreCase) && !l.StartsWith("Keep-Alive:", StringComparison.OrdinalIgnoreCase)));
+                forward = Encoding.ASCII.GetBytes($"{method} {uri.PathAndQuery} {parts[2]}{headers}\r\nConnection: close{body}");
             }
 
             var d = Check(host);

@@ -69,6 +69,9 @@ public class WebShellWindow : Window
             var hello = await _pipe.SendAsync(Ops.Hello);
             ManagedChild = hello.Ok && hello.Payload?["childId"] is not null;
             if (ManagedChild) StartActivitySampler();
+            // Site windows tell the Guardian's gate which hosts an allowed page loads (its CDNs, images, APIs).
+            if (ManagedChild && _app == "scholar")
+                GameWindow.ReportPageParts = (site, hosts) => _pipe.SendAsync(Ops.PageParts, new { site, hosts }, timeoutMs: 5000);
         }
         catch { ManagedChild = _kiosk; }
         var env = await CoreWebView2Environment.CreateAsync(null, userData, ProxyOptions());

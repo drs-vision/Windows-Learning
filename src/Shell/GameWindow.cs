@@ -5,9 +5,11 @@ using Microsoft.Web.WebView2.Wpf;
 namespace CoinQuest.Shell;
 
 /// <summary>
-/// A full-screen window that shows ONE web-hosted game (e.g. a Flash game on its publisher's site, run by Ruffle).
-/// Top-level navigation is pinned to the game's own site, pop-ups are blocked, and the window closes when the
-/// paid play time ends (Scholar sends shell.closeGame). Esc returns to CoinQuest.
+/// A full-screen window for ONE allowed website or web-hosted game (e.g. a Flash game on its publisher's site, run by
+/// Ruffle). Top-level navigation is pinned to the allowed sites, pop-ups are blocked (sign-in pop-ups excepted), and the
+/// window closes when paid play time ends (Scholar sends shell.closeGame). The bar has Back / Forward / Reload for the
+/// page and a button (or Esc) back to CoinQuest. The behind-the-scenes hosts an allowed page loads (CDNs, images, video,
+/// APIs) are reported to the Guardian so its gate lets them through (see NetGate.AllowPageParts).
 /// </summary>
 public sealed class GameWindow : Window
 {
@@ -25,22 +27,45 @@ public sealed class GameWindow : Window
     };
     private CoreWebView2Environment? _env;
 
+    /// <summary>Set by the kid app when the gate is in use: tells the Guardian which hosts an allowed page needs
+    /// (site, hosts) and waits for the answer. Null = no gate (not a managed child), nothing to report.</summary>
+    public static Func<string, string[], Task>? ReportPageParts { get; set; }
+    /// <summary>Hosts already reported or allowed (per window), and reports still on their way.</summary>
+    private readonly HashSet<string> _partsKnown = new(StringComparer.OrdinalIgnoreCase);
+    private readonly Dictionary<string, Task> _partsPending = new(StringComparer.OrdinalIgnoreCase);
+    private System.Windows.Controls.Button? _navBack, _navForward, _navReload;
+
     /// <param name="allowed">Domains this window may navigate to. Null = only the start URL's own site (a game).</param>
     public GameWindow(string url, string title, bool kiosk, IEnumerable<string>? allowed = null)
     {
         _start = new Uri(url);
         _sites = new HashSet<string>((allowed ?? new[] { RegistrableDomain(_start.Host) }).Select(d => d.ToLowerInvariant().TrimStart('.')), StringComparer.OrdinalIgnoreCase);
         Title = title;
-        // A slim bar with a big, obvious way back (Esc works too).
-        var back = new System.Windows.Controls.Button
+        // A slim bar: a big, obvious way back to CoinQuest (Esc works too), then Back / Forward / Reload for the page.
+        var home = new System.Windows.Controls.Button
         {
-            Content = "◀  Back to CoinQuest", FontSize = 18, FontWeight = FontWeights.Bold, Padding = new Thickness(18, 6, 18, 6),
+            Content = "🏠  Back to CoinQuest", FontSize = 18, FontWeight = FontWeights.Bold, Padding = new Thickness(18, 6, 18, 6),
             Background = new System.Windows.Media.SolidColorBrush(System.Windows.Media.Color.FromRgb(0xFF, 0xD2, 0x3F)), BorderThickness = new Thickness(0),
         };
-        back.Click += (_, _) => Close();
+        home.Click += (_, _) => Close();
+        System.Windows.Controls.Button NavButton(string glyph, string tip, Action click)
+        {
+            var b = new System.Windows.Controls.Button
+            {
+                Content = glyph, ToolTip = tip, FontSize = 22, Width = 48, Margin = new Thickness(6, 0, 0, 0), IsEnabled = false,
+                Foreground = System.Windows.Media.Brushes.White, Background = System.Windows.Media.Brushes.Transparent, BorderThickness = new Thickness(0),
+                Cursor = System.Windows.Input.Cursors.Hand,
+            };
+            System.Windows.Automation.AutomationProperties.SetName(b, tip);
+            b.Click += (_, _) => click();
+            return b;
+        }
+        _navBack = NavButton("←", "Back (Alt+Left)", () => { if (_web.CoreWebView2?.CanGoBack == true) _web.CoreWebView2.GoBack(); });
+        _navForward = NavButton("→", "Forward (Alt+Right)", () => { if (_web.CoreWebView2?.CanGoForward == true) _web.CoreWebView2.GoForward(); });
+        _navReload = NavButton("⟳", "Reload (F5)", () => _web.CoreWebView2?.Reload());
         var label = new System.Windows.Controls.TextBlock { Text = title, FontSize = 18, Foreground = System.Windows.Media.Brushes.White, VerticalAlignment = VerticalAlignment.Center, Margin = new Thickness(16, 0, 0, 0) };
         var bar = new System.Windows.Controls.DockPanel { Background = new System.Windows.Media.SolidColorBrush(System.Windows.Media.Color.FromRgb(0x0F, 0x1B, 0x3D)), LastChildFill = true };
-        bar.Children.Add(back); bar.Children.Add(label);
+        bar.Children.Add(home); bar.Children.Add(_navBack); bar.Children.Add(_navForward); bar.Children.Add(_navReload); bar.Children.Add(label);
         var root = new System.Windows.Controls.DockPanel();
         System.Windows.Controls.DockPanel.SetDock(bar, System.Windows.Controls.Dock.Top);
         root.Children.Add(bar); root.Children.Add(_web);
@@ -85,8 +110,49 @@ public sealed class GameWindow : Window
                 if (!Allowed(u)) { e.Cancel = true; WebShellWindow.Log($"locked window blocked navigation to {u.Host}"); }
             };
             core.DownloadStarting += (_, e) => e.Cancel = true;
+            // Back / Forward light up when there's somewhere to go; Reload once a page is showing.
+            core.HistoryChanged += (_, _) => UpdateNav(core);
+            core.NavigationCompleted += (_, _) => UpdateNav(core);
+            if (ReportPageParts is not null)
+            {
+                core.AddWebResourceRequestedFilter("*", CoreWebView2WebResourceContext.All, CoreWebView2WebResourceRequestSourceKinds.All);
+                core.WebResourceRequested += (_, e) => OnPagePart(core, e);
+            }
             core.Navigate(_start.ToString());
         };
+    }
+
+    private void UpdateNav(CoreWebView2 core)
+    {
+        if (_navBack is null || _navForward is null || _navReload is null) return;
+        _navBack.IsEnabled = core.CanGoBack;
+        _navForward.IsEnabled = core.CanGoForward;
+        _navReload.IsEnabled = true;
+        foreach (var b in new[] { _navBack, _navForward }) b.Opacity = b.IsEnabled ? 1 : 0.35;
+    }
+
+    /// <summary>
+    /// A request from the page. A host the gate doesn't know yet (a CDN, image or API host of an allowed page) is
+    /// reported first, and the request waits for the Guardian's answer (a few milliseconds, once per host), so the
+    /// page loads whole the first time. Only reported while the page itself is on an allowed site.
+    /// </summary>
+    private async void OnPagePart(CoreWebView2 core, CoreWebView2WebResourceRequestedEventArgs e)
+    {
+        if (!Uri.TryCreate(e.Request.Uri, UriKind.Absolute, out var u) || u.Scheme is not ("https" or "http" or "wss" or "ws")) return;
+        var host = u.Host.ToLowerInvariant();
+        if (_partsKnown.Contains(host)) return;
+        if (Allowed(u)) { _partsKnown.Add(host); return; }
+        if (!Uri.TryCreate(core.Source, UriKind.Absolute, out var page) || !page.Scheme.StartsWith("http") || !Allowed(page)) return;
+        var deferral = e.GetDeferral();
+        try
+        {
+            if (!_partsPending.TryGetValue(host, out var pending))
+                _partsPending[host] = pending = ReportPageParts!(page.Host.ToLowerInvariant(), new[] { host });
+            await pending;
+            _partsKnown.Add(host);
+        }
+        catch (Exception ex) { WebShellWindow.Log($"page part {host}: {ex.Message}"); }
+        finally { _partsPending.Remove(host); deferral.Complete(); }
     }
 
     /// <summary>The site this window is on now (e.g. "khanacademy.org"), for the parent's activity report.</summary>
