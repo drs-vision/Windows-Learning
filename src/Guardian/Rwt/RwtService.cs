@@ -30,9 +30,9 @@ public sealed class RwtService
     public string? Message { get; private set; }
     public List<string> LastPatches { get; private set; } = new();
 
-    /// <summary>A player's progress file was saved with new content: who, and how many stages they have finished
-    /// (0–40). The router pays only for stages beyond the child's best so far, under its lock.</summary>
-    public event Action<List<(string Player, int Stages)>>? ProgressSaved;
+    /// <summary>A player's progress file was saved with new content: who, how many stages that player has finished
+    /// now (0–40) and at their previous save. The router pays new and replayed stages, under its lock.</summary>
+    public event Action<List<(string Player, int Stages, int Before)>>? ProgressSaved;
 
     public RwtService(ILogger<RwtService> log)
     {
@@ -169,7 +169,7 @@ public sealed class RwtService
         lock (_gate) { _debounce?.Dispose(); _debounce = new Timer(_ => { try { CheckProgress(); } catch (Exception ex) { _log.LogWarning(ex, "RWT progress check failed"); } }, null, 8000, Timeout.Infinite); }
     }
 
-    private sealed class ProgressState { public Dictionary<string, string> Hashes { get; set; } = new(); public DateTimeOffset LastPaid { get; set; } }
+    private sealed class ProgressState { public Dictionary<string, string> Hashes { get; set; } = new(); public Dictionary<string, int> Done { get; set; } = new(); public DateTimeOffset LastPaid { get; set; } }
 
     /// <summary>
     /// The game rewrites a player's file often (after activities, on sign-in and sign-out, when settings change), so
@@ -182,7 +182,7 @@ public sealed class RwtService
         {
             ProgressState st;
             try { st = JsonSerializer.Deserialize<ProgressState>(File.ReadAllText(StateFile)) ?? new(); } catch { st = new(); }
-            var changed = new List<(string, int)>();
+            var changed = new List<(string, int, int)>();
             foreach (var f in Directory.EnumerateFiles(SigninDir, "*.dat", SearchOption.AllDirectories))
             {
                 var rel = Path.GetRelativePath(SigninDir, f);
@@ -193,6 +193,7 @@ public sealed class RwtService
                 try { bytes = File.ReadAllBytes(f); } catch { continue; } // still being written; the next change will catch it
                 var h = Convert.ToHexString(SHA256.HashData(bytes));
                 if (st.Hashes.TryGetValue(rel, out var old) && old == h) continue;
+                var isNew = !st.Hashes.ContainsKey(rel);
                 st.Hashes[rel] = h;
                 try
                 {
@@ -204,7 +205,15 @@ public sealed class RwtService
                 var who = PlayerName(Path.GetDirectoryName(rel)!);
                 var stages = StagesDone(bytes);
                 _log.LogInformation("RWT progress saved for {Player} ({Stages} stages finished)", who, stages);
-                if (stages >= 0) changed.Add((who, stages));
+                if (stages >= 0)
+                {
+                    // Before: this player's last save we saw. A brand-new player file (made just now) starts from 0;
+                    // one we're only seeing for the first time (older than tracking) starts from where it is.
+                    var fresh = DateTime.Now - File.GetLastWriteTime(f) < TimeSpan.FromMinutes(30);
+                    var before = st.Done.TryGetValue(rel, out var d) ? d : isNew && fresh ? 0 : stages;
+                    st.Done[rel] = stages;
+                    changed.Add((who, stages, before));
+                }
             }
             if (changed.Count > 0) ProgressSaved?.Invoke(changed);
             File.WriteAllText(StateFile, JsonSerializer.Serialize(st));
