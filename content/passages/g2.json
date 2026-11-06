@@ -101,39 +101,6 @@
       }
     },
     {
-      "id": "sbc-goat-dog-and-cow",
-      "title": "Goat, Dog, and Cow",
-      "kind": "story",
-      "topic": "friendship",
-      "text": "Goat, Dog, and Cow were great friends. One day they went on a journey in a taxi. When they reached the end of their journey, the driver asked them to pay their fares. Cow paid her fare. Dog paid a bit extra, because he did not have the correct money.",
-      "source": {
-        "name": "Storybooks Canada",
-        "url": "https://github.com/global-asp/sbc-source/blob/master/en/0004_goat-dog-and-cow.md",
-        "license": "CC BY 4.0",
-        "author": "Fabian Wakholi",
-        "note": "Excerpt (pages 1-3)."
-      },
-      "question": {
-        "type": "cause-effect",
-        "q": "Why did Dog pay a bit extra?",
-        "choices": [
-          "He wanted to be kind to the driver",
-          "He did not have the correct money",
-          "He had the longest ride of all",
-          "He was carrying a very big bag"
-        ],
-        "answer": 1,
-        "evidence": "because he did not have the correct money",
-        "explain": "Dog paid extra because he did not have the correct money."
-      },
-      "readability": {
-        "grade": 2.5,
-        "fk": 2,
-        "cli": 3.8,
-        "ari": 1.7
-      }
-    },
-    {
       "id": "sbc-children-of-wax",
       "title": "Children of Wax",
       "kind": "story",
@@ -151,11 +118,11 @@
         "q": "Why were the children not allowed to go near a fire?",
         "choices": [
           "Fire made them sneeze a lot",
-          "They might burn the food",
           "The heat would melt them",
+          "They might burn the food",
           "The smoke hurt their eyes"
         ],
-        "answer": 2,
+        "answer": 1,
         "evidence": "Because they were made of wax!",
         "explain": "The children were made of wax, and wax melts when it gets hot."
       },
@@ -164,39 +131,6 @@
         "fk": 1.8,
         "cli": 3.8,
         "ari": 1.3
-      }
-    },
-    {
-      "id": "sbc-khalai-talks-to-plants",
-      "title": "Khalai Talks to Plants",
-      "kind": "story",
-      "topic": "plants",
-      "text": "This is Khalai. She is seven years old. Her name means 'the good one' in her language, Lubukusu. Khalai wakes up and talks to the orange tree. \"Please orange tree, grow big and give us lots of ripe oranges.\" Khalai walks to school. On the way she talks to the grass. \"Please grass, grow greener and don't dry up.\"",
-      "source": {
-        "name": "Storybooks Canada",
-        "url": "https://github.com/global-asp/sbc-source/blob/master/en/0089_khalai-talks-to-plants.md",
-        "license": "CC BY 4.0",
-        "author": "Ursula Nafula",
-        "note": "Excerpt (pages 1-3)."
-      },
-      "question": {
-        "type": "main-idea",
-        "q": "What does Khalai seem to care about most?",
-        "choices": [
-          "Plants and growing things",
-          "Toys and games at home",
-          "Running fast at school",
-          "Cooking food for her family"
-        ],
-        "answer": 0,
-        "evidence": "Khalai wakes up and talks to the orange tree.",
-        "explain": "Khalai talks kindly to the orange tree and the grass, so she cares about plants."
-      },
-      "readability": {
-        "grade": 2.2,
-        "fk": 1.5,
-        "cli": 3.8,
-        "ari": 1.2
       }
     },
     {
@@ -218,10 +152,10 @@
         "choices": [
           "Her basket",
           "Her shoes",
-          "Her bundle of wood",
-          "Her necklace"
+          "Her necklace",
+          "Her bundle of wood"
         ],
-        "answer": 3,
+        "answer": 2,
         "evidence": "She had forgotten her necklace!",
         "explain": "Nozibele touched her neck and found her necklace was gone."
       },
@@ -230,72 +164,6 @@
         "fk": 1.6,
         "cli": 4.1,
         "ari": 1.5
-      }
-    },
-    {
-      "id": "sbc-zama-is-great",
-      "title": "Zama Is Great!",
-      "kind": "story",
-      "topic": "family",
-      "text": "After washing, I greet Grandpa and Auntie, and wish them a good day. Then I dress myself, \"I'm big now Ma,\" I say. I can close my buttons and buckle my shoes. And I make sure little brother knows all the school news. In class I do my best in every way.",
-      "source": {
-        "name": "Storybooks Canada",
-        "url": "https://github.com/global-asp/sbc-source/blob/master/en/0095_zama-is-great.md",
-        "license": "CC BY 4.0",
-        "author": "Michael Oguttu",
-        "note": "Excerpt (pages 7-11)."
-      },
-      "question": {
-        "type": "inference",
-        "q": "Why does Zama say \"I'm big now\"?",
-        "choices": [
-          "Zama is taller than Ma",
-          "Zama can get dressed alone",
-          "Zama just had a birthday",
-          "Zama goes to a new school"
-        ],
-        "answer": 1,
-        "evidence": "I can close my buttons and buckle my shoes.",
-        "explain": "Zama can do buttons and shoes without help, which shows Zama is growing up."
-      },
-      "readability": {
-        "grade": 2.1,
-        "fk": 2.8,
-        "cli": 2.7,
-        "ari": 0.9
-      }
-    },
-    {
-      "id": "asp-rats",
-      "title": "Rats!",
-      "kind": "story",
-      "topic": "animals",
-      "text": "The rats tried to tip over the bottles. But the oil would not flow out. The rats had a meeting to discuss the problem. After a while, one rat said, \"Let's put our tails into the bottles. Then we can lick the oil off our tails.\" And that's exactly what the rats did. They put their tails into the bottles, and then licked the oil off each other's tails. The rats did this until they had licked up all the oil.",
-      "source": {
-        "name": "African Storybook",
-        "url": "https://github.com/global-asp/asp-source/blob/master/en/0153_rats.md",
-        "license": "CC BY 4.0",
-        "author": "Lourenço Magaia Sabão",
-        "note": "Excerpt (pages 5-7)."
-      },
-      "question": {
-        "type": "detail",
-        "q": "How did the rats get the oil out of the bottles?",
-        "choices": [
-          "They tipped the bottles over",
-          "They broke the bottles open",
-          "They dipped their tails in",
-          "They poured it into a bowl"
-        ],
-        "answer": 2,
-        "evidence": "Let's put our tails into the bottles.",
-        "explain": "The rats put their tails in the bottles and licked off the oil."
-      },
-      "readability": {
-        "grade": 2.7,
-        "fk": 2.3,
-        "cli": 3.9,
-        "ari": 1.8
       }
     },
     {
@@ -431,72 +299,6 @@
       }
     },
     {
-      "id": "asp-clever-cat",
-      "title": "Clever Cat",
-      "kind": "story",
-      "topic": "animals",
-      "text": "When a neighbour appears, Safi is ready to scratch. The neighbour turns and runs away. When Safi feels hungry, she pushes the door and then closes it with her paws. She goes inside and eats her food. When Safi finishes, she jumps onto the sofa and sleeps. All you hear is, \"Purr! Purr! Purr!\"",
-      "source": {
-        "name": "African Storybook",
-        "url": "https://github.com/global-asp/asp-source/blob/master/en/0056_clever-cat.md",
-        "license": "CC BY 4.0",
-        "author": "Ursula Nafula",
-        "note": "Excerpt (pages 5-10). Shortened."
-      },
-      "question": {
-        "type": "sequence",
-        "q": "What does Safi do after she eats her food?",
-        "choices": [
-          "She sleeps on the sofa",
-          "She scratches a visitor",
-          "She runs out the door",
-          "She hides under a bed"
-        ],
-        "answer": 0,
-        "evidence": "she jumps onto the sofa and sleeps",
-        "explain": "When Safi finishes eating, she jumps onto the sofa and sleeps."
-      },
-      "readability": {
-        "grade": 2.5,
-        "fk": 1.7,
-        "cli": 4.3,
-        "ari": 1.6
-      }
-    },
-    {
-      "id": "asp-the-day-i-left-home-for-the-city",
-      "title": "The Day I Left Home for the City",
-      "kind": "story",
-      "topic": "places",
-      "text": "The small bus stop in my village was busy with people and overloaded buses. On the ground were even more things to load. Touts were shouting the names where their buses were going. \"City! City! Going west!\" I heard a tout shouting. That was the bus I needed to catch.",
-      "source": {
-        "name": "African Storybook",
-        "url": "https://github.com/global-asp/asp-source/blob/master/en/0324_the-day-i-left-home-for-the-city.md",
-        "license": "CC BY 4.0",
-        "author": "Lesley Koyi, Ursula Nafula",
-        "note": "Excerpt (pages 1-2)."
-      },
-      "question": {
-        "type": "vocabulary",
-        "q": "In this story, what are \"touts\"?",
-        "choices": [
-          "People selling food and drinks",
-          "People fixing broken buses",
-          "People waiting for their friends",
-          "People shouting where buses go"
-        ],
-        "answer": 3,
-        "evidence": "Touts were shouting the names where their buses were going.",
-        "explain": "The touts shout out the places where their buses are going."
-      },
-      "readability": {
-        "grade": 2.1,
-        "fk": 1,
-        "cli": 3.9,
-        "ari": 1.3
-      }
-    },
-    {
       "id": "pb-trip-to-the-dragon-land",
       "title": "Trip to the Dragon Land",
       "kind": "story",
@@ -513,12 +315,12 @@
         "type": "sequence",
         "q": "What did Varun do right after he heard a loud roar?",
         "choices": [
-          "He ate an ice cream cone",
           "He peeped out of the window",
+          "He ate an ice cream cone",
           "He fell asleep and dreamed",
           "He read a book about dragons"
         ],
-        "answer": 1,
+        "answer": 0,
         "evidence": "He peeps out of the window and yelps!",
         "explain": "After the roar, Varun peeped out of the window and saw a dragon."
       },
@@ -548,10 +350,10 @@
         "choices": [
           "Anger and upset",
           "Fear and worry",
-          "Joy and fun",
-          "Tiredness"
+          "Tiredness",
+          "Joy and fun"
         ],
-        "answer": 2,
+        "answer": 3,
         "evidence": "he shouted with glee",
         "explain": "Wasim was having fun playing, so glee means joy."
       },
@@ -579,12 +381,12 @@
         "type": "main-idea",
         "q": "What is the problem in this story?",
         "choices": [
-          "Beena's friends snore loudly",
           "Beena cannot find her friends",
+          "Beena's friends snore loudly",
           "Big Bird is feeling sick",
           "The farm has no water"
         ],
-        "answer": 0,
+        "answer": 1,
         "evidence": "What can I do if my friends snore?",
         "explain": "Beena's friends snore so loudly that nobody can sleep."
       },
@@ -614,10 +416,10 @@
         "choices": [
           "She was talking to a friend",
           "She came late to science class",
-          "She forgot to bring her book",
-          "She was looking out the window"
+          "She was looking out the window",
+          "She forgot to bring her book"
         ],
-        "answer": 3,
+        "answer": 2,
         "evidence": "Should you not be looking at the board?",
         "explain": "Sarla was watching an eagle instead of looking at the board."
       },
@@ -645,12 +447,12 @@
         "type": "detail",
         "q": "What did Ma stuff the scarecrow with?",
         "choices": [
-          "Old rags",
           "Dry hay",
+          "Old rags",
           "Cotton",
           "Leaves"
         ],
-        "answer": 1,
+        "answer": 0,
         "evidence": "then stuffed it with hay",
         "explain": "Ma put an old shirt over the sticks and stuffed it with hay."
       },
@@ -680,10 +482,10 @@
         "choices": [
           "He dislikes school",
           "He is always hungry",
-          "He is never on time",
-          "He loses his toys"
+          "He loses his toys",
+          "He is never on time"
         ],
-        "answer": 2,
+        "answer": 3,
         "evidence": "Phani is always late.",
         "explain": "The story begins by telling us Phani is always late."
       },
@@ -711,12 +513,12 @@
         "type": "inference",
         "q": "Why did Ammu say her friends could not come to see Shankar?",
         "choices": [
-          "Shankar was not real",
           "Shankar was sick",
+          "Shankar was not real",
           "Her house was far away",
           "Her mother said no"
         ],
-        "answer": 0,
+        "answer": 1,
         "evidence": "Ammu did not have a puppy.",
         "explain": "Ammu did not really have a puppy, so there was no Shankar to see."
       },
@@ -746,10 +548,10 @@
         "choices": [
           "Shout at him loudly",
           "Send him off to bed",
-          "Hide food from him",
-          "Gently persuade him"
+          "Gently persuade him",
+          "Hide food from him"
         ],
-        "answer": 3,
+        "answer": 2,
         "evidence": "Amma would try to coax him to eat other food.",
         "explain": "To coax someone is to kindly try to get them to do something."
       },
@@ -777,12 +579,12 @@
         "type": "vocabulary",
         "q": "Toto was \"shocked\" to see the empty cage. What does shocked mean?",
         "choices": [
-          "Bored and sleepy all day",
           "Surprised and upset",
+          "Bored and sleepy all day",
           "Proud and pleased",
           "Hungry and grumpy"
         ],
-        "answer": 1,
+        "answer": 0,
         "evidence": "Toto was shocked.",
         "explain": "Toto did not expect the cage to be empty, so he was surprised and upset."
       },
@@ -812,10 +614,10 @@
         "choices": [
           "Reeti learns how to do yoga every day",
           "Reeti gets lots of new toys and books",
-          "Reeti misses school in the holidays",
-          "Reeti goes on a long trip with Papa"
+          "Reeti goes on a long trip with Papa",
+          "Reeti misses school in the holidays"
         ],
-        "answer": 2,
+        "answer": 3,
         "evidence": "She likes going to school!",
         "explain": "Reeti likes school and her friends, so the holidays make her unhappy."
       },
@@ -843,12 +645,12 @@
         "type": "cause-effect",
         "q": "Why did Shriya open Piyali's cage?",
         "choices": [
-          "She wanted Piyali to go home",
           "Piyali was making too much noise",
+          "She wanted Piyali to go home",
           "She wanted to clean the cage",
           "Her mother told her to do it"
         ],
-        "answer": 0,
+        "answer": 1,
         "evidence": "Go home Piyali.",
         "explain": "Shriya set Piyali free so she could go back to her family and friends."
       },
@@ -878,10 +680,10 @@
         "choices": [
           "Sit still and rest a while",
           "Drink a cold glass of water",
-          "Hum a quiet little song",
-          "Jump up and down a lot"
+          "Jump up and down a lot",
+          "Hum a quiet little song"
         ],
-        "answer": 3,
+        "answer": 2,
         "evidence": "Yes, by jumping up and down twenty times.",
         "explain": "Jumping up and down twenty times makes your heart beat faster."
       },
@@ -909,12 +711,12 @@
         "type": "main-idea",
         "q": "What is this poem mostly about?",
         "choices": [
-          "A trip Anu takes to the seaside",
           "Patterns Anu sees all around her",
+          "A trip Anu takes to the seaside",
           "Anu learning to read a book",
           "Birds that Anu feeds in the park"
         ],
-        "answer": 1,
+        "answer": 0,
         "evidence": "Lines on a leaf, just like lines on her hand.",
         "explain": "Anu notices lines, waves and shapes everywhere she looks."
       },
@@ -923,6 +725,237 @@
         "fk": 1.5,
         "cli": 3.4,
         "ari": 1.5
+      }
+    },
+    {
+      "id": "pb-its-all-the-cats-fault",
+      "title": "It's All the Cat's Fault!",
+      "kind": "story",
+      "topic": "family",
+      "text": "Why haven't you done your homework? Miss, it's all the cat's fault. If she had not got stuck on the tree, I would not have taken the ladder to climb it. If I had not taken the ladder to climb it, I would not have needed to fix it. If I had not needed to fix it, I wouldn't have woken up the baby.",
+      "source": {
+        "name": "Pratham Books (StoryWeaver)",
+        "url": "https://github.com/global-asp/pb-source/blob/master/en/0140_it-s-all-the-cat-s-fault.md",
+        "license": "CC BY 4.0",
+        "author": "Anushka Ravishankar",
+        "note": "Excerpt (pages 1-3)."
+      },
+      "question": {
+        "type": "sequence",
+        "q": "What happened right after the cat got stuck on the tree?",
+        "choices": [
+          "The child fixed the ladder",
+          "The baby woke up",
+          "The child did homework",
+          "The child took a ladder"
+        ],
+        "answer": 3,
+        "evidence": "I would not have taken the ladder to climb it",
+        "explain": "The cat got stuck, so the child took the ladder to climb the tree."
+      },
+      "readability": {
+        "grade": 2,
+        "fk": 2.9,
+        "cli": 2.1,
+        "ari": 1.2
+      }
+    },
+    {
+      "id": "pb-bunty-and-bubbly",
+      "title": "Bunty and Bubbly",
+      "kind": "story",
+      "topic": "body",
+      "text": "Bunty is chased by the germs. She runs for her life and screams, \"Help... Help!\" Suddenly, Soap King Bubbly appears. \"Bunty, don't be afraid,\" he says. \"Go attack the germs!\" the Soap King orders his army of bubbles. The army of bubbles chases the germs away. These days, Bunty likes to use soap, and she brushes and scrubs herself clean.",
+      "source": {
+        "name": "Pratham Books (StoryWeaver)",
+        "url": "https://github.com/global-asp/pb-source/blob/master/en/0047_bunty-and-bubbly.md",
+        "license": "CC BY 4.0",
+        "author": "Sorit Gupto",
+        "note": "Excerpt (pages 8-11)."
+      },
+      "question": {
+        "type": "main-idea",
+        "q": "What is this part of the story mostly about?",
+        "choices": [
+          "Bunty learns to ride a bike",
+          "Soap bubbles chase germs away",
+          "Bubbles make a pretty rainbow",
+          "Germs are Bunty's best friends"
+        ],
+        "answer": 1,
+        "evidence": "The army of bubbles chases the germs away.",
+        "explain": "The Soap King's bubbles chase the germs away, and now Bunty likes soap."
+      },
+      "readability": {
+        "grade": 2.9,
+        "fk": 2,
+        "cli": 4.7,
+        "ari": 1.9
+      }
+    },
+    {
+      "id": "asp-friendship-between-hyena-and-hare",
+      "title": "Friendship between Hyena and Hare",
+      "kind": "fable",
+      "topic": "friendship",
+      "text": "Hare and Hyena were friends. They decided to farm potatoes together. They worked hard on the farm. After work, Hare and Hyena played together. But sometimes Hyena chased Hare. Hare would run away. One day, Hare asked, \"If you are my friend, why do you chase me?\" Then Hare asked, \"But if you are not my friend, why do we work and play together?\" A friend is someone who is always a friend.",
+      "source": {
+        "name": "African Storybook",
+        "url": "https://github.com/global-asp/asp-source/blob/master/en/0117_friendship-between-hyena-and-hare.md",
+        "license": "CC BY 4.0",
+        "author": "Adapted Aesop's Fable",
+        "note": "Whole story."
+      },
+      "question": {
+        "type": "inference",
+        "q": "Why is Hare confused about Hyena?",
+        "choices": [
+          "Hyena never helps out on the farm",
+          "Hyena eats all of their potatoes",
+          "Hyena works with him but chases him",
+          "Hyena plays games with other friends"
+        ],
+        "answer": 2,
+        "evidence": "If you are my friend, why do you chase me?",
+        "explain": "Hyena works and plays with Hare, but sometimes chases him, so Hare is not sure they are friends."
+      },
+      "readability": {
+        "grade": 2.9,
+        "fk": 2.3,
+        "cli": 4.6,
+        "ari": 1.9
+      }
+    },
+    {
+      "id": "pb-hyena-and-raven",
+      "title": "Hyena and Raven",
+      "kind": "story",
+      "topic": "animals",
+      "text": "\"Please my friend,\" he asked Raven, \"could I hold onto your tail as you fly up into the sky?\" \"All right,\" said Raven. \"I know how much you want to fly. Let's do it tomorrow morning.\" When day came, Hyena took hold of Raven's tail and Raven flew up into the sky.",
+      "source": {
+        "name": "Pratham Books (StoryWeaver)",
+        "url": "https://github.com/global-asp/pb-source/blob/master/en/0307_hyena-and-raven.md",
+        "license": "CC BY 4.0",
+        "author": "Ann Nduku",
+        "note": "Excerpt (page 4)."
+      },
+      "question": {
+        "type": "detail",
+        "q": "What did Hyena hold onto to go up into the sky?",
+        "choices": [
+          "Raven's tail",
+          "Raven's wing",
+          "A long rope",
+          "A tree branch"
+        ],
+        "answer": 0,
+        "evidence": "Hyena took hold of Raven's tail",
+        "explain": "Hyena held Raven's tail as Raven flew up into the sky."
+      },
+      "readability": {
+        "grade": 2.3,
+        "fk": 2.8,
+        "cli": 3.1,
+        "ari": 1.2
+      }
+    },
+    {
+      "id": "baldwin-robert-builds-a-boat",
+      "title": "Robert Builds a Boat",
+      "kind": "story",
+      "topic": "people",
+      "text": "\"Well, I can make some oars,\" said Robert; \"but I think there ought to be still another and a better way. I am going to find such a way if I can.\" The next day Robert's aunt heard a great pounding and sawing in her woodshed. The two boys were there, busily working with hammer and saw. \"What are you making, Robert?\" she asked.",
+      "source": {
+        "name": "Fifty Famous People (James Baldwin, 1912)",
+        "url": "https://www.gutenberg.org/ebooks/6168",
+        "license": "Public domain",
+        "author": "James Baldwin",
+        "note": "Paragraph from the book."
+      },
+      "question": {
+        "type": "detail",
+        "q": "What did Robert's aunt hear in her woodshed?",
+        "choices": [
+          "Singing and laughter",
+          "Barking and howling",
+          "Splashing water",
+          "Pounding and sawing"
+        ],
+        "answer": 3,
+        "evidence": "a great pounding and sawing in her woodshed",
+        "explain": "The boys were busy working with a hammer and saw."
+      },
+      "readability": {
+        "grade": 2.9,
+        "fk": 2.8,
+        "cli": 4,
+        "ari": 2
+      }
+    },
+    {
+      "id": "burgess-bobby-coon-comes-home-late",
+      "title": "Bobby Coon Comes Home Late",
+      "kind": "story",
+      "topic": "animals",
+      "text": "Bobby shuffled along a little nearer, then sat up and blinked at them sleepily. No one needed to be told that Bobby had been out all night. He rubbed his eyes and yawned. \"Hello, everybody,\" said he. \"I wish I felt as bright and lively as all of you look. I'd like to join your school, but I'm afraid if I did I would go to sleep right in the middle of the lesson. I ought to have been home an hour ago. So I guess I'll have to be excused.\"",
+      "source": {
+        "name": "The Burgess Animal Book for Children (Thornton W. Burgess, 1920)",
+        "url": "https://www.gutenberg.org/ebooks/2441",
+        "license": "Public domain",
+        "author": "Thornton W. Burgess",
+        "note": "Paragraph from the book."
+      },
+      "question": {
+        "type": "vocabulary",
+        "q": "Bobby \"blinked at them sleepily.\" What does sleepily tell you?",
+        "choices": [
+          "He is hungry and wants corn",
+          "He feels tired and drowsy",
+          "He is cross and grumpy",
+          "He is excited and wants to play"
+        ],
+        "answer": 1,
+        "evidence": "blinked at them sleepily",
+        "explain": "Bobby had been out all night, so he was tired and sleepy."
+      },
+      "readability": {
+        "grade": 2.5,
+        "fk": 3.1,
+        "cli": 3,
+        "ari": 1.4
+      }
+    },
+    {
+      "id": "burgess-mr-toad-is-thirsty",
+      "title": "Mr. Toad Is Thirsty",
+      "kind": "story",
+      "topic": "animals",
+      "text": "By and by up came old Mr. Toad. It was a warm day and Mr. Toad was very hot and very, very thirsty. He stopped to rest beside the house of Danny Meadow Mouse.",
+      "source": {
+        "name": "Mother West Wind's Children (Thornton W. Burgess, 1911)",
+        "url": "https://www.gutenberg.org/ebooks/20877",
+        "license": "Public domain",
+        "author": "Thornton W. Burgess",
+        "note": "Paragraph from the book."
+      },
+      "question": {
+        "type": "cause-effect",
+        "q": "Why did Mr. Toad stop beside Danny Meadow Mouse's house?",
+        "choices": [
+          "He wanted to visit",
+          "He was lost",
+          "He needed to rest",
+          "He saw some food"
+        ],
+        "answer": 2,
+        "evidence": "He stopped to rest beside the house of Danny Meadow Mouse.",
+        "explain": "Mr. Toad was hot and thirsty on a warm day, so he stopped to rest."
+      },
+      "readability": {
+        "grade": 2,
+        "fk": 3.1,
+        "cli": 2.2,
+        "ari": 0.7
       }
     },
     {
@@ -942,12 +975,12 @@
         "type": "cause-effect",
         "q": "Why is Slaty sure he will not starve in the snow?",
         "choices": [
+          "A boy at the farm helps him",
           "He hides seeds in the fall",
           "He flies south in the winter",
-          "A boy at the farm helps him",
           "He finds bugs under the snow"
         ],
-        "answer": 2,
+        "answer": 0,
         "evidence": "Farmer Brown's boy is a very good friend of mine",
         "explain": "Farmer Brown's boy is Slaty's friend and will not let him go hungry."
       },
@@ -975,12 +1008,12 @@
         "type": "cause-effect",
         "q": "Why does Honker want to take a nap?",
         "choices": [
-          "He has a long trip ahead",
           "He ate too much grain today",
           "It is getting dark outside",
-          "He has no more to say"
+          "He has no more to say",
+          "He has a long trip ahead"
         ],
-        "answer": 0,
+        "answer": 3,
         "evidence": "And I've got a long journey to-morrow.",
         "explain": "Honker is tired and has a long journey the next day."
       },
@@ -1009,11 +1042,11 @@
         "q": "What is the inside of Chippy's nest lined with?",
         "choices": [
           "Soft feathers",
+          "Horse-hair",
           "Green moss",
-          "Cotton fluff",
-          "Horse-hair"
+          "Cotton fluff"
         ],
-        "answer": 3,
+        "answer": 1,
         "evidence": "it is lined inside with horse-hair",
         "explain": "Johnny Chuck says the nest is lined inside with horse-hair."
       },
@@ -1042,11 +1075,11 @@
         "q": "What family does Teacher say he belongs to?",
         "choices": [
           "The Thrush family",
-          "The Warbler family",
           "The Sparrow family",
+          "The Warbler family",
           "The Wren family"
         ],
-        "answer": 1,
+        "answer": 2,
         "evidence": "I'm a Warbler, a Wood Warbler.",
         "explain": "Teacher says he is not a Thrush at all but a Wood Warbler."
       },
@@ -1074,12 +1107,12 @@
         "type": "cause-effect",
         "q": "Why did Peter feel foolish?",
         "choices": [
+          "He got scared for nothing",
           "He tripped on a big root",
           "He forgot where he was going",
-          "He got scared for nothing",
           "His friends laughed at him"
         ],
-        "answer": 2,
+        "answer": 0,
         "evidence": "He had been scared when there was nothing to be afraid of.",
         "explain": "Peter jumped at the boom, but there was nothing to be afraid of."
       },
@@ -1107,12 +1140,12 @@
         "type": "detail",
         "q": "What does Striped Chipmunk do when he wakes up in winter?",
         "choices": [
-          "He eats a little stored food",
           "He digs a brand new tunnel",
           "He goes out to play in snow",
-          "He visits Johnny Chuck"
+          "He visits Johnny Chuck",
+          "He eats a little stored food"
         ],
-        "answer": 0,
+        "answer": 3,
         "evidence": "once in a while I wake up and eat a little",
         "explain": "He keeps food in his house and eats a little when he wakes."
       },
@@ -1141,11 +1174,11 @@
         "q": "How often does Johnny Chuck dig a new hole?",
         "choices": [
           "Every winter",
+          "Every spring",
           "Every week",
-          "Every night",
-          "Every spring"
+          "Every night"
         ],
-        "answer": 3,
+        "answer": 1,
         "evidence": "I dig a new hole each spring.",
         "explain": "Johnny Chuck says he digs a new hole each spring."
       },
@@ -1174,11 +1207,11 @@
         "q": "What can you tell about Little Joe?",
         "choices": [
           "He sleeps all winter",
-          "He is a good swimmer",
           "He lives in a tree",
+          "He is a good swimmer",
           "He hates the cold"
         ],
-        "answer": 1,
+        "answer": 2,
         "evidence": "I can swim for long distances under ice",
         "explain": "Little Joe swims a long way under the ice, so he swims very well."
       },
@@ -1206,12 +1239,12 @@
         "type": "main-idea",
         "q": "What is Old Mother Nature teaching Bobby?",
         "choices": [
+          "The corn is not Bobby's to take",
           "Corn is the best food for coons",
           "Bowser the Hound is a good friend",
-          "The corn is not Bobby's to take",
           "Wild corn grows all over the field"
         ],
-        "answer": 2,
+        "answer": 0,
         "evidence": "That makes it his corn.",
         "explain": "Farmer Brown planted the corn, so it is his and not Bobby's."
       },
@@ -1239,12 +1272,12 @@
         "type": "vocabulary",
         "q": "Old Mother Nature is glad they are \"prompt.\" What does prompt mean?",
         "choices": [
-          "Right on time",
           "Very sleepy",
           "Loud and noisy",
-          "Very hungry"
+          "Very hungry",
+          "Right on time"
         ],
-        "answer": 0,
+        "answer": 3,
         "evidence": "I am glad you are so prompt",
         "explain": "Being prompt means coming right on time, so school can start at once."
       },
@@ -1273,11 +1306,11 @@
         "q": "What did Johnny Chuck do just before the nut hit him?",
         "choices": [
           "He rolled off a big log",
+          "He tipped his head back",
           "He dug a brand new hole",
-          "He ate a fat green beetle",
-          "He tipped his head back"
+          "He ate a fat green beetle"
         ],
-        "answer": 3,
+        "answer": 1,
         "evidence": "Johnny Chuck tipped his head way, way back and looked up.",
         "explain": "Johnny Chuck heard a voice, tipped his head back to look up, and then the nut fell."
       },
@@ -1306,11 +1339,11 @@
         "q": "Why did Johnny Chuck tiptoe up so softly?",
         "choices": [
           "To keep from waking the baby",
-          "To surprise Striped Chipmunk",
           "To sneak some of Chipmunk's nuts",
+          "To surprise Striped Chipmunk",
           "To hide from Reddy Fox nearby"
         ],
-        "answer": 1,
+        "answer": 2,
         "evidence": "to give Striped Chipmunk a scare",
         "explain": "Johnny Chuck crept up quietly to give Striped Chipmunk a scare."
       },
@@ -1338,12 +1371,12 @@
         "type": "detail",
         "q": "In the song, what does Peter Rabbit do when there is danger?",
         "choices": [
+          "He runs off",
           "He hides in a log",
           "He calls for help",
-          "He runs off",
           "He thumps"
         ],
-        "answer": 2,
+        "answer": 0,
         "evidence": "But when there's danger runs away?",
         "explain": "The song says Peter loves to play but runs away from danger."
       },
@@ -1371,12 +1404,12 @@
         "type": "detail",
         "q": "What is Grandfather Frog going to do?",
         "choices": [
-          "Sleep for the winter",
           "Swim to a new pond",
           "Catch fat green flies",
-          "Tell a long story"
+          "Tell a long story",
+          "Sleep for the winter"
         ],
-        "answer": 0,
+        "answer": 3,
         "evidence": "I'm going to sleep for the winter",
         "explain": "Grandfather Frog is tired and will sleep all winter."
       },
@@ -1405,11 +1438,11 @@
         "q": "What did Sammy Jay most likely do?",
         "choices": [
           "He broke a big nest",
+          "He stole something",
           "He told a secret",
-          "He woke everyone up",
-          "He stole something"
+          "He woke everyone up"
         ],
-        "answer": 3,
+        "answer": 1,
         "evidence": "Stop thief!",
         "explain": "Everyone shouts \"Stop thief!\" as he flies away, so he must have taken something."
       },
@@ -1438,11 +1471,11 @@
         "q": "Why was the bell not ringing that day?",
         "choices": [
           "The bell was broken",
-          "There were no waves",
           "The wind was too strong",
+          "There were no waves",
           "Ralph had taken it"
         ],
-        "answer": 1,
+        "answer": 2,
         "evidence": "There were no waves to set it in motion.",
         "explain": "The sea was calm, and without waves the bell could not ring."
       },
@@ -1470,12 +1503,12 @@
         "type": "detail",
         "q": "How long does the abbot ask for to answer the questions?",
         "choices": [
+          "Two weeks",
           "Two days",
           "One year",
-          "Two weeks",
           "Three hours"
         ],
-        "answer": 2,
+        "answer": 0,
         "evidence": "if you will give me two weeks to think about them",
         "explain": "The abbot asks the king for two weeks to think."
       },
@@ -1484,39 +1517,6 @@
         "fk": 2.6,
         "cli": 2.9,
         "ari": 1.7
-      }
-    },
-    {
-      "id": "baldwin-paul-reveres-signal",
-      "title": "Paul Revere's Signal",
-      "kind": "story",
-      "topic": "history",
-      "text": "\"Well, then,\" said Paul Revere, \"you must go back to Boston and watch. Watch, and as soon as the soldiers are ready to start, hang a lantern in the tower of the old North Church. If they are to cross the river, hang two. I will be here, ready. As soon as I see the light, I will mount my horse and ride out to give the alarm.\"",
-      "source": {
-        "name": "Fifty Famous People (James Baldwin, 1912)",
-        "url": "https://www.gutenberg.org/ebooks/6168",
-        "license": "Public domain",
-        "author": "James Baldwin",
-        "note": "Paragraph from the book."
-      },
-      "question": {
-        "type": "detail",
-        "q": "How many lanterns mean the soldiers will cross the river?",
-        "choices": [
-          "Two",
-          "One",
-          "Three",
-          "Four"
-        ],
-        "answer": 0,
-        "evidence": "If they are to cross the river, hang two.",
-        "explain": "Paul Revere says to hang two lanterns if the soldiers cross the river."
-      },
-      "readability": {
-        "grade": 2.7,
-        "fk": 3.1,
-        "cli": 2.9,
-        "ari": 2.1
       }
     },
     {
