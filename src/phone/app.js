@@ -107,7 +107,7 @@ let stateAt = 0;                               // when the shown state was made 
 const waiting = new Map();
 let state = null, status = 'wait', error = '', updatedAt = 0;
 let reading = null;                              // the reading dashboard, when open: { childId, open, loading }
-let tab = 'home', kidId = null;               // which screen, which child (for per-child screens)
+let tab = 'home', kidId = store.get('cq.kid', null), kidMenu = false;               // which screen, which child (for per-child screens)
 let config = null;                             // quests, prizes, websites, channels (loaded when needed)
 let hist = { kid: null, entries: [], more: false, loading: false };
 
@@ -271,18 +271,40 @@ function allKids() {
   return out;
 }
 const KID_COLORS = ['#2f5bd3', '#16a34a', '#db2777', '#f59e0b', '#7c3aed', '#0891b2', '#dc2626', '#ea580c'];
-/** Each kid: their name in their color (set on the PC). Tap to switch; ＋ to add. */
-function kidRowHtml() {
+/** Requests waiting for one kid (requests from other kids show only when you switch to them). */
+function claimsFor(st, id) { return (st?.claims ?? []).filter((c) => !c.childId || c.childId === id); }
+/**
+ * The top of the screen: the kid you're looking at (their color and name). Tap to switch kids or add one.
+ * Everything below (coins, requests, quests, rewards, sites, reports) is that kid only.
+ */
+function kidSwitcherHtml() {
   const cur = kid();
-  return `<div class="kids" role="tablist" aria-label="Kids">${allKids().map((k, i) => {
-    const on = k.link === link && (k.id ?? null) === (cur?.id ?? null);
-    return `<button role="tab" class="kid-chip ${on ? 'on' : ''}" style="--kid:${k.color || 'var(--accent)'}" data-kidx="${i}">${esc(k.name)}</button>`;
-  }).join('')}<button class="kid-chip add" data-add-kid>＋ Add</button></div>`;
+  const kids = allKids();
+  const curEntry = kids.find((k) => k.link === link && (k.id ?? null) === (cur?.id ?? null));
+  const color = curEntry?.color || 'var(--accent)';
+  const name = cur?.name ?? curEntry?.name ?? (state?.household || link.household);
+  const waitingElsewhere = kids.filter((k) => k !== curEntry).reduce((n, k) => n + claimsFor(k.link === link ? state : store.get('cq.state.' + k.link.topicIn, null)?.state, k.id).length, 0);
+  const menu = kidMenu ? `<div class="kid-menu-back" data-kid-menu-close></div>
+    <div class="kid-menu" role="menu" aria-label="Switch kid">
+      ${kids.map((k, i) => {
+        const on = k === curEntry;
+        const n = k.id ? claimsFor(k.link === link ? state : store.get('cq.state.' + k.link.topicIn, null)?.state, k.id).length : 0;
+        return `<button role="menuitemradio" aria-checked="${on}" class="kid-opt ${on ? 'on' : ''}" data-kidx="${i}"><span class="kid-dot" style="--kid:${k.color || 'var(--accent)'}">${esc((k.name || '?').slice(0, 1).toUpperCase())}</span><span class="grow">${esc(k.name)}</span>${n ? `<i class="badge">${n}</i>` : ''}${on ? '<span class="tick">✓</span>' : ''}</button>`;
+      }).join('')}
+      <button class="kid-opt add" data-add-kid><span class="kid-dot add">＋</span><span class="grow">Add a kid</span></button>
+    </div>` : '';
+  return `<div class="kid-switch">
+      <button class="kid-current" data-kid-menu aria-haspopup="menu" aria-expanded="${kidMenu}" style="--kid:${color}">
+        <span class="kid-dot">${esc((name || '?').slice(0, 1).toUpperCase())}</span>
+        <span class="kid-label">${esc(name)}</span><span class="caret">▾</span>
+        ${waitingElsewhere ? `<i class="badge" title="Requests from your other kids">${waitingElsewhere}</i>` : ''}
+      </button>${menu}
+    </div>`;
 }
 function pickKid(i) {
   const k = allKids()[i];
   if (!k) return;
-  kidId = k.id; reading = null;
+  kidId = k.id; reading = null; kidMenu = false; store.set('cq.kid', kidId); window.scrollTo(0, 0);
   if (k.link !== link) { link = k.link; connect(); } else render();
 }
 
@@ -314,7 +336,7 @@ async function startScan() {
         for (const c of await detector.detect(v)) {
           const hash = (() => { try { return new URL(c.rawValue).hash; } catch { return c.rawValue.includes('#') ? c.rawValue.slice(c.rawValue.indexOf('#')) : ''; } })();
           const nl = hash ? w.parseLink(hash) : null;
-          if (nl) { stopScan(); const added = addLink(nl); saveLinks(); adding = false; if (added) { link = added; kidId = null; connect(); toast('Linked'); } return; }
+          if (nl) { stopScan(); const added = addLink(nl); saveLinks(); adding = false; if (added) { link = added; kidId = null; store.set('cq.kid', null); connect(); toast('Linked'); } return; }
         }
       } catch { /* keep looking */ }
       requestAnimationFrame(tick);
@@ -357,7 +379,6 @@ function draw() {
       <div class="card empty add-kid">${addKidHtml(true)}</div>`;
     return;
   }
-  const kidsRow = kidRowHtml();
   const standalone = matchMedia('(display-mode: standalone)').matches || navigator.standalone;
   const hint = tab === 'home' && !standalone && !store.get('cq.hintDone', false)
     ? `<div class="hint"><div><b>Tip:</b> add this to your home screen so it opens like an app — in Safari tap <b>Share → Add to Home Screen</b>; in Chrome tap <b>⋮ → Add to Home screen</b>.</div><button data-hint aria-label="Dismiss">×</button></div>` : '';
@@ -368,19 +389,18 @@ function draw() {
   const body = tab === 'home' && reading ? readingScreen() : { home: homeScreen, rewards: rewardsScreen, shop: shopScreen, allowed: allowedScreen }[tab]?.() ?? homeScreen();
   const tabs = [['home', '🏠', 'Today'], ['rewards', '⭐', 'Earn'], ['shop', '🛍️', 'Rewards'], ['allowed', '🌐', 'Allowed']];
   app.innerHTML = `
-    <header><img src="icon-192.png" alt=""><h1>${esc(state?.household || link.household)}</h1><button class="icon" data-refresh aria-label="Refresh">↻</button></header>
-    ${kidsRow}
+    <header>${kidSwitcherHtml()}<button class="icon" data-refresh aria-label="Refresh">↻</button></header>
     <div class="status"><span class="dot ${status}"></span>${statusText}</div>
     ${hint}
     ${error ? `<div class="err">${esc(error)}</div>` : ''}
     ${body}
     ${adding ? `<div class="sheet-back" data-add-close><div class="sheet add-kid" role="dialog" aria-label="Add a kid">${addKidHtml(false)}</div></div>` : ''}
-    <nav class="tabbar">${tabs.map(([id, icon, label]) => `<button data-tab="${id}" class="${tab === id ? 'on' : ''}" aria-label="${label}"><span>${icon}</span>${label}${id === 'home' && state?.claims?.length ? `<i>${state.claims.length}</i>` : ''}</button>`).join('')}</nav>`;
+    <nav class="tabbar">${tabs.map(([id, icon, label]) => `<button data-tab="${id}" class="${tab === id ? 'on' : ''}" aria-label="${label}"><span>${icon}</span>${label}${id === 'home' && claimsFor(state, kid()?.id).length ? `<i>${claimsFor(state, kid()?.id).length}</i>` : ''}</button>`).join('')}</nav>`;
 }
 
 function homeScreen() {
   if (!state) return status !== 'off' ? `<div class="card empty"><p>Asking the PC…</p></div>` : '';
-  const claims = state.claims || [];
+  const claims = claimsFor(state, kid()?.id);
   let out = claims.length ? `<h2>Waiting for you</h2>` + claims.map((c) => `
       <div class="card claim">
         <div><span class="who">${esc(c.child)}</span> <span class="t">${ago(c.at)}</span></div>
@@ -751,11 +771,13 @@ function toast(text) {
 
 app.addEventListener('click', (e) => {
   if (e.target.classList?.contains('sheet-back')) { adding = false; stopScan(); render(); return; }
+  if (e.target.dataset?.kidMenuClose !== undefined) { kidMenu = false; render(); return; }
   const b = e.target.closest('button');
   if (!b || (b.type === 'submit' && b.form)) return;
   if (b.dataset.refresh !== undefined) { if (tab !== 'home') config = null; refresh(); }
   else if (b.dataset.kidx !== undefined) pickKid(+b.dataset.kidx);
-  else if (b.dataset.addKid !== undefined) { adding = true; render(); }
+  else if (b.dataset.kidMenu !== undefined) { kidMenu = !kidMenu; render(); }
+  else if (b.dataset.addKid !== undefined) { adding = true; kidMenu = false; render(); }
   else if (b.dataset.addClose !== undefined && b.closest('.sheet')) { adding = false; stopScan(); render(); }
   else if (b.dataset.scan !== undefined) startScan();
   else if (b.dataset.repReading !== undefined) { const k = kid(); if (k) openReading(k.id); }
