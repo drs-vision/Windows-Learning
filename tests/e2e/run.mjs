@@ -81,9 +81,14 @@ await check('setup wizard completes with the kid account', async () => {
   await parent.waitForSelector('text=Check it works', { timeout: 30000 });
   await sleep(1500);
   await shot(parent, 'parent-wizard-check');
-  await parent.click('text=Open the Parent Console');
+  await parent.click('button:has-text("Open the Parent Console")');
   // This account is now the child, so the Parent Console asks for the PIN (as it would inside Daniel's account).
-  await parent.waitForSelector('nav.tabs, form.pin-gate', { timeout: 30000 });
+  try { await parent.waitForSelector('nav.tabs, form.pin-gate', { timeout: 30000 }); }
+  catch (e) {
+    await shot(parent, 'parent-after-setup');
+    log(`  [after setup the Parent Console shows] ${(await parent.locator('body').innerText().catch(() => '?')).replace(/\s+/g, ' ').slice(0, 400)}`);
+    throw e;
+  }
   if (await parent.locator('form.pin-gate').count()) { await parent.fill('form.pin-gate input', '2468'); await parent.click('form.pin-gate button[type=submit]'); }
   await parent.waitForSelector('nav.tabs', { timeout: 30000 });
   await shot(parent, 'parent-today');
