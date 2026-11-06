@@ -1,0 +1,1457 @@
+{
+  "about": "Reading Quest paragraphs, about grade 5-6",
+  "passages": [
+    {
+      "id": "sbc-decision",
+      "title": "Decision",
+      "kind": "story",
+      "topic": "community",
+      "text": "When the wind blew, waste paper hung on trees and fences. People were cut by broken glass that was thrown carelessly. Then one day, the tap dried up and our containers were empty. My father walked from house to house asking people to attend a village meeting. People gathered under a big tree and listened.",
+      "source": {
+        "name": "Storybooks Canada",
+        "url": "https://github.com/global-asp/sbc-source/blob/master/en/0027_decision.md",
+        "license": "CC BY 4.0",
+        "author": "Ursula Nafula",
+        "note": "Excerpt (pages 7-11)."
+      },
+      "question": {
+        "type": "sequence",
+        "q": "What happened right after the tap dried up?",
+        "choices": [
+          "The wind blew the waste paper into the trees",
+          "Father asked everyone to come to a meeting",
+          "Everyone packed up and moved to a new village",
+          "The children cleaned up all the broken glass"
+        ],
+        "answer": 1,
+        "evidence": "My father walked from house to house asking people to attend a village meeting",
+        "explain": "When the tap dried up, the father went from house to house asking people to meet."
+      },
+      "readability": {
+        "grade": 5.8,
+        "fk": 4.6,
+        "cli": 7.7,
+        "ari": 5.1
+      }
+    },
+    {
+      "id": "sbc-goat-dog-and-cow",
+      "title": "Goat, Dog, and Cow",
+      "kind": "fable",
+      "topic": "animals",
+      "text": "The driver was about to give Dog his change when Goat ran away without paying anything. The driver was very annoyed. He drove away without giving Dog his change. That is why, even today, Dog runs towards a car to peep inside and find the driver who owes him his change.",
+      "source": {
+        "name": "Storybooks Canada",
+        "url": "https://github.com/global-asp/sbc-source/blob/master/en/0004_goat-dog-and-cow.md",
+        "license": "CC BY 4.0",
+        "author": "Fabian Wakholi",
+        "note": "Excerpt (pages 4-6)."
+      },
+      "question": {
+        "type": "cause-effect",
+        "q": "Why does Dog run toward cars, according to the story?",
+        "choices": [
+          "He is looking for the driver who owes him change",
+          "He is trying to catch Goat, who ran away without paying",
+          "He likes to bark at the loud engines",
+          "He hopes to get a free ride into the next town"
+        ],
+        "answer": 0,
+        "evidence": "find the driver who owes him his change",
+        "explain": "The driver drove off without giving Dog his change, so Dog still looks for him."
+      },
+      "readability": {
+        "grade": 5.5,
+        "fk": 5.3,
+        "cli": 6.4,
+        "ari": 4.6
+      }
+    },
+    {
+      "id": "sbc-hen-and-eagle",
+      "title": "Hen and Eagle",
+      "kind": "fable",
+      "topic": "animals",
+      "text": "After a good night's sleep, Hen had a brilliant idea. She began collecting the fallen feathers from all their bird friends. \"Let's sew them together on top of our own feathers,\" she said. \"Perhaps that will make it easier to travel.\" Eagle was the only one in the village with a needle, so she started sewing first. She made herself a pair of beautiful wings and flew high above Hen. Hen borrowed the needle but she soon got tired of sewing. She left the needle on the cupboard and went into the kitchen to prepare food for her children.",
+      "source": {
+        "name": "Storybooks Canada",
+        "url": "https://github.com/global-asp/sbc-source/blob/master/en/0158_hen-and-eagle.md",
+        "license": "CC BY 4.0",
+        "author": "Ann Nduku",
+        "note": "Excerpt (pages 3-4)."
+      },
+      "question": {
+        "type": "sequence",
+        "q": "What did Hen do after she got tired of sewing?",
+        "choices": [
+          "Asked all her bird friends to bring more feathers",
+          "Flew up high to join Eagle in the sky",
+          "Gave the needle back to Eagle and thanked her for it",
+          "Left the needle on the cupboard and went to cook"
+        ],
+        "answer": 3,
+        "evidence": "She left the needle on the cupboard and went into the kitchen",
+        "explain": "Hen put the needle on the cupboard and went to the kitchen to make food."
+      },
+      "readability": {
+        "grade": 5.6,
+        "fk": 5,
+        "cli": 6.9,
+        "ari": 4.8
+      }
+    },
+    {
+      "id": "sbc-why-hippos-have-no-hair",
+      "title": "Why hippos have no hair",
+      "kind": "fable",
+      "topic": "animals",
+      "text": "One day, Rabbit was walking by the riverside. Hippo was there too, going for a stroll and eating some nice green grass. Hippo didn't see that Rabbit was there and she accidentally stepped on Rabbit's foot. Rabbit started screaming at Hippo, \"You Hippo! Can't you see that you're stepping on my foot?\"",
+      "source": {
+        "name": "Storybooks Canada",
+        "url": "https://github.com/global-asp/sbc-source/blob/master/en/0111_why-hippos-have-no-hair.md",
+        "license": "CC BY 4.0",
+        "author": "Basilio Gimo, David Ker",
+        "note": "Excerpt (pages 1-3)."
+      },
+      "question": {
+        "type": "inference",
+        "q": "How did Rabbit most likely feel when Hippo stepped on that foot?",
+        "choices": [
+          "Proud that Hippo knew who Rabbit was",
+          "Happy to meet a friend by the river",
+          "Angry and hurt by the heavy Hippo",
+          "Too tired and sleepy to care at all"
+        ],
+        "answer": 2,
+        "evidence": "Rabbit started screaming at Hippo",
+        "explain": "Rabbit screamed at Hippo, which shows Rabbit was hurt and angry."
+      },
+      "readability": {
+        "grade": 5.8,
+        "fk": 4.4,
+        "cli": 7.9,
+        "ari": 5.1
+      }
+    },
+    {
+      "id": "asp-hare-tricks-tortoise",
+      "title": "Hare Tricks Tortoise",
+      "kind": "fable",
+      "topic": "animals",
+      "text": "Once upon a time, there lived a tortoise, who had worked very hard during his entire life. When he retired, he received a nice lump sum of money. He decided that he would buy a big piece of land with the money, and become a farmer. News spread all over the village that Tortoise was looking for land to buy.",
+      "source": {
+        "name": "African Storybook",
+        "url": "https://github.com/global-asp/asp-source/blob/master/en/0270_hare-tricks-tortoise.md",
+        "license": "CC BY 4.0",
+        "author": "Maimouna Jallow, Haji Gora Haji",
+        "note": "Excerpt (pages 1-4)."
+      },
+      "question": {
+        "type": "detail",
+        "q": "What did Tortoise plan to do with his money?",
+        "choices": [
+          "Build a large new house in the village",
+          "Buy a big piece of land and farm it",
+          "Give it all away to his neighbours",
+          "Save it for a long trip to the sea"
+        ],
+        "answer": 1,
+        "evidence": "buy a big piece of land with the money, and become a farmer",
+        "explain": "Tortoise wanted to buy land and become a farmer."
+      },
+      "readability": {
+        "grade": 5.3,
+        "fk": 5.2,
+        "cli": 5.7,
+        "ari": 4.9
+      }
+    },
+    {
+      "id": "asp-mod-the-toad",
+      "title": "Mod the Toad",
+      "kind": "story",
+      "topic": "animals",
+      "text": "It was a cold and wet morning in the forest. Mod the little toad was tired of swimming in cold water. \"I need to leave this place during the rainy season,\" she said to herself. \"I want an adventure,\" said Mod to the terrapin. \"I must find out about the world.\" \"Be careful, don't leave the water for too long or your skin will dry out,\" warned the wise terrapin. At that time, toads still had smooth wet skin like frogs. Without water, their skins would become too dry.",
+      "source": {
+        "name": "African Storybook",
+        "url": "https://github.com/global-asp/asp-source/blob/master/en/0349_mod-the-toad.md",
+        "license": "CC BY 4.0",
+        "author": "Alice Mulwa",
+        "note": "Excerpt (pages 1-2). Spacing fixed."
+      },
+      "question": {
+        "type": "cause-effect",
+        "q": "Why did the terrapin tell Mod to be careful?",
+        "choices": [
+          "Her skin would dry out away from the water",
+          "The forest was full of hungry snakes and birds",
+          "She might get lost and miss the rainy season",
+          "The cold water would make her very sick"
+        ],
+        "answer": 0,
+        "evidence": "don't leave the water for too long or your skin will dry out",
+        "explain": "Toads then had smooth wet skin that would dry out without water."
+      },
+      "readability": {
+        "grade": 3.9,
+        "fk": 3.5,
+        "cli": 5.2,
+        "ari": 3.1
+      }
+    },
+    {
+      "id": "asp-the-monkey-and-the-crocodile",
+      "title": "The Monkey and the Crocodile",
+      "kind": "fable",
+      "topic": "animals",
+      "text": "A few days later, the crocodile saw the monkey coming onto the island. He quietly climbed over the rock and carefully lay down on it and kept his face underwater. The monkey finished eating and was ready to go back. But the rock looked higher than usual, so he spoke to the rock, \"Dear rock, you seem to have grown. Are you all right?\"",
+      "source": {
+        "name": "African Storybook",
+        "url": "https://github.com/global-asp/asp-source/blob/master/en/0347_the-monkey-and-the-crocodile.md",
+        "license": "CC BY 4.0",
+        "author": "Mozambican folktale",
+        "note": "Excerpt (pages 5-6)."
+      },
+      "question": {
+        "type": "inference",
+        "q": "Why did the rock look higher than usual?",
+        "choices": [
+          "The monkey had piled stones on it",
+          "The rock was slowly growing bigger",
+          "The water in the river had gone down",
+          "The crocodile was lying on top of it"
+        ],
+        "answer": 3,
+        "evidence": "carefully lay down on it",
+        "explain": "The crocodile had climbed onto the rock and lay on it, so it looked taller."
+      },
+      "readability": {
+        "grade": 5.2,
+        "fk": 5.4,
+        "cli": 5.9,
+        "ari": 4.2
+      }
+    },
+    {
+      "id": "asp-refiloe-and-the-washed-chickens",
+      "title": "Refiloe and the washed chickens",
+      "kind": "story",
+      "topic": "family",
+      "text": "It was the first wedding in the Tenane family, and Refiloe had never been so excited in her life. \"I'm going to be Palesa's bridesmaid, with a new dress and shoes!\" she said to her chickens. Refiloe told her chickens everything. Her father had given the chickens to her as a birthday present, and she loved them very much.",
+      "source": {
+        "name": "African Storybook",
+        "url": "https://github.com/global-asp/asp-source/blob/master/en/0202_refiloe-and-the-washed-chickens.md",
+        "license": "CC BY 4.0",
+        "author": "Marion Drew",
+        "note": "Excerpt (page 1)."
+      },
+      "question": {
+        "type": "detail",
+        "q": "Who gave Refiloe her chickens?",
+        "choices": [
+          "Palesa, the bride, as a thank-you gift",
+          "Her mother, for helping at the farm",
+          "Her father, as a birthday present",
+          "A neighbour, who was moving away"
+        ],
+        "answer": 2,
+        "evidence": "Her father had given the chickens to her as a birthday present",
+        "explain": "The chickens were a birthday present from her father."
+      },
+      "readability": {
+        "grade": 5.7,
+        "fk": 5.8,
+        "cli": 6.8,
+        "ari": 4.6
+      }
+    },
+    {
+      "id": "asp-greedy-mairu",
+      "title": "Greedy Mairu",
+      "kind": "story",
+      "topic": "people",
+      "text": "Once upon a time, there lived a man called Mairu in Bubaali Village. He liked to eat meat so much. One day, the chairman of Bubaali village invited all the villagers to his wedding that was to take place at his home. Then Mairu also heard that there was another wedding in Nabuyanja village. \"Ugh! ugh! ugh! Two parties on the same day!\" Mairu imagined.",
+      "source": {
+        "name": "African Storybook",
+        "url": "https://github.com/global-asp/asp-source/blob/master/en/0209_greedy-mairu.md",
+        "license": "CC BY 4.0",
+        "author": "Mutugi Kamundi",
+        "note": "Excerpt (pages 1-3). Spacing fixed."
+      },
+      "question": {
+        "type": "inference",
+        "q": "Why did Mairu cry \"Ugh! ugh! ugh!\"?",
+        "choices": [
+          "He had not been invited to either of the weddings",
+          "He could not go to both feasts on the same day",
+          "He did not like the meat served at weddings",
+          "The other village was too far to walk to"
+        ],
+        "answer": 1,
+        "evidence": "Two parties on the same day!",
+        "explain": "Mairu loved meat and wanted both parties, but they were on the same day."
+      },
+      "readability": {
+        "grade": 3.7,
+        "fk": 3.7,
+        "cli": 5.1,
+        "ari": 2.2
+      }
+    },
+    {
+      "id": "pb-the-puppy-that-did-not-bark",
+      "title": "The Puppy That Did Not Bark",
+      "kind": "story",
+      "topic": "pets",
+      "text": "Rinku was a little girl who lived in a big house with her parents and baby sister. She looked out into the garden and thought how wonderful it would be if she had a dog as her pet and play with him in the garden every evening. \"Mummy, please get me a small puppy\", she asked her mother. Her mother said, \"I'm sorry Rinku, it is very difficult to take care of a pup.\"",
+      "source": {
+        "name": "Pratham Books (StoryWeaver)",
+        "url": "https://github.com/global-asp/pb-source/blob/master/en/0159_the-puppy-that-did-not-bark.md",
+        "license": "CC BY 4.0",
+        "author": "Uma Balamurali",
+        "note": "Excerpt (pages 1-2). Spacing fixed."
+      },
+      "question": {
+        "type": "detail",
+        "q": "What did Rinku wish she could do every evening?",
+        "choices": [
+          "Play with a pet dog in the garden",
+          "Read stories to her little baby sister",
+          "Watch the birds from her bedroom window",
+          "Walk to the park with her mother"
+        ],
+        "answer": 0,
+        "evidence": "play with him in the garden every evening",
+        "explain": "Rinku dreamed of playing with a pet dog in the garden every evening."
+      },
+      "readability": {
+        "grade": 5.9,
+        "fk": 7.1,
+        "cli": 4.8,
+        "ari": 5.6
+      }
+    },
+    {
+      "id": "pb-samiras-awful-lunch",
+      "title": "Samira's Awful Lunch",
+      "kind": "story",
+      "topic": "food",
+      "text": "Shutting her tiffin box with a bang, Samira went to the school courtyard. A row of ants crawling along the wall said, \"Samira, why aren't you eating your lunch like all the other children?\" Samira said, \"I don't like parathas. I don't like vegetables. I don't want any lunch.\" \"Of course, one cannot eat vegetables,\" the ants agreed. They offered her the wing of a cockroach that they were carefully carrying and said, \"Now try this, it is really delicious.\" \"Oh no! I don't want any horrible cockroaches,\" said Samira and ran away to the garden.",
+      "source": {
+        "name": "Pratham Books (StoryWeaver)",
+        "url": "https://github.com/global-asp/pb-source/blob/master/en/0107_samira-s-awful-lunch.md",
+        "license": "CC BY 4.0",
+        "author": "Bharati Jagannathan",
+        "note": "Excerpt (pages 4-5)."
+      },
+      "question": {
+        "type": "inference",
+        "q": "Why did Samira run away to the garden?",
+        "choices": [
+          "The ants had bitten her hand very hard",
+          "She wanted to share her lunch with friends",
+          "She was late for her lesson in the garden",
+          "She did not want to eat the cockroach wing"
+        ],
+        "answer": 3,
+        "evidence": "I don't want any horrible cockroaches",
+        "explain": "The ants offered her a cockroach wing, and she did not want it."
+      },
+      "readability": {
+        "grade": 5.7,
+        "fk": 5.5,
+        "cli": 7,
+        "ari": 4.4
+      }
+    },
+    {
+      "id": "pb-tok-tok",
+      "title": "Tok Tok",
+      "kind": "story",
+      "topic": "people",
+      "text": "Tok-tok tok-tok! Raja Petuchand of Sonapur buried his head under the pillow. The butter chicken he had enjoyed a little too much last night was already giving him trouble. Now this awful noise! \"Do you have to get the palace work done at this hour?\" he grumbled to queen Suruchi. But she was snoring peacefully next to him in the king-sized bed, dreaming of the next palace festival. Tok-tok... tok-tok!",
+      "source": {
+        "name": "Pratham Books (StoryWeaver)",
+        "url": "https://github.com/global-asp/pb-source/blob/master/en/0117_tok-tok.md",
+        "license": "CC BY 4.0",
+        "author": "Vidya Pradhan",
+        "note": "Excerpt (pages 1-2)."
+      },
+      "question": {
+        "type": "vocabulary",
+        "q": "In this story, what does \"grumbled\" mean?",
+        "choices": [
+          "laughed loudly at a very funny joke",
+          "sang a happy little song out loud",
+          "complained in a cross, unhappy way",
+          "whispered a kind secret very softly"
+        ],
+        "answer": 2,
+        "evidence": "he grumbled to queen Suruchi",
+        "explain": "The king was upset by the noise, so he complained crossly."
+      },
+      "readability": {
+        "grade": 5.2,
+        "fk": 5,
+        "cli": 6.9,
+        "ari": 3.7
+      }
+    },
+    {
+      "id": "pb-grandpa-fish-and-the-radio",
+      "title": "Grandpa Fish and the Radio",
+      "kind": "story",
+      "topic": "family",
+      "text": "Grandpa Fish was the head of the fish family. He was obeyed in most things, not just by the younger fish but also by the frog and tortoise families. But there was one thing over which he simply had no control: the family radio.",
+      "source": {
+        "name": "Pratham Books (StoryWeaver)",
+        "url": "https://github.com/global-asp/pb-source/blob/master/en/0086_grandpa-fish-and-the-radio.md",
+        "license": "CC BY 4.0",
+        "author": "Venkatramana Gowda",
+        "note": "Excerpt (pages 5-6). Shortened. Translated by Divaspathy Hegde."
+      },
+      "question": {
+        "type": "detail",
+        "q": "What could Grandpa Fish not control?",
+        "choices": [
+          "The younger fish",
+          "The family radio",
+          "The frog families",
+          "The water in the stream"
+        ],
+        "answer": 1,
+        "evidence": "one thing over which he simply had no control: the family radio",
+        "explain": "He was obeyed in most things, but not about the radio."
+      },
+      "readability": {
+        "grade": 5.7,
+        "fk": 6,
+        "cli": 6.1,
+        "ari": 5.1
+      }
+    },
+    {
+      "id": "pb-gargi-and-soapy",
+      "title": "Gargi and Soapy",
+      "kind": "story",
+      "topic": "body",
+      "text": "\"Gargi, come here wash your hands thoroughly,\" said Mother with a soap-box in her hand. \"noooooo\".....screamed and cried Gargi as if she saw a monster in the soap-box. She kicked Soapy so hard that he flew up and hit the ceiling of the bathroom. Soapy was scared of Gargi and fed up of her tantrums.",
+      "source": {
+        "name": "Pratham Books (StoryWeaver)",
+        "url": "https://github.com/global-asp/pb-source/blob/master/en/0258_gargi-and-soapy.md",
+        "license": "CC BY 4.0",
+        "author": "Preethi Unnithan",
+        "note": "Excerpt (pages 3-4)."
+      },
+      "question": {
+        "type": "inference",
+        "q": "Who is Soapy?",
+        "choices": [
+          "A bar of soap kept in the soap-box",
+          "Gargi's younger brother at home",
+          "A toy monster from under the bed",
+          "Gargi's pet kitten in the bathroom"
+        ],
+        "answer": 0,
+        "evidence": "a soap-box in her hand",
+        "explain": "Mother held a soap-box, and Gargi kicked Soapy when told to wash."
+      },
+      "readability": {
+        "grade": 5.5,
+        "fk": 5.2,
+        "cli": 6.4,
+        "ari": 5
+      }
+    },
+    {
+      "id": "pb-under-the-sea",
+      "title": "Under the Sea",
+      "kind": "story",
+      "topic": "ocean",
+      "text": "Underwater is amazing! Though it was a little difficult to get used to breathing, Rehan soon learnt the trick. He floated, swam and then dived in. He felt good. Ooooooh! It was fascinating to see all kinds of colourful fishes swimming in all directions! There were rocks, corals, flowers, plants,.... all surrounded by the blue sea. The plants were swaying gently as though they were talking.",
+      "source": {
+        "name": "Pratham Books (StoryWeaver)",
+        "url": "https://github.com/global-asp/pb-source/blob/master/en/0421_under-the-sea.md",
+        "license": "CC BY 4.0",
+        "author": "Geeta Varma",
+        "note": "Excerpt (pages 3-4)."
+      },
+      "question": {
+        "type": "vocabulary",
+        "q": "In this story, \"fascinating\" means...",
+        "choices": [
+          "hard to see clearly at all",
+          "scary and very dangerous",
+          "boring and much too quiet",
+          "very interesting to watch"
+        ],
+        "answer": 3,
+        "evidence": "It was fascinating to see all kinds of colourful fishes",
+        "explain": "Rehan loved watching the colorful fish, so it was very interesting."
+      },
+      "readability": {
+        "grade": 5.2,
+        "fk": 3.7,
+        "cli": 7.7,
+        "ari": 4.3
+      }
+    },
+    {
+      "id": "fabre-uncle-paul-and-the-pear-tree",
+      "title": "Uncle Paul and the Pear-Tree",
+      "kind": "facts",
+      "topic": "plants",
+      "text": "UNCLE PAUL had just cut down a pear-tree in the garden. The tree was old, its trunk ravaged by worms, and for several years it had not borne any fruit. It was to be replaced by another. The children found their Uncle Paul seated on the trunk of the pear-tree. He was looking attentively at something. \"One, two, three, four, five,\" said he, tapping with his finger upon the cross-section of the felled tree. What was he counting?",
+      "source": {
+        "name": "The Story-Book of Science (Jean-Henri Fabre, 1917)",
+        "url": "https://www.gutenberg.org/ebooks/56795",
+        "license": "Public domain",
+        "author": "Jean-Henri Fabre",
+        "note": "Paragraph from the book."
+      },
+      "question": {
+        "type": "inference",
+        "q": "What was Uncle Paul most likely counting?",
+        "choices": [
+          "The children waiting for him in the garden",
+          "The worms that had eaten their way into the trunk",
+          "The rings in the wood that show the tree's age",
+          "The pears the old tree had grown in past summers"
+        ],
+        "answer": 2,
+        "evidence": "tapping with his finger upon the cross-section of the felled tree",
+        "explain": "He tapped the cut end of the trunk, where a tree's yearly rings show."
+      },
+      "readability": {
+        "grade": 5,
+        "fk": 4.3,
+        "cli": 6.6,
+        "ari": 4.2
+      }
+    },
+    {
+      "id": "fabre-the-gillyflower",
+      "title": "Inside a Flower",
+      "kind": "facts",
+      "topic": "plants",
+      "text": "\"Let us examine together this gillyflower. It has a calyx of four sepals and a corolla of four yellow petals. I take away these eight pieces. What is left now is the essential part; that is to say, the thing without which the flower could not fill its role and would be perfectly useless. Let us go carefully over this remaining part. You will find it well worth the trouble.",
+      "source": {
+        "name": "The Story-Book of Science (Jean-Henri Fabre, 1917)",
+        "url": "https://www.gutenberg.org/ebooks/56795",
+        "license": "Public domain",
+        "author": "Jean-Henri Fabre",
+        "note": "Paragraph from the book."
+      },
+      "question": {
+        "type": "vocabulary",
+        "q": "What does \"essential\" mean in this paragraph?",
+        "choices": [
+          "the part that always falls off first",
+          "the part the flower cannot do without",
+          "the smallest and the least useful part",
+          "the prettiest and most colorful part"
+        ],
+        "answer": 1,
+        "evidence": "the thing without which the flower could not fill its role",
+        "explain": "The text explains that the essential part is what the flower cannot do without."
+      },
+      "readability": {
+        "grade": 5.6,
+        "fk": 5.8,
+        "cli": 6.6,
+        "ari": 4.4
+      }
+    },
+    {
+      "id": "fabre-the-air-is-a-great-drinker",
+      "title": "The Air Is a Great Drinker",
+      "kind": "facts",
+      "topic": "water",
+      "text": "\"In watering my garden,\" answered Jules, \"I did not think I was watering the air more than anything else. But I see now: air is the great drinker. Of the contents of a watering-pot the plants take perhaps a handful; the air drinks up the rest. And that is why we have to do it all over again every day.\"",
+      "source": {
+        "name": "The Story-Book of Science (Jean-Henri Fabre, 1917)",
+        "url": "https://www.gutenberg.org/ebooks/56795",
+        "license": "Public domain",
+        "author": "Jean-Henri Fabre",
+        "note": "Paragraph from the book."
+      },
+      "question": {
+        "type": "main-idea",
+        "q": "What has Jules learned about watering his garden?",
+        "choices": [
+          "Most of the water he pours goes into the air",
+          "Watering once a week is plenty for plants",
+          "The garden needs no water on cloudy days",
+          "Plants drink up all of the water he gives them"
+        ],
+        "answer": 0,
+        "evidence": "Of the contents of a watering-pot the plants take perhaps a handful; the air drinks up the rest",
+        "explain": "Jules sees that the air takes most of the water, so he must water daily."
+      },
+      "readability": {
+        "grade": 5,
+        "fk": 6,
+        "cli": 4.9,
+        "ari": 4.2
+      }
+    },
+    {
+      "id": "fabre-the-sealing-wax",
+      "title": "The Jumping Paper",
+      "kind": "facts",
+      "topic": "energy",
+      "text": "Uncle Paul took from his desk a stick of sealing-wax and rubbed it rapidly over his cloth sleeve; then he put it near a small piece of paper. The children were all eyes. Behold, the paper flies up and sticks to the sealing-wax. The experiment is repeated several times. Each time the paper rises unaided, starts off, and fastens on to the stick.",
+      "source": {
+        "name": "The Story-Book of Science (Jean-Henri Fabre, 1917)",
+        "url": "https://www.gutenberg.org/ebooks/56795",
+        "license": "Public domain",
+        "author": "Jean-Henri Fabre",
+        "note": "Paragraph from the book."
+      },
+      "question": {
+        "type": "sequence",
+        "q": "What did Uncle Paul do before he held the wax near the paper?",
+        "choices": [
+          "He wrapped it up in a small sheet of paper",
+          "He warmed it gently over a candle flame",
+          "He dipped the stick into a glass of water",
+          "He rubbed it quickly on his cloth sleeve"
+        ],
+        "answer": 3,
+        "evidence": "rubbed it rapidly over his cloth sleeve",
+        "explain": "First he rubbed the wax on his sleeve, then he put it near the paper."
+      },
+      "readability": {
+        "grade": 5.9,
+        "fk": 5.2,
+        "cli": 7.2,
+        "ari": 5.2
+      }
+    },
+    {
+      "id": "fabre-hunting-nets",
+      "title": "Spiders' Hunting Nets",
+      "kind": "facts",
+      "topic": "animals",
+      "text": "\"Hiding-place!\" exclaimed Jules; \"yes, I think it is more than that. One day I heard, between the lilac branches, a little shrill noise-he-e-e-e! A blue fly was entangled in a cobweb and trying to escape. It was the fly that was making the noise with its fluttering. A spider ran from the bottom of the silken funnel, seized the fly, and carried it off to its hole, doubtless to eat it. Since then I have thought spiders' webs were hunting nets.\"",
+      "source": {
+        "name": "The Story-Book of Science (Jean-Henri Fabre, 1917)",
+        "url": "https://www.gutenberg.org/ebooks/56795",
+        "license": "Public domain",
+        "author": "Jean-Henri Fabre",
+        "note": "Paragraph from the book."
+      },
+      "question": {
+        "type": "detail",
+        "q": "What does Jules now think spiders' webs are?",
+        "choices": [
+          "They are only safe places for spiders to hide",
+          "They are cozy homes built for the blue flies",
+          "They are nets for catching insects to eat",
+          "They are made to keep the rain off the lilacs"
+        ],
+        "answer": 2,
+        "evidence": "I have thought spiders' webs were hunting nets",
+        "explain": "After seeing the spider catch the fly, Jules thinks webs are hunting nets."
+      },
+      "readability": {
+        "grade": 5,
+        "fk": 4.4,
+        "cli": 6.5,
+        "ari": 4.2
+      }
+    },
+    {
+      "id": "vanloon-a-babys-first-song",
+      "title": "A Baby's First Song",
+      "kind": "facts",
+      "topic": "art",
+      "text": "WHEN a baby is perfectly healthy and has had enough to eat and has slept all it wants, then it hums a little tune to show how happy it is. To grown-ups this humming means nothing. It sounds like \"goo-zum, goo-zum, goo-o-o-o-o,\" but to the baby it is perfect music. It is his first contribution to art.",
+      "source": {
+        "name": "The Story of Mankind (Hendrik Willem van Loon, 1921)",
+        "url": "https://www.gutenberg.org/ebooks/754",
+        "license": "Public domain",
+        "author": "Hendrik Willem van Loon",
+        "note": "Paragraph from the book."
+      },
+      "question": {
+        "type": "detail",
+        "q": "Why does a healthy baby hum, according to the writer?",
+        "choices": [
+          "To ask for something more to eat",
+          "To show everyone how happy it is",
+          "To call for a grown-up to come",
+          "Because it is tired and sleepy"
+        ],
+        "answer": 1,
+        "evidence": "it hums a little tune to show how happy it is",
+        "explain": "The baby hums to show it is happy."
+      },
+      "readability": {
+        "grade": 5.4,
+        "fk": 5.9,
+        "cli": 5.6,
+        "ari": 4.5
+      }
+    },
+    {
+      "id": "vanloon-the-man-with-the-saw",
+      "title": "The Man with the Saw",
+      "kind": "facts",
+      "topic": "history",
+      "text": "Suppose that you were Champollion, and that you were examining a stack of papyrus sheets, all covered with hieroglyphics. Suddenly you came across a picture of a man with a saw. \"Very well,\" you would say, \"that means of course that a farmer went out to cut down a tree.\" Then you take another papyrus. It tells the story of a queen who had died at the age of eighty-two. In the midst of a sentence appears the picture of the man with the saw. Queens of eighty-two do not handle saws. The picture therefore must mean something else. But what?",
+      "source": {
+        "name": "The Story of Mankind (Hendrik Willem van Loon, 1921)",
+        "url": "https://www.gutenberg.org/ebooks/754",
+        "license": "Public domain",
+        "author": "Hendrik Willem van Loon",
+        "note": "Paragraph from the book."
+      },
+      "question": {
+        "type": "inference",
+        "q": "Why must the picture of the man with the saw mean something else?",
+        "choices": [
+          "An old queen would not be cutting down trees",
+          "The farmer in the first story was her son",
+          "Saws had not yet been invented in her time",
+          "Queens in Egypt were not allowed to read papyrus"
+        ],
+        "answer": 0,
+        "evidence": "Queens of eighty-two do not handle saws",
+        "explain": "A story about an 82-year-old queen would not show her sawing, so the picture means something else."
+      },
+      "readability": {
+        "grade": 5,
+        "fk": 5,
+        "cli": 6.2,
+        "ari": 3.9
+      }
+    },
+    {
+      "id": "vanloon-the-roman-empire-was-an-accident",
+      "title": "The Roman Empire Was an Accident",
+      "kind": "facts",
+      "topic": "history",
+      "text": "THE Roman Empire was an accident. No one planned it. It \"happened.\" No famous general or statesman or cut-throat ever got up and said \"Friends, Romans, Citizens, we must found an Empire. Follow me and together we shall conquer all the land from the Gates of Hercules to Mount Taurus.\"",
+      "source": {
+        "name": "The Story of Mankind (Hendrik Willem van Loon, 1921)",
+        "url": "https://www.gutenberg.org/ebooks/754",
+        "license": "Public domain",
+        "author": "Hendrik Willem van Loon",
+        "note": "Paragraph from the book."
+      },
+      "question": {
+        "type": "main-idea",
+        "q": "What is the main idea of this paragraph?",
+        "choices": [
+          "The Romans conquered the land in one great war",
+          "The Roman Empire stayed very small and weak",
+          "One famous general carefully planned the whole empire",
+          "No one planned the Roman Empire; it just happened"
+        ],
+        "answer": 3,
+        "evidence": "No one planned it.",
+        "explain": "The writer says the Roman Empire was an accident that just happened."
+      },
+      "readability": {
+        "grade": 5.8,
+        "fk": 5.5,
+        "cli": 7.3,
+        "ari": 4.5
+      }
+    },
+    {
+      "id": "baldwin-the-kings-hawk",
+      "title": "The King and His Hawk",
+      "kind": "story",
+      "topic": "animals",
+      "text": "On the king's wrist sat his favorite hawk; for in those days hawks were trained to hunt. At a word from their masters they would fly high up into the air, and look around for prey. If they chanced to see a deer or a rabbit, they would swoop down upon it swift as any arrow.",
+      "source": {
+        "name": "Fifty Famous Stories Retold (James Baldwin, 1896)",
+        "url": "https://www.gutenberg.org/ebooks/18442",
+        "license": "Public domain",
+        "author": "James Baldwin",
+        "note": "Paragraph from the book."
+      },
+      "question": {
+        "type": "vocabulary",
+        "q": "In this paragraph, \"prey\" means...",
+        "choices": [
+          "the strap worn on the king's wrist",
+          "a short prayer said before a hunt",
+          "animals that are hunted for food",
+          "a nest built high up in a tree"
+        ],
+        "answer": 2,
+        "evidence": "look around for prey. If they chanced to see a deer or a rabbit",
+        "explain": "Prey are animals, like deer and rabbits, that hawks hunt."
+      },
+      "readability": {
+        "grade": 5.2,
+        "fk": 5.2,
+        "cli": 4.8,
+        "ari": 5.6
+      }
+    },
+    {
+      "id": "baldwin-king-john-and-the-abbot",
+      "title": "King John and the Abbot",
+      "kind": "story",
+      "topic": "history",
+      "text": "\"Very well, then,\" said the king, \"I will give you something else to pay you for this merry joke. I will give you four pieces of silver every week as long as you live. And when you get home, you may tell the old abbot that you have brought him a free pardon from King John.\"",
+      "source": {
+        "name": "Fifty Famous Stories Retold (James Baldwin, 1896)",
+        "url": "https://www.gutenberg.org/ebooks/18442",
+        "license": "Public domain",
+        "author": "James Baldwin",
+        "note": "Paragraph from the book."
+      },
+      "question": {
+        "type": "detail",
+        "q": "What did the king promise to give every week?",
+        "choices": [
+          "A letter for the abbot",
+          "Four pieces of silver",
+          "Two bags of gold coins",
+          "Four loaves of bread"
+        ],
+        "answer": 1,
+        "evidence": "four pieces of silver every week as long as you live",
+        "explain": "The king promised four pieces of silver every week for life."
+      },
+      "readability": {
+        "grade": 5.1,
+        "fk": 5.4,
+        "cli": 4.5,
+        "ari": 5.4
+      }
+    },
+    {
+      "id": "baldwin-william-tell",
+      "title": "William Tell",
+      "kind": "story",
+      "topic": "history",
+      "text": "One day this tyrant set up a tall pole in the public square, and put his own cap on the top of it; and then he gave orders that every man who came into the town should bow down before it. But there was one man, named William Tell, who would not do this. He stood up straight with folded arms, and laughed at the swinging cap. He would not bow down to Gessler himself.",
+      "source": {
+        "name": "Fifty Famous Stories Retold (James Baldwin, 1896)",
+        "url": "https://www.gutenberg.org/ebooks/18442",
+        "license": "Public domain",
+        "author": "James Baldwin",
+        "note": "Paragraph from the book."
+      },
+      "question": {
+        "type": "inference",
+        "q": "What kind of man was William Tell?",
+        "choices": [
+          "Brave enough to stand up to an unfair ruler",
+          "Too tired to notice the cap on the pole",
+          "Afraid of Gessler and all his soldiers",
+          "Eager to do whatever the new ruler of the town said"
+        ],
+        "answer": 0,
+        "evidence": "He would not bow down to Gessler himself.",
+        "explain": "He refused to bow and even laughed at the cap, which took courage."
+      },
+      "readability": {
+        "grade": 5.4,
+        "fk": 5.4,
+        "cli": 4.9,
+        "ari": 5.8
+      }
+    },
+    {
+      "id": "baldwin-the-muddy-horseman",
+      "title": "The Muddy Horseman",
+      "kind": "story",
+      "topic": "history",
+      "text": "One day some men were sitting by the door of a hotel in Baltimore. As they looked down the street they saw a horseman coming. He was riding very slowly, and both he and his horse were bespattered with mud.",
+      "source": {
+        "name": "Fifty Famous People (James Baldwin, 1912)",
+        "url": "https://www.gutenberg.org/ebooks/6168",
+        "license": "Public domain",
+        "author": "James Baldwin",
+        "note": "Paragraph from the book."
+      },
+      "question": {
+        "type": "vocabulary",
+        "q": "What does \"bespattered\" mean in this paragraph?",
+        "choices": [
+          "tired out and hungry from riding",
+          "tied to each other with a rope",
+          "dressed in fine, clean clothes",
+          "splashed and covered with spots"
+        ],
+        "answer": 3,
+        "evidence": "both he and his horse were bespattered with mud",
+        "explain": "Bespattered with mud means splashed all over with mud."
+      },
+      "readability": {
+        "grade": 5,
+        "fk": 5,
+        "cli": 5.8,
+        "ari": 4.3
+      }
+    },
+    {
+      "id": "baldwin-the-old-man-at-the-market",
+      "title": "The Old Man at the Market",
+      "kind": "story",
+      "topic": "people",
+      "text": "In Richmond, Virginia, one Saturday morning, an old man went into the market to buy something. He was dressed plainly, his coat was worn, and his hat was dingy. On his arm he carried a small basket.",
+      "source": {
+        "name": "Fifty Famous People (James Baldwin, 1912)",
+        "url": "https://www.gutenberg.org/ebooks/6168",
+        "license": "Public domain",
+        "author": "James Baldwin",
+        "note": "Paragraph from the book."
+      },
+      "question": {
+        "type": "detail",
+        "q": "How was the old man dressed?",
+        "choices": [
+          "In a long farmer's apron covered with mud",
+          "In a fine new suit and a tall shiny hat",
+          "Plainly, with a worn coat and a dingy hat",
+          "In a soldier's uniform with bright buttons"
+        ],
+        "answer": 2,
+        "evidence": "He was dressed plainly, his coat was worn, and his hat was dingy.",
+        "explain": "The text says he was dressed plainly in a worn coat and dingy hat."
+      },
+      "readability": {
+        "grade": 5.4,
+        "fk": 5.5,
+        "cli": 6.3,
+        "ari": 4.3
+      }
+    },
+    {
+      "id": "baldwin-the-whistle",
+      "title": "The Whistle",
+      "kind": "story",
+      "topic": "people",
+      "text": "\"Never mind, my child,\" said his mother, very kindly. \"You are only a very little boy, and you will learn a great deal as you grow bigger. The lesson you have learned to-day is never to pay too dear for a whistle.\" Benjamin Franklin lived to be a very old man, but he never forgot that lesson.",
+      "source": {
+        "name": "Fifty Famous People (James Baldwin, 1912)",
+        "url": "https://www.gutenberg.org/ebooks/6168",
+        "license": "Public domain",
+        "author": "James Baldwin",
+        "note": "Paragraph from the book."
+      },
+      "question": {
+        "type": "main-idea",
+        "q": "What lesson did young Benjamin Franklin learn?",
+        "choices": [
+          "Always to buy the biggest and best toy in the shop",
+          "Not to pay more for a thing than it is worth",
+          "Never to play music when others are near",
+          "To save his money until he was grown up"
+        ],
+        "answer": 1,
+        "evidence": "never to pay too dear for a whistle",
+        "explain": "To pay too dear means to pay more than something is worth."
+      },
+      "readability": {
+        "grade": 5,
+        "fk": 5.7,
+        "cli": 5.1,
+        "ari": 4.1
+      }
+    },
+    {
+      "id": "baldwin-the-paddle-wheels",
+      "title": "The Boys and the Paddle Wheels",
+      "kind": "story",
+      "topic": "people",
+      "text": "After a great deal of tinkering and trying, they did succeed in making two paddle wheels. They were very rough and crude, but strong and serviceable. They fastened each of these wheels to the end of an iron rod which they passed through the boat from side to side. The rod was bent in the middle so that it could be turned as with a crank. When the work was finished, the old fishing boat looked rather odd, with a paddle wheel on each side which dipped just a few inches into the water. The boys lost no time in trying it.",
+      "source": {
+        "name": "Fifty Famous People (James Baldwin, 1912)",
+        "url": "https://www.gutenberg.org/ebooks/6168",
+        "license": "Public domain",
+        "author": "James Baldwin",
+        "note": "Paragraph from the book."
+      },
+      "question": {
+        "type": "sequence",
+        "q": "What did the boys do after they made the two paddle wheels?",
+        "choices": [
+          "Fastened each wheel to the end of an iron rod",
+          "Took the boat to show it to their teacher",
+          "Sold the old fishing boat to buy a new one",
+          "Painted both of the wheels a bright red color"
+        ],
+        "answer": 0,
+        "evidence": "They fastened each of these wheels to the end of an iron rod",
+        "explain": "Next they fastened the wheels to an iron rod passed through the boat."
+      },
+      "readability": {
+        "grade": 5.8,
+        "fk": 5,
+        "cli": 6.2,
+        "ari": 6.1
+      }
+    },
+    {
+      "id": "baldwin-john-randolph-at-the-inn",
+      "title": "John Randolph at the Inn",
+      "kind": "story",
+      "topic": "people",
+      "text": "A fine supper was prepared, and the innkeeper himself waited upon his guest. John Randolph ate in silence. The innkeeper spoke of the weather, of the roads, of the crops, of politics. But his surly guest said scarcely a word.",
+      "source": {
+        "name": "Fifty Famous People (James Baldwin, 1912)",
+        "url": "https://www.gutenberg.org/ebooks/6168",
+        "license": "Public domain",
+        "author": "James Baldwin",
+        "note": "Paragraph from the book."
+      },
+      "question": {
+        "type": "vocabulary",
+        "q": "What does \"surly\" mean in this paragraph?",
+        "choices": [
+          "very hungry and thirsty",
+          "sleepy and very tired",
+          "cheerful and chatty",
+          "rude and unfriendly"
+        ],
+        "answer": 3,
+        "evidence": "his surly guest said scarcely a word",
+        "explain": "The guest would hardly speak to the kind innkeeper, which was rude."
+      },
+      "readability": {
+        "grade": 5.6,
+        "fk": 4.8,
+        "cli": 7.4,
+        "ari": 4.5
+      }
+    },
+    {
+      "id": "burgess-peter-goes-to-school",
+      "title": "Peter Goes to School",
+      "kind": "story",
+      "topic": "animals",
+      "text": "\"Yes,\" replied Peter, \"but there are lots and lots of things I would like to know about other people. If you please, I would like to come to school to you every day. You see, the more I learn about my neighbors, the better able I will be to take care of myself.\"",
+      "source": {
+        "name": "The Burgess Animal Book for Children (Thornton W. Burgess, 1920)",
+        "url": "https://www.gutenberg.org/ebooks/2441",
+        "license": "Public domain",
+        "author": "Thornton W. Burgess",
+        "note": "Paragraph from the book."
+      },
+      "question": {
+        "type": "cause-effect",
+        "q": "Why does Peter want to come to school every day?",
+        "choices": [
+          "His mother told him he had to go every day",
+          "He is lonely and wants other animals to play with",
+          "Knowing his neighbors will help keep him safe",
+          "He hopes to become a teacher himself someday"
+        ],
+        "answer": 2,
+        "evidence": "the more I learn about my neighbors, the better able I will be to take care of myself",
+        "explain": "Peter says learning about his neighbors will help him take care of himself."
+      },
+      "readability": {
+        "grade": 5.1,
+        "fk": 5.8,
+        "cli": 4.5,
+        "ari": 5
+      }
+    },
+    {
+      "id": "burgess-jumper-is-not-ashamed",
+      "title": "Jumper Is Not Ashamed",
+      "kind": "facts",
+      "topic": "animals",
+      "text": "\"I'm not ashamed of running,\" declared Jumper. \"I may be ever so much bigger, but he is so quick I wouldn't stand the least chance in the world. When I suspect Shadow is about, I go somewhere else, the farther the better. If I could climb a tree like Chatterer, it would be different.\"",
+      "source": {
+        "name": "The Burgess Animal Book for Children (Thornton W. Burgess, 1920)",
+        "url": "https://www.gutenberg.org/ebooks/2441",
+        "license": "Public domain",
+        "author": "Thornton W. Burgess",
+        "note": "Paragraph from the book."
+      },
+      "question": {
+        "type": "cause-effect",
+        "q": "Why does Jumper go somewhere else when Shadow is about?",
+        "choices": [
+          "Jumper is ashamed of being so big and slow",
+          "Shadow is so quick Jumper would have no chance",
+          "Jumper is looking for a tall tree to climb",
+          "Shadow has told him to leave the woods for good"
+        ],
+        "answer": 1,
+        "evidence": "he is so quick I wouldn't stand the least chance in the world",
+        "explain": "Jumper is bigger, but Shadow is so quick that running is safest."
+      },
+      "readability": {
+        "grade": 5,
+        "fk": 5.2,
+        "cli": 5.6,
+        "ari": 4.2
+      }
+    },
+    {
+      "id": "burgess-creaker-and-the-eggs",
+      "title": "Creaker and the Eggs",
+      "kind": "facts",
+      "topic": "birds",
+      "text": "Creaker's yellow eyes began to twinkle. \"That is a very personal question,\" said he. \"I won't go so far as to say I steal eggs, but I've found that eggs are very good for my constitution and if I find a nest with nobody around I sometimes help myself to the eggs. You see the owner might not come back and then those eggs would spoil, and that would be a pity.\"",
+      "source": {
+        "name": "The Burgess Bird Book for Children (Thornton W. Burgess, 1919)",
+        "url": "https://www.gutenberg.org/ebooks/3074",
+        "license": "Public domain",
+        "author": "Thornton W. Burgess",
+        "note": "Paragraph from the book."
+      },
+      "question": {
+        "type": "inference",
+        "q": "What does Creaker's answer show?",
+        "choices": [
+          "He does take eggs but makes excuses for it",
+          "He watches nests to keep the eggs safe for others",
+          "He only eats eggs that have already spoiled",
+          "He has never once touched another bird's egg"
+        ],
+        "answer": 0,
+        "evidence": "if I find a nest with nobody around I sometimes help myself to the eggs",
+        "explain": "He admits he helps himself to eggs, then gives a reason to make it sound fine."
+      },
+      "readability": {
+        "grade": 5.8,
+        "fk": 6.7,
+        "cli": 5.1,
+        "ari": 5.6
+      }
+    },
+    {
+      "id": "burgess-phoebes-under-bridges",
+      "title": "Phoebes Under Bridges",
+      "kind": "facts",
+      "topic": "birds",
+      "text": "\"Oh,\" replied Dear Me, \"we Phoebes always have been fond of building under bridges. You see a place like this is quite safe. Then, too, we like to be near water. Always there are many insects flying around where there is water, so it is an easy matter to get plenty to eat. I left the shed at Farmer Brown's because that pesky cat up there discovered our nest last year, and we had a dreadful time keeping our babies out of her clutches. She hasn't found us down here, and she wouldn't be able to trouble us if she should find us.\"",
+      "source": {
+        "name": "The Burgess Bird Book for Children (Thornton W. Burgess, 1919)",
+        "url": "https://www.gutenberg.org/ebooks/3074",
+        "license": "Public domain",
+        "author": "Thornton W. Burgess",
+        "note": "Paragraph from the book."
+      },
+      "question": {
+        "type": "detail",
+        "q": "Where do Phoebes like to build their nests?",
+        "choices": [
+          "Inside an old hollow stump",
+          "In sheds on a busy farm",
+          "High up in a tall maple tree",
+          "Under bridges near the water"
+        ],
+        "answer": 3,
+        "evidence": "we Phoebes always have been fond of building under bridges",
+        "explain": "Dear Me says Phoebes are fond of building under bridges, near water."
+      },
+      "readability": {
+        "grade": 5.7,
+        "fk": 5.5,
+        "cli": 5.8,
+        "ari": 5.9
+      }
+    },
+    {
+      "id": "burgess-whip-poor-wills-whiskers",
+      "title": "Whip-poor-will's Whiskers",
+      "kind": "facts",
+      "topic": "birds",
+      "text": "\"Nobody asked you to swallow them. Nobody wants you to swallow them,\" snapped Jenny. \"I don't know why a bird shouldn't have whiskers just as well as you, Peter Rabbit. Anyway, Whip-poor-will has them and that is all there is to it. It doesn't make any difference whether you believe in them or not, they are there. And I guess Whip-poor-will finds them just as useful as you find yours, and a little more so. I know this much, that if I had to catch all my food in the air I'd want whiskers and lots of them so that the insects would get tangled in them. I suppose that's what Whip-poor-will's are for.\"",
+      "source": {
+        "name": "The Burgess Bird Book for Children (Thornton W. Burgess, 1919)",
+        "url": "https://www.gutenberg.org/ebooks/3074",
+        "license": "Public domain",
+        "author": "Thornton W. Burgess",
+        "note": "Paragraph from the book."
+      },
+      "question": {
+        "type": "inference",
+        "q": "What does Jenny Wren think the whiskers are for?",
+        "choices": [
+          "To feel its way through the dark woods",
+          "To keep its face warm in the winter",
+          "To help it catch insects while flying",
+          "To make it look more like a rabbit"
+        ],
+        "answer": 2,
+        "evidence": "so that the insects would get tangled in them",
+        "explain": "Jenny says insects caught in the air would get tangled in the whiskers."
+      },
+      "readability": {
+        "grade": 5.1,
+        "fk": 4.7,
+        "cli": 5.9,
+        "ari": 4.7
+      }
+    },
+    {
+      "id": "burgess-mr-owl-takes-what-he-wants",
+      "title": "Mr. Owl Takes What He Wants",
+      "kind": "story",
+      "topic": "animals",
+      "text": "\"Now when people are very big and very strong and afraid of nothing and nobody they are very apt to care for nothing and nobody but themselves. So it was with Mr. Owl. Whatever he saw that he wanted he took, no matter to whom it belonged, for there was no one to stop him.",
+      "source": {
+        "name": "Mother West Wind's Children (Thornton W. Burgess, 1911)",
+        "url": "https://www.gutenberg.org/ebooks/20877",
+        "license": "Public domain",
+        "author": "Thornton W. Burgess",
+        "note": "Paragraph from the book."
+      },
+      "question": {
+        "type": "main-idea",
+        "q": "What is this paragraph mostly about?",
+        "choices": [
+          "How Mr. Owl learned to share with friends",
+          "How Mr. Owl took things that were not his",
+          "How Mr. Owl built his home in the forest",
+          "How Mr. Owl grew afraid of all the others"
+        ],
+        "answer": 1,
+        "evidence": "Whatever he saw that he wanted he took, no matter to whom it belonged",
+        "explain": "Because he was big and fearless, Mr. Owl took whatever he wanted."
+      },
+      "readability": {
+        "grade": 5.9,
+        "fk": 6.8,
+        "cli": 5.1,
+        "ari": 5.8
+      }
+    },
+    {
+      "id": "burgess-reddy-fox-shows-off",
+      "title": "Reddy Fox Shows Off",
+      "kind": "story",
+      "topic": "animals",
+      "text": "Little Joe Otter was there, and Billy Mink and Jerry Muskrat and Happy Jack Squirrel, and of course Reddy Fox was there. Oh my, yes, of course Reddy Fox was there! Reddy Fox never misses a chance to show off. He was wearing his very newest red coat and his whitest waistcoat. He had brushed his tail till it looked very handsome, and every few minutes he would turn and admire it. Reddy Fox thought himself a very fine gentleman. He admired himself and he wanted every one else to admire him.",
+      "source": {
+        "name": "Mother West Wind's Children (Thornton W. Burgess, 1911)",
+        "url": "https://www.gutenberg.org/ebooks/20877",
+        "license": "Public domain",
+        "author": "Thornton W. Burgess",
+        "note": "Paragraph from the book."
+      },
+      "question": {
+        "type": "main-idea",
+        "q": "What is this paragraph mostly about?",
+        "choices": [
+          "Reddy Fox showing off his fine looks",
+          "Reddy Fox hiding from the other animals",
+          "Reddy Fox teaching the others a game",
+          "Reddy Fox hunting for his breakfast"
+        ],
+        "answer": 0,
+        "evidence": "Reddy Fox never misses a chance to show off",
+        "explain": "Most sentences tell how Reddy Fox dressed up and admired himself."
+      },
+      "readability": {
+        "grade": 5.8,
+        "fk": 5.4,
+        "cli": 6.8,
+        "ari": 5.1
+      }
+    },
+    {
+      "id": "burgess-the-first-wolf-howl",
+      "title": "The First Wolf Howl",
+      "kind": "story",
+      "topic": "animals",
+      "text": "\"One night he sat thinking about it. Gentle Mistress Moon looked down at him through the tree-tops, and something inside him urged him to tell her his troubles. He pointed his sharp nose up at her, opened his mouth and, because she was so far away, did his best to make her hear. That was the very first Wolf howl ever heard. There was something very lonely and shivery and terrible in the sound, and all who heard it shook with fear. Mr. Wolf didn't know this, but he did know that he felt better for howling. So every night he pointed his nose up at Mistress Moon and howled.",
+      "source": {
+        "name": "Mother West Wind 'How' Stories (Thornton W. Burgess, 1916)",
+        "url": "https://www.gutenberg.org/ebooks/21286",
+        "license": "Public domain",
+        "author": "Thornton W. Burgess",
+        "note": "Paragraph from the book."
+      },
+      "question": {
+        "type": "cause-effect",
+        "q": "Why did Mr. Wolf point his nose up and howl?",
+        "choices": [
+          "He was hungry and calling his family to supper",
+          "He wanted to scare the other animals away",
+          "He was angry that she kept hiding behind the trees",
+          "She was far away, and he wanted her to hear him"
+        ],
+        "answer": 3,
+        "evidence": "because she was so far away, did his best to make her hear",
+        "explain": "He wanted to tell Mistress Moon his troubles, and she was far away."
+      },
+      "readability": {
+        "grade": 5.8,
+        "fk": 5.3,
+        "cli": 6.4,
+        "ari": 5.7
+      }
+    },
+    {
+      "id": "burgess-king-bears-gift",
+      "title": "King Bear's Gift",
+      "kind": "story",
+      "topic": "animals",
+      "text": "\"One day old King Bear gave little Mr. Squirrel six big, fat nuts. You see, old King Bear didn't care for nuts himself, not the kind with the hard shells, anyway, so he really wasn't as generous as he seemed, which is the way with a great many people. It is easy to give what you don't want yourself. Little Mr. Squirrel bowed very low and thanked old King Bear in his best manner. He really didn't want those nuts, for his stomach was full at the time, but it wouldn't do to refuse a gift from the king. So he took the nuts and pretended to be delighted with them.",
+      "source": {
+        "name": "Mother West Wind 'How' Stories (Thornton W. Burgess, 1916)",
+        "url": "https://www.gutenberg.org/ebooks/21286",
+        "license": "Public domain",
+        "author": "Thornton W. Burgess",
+        "note": "Paragraph from the book."
+      },
+      "question": {
+        "type": "inference",
+        "q": "Why was King Bear not as generous as he seemed?",
+        "choices": [
+          "He took the nuts back the very next day",
+          "He gave Mr. Squirrel only one nut, not six",
+          "He gave away nuts he did not want himself",
+          "He made Mr. Squirrel pay for the nuts"
+        ],
+        "answer": 2,
+        "evidence": "It is easy to give what you don't want yourself.",
+        "explain": "King Bear didn't care for hard-shelled nuts, so giving them cost him nothing."
+      },
+      "readability": {
+        "grade": 5.8,
+        "fk": 5.7,
+        "cli": 5.5,
+        "ari": 6.2
+      }
+    },
+    {
+      "id": "burgess-mischief-and-trouble",
+      "title": "Mischief and Trouble",
+      "kind": "story",
+      "topic": "animals",
+      "text": "\"One morning the very imp of mischief seemed to get into old Mr. Possum's head. Yes, Sir, it certainly did seem that way. And when you see Mischief trotting along the Lone Little Path, if you look sharp enough, you'll see Trouble following at his heels like a shadow. I never knew it to fail. It's just as sure as a stomach-ache is to follow overeating.\"",
+      "source": {
+        "name": "Mother West Wind 'Why' Stories (Thornton W. Burgess, 1915)",
+        "url": "https://www.gutenberg.org/ebooks/14958",
+        "license": "Public domain",
+        "author": "Thornton W. Burgess",
+        "note": "Paragraph from the book."
+      },
+      "question": {
+        "type": "main-idea",
+        "q": "What lesson does the storyteller want to teach?",
+        "choices": [
+          "Playing tricks is a harmless way to have fun",
+          "Mischief is always followed by trouble",
+          "Overeating is the worst thing you can do",
+          "Shadows follow you wherever you go"
+        ],
+        "answer": 1,
+        "evidence": "you'll see Trouble following at his heels like a shadow",
+        "explain": "The storyteller says Trouble always follows Mischief."
+      },
+      "readability": {
+        "grade": 5.5,
+        "fk": 5.5,
+        "cli": 6.3,
+        "ari": 4.7
+      }
+    },
+    {
+      "id": "burgess-chipmunk-and-the-mole",
+      "title": "Striped Chipmunk Wonders",
+      "kind": "story",
+      "topic": "animals",
+      "text": "Striped Chipmunk sat staring at a little ridge where the grass was raised up. He had often seen little ridges like that without thinking much about them. He knew that they were made by Miner the Mole. He had known that ever since he was big enough to begin to ask questions. But now as he looked at this one, it suddenly struck him that he had not seen Miner the Mole more than once or twice in all his life.",
+      "source": {
+        "name": "Mother West Wind 'Why' Stories (Thornton W. Burgess, 1915)",
+        "url": "https://www.gutenberg.org/ebooks/14958",
+        "license": "Public domain",
+        "author": "Thornton W. Burgess",
+        "note": "Paragraph from the book."
+      },
+      "question": {
+        "type": "inference",
+        "q": "Why has Striped Chipmunk most likely seen Miner the Mole so rarely?",
+        "choices": [
+          "Miner spends nearly all his time underground",
+          "Miner lives far away in the Green Forest",
+          "Miner is very afraid of Striped Chipmunk",
+          "Miner only comes out when the winter snow falls"
+        ],
+        "answer": 0,
+        "evidence": "a little ridge where the grass was raised up",
+        "explain": "Miner makes ridges by digging under the ground, so he is seldom seen above it."
+      },
+      "readability": {
+        "grade": 5.4,
+        "fk": 5.2,
+        "cli": 5.7,
+        "ari": 5.4
+      }
+    },
+    {
+      "id": "burgess-reddy-fox-dreams",
+      "title": "Reddy Fox's Dream",
+      "kind": "story",
+      "topic": "animals",
+      "text": "By and by Reddy Fox began to dream. He dreamed that he had a nice little brown coat that was waterproof, just like the little brown coat that Billy Mink wore. Yes, and he dreamed that he had learned to swim and to catch fish just as Billy Mink did. He dreamed that the Dear Little Pool was full of little Trouts and that he was just going to catch one when--splash! Reddy Fox had rolled right off of the Big Rock into the Dear Little Pool.",
+      "source": {
+        "name": "Old Mother West Wind (Thornton W. Burgess, 1910)",
+        "url": "https://www.gutenberg.org/ebooks/2557",
+        "license": "Public domain",
+        "author": "Thornton W. Burgess",
+        "note": "Paragraph from the book."
+      },
+      "question": {
+        "type": "sequence",
+        "q": "What happened at the end of Reddy Fox's dream?",
+        "choices": [
+          "He woke up warm and dry in his own bed",
+          "He caught a fat little Trout for dinner",
+          "Billy Mink taught him how to swim and fish",
+          "He rolled off the Big Rock into the pool"
+        ],
+        "answer": 3,
+        "evidence": "Reddy Fox had rolled right off of the Big Rock into the Dear Little Pool",
+        "explain": "Just as he was about to catch a Trout, he rolled into the pool with a splash."
+      },
+      "readability": {
+        "grade": 5.5,
+        "fk": 4.9,
+        "cli": 5.7,
+        "ari": 5.9
+      }
+    },
+    {
+      "id": "burgess-everyone-comes-to-see",
+      "title": "Everyone Comes to See",
+      "kind": "story",
+      "topic": "animals",
+      "text": "Johnny Chuck, over in the Green Meadows, heard the noise and stole down the Lone Little Path to see. Jimmy Skunk, looking for beetles up on the hill, heard the noise and forgot that he hadn't had his breakfast. Reddy Fox, taking a nap, woke up and hurried over to watch the fun. Last of all came Peter Rabbit.",
+      "source": {
+        "name": "Old Mother West Wind (Thornton W. Burgess, 1910)",
+        "url": "https://www.gutenberg.org/ebooks/2557",
+        "license": "Public domain",
+        "author": "Thornton W. Burgess",
+        "note": "Paragraph from the book."
+      },
+      "question": {
+        "type": "detail",
+        "q": "Who forgot that he hadn't had his breakfast?",
+        "choices": [
+          "Johnny Chuck",
+          "Reddy Fox",
+          "Jimmy Skunk",
+          "Peter Rabbit"
+        ],
+        "answer": 2,
+        "evidence": "heard the noise and forgot that he hadn't had his breakfast",
+        "explain": "Jimmy Skunk heard the noise and forgot his breakfast."
+      },
+      "readability": {
+        "grade": 5.5,
+        "fk": 5.2,
+        "cli": 6.1,
+        "ari": 5.1
+      }
+    }
+  ]
+}

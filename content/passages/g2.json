@@ -19,13 +19,19 @@
         "q": "Where did Nyame keep all the wisdom of the world?",
         "choices": [
           "In a cloth bag",
-          "In a clay pot",
           "In a gold box",
+          "In a clay pot",
           "In a stone jar"
         ],
-        "answer": 1,
+        "answer": 2,
         "evidence": "He kept it safe in a clay pot.",
         "explain": "The story says Nyame kept the wisdom safe in a clay pot."
+      },
+      "readability": {
+        "grade": 2.9,
+        "fk": 3.1,
+        "cli": 3.7,
+        "ari": 1.9
       }
     },
     {
@@ -53,6 +59,12 @@
         "answer": 0,
         "evidence": "Ngede hopped about madly among the branches.",
         "explain": "Ngede hops in the branches and leads Gingile to the tree, just like a bird."
+      },
+      "readability": {
+        "grade": 2.9,
+        "fk": 2,
+        "cli": 4.5,
+        "ari": 2.1
       }
     },
     {
@@ -73,13 +85,19 @@
         "q": "What did Tom do right after he counted his money?",
         "choices": [
           "He sold more bananas at the stall",
-          "He bought soap, sugar, and bread",
           "He went home and took a long nap",
-          "He gave the money to the woman"
+          "He gave the money to the woman",
+          "He bought soap, sugar, and bread"
         ],
-        "answer": 1,
+        "answer": 3,
         "evidence": "Then Tom buys soap, sugar, and bread.",
         "explain": "After counting his money, Tom bought soap, sugar, and bread."
+      },
+      "readability": {
+        "grade": 2,
+        "fk": 2.2,
+        "cli": 3.2,
+        "ari": 0.7
       }
     },
     {
@@ -107,6 +125,12 @@
         "answer": 1,
         "evidence": "because he did not have the correct money",
         "explain": "Dog paid extra because he did not have the correct money."
+      },
+      "readability": {
+        "grade": 2.5,
+        "fk": 2,
+        "cli": 3.8,
+        "ari": 1.7
       }
     },
     {
@@ -126,14 +150,20 @@
         "type": "inference",
         "q": "Why were the children not allowed to go near a fire?",
         "choices": [
-          "The heat would melt them",
           "Fire made them sneeze a lot",
           "They might burn the food",
+          "The heat would melt them",
           "The smoke hurt their eyes"
         ],
-        "answer": 0,
+        "answer": 2,
         "evidence": "Because they were made of wax!",
         "explain": "The children were made of wax, and wax melts when it gets hot."
+      },
+      "readability": {
+        "grade": 2.3,
+        "fk": 1.8,
+        "cli": 3.8,
+        "ari": 1.3
       }
     },
     {
@@ -161,6 +191,12 @@
         "answer": 0,
         "evidence": "Khalai wakes up and talks to the orange tree.",
         "explain": "Khalai talks kindly to the orange tree and the grass, so she cares about plants."
+      },
+      "readability": {
+        "grade": 2.2,
+        "fk": 1.5,
+        "cli": 3.8,
+        "ari": 1.2
       }
     },
     {
@@ -181,13 +217,19 @@
         "q": "What had Nozibele forgotten at the river?",
         "choices": [
           "Her basket",
-          "Her necklace",
           "Her shoes",
-          "Her bundle of wood"
+          "Her bundle of wood",
+          "Her necklace"
         ],
-        "answer": 1,
+        "answer": 3,
         "evidence": "She had forgotten her necklace!",
         "explain": "Nozibele touched her neck and found her necklace was gone."
+      },
+      "readability": {
+        "grade": 2.4,
+        "fk": 1.6,
+        "cli": 4.1,
+        "ari": 1.5
       }
     },
     {
@@ -207,14 +249,20 @@
         "type": "inference",
         "q": "Why does Zama say \"I'm big now\"?",
         "choices": [
-          "Zama can get dressed alone",
           "Zama is taller than Ma",
+          "Zama can get dressed alone",
           "Zama just had a birthday",
           "Zama goes to a new school"
         ],
-        "answer": 0,
+        "answer": 1,
         "evidence": "I can close my buttons and buckle my shoes.",
         "explain": "Zama can do buttons and shoes without help, which shows Zama is growing up."
+      },
+      "readability": {
+        "grade": 2.1,
+        "fk": 2.8,
+        "cli": 2.7,
+        "ari": 0.9
       }
     },
     {
@@ -235,13 +283,19 @@
         "q": "How did the rats get the oil out of the bottles?",
         "choices": [
           "They tipped the bottles over",
-          "They dipped their tails in",
           "They broke the bottles open",
+          "They dipped their tails in",
           "They poured it into a bowl"
         ],
-        "answer": 1,
+        "answer": 2,
         "evidence": "Let's put our tails into the bottles.",
         "explain": "The rats put their tails in the bottles and licked off the oil."
+      },
+      "readability": {
+        "grade": 2.7,
+        "fk": 2.3,
+        "cli": 3.9,
+        "ari": 1.8
       }
     },
     {
@@ -258,17 +312,23 @@
         "note": "Excerpt (pages 1-4)."
       },
       "question": {
-        "type": "detail",
-        "q": "What does Teacher Akinyi do during nap time?",
+        "type": "main-idea",
+        "q": "What is this story mostly about?",
         "choices": [
-          "She reads a story",
-          "She sings a lullaby",
-          "She plays a drum",
-          "She paints a picture"
+          "What a kind teacher does",
+          "How to sing a lullaby",
+          "A trip to the market",
+          "Learning to count to ten"
         ],
-        "answer": 1,
-        "evidence": "She sings a lullaby to us.",
-        "explain": "At nap time Teacher Akinyi sings a lullaby to the children."
+        "answer": 0,
+        "evidence": "She loves me a lot.",
+        "explain": "The story tells all the kind things Teacher Akinyi does for her class."
+      },
+      "readability": {
+        "grade": 2.5,
+        "fk": 3.4,
+        "cli": 3.3,
+        "ari": 0.8
       }
     },
     {
@@ -289,13 +349,19 @@
         "q": "Norah got very \"worried.\" What does worried mean?",
         "choices": [
           "Feeling sleepy and tired",
-          "Feeling upset and afraid",
           "Feeling proud and happy",
-          "Feeling hungry and cross"
+          "Feeling hungry and cross",
+          "Feeling upset and afraid"
         ],
-        "answer": 1,
+        "answer": 3,
         "evidence": "Norah got very worried.",
         "explain": "Norah could not find her doll, so she felt upset and afraid."
+      },
+      "readability": {
+        "grade": 2.9,
+        "fk": 2.9,
+        "cli": 4.3,
+        "ari": 1.6
       }
     },
     {
@@ -315,14 +381,20 @@
         "type": "detail",
         "q": "What was different about Opio's village long ago?",
         "choices": [
-          "There was no night",
           "There was no rain",
+          "There was no night",
           "There were no dogs",
           "There was no school"
         ],
-        "answer": 0,
+        "answer": 1,
         "evidence": "Long ago, there was no night in Opio's village.",
         "explain": "The very first sentence tells us there was no night in the village."
+      },
+      "readability": {
+        "grade": 2.6,
+        "fk": 1.9,
+        "cli": 4.2,
+        "ari": 1.5
       }
     },
     {
@@ -339,17 +411,23 @@
         "note": "Whole story."
       },
       "question": {
-        "type": "detail",
-        "q": "What was Moloko's surprise?",
+        "type": "sequence",
+        "q": "What did the children do the day after the game?",
         "choices": [
-          "A party with cake and juice",
-          "New soccer kits and balls",
-          "A trip to a big stadium",
-          "Gold medals for every child"
+          "They stayed home to rest",
+          "They bought new soccer balls",
+          "They came early to the field",
+          "They played a game in the rain"
         ],
-        "answer": 1,
-        "evidence": "Moloko has new soccer kits and balls for all of us!",
-        "explain": "Moloko brought new soccer kits and balls for everyone."
+        "answer": 2,
+        "evidence": "The next day we all came early to the field.",
+        "explain": "The next day everyone came early to the field to find out the surprise."
+      },
+      "readability": {
+        "grade": 2.2,
+        "fk": 2.9,
+        "cli": 3,
+        "ari": 0.5
       }
     },
     {
@@ -377,6 +455,12 @@
         "answer": 0,
         "evidence": "she jumps onto the sofa and sleeps",
         "explain": "When Safi finishes eating, she jumps onto the sofa and sleeps."
+      },
+      "readability": {
+        "grade": 2.5,
+        "fk": 1.7,
+        "cli": 4.3,
+        "ari": 1.6
       }
     },
     {
@@ -396,14 +480,20 @@
         "type": "vocabulary",
         "q": "In this story, what are \"touts\"?",
         "choices": [
-          "People shouting where buses go",
           "People selling food and drinks",
           "People fixing broken buses",
-          "People waiting for their friends"
+          "People waiting for their friends",
+          "People shouting where buses go"
         ],
-        "answer": 0,
+        "answer": 3,
         "evidence": "Touts were shouting the names where their buses were going.",
         "explain": "The touts shout out the places where their buses are going."
+      },
+      "readability": {
+        "grade": 2.1,
+        "fk": 1,
+        "cli": 3.9,
+        "ari": 1.3
       }
     },
     {
@@ -423,14 +513,20 @@
         "type": "sequence",
         "q": "What did Varun do right after he heard a loud roar?",
         "choices": [
-          "He peeped out of the window",
           "He ate an ice cream cone",
+          "He peeped out of the window",
           "He fell asleep and dreamed",
           "He read a book about dragons"
         ],
-        "answer": 0,
+        "answer": 1,
         "evidence": "He peeps out of the window and yelps!",
         "explain": "After the roar, Varun peeped out of the window and saw a dragon."
+      },
+      "readability": {
+        "grade": 2.5,
+        "fk": 2.3,
+        "cli": 3.9,
+        "ari": 1.3
       }
     },
     {
@@ -450,14 +546,20 @@
         "type": "vocabulary",
         "q": "Wasim shouted with \"glee.\" What does glee mean?",
         "choices": [
-          "Joy and fun",
           "Anger and upset",
           "Fear and worry",
+          "Joy and fun",
           "Tiredness"
         ],
-        "answer": 0,
+        "answer": 2,
         "evidence": "he shouted with glee",
         "explain": "Wasim was having fun playing, so glee means joy."
+      },
+      "readability": {
+        "grade": 2.9,
+        "fk": 2.7,
+        "cli": 4.2,
+        "ari": 1.8
       }
     },
     {
@@ -474,17 +576,23 @@
         "note": "Excerpt (pages 1-2)."
       },
       "question": {
-        "type": "cause-effect",
-        "q": "Why could Minti Uncle not sleep all night?",
+        "type": "main-idea",
+        "q": "What is the problem in this story?",
         "choices": [
-          "Her friends snored",
-          "The rain was too loud",
-          "Big Bird sang all night",
-          "The room was cold"
+          "Beena's friends snore loudly",
+          "Beena cannot find her friends",
+          "Big Bird is feeling sick",
+          "The farm has no water"
         ],
         "answer": 0,
-        "evidence": "They were making a lot of noise.",
-        "explain": "Beena's friends snored so loudly that nobody could sleep."
+        "evidence": "What can I do if my friends snore?",
+        "explain": "Beena's friends snore so loudly that nobody can sleep."
+      },
+      "readability": {
+        "grade": 2.7,
+        "fk": 0.7,
+        "cli": 5.1,
+        "ari": 2.3
       }
     },
     {
@@ -504,14 +612,20 @@
         "type": "cause-effect",
         "q": "Why did the new teacher speak to Sarla?",
         "choices": [
-          "She was looking out the window",
           "She was talking to a friend",
           "She came late to science class",
-          "She forgot to bring her book"
+          "She forgot to bring her book",
+          "She was looking out the window"
         ],
-        "answer": 0,
+        "answer": 3,
         "evidence": "Should you not be looking at the board?",
         "explain": "Sarla was watching an eagle instead of looking at the board."
+      },
+      "readability": {
+        "grade": 2.8,
+        "fk": 2.5,
+        "cli": 4.1,
+        "ari": 1.7
       }
     },
     {
@@ -531,14 +645,20 @@
         "type": "detail",
         "q": "What did Ma stuff the scarecrow with?",
         "choices": [
-          "Dry hay",
           "Old rags",
+          "Dry hay",
           "Cotton",
           "Leaves"
         ],
-        "answer": 0,
+        "answer": 1,
         "evidence": "then stuffed it with hay",
         "explain": "Ma put an old shirt over the sticks and stuffed it with hay."
+      },
+      "readability": {
+        "grade": 2.9,
+        "fk": 2,
+        "cli": 4.6,
+        "ari": 2
       }
     },
     {
@@ -558,14 +678,20 @@
         "type": "main-idea",
         "q": "What is Phani's problem?",
         "choices": [
-          "He is never on time",
           "He dislikes school",
           "He is always hungry",
+          "He is never on time",
           "He loses his toys"
         ],
-        "answer": 0,
+        "answer": 2,
         "evidence": "Phani is always late.",
         "explain": "The story begins by telling us Phani is always late."
+      },
+      "readability": {
+        "grade": 2.9,
+        "fk": 3.2,
+        "cli": 4.1,
+        "ari": 1.5
       }
     },
     {
@@ -593,6 +719,12 @@
         "answer": 0,
         "evidence": "Ammu did not have a puppy.",
         "explain": "Ammu did not really have a puppy, so there was no Shankar to see."
+      },
+      "readability": {
+        "grade": 2.6,
+        "fk": 3,
+        "cli": 3.7,
+        "ari": 1.1
       }
     },
     {
@@ -612,14 +744,20 @@
         "type": "vocabulary",
         "q": "Amma would try to \"coax\" Chinnu to eat other food. What does coax mean?",
         "choices": [
-          "Gently persuade him",
           "Shout at him loudly",
           "Send him off to bed",
-          "Hide food from him"
+          "Hide food from him",
+          "Gently persuade him"
         ],
-        "answer": 0,
+        "answer": 3,
         "evidence": "Amma would try to coax him to eat other food.",
         "explain": "To coax someone is to kindly try to get them to do something."
+      },
+      "readability": {
+        "grade": 2.3,
+        "fk": 2.6,
+        "cli": 3.2,
+        "ari": 1.1
       }
     },
     {
@@ -639,14 +777,20 @@
         "type": "vocabulary",
         "q": "Toto was \"shocked\" to see the empty cage. What does shocked mean?",
         "choices": [
-          "Surprised and upset",
           "Bored and sleepy all day",
+          "Surprised and upset",
           "Proud and pleased",
           "Hungry and grumpy"
         ],
-        "answer": 0,
+        "answer": 1,
         "evidence": "Toto was shocked.",
         "explain": "Toto did not expect the cage to be empty, so he was surprised and upset."
+      },
+      "readability": {
+        "grade": 2.8,
+        "fk": 3.4,
+        "cli": 3.7,
+        "ari": 1.1
       }
     },
     {
@@ -663,17 +807,23 @@
         "note": "Excerpt (pages 1-2)."
       },
       "question": {
-        "type": "cause-effect",
-        "q": "Why is Reeti not happy about her holidays?",
+        "type": "main-idea",
+        "q": "What is this part of the story mostly about?",
         "choices": [
-          "She has no one to play with at home",
-          "Her Papa will not tell her stories",
-          "She has to do yoga every morning",
-          "She has too much homework to do"
+          "Reeti learns how to do yoga every day",
+          "Reeti gets lots of new toys and books",
+          "Reeti misses school in the holidays",
+          "Reeti goes on a long trip with Papa"
         ],
-        "answer": 0,
-        "evidence": "At home she has no one to play with.",
-        "explain": "Reeti misses her school friends because at home she has no one to play with."
+        "answer": 2,
+        "evidence": "She likes going to school!",
+        "explain": "Reeti likes school and her friends, so the holidays make her unhappy."
+      },
+      "readability": {
+        "grade": 2.6,
+        "fk": 2.4,
+        "cli": 4,
+        "ari": 1.3
       }
     },
     {
@@ -701,6 +851,12 @@
         "answer": 0,
         "evidence": "Go home Piyali.",
         "explain": "Shriya set Piyali free so she could go back to her family and friends."
+      },
+      "readability": {
+        "grade": 2.8,
+        "fk": 3,
+        "cli": 4,
+        "ari": 1.4
       }
     },
     {
@@ -720,14 +876,20 @@
         "type": "detail",
         "q": "How can you make your heart beat faster?",
         "choices": [
-          "Jump up and down a lot",
           "Sit still and rest a while",
           "Drink a cold glass of water",
-          "Hum a quiet little song"
+          "Hum a quiet little song",
+          "Jump up and down a lot"
         ],
-        "answer": 0,
+        "answer": 3,
         "evidence": "Yes, by jumping up and down twenty times.",
         "explain": "Jumping up and down twenty times makes your heart beat faster."
+      },
+      "readability": {
+        "grade": 2.8,
+        "fk": 3.7,
+        "cli": 3.5,
+        "ari": 1.1
       }
     },
     {
@@ -747,14 +909,20 @@
         "type": "main-idea",
         "q": "What is this poem mostly about?",
         "choices": [
-          "Patterns Anu sees all around her",
           "A trip Anu takes to the seaside",
+          "Patterns Anu sees all around her",
           "Anu learning to read a book",
           "Birds that Anu feeds in the park"
         ],
-        "answer": 0,
+        "answer": 1,
         "evidence": "Lines on a leaf, just like lines on her hand.",
         "explain": "Anu notices lines, waves and shapes everywhere she looks."
+      },
+      "readability": {
+        "grade": 2.1,
+        "fk": 1.5,
+        "cli": 3.4,
+        "ari": 1.5
       }
     },
     {
@@ -774,14 +942,20 @@
         "type": "cause-effect",
         "q": "Why is Slaty sure he will not starve in the snow?",
         "choices": [
-          "A boy at the farm helps him",
           "He hides seeds in the fall",
           "He flies south in the winter",
+          "A boy at the farm helps him",
           "He finds bugs under the snow"
         ],
-        "answer": 0,
+        "answer": 2,
         "evidence": "Farmer Brown's boy is a very good friend of mine",
         "explain": "Farmer Brown's boy is Slaty's friend and will not let him go hungry."
+      },
+      "readability": {
+        "grade": 2.7,
+        "fk": 2.7,
+        "cli": 3.7,
+        "ari": 1.7
       }
     },
     {
@@ -809,6 +983,12 @@
         "answer": 0,
         "evidence": "And I've got a long journey to-morrow.",
         "explain": "Honker is tired and has a long journey the next day."
+      },
+      "readability": {
+        "grade": 2.1,
+        "fk": 2.4,
+        "cli": 2.9,
+        "ari": 1.1
       }
     },
     {
@@ -828,14 +1008,20 @@
         "type": "detail",
         "q": "What is the inside of Chippy's nest lined with?",
         "choices": [
-          "Horse-hair",
           "Soft feathers",
           "Green moss",
-          "Cotton fluff"
+          "Cotton fluff",
+          "Horse-hair"
         ],
-        "answer": 0,
+        "answer": 3,
         "evidence": "it is lined inside with horse-hair",
         "explain": "Johnny Chuck says the nest is lined inside with horse-hair."
+      },
+      "readability": {
+        "grade": 2.5,
+        "fk": 2.4,
+        "cli": 3.6,
+        "ari": 1.4
       }
     },
     {
@@ -863,6 +1049,12 @@
         "answer": 1,
         "evidence": "I'm a Warbler, a Wood Warbler.",
         "explain": "Teacher says he is not a Thrush at all but a Wood Warbler."
+      },
+      "readability": {
+        "grade": 2.7,
+        "fk": 3.1,
+        "cli": 3.6,
+        "ari": 1.5
       }
     },
     {
@@ -882,14 +1074,20 @@
         "type": "cause-effect",
         "q": "Why did Peter feel foolish?",
         "choices": [
-          "He got scared for nothing",
           "He tripped on a big root",
           "He forgot where he was going",
+          "He got scared for nothing",
           "His friends laughed at him"
         ],
-        "answer": 0,
+        "answer": 2,
         "evidence": "He had been scared when there was nothing to be afraid of.",
         "explain": "Peter jumped at the boom, but there was nothing to be afraid of."
+      },
+      "readability": {
+        "grade": 2.5,
+        "fk": 2,
+        "cli": 4,
+        "ari": 1.4
       }
     },
     {
@@ -917,6 +1115,12 @@
         "answer": 0,
         "evidence": "once in a while I wake up and eat a little",
         "explain": "He keeps food in his house and eats a little when he wakes."
+      },
+      "readability": {
+        "grade": 2.3,
+        "fk": 3.2,
+        "cli": 2.4,
+        "ari": 1.2
       }
     },
     {
@@ -936,14 +1140,20 @@
         "type": "detail",
         "q": "How often does Johnny Chuck dig a new hole?",
         "choices": [
-          "Every spring",
           "Every winter",
           "Every week",
-          "Every night"
+          "Every night",
+          "Every spring"
         ],
-        "answer": 0,
+        "answer": 3,
         "evidence": "I dig a new hole each spring.",
         "explain": "Johnny Chuck says he digs a new hole each spring."
+      },
+      "readability": {
+        "grade": 2.1,
+        "fk": 2.8,
+        "cli": 2.8,
+        "ari": 0.8
       }
     },
     {
@@ -963,14 +1173,20 @@
         "type": "inference",
         "q": "What can you tell about Little Joe?",
         "choices": [
-          "He is a good swimmer",
           "He sleeps all winter",
+          "He is a good swimmer",
           "He lives in a tree",
           "He hates the cold"
         ],
-        "answer": 0,
+        "answer": 1,
         "evidence": "I can swim for long distances under ice",
         "explain": "Little Joe swims a long way under the ice, so he swims very well."
+      },
+      "readability": {
+        "grade": 2.7,
+        "fk": 2.4,
+        "cli": 4,
+        "ari": 1.7
       }
     },
     {
@@ -990,14 +1206,20 @@
         "type": "main-idea",
         "q": "What is Old Mother Nature teaching Bobby?",
         "choices": [
-          "The corn is not Bobby's to take",
           "Corn is the best food for coons",
           "Bowser the Hound is a good friend",
+          "The corn is not Bobby's to take",
           "Wild corn grows all over the field"
         ],
-        "answer": 0,
+        "answer": 2,
         "evidence": "That makes it his corn.",
         "explain": "Farmer Brown planted the corn, so it is his and not Bobby's."
+      },
+      "readability": {
+        "grade": 2.6,
+        "fk": 1.9,
+        "cli": 4.1,
+        "ari": 1.9
       }
     },
     {
@@ -1025,6 +1247,12 @@
         "answer": 0,
         "evidence": "I am glad you are so prompt",
         "explain": "Being prompt means coming right on time, so school can start at once."
+      },
+      "readability": {
+        "grade": 2,
+        "fk": 2.3,
+        "cli": 2.9,
+        "ari": 0.8
       }
     },
     {
@@ -1041,17 +1269,23 @@
         "note": "Paragraph from the book."
       },
       "question": {
-        "type": "detail",
-        "q": "Where did the nut hit Johnny Chuck?",
+        "type": "sequence",
+        "q": "What did Johnny Chuck do just before the nut hit him?",
         "choices": [
-          "On his nose",
-          "On his back",
-          "On his tail",
-          "On his ear"
+          "He rolled off a big log",
+          "He dug a brand new hole",
+          "He ate a fat green beetle",
+          "He tipped his head back"
         ],
-        "answer": 0,
-        "evidence": "right on the tip of his funny, black, little nose",
-        "explain": "The nut came down and hit the tip of his little nose."
+        "answer": 3,
+        "evidence": "Johnny Chuck tipped his head way, way back and looked up.",
+        "explain": "Johnny Chuck heard a voice, tipped his head back to look up, and then the nut fell."
+      },
+      "readability": {
+        "grade": 2.8,
+        "fk": 2.3,
+        "cli": 3.9,
+        "ari": 2.1
       }
     },
     {
@@ -1071,14 +1305,20 @@
         "type": "cause-effect",
         "q": "Why did Johnny Chuck tiptoe up so softly?",
         "choices": [
-          "To surprise Striped Chipmunk",
           "To keep from waking the baby",
+          "To surprise Striped Chipmunk",
           "To sneak some of Chipmunk's nuts",
           "To hide from Reddy Fox nearby"
         ],
-        "answer": 0,
+        "answer": 1,
         "evidence": "to give Striped Chipmunk a scare",
         "explain": "Johnny Chuck crept up quietly to give Striped Chipmunk a scare."
+      },
+      "readability": {
+        "grade": 2.4,
+        "fk": 1.3,
+        "cli": 4.3,
+        "ari": 1.5
       }
     },
     {
@@ -1098,14 +1338,20 @@
         "type": "detail",
         "q": "In the song, what does Peter Rabbit do when there is danger?",
         "choices": [
-          "He runs off",
           "He hides in a log",
           "He calls for help",
+          "He runs off",
           "He thumps"
         ],
-        "answer": 0,
+        "answer": 2,
         "evidence": "But when there's danger runs away?",
         "explain": "The song says Peter loves to play but runs away from danger."
+      },
+      "readability": {
+        "grade": 2.4,
+        "fk": 2.4,
+        "cli": 3.7,
+        "ari": 1.1
       }
     },
     {
@@ -1133,6 +1379,12 @@
         "answer": 0,
         "evidence": "I'm going to sleep for the winter",
         "explain": "Grandfather Frog is tired and will sleep all winter."
+      },
+      "readability": {
+        "grade": 2,
+        "fk": 2,
+        "cli": 3.1,
+        "ari": 0.9
       }
     },
     {
@@ -1152,14 +1404,20 @@
         "type": "inference",
         "q": "What did Sammy Jay most likely do?",
         "choices": [
-          "He stole something",
           "He broke a big nest",
           "He told a secret",
-          "He woke everyone up"
+          "He woke everyone up",
+          "He stole something"
         ],
-        "answer": 0,
+        "answer": 3,
         "evidence": "Stop thief!",
         "explain": "Everyone shouts \"Stop thief!\" as he flies away, so he must have taken something."
+      },
+      "readability": {
+        "grade": 2.9,
+        "fk": 2.1,
+        "cli": 4.6,
+        "ari": 1.9
       }
     },
     {
@@ -1179,14 +1437,20 @@
         "type": "cause-effect",
         "q": "Why was the bell not ringing that day?",
         "choices": [
-          "There were no waves",
           "The bell was broken",
+          "There were no waves",
           "The wind was too strong",
           "Ralph had taken it"
         ],
-        "answer": 0,
+        "answer": 1,
         "evidence": "There were no waves to set it in motion.",
         "explain": "The sea was calm, and without waves the bell could not ring."
+      },
+      "readability": {
+        "grade": 2.3,
+        "fk": 2.3,
+        "cli": 3.5,
+        "ari": 1.1
       }
     },
     {
@@ -1206,14 +1470,20 @@
         "type": "detail",
         "q": "How long does the abbot ask for to answer the questions?",
         "choices": [
-          "Two weeks",
           "Two days",
           "One year",
+          "Two weeks",
           "Three hours"
         ],
-        "answer": 0,
+        "answer": 2,
         "evidence": "if you will give me two weeks to think about them",
         "explain": "The abbot asks the king for two weeks to think."
+      },
+      "readability": {
+        "grade": 2.4,
+        "fk": 2.6,
+        "cli": 2.9,
+        "ari": 1.7
       }
     },
     {
@@ -1233,14 +1503,20 @@
         "type": "detail",
         "q": "How many lanterns mean the soldiers will cross the river?",
         "choices": [
-          "One",
           "Two",
+          "One",
           "Three",
           "Four"
         ],
-        "answer": 1,
+        "answer": 0,
         "evidence": "If they are to cross the river, hang two.",
         "explain": "Paul Revere says to hang two lanterns if the soldiers cross the river."
+      },
+      "readability": {
+        "grade": 2.7,
+        "fk": 3.1,
+        "cli": 2.9,
+        "ari": 2.1
       }
     },
     {
@@ -1260,14 +1536,20 @@
         "type": "cause-effect",
         "q": "Why was the mother bird making a great fuss?",
         "choices": [
-          "Two of her babies fell out",
           "A big cat climbed the tree",
           "Rain made her nest soggy",
-          "She could not find any worms"
+          "She could not find any worms",
+          "Two of her babies fell out"
         ],
-        "answer": 0,
+        "answer": 3,
         "evidence": "The storm has blown two of the little ones out of the nest.",
         "explain": "The storm blew two baby robins out of the nest."
+      },
+      "readability": {
+        "grade": 2.6,
+        "fk": 2.2,
+        "cli": 3.9,
+        "ari": 1.6
       }
     },
     {
@@ -1287,14 +1569,20 @@
         "type": "vocabulary",
         "q": "The chickens went to \"roost.\" What does roost mean?",
         "choices": [
-          "Settle in to sleep",
           "Look for some corn",
+          "Settle in to sleep",
           "Run around in circles",
           "Lay a big egg"
         ],
-        "answer": 0,
+        "answer": 1,
         "evidence": "The chickens went to roost.",
         "explain": "Like the birds flying to their nests, the chickens settled down to sleep."
+      },
+      "readability": {
+        "grade": 2.9,
+        "fk": 1.5,
+        "cli": 4.8,
+        "ari": 2.4
       }
     },
     {
@@ -1314,14 +1602,20 @@
         "type": "detail",
         "q": "How old was Edward?",
         "choices": [
-          "Four",
           "Six",
           "Five",
+          "Four",
           "Seven"
         ],
-        "answer": 0,
+        "answer": 2,
         "evidence": "The boy was only four years old",
         "explain": "Edward was only four, and his sister was not yet six."
+      },
+      "readability": {
+        "grade": 2.7,
+        "fk": 2.5,
+        "cli": 3.9,
+        "ari": 1.8
       }
     },
     {
@@ -1349,6 +1643,12 @@
         "answer": 0,
         "evidence": "What a dunce I was to turn Mr. Jefferson away!",
         "explain": "He calls himself a dunce, so he is sorry he turned Mr. Jefferson away."
+      },
+      "readability": {
+        "grade": 2.6,
+        "fk": 2.5,
+        "cli": 4.1,
+        "ari": 1.4
       }
     },
     {
@@ -1368,14 +1668,20 @@
         "type": "main-idea",
         "q": "What is Jules mostly learning about?",
         "choices": [
-          "How to tell a tree's age",
           "How to plant a new tree",
           "Why trees lose their leaves",
-          "Which trees grow the tallest"
+          "Which trees grow the tallest",
+          "How to tell a tree's age"
         ],
-        "answer": 0,
+        "answer": 3,
         "evidence": "You count the layers of wood; so many layers, so many years.",
         "explain": "Jules learns that each layer of wood in a tree stands for one year."
+      },
+      "readability": {
+        "grade": 2.1,
+        "fk": 2.1,
+        "cli": 3.2,
+        "ari": 1
       }
     },
     {
@@ -1395,14 +1701,20 @@
         "type": "inference",
         "q": "Why does Jules say the grass feeds the wolf?",
         "choices": [
-          "The sheep it eats ate grass",
           "Wolves like to chew on grass",
+          "The sheep it eats ate grass",
           "Grass grows where wolves sleep",
           "Sheep bring grass to wolves"
         ],
-        "answer": 0,
+        "answer": 1,
         "evidence": "A sheep browses the grass, a wolf eats the sheep",
         "explain": "The wolf eats sheep, and the sheep ate grass, so the grass feeds the wolf."
+      },
+      "readability": {
+        "grade": 2.7,
+        "fk": 1.8,
+        "cli": 4.3,
+        "ari": 2.1
       }
     }
   ]

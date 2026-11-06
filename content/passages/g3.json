@@ -18,10 +18,10 @@
         "type": "detail",
         "q": "How many zebras are running to the water?",
         "choices": [
-          "Five",
+          "Six",
           "Nine",
           "Seven",
-          "Three"
+          "Eleven"
         ],
         "answer": 2,
         "evidence": "Seven zebras are running to the water.",
@@ -52,7 +52,7 @@
         "q": "Why does the child keep asking Grandma questions?",
         "choices": [
           "The child wants Grandma to bake a cake today.",
-          "The child wants to know what the things are for.",
+          "The child wants to know what they are for.",
           "The child is hungry and wants a banana now.",
           "The child is bored and wants to go play."
         ],
@@ -68,7 +68,7 @@
       }
     },
     {
-      "id": "sbc-khalai-talks-to-plants",
+      "id": "sbc-khalai-asks-the-plants",
       "title": "Khalai talks to plants",
       "kind": "story",
       "topic": "plants",
@@ -86,7 +86,7 @@
         "choices": [
           "Khalai picks flowers to sell at the market.",
           "Khalai plants a new tree at her school.",
-          "Khalai cuts the hedge around her school.",
+          "Khalai cuts the tall hedge around her school.",
           "Khalai asks plants to grow in helpful ways."
         ],
         "answer": 3,
@@ -285,7 +285,7 @@
           "Their eyes were open.",
           "Their heads were hidden.",
           "They snored very loudly.",
-          "They slept in a tree."
+          "They slept up high in a tree."
         ],
         "answer": 1,
         "evidence": "their heads were hidden",
@@ -318,7 +318,7 @@
           "She had already bought him a train ticket.",
           "Badger had made a mess at the breakfast table.",
           "She thought his wish was sweet but could not happen.",
-          "She wanted to go to the moon with Badger."
+          "She wanted to go to the moon with Badger too, one day."
         ],
         "answer": 2,
         "evidence": "I am afraid you are too small to go to the moon.",
@@ -383,7 +383,7 @@
         "choices": [
           "They hit tins and metal pots.",
           "They lit fires to chase them.",
-          "They climbed up into the trees.",
+          "They climbed up into the tall trees.",
           "They collected locusts in sacks."
         ],
         "answer": 3,
@@ -449,7 +449,7 @@
         "choices": [
           "How to bake bread with flour and sugar at home",
           "Dembe and his family running their village shop",
-          "A long trip the children take in the holidays",
+          "A long trip the children take in the school holidays",
           "How Dembe built a new house for his family"
         ],
         "answer": 1,
@@ -468,13 +468,13 @@
       "title": "Inside the World Wide Web",
       "kind": "facts",
       "topic": "technology",
-      "text": "So Nettikutti, here's what everyone wants to know - What IS the Internet? Ooooh. BIG question. Let's see how I can put it simply. The Internet (short for 'INTERconnected NETworks') is a large, large, LARGE collection of computers from all over the world that are connected to each other.",
+      "text": "Hi Nettikutti! Here is a group of kids to meet you! Come on out, come on out, wherever you are! THERE you are! Go on, kids, say hello! And don't be fooled by her cuteness and her size - she holds a LOT of information in her little head! So Nettikutti, here's what everyone wants to know - What IS the Internet? Ooooh. BIG question. Let's see how I can put it simply. The Internet (short for 'INTERconnected NETworks') is a large, large, LARGE collection of computers from all over the world that are connected to each other.",
       "source": {
         "name": "Pratham Books (StoryWeaver)",
         "url": "https://github.com/global-asp/pb-source/blob/master/en/0410_inside-the-world-wide-web.md",
         "license": "CC BY 4.0",
         "author": "Roopa Pai",
-        "note": "Excerpt. Shortened. Illustrations not included."
+        "note": "Excerpt. Illustrations not included."
       },
       "question": {
         "type": "vocabulary",
@@ -490,10 +490,10 @@
         "explain": "Connected means joined together, so the computers can share with each other."
       },
       "readability": {
-        "grade": 6.5,
-        "fk": 5.6,
-        "cli": 8.6,
-        "ari": 5.4
+        "grade": 3.9,
+        "fk": 3.9,
+        "cli": 5.3,
+        "ari": 2.6
       }
     },
     {
@@ -501,7 +501,7 @@
       "title": "It's Bath Time!",
       "kind": "story",
       "topic": "family",
-      "text": "\"Nandu, Chinku, come here. It's time for your bath \", mummy called. Nandu and Chinku came running to the bathroom with their toy elephant. Mummy turned on the tap. Whooosh!!! whoosh!!! gushed water from the tap!!! They jumped into their bath tubs. Splish splash, splish splash, they played in the water. Nandu poured water all over his head. \"Ooh, Ooh \" squealed Chinku, playing in his tub.",
+      "text": "\"Nandu, Chinku, come here. It's time for your bath\", mummy called. Nandu and Chinku came running to the bathroom with their toy elephant. Mummy turned on the tap. Whooosh!!! whoosh!!! gushed water from the tap!!! They jumped into their bath tubs. Splish splash, splish splash, they played in the water. Nandu poured water all over his head. \"Ooh, Ooh\" squealed Chinku, playing in his tub.",
       "source": {
         "name": "Pratham Books (StoryWeaver)",
         "url": "https://github.com/global-asp/pb-source/blob/master/en/0247_it-s-bath-time.md",
@@ -547,7 +547,7 @@
         "q": "Kaage asked the koel \"humbly.\" What does humbly mean?",
         "choices": [
           "Politely, without showing off",
-          "Loudly, in an angry voice",
+          "Loudly, in a cross and angry voice",
           "Quickly, in a big rush",
           "Sadly, while crying hard"
         ],
@@ -580,7 +580,7 @@
         "q": "What color are the windows at Bani's school?",
         "choices": [
           "Bright yellow",
-          "Dark green",
+          "Dark forest green",
           "Bright red",
           "Light blue"
         ],
@@ -612,7 +612,7 @@
         "type": "main-idea",
         "q": "What is this passage mostly about?",
         "choices": [
-          "Ruchi is looking for a new pet cat.",
+          "Ruchi is looking for a new pet cat to buy.",
           "Reena the cat learns to climb trees.",
           "Ruchi and her cat love being together.",
           "Ruchi does not like going to school."
@@ -646,7 +646,7 @@
         "q": "Where was Raj's class going to visit?",
         "choices": [
           "The zoo",
-          "The park",
+          "The big park",
           "The beach",
           "The museum"
         ],
@@ -662,7 +662,7 @@
       }
     },
     {
-      "id": "pb-bheema-the-sleepyhead",
+      "id": "pb-bheema-asks-gauri",
       "title": "Bheema, the Sleepyhead",
       "kind": "story",
       "topic": "animals",
@@ -680,7 +680,7 @@
         "choices": [
           "Bheema eats all the grass.",
           "Bheema cannot get up early.",
-          "Bheema runs off every day.",
+          "Bheema runs far away each day.",
           "Bheema sings too loudly."
         ],
         "answer": 1,
@@ -713,7 +713,7 @@
         "choices": [
           "Karthik loves to play football in the park.",
           "Karthik loves reading, most of all about animals.",
-          "Karthik wants a new dog for his birthday.",
+          "Karthik wants a brand new puppy for his next birthday.",
           "Karthik does not like sitting on his mat."
         ],
         "answer": 1,
@@ -747,7 +747,7 @@
           "A little bit better",
           "Gone away for good",
           "Too bad to put up with",
-          "Funny and silly"
+          "Funny and very silly to see"
         ],
         "answer": 2,
         "evidence": "The toothache was getting unbearable.",
@@ -810,7 +810,7 @@
         "type": "inference",
         "q": "How does Peter know Miner the Mole is working close by?",
         "choices": [
-          "He can hear Miner digging under him.",
+          "He can hear Miner digging right under him.",
           "Jumper the Hare told him about it.",
           "He sees Miner's tracks in the snow.",
           "The ridge was not there the day before."
@@ -846,7 +846,7 @@
           "He used up his fat waiting for plants.",
           "He ran far away to find a new home.",
           "He gave all his food to his friends.",
-          "He was sick all through the winter."
+          "He was sick and weak all through the winter."
         ],
         "answer": 0,
         "evidence": "This is because I have used up the fat, waiting for the first green things to appear.",
@@ -876,7 +876,7 @@
         "type": "inference",
         "q": "What are the \"thousand little spears hidden in his coat\"?",
         "choices": [
-          "Sticks he carries to school",
+          "Sticks he carries along to school",
           "Long grass stuck in his fur",
           "Sharp quills on Prickly Porky",
           "Tiny swords he made himself"
@@ -911,7 +911,7 @@
         "choices": [
           "His ears",
           "His nose",
-          "His paws",
+          "His big paws",
           "His back"
         ],
         "answer": 1,
@@ -944,7 +944,7 @@
         "choices": [
           "How Snow King looks and lives in the cold North",
           "How bears catch fish in the Laughing Brook",
-          "Why Snow King wants to move somewhere warm",
+          "Why Snow King wants to move somewhere warm and sunny",
           "How the bear cousins share food in winter"
         ],
         "answer": 0,
@@ -959,7 +959,7 @@
       }
     },
     {
-      "id": "burgess-deer-antlers",
+      "id": "burgess-deer-antlers-fall-off",
       "title": "A Deer Loses His Antlers",
       "kind": "facts",
       "topic": "animals",
@@ -1041,7 +1041,7 @@
         "type": "main-idea",
         "q": "What is Sprite mostly telling Peter about?",
         "choices": [
-          "Why he wants to trade nests with Peter",
+          "Why he wants to trade his nest with Peter",
           "How he and his wife make a hidden nest",
           "Where he flies when winter comes",
           "What he likes to eat in the forest"
@@ -1077,7 +1077,7 @@
           "Behind loose bark on a tree",
           "Inside a hole in the ground",
           "On a flat rock by the water",
-          "In the chimney of a house"
+          "Up in the chimney of a house"
         ],
         "answer": 0,
         "evidence": "He hunts for a tree or stub with a piece of loose bark hanging to it.",
@@ -1110,7 +1110,7 @@
           "As big as robins",
           "As big as mice",
           "No bigger than bees",
-          "No bigger than ants"
+          "No bigger than tiny ants"
         ],
         "answer": 2,
         "evidence": "They are no bigger than bees.",
@@ -1176,7 +1176,7 @@
           "Afraid of the dark",
           "Proud of how he looks",
           "Too tired to fly",
-          "Angry at everyone"
+          "Angry at everyone he meets"
         ],
         "answer": 1,
         "evidence": "He is a little bit vain, is Sammy Jay.",
@@ -1227,13 +1227,13 @@
       "title": "The Nighthawk's Eggs",
       "kind": "facts",
       "topic": "birds",
-      "text": "\"Didn't I say they don't have a nest?\" sputtered Jenny. \"Mrs. Nighthawk doesn't lay but two eggs, anyway. Perhaps she thinks it isn't worth while building a nest for just two eggs. Anyway, she lays them on the ground or on a flat rock and lets it go at that. She isn't quite as bad as Sally Sly the Cowbird, for she does sit on those eggs and she is a good mother. But just think of those Nighthawk children never having any home! It doesn't seem to me right and it never will.",
+      "text": "\"Didn't I say they don't have a nest?\" sputtered Jenny. \"Mrs. Nighthawk doesn't lay but two eggs, anyway. Perhaps she thinks it isn't worth while building a nest for just two eggs. Anyway, she lays them on the ground or on a flat rock and lets it go at that. She isn't quite as bad as Sally Sly the Cowbird, for she does sit on those eggs and she is a good mother. But just think of those Nighthawk children never having any home! It doesn't seem to me right and it never will. Did you ever see Boomer in a tree?\"",
       "source": {
         "name": "The Burgess Bird Book for Children (Thornton W. Burgess, 1919)",
         "url": "https://www.gutenberg.org/ebooks/3074",
         "license": "Public domain",
         "author": "Thornton W. Burgess",
-        "note": "Paragraph from the book. Shortened."
+        "note": "Paragraph from the book."
       },
       "question": {
         "type": "detail",
@@ -1242,17 +1242,17 @@
           "In a nest high in a tree",
           "On the ground or a flat rock",
           "In a hole in a sandy bank",
-          "Inside a warm chimney"
+          "Inside a warm, dark chimney top"
         ],
         "answer": 1,
         "evidence": "she lays them on the ground or on a flat rock",
         "explain": "Mrs. Nighthawk does not build a nest; she lays her eggs on the ground or a rock."
       },
       "readability": {
-        "grade": 3.4,
-        "fk": 3.1,
-        "cli": 4.4,
-        "ari": 2.6
+        "grade": 3.1,
+        "fk": 2.9,
+        "cli": 4,
+        "ari": 2.2
       }
     },
     {
@@ -1273,7 +1273,7 @@
         "q": "What did Reddy Fox do at the end?",
         "choices": [
           "He caught a big Trout.",
-          "He ran home to his den.",
+          "He ran home to his den for supper.",
           "He jumped into the pool.",
           "He fell asleep on the Big Rock."
         ],
@@ -1374,7 +1374,7 @@
           "His new suit was much too big.",
           "Garden work is hard on clothes.",
           "He wanted to keep extra warm.",
-          "He forgot he had a new suit."
+          "He forgot that he had a new suit on."
         ],
         "answer": 1,
         "evidence": "work in a garden is very hard on clothes",
@@ -1407,7 +1407,7 @@
           "He ate his supper right away.",
           "He climbed up a tree to sleep.",
           "He washed his face and brushed his coat.",
-          "He went to look for more food."
+          "He went out to look for more food to wash."
         ],
         "answer": 2,
         "evidence": "Then he washed his face and brushed his coat.",
@@ -1538,7 +1538,7 @@
         "choices": [
           "He is sure it is very easy.",
           "He has seen it many times.",
-          "He thinks it is very scary.",
+          "He thinks it would be very scary.",
           "He finds it hard to believe."
         ],
         "answer": 3,
@@ -1572,7 +1572,7 @@
           "Machines tear it into little pieces.",
           "It is pressed and dried in layers.",
           "It is spun into long, thin thread.",
-          "It is picked from the cotton plant."
+          "It is picked again from the cotton plant."
         ],
         "answer": 0,
         "evidence": "machines tear it into little pieces",
@@ -1586,7 +1586,7 @@
       }
     },
     {
-      "id": "baldwin-androclus-and-the-lion",
+      "id": "baldwin-androclus-pulls-the-thorn",
       "title": "Androclus and the Lion",
       "kind": "story",
       "topic": "friendship",
@@ -1604,7 +1604,7 @@
         "choices": [
           "Androclus teaches a lion to jump like a dog.",
           "A lion chases Androclus away from its home.",
-          "Androclus finds a thorn bush and cuts it down.",
+          "Androclus finds a big thorn bush and cuts it down to the ground.",
           "Androclus helps a hurt lion, and it becomes friendly."
         ],
         "answer": 3,
@@ -1638,7 +1638,7 @@
           "His mother",
           "Brother Felix",
           "The king",
-          "His teacher"
+          "His older sister"
         ],
         "answer": 1,
         "evidence": "I asked the monk, Brother Felix, to teach me",
@@ -1704,7 +1704,7 @@
           "He was afraid of deep water.",
           "He wanted to travel and explore.",
           "He wanted to stay home always.",
-          "He did not like ships at all."
+          "He did not like big ships at all."
         ],
         "answer": 1,
         "evidence": "Then I could go to many strange lands and see many wonderful things.",
@@ -1736,7 +1736,7 @@
         "choices": [
           "He did not want power for himself.",
           "He was tired of being brave.",
-          "He wanted to fight in a war.",
+          "He wanted to fight in a great big war.",
           "He did not like his people."
         ],
         "answer": 0,
