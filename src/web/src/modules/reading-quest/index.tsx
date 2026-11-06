@@ -6,7 +6,8 @@ import { invalid } from '../../core/module';
 import { bridge } from '../../core/bridge';
 
 /**
- * Reading Quest: a bite-size paragraph (3-6 sentences) with one question right under it; about 5 minutes a quest.
+ * Reading Quest: a bite-size paragraph (3-6 sentences) with one question right under it, one after another for as long
+ * as the child likes (no set length; the daily coin limit caps the pay, not the reading).
  * The PC picks each paragraph near the child's rating and moves the rating with every answer (ReadingQuest.cs), pays
  * coins for right answers and a bonus for every few in a row. Paragraphs are written by people (public-domain and
  * CC BY sources, content/passages); the PC holds the answers.
@@ -15,12 +16,11 @@ export const readingQuest: LessonModule = {
   id: 'reading-quest',
   title: 'Reading Quest',
   tagline: 'Short paragraphs, one question each',
-  description: 'About five minutes: your child reads a short paragraph (3-6 sentences, written by real authors — nature, space, animals, stories) and answers one question right under it. The paragraphs get harder or easier with each answer, so they stay just right. Right answers pay coins, and every few in a row earns a streak bonus.',
+  description: 'Your child reads a short paragraph (3-6 sentences, written by real authors — nature, space, animals, stories) and answers one question right under it, then the next one comes up, for as long as they like. The paragraphs get harder or easier with each answer, so they stay just right. Right answers pay coins, and every few in a row earns a streak bonus.',
   icon: '🧭',
   verification: 'in_app',
   defaults: { coinsPerActivity: 1, dailyCap: 40 },
   options: [
-    { key: 'perQuest', label: 'Paragraphs per quest', number: { min: 3, max: 20 }, default: '6' },
     { key: 'streakEvery', label: 'Streak bonus every', suffix: 'right in a row', number: { min: 2, max: 50 }, default: '2' },
   ],
   nextActivity(): Activity { return { moduleId: 'reading-quest', kind: 'quest', data: {}, issuedAt: 0 }; },
@@ -28,10 +28,13 @@ export const readingQuest: LessonModule = {
   score: () => invalid('Reading Quest is marked by the PC'),
 };
 
-interface Me { level: number; progress: number; streak: number; bestStreak: number; streakEvery: number; answered: number; perQuest: number; earnedToday: number; dailyCap: number; left: number }
+interface Me { level: number; progress: number; streak: number; bestStreak: number; streakEvery: number; answered: number; earnedToday: number; dailyCap: number; left: number }
 interface Shown { id: string; title: string; text: string; q: string; choices: string[]; sourceName: string; sourceUrl: string; license: string; author: string | null; retry: boolean; readSeconds: number; waitLeft: number }
 interface Result { retry: boolean; right: boolean; rightChoice: number; evidence: string; explain: string; streak: number; streakUp: boolean; coins: number; bonus: number; pending: boolean; levelBefore: number; me: Me }
-type Step = { at: 'start' } | { at: 'read'; p: Shown; shownAt: number; openAt: number; pick?: number; r?: Result } | { at: 'done' } | { at: 'empty' };
+type Step = { at: 'loading' } | { at: 'read'; p: Shown; shownAt: number; openAt: number; pick?: number; r?: Result } | { at: 'empty' };
+
+/** How many of this sitting's answers show as dots (a trail, not a count-down: the quest never ends). */
+const TRAIL = 10;
 
 const call = <T,>(op: string, p?: unknown) => bridge.call<T>(op, p);
 
@@ -74,19 +77,18 @@ function Paragraph({ text, mark }: { text: string; mark?: string }) {
 
 function Quest({ ctx }: { activity: Activity; ctx: ActivityContext }) {
   const [me, setMe] = useState<Me | null>(null);
-  const [step, setStep] = useState<Step>({ at: 'start' });
-  const [round, setRound] = useState<{ n: number; results: boolean[]; coins: number; startLevel: number }>({ n: 0, results: [], coins: 0, startLevel: 1 });
+  const [step, setStep] = useState<Step>({ at: 'loading' });
+  const [trail, setTrail] = useState<boolean[]>([]); // this sitting's answers, newest last (only the last few are shown)
   const [err, setErr] = useState('');
   const [toast, setToast] = useState('');
   const top = useRef<HTMLDivElement>(null);
-  useEffect(() => { call<Me>('quest.state').then(setMe).catch((e) => setErr((e as Error).message)); }, []);
+  useEffect(() => { next(); }, []); // no start screen: the first paragraph comes straight up
 
-  async function next(fresh = false) {
+  async function next() {
     setErr('');
     try {
       const r = await call<{ passage: Shown | null; me: Me }>('quest.next');
       setMe(r.me);
-      if (fresh) setRound({ n: 0, results: [], coins: 0, startLevel: r.me.level });
       if (!r.passage) { setStep({ at: 'empty' }); return; }
       setStep({ at: 'read', p: r.passage, shownAt: Date.now(), openAt: Date.now() + r.passage.waitLeft * 1000 });
       top.current?.scrollIntoView?.({ block: 'start' });
@@ -100,14 +102,12 @@ function Quest({ ctx }: { activity: Activity; ctx: ActivityContext }) {
       const r = await call<Result>('quest.answer', { id: step.p.id, pick, readMs: Date.now() - step.shownAt });
       setStep({ ...step, pick, r });
       setMe(r.me);
-      setRound((x) => ({ ...x, n: x.n + 1, results: [...x.results, r.right], coins: x.coins + r.coins + r.bonus }));
-      const msgs = [r.me.level > r.levelBefore ? `⬆ Level ${r.me.level}!` : ''].filter(Boolean);
-      if (msgs.length) { setToast(msgs.join('  ')); setTimeout(() => setToast(''), 3500); }
+      setTrail((t) => [...t, r.right].slice(-TRAIL));
+      if (r.me.level > r.levelBefore) { setToast(`⬆ Level ${r.me.level}!`); setTimeout(() => setToast(''), 3500); }
     } catch (e) { setErr((e as Error).message); setStep({ ...step, pick: undefined }); }
   }
 
   if (!me) return <div class="rq">{err ? <p class="error">{err}</p> : <p class="muted center">Loading…</p>}</div>;
-  const per = me.perQuest;
   const capped = me.dailyCap > 0 && me.earnedToday >= me.dailyCap;
 
   const head = (
@@ -121,51 +121,24 @@ function Quest({ ctx }: { activity: Activity; ctx: ActivityContext }) {
     </div>
   );
 
-  if (step.at === 'start' || step.at === 'empty') return (
+  if (step.at !== 'read') return (
     <div class="rq">
       {head}
       <div class="rq-card rq-start">
-        <h2>🧭 Reading Quest</h2>
         {step.at === 'empty'
-          ? <p>You've read every paragraph there is right now — amazing! New ones come with updates.</p>
-          : <>
-            <p>{per} short paragraphs, one question each. About 5 minutes.</p>
-            <p class="muted">Right answers fill your streak ring. Fill it ({me.streakEvery} in a row) and the number in the middle goes up — with bonus coins.</p>
-            {capped && <p class="muted">You've earned today's Reading Quest coins — you can still read for practice.</p>}
-            <button class="primary big" onClick={() => next(true)}>Start the quest</button>
-          </>}
-        {err && <p class="error">{err}</p>}
+          ? <><h2>🧭 Reading Quest</h2><p>You've read every paragraph there is right now — amazing! New ones come with updates.</p></>
+          : err ? null : <p class="muted">Loading…</p>}
+        {err && <><p class="error">{err}</p><button class="primary" onClick={next}>Try again</button></>}
       </div>
     </div>
   );
 
-  if (step.at === 'done') {
-    const right = round.results.filter(Boolean).length;
-    return (
-      <div class="rq">
-        {head}
-        <div class="rq-card rq-start">
-          <h2>Quest complete! 🎉</h2>
-          <p class="rq-big">{right} of {round.results.length} right{round.coins ? <> · +{round.coins} 🪙</> : null}</p>
-          {me.level > round.startLevel && <p>⬆ You reached <b>Level {me.level}</b>!</p>}
-          <p class="muted">Streak: {me.streak} in a row · best {me.bestStreak}</p>
-          <div class="row center">
-            <button class="primary" onClick={() => next(true)}>Another quest</button>
-            <button class="ghost" onClick={ctx.exit}>Done</button>
-          </div>
-        </div>
-      </div>
-    );
-  }
-
-  const { p, pick, r } = step;
-  const last = round.n >= per;
-  return <QuestCard p={p} pick={pick} r={r} openAt={step.openAt} last={last} head={head} round={round} per={per} err={err} toast={toast} onAnswer={answer} onNext={() => (last ? setStep({ at: 'done' }) : next())} />;
+  return <QuestCard p={step.p} pick={step.pick} r={step.r} openAt={step.openAt} head={head} trail={trail} capped={capped} err={err} toast={toast} onAnswer={answer} onNext={next} />;
 }
 
 /** One paragraph and its question. The answers unlock after the reading time (the PC checks it too). */
-function QuestCard({ p, pick, r, openAt, last, head, round, per, err, toast, onAnswer, onNext }: {
-  p: Shown; pick?: number; r?: Result; openAt: number; last: boolean; head: preact.JSX.Element; round: { n: number; results: boolean[] }; per: number;
+function QuestCard({ p, pick, r, openAt, head, trail, capped, err, toast, onAnswer, onNext }: {
+  p: Shown; pick?: number; r?: Result; openAt: number; head: preact.JSX.Element; trail: boolean[]; capped: boolean;
   err: string; toast: string; onAnswer: (k: number) => void; onNext: () => void;
 }) {
   const [now, setNow] = useState(Date.now());
@@ -175,9 +148,11 @@ function QuestCard({ p, pick, r, openAt, last, head, round, per, err, toast, onA
   return (
     <div class="rq">
       {head}
-      <div class="rq-dots" aria-label={`Paragraph ${Math.min(round.n + (r ? 0 : 1), per)} of ${per}`}>
-        {Array.from({ length: per }, (_, i) => <i class={i < round.results.length ? (round.results[i] ? 'ok' : 'miss') : i === round.results.length ? 'now' : ''} />)}
-      </div>
+      {trail.length > 0 && (
+        <div class="rq-dots" aria-label={`Last answers: ${trail.filter(Boolean).length} of ${trail.length} right`}>
+          {trail.map((ok) => <i class={ok ? 'ok' : 'miss'} />)}{!r && <i class="now" />}
+        </div>
+      )}
       <div class="rq-card">
         <h3 class="rq-title">{p.title}</h3>
         <Paragraph text={p.text} mark={r && !r.right ? r.evidence : undefined} />
@@ -195,7 +170,8 @@ function QuestCard({ p, pick, r, openAt, last, head, round, per, err, toast, onA
             <b>{r.retry ? (r.right ? '✓ Got it this time!' : 'Not this time either — look at the highlighted words.')
               : r.right ? `✓ Right!${r.coins ? ` +${r.coins} 🪙` : ''}${r.pending ? ' (waiting for a parent)' : ''}` : 'Not quite — look at the highlighted words. This one will come back later.'}</b>
             <span>{r.explain}</span>
-            <button class="primary" onClick={onNext}>{last ? 'Finish' : 'Next →'}</button>
+            {capped && r.right && !r.retry && <span class="muted small">That's all of today's Reading Quest coins — keep reading for practice and your level.</span>}
+            <button class="primary" onClick={onNext}>Next paragraph →</button>
           </div>
         )}
         {err && <p class="error">{err}</p>}

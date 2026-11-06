@@ -1,7 +1,7 @@
 # Reading Quest — bite-size paragraphs, one question each
 
-A child reads one short paragraph (a few sentences) and answers one question right under it, about 5 minutes and 5-6
-paragraphs a session. The next paragraph is chosen near the child's rating, which goes up and down with each answer
+A child reads one short paragraph (a few sentences) and answers one question right under it, then the next one comes
+up: there is no set length, the child reads as many as they like (the daily coin limit caps pay, not reading). The next paragraph is chosen near the child's rating, which goes up and down with each answer
 (see `src/Shared/Books/ReadingQuest.cs`). Paragraphs are **written by people, not AI**: public-domain US government
 pages and freely licensed (CC BY) children's stories, each with its source. Only the questions are written for this.
 

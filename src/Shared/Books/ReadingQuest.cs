@@ -4,7 +4,7 @@ using System.Text.Json.Nodes;
 namespace CoinQuest.Shared.Books;
 
 /// <summary>
-/// Reading Quest: a short paragraph, one question under it, about 5 minutes a session. The next paragraph is picked
+/// Reading Quest: a short paragraph, one question under it, one after another with no set length. The next paragraph is picked
 /// near the child's rating, and the rating moves with each answer, Elo-style:
 /// <code>
 ///   chance of a right answer  p = 1 / (1 + 10^((d - R) / 2))      d = the paragraph's readability grade, R = the rating

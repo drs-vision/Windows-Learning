@@ -357,7 +357,6 @@ public sealed class RequestRouter
         {
             level = CoinQuest.Shared.Books.ReadingQuest.Level(st.Rating), progress = Math.Round(CoinQuest.Shared.Books.ReadingQuest.LevelProgress(st.Rating), 2),
             streak = st.Streak, bestStreak = st.BestStreak, streakEvery, answered = st.Answered,
-            perQuest = Math.Clamp(int.TryParse(s.Options.GetValueOrDefault("perQuest"), out var pq) ? pq : 6, 3, 20),
             earnedToday = _ledger.EarnedToday(child.Id, "reading-quest"), dailyCap = s.DailyCap, left = all.Count(p => !st.Done.ContainsKey(p.Id)),
         };
         switch (req.Op)

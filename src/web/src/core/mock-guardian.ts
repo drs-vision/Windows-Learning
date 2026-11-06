@@ -35,7 +35,7 @@ export class MockGuardian {
       'typing-quest': { enabled: false, coinsPerActivity: 10, dailyCap: 80, requireApproval: false },
       'bible-typing': { enabled: true, coinsPerActivity: 15, dailyCap: 60, requireApproval: false },
       'khan-academy': { enabled: true, coinsPerActivity: 5, dailyCap: 80, requireApproval: false },
-      'reading-quest': { enabled: true, coinsPerActivity: 1, dailyCap: 40, requireApproval: false, options: { perQuest: '6', streakEvery: '2' } },
+      'reading-quest': { enabled: true, coinsPerActivity: 1, dailyCap: 40, requireApproval: false, options: { streakEvery: '2' } },
       books: { enabled: true, coinsPerActivity: 3, dailyCap: 120, requireApproval: false, options: { waitMinutes: '5', wordsPer: '20', allowed: '*' } },
     },
   };
@@ -342,7 +342,7 @@ async function questPool(): Promise<QP[]> {
   return qpool;
 }
 const qlevel = (r: number) => Math.max(1, Math.floor(r));
-const qme = (pool: QP[]) => ({ level: qlevel(qs.rating), progress: Math.round((qs.rating < 1 ? qs.rating / 2 : qs.rating < 2 ? 0.5 + (qs.rating - 1) / 2 : qs.rating - Math.floor(qs.rating)) * 100) / 100, streak: qs.streak, bestStreak: qs.best, streakEvery: 2, answered: qs.answered, perQuest: 6, earnedToday: 0, dailyCap: 40, left: pool.filter((p) => !(p.id in qs.done)).length });
+const qme = (pool: QP[]) => ({ level: qlevel(qs.rating), progress: Math.round((qs.rating < 1 ? qs.rating / 2 : qs.rating < 2 ? 0.5 + (qs.rating - 1) / 2 : qs.rating - Math.floor(qs.rating)) * 100) / 100, streak: qs.streak, bestStreak: qs.best, streakEvery: 2, answered: qs.answered, earnedToday: 0, dailyCap: 40, left: pool.filter((p) => !(p.id in qs.done)).length });
 async function mockQuest(op: string, p: any): Promise<any> {
   const pool = await questPool();
   const secs = (x: QP) => Math.min(30, Math.max(15, Math.round(x.text.split(/\s+/).length / 4)));
