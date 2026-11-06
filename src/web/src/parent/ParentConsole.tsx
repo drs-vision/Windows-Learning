@@ -230,7 +230,7 @@ function GiveCoins({ child, sign, onDone }: { child: Child; sign: 1 | -1; onDone
     <div class="give-coins">
       <div class="give-amounts">{[1, 5, 10, 25, 50].map((v) => <button class={'chip-btn' + (n === v ? ' on' : '')} onClick={() => setN(v)}>{v}</button>)}
         <label class="coin-field"><input type="number" min={1} class="coins-input" value={n} onInput={(e) => setN(Math.abs(Math.round(Number((e.target as HTMLInputElement).value) || 0)))} /><span>🪙</span></label></div>
-      <input class="grow" placeholder={sign > 0 ? 'What for? (e.g. Cleaned his room)' : 'Why? (e.g. Didn\'t do chores)'} value={reason} onInput={(e) => setReason((e.target as HTMLInputElement).value)} onKeyDown={(e) => e.key === 'Enter' && n > 0 && go()} />
+      <input class="grow" placeholder={sign > 0 ? 'What for? (e.g. Cleaned their room)' : 'Why? (e.g. Didn\'t do chores)'} value={reason} onInput={(e) => setReason((e.target as HTMLInputElement).value)} onKeyDown={(e) => e.key === 'Enter' && n > 0 && go()} />
       <button class={sign > 0 ? 'primary' : 'danger'} disabled={!n} onClick={go}>{sign > 0 ? `Give ${n} 🪙` : `Take ${n} 🪙`}</button>
       {err && <p class="error">{err}</p>}
     </div>
@@ -453,7 +453,7 @@ function ShopEditor({ child, onSave }: { child: Child; onSave: (c: Child) => voi
           <div class="row">
             <label>Cost 🪙<input type="number" value={editing.cost} min={1} onInput={(e) => setEditing({ ...editing, cost: Number((e.target as HTMLInputElement).value) })} /></label>
             {editing.kind !== 'realWorld' && <label>Minutes<input type="number" value={editing.minutes} min={1} onInput={(e) => setEditing({ ...editing, minutes: Number((e.target as HTMLInputElement).value) })} /></label>}
-            {editing.kind === 'youTube' && <p class="muted small" style={{ flexBasis: '100%' }}>{child.displayName} buys YouTube with + in 5-minute steps at <b>🪙 {youTubeBlockPrice(editing.cost, editing.minutes, [defaultArcadePrice(1)])} per 5 min</b> (this cost ÷ minutes, but never cheaper than 2 coins above the priciest arcade game — games beat videos). "Max per day" counts how many times he buys.</p>}
+            {editing.kind === 'youTube' && <p class="muted small" style={{ flexBasis: '100%' }}>{child.displayName} buys YouTube with + in 5-minute steps at <b>🪙 {youTubeBlockPrice(editing.cost, editing.minutes, [defaultArcadePrice(1)])} per 5 min</b> (this cost ÷ minutes, but never cheaper than 2 coins above the priciest arcade game — games beat videos). "Max per day" counts how many times {child.displayName} buys it.</p>}
             <label>Max per day (0 = no limit)<input type="number" value={editing.dailyCap} min={0} onInput={(e) => setEditing({ ...editing, dailyCap: Number((e.target as HTMLInputElement).value) })} /></label>
           </div>
           <label class="check"><input type="checkbox" checked={editing.enabled !== false} onChange={(e) => setEditing({ ...editing, enabled: (e.target as HTMLInputElement).checked })} /> Show in shop</label>
