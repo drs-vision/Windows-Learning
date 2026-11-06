@@ -388,7 +388,10 @@ public sealed class RequestRouter
                     if (a.Right) _activity.Count(child.Id, DateTime.Now, "reading-quest:correct");
                 }
                 AfterChange();
-                return new { a.Right, a.RightChoice, a.Evidence, a.Explain, a.Streak, a.StreakUp, a.Retry, coins, bonus, pending = pending || bonusPending, levelBefore = CoinQuest.Shared.Books.ReadingQuest.Level(a.Before), me = Me(), balance = _ledger.Balance(child.Id) };
+                // A miss that will come back later reveals nothing (no right answer, no highlight), so the second look is a real
+                // second try. The answer is shown only when the paragraph is finished for good (right, or a second-look miss).
+                var reveal = a.Right || a.Retry;
+                return new { a.Right, rightChoice = reveal ? a.RightChoice : -1, evidence = reveal ? a.Evidence : "", a.Streak, a.StreakUp, a.Retry, coins, bonus, pending = pending || bonusPending, levelBefore = CoinQuest.Shared.Books.ReadingQuest.Level(a.Before), me = Me(), balance = _ledger.Balance(child.Id) };
             }
             default: throw new ArgumentException("Unknown Reading Quest request");
         }

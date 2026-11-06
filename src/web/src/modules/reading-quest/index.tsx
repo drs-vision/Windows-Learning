@@ -30,7 +30,7 @@ export const readingQuest: LessonModule = {
 
 interface Me { level: number; progress: number; streak: number; bestStreak: number; streakEvery: number; answered: number; earnedToday: number; dailyCap: number; left: number }
 interface Shown { id: string; title: string; text: string; q: string; choices: string[]; sourceName: string; sourceUrl: string; license: string; author: string | null; retry: boolean; readSeconds: number; waitLeft: number }
-interface Result { retry: boolean; right: boolean; rightChoice: number; evidence: string; explain: string; streak: number; streakUp: boolean; coins: number; bonus: number; pending: boolean; levelBefore: number; me: Me }
+interface Result { retry: boolean; right: boolean; rightChoice: number; evidence: string; streak: number; streakUp: boolean; coins: number; bonus: number; pending: boolean; levelBefore: number; me: Me }
 type Step = { at: 'loading' } | { at: 'read'; p: Shown; shownAt: number; openAt: number; pick?: number; r?: Result } | { at: 'empty' };
 
 /** How many of this sitting's answers show as dots (a trail, not a count-down: the quest never ends). */
@@ -66,7 +66,7 @@ function StreakRing({ streak, every, best }: { streak: number; every: number; be
   );
 }
 
-/** The paragraph, with the evidence highlighted after a wrong answer. */
+/** The paragraph; the evidence is highlighted only after a second-look miss (the paragraph is retired, so nothing is given away). */
 function Paragraph({ text, mark }: { text: string; mark?: string }) {
   if (!mark) return <p class="rq-text">{text}</p>;
   const i = text.toLowerCase().replace(/\s+/g, ' ').indexOf(mark.toLowerCase().replace(/\s+/g, ' '));
@@ -155,21 +155,20 @@ function QuestCard({ p, pick, r, openAt, head, trail, capped, err, toast, onAnsw
       )}
       <div class="rq-card">
         <h3 class="rq-title">{p.title}</h3>
-        <Paragraph text={p.text} mark={r && !r.right ? r.evidence : undefined} />
+        <Paragraph text={p.text} mark={r && !r.right && r.evidence ? r.evidence : undefined} />
         <p class="rq-credit">From {p.sourceName}{p.author ? `, by ${p.author}` : ''} · {p.license}</p>
         <div class="rq-q">{p.retry && <span class="rq-retry">Second look</span>}<b>{p.q}</b></div>
         {locked && <div class="rq-wait" role="timer"><span class="rq-ring" style={{ '--p': `${Math.round((1 - wait / p.readSeconds) * 100)}` } as any}>{wait}</span> Read the paragraph first — the answers open in {wait} second{wait === 1 ? '' : 's'}.</div>}
         <div class="rq-choices">
           {p.choices.map((c, k) => {
-            const cls = !r ? (pick === k ? ' on' : '') : k === r.rightChoice ? ' right' : k === pick ? ' wrong' : ' dim';
+            const cls = !r ? (pick === k ? ' on' : '') : k === r.rightChoice ? ' right' : k === pick ? ' wrong' : ' dim'; // rightChoice is -1 when the paragraph comes back
             return <button class={'choice' + cls} disabled={locked || !!r || pick != null} onClick={() => onAnswer(k)}><span class="letter">{'ABCD'[k]}</span>{c}</button>;
           })}
         </div>
         {r && (
           <div class={'rq-feedback ' + (r.right ? 'ok' : 'miss')}>
-            <b>{r.retry ? (r.right ? '✓ Got it this time!' : 'Not this time either — look at the highlighted words.')
-              : r.right ? `✓ Right!${r.coins ? ` +${r.coins} 🪙` : ''}${r.pending ? ' (waiting for a parent)' : ''}` : 'Not quite — look at the highlighted words. This one will come back later.'}</b>
-            <span>{r.explain}</span>
+            <b>{r.right ? (r.retry ? '✓ Got it this time!' : `✓ Right!${r.coins ? ` +${r.coins} 🪙` : ''}${r.pending ? ' (waiting for a parent)' : ''}`)
+              : r.retry ? 'Not this time — here is the answer.' : 'Not quite. This one will come back later for another try.'}</b>
             {capped && r.right && !r.retry && <span class="muted small">That's all of today's Reading Quest coins — keep reading for practice and your level.</span>}
             <button class="primary" onClick={onNext}>Next paragraph →</button>
           </div>

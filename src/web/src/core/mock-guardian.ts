@@ -363,7 +363,7 @@ async function mockQuest(op: string, p: any): Promise<any> {
   const x = pool.find((y) => y.id === p.id)!;
   const rightChoice = qs.open!.order.indexOf(x.question.answer);
   const right = p.pick === rightChoice;
-  if (qs.open!.retry) { delete qs.retry[x.id]; qs.open = null; return { retry: true, right, rightChoice, evidence: x.question.evidence, explain: x.question.explain, streak: qs.streak, streakUp: false, coins: 0, bonus: 0, pending: false, levelBefore: qlevel(qs.rating), me: qme(pool) }; }
+  if (qs.open!.retry) { delete qs.retry[x.id]; qs.open = null; return { retry: true, right, rightChoice, evidence: x.question.evidence, streak: qs.streak, streakUp: false, coins: 0, bonus: 0, pending: false, levelBefore: qlevel(qs.rating), me: qme(pool) }; }
   const before = qs.rating;
   const e = 1 / (1 + Math.pow(10, (x.readability.grade - qs.rating) / 2));
   qs.rating = Math.min(13, Math.max(0, qs.rating + (qs.answered < 15 ? 0.8 : 0.4) * ((right ? 1 : 0) - e)));
@@ -371,7 +371,7 @@ async function mockQuest(op: string, p: any): Promise<any> {
   let streakUp = false;
   if (right) { qs.streak++; qs.best = Math.max(qs.best, qs.streak); streakUp = qs.streak % 2 === 0; qs.misses = 0; } else { qs.streak = 0; qs.misses++; }
   const words = x.text.split(/\s+/).length;
-  return { retry: false, right, rightChoice, evidence: x.question.evidence, explain: x.question.explain, streak: qs.streak, streakUp, coins: right ? Math.max(1, Math.ceil(words / 100)) : 0, bonus: streakUp ? Math.min(3, qs.streak / 2) : 0, pending: false, levelBefore: qlevel(before), me: qme(pool) };
+  return { retry: false, right, rightChoice: right ? rightChoice : -1, evidence: right ? x.question.evidence : '', streak: qs.streak, streakUp, coins: right ? Math.max(1, Math.ceil(words / 100)) : 0, bonus: streakUp ? Math.min(3, qs.streak / 2) : 0, pending: false, levelBefore: qlevel(before), me: qme(pool) };
 }
 function mockQuestReport() {
   const d = (n: number) => { const x = new Date(); x.setDate(x.getDate() - n); return x.toISOString().slice(0, 10); };

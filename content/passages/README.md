@@ -58,8 +58,9 @@ Where the paragraphs come from (all written by people; only the questions were w
   paragraph's difficulty in the rating system, so it is never typed by hand.
 * `question`: one, about this paragraph alone, written for the paragraph's difficulty:
   `type` (`detail`, `main-idea`, `vocabulary`, `inference`, `sequence`, `cause-effect` — parents see accuracy by
-  type, so mix them), 4 `choices`, `answer` index, `evidence` (exact words from `text`; highlighted after a wrong
-  answer), `explain`. Wrong choices as long and believable as the right one; no "of the above"; the validator fails a
+  type, so mix them), 4 `choices`, `answer` index, `evidence` (exact words from `text`; highlighted only after a
+  second-look miss, when the paragraph is retired), `explain` (for parents/maintainers; children never see it, and a
+  first miss reveals nothing because the paragraph comes back). Wrong choices as long and believable as the right one; no "of the above"; the validator fails a
   file where the right answer is the longest (or shortest) choice in more than 40% of questions.
 
 ## How a quest plays (for reference; rules in `src/Shared/Books/ReadingQuest.cs`)
