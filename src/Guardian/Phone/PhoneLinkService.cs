@@ -309,8 +309,11 @@ public sealed class PhoneLinkService : BackgroundService
             catch (OperationCanceledException) { break; }
             catch (Exception ex)
             {
-                _cqStatus = "can't reach it: " + ex.Message;
-                _log.LogInformation("CoinQuest relay: {Msg}; retrying in {S}s", ex.Message, (int)backoff.TotalSeconds);
+                // "Unable to connect to the remote server" alone says nothing; the inner error names the cause
+                // (a name that won't resolve usually means a home DNS filter blocks *.workers.dev).
+                var why = ex.InnerException is { } inner && inner.Message != ex.Message ? $"{ex.Message} ({inner.Message})" : ex.Message;
+                _cqStatus = "can't reach it: " + why;
+                _log.LogInformation("CoinQuest relay {Relay}: {Msg}; retrying in {S}s", relay, why, (int)backoff.TotalSeconds);
                 try { await Task.Delay(backoff, token); } catch (OperationCanceledException) { break; }
                 backoff = TimeSpan.FromSeconds(Math.Min(300, backoff.TotalSeconds * 2));
             }
