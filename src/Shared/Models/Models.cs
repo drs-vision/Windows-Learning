@@ -37,6 +37,8 @@ public sealed record Child
     public ArcadeSettings Arcade { get; init; } = new();
     /// <summary>Optional hard daily screen-time cap in minutes. Null = coins-only.</summary>
     public int? DailyScreenTimeCapMinutes { get; init; }
+    /// <summary>Keep daily activity reports for the parent (time per quest/site/channel/app, typing, things finished).</summary>
+    public bool ActivityReports { get; init; } = true;
 }
 
 public sealed record Allowlist

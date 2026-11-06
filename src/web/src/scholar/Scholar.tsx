@@ -14,6 +14,11 @@ type View = { name: 'home' } | { name: 'quest'; moduleId: string } | { name: 'sh
 export function Scholar() {
   const [state, setState] = useState<ChildState | null>(null);
   const [view, setView] = useState<View>({ name: 'home' });
+  // What's on screen, for the parent's activity report. YouTube and the arcade say more once something is playing.
+  useEffect(() => {
+    if (view.name === 'quest') { const m = moduleById(view.moduleId); bridge.context('quest', view.moduleId, m?.title ?? view.moduleId); }
+    else bridge.context('coinquest', view.name, { home: 'Home', shop: 'Shop', arcade: 'Arcade', web: 'Websites', youtube: 'YouTube', parent: 'Parent Console' }[view.name] ?? 'CoinQuest');
+  }, [view.name, (view as { moduleId?: string }).moduleId]);
   const [toast, setToast] = useState<string>('');
   const [error, setError] = useState('');
   const [tick, setTick] = useState(0);

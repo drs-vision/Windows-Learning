@@ -7,11 +7,12 @@ import { MODULES } from '../modules/registry';
 import { familyPassages, type FamilyPassage } from '../modules/my-passages/score';
 import { wordCount } from '../modules/bible-typing/score';
 import { keyboardText } from '../core/keyboardText';
+import * as rep from '../../../phone/report.js';
 import { SetupWizard } from './SetupWizard';
 import { fmt } from '../modules/arcade/Arcade';
 import { merge3 } from '../core/merge';
 
-type Tab = 'today' | 'approvals' | 'allowed' | 'shop' | 'quests' | 'settings';
+type Tab = 'today' | 'activity' | 'approvals' | 'allowed' | 'shop' | 'quests' | 'settings';
 
 /** Five screens (plus Settings). Works standalone in the Parent Console app, or embedded in Scholar behind the PIN. */
 export function ParentConsole({ embedded, onClose }: { embedded?: boolean; onClose?: () => void }) {
@@ -58,7 +59,7 @@ export function ParentConsole({ embedded, onClose }: { embedded?: boolean; onClo
   return (
     <div class="parent">
       <nav class="tabs">
-        {([['today', 'Today'], ['approvals', pendingCount ? `Approvals (${pendingCount})` : 'Approvals'], ['allowed', 'Allowed'], ['shop', 'Shop'], ['quests', 'Quests'], ['settings', 'Settings']] as [Tab, string][]).map(([t, label]) => (
+        {([['today', 'Today'], ['activity', 'Activity'], ['approvals', pendingCount ? `Approvals (${pendingCount})` : 'Approvals'], ['allowed', 'Allowed'], ['shop', 'Shop'], ['quests', 'Quests'], ['settings', 'Settings']] as [Tab, string][]).map(([t, label]) => (
           <button class={tab === t ? 'on' : ''} onClick={() => setTab(t)}>{label}</button>
         ))}
         {embedded && <button class="ghost close" onClick={onClose}>✕ Close</button>}
@@ -67,6 +68,7 @@ export function ParentConsole({ embedded, onClose }: { embedded?: boolean; onClo
       <section class="tab-body">
         {!child && <p class="muted">No child set up yet.</p>}
         {child && tab === 'today' && <Today state={state} child={child} onChange={refresh} onGo={setTab} />}
+        {child && tab === 'activity' && <ActivityTab child={child} onSave={(c) => save(child, c, refresh, setError)} />}
         {child && tab === 'approvals' && <Approvals state={state} onChange={refresh} />}
         {child && tab === 'allowed' && <Allowed child={child} onSave={(c) => save(child, c, refresh, setError)} />}
         {child && tab === 'shop' && <ShopEditor child={child} onSave={(c) => save(child, c, refresh, setError)} />}
@@ -654,6 +656,56 @@ function Quests({ child, onSave }: { child: Child; onSave: (c: Child) => void })
           </div>
         );
       })}
+    </div>
+  );
+}
+
+/** What the child did each day: a calendar, and a day or week report (same look as the parent's phone). */
+function ActivityTab({ child, onSave }: { child: Child; onSave: (c: Child) => void }) {
+  const now = new Date();
+  const [mode, setMode] = useState<'day' | 'week'>('day');
+  const [sel, setSel] = useState(rep.dayKey(now));
+  const [month, setMonth] = useState(new Date(now.getFullYear(), now.getMonth(), 1));
+  const [byDay, setByDay] = useState<Record<string, rep.DayReport>>({});
+  const [err, setErr] = useState('');
+  const [busy, setBusy] = useState(false);
+  async function load() {
+    setBusy(true); setErr('');
+    try {
+      const last = new Date(month.getFullYear(), month.getMonth() + 1, 6);
+      const to = rep.dayKey(last > new Date() ? new Date() : last);
+      const r = await bridge.parentActivity(child.id, rep.dayKey(rep.weekStart(month)), to);
+      setByDay((p) => ({ ...p, ...Object.fromEntries(r.days.map((d) => [d.day, d])) }));
+      // Open on yesterday when today has nothing yet.
+      const y = rep.dayKey(new Date(Date.now() - 86400e3));
+      if (!r.days.some((d) => d.day === rep.dayKey(new Date())) && r.days.some((d) => d.day === y)) setSel((s) => (s === rep.dayKey(new Date()) ? y : s));
+    } catch (e) { setErr((e as Error).message); }
+    setBusy(false);
+  }
+  useEffect(() => { load(); }, [child.id, month.getTime()]);
+  const days = rep.rangeOf(sel, mode);
+  const html = rep.calendarHtml(month, byDay, sel, mode)
+    + `<div class="card">${rep.reportHtml(days.map((d) => byDay[d]).filter(Boolean) as rep.DayReport[], { title: rep.titleOf(sel, mode) })}</div>`;
+  const on = child.activityReports !== false;
+  function click(e: MouseEvent) {
+    const b = (e.target as HTMLElement).closest('button') as HTMLButtonElement | null;
+    if (!b) return;
+    if (b.dataset.calDay) setSel(b.dataset.calDay);
+    else if (b.dataset.calMonth) setMonth(new Date(month.getFullYear(), month.getMonth() + Number(b.dataset.calMonth), 1));
+  }
+  return (
+    <div class="activity">
+      <style dangerouslySetInnerHTML={{ __html: rep.REPORT_CSS }} />
+      <div class="act-bar">
+        <div class="seg">
+          <button class={mode === 'day' ? 'on' : ''} onClick={() => setMode('day')}>Day</button>
+          <button class={mode === 'week' ? 'on' : ''} onClick={() => setMode('week')}>Week</button>
+        </div>
+        <button class="ghost small" disabled={busy} onClick={load}>{busy ? 'Loading…' : '↻ Refresh'}</button>
+      </div>
+      {err && <p class="error">{err}</p>}
+      <div class="act-body" onClick={click} dangerouslySetInnerHTML={{ __html: html }} />
+      <label class="check act-toggle"><input type="checkbox" checked={on} onChange={(e) => onSave({ ...child, activityReports: (e.target as HTMLInputElement).checked })} /> Keep activity reports for {child.displayName} (time in each quest, website, YouTube channel and app; typing; things finished). They stay on this PC and your linked phones.</label>
     </div>
   );
 }

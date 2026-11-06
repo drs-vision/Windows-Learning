@@ -68,6 +68,7 @@ public class WebShellWindow : Window
         {
             var hello = await _pipe.SendAsync(Ops.Hello);
             ManagedChild = hello.Ok && hello.Payload?["childId"] is not null;
+            if (ManagedChild) StartActivitySampler();
         }
         catch { ManagedChild = _kiosk; }
         var env = await CoreWebView2Environment.CreateAsync(null, userData, ProxyOptions());
@@ -270,6 +271,7 @@ public class WebShellWindow : Window
                 {
                     _game?.Close();
                     _game = new GameWindow(url, payload?["title"]?.GetValue<string>() ?? "Game", _kiosk) { Owner = this };
+                    _gameIsSite = false;
                     _game.Closed += (_, _) => { _game = null; _web.CoreWebView2?.PostWebMessageAsString("{\"name\":\"gameClosed\"}"); };
                     _game.Show();
                 });
@@ -285,6 +287,7 @@ public class WebShellWindow : Window
                 {
                     _game?.Close();
                     _game = new GameWindow(url, payload?["title"]?.GetValue<string>() ?? "Website", _kiosk, allow) { Owner = this };
+                    _gameIsSite = true;
                     _game.OnLearnEvent += kind => _web.CoreWebView2?.PostWebMessageAsString($"{{\"name\":\"learn\",\"payload\":{{\"kind\":\"{kind}\"}}}}");
                     _game.Closed += (_, _) => { _game = null; _web.CoreWebView2?.PostWebMessageAsString("{\"name\":\"siteClosed\"}"); };
                     _game.Show();
@@ -367,6 +370,10 @@ public class WebShellWindow : Window
             case "shell.restore":
                 Dispatcher.Invoke(() => { WindowState = _kiosk ? WindowState.Maximized : WindowState.Normal; Activate(); });
                 return Response.Success("", new { ok = true });
+            case "shell.context":
+                // What the CoinQuest screen is showing (a quest, a YouTube channel, an arcade game…), for activity reports.
+                _context = (payload?["kind"]?.GetValue<string>() ?? "coinquest", payload?["key"]?.GetValue<string>() ?? "home", payload?["label"]?.GetValue<string>() ?? "");
+                return Response.Success("", new { ok = true });
             case "shell.info":
                 return Response.Success("", new { app = _app, kiosk = _kiosk, version = typeof(WebShellWindow).Assembly.GetName().Version?.ToString(3), account = Environment.UserName });
             case "shell.exit":
@@ -376,6 +383,81 @@ public class WebShellWindow : Window
                 return Response.Fail("", "unknown shell op");
         }
     }
+
+    // ---- activity sampling (for the parent's reports) ----------------------------------------------------------
+    private (string kind, string key, string label) _context = ("coinquest", "home", "CoinQuest");
+    private bool _gameIsSite;
+    private System.Windows.Threading.DispatcherTimer? _sampler;
+    private static readonly HashSet<string> NotActivity = new(StringComparer.OrdinalIgnoreCase) { "explorer", "LockApp", "ShellExperienceHost", "StartMenuExperienceHost", "SearchHost", "SearchApp", "TextInputHost", "ApplicationFrameHost", "SystemSettings", "Idle" };
+
+    /// <summary>
+    /// Once a minute: what is in front of the child — a CoinQuest screen, a website in CoinQuest's browser, or another
+    /// program (a CD game, Read, Write &amp; Type!, an allowed app) — sent to the Guardian. Time away from the keyboard
+    /// and mouse (over 3 minutes) isn't counted, except while a YouTube video or game is showing.
+    /// </summary>
+    private void StartActivitySampler()
+    {
+        Dispatcher.Invoke(() =>
+        {
+            _sampler = new System.Windows.Threading.DispatcherTimer { Interval = TimeSpan.FromSeconds(60) };
+            _sampler.Tick += async (_, _) =>
+            {
+                try
+                {
+                    var now = Sample();
+                    if (now is null) return;
+                    var (kind, key, label) = now.Value;
+                    if (IdleSeconds() > 180 && kind is not ("youtube" or "arcade")) return;
+                    if (!_pipe.IsConnected) return;
+                    await _pipe.SendAsync(Ops.ActivityTick, new { kind, key, label, seconds = 60 }, timeoutMs: 5000);
+                }
+                catch (Exception ex) { Log("activity sample: " + ex.Message); }
+            };
+            _sampler.Start();
+        });
+    }
+
+    private (string kind, string key, string label)? Sample()
+    {
+        var hwnd = GetForegroundWindow();
+        if (hwnd == IntPtr.Zero) return null;
+        GetWindowThreadProcessId(hwnd, out var pid);
+        if (pid == Environment.ProcessId)
+        {
+            if (_game is { IsActive: true } g && _gameIsSite) { var site = g.Site; return ("site", site, site); }
+            return _context;
+        }
+        try
+        {
+            using var p = Process.GetProcessById((int)pid);
+            if (NotActivity.Contains(p.ProcessName)) return null;
+            var title = new System.Text.StringBuilder(200);
+            GetWindowText(hwnd, title, 200);
+            string label;
+            if (p.ProcessName.StartsWith("otvdm", StringComparison.OrdinalIgnoreCase) || p.ProcessName.StartsWith("ntvdm", StringComparison.OrdinalIgnoreCase))
+                label = title.Length > 0 ? title.ToString() : "Classic game";
+            else
+            {
+                string? desc = null;
+                try { desc = p.MainModule?.FileVersionInfo.FileDescription; } catch { }
+                label = !string.IsNullOrWhiteSpace(desc) ? desc! : title.Length > 0 ? title.ToString() : p.ProcessName;
+            }
+            return ("app", p.ProcessName + (p.ProcessName.StartsWith("otvdm", StringComparison.OrdinalIgnoreCase) ? ":" + label : ""), label);
+        }
+        catch { return null; }
+    }
+
+    private static int IdleSeconds()
+    {
+        var info = new LASTINPUTINFO { cbSize = (uint)System.Runtime.InteropServices.Marshal.SizeOf<LASTINPUTINFO>() };
+        return GetLastInputInfo(ref info) ? (int)((uint)Environment.TickCount - info.dwTime) / 1000 : 0;
+    }
+
+    [System.Runtime.InteropServices.StructLayout(System.Runtime.InteropServices.LayoutKind.Sequential)]
+    private struct LASTINPUTINFO { public uint cbSize; public uint dwTime; }
+    [System.Runtime.InteropServices.DllImport("user32")] private static extern bool GetLastInputInfo(ref LASTINPUTINFO plii);
+    [System.Runtime.InteropServices.DllImport("user32")] private static extern IntPtr GetForegroundWindow();
+    [System.Runtime.InteropServices.DllImport("user32")] private static extern uint GetWindowThreadProcessId(IntPtr hWnd, out uint pid);
 
     [System.Runtime.InteropServices.DllImport("kernel32", CharSet = System.Runtime.InteropServices.CharSet.Unicode, SetLastError = true)]
     private static extern bool DefineDosDevice(int flags, string device, string? target);

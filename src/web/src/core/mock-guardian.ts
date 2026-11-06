@@ -153,7 +153,7 @@ export class MockGuardian {
         this.unlocks.push(unlock); this.emit({ name: 'state' });
         return ok({ balance: this.balance(), unlock });
       }
-      case 'shell.flashpoint': case 'shell.openGame': case 'shell.openSite': case 'shell.closeGame': case 'shell.launch': return ok({ ok: true });
+      case 'shell.context': case 'shell.flashpoint': case 'shell.openGame': case 'shell.openSite': case 'shell.closeGame': case 'shell.launch': return ok({ ok: true });
       case 'youtube.library': return ok({ channels: this.child.youTubeChannels, errors: [], videos: Array.from({ length: 9 }, (_, i) => ({ id: 'dQw4w9WgXcQ', title: `Amazing science video #${i + 1}`, channelId: this.child.youTubeChannels![0].id, channelTitle: 'Mark Rober', published: new Date().toISOString(), thumbnail: '' })) });
       case 'youtube.channel': { const n = Number(p?.next || 0); return ok({ videos: Array.from({ length: 12 }, (_, i) => ({ id: 'vid' + String(n * 12 + i).padStart(8, '0'), title: `Older video #${n * 12 + i + 1}`, channelId: p?.channelId, channelTitle: 'Mark Rober', published: new Date().toISOString(), thumbnail: '' })), next: n < 2 ? String(n + 1) : null }); }
       case 'youtube.check': return ok({ allowed: this.unlocks.some((u) => u.kind === 'youTube') });
@@ -169,6 +169,23 @@ export class MockGuardian {
       case 'parent.phoneLink': return ok({ id: 'demo', name: 'Phone', url: 'https://drs-vision.github.io/Windows-Learning/#demo' });
       case 'parent.discCoins':
       case 'parent.discStatus': return ok({ stage: 'idle', games: [], root: 'C:\\ProgramData\\CoinQuest\\discgames' });
+      case 'parent.activity': {
+        // Sample reports so the Activity tab can be seen in the browser preview.
+        const days = [];
+        const end = new Date(String(p?.to ?? '') || Date.now()), start = new Date(String(p?.from ?? '') || Date.now());
+        for (let d = new Date(start); d <= end; d.setDate(d.getDate() + 1)) {
+          const seed = (d.getDate() * 37) % 11;
+          if (seed < 3) continue;
+          const k = `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
+          days.push({ day: k, childId: 'c1', kid: 'Sam', time: [
+            { kind: 'quest', label: 'Khan Academy', sec: 900 + seed * 120 }, { kind: 'site', label: 'khanacademy.org', sec: 1500 + seed * 60 },
+            { kind: 'youtube', label: 'Mark Rober', sec: 600 + seed * 90 }, { kind: 'quest', label: 'Scripture Typing', sec: 420 },
+            { kind: 'arcade', label: '2048', sec: 300 + seed * 30 }, { kind: 'app', label: 'Read, Write & Type!', sec: 780 }, { kind: 'coinquest', label: 'Home', sec: 240 } ],
+            typing: { sessions: 3, chars: 2400 + seed * 100, ms: 900000, best: 28 + seed }, done: { 'khan-academy:correct': 12 + seed, 'khan-academy:videos': 2, 'bible-typing:finished': 2, 'duolingo:lessons': seed % 3 },
+            earned: { 'khan-academy': 30 + seed, 'bible-typing': 9, rwt: 20 }, spent: { '20 minutes of YouTube': 48 } });
+        }
+        return ok({ childId: 'c1', kid: 'Sam', enabled: true, days });
+      }
       case 'parent.rwtStatus': return ok({ installed: false, otvdm: false, stage: 'idle', patches: [], players: [], root: 'C:\\ProgramData\\CoinQuest\\rwt' });
       case 'shell.pickFile': return ok({ path: null });
       case 'parent.diagnostics': return ok({ version: '0.0.0-mock', problems: ['10-12 21:40 YouTubeService: Feed failed for Mark Rober — HttpRequestException: example'], blocked: ['d35aaqx5ub95lt.cloudfront.net'], internetLock: { applied: true } });

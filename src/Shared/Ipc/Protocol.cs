@@ -49,6 +49,7 @@ public static class Ops
     public const string Hello = "hello";
     public const string State = "state";               // child's current state (balance, unlocks, quests, shop)
     public const string Submit = "submit";             // { moduleId, activity, result }
+    public const string ActivityTick = "activity.tick"; // { kind, key, label, seconds } a minute of what the child is doing (from the CoinQuest window)
     public const string Buy = "buy";                   // { prizeId }
     public const string Progress = "progress";         // { moduleId, progress } save module progress
     public const string ArcadeList = "arcade.list";    // games available, with prices
@@ -83,6 +84,7 @@ public static class Ops
     public const string ParentFpInstallClifp = "parent.fpInstallClifp";
     public const string ParentFpDownloadInstaller = "parent.fpDownloadInstaller";
     public const string ParentDiagnostics = "parent.diagnostics";
+    public const string ParentActivity = "parent.activity"; // { childId, from, to } → daily activity reports (yyyy-MM-dd, inclusive)
     public const string ParentRwtStatus = "parent.rwtStatus";         // Read, Write & Type: imported? otvdm? import progress
     public const string ParentRwtImport = "parent.rwtImport";         // { path } → import the family's disc image (background)
     public const string RwtLaunch = "rwt.launch";                     // → where otvdm and the game live (child or parent)     // recent warnings/errors + blocked hosts

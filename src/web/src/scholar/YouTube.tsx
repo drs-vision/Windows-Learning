@@ -33,6 +33,7 @@ export function YouTube({ unlock, onExit, prize, balance, onBought }: {
   const loadLib = () => { setLoading(true); setError(''); bridge.youtubeLibrary().then(setLib).catch((e) => setError(e.message)).finally(() => setLoading(false)); };
   useEffect(() => { loadLib(); }, []);
   useEffect(() => { if (!unlock) setPlaying(null); }, [unlock]);
+  useEffect(() => { if (playing) bridge.context('youtube', playing.channelId, playing.channelTitle); else bridge.context('coinquest', 'youtube', 'YouTube'); }, [playing?.channelId]);
 
   function loadMore(id: string) {
     const cur = pages[id];

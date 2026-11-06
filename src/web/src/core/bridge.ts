@@ -98,6 +98,7 @@ class Bridge {
   parentArcadeUpload(fileName: string, data: string, title: string, strategy: number) { return this.call<Game>('parent.arcadeUpload', { fileName, data, title, strategy }, { parent: true }); }
   parentArcadeRemove(gameId: string) { return this.call('parent.arcadeRemove', { gameId }, { parent: true }); }
   parentFpStatus() { return this.call<FpStatus>('parent.fpStatus', undefined, { parent: true }); }
+  parentActivity(childId: string, from: string, to: string) { return this.call<{ childId: string; kid: string; enabled: boolean; days: import('../../../phone/report').DayReport[] }>('parent.activity', { childId, from, to }, { parent: true }); }
   parentDiagnostics() { return this.call<{ version: string; problems: string[]; blocked: string[]; internetLock: { applied: boolean; error?: string | null }; net?: { site: string; ok: boolean; detail: string }[]; system?: string[] }>('parent.diagnostics', undefined, { parent: true }); }
   parentBlocked() { return this.call<{ host: string; at: string; reason: string }[]>('parent.blocked', undefined, { parent: true }); }
   parentFpStockNow() { return this.call<FpStatus>('parent.fpStockNow', undefined, { parent: true }); }
@@ -133,6 +134,8 @@ class Bridge {
   openSite(url: string, title: string, allow: string[]) { return this.call('shell.openSite', { url, title, allow }); }
   openGame(url: string, title: string) { return this.call('shell.openGame', { url, title }); }
   closeGame() { return this.call('shell.closeGame').catch(() => undefined); }
+  /** Tell the CoinQuest window what is on screen, for the parent's activity report (kind: quest, youtube, arcade, coinquest). */
+  context(kind: string, key: string, label: string) { return this.call('shell.context', { kind, key, label }).catch(() => undefined); }
   shellInfo() { return this.call<{ app: string; kiosk: boolean; version: string; account: string }>('shell.info'); }
 }
 

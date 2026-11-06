@@ -10,10 +10,13 @@
 //   GET  /<topic>/json?since=…    the backlog as NDJSON (polling fallback)
 //   GET  /v1/health               {"healthy":true}
 //
+// Activity reports (topic ending "-rep") are kept 70 days instead of 7.
 // One Durable Object per topic (topics are random names from the QR link, so a topic is effectively one phone).
 
 const KEEP_SECONDS = 7 * 24 * 3600;
 const KEEP_ROWS = 500;
+const REP_KEEP_SECONDS = 70 * 24 * 3600;
+const REP_KEEP_ROWS = 400;
 const MAX_BYTES = 8192;
 const TOPIC = /^[A-Za-z0-9_-]{8,80}$/;
 
@@ -69,7 +72,9 @@ export class Topic {
       if (!body || body.length > MAX_BYTES) return json({ error: 'message too large' }, 413);
       const now = Math.floor(Date.now() / 1000);
       const row = this.sql.exec('INSERT INTO m (t, body) VALUES (?, ?) RETURNING seq, t, body', now, body).one();
-      this.sql.exec('DELETE FROM m WHERE t < ? OR seq <= (SELECT MAX(seq) FROM m) - ?', now - KEEP_SECONDS, KEEP_ROWS);
+      // Activity reports (topics ending "-rep", one message per child per day) are kept about two months.
+      const rep = topic.endsWith('-rep');
+      this.sql.exec('DELETE FROM m WHERE t < ? OR seq <= (SELECT MAX(seq) FROM m) - ?', now - (rep ? REP_KEEP_SECONDS : KEEP_SECONDS), rep ? REP_KEEP_ROWS : KEEP_ROWS);
       const m = this.msg(row, topic);
       const text = JSON.stringify(m);
       for (const ws of this.ctx.getWebSockets()) { try { ws.send(text); } catch { /* gone */ } }

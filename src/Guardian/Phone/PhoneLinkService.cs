@@ -400,5 +400,29 @@ public sealed class PhoneLinkService : BackgroundService
         }
     }
 
+    /// <summary>
+    /// Leave each phone the daily activity reports (scrambled, one message per day) on CoinQuest's relay, which keeps
+    /// them for about two months, so the phone's calendar can show past days while the PC is off.
+    /// </summary>
+    public async Task PostReports(List<JsonObject> reports)
+    {
+        string? cq; List<Link> links;
+        lock (_gate) { cq = _store.CqRelay; links = _store.Links.ToList(); }
+        if (cq is null || links.Count == 0) return;
+        foreach (var l in links)
+            foreach (var r in reports)
+            {
+                var copy = (JsonObject)r.DeepClone();
+                string body;
+                // Very busy days are trimmed to fit the relay's 8 KB message size.
+                while ((body = "cq1:rep:1/1:" + PhoneWire.Seal(PhoneWire.FromB64Url(l.Key), new JsonObject { ["rep"] = true, ["d"] = copy.DeepClone() })).Length > 8000
+                       && copy["time"] is JsonArray t && t.Count > 5)
+                    t.RemoveAt(t.Count - 1);
+                if (body.Length > 8000) continue;
+                try { using var resp = await _post.PostAsync($"{cq}/{l.TopicOut}-rep", new StringContent(body, Encoding.UTF8, "text/plain")); }
+                catch (Exception ex) { _log.LogInformation("Report: {Msg}", ex.Message); }
+            }
+    }
+
     private static readonly JsonSerializerOptions Json = new() { PropertyNamingPolicy = JsonNamingPolicy.CamelCase };
 }

@@ -114,6 +114,7 @@ export interface Child {
   prizes: Prize[];
   modules: Record<string, ModuleSettings>;
   dailyScreenTimeCapMinutes?: number | null;
+  activityReports?: boolean;
   youTubeChannels?: YouTubeChannel[];
   arcade?: ArcadeSettings;
 }

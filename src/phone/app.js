@@ -4,6 +4,8 @@
 // and change quests (coins, limits, on/off), shop prizes (incl. website and app time), allowed websites, apps and YouTube channels. The parent PIN,
 // internet lock, arcade, updates and CD games stay on the PC.
 import * as w from './wire.js';
+import * as rep from './report.js';
+document.head.insertAdjacentHTML('beforeend', `<style>${rep.REPORT_CSS}</style>`);
 
 const app = document.getElementById('app');
 const sheet = document.getElementById('sheet');
@@ -176,7 +178,7 @@ function send(op, args = {}) {
     setTimeout(() => {
       if (!waiting.has(id)) return;
       waiting.delete(id);
-      reject(new Error(op === 'state' || op === 'config' || op === 'history' || op === 'apps'
+      reject(new Error(op === 'state' || op === 'config' || op === 'history' || op === 'apps' || op === 'activity'
         ? "The PC isn't answering — it may be off, asleep or offline."
         : `The PC isn't answering right now — this will happen when it's back online (within ${cqRelay ? '7 days' : '12 hours'}).`));
     }, 30000);
@@ -201,7 +203,8 @@ async function refresh() {
   status = 'wait'; error = ''; render();
   try {
     await send('state');
-    if (tab === 'rewards' || tab === 'shop' || tab === 'allowed') await loadConfig();
+    if (tab === 'rewards' || tab === 'shop' || tab === 'allowed' || tab === 'activity') await loadConfig();
+    if (tab === 'activity') { actv.fetched = null; }
     if (tab === 'history') await loadHistory(true);
   } catch (e) { status = 'off'; error = state ? '' : e.message; render(); }
 }
@@ -304,8 +307,8 @@ function draw() {
   const statusText = status === 'on' ? `PC answered ${ago(new Date(updatedAt).toISOString())}`
     : status === 'wait' ? (state && asOf ? `Asking the PC… (showing ${asOf})` : 'Asking the PC…')
     : state && asOf ? `PC is offline — showing what it last sent (${asOf})` : 'Not connected to the PC';
-  const body = { home: homeScreen, history: historyScreen, rewards: rewardsScreen, shop: shopScreen, allowed: allowedScreen }[tab]();
-  const tabs = [['home', '🏠', 'Home'], ['history', '🧾', 'History'], ['rewards', '⭐', 'Rewards'], ['shop', '🛍️', 'Shop'], ['allowed', '🌐', 'Allowed']];
+  const body = { home: homeScreen, history: historyScreen, activity: activityScreen, rewards: rewardsScreen, shop: shopScreen, allowed: allowedScreen }[tab]();
+  const tabs = [['home', '🏠', 'Home'], ['history', '🧾', 'History'], ['activity', '📊', 'Activity'], ['rewards', '⭐', 'Rewards'], ['shop', '🛍️', 'Shop'], ['allowed', '🌐', 'Allowed']];
   app.innerHTML = `
     <header><img src="icon-192.png" alt=""><h1>${esc(state?.household || link.household)}</h1><button class="icon" data-refresh aria-label="Refresh">↻</button></header>
     ${pcs}
@@ -357,6 +360,82 @@ function historyScreen() {
   out += '</ul></div>';
   if (hist.more) out += `<button class="wide" data-more ${hist.loading ? 'disabled' : ''}>${hist.loading ? 'Loading…' : 'Show older'}</button>`;
   return out;
+}
+
+// ---- activity reports ----------------------------------------------------------------------------------------------
+// Daily reports wait on CoinQuest's relay (about two months) and are kept on this phone, so past days show with the
+// PC off. "Check now" asks the PC for today so far (and the month on screen) when it's on.
+const actNow = new Date();
+let actv = { mode: 'day', sel: rep.dayKey(actNow), month: new Date(actNow.getFullYear(), actNow.getMonth(), 1), fetched: null, checking: false, checkedAt: 0 };
+const repKey = () => 'cq.rep.' + link.topicIn;
+const repCache = () => store.get(repKey(), {});
+function putReports(days) {
+  const c = repCache();
+  for (const d of days) {
+    if (!d?.childId || !d.day) continue;
+    (c[d.childId] ??= {})[d.day] = d;
+  }
+  // Keep the last ~5 months per child.
+  const cut = rep.dayKey(new Date(Date.now() - 150 * 86400e3));
+  for (const kid of Object.values(c)) for (const day of Object.keys(kid)) if (day < cut) delete kid[day];
+  store.set(repKey(), c);
+}
+async function loadReports() {
+  actv.fetched = link.topicIn;
+  if (!cqRelay || !key) return;
+  try {
+    const since = Math.floor(Date.now() / 1000) - 72 * 86400;
+    const r = await fetch(`${cqRelay}/${link.topicOut}-rep/json?since=${since}`, { cache: 'no-store' });
+    if (!r.ok) return;
+    const got = [];
+    for (const line of (await r.text()).split('\n')) {
+      if (!line.trim()) continue;
+      let m; try { m = JSON.parse(line); } catch { continue; }
+      const sealed = typeof m.message === 'string' && w.assembler().add(m.message);
+      const msg = sealed && await w.open(key, sealed);
+      if (msg?.rep && msg.d) got.push(msg.d);
+    }
+    if (got.length) { putReports(got); render(); }
+  } catch { /* relay unreachable: what's on the phone still shows */ }
+}
+async function checkNow() {
+  const k = kid(); if (!k) return;
+  actv.checking = true; render();
+  try {
+    const from = rep.dayKey(rep.weekStart(new Date(actv.month)));
+    const d = await send('activity', { childId: k.id, from, to: rep.dayKey(new Date()) });
+    putReports(d?.result?.days ?? []);
+    actv.checkedAt = Date.now();
+  } catch (e) { error = e.message; }
+  actv.checking = false; render();
+}
+
+function activityScreen() {
+  const k = kid();
+  if (!k) return `<div class="card empty"><p>Asking the PC…</p></div>`;
+  if (actv.fetched !== link.topicIn) setTimeout(loadReports, 0);
+  if (!config && status !== 'off') setTimeout(() => loadConfig().catch(() => { }), 0);
+  const byDay = repCache()[k.id] ?? {};
+  // Open on yesterday when today has nothing yet (today's report comes tomorrow).
+  if (!actv.picked) { const y = rep.dayKey(new Date(Date.now() - 86400e3)); if (!byDay[actv.sel] && byDay[y]) actv.sel = y; }
+  const days = rep.rangeOf(actv.sel, actv.mode);
+  const reports = days.map((d) => byDay[d]).filter(Boolean);
+  const today = rep.dayKey(new Date());
+  const note = days.includes(today) && !byDay[today]
+    ? "Today's report arrives tomorrow when your child first uses the PC — or tap Check now while the PC is on."
+    : '';
+  const kc = config?.children?.find((c) => c.id === k.id);
+  const on = kc ? kc.activityReports !== false : true;
+  return `<div class="activity">
+    <div class="act-bar">
+      <div class="seg"><button data-actmode="day" class="${actv.mode === 'day' ? 'on' : ''}">Day</button><button data-actmode="week" class="${actv.mode === 'week' ? 'on' : ''}">Week</button></div>
+      <button data-actcheck ${actv.checking ? 'disabled' : ''}>${actv.checking ? 'Asking the PC…' : '↻ Check now'}</button>
+    </div>
+    ${rep.calendarHtml(actv.month, byDay, actv.sel, actv.mode)}
+    <div class="card">${rep.reportHtml(reports, { title: rep.titleOf(actv.sel, actv.mode), note })}</div>
+    <div class="card row between"><span>Keep activity reports for ${esc(k.name)}</span>${toggle(on, 'data-actrep aria-label="Activity reports on or off"')}</div>
+    ${!on ? '<p class="note">Reports are off: nothing new is recorded for this child.</p>' : ''}
+  </div>`;
 }
 
 const field = (label, attrs, hint = '') => `<label class="field"><span>${label}${hint ? `<small>${hint}</small>` : ''}</span><input ${attrs}></label>`;
@@ -607,6 +686,10 @@ app.addEventListener('click', (e) => {
     render();
   }
   else if (b.dataset.kid) { kidId = b.dataset.kid; render(); }
+  else if (b.dataset.calDay) { actv.sel = b.dataset.calDay; actv.picked = true; render(); }
+  else if (b.dataset.calMonth) { actv.month = new Date(actv.month.getFullYear(), actv.month.getMonth() + Number(b.dataset.calMonth), 1); render(); }
+  else if (b.dataset.actmode) { actv.mode = b.dataset.actmode; render(); }
+  else if (b.dataset.actcheck !== undefined) checkNow();
   else if (b.dataset.give) giveSheet(b.dataset.give, +1);
   else if (b.dataset.take) giveSheet(b.dataset.take, -1);
   else if (b.dataset.claim) act('claim', { seq: +b.dataset.claim, approve: b.dataset.ok === '1' }, b.dataset.ok === '1' ? 'Approved' : 'Declined');
@@ -629,6 +712,7 @@ app.addEventListener('click', (e) => {
 // Quest settings save when a field is finished (or a switch flipped).
 app.addEventListener('change', (e) => {
   const el = e.target;
+  if (el.dataset?.actrep !== undefined) { act('setReports', { childId: kid().id, on: el.checked }, el.checked ? 'Activity reports on' : 'Activity reports off'); return; }
   if (!el.dataset?.q) return;
   const args = { childId: kidConfig().id, moduleId: el.dataset.q };
   if (el.dataset.opt) args.options = { [el.dataset.opt]: el.tagName === 'SELECT' ? el.value : String(num(el.value)) };

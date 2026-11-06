@@ -18,6 +18,7 @@ namespace CoinQuest.Guardian.Ipc;
 public sealed class RequestRouter
 {
     private readonly HouseholdStore _store;
+    private readonly CoinQuest.Shared.Activity.ActivityStore _activity = new();
     private readonly Ledger _ledger;
     private readonly ScoreEngine _scorer;
     private readonly UnlockManager _unlocks;
@@ -70,6 +71,7 @@ public sealed class RequestRouter
             // ---- child ----
             Ops.State => child is null ? Response.Fail(req.Id, "not a managed account") : Response.Success(req.Id, ChildState(child)),
             Ops.Submit => child is null ? Response.Fail(req.Id, "not a managed account") : Submit(req, child, client.Account),
+            Ops.ActivityTick => child is null ? Response.Success(req.Id, new { ok = false }) : ActivityTick(req, child),
             Ops.Buy => child is null ? Response.Fail(req.Id, "not a managed account") : Buy(req, child, client.Account),
             Ops.Progress => child is null ? Response.Fail(req.Id, "not a managed account") : SaveProgress(req, child),
             Ops.ArcadeList => child is null ? Response.Success(req.Id, new { games = Array.Empty<object>() })
@@ -115,6 +117,7 @@ public sealed class RequestRouter
             Ops.ParentDiscHide => Parent(req, client, child, () => _discs.SetHidden(Str(req, "id"), req.Payload?["hidden"]?.GetValue<bool>() == true)),
             Ops.ParentDiscRemove => Parent(req, client, child, () => _discs.Remove(Str(req, "id"))),
             Ops.DiscLaunch => DiscLaunch(req, child),
+            Ops.ParentActivity => Parent(req, client, child, () => ActivityDays(Str(req, "childId"), Str(req, "from"), Str(req, "to"))),
             Ops.ParentDiagnostics => Parent(req, client, child, () => new { version = Version, problems = CoinQuest.Guardian.FileLoggerProvider.Recent(), blocked = _gate.RecentlyBlocked().Take(20).Select(b => b.Host), internetLock = _netLock.Status, net = NetCheck().GetAwaiter().GetResult(), system = SystemCheck() }),
             Ops.ParentBlocked => Parent(req, client, child, () => _gate.RecentlyBlocked().Select(b => new { host = b.Host, at = b.At, reason = b.Reason })),
             Ops.ParentFpStatus => Parent(req, client, child, () => FpStatus()),
@@ -210,8 +213,88 @@ public sealed class RequestRouter
         }
 
         if (outcome.ProgressDelta is not null) ProgressStore.Merge(child.Id, moduleId, outcome.ProgressDelta);
+        if (child.ActivityReports) NoteDone(child, moduleId, req.Payload?["result"], outcome);
         AfterChange();
         return Response.Success(req.Id, result);
+    }
+
+    // ---- activity reports ---------------------------------------------------------------------------------------
+
+    private static readonly HashSet<string> TickKinds = new() { "quest", "youtube", "site", "arcade", "app", "coinquest" };
+
+    /// <summary>A minute of what the child is doing, from their CoinQuest window. The first of the day sends the
+    /// parent's phones the reports for the days since the last ones were sent.</summary>
+    private Response ActivityTick(Request req, Child child)
+    {
+        if (!child.ActivityReports) return Response.Success(req.Id, new { ok = false });
+        var kind = Str(req, "kind");
+        if (!TickKinds.Contains(kind)) return Response.Fail(req.Id, "unknown activity");
+        var seconds = Math.Clamp(req.Payload?["seconds"]?.GetValue<int>() ?? 60, 0, 120);
+        var first = _activity.AddTime(child.Id, DateTime.Now, kind, Str(req, "key"), req.Payload?["label"]?.GetValue<string>() ?? "", seconds);
+        if (first) SendReports(child);
+        return Response.Success(req.Id, new { ok = true });
+    }
+
+    /// <summary>Typing totals and things finished (Khan answers, Duolingo lessons, passages…) for the reports.</summary>
+    private void NoteDone(Child child, string moduleId, JsonNode? result, ScoreOutcome outcome)
+    {
+        try
+        {
+            var now = DateTime.Now;
+            int N(string k) => result?["data"]?[k] is JsonValue v && v.TryGetValue<int>(out var i) ? Math.Max(0, i) : 0;
+            switch (moduleId)
+            {
+                case "khan-academy":
+                    _activity.Count(child.Id, now, "khan-academy:correct", N("correct"));
+                    _activity.Count(child.Id, now, "khan-academy:videos", N("video") + N("videos"));
+                    _activity.Count(child.Id, now, "khan-academy:exercises", N("done"));
+                    break;
+                case "duolingo":
+                    _activity.Count(child.Id, now, "duolingo:lessons", N("lesson"));
+                    _activity.Count(child.Id, now, "duolingo:stories", N("story"));
+                    break;
+                default:
+                    if (result?["data"]?["typed"] is JsonValue t && t.TryGetValue<string>(out var typed))
+                    {
+                        var ms = (result["finishedAt"]?.GetValue<double>() ?? 0) - (result["startedAt"]?.GetValue<double>() ?? 0);
+                        _activity.AddTyping(child.Id, now, typed.Length, (long)ms);
+                    }
+                    if (outcome.ProgressDelta is not null || outcome.Coins != 0) _activity.Count(child.Id, now, moduleId + ":finished");
+                    break;
+            }
+        }
+        catch (Exception ex) { _log.LogInformation("Activity note failed: {Msg}", ex.Message); }
+    }
+
+    /// <summary>Daily reports for a range (yyyy-MM-dd, inclusive, at most ~2 months). Today's is live.</summary>
+    private object ActivityDays(string childId, string from, string to)
+    {
+        var child = _store.Current.Children.FirstOrDefault(c => c.Id == childId) ?? throw new ArgumentException("That child isn't on this PC");
+        var end = DateTime.TryParse(to, out var t) ? t.Date : DateTime.Today;
+        var start = DateTime.TryParse(from, out var f) ? f.Date : end;
+        if (end > DateTime.Today) end = DateTime.Today;
+        if ((end - start).TotalDays > 62) start = end.AddDays(-62);
+        var have = _activity.Days(child.Id).ToHashSet();
+        var days = new List<System.Text.Json.Nodes.JsonObject>();
+        for (var d = start; d <= end; d = d.AddDays(1))
+            if (have.Contains(d) || _ledger.Recent(child.Id, 1, new DateTimeOffset(d)).Any(e => e.At < new DateTimeOffset(d.AddDays(1))))
+                days.Add(_activity.Report(child, _ledger, d));
+        return new { childId = child.Id, kid = child.DisplayName, enabled = child.ActivityReports, days };
+    }
+
+    /// <summary>Leave the parent's phones the daily reports since the last ones sent (up to 60 days), once a day.</summary>
+    private void SendReports(Child child)
+    {
+        var marker = System.IO.Path.Combine(CoinQuest.Shared.Config.Paths.DataRoot, "activity", child.Id + ".sent");
+        DateTime? last = null;
+        try { if (File.Exists(marker) && DateTime.TryParse(File.ReadAllText(marker).Trim(), out var l)) last = l.Date; } catch { }
+        var yesterday = DateTime.Today.AddDays(-1);
+        if (last >= yesterday) return;
+        var reports = _activity.Days(child.Id)
+            .Where(d => d < DateTime.Today && d >= DateTime.Today.AddDays(-60) && (last is null || d > last))
+            .OrderBy(d => d).Select(d => _activity.Report(child, _ledger, d)).ToList();
+        try { Directory.CreateDirectory(System.IO.Path.GetDirectoryName(marker)!); File.WriteAllText(marker, yesterday.ToString("yyyy-MM-dd")); } catch { }
+        if (reports.Count > 0) _ = Task.Run(() => _phones.PostReports(reports));
     }
 
     private Response Buy(Request req, Child child, string account)
@@ -369,6 +452,7 @@ public sealed class RequestRouter
             var room = s.DailyCap > 0 ? Math.Max(0, s.DailyCap - _ledger.EarnedToday(child.Id, "discgames")) : due;
             var coins = due < 0 ? due : Math.Min(due, room); // negative rates (a parent's choice) are charged in full
             if (coins == 0) return;
+            if (child.ActivityReports) _activity.Count(child.Id, DateTime.Now, "discgames:finished", what.Count);
             _ledger.Append(child.Id, LedgerKind.Earn, coins, "discgames", string.Join("; ", what), "discgames");
             _log.LogInformation("Classic CD progress for {Child}: +{Coins}", child.DisplayName, coins);
             AfterChange();
@@ -450,6 +534,7 @@ public sealed class RequestRouter
             var room = s.DailyCap > 0 ? Math.Max(0, s.DailyCap - _ledger.EarnedToday(child.Id, "rwt")) : s.CoinsPerActivity;
             var coins = s.CoinsPerActivity < 0 ? s.CoinsPerActivity : Math.Min(s.CoinsPerActivity, room);
             if (coins == 0) return;
+            if (child.ActivityReports) _activity.Count(child.Id, DateTime.Now, "rwt:finished");
             _ledger.Append(child.Id, LedgerKind.Earn, coins, "rwt", $"Read, Write & Type!: progress saved ({string.Join(", ", players)})", "rwt");
             _log.LogInformation("RWT progress for {Child}: +{Coins}", child.DisplayName, coins);
             AfterChange();
@@ -617,6 +702,8 @@ public sealed class RequestRouter
                 "setPrize" => PhoneSetPrize(req),
                 "deletePrize" => PhoneEditChild(Str(req, "childId"), c => c with { Prizes = c.Prizes.Where(p => p.Id != Str(req, "id")).ToList() }),
                 "setSites" => PhoneSetSites(req),
+                "activity" => ActivityDays(Str(req, "childId"), Str(req, "from"), Str(req, "to")),
+                "setReports" => PhoneEditChild(Str(req, "childId"), c => c with { ActivityReports = req.Payload?["on"]?.GetValue<bool>() ?? true }),
                 "setApps" => PhoneSetApps(req),
                 "grant" => PhoneGrant(req, actor),
                 "addChannel" => PhoneEditChild(Str(req, "childId"), c => c.YouTubeChannels.Any(x => x.Id == channel!.Id) ? c : c with { YouTubeChannels = c.YouTubeChannels.Append(channel!).ToList() }),
@@ -637,6 +724,7 @@ public sealed class RequestRouter
         {
             id = c.Id,
             name = c.DisplayName,
+            activityReports = c.ActivityReports,
             modules = c.Modules.Select(kv => new { id = kv.Key, enabled = kv.Value.Enabled, coinsPerActivity = kv.Value.CoinsPerActivity, dailyCap = kv.Value.DailyCap, requireApproval = kv.Value.RequireApproval, options = kv.Value.Options, earnedToday = _ledger.EarnedToday(c.Id, kv.Key) }).ToList(),
             prizes = c.Prizes.Select(p => new { id = p.Id, name = p.Name, cost = p.Cost, kind = p.Kind.ToString(), minutes = p.Minutes, dailyCap = p.DailyCap, enabled = p.Enabled, targets = p.Targets }).ToList(),
             sites = c.Allowlist.Sites,

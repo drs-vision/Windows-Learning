@@ -89,6 +89,9 @@ public sealed class GameWindow : Window
         };
     }
 
+    /// <summary>The site this window is on now (e.g. "khanacademy.org"), for the parent's activity report.</summary>
+    public string Site => Uri.TryCreate(_web.CoreWebView2?.Source ?? "", UriKind.Absolute, out var u) && u.Scheme.StartsWith("http") ? RegistrableDomain(u.Host) : RegistrableDomain(_start.Host);
+
     /// <summary>Raised for learning progress seen in this window ("khan:correct", "khan:video", "khan:done", "duolingo:lesson", "duolingo:story").</summary>
     public event Action<string>? OnLearnEvent;
     private void OnLearn(string kind) => Dispatcher.Invoke(() => OnLearnEvent?.Invoke(kind));

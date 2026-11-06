@@ -81,6 +81,7 @@ export function Arcade({ unlocks, balance, onExit, onChanged }: { unlocks: Unloc
   const [cat, setCat] = useState('All');
   const [sel, setSel] = useState<Game | null>(null);
   const [playing, setPlaying] = useState<(Game & { base?: string; rewritePrefix?: string }) | null>(null);
+  useEffect(() => { if (playing) bridge.context('arcade', playing.id, playing.title); else bridge.context('coinquest', 'arcade', 'Arcade'); }, [playing?.id]);
   const [preparing, setPreparing] = useState('');
   // When the current play's time runs out, from the purchase itself. The shared state (unlocks) arrives a moment
   // later; until it does, this is what keeps the game open (and the countdown right).
