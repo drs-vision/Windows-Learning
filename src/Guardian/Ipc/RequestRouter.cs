@@ -462,13 +462,13 @@ public sealed class RequestRouter
             // First time we see this child's progress: start counting from here (no back-pay for earlier play).
             if (best is null || now <= best || !s.Enabled) return;
             var perLevel = s.Options.GetValueOrDefault("payFor") == "level";
-            var units = perLevel ? CoinQuest.Guardian.Rwt.RwtService.LevelFor(now) - CoinQuest.Guardian.Rwt.RwtService.LevelFor(best.Value) : now - best.Value;
+            var units = perLevel ? RwtService.LevelFor(now) - RwtService.LevelFor(best.Value) : now - best.Value;
             if (units <= 0) return;
             var want = s.CoinsPerActivity * units;
             var room = s.DailyCap > 0 ? Math.Max(0, s.DailyCap - _ledger.EarnedToday(child.Id, "rwt")) : want;
             var coins = want < 0 ? want : Math.Min(want, room);
             if (coins == 0) return;
-            var what = perLevel ? $"reached level {CoinQuest.Guardian.Rwt.RwtService.LevelFor(now)}" : units == 1 ? $"finished stage {now} of 40" : $"finished stages {best + 1}–{now} of 40";
+            var what = perLevel ? $"reached level {RwtService.LevelFor(now)}" : units == 1 ? $"finished stage {now} of 40" : $"finished stages {best + 1}–{now} of 40";
             _ledger.Append(child.Id, LedgerKind.Earn, coins, "rwt", $"Read, Write & Type!: {who} {what}", "rwt");
             _log.LogInformation("RWT progress for {Child}: {What}, {Coins}", child.DisplayName, what, coins);
             AfterChange();
