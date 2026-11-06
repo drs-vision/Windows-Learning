@@ -6,7 +6,7 @@
       "id": "black-beauty-47-01",
       "type": "detail",
       "q": "Who was Black Beauty's new master in this chapter?",
-      "choices": ["Nicholas Skinner", "Jerry Barker", "Mr. Thoroughgood", "Jakes"],
+      "choices": ["Nicholas Skinner", "Jerry Barker", "Mr. Thoroughgood", "Jakes the carter"],
       "answer": 0,
       "evidence": "His name was Nicholas Skinner"
     },
@@ -14,7 +14,7 @@
       "id": "black-beauty-47-02",
       "type": "inference",
       "q": "Black Beauty says \"feeling is believing.\" What does he mean?",
-      "choices": ["He only truly understood a cab-horse's misery when he lived it himself", "He could feel the weather changing", "He believed only what people told him", "He liked to be patted"],
+      "choices": ["He only knew a cab-horse's misery once he lived it", "He could feel in his legs when the weather would change", "He believed only what other horses told him", "He liked to be patted more than to be fed"],
       "answer": 0,
       "evidence": "I never knew till now the utter misery of a cab-horse's life"
     },
@@ -22,7 +22,7 @@
       "id": "black-beauty-47-03",
       "type": "detail",
       "q": "What was missing at Skinner's that Jerry always gave his horses?",
-      "choices": ["A Sunday rest", "A warm blanket", "New shoes", "A name"],
+      "choices": ["A Sunday rest", "A warm blanket", "New shoes", "Clean water"],
       "answer": 0,
       "evidence": "In this place we had no Sunday rest"
     },
@@ -30,7 +30,7 @@
       "id": "black-beauty-47-04",
       "type": "character",
       "q": "Why did Black Beauty keep doing his best even under cruel treatment?",
-      "choices": ["As Ginger had said, it was no use; men are the strongest", "He hoped to win a prize", "He liked his driver", "He was not really tired"],
+      "choices": ["As Ginger had said, it was no use; men are the strongest", "He hoped to win a prize at the horse show", "He liked his driver and wanted to please him", "He was not really tired, only pretending"],
       "answer": 0,
       "evidence": "as poor Ginger said, it was no use; men are the strongest"
     },
@@ -38,7 +38,7 @@
       "id": "black-beauty-47-05",
       "type": "character",
       "q": "What did the young girl at the station ask her father to do?",
-      "choices": ["Take a second cab because the horse was so weak", "Buy the horse", "Walk home instead", "Give the horse some water"],
+      "choices": ["Take a second cab because the horse was so weak", "Buy the poor horse and take him home", "Walk home instead, because the house was not far away", "Give the horse some water from the pump"],
       "answer": 0,
       "evidence": "Papa, papa, do take a second cab"
     },
@@ -46,7 +46,7 @@
       "id": "black-beauty-47-06",
       "type": "character",
       "q": "How did the blustering father answer his daughter Grace?",
-      "choices": ["He told her not to make a fuss and to get in", "He agreed and hired a second cab", "He asked the porter for advice", "He patted the horse kindly"],
+      "choices": ["He told her not to make a fuss and to get in", "He agreed and hired a second cab for the boxes", "He asked the porter what he thought of the horse", "He patted the horse kindly and gave it sugar"],
       "answer": 0,
       "evidence": "get in at once, and don't make all this fuss"
     },
@@ -54,7 +54,7 @@
       "id": "black-beauty-47-07",
       "type": "sequence",
       "q": "Where did Black Beauty fall down?",
-      "choices": ["On Ludgate Hill", "At the railway station", "On London Bridge", "Outside Skinner's stables"],
+      "choices": ["On Ludgate Hill", "At the railway station", "On London Bridge", "Outside Skinner's yard"],
       "answer": 0,
       "evidence": "I got along fairly till we came to Ludgate Hill"
     },
@@ -62,7 +62,7 @@
       "id": "black-beauty-47-08",
       "type": "detail",
       "q": "What helped Black Beauty come back to life after he fell?",
-      "choices": ["Cold water, cordial, and a kind-voiced man encouraging him", "The driver whipping him", "Being left alone all night", "A loud trumpet"],
+      "choices": ["Cold water, cordial, and a kind man's voice", "The driver whipping him until he got up", "Being left alone where he lay in the street all night", "A loud trumpet blown by a passing soldier"],
       "answer": 0,
       "evidence": "a kind-voiced man was patting me and encouraging me to rise"
     },
@@ -70,7 +70,7 @@
       "id": "black-beauty-47-09",
       "type": "detail",
       "q": "What did the farrier say was wrong with Black Beauty?",
-      "choices": ["It was overwork more than disease", "He had a broken leg", "He was broken-winded", "He was too old to live"],
+      "choices": ["It was overwork more than disease", "He had broken a leg in the fall", "He was badly broken-winded", "He was too old to live much longer"],
       "answer": 0,
       "evidence": "This is a case of overwork more than disease"
     },
@@ -78,7 +78,7 @@
       "id": "black-beauty-47-10",
       "type": "vocabulary",
       "q": "Skinner said the horse \"must just go to the dogs.\" What did he mean?",
-      "choices": ["Be got rid of because he was no longer useful", "Go to live with some dogs", "Become a guard animal", "Take a holiday in the country"],
+      "choices": ["Be got rid of because he was no longer useful", "Go and live with some dogs in a kennel", "Become a guard animal for the stable yard", "Take a long holiday out in the country"],
       "answer": 0,
       "evidence": "Then he must just go to the dogs"
     },
@@ -86,7 +86,7 @@
       "id": "black-beauty-47-11",
       "type": "main-idea",
       "q": "What changed Black Beauty's feelings at the end of the chapter?",
-      "choices": ["Ten days of rest and good food made him think it might be better to live", "Skinner became kind to him", "He was sent back to Jerry", "He won a race"],
+      "choices": ["Ten days of rest and good food gave him hope", "Skinner became kind and gave him lighter work", "He was sent back to Jerry and his family", "He won a race against a younger cab horse"],
       "answer": 0,
       "evidence": "I began to think, after all, it might be better to live than go to the dogs"
     }

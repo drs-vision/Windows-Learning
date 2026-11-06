@@ -6,7 +6,7 @@
       "id": "black-beauty-45-01",
       "type": "detail",
       "q": "Why were Christmas and New Year no holiday for cabmen?",
-      "choices": ["There were so many parties that the work was hard and often late", "All the cabs were closed", "The horses had to stay home", "No one wanted to ride in cabs"],
+      "choices": ["So many parties meant hard work, often very late", "All the cabs in London were closed for the holidays", "The horses had to stay home in their stables", "No one wanted to ride in cabs in the cold"],
       "answer": 0,
       "evidence": "There are so many parties, balls, and places of amusement open that the work is hard and often late"
     },
@@ -14,7 +14,7 @@
       "id": "black-beauty-45-02",
       "type": "detail",
       "q": "Why did Jack do most of the evening work?",
-      "choices": ["He was used to standing, and Jerry feared Hotspur would catch cold", "Hotspur was lame", "Jack was the younger horse", "Hotspur refused to work at night"],
+      "choices": ["He was used to standing, and Hotspur might catch cold", "Hotspur was lame from a stone in his shoe", "Jack was the younger and stronger horse", "Hotspur would not work at night in the dark"],
       "answer": 0,
       "evidence": "I was well accustomed to standing, and Jerry was also more afraid of Hotspur taking cold"
     },
@@ -30,7 +30,7 @@
       "id": "black-beauty-45-04",
       "type": "detail",
       "q": "What was the weather like while Jerry waited outside?",
-      "choices": ["Sharp, driving sleet with no shelter", "Warm and still", "Light snow with sunshine", "Thick fog but no wind"],
+      "choices": ["Sharp, driving sleet with no shelter", "Warm and still, like a summer night", "Light snow falling with a clear sky", "Thick yellow fog but no wind or rain at all"],
       "answer": 0,
       "evidence": "now it came on sharp, driving sleet"
     },
@@ -38,7 +38,7 @@
       "id": "black-beauty-45-05",
       "type": "sequence",
       "q": "When did the two gentlemen finally come out?",
-      "choices": ["At a quarter past one", "Right at eleven", "At half-past eleven", "At six in the morning"],
+      "choices": ["At a quarter past one", "Right at eleven o'clock", "At half-past eleven", "At six in the morning"],
       "answer": 0,
       "evidence": "At a quarter past one the door opened"
     },
@@ -46,7 +46,7 @@
       "id": "black-beauty-45-06",
       "type": "character",
       "q": "How did the gentlemen behave about keeping Jerry waiting so long?",
-      "choices": ["They never said sorry and were angry at the charge", "They apologized and paid extra", "They gave Jerry a warm coat", "They invited him inside to warm up"],
+      "choices": ["They never said sorry and were angry at the charge", "They apologized and paid him extra for waiting", "They gave Jerry a warm coat to wear home", "They invited him inside to warm up by the fire"],
       "answer": 0,
       "evidence": "they never said they were sorry to have kept us waiting so long, but were angry at the charge"
     },
@@ -54,7 +54,7 @@
       "id": "black-beauty-45-07",
       "type": "character",
       "q": "What did Jerry do for Jack when they got home, even though he was very ill?",
-      "choices": ["Gave him a rub-down and fetched extra straw for his bed", "Left him in the harness all night", "Sent him to a neighbor's stable", "Went straight to bed without seeing him"],
+      "choices": ["Rubbed him down and gave him extra straw", "Left him in his harness all night long", "Sent him to a neighbor's stable for the night", "Went straight to bed without seeing him"],
       "answer": 0,
       "evidence": "he gave me a rub-down as usual, and even went up into the hayloft for an extra bundle of straw for my bed"
     },
@@ -62,7 +62,7 @@
       "id": "black-beauty-45-08",
       "type": "inference",
       "q": "Harry \"was very still, and neither whistled nor sang\" the next morning. What does this tell you?",
-      "choices": ["He was worried because his father was very ill", "He had a sore throat", "He was angry at the horses", "He was too sleepy to sing"],
+      "choices": ["He was worried because his father was very ill", "He had a sore throat from the cold night air", "He was angry at the two gentlemen who kept them waiting", "He was too sleepy to sing after a late night"],
       "answer": 0,
       "evidence": "He was very still, and neither whistled nor sang"
     },
@@ -70,7 +70,7 @@
       "id": "black-beauty-45-09",
       "type": "vocabulary",
       "q": "Harry says, \"they call it 'bronchitis'.\" From the chapter, what is bronchitis?",
-      "choices": ["A serious illness of the chest and breathing", "A broken bone", "A kind of horse medicine", "A skin rash"],
+      "choices": ["A serious illness of the chest and breathing", "A broken bone in the arm or leg", "A kind of medicine the farrier gives sick horses", "A red, itchy rash on the skin"],
       "answer": 0,
       "evidence": "they call it 'bronchitis'"
     },
@@ -86,7 +86,7 @@
       "id": "black-beauty-45-11",
       "type": "character",
       "q": "How did Governor Grant help the family while Jerry was sick?",
-      "choices": ["He took Hotspur out to work and brought Polly half the earnings", "He paid the doctor's bill", "He bought Jack", "He drove Jerry to the hospital"],
+      "choices": ["He worked Hotspur and gave Polly half the money", "He paid the whole of the doctor's bill himself", "He bought Jack from Polly for a good price", "He drove Jerry to the hospital every day"],
       "answer": 0,
       "evidence": "whatever he earns, I'll bring your mother half of it"
     },
@@ -94,7 +94,7 @@
       "id": "black-beauty-45-12",
       "type": "detail",
       "q": "What did the doctor say Jerry must never do again?",
-      "choices": ["Go back to the cab work", "Ride a horse", "Live in London", "Eat meat pies"],
+      "choices": ["Go back to the cab work", "Ride or drive a horse", "Live anywhere in London", "Eat meat or drink coffee"],
       "answer": 0,
       "evidence": "he must never go back to the cab work again if he wished to be an old man"
     },
@@ -102,7 +102,7 @@
       "id": "black-beauty-45-13",
       "type": "detail",
       "q": "What did Mrs. Fowler's letter offer the family?",
-      "choices": ["A cottage near her and a coachman's job for Jerry", "A large sum of money", "A new cab and two horses", "Tickets to travel abroad"],
+      "choices": ["A cottage near her and a coachman's job for Jerry", "A large sum of money to pay the doctor", "A new cab and two young horses to start afresh", "Tickets for the whole family to travel abroad for his health"],
       "answer": 0,
       "evidence": "Mrs. Fowler says we are all to go and live near her"
     },
@@ -110,7 +110,7 @@
       "id": "black-beauty-45-14",
       "type": "main-idea",
       "q": "Why was the family's good news \"heavy news\" for Black Beauty?",
-      "choices": ["He would be sold and lose the best master he had had since Birtwick", "He had to pull the moving cart", "He would have to live with Hotspur", "He did not like the country"],
+      "choices": ["He would be sold and lose his best master since Birtwick", "He had to pull the heavy moving cart to the country", "He would have to share a stall with Hotspur", "He did not like the country and wanted to stay"],
       "answer": 0,
       "evidence": "Since I left Birtwick I had never been so happy as with my dear master Jerry"
     }

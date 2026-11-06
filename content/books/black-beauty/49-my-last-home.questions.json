@@ -6,7 +6,7 @@
       "id": "black-beauty-49-01",
       "type": "inference",
       "q": "Why did Black Beauty think some change was coming at the start of the chapter?",
-      "choices": ["The groom cleaned and dressed him with extraordinary care", "Willie told him so", "He heard a train", "He was given no food"],
+      "choices": ["The groom cleaned and dressed him with extraordinary care", "Willie came to the stable and told him so", "He heard a train whistle in the distance", "He was given no food that morning"],
       "answer": 0,
       "evidence": "the groom cleaned and dressed me with such extraordinary care that I thought some new change must be at hand"
     },
@@ -14,7 +14,7 @@
       "id": "black-beauty-49-02",
       "type": "character",
       "q": "Why was the tall, pale lady nervous about Black Beauty?",
-      "choices": ["He had once been down and might fall again", "He was too young", "He was too big for her carriage", "He did not like ladies"],
+      "choices": ["He had once been down and might fall again", "He was too young and had not been trained", "He was much too big and strong for her little carriage", "He had bitten a lady at his last home"],
       "answer": 0,
       "evidence": "she should always be nervous in riding behind a horse that had once been down"
     },
@@ -22,7 +22,7 @@
       "id": "black-beauty-49-03",
       "type": "vocabulary",
       "q": "Mr. Thoroughgood says, \"Handsome is that handsome does.\" What does this mean?",
-      "choices": ["How a horse behaves matters more than how he looks", "Only good-looking horses are useful", "A horse must be groomed every day", "Handsome horses cost more"],
+      "choices": ["How a horse behaves matters more than how he looks", "Only good-looking horses are useful for driving", "A horse must be groomed every day to stay handsome", "Handsome horses always cost more at a sale"],
       "answer": 0,
       "evidence": "'Handsome is that handsome does'"
     },
@@ -30,7 +30,7 @@
       "id": "black-beauty-49-04",
       "type": "detail",
       "q": "Which mark made the groom sure the horse was Black Beauty?",
-      "choices": ["The little patch of white hair John called \"Beauty's three-penny bit\"", "A brand on his side", "A missing shoe", "A scar on his nose"],
+      "choices": ["A white patch John called \"Beauty's three-penny bit\"", "A brand burned on his side by the earl's groom", "A missing shoe on his left front foot", "A long scar across his nose from the night of the fire"],
       "answer": 0,
       "evidence": "that little patch of white hair that John used to call 'Beauty's three-penny bit'"
     },
@@ -46,7 +46,7 @@
       "id": "black-beauty-49-06",
       "type": "sequence",
       "q": "What did the ladies decide after Black Beauty proved safe for a week or so?",
-      "choices": ["To keep him and call him by his old name, Black Beauty", "To send him back to Mr. Thoroughgood", "To sell him to a cab owner", "To give him to Willie"],
+      "choices": ["To keep him and call him by his old name, Black Beauty", "To send him back to Mr. Thoroughgood's farm", "To sell him to a cab owner in the town", "To give him to Willie as a present for his care of him"],
       "answer": 0,
       "evidence": "it was quite decided to keep me and call me by my old name"
     },
@@ -54,7 +54,7 @@
       "id": "black-beauty-49-07",
       "type": "main-idea",
       "q": "How does Black Beauty's story end?",
-      "choices": ["He is safe and happy, and his ladies promise never to sell him", "He is sold again to a cab owner", "He runs away to Birtwick", "He goes back to the war"],
+      "choices": ["He is safe and happy, and will never be sold", "He is sold again to a cab owner in London", "He runs away and finds his way to Birtwick", "He goes back to the war with a cavalry officer"],
       "answer": 0,
       "evidence": "My ladies have promised that I shall never be sold"
     }

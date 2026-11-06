@@ -6,7 +6,7 @@
       "id": "black-beauty-46-01",
       "type": "detail",
       "q": "Who bought Black Beauty after Jerry?",
-      "choices": ["A corn dealer and baker", "A cab owner", "A farmer", "A lady with a carriage"],
+      "choices": ["A corn dealer and baker", "A cab owner named Skinner", "A farmer from the country", "A lady with a carriage"],
       "answer": 0,
       "evidence": "I was sold to a corn dealer and baker"
     },
@@ -14,7 +14,7 @@
       "id": "black-beauty-46-02",
       "type": "character",
       "q": "Who was to blame for Black Beauty's heavy loads?",
-      "choices": ["The foreman, who was always hurrying everyone", "Jakes, who enjoyed it", "The baker's children", "The lady on the hill"],
+      "choices": ["The foreman, who was always hurrying everyone", "Jakes the carter, who enjoyed being cruel", "The baker's children, who rode on top of the loads", "The lady who lived at the top of the hill"],
       "answer": 0,
       "evidence": "there was a foreman who was always hurrying and driving every one"
     },
@@ -22,7 +22,7 @@
       "id": "black-beauty-46-03",
       "type": "detail",
       "q": "What made it hard for Black Beauty to pull easily?",
-      "choices": ["The check-rein held his head up", "His shoes were too tight", "The cart had a broken wheel", "He was not fed enough"],
+      "choices": ["The check-rein held his head up", "His new shoes were much too tight", "The cart had a broken wheel", "He was not given enough to eat"],
       "answer": 0,
       "evidence": "always had the check-rein up, which prevented me from drawing easily"
     },
@@ -30,7 +30,7 @@
       "id": "black-beauty-46-04",
       "type": "character",
       "q": "How did Black Beauty feel when he was whipped while doing his very best?",
-      "choices": ["It took the heart out of him", "He felt proud", "He did not mind at all", "He became angry and kicked"],
+      "choices": ["It took the heart out of him", "He felt proud of how hard he worked", "He did not mind it at all", "He became angry and kicked the cart"],
       "answer": 0,
       "evidence": "it took the heart out of me"
     },
@@ -38,7 +38,7 @@
       "id": "black-beauty-46-05",
       "type": "sequence",
       "q": "What did the lady ask Jakes to do?",
-      "choices": ["Take the check-rein off and give the horse his head", "Whip the horse harder", "Unload the whole cart", "Find another horse"],
+      "choices": ["Take the check-rein off and give the horse his head", "Whip the horse harder until he reached the top", "Unload the whole cart and carry the sacks up", "Go and find a stronger horse to help pull"],
       "answer": 0,
       "evidence": "Quite down, give him his head altogether"
     },
@@ -46,7 +46,7 @@
       "id": "black-beauty-46-06",
       "type": "sequence",
       "q": "What happened after the rein was taken off and Jakes spoke kindly?",
-      "choices": ["Black Beauty pulled the load steadily up the hill", "Black Beauty ran away", "The cart tipped over", "Jakes sold the horse to the lady"],
+      "choices": ["Black Beauty pulled the load steadily up the hill", "Black Beauty bolted and ran away down the road", "The cart tipped over and spilled the sacks", "Jakes sold the horse to the kind lady right there and then"],
       "answer": 0,
       "evidence": "I pulled it steadily up the hill"
     },
@@ -54,7 +54,7 @@
       "id": "black-beauty-46-07",
       "type": "character",
       "q": "Why did Jakes want to put the check-rein back on?",
-      "choices": ["Without it he would be the laughing-stock of the carters; it was the fashion", "It made the horse go faster", "The lady told him to", "The horse liked it"],
+      "choices": ["The other carters would laugh at him; it was the fashion", "It made the horse go faster on the flat roads", "The lady had told him to put it back on", "The horse liked it and held his head proudly"],
       "answer": 0,
       "evidence": "I should be the laughing-stock of all the carters; it is the fashion"
     },
@@ -62,7 +62,7 @@
       "id": "black-beauty-46-08",
       "type": "main-idea",
       "q": "What did the lady say about animals being called \"dumb\"?",
-      "choices": ["They cannot tell us how they feel, but they suffer just as much", "They do not feel pain", "They are not very clever", "They should never be used for work"],
+      "choices": ["They cannot say how they feel, but suffer just as much", "They do not feel pain the way people do at all", "They are not clever enough to understand what is done to them", "They should never be used for hard work"],
       "answer": 0,
       "evidence": "they do not suffer less because they have no words"
     },
@@ -70,7 +70,7 @@
       "id": "black-beauty-46-09",
       "type": "inference",
       "q": "What problem did the badly-lighted stable cause Black Beauty?",
-      "choices": ["It weakened his sight, and bright daylight hurt his eyes", "It made him too cold", "It made him lose his appetite", "It made his coat fall out"],
+      "choices": ["It weakened his eyes, so daylight hurt them", "It made him too cold to sleep at night", "It made him lose his appetite for oats", "It made his coat dull and fall out in patches"],
       "answer": 0,
       "evidence": "it very much weakened my sight"
     }

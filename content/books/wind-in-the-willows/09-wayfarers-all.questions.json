@@ -6,7 +6,7 @@
       "id": "wind-in-the-willows-09-01",
       "type": "detail",
       "q": "How was the Water Rat feeling at the start of the chapter?",
-      "choices": ["Restless, without knowing why", "Happy and lazy", "Angry with Toad", "Sick with a cold"],
+      "choices": ["Restless, without knowing why", "Happy, lazy and quite content", "Angry with Toad for his boasting", "Sick in bed with a bad cold"],
       "answer": 0,
       "evidence": "The Water Rat was restless, and he did not exactly know why."
     },
@@ -14,7 +14,7 @@
       "id": "wind-in-the-willows-09-02",
       "type": "inference",
       "q": "What season is beginning in this chapter, causing so many creatures to leave?",
-      "choices": ["The end of summer, as autumn approaches", "Early spring", "The middle of winter", "The first days of summer"],
+      "choices": ["The end of summer, as autumn approaches", "Early spring, as the first flowers open", "The middle of a long, cold winter", "The first warm days of early summer"],
       "answer": 0,
       "evidence": "a feeling in the air of change and departure"
     },
@@ -22,7 +22,7 @@
       "id": "wind-in-the-willows-09-03",
       "type": "vocabulary",
       "q": "The author compares nature to a \"Grand Hotel\" whose guests \"pack, pay, and depart.\" What does this comparison show?",
-      "choices": ["That many animals and birds leave at the end of the season, like hotel guests", "That the animals pay money to live in the woods", "That Rat wants to build a hotel", "That the river is full of boats"],
+      "choices": ["That many creatures leave as the season ends, like guests", "That the animals must pay money to live in the fields and woods", "That the Rat wants to build a hotel by the river", "That the river is crowded with tourists and boats"],
       "answer": 0,
       "evidence": "Nature's Grand Hotel has its Season"
     },
@@ -30,7 +30,7 @@
       "id": "wind-in-the-willows-09-04",
       "type": "detail",
       "q": "What were the field-mice busy doing when Rat visited the wheat field?",
-      "choices": ["Packing up and moving to winter quarters", "Having a picnic", "Harvesting the wheat for the farmer", "Building a boat"],
+      "choices": ["Packing up and moving to winter quarters", "Having a picnic at the edge of the field", "Harvesting the wheat for the farmer", "Building a little boat to sail away in"],
       "answer": 0,
       "evidence": "others were already elbow-deep packing their belongings"
     },
@@ -38,7 +38,7 @@
       "id": "wind-in-the-willows-09-05",
       "type": "detail",
       "q": "Why did the field-mice say they had to move out early?",
-      "choices": ["Before the harvesting machines began clicking round the fields", "Because the river was flooding", "Because the weasels were coming", "Because Rat told them to"],
+      "choices": ["Before the harvest machines came clicking round", "Because the river was rising and flooding the field", "Because weasels from the Wild Wood were coming", "Because the Rat had told them it was time to go"],
       "answer": 0,
       "evidence": "before those horrid machines begin clicking round the fields"
     },
@@ -46,7 +46,7 @@
       "id": "wind-in-the-willows-09-06",
       "type": "sequence",
       "q": "What happened as Rat turned to leave the field-mice?",
-      "choices": ["He tripped over a hat-box and fell", "He helped them pack", "He invited them all to dinner", "He found a lost mouse"],
+      "choices": ["He tripped over a hat-box and fell", "He stayed to help them pack their things", "He invited them all home to dinner", "He found a little lost mouse in the wheat"],
       "answer": 0,
       "evidence": "tripped over a hat-box, and fell"
     },
@@ -54,7 +54,7 @@
       "id": "wind-in-the-willows-09-07",
       "type": "detail",
       "q": "What happened to the swallow who once tried \"stopping on\" for the winter?",
-      "choices": ["The cold, dark days were so miserable that it flew south through the snow", "It froze and had to be rescued by Rat", "It enjoyed the winter and stayed for good", "It moved into Rat's house"],
+      "choices": ["The cold, dark days were so bad it flew south in the snow", "It nearly froze and had to be rescued and warmed by the Rat", "It loved the winter so much that it stayed for good", "It moved into the Rat's snug house until spring"],
       "answer": 0,
       "evidence": "I tried \"stopping on\" one year"
     },
@@ -62,7 +62,7 @@
       "id": "wind-in-the-willows-09-08",
       "type": "character",
       "q": "How did listening to the swallows affect Rat?",
-      "choices": ["It woke a wild new longing in him for the South", "It made him glad to stay home", "It made him angry and he chased them off", "It put him to sleep"],
+      "choices": ["It woke a wild new longing in him for the South", "It made him glad that he could stay at home", "It made him angry, and he chased them away", "It made him so sleepy that he nodded off"],
       "answer": 0,
       "evidence": "awaken this wild new sensation"
     },
@@ -70,7 +70,7 @@
       "id": "wind-in-the-willows-09-09",
       "type": "detail",
       "q": "What did the swallows say draws them back home each spring?",
-      "choices": ["Another call, for meadows, orchards, ponds and English streams", "Rat's invitations", "Fear of hunters in the South", "The need to build new boats"],
+      "choices": ["Another call, for English meadows, orchards and streams", "The Rat's kind invitations to come and stay by the river", "Fear of the hunters who trap birds in the South", "The bad food and cold winds of the Southern lands"],
       "answer": 0,
       "evidence": "the other call is not for us too, in its due season"
     },
@@ -78,7 +78,7 @@
       "id": "wind-in-the-willows-09-10",
       "type": "detail",
       "q": "Who sat down beside Rat by the dusty lane?",
-      "choices": ["A travelling Sea Rat", "The Mole", "A swallow", "Toad in disguise"],
+      "choices": ["A travelling Sea Rat", "The Mole, back from a walk", "A tired swallow", "Toad in a disguise"],
       "answer": 0,
       "evidence": "I'm a seafaring rat, I am"
     },
@@ -86,7 +86,7 @@
       "id": "wind-in-the-willows-09-11",
       "type": "detail",
       "q": "What city did the Sea Rat say he originally came from?",
-      "choices": ["Constantinople", "Venice", "London", "Marseilles"],
+      "choices": ["Constantinople", "Venice", "Alexandria", "Marseilles"],
       "answer": 0,
       "evidence": "the port I originally hail from is Constantinople"
     },
@@ -94,7 +94,7 @@
       "id": "wind-in-the-willows-09-12",
       "type": "character",
       "q": "Why had the Sea Rat left the farm where he had been living for six months?",
-      "choices": ["He felt the old call of the sea and the South", "The farmer threw him out", "The farm burned down", "He was looking for his lost family"],
+      "choices": ["He felt the old call of the sea and the South", "The farmer had caught him in the barn and thrown him out", "The farm burned down one night in the summer", "He was looking for his lost family along the road"],
       "answer": 0,
       "evidence": "following the old call, back to the old life"
     },
@@ -102,7 +102,7 @@
       "id": "wind-in-the-willows-09-13",
       "type": "inference",
       "q": "When the Sea Rat winks and says \"The captain's cabin's good enough for me,\" what is he hinting?",
-      "choices": ["He travels in comfort and does not do the crew's hard work", "He is actually the captain of the ship", "He sleeps in the hot, stuffy hold", "He has never been on a ship"],
+      "choices": ["He travels in comfort and skips the crew's hard work", "He is secretly the captain of the ship himself", "He sleeps down in the hot, stuffy hold with cargo", "He has never actually been on a ship at all"],
       "answer": 0,
       "evidence": "The captain's cabin's good enough for me."
     },
@@ -110,7 +110,7 @@
       "id": "wind-in-the-willows-09-14",
       "type": "detail",
       "q": "What did the Rat bring back for the Sea Rat's meal?",
-      "choices": ["French bread, a garlic sausage, cheese and a flask of wine", "Cold chicken and lemonade", "Shell-fish from the river", "Only bread and water"],
+      "choices": ["French bread, garlic sausage, cheese and wine", "Cold chicken, potted ham, and a bottle of lemonade", "Shell-fish from the river and some brown bread", "Only a crust of dry bread and a cup of water"],
       "answer": 0,
       "evidence": "a yard of long French bread"
     },
@@ -118,7 +118,7 @@
       "id": "wind-in-the-willows-09-15",
       "type": "vocabulary",
       "q": "Rat said his life felt \"narrow and circumscribed.\" What does \"circumscribed\" mean?",
-      "choices": ["Limited, with fixed boundaries", "Exciting and full of travel", "Round like a circle", "Written down carefully"],
+      "choices": ["Limited, with fixed boundaries", "Exciting and full of travel", "Round, like a circle", "Written down very carefully"],
       "answer": 0,
       "evidence": "somewhat narrow and circumscribed"
     },
@@ -126,7 +126,7 @@
       "id": "wind-in-the-willows-09-16",
       "type": "sequence",
       "q": "What did Rat do after the Sea Rat walked away down the road?",
-      "choices": ["Packed a satchel and set off to go South", "Fell asleep in the hedge", "Ran to tell Badger", "Went fishing on the river"],
+      "choices": ["Packed a satchel and set off to go South", "Fell fast asleep in the hedge by the lane", "Ran straight to tell the Badger all about it", "Went out fishing on the river to forget"],
       "answer": 0,
       "evidence": "Going South, with the rest of them"
     },
@@ -134,7 +134,7 @@
       "id": "wind-in-the-willows-09-17",
       "type": "character",
       "q": "What made the Mole realize something was badly wrong with Rat?",
-      "choices": ["Rat's eyes had turned a shifting grey, not like his own", "Rat was shouting angrily", "Rat had a fever", "Rat refused to speak at all"],
+      "choices": ["Rat's eyes had turned a strange, shifting grey", "Rat was shouting angrily at everyone on the road", "Rat had a high fever and was shivering", "Rat refused to speak a single word to him"],
       "answer": 0,
       "evidence": "not his friend's eyes, but the eyes of some other animal"
     },
@@ -142,7 +142,7 @@
       "id": "wind-in-the-willows-09-18",
       "type": "character",
       "q": "How did the Mole help Rat recover at the end of the chapter?",
-      "choices": ["He talked of harvest and winter joys, then gave him paper to write poetry", "He took him on a long journey", "He called for a doctor", "He scolded him for being foolish"],
+      "choices": ["He talked of harvest and winter, then gave him paper for poems", "He took him on a long journey down the river to the sea", "He ran to fetch a doctor and some medicine from the village", "He scolded him sharply for being so foolish"],
       "answer": 0,
       "evidence": "It's quite a long time since you did any poetry"
     },
@@ -150,7 +150,7 @@
       "id": "wind-in-the-willows-09-19",
       "type": "main-idea",
       "q": "What is this chapter mostly about?",
-      "choices": ["Rat is tempted by a longing to travel South, until Mole helps him back to his usual life", "Toad escapes from prison", "Mole visits his old home", "The animals fight the weasels"],
+      "choices": ["Rat longs to travel South until Mole helps him settle again", "Toad escapes from prison dressed as a washerwoman", "Mole visits his old home and the field-mice come carol-singing", "The animals fight the weasels to win back Toad Hall"],
       "answer": 0,
       "evidence": "the cure had at least begun"
     }

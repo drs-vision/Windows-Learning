@@ -6,7 +6,7 @@
       "id": "wind-in-the-willows-11-01",
       "type": "detail",
       "q": "What did Rat tell Toad to do as soon as he pulled him out of the river?",
-      "choices": ["Go upstairs, wash, and change into some of Rat's clothes", "Go straight home to Toad Hall", "Tell him all his adventures at once", "Hide in the cellar from the police"],
+      "choices": ["Go upstairs, wash, and put on some of Rat's clothes", "Go straight home to Toad Hall and lock the doors", "Sit down and tell him all of his adventures at once", "Hide down in the cellar in case the police came"],
       "answer": 0,
       "evidence": "put on some of my clothes"
     },
@@ -14,7 +14,7 @@
       "id": "wind-in-the-willows-11-02",
       "type": "character",
       "q": "How did Rat react as Toad boasted about his adventures over lunch?",
-      "choices": ["He grew more grave and silent", "He laughed and cheered", "He fell asleep", "He asked to hear them again"],
+      "choices": ["He grew more grave and silent", "He laughed and cheered him on", "He fell fast asleep in his chair", "He begged to hear them all again"],
       "answer": 0,
       "evidence": "the more grave and silent the Rat became"
     },
@@ -22,7 +22,7 @@
       "id": "wind-in-the-willows-11-03",
       "type": "character",
       "q": "What does the chapter say was a comforting point in Toad's character?",
-      "choices": ["He was good-hearted and did not mind being scolded by real friends", "He never told a lie", "He was always modest about himself", "He never got angry"],
+      "choices": ["He was good-hearted and took scolding from real friends well", "He never once told a lie, even when a lie would have helped him", "He was always modest and quiet about his own deeds", "He never got angry, however badly he was treated"],
       "answer": 0,
       "evidence": "never minded being jawed by those who were his real friends"
     },
@@ -30,7 +30,7 @@
       "id": "wind-in-the-willows-11-04",
       "type": "vocabulary",
       "q": "Toad said he would lead a quiet life, \"pottering about my property.\" What does \"pottering\" mean here?",
-      "choices": ["Doing small, easy jobs at a relaxed pace", "Making clay pots", "Racing around at top speed", "Selling things"],
+      "choices": ["Doing small, easy jobs at a relaxed pace", "Making clay pots and jugs to sell", "Racing around the grounds at top speed", "Selling off things he no longer needs"],
       "answer": 0,
       "evidence": "pottering about my property"
     },
@@ -38,7 +38,7 @@
       "id": "wind-in-the-willows-11-05",
       "type": "detail",
       "q": "What terrible news did Rat give Toad?",
-      "choices": ["The Stoats and Weasels had taken over Toad Hall", "Badger had moved away", "Toad Hall had burned down", "The police were waiting at Toad Hall"],
+      "choices": ["The Stoats and Weasels had taken over Toad Hall", "The Badger had moved far away from the Wild Wood", "Toad Hall had burned down to the ground one night", "The police were waiting for him at Toad Hall"],
       "answer": 0,
       "evidence": "how they've been and taken Toad Hall"
     },
@@ -46,7 +46,7 @@
       "id": "wind-in-the-willows-11-06",
       "type": "detail",
       "q": "Why had Mole and Badger been living at Toad Hall when it was attacked?",
-      "choices": ["To keep it aired and ready for Toad's return", "Because their own homes had flooded", "Because Toad had sold it to them", "To hide from the weasels"],
+      "choices": ["To keep it aired and ready for Toad's return", "Because their own homes had been flooded out", "Because Toad had sold it to them before prison", "To hide there from the weasels and the stoats"],
       "answer": 0,
       "evidence": "have it all ready for you when you turned up"
     },
@@ -54,7 +54,7 @@
       "id": "wind-in-the-willows-11-07",
       "type": "sequence",
       "q": "What happened when Toad first marched to his front gate with a stick?",
-      "choices": ["A ferret with a gun fired a shot over his head", "The weasels let him in", "He beat the sentries and got inside", "Badger stopped him at the gate"],
+      "choices": ["A ferret with a gun fired a shot over his head", "The weasels opened the gate and let him in", "He beat the sentries and fought his way inside", "The Badger stopped him at the gate and sent him back"],
       "answer": 0,
       "evidence": "a bullet whistled over his head"
     },
@@ -62,7 +62,7 @@
       "id": "wind-in-the-willows-11-08",
       "type": "detail",
       "q": "What happened when Toad tried to reach Toad Hall by boat?",
-      "choices": ["Stoats dropped a stone from a bridge and sank the boat", "The boat hit a rock in the weir", "He reached the boat-house and hid there", "The ferrets chased him with their own boat"],
+      "choices": ["Stoats dropped a stone from a bridge and sank the boat", "The boat hit a rock in the weir and broke apart", "He reached the boat-house safely and hid there", "The ferrets chased him in their own fast boat"],
       "answer": 0,
       "evidence": "A great stone, dropped from above, smashed through the bottom of the boat."
     },
@@ -70,7 +70,7 @@
       "id": "wind-in-the-willows-11-09",
       "type": "character",
       "q": "Why was Rat so cross after Toad's boat trip?",
-      "choices": ["Toad had lost Rat's beloved boat and ruined the suit Rat lent him", "Toad had eaten all of Rat's supper", "Toad had told the weasels where Rat lived", "Toad had broken Rat's window"],
+      "choices": ["Toad lost Rat's boat and ruined the suit Rat lent him", "Toad had eaten all of the supper Rat was saving for Mole", "Toad had told the weasels exactly where Rat lived", "Toad had broken Rat's best window with a stone"],
       "answer": 0,
       "evidence": "Lost me my boat that I was so fond of"
     },
@@ -78,7 +78,7 @@
       "id": "wind-in-the-willows-11-10",
       "type": "inference",
       "q": "Toad sobs that he will go out into the cold to find his friends, then stops when he hears supper arriving. What does this show about him?",
-      "choices": ["His feelings change quickly, and his comfort often comes first", "He is the bravest of all the animals", "He did not hear what Rat said", "He is afraid of the dark"],
+      "choices": ["His feelings change fast, and his comfort comes first", "He is the bravest and most loyal friend of all the animals", "He did not hear what the Rat had just said to him", "He is afraid of going out into the cold and dark"],
       "answer": 0,
       "evidence": "Surely I heard the chink of dishes on a tray!"
     },
@@ -86,7 +86,7 @@
       "id": "wind-in-the-willows-11-11",
       "type": "detail",
       "q": "What had Mole and Badger been doing while Toad was away?",
-      "choices": ["Camping out in all weather, watching over Toad Hall", "Living comfortably in Badger's house", "Travelling to find Toad in prison", "Fishing with Otter"],
+      "choices": ["Camping out in all weather, watching over Toad Hall", "Living snug and comfortable in the Badger's house", "Travelling far and wide to find Toad in prison", "Fishing on the river every day with the Otter"],
       "answer": 0,
       "evidence": "camping out in the open, in every sort of weather"
     },
@@ -94,7 +94,7 @@
       "id": "wind-in-the-willows-11-12",
       "type": "detail",
       "q": "How did the arguing animals finally fall silent?",
-      "choices": ["Badger told them all to be quiet", "Toad started to cry", "There was a knock at the door", "Rat banged a pan"],
+      "choices": ["Badger told them all to be quiet", "Toad started to cry very loudly", "There was a sudden knock at the door", "Rat banged a pan on the table"],
       "answer": 0,
       "evidence": "Be quiet at once, all of you!"
     },
@@ -102,7 +102,7 @@
       "id": "wind-in-the-willows-11-13",
       "type": "detail",
       "q": "What great secret did Badger reveal?",
-      "choices": ["An underground passage leads from the river-bank into Toad Hall", "Badger owned half of Toad Hall", "The weasels planned to leave soon", "Toad's father had hidden treasure"],
+      "choices": ["A secret tunnel runs from the river-bank into Toad Hall", "Badger had secretly owned half of Toad Hall all along", "The weasels were planning to leave Toad Hall soon", "Toad's father had hidden a treasure in the cellars"],
       "answer": 0,
       "evidence": "There--is--an--underground--passage"
     },
@@ -110,7 +110,7 @@
       "id": "wind-in-the-willows-11-14",
       "type": "inference",
       "q": "Why had Toad's father told Badger not to tell Toad about the passage?",
-      "choices": ["Toad could not keep a secret", "Toad was afraid of tunnels", "The passage was too dangerous", "Toad would sell it"],
+      "choices": ["Toad could not keep a secret", "Toad was afraid of dark tunnels", "The passage was too dangerous to use", "Toad would sell it to someone"],
       "answer": 0,
       "evidence": "simply cannot hold his tongue"
     },
@@ -118,7 +118,7 @@
       "id": "wind-in-the-willows-11-15",
       "type": "detail",
       "q": "How did Badger learn about the Chief Weasel's banquet?",
-      "choices": ["Otter disguised himself as a sweep and called at the back-door", "Mole overheard the stoats", "A weasel told Toad", "Rat read about it in the paper"],
+      "choices": ["Otter dressed as a sweep and called at the back-door", "Mole hid in a hedge and overheard the sentries talking", "A weasel boasted about it to Toad by the river", "Rat read all about it in the local newspaper"],
       "answer": 0,
       "evidence": "I got Otter to disguise himself as a sweep"
     },
@@ -126,7 +126,7 @@
       "id": "wind-in-the-willows-11-16",
       "type": "vocabulary",
       "q": "The stoats \"make the best sentinels in the world.\" What is a sentinel?",
-      "choices": ["A guard who keeps watch", "A cook", "A messenger", "A singer"],
+      "choices": ["A guard who keeps watch", "A cook who makes the meals", "A messenger who runs errands", "A singer at a banquet"],
       "answer": 0,
       "evidence": "they make the best sentinels in the world"
     },
@@ -134,7 +134,7 @@
       "id": "wind-in-the-willows-11-17",
       "type": "sequence",
       "q": "What did Mole do the next morning while Toad was still asleep?",
-      "choices": ["Dressed as the washerwoman and frightened the stoats with tales of a coming attack", "Went fishing with Otter", "Sharpened all the swords", "Explored the secret passage alone"],
+      "choices": ["Dressed up as the washerwoman and scared the sentries", "Went fishing with the Otter at the weir before breakfast", "Sharpened all the swords and cleaned the pistols for the fight", "Explored the secret passage alone with a lantern"],
       "answer": 0,
       "evidence": "I've been getting a rise out of the stoats!"
     },
@@ -150,7 +150,7 @@
       "id": "wind-in-the-willows-11-19",
       "type": "main-idea",
       "q": "What is this chapter mostly about?",
-      "choices": ["Toad learns his home has been seized, and his friends plan how to win it back", "Toad escapes from prison", "Rat dreams of travelling South", "Mole and Rat find Portly"],
+      "choices": ["Toad learns his home was seized, and friends plan to win it back", "Toad escapes from prison and rides home on a canal barge", "Rat dreams of travelling South with the Sea Rat", "Mole and Rat find Portly on the island at dawn"],
       "answer": 0,
       "evidence": "There are more ways of getting back a place than taking it by storm."
     }

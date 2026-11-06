@@ -6,7 +6,7 @@
       "id": "black-beauty-43-01",
       "type": "detail",
       "q": "What was election day like for Jerry and Jack?",
-      "choices": ["There was plenty of work, one fare after another", "There was no work at all", "They stayed home all day", "They drove only one customer"],
+      "choices": ["There was plenty of work, one fare after another", "There was no work at all, so they rested", "They stayed at home all day in the stable", "They drove only one customer the whole day"],
       "answer": 0,
       "evidence": "there was no lack of work for Jerry and me"
     },
@@ -14,7 +14,7 @@
       "id": "black-beauty-43-02",
       "type": "detail",
       "q": "What did Jerry give Jack to eat when they had a short break?",
-      "choices": ["Crushed oats wetted up with a little bran", "Polly's meat pie", "Fresh grass", "A carrot and an apple"],
+      "choices": ["Crushed oats wetted up with a little bran", "A slice of Polly's meat pie from his basket", "Fresh grass from a nearby park", "A carrot and an apple from Dolly"],
       "answer": 0,
       "evidence": "a good feed of crushed oats wetted up with a little bran"
     },
@@ -22,7 +22,7 @@
       "id": "black-beauty-43-03",
       "type": "inference",
       "q": "How did Black Beauty feel about elections after this day?",
-      "choices": ["He did not want to be in another one", "He thought they were great fun", "He wished there were one every week", "He did not notice anything unusual"],
+      "choices": ["He did not want to be in another one", "He thought they were great fun to watch", "He wished there were one every week", "He did not notice anything unusual"],
       "answer": 0,
       "evidence": "I don't want to be in another"
     },
@@ -30,7 +30,7 @@
       "id": "black-beauty-43-04",
       "type": "detail",
       "q": "Where did the poor young woman need to go?",
-      "choices": ["St. Thomas' Hospital", "Paddington Station", "Bow Street Police Station", "The bank"],
+      "choices": ["St. Thomas' Hospital", "Paddington Station", "Bow Street Police Station", "The Bank of England"],
       "answer": 0,
       "evidence": "the way to St. Thomas' Hospital"
     },
@@ -38,7 +38,7 @@
       "id": "black-beauty-43-05",
       "type": "detail",
       "q": "What was wrong with the young woman's little boy?",
-      "choices": ["He was four and could not walk, and he was in pain", "He had a broken arm", "He was lost and crying for his father", "He had a bad cough from the rain"],
+      "choices": ["He was four and could not walk, and he was in pain", "He had broken his arm falling down the stairs", "He was lost in the crowd and crying for his father", "He had a bad cough from standing in the rain"],
       "answer": 0,
       "evidence": "he is four years old and can't walk any more than a baby"
     },
@@ -46,7 +46,7 @@
       "id": "black-beauty-43-06",
       "type": "character",
       "q": "Why did the woman at first refuse to get into the cab?",
-      "choices": ["She only had enough money to get back home", "She was afraid of horses", "She wanted to walk for exercise", "She did not trust Jerry"],
+      "choices": ["She only had enough money to get back home", "She was afraid of horses since a bad fall", "She wanted to walk for the exercise", "She did not trust a cabman she did not know"],
       "answer": 0,
       "evidence": "I have only just money enough to get back with"
     },
@@ -54,7 +54,7 @@
       "id": "black-beauty-43-07",
       "type": "character",
       "q": "Why did Jerry offer to take the woman for nothing?",
-      "choices": ["He had children of his own and knew a father's feelings", "He was going that way anyway", "He wanted to win a prize", "The hospital would pay him later"],
+      "choices": ["He had children of his own and felt for her", "He was going that way anyway to get home", "He hoped the cab company would give him a prize for it", "The hospital had promised to pay him later"],
       "answer": 0,
       "evidence": "I know a father's feelings"
     },
@@ -62,7 +62,7 @@
       "id": "black-beauty-43-08",
       "type": "sequence",
       "q": "What happened just as Jerry went to open the door for the woman?",
-      "choices": ["Two men with party colors pushed past and jumped into the cab", "The woman fainted", "Jack ran away", "A policeman stopped the cab"],
+      "choices": ["Two men with party colors pushed in and took the cab", "The young woman fainted on the wet pavement", "Jack took fright and ran off down the street", "A policeman stopped them and asked for his license"],
       "answer": 0,
       "evidence": "one of the men, pushing past the woman, sprang into the cab"
     },
@@ -70,7 +70,7 @@
       "id": "black-beauty-43-09",
       "type": "inference",
       "q": "How did Jerry get the two rude men out of his cab?",
-      "choices": ["He calmly waited and would not drive, so they gave up and left", "He pulled them out by force", "He called the police", "He drove them where they wanted first"],
+      "choices": ["He waited calmly and would not drive, so they left", "He pulled them out of the cab by force", "He called a policeman, who dragged them out by their collars", "He drove them where they wanted to go first"],
       "answer": 0,
       "evidence": "I can wait while you rest yourselves"
     },
@@ -78,7 +78,7 @@
       "id": "black-beauty-43-10",
       "type": "vocabulary",
       "q": "The men were \"blustering about his number and getting a summons.\" What does \"blustering\" mean?",
-      "choices": ["Talking loudly and angrily to make threats", "Whispering politely", "Laughing happily", "Crying quietly"],
+      "choices": ["Talking loudly and angrily to make threats", "Whispering politely to each other", "Laughing and joking together about the woman", "Crying quietly about their trouble"],
       "answer": 0,
       "evidence": "blustering about his number and getting a summons"
     },

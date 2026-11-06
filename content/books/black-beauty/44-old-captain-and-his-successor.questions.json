@@ -6,7 +6,7 @@
       "id": "black-beauty-44-01",
       "type": "detail",
       "q": "What caused the accident that hurt Captain?",
-      "choices": ["A drunk drayman lost control of his horses and crashed into the cab", "Captain slipped on ice", "A train frightened Captain", "Jerry fell asleep while driving"],
+      "choices": ["A drunken drayman drove his horses into the cab", "Captain slipped on the ice and fell in the shafts", "A railway train frightened Captain into bolting", "Jerry fell asleep while driving home late at night"],
       "answer": 0,
       "evidence": "the man had no control over them"
     },
@@ -14,7 +14,7 @@
       "id": "black-beauty-44-02",
       "type": "detail",
       "q": "How was Captain hurt in the crash?",
-      "choices": ["A splintered shaft ran into his side", "He broke a leg", "He lost an eye", "He was burned"],
+      "choices": ["A splintered shaft ran into his side", "He broke a front leg in the fall", "He lost an eye to a flying stone", "He was burned by a lamp that broke"],
       "answer": 0,
       "evidence": "the shafts splintered, and one of them ran into his side"
     },
@@ -22,7 +22,7 @@
       "id": "black-beauty-44-03",
       "type": "detail",
       "q": "What happened to the drayman after the accident?",
-      "choices": ["He was proved to be drunk and was fined", "He went to prison for life", "He was never found", "He paid Jerry a hundred pounds"],
+      "choices": ["He was proved to be drunk and was fined", "He went to prison for the rest of his life", "He drove off and was never found again", "He paid Jerry a hundred pounds himself"],
       "answer": 0,
       "evidence": "The drayman was proved to be very drunk, and was fined"
     },
@@ -30,7 +30,7 @@
       "id": "black-beauty-44-04",
       "type": "character",
       "q": "Why did Jerry say talk of \"compensation\" was nonsense?",
-      "choices": ["Money could not make up for losing a good horse that was like an old friend", "He did not need any money", "The brewer refused to pay", "He thought the accident was his own fault"],
+      "choices": ["No money could pay for losing an old friend like Captain", "He did not need any money from the brewer", "The brewer had already refused to pay a penny", "He thought the accident was really his own fault"],
       "answer": 0,
       "evidence": "losing a good horse that's like an old friend"
     },
@@ -46,7 +46,7 @@
       "id": "black-beauty-44-06",
       "type": "detail",
       "q": "What helped Jerry when the craving for drink came on?",
-      "choices": ["A cup of coffee, some peppermint, or reading his book", "Going to the tavern for one small glass", "Driving faster", "Sleeping in the stable"],
+      "choices": ["A cup of coffee, some peppermint, or reading his book", "Going to the tavern on the corner for just one small glass", "Driving faster to forget about it", "Sleeping it off in the stable with the horses"],
       "answer": 0,
       "evidence": "I used to get a cup of coffee, or some peppermint, or read a bit in my book"
     },
@@ -54,7 +54,7 @@
       "id": "black-beauty-44-07",
       "type": "character",
       "q": "Why would Jerry not sell old Captain for a few pounds?",
-      "choices": ["He would not sell a good old servant into hard work and misery", "No one wanted to buy him", "Captain was worth much more", "The governor told him not to"],
+      "choices": ["He would not sell a faithful old servant into misery", "No one would buy a horse that had been hurt in a crash like that", "Captain was worth far more than a few pounds", "The governor told him he must keep Captain"],
       "answer": 0,
       "evidence": "a few pounds got by selling a good old servant into hard work and misery would canker all the rest of his money"
     },
@@ -70,7 +70,7 @@
       "id": "black-beauty-44-09",
       "type": "inference",
       "q": "Why did the under-groom think Hotspur had run away?",
-      "choices": ["Tight harness, a check-rein, and a sharp curb hurt his tender mouth", "He was a vicious horse", "He was frightened by a dog", "He was very old and confused"],
+      "choices": ["A check-rein and sharp curb hurt his tender mouth", "He was a vicious horse who hated all people", "He was young and was frightened by a band playing in the street", "He was very old and confused in the busy streets"],
       "answer": 0,
       "evidence": "It is my belief that it made the horse mad, being tender in the mouth and so full of spirit"
     },
@@ -78,7 +78,7 @@
       "id": "black-beauty-44-10",
       "type": "vocabulary",
       "q": "Jerry said \"it was an ill wind that blew nobody good.\" What does that saying mean here?",
-      "choices": ["Something bad for one person turned out good for another", "The weather was very windy", "Hotspur was sick from the cold", "Bad luck always follows good luck"],
+      "choices": ["Something bad for one person turned out good for another", "The weather was very windy that whole week", "Hotspur had become sick from the cold wind", "Bad luck always comes right after good luck"],
       "answer": 0,
       "evidence": "it was an ill wind that blew nobody good"
     },
@@ -86,7 +86,7 @@
       "id": "black-beauty-44-11",
       "type": "character",
       "q": "How did Hotspur feel about being a cab-horse by the end of the week?",
-      "choices": ["An easy mouth and a free head made up for a great deal", "He hated it more than ever", "He wanted to go back to the nobleman", "He refused to pull the cab"],
+      "choices": ["His easy mouth and free head made up for a lot", "He hated the work more than ever before", "He wanted to go back to the nobleman's stables", "He refused to pull the cab up the hills"],
       "answer": 0,
       "evidence": "an easy mouth and a free head made up for a great deal"
     }

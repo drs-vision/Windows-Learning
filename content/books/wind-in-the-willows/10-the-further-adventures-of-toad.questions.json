@@ -6,7 +6,7 @@
       "id": "wind-in-the-willows-10-01",
       "type": "detail",
       "q": "Where had Toad spent the night at the start of this chapter?",
-      "choices": ["In a hollow tree", "In a barn", "On the railway train", "In the prison cell"],
+      "choices": ["In a hollow tree", "In a farmer's barn", "On the railway train", "In the prison cell"],
       "answer": 0,
       "evidence": "The front door of the hollow tree faced eastwards"
     },
@@ -14,7 +14,7 @@
       "id": "wind-in-the-willows-10-02",
       "type": "character",
       "q": "How did Toad feel when he woke and remembered everything?",
-      "choices": ["Joyful, because he was free", "Terrified that he would be caught", "Sad and homesick", "Angry at the engine-driver"],
+      "choices": ["Joyful, because he was free", "Terrified that he would be caught", "Sad, lonely and homesick", "Angry at the kind engine-driver"],
       "answer": 0,
       "evidence": "The word and the thought alone were worth fifty blankets."
     },
@@ -22,7 +22,7 @@
       "id": "wind-in-the-willows-10-03",
       "type": "detail",
       "q": "What story did Toad tell the barge-woman to get a ride?",
-      "choices": ["He was a washerwoman going to help a married daughter near Toad Hall", "He was a lost traveller from abroad", "He was a farmer taking eggs to market", "He was a friend of the barge-woman's husband"],
+      "choices": ["He was a washerwoman off to help a married daughter", "He was a lost traveller from abroad looking for an inn", "He was a farmer's wife taking eggs to the market", "He was an old friend of the barge-woman's husband"],
       "answer": 0,
       "evidence": "Here's my married daughter, she sends off to me post-haste"
     },
@@ -30,7 +30,7 @@
       "id": "wind-in-the-willows-10-04",
       "type": "inference",
       "q": "Why did Toad's boasting about loving washing get him into trouble?",
-      "choices": ["The barge-woman asked him to do her washing", "The barge-woman wanted to hire his twenty girls", "The barge-woman reported him to the police", "The barge-woman asked to see his laundry"],
+      "choices": ["The barge-woman asked him to do her washing", "The barge-woman wanted to hire his twenty girls", "The barge-woman reported him to the police", "The barge-woman asked to see his own laundry"],
       "answer": 0,
       "evidence": "put them through the wash-tub as we go along"
     },
@@ -38,7 +38,7 @@
       "id": "wind-in-the-willows-10-05",
       "type": "detail",
       "q": "How did Toad's washing go?",
-      "choices": ["Badly; nothing he did got the clothes clean and he kept losing the soap", "Very well; the barge-woman praised him", "He refused to wash at all", "He washed everything perfectly but slowly"],
+      "choices": ["Badly; the clothes stayed dirty and he kept losing the soap", "Very well; the barge-woman praised his fine, careful work", "He refused to wash anything at all and sat sulking", "He washed everything perfectly, but very slowly"],
       "answer": 0,
       "evidence": "lost the soap, for the fiftieth time"
     },
@@ -46,7 +46,7 @@
       "id": "wind-in-the-willows-10-06",
       "type": "vocabulary",
       "q": "The barge-woman said she thought Toad was \"a humbug all along.\" What is a humbug?",
-      "choices": ["A fake who pretends to be something he is not", "A very hard worker", "A kind of insect", "A brave hero"],
+      "choices": ["A fake who pretends to be something he is not", "A very hard worker who never stops to rest", "A kind of buzzing insect found on boats", "A brave hero who saves people in trouble"],
       "answer": 0,
       "evidence": "I thought you must be a humbug all along"
     },
@@ -54,7 +54,7 @@
       "id": "wind-in-the-willows-10-07",
       "type": "sequence",
       "q": "What did the barge-woman do after she discovered Toad was a toad?",
-      "choices": ["Flung him into the canal", "Locked him in the cabin", "Called for her husband", "Gave him breakfast"],
+      "choices": ["Flung him into the canal", "Locked him in the cabin", "Called loudly for her husband", "Gave him a hot breakfast"],
       "answer": 0,
       "evidence": "Toad found himself flying through the air"
     },
@@ -62,7 +62,7 @@
       "id": "wind-in-the-willows-10-08",
       "type": "character",
       "q": "How did Toad get his revenge on the barge-woman?",
-      "choices": ["He untied her horse and rode away on it", "He sank her barge", "He stole her washing", "He told the police about her"],
+      "choices": ["He untied her horse and rode away on it", "He sank her barge in the middle of the canal", "He stole her washing and threw it away", "He told the police all about her"],
       "answer": 0,
       "evidence": "unfastened the towrope and cast off, jumped lightly on the horse's back"
     },
@@ -70,7 +70,7 @@
       "id": "wind-in-the-willows-10-09",
       "type": "detail",
       "q": "What did Toad finally get from the gipsy in exchange for the horse?",
-      "choices": ["Six shillings and sixpence and a big breakfast of stew", "Four shillings only", "A donkey and a cart", "A ride home in the caravan"],
+      "choices": ["Six and sixpence and a big breakfast of stew", "Four shillings, a pair of old boots and some bread", "A grey donkey and a little painted cart", "A ride home to Toad Hall in the caravan"],
       "answer": 0,
       "evidence": "counted out six shillings and sixpence into Toad's paw"
     },
@@ -78,7 +78,7 @@
       "id": "wind-in-the-willows-10-10",
       "type": "vocabulary",
       "q": "Toad wondered whether it would be easier to fight the gipsy or \"cajole\" him. What does \"cajole\" mean?",
-      "choices": ["To coax or sweet-talk someone into doing something", "To run away from", "To trick with magic", "To pay a lot of money"],
+      "choices": ["To coax or sweet-talk someone into something", "To run away from someone as fast as possible", "To trick someone using some kind of magic", "To pay someone a great deal of money"],
       "answer": 0,
       "evidence": "easier to fight him or cajole him"
     },
@@ -86,7 +86,7 @@
       "id": "wind-in-the-willows-10-11",
       "type": "character",
       "q": "After his breakfast, what did Toad do that showed how conceited he had become?",
-      "choices": ["Made up and sang a song praising himself", "Wrote a thank-you letter to the gipsy", "Went straight home to apologize", "Hid quietly until nightfall"],
+      "choices": ["Made up and sang a song praising himself", "Wrote a polite thank-you letter to the gipsy", "Went straight home to apologize to his friends", "Hid quietly in a ditch until nightfall"],
       "answer": 0,
       "evidence": "It was perhaps the most conceited song that any animal ever composed."
     },
@@ -94,7 +94,7 @@
       "id": "wind-in-the-willows-10-12",
       "type": "detail",
       "q": "Why did Toad collapse when he saw the motor-car coming?",
-      "choices": ["It was the very car he had stolen from the Red Lion Hotel", "It was a police car", "It nearly ran him over", "He was too hungry to stand"],
+      "choices": ["It was the very car he had stolen from the Red Lion Hotel", "It was a police car full of constables looking for him", "It came round the bend and nearly ran him over", "He was too hungry and tired to stand any longer"],
       "answer": 0,
       "evidence": "the very one he had stolen out of the yard of the Red Lion Hotel"
     },
@@ -102,7 +102,7 @@
       "id": "wind-in-the-willows-10-13",
       "type": "detail",
       "q": "What did the gentlemen in the car think had happened to Toad?",
-      "choices": ["That a poor washerwoman had fainted in the road", "That a toad had escaped from prison", "That a thief was hiding by the road", "That a child was lost"],
+      "choices": ["That a poor washerwoman had fainted in the road", "That a toad had escaped from the prison nearby", "That a thief was hiding by the side of the road", "That a little child was lost and needed help"],
       "answer": 0,
       "evidence": "a washerwoman apparently--who has fainted in the road"
     },
@@ -110,7 +110,7 @@
       "id": "wind-in-the-willows-10-14",
       "type": "sequence",
       "q": "What did Toad ask for after being moved to the front seat?",
-      "choices": ["To try driving the car", "To be taken to Toad Hall", "To be let out at the village", "Something to eat"],
+      "choices": ["To try driving the car", "To be taken to Toad Hall", "To be let out at the village", "Something hot to eat"],
       "answer": 0,
       "evidence": "let me try and drive the car for a little"
     },
@@ -118,7 +118,7 @@
       "id": "wind-in-the-willows-10-15",
       "type": "detail",
       "q": "How did the car ride end?",
-      "choices": ["Toad crashed the car through a hedge into a horse-pond", "Toad drove all the way to Toad Hall", "The gentlemen stopped the car and tied Toad up", "The car ran out of petrol"],
+      "choices": ["Toad crashed the car through a hedge into a horse-pond", "Toad drove all the way home to the gates of Toad Hall", "The gentlemen stopped the car and tied Toad up with rope", "The car ran out of petrol on a lonely country road"],
       "answer": 0,
       "evidence": "the wheels of the car were churning up the thick mud of a horse-pond"
     },
@@ -126,7 +126,7 @@
       "id": "wind-in-the-willows-10-16",
       "type": "inference",
       "q": "What lesson does Toad keep failing to learn in this chapter?",
-      "choices": ["His boasting and showing off keep landing him in trouble", "He should never trust a horse", "He should always travel by train", "He should learn to swim better"],
+      "choices": ["His boasting keeps landing him in trouble", "He should never trust a horse he does not know", "He should always travel by train, not by car", "He should learn to swim much better in rivers"],
       "answer": 0,
       "evidence": "What a CONCEITED and heedless ass!"
     },
@@ -134,7 +134,7 @@
       "id": "wind-in-the-willows-10-17",
       "type": "sequence",
       "q": "How did Toad end up in the river?",
-      "choices": ["While running from policemen, he ran blindly straight into it", "He jumped in to wash the mud off", "The barge-woman threw him in again", "He fell off the gipsy's horse"],
+      "choices": ["Running from the police, he ran blindly into it", "He jumped in on purpose to wash the mud off", "The barge-woman caught him and threw him in again", "He fell off the gipsy's horse into the water"],
       "answer": 0,
       "evidence": "in his blind panic he had run straight into the river"
     },
@@ -142,7 +142,7 @@
       "id": "wind-in-the-willows-10-18",
       "type": "detail",
       "q": "Whose face did Toad see in the dark hole in the river bank?",
-      "choices": ["The Water Rat's", "The Mole's", "Badger's", "The barge-woman's"],
+      "choices": ["The Water Rat's", "The Mole's", "The Badger's", "The barge-woman's"],
       "answer": 0,
       "evidence": "It was the Water Rat!"
     },
@@ -150,7 +150,7 @@
       "id": "wind-in-the-willows-10-19",
       "type": "main-idea",
       "q": "What is this chapter mostly about?",
-      "choices": ["Toad's run of tricks and narrow escapes on his way home, made worse by his boasting", "Rat and Mole searching for Portly", "Toad's trial in court", "Badger making a plan to retake Toad Hall"],
+      "choices": ["Toad's tricks and narrow escapes on the way home", "Rat and Mole searching the river for little Portly", "Toad's trial in court and his long prison sentence", "Badger making a plan to win back Toad Hall"],
       "answer": 0,
       "evidence": "But his pride was shortly to have a severe fall."
     }

@@ -6,7 +6,7 @@
       "id": "black-beauty-42-01",
       "type": "detail",
       "q": "What did Mr. B---- want from Jerry?",
-      "choices": ["His vote, and to hire his cab for the election", "To buy Jack", "To borrow money", "To fix his carriage"],
+      "choices": ["His vote, and to hire his cab for the election", "To buy Jack for his own carriage", "To borrow some money to pay for his election bills", "To mend a broken wheel on his carriage"],
       "answer": 0,
       "evidence": "he wants to hire your cab for the election"
     },
@@ -14,7 +14,7 @@
       "id": "black-beauty-42-02",
       "type": "character",
       "q": "Why would Jerry not let his cab be used for the election?",
-      "choices": ["He did not want it covered in bills or the horses racing about for half-drunken voters", "The pay was too low", "His cab was being repaired", "He was going away on holiday"],
+      "choices": ["He did not want bills pasted on it or his horses overdriven", "The pay offered for election day was far too low", "His cab was in the shop being mended and painted", "He was taking his family away on holiday that week"],
       "answer": 0,
       "evidence": "'twould be an insult to the horses"
     },
@@ -22,7 +22,7 @@
       "id": "black-beauty-42-03",
       "type": "character",
       "q": "Why did Jerry decide not to vote for Mr. B----?",
-      "choices": ["He thought the man was blind to what workingmen want", "He did not like the color blue", "Mr. B---- had been rude to Polly", "Jerry never voted"],
+      "choices": ["He thought the man was blind to what workingmen want", "He did not like the blue color the man wore", "Mr. B---- had been rude to Polly when he came to the door", "Jerry had never voted in any election"],
       "answer": 0,
       "evidence": "he is blind as to what workingmen want"
     },
@@ -30,7 +30,7 @@
       "id": "black-beauty-42-04",
       "type": "sequence",
       "q": "What happened to Dolly on the morning before the election?",
-      "choices": ["Boys threw dirt on her and called her names", "She got lost in the city", "She fell off the cab", "She won a prize at school"],
+      "choices": ["Boys threw dirt on her and called her names", "She got lost in the crowds of the city", "She fell off the cab step and hurt her knee badly", "She won a prize for reading at school"],
       "answer": 0,
       "evidence": "have thrown the dirt all over me"
     },
@@ -38,7 +38,7 @@
       "id": "black-beauty-42-05",
       "type": "detail",
       "q": "What did Harry do after the boys insulted Dolly?",
-      "choices": ["He gave them a thrashing", "He told the police", "He ran away crying", "He gave them some sweets"],
+      "choices": ["He gave them a thrashing", "He went and told the police", "He ran home crying to his mother", "He gave them some sweets to stop"],
       "answer": 0,
       "evidence": "I have given them a thrashing they will remember"
     },
@@ -46,7 +46,7 @@
       "id": "black-beauty-42-06",
       "type": "vocabulary",
       "q": "The boys called Dolly a \"ragamuffin.\" What is a ragamuffin?",
-      "choices": ["A dirty, raggedly dressed child", "A kind of cake", "A very clever girl", "A small dog"],
+      "choices": ["A dirty, raggedly dressed child", "A kind of sweet cake from the baker", "A very clever girl at school", "A small, scruffy dog"],
       "answer": 0,
       "evidence": "called her a little 'blue' ragamuffin"
     },
@@ -54,7 +54,7 @@
       "id": "black-beauty-42-07",
       "type": "main-idea",
       "q": "What does Jerry believe every man should do in an election?",
-      "choices": ["Vote according to his conscience and let his neighbor do the same", "Wear his party's color proudly", "Vote the way his customers tell him", "Fight anyone who wears another color"],
+      "choices": ["Vote by his conscience and let his neighbor do the same", "Wear his party's color proudly wherever he goes", "Vote the way his best customers tell him to vote", "Fight any man who wears another party's color"],
       "answer": 0,
       "evidence": "every man ought to vote according to his conscience"
     }

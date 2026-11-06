@@ -6,7 +6,7 @@
       "id": "black-beauty-48-01",
       "type": "detail",
       "q": "What kind of horses were at the sale with Black Beauty?",
-      "choices": ["Old, broken-down horses, some lame or broken-winded", "Young racehorses", "Fine carriage horses", "Little ponies for children"],
+      "choices": ["Old, broken-down horses, some lame or broken-winded", "Young racehorses that had never been ridden", "Fine carriage horses from rich men's stables", "Little ponies for children to ride"],
       "answer": 0,
       "evidence": "I found myself in company with the old broken-down horses"
     },
@@ -14,7 +14,7 @@
       "id": "black-beauty-48-02",
       "type": "detail",
       "q": "Who was with the gentleman farmer at the sale?",
-      "choices": ["His grandson Willie", "His wife", "Jerry Barker", "Joe Green"],
+      "choices": ["His grandson Willie", "His wife Mrs. Thoroughgood", "Jerry Barker", "Joe Green"],
       "answer": 0,
       "evidence": "There's a horse, Willie, that has known better days"
     },
@@ -22,7 +22,7 @@
       "id": "black-beauty-48-03",
       "type": "inference",
       "q": "How could the farmer tell Black Beauty had once been a fine horse?",
-      "choices": ["From his nostrils, ears, and the shape of his neck and shoulder", "From a name tag on his bridle", "Because the seller told him", "From the color of his coat"],
+      "choices": ["From his nostrils, ears, neck and shoulder", "From a name tag fixed to his old bridle", "Because the seller told him the horse's whole history", "From the fine, shining color of his coat"],
       "answer": 0,
       "evidence": "look at his nostrils and his ears, the shape of his neck and shoulder"
     },
@@ -30,7 +30,7 @@
       "id": "black-beauty-48-04",
       "type": "character",
       "q": "What did Willie ask his grandfather to do?",
-      "choices": ["Buy the horse and make him young again, as he did with Ladybird", "Leave quickly", "Buy a pony instead", "Sell their own colt"],
+      "choices": ["Buy him and make him young, as with Ladybird", "Leave the sale quickly before it rained", "Buy a little pony for him to ride to school instead", "Sell their own colt to pay for the horse"],
       "answer": 0,
       "evidence": "Could not you buy him and make him young again as you did with Ladybird?"
     },
@@ -46,7 +46,7 @@
       "id": "black-beauty-48-06",
       "type": "vocabulary",
       "q": "The farmer calls buying the horse \"quite a speculation!\" What does \"speculation\" mean here?",
-      "choices": ["A risk that might or might not pay off", "A sure bargain", "A big mistake", "A gift"],
+      "choices": ["A risk that might or might not pay off", "A sure bargain that cannot lose", "A big mistake that he would always regret", "A gift from a kind friend"],
       "answer": 0,
       "evidence": "'Tis a speculation,\" said the old gentleman"
     },
@@ -54,7 +54,7 @@
       "id": "black-beauty-48-07",
       "type": "character",
       "q": "What job did Mr. Thoroughgood give Willie?",
-      "choices": ["To take the oversight of the horse", "To sell the horse in spring", "To ride the horse in races", "To clean the inn"],
+      "choices": ["To take the oversight of the horse", "To sell the horse again in the spring", "To ride the horse in the village races", "To clean out the stable at the inn"],
       "answer": 0,
       "evidence": "\"you, Willie,\" said he, \"must take the oversight of him"
     },
@@ -62,7 +62,7 @@
       "id": "black-beauty-48-08",
       "type": "detail",
       "q": "What did Willie call Black Beauty?",
-      "choices": ["Old Crony", "Jack", "Blackie", "Ladybird"],
+      "choices": ["Old Crony", "Jack", "Blackie", "Old Captain"],
       "answer": 0,
       "evidence": "He called me Old Crony"
     },
@@ -70,7 +70,7 @@
       "id": "black-beauty-48-09",
       "type": "sequence",
       "q": "What happened in March after the winter's rest?",
-      "choices": ["Mr. Thoroughgood tried him in the phaeton, and he did the work with ease", "He was sold to a cab owner", "He fell ill again", "He went back to the sale"],
+      "choices": ["He was tried in the phaeton and did the work with ease", "He was sold to a cab owner who came looking for a strong horse", "He fell ill again and could not work", "He was taken back to the horse sale"],
       "answer": 0,
       "evidence": "I did the work with perfect ease"
     }

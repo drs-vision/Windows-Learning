@@ -6,7 +6,7 @@
       "id": "wind-in-the-willows-08-01",
       "type": "detail",
       "q": "Why had Toad been put in prison?",
-      "choices": ["For stealing a motor-car and being rude to policemen", "For not paying his taxes", "For fighting with the weasels", "For breaking into a farmhouse"],
+      "choices": ["For stealing a motor-car and being rude to policemen", "For not paying his taxes on Toad Hall for years", "For fighting with the weasels on the high-road", "For breaking into a farmhouse and stealing a pie"],
       "answer": 0,
       "evidence": "imprisoned so justly for stealing so handsome a motor-car"
     },
@@ -14,7 +14,7 @@
       "id": "wind-in-the-willows-08-02",
       "type": "character",
       "q": "How did Toad behave during his first weeks in the dungeon?",
-      "choices": ["He wept, despaired and refused his meals", "He cheerfully planned his escape", "He made friends with all the guards", "He wrote letters to his lawyers every day"],
+      "choices": ["He wept, despaired and refused his meals", "He cheerfully planned his escape night and day", "He made friends with all the guards and warders", "He wrote letters to his lawyers every single day"],
       "answer": 0,
       "evidence": "refusing his meals or intermediate light refreshments"
     },
@@ -22,7 +22,7 @@
       "id": "wind-in-the-willows-08-03",
       "type": "character",
       "q": "Why did the gaoler's daughter ask to look after Toad?",
-      "choices": ["She was fond of animals and pitied his misery", "Her father ordered her to guard him", "She wanted to be paid by Toad", "She hoped to marry a rich toad"],
+      "choices": ["She was fond of animals and pitied his misery", "Her father ordered her to guard him every night", "She wanted Toad to pay her well for her trouble", "She hoped Toad would give her a ride in a car"],
       "answer": 0,
       "evidence": "I can't bear to see that poor beast so unhappy"
     },
@@ -30,7 +30,7 @@
       "id": "wind-in-the-willows-08-04",
       "type": "sequence",
       "q": "What finally made Toad sit up, dry his eyes and start eating?",
-      "choices": ["Hot buttered toast and tea", "A letter from Badger", "A visit from Rat and Mole", "A bowl of bread-and-water"],
+      "choices": ["Hot buttered toast and tea", "A kind letter from the Badger", "A visit from the Rat and the Mole", "A bowl of bread-and-water"],
       "answer": 0,
       "evidence": "The smell of that buttered toast simply talked to Toad"
     },
@@ -38,7 +38,7 @@
       "id": "wind-in-the-willows-08-05",
       "type": "vocabulary",
       "q": "Toad ate the toast \"with avidity.\" What does \"avidity\" mean?",
-      "choices": ["Great eagerness", "Slow carefulness", "Sadness", "Disgust"],
+      "choices": ["Great eagerness", "Slow carefulness", "Quiet sadness", "Plain disgust"],
       "answer": 0,
       "evidence": "pitching into the toast with avidity"
     },
@@ -46,7 +46,7 @@
       "id": "wind-in-the-willows-08-06",
       "type": "inference",
       "q": "When the girl asked about Toad Hall, why did she laugh and say \"I don't want to TAKE it\"?",
-      "choices": ["Toad described it like an advertisement for selling a house", "Toad offered to give her the house", "Toad said the house was falling down", "Toad refused to talk about it"],
+      "choices": ["Toad described it like an advert for selling a house", "Toad offered to give her the whole house for free", "Toad said the old house was falling down around him", "Toad refused to tell her anything about it at all"],
       "answer": 0,
       "evidence": "Five minutes from church, post-office, and golf-links"
     },
@@ -54,7 +54,7 @@
       "id": "wind-in-the-willows-08-07",
       "type": "inference",
       "q": "Why did the girl NOT tell Toad that she was fond of animals as pets?",
-      "choices": ["She knew it would greatly offend him", "She was afraid of her father", "She did not really like animals", "She wanted to keep him as a pet secretly"],
+      "choices": ["She knew it would greatly offend him", "She was afraid her father would hear", "She did not really like animals at all", "She wanted to keep him as a pet in secret"],
       "answer": 0,
       "evidence": "Toad would be extremely offended"
     },
@@ -62,7 +62,7 @@
       "id": "wind-in-the-willows-08-08",
       "type": "detail",
       "q": "What was the girl's plan for Toad's escape?",
-      "choices": ["Toad would dress as her aunt, the washerwoman, and walk out", "Toad would dig a tunnel under the wall", "Toad would hide in a laundry basket", "Her father would let him out at night"],
+      "choices": ["Toad would dress as her aunt, the washerwoman, and walk out", "Toad would dig a long tunnel under the castle wall at night", "Toad would hide in a big laundry basket and be carried out", "Her father would quietly unlock the gate for him at night"],
       "answer": 0,
       "evidence": "you could escape from the castle as the official washerwoman"
     },
@@ -70,7 +70,7 @@
       "id": "wind-in-the-willows-08-09",
       "type": "character",
       "q": "How did Toad first respond to the idea of dressing as a washerwoman?",
-      "choices": ["He was proud and huffy and thought it beneath him", "He thanked her and agreed at once", "He laughed and said it was a clever idea", "He cried because he was afraid"],
+      "choices": ["He was proud and huffy and thought it beneath him", "He thanked her warmly and agreed to it at once", "He laughed and said it was a very clever idea indeed", "He cried because he was afraid of being caught"],
       "answer": 0,
       "evidence": "going about the country disguised as a washerwoman"
     },
@@ -78,7 +78,7 @@
       "id": "wind-in-the-willows-08-10",
       "type": "detail",
       "q": "What did the washerwoman ask for besides Toad's money?",
-      "choices": ["To be gagged, bound and left in a corner", "To be given Toad's coat and waistcoat", "A ride home in a motor-car", "A job at Toad Hall"],
+      "choices": ["To be gagged, bound and left in a corner", "To be given Toad's coat and his waistcoat", "A ride home in Toad's fine motor-car", "A good job as a cook at Toad Hall"],
       "answer": 0,
       "evidence": "she should be gagged and bound and dumped down in a corner"
     },
@@ -86,7 +86,7 @@
       "id": "wind-in-the-willows-08-11",
       "type": "vocabulary",
       "q": "The washerwoman's plan used a \"not very convincing artifice.\" What is an \"artifice\"?",
-      "choices": ["A clever trick meant to fool people", "A kind of clothing", "A prison guard", "A large key"],
+      "choices": ["A clever trick meant to fool people", "A kind of old-fashioned clothing", "A guard who watches prisoners", "A large iron key for the cell"],
       "answer": 0,
       "evidence": "By this not very convincing artifice"
     },
@@ -94,7 +94,7 @@
       "id": "wind-in-the-willows-08-12",
       "type": "detail",
       "q": "What problem did Toad discover at the railway booking-office?",
-      "choices": ["He had left his money in his waistcoat back in the cell", "The train had already left", "The clerk recognized him as Toad", "There were no trains going toward his home"],
+      "choices": ["His money was in his waistcoat, back in the cell", "The last train toward his home had already left", "The clerk recognized him at once as the famous Toad", "There were no trains going anywhere near his home"],
       "answer": 0,
       "evidence": "he had left both coat and waistcoat behind him in his cell"
     },
@@ -102,7 +102,7 @@
       "id": "wind-in-the-willows-08-13",
       "type": "detail",
       "q": "What did the engine-driver ask Toad to do in return for a ride?",
-      "choices": ["Wash some of his shirts", "Shovel coal on the engine", "Pay him later from Toad Hall", "Cook him supper"],
+      "choices": ["Wash some of his shirts", "Shovel coal into the engine", "Pay him later from Toad Hall", "Cook him a hot supper"],
       "answer": 0,
       "evidence": "If you'll wash a few shirts for me when you get home"
     },
@@ -110,7 +110,7 @@
       "id": "wind-in-the-willows-08-14",
       "type": "inference",
       "q": "What does the chapter tell us about Toad's real plans for the engine-driver's shirts?",
-      "choices": ["He never meant to wash them and planned to send money instead", "He planned to wash them carefully himself", "He would ask the gaoler's daughter to wash them", "He planned to throw them away"],
+      "choices": ["He never meant to wash them and would send money instead", "He planned to wash them very carefully himself at home", "He would ask the gaoler's daughter to wash them for him", "He planned to throw them out of the train window"],
       "answer": 0,
       "evidence": "he had never washed a shirt in his life"
     },
@@ -118,7 +118,7 @@
       "id": "wind-in-the-willows-08-15",
       "type": "sequence",
       "q": "What did the engine-driver notice after they had traveled many miles?",
-      "choices": ["Another engine full of police and warders was chasing them", "The train was running out of coal", "A tree had fallen across the rails", "Toad had fallen asleep"],
+      "choices": ["Another engine full of police and warders was chasing them", "The train was running out of coal and water fast", "A great old tree had fallen right across the rails just ahead", "Toad had fallen fast asleep in the corner of the cab"],
       "answer": 0,
       "evidence": "It looks as if we were being pursued!"
     },
@@ -126,7 +126,7 @@
       "id": "wind-in-the-willows-08-16",
       "type": "character",
       "q": "Why did the engine-driver decide to help Toad even after hearing the truth?",
-      "choices": ["He disliked motor-cars and being ordered about by policemen, and felt sorry for Toad", "Toad promised him a fortune", "He was afraid of Toad", "He did not believe Toad's story"],
+      "choices": ["He hated motor-cars and bossy policemen, and pitied Toad", "Toad promised him a fortune once he got safely home again", "He was afraid of what the angry Toad might do to him", "He did not believe a single word of Toad's story"],
       "answer": 0,
       "evidence": "I don't hold with motor-cars, for one thing"
     },
@@ -134,7 +134,7 @@
       "id": "wind-in-the-willows-08-17",
       "type": "detail",
       "q": "How did Toad escape the pursuing engine?",
-      "choices": ["He jumped from the train after a tunnel and hid in a wood", "He hid under a pile of coal", "He jumped into a river", "He climbed onto the roof of a carriage"],
+      "choices": ["He jumped from the train after a tunnel and hid in a wood", "He hid under a big pile of coal in the tender until dark", "He jumped off a bridge into a deep river below", "He climbed onto the roof of a carriage and lay flat"],
       "answer": 0,
       "evidence": "Toad jumped, rolled down a short embankment"
     },
@@ -142,7 +142,7 @@
       "id": "wind-in-the-willows-08-18",
       "type": "main-idea",
       "q": "What is this chapter mostly about?",
-      "choices": ["Toad escapes from prison disguised as a washerwoman and flees by train", "Toad wins his case in court and goes home", "Rat and Mole break Toad out of prison", "Toad buys a railway engine"],
+      "choices": ["Toad escapes prison as a washerwoman and flees by train", "Toad wins his case in court and goes home to Toad Hall", "The Rat and the Mole break Toad out of the prison at night", "Toad buys a railway engine and drives it home very fast"],
       "answer": 0,
       "evidence": "knew that he was free!"
     }
