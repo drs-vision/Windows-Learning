@@ -18,7 +18,7 @@
         "type": "detail",
         "q": "How is the family going to the wedding?",
         "choices": [
-          "By boat",
+          "By plane",
           "By car",
           "By bus",
           "By train"
@@ -26,6 +26,12 @@
         "answer": 3,
         "evidence": "We are going by train.",
         "explain": "The story says, \"We are going by train.\""
+      },
+      "readability": {
+        "grade": 1,
+        "fk": 1.7,
+        "cli": 1.8,
+        "ari": 0
       }
     },
     {
@@ -53,6 +59,12 @@
         "answer": 3,
         "evidence": "But he could not sleep!",
         "explain": "Tinku turned and rolled, but he could not sleep."
+      },
+      "readability": {
+        "grade": 1,
+        "fk": 1.2,
+        "cli": 2,
+        "ari": 0
       }
     },
     {
@@ -69,17 +81,23 @@
         "note": "Beginning of the story. Illustrations not included. Translated by Manisha Chaudhry."
       },
       "question": {
-        "type": "detail",
-        "q": "Where does Grandfather keep his stick?",
+        "type": "main-idea",
+        "q": "What is this story mostly about?",
         "choices": [
-          "Outside the door",
-          "In the corner",
-          "Under the bed",
-          "On the hook"
+          "A father who rides his motorcycle",
+          "A trip on a train to the village",
+          "A grandfather and his old stick",
+          "Where a family keeps its things"
         ],
-        "answer": 1,
-        "evidence": "My grandfather keeps his stick in the corner.",
-        "explain": "Grandfather keeps his stick in the corner."
+        "answer": 3,
+        "evidence": "This is my home. I live here with my whole family.",
+        "explain": "The child shows us the home and where each thing is kept."
+      },
+      "readability": {
+        "grade": 1.8,
+        "fk": 1.7,
+        "cli": 3.1,
+        "ari": 0.6
       }
     },
     {
@@ -107,6 +125,12 @@
         "answer": 3,
         "evidence": "he was still half asleep and he rolled down to the ground",
         "explain": "Jiril had just woken up, so he was still sleepy."
+      },
+      "readability": {
+        "grade": 1.9,
+        "fk": 1.7,
+        "cli": 3.2,
+        "ari": 0.9
       }
     },
     {
@@ -123,17 +147,23 @@
         "note": "Excerpt. Illustrations not included. Translated by Rohini Nilekani."
       },
       "question": {
-        "type": "detail",
-        "q": "What can the child smell from far away?",
+        "type": "main-idea",
+        "q": "Who makes all of these things happen in the poem?",
         "choices": [
-          "Sweets Mother is making",
-          "Rain on the grass",
-          "Flowers in the garden",
-          "Smoke from a fire"
+          "The sun",
+          "The rain",
+          "The wind",
+          "Mother"
         ],
-        "answer": 0,
-        "evidence": "I can smell the sweets mother is preparing",
-        "explain": "The wind brings the smell of the sweets Mother is making."
+        "answer": 2,
+        "evidence": "Who makes that happen? Vayu, the Wind!",
+        "explain": "Each part of the poem asks who did it, and the answer is always the wind."
+      },
+      "readability": {
+        "grade": 1.6,
+        "fk": 1.4,
+        "cli": 2.9,
+        "ari": 0.7
       }
     },
     {
@@ -154,13 +184,19 @@
         "q": "Which part of the gate did Vinay paint?",
         "choices": [
           "The inside",
-          "The top",
+          "The top part",
           "The outside",
           "The bottom"
         ],
         "answer": 2,
         "evidence": "\"Paint the outside of the gate,\" he said to Vinay.",
         "explain": "The painter told Vinay to paint the outside."
+      },
+      "readability": {
+        "grade": 1.7,
+        "fk": 1.5,
+        "cli": 2.9,
+        "ari": 0.7
       }
     },
     {
@@ -188,6 +224,12 @@
         "answer": 0,
         "evidence": "a very strong wind came. It blew my cap away.",
         "explain": "A strong wind blew the cap away and into the tree."
+      },
+      "readability": {
+        "grade": 1,
+        "fk": 1.8,
+        "cli": 1.7,
+        "ari": 0
       }
     },
     {
@@ -215,6 +257,12 @@
         "answer": 3,
         "evidence": "I always draw curly lines",
         "explain": "The child likes straight lines but always draws curly ones."
+      },
+      "readability": {
+        "grade": 1.5,
+        "fk": 0.1,
+        "cli": 3.3,
+        "ari": 1
       }
     },
     {
@@ -234,14 +282,20 @@
         "type": "cause-effect",
         "q": "Why is Kato afraid of the boat ride?",
         "choices": [
-          "Kato cannot swim.",
+          "Kato cannot swim at all.",
           "The river is too cold.",
-          "Kato gets seasick.",
+          "Kato gets sick on boats.",
           "The boat is too small."
         ],
         "answer": 0,
         "evidence": "I...am afraid of water, I cannot swim",
         "explain": "Kato is afraid because Kato cannot swim."
+      },
+      "readability": {
+        "grade": 1.6,
+        "fk": 2.7,
+        "cli": 2.1,
+        "ari": 0
       }
     },
     {
@@ -262,13 +316,19 @@
         "q": "What does the peacock say it will do if the cloud rains?",
         "choices": [
           "Dance for the cloud",
-          "Swim in the water",
+          "Swim in the deep water",
           "Plant some seeds",
           "Sail paper boats"
         ],
         "answer": 0,
         "evidence": "\"Why don't you rain? I will dance for you.\"",
         "explain": "The peacock promises to dance for the cloud."
+      },
+      "readability": {
+        "grade": 1,
+        "fk": 0.5,
+        "cli": 2.4,
+        "ari": 0.1
       }
     },
     {
@@ -296,6 +356,12 @@
         "answer": 0,
         "evidence": "there was no more space on the slate",
         "explain": "The engine filled the slate, so there was no room left."
+      },
+      "readability": {
+        "grade": 1.8,
+        "fk": 0.7,
+        "cli": 3.5,
+        "ari": 1.1
       }
     },
     {
@@ -315,14 +381,20 @@
         "type": "detail",
         "q": "What fell on Fatima's head?",
         "choices": [
-          "A green leaf",
-          "A small fruit",
+          "A ripe mango",
+          "A dry twig",
           "A bird's nest",
           "A tiny book"
         ],
         "answer": 3,
         "evidence": "It was a tiny book, barely the size of a pea.",
         "explain": "A tiny book, as small as a pea, landed on her head."
+      },
+      "readability": {
+        "grade": 1.6,
+        "fk": 2.1,
+        "cli": 2.5,
+        "ari": 0.3
       }
     },
     {
@@ -350,6 +422,12 @@
         "answer": 0,
         "evidence": "did Bheema wake up? No Sir!",
         "explain": "Moti barked and barked, but Bheema did not wake up."
+      },
+      "readability": {
+        "grade": 1.7,
+        "fk": 2.5,
+        "cli": 2.4,
+        "ari": 0.2
       }
     },
     {
@@ -366,17 +444,23 @@
         "note": "Beginning of the story. Illustrations not included."
       },
       "question": {
-        "type": "detail",
-        "q": "What looks like half of Goloo?",
+        "type": "main-idea",
+        "q": "What is Goloo telling us?",
         "choices": [
-          "An owl's eye",
-          "The sun",
-          "The moon",
-          "An umbrella"
+          "Umbrellas keep the hot sun away.",
+          "You can find circles everywhere.",
+          "Owls have very big, round eyes.",
+          "The moon only comes out at night."
         ],
-        "answer": 3,
-        "evidence": "you need an umbrella which also looks like half of me",
-        "explain": "An open umbrella looks like half a circle."
+        "answer": 1,
+        "evidence": "You can find me everywhere, any time!",
+        "explain": "Goloo is a circle, and the sun, moon and owl's eyes are all round."
+      },
+      "readability": {
+        "grade": 1.3,
+        "fk": 1.8,
+        "cli": 2.2,
+        "ari": 0
       }
     },
     {
@@ -397,13 +481,19 @@
         "q": "What is this story mostly about?",
         "choices": [
           "Crocky gets lost in a pond.",
-          "Crocky learns how to swim.",
+          "Crocky learns to swim.",
           "Crocky finds new friends.",
           "Crocky looks for some food."
         ],
         "answer": 2,
         "evidence": "So, Crocky found new friends to play with.",
         "explain": "Crocky was sad with no friends, then many animals came to play."
+      },
+      "readability": {
+        "grade": 1.5,
+        "fk": 1.9,
+        "cli": 2.4,
+        "ari": 0.1
       }
     },
     {
@@ -420,17 +510,23 @@
         "note": "Excerpt. Illustrations not included."
       },
       "question": {
-        "type": "detail",
-        "q": "What was really under the bed?",
+        "type": "cause-effect",
+        "q": "Why did the child think a tiger was under the bed?",
         "choices": [
-          "A toy tiger",
-          "A yellow blanket",
-          "A thick sweater",
-          "A sleepy cat"
+          "Ma told a story about tigers.",
+          "The child heard a loud roar.",
+          "A striped cat was hiding under there.",
+          "The sweater looked like a tiger."
         ],
-        "answer": 2,
-        "evidence": "This is my thick yellow and black sweater.",
-        "explain": "The \"tiger\" was a yellow and black sweater."
+        "answer": 3,
+        "evidence": "This is my thick yellow and black sweater. Its buttons shine like a tiger's eyes.",
+        "explain": "The sweater was yellow and black, and its buttons shone like eyes."
+      },
+      "readability": {
+        "grade": 0.8,
+        "fk": 1.1,
+        "cli": 1.6,
+        "ari": 0
       }
     },
     {
@@ -452,12 +548,18 @@
         "choices": [
           "He climbed up on Jojo's back.",
           "He went home to his mother.",
-          "He asked Jojo his name.",
+          "He went back home to his mother.",
           "He ran to Munni's house."
         ],
         "answer": 0,
         "evidence": "Saboo climbed up and away they went",
         "explain": "Jojo offered a ride, so Saboo climbed up on his back."
+      },
+      "readability": {
+        "grade": 1.6,
+        "fk": 2,
+        "cli": 2.5,
+        "ari": 0.2
       }
     },
     {
@@ -485,6 +587,12 @@
         "answer": 1,
         "evidence": "Anu got ready in a jiffy.",
         "explain": "\"In a jiffy\" means very fast. Anu was in a hurry to see the baby."
+      },
+      "readability": {
+        "grade": 1.3,
+        "fk": 1.5,
+        "cli": 2.2,
+        "ari": 0.2
       }
     },
     {
@@ -512,6 +620,12 @@
         "answer": 1,
         "evidence": "\"No, he can't fly. The king of the birds must be able to fly.\"",
         "explain": "The birds wanted a king who could fly, and Ostrich can't."
+      },
+      "readability": {
+        "grade": 1.5,
+        "fk": 1.3,
+        "cli": 2.7,
+        "ari": 0.4
       }
     },
     {
@@ -539,6 +653,12 @@
         "answer": 3,
         "evidence": "The third colour is yellow.",
         "explain": "Red is first, orange is second, and yellow is third."
+      },
+      "readability": {
+        "grade": 1.8,
+        "fk": 2.4,
+        "cli": 2.8,
+        "ari": 0.4
       }
     },
     {
@@ -559,13 +679,19 @@
         "q": "What did the snail get ready?",
         "choices": [
           "A fast pair of shoes",
-          "A big lunch for Sunday",
-          "A map of the race",
+          "A big lunch for the Sunday",
+          "A map of the race path",
           "A hundred bits of paper"
         ],
         "answer": 3,
         "evidence": "The snail prepared a hundred bits of paper",
         "explain": "The snail made a hundred bits of paper with a message."
+      },
+      "readability": {
+        "grade": 1.8,
+        "fk": 1.3,
+        "cli": 3,
+        "ari": 1
       }
     },
     {
@@ -593,6 +719,12 @@
         "answer": 1,
         "evidence": "her swing went faster and faster",
         "explain": "Keke moved, and the swing went faster until she was high up."
+      },
+      "readability": {
+        "grade": 1.1,
+        "fk": 0.1,
+        "cli": 2.7,
+        "ari": 0.4
       }
     },
     {
@@ -620,6 +752,12 @@
         "answer": 1,
         "evidence": "Two shepherds found it.",
         "explain": "Two shepherds found the pumpkin at the bottom of the hill."
+      },
+      "readability": {
+        "grade": 1.4,
+        "fk": 1,
+        "cli": 2.8,
+        "ari": 0.4
       }
     },
     {
@@ -641,12 +779,18 @@
         "choices": [
           "By sending a bird",
           "By pulling the web string",
-          "By shouting his name",
+          "By shouting his name loudly",
           "By ringing a bell"
         ],
         "answer": 1,
         "evidence": "pull on the web string and I'll come right away",
         "explain": "Anansi tied a web string to the pot for Rabbit to pull."
+      },
+      "readability": {
+        "grade": 1.7,
+        "fk": 2.1,
+        "cli": 2.5,
+        "ari": 0.6
       }
     },
     {
@@ -669,11 +813,17 @@
           "A crown",
           "A flower",
           "Fire",
-          "A jewel"
+          "Gold"
         ],
         "answer": 2,
         "evidence": "The red comb on my head is fire!",
         "explain": "Rooster lied and said his comb was fire."
+      },
+      "readability": {
+        "grade": 1.7,
+        "fk": 2.1,
+        "cli": 2.6,
+        "ari": 0.4
       }
     },
     {
@@ -701,6 +851,12 @@
         "answer": 0,
         "evidence": "\"You can come and sleep with me,\" said Parrot.",
         "explain": "Mouse slept with Parrot that night, and Parrot's home is noisy."
+      },
+      "readability": {
+        "grade": 2.2,
+        "fk": 0.4,
+        "cli": 4.5,
+        "ari": 1.7
       }
     },
     {
@@ -722,12 +878,18 @@
         "choices": [
           "In a basket",
           "On a leaf",
-          "On a bird's back",
+          "On top of a big rock",
           "On Tortoise's shell"
         ],
         "answer": 3,
         "evidence": "She climbed onto Tortoise's shell.",
         "explain": "Snail climbed onto Tortoise's shell to help him look."
+      },
+      "readability": {
+        "grade": 1.4,
+        "fk": 0.4,
+        "cli": 3.1,
+        "ari": 0.6
       }
     },
     {
@@ -755,6 +917,12 @@
         "answer": 0,
         "evidence": "My friend Lele likes to swim.",
         "explain": "The story says Lele likes to swim."
+      },
+      "readability": {
+        "grade": 1.1,
+        "fk": 1.6,
+        "cli": 1.9,
+        "ari": 0
       }
     },
     {
@@ -771,17 +939,23 @@
         "note": "Excerpt. Illustrations not included. Shortened."
       },
       "question": {
-        "type": "detail",
-        "q": "What colour are bananas that are not ripe?",
+        "type": "vocabulary",
+        "q": "\"Unripe bananas are green.\" What does \"unripe\" mean?",
         "choices": [
-          "Yellow",
-          "Green",
-          "Brown",
-          "Red"
+          "Not ready to eat yet",
+          "Very sweet and soft to eat",
+          "Cooked in a pot",
+          "Grown on a tree"
         ],
-        "answer": 1,
-        "evidence": "Unripe bananas are green.",
-        "explain": "Bananas are green before they get ripe."
+        "answer": 0,
+        "evidence": "Ripe bananas are yellow. Unripe bananas are green.",
+        "explain": "Unripe means not ready yet. Bananas turn yellow when they are ripe."
+      },
+      "readability": {
+        "grade": 1.5,
+        "fk": 1.7,
+        "cli": 2.2,
+        "ari": 0.7
       }
     },
     {
@@ -804,11 +978,17 @@
           "The bus was late.",
           "It started to rain.",
           "The bus was too full.",
-          "The bus was dirty."
+          "The bus was red."
         ],
         "answer": 0,
         "evidence": "They complained because the bus was late.",
         "explain": "The people were upset because the bus was late."
+      },
+      "readability": {
+        "grade": 1.7,
+        "fk": 1.2,
+        "cli": 3.1,
+        "ari": 0.6
       }
     },
     {
@@ -836,6 +1016,12 @@
         "answer": 2,
         "evidence": "She speaks using Sign Language.",
         "explain": "Moraa cannot hear, so she speaks using Sign Language."
+      },
+      "readability": {
+        "grade": 1.7,
+        "fk": 2.7,
+        "cli": 2.1,
+        "ari": 0.3
       }
     },
     {
@@ -855,7 +1041,7 @@
         "type": "detail",
         "q": "What did the teacher put in her hair?",
         "choices": [
-          "A pretty hat",
+          "A pretty yellow hat",
           "A red ribbon",
           "Fresh flowers",
           "Colourful beads"
@@ -863,6 +1049,12 @@
         "answer": 3,
         "evidence": "She has decorated her hair with colourful beads.",
         "explain": "The teacher put colourful beads in her braids."
+      },
+      "readability": {
+        "grade": 1.8,
+        "fk": 2.1,
+        "cli": 2.9,
+        "ari": 0.5
       }
     },
     {
@@ -875,7 +1067,7 @@
         "name": "African Storybook",
         "url": "https://github.com/global-asp/asp-source/blob/master/en/0153_rats.md",
         "license": "CC BY 4.0",
-        "author": "Louren\u00e7o Magaia Sab\u00e3o",
+        "author": "Lourenço Magaia Sabão",
         "note": "Beginning of the story. Illustrations not included."
       },
       "question": {
@@ -890,6 +1082,12 @@
         "answer": 1,
         "evidence": "But the spaces in the bottles were too small.",
         "explain": "The rats' mouths did not fit in the small bottle tops."
+      },
+      "readability": {
+        "grade": 1.4,
+        "fk": 1,
+        "cli": 2.5,
+        "ari": 0.5
       }
     },
     {
@@ -910,13 +1108,19 @@
         "q": "What does Ma call Zama?",
         "choices": [
           "Her big helper",
-          "Her early bird",
+          "Her sunny flower",
           "Her morning star",
           "Her little sun"
         ],
         "answer": 2,
         "evidence": "\"You're my morning star,\" says Ma.",
         "explain": "Ma calls Zama her morning star."
+      },
+      "readability": {
+        "grade": 1,
+        "fk": 1.7,
+        "cli": 1.7,
+        "ari": 0
       }
     },
     {
@@ -937,13 +1141,19 @@
         "q": "Why did Eagle come back very tired?",
         "choices": [
           "She had been flying all day long.",
-          "She played with the other birds.",
+          "She played games with the other birds.",
           "She had to walk very far for food.",
           "She was building a new nest."
         ],
         "answer": 2,
         "evidence": "Eagle had to walk very far to find food. She came back very tired.",
         "explain": "Birds could not fly yet, so Eagle had to walk far."
+      },
+      "readability": {
+        "grade": 1,
+        "fk": 1,
+        "cli": 2.1,
+        "ari": 0
       }
     },
     {
@@ -965,12 +1175,18 @@
         "choices": [
           "A wedding cake",
           "A new egg",
-          "A basket",
+          "A basket of fruit",
           "A walking stick"
         ],
         "answer": 3,
         "evidence": "here is a walking stick for your sister",
         "explain": "The boys gave Vusi a walking stick for his sister."
+      },
+      "readability": {
+        "grade": 1.9,
+        "fk": 1.9,
+        "cli": 3.1,
+        "ari": 0.6
       }
     },
     {
@@ -991,13 +1207,19 @@
         "q": "Why is Tommy thankful?",
         "choices": [
           "He doesn't have to make a long trip.",
-          "He found lots of seeds.",
-          "He can sing a pretty song.",
-          "He has a warm nest."
+          "He found lots of seeds to eat today.",
+          "He can sing a very pretty song.",
+          "He has a warm and cozy nest."
         ],
         "answer": 0,
         "evidence": "I'm thankful I don't have to take that long journey",
         "explain": "Tommy likes winter, so he does not have to fly far away like other birds."
+      },
+      "readability": {
+        "grade": 1.7,
+        "fk": 2.3,
+        "cli": 2.3,
+        "ari": 0.5
       }
     },
     {
@@ -1025,6 +1247,12 @@
         "answer": 2,
         "evidence": "I wish I had one like it.",
         "explain": "Peter wishes he had a big tail like Reddy's."
+      },
+      "readability": {
+        "grade": 1.2,
+        "fk": 2.5,
+        "cli": 1.3,
+        "ari": 0
       }
     },
     {
@@ -1052,6 +1280,12 @@
         "answer": 0,
         "evidence": "we'll all dive into the Smiling Pool together",
         "explain": "Billy Mink says they will dive into the Smiling Pool."
+      },
+      "readability": {
+        "grade": 1,
+        "fk": 0.9,
+        "cli": 1.8,
+        "ari": 0.1
       }
     },
     {
@@ -1079,6 +1313,12 @@
         "answer": 2,
         "evidence": "That is for swimming.",
         "explain": "The webs between his toes help Paddy swim."
+      },
+      "readability": {
+        "grade": 1.7,
+        "fk": 1.5,
+        "cli": 3,
+        "ari": 0.6
       }
     },
     {
@@ -1095,17 +1335,23 @@
         "note": "Paragraph from the book."
       },
       "question": {
-        "type": "detail",
-        "q": "Where is Teacher's nest?",
+        "type": "vocabulary",
+        "q": "\"Teacher fairly shrieked this warning.\" What does \"shrieked\" mean?",
         "choices": [
-          "High in a tree",
-          "Under a roof",
-          "On the ground",
-          "In a tall bush"
+          "Whispered softly",
+          "Sang sweetly",
+          "Cried out loudly",
+          "Laughed quietly"
         ],
         "answer": 2,
-        "evidence": "It is on the ground",
-        "explain": "Teacher says the nest is not in a tree. It is on the ground."
+        "evidence": "Teacher fairly shrieked this warning.",
+        "explain": "To shriek is to cry out in a loud, high voice."
+      },
+      "readability": {
+        "grade": 1.1,
+        "fk": 1.5,
+        "cli": 1.9,
+        "ari": 0
       }
     },
     {
@@ -1133,6 +1379,12 @@
         "answer": 2,
         "evidence": "work and play at night",
         "explain": "Whitefoot sleeps in the day and works and plays at night."
+      },
+      "readability": {
+        "grade": 1.8,
+        "fk": 2,
+        "cli": 2.8,
+        "ari": 0.6
       }
     },
     {
@@ -1154,12 +1406,18 @@
         "choices": [
           "Rain in the spring",
           "The cold, snow and ice",
-          "Seeds in the garden",
+          "Seeds in the big garden",
           "Warm sun and flowers"
         ],
         "answer": 1,
         "evidence": "If you are so fond of the cold in the Far North, the snow and the ice",
         "explain": "Peter says his friend is fond of the cold, the snow and the ice."
+      },
+      "readability": {
+        "grade": 1.8,
+        "fk": 2,
+        "cli": 2.3,
+        "ari": 1.2
       }
     },
     {
@@ -1179,14 +1437,20 @@
         "type": "detail",
         "q": "Why doesn't Prickly Porky need to sleep all winter?",
         "choices": [
-          "He lives in a warm cave.",
-          "He stores lots of nuts.",
+          "He lives in a warm, cozy cave.",
+          "He stores lots of nuts for later.",
           "Cold weather doesn't bother him.",
           "He goes south for winter."
         ],
         "answer": 2,
         "evidence": "Cold weather doesn't bother me.",
         "explain": "Prickly Porky says cold weather doesn't bother him, and trees give him food."
+      },
+      "readability": {
+        "grade": 1.4,
+        "fk": 1.3,
+        "cli": 2.8,
+        "ari": 0.3
       }
     },
     {
@@ -1207,13 +1471,19 @@
         "q": "How does Jenny Wren feel about snake skins?",
         "choices": [
           "She thinks they are pretty.",
-          "She wants Peter to find one.",
+          "She wants Peter to find her one.",
           "She does not like them at all.",
           "She likes to collect them."
         ],
         "answer": 2,
         "evidence": "Ugh! It makes me shiver just to think of it.",
         "explain": "Jenny says \"Ugh!\" and shivers, so she does not like them."
+      },
+      "readability": {
+        "grade": 1.5,
+        "fk": 1.1,
+        "cli": 2.8,
+        "ari": 0.6
       }
     },
     {
@@ -1236,11 +1506,17 @@
           "A wall",
           "A tree",
           "A spear",
-          "A rope"
+          "A snake"
         ],
         "answer": 2,
         "evidence": "He is more like a spear than anything else.",
         "explain": "The tusk is round, smooth and sharp, so he thought of a spear."
+      },
+      "readability": {
+        "grade": 1.4,
+        "fk": 2,
+        "cli": 2.3,
+        "ari": 0
       }
     },
     {
@@ -1268,6 +1544,12 @@
         "answer": 1,
         "evidence": "the wind died away, and a thick fog came on",
         "explain": "In the evening the wind stopped, and then a thick fog came."
+      },
+      "readability": {
+        "grade": 1.3,
+        "fk": 1.1,
+        "cli": 2.6,
+        "ari": 0.2
       }
     },
     {
@@ -1290,11 +1572,17 @@
           "Very thirsty",
           "Very hungry",
           "Very cold",
-          "Very sleepy"
+          "Very worried"
         ],
         "answer": 0,
         "evidence": "the king was very thirsty",
         "explain": "The day was warm, and the king was very thirsty."
+      },
+      "readability": {
+        "grade": 1.3,
+        "fk": 1.3,
+        "cli": 2.2,
+        "ari": 0.4
       }
     },
     {
@@ -1322,6 +1610,12 @@
         "answer": 2,
         "evidence": "\"Come in, and I will see what I can do for you.\"",
         "explain": "He helped the poor boy and gave him dinner, so he is kind."
+      },
+      "readability": {
+        "grade": 1.3,
+        "fk": 1.9,
+        "cli": 1.8,
+        "ari": 0.1
       }
     },
     {
@@ -1349,6 +1643,12 @@
         "answer": 1,
         "evidence": "Then he began to nail them on.",
         "explain": "First he made and fitted the shoes. Then he nailed them on."
+      },
+      "readability": {
+        "grade": 1.8,
+        "fk": 1.3,
+        "cli": 3.2,
+        "ari": 0.8
       }
     },
     {
@@ -1376,6 +1676,12 @@
         "answer": 1,
         "evidence": "It seemed as if my hands were on fire.",
         "explain": "Jules said it felt as if his hands were on fire."
+      },
+      "readability": {
+        "grade": 1,
+        "fk": 1.5,
+        "cli": 1.7,
+        "ari": 0
       }
     }
   ]

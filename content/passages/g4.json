@@ -1,0 +1,1556 @@
+{
+  "about": "Reading Quest paragraphs, about grade 4-5",
+  "passages": [
+    {
+      "id": "burgess-chipmunk-cheek-pockets",
+      "title": "Striped Chipmunk's Pockets",
+      "kind": "story",
+      "topic": "animals",
+      "text": "\"Of course,\" cried Peter. \"I don't see how I came to forget that. I've laughed many times at Striped Chipmunk with those pockets stuffed with nuts or seeds until his head looked three times bigger than it does now. Those pockets must be very handy.\"",
+      "source": {
+        "name": "The Burgess Animal Book for Children (Thornton W. Burgess, 1920)",
+        "url": "https://www.gutenberg.org/ebooks/2441",
+        "license": "Public domain",
+        "author": "Thornton W. Burgess",
+        "note": "Paragraph from the book."
+      },
+      "question": {
+        "type": "detail",
+        "q": "What has Peter seen Striped Chipmunk stuff into his pockets?",
+        "choices": [
+          "Nuts or seeds",
+          "Leaves and twigs",
+          "Berries and bugs",
+          "Pebbles and sand"
+        ],
+        "answer": 0,
+        "evidence": "pockets stuffed with nuts or seeds",
+        "explain": "Peter remembers the pockets stuffed with nuts or seeds."
+      },
+      "readability": {
+        "grade": 4.9,
+        "fk": 3.2,
+        "cli": 6.9,
+        "ari": 4.5
+      }
+    },
+    {
+      "id": "burgess-deer-antlers",
+      "title": "Lightfoot's Antlers",
+      "kind": "facts",
+      "topic": "animals",
+      "text": "\"Notice how long and fluffy the hair on that tail is,\" said Old Mother Nature. \"Mrs. Lightfoot's is just like it, and this makes it very easy for her babies to follow her in the dark. When Lightfoot is feeding or simply walking about he carries it down, but when he is frightened and bounds away, up goes that white flag. Now look at his horns. They are not true horns. The latter are hollow, while these are not. Farmer Brown's cows have horns. Lightfoot has antlers. Just remember that. The so-called horns of all the Deer family are antlers and are not hollow. Notice how Lightfoot's curve forward with the branches or tines on the back side.\"",
+      "source": {
+        "name": "The Burgess Animal Book for Children (Thornton W. Burgess, 1920)",
+        "url": "https://www.gutenberg.org/ebooks/2441",
+        "license": "Public domain",
+        "author": "Thornton W. Burgess",
+        "note": "Paragraph from the book."
+      },
+      "question": {
+        "type": "detail",
+        "q": "How are a deer's antlers different from a cow's horns?",
+        "choices": [
+          "Antlers are much softer",
+          "Antlers grow on the nose",
+          "Antlers are not hollow",
+          "Antlers are always white"
+        ],
+        "answer": 2,
+        "evidence": "The so-called horns of all the Deer family are antlers and are not hollow.",
+        "explain": "True horns are hollow, but antlers are not."
+      },
+      "readability": {
+        "grade": 4.8,
+        "fk": 3.7,
+        "cli": 6.6,
+        "ari": 4.1
+      }
+    },
+    {
+      "id": "burgess-otter-slippery-slide",
+      "title": "The Otters' Slippery Slide",
+      "kind": "facts",
+      "topic": "animals",
+      "text": "Old Mother Nature smiled. \"Little Joe Otter and his family are quite as fond of play as any of my children,\" said she. \"They get a lot of fun out of life. One of their ways of playing is to make a slippery slide where the bank is steep and the water deep. In winter it is made of snow, but in summer it is made of mud. There they slide down, splash into the water, then climb up the bank and do it all over again. In winter they make their slippery slide where the water doesn't freeze, and they get just as much fun in winter as they do in summer.\"",
+      "source": {
+        "name": "The Burgess Animal Book for Children (Thornton W. Burgess, 1920)",
+        "url": "https://www.gutenberg.org/ebooks/2441",
+        "license": "Public domain",
+        "author": "Thornton W. Burgess",
+        "note": "Paragraph from the book."
+      },
+      "question": {
+        "type": "sequence",
+        "q": "What do the otters do right after they splash into the water?",
+        "choices": [
+          "Swim off to look for a fish dinner",
+          "Lie on the bank to dry in the sun",
+          "Dig a brand new slide in the mud",
+          "Climb up the bank and do it again"
+        ],
+        "answer": 3,
+        "evidence": "then climb up the bank and do it all over again",
+        "explain": "They splash in, then climb up the bank and slide again."
+      },
+      "readability": {
+        "grade": 4.4,
+        "fk": 4.9,
+        "cli": 4.2,
+        "ari": 4.1
+      }
+    },
+    {
+      "id": "burgess-black-bears-brown",
+      "title": "Bears of Another Color",
+      "kind": "facts",
+      "topic": "animals",
+      "text": "\"You all see what a black coat Buster has,\" said Old Mother Nature. \"Now I'm going to tell you something which may surprise you. Just as there are Red Foxes that are black, so there are Black Bears that are brown.\"",
+      "source": {
+        "name": "The Burgess Animal Book for Children (Thornton W. Burgess, 1920)",
+        "url": "https://www.gutenberg.org/ebooks/2441",
+        "license": "Public domain",
+        "author": "Thornton W. Burgess",
+        "note": "Paragraph from the book."
+      },
+      "question": {
+        "type": "main-idea",
+        "q": "What surprising fact does Old Mother Nature share?",
+        "choices": [
+          "All bears turn black in winter",
+          "Some Black Bears have brown coats",
+          "Buster's coat is really dark red",
+          "Red Foxes and bears are cousins"
+        ],
+        "answer": 1,
+        "evidence": "so there are Black Bears that are brown",
+        "explain": "She says some Black Bears are actually brown."
+      },
+      "readability": {
+        "grade": 4.4,
+        "fk": 3.3,
+        "cli": 5.6,
+        "ari": 4.2
+      }
+    },
+    {
+      "id": "burgess-grouse-brown-cloak",
+      "title": "Mrs. Grouse's Cloak",
+      "kind": "story",
+      "topic": "animals",
+      "text": "\"He didn't see me at all,\" chuckled Mrs. Grouse, as she settled down once more. \"That is what comes of having a cloak so like the color of these nice brown leaves. He isn't the first one who has passed me without seeing me at all. It is better than trying to hide a nest, and I certainly am thankful to Old Mother Nature for the cloak she gave me. I wonder if every one of these twelve eggs will hatch. If they do, I certainly will have a family to be proud of.\"",
+      "source": {
+        "name": "The Burgess Bird Book for Children (Thornton W. Burgess, 1919)",
+        "url": "https://www.gutenberg.org/ebooks/3074",
+        "license": "Public domain",
+        "author": "Thornton W. Burgess",
+        "note": "Paragraph from the book."
+      },
+      "question": {
+        "type": "cause-effect",
+        "q": "Why did the passer-by not see Mrs. Grouse?",
+        "choices": [
+          "She hid her nest deep in a log",
+          "She flew away just in time",
+          "Her feathers look like brown leaves",
+          "She was sitting very far away"
+        ],
+        "answer": 2,
+        "evidence": "having a cloak so like the color of these nice brown leaves",
+        "explain": "Her brown \"cloak\" blends in with the leaves around her."
+      },
+      "readability": {
+        "grade": 4.3,
+        "fk": 4.5,
+        "cli": 4.3,
+        "ari": 4
+      }
+    },
+    {
+      "id": "burgess-cowbird-egg",
+      "title": "Sally Sly's Egg",
+      "kind": "story",
+      "topic": "animals",
+      "text": "\"Sally Sly,\" snapped Jenny Wren. \"Sally Sly the Cowbird. I hoped she wouldn't disgrace the Old Orchard this year, but she has. When Mr. and Mrs. Chebec returned from getting their breakfast this morning they found one of Sally Sly's eggs in their nest. They are terribly upset, and I don't blame them. If I were in their place I simply would throw that egg out. That's what I'd do, I'd throw that egg out!\"",
+      "source": {
+        "name": "The Burgess Bird Book for Children (Thornton W. Burgess, 1919)",
+        "url": "https://www.gutenberg.org/ebooks/3074",
+        "license": "Public domain",
+        "author": "Thornton W. Burgess",
+        "note": "Paragraph from the book."
+      },
+      "question": {
+        "type": "detail",
+        "q": "Why are Mr. and Mrs. Chebec upset?",
+        "choices": [
+          "A strange egg is in their nest",
+          "Someone broke their nest apart",
+          "Their own eggs are all missing",
+          "Jenny Wren moved into the nest"
+        ],
+        "answer": 0,
+        "evidence": "they found one of Sally Sly's eggs in their nest",
+        "explain": "They found Sally Sly's egg in their own nest."
+      },
+      "readability": {
+        "grade": 4,
+        "fk": 2.9,
+        "cli": 5.7,
+        "ari": 3.3
+      }
+    },
+    {
+      "id": "burgess-flicker-head",
+      "title": "A Head in the Doorway",
+      "kind": "story",
+      "topic": "animals",
+      "text": "The chips were dropped and the head was thrust farther out. The sides and throat were a soft reddish-tan and on each side at the beginning of the bill was a black patch. The top of the head was gray and just at the back was a little band of bright red. There was no mistaking that head. It belonged to Yellow Wing the Flicker beyond a doubt.",
+      "source": {
+        "name": "The Burgess Bird Book for Children (Thornton W. Burgess, 1919)",
+        "url": "https://www.gutenberg.org/ebooks/3074",
+        "license": "Public domain",
+        "author": "Thornton W. Burgess",
+        "note": "Paragraph from the book."
+      },
+      "question": {
+        "type": "inference",
+        "q": "How could the watcher tell whose head it was?",
+        "choices": [
+          "By the song that it sang",
+          "By the shape of its nest",
+          "By how fast it was flying",
+          "By the colors on its head"
+        ],
+        "answer": 3,
+        "evidence": "The top of the head was gray and just at the back was a little band of bright red",
+        "explain": "The colors and markings showed it was Yellow Wing the Flicker."
+      },
+      "readability": {
+        "grade": 4.2,
+        "fk": 3.6,
+        "cli": 5.2,
+        "ari": 3.9
+      }
+    },
+    {
+      "id": "burgess-bully-sparrow",
+      "title": "Bully the Sparrow",
+      "kind": "story",
+      "topic": "animals",
+      "text": "Bully the English Sparrow is a born fighter. He never is happier than when he is in the midst of a fight or a fuss of some kind. The fact that all his neighbors were against him didn't bother Bully in the least.",
+      "source": {
+        "name": "The Burgess Bird Book for Children (Thornton W. Burgess, 1919)",
+        "url": "https://www.gutenberg.org/ebooks/3074",
+        "license": "Public domain",
+        "author": "Thornton W. Burgess",
+        "note": "Paragraph from the book."
+      },
+      "question": {
+        "type": "vocabulary",
+        "q": "Bully is \"a born fighter.\" What does that mean?",
+        "choices": [
+          "Someone born during a fight",
+          "Someone who loves to fight",
+          "Someone too small to fight",
+          "Someone who fights at night"
+        ],
+        "answer": 1,
+        "evidence": "He never is happier than when he is in the midst of a fight",
+        "explain": "Bully is happiest when he is in a fight, so fighting is natural to him."
+      },
+      "readability": {
+        "grade": 4.4,
+        "fk": 4.5,
+        "cli": 4.7,
+        "ari": 3.8
+      }
+    },
+    {
+      "id": "burgess-happy-jack-empty-hollow",
+      "title": "Happy Jack's Missing Nuts",
+      "kind": "story",
+      "topic": "animals",
+      "text": "Poor Happy Jack! Soon he came dancing along with another nut to put in the hollow of the old chestnut tree. When he peeped in and saw that all his big store of nuts had disappeared, he couldn't believe his own eyes. He put in one paw and felt all around but not a nut could he feel. Then he climbed in and sure enough, the hollow was empty.",
+      "source": {
+        "name": "Old Mother West Wind (Thornton W. Burgess, 1910)",
+        "url": "https://www.gutenberg.org/ebooks/2557",
+        "license": "Public domain",
+        "author": "Thornton W. Burgess",
+        "note": "Paragraph from the book."
+      },
+      "question": {
+        "type": "sequence",
+        "q": "What did Happy Jack do right after he felt around with his paw?",
+        "choices": [
+          "He climbed into the hollow",
+          "He ran to tell his friends",
+          "He went to find more nuts",
+          "He began to cry and cry"
+        ],
+        "answer": 0,
+        "evidence": "Then he climbed in and sure enough, the hollow was empty.",
+        "explain": "After feeling with his paw, he climbed right in."
+      },
+      "readability": {
+        "grade": 4.1,
+        "fk": 4.2,
+        "cli": 4.6,
+        "ari": 3.5
+      }
+    },
+    {
+      "id": "burgess-smiling-pool",
+      "title": "The Smiling Pool",
+      "kind": "story",
+      "topic": "water",
+      "text": "By and by Billy Mink came to the Smiling Pool. Here the Laughing Brook stopped and rested on its way to join the Big River. It stopped its noisy laughing and singing and just lay smiling and smiling in the warm sunshine. The little flowers on the bank leaned over and nodded to it. The beech tree, which was very old, sometimes dropped a leaf into it. The cat-tails kept their feet cool in the edge of it.",
+      "source": {
+        "name": "Old Mother West Wind (Thornton W. Burgess, 1910)",
+        "url": "https://www.gutenberg.org/ebooks/2557",
+        "license": "Public domain",
+        "author": "Thornton W. Burgess",
+        "note": "Paragraph from the book."
+      },
+      "question": {
+        "type": "main-idea",
+        "q": "What is this paragraph mostly about?",
+        "choices": [
+          "How Billy Mink learned to swim well",
+          "Why the old beech tree drops leaves",
+          "The calm pool and what is around it",
+          "A noisy race down to the Big River"
+        ],
+        "answer": 2,
+        "evidence": "just lay smiling and smiling in the warm sunshine",
+        "explain": "It describes the quiet Smiling Pool and the flowers, tree and cat-tails by it."
+      },
+      "readability": {
+        "grade": 4.8,
+        "fk": 4,
+        "cli": 6,
+        "ari": 4.3
+      }
+    },
+    {
+      "id": "burgess-willful-little-breeze",
+      "title": "The Willful Little Breeze",
+      "kind": "story",
+      "topic": "weather",
+      "text": "Pretty soon all were in the bag but one, a willful little Breeze, who was not quite ready to go home; he wanted to play just a little longer. He danced ahead of Old Mother West Wind. He kissed the sleepy daisies. He shook the nodding buttercups. He set all the little poplar leaves a dancing, too, and he wouldn't come into the big bag. So Old Mother West Wind closed the big bag and slung it over her shoulder. Then she started on towards her home behind the Purple Hills.",
+      "source": {
+        "name": "Old Mother West Wind (Thornton W. Burgess, 1910)",
+        "url": "https://www.gutenberg.org/ebooks/2557",
+        "license": "Public domain",
+        "author": "Thornton W. Burgess",
+        "note": "Paragraph from the book."
+      },
+      "question": {
+        "type": "vocabulary",
+        "q": "One little Breeze is \"willful.\" What does willful mean?",
+        "choices": [
+          "Feeling very tired and sleepy",
+          "Being the biggest of them all",
+          "Being afraid of the dark hills",
+          "Doing just what it wants to do"
+        ],
+        "answer": 3,
+        "evidence": "he wanted to play just a little longer",
+        "explain": "The Breeze does what it wants and will not come into the bag."
+      },
+      "readability": {
+        "grade": 4.8,
+        "fk": 4.3,
+        "cli": 5.8,
+        "ari": 4.2
+      }
+    },
+    {
+      "id": "burgess-bumble-sack-of-gold",
+      "title": "Bumble the Bee's Gold",
+      "kind": "story",
+      "topic": "animals",
+      "text": "\"Matter enough,\" grumbled Bumble the Bee. \"I've got to make a sack of honey, and as if that isn't enough, old Mother Nature has ordered me to carry a sack of gold from each flower I visit to the next flower I visit. If I don't I can get no honey. Buzz-buzz-buzz,\" grumbled Bumble the Bee.",
+      "source": {
+        "name": "Mother West Wind's Children (Thornton W. Burgess, 1911)",
+        "url": "https://www.gutenberg.org/ebooks/20877",
+        "license": "Public domain",
+        "author": "Thornton W. Burgess",
+        "note": "Paragraph from the book."
+      },
+      "question": {
+        "type": "inference",
+        "q": "What is the \"sack of gold\" Bumble carries from flower to flower?",
+        "choices": [
+          "Real gold coins for Mother Nature",
+          "Yellow pollen from the flowers",
+          "Honey to feed the baby bees",
+          "Seeds to plant in the garden"
+        ],
+        "answer": 1,
+        "evidence": "carry a sack of gold from each flower I visit to the next flower I visit",
+        "explain": "Bees carry yellow pollen from flower to flower, which helps plants make seeds."
+      },
+      "readability": {
+        "grade": 4.6,
+        "fk": 5.3,
+        "cli": 4.8,
+        "ari": 3.7
+      }
+    },
+    {
+      "id": "burgess-reddy-fox-boasts",
+      "title": "Reddy Fox Boasts",
+      "kind": "story",
+      "topic": "animals",
+      "text": "Just then Reddy Fox began to boast, for Reddy Fox is a great boaster. \"Pooh!\" said Reddy Fox, \"pooh! Anybody could jump if their legs were made for jumping. And what's the good of climbing trees anyway? Now I can run faster than anybody here--faster than anybody in the whole world!\" said Reddy Fox, puffing himself out.",
+      "source": {
+        "name": "Mother West Wind's Children (Thornton W. Burgess, 1911)",
+        "url": "https://www.gutenberg.org/ebooks/20877",
+        "license": "Public domain",
+        "author": "Thornton W. Burgess",
+        "note": "Paragraph from the book."
+      },
+      "question": {
+        "type": "inference",
+        "q": "Reddy is \"puffing himself out.\" What is he trying to do?",
+        "choices": [
+          "Catch his breath after a run",
+          "Blow the leaves away",
+          "Look big and important",
+          "Get ready to jump high"
+        ],
+        "answer": 2,
+        "evidence": "Reddy Fox is a great boaster",
+        "explain": "He is bragging, so he puffs himself up to look important."
+      },
+      "readability": {
+        "grade": 4.6,
+        "fk": 4.8,
+        "cli": 6,
+        "ari": 3.1
+      }
+    },
+    {
+      "id": "burgess-bobby-coon-mischief",
+      "title": "Bobby Coon's Mischief",
+      "kind": "story",
+      "topic": "animals",
+      "text": "Bobby Coon had been out all night. You see Bobby Coon is very apt to get into mischief, and because usually it is safer to get into mischief under cover of the darkness Bobby Coon prefers the night wherein to go abroad. Not that Bobby Coon is really bad! Oh my, no! Everybody likes Bobby Coon. But he can no more keep out of mischief than a duck can keep out of water.",
+      "source": {
+        "name": "Mother West Wind's Children (Thornton W. Burgess, 1911)",
+        "url": "https://www.gutenberg.org/ebooks/20877",
+        "license": "Public domain",
+        "author": "Thornton W. Burgess",
+        "note": "Paragraph from the book."
+      },
+      "question": {
+        "type": "cause-effect",
+        "q": "Why does Bobby Coon like to go out at night?",
+        "choices": [
+          "Mischief is safer in the dark",
+          "He can't see well in the sun",
+          "His friends play only at night",
+          "He likes to watch the stars"
+        ],
+        "answer": 0,
+        "evidence": "it is safer to get into mischief under cover of the darkness",
+        "explain": "Mischief is safer when the darkness hides him."
+      },
+      "readability": {
+        "grade": 4.5,
+        "fk": 5.3,
+        "cli": 5,
+        "ari": 3.2
+      }
+    },
+    {
+      "id": "burgess-grandfather-frog-growing-old",
+      "title": "Peter Visits Grandfather Frog",
+      "kind": "story",
+      "topic": "animals",
+      "text": "\"I couldn't sleep all winter if I wanted to, and I wouldn't if I could, for there is too much fun to miss,\" muttered Peter, as he started for the Smiling Pool in search of Grandfather Frog. He found him sitting on his big lily-pad, but somehow Grandfather Frog didn't look as chipper and smart as usual. \"He certainly is growing old,\" thought Peter. \"He isn't as spry as he used to be. Seems as if he had grown old in the last two or three weeks. Too bad, too bad.\"",
+      "source": {
+        "name": "Mother West Wind 'How' Stories (Thornton W. Burgess, 1916)",
+        "url": "https://www.gutenberg.org/ebooks/21286",
+        "license": "Public domain",
+        "author": "Thornton W. Burgess",
+        "note": "Paragraph from the book."
+      },
+      "question": {
+        "type": "inference",
+        "q": "Why does Peter say \"Too bad, too bad\"?",
+        "choices": [
+          "He could not find the Smiling Pool",
+          "He wishes he could sleep all winter",
+          "Grandfather Frog was rude to him",
+          "He is sad that his friend seems old"
+        ],
+        "answer": 3,
+        "evidence": "He certainly is growing old",
+        "explain": "Peter is sorry to see that Grandfather Frog looks old and tired."
+      },
+      "readability": {
+        "grade": 4.6,
+        "fk": 4.6,
+        "cli": 4.9,
+        "ari": 4.3
+      }
+    },
+    {
+      "id": "burgess-be-content",
+      "title": "Be Content",
+      "kind": "story",
+      "topic": "feelings",
+      "text": "\"Chug-a-rum!\" said Grandfather Frog. \"Chug-a-rum! Be content with the blessings you have got, Peter Rabbit. Be content with the blessings you have got. No good comes of wishing for things which it never was meant that you should have. It is a bad habit and it makes discontent.\"",
+      "source": {
+        "name": "Mother West Wind 'How' Stories (Thornton W. Burgess, 1916)",
+        "url": "https://www.gutenberg.org/ebooks/21286",
+        "license": "Public domain",
+        "author": "Thornton W. Burgess",
+        "note": "Paragraph from the book."
+      },
+      "question": {
+        "type": "main-idea",
+        "q": "What lesson does Grandfather Frog give Peter?",
+        "choices": [
+          "Always ask for what you want",
+          "Be happy with what you have",
+          "Learn to swim like a frog",
+          "Wish hard and it comes true"
+        ],
+        "answer": 1,
+        "evidence": "Be content with the blessings you have got",
+        "explain": "He tells Peter to be content with the blessings he has."
+      },
+      "readability": {
+        "grade": 4.1,
+        "fk": 3.1,
+        "cli": 6.2,
+        "ari": 3.1
+      }
+    },
+    {
+      "id": "burgess-blacky-caw",
+      "title": "Blacky the Crow",
+      "kind": "story",
+      "topic": "animals",
+      "text": "\"Caw, caw, caw, caw!\" Blacky the Crow sat in the top of a tall tree and seemed trying to see just how much noise he could make with that harsh voice of his. Peter Rabbit peered out from the dear Old Briar-patch and frowned.",
+      "source": {
+        "name": "Mother West Wind 'How' Stories (Thornton W. Burgess, 1916)",
+        "url": "https://www.gutenberg.org/ebooks/21286",
+        "license": "Public domain",
+        "author": "Thornton W. Burgess",
+        "note": "Paragraph from the book."
+      },
+      "question": {
+        "type": "inference",
+        "q": "How does Peter feel about Blacky's noise?",
+        "choices": [
+          "He does not like it",
+          "He thinks it is music",
+          "He wants to join in",
+          "He is scared of it"
+        ],
+        "answer": 0,
+        "evidence": "Peter Rabbit peered out from the dear Old Briar-patch and frowned.",
+        "explain": "Peter frowned, so the harsh noise bothered him."
+      },
+      "readability": {
+        "grade": 4.1,
+        "fk": 3,
+        "cli": 5,
+        "ari": 4.2
+      }
+    },
+    {
+      "id": "burgess-happy-jack-folded-hands",
+      "title": "Folded Hands",
+      "kind": "story",
+      "topic": "animals",
+      "text": "Happy Jack Squirrel sat with his hands folded across his white waistcoat. He is very fond of sitting with his hands folded that way. A little way from him sat Peter Rabbit. Peter was sitting up very straight, but his hands dropped right down in front. Happy Jack noticed it.",
+      "source": {
+        "name": "Mother West Wind 'Why' Stories (Thornton W. Burgess, 1915)",
+        "url": "https://www.gutenberg.org/ebooks/14958",
+        "license": "Public domain",
+        "author": "Thornton W. Burgess",
+        "note": "Paragraph from the book."
+      },
+      "question": {
+        "type": "detail",
+        "q": "How was Peter Rabbit sitting?",
+        "choices": [
+          "Lying down with his eyes shut",
+          "With hands folded on his vest",
+          "Very straight, hands dropped",
+          "Curled up in a tight ball"
+        ],
+        "answer": 2,
+        "evidence": "Peter was sitting up very straight, but his hands dropped right down in front.",
+        "explain": "Peter sat up straight with his hands dropped down in front."
+      },
+      "readability": {
+        "grade": 4.9,
+        "fk": 3.4,
+        "cli": 7,
+        "ari": 4.2
+      }
+    },
+    {
+      "id": "burgess-jerry-muskrat-house",
+      "title": "A Funny Place for a House",
+      "kind": "story",
+      "topic": "animals",
+      "text": "Johnny Chuck scratched his head thoughtfully. \"It does seem a funny place,\" he admitted. \"It certainly does seem a funny place. But then, Jerry Muskrat is a funny fellow. You know how much of the time he stays in the water. That seems funny to me. I suppose there is a reason for it, and probably there is a reason for building his house where it is. I've found that there is a reason for most things. Probably Jerry's great-great-grandfather built his house that way, and so Jerry does the same thing.\"",
+      "source": {
+        "name": "Mother West Wind 'Why' Stories (Thornton W. Burgess, 1915)",
+        "url": "https://www.gutenberg.org/ebooks/14958",
+        "license": "Public domain",
+        "author": "Thornton W. Burgess",
+        "note": "Paragraph from the book."
+      },
+      "question": {
+        "type": "detail",
+        "q": "What has Johnny Chuck found out about most things?",
+        "choices": [
+          "Most things should be kept secret",
+          "Most houses belong in water",
+          "Most old ways are wrong ones",
+          "Most things happen for a reason"
+        ],
+        "answer": 3,
+        "evidence": "I've found that there is a reason for most things.",
+        "explain": "Johnny says there is a reason for most things."
+      },
+      "readability": {
+        "grade": 4.6,
+        "fk": 3.9,
+        "cli": 6.3,
+        "ari": 3.7
+      }
+    },
+    {
+      "id": "burgess-grandfather-frog-pestered",
+      "title": "Peter's Questions",
+      "kind": "story",
+      "topic": "animals",
+      "text": "\"Chug-a-rum!\" said he. \"You and your questions are a nuisance, Peter Rabbit, and I may as well get rid of you now as to have you keep coming down here and pestering me to death. Besides, any one who has to keep such a sharp watch for Reddy Fox as you do ought to know why he wears a red coat. If you'll promise to sit perfectly still and ask no foolish questions, I'll tell you the story.\"",
+      "source": {
+        "name": "Mother West Wind 'Why' Stories (Thornton W. Burgess, 1915)",
+        "url": "https://www.gutenberg.org/ebooks/14958",
+        "license": "Public domain",
+        "author": "Thornton W. Burgess",
+        "note": "Paragraph from the book."
+      },
+      "question": {
+        "type": "cause-effect",
+        "q": "Why does Grandfather Frog agree to tell the story?",
+        "choices": [
+          "Because Peter gave him a fly",
+          "To make Peter stop pestering",
+          "To make Reddy Fox go away",
+          "Because he loves to tell tales"
+        ],
+        "answer": 1,
+        "evidence": "I may as well get rid of you now as to have you keep coming down here and pestering me to death",
+        "explain": "He wants Peter to stop coming back and bothering him."
+      },
+      "readability": {
+        "grade": 4.5,
+        "fk": 4.9,
+        "cli": 4.5,
+        "ari": 4.2
+      }
+    },
+    {
+      "id": "vanloon-rock-in-svithjod",
+      "title": "The Rock in Svithjod",
+      "kind": "story",
+      "topic": "places",
+      "text": "HIGH Up in the North in the land called Svithjod, there stands a rock. It is a hundred miles high and a hundred miles wide. Once every thousand years a little bird comes to this rock to sharpen its beak.",
+      "source": {
+        "name": "The Story of Mankind (Hendrik Willem van Loon, 1921)",
+        "url": "https://www.gutenberg.org/ebooks/754",
+        "license": "Public domain",
+        "author": "Hendrik Willem van Loon",
+        "note": "Paragraph from the book."
+      },
+      "question": {
+        "type": "detail",
+        "q": "How often does the little bird come to the rock?",
+        "choices": [
+          "Once every hundred years",
+          "Every spring when snow melts",
+          "Once every thousand years",
+          "Every morning at sunrise"
+        ],
+        "answer": 2,
+        "evidence": "Once every thousand years a little bird comes to this rock",
+        "explain": "The bird comes only once every thousand years."
+      },
+      "readability": {
+        "grade": 4.4,
+        "fk": 3.8,
+        "cli": 5.5,
+        "ari": 4.1
+      }
+    },
+    {
+      "id": "fabre-drying-the-clothes",
+      "title": "Drying the Clothes",
+      "kind": "facts",
+      "topic": "water",
+      "text": "\"When Mother Ambroisine hangs the clothes she has just washed on the line, what does she do it for? To dry the linen, to free it from the water with which it is saturated. Well, what becomes of this water, if you please?\"",
+      "source": {
+        "name": "The Story-Book of Science (Jean-Henri Fabre, 1917)",
+        "url": "https://www.gutenberg.org/ebooks/56795",
+        "license": "Public domain",
+        "author": "Jean-Henri Fabre",
+        "note": "Paragraph from the book."
+      },
+      "question": {
+        "type": "vocabulary",
+        "q": "The wet linen is \"saturated\" with water. What does saturated mean?",
+        "choices": [
+          "Holding lots of water",
+          "Dried out by the sun",
+          "Folded in a neat pile",
+          "Scrubbed with soap"
+        ],
+        "answer": 0,
+        "evidence": "to free it from the water with which it is saturated",
+        "explain": "Saturated means full of water, so the clothes must be dried."
+      },
+      "readability": {
+        "grade": 4.7,
+        "fk": 4.3,
+        "cli": 5.4,
+        "ari": 4.4
+      }
+    },
+    {
+      "id": "fabre-parts-of-a-flower",
+      "title": "The Parts of a Flower",
+      "kind": "facts",
+      "topic": "plants",
+      "text": "\"Let us begin with the blossoms of the digitalis, which I spoke of yesterday. Here is one. It has, as you see, almost the form of a glove-finger, or better, of a long pointed cap. Emile could put one on to his little finger; there would be plenty of room. It is purplish-red in color. Inside, it has spots of dark red encircled with white. The red glove-finger rises from the center of a circle of five little leaves. These little leaves are also part of the flower. Together they form what is called the calyx. The rest, the red part, is called the corolla. Remember these words, which are new to you.\"",
+      "source": {
+        "name": "The Story-Book of Science (Jean-Henri Fabre, 1917)",
+        "url": "https://www.gutenberg.org/ebooks/56795",
+        "license": "Public domain",
+        "author": "Jean-Henri Fabre",
+        "note": "Paragraph from the book."
+      },
+      "question": {
+        "type": "vocabulary",
+        "q": "What is the \"calyx\" of this flower?",
+        "choices": [
+          "The red part shaped like a glove",
+          "The dark red spots with white rings",
+          "The tall stem that holds it up",
+          "The ring of five little leaves"
+        ],
+        "answer": 3,
+        "evidence": "Together they form what is called the calyx.",
+        "explain": "The five little leaves at the bottom of the flower form the calyx."
+      },
+      "readability": {
+        "grade": 4.2,
+        "fk": 4.1,
+        "cli": 5.5,
+        "ari": 3.1
+      }
+    },
+    {
+      "id": "fabre-snail-tentacles",
+      "title": "The Snail's Tentacles",
+      "kind": "facts",
+      "topic": "animals",
+      "text": "\"Right at the end of each long tentacle you see a little black point. It is an eye as complete as that of the horse and ox, in spite of its minute dimensions. What is necessary for making an eye, you are far from suspecting. It is so complicated I will not try to tell you. And yet it is all to be found in that little black point that is scarcely visible. That is not all: beside the eye is a nose, that is to say an organ especially sensitive to odors. The snail sees and smells with the tips of its long tentacles.\"",
+      "source": {
+        "name": "The Story-Book of Science (Jean-Henri Fabre, 1917)",
+        "url": "https://www.gutenberg.org/ebooks/56795",
+        "license": "Public domain",
+        "author": "Jean-Henri Fabre",
+        "note": "Paragraph from the book."
+      },
+      "question": {
+        "type": "main-idea",
+        "q": "What is this paragraph mostly about?",
+        "choices": [
+          "How a horse and an ox see things",
+          "What a snail's tentacles can do",
+          "Why snails move very slowly",
+          "How to make a tiny black eye"
+        ],
+        "answer": 1,
+        "evidence": "The snail sees and smells with the tips of its long tentacles.",
+        "explain": "It explains the eye and nose at the tips of a snail's tentacles."
+      },
+      "readability": {
+        "grade": 4.7,
+        "fk": 5.4,
+        "cli": 4.7,
+        "ari": 4.1
+      }
+    },
+    {
+      "id": "fabre-things-that-seem-to-move",
+      "title": "Things That Seem to Move",
+      "kind": "facts",
+      "topic": "science",
+      "text": "\"Without being able to explain it to myself well,\" returned Emile, \"I see that it is so. We move and we think we see the other things moving. The faster we go, the faster the other things seem to go.\"",
+      "source": {
+        "name": "The Story-Book of Science (Jean-Henri Fabre, 1917)",
+        "url": "https://www.gutenberg.org/ebooks/56795",
+        "license": "Public domain",
+        "author": "Jean-Henri Fabre",
+        "note": "Paragraph from the book."
+      },
+      "question": {
+        "type": "cause-effect",
+        "q": "What happens to other things when we go faster?",
+        "choices": [
+          "Other things seem to move faster",
+          "Other things seem to stand still",
+          "Other things seem to get bigger",
+          "Other things seem to slow down"
+        ],
+        "answer": 0,
+        "evidence": "The faster we go, the faster the other things seem to go.",
+        "explain": "Emile says the faster we go, the faster other things seem to go."
+      },
+      "readability": {
+        "grade": 4,
+        "fk": 5,
+        "cli": 4.2,
+        "ari": 3
+      }
+    },
+    {
+      "id": "baldwin-picciola-little-mound",
+      "title": "Picciola",
+      "kind": "story",
+      "topic": "plants",
+      "text": "One fine morning in spring, Char-ney was taking his walk in the yard. He was counting the paving stones, as he had done a thousand times before. All at once he stopped. What had made that little mound of earth between two of the stones?",
+      "source": {
+        "name": "Fifty Famous Stories Retold (James Baldwin, 1896)",
+        "url": "https://www.gutenberg.org/ebooks/18442",
+        "license": "Public domain",
+        "author": "James Baldwin",
+        "note": "Paragraph from the book."
+      },
+      "question": {
+        "type": "inference",
+        "q": "Why did Charney stop all at once?",
+        "choices": [
+          "He heard a loud bang",
+          "He felt too tired to go on",
+          "He saw something new",
+          "He lost his count of stones"
+        ],
+        "answer": 2,
+        "evidence": "What had made that little mound of earth between two of the stones?",
+        "explain": "He noticed a little mound of earth that had not been there before."
+      },
+      "readability": {
+        "grade": 4.1,
+        "fk": 3,
+        "cli": 5.7,
+        "ari": 3.6
+      }
+    },
+    {
+      "id": "baldwin-grace-darling-rowing",
+      "title": "Grace Darling",
+      "kind": "story",
+      "topic": "ocean",
+      "text": "In a few minutes they were ready. They set off in the heavy lighthouse boat. Grace pulled one oar, and her father the other, and they made straight toward the wreck. But it was hard rowing against such a sea, and it seemed as though they would never reach the place.",
+      "source": {
+        "name": "Fifty Famous Stories Retold (James Baldwin, 1896)",
+        "url": "https://www.gutenberg.org/ebooks/18442",
+        "license": "Public domain",
+        "author": "James Baldwin",
+        "note": "Paragraph from the book."
+      },
+      "question": {
+        "type": "cause-effect",
+        "q": "Why did it seem they would never reach the wreck?",
+        "choices": [
+          "Their little boat had a leak",
+          "They had only one oar to use",
+          "A thick fog hid the wreck",
+          "The waves made it hard to row"
+        ],
+        "answer": 3,
+        "evidence": "it was hard rowing against such a sea",
+        "explain": "The rough sea made rowing very hard."
+      },
+      "readability": {
+        "grade": 4.6,
+        "fk": 3.5,
+        "cli": 6,
+        "ari": 4.2
+      }
+    },
+    {
+      "id": "baldwin-bruce-and-the-spider",
+      "title": "Bruce and the Spider",
+      "kind": "story",
+      "topic": "people",
+      "text": "As he lay thinking, he saw a spider over his head, making ready to weave her web. He watched her as she toiled slowly and with great care. Six times she tried to throw her frail thread from one beam to another, and six times it fell short.",
+      "source": {
+        "name": "Fifty Famous Stories Retold (James Baldwin, 1896)",
+        "url": "https://www.gutenberg.org/ebooks/18442",
+        "license": "Public domain",
+        "author": "James Baldwin",
+        "note": "Paragraph from the book."
+      },
+      "question": {
+        "type": "detail",
+        "q": "How many times did the spider's thread fall short?",
+        "choices": [
+          "Three times",
+          "Six times",
+          "Seven times",
+          "Ten times"
+        ],
+        "answer": 1,
+        "evidence": "six times it fell short",
+        "explain": "The spider tried six times, and six times the thread fell short."
+      },
+      "readability": {
+        "grade": 4.8,
+        "fk": 4.4,
+        "cli": 5.1,
+        "ari": 4.8
+      }
+    },
+    {
+      "id": "baldwin-androclus-and-the-lion",
+      "title": "Androclus and the Lion",
+      "kind": "story",
+      "topic": "animals",
+      "text": "After a while a great noise woke him up. A lion had come into the cave, and was roaring loudly. Androclus was very much afraid, for he felt sure that the beast would kill him. Soon, however, he saw that the lion was not angry, but that he limped as though his foot hurt him.",
+      "source": {
+        "name": "Fifty Famous Stories Retold (James Baldwin, 1896)",
+        "url": "https://www.gutenberg.org/ebooks/18442",
+        "license": "Public domain",
+        "author": "James Baldwin",
+        "note": "Paragraph from the book."
+      },
+      "question": {
+        "type": "inference",
+        "q": "Why did Androclus soon feel less afraid?",
+        "choices": [
+          "The lion fell fast asleep",
+          "A friend came to help him",
+          "The lion seemed hurt, not angry",
+          "He found a way out of the cave"
+        ],
+        "answer": 2,
+        "evidence": "he saw that the lion was not angry, but that he limped as though his foot hurt him",
+        "explain": "The lion was limping in pain, not angry."
+      },
+      "readability": {
+        "grade": 4.1,
+        "fk": 4.1,
+        "cli": 4.6,
+        "ari": 3.5
+      }
+    },
+    {
+      "id": "baldwin-paul-revere-riverside",
+      "title": "Paul Revere Waits",
+      "kind": "story",
+      "topic": "history",
+      "text": "When night came, Paul Revere was at the riverside with his horse. He looked over toward Boston. He knew where the old North Church stood, but he could not see much in the darkness.",
+      "source": {
+        "name": "Fifty Famous People (James Baldwin, 1912)",
+        "url": "https://www.gutenberg.org/ebooks/6168",
+        "license": "Public domain",
+        "author": "James Baldwin",
+        "note": "Paragraph from the book."
+      },
+      "question": {
+        "type": "detail",
+        "q": "Why could Paul Revere not see much?",
+        "choices": [
+          "Night had made it dark",
+          "Fog covered the river",
+          "His horse was in the way",
+          "Trees blocked his view"
+        ],
+        "answer": 0,
+        "evidence": "he could not see much in the darkness",
+        "explain": "It was night, so he could not see much in the darkness."
+      },
+      "readability": {
+        "grade": 4.4,
+        "fk": 3.1,
+        "cli": 6.1,
+        "ari": 3.9
+      }
+    },
+    {
+      "id": "baldwin-benjamin-pennies",
+      "title": "Benjamin's Shopping Trip",
+      "kind": "story",
+      "topic": "family",
+      "text": "As Benjamin ran down the street, he wondered what he should buy. Should he buy candy? He hardly knew how it tasted. Should he buy a pretty toy? If he had been the only child in the family, things might have been different. But there were fourteen boys and girls older than he, and two little sisters who were younger.",
+      "source": {
+        "name": "Fifty Famous People (James Baldwin, 1912)",
+        "url": "https://www.gutenberg.org/ebooks/6168",
+        "license": "Public domain",
+        "author": "James Baldwin",
+        "note": "Paragraph from the book."
+      },
+      "question": {
+        "type": "inference",
+        "q": "Why might Benjamin hardly know how candy tasted?",
+        "choices": [
+          "He never liked sweet things at all",
+          "No shops in his town sold candy",
+          "His mother said candy was bad",
+          "There were many kids to share with"
+        ],
+        "answer": 3,
+        "evidence": "there were fourteen boys and girls older than he",
+        "explain": "With so many children in the family, there was little left for treats."
+      },
+      "readability": {
+        "grade": 4,
+        "fk": 3.3,
+        "cli": 5.6,
+        "ari": 3.1
+      }
+    },
+    {
+      "id": "baldwin-two-wreaths",
+      "title": "The Two Wreaths",
+      "kind": "story",
+      "topic": "plants",
+      "text": "\"One of these wreaths.\" said the queen, \"is made of flowers plucked from your garden. The other is made of artificial flowers, shaped and colored by a skillful artist. Now, tell me, O King, which is the true, and which is the false?\"",
+      "source": {
+        "name": "Fifty Famous People (James Baldwin, 1912)",
+        "url": "https://www.gutenberg.org/ebooks/6168",
+        "license": "Public domain",
+        "author": "James Baldwin",
+        "note": "Paragraph from the book."
+      },
+      "question": {
+        "type": "vocabulary",
+        "q": "What are \"artificial flowers\"?",
+        "choices": [
+          "Flowers picked that morning",
+          "Flowers made by a person",
+          "Flowers grown in the shade",
+          "Flowers that smell sweet"
+        ],
+        "answer": 1,
+        "evidence": "artificial flowers, shaped and colored by a skillful artist",
+        "explain": "Artificial flowers are made by a person, not grown."
+      },
+      "readability": {
+        "grade": 4.1,
+        "fk": 3.4,
+        "cli": 5.7,
+        "ari": 3.3
+      }
+    },
+    {
+      "id": "baldwin-gardener-bag-of-gold",
+      "title": "The Bag of Gold",
+      "kind": "story",
+      "topic": "people",
+      "text": "The gardener answered: \"A year ago, as I was spading in my garden, I saw something fall at the foot of a palm tree. I ran to pick it up and was surprised to find that it was a bag full of bright gold pieces. I said to myself, 'This money must belong to our master, Al Mansour. Some large bird has stolen it from his palace.'\"",
+      "source": {
+        "name": "Fifty Famous People (James Baldwin, 1912)",
+        "url": "https://www.gutenberg.org/ebooks/6168",
+        "license": "Public domain",
+        "author": "James Baldwin",
+        "note": "Paragraph from the book."
+      },
+      "question": {
+        "type": "inference",
+        "q": "What kind of person does the gardener seem to be?",
+        "choices": [
+          "Honest and true",
+          "Greedy and selfish",
+          "Lazy and careless",
+          "Rude and unkind"
+        ],
+        "answer": 0,
+        "evidence": "This money must belong to our master, Al Mansour.",
+        "explain": "He found gold and thought first of who it belonged to."
+      },
+      "readability": {
+        "grade": 4.5,
+        "fk": 5.4,
+        "cli": 4,
+        "ari": 4.2
+      }
+    },
+    {
+      "id": "asp-the-wise-man",
+      "title": "The wise man",
+      "kind": "story",
+      "topic": "family",
+      "text": "Once upon a time, there was a man who thought that the youth were wiser than their elders. He even bragged about it before his wife. He said to her, \"I am wiser than your father.\" His wife disagreed with him, but he would not listen to her. One day when the wife went to see her parents, she told her father about how his son-in-law claims to be wiser than him because he is younger. The old man sent his daughter back to ask her husband if he still held the same view.",
+      "source": {
+        "name": "African Storybook",
+        "url": "https://github.com/global-asp/asp-source/blob/master/en/0207_the-wise-man.md",
+        "license": "CC BY 4.0",
+        "author": "Cornelius Wekunya",
+        "note": "Beginning of the story. Illustrations not included."
+      },
+      "question": {
+        "type": "detail",
+        "q": "What did the man brag about to his wife?",
+        "choices": [
+          "That he was richer than her father",
+          "That he was stronger than her father",
+          "That he was wiser than her father",
+          "That he was older than her father"
+        ],
+        "answer": 2,
+        "evidence": "I am wiser than your father.",
+        "explain": "He said, \"I am wiser than your father.\""
+      },
+      "readability": {
+        "grade": 4.8,
+        "fk": 5,
+        "cli": 5,
+        "ari": 4.5
+      }
+    },
+    {
+      "id": "asp-nonkungu-and-the-imbulu",
+      "title": "Nonkungu and the imbulu",
+      "kind": "story",
+      "topic": "family",
+      "text": "Once upon a time there was a poor man and his wife. They had only one child, a girl. The child's name was Nonkungu. Her parents loved Nonkungu very much. One day her parents decided to send her to stay with her rich Uncle Mtonyama. Nonkungu's mother made a special skirt with ribbon, buttons and beads. She also made a beautiful bead necklace for Nonkungu. Then she sent her off to her uncle's village.",
+      "source": {
+        "name": "African Storybook",
+        "url": "https://github.com/global-asp/asp-source/blob/master/en/0251_nonkungu-and-the-imbulu.md",
+        "license": "CC BY 4.0",
+        "author": "Alan Kenyon, Viv Kenyon",
+        "note": "Beginning of the story. Illustrations not included."
+      },
+      "question": {
+        "type": "sequence",
+        "q": "What did Nonkungu's mother do just before sending her off?",
+        "choices": [
+          "Baked bread for the long trip",
+          "Wrote a letter to the uncle",
+          "Sold their cow for some money",
+          "Made her a skirt and necklace"
+        ],
+        "answer": 3,
+        "evidence": "She also made a beautiful bead necklace for Nonkungu. Then she sent her off",
+        "explain": "She made a skirt and a necklace, then sent Nonkungu off."
+      },
+      "readability": {
+        "grade": 4.6,
+        "fk": 4.3,
+        "cli": 6.1,
+        "ari": 3.3
+      }
+    },
+    {
+      "id": "asp-elephant-and-chameleon",
+      "title": "Elephant and Chameleon",
+      "kind": "story",
+      "topic": "weather",
+      "text": "Once upon a time in a big palace, there lived a king and his beautiful daughter, the princess. Elephant lived in a house on one side of the palace. Chameleon lived on the other side. At this time, there was a terrible drought across the land. The king had an idea and called his two neighbours to the palace.",
+      "source": {
+        "name": "African Storybook",
+        "url": "https://github.com/global-asp/asp-source/blob/master/en/0115_elephant-and-chameleon.md",
+        "license": "CC BY 4.0",
+        "author": "Stella Badaru",
+        "note": "Beginning of the story. Illustrations not included."
+      },
+      "question": {
+        "type": "vocabulary",
+        "q": "There was a terrible \"drought.\" What is a drought?",
+        "choices": [
+          "A big storm with much rain",
+          "A long time with no rain",
+          "A cold time with lots of snow",
+          "A loud party at a palace"
+        ],
+        "answer": 1,
+        "evidence": "there was a terrible drought across the land",
+        "explain": "A drought is a long time without rain."
+      },
+      "readability": {
+        "grade": 4.7,
+        "fk": 4.6,
+        "cli": 5.8,
+        "ari": 3.8
+      }
+    },
+    {
+      "id": "asp-clever-cat",
+      "title": "Clever cat",
+      "kind": "story",
+      "topic": "animals",
+      "text": "In my village lives Mister Kiio. Mister Kiio has a cat with black and white spots called Safi. When Mister Kiio goes to work, he leaves the door open. Safi sits in the doorway to watch over Mister Kiio's house. When the neighbour's dog comes close, Safi stares at him and shows her nails.",
+      "source": {
+        "name": "African Storybook",
+        "url": "https://github.com/global-asp/asp-source/blob/master/en/0056_clever-cat.md",
+        "license": "CC BY 4.0",
+        "author": "Ursula Nafula",
+        "note": "Beginning of the story. Illustrations not included."
+      },
+      "question": {
+        "type": "main-idea",
+        "q": "What is this paragraph mostly about?",
+        "choices": [
+          "A dog that is friends with a cat",
+          "A man who loses his front door",
+          "A cat who watches over a house",
+          "A cat that learns to paint spots"
+        ],
+        "answer": 2,
+        "evidence": "Safi sits in the doorway to watch over Mister Kiio's house.",
+        "explain": "Safi guards Mister Kiio's house while he is at work."
+      },
+      "readability": {
+        "grade": 4.6,
+        "fk": 3.9,
+        "cli": 6.1,
+        "ari": 3.7
+      }
+    },
+    {
+      "id": "asp-amazing-daisy",
+      "title": "Amazing Daisy",
+      "kind": "story",
+      "topic": "animals",
+      "text": "\"Daisy, we can all flap our wings but it's very difficult for chickens to fly,\" Mama told her. Daisy wouldn't give up. Every day she practised by herself, flapping her wings. Flap, flap, flap, she would flap her wings but she couldn't lift off the ground. While she practised, she imagined herself flying high into the sky and looking at the chickens below. She imagined herself flying past the sparrows and past the swallows. \"Wow!\" the birds would say. \"A chicken that can fly!\"",
+      "source": {
+        "name": "African Storybook",
+        "url": "https://github.com/global-asp/asp-source/blob/master/en/0200_amazing-daisy.md",
+        "license": "CC BY 4.0",
+        "author": "Nozizwe Herero",
+        "note": "Excerpt from the story. Illustrations not included."
+      },
+      "question": {
+        "type": "main-idea",
+        "q": "What is this part of the story mostly about?",
+        "choices": [
+          "Daisy keeps on trying to fly",
+          "Daisy makes friends with birds",
+          "Daisy runs away from the farm",
+          "Mama teaches Daisy to swim"
+        ],
+        "answer": 0,
+        "evidence": "Daisy wouldn't give up.",
+        "explain": "Daisy practises flying every day and does not give up."
+      },
+      "readability": {
+        "grade": 4.9,
+        "fk": 3.6,
+        "cli": 7.1,
+        "ari": 4.1
+      }
+    },
+    {
+      "id": "pb-the-puppy-that-did-not-bark",
+      "title": "The puppy that did not bark!!!",
+      "kind": "story",
+      "topic": "animals",
+      "text": "As soon as she got up in the morning she begged her father, \"Daddy, please, please get me a pup.\" Her father said \"Sure Rinku, as soon as you grow a little older.\" One evening on the way back from school, Rinku heard some noise in the bushes near her house. She ran towards the noise and found a little brown puppy under the bushes. Rinku was very excited. She carefully picked up the small furry bundle and carried it home. She kept it in a small box in the garden. This was her big secret.",
+      "source": {
+        "name": "Pratham Books (StoryWeaver)",
+        "url": "https://github.com/global-asp/pb-source/blob/master/en/0159_the-puppy-that-did-not-bark.md",
+        "license": "CC BY 4.0",
+        "author": "Uma Balamurali",
+        "note": "Excerpt from the story. Illustrations not included."
+      },
+      "question": {
+        "type": "inference",
+        "q": "Why did Rinku keep the puppy a secret?",
+        "choices": [
+          "The puppy was too scared",
+          "She wanted to surprise her friends",
+          "The puppy belonged to a neighbor",
+          "Her father said she was too young"
+        ],
+        "answer": 3,
+        "evidence": "as soon as you grow a little older",
+        "explain": "Her father had said to wait until she was older."
+      },
+      "readability": {
+        "grade": 4,
+        "fk": 4,
+        "cli": 4.9,
+        "ari": 3.2
+      }
+    },
+    {
+      "id": "pb-gullis-box-of-things",
+      "title": "Gulli's Box of Things",
+      "kind": "story",
+      "topic": "family",
+      "text": "\"What's wrong Grandpa, why are you not reading the newspaper?\" asked Gulli one morning. \"Oh dear, I broke my reading glasses, and I can't read anything without them,\" said Grandpa. \"Ah, don't you worry, Grandpa. Let me go and get my box of things.\" Gulli ran out fast, and came back with his little brown box.",
+      "source": {
+        "name": "Pratham Books (StoryWeaver)",
+        "url": "https://github.com/global-asp/pb-source/blob/master/en/0075_gulli-s-box-of-things.md",
+        "license": "CC BY 4.0",
+        "author": "Anupama Ajinkya Apte",
+        "note": "Beginning of the story. Illustrations not included."
+      },
+      "question": {
+        "type": "sequence",
+        "q": "What did Gulli do after he heard about the broken glasses?",
+        "choices": [
+          "He went to buy Grandpa new glasses",
+          "He ran off to fetch his little box",
+          "He read the newspaper to Grandpa",
+          "He told his mother what happened"
+        ],
+        "answer": 1,
+        "evidence": "Gulli ran out fast, and came back with his little brown box.",
+        "explain": "Gulli ran out and came back with his box of things."
+      },
+      "readability": {
+        "grade": 3.7,
+        "fk": 3,
+        "cli": 5.4,
+        "ari": 2.7
+      }
+    },
+    {
+      "id": "pb-daddys-mo",
+      "title": "Daddy's Mo",
+      "kind": "story",
+      "topic": "family",
+      "text": "Anu likes many things about Daddy. She likes the bright paper lanterns he makes, the crisp onion pakodas he fries and the cute tortoise he makes out of paper. Besides, he climbs the stairs with a hop, and wrestles with Uncle for fun. When guests come over, he always makes them laugh. Anu likes all these things about Daddy. But do you know what Anu likes most of all? Daddy's moustache!",
+      "source": {
+        "name": "Pratham Books (StoryWeaver)",
+        "url": "https://github.com/global-asp/pb-source/blob/master/en/0432_daddy-s-mo.md",
+        "license": "CC BY 4.0",
+        "author": "Madhuri Purandare",
+        "note": "Beginning of the story. Illustrations not included. Translated by Sai Keskar."
+      },
+      "question": {
+        "type": "detail",
+        "q": "What does Anu like most of all about Daddy?",
+        "choices": [
+          "Daddy's moustache",
+          "His paper lanterns",
+          "His onion pakodas",
+          "His funny jokes"
+        ],
+        "answer": 0,
+        "evidence": "Daddy's moustache!",
+        "explain": "Anu likes his moustache most of all."
+      },
+      "readability": {
+        "grade": 4.6,
+        "fk": 3.3,
+        "cli": 6.5,
+        "ari": 3.9
+      }
+    },
+    {
+      "id": "pb-jaggees-mornings",
+      "title": "Jaggee's mornings",
+      "kind": "story",
+      "topic": "family",
+      "text": "Every weekday morning Jaggee's alarm clock rings at 5 o'clock and every weekday morning he tries to ignore it. \"I do not like mornings!\" groans Jaggee. But Jaggee has school. He hides under the blankets and pretends that it isn't really morning. He complains. He says nasty things about mornings. \"Most of the days I fall back to sleep for a few minutes!\", Jaggee says.",
+      "source": {
+        "name": "Pratham Books (StoryWeaver)",
+        "url": "https://github.com/global-asp/pb-source/blob/master/en/0171_jaggee-s-mornings.md",
+        "license": "CC BY 4.0",
+        "author": "Sandhya Sridhar",
+        "note": "Beginning of the story. Illustrations not included."
+      },
+      "question": {
+        "type": "vocabulary",
+        "q": "Jaggee \"groans\" about mornings. What does groans mean?",
+        "choices": [
+          "Jumps up with a big smile",
+          "Sings a cheerful song",
+          "Makes an unhappy noise",
+          "Whispers very quietly"
+        ],
+        "answer": 2,
+        "evidence": "He complains. He says nasty things about mornings.",
+        "explain": "To groan is to make an unhappy sound, like a complaint."
+      },
+      "readability": {
+        "grade": 4.9,
+        "fk": 4.1,
+        "cli": 6.9,
+        "ari": 3.7
+      }
+    },
+    {
+      "id": "pb-hot-tea-and-warm-rugs",
+      "title": "Hot Tea and Warm Rugs",
+      "kind": "story",
+      "topic": "places",
+      "text": "Amma says people in Gujarat have a Ponkh festival in winter. Farmers roast bundles of millet on coal stoves. Everyone eats the fresh, green, plump and tender beads of millet grains called ponkh. I wore a bright blue sweater to the fair. There were many stalls all along the road. Manu wanted to go on the merry-go-round. I wanted to buy grandma a warm, soft shawl.",
+      "source": {
+        "name": "Pratham Books (StoryWeaver)",
+        "url": "https://github.com/global-asp/pb-source/blob/master/en/0015_hot-tea-and-warm-rugs.md",
+        "license": "CC BY 4.0",
+        "author": "Mala Kumar, Manisha Chaudhry",
+        "note": "Excerpt from the story. Illustrations not included."
+      },
+      "question": {
+        "type": "vocabulary",
+        "q": "What is \"ponkh\"?",
+        "choices": [
+          "A warm and soft winter shawl",
+          "A ride at the busy winter fair",
+          "A coal stove used for roasting",
+          "Young green grains of millet"
+        ],
+        "answer": 3,
+        "evidence": "tender beads of millet grains called ponkh",
+        "explain": "Ponkh is the fresh, green millet grains people eat."
+      },
+      "readability": {
+        "grade": 4.7,
+        "fk": 3.8,
+        "cli": 6.6,
+        "ari": 3.8
+      }
+    },
+    {
+      "id": "pb-my-juggling-granny",
+      "title": "My Juggling Granny",
+      "kind": "poem",
+      "topic": "family",
+      "text": "Grannies come in many sizes, And they give us funny surprises! Did you know my granny juggles? With her, I like to snuggle! A great spotter of things is she, She's not one to let things be! An expert at tossing everything in sight, People around get quite a fright!",
+      "source": {
+        "name": "Pratham Books (StoryWeaver)",
+        "url": "https://github.com/global-asp/pb-source/blob/master/en/0139_my-juggling-granny.md",
+        "license": "CC BY 4.0",
+        "author": "Mala Kumar, Manisha Chaudhry",
+        "note": "Beginning of the story. Illustrations not included. Translated by Mala Kumar, Manisha Chaudhry."
+      },
+      "question": {
+        "type": "cause-effect",
+        "q": "Why do people around Granny \"get quite a fright\"?",
+        "choices": [
+          "She shouts at them loudly",
+          "Things fly when she juggles",
+          "She hides and then jumps out",
+          "She drives her car too fast"
+        ],
+        "answer": 1,
+        "evidence": "An expert at tossing everything in sight",
+        "explain": "She tosses everything in sight, which surprises people."
+      },
+      "readability": {
+        "grade": 4,
+        "fk": 3.7,
+        "cli": 5.5,
+        "ari": 3
+      }
+    },
+    {
+      "id": "sbc-sakimas-song",
+      "title": "Sakima's song",
+      "kind": "story",
+      "topic": "people",
+      "text": "Sakima lived with his parents and his four year old sister. They lived on a rich man's land. Their grass-thatched hut was at the end of a row of trees. When Sakima was three years old, he fell sick and lost his sight. Sakima was a talented boy. Sakima did many things that other six year old boys did not do. For example, he could sit with older members of the village and discuss important matters.",
+      "source": {
+        "name": "Storybooks Canada",
+        "url": "https://github.com/global-asp/sbc-source/blob/master/en/0315_sakimas-song.md",
+        "license": "CC BY 4.0",
+        "author": "Ursula Nafula",
+        "note": "Beginning of the story. Illustrations not included."
+      },
+      "question": {
+        "type": "detail",
+        "q": "What happened to Sakima when he was three years old?",
+        "choices": [
+          "He moved to the rich man's land",
+          "He learned to sing many songs",
+          "He fell sick and lost his sight",
+          "He got a little baby sister"
+        ],
+        "answer": 2,
+        "evidence": "When Sakima was three years old, he fell sick and lost his sight.",
+        "explain": "At three, Sakima fell sick and lost his sight."
+      },
+      "readability": {
+        "grade": 4.4,
+        "fk": 4,
+        "cli": 5.7,
+        "ari": 3.4
+      }
+    },
+    {
+      "id": "sbc-a-tiny-seed-wangari-school",
+      "title": "A Tiny Seed: The Story of Wangari Maathai",
+      "kind": "story",
+      "topic": "people",
+      "text": "Wangari was a clever child and couldn't wait to go to school. But her mother and father wanted her to stay and help them at home. When she was seven years old, her big brother persuaded her parents to let her go to school. She liked to learn! Wangari learnt more and more with every book she read. She did so well at school that she was invited to study in the United States of America. Wangari was excited! She wanted to know more about the world.",
+      "source": {
+        "name": "Storybooks Canada",
+        "url": "https://github.com/global-asp/sbc-source/blob/master/en/0110_a-tiny-seed-the-story-of-wangari-maathai.md",
+        "license": "CC BY 4.0",
+        "author": "Nicola Rijsdijk",
+        "note": "Excerpt from the story. Illustrations not included."
+      },
+      "question": {
+        "type": "sequence",
+        "q": "What happened after Wangari did very well at school?",
+        "choices": [
+          "She was invited to study in America",
+          "Her parents asked her to stay home",
+          "Her brother taught her to read",
+          "She became a farmer like her mother"
+        ],
+        "answer": 0,
+        "evidence": "She did so well at school that she was invited to study in the United States of America.",
+        "explain": "Doing well at school led to an invitation to study in the USA."
+      },
+      "readability": {
+        "grade": 4,
+        "fk": 3.6,
+        "cli": 5.3,
+        "ari": 3.1
+      }
+    },
+    {
+      "id": "sbc-magozwe",
+      "title": "Magozwe",
+      "kind": "story",
+      "topic": "people",
+      "text": "In the busy city of Nairobi, far away from a caring life at home, lived a group of homeless boys. They welcomed each day just as it came. On one morning, the boys were packing their mats after sleeping on cold pavements. To chase away the cold they lit a fire with rubbish. Among the group of boys was Magozwe. He was the youngest.",
+      "source": {
+        "name": "Storybooks Canada",
+        "url": "https://github.com/global-asp/sbc-source/blob/master/en/0262_magozwe.md",
+        "license": "CC BY 4.0",
+        "author": "Lesley Koyi",
+        "note": "Beginning of the story. Illustrations not included."
+      },
+      "question": {
+        "type": "main-idea",
+        "q": "What is this paragraph mostly about?",
+        "choices": [
+          "A boy who moves to a new school",
+          "A family cooking a big breakfast",
+          "Children playing in a city park",
+          "Homeless boys on a cold morning"
+        ],
+        "answer": 3,
+        "evidence": "lived a group of homeless boys",
+        "explain": "It tells about a group of homeless boys starting a cold day in Nairobi."
+      },
+      "readability": {
+        "grade": 4.1,
+        "fk": 4.1,
+        "cli": 5.2,
+        "ari": 3
+      }
+    }
+  ]
+}
