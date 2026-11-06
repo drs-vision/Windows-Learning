@@ -37,7 +37,7 @@ for (const id of books) {
     chapters++;
     const tp = join(dir, ch.text);
     if (!existsSync(tp)) { err(where, `missing text ${ch.text}`); continue; }
-    const text = readFileSync(tp, 'utf8');
+    const text = readFileSync(tp, 'utf8').replace(/\r\n?/g, '\n');
     if (!KEYBOARD.test(text)) {
       const bad = [...new Set([...text].filter((c) => c !== '\n' && (c < ' ' || c > '~')))].map((c) => 'U+' + c.codePointAt(0).toString(16).toUpperCase().padStart(4, '0'));
       err(where, `text has characters that aren't on a keyboard: ${bad.join(' ')}`);
