@@ -15,6 +15,19 @@
     "cli": 6,
     "ari": 4.8
   },
+  "measures": {
+    "lexile": {
+      "value": 580,
+      "url": "https://www.booksource.com/Products/Story-Of-Doctor-Dolittle--The__0440483077.aspx",
+      "note": "Measured on the revised 1988 edition."
+    },
+    "atos": {
+      "level": 5.1,
+      "interest": "MG",
+      "url": "https://www.booksource.com/Products/Story-Of-Doctor-Dolittle--The__0440483077.aspx",
+      "note": "Measured on the revised 1988 edition."
+    }
+  },
   "summary": "A country doctor learns to talk to animals and sails to Africa to cure the sick monkeys.",
   "source": {
     "name": "Project Gutenberg eBook #501 (public-domain text; Gutenberg header, license and name removed)",

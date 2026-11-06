@@ -37,7 +37,7 @@ interface BookStatus { id: string; title: string; author: string; level: number;
 interface Shelf { perCorrect: number; wordsPer: number; books: BookStatus[] }
 interface Shown { id: string; q: string; choices: string[] }
 interface ChapterData { book: string; text: string; parts: string[]; status: ChapterStatus; quiz: { id: string; questions: Shown[] } | null }
-interface Graded { passed: boolean; correct: number; total: number; percent: number; retakeAt: string | null; review: { q: string; choices: string[]; picked: number; right: number }[] | null; coins: number; pending: boolean; bonusLeft: number }
+interface Graded { passed: boolean; correct: number; total: number; percent: number; retakeAt: string | null; review: { id: string; q: string; choices: string[]; picked: number; right: number }[] | null; coins: number; pending: boolean; bonusLeft: number }
 
 const call = <T,>(op: string, p?: unknown) => bridge.call<T>(op, p);
 const minutesRead = (words: number) => Math.max(1, Math.round(words / 180));
@@ -182,7 +182,7 @@ function ChapterView({ book, n, shelf, onBack, onNext }: { book: BookStatus; n: 
   );
 
   if (mode === 'quiz' && quiz) return <QuizView title={name} quiz={quiz} bookId={book.id} n={n} text={data.text} onDone={(g) => { setResult(g); setQuiz(null); setMode('result'); reload(); }} onBack={() => setMode('read')} />;
-  if (mode === 'result' && result) return <ResultView g={result} onReread={() => setMode(typing ? 'type' : 'read')} onBonus={() => setMode('bonus')} onNext={hasNext ? () => onNext(n + 1) : undefined} onBack={onBack} />;
+  if (mode === 'result' && result) return <ResultView g={result} bookId={book.id} n={n} onReread={() => setMode(typing ? 'type' : 'read')} onBonus={() => setMode('bonus')} onNext={hasNext ? () => onNext(n + 1) : undefined} onBack={onBack} />;
   if (mode === 'bonus') return <BonusView bookId={book.id} n={n} onDone={() => { reload(); setMode('read'); }} />;
 
   if (typing && !st.passed && mode !== 'read') return <div class="reading">{head}<TypeChapter data={data} bookId={book.id} n={n} wordsPer={shelf.wordsPer} onChanged={reload} />{quizBar}</div>;
@@ -317,16 +317,15 @@ function QuizView({ title, quiz, bookId, n, text, onDone, onBack }: { title: str
   const toggleSide = () => { const v = !side; setSide(v); try { localStorage.setItem('cq.books.side', v ? '1' : '0'); } catch { /* fine */ } };
   // Picks are kept with the open quiz, so going back to reread and returning finds them as they were.
   const store = `cq.books.quiz.${quiz.id}`;
-  const saved = (() => { try { return JSON.parse(localStorage.getItem(store) ?? 'null') as { answers: number[]; flagged: string[] } | null; } catch { return null; } })();
+  const saved = (() => { try { return JSON.parse(localStorage.getItem(store) ?? 'null') as { answers: number[] } | null; } catch { return null; } })();
   const [answers, setAnswers] = useState<number[]>(() => saved?.answers?.length === quiz.questions.length ? saved.answers : quiz.questions.map(() => -1));
-  const [flagged, setFlagged] = useState<string[]>(() => saved?.flagged ?? []);
-  useEffect(() => { try { localStorage.setItem(store, JSON.stringify({ answers, flagged })); } catch { /* fine */ } }, [answers, flagged]);
+  useEffect(() => { try { localStorage.setItem(store, JSON.stringify({ answers })); } catch { /* fine */ } }, [answers]);
   const [busy, setBusy] = useState(false);
   const [err, setErr] = useState('');
-  const done = quiz.questions.every((q, i) => answers[i] >= 0 || flagged.includes(q.id));
+  const done = answers.every((a) => a >= 0);
   async function submit() {
     setBusy(true); setErr('');
-    try { const g = await call<Graded>('books.grade', { bookId, n, quizId: quiz.id, answers, flagged }); try { localStorage.removeItem(store); } catch { /* fine */ } onDone(g); }
+    try { const g = await call<Graded>('books.grade', { bookId, n, quizId: quiz.id, answers }); try { localStorage.removeItem(store); } catch { /* fine */ } onDone(g); }
     catch (e) { setErr((e as Error).message); setBusy(false); }
   }
   return (
@@ -336,15 +335,13 @@ function QuizView({ title, quiz, bookId, n, text, onDone, onBack }: { title: str
       {side && <aside class="quiz-text"><BookText text={text} store={`cq.books.marks.${bookId}/${n}`} compact /></aside>}
       <div class="quiz-main">
       <p class="muted center">{answers.filter((a) => a >= 0).length} of {quiz.questions.length} answered</p>
-      <p class="muted center">Get 70% or more to pass. You can look at the chapter while you answer. Something wrong with a question? Tap ⚑ and it won't count.</p>
+      <p class="muted center">Get 70% or more to pass. You can look at the chapter while you answer.</p>
       {quiz.questions.map((q, i) => (
-        <div class={'quiz-q' + (flagged.includes(q.id) ? ' flagged' : '')}>
-          <div class="quiz-q-head"><b>{i + 1}. {q.q}</b><button class="flag" title="This question seems wrong" onClick={() => setFlagged(flagged.includes(q.id) ? flagged.filter((x) => x !== q.id) : [...flagged, q.id])}>⚑</button></div>
-          {flagged.includes(q.id) ? <p class="muted small">Flagged — it won't count, and a parent will see it.</p> : (
-            <div class="quiz-choices">
-              {q.choices.map((c, k) => <button class={'choice' + (answers[i] === k ? ' on' : '')} onClick={() => setAnswers(answers.map((a, j) => (j === i ? k : a)))}><span class="letter">{'ABCD'[k]}</span>{c}</button>)}
-            </div>
-          )}
+        <div class="quiz-q">
+          <div class="quiz-q-head"><b>{i + 1}. {q.q}</b></div>
+          <div class="quiz-choices">
+            {q.choices.map((c, k) => <button class={'choice' + (answers[i] === k ? ' on' : '')} onClick={() => setAnswers(answers.map((a, j) => (j === i ? k : a)))}><span class="letter">{'ABCD'[k]}</span>{c}</button>)}
+          </div>
         </div>
       ))}
       {err && <p class="error">{err}</p>}
@@ -355,7 +352,7 @@ function QuizView({ title, quiz, bookId, n, text, onDone, onBack }: { title: str
   );
 }
 
-function ResultView({ g, onReread, onBonus, onNext, onBack }: { g: Graded; onReread: () => void; onBonus: () => void; onNext?: () => void; onBack: () => void }) {
+function ResultView({ g, bookId, n, onReread, onBonus, onNext, onBack }: { g: Graded; bookId: string; n: number; onReread: () => void; onBonus: () => void; onNext?: () => void; onBack: () => void }) {
   const [, tick] = useState(0);
   useEffect(() => { const t = setInterval(() => tick((x) => x + 1), 1000); return () => clearInterval(t); }, []);
   const wait = left(g.retakeAt);
@@ -370,7 +367,7 @@ function ResultView({ g, onReread, onBonus, onNext, onBack }: { g: Graded; onRer
           {g.review.map((r) => (
             <li class={r.picked === r.right ? 'ok' : 'miss'}>
               <b>{r.q}</b>
-              <span>{r.picked === r.right ? `✓ ${r.choices[r.right]}` : <>✗ {r.picked >= 0 ? r.choices[r.picked] : '(flagged)'} — <b>{r.choices[r.right]}</b></>}</span>
+              <span>{r.picked === r.right ? `✓ ${r.choices[r.right]}` : <>✗ {r.picked >= 0 ? r.choices[r.picked] : '(no answer)'} — <b>{r.choices[r.right]}</b></>}</span>
             </li>
           ))}
         </ol>

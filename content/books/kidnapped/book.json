@@ -15,6 +15,18 @@
     "cli": 5.7,
     "ari": 7.6
   },
+  "measures": {
+    "lexile": {
+      "value": 990,
+      "url": "https://catalog.saclibrary.org/Record/.b16386371",
+      "note": "The Puffin edition lists 950L."
+    },
+    "atos": {
+      "level": 7.6,
+      "interest": "UG",
+      "url": "https://catalog.saclibrary.org/Record/.b16386371"
+    }
+  },
   "summary": "Young David Balfour is betrayed by his uncle, kidnapped onto a ship, and flees across Scotland with Alan Breck.",
   "source": {
     "name": "Project Gutenberg eBook #421 (public-domain text; Gutenberg header, license and name removed)",

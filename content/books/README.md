@@ -36,9 +36,16 @@ content/books/
 
 * `level` is the reading level children see: 1 is easiest, and books of about the same difficulty share a level.
   Children only ever see "Level N" (no grades, so nobody feels behind). The app sorts the shelf by it.
-  Current scale: 1 = Beatrix Potter tales; 2 = Aesop, The Tailor of Gloucester; 3 = Black Beauty, Doctor Dolittle;
-  4 = Treasure Island, The Call of the Wild, The Jungle Book; 5 = Kidnapped, Around the World in Eighty Days,
-  The Wind in the Willows.
+  Levels follow the published ATOS book levels (below), nudged for old-fashioned language or dialect. Current scale:
+  1 = Beatrix Potter tales (ATOS ~3.5-4.7); 2 = Aesop, The Tailor of Gloucester (5.3); 3 = Doctor Dolittle (5.1);
+  4 = The Jungle Book (7.5), Black Beauty (7.7), The Call of the Wild (8.0), Treasure Island (8.3);
+  5 = Kidnapped (7.6, heavy Scots dialect), The Wind in the Willows (8.2), Around the World in Eighty Days (9.6).
+* `readability` (book and each chapter): Flesch-Kincaid, Coleman-Liau and ARI grades and their average, written by
+  `node scripts/books/readability.mjs` (the validator fails if they're missing or out of date with the text).
+* `measures` (optional): published difficulty, each with the `url` of the page the number came from and an optional
+  `note` (e.g. another edition's value): `lexile` { value, code ("AD", "NC", ...), url } (MetaMetrics) and `atos`
+  { level, interest ("LG"/"MG"/"UG"), url } (Renaissance Accelerated Reader). Only record values from a page you
+  opened; leave a measure out rather than guess.
 * `grade.min` / `grade.max` are approximate US school grades (0 = kindergarten), shown to parents only as a hint.
 * `edited` (optional): if the text differs from the original, say what changed and why (see doctor-dolittle).
 * `words` is the chapter's word count (whitespace-separated). It sets the quiz length (below).

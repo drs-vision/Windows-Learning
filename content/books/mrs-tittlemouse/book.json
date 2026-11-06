@@ -15,6 +15,17 @@
     "cli": 6.8,
     "ari": 3.9
   },
+  "measures": {
+    "lexile": {
+      "value": 610,
+      "url": "https://catalog.pcpls.org/Record/10086773"
+    },
+    "atos": {
+      "level": 3.5,
+      "interest": "LG",
+      "url": "https://catalog.pcpls.org/Record/10086773"
+    }
+  },
   "summary": "A tidy wood-mouse keeps finding uninvited guests in her house under the bank.",
   "source": {
     "name": "Project Gutenberg eBook #17089 (public-domain text; Gutenberg header, license and name removed)",

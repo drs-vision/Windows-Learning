@@ -767,3 +767,6 @@ button.big { font-size: 1.1em; padding: .7em 1.4em; }
 .parent .ra-about h4 { margin: 1.2em 0 .3em; font-size: .95rem; text-transform: none; letter-spacing: 0; color: inherit; }
 .parent .ra-about p, .parent .ra-about li { line-height: 1.5; }
 @media (max-width: 640px) { .parent .ra-recent li { grid-template-columns: 1fr auto; } .parent .ra-date, .parent .ra-chip { display: none; } }
+
+.parent .book-measures { display: flex; gap: 10px; flex-wrap: wrap; margin-top: .25em; font-size: .78rem; }
+.parent .book-measures a { color: var(--muted); }

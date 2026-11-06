@@ -15,6 +15,17 @@
     "cli": 8.1,
     "ari": 8.5
   },
+  "measures": {
+    "lexile": {
+      "value": 1120,
+      "url": "https://www.booksource.com/Products/Call-Of-The-Wild--The__0486264726.aspx"
+    },
+    "atos": {
+      "level": 8.0,
+      "interest": "MG",
+      "url": "https://wms.swanlibraries.net/Record/a480416"
+    }
+  },
   "summary": "Buck, a pet dog in California, is stolen and sold as a sled dog in the frozen Yukon.",
   "source": {
     "name": "Project Gutenberg eBook #215 (public-domain text; Gutenberg header, license and name removed)",

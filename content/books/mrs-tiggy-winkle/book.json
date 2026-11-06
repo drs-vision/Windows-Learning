@@ -15,6 +15,18 @@
     "cli": 8.3,
     "ari": 6.1
   },
+  "measures": {
+    "lexile": {
+      "value": 610,
+      "url": "https://catalog.saclibrary.org/Record/.b20838074",
+      "note": "A 2002 edition lists 770L."
+    },
+    "atos": {
+      "level": 4.2,
+      "interest": "LG",
+      "url": "https://catalog.saclibrary.org/Record/.b20838074"
+    }
+  },
   "summary": "Lucie, looking for her lost handkerchiefs, finds a washerwoman hedgehog in the hills.",
   "source": {
     "name": "Project Gutenberg eBook #15137 (public-domain text; Gutenberg header, license and name removed)",

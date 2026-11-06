@@ -15,6 +15,12 @@
     "cli": 7.5,
     "ari": 5.8
   },
+  "measures": {
+    "lexile": {
+      "value": 690,
+      "url": "https://bemis2.marmot.org/Record/.b46224075"
+    }
+  },
   "summary": "Three kittens dressed up for company get their best clothes into a terrible mess.",
   "source": {
     "name": "Project Gutenberg eBook #14837 (public-domain text; Gutenberg header, license and name removed)",

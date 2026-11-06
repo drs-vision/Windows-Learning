@@ -15,6 +15,17 @@
     "cli": 9.3,
     "ari": 8.8
   },
+  "measures": {
+    "lexile": {
+      "value": 890,
+      "url": "https://bookroo.com/books/around-the-world-in-eighty-days-puffin-classics"
+    },
+    "atos": {
+      "level": 9.6,
+      "interest": "MG",
+      "url": "https://catalog.pcpls.org/Record/14301307"
+    }
+  },
   "summary": "Phileas Fogg bets his fortune that he can travel around the world in eighty days.",
   "source": {
     "name": "Project Gutenberg eBook #103 (public-domain text; Gutenberg header, license and name removed)",

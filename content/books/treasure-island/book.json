@@ -15,6 +15,18 @@
     "cli": 6.3,
     "ari": 7.2
   },
+  "measures": {
+    "lexile": {
+      "value": 850,
+      "url": "https://eh.catalog.lionlibraries.org/Record/.b26122595",
+      "note": "The Bantam edition lists 890L."
+    },
+    "atos": {
+      "level": 8.3,
+      "interest": "MG",
+      "url": "https://eh.catalog.lionlibraries.org/Record/.b26122595"
+    }
+  },
   "summary": "Young Jim Hawkins finds a treasure map and sails with pirates, including the cunning Long John Silver.",
   "source": {
     "name": "Project Gutenberg eBook #120 (public-domain text; Gutenberg header, license and name removed)",

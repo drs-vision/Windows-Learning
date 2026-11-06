@@ -256,6 +256,7 @@ public sealed class RequestRouter
                 id = b.Id, title = b.Title, author = b.Author, published = b.Published, level = b.Level,
                 grade = new { min = b.Grade.Min, max = b.Grade.Max, label = b.Grade.Label },
                 summary = b.Summary, edited = b.Edited, chapters = b.Chapters.Count, words = b.Chapters.Sum(c => c.Words),
+                measures = b.Measures, formulaGrade = b.Readability?.Grade,
                 ready = b.Chapters.Count(c => _library.Questions(b.Id, c.N).Count >= Math.Ceiling(CoinQuest.Shared.Books.BookLibrary.QuizSize(c.Words) * 1.5)),
                 done = Passed(b.Id), started = Started(b.Id),
             }).ToList(),
@@ -391,17 +392,10 @@ public sealed class RequestRouter
             case Ops.BooksGrade:
             {
                 var answers = (req.Payload?["answers"] as JsonArray)?.Select(a => a?.GetValue<int>() ?? -1).ToList() ?? new();
-                var flagged = (req.Payload?["flagged"] as JsonArray)?.Select(a => a?.GetValue<string>() ?? "").Where(x => x.Length > 0).ToHashSet() ?? new();
                 var wait = TimeSpan.FromMinutes(Math.Clamp(int.TryParse(s.Options.GetValueOrDefault("waitMinutes"), out var w) ? w : 5, 0, 240));
-                var g = CoinQuest.Shared.Books.Quiz.Grade(state, bank, Str(req, "quizId"), answers, flagged, wait, now);
+                // Every question counts: nothing a child sends can leave a question out of the score.
+                var g = CoinQuest.Shared.Books.Quiz.Grade(state, bank, Str(req, "quizId"), answers, new HashSet<string>(), wait, now);
                 Save(bookId, n, state);
-                if (flagged.Count > 0)
-                {
-                    var list = FlaggedQuestions();
-                    foreach (var q in flagged) list.Add(new JsonObject { ["book"] = bookId, ["chapter"] = n, ["question"] = q, ["at"] = now.ToString("O"), ["child"] = child.DisplayName });
-                    try { File.WriteAllText(FlagFile, JsonSerializer.Serialize(list.TakeLast(500))); } catch { }
-                    _log.LogInformation("Question(s) flagged as wrong in {Book} ch {N}: {Ids}", bookId, n, string.Join(", ", flagged));
-                }
                 var (coins, pending) = (0, false);
                 if (child.ActivityReports)
                 {

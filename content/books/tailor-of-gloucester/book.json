@@ -15,6 +15,18 @@
     "cli": 8.4,
     "ari": 7.7
   },
+  "measures": {
+    "lexile": {
+      "value": 960,
+      "code": "AD",
+      "url": "https://dgs.swanlibraries.net/Record/a150262"
+    },
+    "atos": {
+      "level": 5.3,
+      "interest": "LG",
+      "url": "https://dgs.swanlibraries.net/Record/a150262"
+    }
+  },
   "summary": "A poor tailor falls ill before finishing the Mayor's wedding coat, and the mice he saved help him.",
   "source": {
     "name": "Project Gutenberg eBook #14868 (public-domain text; Gutenberg header, license and name removed)",

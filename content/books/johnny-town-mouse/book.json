@@ -15,6 +15,17 @@
     "cli": 7.5,
     "ari": 5.8
   },
+  "measures": {
+    "lexile": {
+      "value": 730,
+      "url": "https://wasecalesueur.tdslib.org/Record/347354"
+    },
+    "atos": {
+      "level": 4.1,
+      "interest": "LG",
+      "url": "https://dgs.swanlibraries.net/Record/a894550"
+    }
+  },
   "summary": "A country mouse visits the town, and a town mouse visits the country.",
   "source": {
     "name": "Project Gutenberg eBook #15284 (public-domain text; Gutenberg header, license and name removed)",

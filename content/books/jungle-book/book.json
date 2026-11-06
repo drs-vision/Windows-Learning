@@ -15,6 +15,17 @@
     "cli": 6.4,
     "ari": 6.2
   },
+  "measures": {
+    "lexile": {
+      "value": 1080,
+      "url": "https://catalog.saclibrary.org/Record/.b12549903"
+    },
+    "atos": {
+      "level": 7.5,
+      "interest": "MG",
+      "url": "https://catalog.saclibrary.org/Record/.b12549903"
+    }
+  },
   "summary": "Mowgli is raised by wolves, Rikki-tikki-tavi the mongoose fights two cobras, and more animal stories.",
   "source": {
     "name": "Project Gutenberg eBook #236 (public-domain text; Gutenberg header, license and name removed)",

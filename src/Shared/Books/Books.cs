@@ -17,8 +17,8 @@ public sealed class BookLibrary
     /// <summary>Readability formulas on the text (scripts/books/readability.mjs): US grades; Grade is their average.</summary>
     public sealed record Readability(double Grade, double Fk, double Cli, double Ari);
     /// <summary>Published measures of the book: Lexile (MetaMetrics) and ATOS book level (Renaissance), with where they came from.</summary>
-    public sealed record Lexile(int Value, string? Code, string Url);
-    public sealed record Atos(double Level, string? Interest, string Url);
+    public sealed record Lexile(int Value, string? Code, string Url, string? Note = null);
+    public sealed record Atos(double Level, string? Interest, string Url, string? Note = null);
     public sealed record Measures(Lexile? Lexile, Atos? Atos);
     public sealed record ChapterInfo(int N, string Title, string Text, string Questions, int Words, Readability? Readability = null);
     /// <summary>Level: the reading level children see (1 = easiest). Grade is an approximate hint for parents.</summary>
@@ -159,7 +159,7 @@ public static class Quiz
     public sealed record ShownQuestion(string Id, string Q, List<string> Choices);
     public sealed record Graded(bool Passed, int Correct, int Total, int Percent, DateTimeOffset? RetakeAt, List<Review>? Review);
     /// <summary>After a pass: each question, the child's choice and the right one (positions as shown).</summary>
-    public sealed record Review(string Q, List<string> Choices, int Picked, int Right);
+    public sealed record Review(string Id, string Q, List<string> Choices, int Picked, int Right);
 
     private static ShownQuestion Show(BookLibrary.Question q, int[] order) => new(q.Id, q.Q, order.Select(i => q.Choices[i]).ToList());
 
@@ -214,7 +214,7 @@ public static class Quiz
             var right = Array.IndexOf(order, question.Answer);
             var picked = i < answers.Count ? answers[i] : -1;
             if (!p.Seen.Contains(question.Id)) p.Seen.Add(question.Id);
-            review.Add(new Review(question.Q, order.Select(k => question.Choices[k]).ToList(), picked, right));
+            review.Add(new Review(question.Id, question.Q, order.Select(k => question.Choices[k]).ToList(), picked, right));
             if (flagged.Contains(question.Id)) continue;
             total++;
             if (picked == right) correct++;

@@ -15,6 +15,19 @@
     "cli": 7.8,
     "ari": 8
   },
+  "measures": {
+    "lexile": {
+      "value": 880,
+      "code": "NC",
+      "url": "https://www.booksource.com/products/wind-in-the-willows--the__9780141321134.aspx",
+      "note": "A 1908 Scribner record lists NC1140L."
+    },
+    "atos": {
+      "level": 8.2,
+      "interest": "MG",
+      "url": "https://catalog.pcpls.org/Record/14508402"
+    }
+  },
   "summary": "Mole, Rat, Badger and the boastful Toad have adventures on the river and in the Wild Wood.",
   "source": {
     "name": "Project Gutenberg eBook #289 (public-domain text; Gutenberg header, license and name removed)",

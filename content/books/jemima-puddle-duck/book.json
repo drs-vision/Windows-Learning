@@ -15,6 +15,18 @@
     "cli": 7.5,
     "ari": 5.5
   },
+  "measures": {
+    "lexile": {
+      "value": 770,
+      "code": "AD",
+      "url": "https://catalog.saclibrary.org/Record/.b20838086"
+    },
+    "atos": {
+      "level": 4.7,
+      "interest": "LG",
+      "url": "https://catalog.saclibrary.org/Record/.b20838086"
+    }
+  },
   "summary": "A farm duck who wants to hatch her own eggs trusts a very polite gentleman with sandy whiskers.",
   "source": {
     "name": "Project Gutenberg eBook #14814 (public-domain text; Gutenberg header, license and name removed)",

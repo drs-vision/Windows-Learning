@@ -15,6 +15,18 @@
     "cli": 7.9,
     "ari": 6.1
   },
+  "measures": {
+    "lexile": {
+      "value": 830,
+      "code": "AD",
+      "url": "https://ipac.mckinneytexas.org/Record/42525"
+    },
+    "atos": {
+      "level": 4.5,
+      "interest": "LG",
+      "url": "https://ipac.mckinneytexas.org/Record/42525"
+    }
+  },
   "summary": "A gray squirrel is blamed for stealing nuts and gets stuck inside a hollow tree.",
   "source": {
     "name": "Project Gutenberg eBook #14797 (public-domain text; Gutenberg header, license and name removed)",

@@ -190,7 +190,7 @@ export class MockGuardian {
         return ok({ childId: 'c1', kid: 'Sam', enabled: true, days });
       }
       // Reading, for the browser preview: one real book (Peter Rabbit). The real marking happens in the Guardian.
-      case 'parent.books': return ok({ flagged: 0, books: shelf.map((b) => ({ id: b.id, title: b.title, author: b.author, published: b.published, level: b.level, grade: b.grade, summary: b.summary, edited: b.edited, chapters: b.chapters.length, words: b.chapters.reduce((t, c) => t + c.words, 0), ready: b.chapters.length, done: b.id === 'peter-rabbit' && mb.passed ? 1 : 0, started: b.id === 'peter-rabbit' && mb.attempts > 0 })) });
+      case 'parent.books': return ok({ flagged: 0, books: shelf.map((b) => ({ id: b.id, title: b.title, author: b.author, published: b.published, level: b.level, grade: b.grade, summary: b.summary, edited: b.edited, measures: b.measures, formulaGrade: b.readability?.grade, chapters: b.chapters.length, words: b.chapters.reduce((t, c) => t + c.words, 0), ready: b.chapters.length, done: b.id === 'peter-rabbit' && mb.passed ? 1 : 0, started: b.id === 'peter-rabbit' && mb.attempts > 0 })) });
       case 'parent.reading': {
         // A sample history so the reading analysis can be seen in the browser preview.
         const d = (n: number) => { const x = new Date(); x.setDate(x.getDate() - n); return `${x.getFullYear()}-${String(x.getMonth() + 1).padStart(2, '0')}-${String(x.getDate()).padStart(2, '0')}`; };
@@ -290,7 +290,7 @@ import prQs from '../../../../content/books/peter-rabbit/01-the-tale-of-peter-ra
 const mb = { passed: false, correct: 0, total: 0, attempts: 0, retakeAt: null as string | null, seen: [] as string[], bonusDone: [] as string[], quiz: null as null | { id: string; ids: string[]; orders: number[][] }, bonus: null as null | { id: string; order: number[] }, typed: 0 };
 const mbBank = (prQs as { questions: { id: string; q: string; choices: string[]; answer: number }[] }).questions;
 const mbParts = prText.trim().split(/\n\s*\n/).reduce((acc: string[], p) => { const last = acc[acc.length - 1]; if (last && (last + ' ' + p).split(' ').length <= 170) acc[acc.length - 1] = last + ' ' + p; else acc.push(p); return acc; }, []);
-type ShelfBook = { id: string; title: string; author: string; published: number; level: number; edited?: string; grade: { min: number; max: number; label: string }; summary: string; chapters: { n: number; title: string; words: number }[] };
+type ShelfBook = { id: string; title: string; author: string; published: number; level: number; edited?: string; measures?: any; readability?: { grade: number }; grade: { min: number; max: number; label: string }; summary: string; chapters: { n: number; title: string; words: number }[] };
 // Only the books' metadata (small): the preview can open Peter Rabbit, the other books list their chapters.
 const shelf = Object.values(import.meta.glob('../../../../content/books/*/book.json', { eager: true, import: 'default' }) as Record<string, ShelfBook>)
   .sort((a, b) => a.level - b.level || a.grade.min - b.grade.min || a.title.localeCompare(b.title));
@@ -310,7 +310,7 @@ function mockBooks(op: string, p: any): any {
     return { id: mb.quiz.id, questions: ids.map((id, i) => show(id, mb.quiz!.orders[i])) };
   }
   if (op === 'books.grade') {
-    const qz = mb.quiz!; let correct = 0; const review = qz.ids.map((id, i) => { const q = mbBank.find((x) => x.id === id)!; const right = qz.orders[i].indexOf(q.answer); if (p.answers[i] === right) correct++; if (!mb.seen.includes(id)) mb.seen.push(id); return { q: q.q, choices: qz.orders[i].map((k) => q.choices[k]), picked: p.answers[i], right }; });
+    const qz = mb.quiz!; let correct = 0; const review = qz.ids.map((id, i) => { const q = mbBank.find((x) => x.id === id)!; const right = qz.orders[i].indexOf(q.answer); if (p.answers[i] === right) correct++; if (!mb.seen.includes(id)) mb.seen.push(id); return { id, q: q.q, choices: qz.orders[i].map((k) => q.choices[k]), picked: p.answers[i], right }; });
     mb.quiz = null; mb.attempts++;
     const passed = correct >= Math.ceil(0.7 * qz.ids.length);
     if (passed) { mb.passed = true; mb.correct = correct; mb.total = qz.ids.length; } else mb.retakeAt = new Date(Date.now() + 600000).toISOString();

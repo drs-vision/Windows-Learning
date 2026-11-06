@@ -3,7 +3,7 @@
   "title": "Black Beauty",
   "author": "Anna Sewell",
   "published": 1877,
-  "level": 3,
+  "level": 4,
   "grade": {
     "min": 4,
     "max": 6,
@@ -14,6 +14,17 @@
     "fk": 8.1,
     "cli": 5.5,
     "ari": 8.6
+  },
+  "measures": {
+    "lexile": {
+      "value": 990,
+      "url": "https://catalog.wake.gov/Record/366290"
+    },
+    "atos": {
+      "level": 7.7,
+      "interest": "MG",
+      "url": "https://catalog.wake.gov/Record/366290"
+    }
   },
   "summary": "A horse tells his own life story, from a happy home to hard work in London, and how people treat animals.",
   "source": {

@@ -15,6 +15,12 @@
     "cli": 5.6,
     "ari": 4.4
   },
+  "measures": {
+    "lexile": {
+      "value": 940,
+      "url": "https://catalog.haltomcitytx.com/Record/273763"
+    }
+  },
   "summary": "Short fables with animals, each ending in a lesson to remember.",
   "source": {
     "name": "Project Gutenberg eBook #19994 (public-domain text; Gutenberg header, license and name removed)",
