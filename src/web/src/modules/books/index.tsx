@@ -82,6 +82,9 @@ function BookCard({ b, onOpen }: { b: BookStatus; onOpen: (id: string) => void }
 
 /** Reading now (started, not finished) on top, then the library by level, then finished books at the bottom. */
 function ShelfView({ shelf, onOpen, onExit }: { shelf: Shelf; onOpen: (id: string) => void; onExit: () => void }) {
+  // The intro line can be closed once; it stays closed on this PC.
+  const [introHidden, setIntroHidden] = useState(() => { try { return localStorage.getItem('cq.books.introHidden') === '1'; } catch { return false; } });
+  const hideIntro = () => { setIntroHidden(true); try { localStorage.setItem('cq.books.introHidden', '1'); } catch { /* fine */ } };
   const reading = shelf.books.filter((b) => started(b) && !finished(b));
   const done = shelf.books.filter(finished);
   const levels = useMemo(() => {
@@ -92,7 +95,10 @@ function ShelfView({ shelf, onOpen, onExit }: { shelf: Shelf; onOpen: (id: strin
   return (
     <div class="reading">
       <div class="reading-head"><button class="ghost" onClick={onExit}>← Back</button><h2>📚 Bookshelf</h2><span /></div>
-      <p class="muted center">Read whatever you like. Quizzes are optional: pass a chapter's quiz to earn <b>{shelf.perCorrect} 🪙</b> for every right answer.</p>
+      {!introHidden && (
+        <p class="muted center shelf-intro"><span>Read whatever you like. Quizzes are optional: pass a chapter's quiz to earn <b>{shelf.perCorrect} 🪙</b> for every right answer.</span>
+          <button class="ghost small dismiss" aria-label="Got it, hide this" title="Got it" onClick={hideIntro}>✕</button></p>
+      )}
       {shelf.books.length === 0 && <p class="muted center">No books yet — ask a parent to pick some.</p>}
       {reading.length > 0 && (
         <section class="shelf-group shelf-now">

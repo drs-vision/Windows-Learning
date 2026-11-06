@@ -685,6 +685,7 @@ button.big { font-size: 1.1em; padding: .7em 1.4em; }
 .shelf-done { opacity: .85; }
 .book-progress { display: flex; align-items: center; gap: 12px; max-width: 30rem; margin: 0 auto 1em; } .book-progress .book-bar { flex: 1; height: 8px; } .book-progress small { color: var(--ink-2); white-space: nowrap; }
 .read-mark { color: var(--green); font-weight: 800; }
+.shelf-intro { display: flex; justify-content: center; align-items: center; gap: 10px; max-width: 46rem; margin-left: auto; margin-right: auto; } .shelf-intro span { flex: 1; } .shelf-intro .dismiss { padding: .1em .5em; line-height: 1; }
 .shelf { display: grid; grid-template-columns: repeat(auto-fill, minmax(130px, 150px)); gap: 20px 16px; }
 .book-grade { align-self: flex-start; font-style: normal; font-size: .72rem; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; background: rgba(0,0,0,.28); border-radius: 999px; padding: .2em .6em; }
 .book-card { background: none; padding: 0; display: grid; gap: 8px; text-align: left; }
