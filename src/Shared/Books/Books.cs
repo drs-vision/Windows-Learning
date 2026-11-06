@@ -170,11 +170,14 @@ public static class Quiz
         return o;
     }
 
-    /// <summary>Start a quiz: questions not seen before first, then a few seen ones; each with its choices shuffled.</summary>
+    /// <summary>Start a quiz (or reopen the one already open): questions not seen before first, then a few seen ones; each with its choices shuffled.</summary>
     public static List<ShownQuestion> Start(ChapterProgress p, List<BookLibrary.Question> bank, int size, Random rng, DateTimeOffset now)
     {
         if (bank.Count == 0) throw new InvalidOperationException("This chapter's questions aren't ready yet");
         if (p.Passed) throw new InvalidOperationException("You've already passed this chapter");
+        // A quiz that's open stays the same — same questions, same order — when the child goes back to reread.
+        // New questions only come with a retake after a quiz is marked and failed.
+        if (Current(p, bank) is { } open) return open;
         if (p.RetakeAt is { } t && t > now) throw new InvalidOperationException($"You can try again in {Math.Max(1, (int)Math.Ceiling((t - now).TotalMinutes))} minute(s). Read the chapter again while you wait!");
         size = Math.Min(size, bank.Count);
         var unseen = bank.Where(q => !p.Seen.Contains(q.Id)).OrderBy(_ => rng.Next()).ToList();

@@ -98,4 +98,19 @@ public class BooksTests
         Assert.Null(Quiz.NextBonus(p, bank, 4, rng, now));
         Assert.Throws<InvalidOperationException>(() => Quiz.Start(p, bank, 4, rng, now)); // passed: no second payout
     }
+
+    [Fact]
+    public void Going_back_to_reread_keeps_the_same_quiz()
+    {
+        var bank = Bank(12); var p = new ChapterProgress(); var now = DateTimeOffset.Now; var rng = new Random(7);
+        var first = Quiz.Start(p, bank, 4, rng, now);
+        var id = p.Quiz!.Id;
+        var again = Quiz.Start(p, bank, 4, rng, now.AddMinutes(3)); // reopened after rereading
+        Assert.Equal(id, p.Quiz!.Id);
+        Assert.Equal(first.Select(q => (q.Id, string.Join("|", q.Choices))), again.Select(q => (q.Id, string.Join("|", q.Choices))));
+        Assert.False(Quiz.Grade(p, bank, id, first.Select(_ => -1).ToList(), new HashSet<string>(), TimeSpan.FromMinutes(5), now).Passed);
+        var retake = Quiz.Start(p, bank, 4, rng, now.AddMinutes(6)); // after a fail: new questions
+        Assert.NotEqual(id, p.Quiz!.Id);
+        Assert.Empty(retake.Select(q => q.Id).Intersect(first.Select(q => q.Id)));
+    }
 }

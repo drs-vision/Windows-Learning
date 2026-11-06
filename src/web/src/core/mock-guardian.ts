@@ -303,6 +303,7 @@ function mockBooks(op: string, p: any): any {
   if (op === 'books.chapter' && p.bookId !== 'peter-rabbit') { const b = shelf.find((x) => x.id === p.bookId)!; const c = b.chapters.find((x) => x.n === p.n)!; return { book: b.title, text: `(This preview only opens The Tale of Peter Rabbit. In CoinQuest, "${c.title}" opens here.)`, parts: [], status: { n: c.n, title: c.title, words: c.words, quizSize: quizSize(c.words), hasQuiz: false, passed: false, correct: 0, total: 0, attempts: 0, retakeAt: null, bonusLeft: 0, typed: 0 }, quiz: null }; }
   if (op === 'books.chapter') return { book: 'The Tale of Peter Rabbit', text: prText, parts: mbParts, status: status(), quiz: mb.quiz ? { id: mb.quiz.id, questions: mb.quiz.ids.map((id, i) => show(id, mb.quiz!.orders[i])) } : null };
   if (op === 'books.quiz') {
+    if (mb.quiz) return { id: mb.quiz.id, questions: mb.quiz.ids.map((id, i) => show(id, mb.quiz!.orders[i])) }; // still open: the same quiz
     if (mb.retakeAt && Date.parse(mb.retakeAt) > Date.now()) throw new Error('You can try again soon');
     const ids = [...mbBank.filter((q) => !mb.seen.includes(q.id)), ...mbBank.filter((q) => mb.seen.includes(q.id))].slice(0, 4).map((q) => q.id);
     mb.quiz = { id: 'q' + Date.now(), ids, orders: ids.map(shuffle) };

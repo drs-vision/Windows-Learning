@@ -376,7 +376,7 @@ public sealed class RequestRouter
             case Ops.BooksQuiz:
             {
                 // Reading time (the chapter on screen, window in use) before the first quiz: for the parents' reading speed.
-                if (state.Attempts == 0 && state.Quiz is null && req.Payload?["readMs"] is JsonValue rv && rv.TryGetValue<double>(out var readMs))
+                if (state.Attempts == 0 && req.Payload?["readMs"] is JsonValue rv && rv.TryGetValue<double>(out var readMs))
                     state.ReadMs = Math.Min(state.ReadMs + (long)Math.Clamp(readMs, 0, 3 * 3600_000), 6 * 3600_000);
                 var shown = CoinQuest.Shared.Books.Quiz.Start(state, bank, CoinQuest.Shared.Books.BookLibrary.QuizSize(ch.Words), _rng, now);
                 Save(bookId, n, state);

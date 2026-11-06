@@ -175,6 +175,7 @@ function ChapterView({ book, n, shelf, onBack, onNext }: { book: BookStatus; n: 
         </>
       ) : !st.hasQuiz ? <p class="muted">This chapter's quiz isn't ready yet.</p>
         : wait > 0 ? <><p>⏳ You can take the quiz again in <b>{clock(wait)}</b>. Reading the chapter again helps!</p><button class="primary" disabled>Take the quiz</button></>
+        : quiz ? <><p>Your quiz is waiting, just as you left it.</p><button class="primary" onClick={() => { setMode('quiz'); window.scrollTo?.(0, 0); }}>Back to the quiz</button></>
         : <><p>Finished reading? The quiz has <b>{st.quizSize} questions</b>; get 70% to earn <b>{shelf.perCorrect} 🪙</b> for each right answer.</p><button class="primary" onClick={startQuiz}>Take the quiz</button></>}
     </div>
   );
@@ -242,20 +243,24 @@ function TypeChapter({ data, bookId, n, wordsPer, onChanged }: { data: ChapterDa
 }
 
 function QuizView({ title, quiz, bookId, n, onDone, onBack }: { title: string; quiz: { id: string; questions: Shown[] }; bookId: string; n: number; onDone: (g: Graded) => void; onBack: () => void }) {
-  const [answers, setAnswers] = useState<number[]>(() => quiz.questions.map(() => -1));
-  const [flagged, setFlagged] = useState<string[]>([]);
+  // Picks are kept with the open quiz, so going back to reread and returning finds them as they were.
+  const store = `cq.books.quiz.${quiz.id}`;
+  const saved = (() => { try { return JSON.parse(localStorage.getItem(store) ?? 'null') as { answers: number[]; flagged: string[] } | null; } catch { return null; } })();
+  const [answers, setAnswers] = useState<number[]>(() => saved?.answers?.length === quiz.questions.length ? saved.answers : quiz.questions.map(() => -1));
+  const [flagged, setFlagged] = useState<string[]>(() => saved?.flagged ?? []);
+  useEffect(() => { try { localStorage.setItem(store, JSON.stringify({ answers, flagged })); } catch { /* fine */ } }, [answers, flagged]);
   const [busy, setBusy] = useState(false);
   const [err, setErr] = useState('');
   const done = quiz.questions.every((q, i) => answers[i] >= 0 || flagged.includes(q.id));
   async function submit() {
     setBusy(true); setErr('');
-    try { onDone(await call<Graded>('books.grade', { bookId, n, quizId: quiz.id, answers, flagged })); }
+    try { const g = await call<Graded>('books.grade', { bookId, n, quizId: quiz.id, answers, flagged }); try { localStorage.removeItem(store); } catch { /* fine */ } onDone(g); }
     catch (e) { setErr((e as Error).message); setBusy(false); }
   }
   return (
     <div class="reading quiz">
-      <div class="reading-head"><button class="ghost" onClick={onBack}>← Back to the chapter</button><h2>Quiz · {title}</h2><span class="muted">{answers.filter((a) => a >= 0).length}/{quiz.questions.length}</span></div>
-      <p class="muted center">Get 70% or more to pass. Something wrong with a question? Tap ⚑ and it won't count.</p>
+      <div class="reading-head"><button class="ghost" onClick={onBack}>← Reread the chapter</button><h2>Quiz · {title}</h2><span class="muted">{answers.filter((a) => a >= 0).length}/{quiz.questions.length}</span></div>
+      <p class="muted center">Get 70% or more to pass. You can go back and reread — your quiz and answers stay the same. Something wrong with a question? Tap ⚑ and it won't count.</p>
       {quiz.questions.map((q, i) => (
         <div class={'quiz-q' + (flagged.includes(q.id) ? ' flagged' : '')}>
           <div class="quiz-q-head"><b>{i + 1}. {q.q}</b><button class="flag" title="This question seems wrong" onClick={() => setFlagged(flagged.includes(q.id) ? flagged.filter((x) => x !== q.id) : [...flagged, q.id])}>⚑</button></div>
