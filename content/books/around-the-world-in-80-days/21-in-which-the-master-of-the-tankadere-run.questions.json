@@ -1,0 +1,158 @@
+{
+  "book": "around-the-world-in-80-days",
+  "chapter": 21,
+  "questions": [
+    {
+      "id": "around-the-world-in-80-days-21-01",
+      "type": "detail",
+      "q": "Why was the voyage on the Tankadere so dangerous?",
+      "choices": ["She was a tiny boat on stormy Chinese seas in November", "Her crew had never sailed outside the Hong Kong harbour before", "Pirates were known to attack small boats along that coast", "The boat was old and had a leak that the crew could not fix"],
+      "answer": 0,
+      "evidence": "This voyage of eight hundred miles was a perilous venture on a craft of twenty tons"
+    },
+    {
+      "id": "around-the-world-in-80-days-21-02",
+      "type": "vocabulary",
+      "q": "The sails above Aouda \"seemed like great white wings,\" and the boat \"seemed to be flying.\" What is the author comparing the boat to?",
+      "choices": ["A bird", "A train", "A kite", "A cloud"],
+      "answer": 0,
+      "evidence": "which rode on the waves like a seagull"
+    },
+    {
+      "id": "around-the-world-in-80-days-21-03",
+      "type": "detail",
+      "q": "Why did the pilot hang out his lights at night?",
+      "choices": ["So that Aouda could read in the cabin below the deck", "To avoid a collision in seas crowded with other vessels", "To signal the Carnatic that they were coming behind her", "Because the law of Hong Kong said every boat must do so"],
+      "answer": 1,
+      "evidence": "collisions are not uncommon occurrences"
+    },
+    {
+      "id": "around-the-world-in-80-days-21-04",
+      "type": "inference",
+      "q": "What did Fix believe was Fogg's real reason for going around the world?",
+      "choices": ["To reach America safely by a long route and enjoy the stolen money there", "To visit Aouda's family and arrange a marriage with her", "To win the wager and then go straight back to his quiet life at the club in London", "To find his lost servant somewhere in the ports of Asia"],
+      "answer": 0,
+      "evidence": "he had traversed three quarters of the globe, so as to gain the American continent more surely"
+    },
+    {
+      "id": "around-the-world-in-80-days-21-05",
+      "type": "character",
+      "q": "What did Fix decide he would do if Fogg reached the United States?",
+      "choices": ["Give up and go home", "Never lose sight of him until he was extradited", "Hand the case to an American detective", "Tell Aouda the whole truth and ask her to help him catch Fogg"],
+      "answer": 1,
+      "evidence": "he would not lose sight of him for an hour"
+    },
+    {
+      "id": "around-the-world-in-80-days-21-06",
+      "type": "inference",
+      "q": "What did Fogg and Aouda hope had happened to Passepartout?",
+      "choices": ["That he had gone back to the hotel and was waiting there", "That he had boarded the Carnatic by mistake", "That the police had found him and would send him to Shanghai", "That he had taken a train across China to meet them"],
+      "answer": 1,
+      "evidence": "the man might have embarked on the Carnatic at the last moment"
+    },
+    {
+      "id": "around-the-world-in-80-days-21-07",
+      "type": "character",
+      "q": "Why did Fix find it hard to eat Fogg's food?",
+      "choices": ["He was too sea-sick to keep anything down at all", "He hated living at the expense of the man he wanted to arrest", "He thought the food on the little boat might have been poisoned by Fogg", "He had promised himself to eat only once a day"],
+      "answer": 1,
+      "evidence": "To travel at this man's expense and live upon his provisions was not palatable to him."
+    },
+    {
+      "id": "around-the-world-in-80-days-21-08",
+      "type": "detail",
+      "q": "What did Fogg say when Fix offered to pay his share of the boat?",
+      "choices": ["\"You may pay me back in Yokohama, sir.\"", "\"This enters into my general expenses.\"", "\"Pay the pilot whatever you think is fair.\"", "\"I will accept fifty pounds, and no more.\""],
+      "answer": 1,
+      "evidence": "This enters into my general expenses."
+    },
+    {
+      "id": "around-the-world-in-80-days-21-09",
+      "type": "inference",
+      "q": "Why did the crew of the Tankadere work so hard?",
+      "choices": ["They were afraid of what Fix might do to them", "They hoped to win the reward Fogg had promised", "They wanted to beat the Carnatic to Japan for fun", "The pilot had threatened to fire them all"],
+      "answer": 1,
+      "evidence": "inspired by the reward to be gained"
+    },
+    {
+      "id": "around-the-world-in-80-days-21-10",
+      "type": "detail",
+      "q": "Which signs told John Bunsby that a storm was coming?",
+      "choices": ["A jumpy barometer and long surges from the south-east", "Thousands of seabirds flew over the boat toward the shore", "The water turned cold and a thick fog rolled in from land", "Other fishing boats were hurrying back to the harbour"],
+      "answer": 0,
+      "evidence": "The barometer announced a speedy change"
+    },
+    {
+      "id": "around-the-world-in-80-days-21-11",
+      "type": "character",
+      "q": "Why was Fogg glad to hear the typhoon came from the south?",
+      "choices": ["A south wind would be warm and pleasant for Aouda", "It would carry the boat forward toward Shanghai", "It meant the storm would be short and gentle", "It would keep Fix in the cabin out of his way"],
+      "answer": 1,
+      "evidence": "Glad it's a typhoon from the south, for it will carry us forward."
+    },
+    {
+      "id": "around-the-world-in-80-days-21-12",
+      "type": "sequence",
+      "q": "How did the pilot prepare the boat for the typhoon?",
+      "choices": ["He took down most sail and raised one small storm-jib", "He dropped anchor in a bay and waited for it to pass", "He hoisted every sail he had to outrun the storm", "He tied all of the passengers safely to the masts with strong ropes"],
+      "answer": 0,
+      "evidence": "A single triangular sail, of strong canvas, was hoisted as a storm-jib"
+    },
+    {
+      "id": "around-the-world-in-80-days-21-13",
+      "type": "detail",
+      "q": "Where did the passengers choose to stay during the storm?",
+      "choices": ["Below in the cabin", "On the deck", "In the pilot's hut", "In the bow, tied up"],
+      "answer": 1,
+      "evidence": "Neither Mr. Fogg, Fix, nor Aouda consented to leave the deck."
+    },
+    {
+      "id": "around-the-world-in-80-days-21-14",
+      "type": "character",
+      "q": "When the pilot wanted to head for a port on the coast, which port did Fogg name?",
+      "choices": ["Hong Kong, the port they had left", "Shanghai, where they were already going", "Nagasaki, at the south of Japan", "Macao, the Portuguese town nearby"],
+      "answer": 1,
+      "evidence": "I know of but one"
+    },
+    {
+      "id": "around-the-world-in-80-days-21-15",
+      "type": "character",
+      "q": "How did Aouda behave during the terrible night of the storm?",
+      "choices": ["She cried and begged the pilot to turn back", "She was exhausted but did not complain", "She hid in the cabin and would not come out", "She helped the crew pull in the heavy ropes"],
+      "answer": 1,
+      "evidence": "Aouda was exhausted, but did not utter a complaint."
+    },
+    {
+      "id": "around-the-world-in-80-days-21-16",
+      "type": "inference",
+      "q": "Why were the people on board so worried at noon on the last day?",
+      "choices": ["They had 45 miles to go in six hours and the wind was dying", "The boat had sprung a leak and was slowly filling with water", "They had run out of food and fresh water during the storm", "Fix had been washed overboard by a giant wave"],
+      "answer": 0,
+      "evidence": "the wind was becoming calmer every moment"
+    },
+    {
+      "id": "around-the-world-in-80-days-21-17",
+      "type": "sequence",
+      "q": "What did they see when they were still three miles from Shanghai?",
+      "choices": ["The Carnatic coming in from Yokohama", "The steamer leaving for Yokohama", "A police boat sent out to meet them", "Passepartout waving from the river bank"],
+      "answer": 1,
+      "evidence": "It was the American steamer, leaving for Yokohama at the appointed time."
+    },
+    {
+      "id": "around-the-world-in-80-days-21-18",
+      "type": "inference",
+      "q": "Why did Fogg have the flag hoisted at half-mast before firing the cannon?",
+      "choices": ["It was a signal of distress that might make the steamer come to help", "It showed respect for the sailors lost in the typhoon that week", "It told the harbour police in Shanghai that the boat was English", "It was a way to greet the captain of the steamer as a friend"],
+      "answer": 0,
+      "evidence": "this being the signal of distress"
+    },
+    {
+      "id": "around-the-world-in-80-days-21-19",
+      "type": "main-idea",
+      "q": "What is this chapter mostly about?",
+      "choices": ["A small boat's race through a typhoon to try to reach the steamer in time", "Fix finally telling Fogg that he is a detective sent from London", "Aouda and Fogg exploring the coast of China on a pleasure trip", "The crew of the Tankadere refusing to sail into the storm"],
+      "answer": 0,
+      "evidence": "So the Tankadere kept steadily on her northward track."
+    }
+  ]
+}

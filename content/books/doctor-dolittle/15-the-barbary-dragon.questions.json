@@ -1,0 +1,136 @@
+{
+  "book": "doctor-dolittle",
+  "chapter": 15,
+  "questions": [
+    {
+      "id": "doctor-dolittle-15-01",
+      "type": "detail",
+      "q": "What made the pirates notice that the Doctor was escaping?",
+      "choices": [
+        "Jip barked at the pirates",
+        "The anchor chain rattled",
+        "Dab-Dab quacked in alarm",
+        "Gub-Gub sneezed very loudly"
+      ],
+      "answer": 3,
+      "evidence": "Gub-Gub suddenly sneezed so loud"
+    },
+    {
+      "id": "doctor-dolittle-15-02",
+      "type": "detail",
+      "q": "What did Ben Ali call himself?",
+      "choices": [
+        "The Red Sea Wolf",
+        "The King of the Sands",
+        "The Barbary Dragon",
+        "The Terror of Barbary"
+      ],
+      "answer": 2,
+      "evidence": "Ben Ali, the Barbary Dragon"
+    },
+    {
+      "id": "doctor-dolittle-15-03",
+      "type": "detail",
+      "q": "What did Ben Ali say he wanted from the Doctor before letting him go home?",
+      "choices": [
+        "His whole ship and all its sails and ropes",
+        "A trunk-full of gold sent by his friends",
+        "The Doctor's medicine-bag and all his bottles",
+        "A promise to cure the pirates when they were sick"
+      ],
+      "answer": 1,
+      "evidence": "you must make your friends send me a trunk-full of gold"
+    },
+    {
+      "id": "doctor-dolittle-15-04",
+      "type": "character",
+      "q": "Why did Too-Too tell the Doctor to keep Ben Ali talking?",
+      "choices": [
+        "So the old ship would sink under the pirates",
+        "So the swallows could come back and help them",
+        "So Jip would have time to swim to the shore",
+        "So the canaries could fly off to find the sharks"
+      ],
+      "answer": 0,
+      "evidence": "Be pleasant, till the ship sinks under him"
+    },
+    {
+      "id": "doctor-dolittle-15-05",
+      "type": "character",
+      "q": "Why did the Doctor say they should not fight the pirates?",
+      "choices": [
+        "The pirates were far too many to fight",
+        "The animals were too tired from the island",
+        "Fighting was against the law of the sea",
+        "The pirates had pistols and swords"
+      ],
+      "answer": 3,
+      "evidence": "But they have pistols and swords"
+    },
+    {
+      "id": "doctor-dolittle-15-06",
+      "type": "inference",
+      "q": "Why did Jip laugh at the pirate who said they would see rats leaving if the boat were sinking?",
+      "choices": [
+        "Jip had chased all the rats off the ship",
+        "There had never been any rats on that ship",
+        "The rats had already left two hours before",
+        "The rats were hiding inside the pirates' boots"
+      ],
+      "answer": 2,
+      "evidence": "They left two hours ago!"
+    },
+    {
+      "id": "doctor-dolittle-15-07",
+      "type": "sequence",
+      "q": "What happened right after the ship sank to the bottom of the bay?",
+      "choices": [
+        "The Doctor sailed away into the open sea",
+        "The six pirates were left bobbing in the water",
+        "The swallows came to pull the ship again",
+        "Ben Ali climbed onto the Doctor's ship"
+      ],
+      "answer": 1,
+      "evidence": "the six bad men were left bobbing about in the deep water of the bay"
+    },
+    {
+      "id": "doctor-dolittle-15-08",
+      "type": "detail",
+      "q": "What did the shark offer to do for the Doctor?",
+      "choices": [
+        "Eat up the pirates",
+        "Pull the ship home",
+        "Find the lost rats",
+        "Guard the canaries"
+      ],
+      "answer": 0,
+      "evidence": "we will gladly eat them up for you"
+    },
+    {
+      "id": "doctor-dolittle-15-09",
+      "type": "vocabulary",
+      "q": "Ben Ali \"groaned in disgust\" when told to grow bird-seed. What does \"disgust\" mean here?",
+      "choices": [
+        "A feeling of being very cold and wet",
+        "A sudden fright that makes you shake",
+        "A happy surprise that makes you laugh",
+        "A strong feeling of dislike for something"
+      ],
+      "answer": 3,
+      "evidence": "he groaned in disgust"
+    },
+    {
+      "id": "doctor-dolittle-15-10",
+      "type": "main-idea",
+      "q": "What is the most important thing the Doctor does with Ben Ali in this chapter?",
+      "choices": [
+        "Lets the sharks eat him so the seas are safe for all ships",
+        "Takes him prisoner and carries him back home to Puddleby",
+        "Makes him promise to stop being a pirate and become a farmer",
+        "Teaches him to talk with the canaries and the sharks"
+      ],
+      "answer": 2,
+      "evidence": "you must give up being a pirate altogether"
+    }
+  ]
+}

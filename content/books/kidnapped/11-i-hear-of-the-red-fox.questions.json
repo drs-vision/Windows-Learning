@@ -1,0 +1,150 @@
+{
+  "book": "kidnapped",
+  "chapter": 11,
+  "questions": [
+    {
+      "id": "kidnapped-11-01",
+      "type": "detail",
+      "q": "How did Alan react when David spoke well of his friend Mr. Campbell the minister?",
+      "choices": ["He said he hated everyone with that name", "He asked David to tell him more about the man", "He laughed and said all ministers were alike", "He said the minister must be a distant cousin"],
+      "answer": 0,
+      "evidence": "he hated all that were of that name"
+    },
+    {
+      "id": "kidnapped-11-02",
+      "type": "detail",
+      "q": "What did Duncan Stewart and the other swordsmen do with the three guineas King George gave each of them?",
+      "choices": ["Spent them on a feast in a London tavern", "Handed them to the porter at the palace lodge", "Sent them home to their families in the Highlands", "Gave them to the soldiers of the Black Watch"],
+      "answer": 1,
+      "evidence": "So he gives the King's three guineas into the man's hand"
+    },
+    {
+      "id": "kidnapped-11-03",
+      "type": "character",
+      "q": "Why did Alan's father give his money to the palace porter?",
+      "choices": ["He was afraid the King would take it back", "He owed the porter money from an earlier visit", "To show the porter what fine gentlemen they were", "He thought the King's money would bring them bad luck"],
+      "answer": 2,
+      "evidence": "give the poor porter a proper notion of their quality"
+    },
+    {
+      "id": "kidnapped-11-04",
+      "type": "detail",
+      "q": "According to Alan, why did he first enlist as a soldier?",
+      "choices": ["His chief ordered him to learn the English way of war", "He wanted to see London as his father had", "His father left him almost nothing to live on", "He was forced into the army by a press gang"],
+      "answer": 2,
+      "evidence": "He left me my breeks to cover me, and little besides"
+    },
+    {
+      "id": "kidnapped-11-05",
+      "type": "detail",
+      "q": "What did Alan do at the battle of Preston Pans?",
+      "choices": ["Deserted the English army to join the other side", "Was badly wounded and carried off the field by his friends", "Saved the life of his chief, Ardshiel", "Was taken prisoner by the red-coats"],
+      "answer": 0,
+      "evidence": "I deserted to the right side at Preston Pans"
+    },
+    {
+      "id": "kidnapped-11-06",
+      "type": "detail",
+      "q": "What does Alan carry in his pocket that he hopes will give him some protection?",
+      "choices": ["A letter of pardon signed by King George", "A pass from the Campbell factor of Appin", "A commission from the King of France", "A certificate from the captain of the brig"],
+      "answer": 2,
+      "evidence": "I have the King of France's commission in my pocket"
+    },
+    {
+      "id": "kidnapped-11-07",
+      "type": "vocabulary",
+      "q": "Alan says, \"I weary for my friends and country.\" What does \"weary for\" mean here?",
+      "choices": ["Grow tired and bored of", "Feel worried and afraid for", "Miss and long for", "Feel ashamed of"],
+      "answer": 2,
+      "evidence": "I weary for my friends and country"
+    },
+    {
+      "id": "kidnapped-11-08",
+      "type": "detail",
+      "q": "What is the money in Alan's belt?",
+      "choices": ["Pay he earned as a soldier for the French King", "A second rent the Appin tenants gathered for Ardshiel", "The captain's payment for taking him to Linnhe Loch", "Gold he won from the officers of the brig at cards"],
+      "answer": 1,
+      "evidence": "scrape up a second rent for Ardshiel"
+    },
+    {
+      "id": "kidnapped-11-09",
+      "type": "inference",
+      "q": "Why does Alan mention seeing Ardshiel buying butter in a French market?",
+      "choices": ["To show how cheap food is in France", "To show that his chief has learned to cook", "To show how low his great chief has been brought", "To show that his chief is hiding there in disguise from spies"],
+      "answer": 2,
+      "evidence": "buying butter in the market-place"
+    },
+    {
+      "id": "kidnapped-11-10",
+      "type": "detail",
+      "q": "Who is James of the Glens?",
+      "choices": ["Ardshiel's half-brother, who collects the money", "A Campbell lawyer working for the King's factor", "The captain of the clan who lives in France", "A Highland piper who taught Alan his tunes"],
+      "answer": 0,
+      "evidence": "Ardshiel's half-brother"
+    },
+    {
+      "id": "kidnapped-11-11",
+      "type": "character",
+      "q": "What did David, though he was a Whig, say about the tenants paying two rents?",
+      "choices": ["He called it foolish", "He called it noble", "He called it unlawful", "He called it a trick"],
+      "answer": 1,
+      "evidence": "I call it noble"
+    },
+    {
+      "id": "kidnapped-11-12",
+      "type": "detail",
+      "q": "Who is the man Alan calls the Red Fox?",
+      "choices": ["Captain Hoseason of the brig Covenant", "Red-headed Colin Campbell of Glenure", "The Duke of Cumberland, called the Butcher", "A red-coat officer who hunted Ardshiel"],
+      "answer": 1,
+      "evidence": "red-headed Colin of Glenure"
+    },
+    {
+      "id": "kidnapped-11-13",
+      "type": "sequence",
+      "q": "When the Red Fox learned that the tenants were sending a second rent to Ardshiel, what did he do first?",
+      "choices": ["He had James of the Glens arrested", "He declared all the farms to let", "He raised the rent on every farm", "He wrote to the King of France"],
+      "answer": 1,
+      "evidence": "He declares all the farms to let"
+    },
+    {
+      "id": "kidnapped-11-14",
+      "type": "detail",
+      "q": "Why did the Red Fox's first plan to get new tenants fail?",
+      "choices": ["The Stewart tenants offered a better price than any Campbell", "No Campbell was willing to travel so far into Appin", "James of the Glens tore up all the papers", "King George ordered him to leave the farms alone"],
+      "answer": 0,
+      "evidence": "offered him a better price than any Campbell in all broad Scotland"
+    },
+    {
+      "id": "kidnapped-11-15",
+      "type": "inference",
+      "q": "Why does David say that killing Colin Campbell would do no good?",
+      "choices": ["The Campbells would burn every house in Appin", "Colin was already planning to leave the country", "The tenants would lose their farms all the same that year", "The Government would just send another factor"],
+      "answer": 3,
+      "evidence": "There would be another factor in his shoes"
+    },
+    {
+      "id": "kidnapped-11-16",
+      "type": "detail",
+      "q": "How does Alan explain that he can travel the Highlands without being arrested?",
+      "choices": ["He always wears a red-coat uniform as a disguise", "If a sentry is in one place, he goes by another", "He pays the soldiers with money from his belt", "He travels only by boat along the coast at night"],
+      "answer": 1,
+      "evidence": "if there's a sentry at one place, ye just go by another"
+    },
+    {
+      "id": "kidnapped-11-17",
+      "type": "character",
+      "q": "What does David say was Alan's worst fault?",
+      "choices": ["A habit of drinking too much of the captain's wine", "A childish habit of taking offence and picking quarrels", "Spending every penny he had on fine clothes and buttons", "A tendency to tell long stories that were not true"],
+      "answer": 1,
+      "evidence": "his childish propensity to take offence and to pick quarrels"
+    },
+    {
+      "id": "kidnapped-11-18",
+      "type": "main-idea",
+      "q": "What is this chapter mostly about?",
+      "choices": ["The crew of the brig planning a new attack on Alan and David", "Alan telling his story and his hatred of the Red Fox", "David and Alan sailing safely through the reefs of Mull", "David teaching Alan to read the books he carried"],
+      "answer": 1,
+      "evidence": "I have seen many a grim face, but never a grimmer than Alan's when he had named the Red Fox"
+    }
+  ]
+}

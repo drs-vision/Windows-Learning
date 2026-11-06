@@ -1,0 +1,166 @@
+{
+  "book": "call-of-the-wild",
+  "chapter": 1,
+  "questions": [
+    {
+      "id": "call-of-the-wild-01-01",
+      "type": "detail",
+      "q": "Where did Buck live before he was stolen?",
+      "choices": ["On a sheep ranch outside Seattle", "At Judge Miller's place in the Santa Clara Valley", "At a gold miner's cabin in the far North", "In a kennel behind a San Francisco saloon"],
+      "answer": 1,
+      "evidence": "Buck lived at a big house in the sun-kissed Santa Clara Valley"
+    },
+    {
+      "id": "call-of-the-wild-01-02",
+      "type": "inference",
+      "q": "Why did so many men suddenly want big, strong dogs with furry coats?",
+      "choices": ["Dog sled racing had become a popular sport in California", "The army needed dogs to guard its forts in the far North", "Gold had been found in the Arctic and men were rushing north", "Farmers needed strong dogs to herd their cattle through snow"],
+      "answer": 2,
+      "evidence": "had found a yellow metal"
+    },
+    {
+      "id": "call-of-the-wild-01-03",
+      "type": "character",
+      "q": "How did Buck think of himself on Judge Miller's place?",
+      "choices": ["As a king over everything there, humans included", "As a lowly kennel-dog who had to obey the terriers", "As a pampered house-dog who rarely went outdoors", "As a guard dog whose only job was to watch the stables"],
+      "answer": 0,
+      "evidence": "for he was king"
+    },
+    {
+      "id": "call-of-the-wild-01-04",
+      "type": "detail",
+      "q": "What kinds of dogs were Buck's father and mother?",
+      "choices": ["A Newfoundland father and a collie mother", "A wolf father and a husky mother", "A St. Bernard father and a Scotch shepherd mother", "A mastiff father and a Scotch terrier mother"],
+      "answer": 2,
+      "evidence": "His father, Elmo, a huge St. Bernard"
+    },
+    {
+      "id": "call-of-the-wild-01-05",
+      "type": "character",
+      "q": "Why did Manuel, the gardener's helper, sell Buck to a stranger?",
+      "choices": ["The Judge had quietly told him to get rid of the dog", "He was angry that Buck had bitten one of his children", "A stranger threatened to hurt him unless he gave up Buck", "He needed money because of his gambling in the lottery"],
+      "answer": 3,
+      "evidence": "He loved to play Chinese lottery"
+    },
+    {
+      "id": "call-of-the-wild-01-06",
+      "type": "detail",
+      "q": "Where was the Judge on the night Manuel led Buck away?",
+      "choices": ["At a meeting of the Raisin Growers' Association", "Away on a long trip by train to San Francisco", "Asleep in front of the library fire at home", "Out hunting in the hills with his two sons"],
+      "answer": 0,
+      "evidence": "The Judge was at a meeting of the Raisin Growers' Association"
+    },
+    {
+      "id": "call-of-the-wild-01-07",
+      "type": "vocabulary",
+      "q": "When Manuel put a rope around Buck's neck, \"it was an unwonted performance.\" What does \"unwonted\" mean here?",
+      "choices": ["Unwanted and hated", "Unusual, not what he was used to", "Dangerous and likely to hurt", "Practiced and rehearsed many times before"],
+      "answer": 1,
+      "evidence": "it was an unwonted performance"
+    },
+    {
+      "id": "call-of-the-wild-01-08",
+      "type": "detail",
+      "q": "What did the kidnapper tell the baggageman on the train about Buck?",
+      "choices": ["That Buck was a show dog being sent to a contest", "That Buck had fits and a dog-doctor would cure him", "That Buck had been sold to a miner going to Alaska", "That Buck was a stray he had found by the tracks"],
+      "answer": 1,
+      "evidence": "Yep, has fits"
+    },
+    {
+      "id": "call-of-the-wild-01-09",
+      "type": "sequence",
+      "q": "In the shed behind the saloon, what did the men do to Buck before leaving him for the night?",
+      "choices": ["Filed off his brass collar and shut him in a crate", "Tied him to a post and gave him a bowl of water", "Painted over his coat so the Judge could not find him", "Put a muzzle on him and locked him in a back room"],
+      "answer": 0,
+      "evidence": "filing the heavy brass collar from off his neck"
+    },
+    {
+      "id": "call-of-the-wild-01-10",
+      "type": "character",
+      "q": "Each time the shed door rattled open in the night, what did Buck hope to see?",
+      "choices": ["The Judge, or at least the boys", "Manuel coming back to set him free", "A man bringing him food and water", "The other dogs from the Judge's kennels"],
+      "answer": 0,
+      "evidence": "expecting to see the Judge, or the boys at least"
+    },
+    {
+      "id": "call-of-the-wild-01-11",
+      "type": "detail",
+      "q": "How long did Buck go without eating or drinking in the express car?",
+      "choices": ["One long night", "Two days and nights", "Four days and nights", "Almost a whole week"],
+      "answer": 1,
+      "evidence": "For two days and nights Buck neither ate nor drank"
+    },
+    {
+      "id": "call-of-the-wild-01-12",
+      "type": "inference",
+      "q": "Why did the express messengers' teasing make Buck so much angrier?",
+      "choices": ["It hurt his dignity, and his anger grew and grew", "He thought they were going to steal his food", "He believed they were the men who had sold him", "It reminded him of the terriers who teased Toots"],
+      "answer": 0,
+      "evidence": "the more outrage to his dignity, and his anger waxed and waxed"
+    },
+    {
+      "id": "call-of-the-wild-01-13",
+      "type": "vocabulary",
+      "q": "By the time he reached Seattle, Buck \"was metamorphosed into a raging fiend.\" What does \"metamorphosed\" mean?",
+      "choices": ["Calmed and comforted", "Tied up and carried off", "Completely changed", "Fed and given water"],
+      "answer": 2,
+      "evidence": "he was metamorphosed into a raging fiend"
+    },
+    {
+      "id": "call-of-the-wild-01-14",
+      "type": "sequence",
+      "q": "What did the four men who carried the crate do when the man in the red sweater began to open it?",
+      "choices": ["They held the crate steady so Buck could not tip it", "They scattered and climbed on top of the wall to watch", "They ran inside the house and locked the door behind them", "They tossed ropes over Buck's head as he came out"],
+      "answer": 1,
+      "evidence": "from safe perches on top the wall they prepared to watch"
+    },
+    {
+      "id": "call-of-the-wild-01-15",
+      "type": "main-idea",
+      "q": "What lesson did Buck learn from the man in the red sweater, which he never forgot?",
+      "choices": ["That all men are cruel and none of them can ever be trusted", "That he could win any fight if he was angry enough", "That he stood no chance against a man with a club", "That dogs who wag their tails get the best food"],
+      "answer": 2,
+      "evidence": "he stood no chance against a man with a club"
+    },
+    {
+      "id": "call-of-the-wild-01-16",
+      "type": "inference",
+      "q": "The book says Buck \"was beaten\" but \"not broken.\" What does that mean?",
+      "choices": ["He was hurt badly, but none of his bones were broken", "He lost the fight but kept his pride and spirit", "He gave up and began to fawn on the man with the club", "He was not hurt at all because he dodged the club"],
+      "answer": 1,
+      "evidence": "He was beaten (he knew that); but he was not broken"
+    },
+    {
+      "id": "call-of-the-wild-01-17",
+      "type": "detail",
+      "q": "Who bought Buck from the man in the red sweater, and for whom?",
+      "choices": ["Francois, for a gold miner on the Yukon", "Manuel, so he could return him to the Judge", "A whaling captain, for a trip to Spitzbergen", "Perrault, using money from the Canadian Government"],
+      "answer": 3,
+      "evidence": "The Canadian Government would be no loser"
+    },
+    {
+      "id": "call-of-the-wild-01-18",
+      "type": "character",
+      "q": "How did Buck come to feel about Perrault and Francois?",
+      "choices": ["He loved them as much as he had loved the Judge", "He feared them and tried to escape at every chance", "He respected them because they were fair men", "He hated them for taking him away from Seattle"],
+      "answer": 2,
+      "evidence": "he none the less grew honestly to respect them"
+    },
+    {
+      "id": "call-of-the-wild-01-19",
+      "type": "character",
+      "q": "What was Dave, one of the dogs on the Narwhal, like?",
+      "choices": ["Gloomy, and he only wanted to be left alone", "Friendly, but he stole food when no one looked", "Nervous, and he howled whenever the ship rolled", "Playful, and he wrestled with Curly all day"],
+      "answer": 0,
+      "evidence": "all he desired was to be left alone"
+    },
+    {
+      "id": "call-of-the-wild-01-20",
+      "type": "detail",
+      "q": "At the end of the chapter, what was the strange white stuff that puzzled Buck on the deck?",
+      "choices": ["Salt spray from the stormy sea", "Flour spilled from the ship's stores", "Ashes blowing down from the ship's tall smokestack", "Snow, which he was seeing for the first time"],
+      "answer": 3,
+      "evidence": "for it was his first snow"
+    }
+  ]
+}

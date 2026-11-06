@@ -1,0 +1,166 @@
+{
+  "book": "call-of-the-wild",
+  "chapter": 4,
+  "questions": [
+    {
+      "id": "call-of-the-wild-04-01",
+      "type": "detail",
+      "q": "Which dog did Francois first put in the lead after Spitz was gone?",
+      "choices": ["Dave, the experienced wheel-dog at the back", "Sol-leks, whom he judged the best lead-dog left", "Billee, the most good-natured dog in the whole team", "Pike, the clever dog who pulled just behind Buck"],
+      "answer": 1,
+      "evidence": "In his judgment, Sol-leks was the best lead-dog left."
+    },
+    {
+      "id": "call-of-the-wild-04-02",
+      "type": "character",
+      "q": "Why did Buck keep away from the men and refuse to go to his old place in the team?",
+      "choices": ["He was afraid that Francois was going to give him a thrashing", "He was too badly hurt from the fight to pull the sled that day", "He wanted to run off into the woods and live with the wolves", "He wanted the leadership, which he felt he had earned"],
+      "answer": 3,
+      "evidence": "He wanted, not to escape a clubbing, but to have the leadership."
+    },
+    {
+      "id": "call-of-the-wild-04-03",
+      "type": "inference",
+      "q": "Why did Buck back away when Francois came at him with a heavy club?",
+      "choices": ["He remembered the man in the red sweater", "He knew that Perrault would punish him later", "He was too weak to fight after losing blood", "He wanted Sol-leks to fight the man instead"],
+      "answer": 0,
+      "evidence": "Buck remembered the man in the red sweater"
+    },
+    {
+      "id": "call-of-the-wild-04-04",
+      "type": "sequence",
+      "q": "What finally made Buck trot in and take his place at the head of the team?",
+      "choices": ["Francois offered him a large piece of frozen fish", "Perrault tied a rope to his collar and pulled him in", "Francois threw down the club as Perrault told him to", "Sol-leks walked away and left the lead place empty"],
+      "answer": 2,
+      "evidence": "Francois complied, whereupon Buck trotted in"
+    },
+    {
+      "id": "call-of-the-wild-04-05",
+      "type": "vocabulary",
+      "q": "\"Francois was obdurate\" when he kept putting Sol-leks back in the lead. What does \"obdurate\" mean?",
+      "choices": ["Stubborn and unwilling to change", "Kind and gentle with the dogs", "Confused about what to do next", "Tired after a long night awake"],
+      "answer": 0,
+      "evidence": "Francois was obdurate"
+    },
+    {
+      "id": "call-of-the-wild-04-06",
+      "type": "detail",
+      "q": "How good was Buck as a leader, compared to Spitz?",
+      "choices": ["He was much slower, and the team often got lost", "He was even better than Spitz at quick thinking", "He was about the same, but the dogs liked him a little more", "He was worse at first, but slowly learned how to lead"],
+      "answer": 1,
+      "evidence": "he showed himself the superior even of Spitz"
+    },
+    {
+      "id": "call-of-the-wild-04-07",
+      "type": "character",
+      "q": "Why didn't Dave and Sol-leks mind that Buck was the new leader?",
+      "choices": ["They had always disliked Spitz and were glad that he was gone", "They were afraid Buck would punish them if they ever complained", "They only cared about toiling hard in the traces", "They were too old and tired to notice who led the team"],
+      "answer": 2,
+      "evidence": "Their business was to toil, and toil mightily, in the traces."
+    },
+    {
+      "id": "call-of-the-wild-04-08",
+      "type": "detail",
+      "q": "How did Pike change after Buck became leader?",
+      "choices": ["He pulled harder than ever", "He began to hide in the snow every morning", "He tried to take the lead place from Buck", "He stopped stealing food from the other dogs"],
+      "answer": 0,
+      "evidence": "he was pulling more than ever before in his life"
+    },
+    {
+      "id": "call-of-the-wild-04-09",
+      "type": "detail",
+      "q": "Which two native huskies joined the team at the Rink Rapids?",
+      "choices": ["Billee and Joe", "Dub and Dolly", "Pike and Sol-leks", "Teek and Koona"],
+      "answer": 3,
+      "evidence": "two native huskies, Teek and Koona, were added"
+    },
+    {
+      "id": "call-of-the-wild-04-10",
+      "type": "inference",
+      "q": "Why was the trip back to Skaguay called a record run?",
+      "choices": ["They had carried more gold than any team before them", "They averaged forty miles a day for fourteen days", "They lost no dogs at all on the whole of the trip", "They crossed every river without breaking through"],
+      "answer": 1,
+      "evidence": "Each day for fourteen days they had averaged forty miles."
+    },
+    {
+      "id": "call-of-the-wild-04-11",
+      "type": "sequence",
+      "q": "What happened when official orders came for Perrault and Francois at Skaguay?",
+      "choices": ["They harnessed Buck and started back to Dawson with the mail", "They sold the whole team to a gold miner for a thousand dollars", "Francois hugged Buck and wept, and they left Buck's life for good", "They took Buck aboard a ship heading back to Seattle"],
+      "answer": 2,
+      "evidence": "Francois called Buck to him, threw his arms around him, wept over him."
+    },
+    {
+      "id": "call-of-the-wild-04-12",
+      "type": "detail",
+      "q": "What was Buck's new team carrying on the trail back to Dawson?",
+      "choices": ["Mail for the men who were looking for gold", "Gold dust from the mines down to the coast", "Food and tools for a new police camp", "Logs and firewood for the miners' cabins"],
+      "answer": 0,
+      "evidence": "for this was the mail train"
+    },
+    {
+      "id": "call-of-the-wild-04-13",
+      "type": "vocabulary",
+      "q": "\"It was a monotonous life, operating with machine-like regularity. One day was very like another.\" What does \"monotonous\" mean?",
+      "choices": ["Exciting and full of danger", "The same over and over, dull", "Lonely and far from others", "Short and quickly over"],
+      "answer": 1,
+      "evidence": "One day was very like another."
+    },
+    {
+      "id": "call-of-the-wild-04-14",
+      "type": "character",
+      "q": "When Buck lay by the fire and thought of Judge Miller's place, how did he feel?",
+      "choices": ["He was terribly homesick and longed to go back", "He was not homesick at all", "He was angry at the Judge for letting Manuel take him", "He was confused and could no longer remember the house"],
+      "answer": 1,
+      "evidence": "He was not homesick."
+    },
+    {
+      "id": "call-of-the-wild-04-15",
+      "type": "inference",
+      "q": "Who was the short, hairy man Buck seemed to see by \"another fire\"?",
+      "choices": ["A man from long ago, like those his wild ancestors had known", "The half-breed cook, seen through the smoke of the fire", "A miner who had lost his way in the snow and found their camp", "Manuel, the gardener's helper, in one of Buck's bad dreams"],
+      "answer": 0,
+      "evidence": "the memories of his heredity"
+    },
+    {
+      "id": "call-of-the-wild-04-16",
+      "type": "detail",
+      "q": "How did the drivers on the mail train take care of their dogs each night?",
+      "choices": ["They let the tired dogs sleep inside the warm tents right beside them", "They fed the dogs first and checked their feet before sleeping", "They gave the dogs a full day of rest every third day", "They rubbed the dogs with oil to keep away the frost"],
+      "answer": 1,
+      "evidence": "They ate before the drivers ate"
+    },
+    {
+      "id": "call-of-the-wild-04-17",
+      "type": "detail",
+      "q": "Which dog suffered the most on the hard trip back from Dawson?",
+      "choices": ["Billee, who cried in his sleep", "Joe, who grew sourer than ever", "Dave, who had something wrong inside", "Sol-leks, who was blind in one eye"],
+      "answer": 2,
+      "evidence": "But it was Dave who suffered most of all."
+    },
+    {
+      "id": "call-of-the-wild-04-18",
+      "type": "sequence",
+      "q": "What did Dave do after the driver took him out of the team and put Sol-leks in his place?",
+      "choices": ["He ran quietly behind the sled where the trail was easy", "He lay down in the snow and refused to move all day", "He bit through Sol-leks's traces and stood in his old place", "He ran off alone into the woods by the river and was never seen again"],
+      "answer": 2,
+      "evidence": "Dave had bitten through both of Sol-leks's traces"
+    },
+    {
+      "id": "call-of-the-wild-04-19",
+      "type": "character",
+      "q": "Why did the drivers decide to put the sick Dave back in the harness?",
+      "choices": ["They needed every dog to pull the heavy load of mail", "They thought that the hard work in harness might make him well again", "They believed a dog could break its heart if kept from its work", "They wanted him to rest by riding on top of the sled"],
+      "answer": 2,
+      "evidence": "a dog could break its heart through being denied the work that killed it"
+    },
+    {
+      "id": "call-of-the-wild-04-20",
+      "type": "main-idea",
+      "q": "What is this chapter mostly about?",
+      "choices": ["Buck winning the lead and the pride sled dogs take in their work", "Buck trying to escape so that he can find his way back home", "Perrault and Francois searching up and down the trail for the missing Spitz", "The miners of Skaguay fighting over who will own Buck's team"],
+      "answer": 0,
+      "evidence": "the pride of trace and trail was his"
+    }
+  ]
+}

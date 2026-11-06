@@ -26,9 +26,10 @@ for (const id of books) {
   const dir = join(ROOT, id);
   let book;
   try { book = JSON.parse(readFileSync(join(dir, 'book.json'), 'utf8')); } catch (e) { err(id, 'book.json: ' + e.message); continue; }
-  for (const k of ['id', 'title', 'author', 'published', 'grade', 'summary', 'source', 'publicDomain', 'chapters']) if (book[k] === undefined) err(id, `book.json is missing "${k}"`);
+  for (const k of ['id', 'title', 'author', 'published', 'level', 'grade', 'summary', 'source', 'publicDomain', 'chapters']) if (book[k] === undefined) err(id, `book.json is missing "${k}"`);
   if (book.id !== id) err(id, `book.json id "${book.id}" doesn't match its folder`);
   if (book.published > 1930) err(id, `published ${book.published}: only books published before 1931 are public domain in the US`);
+  if (!(Number.isInteger(book.level) && book.level >= 1 && book.level <= 12)) err(id, 'level must be a whole number from 1 (easiest) up');
   if (!(book.grade?.min >= 0 && book.grade?.max >= book.grade?.min)) err(id, 'grade.min / grade.max are wrong');
   const ids = new Set();
   for (const ch of book.chapters ?? []) {

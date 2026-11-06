@@ -1,0 +1,70 @@
+{
+  "book": "around-the-world-in-80-days",
+  "chapter": 34,
+  "questions": [
+    {
+      "id": "around-the-world-in-80-days-34-01",
+      "type": "detail",
+      "q": "Where was Phileas Fogg held after his arrest?",
+      "choices": ["In the Custom House", "In a ship's cabin", "At the town hall", "In a railway station office"],
+      "answer": 0,
+      "evidence": "He had been shut up in the Custom House"
+    },
+    {
+      "id": "around-the-world-in-80-days-34-02",
+      "type": "character",
+      "q": "Why did Passepartout believe he was the cause of this new misfortune?",
+      "choices": ["He had lost the tickets for the London train", "He had never told Mr. Fogg who Fix really was", "He had told Fix where Mr. Fogg kept the money", "He had made them late by stopping to eat"],
+      "answer": 1,
+      "evidence": "Had he not concealed Fix's errand from his master?"
+    },
+    {
+      "id": "around-the-world-in-80-days-34-03",
+      "type": "character",
+      "q": "How did Mr. Fogg appear while he sat in the Custom House?",
+      "choices": ["Furious, pounding on the locked door for help", "Calm and motionless, without apparent anger", "Weeping quietly with his face in his hands", "Busy writing a letter to the Reform Club"],
+      "answer": 1,
+      "evidence": "seated, motionless, calm, and without apparent anger"
+    },
+    {
+      "id": "around-the-world-in-80-days-34-04",
+      "type": "detail",
+      "q": "What did Mr. Fogg notice about his watch when the Custom House clock struck one?",
+      "choices": ["It had stopped during the storm", "It was two hours too fast", "It had been broken in the arrest", "It was exactly one hour slow"],
+      "answer": 1,
+      "evidence": "Mr. Fogg observed that his watch was two hours too fast."
+    },
+    {
+      "id": "around-the-world-in-80-days-34-05",
+      "type": "detail",
+      "q": "What did Fix say when he rushed back into the room?",
+      "choices": ["That the real robber had been arrested three days before", "That Fogg must go before a judge in London at once", "That the Bank wanted Fogg to pay back the money", "That Passepartout had been arrested by the police as well"],
+      "answer": 0,
+      "evidence": "robber arrested three days ago--you are free!"
+    },
+    {
+      "id": "around-the-world-in-80-days-34-06",
+      "type": "sequence",
+      "q": "What did Mr. Fogg do right after learning he was free?",
+      "choices": ["He thanked Fix and shook him warmly by the hand", "He knocked Fix down with one quick motion", "He ran straight out to find a cab for the station", "He sat down again and wrote in his journal"],
+      "answer": 1,
+      "evidence": "with the precision of a machine knocked Fix down"
+    },
+    {
+      "id": "around-the-world-in-80-days-34-07",
+      "type": "inference",
+      "q": "Why did Mr. Fogg have to order a special train?",
+      "choices": ["The express train had already left", "No trains ran to London on Saturdays", "The police would not let him ride with others", "Aouda was too tired to travel on a crowded train"],
+      "answer": 0,
+      "evidence": "The express train had left thirty-five minutes before."
+    },
+    {
+      "id": "around-the-world-in-80-days-34-08",
+      "type": "main-idea",
+      "q": "How does the chapter end?",
+      "choices": ["Fogg reaches London five minutes late and believes he has lost", "Fogg reaches the Reform Club just in time to win his bet", "Fogg's special train breaks down far outside of London", "Fogg decides to go back to Liverpool to find Fix again"],
+      "answer": 0,
+      "evidence": "Having made the tour of the world, he was behind-hand five minutes."
+    }
+  ]
+}

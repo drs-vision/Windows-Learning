@@ -1,0 +1,223 @@
+{
+  "id": "kidnapped",
+  "title": "Kidnapped",
+  "author": "Robert Louis Stevenson",
+  "published": 1886,
+  "level": 5,
+  "grade": {
+    "min": 6,
+    "max": 8,
+    "label": "Grades 6-8"
+  },
+  "summary": "Young David Balfour is betrayed by his uncle, kidnapped onto a ship, and flees across Scotland with Alan Breck.",
+  "source": {
+    "name": "Project Gutenberg eBook #421 (public-domain text; Gutenberg header, license and name removed)",
+    "url": "https://www.gutenberg.org/ebooks/421"
+  },
+  "publicDomain": "First published 1886; in the US public domain (published before 1931).",
+  "chapters": [
+    {
+      "n": 1,
+      "title": "I Set Off Upon My Journey to the House of Shaws",
+      "text": "01-i-set-off-upon-my-journey-to-the-house-o.txt",
+      "questions": "01-i-set-off-upon-my-journey-to-the-house-o.questions.json",
+      "words": 1720
+    },
+    {
+      "n": 2,
+      "title": "I Come to My Journey's End",
+      "text": "02-i-come-to-my-journey-s-end.txt",
+      "questions": "02-i-come-to-my-journey-s-end.questions.json",
+      "words": 1934
+    },
+    {
+      "n": 3,
+      "title": "I Make Acquaintance of My Uncle",
+      "text": "03-i-make-acquaintance-of-my-uncle.txt",
+      "questions": "03-i-make-acquaintance-of-my-uncle.questions.json",
+      "words": 2662
+    },
+    {
+      "n": 4,
+      "title": "I Run a Great Danger in the House of Shaws",
+      "text": "04-i-run-a-great-danger-in-the-house-of-sha.txt",
+      "questions": "04-i-run-a-great-danger-in-the-house-of-sha.questions.json",
+      "words": 2972
+    },
+    {
+      "n": 5,
+      "title": "I Go to the Queen's Ferry",
+      "text": "05-i-go-to-the-queen-s-ferry.txt",
+      "questions": "05-i-go-to-the-queen-s-ferry.questions.json",
+      "words": 2402
+    },
+    {
+      "n": 6,
+      "title": "What Befell at the Queen's Ferry",
+      "text": "06-what-befell-at-the-queen-s-ferry.txt",
+      "questions": "06-what-befell-at-the-queen-s-ferry.questions.json",
+      "words": 1872
+    },
+    {
+      "n": 7,
+      "title": "I Go to Sea in the Brig \"Covenant\" of Dysart",
+      "text": "07-i-go-to-sea-in-the-brig-covenant-of-dysa.txt",
+      "questions": "07-i-go-to-sea-in-the-brig-covenant-of-dysa.questions.json",
+      "words": 2704
+    },
+    {
+      "n": 8,
+      "title": "The Round-house",
+      "text": "08-the-round-house.txt",
+      "questions": "08-the-round-house.questions.json",
+      "words": 5264
+    },
+    {
+      "n": 9,
+      "title": "The Siege of the Round-house",
+      "text": "09-the-siege-of-the-round-house.txt",
+      "questions": "09-the-siege-of-the-round-house.questions.json",
+      "words": 2554
+    },
+    {
+      "n": 10,
+      "title": "The Captain Knuckles Under",
+      "text": "10-the-captain-knuckles-under.txt",
+      "questions": "10-the-captain-knuckles-under.questions.json",
+      "words": 1583
+    },
+    {
+      "n": 11,
+      "title": "I Hear of the \"Red Fox\"",
+      "text": "11-i-hear-of-the-red-fox.txt",
+      "questions": "11-i-hear-of-the-red-fox.questions.json",
+      "words": 3265
+    },
+    {
+      "n": 12,
+      "title": "The Loss of the Brig",
+      "text": "12-the-loss-of-the-brig.txt",
+      "questions": "12-the-loss-of-the-brig.questions.json",
+      "words": 2140
+    },
+    {
+      "n": 13,
+      "title": "The Islet",
+      "text": "13-the-islet.txt",
+      "questions": "13-the-islet.questions.json",
+      "words": 3525
+    },
+    {
+      "n": 14,
+      "title": "The Lad with the Silver Button: Through the Isle of Mull",
+      "text": "14-the-lad-with-the-silver-button-through-t.txt",
+      "questions": "14-the-lad-with-the-silver-button-through-t.questions.json",
+      "words": 3032
+    },
+    {
+      "n": 15,
+      "title": "The Lad with the Silver Button: Across Morven",
+      "text": "15-the-lad-with-the-silver-button-across-mo.txt",
+      "questions": "15-the-lad-with-the-silver-button-across-mo.questions.json",
+      "words": 2775
+    },
+    {
+      "n": 16,
+      "title": "The Death of the Red Fox",
+      "text": "16-the-death-of-the-red-fox.txt",
+      "questions": "16-the-death-of-the-red-fox.questions.json",
+      "words": 2121
+    },
+    {
+      "n": 17,
+      "title": "I Talk with Alan in the Wood of Lettermore",
+      "text": "17-i-talk-with-alan-in-the-wood-of-lettermo.txt",
+      "questions": "17-i-talk-with-alan-in-the-wood-of-lettermo.questions.json",
+      "words": 3017
+    },
+    {
+      "n": 18,
+      "title": "The House of Fear",
+      "text": "18-the-house-of-fear.txt",
+      "questions": "18-the-house-of-fear.questions.json",
+      "words": 2394
+    },
+    {
+      "n": 19,
+      "title": "The Flight in the Heather: the Rocks",
+      "text": "19-the-flight-in-the-heather-the-rocks.txt",
+      "questions": "19-the-flight-in-the-heather-the-rocks.questions.json",
+      "words": 3325
+    },
+    {
+      "n": 20,
+      "title": "The Flight in the Heather: the Heugh of Corrynakiegh",
+      "text": "20-the-flight-in-the-heather-the-heugh-of-c.txt",
+      "questions": "20-the-flight-in-the-heather-the-heugh-of-c.questions.json",
+      "words": 2739
+    },
+    {
+      "n": 21,
+      "title": "The Flight in the Heather: the Moor",
+      "text": "21-the-flight-in-the-heather-the-moor.txt",
+      "questions": "21-the-flight-in-the-heather-the-moor.questions.json",
+      "words": 2944
+    },
+    {
+      "n": 22,
+      "title": "Cluny's Cage",
+      "text": "22-cluny-s-cage.txt",
+      "questions": "22-cluny-s-cage.questions.json",
+      "words": 3133
+    },
+    {
+      "n": 23,
+      "title": "The Flight in the Heather: the Quarrel",
+      "text": "23-the-flight-in-the-heather-the-quarrel.txt",
+      "questions": "23-the-flight-in-the-heather-the-quarrel.questions.json",
+      "words": 3799
+    },
+    {
+      "n": 24,
+      "title": "In Balquhidder",
+      "text": "24-in-balquhidder.txt",
+      "questions": "24-in-balquhidder.questions.json",
+      "words": 2528
+    },
+    {
+      "n": 25,
+      "title": "End of the Flight: We Pass the Forth",
+      "text": "25-end-of-the-flight-we-pass-the-forth.txt",
+      "questions": "25-end-of-the-flight-we-pass-the-forth.questions.json",
+      "words": 3964
+    },
+    {
+      "n": 26,
+      "title": "I Come to Mr. Rankeillor",
+      "text": "26-i-come-to-mr-rankeillor.txt",
+      "questions": "26-i-come-to-mr-rankeillor.questions.json",
+      "words": 2851
+    },
+    {
+      "n": 27,
+      "title": "I Go in Quest of My Inheritance",
+      "text": "27-i-go-in-quest-of-my-inheritance.txt",
+      "questions": "27-i-go-in-quest-of-my-inheritance.questions.json",
+      "words": 2733
+    },
+    {
+      "n": 28,
+      "title": "I Come Into My Kingdom",
+      "text": "28-i-come-into-my-kingdom.txt",
+      "questions": "28-i-come-into-my-kingdom.questions.json",
+      "words": 2387
+    },
+    {
+      "n": 29,
+      "title": "Good-bye",
+      "text": "29-good-bye.txt",
+      "questions": "29-good-bye.questions.json",
+      "words": 1405
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "id": "two-bad-mice",
+  "title": "The Tale of Two Bad Mice",
+  "author": "Beatrix Potter",
+  "published": 1904,
+  "level": 1,
+  "grade": {
+    "min": 0,
+    "max": 2,
+    "label": "Grades K-2"
+  },
+  "summary": "Two mice break into a doll's house and are very cross to find the food is pretend.",
+  "source": {
+    "name": "Project Gutenberg eBook #45264 (public-domain text; Gutenberg header, license and name removed)",
+    "url": "https://www.gutenberg.org/ebooks/45264"
+  },
+  "publicDomain": "First published 1904; in the US public domain (published before 1931).",
+  "chapters": [
+    {
+      "n": 1,
+      "title": "The Tale of Two Bad Mice",
+      "text": "01-the-tale-of-two-bad-mice.txt",
+      "questions": "01-the-tale-of-two-bad-mice.questions.json",
+      "words": 883
+    }
+  ]
+}

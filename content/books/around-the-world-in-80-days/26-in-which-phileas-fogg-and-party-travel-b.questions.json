@@ -1,0 +1,94 @@
+{
+  "book": "around-the-world-in-80-days",
+  "chapter": 26,
+  "questions": [
+    {
+      "id": "around-the-world-in-80-days-26-01",
+      "type": "detail",
+      "q": "Which two cities does the great railroad line connect?",
+      "choices": ["San Francisco and New York", "Chicago and Los Angeles", "Boston and San Diego", "Omaha and Sacramento only"],
+      "answer": 0,
+      "evidence": "New York and San Francisco are thus united"
+    },
+    {
+      "id": "around-the-world-in-80-days-26-02",
+      "type": "detail",
+      "q": "How long did the trip from New York to San Francisco now take by railroad?",
+      "choices": ["About six months", "Seven days", "Three full weeks", "Two days and a night"],
+      "answer": 1,
+      "evidence": "It is now accomplished in seven days."
+    },
+    {
+      "id": "around-the-world-in-80-days-26-03",
+      "type": "detail",
+      "q": "According to the chapter, how fast did the railroad grow across the prairies while it was being built?",
+      "choices": ["Ten miles every single week", "A mile and a half a day", "Half a mile in each month", "Five miles on a good day"],
+      "answer": 1,
+      "evidence": "The road grew, on the prairies, a mile and a half a day."
+    },
+    {
+      "id": "around-the-world-in-80-days-26-04",
+      "type": "detail",
+      "q": "What did Phileas Fogg hope to catch at New York on the 11th?",
+      "choices": ["A fast train going north to Canada", "The Atlantic steamer for Liverpool", "A river boat down to New Orleans", "A mail ship sailing across to France"],
+      "answer": 1,
+      "evidence": "take the Atlantic steamer at New York on the 11th for Liverpool"
+    },
+    {
+      "id": "around-the-world-in-80-days-26-05",
+      "type": "character",
+      "q": "How did Passepartout feel toward Fix as they sat together on the train?",
+      "choices": ["He was glad to have a friend to talk with", "He felt sorry that Fix seemed so lonely", "He was cold and ready to strangle him", "He was afraid Fix would leave the train"],
+      "answer": 2,
+      "evidence": "ready to strangle his former friend on the slightest provocation"
+    },
+    {
+      "id": "around-the-world-in-80-days-26-06",
+      "type": "sequence",
+      "q": "What happened in the car at eight o'clock on the first night?",
+      "choices": ["The passengers were served a large dinner", "The car was turned into a dormitory of beds", "A conductor came to check every ticket", "The lamps were put out to save the oil"],
+      "answer": 1,
+      "evidence": "the car was transformed into a dormitory"
+    },
+    {
+      "id": "around-the-world-in-80-days-26-07",
+      "type": "vocabulary",
+      "q": "The track went \"plunging into narrow defiles, which seemed to have no outlet.\" What is a defile here?",
+      "choices": ["A narrow pass between mountains", "A wide and grassy open meadow", "A long bridge over a deep, rushing river", "A tall wooden station platform"],
+      "answer": 0,
+      "evidence": "plunging into narrow defiles"
+    },
+    {
+      "id": "around-the-world-in-80-days-26-08",
+      "type": "detail",
+      "q": "What blocked the train's track about twelve o'clock in Nevada?",
+      "choices": ["A huge snowdrift", "A broken bridge", "A herd of buffalo", "A fallen pine tree"],
+      "answer": 2,
+      "evidence": "a troop of ten or twelve thousand head of buffalo encumbered the track"
+    },
+    {
+      "id": "around-the-world-in-80-days-26-09",
+      "type": "character",
+      "q": "How did Phileas Fogg act while the train was stopped by the delay?",
+      "choices": ["He paced the platform and scolded the engineer", "He stayed in his seat and waited calmly", "He wrote angry letters to the railroad company", "He walked ahead to try to find another train"],
+      "answer": 1,
+      "evidence": "remained in his seat, and waited philosophically"
+    },
+    {
+      "id": "around-the-world-in-80-days-26-10",
+      "type": "inference",
+      "q": "Why was the engineer wise not to drive the locomotive straight through the herd?",
+      "choices": ["The animals belonged to a rich rancher nearby", "The law said trains must always stop for cattle", "The train could have been thrown off the track", "The passengers wanted time to watch the herd"],
+      "answer": 2,
+      "evidence": "the train would inevitably have been thrown off the track"
+    },
+    {
+      "id": "around-the-world-in-80-days-26-11",
+      "type": "main-idea",
+      "q": "What is this chapter mostly about?",
+      "choices": ["Fogg and his party crossing the West by train, including a long buffalo delay", "Passepartout and Fix fighting on the train and being put off the train at Reno", "Fogg buying a ranch in Nevada so he can rest from his long journey", "The travellers losing their way in a snowstorm in the Sierra Nevada"],
+      "answer": 0,
+      "evidence": "The procession of buffaloes lasted three full hours"
+    }
+  ]
+}

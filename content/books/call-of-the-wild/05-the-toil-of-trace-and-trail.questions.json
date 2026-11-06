@@ -1,0 +1,166 @@
+{
+  "book": "call-of-the-wild",
+  "chapter": 5,
+  "questions": [
+    {
+      "id": "call-of-the-wild-05-01",
+      "type": "detail",
+      "q": "When the mail team reached Skaguay at the start of the chapter, what was wrong with the dogs?",
+      "choices": ["They were sick from eating the frozen horse-hide", "They were dead tired from months of hard toil", "They had been hurt in a fight with the police dogs", "They were half-frozen after falling through the ice"],
+      "answer": 1,
+      "evidence": "There was nothing the matter with them except that they were dead tired."
+    },
+    {
+      "id": "call-of-the-wild-05-02",
+      "type": "inference",
+      "q": "Why were Buck and his tired mates sold instead of given a long rest?",
+      "choices": ["Their driver wanted to go home and could not take them along", "The Judge had sent a letter asking for Buck to be returned", "Orders said fresh dogs would replace them and they would be sold", "They had been caught stealing from the mail train's food sacks"],
+      "answer": 2,
+      "evidence": "Fresh batches of Hudson Bay dogs were to take the places of those worthless for the trail."
+    },
+    {
+      "id": "call-of-the-wild-05-03",
+      "type": "character",
+      "q": "What did Hal's belt full of cartridges, a gun and a knife show about him?",
+      "choices": ["That he was a skilled hunter who had lived many years in the North", "That he was very young and had no real experience at all", "That he was a police officer sent to guard the mail", "That he was planning to rob the miners in Dawson"],
+      "answer": 1,
+      "evidence": "It advertised his callowness"
+    },
+    {
+      "id": "call-of-the-wild-05-04",
+      "type": "detail",
+      "q": "How were Hal, Charles and Mercedes related?",
+      "choices": ["Mercedes was Charles's wife and Hal's sister", "Mercedes was Hal's wife and Charles's daughter", "Hal and Charles were brothers, and Mercedes was their cousin", "Charles was Hal's father, and Mercedes was Hal's aunt"],
+      "answer": 0,
+      "evidence": "She was Charles's wife and Hal's sister"
+    },
+    {
+      "id": "call-of-the-wild-05-05",
+      "type": "inference",
+      "q": "When Buck first saw his new owners' camp, what did it tell him about them?",
+      "choices": ["That they were careless and messy in everything they did", "That they were rich and had brought every comfort from home", "That they had travelled the trail to Dawson many times before", "That they had already bought a strong team of fresh dogs"],
+      "answer": 0,
+      "evidence": "a slipshod and slovenly affair"
+    },
+    {
+      "id": "call-of-the-wild-05-06",
+      "type": "detail",
+      "q": "What advice did a man from a neighboring tent give about the tent?",
+      "choices": ["To buy a bigger one before leaving Skaguay", "Not to take it along, since it was springtime", "To pack it on the front of the sled, not the back", "To sell it to the miners for extra dog food"],
+      "answer": 1,
+      "evidence": "I wouldn't tote that tent along if I was you"
+    },
+    {
+      "id": "call-of-the-wild-05-07",
+      "type": "detail",
+      "q": "Why couldn't the dogs move the sled at first, even when Hal whipped them?",
+      "choices": ["The dogs were tied to a post that Hal had forgotten about", "The sled's runners had frozen fast to the packed snow", "The sled was stuck in a deep rut in the main street", "Buck had told the team to refuse to pull for Hal"],
+      "answer": 1,
+      "evidence": "The runners are froze fast."
+    },
+    {
+      "id": "call-of-the-wild-05-08",
+      "type": "sequence",
+      "q": "What happened as the top-heavy sled swung around the turn into the main street?",
+      "choices": ["It tipped over, spilling half its load, and the dogs ran on", "It slid into a snowbank and the dogs stopped to rest", "It hit a wagon, and Hal had to pay the owner for it", "It broke in two, and Charles had to build a new one"],
+      "answer": 0,
+      "evidence": "As they swung on the turn the sled went over"
+    },
+    {
+      "id": "call-of-the-wild-05-09",
+      "type": "detail",
+      "q": "What advice did the people of Skaguay give after the sled tipped over?",
+      "choices": ["Wait for summer and travel to Dawson by riverboat", "Half the load and twice the dogs", "Hire an experienced driver to lead the team for them", "Leave Mercedes behind in town"],
+      "answer": 1,
+      "evidence": "Half the load and twice the dogs"
+    },
+    {
+      "id": "call-of-the-wild-05-10",
+      "type": "vocabulary",
+      "q": "\"And so it went, the inexorable elimination of the superfluous.\" What does \"superfluous\" mean here?",
+      "choices": ["Things that were too heavy to lift by hand", "Things that were extra and not needed", "Things that were broken beyond repair", "Things that belonged to other travellers"],
+      "answer": 1,
+      "evidence": "the inexorable elimination of the superfluous"
+    },
+    {
+      "id": "call-of-the-wild-05-11",
+      "type": "inference",
+      "q": "Why was it a mistake for Charles and Hal to use fourteen dogs on one sled?",
+      "choices": ["Fourteen dogs would fight too much to be harnessed in a single line", "The trail to Dawson was too narrow for such a long team to fit", "One sled could not carry enough food for fourteen hungry dogs", "The law in Skaguay allowed only twelve dogs to pull each sled"],
+      "answer": 2,
+      "evidence": "one sled could not carry the food for fourteen dogs"
+    },
+    {
+      "id": "call-of-the-wild-05-12",
+      "type": "character",
+      "q": "How did Buck feel about his new masters as the days went by?",
+      "choices": ["He grew fond of Mercedes because she sometimes fed him extra fish", "He felt that there was no depending on any of the three", "He respected Hal because he drove the team very hard", "He trusted Charles, who was the gentlest of the three"],
+      "answer": 1,
+      "evidence": "there was no depending upon these two men and the woman"
+    },
+    {
+      "id": "call-of-the-wild-05-13",
+      "type": "sequence",
+      "q": "What mistake did Hal make with the dog-food early in the trip?",
+      "choices": ["He left half the fish behind in Skaguay to lighten the sled", "He doubled the ration, so the food ran out too soon", "He traded the fish to a miner for a new revolver", "He let the food get wet, so that it spoiled on the trail"],
+      "answer": 1,
+      "evidence": "He doubled it."
+    },
+    {
+      "id": "call-of-the-wild-05-14",
+      "type": "detail",
+      "q": "What was the one thing the three travellers were never too tired to do?",
+      "choices": ["Quarrel with one another", "Feed and care for the dogs", "Write letters to their family", "Study the map to find the trail"],
+      "answer": 0,
+      "evidence": "To quarrel was the one thing they were never too weary to do."
+    },
+    {
+      "id": "call-of-the-wild-05-15",
+      "type": "character",
+      "q": "Why did Mercedes's riding on the sled make things so much worse?",
+      "choices": ["She kept changing the directions and confused the dogs on the trail", "She added a heavy load to the sled for the weak, starving dogs", "She took up the space that had been saved for the food", "She frightened the dogs by crying loudly all through the day"],
+      "answer": 1,
+      "evidence": "a lusty last straw to the load dragged by the weak and starving animals"
+    },
+    {
+      "id": "call-of-the-wild-05-16",
+      "type": "detail",
+      "q": "When the dog-food gave out, what did Hal trade his revolver for?",
+      "choices": ["A sack of dried salmon from a fishing camp", "A few pounds of frozen horse-hide", "Two fresh dogs from an old woman's village", "A lighter sled"],
+      "answer": 1,
+      "evidence": "a few pounds of frozen horse-hide for the Colt's revolver"
+    },
+    {
+      "id": "call-of-the-wild-05-17",
+      "type": "inference",
+      "q": "Near the end of the trip it was beautiful spring weather. How did the travellers and dogs react to it?",
+      "choices": ["They stopped for a few days to rest and enjoy the warm sunshine", "They were too worn out and miserable to even notice it", "They hurried faster because the warm weather made them cheerful", "They were frightened by the honking geese flying overhead"],
+      "answer": 1,
+      "evidence": "neither dogs nor humans were aware of it"
+    },
+    {
+      "id": "call-of-the-wild-05-18",
+      "type": "detail",
+      "q": "What did John Thornton warn Hal about at White River?",
+      "choices": ["The rotten ice", "A pack of wolves waiting farther down the trail", "The angry miners in Dawson who would steal his dogs", "A storm coming that would bury the trail in snow"],
+      "answer": 0,
+      "evidence": "Thornton's warning to take no more chances on the rotten ice"
+    },
+    {
+      "id": "call-of-the-wild-05-19",
+      "type": "inference",
+      "q": "Why did Buck refuse to get up when Hal ordered the team on?",
+      "choices": ["He was waiting for Thornton to give him something to eat first", "He sensed that disaster waited on the thin ice ahead", "He wanted Sol-leks to take a turn leading the team", "He was angry that Hal had sold his old friend Billee"],
+      "answer": 1,
+      "evidence": "he sensed disaster close at hand, out there ahead on the ice"
+    },
+    {
+      "id": "call-of-the-wild-05-20",
+      "type": "sequence",
+      "q": "What happened after John Thornton cut Buck's traces and the others went on without him?",
+      "choices": ["They reached Dawson safely and sold the rest of the team", "They turned back to Skaguay because the ice was too thin", "The ice broke and the sled, dogs and people disappeared", "They camped a mile away and came back the next morning"],
+      "answer": 2,
+      "evidence": "The bottom had dropped out of the trail."
+    }
+  ]
+}

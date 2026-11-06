@@ -1,0 +1,253 @@
+{
+  "book": "kidnapped",
+  "chapter": 3,
+  "questions": [
+    {
+      "id": "kidnapped-03-01",
+      "type": "detail",
+      "q": "What was laid on the kitchen table for supper when David came in?",
+      "choices": [
+        "Bread, cheese and a big jug of fresh warm milk",
+        "A roast chicken and a bottle of wine",
+        "Porridge, a horn spoon and a cup of small beer",
+        "Oatcakes, herring and a pot of tea"
+      ],
+      "answer": 2,
+      "evidence": "a bowl of porridge, a horn spoon, and a cup of small beer"
+    },
+    {
+      "id": "kidnapped-03-02",
+      "type": "detail",
+      "q": "Besides a few dishes, what else was in the bare kitchen?",
+      "choices": [
+        "A fine clock and a painting of the old family laird",
+        "Shelves full of books and a writing desk",
+        "A spinning wheel and a basket of wool",
+        "Lockfast chests and a padlocked corner cupboard"
+      ],
+      "answer": 3,
+      "evidence": "lockfast chests arranged along the wall and a corner cupboard with a padlock"
+    },
+    {
+      "id": "kidnapped-03-03",
+      "type": "character",
+      "q": "What troubled David most about the way the man looked at him?",
+      "choices": [
+        "He kept laughing at David's dusty clothes",
+        "He stared angrily at David's letter",
+        "He would not stop staring at his face",
+        "He would not look him fairly in the face"
+      ],
+      "answer": 3,
+      "evidence": "he would neither take his eyes away from me nor look me fairly in the face"
+    },
+    {
+      "id": "kidnapped-03-04",
+      "type": "detail",
+      "q": "Who did the man in the nightcap turn out to be?",
+      "choices": [
+        "The session clerk of Cramond parish",
+        "David's uncle, his father's brother",
+        "An old servant left to mind the house",
+        "A cousin of Mr. Campbell the minister"
+      ],
+      "answer": 1,
+      "evidence": "I'm your born uncle, Davie, my man"
+    },
+    {
+      "id": "kidnapped-03-05",
+      "type": "vocabulary",
+      "q": "Uncle Ebenezer tells David to \"sit down and fill your kyte.\" What is a \"kyte\"?",
+      "choices": [
+        "Pipe",
+        "Pockets",
+        "Cup",
+        "Stomach"
+      ],
+      "answer": 3,
+      "evidence": "sit down and fill your kyte"
+    },
+    {
+      "id": "kidnapped-03-06",
+      "type": "character",
+      "q": "When Ebenezer asks what brought him, how does David answer about hoping for help?",
+      "choices": [
+        "He begs his uncle for money to go home",
+        "He says he expects to be made the laird",
+        "He admits some hope but says he is no beggar",
+        "He says he only came to see the house"
+      ],
+      "answer": 2,
+      "evidence": "But I am no beggar"
+    },
+    {
+      "id": "kidnapped-03-07",
+      "type": "detail",
+      "q": "What did Uncle Ebenezer do with the porridge after David had eaten some?",
+      "choices": [
+        "He saved it in a cupboard for the next morning",
+        "He took the stool and spoon and ate it himself",
+        "He gave it to a dog that lived in the kitchen",
+        "He threw it in the fire because it had gone cold"
+      ],
+      "answer": 1,
+      "evidence": "as soon as he had ousted me from the stool and spoon"
+    },
+    {
+      "id": "kidnapped-03-08",
+      "type": "detail",
+      "q": "How long ago had David's father died?",
+      "choices": [
+        "Three weeks",
+        "Three months",
+        "Ten days",
+        "One year"
+      ],
+      "answer": 0,
+      "evidence": "Three weeks, sir"
+    },
+    {
+      "id": "kidnapped-03-09",
+      "type": "inference",
+      "q": "Ebenezer seemed \"singularly satisfied\" to learn that David's father never spoke of him or of Shaws. What does this suggest?",
+      "choices": [
+        "Ebenezer thought David was lying to win his favour",
+        "Ebenezer was hurt and wanted David to leave at once",
+        "Ebenezer was proud of how quiet his brother had been",
+        "Ebenezer was glad David knew little about the family"
+      ],
+      "answer": 3,
+      "evidence": "he seemed singularly satisfied"
+    },
+    {
+      "id": "kidnapped-03-10",
+      "type": "detail",
+      "q": "Why did Uncle Ebenezer refuse to give David a light for bed?",
+      "choices": [
+        "He said the moon was bright enough",
+        "He said boys should sleep in the dark",
+        "He said he was afraid of fires",
+        "He said candles cost far too much"
+      ],
+      "answer": 2,
+      "evidence": "I'm unco feared of fires"
+    },
+    {
+      "id": "kidnapped-03-11",
+      "type": "sequence",
+      "q": "What happened right after Uncle Ebenezer said good-night at the bedroom door?",
+      "choices": [
+        "He sat outside the door all night",
+        "He locked David in from the outside",
+        "He brought David a candle after all",
+        "He came back with a warm blanket"
+      ],
+      "answer": 1,
+      "evidence": "I heard him lock me in from the outside"
+    },
+    {
+      "id": "kidnapped-03-12",
+      "type": "detail",
+      "q": "Where did David sleep on his first night at Shaws?",
+      "choices": [
+        "On the floor beside the big bedstead, in his plaid",
+        "On a bench by the kitchen fire with his bundle",
+        "In the damp bed under a heap of old woollen blankets",
+        "In a chair by the window looking at the moon"
+      ],
+      "answer": 0,
+      "evidence": "I lay down upon the floor under lee of the big bedstead"
+    },
+    {
+      "id": "kidnapped-03-13",
+      "type": "detail",
+      "q": "How did Uncle Ebenezer share the one cup of beer at breakfast?",
+      "choices": [
+        "He poured an exact half into another cup",
+        "He filled a second cup up from the barrel",
+        "He let David have the whole cup himself",
+        "He drank it all and gave David water"
+      ],
+      "answer": 0,
+      "evidence": "he poured an accurate half from one cup to the other"
+    },
+    {
+      "id": "kidnapped-03-14",
+      "type": "character",
+      "q": "What does David decide about his uncle after the beer is shared?",
+      "choices": [
+        "He is a drunkard who hides his ale",
+        "He is poor and cannot afford any food",
+        "He is a miser, but a thorough one",
+        "He is a generous and kindly host"
+      ],
+      "answer": 2,
+      "evidence": "if my uncle was certainly a miser"
+    },
+    {
+      "id": "kidnapped-03-15",
+      "type": "detail",
+      "q": "What did Uncle Ebenezer ask David not to do while he thought about David's future?",
+      "choices": [
+        "Walk in the garden or near the stairs",
+        "Go down to the village or speak to Jennet",
+        "Open the chests or the padlocked cupboard",
+        "Send any letters or messages to anybody"
+      ],
+      "answer": 3,
+      "evidence": "Nae letters; nae messages; no kind of word to onybody"
+    },
+    {
+      "id": "kidnapped-03-16",
+      "type": "detail",
+      "q": "How did Uncle Ebenezer react when David gave him Jennet Clouston's message?",
+      "choices": [
+        "He said he would pay her money to stop cursing his house",
+        "He called her a witch and wanted to see the session clerk",
+        "He laughed and said she was a harmless old neighbour",
+        "He turned pale and hid himself in the upstairs rooms"
+      ],
+      "answer": 1,
+      "evidence": "A witch--a proclaimed witch! I'll aff and see the session clerk"
+    },
+    {
+      "id": "kidnapped-03-17",
+      "type": "character",
+      "q": "Why did Uncle Ebenezer decide not to go out after all?",
+      "choices": [
+        "He saw Jennet Clouston coming toward the house",
+        "He found that his old blue coat was too worn to wear",
+        "He suddenly remembered that the session clerk was away",
+        "David said locking him out would end their friendship"
+      ],
+      "answer": 3,
+      "evidence": "If you lock me out"
+    },
+    {
+      "id": "kidnapped-03-18",
+      "type": "inference",
+      "q": "Why does David think Uncle Ebenezer works so hard to keep him at Shaws?",
+      "choices": [
+        "He cannot tell; his uncle seems to dislike him yet wants him to stay",
+        "He knows his uncle means him to marry a rich neighbour's daughter now",
+        "He believes his uncle needs a servant to help with the house",
+        "He thinks his uncle is lonely and wants a son to share his meals"
+      ],
+      "answer": 0,
+      "evidence": "I can make nothing out of this"
+    },
+    {
+      "id": "kidnapped-03-19",
+      "type": "main-idea",
+      "q": "What is this chapter mostly about?",
+      "choices": [
+        "David meeting his strange, miserly uncle and agreeing to stay awhile",
+        "David returning to Essendean after his uncle sends him away",
+        "David and his uncle visiting the village to confront Jennet",
+        "David exploring the house and finding a secret room full of gold"
+      ],
+      "answer": 0,
+      "evidence": "I'll stay awhile"
+    }
+  ]
+}

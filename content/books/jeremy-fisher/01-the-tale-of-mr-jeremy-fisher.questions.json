@@ -1,0 +1,70 @@
+{
+  "book": "jeremy-fisher",
+  "chapter": 1,
+  "questions": [
+    {
+      "id": "jeremy-fisher-01-01",
+      "type": "detail",
+      "q": "Where did Mr. Jeremy Fisher live?",
+      "choices": ["In a little damp house at the edge of a pond", "In a hollow log beside a deep river", "In a tidy hole under a big fir-tree", "In a round green boat on the lake"],
+      "answer": 0,
+      "evidence": "he lived in a little damp house amongst the buttercups at the edge of a pond"
+    },
+    {
+      "id": "jeremy-fisher-01-02",
+      "type": "detail",
+      "q": "What did Mr. Jeremy want to catch for his dinner?",
+      "choices": ["A big trout", "A dish of minnows", "Some water-beetles", "A fat stickleback"],
+      "answer": 1,
+      "evidence": "catch a dish of minnows for my dinner"
+    },
+    {
+      "id": "jeremy-fisher-01-03",
+      "type": "detail",
+      "q": "What was Mr. Jeremy's boat like?",
+      "choices": ["Long and brown, made from a log", "Round and green, like a lily-leaf", "Small and white, made of paper", "Flat and yellow, like a buttercup"],
+      "answer": 1,
+      "evidence": "The boat was round and green, and very like the other lily-leaves."
+    },
+    {
+      "id": "jeremy-fisher-01-04",
+      "type": "detail",
+      "q": "What did Mr. Jeremy eat for lunch?",
+      "choices": ["A salad from a string bag", "A roasted grasshopper", "A butterfly sandwich", "Some fresh minnows"],
+      "answer": 2,
+      "evidence": "I will eat a butterfly sandwich"
+    },
+    {
+      "id": "jeremy-fisher-01-05",
+      "type": "sequence",
+      "q": "What did Mr. Jeremy catch when he thought he had a minnow?",
+      "choices": ["A big trout with sharp teeth", "Jack Sharp the stickleback", "An old shoe from the mud", "A great big water-beetle"],
+      "answer": 1,
+      "evidence": "Mr. Jeremy landed little Jack Sharp the stickleback, covered with spines"
+    },
+    {
+      "id": "jeremy-fisher-01-06",
+      "type": "inference",
+      "q": "Why did the trout spit Mr. Jeremy out again?",
+      "choices": ["It did not like the taste of his macintosh", "A big pike came and scared it away", "Mr. Jeremy hit it with his reed pole", "It wanted to eat the little minnows"],
+      "answer": 0,
+      "evidence": "the trout was so displeased with the taste of the macintosh"
+    },
+    {
+      "id": "jeremy-fisher-01-07",
+      "type": "character",
+      "q": "How did Mr. Jeremy feel about fishing after the trout?",
+      "choices": ["He wanted to go back the very next day", "He would never dare to go fishing again", "He wanted to buy a new rod and basket", "He thought fishing was more fun than ever"],
+      "answer": 1,
+      "evidence": "I am sure I should never have dared to go fishing again"
+    },
+    {
+      "id": "jeremy-fisher-01-08",
+      "type": "main-idea",
+      "q": "What is this story mostly about?",
+      "choices": ["A frog who builds a new house by the pond", "A tortoise who brings a salad to dinner", "A frog whose fishing trip goes very wrong", "A fish who laughs at all of his friends"],
+      "answer": 2,
+      "evidence": "I have lost my rod and basket"
+    }
+  ]
+}

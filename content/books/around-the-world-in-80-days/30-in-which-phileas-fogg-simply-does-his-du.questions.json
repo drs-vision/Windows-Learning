@@ -1,0 +1,134 @@
+{
+  "book": "around-the-world-in-80-days",
+  "chapter": 30,
+  "questions": [
+    {
+      "id": "around-the-world-in-80-days-30-01",
+      "type": "detail",
+      "q": "How many passengers, including Passepartout, had disappeared after the attack?",
+      "choices": ["Two", "Three", "Five", "Ten"],
+      "answer": 1,
+      "evidence": "Three passengers including Passepartout had disappeared."
+    },
+    {
+      "id": "around-the-world-in-80-days-30-02",
+      "type": "detail",
+      "q": "How had Phileas Fogg come through the fight?",
+      "choices": ["He had hurt his arm very badly", "He had not received a scratch", "He had a deep cut on his head", "He had twisted his ankle"],
+      "answer": 1,
+      "evidence": "had not received a scratch"
+    },
+    {
+      "id": "around-the-world-in-80-days-30-03",
+      "type": "character",
+      "q": "What did Mr. Fogg tell Aouda he would do about Passepartout?",
+      "choices": ["Wait at the station until the soldiers found him", "Find him, living or dead", "Send a telegraph to the police in Omaha", "Offer a reward to anyone who brought him back"],
+      "answer": 1,
+      "evidence": "I will find him, living or dead"
+    },
+    {
+      "id": "around-the-world-in-80-days-30-04",
+      "type": "inference",
+      "q": "Why did going after Passepartout mean Fogg was probably giving up his bet?",
+      "choices": ["The soldiers would charge him all his money", "A day's delay would make him miss the New York steamer", "He would have to give his carpet-bag to the captain", "The rules of the bet said he must never leave the train"],
+      "answer": 1,
+      "evidence": "The delay of a single day would make him lose the steamer at New York"
+    },
+    {
+      "id": "around-the-world-in-80-days-30-05",
+      "type": "detail",
+      "q": "Why did the captain at first not want to chase the Sioux?",
+      "choices": ["His soldiers had no horses or guns that day", "He could not leave the fort unprotected", "He did not believe anyone was really missing", "He was waiting for orders from Washington"],
+      "answer": 1,
+      "evidence": "I cannot leave the fort unprotected"
+    },
+    {
+      "id": "around-the-world-in-80-days-30-06",
+      "type": "sequence",
+      "q": "What changed the captain's mind?",
+      "choices": ["Aouda offered him all the money in the carpet-bag", "Fogg said he would go alone, and the captain was touched", "Fix showed the captain his police warrant", "A telegram arrived ordering him to send help"],
+      "answer": 1,
+      "evidence": "touched in spite of himself"
+    },
+    {
+      "id": "around-the-world-in-80-days-30-07",
+      "type": "detail",
+      "q": "What did Mr. Fogg ask Fix to do while he was gone?",
+      "choices": ["Go along to guard the sergeant's men", "Stay behind at the station with Aouda", "Ride ahead to the next station", "Watch over the wounded colonel"],
+      "answer": 1,
+      "evidence": "you will remain with Aouda"
+    },
+    {
+      "id": "around-the-world-in-80-days-30-08",
+      "type": "detail",
+      "q": "What did Mr. Fogg promise the soldiers if they saved the prisoners?",
+      "choices": ["A free trip to England on his steamer", "Five thousand dollars to divide among them", "A silver medal from the Queen for every man", "A great dinner at the best hotel in Omaha"],
+      "answer": 1,
+      "evidence": "I will divide five thousand dollars among you"
+    },
+    {
+      "id": "around-the-world-in-80-days-30-09",
+      "type": "character",
+      "q": "How did Fix feel soon after Fogg left?",
+      "choices": ["Relieved that he could finally rest", "Angry at himself for letting Fogg go alone", "Proud that he had kept his promise to Aouda", "Happy because the reward would soon be his"],
+      "answer": 1,
+      "evidence": "I have been an idiot!"
+    },
+    {
+      "id": "around-the-world-in-80-days-30-10",
+      "type": "vocabulary",
+      "q": "Under new snow, every footprint \"would be effaced.\" What does effaced mean?",
+      "choices": ["Wiped out", "Made deeper", "Frozen hard", "Made easier to see"],
+      "answer": 0,
+      "evidence": "every imprint would be effaced"
+    },
+    {
+      "id": "around-the-world-in-80-days-30-11",
+      "type": "detail",
+      "q": "What came out of the mist from the east at about two o'clock?",
+      "choices": ["A rescue train sent from Omaha", "The runaway locomotive, coming back", "A wagon carrying more soldiers", "Fogg leading the three rescued travellers"],
+      "answer": 1,
+      "evidence": "The locomotive, which was slowly approaching with deafening whistles"
+    },
+    {
+      "id": "around-the-world-in-80-days-30-12",
+      "type": "character",
+      "q": "What did Aouda decide when the conductor said the train would start at once?",
+      "choices": ["She would go on and wait for Fogg in New York", "She would not go, but would stay and wait", "She would beg the colonel to make it wait", "She would ride back to the fort with Fix"],
+      "answer": 1,
+      "evidence": "\"I will not go,\" said Aouda."
+    },
+    {
+      "id": "around-the-world-in-80-days-30-13",
+      "type": "inference",
+      "q": "Fix had planned to leave, but did not get on the train. What does this show?",
+      "choices": ["He was too badly wounded to walk", "He still wished to struggle on to the end", "He had lost his ticket during the attack", "He was afraid the Sioux would attack again"],
+      "answer": 1,
+      "evidence": "He wished to struggle on to the end."
+    },
+    {
+      "id": "around-the-world-in-80-days-30-14",
+      "type": "sequence",
+      "q": "What did Aouda do through the long, cold night?",
+      "choices": ["She slept in the waiting-room beside the stove", "She wandered at the edge of the plains, full of worry", "She sat talking with Fix on the station bench", "She wrote a letter to Mr. Fogg's friends in London"],
+      "answer": 1,
+      "evidence": "wandered about on the verge of the plains"
+    },
+    {
+      "id": "around-the-world-in-80-days-30-15",
+      "type": "detail",
+      "q": "What had Passepartout and the other prisoners begun to do just before the soldiers arrived?",
+      "choices": ["Struggle with their captors", "Hide in a deep snowy ravine", "Light a fire to send a signal", "Run back toward the railroad"],
+      "answer": 0,
+      "evidence": "had begun to struggle with their captors"
+    },
+    {
+      "id": "around-the-world-in-80-days-30-16",
+      "type": "main-idea",
+      "q": "Which title best fits what this chapter is mostly about?",
+      "choices": ["Fogg gives up his time and money to rescue his servant", "Fix finally arrests Fogg at a lonely fort in the snow", "Aouda goes on alone to New York to wait for her friends", "Colonel Proctor and Fogg settle their quarrel at last"],
+      "answer": 0,
+      "evidence": "He had sacrificed his fortune, and was now risking his life, all without hesitation, from duty"
+    }
+  ]
+}

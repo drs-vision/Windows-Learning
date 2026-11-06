@@ -1,0 +1,123 @@
+{
+  "book": "ginger-and-pickles",
+  "chapter": 1,
+  "questions": [
+    {
+      "id": "ginger-and-pickles-01-01",
+      "type": "detail",
+      "q": "What kind of animals were Ginger and Pickles?",
+      "choices": [
+        "A yellow tom-cat and a terrier",
+        "A brown rabbit and a mouse",
+        "A tabby cat and a collie dog",
+        "A gray rat and a dormouse"
+      ],
+      "answer": 0,
+      "evidence": "Ginger was a yellow tom-cat, and Pickles was a terrier."
+    },
+    {
+      "id": "ginger-and-pickles-01-02",
+      "type": "inference",
+      "q": "Why did Ginger ask Pickles to serve the mice?",
+      "choices": [
+        "The mice made his mouth water",
+        "Pickles was much better at sums",
+        "The mice only liked to talk to dogs",
+        "Ginger was always too busy eating"
+      ],
+      "answer": 0,
+      "evidence": "because he said it made his mouth water"
+    },
+    {
+      "id": "ginger-and-pickles-01-03",
+      "type": "vocabulary",
+      "q": "In the story, what does buying on \"credit\" mean?",
+      "choices": [
+        "Paying twice as much money",
+        "Saying you will pay another time",
+        "Getting something for half price",
+        "Trading one thing for another"
+      ],
+      "answer": 1,
+      "evidence": "she says she will pay another time"
+    },
+    {
+      "id": "ginger-and-pickles-01-04",
+      "type": "detail",
+      "q": "Why was there never any money in the till?",
+      "choices": [
+        "Robbers came and stole it",
+        "The customers never paid",
+        "Ginger spent it all on fish",
+        "Nobody came to the shop"
+      ],
+      "answer": 1,
+      "evidence": "they never paid for as much as a pennyworth of peppermints"
+    },
+    {
+      "id": "ginger-and-pickles-01-05",
+      "type": "detail",
+      "q": "What could Pickles not buy because there was no money?",
+      "choices": [
+        "A new collar",
+        "A dog licence",
+        "A bag of biscuits",
+        "A warm coat"
+      ],
+      "answer": 1,
+      "evidence": "Pickles was unable to buy a dog licence"
+    },
+    {
+      "id": "ginger-and-pickles-01-06",
+      "type": "detail",
+      "q": "Who was the policeman who came into the shop?",
+      "choices": [
+        "A real live policeman",
+        "A German doll",
+        "Samuel Whiskers in a helmet",
+        "Kep the Collie dog"
+      ],
+      "answer": 1,
+      "evidence": "he's only a German doll!"
+    },
+    {
+      "id": "ginger-and-pickles-01-07",
+      "type": "sequence",
+      "q": "What did Ginger and Pickles do after they opened the envelope?",
+      "choices": [
+        "Closed up the shop and left",
+        "Paid all the bills at once",
+        "Sent the bills to everybody again",
+        "Gave the shop to Tabitha Twitchit"
+      ],
+      "answer": 0,
+      "evidence": "let us close the shop"
+    },
+    {
+      "id": "ginger-and-pickles-01-08",
+      "type": "detail",
+      "q": "Who opened the shop again at the end of the story?",
+      "choices": [
+        "Tabitha Twitchit",
+        "Mr. John Dormouse",
+        "Sally Henny Penny",
+        "Timothy Baker"
+      ],
+      "answer": 2,
+      "evidence": "Sally Henny Penny sent out a printed poster to say that she was going to re-open the shop"
+    },
+    {
+      "id": "ginger-and-pickles-01-09",
+      "type": "main-idea",
+      "q": "What is this story mostly about?",
+      "choices": [
+        "A shop that closes because nobody pays for anything",
+        "A cat and a dog who fight over a bar of soap",
+        "A policeman who catches robbers in the village",
+        "A hen who sells candles and peppermints to mice"
+      ],
+      "answer": 0,
+      "evidence": "As there was always no money, Ginger and Pickles were obliged to eat their own goods."
+    }
+  ]
+}

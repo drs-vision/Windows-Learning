@@ -1,0 +1,158 @@
+{
+  "book": "kidnapped",
+  "chapter": 26,
+  "questions": [
+    {
+      "id": "kidnapped-26-01",
+      "type": "detail",
+      "q": "Why did Alan refuse \"Bonnie House of Airlie\" as the whistled signal?",
+      "choices": ["Any ploughman might whistle it by accident", "It was a Whig song that he could never abide", "David could never whistle it in tune", "It was too long to whistle in the dark"],
+      "answer": 0,
+      "evidence": "any ploughman might whistle it by accident"
+    },
+    {
+      "id": "kidnapped-26-02",
+      "type": "detail",
+      "q": "Where was Alan to wait after dark until he heard David whistle?",
+      "choices": ["In the fields by the roadside near Newhalls", "In the den down on the sea-shore near Carriden", "Behind the town-hall of Queensferry", "In the little wood above Limekilns"],
+      "answer": 0,
+      "evidence": "he should lie in the fields by the roadside near to Newhalls"
+    },
+    {
+      "id": "kidnapped-26-03",
+      "type": "character",
+      "q": "As the morning went on in Queensferry, why did David grow more and more worried?",
+      "choices": ["He had no proof of his rights, or even of who he was", "He had seen soldiers searching every house on the street", "He feared his uncle was waiting for him at the harbour", "He had lost the paper with Mr. Rankeillor's address"],
+      "answer": 0,
+      "evidence": "no clear proof of my rights, nor so much as of my own identity"
+    },
+    {
+      "id": "kidnapped-26-04",
+      "type": "inference",
+      "q": "Why could David not bring himself to ask anyone for Mr. Rankeillor's house?",
+      "choices": ["He was ashamed of his rags and thought they would laugh", "He did not speak the Lowland way of the townspeople", "Alan had warned him to speak to no one in the town", "He was afraid the lawyer was his uncle's close friend"],
+      "answer": 0,
+      "evidence": "I thought shame even to speak with them in such a pickle of rags and dirt"
+    },
+    {
+      "id": "kidnapped-26-05",
+      "type": "detail",
+      "q": "How did David finally meet Mr. Rankeillor?",
+      "choices": ["The lawyer noticed him outside his own house and asked his business", "A kind lass from the harbour led him straight to the lawyer's office", "He knocked at a dozen doors until a servant fetched the lawyer", "Mr. Campbell the minister happened to be passing and took him there"],
+      "answer": 0,
+      "evidence": "he came straight up to me and asked me what I did"
+    },
+    {
+      "id": "kidnapped-26-06",
+      "type": "vocabulary",
+      "q": "The house had walls \"new-harled.\" Using the note in the chapter, what does that mean?",
+      "choices": ["Newly rough-cast", "Freshly painted white", "Recently built of brick", "Covered in climbing ivy"],
+      "answer": 0,
+      "evidence": "Newly rough-cast"
+    },
+    {
+      "id": "kidnapped-26-07",
+      "type": "inference",
+      "q": "Why did Mr. Rankeillor speak a line of Latin to David early in their talk?",
+      "choices": ["To test whether David was really an educated young man", "To show off to his clerk, who was listening at the door", "To give David a secret warning that his uncle was nearby", "Because he had forgotten how to say it plainly in English"],
+      "answer": 0,
+      "evidence": "his scrap of Latin had been set to test me"
+    },
+    {
+      "id": "kidnapped-26-08",
+      "type": "detail",
+      "q": "Where did David say his father worked?",
+      "choices": ["As the schoolmaster of Essendean", "As minister of a church in Angus", "As a lawyer in the town of Edinburgh", "As a farmer near the House of Shaws"],
+      "answer": 0,
+      "evidence": "My father was Alexander Balfour, schoolmaster of that place"
+    },
+    {
+      "id": "kidnapped-26-09",
+      "type": "detail",
+      "q": "Who did David say held the papers that could prove who he was?",
+      "choices": ["Mr. Campbell, the minister", "His uncle, Ebenezer Balfour", "Captain Hoseason of the brig", "Mr. Rankeillor's clerk"],
+      "answer": 0,
+      "evidence": "they are in the hands of Mr. Campbell, the minister"
+    },
+    {
+      "id": "kidnapped-26-10",
+      "type": "vocabulary",
+      "q": "Rankeillor points out \"a considerable hiatus\" of nearly two months between the shipwreck and today. What is a \"hiatus\" here?",
+      "choices": ["A gap of time that is not accounted for", "A large sum of money that has been lost", "A legal paper that has to be signed", "A long voyage across a stormy sea"],
+      "answer": 0,
+      "evidence": "Here is a considerable hiatus, Mr. Balfour, of near upon two months"
+    },
+    {
+      "id": "kidnapped-26-11",
+      "type": "character",
+      "q": "Why did David at first hold back from telling Rankeillor his story?",
+      "choices": ["He had suffered from trusting before, and thought the lawyer was his uncle's man", "He was too hungry and tired to talk at all until he had eaten a good proper meal", "He was afraid Rankeillor would send at once for the soldiers in the town", "He had promised Alan never to tell anyone anything about the journey"],
+      "answer": 0,
+      "evidence": "I have already suffered by my trustfulness"
+    },
+    {
+      "id": "kidnapped-26-12",
+      "type": "detail",
+      "q": "What did Uncle Ebenezer claim had happened to David when Mr. Campbell came asking for him?",
+      "choices": ["He had gone to Europe to finish his education", "He had joined the army and gone to fight in France", "He had drowned in the sea off the Isle of Mull", "He had gone back home to Essendean to live"],
+      "answer": 0,
+      "evidence": "you had started for the continent of Europe, intending to fulfil your education"
+    },
+    {
+      "id": "kidnapped-26-13",
+      "type": "sequence",
+      "q": "What story did Captain Hoseason bring, which made everyone stop searching?",
+      "choices": ["That David had drowned", "That David was in Leyden", "That David had run away", "That David was in prison"],
+      "answer": 0,
+      "evidence": "comes Captain Hoseason with the story of your drowning"
+    },
+    {
+      "id": "kidnapped-26-14",
+      "type": "character",
+      "q": "How did Rankeillor listen while David told his whole story?",
+      "choices": ["With his eyes closed, yet hearing and remembering every word", "Writing every single detail down quickly in his paper book", "Walking up and down the room and asking many questions", "Interrupting often to argue about the law with David"],
+      "answer": 0,
+      "evidence": "he listening with his spectacles thrust up and his eyes closed"
+    },
+    {
+      "id": "kidnapped-26-15",
+      "type": "inference",
+      "q": "Why did Rankeillor pretend not to hear Alan's name and call him \"Mr. Thomson\"?",
+      "choices": ["As a lawyer he wished not to know officially about a wanted man", "He was truly hard of hearing and could not catch Highland names", "He had once known a real Mr. Thomson who looked much like Alan", "He wanted to write the story down later and needed simpler names"],
+      "answer": 0,
+      "evidence": "he must have heard the name all too clearly"
+    },
+    {
+      "id": "kidnapped-26-16",
+      "type": "detail",
+      "q": "What name did David give to Cluny in his story?",
+      "choices": ["Mr. Jameson, a Highland chief", "Mr. Glen, a gentleman of Appin", "Mr. Thomson's kinsman", "Mr. Stewart of the Cage"],
+      "answer": 0,
+      "evidence": "Mr. Jameson, a Highland chief"
+    },
+    {
+      "id": "kidnapped-26-17",
+      "type": "character",
+      "q": "What did Rankeillor think of David's loyalty to \"Mr. Thomson\"?",
+      "choices": ["He was right to stick by him, since Alan had stuck by David", "He was foolish to trust a Highlander who was wanted for murder", "He ought to give Alan up to the law to clear his own name", "He should send Alan away at once and never see him again"],
+      "answer": 0,
+      "evidence": "you are doubtless quite right to adhere to him; indubitably, he adhered to you"
+    },
+    {
+      "id": "kidnapped-26-18",
+      "type": "sequence",
+      "q": "What did Rankeillor do at the end of the chapter when he saw David look at his rags?",
+      "choices": ["Had a plate laid for dinner and gave him soap and his son's clothes", "Gave him a few shillings and sent him out to buy new clothes in the town", "Told him to wait in the dusty chamber while he fetched a tailor", "Sent him off to the inn by the harbour to wash and rest a while"],
+      "answer": 0,
+      "evidence": "laid out some clothes that belonged to his son"
+    },
+    {
+      "id": "kidnapped-26-19",
+      "type": "main-idea",
+      "q": "What is this chapter mostly about?",
+      "choices": ["David finds Mr. Rankeillor and wins his trust and help", "David is turned away by the lawyer and must go back to Alan", "David meets his uncle in Queensferry and has him arrested", "David proves who he is by showing Mr. Campbell's letters"],
+      "answer": 0,
+      "evidence": "you are near the end of your troubles"
+    }
+  ]
+}

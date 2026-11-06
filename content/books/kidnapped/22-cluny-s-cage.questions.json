@@ -1,0 +1,158 @@
+{
+  "book": "kidnapped",
+  "chapter": 22,
+  "questions": [
+    {
+      "id": "kidnapped-22-01",
+      "type": "detail",
+      "q": "How did the guides and travellers climb up the steep wood to reach Cluny's Cage?",
+      "choices": ["By using the tree trunks like the rounds of a ladder", "By following a hidden staircase cut into the rock", "By pulling themselves up a rope let down from the top", "By walking up a winding path along a mountain stream"],
+      "answer": 0,
+      "evidence": "their trunks were like the rounds of a ladder, by which we mounted"
+    },
+    {
+      "id": "kidnapped-22-02",
+      "type": "detail",
+      "q": "What served as the living centre-beam of the Cage's roof?",
+      "choices": ["A tree growing out from the hillside", "An old ship's mast carried up the hill", "A long slab of stone from the cliff face", "Two crossed pine logs tied with rope"],
+      "answer": 0,
+      "evidence": "A tree, which grew out from the hillside, was the living centre-beam of the roof"
+    },
+    {
+      "id": "kidnapped-22-03",
+      "type": "inference",
+      "q": "Why was the fireplace built against a projection of the cliff?",
+      "choices": ["So the smoke, rising against rock of the same colour, would not be seen", "So the heat stored in the rock would keep the Cage warm all through the winter", "So the cooking could be done without any danger of fire to the walls", "So water running down the cliff could be caught for the cooking"],
+      "answer": 0,
+      "evidence": "readily escaped notice from below"
+    },
+    {
+      "id": "kidnapped-22-04",
+      "type": "detail",
+      "q": "How did Cluny stay safe for so long while others fled or were taken?",
+      "choices": ["He moved between hiding-places on his scouts' reports", "He paid the soldiers to leave his part of the country alone", "He disguised himself as a poor shepherd and lived in the open", "He hid in one deep cave that no soldier ever found"],
+      "answer": 0,
+      "evidence": "he moved from one to another as the soldiers drew near or moved away"
+    },
+    {
+      "id": "kidnapped-22-05",
+      "type": "character",
+      "q": "How did Cluny look and act when he greeted Alan and David?",
+      "choices": ["Plainly dressed in a nightcap, but with the manners of a king", "Dressed in fine clothes and a sword, but rude and suspicious", "Ragged and dirty, and too frightened to rise from his seat", "Wearing a soldier's red coat, and laughing loudly and rudely at them"],
+      "answer": 0,
+      "evidence": "For all that he had the manners of a king"
+    },
+    {
+      "id": "kidnapped-22-06",
+      "type": "detail",
+      "q": "What toast did Cluny give when they all drank together?",
+      "choices": ["The Restoration", "King George", "The Laird of Shaws", "Clan Macpherson"],
+      "answer": 0,
+      "evidence": "here's a toast to ye: The Restoration!"
+    },
+    {
+      "id": "kidnapped-22-07",
+      "type": "vocabulary",
+      "q": "Cluny says, \"My life is a bit driegh,\" and explains he sees little company and twirls his thumbs. What does \"driegh\" mean?",
+      "choices": ["Dull and tiresome", "Dangerous and wild", "Rich and comfortable", "Short and happy"],
+      "answer": 0,
+      "evidence": "I see little company, and sit and twirl my thumbs"
+    },
+    {
+      "id": "kidnapped-22-08",
+      "type": "character",
+      "q": "What kind of habits had Cluny developed in his long hiding?",
+      "choices": ["Precise habits, like an old maid, with his own seat no one else could use", "Careless habits, leaving his things scattered all over the Cage floor", "Brave habits, going out alone each night to spy on the soldiers", "Lazy habits, sleeping most of the day and letting his gillies decide everything"],
+      "answer": 0,
+      "evidence": "Cluny had grown to have all manner of precise habits, like those of an old maid"
+    },
+    {
+      "id": "kidnapped-22-09",
+      "type": "detail",
+      "q": "Who shaved Cluny each morning and brought him the news of the country?",
+      "choices": ["A gillie who was a barber", "His wife, who came by night", "Alan Breck Stewart", "A scout from the south"],
+      "answer": 0,
+      "evidence": "one of them, who was a barber, came and shaved him"
+    },
+    {
+      "id": "kidnapped-22-10",
+      "type": "inference",
+      "q": "What does it show that men of his clan paid money and laid aside revenge at Cluny's word?",
+      "choices": ["Even hunted and in hiding, he still ruled his clan as their chief", "His clan was afraid that he would betray them to the red-coats", "The courts of Scotland had ordered his clan to obey him", "The men wanted his money and hoped to be paid well for all of their help"],
+      "answer": 0,
+      "evidence": "he still exercised a patriarchal justice in his clan"
+    },
+    {
+      "id": "kidnapped-22-11",
+      "type": "detail",
+      "q": "According to Cluny's stories, who had once stayed in the Cage before?",
+      "choices": ["Prince Charlie", "King George", "Colin Campbell", "Alan's old father"],
+      "answer": 0,
+      "evidence": "Cluny entertained us with stories of Prince Charlie's stay in the Cage"
+    },
+    {
+      "id": "kidnapped-22-12",
+      "type": "character",
+      "q": "Why did David refuse to play cards after the meal?",
+      "choices": ["His father had taught him gambling was wrong, and he had promised", "He had no money of his own left and did not want to borrow", "He did not know any of the games that Cluny wanted to play", "He thought that Cluny was a cheat and would take every penny of his money"],
+      "answer": 0,
+      "evidence": "it was a promise to my father"
+    },
+    {
+      "id": "kidnapped-22-13",
+      "type": "sequence",
+      "q": "What did Alan do right after Cluny called David's refusal Whiggish, canting talk?",
+      "choices": ["Spoke up for David as an honest gentleman and offered to play Cluny himself", "Told David to stop being foolish and sit down to play at once", "Laughed at David along with Cluny and poured another dram", "Stood up and said that he and David would leave the Cage and go on their way at once"],
+      "answer": 0,
+      "evidence": "I will put my hand in the fire for Mr. Balfour"
+    },
+    {
+      "id": "kidnapped-22-14",
+      "type": "detail",
+      "q": "What happened to David during most of the time they stayed in the Cage?",
+      "choices": ["He lay sick in a kind of trance of fever", "He went out each day with Cluny's scouts", "He played cards with the gillies by the fire", "He wrote letters to Mr. Campbell and Mr. Rankeillor"],
+      "answer": 0,
+      "evidence": "I fell into a kind of trance"
+    },
+    {
+      "id": "kidnapped-22-15",
+      "type": "sequence",
+      "q": "On the second day, what did Alan ask David for while David lay feverish?",
+      "choices": ["A loan of his money", "The silver button", "His pistol and powder", "A promise to stay"],
+      "answer": 0,
+      "evidence": "He asked me for a loan of my money"
+    },
+    {
+      "id": "kidnapped-22-16",
+      "type": "inference",
+      "q": "When David came back on the third day and saw papers but no gold on the table, all on Cluny's side, what did he begin to suspect?",
+      "choices": ["That Alan had lost all their money at cards", "That Cluny had paid the scouts to keep them there", "That the gold had been hidden from the soldiers", "That Alan had won and put the gold in his purse"],
+      "answer": 0,
+      "evidence": "I began to have a strong misgiving"
+    },
+    {
+      "id": "kidnapped-22-17",
+      "type": "character",
+      "q": "How did Alan behave when he admitted losing the money?",
+      "choices": ["He was ashamed and kept looking at the ground", "He was angry and blamed Cluny for cheating", "He laughed and said they would win it back", "He was proud and said a gentleman never minds losing"],
+      "answer": 0,
+      "evidence": "Alan said nothing, only looked on the ground"
+    },
+    {
+      "id": "kidnapped-22-18",
+      "type": "character",
+      "q": "Why did David find it painful to take the money back from Cluny?",
+      "choices": ["Taking back money fairly lost was hard on a man of pride", "He feared Cluny would tell the soldiers where they were", "He thought the gold was stolen from the king's soldiers", "He believed that Alan would only gamble it all away again"],
+      "answer": 0,
+      "evidence": "it must be hard upon a man of any pride"
+    },
+    {
+      "id": "kidnapped-22-19",
+      "type": "main-idea",
+      "q": "What is the main thing that happens in this chapter?",
+      "choices": ["Alan gambles their money away in Cluny's hideout, and David must ask for it back", "Cluny captures David and Alan and holds them as prisoners in the Cage until a ransom is paid", "David nurses Alan through a fever while Cluny's men fight off the soldiers", "David wins a great sum from Cluny at cards and buys passage to France"],
+      "answer": 0,
+      "evidence": "I've lost it; there's the naked truth"
+    }
+  ]
+}

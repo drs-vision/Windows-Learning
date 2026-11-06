@@ -1,0 +1,110 @@
+{
+  "book": "doctor-dolittle",
+  "chapter": 1,
+  "questions": [
+    {
+      "id": "doctor-dolittle-01-01",
+      "type": "detail",
+      "q": "What was the name of the little town where Doctor Dolittle lived?",
+      "choices": [
+        "Puddleby-on-the-Marsh",
+        "Oxenthorpe-on-the-Hill",
+        "Little Marsh-by-the-Sea",
+        "West Country Village"
+      ],
+      "answer": 0,
+      "evidence": "He lived in a little town called, Puddleby-on-the-Marsh"
+    },
+    {
+      "id": "doctor-dolittle-01-02",
+      "type": "detail",
+      "q": "Who kept house for the Doctor?",
+      "choices": [
+        "His cousin, Polly Dolittle",
+        "The Cat's-meat-Man's wife",
+        "His sister, Sarah Dolittle",
+        "An old lady from Oxenthorpe"
+      ],
+      "answer": 2,
+      "evidence": "His sister, Sarah Dolittle, was housekeeper for him"
+    },
+    {
+      "id": "doctor-dolittle-01-03",
+      "type": "detail",
+      "q": "Where in the house did the Doctor keep his white mice?",
+      "choices": [
+        "In a box in the pantry",
+        "In his piano",
+        "In the linen closet",
+        "Down in the cellar with the hedgehog"
+      ],
+      "answer": 1,
+      "evidence": "white mice in his piano"
+    },
+    {
+      "id": "doctor-dolittle-01-04",
+      "type": "sequence",
+      "q": "What happened when the old lady with rheumatism came to see the Doctor?",
+      "choices": [
+        "She tripped over Jip the dog in the hall and hurt her leg",
+        "She was frightened by the owl and ran out of the parlor",
+        "She sat on the hedgehog and went to a different doctor after that",
+        "She asked the Doctor to give away all his pets to the farmers"
+      ],
+      "answer": 2,
+      "evidence": "she sat on the hedgehog who was sleeping on the sofa"
+    },
+    {
+      "id": "doctor-dolittle-01-05",
+      "type": "character",
+      "q": "When his sister complained about the animals, what did the Doctor say?",
+      "choices": [
+        "That he would find new homes for some of them",
+        "That he liked the animals better than the \"best people\"",
+        "That the animals helped him cure sick people",
+        "That she should leave the house if she did not like them"
+      ],
+      "answer": 1,
+      "evidence": "But I like the animals better than the 'best people'"
+    },
+    {
+      "id": "doctor-dolittle-01-06",
+      "type": "inference",
+      "q": "Why did the Doctor become poorer and poorer?",
+      "choices": [
+        "He had almost no patients left, and feeding his many pets cost a lot",
+        "He spent all his money building a large garden with stone seats",
+        "His sister spent his savings on new clothes and fine furniture",
+        "He gave his medicine away for free to everyone in the town"
+      ],
+      "answer": 0,
+      "evidence": "it cost a lot to feed them"
+    },
+    {
+      "id": "doctor-dolittle-01-07",
+      "type": "detail",
+      "q": "What did the Doctor sell when his money began to run out?",
+      "choices": [
+        "His high hat and his gold watch",
+        "His piano and his Sunday suit",
+        "His cow and her calf",
+        "His stone garden seats and his books"
+      ],
+      "answer": 1,
+      "evidence": "sold the brown suit he wore on Sundays"
+    },
+    {
+      "id": "doctor-dolittle-01-08",
+      "type": "main-idea",
+      "q": "What is this chapter mostly about?",
+      "choices": [
+        "How the Doctor learned to talk to his animals in their own language",
+        "How the Doctor's sister moved away to live in another town",
+        "How the Doctor's love of animals drove away his patients and left him poor",
+        "How the people of Puddleby stopped following the Doctor through the streets"
+      ],
+      "answer": 2,
+      "evidence": "the Doctor got more and more animals; and the people who came to see him got less and less"
+    }
+  ]
+}

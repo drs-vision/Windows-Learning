@@ -1,0 +1,150 @@
+{
+  "book": "jungle-book",
+  "chapter": 10,
+  "questions": [
+    {
+      "id": "jungle-book-10-01",
+      "type": "detail",
+      "q": "Why did Nag decide to wait in the bathroom until morning?",
+      "choices": ["The big man would come to bathe without his stick", "The bathroom was the only cool place left in the house", "Nagaina had told him to guard the sluice for her", "He was too tired to crawl back out to the garden"],
+      "answer": 0,
+      "evidence": "when he comes in to bathe in the morning he will not have a stick"
+    },
+    {
+      "id": "jungle-book-10-02",
+      "type": "detail",
+      "q": "Where did Rikki-tikki decide he had to bite Nag?",
+      "choices": ["On the thick neck just below the hood", "Near the tail, where the snake could not reach", "On the head, above the hood", "In the middle of the back, to break it"],
+      "answer": 2,
+      "evidence": "the head above the hood"
+    },
+    {
+      "id": "jungle-book-10-03",
+      "type": "character",
+      "q": "Why did Rikki-tikki keep his jaws locked even when he was sure he would be banged to death?",
+      "choices": ["He hoped the big man would hear and come to help", "For his family's honor, he wanted to be found holding on", "He was too dizzy and frightened to let go of the snake", "He wanted to prove to Darzee that he was not a coward"],
+      "answer": 1,
+      "evidence": "for the honor of his family, he preferred to be found with his teeth locked"
+    },
+    {
+      "id": "jungle-book-10-04",
+      "type": "detail",
+      "q": "What was the \"thunderclap\" that went off just behind Rikki-tikki?",
+      "choices": ["The heavy water jar falling and smashing on the floor", "The big man firing both barrels of a shotgun into Nag", "The tin bath being knocked over by Nag's thrashing tail", "A storm breaking over the bungalow in the middle of the night"],
+      "answer": 1,
+      "evidence": "fired both barrels of a shotgun into Nag just behind the hood"
+    },
+    {
+      "id": "jungle-book-10-05",
+      "type": "character",
+      "q": "Why was Rikki-tikki angry when he found Darzee singing a song of triumph?",
+      "choices": ["Darzee was taking all the credit for killing Nag", "The singing had woken Teddy before breakfast", "Nagaina was still alive, so it was no time to sing", "Darzee had promised to keep the news a secret for now"],
+      "answer": 2,
+      "evidence": "Is this the time to sing?"
+    },
+    {
+      "id": "jungle-book-10-06",
+      "type": "detail",
+      "q": "Where had Nagaina hidden her eggs?",
+      "choices": ["Under the rubbish heap behind the stables, in the shade", "In the melon bed, at the end nearest the wall", "In the old rat-hole under the thorn-bush", "Among the roots of the big orange tree"],
+      "answer": 1,
+      "evidence": "In the melon bed, on the end nearest the wall"
+    },
+    {
+      "id": "jungle-book-10-07",
+      "type": "vocabulary",
+      "q": "\"Darzee was a feather-brained little fellow.\" What does \"feather-brained\" mean?",
+      "choices": ["Silly and unable to think much ahead", "Clever and quick to make plans", "Shy and afraid of everyone", "Very proud of his bright and beautiful feathers"],
+      "answer": 0,
+      "evidence": "Darzee was a feather-brained little fellow"
+    },
+    {
+      "id": "jungle-book-10-08",
+      "type": "sequence",
+      "q": "Who actually pretended to have a broken wing to lead Nagaina away from the melon bed?",
+      "choices": ["Darzee himself", "Chuchundra", "Darzee's wife", "The Coppersmith"],
+      "answer": 2,
+      "evidence": "Oh, my wing is broken!"
+    },
+    {
+      "id": "jungle-book-10-09",
+      "type": "character",
+      "q": "Why was Darzee's wife willing to help destroy the cobra eggs when Darzee was not?",
+      "choices": ["Nagaina had once tried to eat her own eggs", "She knew cobra eggs would become young cobras", "Rikki-tikki had promised to guard her nest forever", "She wanted the melon bed for her own new nest"],
+      "answer": 1,
+      "evidence": "she knew that cobra's eggs meant young cobras later on"
+    },
+    {
+      "id": "jungle-book-10-10",
+      "type": "inference",
+      "q": "Why did Darzee's wife refuse to look at Nagaina when the snake told her to?",
+      "choices": ["A bird that looks into a snake's eyes is too frightened to move", "She was busy watching for Rikki-tikki in the melon patch", "She did not want Nagaina to see that she was not really hurt", "She was ashamed of lying to the snake about the boy and the stone"],
+      "answer": 0,
+      "evidence": "a bird who looks at a snake's eyes gets so frightened that she cannot move"
+    },
+    {
+      "id": "jungle-book-10-11",
+      "type": "inference",
+      "q": "When Rikki-tikki found the eggs he said, \"I was not a day too soon.\" What did he mean?",
+      "choices": ["Nagaina was about to move the eggs to a new hiding place", "The baby cobras inside were almost ready to hatch", "The ants were about to find and eat the eggs first", "Teddy was planning to dig up the melon bed that day"],
+      "answer": 1,
+      "evidence": "he could see the baby cobras curled up inside the skin"
+    },
+    {
+      "id": "jungle-book-10-12",
+      "type": "detail",
+      "q": "When Rikki-tikki reached the veranda, where was Nagaina?",
+      "choices": ["Wrapped around the leg of the breakfast table", "Coiled on the matting close to Teddy's bare leg", "Lying across the veranda steps to block the door", "Hanging from the roof above Teddy's mother"],
+      "answer": 1,
+      "evidence": "within easy striking distance of Teddy's bare leg"
+    },
+    {
+      "id": "jungle-book-10-13",
+      "type": "sequence",
+      "q": "What happened the moment Nagaina spun around to look at her last egg?",
+      "choices": ["Teddy's father dragged Teddy across the table out of reach", "Rikki-tikki bit Nagaina on the back of her hood", "Teddy's mother fainted and fell from her chair", "Darzee's wife flew down and flapped at Nagaina's head"],
+      "answer": 0,
+      "evidence": "catch Teddy by the shoulder, and drag him across the little table"
+    },
+    {
+      "id": "jungle-book-10-14",
+      "type": "detail",
+      "q": "How did Nagaina manage to get her egg back?",
+      "choices": ["She tricked Rikki-tikki by pretending to go away", "She grabbed it while Rikki-tikki was drawing breath", "She knocked Rikki-tikki off the veranda with her tail", "Darzee rolled it toward her from the edge of the steps"],
+      "answer": 1,
+      "evidence": "while Rikki-tikki was drawing breath, she caught it in her mouth"
+    },
+    {
+      "id": "jungle-book-10-15",
+      "type": "inference",
+      "q": "How did Darzee's wife help Rikki-tikki catch Nagaina before she escaped?",
+      "choices": ["She flapped about Nagaina's head and slowed her down", "She called the Coppersmith to block the path", "She showed Rikki-tikki a shortcut through the long grass", "She pecked the egg out of Nagaina's mouth"],
+      "answer": 0,
+      "evidence": "the instant's delay brought Rikki-tikki up to her"
+    },
+    {
+      "id": "jungle-book-10-16",
+      "type": "vocabulary",
+      "q": "Darzee sings, \"Valiant Rikki-tikki is dead!\" What does \"valiant\" mean?",
+      "choices": ["Very small", "Brave", "Clever and sly", "Quick-tempered"],
+      "answer": 1,
+      "evidence": "Valiant Rikki-tikki is dead!"
+    },
+    {
+      "id": "jungle-book-10-17",
+      "type": "detail",
+      "q": "What job does the Coppersmith bird do in the garden?",
+      "choices": ["He wakes the whole garden every morning at dawn", "He is the town crier who tells everyone the news", "He keeps watch for snakes from the top of the tallest tree", "He mends the nests of birds after a storm"],
+      "answer": 1,
+      "evidence": "he is the town crier to every Indian garden"
+    },
+    {
+      "id": "jungle-book-10-18",
+      "type": "main-idea",
+      "q": "What is this part of the story mostly about?",
+      "choices": ["Rikki-tikki defeating both cobras to save Teddy's family", "Darzee writing songs to honor the bravest animals", "Teddy's family deciding to leave the dangerous bungalow", "Nagaina teaching her young cobras how to hunt"],
+      "answer": 0,
+      "evidence": "He saved our lives and Teddy's life"
+    }
+  ]
+}

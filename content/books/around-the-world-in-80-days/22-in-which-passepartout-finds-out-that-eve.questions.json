@@ -1,0 +1,126 @@
+{
+  "book": "around-the-world-in-80-days",
+  "chapter": 22,
+  "questions": [
+    {
+      "id": "around-the-world-in-80-days-22-01",
+      "type": "detail",
+      "q": "Which cabins on the Carnatic were empty when she sailed?",
+      "choices": ["The captain's quarters", "The two state-rooms Fogg had engaged", "All of the second-class cabins below", "The cabins booked by Fix for himself"],
+      "answer": 1,
+      "evidence": "those which had been engaged by Phileas Fogg"
+    },
+    {
+      "id": "around-the-world-in-80-days-22-02",
+      "type": "sequence",
+      "q": "How did Passepartout end up on board the Carnatic?",
+      "choices": ["Fix carried him on board and left him in a cabin", "He staggered to the quay and fell on deck", "The police found him and put him on the ship by mistake", "Fogg sent two sailors to bring him back from the tavern"],
+      "answer": 1,
+      "evidence": "fell unconscious on the deck, just as the Carnatic was moving off"
+    },
+    {
+      "id": "around-the-world-in-80-days-22-03",
+      "type": "inference",
+      "q": "What do the words \"pursued even in his dreams by a fixed idea\" suggest about Passepartout?",
+      "choices": ["He kept dreaming about the money Fix had offered him", "Even asleep, he could not forget his duty to reach the Carnatic", "He was having nightmares about the storm at sea", "He kept thinking about Aouda and the night of her rescue at the pagoda"],
+      "answer": 1,
+      "evidence": "The thought of a duty unfulfilled shook off his torpor"
+    },
+    {
+      "id": "around-the-world-in-80-days-22-04",
+      "type": "character",
+      "q": "What did Passepartout think about Fix's claim that Fogg had robbed the bank?",
+      "choices": ["He thought it might be true and was afraid", "He thought it was nonsense", "He thought Aouda must know the truth", "He decided to ask his master about it"],
+      "answer": 1,
+      "evidence": "Mr. Fogg is no more a robber than I am a murderer."
+    },
+    {
+      "id": "around-the-world-in-80-days-22-05",
+      "type": "detail",
+      "q": "What did Passepartout think of doing about Fix's secret?",
+      "choices": ["Telegraphing the gentlemen of the Reform Club about it from Yokohama at once", "Waiting until London to tell Fogg, and having a good laugh about it", "Telling the captain so that Fix would be put off the ship", "Writing it all down in a letter to Aouda"],
+      "answer": 1,
+      "evidence": "have a good laugh over it"
+    },
+    {
+      "id": "around-the-world-in-80-days-22-06",
+      "type": "detail",
+      "q": "How did Passepartout learn that his master was not on the ship?",
+      "choices": ["A sailor told him Fogg had stayed in Hong Kong", "His name was not on the passenger list", "He searched every cabin on the ship one by one", "He found a note from Fogg in his own cabin"],
+      "answer": 1,
+      "evidence": "his master's name was not upon it"
+    },
+    {
+      "id": "around-the-world-in-80-days-22-07",
+      "type": "vocabulary",
+      "q": "\"He fell thunderstruck on a seat.\" What does \"thunderstruck\" mean here?",
+      "choices": ["Very shocked", "Hurt by lightning", "Very sleepy", "Wet with rain"],
+      "answer": 0,
+      "evidence": "He fell thunderstruck on a seat."
+    },
+    {
+      "id": "around-the-world-in-80-days-22-08",
+      "type": "character",
+      "q": "Whom did Passepartout blame most for his master missing the steamer?",
+      "choices": ["Himself alone, for drinking too much port", "The captain of the Carnatic, for leaving early", "Fix, who got him drunk to separate him from his master", "The clerk at the steamer office, who gave wrong times"],
+      "answer": 2,
+      "evidence": "it was still more the fault of the traitor"
+    },
+    {
+      "id": "around-the-world-in-80-days-22-09",
+      "type": "detail",
+      "q": "What was Passepartout's money situation on the way to Japan?",
+      "choices": ["He had a few pounds left from shopping in Hong Kong", "He had not a single penny, though his passage was paid", "He had Fogg's carpet-bag full of banknotes with him", "He had borrowed some money from a friendly sailor on the ship"],
+      "answer": 1,
+      "evidence": "he had not a solitary shilling, not so much as a penny"
+    },
+    {
+      "id": "around-the-world-in-80-days-22-10",
+      "type": "character",
+      "q": "How did Passepartout behave at meals on the Carnatic?",
+      "choices": ["He was too upset to eat anything at all", "He ate for Mr. Fogg, Aouda, and himself", "He saved half of his food to sell in Japan", "He only drank tea and ate a little rice"],
+      "answer": 1,
+      "evidence": "ate for Mr. Fogg, Aouda, and himself"
+    },
+    {
+      "id": "around-the-world-in-80-days-22-11",
+      "type": "inference",
+      "q": "Why didn't Passepartout go to the consuls for help right away?",
+      "choices": ["He didn't know where their offices were", "He did not want to tell the story connected with his master", "He was afraid the consuls would arrest him", "He thought their offices would already be closed for the night"],
+      "answer": 1,
+      "evidence": "he shrank from telling the story of his adventures"
+    },
+    {
+      "id": "around-the-world-in-80-days-22-12",
+      "type": "detail",
+      "q": "What did Passepartout find in the smoking-houses of Yokohama?",
+      "choices": ["Fine stringy tobacco, not opium", "Opium, just like in Hong Kong", "Nothing, they were all closed", "Sailors from the Carnatic"],
+      "answer": 0,
+      "evidence": "not opium, which is almost unknown in Japan"
+    },
+    {
+      "id": "around-the-world-in-80-days-22-13",
+      "type": "detail",
+      "q": "Why were the violets Passepartout found no good for supper?",
+      "choices": ["They had no smell", "They were poisonous", "They were too small", "Birds had eaten them"],
+      "answer": 0,
+      "evidence": "he found that they were odourless"
+    },
+    {
+      "id": "around-the-world-in-80-days-22-14",
+      "type": "inference",
+      "q": "Why did Passepartout have to wait until morning for a meal?",
+      "choices": ["He had no money, and meat was scarce in Yokohama", "The shops in Yokohama closed at noon every day", "He had promised the purser to come back to the ship", "He did not like the taste of rice or fish"],
+      "answer": 0,
+      "evidence": "to postpone the meal he craved till the following morning"
+    },
+    {
+      "id": "around-the-world-in-80-days-22-15",
+      "type": "main-idea",
+      "q": "What is this chapter mostly about?",
+      "choices": ["Passepartout finding himself alone and penniless on the Carnatic and in Yokohama", "Fogg and Aouda arriving in Yokohama and searching the town for Passepartout", "Fix and Passepartout fighting on the deck of the Carnatic", "Passepartout getting a job with the French consul in Japan"],
+      "answer": 0,
+      "evidence": "his master was not there"
+    }
+  ]
+}

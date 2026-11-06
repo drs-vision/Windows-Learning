@@ -70,7 +70,17 @@ label.check, label.switch { flex-direction: row; align-items: center; gap: .5em;
 .unlock-pills { flex: 1; display: flex; gap: .5em; }
 .pill { background: var(--green); color: #052e16; font-weight: 700; border-radius: 999px; padding: .3em .9em; font-size: .9em; animation: pulse 2s infinite; }
 @keyframes pulse { 50% { filter: brightness(1.15); } }
-.wallet { background: var(--gold); color: #1a1400; font-size: 1.2rem; border-radius: 999px; padding: .4em 1.1em; }
+.wallet { background: var(--gold); color: #1a1400; font-size: 1.2rem; border-radius: 999px; padding: .4em 1.1em; position: relative; }
+.wallet-coin { display: inline-block; }
+.wallet.gaining .wallet-coin { animation: coin-flip .7s ease-out; }
+.coin-gain { position: absolute; right: calc(100% + 10px); top: 50%; white-space: nowrap; font-weight: 800; font-size: .95rem; color: var(--gold); text-shadow: 0 1px 2px rgba(0,0,0,.5); pointer-events: none; animation: coin-rise 1.8s ease-out forwards; }
+@keyframes coin-flip { from { transform: rotateY(0) scale(1); } 50% { transform: rotateY(180deg) scale(1.15); } to { transform: rotateY(360deg) scale(1); } }
+@keyframes coin-rise { 0% { opacity: 0; transform: translateY(-20%); } 15% { opacity: 1; transform: translateY(-50%); } 70% { opacity: 1; } 100% { opacity: 0; transform: translateY(-140%); } }
+@media (prefers-reduced-motion: reduce) {
+  .wallet.gaining .wallet-coin { animation: none; }
+  .coin-gain { animation: coin-fade 1.8s ease-out forwards; }
+  @keyframes coin-fade { 0%, 100% { opacity: 0; transform: translateY(-50%); } 15%, 70% { opacity: 1; transform: translateY(-50%); } }
+}
 .home { display: grid; grid-template-columns: 1fr 300px; gap: 1.5em; max-width: 1300px; margin: 0 auto; }
 @media (max-width: 1000px) { .home { grid-template-columns: 1fr; } }
 .quest-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 1em; }
@@ -667,11 +677,11 @@ button.big { font-size: 1.1em; padding: .7em 1.4em; }
 .reading-head { display: grid; grid-template-columns: auto 1fr auto; gap: 12px; align-items: center; margin-bottom: .6em; }
 .reading-head h2 { margin: 0; text-align: center; font-size: 1.4rem; }
 .shelf-group h3 { margin: 1.4em 0 .6em; color: var(--ink-2); font-size: .95rem; text-transform: uppercase; letter-spacing: .06em; }
-.shelf { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 180px)); justify-content: center; gap: 22px 18px; margin-top: 1.4em; }
+.shelf { display: grid; grid-template-columns: repeat(auto-fill, minmax(130px, 150px)); gap: 20px 16px; }
 .book-grade { align-self: flex-start; font-style: normal; font-size: .72rem; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; background: rgba(0,0,0,.28); border-radius: 999px; padding: .2em .6em; }
 .book-card { background: none; padding: 0; display: grid; gap: 8px; text-align: left; }
 .book-spine { aspect-ratio: 3 / 4; border-radius: 6px 12px 12px 6px; padding: 12px; display: flex; flex-direction: column; justify-content: space-between; gap: 6px; color: #fff; box-shadow: inset 6px 0 0 rgba(0,0,0,.25), 0 6px 16px rgba(0,0,0,.35); }
-.book-spine b { font-family: Georgia, "Times New Roman", serif; font-size: 1.15rem; line-height: 1.2; }
+.book-spine b { font-family: Georgia, "Times New Roman", serif; font-size: 1.02rem; line-height: 1.2; }
 .book-spine small { opacity: .85; }
 .book-card:hover .book-spine { transform: translateY(-3px); }
 .book-meta { font-size: .85rem; color: var(--ink-2); }
@@ -705,4 +715,6 @@ button.big { font-size: 1.1em; padding: .7em 1.4em; }
 .parent .book-pick { display: flex; gap: 10px; align-items: flex-start; padding: .5em 0; border-bottom: 1px solid var(--panel-2); cursor: pointer; }
 .parent .book-pick input { margin-top: .3em; }
 
-.parent label.book-pick { flex-direction: row; display: flex; } .parent label.book-pick > span { flex: 1; }
+.parent label.book-pick { flex-direction: row; display: flex; } .parent .book-pick > span { flex: 1; }
+.parent .book-progress { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; margin-top: .3em; color: var(--ink-2); }
+.parent button.link { background: none; border: 0; padding: 0; color: var(--accent, #4f7cff); text-decoration: underline; cursor: pointer; font: inherit; }

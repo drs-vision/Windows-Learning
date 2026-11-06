@@ -1,0 +1,149 @@
+{
+  "book": "doctor-dolittle",
+  "chapter": 11,
+  "questions": [
+    {
+      "id": "doctor-dolittle-11-01",
+      "type": "detail",
+      "q": "Why did saying farewell to the monkeys take such a long time?",
+      "choices": [
+        "Thousands of monkeys all wanted to shake the Doctor's hand",
+        "The monkeys kept begging the Doctor to stay",
+        "The Doctor had to give every monkey a last dose of medicine",
+        "The monkeys had a long song to sing for each of the animals"
+      ],
+      "answer": 0,
+      "evidence": "all those thousands of monkeys wanted to shake John Dolittle by the hand"
+    },
+    {
+      "id": "doctor-dolittle-11-02",
+      "type": "character",
+      "q": "Why did Polynesia say they must tread softly and talk low?",
+      "choices": [
+        "They might wake up the lions sleeping in their dens",
+        "The King might hear them and send soldiers to catch them again",
+        "The pushmi-pullyu was very shy and did not like loud noises at all",
+        "There were dangerous snakes hiding in the jungle-paths"
+      ],
+      "answer": 1,
+      "evidence": "If the King should hear us, he will send his soldiers to catch us again"
+    },
+    {
+      "id": "doctor-dolittle-11-03",
+      "type": "sequence",
+      "q": "What happened while Chee-Chee was away looking for cocoanuts?",
+      "choices": [
+        "The King's soldiers found Chee-Chee and locked him up in the dungeon",
+        "The Doctor and the other animals got lost in the deep woods",
+        "Polynesia flew ahead to the beach to look for a boat to sail home",
+        "The pushmi-pullyu got frightened and ran back into the jungle alone"
+      ],
+      "answer": 1,
+      "evidence": "got lost in the deep woods"
+    },
+    {
+      "id": "doctor-dolittle-11-04",
+      "type": "detail",
+      "q": "Where did the lost travelers end up after many days of wandering?",
+      "choices": [
+        "On the seashore near the rocks where their ship had sunk",
+        "In the King's back-garden, by mistake",
+        "At the edge of the river where the monkeys had made their bridge",
+        "Back in the Land of the Monkeys, by the great stone"
+      ],
+      "answer": 1,
+      "evidence": "they walked right into the King's back-garden by mistake"
+    },
+    {
+      "id": "doctor-dolittle-11-05",
+      "type": "detail",
+      "q": "What work did the King say the Doctor must do for the rest of his life?",
+      "choices": [
+        "Cut wood for the palace fires every day",
+        "Look after the King's cattle in the fields",
+        "Scrub the King's kitchen-floor",
+        "Cook for the soldiers"
+      ],
+      "answer": 2,
+      "evidence": "This Doctor shall scrub my kitchen-floor for the rest of his life!"
+    },
+    {
+      "id": "doctor-dolittle-11-06",
+      "type": "inference",
+      "q": "What did it mean when Polynesia said nothing and blinked her eyes?",
+      "choices": [
+        "She was tired and was falling asleep in the tree",
+        "Someone had made trouble, and she was thinking of a way to put things right",
+        "She was frightened and did not know what to do next to save the Doctor",
+        "She was sad because she missed her old home in Puddleby very much"
+      ],
+      "answer": 1,
+      "evidence": "Whenever she said nothing and blinked her eyes"
+    },
+    {
+      "id": "doctor-dolittle-11-07",
+      "type": "character",
+      "q": "Whose fault did Polynesia say it was that they got lost?",
+      "choices": [
+        "Chee-Chee's, for going away to look for cocoanuts",
+        "The Doctor's, for not following the right path",
+        "Gub-Gub's, for running off the path after ginger-roots",
+        "Jip's, for chasing after a rabbit in the jungle"
+      ],
+      "answer": 2,
+      "evidence": "He would keep running off the path hunting for ginger-roots."
+    },
+    {
+      "id": "doctor-dolittle-11-08",
+      "type": "detail",
+      "q": "What was Prince Bumpo reading when he came into the garden?",
+      "choices": [
+        "A letter from his mother, the Queen",
+        "A book of fairy-tales",
+        "A book of magic spells",
+        "A map of the Land of the Monkeys"
+      ],
+      "answer": 1,
+      "evidence": "He carried a book of fairy-tales under his arm."
+    },
+    {
+      "id": "doctor-dolittle-11-09",
+      "type": "vocabulary",
+      "q": "Polynesia talks \"in a small, high voice like a little girl.\" Why does she change her voice?",
+      "choices": [
+        "To show Chee-Chee how well she could sing",
+        "So Bumpo would believe a fairy was speaking to him",
+        "Because she had caught a cold in the wet jungle",
+        "So the King's soldiers would not know where she was"
+      ],
+      "answer": 1,
+      "evidence": "talking in a small, high voice like a little girl"
+    },
+    {
+      "id": "doctor-dolittle-11-10",
+      "type": "detail",
+      "q": "Who did Polynesia pretend to be when she spoke to Bumpo?",
+      "choices": [
+        "The Queen of the Jungle, who lived in the tallest palm-tree",
+        "Tripsitinka, the Queen of the Fairies, hiding in a rose-bud",
+        "A good wizard who lived far away across the wide sea",
+        "Bumpo's old nurse, who used to tell him fairy stories"
+      ],
+      "answer": 1,
+      "evidence": "'tis I, Tripsitinka, the Queen of the Fairies"
+    },
+    {
+      "id": "doctor-dolittle-11-11",
+      "type": "main-idea",
+      "q": "What is this chapter mostly about?",
+      "choices": [
+        "How the monkeys said goodbye to the Doctor at the river",
+        "How Chee-Chee looked everywhere for the Doctor in the jungle",
+        "How the Doctor was caught again and Polynesia began a plan to free him",
+        "How Prince Bumpo spent a long afternoon in the garden reading fairy-stories"
+      ],
+      "answer": 2,
+      "evidence": "she was thinking out some way to put things right"
+    }
+  ]
+}

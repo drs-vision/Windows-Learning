@@ -1,0 +1,266 @@
+{
+  "book": "kidnapped",
+  "chapter": 9,
+  "questions": [
+    {
+      "id": "kidnapped-09-01",
+      "type": "detail",
+      "q": "What did Alan do when the captain showed his face in the open door?",
+      "choices": [
+        "Slammed the door shut and barred it with a bench",
+        "Pointed his sword at him and cried \"Stand!\"",
+        "Fired a pistol at him over David's shoulder",
+        "Offered him the belt of gold to leave them alone"
+      ],
+      "answer": 1,
+      "evidence": "\"Stand!\" cried Alan, and pointed his sword at him"
+    },
+    {
+      "id": "kidnapped-09-02",
+      "type": "detail",
+      "q": "What did Alan say was his badge?",
+      "choices": [
+        "The oak",
+        "The eagle",
+        "The rose",
+        "The thistle"
+      ],
+      "answer": 0,
+      "evidence": "My badge is the oak"
+    },
+    {
+      "id": "kidnapped-09-03",
+      "type": "character",
+      "q": "What did the captain say to David before he left the doorway?",
+      "choices": [
+        "\"David, I'll mind this\"",
+        "\"David, you are a brave lad\"",
+        "\"David, come out and you'll be safe\"",
+        "\"David, bring me the gold\""
+      ],
+      "answer": 0,
+      "evidence": "I'll mind this"
+    },
+    {
+      "id": "kidnapped-09-04",
+      "type": "detail",
+      "q": "Why did Alan hold a dirk in his left hand?",
+      "choices": [
+        "In case the men ran in under his sword",
+        "Because his right arm had been hurt",
+        "So that he could throw it at the captain",
+        "To cut the ropes that held the hatch"
+      ],
+      "answer": 0,
+      "evidence": "in case they should run in under his sword"
+    },
+    {
+      "id": "kidnapped-09-05",
+      "type": "detail",
+      "q": "How did David know the crew were getting weapons ready on deck?",
+      "choices": [
+        "Alan saw the flash of swords in the lamplight",
+        "Mr. Riach shouted a warning across the deck",
+        "He saw them through the window loading their muskets",
+        "He heard a clash of steel as a cutlass was dropped"
+      ],
+      "answer": 3,
+      "evidence": "there came a clash of steel upon the deck"
+    },
+    {
+      "id": "kidnapped-09-06",
+      "type": "detail",
+      "q": "Who was the first man to cross blades with Alan in the doorway?",
+      "choices": [
+        "Mr. Shuan",
+        "Mr. Riach",
+        "The ship's cook",
+        "The captain"
+      ],
+      "answer": 0,
+      "evidence": "saw Mr. Shuan in the doorway, crossing blades with Alan"
+    },
+    {
+      "id": "kidnapped-09-07",
+      "type": "detail",
+      "q": "What were the five men carrying when they ran past David's window?",
+      "choices": [
+        "A heavy fishing net to throw over Alan",
+        "Long poles with hooks on the ends",
+        "A spare yard to use as a battering-ram",
+        "Buckets of water to put out a fire"
+      ],
+      "answer": 2,
+      "evidence": "carrying a spare yard for a battering-ram"
+    },
+    {
+      "id": "kidnapped-09-08",
+      "type": "sequence",
+      "q": "What did the five men do after David's third shot?",
+      "choices": [
+        "Threw down the yard and ran for it",
+        "Broke the door down with the yard",
+        "Climbed onto the roof of the round-house",
+        "Fired their muskets through the window"
+      ],
+      "answer": 0,
+      "evidence": "the whole party threw down the yard and ran for it"
+    },
+    {
+      "id": "kidnapped-09-09",
+      "type": "detail",
+      "q": "Whom did David think he had \"winged\" with his first shot?",
+      "choices": [
+        "The captain",
+        "Mr. Shuan",
+        "A cabin-boy",
+        "Mr. Riach"
+      ],
+      "answer": 0,
+      "evidence": "I told him I had winged one, and thought it was the captain"
+    },
+    {
+      "id": "kidnapped-09-10",
+      "type": "vocabulary",
+      "q": "A sailor says, \"It was Shuan bauchled it.\" Using the note in the text, what does \"bauchled\" mean?",
+      "choices": [
+        "Planned",
+        "Bungled",
+        "Started",
+        "Ordered"
+      ],
+      "answer": 1,
+      "evidence": "* Bungled."
+    },
+    {
+      "id": "kidnapped-09-11",
+      "type": "detail",
+      "q": "What was the signal for the second attack?",
+      "choices": [
+        "A single call on the sea-pipe",
+        "A shout from the captain",
+        "The ringing of the ship's bell",
+        "A shot fired from the deck"
+      ],
+      "answer": 0,
+      "evidence": "there came a single call on the sea-pipe, and that was the signal"
+    },
+    {
+      "id": "kidnapped-09-12",
+      "type": "character",
+      "q": "Why didn't David fire at first when the man from the skylight landed?",
+      "choices": [
+        "His pistol was not loaded and he had no time to charge it",
+        "Alan had told him never to fire inside the round-house",
+        "At the touch of a living man his whole flesh misgave him",
+        "He thought the man was a friend who had come to help them"
+      ],
+      "answer": 2,
+      "evidence": "my whole flesh misgave me"
+    },
+    {
+      "id": "kidnapped-09-13",
+      "type": "sequence",
+      "q": "What did David do after shooting the two men who came through the skylight?",
+      "choices": [
+        "Sat down and began loading every pistol again as fast as he could",
+        "Climbed up through the broken skylight to escape onto the deck",
+        "Heard Alan shout for help and ran at the attackers with a cutlass",
+        "Hid under the table until the noise of the fighting had died away"
+      ],
+      "answer": 2,
+      "evidence": "catching up my cutlass, fell on them in flank"
+    },
+    {
+      "id": "kidnapped-09-14",
+      "type": "detail",
+      "q": "How does David describe Alan chasing the seamen along the deck?",
+      "choices": [
+        "As a cat chases a mouse",
+        "As a hawk chases a sparrow",
+        "As a sheep-dog chases sheep",
+        "As a wolf chases a deer"
+      ],
+      "answer": 2,
+      "evidence": "as a sheep-dog chases sheep"
+    },
+    {
+      "id": "kidnapped-09-15",
+      "type": "detail",
+      "q": "Where did the beaten seamen go to hide?",
+      "choices": [
+        "Into the ship's boat, which they pushed off",
+        "Down into the hold where the cargo was kept",
+        "Up the masts and into the rigging of the brig",
+        "Into the forecastle, clapping the hatch shut"
+      ],
+      "answer": 3,
+      "evidence": "we heard them tumble one upon another into the forecastle"
+    },
+    {
+      "id": "kidnapped-09-16",
+      "type": "character",
+      "q": "How did Alan act right after the fight was won?",
+      "choices": [
+        "He sat quietly and prayed for the men who had died",
+        "He scolded David for not shooting more of the crew",
+        "He began to plan an escape in the ship's small boat",
+        "He hugged David, boasted, and made up a Gaelic song"
+      ],
+      "answer": 3,
+      "evidence": "am I no a bonny fighter?"
+    },
+    {
+      "id": "kidnapped-09-17",
+      "type": "inference",
+      "q": "Why does David say Alan's song was \"something less than just\" to him?",
+      "choices": [
+        "It called David a Whig and an enemy of the clans",
+        "It said that David had run away during the battle",
+        "It made fun of David for crying like a child after the fight",
+        "It praised only Alan's sword, though David did his share"
+      ],
+      "answer": 3,
+      "evidence": "might have claimed a place in Alan's verses"
+    },
+    {
+      "id": "kidnapped-09-18",
+      "type": "character",
+      "q": "How did David feel once the fighting was over?",
+      "choices": [
+        "So tired that he fell asleep before Alan finished speaking",
+        "So horrified by what he had done that he sobbed like a child",
+        "So angry at the captain that he wanted to fight again",
+        "So proud of himself that he sang along with Alan's song"
+      ],
+      "answer": 1,
+      "evidence": "I began to sob and cry like any child"
+    },
+    {
+      "id": "kidnapped-09-19",
+      "type": "detail",
+      "q": "What land did David see from the round-house door in the morning?",
+      "choices": [
+        "The hills of Skye and the isle of Rum",
+        "The rocky coast around Cape Wrath",
+        "The city of Edinburgh and its castle",
+        "The low sandy shore of the Carolinas"
+      ],
+      "answer": 0,
+      "evidence": "I saw the great stone hills of Skye on the right hand"
+    },
+    {
+      "id": "kidnapped-09-20",
+      "type": "main-idea",
+      "q": "What is this chapter mostly about?",
+      "choices": [
+        "The captain making peace with Alan and paying him back his gold",
+        "The death of Mr. Riach in a storm off the coast of Skye",
+        "David and Alan escaping from the brig in a small boat at night",
+        "Alan and David fighting off the crew and winning the round-house"
+      ],
+      "answer": 3,
+      "evidence": "there were Alan and I victorious and unhurt"
+    }
+  ]
+}

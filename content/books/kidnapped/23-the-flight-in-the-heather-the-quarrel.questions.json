@@ -1,0 +1,158 @@
+{
+  "book": "kidnapped",
+  "chapter": 23,
+  "questions": [
+    {
+      "id": "kidnapped-23-01",
+      "type": "detail",
+      "q": "Who carried the luggage and Alan's great-coat as they left the Cage?",
+      "choices": ["One of the gillies from the Cage", "Alan himself, on his own strong back", "David, though he was still weak", "A pony borrowed from Cluny's men"],
+      "answer": 0,
+      "evidence": "whither we were led by one of the gillies from the Cage"
+    },
+    {
+      "id": "kidnapped-23-02",
+      "type": "character",
+      "q": "At the start of the march, how did David and Alan each feel?",
+      "choices": ["David was angry and proud; Alan was angry and ashamed", "David was cheerful and rested; Alan was sad and tired", "Both were happy and glad to be free of Cluny and his cards", "David was frightened of the soldiers; Alan was calm"],
+      "answer": 0,
+      "evidence": "I, angry and proud"
+    },
+    {
+      "id": "kidnapped-23-03",
+      "type": "inference",
+      "q": "Why did David feel ashamed when he thought about separating from Alan?",
+      "choices": ["Leaving the friend in greater danger would be disloyal", "He knew he could never find the way home without Alan", "He had promised Cluny that he would stay by Alan's side", "He owed Alan money and could not pay it back yet"],
+      "answer": 0,
+      "evidence": "made my cheeks to burn"
+    },
+    {
+      "id": "kidnapped-23-04",
+      "type": "detail",
+      "q": "What did David think made Alan's conduct over the money \"scarce better than theft\"?",
+      "choices": ["Alan had wheedled the money from him while he lay half-conscious", "Alan had taken the money out of his pocket while he was fast asleep", "Alan had given the money to Cluny's gillies without asking him", "Alan had lied and said the money was his own from the start"],
+      "answer": 0,
+      "evidence": "Wheedling my money from me while I lay half-conscious"
+    },
+    {
+      "id": "kidnapped-23-05",
+      "type": "sequence",
+      "q": "What did Alan do first when he finally broke the silence beside Loch Errocht?",
+      "choices": ["Said he was sorry", "Offered to repay the money", "Asked to carry the pack", "Began whistling a song"],
+      "answer": 0,
+      "evidence": "I have to say that I'm sorry"
+    },
+    {
+      "id": "kidnapped-23-06",
+      "type": "detail",
+      "q": "Alan said he had long owed David something, and now owed him money as well. What was it?",
+      "choices": ["His life", "His sword", "A new coat", "An apology"],
+      "answer": 0,
+      "evidence": "I have long been owing ye my life"
+    },
+    {
+      "id": "kidnapped-23-07",
+      "type": "detail",
+      "q": "Why was Alan unhappy with the route Cluny's scout chose?",
+      "choices": ["It led through the country of the Glenorchy Campbells, his blood-foes", "It took them far out of their way, up to the north and the cold sea", "It went straight past the camp where the dragoons were waiting", "It meant crossing Loch Rannoch in daylight in an open boat"],
+      "answer": 0,
+      "evidence": "his blood-foes, the Glenorchy Campbells"
+    },
+    {
+      "id": "kidnapped-23-08",
+      "type": "vocabulary",
+      "q": "Alan calls the Campbell country \"one of the dowiest countries in Scotland,\" with nothing but \"heath, and crows, and Campbells.\" What does \"dowiest\" mean?",
+      "choices": ["Most dreary and gloomy", "Most rich and fertile", "Most crowded with people", "Most beautiful and green"],
+      "answer": 0,
+      "evidence": "There's naething there that I ken, but heath, and crows, and Campbells"
+    },
+    {
+      "id": "kidnapped-23-09",
+      "type": "detail",
+      "q": "What was the weather like for most of the three nights they travelled in the mountains?",
+      "choices": ["Misty, windy and almost always raining", "Hot and dry, with a blazing sun", "Frosty, with deep snow on the high hills", "Calm and clear, with a bright moon"],
+      "answer": 0,
+      "evidence": "almost continually blown and rained upon"
+    },
+    {
+      "id": "kidnapped-23-10",
+      "type": "detail",
+      "q": "What did Alan do when the cry of the river rose unusually sharp?",
+      "choices": ["He crossed himself in the manner of the Catholics", "He drew his sword and stood guard at the ford", "He told David the old story of the Water Kelpie", "He made them lie still until the noise had died away"],
+      "answer": 0,
+      "evidence": "to see him cross himself in the manner of the Catholics"
+    },
+    {
+      "id": "kidnapped-23-11",
+      "type": "character",
+      "q": "How did David treat Alan during the first two days of these wanderings?",
+      "choices": ["He refused his help and looked past him like a bush or stone", "He talked to him kindly and thanked him warmly for every kindness", "He shouted at him every hour and threatened to leave him", "He kept asking him to tell stories to pass the time"],
+      "answer": 0,
+      "evidence": "passing him over with my eyes as if he had been a bush or a stone"
+    },
+    {
+      "id": "kidnapped-23-12",
+      "type": "sequence",
+      "q": "What changed in Alan after David coldly refused, perhaps for the ninth time, to let him carry the pack?",
+      "choices": ["He stopped being patient and began to taunt David, calling him Whig", "He gave up on David and went off alone to look for a house for the night", "He grew even kinder and carried David's pack without asking", "He fell silent and would not speak another word for days"],
+      "answer": 0,
+      "evidence": "\"Whig\" was the best name he had to give me"
+    },
+    {
+      "id": "kidnapped-23-13",
+      "type": "inference",
+      "q": "Why did David, sick and miserable, begin to like the thought of dying on the mountain?",
+      "choices": ["He imagined Alan would be tortured with regret", "He believed he would finally be free of his uncle", "He hoped someone would find him and take him home", "He thought the soldiers would stop chasing Alan"],
+      "answer": 0,
+      "evidence": "Alan would repent then, I thought"
+    },
+    {
+      "id": "kidnapped-23-14",
+      "type": "inference",
+      "q": "Why did Alan's whistling of \"Johnnie Cope\" anger David so much?",
+      "choices": ["It mocked a royal defeat, though Alan himself had fought on the royal side that day", "It was the song the dragoons had played when they camped upon the moor", "It reminded David of the stormy night his uncle sent him up the tower in the dark", "It was a Campbell song, and Alan only sang it to make fun of Colin Campbell"],
+      "answer": 0,
+      "evidence": "Alan, on the day of that battle, had been engaged upon the royal side"
+    },
+    {
+      "id": "kidnapped-23-15",
+      "type": "sequence",
+      "q": "What did David do after his insults, when Alan said some things cannot be passed over?",
+      "choices": ["Drew his sword and fell on guard", "Turned his back and walked away fast", "Fell to the ground in a swoon", "Begged Alan to forgive him"],
+      "answer": 0,
+      "evidence": "drawing my sword, I fell on guard"
+    },
+    {
+      "id": "kidnapped-23-16",
+      "type": "character",
+      "q": "What did Alan do instead of fighting David?",
+      "choices": ["Threw his sword away and fell to the ground, saying he could not", "Knocked David's sword from his hand with one quick stroke", "Laughed at David and then walked off whistling a tune into the night", "Called for Cluny's scout to come and carry David away"],
+      "answer": 0,
+      "evidence": "he had thrown it from him and fallen to the ground"
+    },
+    {
+      "id": "kidnapped-23-17",
+      "type": "character",
+      "q": "Since no apology could undo his words, how did David bring Alan back to his side?",
+      "choices": ["He put away his pride and simply cried for help", "He offered to give Alan all the money from Cluny", "He told Alan the Campbells were not his friends", "He promised never to call Alan a Stewart again"],
+      "answer": 0,
+      "evidence": "a mere cry for help might bring Alan back to my side"
+    },
+    {
+      "id": "kidnapped-23-18",
+      "type": "inference",
+      "q": "Why is it funny when Alan agrees David may be \"a foot, or near hand\" taller?",
+      "choices": ["Alan, proud of his size, eats his words so as not to start a new quarrel", "Alan was in fact much taller than David and had only been teasing him all along", "David had made up the whole thing to see if Alan was listening", "Alan had always said that height did not matter to a real soldier"],
+      "answer": 0,
+      "evidence": "to hear Alan eat his words up in the fear of some fresh quarrel"
+    },
+    {
+      "id": "kidnapped-23-19",
+      "type": "main-idea",
+      "q": "What is this chapter mostly about?",
+      "choices": ["A bitter quarrel that nearly ends the friendship, healed when David is sick", "The two friends fighting a long duel with swords in which Alan is badly wounded", "David and Alan agreeing to separate and take different roads", "A long, easy journey through friendly Stewart country"],
+      "answer": 0,
+      "evidence": "and now I like ye better!"
+    }
+  ]
+}

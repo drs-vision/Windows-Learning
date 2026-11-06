@@ -1,0 +1,110 @@
+{
+  "book": "doctor-dolittle",
+  "chapter": 17,
+  "questions": [
+    {
+      "id": "doctor-dolittle-17-01",
+      "type": "detail",
+      "q": "What was the locked room on the pirate ship?",
+      "choices": [
+        "The pirates' treasure-room, full of gold coins",
+        "The pirates' rum-room, with barrels and jugs",
+        "The pirates' kitchen, with pots and pans",
+        "The captain's bedroom, with a big silk bed"
+      ],
+      "answer": 1,
+      "evidence": "it is the pirates' rum-room"
+    },
+    {
+      "id": "doctor-dolittle-17-02",
+      "type": "detail",
+      "q": "Who was sitting in the middle of the floor in the little room?",
+      "choices": [
+        "A little boy about eight years old, crying",
+        "An old sailor tied up with ropes and chains",
+        "A pirate hiding from the sharks in the bay",
+        "A little girl holding a broken violin"
+      ],
+      "answer": 0,
+      "evidence": "a little boy, about eight years old, crying bitterly"
+    },
+    {
+      "id": "doctor-dolittle-17-03",
+      "type": "character",
+      "q": "Why did the little boy stop being afraid of the Doctor?",
+      "choices": [
+        "The Doctor gave him some strawberry-jam right away",
+        "The Doctor showed him the key to go free",
+        "The Doctor told him that Ben Ali was gone",
+        "The Doctor laughed like a friend, not a pirate"
+      ],
+      "answer": 3,
+      "evidence": "You laugh like a friend"
+    },
+    {
+      "id": "doctor-dolittle-17-04",
+      "type": "detail",
+      "q": "Why did the pirates want the boy's uncle to join them?",
+      "choices": [
+        "He knew where a great treasure was buried",
+        "He was the strongest fighter in the South Atlantic",
+        "He was clever at sailing a ship in all weathers",
+        "He could talk to the fishes of the sea"
+      ],
+      "answer": 2,
+      "evidence": "he was clever at sailing a ship in all weathers"
+    },
+    {
+      "id": "doctor-dolittle-17-05",
+      "type": "inference",
+      "q": "Why did the Doctor say \"You don't KNOW that he was drowned, do you?\"",
+      "choices": [
+        "To make the boy tell the truth about the pirates",
+        "To give the boy hope that his uncle might be alive",
+        "To show the boy that he was not really listening",
+        "To warn the boy that the sharks might find his uncle"
+      ],
+      "answer": 1,
+      "evidence": "You don't KNOW that he was drowned, do you?"
+    },
+    {
+      "id": "doctor-dolittle-17-06",
+      "type": "detail",
+      "q": "Which of these was a way to know the boy's uncle?",
+      "choices": [
+        "Red hair and an anchor tattooed on his arm",
+        "A black beard and a little gold ring in one ear",
+        "A wooden leg and a green parrot on his shoulder",
+        "Gray hair and a ship tattooed on his hand"
+      ],
+      "answer": 0,
+      "evidence": "an anchor tattooed on his arm"
+    },
+    {
+      "id": "doctor-dolittle-17-07",
+      "type": "vocabulary",
+      "q": "The shell-fish call the porpoises \"The Ocean Gossips.\" What is a gossip?",
+      "choices": [
+        "Someone who swims faster than everyone else",
+        "Someone who keeps secrets and never tells them",
+        "Someone who sings loudly to the other fishes",
+        "Someone who hears and passes on lots of news"
+      ],
+      "answer": 3,
+      "evidence": "We hear all the salt-water news"
+    },
+    {
+      "id": "doctor-dolittle-17-08",
+      "type": "sequence",
+      "q": "What happened after the Doctor told the boy what the porpoises said?",
+      "choices": [
+        "The boy went up on deck to look for his uncle",
+        "The eagles flew off in every direction to search",
+        "The pushmi-pullyu gave the boy a ride",
+        "The Doctor followed the porpoises toward Brazil"
+      ],
+      "answer": 2,
+      "evidence": "the pushmi-pullyu took the little boy on his back"
+    }
+  ]
+}

@@ -1,0 +1,240 @@
+{
+  "book": "kidnapped",
+  "chapter": 28,
+  "questions": [
+    {
+      "id": "kidnapped-28-01",
+      "type": "detail",
+      "q": "What did Ebenezer warn Alan that he had, when he first spoke from the window?",
+      "choices": [
+        "A blunderbuss",
+        "A big fierce dog",
+        "Two servants",
+        "A sword"
+      ],
+      "answer": 0,
+      "evidence": "I have a blunderbush"
+    },
+    {
+      "id": "kidnapped-28-02",
+      "type": "vocabulary",
+      "q": "Ebenezer says, \"I hae nae trokings wi' night-hawks.\" Using the note in the chapter, what are \"trokings\"?",
+      "choices": [
+        "Dealings",
+        "Quarrels",
+        "Debts",
+        "Mysteries"
+      ],
+      "answer": 0,
+      "evidence": "Dealings."
+    },
+    {
+      "id": "kidnapped-28-03",
+      "type": "sequence",
+      "q": "What single word from Alan made Ebenezer's voice change and made him offer to let Alan in?",
+      "choices": [
+        "\"David\"",
+        "\"Hoseason\"",
+        "\"Rankeillor\"",
+        "\"Ransom\""
+      ],
+      "answer": 0,
+      "evidence": "\"David,\" says Alan."
+    },
+    {
+      "id": "kidnapped-28-04",
+      "type": "inference",
+      "q": "Why did Alan insist they talk on the doorstep instead of going inside?",
+      "choices": [
+        "So the hidden witnesses could hear every word",
+        "So he could run away quickly if soldiers came",
+        "Because he was afraid of the dark house itself",
+        "Because Ebenezer had locked the dogs indoors"
+      ],
+      "answer": 0,
+      "evidence": "it is here upon this doorstep that we must confer upon this business"
+    },
+    {
+      "id": "kidnapped-28-05",
+      "type": "detail",
+      "q": "In the story Alan made up, what had his \"friends\" done with David?",
+      "choices": [
+        "Found him half drowned and kept him in an old ruined castle",
+        "Sold him to a ship sailing for the plantations in Carolina",
+        "Taken him to France to serve in a Highland regiment there",
+        "Hidden him in a deep cave on Ben Alder with Cluny's men"
+      ],
+      "answer": 0,
+      "evidence": "clapped him in an auld, ruined castle"
+    },
+    {
+      "id": "kidnapped-28-06",
+      "type": "detail",
+      "q": "When Ebenezer said he did not care about David, what did Alan claim he was really trying to do?",
+      "choices": [
+        "Make the ransom smaller",
+        "Hide that he had no money",
+        "Get Alan to go away quietly",
+        "Keep David safe from harm"
+      ],
+      "answer": 0,
+      "evidence": "pretending ye don't care, to make the ransom smaller"
+    },
+    {
+      "id": "kidnapped-28-07",
+      "type": "inference",
+      "q": "Alan says that if no money could be made, his friends would just let David go. Why does that worry Ebenezer?",
+      "choices": [
+        "David would come home and tell everyone what his uncle had done",
+        "Alan's friends would come down and burn the House of Shaws to the ground",
+        "David would be lost forever in the Highlands with no friends",
+        "The soldiers would arrest Ebenezer for helping the Highlanders"
+      ],
+      "answer": 0,
+      "evidence": "Then it'll have to be David that tells it"
+    },
+    {
+      "id": "kidnapped-28-08",
+      "type": "sequence",
+      "q": "What made Ebenezer scramble to his feet and promise to be civil?",
+      "choices": [
+        "Alan threatened to run three feet of iron through him",
+        "Alan reached out and took away his blunderbuss",
+        "He heard Torrance cough by the corner of the dark house",
+        "Alan said he would call the soldiers from the town"
+      ],
+      "answer": 0,
+      "evidence": "I will ram three feet of iron through your vitals"
+    },
+    {
+      "id": "kidnapped-28-09",
+      "type": "detail",
+      "q": "When Alan asked whether he wanted David \"killed or kept,\" what did Ebenezer answer?",
+      "choices": [
+        "Kept",
+        "Killed",
+        "Sent to sea",
+        "Set free"
+      ],
+      "answer": 0,
+      "evidence": "O, keepit, keepit!"
+    },
+    {
+      "id": "kidnapped-28-10",
+      "type": "vocabulary",
+      "q": "Alan says keeping David will be \"a fashious job.\" Using the note in the chapter, what does \"fashious\" mean?",
+      "choices": [
+        "Troublesome",
+        "Simple",
+        "Quick",
+        "Pleasant"
+      ],
+      "answer": 0,
+      "evidence": "Troublesome."
+    },
+    {
+      "id": "kidnapped-28-11",
+      "type": "inference",
+      "q": "How did Alan trick Ebenezer into talking about Hoseason?",
+      "choices": [
+        "He pretended he and Hoseason were partners who shared everything",
+        "He showed Ebenezer a letter that Hoseason had written to him",
+        "He said Hoseason was waiting close by with the whole crew of the brig",
+        "He told Ebenezer that Hoseason had been hanged and confessed"
+      ],
+      "answer": 0,
+      "evidence": "Hoseason and me are partners; we gang shares"
+    },
+    {
+      "id": "kidnapped-28-12",
+      "type": "detail",
+      "q": "How much did Ebenezer admit he had paid Hoseason?",
+      "choices": [
+        "Twenty pounds",
+        "Five pounds",
+        "A hundred guineas",
+        "Two thirds of Shaws"
+      ],
+      "answer": 0,
+      "evidence": "I gave him twenty pound"
+    },
+    {
+      "id": "kidnapped-28-13",
+      "type": "sequence",
+      "q": "What happened right after Ebenezer confessed the payment?",
+      "choices": [
+        "Rankeillor stepped forward and wished him good evening",
+        "Ebenezer fired his blunderbuss and ran into the house",
+        "Alan drew his sword and chased Ebenezer up the stair",
+        "David ran out and begged his uncle to say that he was sorry"
+      ],
+      "answer": 0,
+      "evidence": "Thank you, Mr. Thomson. That will do excellently well"
+    },
+    {
+      "id": "kidnapped-28-14",
+      "type": "character",
+      "q": "How did Ebenezer react when the witnesses appeared?",
+      "choices": [
+        "He sat on the doorstep and stared like a man turned to stone",
+        "He wept loudly and begged David to forgive him there and then",
+        "He laughed and said he had known they were there all along",
+        "He shouted for help and tried to run back into the house"
+      ],
+      "answer": 0,
+      "evidence": "stared upon us like a man turned to stone"
+    },
+    {
+      "id": "kidnapped-28-15",
+      "type": "character",
+      "q": "Why did Alan sulk at the far end of the kitchen?",
+      "choices": [
+        "Rankeillor teased him about the king's name",
+        "He wanted a bigger share of the money from Shaws",
+        "He was angry that Ebenezer had lied",
+        "Torrance had drunk the last of the wine"
+      ],
+      "answer": 0,
+      "evidence": "This was just the stab that Alan would feel keenest"
+    },
+    {
+      "id": "kidnapped-28-16",
+      "type": "detail",
+      "q": "What did Ebenezer agree to pay David under the agreement?",
+      "choices": [
+        "Two clear thirds of the yearly income of Shaws",
+        "The whole of the estate, and leave the house",
+        "Half of the income, for as long as he lived",
+        "Twenty pounds a year, paid to him through the lawyer"
+      ],
+      "answer": 0,
+      "evidence": "to pay me two clear thirds of the yearly income of Shaws"
+    },
+    {
+      "id": "kidnapped-28-17",
+      "type": "character",
+      "q": "Why could David not sleep that night while the others snored?",
+      "choices": [
+        "The good change in his life moved him more than his hardships",
+        "He was afraid his uncle would creep in and harm him in the night",
+        "The kitchen chests were too hard after his soft bed",
+        "He was worried that Alan would slip away and leave without him"
+      ],
+      "answer": 0,
+      "evidence": "this good change in my case unmanned me more than any of the former evil ones"
+    },
+    {
+      "id": "kidnapped-28-18",
+      "type": "main-idea",
+      "q": "What is this chapter mostly about?",
+      "choices": [
+        "Alan tricks Ebenezer into confessing, and David wins his rights",
+        "Ebenezer catches Alan lying and drives everyone off with his gun",
+        "David and his uncle make peace and agree to live together kindly",
+        "Rankeillor takes Ebenezer to prison for the crime of kidnapping"
+      ],
+      "answer": 0,
+      "evidence": "I was a man of means and had a name in the country"
+    }
+  ]
+}

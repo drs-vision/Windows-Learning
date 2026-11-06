@@ -1,0 +1,162 @@
+{
+  "book": "doctor-dolittle",
+  "chapter": 3,
+  "questions": [
+    {
+      "id": "doctor-dolittle-03-01",
+      "type": "detail",
+      "q": "What did Sarah buy when the Doctor began to make money again?",
+      "choices": [
+        "A new dress",
+        "A new hat for church",
+        "A piano for the parlor",
+        "New curtains for the house"
+      ],
+      "answer": 0,
+      "evidence": "his sister, Sarah, bought a new dress"
+    },
+    {
+      "id": "doctor-dolittle-03-02",
+      "type": "inference",
+      "q": "Why did the Doctor keep getting more and more pets even after they got well?",
+      "choices": [
+        "He paid them to stay and help him cure other animals",
+        "Many animals liked him so much they asked to stay, and he could not refuse",
+        "He wanted to start a circus of his own in the big garden",
+        "Their owners never came back to take them home again"
+      ],
+      "answer": 1,
+      "evidence": "he never had the heart to refuse them"
+    },
+    {
+      "id": "doctor-dolittle-03-03",
+      "type": "character",
+      "q": "Why did the Doctor take the monkey away from the organ-grinder?",
+      "choices": [
+        "The monkey asked him in monkey-language to buy him",
+        "The organ-grinder wanted to sell the monkey for a shilling",
+        "The monkey's collar was too tight and he was dirty and unhappy",
+        "The monkey was sick and needed medicine for a cough"
+      ],
+      "answer": 2,
+      "evidence": "the monkey's collar was too tight"
+    },
+    {
+      "id": "doctor-dolittle-03-04",
+      "type": "vocabulary",
+      "q": "The animals named the monkey \"Chee-Chee.\" What does that word mean in monkey-language?",
+      "choices": [
+        "Little one",
+        "Friend",
+        "Ginger",
+        "Clever"
+      ],
+      "answer": 2,
+      "evidence": "meaning \"ginger.\""
+    },
+    {
+      "id": "doctor-dolittle-03-05",
+      "type": "detail",
+      "q": "Why did the crocodile escape from the circus and come to the Doctor's garden?",
+      "choices": [
+        "He wanted to eat the fish in the pond",
+        "He was looking for a way home to Africa",
+        "He had a bad tooth-ache",
+        "The circus-men had been cruel to him"
+      ],
+      "answer": 2,
+      "evidence": "the crocodile who had a bad tooth-ache escaped at night"
+    },
+    {
+      "id": "doctor-dolittle-03-06",
+      "type": "sequence",
+      "q": "What happened when the circus-men came to take the crocodile back?",
+      "choices": [
+        "The Doctor paid them money so the crocodile could stay",
+        "The crocodile got so wild and savage that he frightened them away",
+        "The crocodile hid under Sarah's bed until they gave up and left",
+        "The crocodile went back with them but escaped again the next night"
+      ],
+      "answer": 1,
+      "evidence": "he got so wild and savage that he frightened them away"
+    },
+    {
+      "id": "doctor-dolittle-03-07",
+      "type": "detail",
+      "q": "What did Sarah say she would do if the Doctor did not send the crocodile away?",
+      "choices": [
+        "Go back to live with her family in Oxenthorpe",
+        "Go and get married",
+        "Call the circus-men to come and take it",
+        "Sell the house and garden"
+      ],
+      "answer": 1,
+      "evidence": "I'll go and get married!"
+    },
+    {
+      "id": "doctor-dolittle-03-08",
+      "type": "character",
+      "q": "How did the Doctor feel about having very little money after Sarah left?",
+      "choices": [
+        "He did not worry, saying money did not matter as long as they were happy",
+        "He was very worried and stayed awake every night counting his coins",
+        "He was angry and blamed the animals for driving his sister away",
+        "He was ashamed and stopped walking through the town in his high hat"
+      ],
+      "answer": 0,
+      "evidence": "What does money matter, so long as we are happy?"
+    },
+    {
+      "id": "doctor-dolittle-03-09",
+      "type": "detail",
+      "q": "Which animal was chosen to keep the accounts because it was good at arithmetic?",
+      "choices": [
+        "Dab-Dab the duck",
+        "Polynesia the parrot",
+        "Too-Too the owl",
+        "Gub-Gub the pig"
+      ],
+      "answer": 2,
+      "evidence": "the owl, Too-Too, was to keep the accounts"
+    },
+    {
+      "id": "doctor-dolittle-03-10",
+      "type": "inference",
+      "q": "Why did Chee-Chee find his new housework easier than the other animals did?",
+      "choices": [
+        "He had worked in the circus and was used to hard work",
+        "He was the oldest and knew how to keep a house",
+        "He had hands and could do things like a man",
+        "He only had to do the gardening, which was easy"
+      ],
+      "answer": 2,
+      "evidence": "who had hands, and could do things like a man"
+    },
+    {
+      "id": "doctor-dolittle-03-11",
+      "type": "detail",
+      "q": "How did Jip sweep the floors?",
+      "choices": [
+        "He pushed a small broom along with his nose",
+        "He brushed the dust out of the door with his paws",
+        "He swept with his tail, with a rag tied onto it",
+        "He carried a feather duster in his mouth"
+      ],
+      "answer": 2,
+      "evidence": "sweeping his tail over the floor with a rag tied onto it for a broom"
+    },
+    {
+      "id": "doctor-dolittle-03-12",
+      "type": "main-idea",
+      "q": "What is this chapter mostly about?",
+      "choices": [
+        "How the crocodile learned to live happily in the fish-pond",
+        "How the Doctor lost his money again, and the animals worked to help him",
+        "How the Doctor rescued the monkey from a cruel organ-grinder",
+        "How the animals sold radishes and roses at a stall by the gate"
+      ],
+      "answer": 1,
+      "evidence": "it is for our sakes that the old man finds himself so lonely and so poor"
+    }
+  ]
+}

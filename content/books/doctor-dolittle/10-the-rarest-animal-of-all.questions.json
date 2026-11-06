@@ -1,0 +1,162 @@
+{
+  "book": "doctor-dolittle",
+  "chapter": 10,
+  "questions": [
+    {
+      "id": "doctor-dolittle-10-01",
+      "type": "vocabulary",
+      "q": "The chapter says pushmi-pullyus \"are now extinct.\" What does \"extinct\" mean?",
+      "choices": [
+        "There aren't any more of them",
+        "They live only in zoos now",
+        "They have learned to hide very well",
+        "They have moved to another country"
+      ],
+      "answer": 0,
+      "evidence": "That means, there aren't any more."
+    },
+    {
+      "id": "doctor-dolittle-10-02",
+      "type": "detail",
+      "q": "What did a pushmi-pullyu look like?",
+      "choices": [
+        "It had two tails and one very large head with long ears",
+        "It had no tail, but a head at each end with sharp horns",
+        "It had a long neck like a giraffe and four horns on its head",
+        "It looked like a small horse with a single horn in the middle"
+      ],
+      "answer": 1,
+      "evidence": "They had no tail, but a head at each end"
+    },
+    {
+      "id": "doctor-dolittle-10-03",
+      "type": "inference",
+      "q": "Why could no one ever sneak up on a pushmi-pullyu?",
+      "choices": [
+        "It could hear footsteps from many miles away in the jungle",
+        "It always hid in the very tallest grass by the edge of the river",
+        "Whichever way you came, it faced you, and one head always stayed awake",
+        "It ran faster than any other animal in all the jungles of Africa"
+      ],
+      "answer": 2,
+      "evidence": "only one half of him slept at a time"
+    },
+    {
+      "id": "doctor-dolittle-10-04",
+      "type": "sequence",
+      "q": "How did the monkeys finally catch up with the pushmi-pullyu?",
+      "choices": [
+        "They chased it into the river until it got much too tired to swim",
+        "They joined hands and made a great circle round the high grass",
+        "They dug a deep hole and covered it with leaves and grass",
+        "They called to it in a friendly voice until it came out"
+      ],
+      "answer": 1,
+      "evidence": "they all joined hands and made a great circle round the high grass"
+    },
+    {
+      "id": "doctor-dolittle-10-05",
+      "type": "character",
+      "q": "Why did the pushmi-pullyu not want to go at first?",
+      "choices": [
+        "He was afraid of the long sea voyage",
+        "He was shy and hated being stared at",
+        "He did not want to leave his family behind",
+        "He did not trust any man at all"
+      ],
+      "answer": 1,
+      "evidence": "I hate being stared at"
+    },
+    {
+      "id": "doctor-dolittle-10-06",
+      "type": "detail",
+      "q": "How long did the monkeys try to persuade the pushmi-pullyu?",
+      "choices": [
+        "One whole night",
+        "Two weeks",
+        "Three days",
+        "A month"
+      ],
+      "answer": 2,
+      "evidence": "for three days they tried to persuade him"
+    },
+    {
+      "id": "doctor-dolittle-10-07",
+      "type": "character",
+      "q": "Why did Dab-Dab say the Doctor should take the pushmi-pullyu home?",
+      "choices": [
+        "She thought it would be good company for Jip and Gub-Gub on the ship",
+        "People would pay to see him, so they could buy the sailor's boat and live",
+        "She wanted the pushmi-pullyu to help her with all the housework",
+        "She was afraid the King's soldiers would catch it if it stayed behind"
+      ],
+      "answer": 1,
+      "evidence": "how are you going to get the sailor the new boat you spoke of"
+    },
+    {
+      "id": "doctor-dolittle-10-08",
+      "type": "detail",
+      "q": "What did the pushmi-pullyu make the Doctor promise before he agreed to go?",
+      "choices": [
+        "To feed him fresh grass and honey every single day",
+        "To never put him in a cage or a menagerie",
+        "To send him back if he did not like it there",
+        "To bring his mother along with him on the ship"
+      ],
+      "answer": 2,
+      "evidence": "if I do not like it in the Land of the White Men you will send me back"
+    },
+    {
+      "id": "doctor-dolittle-10-09",
+      "type": "inference",
+      "q": "Why does the pushmi-pullyu keep one mouth mostly for eating?",
+      "choices": [
+        "So that it never gets hungry while it is walking through the jungle",
+        "So it can talk while eating without being rude",
+        "So that one head can guard the food from other animals",
+        "Because the other mouth cannot talk any language at all"
+      ],
+      "answer": 1,
+      "evidence": "In that way I can talk while I am eating without being rude."
+    },
+    {
+      "id": "doctor-dolittle-10-10",
+      "type": "detail",
+      "q": "What advice did the Doctor give the animals in his speech at the party?",
+      "choices": [
+        "Always wash in the river before going to bed at night",
+        "Never trust the King of the Jolliginki or any of his soldiers in the jungle",
+        "Keep flies off your food, and do not sleep on the ground in the rains",
+        "Keep away from the ships of men who come to hunt"
+      ],
+      "answer": 2,
+      "evidence": "never to let the flies settle on your food before you eat it"
+    },
+    {
+      "id": "doctor-dolittle-10-11",
+      "type": "detail",
+      "q": "What did the Grand Gorilla do to mark the place where the Doctor ate with them?",
+      "choices": [
+        "He carved the Doctor's name into the trunk of a great tree",
+        "He rolled a great rock up to the head of the table",
+        "He planted a tall palm-tree right where the Doctor had sat",
+        "He built a little house of grass on the spot where they ate"
+      ],
+      "answer": 1,
+      "evidence": "rolled a great rock up to the head of the table"
+    },
+    {
+      "id": "doctor-dolittle-10-12",
+      "type": "main-idea",
+      "q": "What is this chapter mostly about?",
+      "choices": [
+        "How the Doctor gave a long speech after eating many fruits",
+        "How the monkeys found the rare pushmi-pullyu and he agreed to go with the Doctor",
+        "How the pushmi-pullyu told the Doctor all about his family and the last of the Unicorns",
+        "How the monkeys walked with the Doctor to the edge of their country"
+      ],
+      "answer": 1,
+      "evidence": "And Chee-Chee very proudly took the animal inside and showed him to the Doctor."
+    }
+  ]
+}

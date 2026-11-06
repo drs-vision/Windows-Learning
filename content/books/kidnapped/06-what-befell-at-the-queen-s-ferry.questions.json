@@ -1,0 +1,188 @@
+{
+  "book": "kidnapped",
+  "chapter": 6,
+  "questions": [
+    {
+      "id": "kidnapped-06-01",
+      "type": "detail",
+      "q": "What was unusual about the room where Captain Hoseason sat at the inn?",
+      "choices": [
+        "It was crowded with maps, charts and sea chests",
+        "It was full of sailors singing and drinking punch",
+        "It was heated like an oven by a great coal fire",
+        "It was dark and cold with every window boarded"
+      ],
+      "answer": 2,
+      "evidence": "heated like an oven by a great fire of coal"
+    },
+    {
+      "id": "kidnapped-06-02",
+      "type": "character",
+      "q": "Why did the captain say he kept his room so hot?",
+      "choices": [
+        "He had cold blood from his years in the tropic seas",
+        "He had a fever he had caught on his last long voyage",
+        "He was trying to dry out his wet sea-clothes quickly",
+        "He wanted his visitors to feel tired and sleepy"
+      ],
+      "answer": 0,
+      "evidence": "I'm a cold-rife man by my nature"
+    },
+    {
+      "id": "kidnapped-06-03",
+      "type": "sequence",
+      "q": "Why did David leave his uncle alone with the captain?",
+      "choices": [
+        "The captain asked him to carry a letter to the pier",
+        "Ransome begged him to come and see the ship's boat",
+        "His uncle sent him to fetch the lawyer Mr. Rankeillor",
+        "He wanted a look at the sea and the room was too close"
+      ],
+      "answer": 3,
+      "evidence": "so sickened by the closeness of the room"
+    },
+    {
+      "id": "kidnapped-06-04",
+      "type": "detail",
+      "q": "What was new to David when he walked down on the beach?",
+      "choices": [
+        "The seaweeds, some with little bladders that crackled",
+        "The great waves crashing loudly on the rocks",
+        "The crabs and shells left behind by the tide",
+        "The white sand stretching for miles along the shore"
+      ],
+      "answer": 0,
+      "evidence": "some with little bladders that crackled between my fingers"
+    },
+    {
+      "id": "kidnapped-06-05",
+      "type": "detail",
+      "q": "What did David offer Ransome instead of the bowl of punch he wanted?",
+      "choices": [
+        "A glass of ale",
+        "A cup of milk",
+        "A dish of porridge",
+        "Some hot tea"
+      ],
+      "answer": 0,
+      "evidence": "But a glass of ale you may have, and welcome"
+    },
+    {
+      "id": "kidnapped-06-06",
+      "type": "detail",
+      "q": "What did the landlord say about Mr. Rankeillor?",
+      "choices": [
+        "He was a very honest man",
+        "He was a cruel and greedy lawyer",
+        "He had left the county for good",
+        "He was a friend of Ebenezer's"
+      ],
+      "answer": 0,
+      "evidence": "and a very honest man"
+    },
+    {
+      "id": "kidnapped-06-07",
+      "type": "vocabulary",
+      "q": "The landlord says David has \"a kind of gliff of Mr. Alexander.\" Using the note in the text, what does \"gliff\" mean?",
+      "choices": [
+        "Look",
+        "Voice",
+        "Walk",
+        "Temper"
+      ],
+      "answer": 0,
+      "evidence": "* Look."
+    },
+    {
+      "id": "kidnapped-06-08",
+      "type": "detail",
+      "q": "According to the landlord, what was the report that went around about Ebenezer?",
+      "choices": [
+        "That he had killed his brother Alexander to get the place",
+        "That he had sold his own land to Captain Hoseason",
+        "That he had married Jennet Clouston and then left her",
+        "That he had stolen gold from the kirk at Cramond parish"
+      ],
+      "answer": 0,
+      "evidence": "just that he had killed him"
+    },
+    {
+      "id": "kidnapped-06-09",
+      "type": "inference",
+      "q": "What did David learn when the landlord said Alexander was the eldest son?",
+      "choices": [
+        "That the house of Shaws should rightly belong to David",
+        "That his father had been a sailor before he was a teacher",
+        "That Mr. Rankeillor had always cheated the Balfour family",
+        "That his uncle was really much younger than he looked"
+      ],
+      "answer": 0,
+      "evidence": "was now one of the rich of the earth"
+    },
+    {
+      "id": "kidnapped-06-10",
+      "type": "character",
+      "q": "David says the captain \"was two men.\" What does he mean?",
+      "choices": [
+        "He seemed good on land but became worse once on board",
+        "He had a twin brother who sailed with him on the brig",
+        "He was both the captain and the navigator of the ship",
+        "He could talk like a Scot and also like an Englishman"
+      ],
+      "answer": 0,
+      "evidence": "left the better one behind as soon as he set foot on board his vessel"
+    },
+    {
+      "id": "kidnapped-06-11",
+      "type": "detail",
+      "q": "What did the captain whisper in David's ear to get him on board?",
+      "choices": [
+        "That Mr. Rankeillor was waiting aboard the brig",
+        "That there was a gift for him in the cabin below",
+        "To take care of the old tod, who meant mischief",
+        "That he knew a secret about David's dead father"
+      ],
+      "answer": 2,
+      "evidence": "Take care of the old tod;* he means mischief"
+    },
+    {
+      "id": "kidnapped-06-12",
+      "type": "sequence",
+      "q": "What did David see when he ran to the ship's side?",
+      "choices": [
+        "Ransome swimming back to the pier with the captain's letter",
+        "His uncle climbing up the ship's ladder to join him on deck",
+        "Mr. Rankeillor waving to him from the end of the town pier",
+        "The boat pulling for the town with his uncle in the stern"
+      ],
+      "answer": 3,
+      "evidence": "with my uncle sitting in the stern"
+    },
+    {
+      "id": "kidnapped-06-13",
+      "type": "detail",
+      "q": "What happened to David right after he cried out for help?",
+      "choices": [
+        "He was tied to the mast with ropes",
+        "He was locked in the captain's cabin",
+        "He jumped overboard into the sea",
+        "He was struck and fell senseless"
+      ],
+      "answer": 3,
+      "evidence": "I saw a great flash of fire, and fell senseless"
+    },
+    {
+      "id": "kidnapped-06-14",
+      "type": "main-idea",
+      "q": "What is this chapter mostly about?",
+      "choices": [
+        "David learns the sea is dangerous and decides to stay safe on shore",
+        "David and the captain become friends and plan a voyage together",
+        "David visits the lawyer and claims the house of Shaws as his own",
+        "David is tricked aboard the Covenant and kidnapped with his uncle's help"
+      ],
+      "answer": 3,
+      "evidence": "Help, help! Murder!"
+    }
+  ]
+}

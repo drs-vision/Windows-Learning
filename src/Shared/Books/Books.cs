@@ -15,7 +15,8 @@ public sealed class BookLibrary
 {
     public sealed record Grade(int Min, int Max, string Label);
     public sealed record ChapterInfo(int N, string Title, string Text, string Questions, int Words);
-    public sealed record Book(string Id, string Title, string Author, int Published, Grade Grade, string Summary, List<ChapterInfo> Chapters);
+    /// <summary>Level: the reading level children see (1 = easiest). Grade is an approximate hint for parents.</summary>
+    public sealed record Book(string Id, string Title, string Author, int Published, int Level, Grade Grade, string Summary, List<ChapterInfo> Chapters, string? Edited = null);
     public sealed record Question(string Id, string Type, string Q, List<string> Choices, int Answer, string Evidence);
 
     private static readonly JsonSerializerOptions Json = new() { PropertyNameCaseInsensitive = true };
@@ -47,7 +48,7 @@ public sealed class BookLibrary
                         catch { /* a broken book is left out; the validator reports it */ }
                     }
             }
-            return _books.Values.OrderBy(b => b.Grade.Min).ThenBy(b => b.Grade.Max).ThenBy(b => b.Title).ToList();
+            return _books.Values.OrderBy(b => b.Level).ThenBy(b => b.Grade.Min).ThenBy(b => b.Title).ToList();
         }
     }
 
@@ -124,6 +125,12 @@ public sealed class ChapterProgress
     public List<string> Seen { get; set; } = new();
     public List<string> BonusDone { get; set; } = new();
     public List<int> TypedParts { get; set; } = new();
+    /// <summary>Time the chapter was on screen and in use before the first quiz (for the parents' reading speed).</summary>
+    public long ReadMs { get; set; }
+    /// <summary>The first quiz's score (for the parents' "% right" and the verified reading level).</summary>
+    public int FirstCorrect { get; set; }
+    public int FirstTotal { get; set; }
+    public DateTimeOffset? PassedAt { get; set; }
     public OpenQuiz? Quiz { get; set; }
     public OpenQuiz? Bonus { get; set; }
 }
@@ -204,10 +211,11 @@ public static class Quiz
         }
         p.Quiz = null;
         p.Attempts++;
+        if (p.Attempts == 1) { p.FirstCorrect = correct; p.FirstTotal = total; }
         var pct = total == 0 ? 100 : (int)Math.Round(100.0 * correct / total);
         if (total == 0 || correct >= Math.Ceiling(PassMark * total - 1e-9))
         {
-            p.Passed = true; p.Correct = correct; p.Total = total; p.RetakeAt = null;
+            p.Passed = true; p.Correct = correct; p.Total = total; p.RetakeAt = null; p.PassedAt = now;
             return new Graded(true, correct, total, pct, null, review);
         }
         p.RetakeAt = now + wait;
@@ -215,14 +223,18 @@ public static class Quiz
         return new Graded(false, correct, total, pct, p.RetakeAt, null);
     }
 
-    /// <summary>After passing: questions the child hasn't seen yet, one at a time.</summary>
-    public static int BonusLeft(ChapterProgress p, List<BookLibrary.Question> bank) =>
-        p.Passed ? bank.Count(q => !p.Seen.Contains(q.Id) && !p.BonusDone.Contains(q.Id)) : 0;
+    /// <summary>
+    /// After passing: questions the child hasn't seen yet, one at a time — at most as many as the quiz had
+    /// (<paramref name="size"/>), so a chapter's bonus is in step with its length, like the quiz itself.
+    /// </summary>
+    public static int BonusLeft(ChapterProgress p, List<BookLibrary.Question> bank, int size) =>
+        p.Passed ? Math.Min(bank.Count(q => !p.Seen.Contains(q.Id) && !p.BonusDone.Contains(q.Id)), Math.Max(0, size - p.BonusDone.Count)) : 0;
 
-    public static ShownQuestion? NextBonus(ChapterProgress p, List<BookLibrary.Question> bank, Random rng, DateTimeOffset now)
+    public static ShownQuestion? NextBonus(ChapterProgress p, List<BookLibrary.Question> bank, int size, Random rng, DateTimeOffset now)
     {
         if (!p.Passed) throw new InvalidOperationException("Pass the chapter quiz first");
         if (p.Bonus is { Qids.Count: 1 } open && bank.FirstOrDefault(x => x.Id == open.Qids[0]) is { } same) return Show(same, open.Orders[0]);
+        if (BonusLeft(p, bank, size) == 0) return null;
         var q = bank.Where(x => !p.Seen.Contains(x.Id) && !p.BonusDone.Contains(x.Id)).OrderBy(_ => rng.Next()).FirstOrDefault();
         if (q is null) return null;
         p.Bonus = new OpenQuiz { Id = Guid.NewGuid().ToString("N")[..12], Qids = { q.Id }, Orders = { Shuffled(rng) }, Issued = now };

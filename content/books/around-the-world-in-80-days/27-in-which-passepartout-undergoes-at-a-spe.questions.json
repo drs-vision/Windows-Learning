@@ -1,0 +1,126 @@
+{
+  "book": "around-the-world-in-80-days",
+  "chapter": 27,
+  "questions": [
+    {
+      "id": "around-the-world-in-80-days-27-01",
+      "type": "detail",
+      "q": "What was Passepartout doing on the platform when the strange man appeared?",
+      "choices": ["Working out the value of the golden-looking sun in pounds", "Counting the cars of the train as it went around a curve", "Watching for herds of buffalo out on the snowy prairie", "Writing a letter home to his friends in Paris"],
+      "answer": 0,
+      "evidence": "calculating its value in pounds sterling"
+    },
+    {
+      "id": "around-the-world-in-80-days-27-02",
+      "type": "detail",
+      "q": "What was the stranger wearing that made him look like a clergyman?",
+      "choices": ["A long grey coat and a red scarf", "Black clothes and a white cravat", "A brown suit and a straw hat", "A blue uniform with brass buttons"],
+      "answer": 1,
+      "evidence": "a black waistcoat, black trousers, a white cravat"
+    },
+    {
+      "id": "around-the-world-in-80-days-27-03",
+      "type": "detail",
+      "q": "What did the stranger fix to the door of each car?",
+      "choices": ["A printed timetable", "A handwritten notice", "A map of Utah", "A warning about thieves"],
+      "answer": 1,
+      "evidence": "affixed to the door of each car a notice written in manuscript"
+    },
+    {
+      "id": "around-the-world-in-80-days-27-04",
+      "type": "detail",
+      "q": "What did the notice announce?",
+      "choices": ["A lecture by Elder William Hitch in car No. 117", "A dinner party for passengers in the saloon car", "A change in the train's stopping time at Ogden", "A reward for anyone who found a lady's lost purse"],
+      "answer": 0,
+      "evidence": "would deliver a lecture on Mormonism in car No. 117"
+    },
+    {
+      "id": "around-the-world-in-80-days-27-05",
+      "type": "detail",
+      "q": "Who chose not to go to the lecture?",
+      "choices": ["Passepartout and Aouda", "Mr. Fogg and Fix", "The conductor and the engineer", "Only the women on the train"],
+      "answer": 1,
+      "evidence": "Neither Mr. Fogg nor Fix cared to attend."
+    },
+    {
+      "id": "around-the-world-in-80-days-27-06",
+      "type": "character",
+      "q": "How did Elder Hitch speak when he began his lecture?",
+      "choices": ["Softly, as if telling a bedtime story", "In an irritated voice, as if already contradicted", "Slowly, reading every word from a small book", "Cheerfully, making the audience laugh often"],
+      "answer": 1,
+      "evidence": "in an irritated voice, as if he had already been contradicted"
+    },
+    {
+      "id": "around-the-world-in-80-days-27-07",
+      "type": "sequence",
+      "q": "What happened to the size of the audience as the lecture went on?",
+      "choices": ["More passengers kept crowding into the car", "It stayed about the same until the end", "People left until only Passepartout remained", "Everyone left at once when the train stopped"],
+      "answer": 2,
+      "evidence": "Passepartout was now the only person left in the car"
+    },
+    {
+      "id": "around-the-world-in-80-days-27-08",
+      "type": "vocabulary",
+      "q": "The Elder's story \"became somewhat wearisome.\" What does wearisome mean?",
+      "choices": ["Frightening", "Tiring and dull", "Hard to hear", "Very amusing to hear"],
+      "answer": 1,
+      "evidence": "The Elder's story became somewhat wearisome"
+    },
+    {
+      "id": "around-the-world-in-80-days-27-09",
+      "type": "character",
+      "q": "What did Passepartout answer when the Elder invited him to plant his tent with them?",
+      "choices": ["He said he would think about it", "He said \"No!\" and left the car", "He asked to hear more the next day", "He said he must first ask Mr. Fogg"],
+      "answer": 1,
+      "evidence": "\"No!\" replied Passepartout courageously"
+    },
+    {
+      "id": "around-the-world-in-80-days-27-10",
+      "type": "inference",
+      "q": "The Elder was left \"to preach to vacancy.\" What does this mean?",
+      "choices": ["He went on talking to a crowd of new listeners", "He was left talking to an empty car", "He was asked to give his talk again later", "He moved his lecture to another car"],
+      "answer": 1,
+      "evidence": "leaving the Elder to preach to vacancy"
+    },
+    {
+      "id": "around-the-world-in-80-days-27-11",
+      "type": "detail",
+      "q": "Why can fish not live in the Great Salt Lake, according to the chapter?",
+      "choices": ["The water is far too cold all winter", "The water holds a great deal of salt", "The lake is frozen solid most of the year", "Large birds catch every fish that comes"],
+      "answer": 1,
+      "evidence": "it contains considerable salt"
+    },
+    {
+      "id": "around-the-world-in-80-days-27-12",
+      "type": "detail",
+      "q": "What did Mr. Fogg and his party do during the six-hour stop at Ogden?",
+      "choices": ["They slept for hours at a hotel near the station", "They visited Salt Lake City by a branch road", "They went hunting buffalo on the prairie", "They waited in the car playing whist all day"],
+      "answer": 1,
+      "evidence": "Mr. Fogg and his party had time to pay a visit to Salt Lake City"
+    },
+    {
+      "id": "around-the-world-in-80-days-27-13",
+      "type": "detail",
+      "q": "How were the streets of Salt Lake City laid out?",
+      "choices": ["In winding circles around a hill", "Like a checker-board", "Along a single long road", "In no plan at all"],
+      "answer": 1,
+      "evidence": "like a checker-board"
+    },
+    {
+      "id": "around-the-world-in-80-days-27-14",
+      "type": "sequence",
+      "q": "What happened just as the train began to leave Salt Lake station?",
+      "choices": ["A wheel broke and the train had to stop for repairs", "A man ran shouting \"Stop!\" and jumped onto the rear platform", "Fix got off the train and disappeared into the crowd", "Elder Hitch began a second lecture in the dining car"],
+      "answer": 1,
+      "evidence": "jumped on the rear platform of the train"
+    },
+    {
+      "id": "around-the-world-in-80-days-27-15",
+      "type": "main-idea",
+      "q": "What is this chapter mostly about?",
+      "choices": ["Passepartout hearing a long lecture on the train and the party visiting Salt Lake City", "Passepartout missing the train in Utah and walking to catch up with his master", "Fogg arguing with a missionary and being forced to leave the train at Ogden in a snowstorm", "The travellers being snowed in at the Great Salt Lake for several days"],
+      "answer": 0,
+      "evidence": "Passepartout took one of the front seats"
+    }
+  ]
+}

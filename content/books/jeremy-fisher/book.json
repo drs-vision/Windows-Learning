@@ -1,0 +1,27 @@
+{
+  "id": "jeremy-fisher",
+  "title": "The Tale of Mr. Jeremy Fisher",
+  "author": "Beatrix Potter",
+  "published": 1906,
+  "level": 1,
+  "grade": {
+    "min": 0,
+    "max": 2,
+    "label": "Grades K-2"
+  },
+  "summary": "A frog goes fishing for minnows for his friends and nearly ends up as dinner himself.",
+  "source": {
+    "name": "Project Gutenberg eBook #15077 (public-domain text; Gutenberg header, license and name removed)",
+    "url": "https://www.gutenberg.org/ebooks/15077"
+  },
+  "publicDomain": "First published 1906; in the US public domain (published before 1931).",
+  "chapters": [
+    {
+      "n": 1,
+      "title": "The Tale of Mr. Jeremy Fisher",
+      "text": "01-the-tale-of-mr-jeremy-fisher.txt",
+      "questions": "01-the-tale-of-mr-jeremy-fisher.questions.json",
+      "words": 792
+    }
+  ]
+}

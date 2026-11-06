@@ -1,0 +1,94 @@
+{
+  "book": "mrs-tiggy-winkle",
+  "chapter": 1,
+  "questions": [
+    {
+      "id": "mrs-tiggy-winkle-01-01",
+      "type": "detail",
+      "q": "What was Lucie always losing?",
+      "choices": ["Her hair ribbons", "Her pocket-handkerchiefs", "Her little shoes", "Her silver pins"],
+      "answer": 1,
+      "evidence": "she was always losing her pocket-handkerchiefs"
+    },
+    {
+      "id": "mrs-tiggy-winkle-01-02",
+      "type": "detail",
+      "q": "What did Lucie see a great way up the hill-side?",
+      "choices": ["Some white things spread on the grass", "A big red barn with an open door", "Lots of sheep eating the short grass", "A tall chimney with smoke coming out"],
+      "answer": 0,
+      "evidence": "she thought she saw some white things spread upon the grass"
+    },
+    {
+      "id": "mrs-tiggy-winkle-01-03",
+      "type": "detail",
+      "q": "What did Lucie find at the end of the path, under a big rock?",
+      "choices": ["A spring of water", "A door into the hill", "A sleeping kitten", "A nest of baby birds"],
+      "answer": 1,
+      "evidence": "a door! straight into the hill"
+    },
+    {
+      "id": "mrs-tiggy-winkle-01-04",
+      "type": "detail",
+      "q": "What was Mrs. Tiggy-winkle doing when Lucie came in?",
+      "choices": ["Baking a cake", "Ironing clothes", "Sweeping the floor", "Sleeping by the fire"],
+      "answer": 1,
+      "evidence": "with an iron in her hand stood a very stout short person"
+    },
+    {
+      "id": "mrs-tiggy-winkle-01-05",
+      "type": "detail",
+      "q": "Whose little scarlet waist-coat did Mrs. Tiggy-winkle iron?",
+      "choices": ["Cock Robin's", "Peter Rabbit's", "Tom Titmouse's", "Squirrel Nutkin's"],
+      "answer": 0,
+      "evidence": "that's a little scarlet waist-coat belonging to Cock Robin"
+    },
+    {
+      "id": "mrs-tiggy-winkle-01-06",
+      "type": "detail",
+      "q": "Why did old Mrs. Rabbit's handkerchief have to be washed by itself?",
+      "choices": ["It was stained with currant wine", "It smelled of onions", "It had a hole right in the middle", "It was much too big for the basin"],
+      "answer": 1,
+      "evidence": "it did so smell of onions"
+    },
+    {
+      "id": "mrs-tiggy-winkle-01-07",
+      "type": "vocabulary",
+      "q": "Mrs. Tiggy-winkle called herself a \"clear-starcher.\" What job does she do?",
+      "choices": ["She bakes bread for the farm", "She washes and irons clothes", "She sews new coats for animals", "She looks after the little lambs"],
+      "answer": 1,
+      "evidence": "I'm an excellent clear-starcher"
+    },
+    {
+      "id": "mrs-tiggy-winkle-01-08",
+      "type": "sequence",
+      "q": "What did Lucie and Mrs. Tiggy-winkle do after they finished tea?",
+      "choices": ["Went to sleep by the warm fire", "Tied up the clean clothes in bundles", "Washed all the cups in the spring", "Started ironing a new basket of clothes"],
+      "answer": 1,
+      "evidence": "When they had finished tea, they tied up the clothes in bundles"
+    },
+    {
+      "id": "mrs-tiggy-winkle-01-09",
+      "type": "detail",
+      "q": "Who were the first animals they met on the way down the hill?",
+      "choices": ["Peter Rabbit and Benjamin Bunny", "Tabby Kitten and Sally Henny-penny", "Squirrel Nutkin and Cock Robin", "Jenny Wren and Tom Titmouse"],
+      "answer": 0,
+      "evidence": "the very first that they met were Peter Rabbit and Benjamin Bunny"
+    },
+    {
+      "id": "mrs-tiggy-winkle-01-10",
+      "type": "inference",
+      "q": "What did Lucie find out about Mrs. Tiggy-winkle at the end?",
+      "choices": ["She was really a hedgehog", "She was really Lucie's own aunt", "She was really a fairy from the hill", "She was really a little brown mouse"],
+      "answer": 0,
+      "evidence": "Mrs. Tiggy-winkle was nothing but a HEDGEHOG"
+    },
+    {
+      "id": "mrs-tiggy-winkle-01-11",
+      "type": "main-idea",
+      "q": "What is this story mostly about?",
+      "choices": ["A girl who finds a hedgehog washerwoman while looking for her things", "A girl who climbs a tall hill to see the town far below", "A hedgehog who loses her cap and her shawl in the woods", "A farm where all of the animals lose their best clothes"],
+      "answer": 0,
+      "evidence": "Have you seen my pocket-handkins?"
+    }
+  ]
+}

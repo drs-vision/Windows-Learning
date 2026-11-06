@@ -1,0 +1,136 @@
+{
+  "book": "doctor-dolittle",
+  "chapter": 4,
+  "questions": [
+    {
+      "id": "doctor-dolittle-04-01",
+      "type": "detail",
+      "q": "What were the Doctor and the animals doing when Too-Too heard a noise outside?",
+      "choices": [
+        "Eating their supper together at the long kitchen table by the window",
+        "Sitting round the fire while the Doctor read aloud to them",
+        "Selling radishes and roses at the stall by the gate",
+        "Clearing the deep snow away from the front door"
+      ],
+      "answer": 1,
+      "evidence": "the Doctor was reading aloud to them"
+    },
+    {
+      "id": "doctor-dolittle-04-02",
+      "type": "detail",
+      "q": "What was the message that Chee-Chee's cousin sent from Africa?",
+      "choices": [
+        "The King of Africa wanted the Doctor to come and be his own royal doctor",
+        "A sickness was killing the monkeys, and they begged him to come",
+        "The crocodile's family wanted him to come home to Africa at once",
+        "The swallows needed the Doctor to mend a broken wing"
+      ],
+      "answer": 1,
+      "evidence": "There is a terrible sickness among the monkeys out there."
+    },
+    {
+      "id": "doctor-dolittle-04-03",
+      "type": "detail",
+      "q": "Who carried the message all the way from Africa?",
+      "choices": [
+        "A stork",
+        "A crow",
+        "A swallow",
+        "A gull"
+      ],
+      "answer": 2,
+      "evidence": "A swallow"
+    },
+    {
+      "id": "doctor-dolittle-04-04",
+      "type": "inference",
+      "q": "Why did the Doctor say the swallow \"must be perished with the cold\"?",
+      "choices": [
+        "She had flown through a snowstorm with a broken wing",
+        "The swallows had flown South weeks ago, so she was out in the bitter winter",
+        "She had been waiting outside on the rain-butt all night long in the snow and wind",
+        "Swallows always catch colds when they fly across the sea"
+      ],
+      "answer": 1,
+      "evidence": "The swallows flew South six weeks ago!"
+    },
+    {
+      "id": "doctor-dolittle-04-05",
+      "type": "character",
+      "q": "What had happened to the last twopence in the money-box?",
+      "choices": [
+        "Gub-Gub had spent it on apples from the grocer",
+        "Sarah had taken it with her when she left the house",
+        "The Doctor had spent it on a rattle for a badger's baby",
+        "Too-Too had used it to pay the fishmonger's bill for the week's fish"
+      ],
+      "answer": 2,
+      "evidence": "you spent it on a rattle for that badger's baby when he was teething"
+    },
+    {
+      "id": "doctor-dolittle-04-06",
+      "type": "detail",
+      "q": "How did the Doctor get a boat to take them to Africa?",
+      "choices": [
+        "He borrowed it from a sailor whose baby he had cured of measles",
+        "He bought it from a fisherman using the money the animals had saved up",
+        "The Cat's-meat-Man lent him his brother's fishing boat",
+        "The swallow led them to an old boat left on the beach"
+      ],
+      "answer": 0,
+      "evidence": "I knew a seaman once who brought his baby to me with measles"
+    },
+    {
+      "id": "doctor-dolittle-04-07",
+      "type": "vocabulary",
+      "q": "Polynesia says to bring a bell \"to tell the time by.\" What does she mean?",
+      "choices": [
+        "The bell rings by itself to wake everyone in the morning",
+        "Ringing it every half-hour lets you know what time it is",
+        "The bell tells other ships that it is time to move out of the way",
+        "The bell warns the sailors when a storm is about to come"
+      ],
+      "answer": 1,
+      "evidence": "You go and ring it every half-hour and then you know what time it is."
+    },
+    {
+      "id": "doctor-dolittle-04-08",
+      "type": "sequence",
+      "q": "What did the animals do with the house key before they left?",
+      "choices": [
+        "Hid it under a stone seat in the garden",
+        "Gave it to the Cat's-meat-Man to keep until they came home",
+        "Gave it to the old horse who lived in the stable",
+        "Sent it to Sarah with a letter"
+      ],
+      "answer": 2,
+      "evidence": "gave the key to the old horse who lived in the stable"
+    },
+    {
+      "id": "doctor-dolittle-04-09",
+      "type": "detail",
+      "q": "Why did Gub-Gub say the bed on the ship was not a bed?",
+      "choices": [
+        "It was much too small for a pig to fit in",
+        "It looked like a shelf",
+        "It was a pile of old sails and rope",
+        "It was made of hard wooden boards"
+      ],
+      "answer": 1,
+      "evidence": "That's a shelf!"
+    },
+    {
+      "id": "doctor-dolittle-04-10",
+      "type": "main-idea",
+      "q": "What is this chapter mostly about?",
+      "choices": [
+        "How the Doctor spent a cold winter at home",
+        "How a call for help from Africa led the Doctor to set sail there",
+        "How Polynesia taught the animals everything about life on a ship",
+        "How the Doctor finally solved his money troubles in Puddleby"
+      ],
+      "answer": 1,
+      "evidence": "beg you to come to Africa to stop the sickness"
+    }
+  ]
+}

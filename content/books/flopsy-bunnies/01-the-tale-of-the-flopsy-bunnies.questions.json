@@ -1,0 +1,123 @@
+{
+  "book": "flopsy-bunnies",
+  "chapter": 1,
+  "questions": [
+    {
+      "id": "flopsy-bunnies-01-01",
+      "type": "vocabulary",
+      "q": "Lettuce had a \"soporific\" effect on the bunnies. What does soporific mean?",
+      "choices": [
+        "It makes you hungry",
+        "It makes you sleepy",
+        "It makes you sneeze",
+        "It makes you grow"
+      ],
+      "answer": 1,
+      "evidence": "I have never felt sleepy after eating lettuces"
+    },
+    {
+      "id": "flopsy-bunnies-01-02",
+      "type": "detail",
+      "q": "Who did Benjamin Bunny marry when he grew up?",
+      "choices": [
+        "His Cousin Flopsy",
+        "Thomasina Tittlemouse",
+        "His Cousin Mopsy",
+        "Jemima Puddle-Duck"
+      ],
+      "answer": 0,
+      "evidence": "he married his Cousin Flopsy"
+    },
+    {
+      "id": "flopsy-bunnies-01-03",
+      "type": "detail",
+      "q": "What did the bunnies find on the rubbish heap one day?",
+      "choices": [
+        "Lots of fresh carrots",
+        "Some overgrown lettuces",
+        "A pile of sweet red apples",
+        "A sack of new cabbages"
+      ],
+      "answer": 1,
+      "evidence": "there were a quantity of overgrown lettuces"
+    },
+    {
+      "id": "flopsy-bunnies-01-04",
+      "type": "detail",
+      "q": "What did Benjamin put over his head before he went to sleep?",
+      "choices": [
+        "An old boot",
+        "A paper bag",
+        "A big lettuce leaf",
+        "A jam pot lid"
+      ],
+      "answer": 1,
+      "evidence": "put a paper bag over his head to keep off the flies"
+    },
+    {
+      "id": "flopsy-bunnies-01-05",
+      "type": "sequence",
+      "q": "What did Mr. McGregor do after he saw the little ears in the grass?",
+      "choices": [
+        "Ran to the house to fetch his wife",
+        "Dropped the rabbits into his sack",
+        "Chased the rabbits across the field",
+        "Gave the rabbits some fresh lettuces"
+      ],
+      "answer": 1,
+      "evidence": "as he dropped them into his sack"
+    },
+    {
+      "id": "flopsy-bunnies-01-06",
+      "type": "character",
+      "q": "How did Thomasina Tittlemouse help get the bunnies out of the sack?",
+      "choices": [
+        "She nibbled a hole in the sack",
+        "She untied the string with her teeth",
+        "She called Peter Rabbit to come help",
+        "She pushed the sack off the wall"
+      ],
+      "answer": 0,
+      "evidence": "She nibbled a hole in the bottom corner of the sack."
+    },
+    {
+      "id": "flopsy-bunnies-01-07",
+      "type": "detail",
+      "q": "What did the rabbits put into the empty sack?",
+      "choices": [
+        "Stones and sticks from the field",
+        "Rotten marrows, a brush and turnips",
+        "Lawn mowings and some paper bags",
+        "Old boots and some broken jam pots"
+      ],
+      "answer": 1,
+      "evidence": "three rotten vegetable marrows, an old blacking-brush and two decayed turnips"
+    },
+    {
+      "id": "flopsy-bunnies-01-08",
+      "type": "detail",
+      "q": "What present did Thomasina Tittlemouse get the next Christmas?",
+      "choices": [
+        "Rabbit-wool for a cloak and mittens",
+        "A big basket of fresh lettuces",
+        "A new house under the bank",
+        "Some tobacco from Mr. McGregor"
+      ],
+      "answer": 0,
+      "evidence": "Thomasina Tittlemouse got a present of enough rabbit-wool to make herself a cloak"
+    },
+    {
+      "id": "flopsy-bunnies-01-09",
+      "type": "main-idea",
+      "q": "What is this story mostly about?",
+      "choices": [
+        "Sleepy bunnies who are caught and then saved",
+        "A mouse who builds a new house inside a jam pot",
+        "Mr. McGregor buying himself some tobacco",
+        "Peter Rabbit growing cabbages in his garden"
+      ],
+      "answer": 0,
+      "evidence": "The little rabbits were pulled out and pinched to wake them."
+    }
+  ]
+}

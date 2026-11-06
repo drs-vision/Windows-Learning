@@ -1,0 +1,253 @@
+{
+  "book": "kidnapped",
+  "chapter": 7,
+  "questions": [
+    {
+      "id": "kidnapped-07-01",
+      "type": "detail",
+      "q": "How was David when he first came to himself on the ship?",
+      "choices": [
+        "Tied to the mainmast while the sailors laughed at him",
+        "Lying on the deck in the sun with a cold wet cloth",
+        "Locked in the captain's cabin with a guard at the door",
+        "In darkness, in pain, and bound hand and foot"
+      ],
+      "answer": 3,
+      "evidence": "I came to myself in darkness, in great pain, bound hand and foot"
+    },
+    {
+      "id": "kidnapped-07-02",
+      "type": "detail",
+      "q": "Why was a gun fired as the brig passed Dysart?",
+      "choices": [
+        "To signal the customs officers",
+        "The captain's mother lived there",
+        "The ship was in great danger",
+        "To warn other ships of the storm"
+      ],
+      "answer": 1,
+      "evidence": "old Mrs. Hoseason, the captain's mother"
+    },
+    {
+      "id": "kidnapped-07-03",
+      "type": "inference",
+      "q": "What does the gun fired for the captain's mother show about Hoseason, according to David?",
+      "choices": [
+        "Even the worst man may have a kindlier side",
+        "He was afraid of being caught by the king's ships",
+        "He liked to frighten prisoners",
+        "He wanted the people of Dysart to see his wealth"
+      ],
+      "answer": 0,
+      "evidence": "even the worst man may have his kindlier side"
+    },
+    {
+      "id": "kidnapped-07-04",
+      "type": "detail",
+      "q": "Who was the small man with green eyes and fair hair who dressed David's wound?",
+      "choices": [
+        "Captain Hoseason himself",
+        "Mr. Riach, the second officer",
+        "Mr. Shuan, the chief mate",
+        "Ransome, the cabin-boy"
+      ],
+      "answer": 1,
+      "evidence": "I am no conjurer, Mr. Riach"
+    },
+    {
+      "id": "kidnapped-07-05",
+      "type": "vocabulary",
+      "q": "Mr. Riach calls David's wound \"a sore dunt.\" Using the note in the text, what is a \"dunt\"?",
+      "choices": [
+        "A rope burn on the wrists",
+        "A deep cut from a knife",
+        "A stroke or blow",
+        "A bad fever from the sea"
+      ],
+      "answer": 2,
+      "evidence": "* Stroke."
+    },
+    {
+      "id": "kidnapped-07-06",
+      "type": "detail",
+      "q": "What frightened David while he lay in the dark hole of the ship?",
+      "choices": [
+        "Rats scurrying, sometimes over his face",
+        "A strange voice singing from the darkness",
+        "Sailors coming down to beat him at night",
+        "Water slowly rising up around his feet"
+      ],
+      "answer": 0,
+      "evidence": "the scurrying of the ship's rats, that sometimes pattered on my very face"
+    },
+    {
+      "id": "kidnapped-07-07",
+      "type": "detail",
+      "q": "Where did Mr. Riach want David moved to?",
+      "choices": [
+        "The round-house",
+        "The deck by the wheel",
+        "The captain's cabin",
+        "The forecastle"
+      ],
+      "answer": 3,
+      "evidence": "I want that boy taken out of this hole and put in the forecastle"
+    },
+    {
+      "id": "kidnapped-07-08",
+      "type": "character",
+      "q": "What finally made the captain agree to move David?",
+      "choices": [
+        "Riach said the lad would die if he stayed there",
+        "Riach offered to pay the captain with his own wages",
+        "The sailors threatened to stop work until he did",
+        "David promised to work hard as a ship's boy"
+      ],
+      "answer": 0,
+      "evidence": "If ye say the lad will die"
+    },
+    {
+      "id": "kidnapped-07-09",
+      "type": "inference",
+      "q": "When Mr. Riach says, \"Admitting that you have been paid to do a murder,\" what is he hinting?",
+      "choices": [
+        "That David's uncle had paid Riach to watch over him",
+        "That Mr. Shuan planned to murder the cabin-boy",
+        "That the captain had killed a sailor on a past voyage",
+        "That the captain was paid to get rid of David"
+      ],
+      "answer": 3,
+      "evidence": "Admitting that you have been paid to do a murder"
+    },
+    {
+      "id": "kidnapped-07-10",
+      "type": "detail",
+      "q": "Which sailor told David, \"it was me that gave it ye,\" about the blow on his head?",
+      "choices": [
+        "Mr. Riach as he dressed the wound",
+        "The man who brought him a healing drink",
+        "The captain on the night they sailed",
+        "Ransome when he came from the round-house"
+      ],
+      "answer": 1,
+      "evidence": "it was me that gave it ye!"
+    },
+    {
+      "id": "kidnapped-07-11",
+      "type": "character",
+      "q": "How did David's opinion of the sailors change after living with them?",
+      "choices": [
+        "He found that they were all honest men who had been kidnapped like him",
+        "He was ashamed of first thinking them wholly bad, since they had virtues",
+        "He decided they were cowards who were afraid of their cruel captain",
+        "He grew to hate them even more than on the day he first saw them at the pier"
+      ],
+      "answer": 1,
+      "evidence": "I began to be ashamed of my first judgment"
+    },
+    {
+      "id": "kidnapped-07-12",
+      "type": "detail",
+      "q": "Who would sit by David's berth for hours talking about his wife and child?",
+      "choices": [
+        "The cook, once a soldier",
+        "A fisher who had lost his boat",
+        "A young sailor who had run from home",
+        "Mr. Riach, when he had been drinking"
+      ],
+      "answer": 1,
+      "evidence": "He was a fisher that had lost his boat"
+    },
+    {
+      "id": "kidnapped-07-13",
+      "type": "detail",
+      "q": "What good deed did the sailors do for David?",
+      "choices": [
+        "They let him come up on deck every day to see the sea",
+        "They returned his money, though about a third was missing",
+        "They hid him from the captain whenever he came below",
+        "They taught him how to steer the ship through a storm"
+      ],
+      "answer": 1,
+      "evidence": "they returned my money, which had been shared among them"
+    },
+    {
+      "id": "kidnapped-07-14",
+      "type": "inference",
+      "q": "What did David's uncle mean to happen to him at the end of the voyage?",
+      "choices": [
+        "To be handed over to soldiers as a rebel against the king",
+        "To be left on an island in the middle of the Atlantic Ocean",
+        "To be sold into slavery on the plantations in the Carolinas",
+        "To be trained as a sailor and work for Hoseason for life"
+      ],
+      "answer": 2,
+      "evidence": "that was the destiny to which my wicked uncle had condemned me"
+    },
+    {
+      "id": "kidnapped-07-15",
+      "type": "character",
+      "q": "What was strange about the two mates, Mr. Riach and Mr. Shuan?",
+      "choices": [
+        "Both had once been pirates and had sailed under the black flag",
+        "Riach was harsh when sober; Shuan was gentle unless drinking",
+        "Both were kind when sober and cruel whenever they drank",
+        "Riach could not sail; Shuan could not read or write"
+      ],
+      "answer": 1,
+      "evidence": "Mr. Riach was sullen, unkind, and harsh when he was sober"
+    },
+    {
+      "id": "kidnapped-07-16",
+      "type": "detail",
+      "q": "What could Ransome remember of his life before he went to sea?",
+      "choices": [
+        "He had lived on a farm and looked after the sheep",
+        "His father made clocks and had a whistling starling",
+        "He had gone to school and learned to read and write",
+        "His mother sang to him in a little house by a river"
+      ],
+      "answer": 1,
+      "evidence": "only that his father had made clocks"
+    },
+    {
+      "id": "kidnapped-07-17",
+      "type": "detail",
+      "q": "Who gave Ransome strong drink?",
+      "choices": [
+        "Mr. Shuan",
+        "The captain",
+        "The sailors",
+        "Mr. Riach"
+      ],
+      "answer": 3,
+      "evidence": "It was Mr. Riach (Heaven forgive him!) who gave the boy drink"
+    },
+    {
+      "id": "kidnapped-07-18",
+      "type": "sequence",
+      "q": "What did Mr. Riach promise after David told him his whole story?",
+      "choices": [
+        "To ask the captain to turn the ship around and take him home at once",
+        "To help him jump overboard and swim to the nearest shore at night",
+        "To get him pen and paper to write to Mr. Campbell and Mr. Rankeillor",
+        "To hide him in the round-house until they reached the Carolinas"
+      ],
+      "answer": 2,
+      "evidence": "I should have paper, pen, and ink, and write one line to Mr. Campbell"
+    },
+    {
+      "id": "kidnapped-07-19",
+      "type": "main-idea",
+      "q": "What is this chapter mostly about?",
+      "choices": [
+        "David's daring escape from the Covenant during a great storm at sea",
+        "David's quarrel with the captain over the money his uncle paid",
+        "David's first days as a prisoner on the Covenant and the people he meets there",
+        "David's arrival in the Carolinas and his sale to a planter"
+      ],
+      "answer": 2,
+      "evidence": "Here I lay for the space of many days a close prisoner"
+    }
+  ]
+}

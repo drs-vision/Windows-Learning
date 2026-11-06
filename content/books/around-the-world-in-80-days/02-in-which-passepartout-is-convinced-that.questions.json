@@ -1,0 +1,70 @@
+{
+  "book": "around-the-world-in-80-days",
+  "chapter": 2,
+  "questions": [
+    {
+      "id": "around-the-world-in-80-days-02-01",
+      "type": "inference",
+      "q": "When Passepartout compares his new master to the people at Madame Tussaud's, what does he mean?",
+      "choices": ["Fogg seems as stiff and lifeless as a wax figure", "Fogg looks like a famous man he once saw there", "Fogg is as cheerful as the crowds who visit there", "Fogg reminds him of a performer he worked with"],
+      "answer": 0,
+      "evidence": "Madame Tussaud's \"people,\" let it be said, are of wax"
+    },
+    {
+      "id": "around-the-world-in-80-days-02-02",
+      "type": "detail",
+      "q": "About how old did Mr. Fogg appear to Passepartout?",
+      "choices": ["About thirty", "About forty", "About fifty-five", "About twenty-five"],
+      "answer": 1,
+      "evidence": "He appeared to be a man about forty years of age"
+    },
+    {
+      "id": "around-the-world-in-80-days-02-03",
+      "type": "character",
+      "q": "Why did Fogg, \"so to speak,\" never rub against anybody?",
+      "choices": ["He was afraid of catching illnesses from crowds", "He thought friction slows a person down", "He disliked foreigners and avoided them", "He had been told to by his doctor in Paris"],
+      "answer": 1,
+      "evidence": "friction retards, he never rubbed against anybody"
+    },
+    {
+      "id": "around-the-world-in-80-days-02-04",
+      "type": "detail",
+      "q": "Why did Passepartout leave his last master, young Lord Longferry?",
+      "choices": ["Lord Longferry refused to pay his wages for months", "Lord Longferry moved away to live in Scotland", "His mild complaint about the lord's wild nights was ill-received", "Lord Longferry accused him of stealing a silver watch"],
+      "answer": 2,
+      "evidence": "ventured a mild remonstrance on such conduct; which, being ill-received, he took his leave"
+    },
+    {
+      "id": "around-the-world-in-80-days-02-05",
+      "type": "vocabulary",
+      "q": "Passepartout \"ventured a mild remonstrance\" about his last master's behavior. What is a remonstrance?",
+      "choices": ["A loud cheer", "A polite protest", "A secret report", "A long apology"],
+      "answer": 1,
+      "evidence": "ventured a mild remonstrance on such conduct"
+    },
+    {
+      "id": "around-the-world-in-80-days-02-06",
+      "type": "detail",
+      "q": "What did Passepartout find hung over the clock in his room?",
+      "choices": ["A card listing the daily routine of the house", "A note from James Forster wishing him good luck", "A painting of Mr. Fogg in his younger days", "A key to the safe in Mr. Fogg's bedroom"],
+      "answer": 0,
+      "evidence": "a programme of the daily routine of the house"
+    },
+    {
+      "id": "around-the-world-in-80-days-02-07",
+      "type": "detail",
+      "q": "What did Passepartout notice was missing from the house in Saville Row?",
+      "choices": ["Gas lamps and fireplaces", "A study, books and any weapons", "Clocks or watches in any of the rooms", "A kitchen and a dining room"],
+      "answer": 1,
+      "evidence": "There was no study, nor were there books"
+    },
+    {
+      "id": "around-the-world-in-80-days-02-08",
+      "type": "main-idea",
+      "q": "How does Passepartout feel about his new place by the end of the chapter?",
+      "choices": ["Worried that his strict master will dismiss him like James Forster", "Joyful that he has found the quiet, regular master he wanted", "Bored and already planning to look for a livelier household", "Puzzled about where his strange master's fortune came from"],
+      "answer": 1,
+      "evidence": "This is just what I wanted!"
+    }
+  ]
+}

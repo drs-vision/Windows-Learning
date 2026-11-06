@@ -1,0 +1,150 @@
+{
+  "book": "kidnapped",
+  "chapter": 24,
+  "questions": [
+    {
+      "id": "kidnapped-24-01",
+      "type": "detail",
+      "q": "Which clan did Alan most want to avoid in Balquhidder?",
+      "choices": ["The Macgregors", "The Maclarens", "The Stewarts of Appin", "The Athole Stewarts"],
+      "answer": 0,
+      "evidence": "Alan, who took up the quarrel of any friend, however distant, was extremely wishful to avoid them"
+    },
+    {
+      "id": "kidnapped-24-02",
+      "type": "detail",
+      "q": "Whose household did they find at the first house where Alan knocked?",
+      "choices": ["A household of Maclarens who knew Alan by reputation", "A family of Macgregors who were waiting for Robin Oig", "An old Campbell shepherd who lived there all alone", "A minister and his wife who took in poor travellers"],
+      "answer": 0,
+      "evidence": "it was a household of Maclarens that we found"
+    },
+    {
+      "id": "kidnapped-24-03",
+      "type": "detail",
+      "q": "How long was David bedridden after the doctor came?",
+      "choices": ["No more than a week", "Nearly three months", "Only a single short night", "Most of the summer"],
+      "answer": 0,
+      "evidence": "I lay bedridden for no more than a week"
+    },
+    {
+      "id": "kidnapped-24-04",
+      "type": "character",
+      "q": "Where did Alan stay while David was getting well?",
+      "choices": ["He hid by day in a hole of the braes and visited at night", "He went on ahead to Queensferry to wait there for David to come", "He slept every night in a bed in the Maclarens' kitchen", "He joined Cluny's scouts and kept watch on the soldiers"],
+      "answer": 0,
+      "evidence": "He hid by day in a hole of the braes under a little wood"
+    },
+    {
+      "id": "kidnapped-24-05",
+      "type": "detail",
+      "q": "What did David see pinned near the foot of his bed?",
+      "choices": ["A printed bill with his portrait and the reward on his life", "A letter from Mr. Rankeillor asking him to come to the Lowlands at once", "A map of the road south to the Forth that Alan had drawn", "A notice calling every man in Balquhidder to join the army"],
+      "answer": 0,
+      "evidence": "There was one pinned near the foot of my bed"
+    },
+    {
+      "id": "kidnapped-24-06",
+      "type": "inference",
+      "q": "Though many in Balquhidder guessed who David was, he was never questioned or betrayed. What does this show about these clansmen?",
+      "choices": ["They could keep a secret among a whole countryside", "They were too frightened of the soldiers to say anything", "They had never heard of the murder of the Red Fox", "They did not believe a Lowland boy could be wanted"],
+      "answer": 0,
+      "evidence": "it is told to a whole countryside, and they will keep it for a century"
+    },
+    {
+      "id": "kidnapped-24-07",
+      "type": "detail",
+      "q": "Who came to visit David while he was recovering?",
+      "choices": ["Robin Oig, a son of Rob Roy", "Cluny Macpherson, in disguise", "James Stewart of the Glens", "Mr. Henderland, the catechist"],
+      "answer": 0,
+      "evidence": "the visit I had of Robin Oig, one of the sons of the notorious Rob Roy"
+    },
+    {
+      "id": "kidnapped-24-08",
+      "type": "inference",
+      "q": "Why were Duncan and David worried when Robin Oig arrived?",
+      "choices": ["Alan was due soon, and the two men were unlikely to agree", "Robin had come with soldiers to arrest David for the reward", "Duncan owed Robin money and could not pay him what he owed", "Robin was known to rob every house he entered in Balquhidder"],
+      "answer": 0,
+      "evidence": "the two were little likely to agree"
+    },
+    {
+      "id": "kidnapped-24-09",
+      "type": "detail",
+      "q": "Why had Robin come to see David?",
+      "choices": ["A Balfour surgeon had once cured his brother's broken leg", "He wanted to collect the blood money set on David's head", "He had heard David was a good piper and wished to hear him", "He was looking for Alan to settle an old quarrel with swords"],
+      "answer": 0,
+      "evidence": "cured my brother's leg when it was broken in the brush at Preston Pans"
+    },
+    {
+      "id": "kidnapped-24-10",
+      "type": "character",
+      "q": "How did Robin treat David once he learned David could not say if he was kin to Balfour of Baith?",
+      "choices": ["Turned away and called him a kinless loon", "Laughed kindly and offered him help anyway", "Grew angry and threatened to fetch soldiers", "Shook his hand and promised to find out"],
+      "answer": 0,
+      "evidence": "only some kinless loon that didn't know his own father"
+    },
+    {
+      "id": "kidnapped-24-11",
+      "type": "inference",
+      "q": "Why did David almost smile at Robin's insult, even though he was angry?",
+      "choices": ["It was odd for a hunted outlaw to be so fussy about others' family", "Robin had mixed up David's name with someone else's by mistake", "David knew that his uncle had lied to Robin about the whole family", "Robin's Highland way of speaking made the words sound silly"],
+      "answer": 0,
+      "evidence": "should be so nice as to the descent of his acquaintances"
+    },
+    {
+      "id": "kidnapped-24-12",
+      "type": "vocabulary",
+      "q": "When Alan and Robin met in the doorway they \"looked at each other like strange dogs.\" What does this tell you?",
+      "choices": ["They were suspicious and ready to fight", "They were glad to see each other again", "They were both very tired and hungry after the road", "They did not notice each other at all"],
+      "answer": 0,
+      "evidence": "looked at each other like strange dogs"
+    },
+    {
+      "id": "kidnapped-24-13",
+      "type": "sequence",
+      "q": "What did Duncan do just as the quarrel reached \"now or never\"?",
+      "choices": ["Stepped between them and proposed a piping contest", "Ran outside to call all the neighbours in to help him", "Took both their swords and hid them away", "Asked his wife to bring in the supper at once"],
+      "answer": 0,
+      "evidence": "Here will be a braw chance to settle it"
+    },
+    {
+      "id": "kidnapped-24-14",
+      "type": "detail",
+      "q": "What is Athole brose made of?",
+      "choices": ["Old whiskey, strained honey and sweet cream", "Oatmeal, cold water and a good pinch of salt", "Mutton broth, barley and chopped onions", "Hot milk, brandy and a squeeze of lemon"],
+      "answer": 0,
+      "evidence": "made of old whiskey, strained honey and sweet cream"
+    },
+    {
+      "id": "kidnapped-24-15",
+      "type": "vocabulary",
+      "q": "Alan decorated his playing with grace-notes that pipers call the \"warblers.\" What are the warblers?",
+      "choices": ["Quick notes that ornament a tune", "The long low drone notes under a tune", "The bags and pipes of the instrument", "Slow sad songs played at a funeral"],
+      "answer": 0,
+      "evidence": "a perfect flight of grace-notes, such as pipers love, and call the \"warblers.\""
+    },
+    {
+      "id": "kidnapped-24-16",
+      "type": "character",
+      "q": "How did Alan feel when Robin played his variations back better than he had?",
+      "choices": ["His face grew dark and hot, as if deeply insulted", "He laughed and clapped Robin warmly on the back", "He was pleased to learn something new about piping", "He fell asleep by the peat fire with his bonnet off"],
+      "answer": 0,
+      "evidence": "his face grew dark and hot"
+    },
+    {
+      "id": "kidnapped-24-17",
+      "type": "sequence",
+      "q": "What finally made the last of Alan's anger die away?",
+      "choices": ["Robin played a pibroch that was a favourite of the Appin Stewarts", "Duncan poured him a second glass of brose", "David got out of bed and begged the two of them to stop fighting", "Robin admitted Alan was the better piper"],
+      "answer": 0,
+      "evidence": "it was a piece peculiar to the Appin Stewarts and a chief favourite with Alan"
+    },
+    {
+      "id": "kidnapped-24-18",
+      "type": "main-idea",
+      "q": "What is this chapter mostly about?",
+      "choices": ["David recovers among friends, and a quarrel ends in a piping match", "David is captured by the Macgregors and must be rescued by Alan and Duncan", "Alan and Robin Oig fight a duel with swords, and Robin is badly hurt", "David learns at last that he is related to Balfour of Baith"],
+      "answer": 0,
+      "evidence": "Thereupon that quarrel was made up"
+    }
+  ]
+}

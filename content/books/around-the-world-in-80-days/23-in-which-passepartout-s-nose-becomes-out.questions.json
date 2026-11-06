@@ -1,0 +1,134 @@
+{
+  "book": "around-the-world-in-80-days",
+  "chapter": 23,
+  "questions": [
+    {
+      "id": "around-the-world-in-80-days-23-01",
+      "type": "character",
+      "q": "What did Passepartout refuse to sell, even though he was starving?",
+      "choices": ["His shoes from Bombay", "His watch", "His French songbook", "His travelling-bag"],
+      "answer": 1,
+      "evidence": "He might, indeed, sell his watch; but he would have starved first."
+    },
+    {
+      "id": "around-the-world-in-80-days-23-02",
+      "type": "detail",
+      "q": "What was Passepartout's first plan for getting money?",
+      "choices": ["To sing French and English songs in the streets", "To work as a porter carrying bags at the docks", "To ask the French consul in Yokohama for a small loan", "To sell mangoes and tea to the sailors in port"],
+      "answer": 0,
+      "evidence": "He knew several French and English songs"
+    },
+    {
+      "id": "around-the-world-in-80-days-23-03",
+      "type": "inference",
+      "q": "Why did Passepartout trade his clothes with the old-clothes dealer?",
+      "choices": ["His own clothes had been torn on the Carnatic", "He was too well dressed for a street singer and needed money", "The dealer said Europeans were not allowed in that quarter", "He wanted to hide from Fix by dressing up and looking like a native"],
+      "answer": 1,
+      "evidence": "he would seem rather too well dressed for a wandering artist"
+    },
+    {
+      "id": "around-the-world-in-80-days-23-04",
+      "type": "sequence",
+      "q": "What did Passepartout do right after changing his clothes?",
+      "choices": ["He went to the docks to look for work", "He ate at a tea-house", "He sang his first song in the market", "He went to the theatre to buy a ticket"],
+      "answer": 1,
+      "evidence": "upon half a bird and a little rice"
+    },
+    {
+      "id": "around-the-world-in-80-days-23-05",
+      "type": "detail",
+      "q": "What did Passepartout plan to offer the American steamers in return for his passage?",
+      "choices": ["To work as a cook or servant", "To pay them back once he reached San Francisco", "To sing for the passengers every evening", "To clean the decks and polish the brass"],
+      "answer": 0,
+      "evidence": "He would offer himself as a cook or servant"
+    },
+    {
+      "id": "around-the-world-in-80-days-23-06",
+      "type": "inference",
+      "q": "Why did his plan to work on a steamer start to seem difficult?",
+      "choices": ["He was dressed oddly and could give no references", "The steamers had all left Yokohama the day before", "He did not know how to cook any American food", "He was afraid of the long voyage across the Pacific"],
+      "answer": 0,
+      "evidence": "What references could he give?"
+    },
+    {
+      "id": "around-the-world-in-80-days-23-07",
+      "type": "detail",
+      "q": "Why did the placard carried by the clown catch Passepartout's eye?",
+      "choices": ["It offered free food and lodging to anyone who joined the troupe", "It said the troupe was about to leave for the United States", "It showed a picture of a man who looked like Mr. Fogg", "It asked for a strong man to carry the stage scenery"],
+      "answer": 1,
+      "evidence": "PRIOR TO THEIR DEPARTURE TO THE UNITED STATES"
+    },
+    {
+      "id": "around-the-world-in-80-days-23-08",
+      "type": "character",
+      "q": "Why did Mr. Batulcar say he did not need a servant?",
+      "choices": ["He already had two servants, his own two strong arms", "He said he could not afford to pay anyone any more wages this year", "His acrobats did all the work for him", "He did not trust anyone who was not Japanese"],
+      "answer": 0,
+      "evidence": "holding out his two robust arms"
+    },
+    {
+      "id": "around-the-world-in-80-days-23-09",
+      "type": "inference",
+      "q": "How did Mr. Batulcar know Passepartout was not Japanese?",
+      "choices": ["Passepartout showed him his French passport", "He could see through the disguise right away", "A clown in the troupe had seen him on the ship", "Passepartout told him so as soon as he came in"],
+      "answer": 1,
+      "evidence": "You are no more a Japanese than I am a monkey!"
+    },
+    {
+      "id": "around-the-world-in-80-days-23-10",
+      "type": "detail",
+      "q": "What job did Mr. Batulcar give Passepartout?",
+      "choices": ["Ticket seller", "Clown in the troupe", "Cook for the troupe", "Musician in the band"],
+      "answer": 1,
+      "evidence": "I can as a clown"
+    },
+    {
+      "id": "around-the-world-in-80-days-23-11",
+      "type": "vocabulary",
+      "q": "The text says Passepartout's new job \"was not a very dignified position.\" What does \"dignified\" mean?",
+      "choices": ["Paying a lot of money", "Proper and worthy of respect", "Safe and free from danger", "Easy and not tiring"],
+      "answer": 1,
+      "evidence": "It was not a very dignified position"
+    },
+    {
+      "id": "around-the-world-in-80-days-23-12",
+      "type": "detail",
+      "q": "What were the Long Noses' noses made of?",
+      "choices": ["Bamboo", "Paper", "Clay", "Leather"],
+      "answer": 0,
+      "evidence": "These noses were made of bamboo"
+    },
+    {
+      "id": "around-the-world-in-80-days-23-13",
+      "type": "detail",
+      "q": "Why was Passepartout chosen for the base of the \"human pyramid\"?",
+      "choices": ["He was the tallest man in the whole troupe", "The usual base man had quit the troupe", "Mr. Batulcar wanted the audience to laugh at a new clown", "He had practised it for many years as a young gymnast"],
+      "answer": 1,
+      "evidence": "the performer who had hitherto formed the base of the Car had quitted the troupe"
+    },
+    {
+      "id": "around-the-world-in-80-days-23-14",
+      "type": "sequence",
+      "q": "What made the human pyramid fall down?",
+      "choices": ["The orchestra's loud music shook the stage", "Passepartout left his place to run to his master in the gallery", "One of the bamboo noses snapped in two", "A spectator threw something at the performers"],
+      "answer": 1,
+      "evidence": "It was Passepartout's fault."
+    },
+    {
+      "id": "around-the-world-in-80-days-23-15",
+      "type": "detail",
+      "q": "How did Fogg calm the furious Mr. Batulcar?",
+      "choices": ["He promised to pay him later in America", "He gave him a handful of banknotes", "He let Passepartout perform once more", "He threatened to call the police"],
+      "answer": 1,
+      "evidence": "Phileas Fogg appeased him by giving him a handful of banknotes"
+    },
+    {
+      "id": "around-the-world-in-80-days-23-16",
+      "type": "main-idea",
+      "q": "What is this chapter mostly about?",
+      "choices": ["Passepartout joins a troupe of acrobats in Yokohama and finds his master there", "Fogg and Aouda search Yokohama for Passepartout with the help of the police", "Passepartout gets a job as a cook on an American steamer", "Fix catches Passepartout and makes him confess everything"],
+      "answer": 0,
+      "evidence": "Ah, my master! my master!"
+    }
+  ]
+}

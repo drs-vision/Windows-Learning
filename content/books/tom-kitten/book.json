@@ -1,0 +1,27 @@
+{
+  "id": "tom-kitten",
+  "title": "The Tale of Tom Kitten",
+  "author": "Beatrix Potter",
+  "published": 1907,
+  "level": 1,
+  "grade": {
+    "min": 0,
+    "max": 2,
+    "label": "Grades K-2"
+  },
+  "summary": "Three kittens dressed up for company get their best clothes into a terrible mess.",
+  "source": {
+    "name": "Project Gutenberg eBook #14837 (public-domain text; Gutenberg header, license and name removed)",
+    "url": "https://www.gutenberg.org/ebooks/14837"
+  },
+  "publicDomain": "First published 1907; in the US public domain (published before 1931).",
+  "chapters": [
+    {
+      "n": 1,
+      "title": "The Tale of Tom Kitten",
+      "text": "01-the-tale-of-tom-kitten.txt",
+      "questions": "01-the-tale-of-tom-kitten.questions.json",
+      "words": 691
+    }
+  ]
+}

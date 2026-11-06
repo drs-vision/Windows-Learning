@@ -1,0 +1,126 @@
+{
+  "book": "around-the-world-in-80-days",
+  "chapter": 29,
+  "questions": [
+    {
+      "id": "around-the-world-in-80-days-29-01",
+      "type": "detail",
+      "q": "At the start of the chapter, was Phileas Fogg behind schedule?",
+      "choices": ["Yes, he was already two days behind", "No, he was not yet behind-hand", "Yes, by the twelve hours lost to the buffalo", "No, he was a full week ahead of his plan"],
+      "answer": 1,
+      "evidence": "Phileas Fogg was not as yet behind-hand."
+    },
+    {
+      "id": "around-the-world-in-80-days-29-02",
+      "type": "detail",
+      "q": "What did Colonel Proctor say from behind Mr. Fogg during the whist game?",
+      "choices": ["\"I should play a diamond.\"", "\"You have cheated, sir!\"", "\"Give me your seat at once.\"", "\"That card is not yours.\""],
+      "answer": 0,
+      "evidence": "I should play a diamond."
+    },
+    {
+      "id": "around-the-world-in-80-days-29-03",
+      "type": "character",
+      "q": "When the colonel interrupted, what did Mr. Fogg do with his card?",
+      "choices": ["He calmly threw down the ten of spades anyway", "He changed his mind and played a diamond instead", "He tore up the card and left the game in anger", "He handed his cards to Fix and walked away"],
+      "answer": 0,
+      "evidence": "replied Phileas Fogg coolly, throwing down the ten of spades"
+    },
+    {
+      "id": "around-the-world-in-80-days-29-04",
+      "type": "character",
+      "q": "Why did Fix stand up and speak to Colonel Proctor?",
+      "choices": ["He wanted to arrest the colonel for causing trouble", "He tried to make the quarrel his own, since he had been struck", "He wanted to ask the colonel to join their game", "He hoped the colonel would delay Fogg in America"],
+      "answer": 1,
+      "evidence": "it was I whom you not only insulted, but struck"
+    },
+    {
+      "id": "around-the-world-in-80-days-29-05",
+      "type": "detail",
+      "q": "When did Mr. Fogg first suggest that he and the colonel should meet?",
+      "choices": ["The next morning", "Six months later", "In ten years' time", "That same evening"],
+      "answer": 1,
+      "evidence": "Will you appoint a meeting for six months hence?"
+    },
+    {
+      "id": "around-the-world-in-80-days-29-06",
+      "type": "vocabulary",
+      "q": "The colonel cried, \"All this is an evasion.\" What does he mean by evasion?",
+      "choices": ["A way of avoiding something", "A polite kind of promise", "A clever kind of trick in cards", "A warning to call the police"],
+      "answer": 0,
+      "evidence": "All this is an evasion"
+    },
+    {
+      "id": "around-the-world-in-80-days-29-07",
+      "type": "detail",
+      "q": "Where did the colonel say they should settle the quarrel?",
+      "choices": ["At Omaha, the end of the line", "At Plum Creek, the next station", "In Chicago, where the colonel lived", "At Fort Kearney, beside the soldiers"],
+      "answer": 1,
+      "evidence": "It's the next station."
+    },
+    {
+      "id": "around-the-world-in-80-days-29-08",
+      "type": "character",
+      "q": "What did Mr. Fogg do after agreeing to the meeting?",
+      "choices": ["He wrote a long letter to the Reform Club", "He calmly went back to the interrupted game", "He asked the conductor to put the colonel off", "He hid in the baggage car until Plum Creek"],
+      "answer": 1,
+      "evidence": "Mr. Fogg resumed the interrupted game with perfect calmness."
+    },
+    {
+      "id": "around-the-world-in-80-days-29-09",
+      "type": "sequence",
+      "q": "Why could the two men not get off the train at Plum Creek?",
+      "choices": ["The station was closed because of the snow", "The train was twenty minutes late and would not stop", "Aouda locked the door of the car to stop them", "Soldiers on the platform would not let them off"],
+      "answer": 1,
+      "evidence": "We are twenty minutes late, and we shall not stop."
+    },
+    {
+      "id": "around-the-world-in-80-days-29-10",
+      "type": "detail",
+      "q": "What did the conductor suggest instead of stopping?",
+      "choices": ["That they wait to settle it at Omaha", "That they settle it in the last car as the train went on", "That they shake hands and forget the quarrel", "That they settle it with another game of whist"],
+      "answer": 1,
+      "evidence": "why not fight as we go along?"
+    },
+    {
+      "id": "around-the-world-in-80-days-29-11",
+      "type": "vocabulary",
+      "q": "The passengers in the last car left it \"with alacrity.\" What does alacrity mean?",
+      "choices": ["Slowly and with many complaints", "Quickly and willingly", "Angrily, shouting at the conductor", "Sadly, leaving their bags behind"],
+      "answer": 1,
+      "evidence": "The passengers granted the request with alacrity"
+    },
+    {
+      "id": "around-the-world-in-80-days-29-12",
+      "type": "sequence",
+      "q": "What interrupted the duel before it began?",
+      "choices": ["The colonel changed his mind and apologised", "The train was attacked by a band of Sioux", "The bridge ahead broke and the train stopped", "Aouda ran into the car and begged them to stop"],
+      "answer": 1,
+      "evidence": "the train was attacked by a band of Sioux"
+    },
+    {
+      "id": "around-the-world-in-80-days-29-13",
+      "type": "detail",
+      "q": "Why was the locomotive rushing forward faster and faster?",
+      "choices": ["The engineer wanted to reach Omaha quickly", "A chief opened the steam-valve wide by mistake", "The track ran steeply downhill to the river", "Passepartout had added too much coal to the fire"],
+      "answer": 1,
+      "evidence": "had opened wide instead of closing the steam-valve"
+    },
+    {
+      "id": "around-the-world-in-80-days-29-14",
+      "type": "character",
+      "q": "How did Passepartout manage to stop the train?",
+      "choices": ["He climbed onto the engine and pulled the brake", "He crept under the cars and freed them from the engine", "He ran along the roof and signalled the soldiers", "He jumped off and threw a log across the rails"],
+      "answer": 1,
+      "evidence": "he made use of his old acrobatic experience"
+    },
+    {
+      "id": "around-the-world-in-80-days-29-15",
+      "type": "main-idea",
+      "q": "How does the chapter end?",
+      "choices": ["Everyone is safe and the train goes on to Omaha", "Passepartout, who saved the train, is found missing", "Fogg and the colonel finish their duel at the fort", "Fix is arrested by the soldiers waiting at Fort Kearney"],
+      "answer": 1,
+      "evidence": "among others the courageous Frenchman, whose devotion had just saved them"
+    }
+  ]
+}

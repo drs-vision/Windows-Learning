@@ -3,6 +3,7 @@
   "title": "The Wind in the Willows",
   "author": "Kenneth Grahame",
   "published": 1908,
+  "level": 5,
   "grade": {
     "min": 5,
     "max": 7,

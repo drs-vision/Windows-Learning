@@ -1,0 +1,168 @@
+{
+  "id": "doctor-dolittle",
+  "title": "The Story of Doctor Dolittle",
+  "author": "Hugh Lofting",
+  "published": 1920,
+  "level": 3,
+  "grade": {
+    "min": 3,
+    "max": 5,
+    "label": "Grades 3-5"
+  },
+  "summary": "A country doctor learns to talk to animals and sails to Africa to cure the sick monkeys.",
+  "source": {
+    "name": "Project Gutenberg eBook #501 (public-domain text; Gutenberg header, license and name removed)",
+    "url": "https://www.gutenberg.org/ebooks/501"
+  },
+  "publicDomain": "First published 1920; in the US public domain (published before 1931).",
+  "chapters": [
+    {
+      "n": 1,
+      "title": "Puddleby",
+      "text": "01-puddleby.txt",
+      "questions": "01-puddleby.questions.json",
+      "words": 686
+    },
+    {
+      "n": 2,
+      "title": "Animal Language",
+      "text": "02-animal-language.txt",
+      "questions": "02-animal-language.questions.json",
+      "words": 1836
+    },
+    {
+      "n": 3,
+      "title": "More Money Troubles",
+      "text": "03-more-money-troubles.txt",
+      "questions": "03-more-money-troubles.questions.json",
+      "words": 1232
+    },
+    {
+      "n": 4,
+      "title": "A Message from Africa",
+      "text": "04-a-message-from-africa.txt",
+      "questions": "04-a-message-from-africa.questions.json",
+      "words": 1093
+    },
+    {
+      "n": 5,
+      "title": "The Great Journey",
+      "text": "05-the-great-journey.txt",
+      "questions": "05-the-great-journey.questions.json",
+      "words": 1196
+    },
+    {
+      "n": 6,
+      "title": "Polynesia and the King",
+      "text": "06-polynesia-and-the-king.txt",
+      "questions": "06-polynesia-and-the-king.questions.json",
+      "words": 1034
+    },
+    {
+      "n": 7,
+      "title": "The Bridge of Apes",
+      "text": "07-the-bridge-of-apes.txt",
+      "questions": "07-the-bridge-of-apes.questions.json",
+      "words": 1602
+    },
+    {
+      "n": 8,
+      "title": "The Leader of the Lions",
+      "text": "08-the-leader-of-the-lions.txt",
+      "questions": "08-the-leader-of-the-lions.questions.json",
+      "words": 1017
+    },
+    {
+      "n": 9,
+      "title": "The Monkeys' Council",
+      "text": "09-the-monkeys-council.txt",
+      "questions": "09-the-monkeys-council.questions.json",
+      "words": 798
+    },
+    {
+      "n": 10,
+      "title": "The Rarest Animal of All",
+      "text": "10-the-rarest-animal-of-all.txt",
+      "questions": "10-the-rarest-animal-of-all.questions.json",
+      "words": 1275
+    },
+    {
+      "n": 11,
+      "title": "Prince Bumpo",
+      "text": "11-prince-bumpo.txt",
+      "questions": "11-prince-bumpo.questions.json",
+      "words": 1109
+    },
+    {
+      "n": 12,
+      "title": "Medicine and Magic",
+      "text": "12-medicine-and-magic.txt",
+      "questions": "12-medicine-and-magic.questions.json",
+      "words": 1835
+    },
+    {
+      "n": 13,
+      "title": "Red Sails and Blue Wings",
+      "text": "13-red-sails-and-blue-wings.txt",
+      "questions": "13-red-sails-and-blue-wings.questions.json",
+      "words": 853
+    },
+    {
+      "n": 14,
+      "title": "The Rats' Warning",
+      "text": "14-the-rats-warning.txt",
+      "questions": "14-the-rats-warning.questions.json",
+      "words": 990
+    },
+    {
+      "n": 15,
+      "title": "The Barbary Dragon",
+      "text": "15-the-barbary-dragon.txt",
+      "questions": "15-the-barbary-dragon.questions.json",
+      "words": 1283
+    },
+    {
+      "n": 16,
+      "title": "Too-too, the Listener",
+      "text": "16-too-too-the-listener.txt",
+      "questions": "16-too-too-the-listener.questions.json",
+      "words": 973
+    },
+    {
+      "n": 17,
+      "title": "The Ocean Gossips",
+      "text": "17-the-ocean-gossips.txt",
+      "questions": "17-the-ocean-gossips.questions.json",
+      "words": 1106
+    },
+    {
+      "n": 18,
+      "title": "Smells",
+      "text": "18-smells.txt",
+      "questions": "18-smells.questions.json",
+      "words": 1643
+    },
+    {
+      "n": 19,
+      "title": "The Rock",
+      "text": "19-the-rock.txt",
+      "questions": "19-the-rock.questions.json",
+      "words": 1272
+    },
+    {
+      "n": 20,
+      "title": "The Fisherman's Town",
+      "text": "20-the-fisherman-s-town.txt",
+      "questions": "20-the-fisherman-s-town.questions.json",
+      "words": 1091
+    },
+    {
+      "n": 21,
+      "title": "Home Again",
+      "text": "21-home-again.txt",
+      "questions": "21-home-again.questions.json",
+      "words": 734
+    }
+  ],
+  "edited": "A few passages in chapters 5, 6, 9, 11 and 12 were reworded, as in later editions: the original 1920 text has Prince Bumpo ask to be made white and uses racial language. Here he asks for a face that shines like silver; the story is otherwise unchanged."
+}

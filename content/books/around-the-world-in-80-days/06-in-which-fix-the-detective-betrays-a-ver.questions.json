@@ -1,0 +1,86 @@
+{
+  "book": "around-the-world-in-80-days",
+  "chapter": 6,
+  "questions": [
+    {
+      "id": "around-the-world-in-80-days-06-01",
+      "type": "detail",
+      "q": "What was the name of the steamer Fix was waiting for at Suez?",
+      "choices": ["The Mongolia", "The Rangoon", "The Carnatic", "The Henrietta"],
+      "answer": 0,
+      "evidence": "the arrival of the steamer Mongolia"
+    },
+    {
+      "id": "around-the-world-in-80-days-06-02",
+      "type": "detail",
+      "q": "What was Fix's job at Suez?",
+      "choices": ["To deliver the Indian mails to the steamer", "To watch every arriving passenger for the bank robber", "To sign and seal the passports of English travellers", "To guard the coal supply for ships on the canal"],
+      "answer": 1,
+      "evidence": "it was his task to narrowly watch every passenger who arrived at Suez"
+    },
+    {
+      "id": "around-the-world-in-80-days-06-03",
+      "type": "character",
+      "q": "What seems to drive Fix most in his hunt for the thief?",
+      "choices": ["Hope of the splendid reward", "Anger at losing his own money to the robber", "A promise he made to the Bank's directors", "Orders from the British consul at Suez"],
+      "answer": 0,
+      "evidence": "inspired by the hope of obtaining the splendid reward"
+    },
+    {
+      "id": "around-the-world-in-80-days-06-04",
+      "type": "detail",
+      "q": "How did Fix say a good detective recognises a thief?",
+      "choices": ["By studying photographs sent from Scotland Yard", "By feeling the thief's presence, like a sixth sense", "By checking every passport for a forged signature", "By watching for anyone who seems nervous or afraid"],
+      "answer": 1,
+      "evidence": "A man rather feels the presence of these fellows, consul, than recognises them."
+    },
+    {
+      "id": "around-the-world-in-80-days-06-05",
+      "type": "inference",
+      "q": "The consul warns Fix that the description \"has a singular resemblance to an honest man.\" What is the consul suggesting?",
+      "choices": ["The description fits Fix himself very closely", "The thief has surely changed his clothes and face", "The description might fit many innocent men", "The Bank has sent the wrong description by mistake"],
+      "answer": 2,
+      "evidence": "has a singular resemblance to an honest man"
+    },
+    {
+      "id": "around-the-world-in-80-days-06-06",
+      "type": "vocabulary",
+      "q": "\"Mr. Fix evidently was not wanting in a tinge of self-conceit.\" What does this tell us about Fix?",
+      "choices": ["He was rather proud of himself", "He had no confidence at all in his own skills", "He wanted very badly to go back home to London", "He was shy and did not like to talk about himself"],
+      "answer": 0,
+      "evidence": "Mr. Fix evidently was not wanting in a tinge of self-conceit."
+    },
+    {
+      "id": "around-the-world-in-80-days-06-07",
+      "type": "detail",
+      "q": "How long would the Mongolia stop at Suez, and why?",
+      "choices": ["One day, so the passengers could see the town", "Four hours, which is long enough to take on coal", "Two days, while the Indian mails were sorted", "Six hours, to wait for the tide in the canal"],
+      "answer": 1,
+      "evidence": "Four hours; long enough to get in her coal."
+    },
+    {
+      "id": "around-the-world-in-80-days-06-08",
+      "type": "detail",
+      "q": "What surprised Fix when a passenger showed him a passport on the quay?",
+      "choices": ["It belonged to a member of the Reform Club", "It had already been stamped by the English consul", "Its description matched that of the bank robber", "It was written entirely in the French language"],
+      "answer": 2,
+      "evidence": "the description in the passport was identical with that of the bank robber"
+    },
+    {
+      "id": "around-the-world-in-80-days-06-09",
+      "type": "sequence",
+      "q": "What did the passenger with the passport do after Fix told him where the consulate was?",
+      "choices": ["He went straight to the consulate by himself", "He went back to the steamer to fetch his master", "He asked Fix to come along and show him the way", "He gave the passport to Fix to take to the consul"],
+      "answer": 1,
+      "evidence": "I'll go and fetch my master"
+    },
+    {
+      "id": "around-the-world-in-80-days-06-10",
+      "type": "main-idea",
+      "q": "What is this chapter mostly about?",
+      "choices": ["Fogg and Passepartout touring the town of Suez", "The building of the great canal by M. Lesseps", "The detective Fix eagerly waiting for the steamer to find his thief", "The consul arresting a suspicious passenger"],
+      "answer": 2,
+      "evidence": "awaited with a feverish impatience, easy to understand, the arrival of the steamer Mongolia"
+    }
+  ]
+}

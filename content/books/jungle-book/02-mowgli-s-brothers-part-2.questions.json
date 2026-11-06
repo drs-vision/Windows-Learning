@@ -1,0 +1,150 @@
+{
+  "book": "jungle-book",
+  "chapter": 2,
+  "questions": [
+    {
+      "id": "jungle-book-02-01",
+      "type": "detail",
+      "q": "How did Shere Khan win over the younger wolves of the Pack?",
+      "choices": ["He let them follow him for scraps and flattered them", "He promised each of them a turn at leading the Pack", "He taught them secret ways to hunt the village cattle", "He threatened to kill their cubs if they disobeyed"],
+      "answer": 0,
+      "evidence": "who followed him for scraps"
+    },
+    {
+      "id": "jungle-book-02-02",
+      "type": "character",
+      "q": "When Bagheera warned him about Shere Khan, why did Mowgli say he was not afraid?",
+      "choices": ["He had the Pack, Bagheera and Baloo to help him", "He was sure he could beat the tiger in a fair fight", "He believed Shere Khan had left the hills for good", "He knew Mother Wolf would hide him in the cave"],
+      "answer": 0,
+      "evidence": "I have the Pack and I have thee"
+    },
+    {
+      "id": "jungle-book-02-03",
+      "type": "detail",
+      "q": "What did Mowgli do when Tabaqui told him he was a naked man's cub?",
+      "choices": ["Swung him by the tail against a palm-tree", "Chased him all the way down to the village", "Told Akela, who drove him from the Pack", "Laughed at him and went back to sleep"],
+      "answer": 0,
+      "evidence": "I caught Tabaqui by the tail and swung him twice against a palm-tree"
+    },
+    {
+      "id": "jungle-book-02-04",
+      "type": "detail",
+      "q": "What did Mowgli find when Bagheera told him to feel under his jaw?",
+      "choices": ["A little bald spot left by a collar", "An old scar from a fight with the tiger", "A thorn that had been stuck there for years", "A notch in his ear from a hunter's trap"],
+      "answer": 0,
+      "evidence": "he came upon a little bald spot"
+    },
+    {
+      "id": "jungle-book-02-05",
+      "type": "inference",
+      "q": "Why did Bagheera pay the price for Mowgli at the Council long ago?",
+      "choices": ["He too had been born among men, in the king's cages", "He wanted a clever man's cub to help him hunt the buck", "He owed Father Wolf a debt from an old fight", "He hated Shere Khan and wanted to anger him"],
+      "answer": 0,
+      "evidence": "It was because of this that I paid the price for thee"
+    },
+    {
+      "id": "jungle-book-02-06",
+      "type": "inference",
+      "q": "Bagheera says the wolves hate Mowgli partly because they cannot meet his eyes. What does this show?",
+      "choices": ["They feel that he is a man and stronger than them in a way", "They think he is rude for staring at them during Council", "They believe he has gone mad like Tabaqui the jackal", "They are jealous that he gets more food than they do"],
+      "answer": 0,
+      "evidence": "because their eyes cannot meet thine"
+    },
+    {
+      "id": "jungle-book-02-07",
+      "type": "vocabulary",
+      "q": "\"I did not know these things,\" said Mowgli sullenly. What does \"sullenly\" mean?",
+      "choices": ["In a gloomy, bad-tempered way", "In a loud and cheerful voice", "In a sleepy and careless manner", "In a proud and boastful way"],
+      "answer": 0,
+      "evidence": "said Mowgli sullenly"
+    },
+    {
+      "id": "jungle-book-02-08",
+      "type": "detail",
+      "q": "What did Bagheera mean by \"the Red Flower\"?",
+      "choices": ["Fire", "A poison flower that grows by the huts", "The blood of a hunted buck", "A bright red jungle berry"],
+      "answer": 0,
+      "evidence": "By Red Flower Bagheera meant fire"
+    },
+    {
+      "id": "jungle-book-02-09",
+      "type": "sequence",
+      "q": "On his way down to the village, what did Mowgli hear happen to Akela?",
+      "choices": ["He sprang at a Sambhur and missed his hold", "He was caught in a trap left by the villagers", "He fought Shere Khan and was badly wounded", "He was chased away from the Pack by Tabaqui"],
+      "answer": 0,
+      "evidence": "The Lone Wolf must have sprung and missed his hold"
+    },
+    {
+      "id": "jungle-book-02-10",
+      "type": "detail",
+      "q": "How did Mowgli learn the way to carry fire?",
+      "choices": ["He watched a village boy fill a wicker pot with hot charcoal", "Bagheera showed him how men carried fire in iron pans", "He remembered it from the night his parents ran away", "Baloo taught him how to strike sparks from two stones"],
+      "answer": 0,
+      "evidence": "fill it with lumps of red-hot charcoal"
+    },
+    {
+      "id": "jungle-book-02-11",
+      "type": "character",
+      "q": "Why was Mowgli not afraid of the Red Flower when Bagheera asked him?",
+      "choices": ["He remembered lying warm and happy beside it as a baby", "He had seen Bagheera carry it many times without harm", "He thought it was only a flower and could not hurt him", "Mother Wolf had told him that fire was a friend to wolves"],
+      "answer": 0,
+      "evidence": "I lay beside the Red Flower, and it was warm and pleasant"
+    },
+    {
+      "id": "jungle-book-02-12",
+      "type": "detail",
+      "q": "What did Akela do at the Council Rock to show that the leadership of the Pack was open?",
+      "choices": ["He lay beside his rock instead of on it", "He howled three long times at the moon", "He gave his place to Shere Khan", "He walked out of the circle alone"],
+      "answer": 0,
+      "evidence": "lay by the side of his rock as a sign that the leadership of the Pack was open"
+    },
+    {
+      "id": "jungle-book-02-13",
+      "type": "vocabulary",
+      "q": "A leader who has missed his kill is called \"the Dead Wolf.\" Why is he given this name?",
+      "choices": ["He will soon be killed by the Pack, so he does not live long", "He has already died and only his ghost speaks at Council", "He is too tired to hunt and must sleep like the dead", "He is no longer allowed to eat with the other wolves"],
+      "answer": 0,
+      "evidence": "he is called the Dead Wolf as long as he lives, which is not long"
+    },
+    {
+      "id": "jungle-book-02-14",
+      "type": "character",
+      "q": "What did Akela offer the Pack if they would let Mowgli go to his own people?",
+      "choices": ["To die without fighting when his time came", "To lead them on one last great hunt for buck", "To leave the hills forever and never return", "To hand the leadership straight to Shere Khan"],
+      "answer": 0,
+      "evidence": "I will die without fighting"
+    },
+    {
+      "id": "jungle-book-02-15",
+      "type": "sequence",
+      "q": "What did Mowgli do right after flinging the fire pot to the ground?",
+      "choices": ["Lit his dead branch and whirled it above the wolves", "Ran away from the Council Rock down toward the village", "Begged the Pack to let him stay as their brother", "Hid behind Bagheera as the moss burst into flame"],
+      "answer": 0,
+      "evidence": "Mowgli thrust his dead branch into the fire till the twigs lit and crackled"
+    },
+    {
+      "id": "jungle-book-02-16",
+      "type": "detail",
+      "q": "How did Mowgli punish Shere Khan at the Council?",
+      "choices": ["He beat him over the head with the burning branch", "He set the tiger's striped coat on fire with coals", "He made the young wolves chase him out of the hills", "He tied him to a tree with vines and left him there"],
+      "answer": 0,
+      "evidence": "He beat Shere Khan over the head with the branch"
+    },
+    {
+      "id": "jungle-book-02-17",
+      "type": "inference",
+      "q": "Why did Bagheera say, \"Now I know thou art a man,\" when Mowgli began to cry?",
+      "choices": ["Only men shed tears, and no wolf ever does", "Mowgli had finally beaten the great tiger", "Mowgli spoke to the Pack in a human tongue", "Men are the only creatures who fear fire"],
+      "answer": 0,
+      "evidence": "That is only tears such as men use"
+    },
+    {
+      "id": "jungle-book-02-18",
+      "type": "main-idea",
+      "q": "What is this part of the story mostly about?",
+      "choices": ["Mowgli uses fire to save Akela and face Shere Khan, then must leave the jungle for men", "Mowgli becomes the new leader of the Seeonee Pack after Akela grows too old to hunt", "Bagheera escapes from the king's palace and learns the ways of the jungle wolves", "Mowgli and the wolves together hunt down and kill Shere Khan near the village"],
+      "answer": 0,
+      "evidence": "Mowgli went down the hillside alone, to meet those mysterious things that are called men"
+    }
+  ]
+}

@@ -1,0 +1,110 @@
+{
+  "book": "around-the-world-in-80-days",
+  "chapter": 17,
+  "questions": [
+    {
+      "id": "around-the-world-in-80-days-17-01",
+      "type": "detail",
+      "q": "What did Mr. Fogg usually do on the Rangoon?",
+      "choices": ["Walked the deck and talked with the crew", "Stayed in the cabin with Aouda or played whist", "Read newspapers in the ship's library", "Wrote letters to his friends at the Reform Club"],
+      "answer": 1,
+      "evidence": "where he kept Aouda company, or, according to his inveterate habit, took a hand at whist"
+    },
+    {
+      "id": "around-the-world-in-80-days-17-02",
+      "type": "inference",
+      "q": "What did Passepartout wrongly decide Fix must be?",
+      "choices": ["A thief planning to steal his master's bag", "A Reform Club spy", "A detective hired by the Bank of England", "A sailor looking for work on the next ship"],
+      "answer": 1,
+      "evidence": "He's a spy sent to keep us in view!"
+    },
+    {
+      "id": "around-the-world-in-80-days-17-03",
+      "type": "character",
+      "q": "Why did Passepartout decide not to tell Mr. Fogg about Fix?",
+      "choices": ["He was afraid Fogg would blame him for talking to strangers", "He didn't want Fogg hurt by his club's mistrust", "He wanted to keep the secret and earn a reward himself", "He thought Fogg already knew everything about Fix"],
+      "answer": 1,
+      "evidence": "lest he should be justly offended at this mistrust on the part of his adversaries"
+    },
+    {
+      "id": "around-the-world-in-80-days-17-04",
+      "type": "detail",
+      "q": "Why did the Rangoon stop at Singapore?",
+      "choices": ["To pick up mail for the Chinese ports", "To receive coal", "To repair a broken engine valve", "To let the sick passengers go ashore"],
+      "answer": 1,
+      "evidence": "to receive coal"
+    },
+    {
+      "id": "around-the-world-in-80-days-17-05",
+      "type": "sequence",
+      "q": "What did Fix do while Fogg and Aouda drove around Singapore?",
+      "choices": ["He sent a telegram and then went back to his cabin", "He followed them carefully, keeping them in sight", "He went shopping with Passepartout in the town", "He stayed on board and searched Fogg's cabin"],
+      "answer": 1,
+      "evidence": "followed them cautiously, without being himself perceived"
+    },
+    {
+      "id": "around-the-world-in-80-days-17-06",
+      "type": "detail",
+      "q": "What did Passepartout buy in Singapore and share with Aouda?",
+      "choices": ["A basket of fresh nutmegs", "Several dozen mangoes", "A bunch of cloves", "A box of pepper"],
+      "answer": 1,
+      "evidence": "purchasing several dozen mangoes"
+    },
+    {
+      "id": "around-the-world-in-80-days-17-07",
+      "type": "detail",
+      "q": "Why did Fogg want to reach Hong Kong in six days?",
+      "choices": ["Aouda's cousin was leaving Hong Kong for good on the 6th of November", "To catch the steamer for Yokohama leaving on the 6th of November", "The warrant for his arrest was due on the 6th", "His bet said he must be in China by the 6th"],
+      "answer": 1,
+      "evidence": "in time for the steamer which would leave on the 6th of November for Yokohama"
+    },
+    {
+      "id": "around-the-world-in-80-days-17-08",
+      "type": "inference",
+      "q": "What was one reason Passepartout was so impatient about the delays?",
+      "choices": ["He was seasick and wanted to get off the ship", "The gas was still burning at his expense back in Saville Row", "He had a bet of his own with the ship's cook", "He had promised to meet some of Fix's friends at a hotel in Hong Kong"],
+      "answer": 1,
+      "evidence": "the gas, which was remorselessly burning at his expense in Saville Row"
+    },
+    {
+      "id": "around-the-world-in-80-days-17-09",
+      "type": "detail",
+      "q": "When Fix said he didn't believe in the trip, what did Passepartout call him?",
+      "choices": ["A sly dog", "A liar", "A good fellow", "A spy"],
+      "answer": 0,
+      "evidence": "You're a sly dog!"
+    },
+    {
+      "id": "around-the-world-in-80-days-17-10",
+      "type": "vocabulary",
+      "q": "Passepartout kept \"chaffing\" Fix with hints and jokes. What does \"chaffing\" mean here?",
+      "choices": ["Teasing in a friendly way", "Shouting at in anger", "Begging for help", "Paying no attention to"],
+      "answer": 0,
+      "evidence": "Passepartout persisted in chaffing him"
+    },
+    {
+      "id": "around-the-world-in-80-days-17-11",
+      "type": "character",
+      "q": "How did Passepartout's teasing make Fix feel?",
+      "choices": ["Pleased, since it meant Passepartout trusted him", "Puzzled and worried that he had been found out", "Angry enough to report Passepartout to the captain", "Bored, because he did not understand the joke"],
+      "answer": 1,
+      "evidence": "He was evidently suspected"
+    },
+    {
+      "id": "around-the-world-in-80-days-17-12",
+      "type": "character",
+      "q": "What did Passepartout think about his master and Aouda?",
+      "choices": ["That Fogg was secretly in love with her", "That Fogg must be quite heartless, since her charms had no effect", "That Aouda did not like Fogg at all", "That they would surely be married as soon as they arrived in Hong Kong"],
+      "answer": 1,
+      "evidence": "must be, he thought, quite heartless"
+    },
+    {
+      "id": "around-the-world-in-80-days-17-13",
+      "type": "main-idea",
+      "q": "What is this chapter mostly about?",
+      "choices": ["The voyage to Hong Kong, as Fix and Passepartout each suspect the other", "Fogg and Aouda's long holiday in the gardens of Singapore", "A fierce storm that forces the Rangoon to turn back", "Passepartout repairing the steam engine on the Rangoon"],
+      "answer": 0,
+      "evidence": "Such was the situation between Fix and Passepartout."
+    }
+  ]
+}

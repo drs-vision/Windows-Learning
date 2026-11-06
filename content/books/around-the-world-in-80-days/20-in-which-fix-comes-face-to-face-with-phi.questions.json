@@ -1,0 +1,110 @@
+{
+  "book": "around-the-world-in-80-days",
+  "chapter": 20,
+  "questions": [
+    {
+      "id": "around-the-world-in-80-days-20-01",
+      "type": "detail",
+      "q": "What was Mr. Fogg doing while Passepartout was in the tavern with Fix?",
+      "choices": ["Searching the docks for a faster ship to Japan", "Shopping with Aouda for things she needed for the voyage", "Playing whist with some English officers at the Club Hotel all evening", "Asking at the Exchange for news of Aouda's cousin"],
+      "answer": 1,
+      "evidence": "making the necessary purchases for the long voyage before them"
+    },
+    {
+      "id": "around-the-world-in-80-days-20-02",
+      "type": "character",
+      "q": "How did Fogg explain his generosity to Aouda when she protested?",
+      "choices": ["He said it was a part of his programme", "He said he was a very rich man", "He said she could pay him back later", "He said the club would pay for it"],
+      "answer": 0,
+      "evidence": "It is in the interest of my journey--a part of my programme."
+    },
+    {
+      "id": "around-the-world-in-80-days-20-03",
+      "type": "inference",
+      "q": "Why wasn't Fogg worried when Passepartout did not come back at bedtime?",
+      "choices": ["He thought the ship sailed next morning", "He thought Passepartout was looking after Aouda", "He had sent Passepartout on an errand across the island", "He guessed Passepartout had gone aboard to sleep"],
+      "answer": 0,
+      "evidence": "knowing that the steamer was not to leave for Yokohama until the next morning"
+    },
+    {
+      "id": "around-the-world-in-80-days-20-04",
+      "type": "detail",
+      "q": "What did Fogg say to Aouda when he learned the Carnatic had already sailed?",
+      "choices": ["\"We are ruined, madam; the wager is lost.\"", "\"It is an accident, madam; nothing more.\"", "\"My servant has betrayed me, madam.\"", "\"We must wait here a week, madam.\""],
+      "answer": 1,
+      "evidence": "It is an accident, madam; nothing more."
+    },
+    {
+      "id": "around-the-world-in-80-days-20-05",
+      "type": "character",
+      "q": "Why did Fix's heart \"leap for joy\" on the quay?",
+      "choices": ["He thought Fogg would be stuck in Hong Kong for a week, until the warrant came", "He saw Passepartout running toward them along the wharf", "He had found a letter from London waiting for him at the steamer office that morning", "He believed Aouda would tell him where the money was hidden"],
+      "answer": 0,
+      "evidence": "Fogg detained at Hong Kong for a week!"
+    },
+    {
+      "id": "around-the-world-in-80-days-20-06",
+      "type": "sequence",
+      "q": "What did Fogg do right after hearing they would have to wait a week?",
+      "choices": ["He went back to the hotel to read the newspapers", "He went to the docks to look for another vessel", "He sent a telegram to the Reform Club in London", "He asked the police to search for Passepartout"],
+      "answer": 1,
+      "evidence": "he directed his steps toward the docks in search of some craft about to start"
+    },
+    {
+      "id": "around-the-world-in-80-days-20-07",
+      "type": "detail",
+      "q": "What did Fogg first offer the pilot to sail him to Yokohama?",
+      "choices": ["Fifty pounds and the price of a new sail", "100 pounds a day, plus a 200-pound reward", "A thousand pounds, paid in advance on the quay", "A share of his winnings when he got back to London"],
+      "answer": 1,
+      "evidence": "I offer you a hundred pounds per day"
+    },
+    {
+      "id": "around-the-world-in-80-days-20-08",
+      "type": "character",
+      "q": "How did Aouda answer when Fogg asked if she would be afraid of the voyage?",
+      "choices": ["\"Not with you, Mr. Fogg.\"", "\"A little, but I will come.\"", "\"Only of the storms, sir.\"", "\"I would rather stay here.\""],
+      "answer": 0,
+      "evidence": "Not with you, Mr. Fogg"
+    },
+    {
+      "id": "around-the-world-in-80-days-20-09",
+      "type": "inference",
+      "q": "Why did the pilot's plan to sail to Shanghai work for Fogg?",
+      "choices": ["The San Francisco steamer actually started from Shanghai", "Shanghai had a railway that went straight to Yokohama", "The Carnatic was going to stop and wait at Shanghai for him to arrive", "A faster steamer left Shanghai for London that week"],
+      "answer": 0,
+      "evidence": "but it starts from Shanghai"
+    },
+    {
+      "id": "around-the-world-in-80-days-20-10",
+      "type": "vocabulary",
+      "q": "Fogg asks, \"Would you like some earnest-money?\" What is \"earnest-money\"?",
+      "choices": ["A deposit paid in advance", "A tip for the crew after the trip", "Money borrowed from a bank", "A fine for breaking a promise"],
+      "answer": 0,
+      "evidence": "Would you like some earnest-money?"
+    },
+    {
+      "id": "around-the-world-in-80-days-20-11",
+      "type": "detail",
+      "q": "What did Fogg do to try to find Passepartout before leaving?",
+      "choices": ["He searched every tavern near the quay himself", "He gave his description and money to the police and the French consulate", "He left a note at the hotel and nothing else", "He hired a man to wait on the wharf with a sign"],
+      "answer": 1,
+      "evidence": "Phileas Fogg there gave Passepartout's description"
+    },
+    {
+      "id": "around-the-world-in-80-days-20-12",
+      "type": "character",
+      "q": "How did Fix feel about accepting Fogg's offer of a place on the Tankadere?",
+      "choices": ["Proud that his plan had worked perfectly", "Something like humiliation at using Fogg's kindness", "Frightened of the long voyage in a small boat", "Annoyed that the cabin he was given was so small, plain and crowded"],
+      "answer": 1,
+      "evidence": "The detective had a feeling akin to humiliation in profiting by the kindness of Mr. Fogg."
+    },
+    {
+      "id": "around-the-world-in-80-days-20-13",
+      "type": "main-idea",
+      "q": "What is this chapter mostly about?",
+      "choices": ["Passepartout waking up in the tavern and racing to the Carnatic", "Fogg missing the Carnatic and hiring a small pilot-boat instead", "Fix finally getting the warrant and arresting Fogg in Hong Kong", "Aouda deciding to stay behind and wait for Passepartout"],
+      "answer": 1,
+      "evidence": "pilot-boat No. 43, with its crew on board"
+    }
+  ]
+}

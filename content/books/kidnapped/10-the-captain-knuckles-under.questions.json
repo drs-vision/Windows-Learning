@@ -1,0 +1,175 @@
+{
+  "book": "kidnapped",
+  "chapter": 10,
+  "questions": [
+    {
+      "id": "kidnapped-10-01",
+      "type": "detail",
+      "q": "Why did David lose his hunger at breakfast in the round-house?",
+      "choices": [
+        "He was too seasick to look at any food",
+        "The only food left was cold, hard porridge",
+        "The floor was covered with glass and blood",
+        "He was afraid the food had been poisoned"
+      ],
+      "answer": 2,
+      "evidence": "The floor was covered with broken glass and in a horrid mess of blood"
+    },
+    {
+      "id": "kidnapped-10-02",
+      "type": "inference",
+      "q": "Why did David and Alan find it funny that the captain and Mr. Riach were shut in the fore-part of the ship?",
+      "choices": [
+        "The captain had to cook his own meals for the first time",
+        "Mr. Riach had to doctor the men he had wounded himself",
+        "The two thirstiest men had only cold water to drink",
+        "The two officers had to sleep with the common sailors"
+      ],
+      "answer": 2,
+      "evidence": "condemned to what they hated most--cold water"
+    },
+    {
+      "id": "kidnapped-10-03",
+      "type": "detail",
+      "q": "What did Alan give David as a keepsake for the night's fighting?",
+      "choices": [
+        "The dirk he had held in his left hand",
+        "A silver button cut from his coat",
+        "One of his silver-mounted pistols",
+        "A golden guinea from his money-belt"
+      ],
+      "answer": 1,
+      "evidence": "cut me off one of the silver buttons from his coat"
+    },
+    {
+      "id": "kidnapped-10-04",
+      "type": "detail",
+      "q": "What did Alan say would happen wherever David showed the button?",
+      "choices": [
+        "The friends of Alan Breck would come around him",
+        "Any ship's captain would carry him home for free",
+        "The soldiers of King George would let him pass",
+        "The people of Appin would give him food and a bed"
+      ],
+      "answer": 0,
+      "evidence": "the friends of Alan Breck will come around you"
+    },
+    {
+      "id": "kidnapped-10-05",
+      "type": "character",
+      "q": "What did David have to be careful not to do when Alan boasted?",
+      "choices": [
+        "Tell him that his coat was spoiled and worn out",
+        "Ask him questions about his chief and the gold",
+        "Remind him that the captain had beaten him at cards",
+        "Smile at his vanity, which could start a quarrel"
+      ],
+      "answer": 3,
+      "evidence": "I was always in danger of smiling at his vanity"
+    },
+    {
+      "id": "kidnapped-10-06",
+      "type": "inference",
+      "q": "Why did David value the button more after watching Alan brush his coat?",
+      "choices": [
+        "Alan told him the buttons were made of pure gold from France",
+        "Alan offered to sew the button onto David's own jacket",
+        "Alan said it was the last button his father had ever owned",
+        "Alan took such care of the coat, yet cut a button from it for him"
+      ],
+      "answer": 3,
+      "evidence": "I put a higher value on his gift"
+    },
+    {
+      "id": "kidnapped-10-07",
+      "type": "detail",
+      "q": "What did Mr. Riach admit when he came to ask for a parley?",
+      "choices": [
+        "That he had been paid by David's uncle to watch over him",
+        "That he was frightened, and the men would not follow anyway",
+        "That the captain was dead and he was now in command",
+        "That he had a plan to help David and Alan escape at night"
+      ],
+      "answer": 1,
+      "evidence": "I'm frich'ened, Davie"
+    },
+    {
+      "id": "kidnapped-10-08",
+      "type": "detail",
+      "q": "How did the captain look when he came to the window to talk?",
+      "choices": [
+        "Angry and red, waving a cutlass about",
+        "Stern and pale, with his arm in a sling",
+        "Calm and smiling, with a bottle in hand",
+        "Weak and lying on a blanket on the deck"
+      ],
+      "answer": 1,
+      "evidence": "with his arm in a sling, and looking stern and pale"
+    },
+    {
+      "id": "kidnapped-10-09",
+      "type": "character",
+      "q": "Why did Alan refuse to trust the captain's word?",
+      "choices": [
+        "The captain had given his hand on a bargain the night before and then attacked",
+        "The captain was known to be a Campbell and an enemy of Alan's clan",
+        "The captain had once handed another Jacobite over to the soldiers at Glasgow",
+        "The captain had lied about the brig being bound for the Carolinas"
+      ],
+      "answer": 0,
+      "evidence": "I doubt your word is a breakable"
+    },
+    {
+      "id": "kidnapped-10-10",
+      "type": "vocabulary",
+      "q": "Alan says his people pass between islands in \"their bit cobles.\" Using the note in the text, what is a \"coble\"?",
+      "choices": [
+        "A pony for riding hills",
+        "A small fishing boat",
+        "A rough woollen cloak",
+        "A wooden walking stick"
+      ],
+      "answer": 1,
+      "evidence": "a small boat used in fishing"
+    },
+    {
+      "id": "kidnapped-10-11",
+      "type": "detail",
+      "q": "Where did Alan say he would not be set ashore?",
+      "choices": [
+        "In Appin, Ardgour or Morven",
+        "Within thirty miles of his home",
+        "Anywhere near Arisaig or Morar",
+        "In a country of the Campbells"
+      ],
+      "answer": 3,
+      "evidence": "except in a country of the Campbells"
+    },
+    {
+      "id": "kidnapped-10-12",
+      "type": "sequence",
+      "q": "What was the last part of the treaty between Alan and the captain?",
+      "choices": [
+        "Half of the gold to be paid before they left the ship",
+        "A promise that David would be set free in Glasgow",
+        "The return of Mr. Shuan's body to his wife in Leith",
+        "A bottle of brandy traded for two buckets of water"
+      ],
+      "answer": 3,
+      "evidence": "a bottle of brandy against two buckets of water"
+    },
+    {
+      "id": "kidnapped-10-13",
+      "type": "main-idea",
+      "q": "What is this chapter mostly about?",
+      "choices": [
+        "David asking the captain to take him home to the house of Shaws",
+        "Alan and the beaten captain making terms to set Alan ashore",
+        "Alan and David taking over the brig and sailing it to France",
+        "The captain and his crew winning back the round-house by a trick"
+      ],
+      "answer": 1,
+      "evidence": "That was the last clause of the treaty"
+    }
+  ]
+}

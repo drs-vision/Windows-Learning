@@ -1,0 +1,136 @@
+{
+  "book": "johnny-town-mouse",
+  "chapter": 1,
+  "questions": [
+    {
+      "id": "johnny-town-mouse-01-01",
+      "type": "detail",
+      "q": "How did Timmy Willie get to town?",
+      "choices": [
+        "He rode all the way on the back of the cat",
+        "He fell asleep in a hamper of vegetables",
+        "He walked along the road for many miles",
+        "Johnny Town-mouse came and fetched him"
+      ],
+      "answer": 1,
+      "evidence": "went to town by mistake in a hamper"
+    },
+    {
+      "id": "johnny-town-mouse-01-02",
+      "type": "detail",
+      "q": "What did Timmy Willie eat in the hamper before he fell asleep?",
+      "choices": [
+        "Some peas",
+        "A cabbage leaf",
+        "Some corn seeds",
+        "A bit of cake"
+      ],
+      "answer": 0,
+      "evidence": "after eating some peas"
+    },
+    {
+      "id": "johnny-town-mouse-01-03",
+      "type": "sequence",
+      "q": "What did the cook do when Timmy Willie sprang out of the hamper?",
+      "choices": [
+        "Caught him in her apron and shook him",
+        "Jumped on a chair and called for the cat",
+        "Gave him a crumb of cake and some cheese",
+        "Put him back in the hamper and shut the lid"
+      ],
+      "answer": 1,
+      "evidence": "Up jumped the cook on a chair"
+    },
+    {
+      "id": "johnny-town-mouse-01-04",
+      "type": "detail",
+      "q": "What did Timmy Willie crash into when he dropped through the hole?",
+      "choices": [
+        "A mouse dinner party",
+        "The coal-cellar",
+        "A box of sugar",
+        "The cat's basket"
+      ],
+      "answer": 0,
+      "evidence": "crashed into the middle of a mouse dinner party"
+    },
+    {
+      "id": "johnny-town-mouse-01-05",
+      "type": "inference",
+      "q": "Why did Timmy Willie lose his appetite at the dinner party?",
+      "choices": [
+        "The food was much too strange and sweet for him to eat",
+        "He found out the young mice were chased by the cat",
+        "He had eaten too many peas in the hamper",
+        "The other mice laughed at his short tail"
+      ],
+      "answer": 1,
+      "evidence": "Timmy Willie learnt with horror that they were being chased by the cat"
+    },
+    {
+      "id": "johnny-town-mouse-01-06",
+      "type": "detail",
+      "q": "Why did Timmy Willie not sleep on the sofa pillow?",
+      "choices": [
+        "It smelt of cat",
+        "It was too hard and lumpy for him",
+        "It was kept only for Johnny",
+        "It was wet from the rain outside"
+      ],
+      "answer": 0,
+      "evidence": "But the sofa smelt of cat."
+    },
+    {
+      "id": "johnny-town-mouse-01-07",
+      "type": "character",
+      "q": "How did Timmy Willie feel while he stayed in town?",
+      "choices": [
+        "Happy and full of fun",
+        "Homesick and ill",
+        "Brave and proud",
+        "Bored but well fed"
+      ],
+      "answer": 1,
+      "evidence": "Timmy Willie longed to be at home in his peaceful nest in a sunny bank."
+    },
+    {
+      "id": "johnny-town-mouse-01-08",
+      "type": "detail",
+      "q": "When did Johnny Town-mouse come to visit the country?",
+      "choices": [
+        "On a snowy day in winter",
+        "In the spring, when the sun came out",
+        "In the autumn when the corn was ripe",
+        "On Christmas Eve with a present"
+      ],
+      "answer": 1,
+      "evidence": "The winter passed; the sun came out again"
+    },
+    {
+      "id": "johnny-town-mouse-01-09",
+      "type": "character",
+      "q": "Why did Johnny Town-mouse go back to town?",
+      "choices": [
+        "The big cows frightened him far away",
+        "He said the country was too quiet",
+        "His friends sent him a letter",
+        "Timmy Willie asked him to leave"
+      ],
+      "answer": 1,
+      "evidence": "he said it was too quiet!!"
+    },
+    {
+      "id": "johnny-town-mouse-01-10",
+      "type": "main-idea",
+      "q": "What is the lesson of this story?",
+      "choices": [
+        "The town is always better than the country",
+        "Mice should never ride in a vegetable hamper",
+        "One place suits one person, another suits another",
+        "Always be careful when a cat is in the house"
+      ],
+      "answer": 2,
+      "evidence": "One place suits one person, another place suits another person."
+    }
+  ]
+}

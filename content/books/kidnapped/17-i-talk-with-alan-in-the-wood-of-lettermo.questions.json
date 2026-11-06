@@ -1,0 +1,150 @@
+{
+  "book": "kidnapped",
+  "chapter": 17,
+  "questions": [
+    {
+      "id": "kidnapped-17-01",
+      "type": "character",
+      "q": "How did David feel about Alan at the start of the chapter, as they lay in the wood?",
+      "choices": ["He held him in horror, believing him a murderer", "He was grateful to Alan for saving him from the soldiers", "He was angry that Alan had left him alone on Mull", "He was proud of Alan for punishing the Red Fox"],
+      "answer": 0,
+      "evidence": "I held him in horror"
+    },
+    {
+      "id": "kidnapped-17-02",
+      "type": "vocabulary",
+      "q": "David tells Alan, \"You and me must twine.\" What does \"twine\" mean here?",
+      "choices": ["Part ways", "Join together", "Run faster", "Make peace"],
+      "answer": 0,
+      "evidence": "* Part."
+    },
+    {
+      "id": "kidnapped-17-03",
+      "type": "detail",
+      "q": "In Alan's story of the Man and the Good People, what did the man do before he opened the bag?",
+      "choices": ["He prayed to the king of the fairies for help", "He stuck his dirk through it", "He threw it into the sea in fear", "He called out to see who was inside"],
+      "answer": 1,
+      "evidence": "he stuck his dirk throughout that poke before he opened it"
+    },
+    {
+      "id": "kidnapped-17-04",
+      "type": "inference",
+      "q": "Why did Alan tell David the story of the man and the bag?",
+      "choices": ["To pass the time while the soldiers marched past", "To show that thinking the worst of a friend can be a terrible mistake", "To explain where the Good People live on the Skerryvore", "To frighten David into staying with him in Appin"],
+      "answer": 1,
+      "evidence": "you and the man are very much alike"
+    },
+    {
+      "id": "kidnapped-17-05",
+      "type": "detail",
+      "q": "What reason did Alan give to show he would not have killed the Red Fox that way?",
+      "choices": ["He had been at James's house all that morning", "He would never kill in his own country, or carry only a fishing-rod", "He had promised Ardshiel never to harm a Campbell", "He was too far away and could not shoot that far"],
+      "answer": 1,
+      "evidence": "if I were going to kill a gentleman, it would not be in my own country"
+    },
+    {
+      "id": "kidnapped-17-06",
+      "type": "detail",
+      "q": "How did Alan swear that he had no part in the killing?",
+      "choices": ["On his father's grave in Appin", "On the Holy Iron of his dirk", "On a Bible from the brig", "On the silver button"],
+      "answer": 1,
+      "evidence": "I swear upon the Holy Iron"
+    },
+    {
+      "id": "kidnapped-17-07",
+      "type": "inference",
+      "q": "When Alan says the murderer's coat was blue and that he was \"tying my brogues,\" what can you tell?",
+      "choices": ["Alan truly did not see the man at all", "Alan is avoiding saying who the man was", "Alan thinks David himself fired the shot", "Alan is sure the man was a Campbell"],
+      "answer": 1,
+      "evidence": "I've a grand memory for forgetting, David"
+    },
+    {
+      "id": "kidnapped-17-08",
+      "type": "character",
+      "q": "Why did Alan say he drew the soldiers after himself and David?",
+      "choices": ["So that the real shooter could escape into the heather", "So that the soldiers would arrest the Campbell lawyer instead", "So that David would be forced to come along with him", "So that the soldiers would grow tired and give up the hunt"],
+      "answer": 0,
+      "evidence": "the best place for him will be the heather"
+    },
+    {
+      "id": "kidnapped-17-09",
+      "type": "character",
+      "q": "What did David decide about Alan's way of thinking?",
+      "choices": ["His morals were back to front, but he would die for them", "His morals were just the same as any good Lowland minister's", "He had no morals at all and could not be trusted", "He was only pretending to have morals to fool David"],
+      "answer": 0,
+      "evidence": "Alan's morals were all tail-first; but he was ready to give his life for them"
+    },
+    {
+      "id": "kidnapped-17-10",
+      "type": "detail",
+      "q": "Where did Alan say the trial for the Red Fox's murder would be held?",
+      "choices": ["In Edinburgh, before the Lords of the high court", "In Inverara, the Campbells' head place", "In Fort William, by the army", "In London, before King George"],
+      "answer": 1,
+      "evidence": "it'll be tried in Inverara, the Campbells' head place"
+    },
+    {
+      "id": "kidnapped-17-11",
+      "type": "inference",
+      "q": "What was Alan's main point about the trial David would face?",
+      "choices": ["That the judges would be fair because the Duke was honest", "That a jury of Campbells would surely hang him", "That David would be set free since he was a Lowlander", "That no trial could be held without a witness"],
+      "answer": 1,
+      "evidence": "with fifteen Campbells in the jury-box"
+    },
+    {
+      "id": "kidnapped-17-12",
+      "type": "detail",
+      "q": "Why was David more willing to flee once Alan said they were heading \"to the Lowlands\"?",
+      "choices": ["He wanted to get back and get the upper hand of his uncle", "He hoped to find Mr. Campbell and hide in his house", "He knew there were no soldiers at all in the Lowlands", "He wanted to take a ship from Leith to the American colonies"],
+      "answer": 0,
+      "evidence": "I was growing impatient to get back and have the upper-hand of my uncle"
+    },
+    {
+      "id": "kidnapped-17-13",
+      "type": "detail",
+      "q": "What choice did Alan say David had?",
+      "choices": ["Go home by sea, or stay in Appin", "Take to the heather with him, or hang", "Give himself up, or hide in the house of James", "Fight the soldiers, or run to Mull"],
+      "answer": 1,
+      "evidence": "Either take to the heather with me, or else hang"
+    },
+    {
+      "id": "kidnapped-17-14",
+      "type": "detail",
+      "q": "Why did Alan plan to go to Aucharn before fleeing?",
+      "choices": ["To get his clothes, arms and money from James", "To warn the tenants that the soldiers were coming", "To tell James that the Red Fox was dead", "To leave a message for the crew of the brig"],
+      "answer": 0,
+      "evidence": "where I must get my clothes, and my arms, and money to carry us along"
+    },
+    {
+      "id": "kidnapped-17-15",
+      "type": "sequence",
+      "q": "In Alan's account, what happened to the brig Covenant after the crew got into the skiff?",
+      "choices": ["It broke apart and washed ashore in pieces", "It lifted over the reef and sank into the sea", "It drifted off and was found by a King's cruiser", "It stayed stuck on the reef for many days"],
+      "answer": 1,
+      "evidence": "the sea closed over the Covenant of Dysart"
+    },
+    {
+      "id": "kidnapped-17-16",
+      "type": "detail",
+      "q": "What did Hoseason order the sailors to do once they were on the beach?",
+      "choices": ["Search the shore for David", "Lay hands upon Alan", "Build a fire and rest", "Row back to the wreck"],
+      "answer": 1,
+      "evidence": "bade them lay hands upon Alan"
+    },
+    {
+      "id": "kidnapped-17-17",
+      "type": "character",
+      "q": "Who took Alan's side against the other sailors on the beach?",
+      "choices": ["Captain Hoseason", "Mr. Riach", "Mr. Shuan", "The cabin boy"],
+      "answer": 1,
+      "evidence": "Riach! Well, it was him that took up the clubs for me"
+    },
+    {
+      "id": "kidnapped-17-18",
+      "type": "main-idea",
+      "q": "What is this chapter mostly about?",
+      "choices": ["David and Alan fighting and parting ways for good", "David coming to trust Alan again and agreeing to flee with him", "Alan going back to Mull to look for the sailors", "Alan and David being tried for the murder in Inverara"],
+      "answer": 1,
+      "evidence": "I'll chance it, Alan"
+    }
+  ]
+}

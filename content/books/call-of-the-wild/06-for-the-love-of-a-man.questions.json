@@ -1,0 +1,166 @@
+{
+  "book": "call-of-the-wild",
+  "chapter": 6,
+  "questions": [
+    {
+      "id": "call-of-the-wild-06-01",
+      "type": "detail",
+      "q": "Why was John Thornton alone in camp when he rescued Buck?",
+      "choices": ["He had frozen his feet, and his partners left him to get well", "He had quarrelled with his partners and they had gone on without him", "He was waiting there for the mail train to bring him a letter", "He had come north alone to search for gold along the river"],
+      "answer": 0,
+      "evidence": "When John Thornton froze his feet in the previous December"
+    },
+    {
+      "id": "call-of-the-wild-06-02",
+      "type": "character",
+      "q": "How did Skeet, the little Irish setter, help Buck after his rescue?",
+      "choices": ["She brought him scraps of meat from the cooking fire", "She washed and cleaned his wounds every morning", "She kept the other dogs away while he slept by the river", "She led him to a warm spot in the sun beside the tent"],
+      "answer": 1,
+      "evidence": "so she washed and cleansed Buck's wounds"
+    },
+    {
+      "id": "call-of-the-wild-06-03",
+      "type": "detail",
+      "q": "What kind of dog was Nig?",
+      "choices": ["A small Irish setter with a gentle nature", "A huge black half-bloodhound, half-deerhound", "A grey husky who had pulled in the mail train", "A spotted pointer brought up from the Southland"],
+      "answer": 1,
+      "evidence": "a huge black dog, half bloodhound and half deerhound"
+    },
+    {
+      "id": "call-of-the-wild-06-04",
+      "type": "inference",
+      "q": "How was Buck's feeling for John Thornton different from his feeling for Judge Miller?",
+      "choices": ["He feared Thornton, but he had never once feared the Judge", "It was passionate love, not just a dignified friendship", "He obeyed Thornton only because Thornton fed him well", "He liked the Judge much more but stayed with Thornton"],
+      "answer": 1,
+      "evidence": "with the Judge himself, a stately and dignified friendship"
+    },
+    {
+      "id": "call-of-the-wild-06-05",
+      "type": "character",
+      "q": "What made John Thornton \"the ideal master\" for his dogs?",
+      "choices": ["He cared for them as if they were his own children", "He fed them more fish than any other man on the trail", "He never made them pull a sled or carry a heavy pack", "He trained them every day to obey his commands at once"],
+      "answer": 0,
+      "evidence": "as if they were his own children"
+    },
+    {
+      "id": "call-of-the-wild-06-06",
+      "type": "detail",
+      "q": "What was Buck's special way of showing love that looked almost like hurting?",
+      "choices": ["He would jump hard against Thornton and knock him down", "He would bite Thornton's hand in a pretend bite", "He would growl and snarl whenever Thornton came near", "He would pull Thornton's sleeve until the cloth tore"],
+      "answer": 1,
+      "evidence": "this feigned bite for a caress"
+    },
+    {
+      "id": "call-of-the-wild-06-07",
+      "type": "inference",
+      "q": "Why did Buck get up in the night and listen at the tent flap to Thornton breathing?",
+      "choices": ["He heard wolves outside and wanted to warn his master", "He was hungry and hoped Thornton would wake and feed him", "He feared Thornton would leave his life like his other masters", "He was guarding the camp against thieves from the river"],
+      "answer": 2,
+      "evidence": "He was afraid that Thornton would pass out of his life"
+    },
+    {
+      "id": "call-of-the-wild-06-08",
+      "type": "character",
+      "q": "Buck stole from other camps. Why did he never steal from John Thornton?",
+      "choices": ["Thornton kept all his food locked up in a strong box", "Because of his very great love for Thornton", "Thornton always gave him more than enough to eat", "Skeet and Nig would have told on him right away"],
+      "answer": 1,
+      "evidence": "Because of his very great love, he could not steal from this man"
+    },
+    {
+      "id": "call-of-the-wild-06-09",
+      "type": "detail",
+      "q": "What did Buck feel pulling at him from deep in the forest?",
+      "choices": ["The smell of a moose camp far across the hills", "The howl of the wolf pack that hunted near Dawson", "A call that lured him to turn his back on the fire", "The sound of other dogs barking in a miners' camp"],
+      "answer": 2,
+      "evidence": "Deep in the forest a call was sounding"
+    },
+    {
+      "id": "call-of-the-wild-06-10",
+      "type": "vocabulary",
+      "q": "\"After that he tolerated them in a passive sort of way.\" What does it mean that Buck \"tolerated\" Hans and Pete?",
+      "choices": ["He loved them as much as he loved Thornton", "He put up with them but did not care for them", "He was afraid of them and hid when they came", "He fought with them every time they came near"],
+      "answer": 1,
+      "evidence": "he tolerated them in a passive sort of way"
+    },
+    {
+      "id": "call-of-the-wild-06-11",
+      "type": "sequence",
+      "q": "What happened when Thornton, on a whim, told Buck to jump off the cliff?",
+      "choices": ["Buck refused, lay down, and would not move from the spot", "Buck sprang at once, and the men had to drag him back to safety", "Buck barked at the edge until Thornton laughed and called him", "Buck ran down a path to the bottom and waited there for them"],
+      "answer": 1,
+      "evidence": "while Hans and Pete were dragging them back into safety"
+    },
+    {
+      "id": "call-of-the-wild-06-12",
+      "type": "detail",
+      "q": "What did the miners' meeting at Circle City decide after Buck attacked Black Burton?",
+      "choices": ["That Buck must be chained up and kept away from town", "That the dog had good reason, so Buck was let go", "That Thornton had to pay Burton for the harm done", "That Buck had to be sold to a team leaving for Dawson"],
+      "answer": 1,
+      "evidence": "decided that the dog had sufficient provocation"
+    },
+    {
+      "id": "call-of-the-wild-06-13",
+      "type": "inference",
+      "q": "Why did Buck attack Black Burton in the bar?",
+      "choices": ["Burton had tried to steal Buck from his corner", "Burton had kicked Buck as he walked past him", "Burton had struck John Thornton without warning", "Burton had thrown his food on the floor at Buck"],
+      "answer": 2,
+      "evidence": "Burton struck out, without warning, straight from the shoulder."
+    },
+    {
+      "id": "call-of-the-wild-06-14",
+      "type": "sequence",
+      "q": "How was Thornton thrown into the wild rapids of the Forty-Mile Creek?",
+      "choices": ["He slipped on a wet rock while walking along the bank", "Hans checked the boat too suddenly and it flipped over", "A tree fell across the boat as it passed a narrow bend", "The rope broke and the boat was swept onto the rocks"],
+      "answer": 1,
+      "evidence": "Hans checked it with the rope and checked too suddenly"
+    },
+    {
+      "id": "call-of-the-wild-06-15",
+      "type": "detail",
+      "q": "What did Buck do differently on his second try to reach Thornton in the river?",
+      "choices": ["He swam without the rope so that it could not pull him under", "He swam straight out into the stream instead of at an angle", "He waited for Hans to throw Thornton a long pole first", "He swam up from below Thornton rather than coming down"],
+      "answer": 1,
+      "evidence": "this time straight into the stream"
+    },
+    {
+      "id": "call-of-the-wild-06-16",
+      "type": "detail",
+      "q": "What injury did Thornton find on Buck after the river rescue?",
+      "choices": ["A badly cut front paw", "Three of his ribs were broken", "A deep gash on one shoulder", "A sprained and swollen hind leg"],
+      "answer": 1,
+      "evidence": "finding three broken ribs"
+    },
+    {
+      "id": "call-of-the-wild-06-17",
+      "type": "detail",
+      "q": "In the Eldorado Saloon, what did Thornton boast that Buck could do?",
+      "choices": ["Pull a loaded sled all the way from Dawson to Circle City", "Start a sled with a thousand pounds and walk off with it", "Beat any dog in Dawson in a fight in front of the crowd", "Outrun the fastest dog team in Alaska over a mile"],
+      "answer": 1,
+      "evidence": "Buck can start a thousand pounds."
+    },
+    {
+      "id": "call-of-the-wild-06-18",
+      "type": "character",
+      "q": "How did Thornton feel right after Matthewson slammed down his thousand dollars?",
+      "choices": ["Calm and sure, because he had seen Buck pull that much before", "Doubtful and embarrassed, since he had no thousand dollars", "Angry, because he thought Matthewson had cheated him", "Excited, because he knew he would easily win the bet"],
+      "answer": 1,
+      "evidence": "His tongue had tricked him."
+    },
+    {
+      "id": "call-of-the-wild-06-19",
+      "type": "vocabulary",
+      "q": "\"The enormousness of it appalled him.\" What does \"appalled\" mean here?",
+      "choices": ["Pleased and delighted", "Shocked and dismayed", "Confused and puzzled", "Bored and uninterested"],
+      "answer": 1,
+      "evidence": "The enormousness of it appalled him."
+    },
+    {
+      "id": "call-of-the-wild-06-20",
+      "type": "main-idea",
+      "q": "What is this chapter mostly about?",
+      "choices": ["Buck's deep love for John Thornton and what he does for him", "Buck becoming the leader of a new team of mail dogs", "Thornton and his partners finding a rich vein of gold", "Buck learning to hunt alone in the forest for his food"],
+      "answer": 0,
+      "evidence": "Love, genuine passionate love, was his for the first time."
+    }
+  ]
+}

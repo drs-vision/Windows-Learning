@@ -88,7 +88,7 @@ public sealed class HouseholdStore
         }
     }
 
-    public const int CurrentSchema = 8;
+    public const int CurrentSchema = 9;
 
     /// <summary>Upgrade data written by older versions. Runs on every load; must be idempotent.</summary>
     public static Household Migrate(Household h)
@@ -158,6 +158,19 @@ public sealed class HouseholdStore
                         n = n <= 0 ? 20 : m8.CoinsPerActivity > 1 ? Math.Max(1, (int)Math.Round(n / (double)m8.CoinsPerActivity)) : n;
                         modules[id] = m8 with { CoinsPerActivity = 1, Options = new Dictionary<string, string>(m8.Options) { ["wordsPer"] = n.ToString() } };
                     }
+            // v9: Reading pays 3 coins a right answer (daily limit 120, so two long chapters still pay) and a retake
+            // waits 5 minutes. Only settings still on the first defaults (1 coin, 60 a day, 10 minutes) move.
+            if (h.SchemaVersion < 9 && modules.TryGetValue("books", out var r9))
+            {
+                var opts = new Dictionary<string, string>(r9.Options);
+                if (opts.GetValueOrDefault("waitMinutes", "10") == "10") opts["waitMinutes"] = "5";
+                modules["books"] = r9 with
+                {
+                    CoinsPerActivity = r9.CoinsPerActivity == 1 ? 3 : r9.CoinsPerActivity,
+                    DailyCap = r9.DailyCap == 60 ? 120 : r9.DailyCap,
+                    Options = opts,
+                };
+            }
             var allow = c.Allowlist;
             if (h.SchemaVersion < 3)
                 allow = allow with { Apps = allow.Apps.Where(a => !Allowlist.Browsers.Contains(Path.GetFileName(a), StringComparer.OrdinalIgnoreCase)).ToList() };

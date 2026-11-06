@@ -82,4 +82,19 @@ public class SafeFileTests
         }
         Assert.Equal("Second", new HouseholdStore(path).Current.Name);
     }
+
+    [Fact]
+    public void V9_moves_reading_from_the_first_defaults_but_keeps_a_parents_choice()
+    {
+        ModuleSettings Books(int coins, int cap, string wait) => ModuleSettings.Defaults()["books"] with
+        {
+            CoinsPerActivity = coins, DailyCap = cap, Options = new() { ["wordsPer"] = "20", ["waitMinutes"] = wait, ["allowed"] = "*" },
+        };
+        Child Kid(ModuleSettings b) { var m = ModuleSettings.Defaults(); m["books"] = b; return new Child { DisplayName = "Sam", Modules = m }; }
+        var h = new Household { SchemaVersion = 8, Children = new() { Kid(Books(1, 60, "10")), Kid(Books(2, 40, "15")) } };
+        var after = HouseholdStore.Migrate(h);
+        var a = after.Children[0].Modules["books"]; var b = after.Children[1].Modules["books"];
+        Assert.Equal((3, 120, "5"), (a.CoinsPerActivity, a.DailyCap, a.Options["waitMinutes"]));
+        Assert.Equal((2, 40, "15"), (b.CoinsPerActivity, b.DailyCap, b.Options["waitMinutes"]));
+    }
 }

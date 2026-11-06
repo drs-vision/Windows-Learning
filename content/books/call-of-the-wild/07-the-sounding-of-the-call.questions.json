@@ -1,0 +1,166 @@
+{
+  "book": "call-of-the-wild",
+  "chapter": 7,
+  "questions": [
+    {
+      "id": "call-of-the-wild-07-01",
+      "type": "detail",
+      "q": "What did Buck's winning the bet make possible for John Thornton?",
+      "choices": ["Buying a big house and moving back to the Southland", "Paying debts and searching the East for a lost mine", "Buying a new team of dogs to carry the mail", "Opening a saloon of his own in the middle of Dawson"],
+      "answer": 1,
+      "evidence": "journey with his partners into the East after a fabled lost mine"
+    },
+    {
+      "id": "call-of-the-wild-07-02",
+      "type": "character",
+      "q": "How did John Thornton find food on the long journey east?",
+      "choices": ["He carried months of flour and bacon on the sled", "He hunted his dinner as he travelled each day", "He traded gold dust for food at every camp he passed", "He sent Hans and Pete back to Dawson for supplies"],
+      "answer": 1,
+      "evidence": "he hunted his dinner in the course of the day's travel"
+    },
+    {
+      "id": "call-of-the-wild-07-03",
+      "type": "detail",
+      "q": "What did Thornton find in the wreckage of an old hunting lodge?",
+      "choices": ["A map that showed the way to the Lost Cabin", "A sack of gold nuggets hidden under the floor", "A long-barrelled flint-lock gun", "A journal written by the man who built the lodge"],
+      "answer": 2,
+      "evidence": "John Thornton found a long-barrelled flint-lock"
+    },
+    {
+      "id": "call-of-the-wild-07-04",
+      "type": "sequence",
+      "q": "At the end of all their wandering, what did the partners find?",
+      "choices": ["The Lost Cabin, standing empty beside the old mine", "A shallow placer in a valley full of gold", "A trading post where they sold all of their furs", "A Yeehat village that gave them food and shelter"],
+      "answer": 1,
+      "evidence": "they found, not the Lost Cabin, but a shallow placer in a broad valley"
+    },
+    {
+      "id": "call-of-the-wild-07-05",
+      "type": "inference",
+      "q": "In Buck's visions of the hairy man by the fire, what feeling stood out most?",
+      "choices": ["Fear", "Joy", "Anger", "Loneliness"],
+      "answer": 0,
+      "evidence": "The salient thing of this other world seemed fear."
+    },
+    {
+      "id": "call-of-the-wild-07-06",
+      "type": "vocabulary",
+      "q": "\"Irresistible impulses seized him.\" What is an \"irresistible\" impulse?",
+      "choices": ["A sudden urge too strong to fight against", "A plan worked out carefully ahead of time", "A small wish that is easy to forget", "A command given by someone in charge"],
+      "answer": 0,
+      "evidence": "Irresistible impulses seized him."
+    },
+    {
+      "id": "call-of-the-wild-07-07",
+      "type": "detail",
+      "q": "What animal did Buck find making the long howl in the forest one night?",
+      "choices": ["A husky that had run away from a Yeehat camp", "A long, lean timber wolf", "A black bear fishing in the stream", "Nig, who had wandered off from the camp"],
+      "answer": 1,
+      "evidence": "a long, lean, timber wolf"
+    },
+    {
+      "id": "call-of-the-wild-07-08",
+      "type": "sequence",
+      "q": "How did the timber wolf finally come to trust Buck?",
+      "choices": ["Buck brought it a rabbit he had caught", "It saw that Buck meant no harm and sniffed noses with him", "Buck beat it in a long fight and it gave up and lay down at his feet", "It followed Buck back to Thornton's camp to be fed"],
+      "answer": 1,
+      "evidence": "the wolf, finding that no harm was intended, finally sniffed noses with him"
+    },
+    {
+      "id": "call-of-the-wild-07-09",
+      "type": "vocabulary",
+      "q": "\"In the end Buck's pertinacity was rewarded.\" What does \"pertinacity\" mean?",
+      "choices": ["Speed and quickness in a chase", "Fierceness when fighting", "Refusing to give up; stubborn persistence", "Cleverness in hiding from others"],
+      "answer": 2,
+      "evidence": "Buck's pertinacity was rewarded"
+    },
+    {
+      "id": "call-of-the-wild-07-10",
+      "type": "character",
+      "q": "Why did Buck turn back instead of running on with his wild brother?",
+      "choices": ["He grew tired and hungry after running so far", "He was afraid of the other wolves ahead", "He remembered John Thornton back at camp", "He got lost and could not follow the trail"],
+      "answer": 2,
+      "evidence": "Buck remembered John Thornton"
+    },
+    {
+      "id": "call-of-the-wild-07-11",
+      "type": "detail",
+      "q": "What did Buck do for two days and nights after returning from the wolf?",
+      "choices": ["He slept by the fire and would not eat", "He never left camp or let Thornton out of his sight", "He searched the woods day and night for his wild brother the wolf", "He hauled meat and gold for the partners"],
+      "answer": 1,
+      "evidence": "For two days and nights Buck never left camp"
+    },
+    {
+      "id": "call-of-the-wild-07-12",
+      "type": "inference",
+      "q": "Buck looked like a gigantic wolf. What features showed he was not quite a wolf?",
+      "choices": ["His short, stubby legs and the curly tail of a husky dog", "Brown on his muzzle and a splash of white on his chest", "His floppy ears and small head", "His spotted coat and long, thin tail"],
+      "answer": 1,
+      "evidence": "the splash of white hair that ran midmost down his chest"
+    },
+    {
+      "id": "call-of-the-wild-07-13",
+      "type": "detail",
+      "q": "Why was the great bull moose in such a savage temper?",
+      "choices": ["An arrow was stuck in his side", "Wolves had chased him for days", "He had lost his herd in a storm", "Buck had hurt one of his calves"],
+      "answer": 0,
+      "evidence": "protruded a feathered arrow-end, which accounted for his savageness"
+    },
+    {
+      "id": "call-of-the-wild-07-14",
+      "type": "inference",
+      "q": "Why did the young bulls finally stop coming back to help the old bull?",
+      "choices": ["Buck had driven them far away into the mountains", "Winter pushed them on, and only one life was at stake", "The old bull told them to leave by roaring at them", "Hunters with rifles had frightened the herd away"],
+      "answer": 1,
+      "evidence": "The life of only one member was demanded"
+    },
+    {
+      "id": "call-of-the-wild-07-15",
+      "type": "sequence",
+      "q": "As Buck headed back to camp after the moose hunt, what warned him that something was wrong?",
+      "choices": ["He heard Thornton's rifle firing again and again", "A new stir in the land and a fresh trail toward camp", "Skeet ran out to meet him, barking for help", "He saw thick smoke rising high above the valley"],
+      "answer": 1,
+      "evidence": "he came upon a fresh trail that sent his neck hair rippling"
+    },
+    {
+      "id": "call-of-the-wild-07-16",
+      "type": "detail",
+      "q": "Who had attacked the camp while Buck was away?",
+      "choices": ["Black Burton and his friends from Circle City", "A band of Yeehats", "Wolves", "Miners who wanted the partners' gold"],
+      "answer": 1,
+      "evidence": "The Yeehats were dancing about the wreckage of the spruce-bough lodge"
+    },
+    {
+      "id": "call-of-the-wild-07-17",
+      "type": "character",
+      "q": "Why did Buck, usually so cunning, lose his head and rush at the attackers?",
+      "choices": ["He was starving and smelled food cooking in the camp", "Because of his great love for John Thornton", "He wanted the gold", "He thought the attackers were only playing a game"],
+      "answer": 1,
+      "evidence": "it was because of his great love for John Thornton that he lost his head"
+    },
+    {
+      "id": "call-of-the-wild-07-18",
+      "type": "inference",
+      "q": "Why was Buck finally ready to obey the call when the wolf pack came?",
+      "choices": ["Thornton was dead, so the last tie to man was broken", "He was afraid the wolves would attack him if he refused", "He needed the pack to help him hunt the Yeehats", "Hans and Pete had told him to go away from the camp"],
+      "answer": 0,
+      "evidence": "The last tie was broken."
+    },
+    {
+      "id": "call-of-the-wild-07-19",
+      "type": "sequence",
+      "q": "After Buck held off the wolves, what happened when the gray wolf came forward?",
+      "choices": ["Buck chased it into the creek bed", "Buck knew his wild brother and they touched noses", "The gray wolf led the pack away from Buck", "The gray wolf fought Buck to become leader"],
+      "answer": 1,
+      "evidence": "Buck recognized the wild brother"
+    },
+    {
+      "id": "call-of-the-wild-07-20",
+      "type": "main-idea",
+      "q": "What happens to Buck by the end of the book?",
+      "choices": ["He returns to Judge Miller's place in California", "He answers the call and runs with the wolf pack", "He becomes a lead dog for the mail train once more", "He stays alone by the pool and never leaves it"],
+      "answer": 1,
+      "evidence": "he may be seen running at the head of the pack"
+    }
+  ]
+}

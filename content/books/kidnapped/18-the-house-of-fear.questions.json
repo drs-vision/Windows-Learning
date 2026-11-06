@@ -1,0 +1,150 @@
+{
+  "book": "kidnapped",
+  "chapter": 18,
+  "questions": [
+    {
+      "id": "kidnapped-18-01",
+      "type": "detail",
+      "q": "What did David and Alan see when they reached the top of the brae above James's house?",
+      "choices": ["Soldiers camped all around the farm with fires", "People hurrying about the house carrying lighted brands", "A dark house with every window shut tight", "The house burning after a night raid by the Campbell men"],
+      "answer": 1,
+      "evidence": "five or six persons were moving hurriedly about, each carrying a lighted brand"
+    },
+    {
+      "id": "kidnapped-18-02",
+      "type": "detail",
+      "q": "How did Alan let the people at the house know it was a friend coming?",
+      "choices": ["He fired his pistol into the air", "He whistled three times in a special way", "He called out his name in the Gaelic", "He waved a burning torch to and fro from the hill-top"],
+      "answer": 1,
+      "evidence": "he whistled three times, in a particular manner"
+    },
+    {
+      "id": "kidnapped-18-03",
+      "type": "inference",
+      "q": "Why did Alan say it would be better to \"give his name the go-by\" when introducing David?",
+      "choices": ["So nobody could later tell the soldiers who David was", "Because David's name was a Campbell name", "Because David had asked to be called by a new name in Appin", "So that James would not ask David for money"],
+      "answer": 0,
+      "evidence": "it will be the better for his health if we give his name the go-by"
+    },
+    {
+      "id": "kidnapped-18-04",
+      "type": "character",
+      "q": "How did James of the Glens feel about the death of Colin Roy?",
+      "choices": ["He was glad and thanked Alan for the deed", "He wished Colin were alive, fearing Appin would pay", "He did not care and talked only of the farm", "He was sure the soldiers would never suspect anyone in Appin"],
+      "answer": 1,
+      "evidence": "I wish he was alive again"
+    },
+    {
+      "id": "kidnapped-18-05",
+      "type": "vocabulary",
+      "q": "James asks, \"who's to bear the wyte of it?\" What does \"wyte\" mean?",
+      "choices": ["Cost", "Blame", "Weight", "Grief"],
+      "answer": 1,
+      "evidence": "* Blame."
+    },
+    {
+      "id": "kidnapped-18-06",
+      "type": "detail",
+      "q": "What were the servants taking out of the thatch of the house?",
+      "choices": ["Guns, swords and weapons of war", "Bags of hidden gold and silver", "Letters from Ardshiel in France", "Bundles of tartan cloth and kilts"],
+      "answer": 0,
+      "evidence": "from which they brought out guns, swords, and different weapons of war"
+    },
+    {
+      "id": "kidnapped-18-07",
+      "type": "character",
+      "q": "Why did Alan grab the bundle the lassie was carrying out of the house?",
+      "choices": ["It held the money he needed for the journey", "It was his French clothes, which they meant to bury", "It had papers that could hang James", "It held food he wanted for the heather"],
+      "answer": 1,
+      "evidence": "Bury my French clothes!"
+    },
+    {
+      "id": "kidnapped-18-08",
+      "type": "detail",
+      "q": "What was James's eldest son doing in the kitchen?",
+      "choices": ["Burning papers one by one", "Cleaning his father's pistols", "Packing food for Alan and David", "Writing a letter to Edinburgh"],
+      "answer": 0,
+      "evidence": "now and again setting one alight and burning it to the bitter end"
+    },
+    {
+      "id": "kidnapped-18-09",
+      "type": "vocabulary",
+      "q": "James shouts at his son, \"Are you gone gyte?\" What does \"gyte\" mean?",
+      "choices": ["Lazy", "Deaf", "Mad", "Blind"],
+      "answer": 2,
+      "evidence": "* Mad."
+    },
+    {
+      "id": "kidnapped-18-10",
+      "type": "detail",
+      "q": "What new shoes was David given at James's house?",
+      "choices": ["Highland brogues of deer-leather", "Heavy boots with iron nails", "Soldier's shoes", "Soft slippers made of sheep's wool from Mull"],
+      "answer": 0,
+      "evidence": "a pair of Highland brogues made of deer-leather"
+    },
+    {
+      "id": "kidnapped-18-11",
+      "type": "detail",
+      "q": "Which of these did James give Alan and David to take into the heather?",
+      "choices": ["A horse, a tent and a map", "A bag of oatmeal, an iron pan and French brandy", "A fishing net, a lantern and a blanket", "Bread, cheese, a warm plaid and a small purse of guineas"],
+      "answer": 1,
+      "evidence": "a bag of oatmeal, an iron pan, and a bottle of right French brandy"
+    },
+    {
+      "id": "kidnapped-18-12",
+      "type": "inference",
+      "q": "Why did the three of them have so little money among them?",
+      "choices": ["Soldiers had searched the house and taken it", "Alan's belt was gone and James had spent his on the tenants' law cases", "David had lost his purse in the wood of Lettermore", "They had buried all of it with the guns and swords"],
+      "answer": 1,
+      "evidence": "legal expenses on behalf of the tenants"
+    },
+    {
+      "id": "kidnapped-18-13",
+      "type": "detail",
+      "q": "What did James say he would have to do against Alan and David to protect himself?",
+      "choices": ["Lock them in the barn for the soldiers", "Put out a paper offering a reward for them", "Tell the soldiers exactly which way they had gone over the hill", "Send them to the Campbells at Inverara"],
+      "answer": 1,
+      "evidence": "have to offer a reward for ye"
+    },
+    {
+      "id": "kidnapped-18-14",
+      "type": "character",
+      "q": "Why did Alan grow angry when James wanted to describe David's clothes in the paper?",
+      "choices": ["Because David had just been given those clothes", "Because the clothes were Alan's own", "Because nobody had seen David's clothes", "Because James had the colour of the coat all wrong"],
+      "answer": 0,
+      "evidence": "Would ye change his clothes and then betray him?"
+    },
+    {
+      "id": "kidnapped-18-15",
+      "type": "inference",
+      "q": "When David says to paper the man who really fired the shot, what can he tell from how Alan and James react?",
+      "choices": ["That the shooter was probably a Cameron from Mamore", "That Alan himself was the man who fired the shot", "That James had paid a stranger to kill Glenure", "That the shooter was one of the Campbell servants"],
+      "answer": 0,
+      "evidence": "it must have been a Cameron from Mamore that did the act"
+    },
+    {
+      "id": "kidnapped-18-16",
+      "type": "sequence",
+      "q": "What did Mrs. Stewart do right after David agreed to be papered?",
+      "choices": ["She scolded James for asking such a thing", "She wept on their necks and blessed them", "She ran out to warn the servants", "She gave David her husband's sword"],
+      "answer": 1,
+      "evidence": "wept first upon my neck and then on Alan's"
+    },
+    {
+      "id": "kidnapped-18-17",
+      "type": "vocabulary",
+      "q": "Alan says there will be \"crying of 'Cruachan!'\" the next day. What is \"Cruachan\"?",
+      "choices": ["A Stewart war song", "The rallying-word of the Campbells", "A nickname the people use for the King's dragoons", "A Gaelic word for murder"],
+      "answer": 1,
+      "evidence": "The rallying-word of the Campbells"
+    },
+    {
+      "id": "kidnapped-18-18",
+      "type": "main-idea",
+      "q": "Why is this chapter called \"The House of Fear\"?",
+      "choices": ["The house is said to be haunted by ghosts", "Everyone there is in a panic over what the murder will bring", "Alan is afraid to go inside his kinsman's house", "David is afraid James will hand him to the soldiers that night"],
+      "answer": 1,
+      "evidence": "The faces in the torchlight were like those of people overborne with hurry and panic"
+    }
+  ]
+}

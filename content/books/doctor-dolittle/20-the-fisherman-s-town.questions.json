@@ -1,0 +1,110 @@
+{
+  "book": "doctor-dolittle",
+  "chapter": 20,
+  "questions": [
+    {
+      "id": "doctor-dolittle-20-01",
+      "type": "inference",
+      "q": "Why did the uncle punch the Doctor when he was first woken up?",
+      "choices": [
+        "He thought it was Ben Ali coming back in the dark",
+        "He was dreaming that he was fighting a big shark",
+        "He was angry at being woken from a good sleep",
+        "He thought the Doctor had come to steal his snuff"
+      ],
+      "answer": 0,
+      "evidence": "the man thought it was Ben Ali coming back"
+    },
+    {
+      "id": "doctor-dolittle-20-02",
+      "type": "detail",
+      "q": "Why had the Barbary Dragon left the uncle on the rock?",
+      "choices": [
+        "He had tried to steal the pirates' gold",
+        "He had helped his nephew run away",
+        "He had made a hole in the pirate ship",
+        "He wouldn't promise to become a pirate"
+      ],
+      "answer": 3,
+      "evidence": "when he wouldn't promise to become a pirate"
+    },
+    {
+      "id": "doctor-dolittle-20-03",
+      "type": "detail",
+      "q": "What had the uncle lived on for four days?",
+      "choices": [
+        "Sea-weed",
+        "Rain-water",
+        "Snuff",
+        "Raw fish"
+      ],
+      "answer": 2,
+      "evidence": "I have lived on snuff"
+    },
+    {
+      "id": "doctor-dolittle-20-04",
+      "type": "inference",
+      "q": "Why did sailors far out at sea think a terrible storm was coming?",
+      "choices": [
+        "They saw dark clouds gather over the rock",
+        "They heard the swallows whistling so loudly",
+        "They felt the waves grow big and rough",
+        "They heard Jip barking from the far ship"
+      ],
+      "answer": 1,
+      "evidence": "The noise they made was so great"
+    },
+    {
+      "id": "doctor-dolittle-20-05",
+      "type": "character",
+      "q": "How did Jip act when Dab-Dab told him he was clever?",
+      "choices": [
+        "He tossed his head and said it was nothing special",
+        "He barked and danced about the deck with joy",
+        "He said that the eagles had helped him a great deal",
+        "He hid inside the ship because he felt so shy"
+      ],
+      "answer": 0,
+      "evidence": "he just tossed his head"
+    },
+    {
+      "id": "doctor-dolittle-20-06",
+      "type": "detail",
+      "q": "How long had the boy's mother been sitting on a hill watching the sea?",
+      "choices": [
+        "Two days",
+        "Four days",
+        "Forty days",
+        "Twenty days"
+      ],
+      "answer": 3,
+      "evidence": "She had been sitting on a hill for twenty days"
+    },
+    {
+      "id": "doctor-dolittle-20-07",
+      "type": "vocabulary",
+      "q": "The Mayor gave the Doctor \"this little token from the grateful people.\" What is a \"token\" here?",
+      "choices": [
+        "A coin used to pay for a ride",
+        "A letter asking him to stay",
+        "A small gift to show thanks",
+        "A ticket to the village party"
+      ],
+      "answer": 2,
+      "evidence": "this little token from the grateful people of our worthy Town"
+    },
+    {
+      "id": "doctor-dolittle-20-08",
+      "type": "detail",
+      "q": "What was written on the gold collar the Mayor gave Jip?",
+      "choices": [
+        "JIP-THE BRAVEST DOG OF THE SEVEN SEAS",
+        "JIP-THE CLEVEREST DOG IN THE WORLD",
+        "JIP-FINDER OF THE RED-HAIRED FISHERMAN",
+        "JIP-THE DOCTOR'S FAITHFUL FRIEND"
+      ],
+      "answer": 1,
+      "evidence": "JIP-THE CLEVEREST DOG IN THE WORLD"
+    }
+  ]
+}

@@ -1,0 +1,227 @@
+{
+  "book": "kidnapped",
+  "chapter": 2,
+  "questions": [
+    {
+      "id": "kidnapped-02-01",
+      "type": "detail",
+      "q": "What did David see from the top of a hill on the second day of his journey?",
+      "choices": [
+        "The village of Essendean far behind him",
+        "The city of Edinburgh smoking like a kiln",
+        "A great forest stretching to the mountains",
+        "The house of Shaws standing in a valley"
+      ],
+      "answer": 1,
+      "evidence": "the city of Edinburgh smoking like a kiln"
+    },
+    {
+      "id": "kidnapped-02-02",
+      "type": "detail",
+      "q": "What did David see on the Glasgow road that filled him with pride?",
+      "choices": [
+        "A great crowd gathered for a country fair",
+        "A ship being built beside the road",
+        "A regiment marching to the fifes",
+        "A fine coach pulled by six horses"
+      ],
+      "answer": 2,
+      "evidence": "I beheld a regiment marching to the fifes"
+    },
+    {
+      "id": "kidnapped-02-03",
+      "type": "inference",
+      "q": "When people in Cramond parish were asked the way to the house of Shaws, how did they react?",
+      "choices": [
+        "They said they had never heard of such a place",
+        "They seemed surprised and gave David a strange look",
+        "They laughed and pointed him toward the castle",
+        "They offered to walk him there for a small fee"
+      ],
+      "answer": 1,
+      "evidence": "It was a word that seemed to surprise those of whom I sought my way"
+    },
+    {
+      "id": "kidnapped-02-04",
+      "type": "detail",
+      "q": "What advice did the man with the cart give David?",
+      "choices": [
+        "To hurry before the gates were shut",
+        "To keep clear of the Shaws",
+        "To ask the minister for directions",
+        "To stay the night at the village inn"
+      ],
+      "answer": 1,
+      "evidence": "ye'll keep clear of the Shaws"
+    },
+    {
+      "id": "kidnapped-02-05",
+      "type": "vocabulary",
+      "q": "The carter asks, \"Are ye daft?\" What does \"daft\" mean?",
+      "choices": [
+        "Lost and far from home",
+        "Tired from a long journey",
+        "Rich and well-dressed",
+        "Foolish or out of your mind"
+      ],
+      "answer": 3,
+      "evidence": "Are ye daft?"
+    },
+    {
+      "id": "kidnapped-02-06",
+      "type": "character",
+      "q": "Why did David ask the barber about Mr. Balfour?",
+      "choices": [
+        "He needed a shave before meeting his uncle",
+        "The barber was a cousin of the Balfours",
+        "The barber had just come from the house",
+        "He knew that barbers were great gossips"
+      ],
+      "answer": 3,
+      "evidence": "knowing well that barbers were great gossips"
+    },
+    {
+      "id": "kidnapped-02-07",
+      "type": "character",
+      "q": "Why did David keep going toward Shaws even after hearing bad things about it?",
+      "choices": [
+        "He hoped to find a rich treasure hidden in the house",
+        "He had come so far that shame and self-respect kept him going",
+        "Mr. Campbell had made him promise never to turn back",
+        "He had no money left to buy food for the road home"
+      ],
+      "answer": 1,
+      "evidence": "I was bound, out of mere self-respect, to carry it through"
+    },
+    {
+      "id": "kidnapped-02-08",
+      "type": "detail",
+      "q": "What did the house of Shaws look like when David first saw it?",
+      "choices": [
+        "A small farm cottage with a thatched roof",
+        "A fine mansion with a garden and gates",
+        "A busy castle with soldiers at the door",
+        "A kind of ruin with no road and no smoke"
+      ],
+      "answer": 3,
+      "evidence": "the house itself appeared to be a kind of ruin"
+    },
+    {
+      "id": "kidnapped-02-09",
+      "type": "detail",
+      "q": "What did Jennet Clouston do when she showed David the house?",
+      "choices": [
+        "She put a curse on the laird and his house",
+        "She told him the laird had died long ago",
+        "She offered to carry his letter to the laird",
+        "She warned him that the laird kept a fierce dog"
+      ],
+      "answer": 0,
+      "evidence": "Jennet Clouston has called down the curse on him and his house"
+    },
+    {
+      "id": "kidnapped-02-10",
+      "type": "vocabulary",
+      "q": "Jennet's voice rose to \"a kind of eldritch sing-song.\" What does \"eldritch\" most likely mean?",
+      "choices": [
+        "Cheerful and bright, like a bird",
+        "Soft and gentle, like a lullaby",
+        "Strange and eerie, like a witch",
+        "Low and tired, like an old woman"
+      ],
+      "answer": 2,
+      "evidence": "a kind of eldritch sing-song"
+    },
+    {
+      "id": "kidnapped-02-11",
+      "type": "detail",
+      "q": "What comforted David after the sun went down as he sat staring at the house?",
+      "choices": [
+        "A thin scroll of smoke rising from a chimney",
+        "The sound of a dog barking near the house",
+        "A friendly farmer who offered him a meal",
+        "A lantern shining brightly by the door"
+      ],
+      "answer": 0,
+      "evidence": "I saw a scroll of smoke go mounting"
+    },
+    {
+      "id": "kidnapped-02-12",
+      "type": "detail",
+      "q": "What was tied across the unfinished main entrance instead of iron gates?",
+      "choices": [
+        "A thorn hedge grown up between the pillars",
+        "A row of wooden planks nailed together",
+        "A pair of hurdles tied with a straw rope",
+        "A heavy chain with a rusty padlock on it"
+      ],
+      "answer": 2,
+      "evidence": "a pair of hurdles were tied across with a straw rope"
+    },
+    {
+      "id": "kidnapped-02-13",
+      "type": "detail",
+      "q": "What flew in and out of the unglazed windows of the house?",
+      "choices": [
+        "Bats",
+        "Swallows",
+        "Pigeons",
+        "Owls"
+      ],
+      "answer": 0,
+      "evidence": "bats flew in and out like doves out of a dove-cote"
+    },
+    {
+      "id": "kidnapped-02-14",
+      "type": "sequence",
+      "q": "What did David do after knocking twice and getting no answer?",
+      "choices": [
+        "He climbed in through one of the broken lower windows",
+        "He left the letter on the step and walked back to Cramond",
+        "He went around the side of the house to look for a back door",
+        "He kicked and buffeted the door and shouted for Mr. Balfour"
+      ],
+      "answer": 3,
+      "evidence": "I began instead to rain kicks and buffets on the door"
+    },
+    {
+      "id": "kidnapped-02-15",
+      "type": "detail",
+      "q": "What was the man at the window holding when he first spoke to David?",
+      "choices": [
+        "A walking staff",
+        "A lantern",
+        "A carving knife",
+        "A blunderbuss"
+      ],
+      "answer": 3,
+      "evidence": "the bell mouth of a blunderbuss"
+    },
+    {
+      "id": "kidnapped-02-16",
+      "type": "inference",
+      "q": "What can you tell from the man's question, \"Is your father dead?\"",
+      "choices": [
+        "He had been told of David's coming by letter",
+        "He thought David was a beggar at the door",
+        "He was hoping to buy the father's books",
+        "He already knew who David's father was"
+      ],
+      "answer": 3,
+      "evidence": "Is your father dead?"
+    },
+    {
+      "id": "kidnapped-02-17",
+      "type": "main-idea",
+      "q": "What is this chapter mostly about?",
+      "choices": [
+        "David's visit to Edinburgh and the soldiers in the castle",
+        "David's growing fear as he hears of Shaws and reaches its gloomy door",
+        "David's long walk back to Essendean after being sent away",
+        "David's happy welcome at the grand house of his rich relations"
+      ],
+      "answer": 1,
+      "evidence": "The nearer I got to that, the drearier it appeared"
+    }
+  ]
+}

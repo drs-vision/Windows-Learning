@@ -1,0 +1,110 @@
+{
+  "book": "tom-kitten",
+  "chapter": 1,
+  "questions": [
+    {
+      "id": "tom-kitten-01-01",
+      "type": "detail",
+      "q": "What were the names of the three kittens?",
+      "choices": [
+        "Mittens, Tom Kitten, and Moppet",
+        "Tabby, Tom Kitten, and Ginger",
+        "Moppet, Mittens, and Pickles",
+        "Tom, Tabitha, and Rebeccah"
+      ],
+      "answer": 0,
+      "evidence": "their names were Mittens, Tom Kitten, and Moppet"
+    },
+    {
+      "id": "tom-kitten-01-02",
+      "type": "character",
+      "q": "Why did Mrs. Tabitha Twitchit wash and dress the kittens?",
+      "choices": [
+        "They were going to school",
+        "She expected friends to tea",
+        "It was Tom Kitten's birthday",
+        "They were going to visit the ducks"
+      ],
+      "answer": 1,
+      "evidence": "expected friends to tea"
+    },
+    {
+      "id": "tom-kitten-01-03",
+      "type": "detail",
+      "q": "What happened when Tom Kitten was dressed?",
+      "choices": [
+        "His hat was much too big",
+        "Several buttons burst off",
+        "His trousers were too long",
+        "He lost one of his shoes"
+      ],
+      "answer": 1,
+      "evidence": "several buttons burst off"
+    },
+    {
+      "id": "tom-kitten-01-04",
+      "type": "detail",
+      "q": "What did Mrs. Tabitha make while the kittens were in the garden?",
+      "choices": [
+        "Hot buttered toast",
+        "A big plum cake",
+        "Some fish soup",
+        "A pot of hot tea"
+      ],
+      "answer": 0,
+      "evidence": "while she made hot buttered toast"
+    },
+    {
+      "id": "tom-kitten-01-05",
+      "type": "sequence",
+      "q": "What happened when Moppet and Mittens walked down the garden path?",
+      "choices": [
+        "They trod on their pinafores and fell on their noses",
+        "They met Sally Henny Penny and ran back into the house",
+        "They fell into the dirty ash-pit and got black all over",
+        "They chased the Puddle-Ducks down the road"
+      ],
+      "answer": 0,
+      "evidence": "they trod upon their pinafores and fell on their noses"
+    },
+    {
+      "id": "tom-kitten-01-06",
+      "type": "detail",
+      "q": "What did Mr. Drake Puddle-Duck do with Tom's clothes?",
+      "choices": [
+        "Buttoned them back on Tom",
+        "Put them on himself",
+        "Gave them to Mrs. Tabitha",
+        "Hid them in the pig-stye"
+      ],
+      "answer": 1,
+      "evidence": "But he put them on himself!"
+    },
+    {
+      "id": "tom-kitten-01-07",
+      "type": "inference",
+      "q": "Mrs. Tabitha told her friends the kittens had measles. Was that true?",
+      "choices": [
+        "Yes, they were sick in bed",
+        "No, they were not in bed at all",
+        "Yes, the doctor came to see them",
+        "No, they had gone to the pond"
+      ],
+      "answer": 1,
+      "evidence": "which was not true"
+    },
+    {
+      "id": "tom-kitten-01-08",
+      "type": "main-idea",
+      "q": "What is this story mostly about?",
+      "choices": [
+        "Kittens who get their best clothes into a mess",
+        "Ducks who learn to march along the road",
+        "A mother cat who bakes for a big party",
+        "Kittens who climb the garden wall to see the town"
+      ],
+      "answer": 0,
+      "evidence": "found her kittens on the wall with no clothes on"
+    }
+  ]
+}

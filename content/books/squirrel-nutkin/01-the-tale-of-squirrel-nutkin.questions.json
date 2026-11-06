@@ -1,0 +1,86 @@
+{
+  "book": "squirrel-nutkin",
+  "chapter": 1,
+  "questions": [
+    {
+      "id": "squirrel-nutkin-01-01",
+      "type": "detail",
+      "q": "What was the name of Nutkin's brother?",
+      "choices": ["Twinkleberry", "Old Brown", "Timmy Tiptoes", "Hitty Pitty"],
+      "answer": 0,
+      "evidence": "He had a brother called Twinkleberry"
+    },
+    {
+      "id": "squirrel-nutkin-01-02",
+      "type": "detail",
+      "q": "How did the squirrels get across the lake to Owl Island?",
+      "choices": ["They swam across with their sacks", "They made little rafts out of twigs", "They rode on the back of Old Brown", "They walked over a long fallen log"],
+      "answer": 1,
+      "evidence": "They made little rafts out of twigs"
+    },
+    {
+      "id": "squirrel-nutkin-01-03",
+      "type": "detail",
+      "q": "What did the squirrels use as a sail on their rafts?",
+      "choices": ["A big green leaf", "Their own tails", "A dock-leaf", "An old sack"],
+      "answer": 1,
+      "evidence": "spread out his tail for a sail"
+    },
+    {
+      "id": "squirrel-nutkin-01-04",
+      "type": "character",
+      "q": "How did the other squirrels act when they asked Old Brown for nuts?",
+      "choices": ["They shouted riddles at him", "They bowed and spoke politely", "They tickled him with a nettle", "They threw sticks at his door"],
+      "answer": 1,
+      "evidence": "each made a low bow, and said politely"
+    },
+    {
+      "id": "squirrel-nutkin-01-05",
+      "type": "character",
+      "q": "How did Nutkin behave toward Old Brown?",
+      "choices": ["He was quiet and shy", "He was rude and sang riddles at him", "He brought him the biggest present", "He helped him carry food inside"],
+      "answer": 1,
+      "evidence": "Nutkin was excessively impertinent in his manners"
+    },
+    {
+      "id": "squirrel-nutkin-01-06",
+      "type": "vocabulary",
+      "q": "The story says Nutkin was \"impertinent.\" What does that mean?",
+      "choices": ["Very sleepy and slow", "Rude and cheeky", "Kind and helpful", "Quiet and afraid"],
+      "answer": 1,
+      "evidence": "Nutkin became more and more impertinent"
+    },
+    {
+      "id": "squirrel-nutkin-01-07",
+      "type": "detail",
+      "q": "What present did the squirrels bring on the fifth day?",
+      "choices": ["A fat mole", "Wild honey", "Six beetles", "A new-laid egg"],
+      "answer": 1,
+      "evidence": "On the fifth day the squirrels brought a present of wild honey"
+    },
+    {
+      "id": "squirrel-nutkin-01-08",
+      "type": "sequence",
+      "q": "What did Nutkin do just before Old Brown caught him?",
+      "choices": ["He played ninepins on a flat rock", "He jumped right onto Old Brown's head", "He peeped in through the key-hole", "He ran home across the lake on a raft"],
+      "answer": 1,
+      "evidence": "he took a running jump right onto the head of Old Brown"
+    },
+    {
+      "id": "squirrel-nutkin-01-09",
+      "type": "detail",
+      "q": "How did Nutkin escape from Old Brown?",
+      "choices": ["His tail broke and he ran out the attic window", "Twinkleberry came in and pulled him out the door", "He bit Old Brown and ran out the front door", "He hid in a sack of nuts until Old Brown slept"],
+      "answer": 0,
+      "evidence": "his tail broke in two, and he dashed up the staircase and escaped out of the attic window"
+    },
+    {
+      "id": "squirrel-nutkin-01-10",
+      "type": "main-idea",
+      "q": "What lesson does this story teach?",
+      "choices": ["Always gather nuts before the winter comes", "Owls are kind to everyone who visits them", "Being rude and showing off can get you in trouble", "Squirrels are better at riddles than owls are"],
+      "answer": 2,
+      "evidence": "Old Mr. Brown turned up his eyes in disgust at the impertinence of Nutkin."
+    }
+  ]
+}

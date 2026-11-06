@@ -35,7 +35,7 @@ export class MockGuardian {
       'typing-quest': { enabled: false, coinsPerActivity: 10, dailyCap: 80, requireApproval: false },
       'bible-typing': { enabled: true, coinsPerActivity: 15, dailyCap: 60, requireApproval: false },
       'khan-academy': { enabled: true, coinsPerActivity: 5, dailyCap: 80, requireApproval: false },
-      books: { enabled: true, coinsPerActivity: 1, dailyCap: 60, requireApproval: false, options: { waitMinutes: '10', wordsPer: '20', allowed: '*' } },
+      books: { enabled: true, coinsPerActivity: 3, dailyCap: 120, requireApproval: false, options: { waitMinutes: '5', wordsPer: '20', allowed: '*' } },
     },
   };
   private ledger: LedgerEntry[] = JSON.parse(localStorage.getItem('cq.mock.ledger') ?? '[]');
@@ -176,21 +176,27 @@ export class MockGuardian {
         const end = new Date(String(p?.to ?? '') || Date.now()), start = new Date(String(p?.from ?? '') || Date.now());
         for (let d = new Date(start); d <= end; d.setDate(d.getDate() + 1)) {
           const seed = (d.getDate() * 37) % 11;
-          if (seed < 3) continue;
+          if (seed < 3 && d.toDateString() !== new Date().toDateString()) continue;
           const k = `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
           days.push({ day: k, childId: 'c1', kid: 'Sam', time: [
             { kind: 'quest', label: 'Khan Academy', sec: 900 + seed * 120 }, { kind: 'site', label: 'khanacademy.org', sec: 1500 + seed * 60 },
             { kind: 'youtube', label: 'Mark Rober', sec: 600 + seed * 90 }, { kind: 'quest', label: 'Scripture Typing', sec: 420 },
             { kind: 'arcade', label: '2048', sec: 300 + seed * 30 }, { kind: 'app', label: 'Read, Write & Type!', sec: 780 }, { kind: 'coinquest', label: 'Home', sec: 240 } ],
-            typing: { sessions: 3, chars: 2400 + seed * 100, ms: 900000, best: 28 + seed }, done: { 'khan-academy:correct': 12 + seed, 'khan-academy:videos': 2, 'bible-typing:finished': 2, 'duolingo:lessons': seed % 3 },
+            typing: { sessions: 3, chars: 2400 + seed * 100, ms: 900000, best: 28 + seed }, done: { 'khan-academy:correct': 12 + seed, 'khan-academy:videos': 2, 'bible-typing:finished': 2, 'duolingo:lessons': seed % 3, 'books:chapters': 1 + (seed % 2), 'books:answered': 12, 'books:correct': 9 + (seed % 3), 'books:readWords': 2600, 'books:readSec': 1150 + seed * 20 },
             earned: { 'khan-academy': 30 + seed, 'bible-typing': 9, rwt: 20 }, spent: { '20 minutes of YouTube': 48 },
             log: [{ t: '15:42', d: 9, k: 'Earn', s: 'bible-typing', x: 'Psalm 23 · 118 words' }, { t: '16:05', d: 12, k: 'Earn', s: 'khan-academy', x: 'Khan Academy: 1 finished exercise + 7 correct answers' }, { t: '16:30', d: -48, k: 'Spend', s: 'p-yt', x: '20 minutes of YouTube' }, { t: '17:10', d: 5, k: 'Adjust', s: 'parent', x: 'Cleaned his room' }] });
         }
+        if (days.length) (days[days.length - 1] as any).reading = { chapters: 23, firstTry: 84, wpm: 142, level: 4, verified: 3 };
         return ok({ childId: 'c1', kid: 'Sam', enabled: true, days });
       }
       // Reading, for the browser preview: one real book (Peter Rabbit). The real marking happens in the Guardian.
-      case 'parent.books': return ok({ flagged: 0, books: shelf.map((b) => ({ id: b.id, title: b.title, author: b.author, published: b.published, grade: b.grade, summary: b.summary, chapters: b.chapters.length, words: b.chapters.reduce((t, c) => t + c.words, 0), ready: b.chapters.length })) });
-      case 'books.list': case 'books.chapter': case 'books.quiz': case 'books.grade': case 'books.bonus': case 'books.bonusAnswer': case 'books.typed': return ok(mockBooks(req.op, p));
+      case 'parent.books': return ok({ flagged: 0, books: shelf.map((b) => ({ id: b.id, title: b.title, author: b.author, published: b.published, level: b.level, grade: b.grade, summary: b.summary, edited: b.edited, chapters: b.chapters.length, words: b.chapters.reduce((t, c) => t + c.words, 0), ready: b.chapters.length, done: b.id === 'peter-rabbit' && mb.passed ? 1 : 0, started: b.id === 'peter-rabbit' && mb.attempts > 0 })) });
+      case 'parent.booksReset': if (p.bookId === 'peter-rabbit') Object.assign(mb, { passed: false, correct: 0, total: 0, attempts: 0, retakeAt: null, seen: [], bonusDone: [], quiz: null, bonus: null, typed: 0 }); return ok({ ok: true });
+      case 'books.list': case 'books.chapter': case 'books.quiz': case 'books.grade': case 'books.bonus': case 'books.bonusAnswer': case 'books.typed': {
+        const r = mockBooks(req.op, p);
+        if (r?.coins > 0) { this.append('earn', r.coins, 'books', 'Reading'); r.balance = this.balance(); this.persist(); this.emit({ name: 'state' }); }
+        return ok(r);
+      }
       case 'parent.rwtStatus': return ok({ installed: false, otvdm: false, stage: 'idle', patches: [], players: [], root: 'C:\\ProgramData\\CoinQuest\\rwt' });
       case 'shell.pickFile': return ok({ path: null });
       case 'parent.diagnostics': return ok({ version: '0.0.0-mock', problems: ['10-12 21:40 YouTubeService: Feed failed for Mark Rober — HttpRequestException: example'], blocked: ['d35aaqx5ub95lt.cloudfront.net'], internetLock: { applied: true } });
@@ -270,16 +276,16 @@ import prQs from '../../../../content/books/peter-rabbit/01-the-tale-of-peter-ra
 const mb = { passed: false, correct: 0, total: 0, attempts: 0, retakeAt: null as string | null, seen: [] as string[], bonusDone: [] as string[], quiz: null as null | { id: string; ids: string[]; orders: number[][] }, bonus: null as null | { id: string; order: number[] }, typed: 0 };
 const mbBank = (prQs as { questions: { id: string; q: string; choices: string[]; answer: number }[] }).questions;
 const mbParts = prText.trim().split(/\n\s*\n/).reduce((acc: string[], p) => { const last = acc[acc.length - 1]; if (last && (last + ' ' + p).split(' ').length <= 170) acc[acc.length - 1] = last + ' ' + p; else acc.push(p); return acc; }, []);
-type ShelfBook = { id: string; title: string; author: string; published: number; grade: { min: number; max: number; label: string }; summary: string; chapters: { n: number; title: string; words: number }[] };
+type ShelfBook = { id: string; title: string; author: string; published: number; level: number; edited?: string; grade: { min: number; max: number; label: string }; summary: string; chapters: { n: number; title: string; words: number }[] };
 // Only the books' metadata (small): the preview can open Peter Rabbit, the other books list their chapters.
 const shelf = Object.values(import.meta.glob('../../../../content/books/*/book.json', { eager: true, import: 'default' }) as Record<string, ShelfBook>)
-  .sort((a, b) => a.grade.min - b.grade.min || a.grade.max - b.grade.max || a.title.localeCompare(b.title));
+  .sort((a, b) => a.level - b.level || a.grade.min - b.grade.min || a.title.localeCompare(b.title));
 const quizSize = (w: number) => Math.max(4, Math.min(10, Math.round(w / 250)));
 const shuffle = () => [0, 1, 2, 3].sort(() => Math.random() - 0.5);
 function mockBooks(op: string, p: any): any {
-  const status = () => ({ n: 1, title: 'The Tale of Peter Rabbit', words: 948, quizSize: 4, hasQuiz: true, passed: mb.passed, correct: mb.correct, total: mb.total, attempts: mb.attempts, retakeAt: mb.retakeAt && Date.parse(mb.retakeAt) > Date.now() ? mb.retakeAt : null, bonusLeft: mb.passed ? mbBank.filter((q) => !mb.seen.includes(q.id) && !mb.bonusDone.includes(q.id)).length : 0, typed: mb.typed });
+  const status = () => ({ n: 1, title: 'The Tale of Peter Rabbit', words: 948, quizSize: 4, hasQuiz: true, passed: mb.passed, correct: mb.correct, total: mb.total, attempts: mb.attempts, retakeAt: mb.retakeAt && Date.parse(mb.retakeAt) > Date.now() ? mb.retakeAt : null, bonusLeft: mb.passed ? Math.min(mbBank.filter((q) => !mb.seen.includes(q.id) && !mb.bonusDone.includes(q.id)).length, 4 - mb.bonusDone.length) : 0, typed: mb.typed });
   const show = (id: string, order: number[]) => { const q = mbBank.find((x) => x.id === id)!; return { id, q: q.q, choices: order.map((i) => q.choices[i]) }; };
-  if (op === 'books.list') return { perCorrect: 1, wordsPer: 20, books: shelf.map((b) => ({ id: b.id, title: b.title, author: b.author, grade: b.grade, summary: b.summary, chapters: b.id === 'peter-rabbit' ? [status()] : b.chapters.map((c) => ({ n: c.n, title: c.title, words: c.words, quizSize: quizSize(c.words), hasQuiz: true, passed: false, correct: 0, total: 0, attempts: 0, retakeAt: null, bonusLeft: 0, typed: 0 })) })) };
+  if (op === 'books.list') return { perCorrect: 3, wordsPer: 20, books: shelf.map((b) => ({ id: b.id, title: b.title, author: b.author, level: b.level, summary: b.summary, chapters: b.id === 'peter-rabbit' ? [status()] : b.chapters.map((c) => ({ n: c.n, title: c.title, words: c.words, quizSize: quizSize(c.words), hasQuiz: true, passed: false, correct: 0, total: 0, attempts: 0, retakeAt: null, bonusLeft: 0, typed: 0 })) })) };
   if (op === 'books.chapter' && p.bookId !== 'peter-rabbit') { const b = shelf.find((x) => x.id === p.bookId)!; const c = b.chapters.find((x) => x.n === p.n)!; return { book: b.title, text: `(This preview only opens The Tale of Peter Rabbit. In CoinQuest, "${c.title}" opens here.)`, parts: [], status: { n: c.n, title: c.title, words: c.words, quizSize: quizSize(c.words), hasQuiz: false, passed: false, correct: 0, total: 0, attempts: 0, retakeAt: null, bonusLeft: 0, typed: 0 }, quiz: null }; }
   if (op === 'books.chapter') return { book: 'The Tale of Peter Rabbit', text: prText, parts: mbParts, status: status(), quiz: mb.quiz ? { id: mb.quiz.id, questions: mb.quiz.ids.map((id, i) => show(id, mb.quiz!.orders[i])) } : null };
   if (op === 'books.quiz') {
@@ -293,9 +299,9 @@ function mockBooks(op: string, p: any): any {
     mb.quiz = null; mb.attempts++;
     const passed = correct >= Math.ceil(0.7 * qz.ids.length);
     if (passed) { mb.passed = true; mb.correct = correct; mb.total = qz.ids.length; } else mb.retakeAt = new Date(Date.now() + 600000).toISOString();
-    return { passed, correct, total: qz.ids.length, percent: Math.round(100 * correct / qz.ids.length), retakeAt: passed ? null : mb.retakeAt, review: passed ? review : null, coins: passed ? correct : 0, pending: false, bonusLeft: status().bonusLeft };
+    return { passed, correct, total: qz.ids.length, percent: Math.round(100 * correct / qz.ids.length), retakeAt: passed ? null : mb.retakeAt, review: passed ? review : null, coins: passed ? correct * 3 : 0, pending: false, bonusLeft: status().bonusLeft };
   }
-  if (op === 'books.bonus') { const q = mbBank.find((x) => !mb.seen.includes(x.id) && !mb.bonusDone.includes(x.id)); if (!q) return { question: null, left: 0 }; mb.bonus = { id: q.id, order: shuffle() }; return { question: show(q.id, mb.bonus.order), left: status().bonusLeft }; }
+  if (op === 'books.bonus') { if (status().bonusLeft <= 0) return { question: null, left: 0 }; const q = mbBank.find((x) => !mb.seen.includes(x.id) && !mb.bonusDone.includes(x.id)); if (!q) return { question: null, left: 0 }; mb.bonus = { id: q.id, order: shuffle() }; return { question: show(q.id, mb.bonus.order), left: status().bonusLeft }; }
   if (op === 'books.bonusAnswer') { const q = mbBank.find((x) => x.id === p.qid)!; const right = mb.bonus!.order.indexOf(q.answer); mb.bonusDone.push(q.id); return { right: p.choice === right, rightChoice: right, coins: p.choice === right ? 1 : 0, left: status().bonusLeft }; }
   if (op === 'books.typed') { mb.typed = Math.max(mb.typed, p.part + 1); return { coins: 2, pending: false, again: false, typed: mb.typed }; }
   return null;

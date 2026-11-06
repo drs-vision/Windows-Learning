@@ -1,0 +1,27 @@
+{
+  "id": "tailor-of-gloucester",
+  "title": "The Tailor of Gloucester",
+  "author": "Beatrix Potter",
+  "published": 1903,
+  "level": 2,
+  "grade": {
+    "min": 1,
+    "max": 3,
+    "label": "Grades 1-3"
+  },
+  "summary": "A poor tailor falls ill before finishing the Mayor's wedding coat, and the mice he saved help him.",
+  "source": {
+    "name": "Project Gutenberg eBook #14868 (public-domain text; Gutenberg header, license and name removed)",
+    "url": "https://www.gutenberg.org/ebooks/14868"
+  },
+  "publicDomain": "First published 1903; in the US public domain (published before 1931).",
+  "chapters": [
+    {
+      "n": 1,
+      "title": "The Tailor of Gloucester",
+      "text": "01-the-tailor-of-gloucester.txt",
+      "questions": "01-the-tailor-of-gloucester.questions.json",
+      "words": 2708
+    }
+  ]
+}

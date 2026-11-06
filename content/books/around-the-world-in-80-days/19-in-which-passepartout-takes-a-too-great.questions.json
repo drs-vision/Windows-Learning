@@ -1,0 +1,126 @@
+{
+  "book": "around-the-world-in-80-days",
+  "chapter": 19,
+  "questions": [
+    {
+      "id": "around-the-world-in-80-days-19-01",
+      "type": "detail",
+      "q": "According to the chapter, what did Hong Kong look like to a visitor?",
+      "choices": ["An English town in Kent or Surrey moved by magic", "A quiet fishing village with only a few houses", "A walled Chinese city full of ancient temples", "A Portuguese town just like nearby Macao, across the water"],
+      "answer": 0,
+      "evidence": "the appearance of a town in Kent or Surrey"
+    },
+    {
+      "id": "around-the-world-in-80-days-19-02",
+      "type": "detail",
+      "q": "What did Passepartout learn at the barber's about the old men dressed in yellow?",
+      "choices": ["They were priests from a temple near the port", "They were over eighty, so they could wear yellow", "They were rich merchants who owned the junks in the harbour", "They were soldiers guarding the government house"],
+      "answer": 1,
+      "evidence": "these ancient men were all at least eighty years old"
+    },
+    {
+      "id": "around-the-world-in-80-days-19-03",
+      "type": "inference",
+      "q": "Why was Fix so upset when Passepartout found him on the quay?",
+      "choices": ["He had lost his ticket", "The warrant had still not come", "He was sea-sick again", "His money had been stolen"],
+      "answer": 1,
+      "evidence": "The warrant had not come!"
+    },
+    {
+      "id": "around-the-world-in-80-days-19-04",
+      "type": "detail",
+      "q": "What news did the steamer office clerk give them?",
+      "choices": ["The Carnatic was full and had no more cabins left", "It would sail that very evening", "The Carnatic's repairs would take another two weeks", "The Carnatic would stop at Shanghai before Japan"],
+      "answer": 1,
+      "evidence": "the steamer would leave that very evening"
+    },
+    {
+      "id": "around-the-world-in-80-days-19-05",
+      "type": "character",
+      "q": "Why did Fix take Passepartout into the tavern?",
+      "choices": ["To tell him everything and get his help keeping Fogg in Hong Kong", "To celebrate their going on to America together with a fine dinner and wine", "To meet a friend who might have news of the warrant", "To get out of the rain while they waited for the boat"],
+      "answer": 0,
+      "evidence": "he resolved to tell Passepartout all"
+    },
+    {
+      "id": "around-the-world-in-80-days-19-06",
+      "type": "vocabulary",
+      "q": "The place was a smoking-house where many customers \"lay upon this bed in a deep sleep\" and were called \"stupefied.\" What does \"stupefied\" mean?",
+      "choices": ["Dazed and unable to think clearly", "Angry and ready to fight", "Very excited, cheerful and talkative", "Hungry and thirsty"],
+      "answer": 0,
+      "evidence": "The bed already supported twenty of these stupefied sots."
+    },
+    {
+      "id": "around-the-world-in-80-days-19-07",
+      "type": "detail",
+      "q": "When Fix asked \"You have guessed who I am?\", who did Passepartout think Fix was?",
+      "choices": ["A police detective from London", "An agent of the Reform Club gentlemen", "A clerk of the steamship company", "A thief who wanted his master's money"],
+      "answer": 1,
+      "evidence": "An agent of the members of the Reform Club"
+    },
+    {
+      "id": "around-the-world-in-80-days-19-08",
+      "type": "detail",
+      "q": "How much money had been stolen from the Bank of England?",
+      "choices": ["Twenty thousand pounds", "Fifty-five thousand pounds", "Two thousand pounds", "Five hundred pounds"],
+      "answer": 1,
+      "evidence": "a robbery of fifty-five thousand pounds was committed at the Bank of England"
+    },
+    {
+      "id": "around-the-world-in-80-days-19-09",
+      "type": "sequence",
+      "q": "What did Fix show Passepartout to prove he was a detective?",
+      "choices": ["His police badge", "His commission", "A letter from London", "The bank's warrant"],
+      "answer": 1,
+      "evidence": "Here is my commission."
+    },
+    {
+      "id": "around-the-world-in-80-days-19-10",
+      "type": "inference",
+      "q": "Which fact did Fix use to argue that Fogg might be the robber?",
+      "choices": ["Fogg had been seen at the Bank of England on the day of the robbery", "Fogg left suddenly, without trunks, carrying a large sum in banknotes", "Fogg had paid the judge in Calcutta with gold coins stolen from the bank", "Fogg had told Aouda that he once worked at the bank"],
+      "answer": 1,
+      "evidence": "without trunks, and carrying a large amount in banknotes"
+    },
+    {
+      "id": "around-the-world-in-80-days-19-11",
+      "type": "detail",
+      "q": "What did Fix offer Passepartout in return for his help?",
+      "choices": ["A free passage back to France on a fast steamer", "A share of the two thousand pounds reward", "A job as his assistant at the London police office", "His promise that Passepartout would not be arrested"],
+      "answer": 1,
+      "evidence": "I will share with you the two thousand pounds reward"
+    },
+    {
+      "id": "around-the-world-in-80-days-19-12",
+      "type": "character",
+      "q": "Why did Passepartout refuse to help Fix?",
+      "choices": ["He had seen his master's goodness and would never betray him", "He was sure that Fix was only lying in order to win the bet for the club", "He wanted the whole reward for himself, not just a share", "He was afraid that Aouda would be angry with him"],
+      "answer": 0,
+      "evidence": "I will never betray him--not for all the gold in the world"
+    },
+    {
+      "id": "around-the-world-in-80-days-19-13",
+      "type": "vocabulary",
+      "q": "Passepartout says, \"I come from a village where they don't eat that kind of bread!\" What does he mean?",
+      "choices": ["His village has very poor food", "Honest folk there don't do such things", "He is very hungry and wants better bread", "Bakers in his village use a special recipe"],
+      "answer": 1,
+      "evidence": "I come from a village where they don't eat that kind of bread!"
+    },
+    {
+      "id": "around-the-world-in-80-days-19-14",
+      "type": "sequence",
+      "q": "How did Fix finally keep Passepartout from warning his master?",
+      "choices": ["He locked him in a back room of the tavern", "He gave him a pipe that made him fall unconscious", "He told the police to arrest him on the quay as a thief", "He sent him on an errand to the wrong ship"],
+      "answer": 1,
+      "evidence": "Fix slipped one into Passepartout's hand"
+    },
+    {
+      "id": "around-the-world-in-80-days-19-15",
+      "type": "main-idea",
+      "q": "What is this chapter mostly about?",
+      "choices": ["Fix reveals he is a detective, Passepartout stays loyal, and Fix keeps him from his master", "Passepartout explores Hong Kong and buys gifts for Aouda in the market", "Fogg learns about the robbery and agrees to go back to London", "Fix and Passepartout become partners in order to catch the real thief"],
+      "answer": 0,
+      "evidence": "I am a police detective, sent out here by the London office."
+    }
+  ]
+}

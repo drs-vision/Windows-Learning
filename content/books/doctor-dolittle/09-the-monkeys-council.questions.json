@@ -1,0 +1,110 @@
+{
+  "book": "doctor-dolittle",
+  "chapter": 9,
+  "questions": [
+    {
+      "id": "doctor-dolittle-09-01",
+      "type": "detail",
+      "q": "Who kept everybody away from the Doctor's door while he slept?",
+      "choices": [
+        "Polynesia",
+        "Chee-Chee",
+        "The Grand Gorilla",
+        "Jip"
+      ],
+      "answer": 1,
+      "evidence": "CHEE-CHEE stood outside the Doctor's door, keeping everybody away"
+    },
+    {
+      "id": "doctor-dolittle-09-02",
+      "type": "detail",
+      "q": "What did the Grand Gorilla think would make the Doctor stay?",
+      "choices": [
+        "Making him King of all the monkeys in the jungle forever",
+        "A new house, a bigger bed and plenty of monkey-servants",
+        "Giving him fifty bags of cocoanuts and a boat of his own",
+        "Asking the Leader of the Lions to tell him he must stay"
+      ],
+      "answer": 1,
+      "evidence": "if we make him a new house and a bigger bed"
+    },
+    {
+      "id": "doctor-dolittle-09-03",
+      "type": "inference",
+      "q": "Why did Chee-Chee say it was useless to ask the Doctor to stay?",
+      "choices": [
+        "The Doctor owed money in Puddleby and said he must go back and pay it",
+        "The Doctor missed his sister Sarah and wanted to see her again",
+        "The Doctor was afraid the King of the Jolliginki's soldiers would catch him",
+        "The Doctor did not like the hot weather in the Land of the Monkeys"
+      ],
+      "answer": 0,
+      "evidence": "He owes money in Puddleby; and he says he must go back and pay it."
+    },
+    {
+      "id": "doctor-dolittle-09-04",
+      "type": "character",
+      "q": "Why did the Doctor feel he must get the sailor another boat?",
+      "choices": [
+        "The sailor had made him promise to bring two boats back",
+        "The sailor said he would tell the King if he did not",
+        "The sailor was poor and his ship was all he had",
+        "The sailor needed a much bigger boat for his fishing"
+      ],
+      "answer": 2,
+      "evidence": "because the man was poor and his ship was all he had"
+    },
+    {
+      "id": "doctor-dolittle-09-05",
+      "type": "detail",
+      "q": "Why did Chee-Chee say bananas and cocoanuts were not a good present?",
+      "choices": [
+        "The Doctor did not like to eat fruit of any kind",
+        "They would be too heavy to carry so far and would go bad",
+        "The Doctor could buy plenty of them back home in Puddleby for a penny",
+        "The swallows would eat them all on the long way home"
+      ],
+      "answer": 1,
+      "evidence": "would go bad before half was eaten"
+    },
+    {
+      "id": "doctor-dolittle-09-06",
+      "type": "vocabulary",
+      "q": "What are \"menageries,\" as Chee-Chee explains them?",
+      "choices": [
+        "Big ships that carry wild animals across the sea to other far-off lands",
+        "Farms where people keep cows, sheep and horses in fields",
+        "Places where animals are kept in cages for people to look at",
+        "Schools where children learn to talk to animals"
+      ],
+      "answer": 2,
+      "evidence": "places in the Land of the White Men, where animals were put in cages"
+    },
+    {
+      "id": "doctor-dolittle-09-07",
+      "type": "sequence",
+      "q": "Which rare animal did Chee-Chee finally say they should give the Doctor?",
+      "choices": [
+        "An iguana",
+        "An okapi",
+        "A pushmi-pullyu",
+        "A red marmoset"
+      ],
+      "answer": 2,
+      "evidence": "Let us give him that."
+    },
+    {
+      "id": "doctor-dolittle-09-08",
+      "type": "main-idea",
+      "q": "What is this chapter mostly about?",
+      "choices": [
+        "How the monkeys learned what money is from Chee-Chee",
+        "How the monkeys decided on a thank-you present for the Doctor before he left",
+        "How Chee-Chee told the monkeys about the London Zoo",
+        "How the monkeys built the Doctor a new house and a bigger bed so he would stay"
+      ],
+      "answer": 1,
+      "evidence": "Let us give him the finest present a man ever had!"
+    }
+  ]
+}

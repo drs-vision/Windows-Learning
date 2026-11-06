@@ -1,0 +1,150 @@
+{
+  "book": "jungle-book",
+  "chapter": 7,
+  "questions": [
+    {
+      "id": "jungle-book-07-01",
+      "type": "detail",
+      "q": "Who does the storyteller say told him this tale?",
+      "choices": ["Limmershin, the Winter Wren", "Sea Catch, the old fur seal", "Kerick Booterin, the seal-hunter", "Sea Vitch, the walrus"],
+      "answer": 0,
+      "evidence": "Limmershin, the Winter Wren, told me the tale"
+    },
+    {
+      "id": "jungle-book-07-02",
+      "type": "character",
+      "q": "Why did Sea Catch fight with the other seals every spring?",
+      "choices": ["To win a good place by the sea for his nursery", "To become the leader of all the seals on the beach", "To drive the young bachelor seals off the island", "To get the best fishing grounds near the rocks"],
+      "answer": 0,
+      "evidence": "He only wanted room by the sea for his nursery."
+    },
+    {
+      "id": "jungle-book-07-03",
+      "type": "detail",
+      "q": "Which of these was against the Rules of the Beach?",
+      "choices": ["Chasing a beaten seal", "Fighting in the breakers", "Eating while on the beach", "Arriving before the wives"],
+      "answer": 0,
+      "evidence": "Sea Catch never chased a beaten seal, for that was against the Rules of the Beach"
+    },
+    {
+      "id": "jungle-book-07-04",
+      "type": "vocabulary",
+      "q": "The young seals were called \"the holluschickie.\" What does that word mean?",
+      "choices": ["The bachelors", "The babies", "The hunters", "The mothers"],
+      "answer": 0,
+      "evidence": "They were called the holluschickie--the bachelors"
+    },
+    {
+      "id": "jungle-book-07-05",
+      "type": "inference",
+      "q": "Why was Sea Catch usually in a bad temper during the summer on the beach?",
+      "choices": ["He ate nothing during the four months he stayed there", "His wife Matkah always arrived late and kept him waiting", "The holluschickie made too much noise in the sand dunes", "The fog hid the sun almost every day of the season"],
+      "answer": 0,
+      "evidence": "It was not the fashion for Sea Catch to eat anything during the four months"
+    },
+    {
+      "id": "jungle-book-07-06",
+      "type": "character",
+      "q": "Why did Sea Catch refuse Matkah's idea of moving to Otter Island?",
+      "choices": ["Other seals would say they were afraid", "The fishing there was poor and thin", "The Killer Whale hunted off its shores", "It was much too far from Lukannon"],
+      "answer": 0,
+      "evidence": "If we went there they would say we were afraid."
+    },
+    {
+      "id": "jungle-book-07-07",
+      "type": "detail",
+      "q": "What was unusual about Matkah's baby, Kotick?",
+      "choices": ["His coat was going to be white", "He was born with a full mane", "He could swim on his first day", "He had dark brown eyes"],
+      "answer": 0,
+      "evidence": "our baby's going to be white!"
+    },
+    {
+      "id": "jungle-book-07-08",
+      "type": "sequence",
+      "q": "What happened the first time Kotick went down to the sea?",
+      "choices": ["A wave carried him out of his depth and he nearly drowned", "He swam out so far that his mother had to bring him back", "He met the Killer Whale and raced straight back up the beach", "He floated happily on his back until the tide turned again"],
+      "answer": 0,
+      "evidence": "if the next wave had not thrown him back again he would have drowned"
+    },
+    {
+      "id": "jungle-book-07-09",
+      "type": "detail",
+      "q": "What did Kotick do whenever he saw a thin fin drifting close to shore?",
+      "choices": ["He headed for the beach like an arrow", "He dived down deep beneath the waves", "He called loudly for his father to come", "He hid among the slippery weedy rocks"],
+      "answer": 0,
+      "evidence": "Kotick would head for the beach like an arrow"
+    },
+    {
+      "id": "jungle-book-07-10",
+      "type": "detail",
+      "q": "According to Matkah, what did tingly, prickly feelings in the skin mean?",
+      "choices": ["Bad weather was coming, so he must swim hard and get away", "Fish were close by, so it was a good time to dive for food", "Men in boats were near, so he must keep his head down", "Spring had come, so it was time to return to the beaches"],
+      "answer": 0,
+      "evidence": "tingly, prickly feelings meant bad weather coming"
+    },
+    {
+      "id": "jungle-book-07-11",
+      "type": "detail",
+      "q": "Which of these did Matkah teach Kotick to leave alone?",
+      "choices": ["Flying fish, because they are all bony", "Cod, because they bite back very hard", "Halibut, because they hide in the weeds", "Porpoises, because they never share fish"],
+      "answer": 0,
+      "evidence": "to leave the flying fish alone because they are all bony"
+    },
+    {
+      "id": "jungle-book-07-12",
+      "type": "inference",
+      "q": "What made Kotick suddenly turn north while he was off the Island of Juan Fernandez?",
+      "choices": ["He felt lazy and homesick for the beaches of Novastoshnah", "His mother called him home to help with the new babies", "A gale was coming and the porpoises told him to flee", "He wanted to show his white coat to his old friends"],
+      "answer": 0,
+      "evidence": "he remembered the good firm beaches of Novastoshnah"
+    },
+    {
+      "id": "jungle-book-07-13",
+      "type": "vocabulary",
+      "q": "The waves broke \"in great phosphorescent streaks and swirls.\" What does \"phosphorescent\" mean?",
+      "choices": ["Glowing with light in the dark", "Foamy and very noisy", "Cold and icy gray", "Muddy and full of sand"],
+      "answer": 0,
+      "evidence": "the waves break in great phosphorescent streaks and swirls"
+    },
+    {
+      "id": "jungle-book-07-14",
+      "type": "character",
+      "q": "Why did Kerick Booterin tell Patalamon not to touch the white seal?",
+      "choices": ["He feared it might be the ghost of old Zaharrof", "He wanted to keep the rare white skin for himself", "He thought it was too small to be worth skinning", "He knew Sea Catch would fight any man who came near"],
+      "answer": 0,
+      "evidence": "Perhaps it is old Zaharrof's ghost."
+    },
+    {
+      "id": "jungle-book-07-15",
+      "type": "detail",
+      "q": "Why did the men drive the seals so slowly to the killing-grounds?",
+      "choices": ["If the seals got heated, their fur would come off in patches", "Kerick wanted to stop and count every seal along the way", "The path was full of rocks that could hurt the men's feet", "The seals were tired and would not move any faster for them"],
+      "answer": 0,
+      "evidence": "if the seals went too fast Kerick knew that they would get heated"
+    },
+    {
+      "id": "jungle-book-07-16",
+      "type": "sequence",
+      "q": "What did Kotick do after he saw the men kill and skin the seals?",
+      "choices": ["He galloped back to the sea and flung himself into the water", "He hid behind the Salt House until the men had gone home", "He ran straight to his mother and told her what he had seen", "He tried to warn the other seals on the beach of the danger"],
+      "answer": 0,
+      "evidence": "He turned and galloped"
+    },
+    {
+      "id": "jungle-book-07-17",
+      "type": "detail",
+      "q": "What did the Sea Lion say seals must find if they never wanted to be driven by men?",
+      "choices": ["An island where no men ever come", "A beach far south of the Sticky Water", "A cave hidden deep under the sea", "A leader strong enough to fight men"],
+      "answer": 0,
+      "evidence": "unless you can find an island where no men ever come you will always be driven"
+    },
+    {
+      "id": "jungle-book-07-18",
+      "type": "main-idea",
+      "q": "What is this part of the story mostly about?",
+      "choices": ["A white seal grows up, sees hunters kill seals, and seeks a safer home", "A huge old seal fights every other seal to become king of the beach", "A seal-hunter and his son try to capture the rare white seal alive", "A young seal and a porpoise race each other around the Pacific"],
+      "answer": 0,
+      "evidence": "Isn't there any such island?"
+    }
+  ]
+}

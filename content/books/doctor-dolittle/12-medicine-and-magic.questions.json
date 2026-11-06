@@ -1,0 +1,188 @@
+{
+  "book": "doctor-dolittle",
+  "chapter": 12,
+  "questions": [
+    {
+      "id": "doctor-dolittle-12-01",
+      "type": "detail",
+      "q": "What was Gub-Gub doing at the prison window when Polynesia arrived?",
+      "choices": [
+        "Sniffing the cooking-smells from the palace-kitchen",
+        "Watching the guards change at the palace gate",
+        "Calling out to Chee-Chee in the trees outside",
+        "Trying to squeeze his body between the bars"
+      ],
+      "answer": 0,
+      "evidence": "trying to sniff the cooking-smells"
+    },
+    {
+      "id": "doctor-dolittle-12-02",
+      "type": "character",
+      "q": "What did Polynesia tell the Doctor he must make Prince Bumpo promise first?",
+      "choices": [
+        "To give him half of the Kingdom of Jolliginki",
+        "To tell the King that the Doctor was a good wizard",
+        "To bring food and water to all the animals",
+        "To open the prison-door and find him a ship"
+      ],
+      "answer": 3,
+      "evidence": "open the prison-door and find a ship for you"
+    },
+    {
+      "id": "doctor-dolittle-12-03",
+      "type": "vocabulary",
+      "q": "Polynesia spoke \"impatiently\" to the Doctor. What does that tell you about how she spoke?",
+      "choices": [
+        "She was speaking very slowly and kindly to him",
+        "She was frightened and spoke in a shaky whisper",
+        "She was in a hurry and didn't want to wait or argue",
+        "She was teasing him and trying to make him laugh"
+      ],
+      "answer": 2,
+      "evidence": "said Polynesia impatiently"
+    },
+    {
+      "id": "doctor-dolittle-12-04",
+      "type": "detail",
+      "q": "Why did Prince Bumpo want his face to shine like silver?",
+      "choices": [
+        "So his father the King would make him the next king",
+        "So The Sleeping Beauty would think he was her prince",
+        "So the people of Jolliginki would bow down to him",
+        "So he could frighten the enemies of his kingdom"
+      ],
+      "answer": 1,
+      "evidence": "My prince's face shone like silver in the moonlight"
+    },
+    {
+      "id": "doctor-dolittle-12-05",
+      "type": "detail",
+      "q": "What did the Doctor first suggest he could make shine instead of Bumpo's face?",
+      "choices": [
+        "His crown",
+        "His sword and shield",
+        "His horse's saddle",
+        "The palace windows"
+      ],
+      "answer": 0,
+      "evidence": "supposing I made your crown shine very brightly"
+    },
+    {
+      "id": "doctor-dolittle-12-06",
+      "type": "sequence",
+      "q": "What did the Doctor make Bumpo do BEFORE he would mix any medicine?",
+      "choices": [
+        "Bring him a looking-glass from the palace",
+        "Promise to apologize to the King for the prison",
+        "Find Polynesia and Chee-Chee in the forest",
+        "Go to the beach and get a ship ready with food"
+      ],
+      "answer": 3,
+      "evidence": "you must first go down to the beach and get a ship ready"
+    },
+    {
+      "id": "doctor-dolittle-12-07",
+      "type": "detail",
+      "q": "What did Bumpo do with the mixture of medicines in the basin?",
+      "choices": [
+        "He rubbed it on his cheeks with a soft cloth",
+        "He drank it down quickly in one big gulp",
+        "He dipped his face in it right up to his ears",
+        "He poured it over his crown and his hair"
+      ],
+      "answer": 2,
+      "evidence": "put his face in--right up to the ears"
+    },
+    {
+      "id": "doctor-dolittle-12-08",
+      "type": "inference",
+      "q": "Why did the Doctor stand first on one leg and then the other while Bumpo's face was in the basin?",
+      "choices": [
+        "He was trying to keep his feet warm in the cold prison",
+        "He was worried the medicine might not work right",
+        "He was dancing because he knew they would be free",
+        "He was tired after standing up for so many hours"
+      ],
+      "answer": 1,
+      "evidence": "dreadfully anxious and fidgety"
+    },
+    {
+      "id": "doctor-dolittle-12-09",
+      "type": "detail",
+      "q": "Why wouldn't the Doctor let Bumpo keep the looking-glass?",
+      "choices": [
+        "He said he needed it to shave with",
+        "He said it had been a gift from his sister",
+        "He said the King would take it away from him",
+        "He said it would break on the long sea voyage"
+      ],
+      "answer": 0,
+      "evidence": "he needed it to shave with"
+    },
+    {
+      "id": "doctor-dolittle-12-10",
+      "type": "character",
+      "q": "Why did the Doctor feel sorry about Bumpo after they escaped?",
+      "choices": [
+        "He had taken the copper keys and Bumpo needed them",
+        "He had broken his promise to give Bumpo half his kingdom",
+        "He thought the King would put Bumpo in the prison",
+        "He thought the shine might wear off by morning"
+      ],
+      "answer": 3,
+      "evidence": "the shine will have worn off when he wakes up in the morning"
+    },
+    {
+      "id": "doctor-dolittle-12-11",
+      "type": "detail",
+      "q": "Which animals stayed behind in Africa instead of going on the ship?",
+      "choices": [
+        "Jip, Dab-Dab and the white mouse",
+        "Gub-Gub, Too-Too and the pushmi-pullyu",
+        "Chee-Chee, Polynesia and the crocodile",
+        "Polynesia, Jip and the owl Too-Too"
+      ],
+      "answer": 2,
+      "evidence": "But Chee-Chee, Polynesia and the crocodile stayed behind"
+    },
+    {
+      "id": "doctor-dolittle-12-12",
+      "type": "sequence",
+      "q": "What was the Doctor worried about once he stood on the boat?",
+      "choices": [
+        "That the ship had too little food for the trip",
+        "That nobody was with them to guide them home",
+        "That the King's soldiers would chase after them",
+        "That the crocodile would try to come aboard"
+      ],
+      "answer": 1,
+      "evidence": "they had no one with them to guide them back to Puddleby"
+    },
+    {
+      "id": "doctor-dolittle-12-13",
+      "type": "detail",
+      "q": "What were the thousands of birds that came down and settled on the ship and the sand?",
+      "choices": [
+        "Swallows going back home for the Summer",
+        "Parrots coming to say good-by to Polynesia",
+        "Sea-gulls looking for fish in the moonlight",
+        "Wild ducks flying south for the Winter"
+      ],
+      "answer": 0,
+      "evidence": "these are the swallows going back"
+    },
+    {
+      "id": "doctor-dolittle-12-14",
+      "type": "main-idea",
+      "q": "What is this chapter mostly about?",
+      "choices": [
+        "How Prince Bumpo finds The Sleeping Beauty and marries her at last",
+        "How Polynesia teaches Prince Bumpo to speak the language of animals",
+        "How the King of Jolliginki makes the Doctor scrub his dirty kitchen",
+        "How the Doctor tricks his way out of prison and sets sail for home"
+      ],
+      "answer": 3,
+      "evidence": "Pull up the anchor and set the sail!"
+    }
+  ]
+}

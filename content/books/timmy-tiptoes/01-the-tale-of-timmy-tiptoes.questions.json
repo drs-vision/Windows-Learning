@@ -1,0 +1,136 @@
+{
+  "book": "timmy-tiptoes",
+  "chapter": 1,
+  "questions": [
+    {
+      "id": "timmy-tiptoes-01-01",
+      "type": "detail",
+      "q": "What was the name of Timmy Tiptoes' wife?",
+      "choices": [
+        "Goody",
+        "Silvertail",
+        "Twinkleberry",
+        "Moppet"
+      ],
+      "answer": 0,
+      "evidence": "he had a little squirrel wife called Goody"
+    },
+    {
+      "id": "timmy-tiptoes-01-02",
+      "type": "detail",
+      "q": "Where did Timmy and Goody store their nuts when the stumps were full?",
+      "choices": [
+        "Under a big flat rock",
+        "In an old wood-pecker's hole",
+        "In the ground near the lake",
+        "In the nest at the top of the tree"
+      ],
+      "answer": 1,
+      "evidence": "a hole high up a tree, that had belonged to a wood-pecker"
+    },
+    {
+      "id": "timmy-tiptoes-01-03",
+      "type": "detail",
+      "q": "Why do squirrels who bury their nuts lose more than half?",
+      "choices": [
+        "The birds dig them all up",
+        "They cannot remember the place",
+        "The rain washes them away",
+        "Other squirrels always steal them"
+      ],
+      "answer": 1,
+      "evidence": "because they cannot remember the place"
+    },
+    {
+      "id": "timmy-tiptoes-01-04",
+      "type": "inference",
+      "q": "Why did the other squirrels attack Timmy?",
+      "choices": [
+        "Timmy laughed at them and called them bad names",
+        "A bird sang a song and they thought he took nuts",
+        "Timmy would not share his nuts or his jacket",
+        "They wanted to live in his snug little nest"
+      ],
+      "answer": 1,
+      "evidence": "But when the other squirrels heard that song, they rushed upon Timmy Tiptoes"
+    },
+    {
+      "id": "timmy-tiptoes-01-05",
+      "type": "detail",
+      "q": "What did the squirrels do with Timmy after they caught him?",
+      "choices": [
+        "Pushed him into the little round hole",
+        "Tied him up tight with his own nut bags",
+        "Chased him all the way into the lake",
+        "Threw him into a hollow stump full of nuts"
+      ],
+      "answer": 0,
+      "evidence": "they pushed him in"
+    },
+    {
+      "id": "timmy-tiptoes-01-06",
+      "type": "character",
+      "q": "How did the Chipmunk treat Timmy inside the tree?",
+      "choices": [
+        "It was very kind to him",
+        "It was cross and bit him",
+        "It made him do the work",
+        "It ate up all his nuts"
+      ],
+      "answer": 0,
+      "evidence": "It was most kind to Timmy Tiptoes"
+    },
+    {
+      "id": "timmy-tiptoes-01-07",
+      "type": "inference",
+      "q": "Why could Timmy not get out of the hole when Goody found him?",
+      "choices": [
+        "The hole was blocked with moss",
+        "He had grown too fat",
+        "Chippy Hackee would not let him go",
+        "His ribs still hurt too much"
+      ],
+      "answer": 1,
+      "evidence": "he was so fat that he could not get out"
+    },
+    {
+      "id": "timmy-tiptoes-01-08",
+      "type": "detail",
+      "q": "How did Timmy finally get out of the tree?",
+      "choices": [
+        "Goody pulled him out by the tail",
+        "A big wind blew off the top of the tree",
+        "He dug a long tunnel under the roots",
+        "Chippy Hackee bit the hole bigger for him"
+      ],
+      "answer": 1,
+      "evidence": "a big wind blew off the top of the tree"
+    },
+    {
+      "id": "timmy-tiptoes-01-09",
+      "type": "detail",
+      "q": "What made Chippy Hackee hurry home at last?",
+      "choices": [
+        "A large bear",
+        "His wife called him",
+        "The rain came in",
+        "A little bird sang"
+      ],
+      "answer": 0,
+      "evidence": "At last a large bear came walking through the wood."
+    },
+    {
+      "id": "timmy-tiptoes-01-10",
+      "type": "main-idea",
+      "q": "What is this story mostly about?",
+      "choices": [
+        "A squirrel who is blamed for stealing and gets stuck in a tree",
+        "A little bird who teaches all the squirrels a new song",
+        "A big bear who looks for nuts all through the wood",
+        "Two squirrels who build a snug new nest for the winter"
+      ],
+      "answer": 0,
+      "evidence": "We will leave him here till he confesses"
+    }
+  ]
+}

@@ -3,6 +3,7 @@
   "title": "The Tale of Peter Rabbit",
   "author": "Beatrix Potter",
   "published": 1902,
+  "level": 1,
   "grade": {
     "min": 0,
     "max": 2,

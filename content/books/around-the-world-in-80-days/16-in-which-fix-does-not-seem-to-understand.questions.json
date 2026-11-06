@@ -1,0 +1,102 @@
+{
+  "book": "around-the-world-in-80-days",
+  "chapter": 16,
+  "questions": [
+    {
+      "id": "around-the-world-in-80-days-16-01",
+      "type": "detail",
+      "q": "How did the Rangoon compare with the Mongolia?",
+      "choices": ["It was slower but much more comfortable", "It was as fast but not as well fitted up", "It was bigger, faster and more luxurious", "It was smaller and had no cabins for ladies"],
+      "answer": 1,
+      "evidence": "She was as fast, but not as well fitted up, as the Mongolia"
+    },
+    {
+      "id": "around-the-world-in-80-days-16-02",
+      "type": "character",
+      "q": "How did Mr. Fogg behave toward Aouda on the voyage?",
+      "choices": ["He talked to her for hours about his travels and his club", "He avoided her and stayed alone playing whist all day", "He seemed cold, but made sure she had everything she needed", "He was cheerful and joked with her at every meal"],
+      "answer": 2,
+      "evidence": "he seemed to be always on the watch that nothing should be wanting to Aouda's comfort"
+    },
+    {
+      "id": "around-the-world-in-80-days-16-03",
+      "type": "vocabulary",
+      "q": "Fogg treated Aouda \"with the precision of an automaton.\" What is an automaton?",
+      "choices": ["A clockwork machine", "A kind and gentle nurse", "A strict army officer", "A court judge in a wig"],
+      "answer": 0,
+      "evidence": "with the precision of an automaton"
+    },
+    {
+      "id": "around-the-world-in-80-days-16-04",
+      "type": "detail",
+      "q": "Whom did Aouda hope to join in Hong Kong?",
+      "choices": ["Her uncle, an officer in the English army", "Jeejeeh, a cousin of a rich Parsee baronet", "Sir Francis Cromarty's married sister", "An old school friend from her days in Bombay"],
+      "answer": 1,
+      "evidence": "it was his cousin, Jeejeeh, whom she hoped to join at Hong Kong"
+    },
+    {
+      "id": "around-the-world-in-80-days-16-05",
+      "type": "inference",
+      "q": "Why did Fix think the arrest had to happen in Hong Kong?",
+      "choices": ["It was the last English ground; beyond it a simple warrant would be useless", "The judge in Hong Kong was an old friend who owed him a favour", "Fogg had told Passepartout that he planned to stay there for a whole month or more", "His own money would run out before the ship reached Japan"],
+      "answer": 0,
+      "evidence": "Hong Kong was the last English ground on which he would set foot"
+    },
+    {
+      "id": "around-the-world-in-80-days-16-06",
+      "type": "character",
+      "q": "Why was telling Passepartout the truth a dangerous plan for Fix?",
+      "choices": ["Passepartout might attack him with his fists", "One word from Passepartout to his master would ruin everything", "The captain would surely put him off the ship when it reached Singapore", "Aouda would warn the police in Hong Kong first"],
+      "answer": 1,
+      "evidence": "A word from Passepartout to his master would ruin all."
+    },
+    {
+      "id": "around-the-world-in-80-days-16-07",
+      "type": "inference",
+      "q": "What new idea did Aouda's presence give Fix?",
+      "choices": ["That Fogg might have run off with her, which could be used to stop him", "That she was a detective sent from Bombay to help him", "That she might know exactly where Fogg had hidden the rest of the stolen bank money", "That she would pay Fix to protect her from the priests"],
+      "answer": 0,
+      "evidence": "He asked himself whether there had not been a wicked elopement"
+    },
+    {
+      "id": "around-the-world-in-80-days-16-08",
+      "type": "detail",
+      "q": "From Singapore, how could Fix warn the authorities in Hong Kong?",
+      "choices": ["By sending a letter on a faster mail steamer", "By the telegraph wire", "By asking the captain to signal with flags", "By sending a messenger on a fishing boat"],
+      "answer": 1,
+      "evidence": "there is a telegraphic wire to Hong Kong"
+    },
+    {
+      "id": "around-the-world-in-80-days-16-09",
+      "type": "sequence",
+      "q": "How did Fix act when he finally met Passepartout on deck?",
+      "choices": ["He acted very surprised to see him", "He hid his face and walked quickly away", "He told him at once that he was a detective", "He asked to speak to Mr. Fogg in private"],
+      "answer": 0,
+      "evidence": "with every appearance of extreme surprise"
+    },
+    {
+      "id": "around-the-world-in-80-days-16-10",
+      "type": "detail",
+      "q": "What excuse did Fix give for not being seen since Calcutta?",
+      "choices": ["He had been busy writing letters for the company", "He had been sea-sick and stayed in his berth", "He had come on board only at the last port", "He had been helping the captain on the bridge"],
+      "answer": 1,
+      "evidence": "Oh, a trifle of sea-sickness--I've been staying in my berth."
+    },
+    {
+      "id": "around-the-world-in-80-days-16-11",
+      "type": "inference",
+      "q": "Why was Fix disappointed to learn Aouda would stay with a relative in Hong Kong?",
+      "choices": ["It meant there was no elopement he could use against Fogg", "It meant Fogg would have to stay in Hong Kong for a long time", "It meant Passepartout would leave the ship with her", "It meant she could not help him find the stolen money"],
+      "answer": 0,
+      "evidence": "Nothing to be done there"
+    },
+    {
+      "id": "around-the-world-in-80-days-16-12",
+      "type": "main-idea",
+      "q": "What is this chapter mostly about?",
+      "choices": ["Aouda and Fogg exploring the Andaman Islands on foot", "Fix planning how to stop Fogg and meeting Passepartout again", "Passepartout learning that Fix is really a detective", "A storm that nearly sinks the Rangoon near Singapore"],
+      "answer": 1,
+      "evidence": "Fix prepared to make himself known"
+    }
+  ]
+}

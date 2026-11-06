@@ -1,0 +1,27 @@
+{
+  "id": "ginger-and-pickles",
+  "title": "The Tale of Ginger and Pickles",
+  "author": "Beatrix Potter",
+  "published": 1909,
+  "level": 1,
+  "grade": {
+    "min": 0,
+    "max": 2,
+    "label": "Grades K-2"
+  },
+  "summary": "A cat and a terrier run a village shop and give everyone credit, which does not go well.",
+  "source": {
+    "name": "Project Gutenberg eBook #14877 (public-domain text; Gutenberg header, license and name removed)",
+    "url": "https://www.gutenberg.org/ebooks/14877"
+  },
+  "publicDomain": "First published 1909; in the US public domain (published before 1931).",
+  "chapters": [
+    {
+      "n": 1,
+      "title": "The Tale of Ginger and Pickles",
+      "text": "01-the-tale-of-ginger-and-pickles.txt",
+      "questions": "01-the-tale-of-ginger-and-pickles.questions.json",
+      "words": 1108
+    }
+  ]
+}

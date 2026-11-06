@@ -92,6 +92,38 @@ export function Scholar() {
   );
 }
 
+/**
+ * The coin balance. When coins arrive it gives a small, quiet nod: the coin flips once, the number counts up, and a
+ * "+N" drifts up and fades. Nothing loops or blinks; with "reduce motion" on, only the "+N" fades in and out.
+ */
+function Wallet({ balance, onClick }: { balance: number; onClick: () => void }) {
+  const [shown, setShown] = useState(balance);
+  const [gain, setGain] = useState<{ n: number; key: number } | null>(null);
+  const prev = useRef(balance);
+  useEffect(() => {
+    const from = prev.current;
+    prev.current = balance;
+    if (balance <= from) { setShown(balance); return; }
+    setGain({ n: balance - from, key: Date.now() });
+    const start = performance.now(), ms = 700;
+    let raf = 0;
+    const step = (t: number) => {
+      const k = Math.min(1, (t - start) / ms);
+      setShown(Math.round(from + (balance - from) * (1 - Math.pow(1 - k, 3))));
+      if (k < 1) raf = requestAnimationFrame(step);
+    };
+    raf = requestAnimationFrame(step);
+    const done = setTimeout(() => setGain(null), 1800);
+    return () => { cancelAnimationFrame(raf); clearTimeout(done); setShown(balance); };
+  }, [balance]);
+  return (
+    <button class={'wallet' + (gain ? ' gaining' : '')} onClick={onClick} aria-label={`${balance} coins`}>
+      <span class="wallet-coin" key={gain?.key}>🪙</span> <b>{shown}</b>
+      {gain && <span class="coin-gain" key={gain.key} aria-hidden="true">+{gain.n}</span>}
+    </button>
+  );
+}
+
 function TopBar({ state, unlocks, onHome, onShop }: { state: ChildState; unlocks: Unlock[]; onHome: () => void; onShop: () => void }) {
   return (
     <header class="topbar">
@@ -106,7 +138,7 @@ function TopBar({ state, unlocks, onHome, onShop }: { state: ChildState; unlocks
           </>;
         })()}
       </div>
-      <button class="wallet" onClick={onShop}>🪙 <b>{state.balance}</b></button>
+      <Wallet balance={state.balance} onClick={onShop} />
     </header>
   );
 }

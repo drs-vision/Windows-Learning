@@ -1,0 +1,110 @@
+{
+  "book": "around-the-world-in-80-days",
+  "chapter": 31,
+  "questions": [
+    {
+      "id": "around-the-world-in-80-days-31-01",
+      "type": "detail",
+      "q": "How far behind time was Phileas Fogg at the start of the chapter?",
+      "choices": ["Eight hours", "Twenty hours", "Two full days", "Eleven hours"],
+      "answer": 1,
+      "evidence": "Phileas Fogg found himself twenty hours behind time."
+    },
+    {
+      "id": "around-the-world-in-80-days-31-02",
+      "type": "character",
+      "q": "How did Passepartout feel about the delay?",
+      "choices": ["Desperate, because he believed he had ruined his master", "Calm, because he trusted Fogg to find another train", "Cheerful, because he was glad to be rescued alive", "Angry, because he blamed Fix and the conductor for the delay"],
+      "answer": 0,
+      "evidence": "He had ruined his master!"
+    },
+    {
+      "id": "around-the-world-in-80-days-31-03",
+      "type": "detail",
+      "q": "What way of travelling did Fix suggest to Mr. Fogg?",
+      "choices": ["A sledge with sails", "A team of fast horses", "A boat down the Platte", "A special hired train"],
+      "answer": 0,
+      "evidence": "On a sledge with sails."
+    },
+    {
+      "id": "around-the-world-in-80-days-31-04",
+      "type": "inference",
+      "q": "Who was the man who had spoken to Fix during the night?",
+      "choices": ["A soldier from the fort asking about the prisoners", "Mudge, the owner of the sailing sledge", "The conductor, asking him to board the train", "A telegraph clerk with news from Omaha"],
+      "answer": 1,
+      "evidence": "It was the man who had spoken to Fix during the night, and whose offer he had refused."
+    },
+    {
+      "id": "around-the-world-in-80-days-31-05",
+      "type": "vocabulary",
+      "q": "The sledge was \"rigged like a sloop.\" What does this tell you about it?",
+      "choices": ["It was pulled by a team of dogs", "It had a mast and sails like a small boat", "It ran along on steel railroad tracks", "It was built mainly to carry heavy freight"],
+      "answer": 1,
+      "evidence": "It was, in short, a sledge rigged like a sloop."
+    },
+    {
+      "id": "around-the-world-in-80-days-31-06",
+      "type": "character",
+      "q": "What did Aouda decide when Mr. Fogg offered to leave her at Fort Kearney?",
+      "choices": ["She agreed to go to Europe later with Passepartout", "She refused to be separated from Mr. Fogg", "She asked to stay and care for the wounded", "She said she would take the next train east"],
+      "answer": 1,
+      "evidence": "Aouda refused to separate from Mr. Fogg"
+    },
+    {
+      "id": "around-the-world-in-80-days-31-07",
+      "type": "character",
+      "q": "What did Fix resolve to do, even if his opinion of Fogg had changed a little?",
+      "choices": ["Give up the case and travel home to Liverpool alone", "Do his duty and hurry the whole party back to England", "Tell Aouda the whole truth about the bank robbery", "Leave the party at Omaha and wait for new orders"],
+      "answer": 1,
+      "evidence": "he was nevertheless resolved to do his duty"
+    },
+    {
+      "id": "around-the-world-in-80-days-31-08",
+      "type": "detail",
+      "q": "What were the two things Phileas Fogg had to fear on the sledge trip?",
+      "choices": ["Wolves, and a frozen river breaking under them", "An accident to the sledge, and a change or calm in the wind", "Getting lost in the snow, and running short of food", "Sioux riders, and a heavy snowstorm from the north"],
+      "answer": 1,
+      "evidence": "an accident to the sledge, and a change or calm in the wind"
+    },
+    {
+      "id": "around-the-world-in-80-days-31-09",
+      "type": "detail",
+      "q": "What did Mr. Fogg say about the sounds made by the singing lashings?",
+      "choices": ["\"Those chords give the fifth and the octave.\"", "\"That noise will surely frighten off the wolves.\"", "\"The mast will break if this wind keeps on.\"", "\"We are going faster than any express train.\""],
+      "answer": 0,
+      "evidence": "Those chords give the fifth and the octave"
+    },
+    {
+      "id": "around-the-world-in-80-days-31-10",
+      "type": "character",
+      "q": "What did Passepartout feel he would never forget?",
+      "choices": ["The day the sledge flew over the frozen Platte", "The sacrifice Mr. Fogg made to rescue him", "The cold that made his face as red as the sun", "The kindness of the soldiers at Fort Kearney"],
+      "answer": 1,
+      "evidence": "the sacrifice which Mr. Fogg had made, without hesitation, to rescue him from the Sioux"
+    },
+    {
+      "id": "around-the-world-in-80-days-31-11",
+      "type": "detail",
+      "q": "What animals chased the sledge across the plain?",
+      "choices": ["Buffalo", "Prairie-wolves", "Wild horses", "Black bears"],
+      "answer": 1,
+      "evidence": "bands of gaunt, famished, ferocious prairie-wolves ran howling after the sledge"
+    },
+    {
+      "id": "around-the-world-in-80-days-31-12",
+      "type": "sequence",
+      "q": "What did the party do as soon as they reached the Omaha station?",
+      "choices": ["Rested for a night at a hotel in Omaha", "Jumped onto a train that was ready to start", "Telegraphed New York to hold the steamer", "Walked around the snowy town to see the sights"],
+      "answer": 1,
+      "evidence": "they only had time to get into the cars"
+    },
+    {
+      "id": "around-the-world-in-80-days-31-13",
+      "type": "main-idea",
+      "q": "What disappointing news ends the chapter?",
+      "choices": ["The train for New York has been cancelled for the night", "The China for Liverpool left three-quarters of an hour before", "Fix has telegraphed the police to wait for them at the New York pier", "The Hudson River is frozen and no boat can cross it"],
+      "answer": 1,
+      "evidence": "The China, for Liverpool, had started three-quarters of an hour before!"
+    }
+  ]
+}

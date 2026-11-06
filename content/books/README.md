@@ -9,7 +9,7 @@ content/books/
   schema/book.schema.json           JSON Schema for book.json
   schema/questions.schema.json      JSON Schema for a chapter's questions file
   <book-id>/
-    book.json                       the book: title, author, grade level, source, chapter list
+    book.json                       the book: title, author, level, source, chapter list
     01-<slug>.txt                   chapter 1 text
     01-<slug>.questions.json        chapter 1 question bank
     02-<slug>.txt ...
@@ -23,6 +23,7 @@ content/books/
   "title": "Black Beauty",
   "author": "Anna Sewell",
   "published": 1877,
+  "level": 3,
   "grade": { "min": 4, "max": 6, "label": "Grades 4-6" },
   "summary": "One or two plain sentences a parent reads when choosing books.",
   "source": { "name": "Project Gutenberg eBook #271 (...)", "url": "https://www.gutenberg.org/ebooks/271" },
@@ -33,7 +34,13 @@ content/books/
 }
 ```
 
-* `grade.min` / `grade.max` are US school grades; 0 means kindergarten. The app sorts and groups books by them.
+* `level` is the reading level children see: 1 is easiest, and books of about the same difficulty share a level.
+  Children only ever see "Level N" (no grades, so nobody feels behind). The app sorts the shelf by it.
+  Current scale: 1 = Beatrix Potter tales; 2 = Aesop, The Tailor of Gloucester; 3 = Black Beauty, Doctor Dolittle;
+  4 = Treasure Island, The Call of the Wild, The Jungle Book; 5 = Kidnapped, Around the World in Eighty Days,
+  The Wind in the Willows.
+* `grade.min` / `grade.max` are approximate US school grades (0 = kindergarten), shown to parents only as a hint.
+* `edited` (optional): if the text differs from the original, say what changed and why (see doctor-dolittle).
 * `words` is the chapter's word count (whitespace-separated). It sets the quiz length (below).
 
 ## Chapter text (`NN-slug.txt`)
@@ -42,7 +49,9 @@ content/books/
   dash, `...` for an ellipsis, no accented letters. A child may be asked to *type* the chapter, so every character
   must be typeable. `scripts/books/validate.mjs` rejects anything else.
 * Paragraphs are separated by one blank line. No notes, illustrations or page numbers.
-* Use the original public-domain wording only: no modern introductions, footnotes or edited versions.
+* Use the original public-domain wording only: no modern introductions, footnotes or edited versions. The one
+  exception is a passage unsuitable for children (e.g. racial slurs or caricature), which may be reworded in the
+  spirit of later editions and recorded in `edited`. Hand edits are lost if the importer is re-run on that book.
 * `scripts/books/import_gutenberg.py <book-id> <file.txt>` builds the text files and the chapter list from a
   Project Gutenberg plain-text file (it removes the Gutenberg header, license and name, which may not be shipped).
 
@@ -75,7 +84,7 @@ content/books/
   text), `main-idea` (what the chapter or fable is mostly about, or its lesson).
 * `id`: `<book-id>-<chapter 2 digits>-<question 2 digits>`, unique in the book. Never reuse an id for a different
   question (children's progress remembers which questions they have seen).
-* Keep questions answerable from **this chapter alone**, at the book's grade level, with one clearly right answer and
+* Keep questions answerable from **this chapter alone**, at the book's level, with one clearly right answer and
   three wrong answers that are believable but clearly wrong to someone who read it. Avoid "all of the above",
   "none of the above", trick wording and questions about tiny details nobody would remember.
 * **No giveaways:** the wrong choices must be as long, specific and detailed as the right one, so "pick the longest

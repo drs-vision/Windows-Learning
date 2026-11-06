@@ -1,0 +1,134 @@
+{
+  "book": "around-the-world-in-80-days",
+  "chapter": 13,
+  "questions": [
+    {
+      "id": "around-the-world-in-80-days-13-01",
+      "type": "character",
+      "q": "How did Passepartout feel about his master's plan to rescue the young woman?",
+      "choices": ["He was charmed and began to love his master", "He thought it was foolish and wanted to leave", "He was afraid and begged Fogg to give it up", "He agreed only because he was paid extra"],
+      "answer": 0,
+      "evidence": "He began to love Phileas Fogg."
+    },
+    {
+      "id": "around-the-world-in-80-days-13-02",
+      "type": "detail",
+      "q": "Why did the guide agree to help with the rescue?",
+      "choices": ["Fogg promised to give him the elephant", "He and the woman were both Parsees", "He was afraid of Sir Francis's soldiers", "He had once worked for the woman's father"],
+      "answer": 1,
+      "evidence": "I am a Parsee, and this woman is a Parsee"
+    },
+    {
+      "id": "around-the-world-in-80-days-13-03",
+      "type": "detail",
+      "q": "What was the name of the young woman who was to be sacrificed?",
+      "choices": ["Kiouni", "Pillaji", "Aouda", "Bundelcund"],
+      "answer": 2,
+      "evidence": "Her name was Aouda."
+    },
+    {
+      "id": "around-the-world-in-80-days-13-04",
+      "type": "detail",
+      "q": "According to the guide, what was the young woman's background?",
+      "choices": ["She was a servant girl from a village near the pagoda", "She was the daughter of a rich Bombay merchant, educated in English", "She was a princess raised in the palace of the old rajah", "She was a traveller from Calcutta who had been kidnapped on a train"],
+      "answer": 1,
+      "evidence": "the daughter of a wealthy Bombay merchant"
+    },
+    {
+      "id": "around-the-world-in-80-days-13-05",
+      "type": "inference",
+      "q": "Why did the party decide the rescue had to happen during the night?",
+      "choices": ["At daybreak she would be led to the pyre and no one could save her", "The elephant could only travel safely after dark in the forest", "Sir Francis had to be back with his troops before the morning", "The guide said the temple doors were always unlocked at night"],
+      "answer": 0,
+      "evidence": "the abduction must be made that night"
+    },
+    {
+      "id": "around-the-world-in-80-days-13-06",
+      "type": "detail",
+      "q": "What did the party find when they first crept up to the doors of the pagoda?",
+      "choices": ["The doors were open and the temple was empty", "Guards with naked sabres were watching at the doors", "A crowd of priests was singing on the steps", "The rajah's soldiers were asleep beside the doors"],
+      "answer": 1,
+      "evidence": "were watching at the doors and marching to and fro with naked sabres"
+    },
+    {
+      "id": "around-the-world-in-80-days-13-07",
+      "type": "sequence",
+      "q": "After waiting until midnight with no change among the guards, what did the party decide to do?",
+      "choices": ["Return to the elephant and ride to Allahabad", "Make an opening in the rear wall of the pagoda", "Bribe the guards with money from Fogg's bag", "Wait in the trees for the sacrifice to begin"],
+      "answer": 1,
+      "evidence": "an opening in the walls of the pagoda must be made"
+    },
+    {
+      "id": "around-the-world-in-80-days-13-08",
+      "type": "detail",
+      "q": "What tools did the party have for breaking through the temple wall?",
+      "choices": ["An axe and a crowbar from the elephant's pack", "Only their pocket-knives", "The guide's long hunting knife and a spade", "Iron bars taken from a window of the pagoda"],
+      "answer": 1,
+      "evidence": "the party only had their pocket-knives"
+    },
+    {
+      "id": "around-the-world-in-80-days-13-09",
+      "type": "sequence",
+      "q": "What stopped the party while they were loosening the bricks?",
+      "choices": ["A cry was heard inside the temple, and then guards came to the rear", "The wall turned out to be solid stone that their knives could not cut", "Passepartout fell and made a loud noise that woke the sleepers", "Heavy rain began to fall and put out all the torches"],
+      "answer": 0,
+      "evidence": "suddenly a cry was heard in the interior of the temple"
+    },
+    {
+      "id": "around-the-world-in-80-days-13-10",
+      "type": "vocabulary",
+      "q": "The text says, \"The tranquil Fogg waited, without betraying any emotion.\" What does \"tranquil\" mean here?",
+      "choices": ["Calm and quiet", "Nervous", "Angry", "Puzzled and lost"],
+      "answer": 0,
+      "evidence": "The tranquil Fogg waited, without betraying any emotion."
+    },
+    {
+      "id": "around-the-world-in-80-days-13-11",
+      "type": "character",
+      "q": "When Sir Francis said they should go away, why did Fogg want to stay?",
+      "choices": ["He said he was not due at Allahabad until tomorrow before noon", "He said the guards would surely fall asleep before morning", "He said he had already paid the guide to finish the job", "He said he had made a bet that he would save the woman"],
+      "answer": 0,
+      "evidence": "I am only due at Allahabad tomorrow before noon."
+    },
+    {
+      "id": "around-the-world-in-80-days-13-12",
+      "type": "detail",
+      "q": "Where was Passepartout while he worked out his idea?",
+      "choices": ["Hiding behind the funeral pyre", "Lying beside the sleeping elephant", "Perched on the lower branches of a tree", "Crouching by the stream near the pagoda"],
+      "answer": 2,
+      "evidence": "perched himself on the lower branches of a tree"
+    },
+    {
+      "id": "around-the-world-in-80-days-13-13",
+      "type": "detail",
+      "q": "When Sir Francis grabbed Mr. Fogg's hand at dawn, what did he find in it?",
+      "choices": ["A pistol", "An open knife", "A small torch", "A coil of rope"],
+      "answer": 1,
+      "evidence": "found in it an open knife"
+    },
+    {
+      "id": "around-the-world-in-80-days-13-14",
+      "type": "inference",
+      "q": "Who was really the \"rajah\" who rose from the pyre and carried the woman away?",
+      "choices": ["The old rajah, who had not been dead after all", "Passepartout, who had slipped onto the pyre in the smoke", "The Parsee guide, wearing the rajah's robes", "Sir Francis, who had crept around behind the crowd"],
+      "answer": 1,
+      "evidence": "It was Passepartout himself, who had slipped upon the pyre"
+    },
+    {
+      "id": "around-the-world-in-80-days-13-15",
+      "type": "detail",
+      "q": "How did the party know their trick had been discovered as they rode away?",
+      "choices": ["A ball whizzed through Phileas Fogg's hat", "The elephant was hit by an arrow in the leg", "The priests blew horns all through the forest", "Soldiers on horses blocked the road ahead"],
+      "answer": 0,
+      "evidence": "a ball which whizzed through Phileas Fogg's hat"
+    },
+    {
+      "id": "around-the-world-in-80-days-13-16",
+      "type": "main-idea",
+      "q": "What is this chapter mostly about?",
+      "choices": ["Fogg buying an elephant to cross a gap in the railway", "The daring rescue of Aouda from the funeral pyre", "Sir Francis telling the history of the pagoda of Pillaji", "Passepartout being arrested for entering a temple"],
+      "answer": 1,
+      "evidence": "had delivered the young woman from death"
+    }
+  ]
+}

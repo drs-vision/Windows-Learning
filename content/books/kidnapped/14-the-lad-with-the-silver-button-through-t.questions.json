@@ -1,0 +1,150 @@
+{
+  "book": "kidnapped",
+  "chapter": 14,
+  "questions": [
+    {
+      "id": "kidnapped-14-01",
+      "type": "detail",
+      "q": "How did David find his way to the first house on the Ross of Mull?",
+      "choices": ["He followed a road marked with stones", "He aimed for the smoke he had seen from the island", "He followed the fishers who had rescued him", "He walked along the rocky shore until he saw a lamp burning"],
+      "answer": 1,
+      "evidence": "I aimed as well as I could for the smoke I had seen so often from the island"
+    },
+    {
+      "id": "kidnapped-14-02",
+      "type": "detail",
+      "q": "What news did the old gentleman at the house give David about his shipmates?",
+      "choices": ["That they had all been drowned in the wreck", "That they had come ashore safe and eaten in that house", "That red-coats had arrested them on the beach", "That they had all sailed away to Ireland in the ship's skiff"],
+      "answer": 1,
+      "evidence": "my shipmates had got safe ashore, and had broken bread in that very house"
+    },
+    {
+      "id": "kidnapped-14-03",
+      "type": "inference",
+      "q": "Why did David smile when told the first man was bareheaded?",
+      "choices": ["He guessed Alan had hidden his fine hat from the rain", "He thought Alan looked foolish without a hat", "He knew it meant Alan had sold his hat for food", "He was glad that Alan had finally stopped being so vain about clothes"],
+      "answer": 0,
+      "evidence": "I judged it more likely he had it out of harm's way under his great-coat"
+    },
+    {
+      "id": "kidnapped-14-04",
+      "type": "detail",
+      "q": "What message had been left for \"the lad with the silver button\"?",
+      "choices": ["To wait at the house until Alan came back", "To follow his friend to his country, by Torosay", "To take the next boat from Iona back home to Queensferry", "To find Mr. Campbell the minister in Essendean"],
+      "answer": 1,
+      "evidence": "you are to follow your friend to his country, by Torosay"
+    },
+    {
+      "id": "kidnapped-14-05",
+      "type": "character",
+      "q": "How did the old gentleman and his wife treat David?",
+      "choices": ["They fed him and then asked for most of his money", "They fed him, let him sleep, and would take no money", "They gave him a bed but sent him off before dawn", "They were afraid of him and spoke to him through the door"],
+      "answer": 1,
+      "evidence": "would take no money"
+    },
+    {
+      "id": "kidnapped-14-06",
+      "type": "inference",
+      "q": "David thinks, \"If these are the wild Highlanders, I could wish my own folk wilder.\" What does he mean?",
+      "choices": ["He wishes Lowlanders were as kind as these people", "He thinks the Highlanders are much too rough", "He wishes his own people were braver in battle", "He fears the Highlanders will soon turn wild on him"],
+      "answer": 0,
+      "evidence": "I could wish my own folk wilder"
+    },
+    {
+      "id": "kidnapped-14-07",
+      "type": "detail",
+      "q": "Why were people on Mull dressed in such strange mixtures of clothes?",
+      "choices": ["The Highland dress had been forbidden by law", "A fire had burned most of the island's cloth", "It was the custom for a summer festival", "Traders had stopped bringing cloth to the island"],
+      "answer": 0,
+      "evidence": "The Highland dress being forbidden by law since the rebellion"
+    },
+    {
+      "id": "kidnapped-14-08",
+      "type": "detail",
+      "q": "How did the Highland beggars differ from the Lowland beggars David knew?",
+      "choices": ["They stood on their dignity and would give no change", "They begged only for bread and never for money", "They sang songs and played pipes for every coin", "They followed travellers for miles and would not leave"],
+      "answer": 0,
+      "evidence": "these Highland beggars stood on their dignity"
+    },
+    {
+      "id": "kidnapped-14-09",
+      "type": "detail",
+      "q": "What made the man at the lone house suddenly able to speak English?",
+      "choices": ["David spoke to him in French", "David held up a guinea", "His wife scolded him for being rude", "David showed him Alan's silver button"],
+      "answer": 1,
+      "evidence": "held up one of my guineas in my finger and thumb"
+    },
+    {
+      "id": "kidnapped-14-10",
+      "type": "detail",
+      "q": "Why did David and his guide spend a whole night at Hector Maclean's house?",
+      "choices": ["A storm made the road to Torosay too dangerous", "The guide got merry on punch and refused to start", "Maclean needed a full day to gather and count out the silver", "David was too ill with his sore throat to walk"],
+      "answer": 1,
+      "evidence": "my rascal guide grew so merry that he refused to start"
+    },
+    {
+      "id": "kidnapped-14-11",
+      "type": "sequence",
+      "q": "After taking two more shillings and walking about two miles, what did the guide do?",
+      "choices": ["Ran off back toward Maclean's house", "Sat down and took off his brogues to rest", "Led David straight into a deep bog", "Called some friends to rob David"],
+      "answer": 1,
+      "evidence": "he sat down upon the wayside and took off his brogues from his feet"
+    },
+    {
+      "id": "kidnapped-14-12",
+      "type": "detail",
+      "q": "How did the fight between David and the guide end?",
+      "choices": ["The guide cut David's arm with the knife and ran off into the hills", "David knocked him down and took his knife and brogues", "Hector Maclean arrived and stopped them fighting", "David gave in and paid him three more shillings"],
+      "answer": 1,
+      "evidence": "I picked up both that and his brogues"
+    },
+    {
+      "id": "kidnapped-14-13",
+      "type": "vocabulary",
+      "q": "The guide \"took off his brogues from his feet,\" and David later leaves him \"barefoot.\" What are brogues?",
+      "choices": ["Stockings", "Shoes", "Leg wraps", "Spurs"],
+      "answer": 1,
+      "evidence": "leaving him barefoot and disarmed"
+    },
+    {
+      "id": "kidnapped-14-14",
+      "type": "detail",
+      "q": "What did David notice that made him distrust the blind catechist?",
+      "choices": ["A pistol butt sticking out of his coat-pocket", "A purse full of stolen guineas at his belt", "A red-coat's badge pinned inside his cloak", "A knife hidden inside the top of his staff"],
+      "answer": 0,
+      "evidence": "I saw the steel butt of a pistol sticking from under the flap of his coat-pocket"
+    },
+    {
+      "id": "kidnapped-14-15",
+      "type": "inference",
+      "q": "Why did the blind man keep edging up to David and asking if he was rich?",
+      "choices": ["He wanted to rob David", "He wanted David to be his servant", "He wanted to take David to church", "He was trying to find his way by touch"],
+      "answer": 0,
+      "evidence": "whether I was rich"
+    },
+    {
+      "id": "kidnapped-14-16",
+      "type": "character",
+      "q": "How did David finally get rid of the blind catechist?",
+      "choices": ["He ran away from him across a bog", "He said he would shoot him with his own pistol", "He paid him a dram of brandy to go away", "He asked a passing drover to send him off"],
+      "answer": 1,
+      "evidence": "I had a pistol in my pocket as well as he"
+    },
+    {
+      "id": "kidnapped-14-17",
+      "type": "detail",
+      "q": "What did the innkeeper at Torosay tell David about the blind man, Duncan Mackiegh?",
+      "choices": ["That he was a harmless teacher loved by all the children", "That he was a very dangerous man accused of robbery and murder", "That he was really a spy working secretly for the Campbells of Mull", "That he was not truly blind but only pretended to be"],
+      "answer": 1,
+      "evidence": "That is a very dangerous man"
+    },
+    {
+      "id": "kidnapped-14-18",
+      "type": "main-idea",
+      "q": "What is this chapter mostly about?",
+      "choices": ["David's journey across Mull, meeting both kind people and rogues", "David searching every village on Mull for the lost crew", "David working on a farm to earn money for a boat home", "David and Alan hiding together from soldiers on Mull"],
+      "answer": 0,
+      "evidence": "having travelled the greater part of that big and crooked Island of Mull, from Earraid to Torosay"
+    }
+  ]
+}

@@ -1,0 +1,150 @@
+{
+  "book": "jungle-book",
+  "chapter": 3,
+  "questions": [
+    {
+      "id": "jungle-book-03-01",
+      "type": "main-idea",
+      "q": "What is this part of the story mostly about?",
+      "choices": ["The monkeys carry Mowgli off, and his friends ask Kaa to help rescue him", "Mowgli learns the Master Words and then teaches them to the wolf cubs", "Baloo and Bagheera argue so badly that Mowgli runs away to the man village", "Kaa the Rock Python hunts the monkeys after they steal his young"],
+      "answer": 0,
+      "evidence": "Our man-cub is in the hands of the Bandar-log now"
+    },
+    {
+      "id": "jungle-book-03-02",
+      "type": "detail",
+      "q": "What is the answer to the Strangers' Hunting Call?",
+      "choices": ["Hunt then for food, but not for pleasure", "We be of one blood, ye and I", "Give me leave to hunt here because I am hungry", "Good hunting go with you, O brother"],
+      "answer": 0,
+      "evidence": "Hunt then for food, but not for pleasure."
+    },
+    {
+      "id": "jungle-book-03-03",
+      "type": "character",
+      "q": "Why did Baloo say he hit Mowgli, very softly, when the boy forgot his lessons?",
+      "choices": ["He would rather bruise him than see him harmed through not knowing", "He was tired of repeating every single lesson a hundred times over", "He wanted to show Bagheera which of them was the real teacher", "He thought the man-cub was lazy and needed to work harder"],
+      "answer": 0,
+      "evidence": "Better he should be bruised from head to foot by me who love him than that he should come to harm through ignorance"
+    },
+    {
+      "id": "jungle-book-03-04",
+      "type": "detail",
+      "q": "What are the Master Words for the Hunting People?",
+      "choices": ["We be of one blood, ye and I", "Feet that make no noise in the dark", "Give me leave to hunt here", "Mark my trail and tell my friends"],
+      "answer": 0,
+      "evidence": "We be of one blood, ye and I"
+    },
+    {
+      "id": "jungle-book-03-05",
+      "type": "detail",
+      "q": "Who helped Mowgli get the Snake Word, because Baloo could not say it?",
+      "choices": ["Hathi the Wild Elephant", "Kaa the Rock Python", "Rann the Kite", "Ikki the Porcupine"],
+      "answer": 0,
+      "evidence": "Hathi had taken Mowgli down to a pool to get the Snake Word from a water-snake"
+    },
+    {
+      "id": "jungle-book-03-06",
+      "type": "inference",
+      "q": "When Baloo said no one was to be feared, Bagheera whispered, \"Except his own tribe.\" What did he mean?",
+      "choices": ["The wolves of Mowgli's own Pack might one day turn on him", "The monkeys were planning to steal Mowgli that very day", "Mowgli's human family might one day come to take him back", "Baloo himself was the greatest danger to the boy"],
+      "answer": 0,
+      "evidence": "Except his own tribe"
+    },
+    {
+      "id": "jungle-book-03-07",
+      "type": "detail",
+      "q": "Why did Mowgli first go off with the gray apes?",
+      "choices": ["Baloo had hurt his head and the apes seemed to pity him", "He was lost in the trees and they offered to lead him home", "Bagheera had told him to go and learn the monkeys' speech", "He was hungry, and the apes had promised to show him honey"],
+      "answer": 0,
+      "evidence": "When Baloo hurt my head"
+    },
+    {
+      "id": "jungle-book-03-08",
+      "type": "detail",
+      "q": "What did the Monkey People promise Mowgli?",
+      "choices": ["That he would be their leader some day", "That they would teach him to swing by his tail", "That they would protect him from Shere Khan", "That they would show him the way to men"],
+      "answer": 0,
+      "evidence": "should be their leader some day"
+    },
+    {
+      "id": "jungle-book-03-09",
+      "type": "character",
+      "q": "According to Baloo, what is one big thing wrong with the Bandar-log?",
+      "choices": ["They have no law and no leaders, and they forget everything", "They hunt only cattle and bring men with guns into the jungle", "They eat young wolf cubs whenever the Pack is out hunting", "They speak only the language of men and no jungle tongue"],
+      "answer": 0,
+      "evidence": "They have no law. They are outcasts."
+    },
+    {
+      "id": "jungle-book-03-10",
+      "type": "vocabulary",
+      "q": "Baloo calls the monkeys \"outcasts.\" What is an outcast?",
+      "choices": ["Someone shut out and rejected by everyone else", "Someone who travels far away from home to hunt", "Someone who leads a large and powerful group", "Someone who is too young to follow the Law"],
+      "answer": 0,
+      "evidence": "They are outcasts."
+    },
+    {
+      "id": "jungle-book-03-11",
+      "type": "inference",
+      "q": "Why did the monkeys want to keep Mowgli in their tribe?",
+      "choices": ["He could weave sticks together, and they hoped he would teach them", "They wanted to trade him to Shere Khan for a share of his kills", "They hoped Baloo would teach them the Law if they held his pupil", "They needed someone tall enough to reach the highest coconuts"],
+      "answer": 0,
+      "evidence": "he could weave sticks together for protection from the wind"
+    },
+    {
+      "id": "jungle-book-03-12",
+      "type": "sequence",
+      "q": "When did the monkeys grab Mowgli?",
+      "choices": ["During the midday nap, as he slept between Baloo and Bagheera", "At night, while the wolves were away at the Council Rock", "In the morning, as he swam alone in a forest pool", "At sunset, while Baloo was teaching him the Wood Laws"],
+      "answer": 0,
+      "evidence": "slept between the Panther and the Bear"
+    },
+    {
+      "id": "jungle-book-03-13",
+      "type": "detail",
+      "q": "How did Mowgli send a message to his friends while the monkeys carried him off?",
+      "choices": ["He called to Rann the Kite with the Master Words", "He dropped broken twigs to mark the trail below", "He shouted for Baloo again and again until his voice gave out", "He asked a bat to carry word back to the Pack"],
+      "answer": 0,
+      "evidence": "Mark my trail!"
+    },
+    {
+      "id": "jungle-book-03-14",
+      "type": "detail",
+      "q": "Why could Bagheera not follow the monkeys up into the trees?",
+      "choices": ["The thin branches broke under his weight", "Baloo held him back and begged him to wait", "The monkeys threw nuts into his eyes", "He was afraid of falling so far down"],
+      "answer": 0,
+      "evidence": "the thin branches broke beneath his weight"
+    },
+    {
+      "id": "jungle-book-03-15",
+      "type": "detail",
+      "q": "Why did Baloo decide they should go to Kaa for help?",
+      "choices": ["Kaa can climb, and the Bandar-log fear him more than anyone", "Kaa knows the way to every hidden city in the whole jungle", "Kaa is Mowgli's old friend and owes the boy a great favor", "Kaa can move faster than any other creature through the grass"],
+      "answer": 0,
+      "evidence": "they, the Bandar-log, fear Kaa the Rock Snake"
+    },
+    {
+      "id": "jungle-book-03-16",
+      "type": "detail",
+      "q": "What had Kaa been doing for the ten days before Baloo and Bagheera found him?",
+      "choices": ["Changing his skin", "Sleeping off a big meal", "Hunting the Bandar-log", "Hiding from the hunters"],
+      "answer": 0,
+      "evidence": "he had been in retirement for the last ten days changing his skin"
+    },
+    {
+      "id": "jungle-book-03-17",
+      "type": "character",
+      "q": "Why did Bagheera tell Kaa the rude names the monkeys had called him?",
+      "choices": ["To make Kaa angry enough to go after the monkeys", "To warn Kaa that the monkeys planned to attack him", "To show Kaa that the monkeys were cleverer than snakes", "To make Kaa laugh before they asked him for a favor"],
+      "answer": 0,
+      "evidence": "Bagheera went on sweetly"
+    },
+    {
+      "id": "jungle-book-03-18",
+      "type": "detail",
+      "q": "According to Rann the Kite, where had the Bandar-log taken Mowgli?",
+      "choices": ["To the monkey city called the Cold Lairs, beyond the river", "To the top of the Council Rock where the wolves of the Pack meet", "To the man village at the edge of the plowed fields", "To Shere Khan's den near the banks of the Waingunga"],
+      "answer": 0,
+      "evidence": "to the monkey city--to the Cold Lairs"
+    }
+  ]
+}

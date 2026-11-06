@@ -1,0 +1,150 @@
+{
+  "book": "kidnapped",
+  "chapter": 19,
+  "questions": [
+    {
+      "id": "kidnapped-19-01",
+      "type": "detail",
+      "q": "Why did Alan stop at houses along the way during the night, even while fleeing?",
+      "choices": ["To beg for food", "To pass on the news of the murder", "To ask the people which road the soldiers had taken", "To collect the second rent for Ardshiel one last time"],
+      "answer": 1,
+      "evidence": "This was to pass the news"
+    },
+    {
+      "id": "kidnapped-19-02",
+      "type": "detail",
+      "q": "Which valley does David later think they may have come to at dawn?",
+      "choices": ["Glencoe", "Glen Lyon", "The Ross", "Lochaber"],
+      "answer": 0,
+      "evidence": "it may have been the valley called Glencoe"
+    },
+    {
+      "id": "kidnapped-19-03",
+      "type": "character",
+      "q": "How did David react when he found himself standing on the small middle rock in the river?",
+      "choices": ["He laughed and jumped ahead of Alan", "He felt sick with fear and covered his eyes", "He sat down and refused to go on at all", "He shouted for help to some people up on the far bank"],
+      "answer": 1,
+      "evidence": "there came on me a deadly sickness of fear, and I put my hand over my eyes"
+    },
+    {
+      "id": "kidnapped-19-04",
+      "type": "sequence",
+      "q": "What did Alan do just before he shouted \"Hang or drown!\" and leaped across?",
+      "choices": ["He tied his belt around David's waist", "He made David drink some brandy", "He threw his sword across to the bank", "He pointed out the soldiers on the hill"],
+      "answer": 1,
+      "evidence": "Alan had set the brandy bottle to my lips"
+    },
+    {
+      "id": "kidnapped-19-05",
+      "type": "detail",
+      "q": "What happened when David leaped across the far branch of the river?",
+      "choices": ["He landed safely on both feet beside Alan", "Only his hands reached, and Alan dragged him up", "He fell into the water and swam to the bank", "He slipped back onto the middle rock and waited there for help"],
+      "answer": 1,
+      "evidence": "Alan seized me, first by the hair, then by the collar"
+    },
+    {
+      "id": "kidnapped-19-06",
+      "type": "detail",
+      "q": "How did Alan finally get up onto the top of the two great rocks?",
+      "choices": ["By climbing a small birch tree that grew beside them", "By standing on David's shoulders and leaping", "By throwing his belt over a point of stone", "By finding a crack that ran to the top"],
+      "answer": 1,
+      "evidence": "by standing on my shoulders and leaping up"
+    },
+    {
+      "id": "kidnapped-19-07",
+      "type": "detail",
+      "q": "Why were the two leaning rocks such a good hiding place?",
+      "choices": ["They had a cave underneath where a fire could be lit", "Their tops made a hollow dish where men could lie hidden", "They stood out in the river, so that no soldier could ever reach them", "A spring of cool water ran out from between them"],
+      "answer": 1,
+      "evidence": "made a kind of dish or saucer, where as many as three or four men might have lain hidden"
+    },
+    {
+      "id": "kidnapped-19-08",
+      "type": "character",
+      "q": "What did Alan say when David was ashamed of his poor jumping?",
+      "choices": ["That a real Highlander would never have been afraid", "That being afraid and doing it anyway makes a fine man", "That David must practise his jumping every single day from now on", "That he would leave David behind the next time"],
+      "answer": 1,
+      "evidence": "To be feared of a thing and yet to do it, is what makes the prettiest kind of a man"
+    },
+    {
+      "id": "kidnapped-19-09",
+      "type": "detail",
+      "q": "What two mistakes did Alan blame himself for?",
+      "choices": ["Taking a wrong road and forgetting a water-bottle", "Losing the oatmeal and leaving his sword behind", "Telling James their plan and trusting the boatman", "Sleeping too long and making too much noise"],
+      "answer": 0,
+      "evidence": "I have come wanting a water-bottle"
+    },
+    {
+      "id": "kidnapped-19-10",
+      "type": "vocabulary",
+      "q": "Alan says, \"I have proved myself a gomeral this night,\" and then lists his mistakes. What is a \"gomeral\"?",
+      "choices": ["A hero", "A fool", "A guide", "A coward"],
+      "answer": 1,
+      "evidence": "I have proved myself a gomeral this night"
+    },
+    {
+      "id": "kidnapped-19-11",
+      "type": "detail",
+      "q": "Why did Alan put his hand over David's mouth at about nine in the morning?",
+      "choices": ["David was snoring", "David was crying out in a bad dream", "David was about to sneeze", "David was humming"],
+      "answer": 0,
+      "evidence": "Ye were snoring"
+    },
+    {
+      "id": "kidnapped-19-12",
+      "type": "detail",
+      "q": "What did David see in the valley when he looked over the edge of the rock?",
+      "choices": ["A camp of red-coats with sentries posted along the river", "A band of Campbells with dogs searching every rock", "Farmers cutting hay in the fields near the river", "A long line of emigrants walking toward the coast"],
+      "answer": 0,
+      "evidence": "About half a mile up the water was a camp of red-coats"
+    },
+    {
+      "id": "kidnapped-19-13",
+      "type": "vocabulary",
+      "q": "Alan says they must \"lie here and birstle,\" and then the sun beats on them all day. What does \"birstle\" mean here?",
+      "choices": ["Sleep quietly", "Roast in the heat", "Keep watch", "Hide from the rain"],
+      "answer": 1,
+      "evidence": "like scones upon a girdle"
+    },
+    {
+      "id": "kidnapped-19-14",
+      "type": "inference",
+      "q": "Why does David find it strange to suffer on the rock that day?",
+      "choices": ["He had always loved hot summer weather back home", "Only days before, he had suffered from cold on his island", "He had never been outdoors for a whole day before", "Alan had promised him that the rock would be cool"],
+      "answer": 1,
+      "evidence": "first from cold upon my island and now from heat upon this rock"
+    },
+    {
+      "id": "kidnapped-19-15",
+      "type": "detail",
+      "q": "What did the English soldier say when he touched the rock where they lay?",
+      "choices": ["\"There's somebody up there\"", "\"I tell you it's 'ot\"", "\"Search behind this one\"", "\"Fetch me some water\""],
+      "answer": 1,
+      "evidence": "I tell you it's 'ot"
+    },
+    {
+      "id": "kidnapped-19-16",
+      "type": "sequence",
+      "q": "What did Alan and David do at about two in the afternoon, when the heat was beyond bearing?",
+      "choices": ["They ran straight down to the river to drink", "They slipped down into the shade on the far side of the rock", "They gave themselves up to the nearest sentry", "They covered themselves with bracken and stayed put on top of the rock"],
+      "answer": 1,
+      "evidence": "slipped over the edge and dropped on the ground on the shadowy side"
+    },
+    {
+      "id": "kidnapped-19-17",
+      "type": "detail",
+      "q": "What is \"drammach,\" which they made after drinking at the burn?",
+      "choices": ["Cold water mixed with oatmeal", "Brandy warmed over a small fire", "Oat-cakes baked on a hot stone", "Fish boiled in the iron pan"],
+      "answer": 0,
+      "evidence": "it is but cold water mingled with oatmeal"
+    },
+    {
+      "id": "kidnapped-19-18",
+      "type": "main-idea",
+      "q": "What is this chapter mostly about?",
+      "choices": ["Alan and David hiding from soldiers on a scorching rock and then escaping", "Alan and David being caught by soldiers in Glencoe and breaking free", "David leaving Alan behind and going on alone to the Lowlands", "Alan teaching David to fight with a sword while they wait"],
+      "answer": 0,
+      "evidence": "we drew steadily away from their neighbourhood"
+    }
+  ]
+}

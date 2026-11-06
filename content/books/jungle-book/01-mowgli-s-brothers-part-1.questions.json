@@ -1,0 +1,150 @@
+{
+  "book": "jungle-book",
+  "chapter": 1,
+  "questions": [
+    {
+      "id": "jungle-book-01-01",
+      "type": "detail",
+      "q": "Where does the story begin, as Father Wolf wakes up from his day's rest?",
+      "choices": ["In the Seeonee hills", "Beside the Waingunga River", "At the Council Rock", "In a village rubbish-heap"],
+      "answer": 0,
+      "evidence": "a very warm evening in the Seeonee hills"
+    },
+    {
+      "id": "jungle-book-01-02",
+      "type": "character",
+      "q": "Why do the wolves of India despise Tabaqui the jackal?",
+      "choices": ["He makes mischief, tells tales and eats rags from rubbish-heaps", "He steals the wolves' kills and gives them to the tiger to eat", "He hunts the wolf cubs whenever their parents are away", "He breaks the Law of the Jungle by hunting cattle in the villages"],
+      "answer": 0,
+      "evidence": "he runs about making mischief, and telling tales"
+    },
+    {
+      "id": "jungle-book-01-03",
+      "type": "inference",
+      "q": "Why did Tabaqui praise the wolf cubs to their parents' faces?",
+      "choices": ["He knew it was unlucky and liked making the wolves uncomfortable", "He hoped the wolves would let him live in the cave with them", "He truly thought the cubs were the finest he had ever seen", "He wanted Father Wolf to share the next night's hunt with him"],
+      "answer": 0,
+      "evidence": "It pleased him to see Mother and Father Wolf look uncomfortable."
+    },
+    {
+      "id": "jungle-book-01-04",
+      "type": "detail",
+      "q": "Why did Mother Wolf say Shere Khan had only ever killed cattle?",
+      "choices": ["He was lame in one foot from birth", "He was too old to chase deer", "He was afraid of the wolf pack", "He liked the taste of village cows"],
+      "answer": 0,
+      "evidence": "He has been lame in one foot from his birth."
+    },
+    {
+      "id": "jungle-book-01-05",
+      "type": "detail",
+      "q": "According to the Law of the Jungle, what is the real reason beasts must not eat Man?",
+      "choices": ["Man-killing brings men with guns, gongs and torches, and then everyone suffers", "Man is too clever to be caught, so hunting him wastes a whole night", "Men are protected by the Pack Council and the wolves would punish the killer", "Man's meat makes every beast in the jungle go mad with the dewanee"],
+      "answer": 0,
+      "evidence": "man-killing means, sooner or later, the arrival of white men on elephants"
+    },
+    {
+      "id": "jungle-book-01-06",
+      "type": "detail",
+      "q": "How did Shere Khan miss his prey and hurt himself?",
+      "choices": ["He jumped at a woodcutter's campfire and burned his feet", "He fell into a hidden trap and cut his paw", "He slipped on the riverbank and twisted his leg", "He ran into a thorn bush and scratched his face"],
+      "answer": 0,
+      "evidence": "jump at a woodcutter's campfire, and has burned his feet"
+    },
+    {
+      "id": "jungle-book-01-07",
+      "type": "detail",
+      "q": "What did the baby do when he first looked up into Father Wolf's face?",
+      "choices": ["He laughed", "He cried loudly for his mother", "He ran back into the bushes", "He hid behind a low branch"],
+      "answer": 0,
+      "evidence": "He looked up into Father Wolf's face, and laughed."
+    },
+    {
+      "id": "jungle-book-01-08",
+      "type": "vocabulary",
+      "q": "Shere Khan says, \"My quarry. A man's cub went this way.\" What does \"quarry\" mean here?",
+      "choices": ["An animal or person being hunted", "A place where stone is dug out", "A meal shared with a friend", "A gift owed to a leader"],
+      "answer": 0,
+      "evidence": "My quarry. A man's cub went this way"
+    },
+    {
+      "id": "jungle-book-01-09",
+      "type": "inference",
+      "q": "Why could Shere Khan not simply walk in and take the baby from the wolves?",
+      "choices": ["The cave mouth was too narrow for a tiger to come in", "Tabaqui warned him that the whole Pack was hiding inside", "His burned feet were too sore for him to climb up the hill", "Baloo and Bagheera were guarding the cave entrance that night"],
+      "answer": 0,
+      "evidence": "the mouth of the cave was too narrow for a tiger to come in by"
+    },
+    {
+      "id": "jungle-book-01-10",
+      "type": "character",
+      "q": "What did Mother Wolf, called Raksha the Demon, tell Shere Khan the man's cub would do in the end?",
+      "choices": ["Hunt Shere Khan himself", "Lead the whole Seeonee Pack", "Go back to live among men", "Become Tabaqui's master"],
+      "answer": 0,
+      "evidence": "he shall hunt thee"
+    },
+    {
+      "id": "jungle-book-01-11",
+      "type": "detail",
+      "q": "Why did Mother Wolf choose the name Mowgli for the baby?",
+      "choices": ["It means the Frog", "It means the Brave One", "It was his human parents' name for him", "It means Little Brother of the wolves"],
+      "answer": 0,
+      "evidence": "for Mowgli the Frog I will call thee"
+    },
+    {
+      "id": "jungle-book-01-12",
+      "type": "detail",
+      "q": "By the Law of the Jungle, why must a wolf bring his young cubs to the Pack Council?",
+      "choices": ["So the other wolves can identify them", "So they can be given their hunting names", "So the leader can pick the strongest ones", "So they can learn the Law from Baloo"],
+      "answer": 0,
+      "evidence": "in order that the other wolves may identify them"
+    },
+    {
+      "id": "jungle-book-01-13",
+      "type": "character",
+      "q": "What do we learn about Akela, the leader of the Pack?",
+      "choices": ["He had been trapped twice and beaten once, so he knew the ways of men", "He was the youngest wolf ever to lead the Seeonee Pack by his strength", "He was Shere Khan's old friend and often hunted beside the great tiger", "He was Father Wolf's brother and had raised him from a little cub"],
+      "answer": 0,
+      "evidence": "He had fallen twice into a wolf trap in his youth"
+    },
+    {
+      "id": "jungle-book-01-14",
+      "type": "detail",
+      "q": "Why could Baloo the bear come and go as he pleased, even at the Pack Council?",
+      "choices": ["He eats only nuts, roots and honey", "He is the oldest animal in the jungle", "He is stronger than any wolf in the Pack", "He once saved Akela's life in a fight"],
+      "answer": 0,
+      "evidence": "he eats only nuts and roots and honey"
+    },
+    {
+      "id": "jungle-book-01-15",
+      "type": "sequence",
+      "q": "At the Council, what happened right after Baloo spoke for the man's cub?",
+      "choices": ["Bagheera dropped into the circle and offered a bull for him", "Shere Khan leaped into the circle and tried to seize him", "Mother Wolf sprang forward to fight the young wolves", "Akela accepted Mowgli and sent the whole Pack home"],
+      "answer": 0,
+      "evidence": "A black shadow dropped down into the circle."
+    },
+    {
+      "id": "jungle-book-01-16",
+      "type": "vocabulary",
+      "q": "The wolves made \"a clamor of scores of voices.\" What is a clamor?",
+      "choices": ["A loud noise of many people talking at once", "A quiet whisper passed slowly from ear to ear", "A long silence while everyone thinks hard", "A song that the wolves sing at the full moon"],
+      "answer": 0,
+      "evidence": "There was a clamor of scores of voices"
+    },
+    {
+      "id": "jungle-book-01-17",
+      "type": "detail",
+      "q": "What one thing did Bagheera tell Mowgli he must never kill or eat, and why?",
+      "choices": ["Cattle, because he was bought into the Pack with a bull's life", "Deer, because the Pack needed them for food in the long winter", "Monkeys, because they are cousins of men and know their language", "Fish, because Baloo said they belong to the River and its people"],
+      "answer": 0,
+      "evidence": "he must never touch cattle because he had been bought into the Pack at the price of a bull's life"
+    },
+    {
+      "id": "jungle-book-01-18",
+      "type": "main-idea",
+      "q": "What is this part of the story mostly about?",
+      "choices": ["How a lost man's cub was saved and accepted into the wolf pack", "How the wolves drove Shere Khan away from the Seeonee hills forever", "How Tabaqui the jackal went mad and attacked the wolves' cave", "How Mowgli learned to hunt and later became leader of the Pack"],
+      "answer": 0,
+      "evidence": "And that is how Mowgli was entered into the Seeonee Wolf Pack"
+    }
+  ]
+}

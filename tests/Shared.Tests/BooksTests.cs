@@ -18,12 +18,13 @@ public class BooksTests
     private static List<int> RightAnswers(List<Quiz.ShownQuestion> shown) => shown.Select(s => s.Choices.IndexOf("right")).ToList();
 
     [Fact]
-    public void Library_loads_books_sorted_by_grade()
+    public void Library_loads_books_sorted_by_level()
     {
         var lib = new BookLibrary(BooksRoot());
         var books = lib.Books();
         Assert.Contains(books, b => b.Id == "peter-rabbit");
-        Assert.True(books.Zip(books.Skip(1)).All(p => p.First.Grade.Min <= p.Second.Grade.Min));
+        Assert.All(books, b => Assert.True(b.Level >= 1));
+        Assert.True(books.Zip(books.Skip(1)).All(p => p.First.Level <= p.Second.Level));
         Assert.NotEmpty(lib.Questions("peter-rabbit", 1));
         Assert.All(lib.Parts("peter-rabbit", 1), p => Assert.DoesNotContain('\n', p));
     }
@@ -64,7 +65,8 @@ public class BooksTests
         var g = Quiz.Grade(p, bank, p.Quiz!.Id, answers, new HashSet<string>(), TimeSpan.FromMinutes(10), now);
         Assert.True(g.Passed);
         Assert.Equal(7, g.Correct);
-        Assert.Equal(0, Quiz.BonusLeft(p, bank)); // all 10 were in the quiz
+        Assert.Equal(0, Quiz.BonusLeft(p, bank, 10)); // all 10 were in the quiz
+        Assert.Equal((7, 10), (p.FirstCorrect, p.FirstTotal));
     }
 
     [Fact]
@@ -76,11 +78,24 @@ public class BooksTests
         var g = Quiz.Grade(p, bank, p.Quiz!.Id, answers, new HashSet<string> { shown[0].Id }, TimeSpan.FromMinutes(10), now);
         Assert.Equal(3, g.Total);
         Assert.Equal(3, g.Correct);
-        Assert.Equal(2, Quiz.BonusLeft(p, bank));
-        var b = Quiz.NextBonus(p, bank, new Random(1), now)!;
+        Assert.Equal(2, Quiz.BonusLeft(p, bank, 4));
+        var b = Quiz.NextBonus(p, bank, 4, new Random(1), now)!;
         var (right, pos) = Quiz.AnswerBonus(p, bank, b.Id, b.Choices.IndexOf("right"));
         Assert.True(right);
         Assert.Equal(b.Choices.IndexOf("right"), pos);
-        Assert.Equal(1, Quiz.BonusLeft(p, bank));
+        Assert.Equal(1, Quiz.BonusLeft(p, bank, 4));
+    }
+
+    [Fact]
+    public void Bonus_is_never_more_than_the_quiz_and_a_chapter_pays_once()
+    {
+        var bank = Bank(12); var p = new ChapterProgress(); var now = DateTimeOffset.Now; var rng = new Random(4);
+        var shown = Quiz.Start(p, bank, 4, rng, now);
+        Assert.True(Quiz.Grade(p, bank, p.Quiz!.Id, RightAnswers(shown), new HashSet<string>(), TimeSpan.FromMinutes(5), now).Passed);
+        Assert.Equal(4, Quiz.BonusLeft(p, bank, 4)); // 8 unseen, but no more bonus than the quiz had
+        for (var i = 0; i < 4; i++) { var b = Quiz.NextBonus(p, bank, 4, rng, now)!; Quiz.AnswerBonus(p, bank, b.Id, 0); }
+        Assert.Equal(0, Quiz.BonusLeft(p, bank, 4));
+        Assert.Null(Quiz.NextBonus(p, bank, 4, rng, now));
+        Assert.Throws<InvalidOperationException>(() => Quiz.Start(p, bank, 4, rng, now)); // passed: no second payout
     }
 }

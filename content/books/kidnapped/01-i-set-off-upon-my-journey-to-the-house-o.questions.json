@@ -1,0 +1,188 @@
+{
+  "book": "kidnapped",
+  "chapter": 1,
+  "questions": [
+    {
+      "id": "kidnapped-01-01",
+      "type": "detail",
+      "q": "In what year does David begin the story of his adventures?",
+      "choices": [
+        "1762",
+        "1745",
+        "1751",
+        "1707"
+      ],
+      "answer": 2,
+      "evidence": "the year of grace 1751"
+    },
+    {
+      "id": "kidnapped-01-02",
+      "type": "detail",
+      "q": "Who was waiting for David by the garden gate of the manse?",
+      "choices": [
+        "The new dominie who would run the school",
+        "Mr. Campbell, the minister of Essendean",
+        "His uncle Ebenezer Balfour of Shaws",
+        "Mrs. Campbell with a basket of food"
+      ],
+      "answer": 1,
+      "evidence": "Mr. Campbell, the minister of Essendean, was waiting for me"
+    },
+    {
+      "id": "kidnapped-01-03",
+      "type": "detail",
+      "q": "Why is David leaving Essendean?",
+      "choices": [
+        "His father has sent him to find work",
+        "He wants to join the army in Edinburgh",
+        "He has been sent away from the school",
+        "Both of his parents have died"
+      ],
+      "answer": 3,
+      "evidence": "since they are both dead"
+    },
+    {
+      "id": "kidnapped-01-04",
+      "type": "detail",
+      "q": "What did David's father leave for him, which he called David's inheritance?",
+      "choices": [
+        "A map showing the way to Cramond",
+        "A letter to be taken to the house of Shaws",
+        "The deed to the schoolhouse at Essendean",
+        "A small purse of gold coins and a ring"
+      ],
+      "answer": 1,
+      "evidence": "he gave me in charge a certain letter, which he said was your inheritance"
+    },
+    {
+      "id": "kidnapped-01-05",
+      "type": "detail",
+      "q": "To whom was the letter addressed?",
+      "choices": [
+        "The minister of the kirk at Cramond parish",
+        "Ebenezer Balfour, Esquire, of Shaws",
+        "Mr. Campbell of Kilrennet",
+        "Alexander Balfour of Edinburgh"
+      ],
+      "answer": 1,
+      "evidence": "To the hands of Ebenezer Balfour, Esquire, of Shaws"
+    },
+    {
+      "id": "kidnapped-01-06",
+      "type": "detail",
+      "q": "How old is David when he sets off on his journey?",
+      "choices": [
+        "Fourteen",
+        "Seventeen",
+        "Twelve",
+        "Twenty-one"
+      ],
+      "answer": 1,
+      "evidence": "a lad of seventeen years of age"
+    },
+    {
+      "id": "kidnapped-01-07",
+      "type": "inference",
+      "q": "What did Mr. Campbell say David could do if his relations at Shaws turned him away?",
+      "choices": [
+        "Look for work as a teacher in Edinburgh",
+        "Walk the two days back and come to the manse",
+        "Write a letter to the minister asking for money",
+        "Take a ship from Cramond to find his fortune"
+      ],
+      "answer": 1,
+      "evidence": "ye can but walk the two days back again and risp at the manse door"
+    },
+    {
+      "id": "kidnapped-01-08",
+      "type": "vocabulary",
+      "q": "Mr. Campbell tells David, \"Be soople, Davie, in things immaterial.\" What does \"soople\" mean here?",
+      "choices": [
+        "Proud and ready to stand up for yourself",
+        "Quick to run away from any danger",
+        "Willing to bend and go along with others",
+        "Careful to keep your money hidden"
+      ],
+      "answer": 2,
+      "evidence": "Be soople, Davie, in things immaterial"
+    },
+    {
+      "id": "kidnapped-01-09",
+      "type": "detail",
+      "q": "What was the \"round\" gift in Mr. Campbell's little packet?",
+      "choices": [
+        "A ball of sealing wax",
+        "A wooden button",
+        "A shilling piece",
+        "A small silver watch"
+      ],
+      "answer": 2,
+      "evidence": "That which he had called round, I found to be a shilling piece"
+    },
+    {
+      "id": "kidnapped-01-10",
+      "type": "detail",
+      "q": "What was the \"cubical\" gift that Mr. Campbell hoped would see David \"into a better land\"?",
+      "choices": [
+        "A small block of cheese",
+        "A little Bible",
+        "A box of medicine",
+        "A carved wooden box"
+      ],
+      "answer": 1,
+      "evidence": "sure enough it was a little Bible"
+    },
+    {
+      "id": "kidnapped-01-11",
+      "type": "detail",
+      "q": "What was written on the flat, square piece of yellow paper?",
+      "choices": [
+        "A list of David's relations at Shaws",
+        "Directions for the road from Essendean to Cramond",
+        "A prayer to keep travellers safe on a journey",
+        "A recipe for lily of the valley water"
+      ],
+      "answer": 3,
+      "evidence": "TO MAKE LILLY OF THE VALLEY WATER"
+    },
+    {
+      "id": "kidnapped-01-12",
+      "type": "character",
+      "q": "Why did David's conscience smite him after Mr. Campbell ran off?",
+      "choices": [
+        "He had forgotten to thank Mrs. Campbell for her gifts",
+        "He had sold his father's books for far too little money",
+        "The minister was sad, but David was glad to leave",
+        "He had lied to the minister about breakfast"
+      ],
+      "answer": 2,
+      "evidence": "I, for my part, was overjoyed to get away"
+    },
+    {
+      "id": "kidnapped-01-13",
+      "type": "sequence",
+      "q": "What was the last thing David looked back at as he left?",
+      "choices": [
+        "The big boulder under the birch by the trackside",
+        "Kirk Essendean, the manse and the kirkyard",
+        "The ford where Mr. Campbell had turned back home",
+        "His father's house on Essen-Waterside"
+      ],
+      "answer": 1,
+      "evidence": "I took my last look of Kirk Essendean"
+    },
+    {
+      "id": "kidnapped-01-14",
+      "type": "main-idea",
+      "q": "What is this chapter mostly about?",
+      "choices": [
+        "David and the minister quarrelling over money",
+        "David arriving at a great, busy house near Edinburgh",
+        "David leaving his home village for the house of Shaws",
+        "David learning that his father was secretly a rich laird"
+      ],
+      "answer": 2,
+      "evidence": "start him off to the house of Shaws"
+    }
+  ]
+}

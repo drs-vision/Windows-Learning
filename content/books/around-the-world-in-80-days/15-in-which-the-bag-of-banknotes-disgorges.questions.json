@@ -1,0 +1,134 @@
+{
+  "book": "around-the-world-in-80-days",
+  "chapter": 15,
+  "questions": [
+    {
+      "id": "around-the-world-in-80-days-15-01",
+      "type": "detail",
+      "q": "What happened just as Mr. Fogg was leaving the Calcutta station?",
+      "choices": ["Fix walked up and asked to share a carriage to the docks", "A policeman asked him and his servant to follow him", "The captain of the Rangoon came to meet him", "Aouda's relative arrived to take her home"],
+      "answer": 1,
+      "evidence": "Be so good, both of you, as to follow me."
+    },
+    {
+      "id": "around-the-world-in-80-days-15-02",
+      "type": "character",
+      "q": "Why did Mr. Fogg obey the policeman without any fuss?",
+      "choices": ["He was afraid of being beaten with the stick", "He thought the policeman was a friend of Fix", "To an Englishman, the law is sacred", "He wanted to see the city before the ship left"],
+      "answer": 2,
+      "evidence": "law is sacred to an Englishman"
+    },
+    {
+      "id": "around-the-world-in-80-days-15-03",
+      "type": "character",
+      "q": "What did Aouda say to Mr. Fogg once they were locked in the room?",
+      "choices": ["That he must leave her, since he was in trouble for saving her", "That her relative in Calcutta would surely pay for a good lawyer to help", "That she would tell the judge what the priests had done", "That she wanted to go back to Bombay by herself"],
+      "answer": 0,
+      "evidence": "Sir, you must leave me to my fate!"
+    },
+    {
+      "id": "around-the-world-in-80-days-15-04",
+      "type": "vocabulary",
+      "q": "\"We shall be on board by noon,\" replied his master, placidly. What does \"placidly\" mean here?",
+      "choices": ["Angrily and loudly", "Calmly, without worry", "Sadly, almost in tears", "Quickly, in a rush"],
+      "answer": 1,
+      "evidence": "replied his master, placidly"
+    },
+    {
+      "id": "around-the-world-in-80-days-15-05",
+      "type": "detail",
+      "q": "What funny mix-up happened when Judge Obadiah came into court?",
+      "choices": ["He sat in the clerk's chair by mistake", "He put on his clerk's wig instead of his own", "He called out the wrong prisoner's name first of all", "He forgot his glasses and could not read"],
+      "answer": 1,
+      "evidence": "This is not my wig!"
+    },
+    {
+      "id": "around-the-world-in-80-days-15-06",
+      "type": "inference",
+      "q": "Why did Passepartout watch the big clock over the judge so nervously?",
+      "choices": ["He was hungry and wanted lunch at noon", "The steamer for Hong Kong was leaving at noon", "Fix had told him the trial would last all day", "He had promised to meet Aouda's cousin at ten"],
+      "answer": 1,
+      "evidence": "But the steamer leaves at noon!"
+    },
+    {
+      "id": "around-the-world-in-80-days-15-07",
+      "type": "sequence",
+      "q": "Who came into the court-room as the complainants?",
+      "choices": ["Three Indian priests", "Sir Francis Cromarty and the guide", "The rajah's guards from Pillaji", "Fix and the British consul"],
+      "answer": 0,
+      "evidence": "three Indian priests entered"
+    },
+    {
+      "id": "around-the-world-in-80-days-15-08",
+      "type": "inference",
+      "q": "Fogg and Passepartout first thought the charge was about the rescue at Pillaji. What was it really about?",
+      "choices": ["Buying an elephant without a proper permit", "Passepartout entering the pagoda on Malabar Hill in Bombay", "Riding on a railway line that was not finished", "Leaving their Bombay hotel without paying the bill for their rooms"],
+      "answer": 1,
+      "evidence": "but of the pagoda of Malabar Hill, at Bombay"
+    },
+    {
+      "id": "around-the-world-in-80-days-15-09",
+      "type": "detail",
+      "q": "What proof did the clerk put on his desk?",
+      "choices": ["Passepartout's lost straw hat", "A pair of shoes left behind", "A torn piece of his coat", "His ticket from the train"],
+      "answer": 1,
+      "evidence": "here are the desecrator's very shoes"
+    },
+    {
+      "id": "around-the-world-in-80-days-15-10",
+      "type": "character",
+      "q": "Why was Passepartout's cry of \"My shoes!\" a mistake?",
+      "choices": ["It made the crowd laugh and angered the judge", "It admitted that he was the one who had entered the pagoda", "It woke Aouda, who had fallen asleep on the bench", "It told Fix exactly where the carpet-bag full of banknotes was kept"],
+      "answer": 1,
+      "evidence": "permitting this imprudent exclamation to escape him"
+    },
+    {
+      "id": "around-the-world-in-80-days-15-11",
+      "type": "detail",
+      "q": "How had Fix set up the arrest in Calcutta?",
+      "choices": ["He promised the Bombay priests money and sent them to Calcutta", "He wrote to the judge pretending to be one of the priests from Pillaji", "He paid the policeman to invent a charge against Fogg", "He followed Fogg on the elephant and told the guards"],
+      "answer": 0,
+      "evidence": "he promised them a goodly sum in damages"
+    },
+    {
+      "id": "around-the-world-in-80-days-15-12",
+      "type": "detail",
+      "q": "What sentence did the judge give Passepartout?",
+      "choices": ["A week in prison and a fine of 150 pounds", "Fifteen days in prison and a fine of 300 pounds", "Thirty days in prison and no fine at all", "A fine of 1,000 pounds but no prison"],
+      "answer": 1,
+      "evidence": "imprisonment for fifteen days and a fine of three hundred pounds"
+    },
+    {
+      "id": "around-the-world-in-80-days-15-13",
+      "type": "inference",
+      "q": "Why was Fix pleased when Fogg was sentenced to a week in prison?",
+      "choices": ["The warrant would have time to arrive while Fogg was held", "He would get to keep the fines that Fogg paid", "He could take the next ship to Hong Kong ahead of Fogg", "He would finally be able to search Fogg's carpet-bag"],
+      "answer": 0,
+      "evidence": "it would be more than time for the warrant to arrive"
+    },
+    {
+      "id": "around-the-world-in-80-days-15-14",
+      "type": "sequence",
+      "q": "How did Fogg avoid going to prison?",
+      "choices": ["He proved to the judge that the shoes belonged to someone else", "He offered bail and paid 1,000 pounds for each of them", "He asked the British consul to set them free", "He escaped through the barred window of the room"],
+      "answer": 1,
+      "evidence": "I offer bail."
+    },
+    {
+      "id": "around-the-world-in-80-days-15-15",
+      "type": "detail",
+      "q": "What was Passepartout's joke about his shoes when they were handed back?",
+      "choices": ["They were worth more than a thousand pounds apiece and pinched his feet", "They were the only things he had managed to keep from all of India so far", "They would bring him luck for the rest of the voyage", "They were far too big and he would give them to Fix"],
+      "answer": 0,
+      "evidence": "More than a thousand pounds apiece; besides, they pinch my feet."
+    },
+    {
+      "id": "around-the-world-in-80-days-15-16",
+      "type": "main-idea",
+      "q": "What is this chapter mostly about?",
+      "choices": ["Fogg being tried in Calcutta for Passepartout's act in Bombay, and paying bail to leave", "Passepartout rescuing Aouda for a second time from the priests of Pillaji", "Fix finally arresting Fogg after the warrant arrives from London", "Aouda telling the judge the story of her life in Bombay"],
+      "answer": 0,
+      "evidence": "Meanwhile, you are liberated on bail."
+    }
+  ]
+}

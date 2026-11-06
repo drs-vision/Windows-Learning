@@ -1,0 +1,158 @@
+{
+  "book": "around-the-world-in-80-days",
+  "chapter": 11,
+  "questions": [
+    {
+      "id": "around-the-world-in-80-days-11-01",
+      "type": "detail",
+      "q": "Who sat opposite Fogg and Passepartout in the train carriage?",
+      "choices": ["Fix, the detective", "Sir Francis Cromarty", "The Rev. Decimus Smith", "The British consul at Suez"],
+      "answer": 1,
+      "evidence": "This was Sir Francis Cromarty, one of Mr. Fogg's whist partners on the Mongolia"
+    },
+    {
+      "id": "around-the-world-in-80-days-11-02",
+      "type": "detail",
+      "q": "Where was Sir Francis Cromarty travelling to?",
+      "choices": ["Calcutta, to sail home to England", "Benares, to join his corps", "Allahabad, to visit his family", "Bombay, to meet the governor"],
+      "answer": 1,
+      "evidence": "now on his way to join his corps at Benares"
+    },
+    {
+      "id": "around-the-world-in-80-days-11-03",
+      "type": "inference",
+      "q": "The narrator says Fogg \"was not travelling, but only describing a circumference.\" What does this mean?",
+      "choices": ["He was drawing careful maps of every country he passed", "He was only going around the globe, not learning about the places", "He was measuring the exact size of the earth for a learned society", "He was travelling in circles because he had lost his way"],
+      "answer": 1,
+      "evidence": "who was not travelling, but only describing a circumference, took no pains to inquire into these subjects"
+    },
+    {
+      "id": "around-the-world-in-80-days-11-04",
+      "type": "character",
+      "q": "What did Sir Francis wonder about Fogg?",
+      "choices": ["Whether a human heart really beat beneath his cold exterior", "Whether he had ever served as a soldier in the English army", "Whether he was secretly the thief who robbed the Bank", "Whether he could be beaten at a game of whist"],
+      "answer": 0,
+      "evidence": "whether a human heart really beat beneath this cold exterior"
+    },
+    {
+      "id": "around-the-world-in-80-days-11-05",
+      "type": "detail",
+      "q": "What delay did Sir Francis say Fogg would have met at the mountains some years before?",
+      "choices": ["The trains used to wait a full day for the mail", "Passengers had to cross on ponies or in palanquins", "The line was often blocked by deep snow in winter", "Travellers needed special passes to enter the hills"],
+      "answer": 1,
+      "evidence": "which the passengers were obliged to cross in palanquins or on ponies to Kandallah"
+    },
+    {
+      "id": "around-the-world-in-80-days-11-06",
+      "type": "character",
+      "q": "Why did Fogg say Passepartout's trouble at the pagoda could not have delayed him?",
+      "choices": ["He had already paid the priests for the lost shoes", "Passepartout would be punished and go home, and Fogg would go on", "Sir Francis would surely speak to the Government on their behalf", "The priests did not know which train they had taken"],
+      "answer": 1,
+      "evidence": "I don't see how this affair could have delayed his master."
+    },
+    {
+      "id": "around-the-world-in-80-days-11-07",
+      "type": "detail",
+      "q": "What did Passepartout buy at Burhampoor?",
+      "choices": ["A new silver watch", "Indian slippers decorated with false pearls", "A straw hat to keep off the sun", "A blanket to wrap his feet in on the long train ride"],
+      "answer": 1,
+      "evidence": "Indian slippers, ornamented with false pearls"
+    },
+    {
+      "id": "around-the-world-in-80-days-11-08",
+      "type": "character",
+      "q": "How had Passepartout's feelings about the journey changed by this point?",
+      "choices": ["He now believed in the bet and worried about any delay", "He was now sure that the journey would end in Calcutta", "He was now tired of travelling and wanted to go home", "He now thought his master was the bank robber after all"],
+      "answer": 0,
+      "evidence": "He came to regard his master's project as intended in good earnest, believed in the reality of the bet"
+    },
+    {
+      "id": "around-the-world-in-80-days-11-09",
+      "type": "detail",
+      "q": "What did Passepartout blame Fogg for not doing on the train?",
+      "choices": ["Buying first-class tickets", "Bribing the engineer", "Sending a telegram ahead", "Hiring a faster special train"],
+      "answer": 1,
+      "evidence": "mentally blaming Mr. Fogg for not having bribed the engineer"
+    },
+    {
+      "id": "around-the-world-in-80-days-11-10",
+      "type": "inference",
+      "q": "Why was Passepartout's watch now at least four hours slow?",
+      "choices": ["It had been damaged in the fight at the pagoda", "It still showed London time as they went east", "He had forgotten to wind it since leaving Suez", "Sir Francis had set it wrong as a joke"],
+      "answer": 1,
+      "evidence": "always regulated on the Greenwich meridian, which was now some seventy-seven degrees westward"
+    },
+    {
+      "id": "around-the-world-in-80-days-11-11",
+      "type": "detail",
+      "q": "Why did the train stop at the hamlet of Kholby?",
+      "choices": ["The engine had run out of English coal", "The railway was not finished to Allahabad", "A herd of elephants was blocking the track", "The bridge over the river had been washed away"],
+      "answer": 1,
+      "evidence": "Certainly. The railway isn't finished."
+    },
+    {
+      "id": "around-the-world-in-80-days-11-12",
+      "type": "detail",
+      "q": "How many miles of track were still missing between Kholby and Allahabad?",
+      "choices": ["Five", "Fifty", "Fifteen", "Five hundred"],
+      "answer": 1,
+      "evidence": "There's still a matter of fifty miles to be laid from here to Allahabad"
+    },
+    {
+      "id": "around-the-world-in-80-days-11-13",
+      "type": "character",
+      "q": "Why wasn't Fogg upset when he learned the railway stopped at Kholby?",
+      "choices": ["He had read about the gap in the newspapers in London", "He had expected some obstacle and had two days to spare", "He planned to complain to the company and get his money back", "He knew Sir Francis could order a special train for them"],
+      "answer": 1,
+      "evidence": "I have two days, which I have already gained, to sacrifice."
+    },
+    {
+      "id": "around-the-world-in-80-days-11-14",
+      "type": "vocabulary",
+      "q": "The newspapers \"had been premature in their announcement\" that the line was complete. What does premature mean here?",
+      "choices": ["Too early", "Too angry", "Too long", "Too quiet"],
+      "answer": 0,
+      "evidence": "had been premature in their announcement of the completion of the line"
+    },
+    {
+      "id": "around-the-world-in-80-days-11-15",
+      "type": "sequence",
+      "q": "What did Fogg say he would do after searching the village and finding no vehicle?",
+      "choices": ["Wait at Kholby for the line to be finished", "Go back to Bombay and take a steamer", "Go on foot", "Ride with the other passengers in a waggon"],
+      "answer": 2,
+      "evidence": "I shall go afoot"
+    },
+    {
+      "id": "around-the-world-in-80-days-11-16",
+      "type": "detail",
+      "q": "What was the name of the elephant Passepartout found?",
+      "choices": ["Kiouni", "Kholby", "Kandallah", "Kali"],
+      "answer": 0,
+      "evidence": "Kiouni--this was the name of the beast"
+    },
+    {
+      "id": "around-the-world-in-80-days-11-17",
+      "type": "detail",
+      "q": "How did Fogg finally get the elephant?",
+      "choices": ["He hired it for forty pounds an hour", "He bought it outright for two thousand pounds", "He traded his carpet-bag and silver watch for it", "Sir Francis ordered the owner to lend it"],
+      "answer": 1,
+      "evidence": "At two thousand pounds the Indian yielded."
+    },
+    {
+      "id": "around-the-world-in-80-days-11-18",
+      "type": "character",
+      "q": "Why was Fogg willing to pay so much for the elephant?",
+      "choices": ["He planned to sell it again for more money in Calcutta", "He wanted to give it as a gift to his friend Sir Francis Cromarty", "It was absolutely necessary to him with the bet at stake", "He had always wanted to own an elephant of his own"],
+      "answer": 2,
+      "evidence": "the elephant was absolutely necessary to him"
+    },
+    {
+      "id": "around-the-world-in-80-days-11-19",
+      "type": "main-idea",
+      "q": "What is this chapter mostly about?",
+      "choices": ["A gap in the railway forces Fogg to buy an elephant to keep going", "Passepartout is arrested for his trouble at the pagoda in Bombay", "Fogg and Sir Francis play whist all the way across India", "Fix finally catches up with Fogg on the train to Calcutta"],
+      "answer": 0,
+      "evidence": "in default of any other means of conveyance, Mr. Fogg resolved to hire him"
+    }
+  ]
+}

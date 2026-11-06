@@ -1,0 +1,70 @@
+{
+  "book": "around-the-world-in-80-days",
+  "chapter": 32,
+  "questions": [
+    {
+      "id": "around-the-world-in-80-days-32-01",
+      "type": "detail",
+      "q": "Why could the Hamburg boats not help Mr. Fogg?",
+      "choices": ["They did not leave until the 14th", "They went to Havre, not Liverpool or London", "They were too slow to cross in time", "They carried only heavy freight, not passengers"],
+      "answer": 1,
+      "evidence": "the Hamburg boats did not go directly to Liverpool or London, but to Havre"
+    },
+    {
+      "id": "around-the-world-in-80-days-32-02",
+      "type": "character",
+      "q": "How did Passepartout feel after they missed the China?",
+      "choices": ["Crushed, blaming himself for ruining his master", "Relieved that the long journey was finally over", "Angry at Fix for making them miss the boat", "Hopeful that a faster steamer would come along soon"],
+      "answer": 0,
+      "evidence": "he overwhelmed himself with bitter self-accusations"
+    },
+    {
+      "id": "around-the-world-in-80-days-32-03",
+      "type": "inference",
+      "q": "Mr. Fogg slept profoundly at the hotel while the others could not rest. What does this show about him?",
+      "choices": ["He had given up and no longer cared about the bet", "He stayed calm even when things looked hopeless", "He was ill and needed a great deal of sleep", "He had secretly already booked another steamer"],
+      "answer": 1,
+      "evidence": "Phileas Fogg, who slept profoundly"
+    },
+    {
+      "id": "around-the-world-in-80-days-32-04",
+      "type": "detail",
+      "q": "Where was the Henrietta bound when Mr. Fogg found her?",
+      "choices": ["Liverpool", "Bordeaux", "Southampton", "Havre"],
+      "answer": 1,
+      "evidence": "I am setting out for Bordeaux, and shall go to Bordeaux."
+    },
+    {
+      "id": "around-the-world-in-80-days-32-05",
+      "type": "character",
+      "q": "What did Captain Speedy think about carrying passengers?",
+      "choices": ["He liked them because they paid him well", "He never had them because they were too much in the way", "He took them only if they could help with the work", "He carried them only on his trips to China"],
+      "answer": 1,
+      "evidence": "Never have passengers. Too much in the way."
+    },
+    {
+      "id": "around-the-world-in-80-days-32-06",
+      "type": "vocabulary",
+      "q": "\"Up to this time money had smoothed away every obstacle. Now money failed.\" What is an obstacle?",
+      "choices": ["Something that blocks the way", "A large sum of borrowed money", "A friend who offers to help", "A ticket for a long sea journey"],
+      "answer": 0,
+      "evidence": "money had smoothed away every obstacle"
+    },
+    {
+      "id": "around-the-world-in-80-days-32-07",
+      "type": "sequence",
+      "q": "After the captain refused to go to Liverpool, what did Mr. Fogg do?",
+      "choices": ["Offered two thousand dollars each to go to Bordeaux", "Went back to the hotel to wait for the Inman steamer", "Hired a balloon to carry the whole party over the ocean", "Hurried back to the hotel to tell Aouda the bet was lost"],
+      "answer": 0,
+      "evidence": "I offer you two thousand."
+    },
+    {
+      "id": "around-the-world-in-80-days-32-08",
+      "type": "main-idea",
+      "q": "What is this chapter mostly about?",
+      "choices": ["Fogg finding a ship to cross the Atlantic after missing the China", "Fogg giving up the bet and settling down to live in New York", "Fix arresting Fogg as soon as he reaches the New York hotel", "Passepartout getting lost on Broadway and missing the ship at nine"],
+      "answer": 0,
+      "evidence": "Will you carry me and three other persons to Liverpool?"
+    }
+  ]
+}

@@ -1,0 +1,70 @@
+{
+  "book": "around-the-world-in-80-days",
+  "chapter": 8,
+  "questions": [
+    {
+      "id": "around-the-world-in-80-days-08-01",
+      "type": "detail",
+      "q": "How much of Paris had Passepartout been able to see?",
+      "choices": ["Only a rainy view through a carriage window", "A whole day of sights with his old friends", "The circus in the Champs Elysees one evening", "Nothing, because they went around the city"],
+      "answer": 0,
+      "evidence": "through the windows of a car, and in a driving rain"
+    },
+    {
+      "id": "around-the-world-in-80-days-08-02",
+      "type": "detail",
+      "q": "Why did Passepartout need to go to a shop in Suez?",
+      "choices": ["To buy a newer, more exact watch", "To buy shoes and shirts", "To send a telegram home to Paris", "To buy food for the long voyage to Bombay"],
+      "answer": 1,
+      "evidence": "I must buy some shoes and shirts."
+    },
+    {
+      "id": "around-the-world-in-80-days-08-03",
+      "type": "inference",
+      "q": "Why did Passepartout's watch disagree with the time in Suez?",
+      "choices": ["It had been broken when he packed in a hurry", "It still showed London time, two hours behind", "His great-grandfather had always set it wrong", "It ran too fast whenever they were at sea"],
+      "answer": 1,
+      "evidence": "You have kept London time, which is two hours behind that of Suez."
+    },
+    {
+      "id": "around-the-world-in-80-days-08-04",
+      "type": "character",
+      "q": "When Fix said his watch would not agree with the sun, Passepartout replied, \"So much the worse for the sun.\" What does this show about him?",
+      "choices": ["He is stubborn and proud of his family watch", "He does not understand how clocks work at all", "He is angry with Fix and wants to end the talk", "He thinks the sun moves differently in Africa"],
+      "answer": 0,
+      "evidence": "returned the watch to its fob with a defiant gesture"
+    },
+    {
+      "id": "around-the-world-in-80-days-08-05",
+      "type": "detail",
+      "q": "What did Passepartout tell Fix about how long he had known his master?",
+      "choices": ["He had served Fogg faithfully for ten years", "He started work the day they left London", "He had known Fogg since they met in Paris", "He had worked for Fogg's family as a boy"],
+      "answer": 1,
+      "evidence": "I entered his service the very day we left London."
+    },
+    {
+      "id": "around-the-world-in-80-days-08-06",
+      "type": "inference",
+      "q": "Which of these things that Passepartout told Fix made Fix MORE sure that Fogg was the thief?",
+      "choices": ["That Fogg played whist every evening", "That Fogg carried a huge sum in new banknotes", "That Fogg had a servant who was a Frenchman", "That Fogg wanted to see the sights of Egypt"],
+      "answer": 1,
+      "evidence": "he is carrying an enormous sum in brand new banknotes with him"
+    },
+    {
+      "id": "around-the-world-in-80-days-08-07",
+      "type": "vocabulary",
+      "q": "Once he was fully convinced, Fix \"had quite recovered his equanimity.\" What is equanimity?",
+      "choices": ["Calmness", "Speed", "Money", "Courage"],
+      "answer": 0,
+      "evidence": "Fix had quite recovered his equanimity"
+    },
+    {
+      "id": "around-the-world-in-80-days-08-08",
+      "type": "sequence",
+      "q": "What did Fix do after leaving the consul at the end of the chapter?",
+      "choices": ["He arrested Fogg on the quay at Suez", "He sent a telegram and boarded the Mongolia", "He went back to the shop to find Passepartout", "He waited in Suez for the next steamer"],
+      "answer": 1,
+      "evidence": "repaired to the telegraph office, whence he sent the dispatch"
+    }
+  ]
+}

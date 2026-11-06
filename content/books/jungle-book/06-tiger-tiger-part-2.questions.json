@@ -1,0 +1,150 @@
+{
+  "book": "jungle-book",
+  "chapter": 6,
+  "questions": [
+    {
+      "id": "jungle-book-06-01",
+      "type": "detail",
+      "q": "Who was the \"wise helper\" Gray Brother had brought to help Mowgli?",
+      "choices": ["Akela", "Bagheera", "Baloo", "Kaa"],
+      "answer": 0,
+      "evidence": "Akela! Akela!"
+    },
+    {
+      "id": "jungle-book-06-02",
+      "type": "detail",
+      "q": "How did Mowgli ask the wolves to divide the buffalo herd?",
+      "choices": ["Cows and calves in one group, bulls and plow buffaloes in the other", "The oldest buffaloes in one group and the youngest in the other", "The fastest runners in one group and the slowest in the other", "Rama alone in one group and all the other buffaloes together"],
+      "answer": 0,
+      "evidence": "Keep the cows and calves together, and the bulls and the plow buffaloes by themselves."
+    },
+    {
+      "id": "jungle-book-06-03",
+      "type": "inference",
+      "q": "Why were the cow-buffaloes more dangerous than the bulls?",
+      "choices": ["They had calves to protect", "They had longer, sharper horns", "They were much bigger", "They had not eaten yet"],
+      "answer": 0,
+      "evidence": "for they had no calves to protect"
+    },
+    {
+      "id": "jungle-book-06-04",
+      "type": "sequence",
+      "q": "What did the other herd children do when the buffaloes crashed into the thicket?",
+      "choices": ["Ran to the village crying that the buffaloes had gone mad", "Climbed the nearest trees to hide from the charging bulls", "Followed Mowgli into the jungle to help him drive the herd", "Stayed quietly with their cattle and waited for the evening"],
+      "answer": 0,
+      "evidence": "crying that the buffaloes had gone mad and run away"
+    },
+    {
+      "id": "jungle-book-06-05",
+      "type": "detail",
+      "q": "What was Mowgli's plan for trapping Shere Khan?",
+      "choices": ["Catch him in the ravine between the bulls and the cows", "Lead him into a pit trap that the villagers had dug", "Drive him out onto the plain where Buldeo could shoot him", "Chase him into the river where he would be too slow"],
+      "answer": 0,
+      "evidence": "catch Shere Khan between the bulls and the cows"
+    },
+    {
+      "id": "jungle-book-06-06",
+      "type": "inference",
+      "q": "Why did it matter that the sides of the ravine ran nearly straight up and down?",
+      "choices": ["Shere Khan would not be able to climb out and escape", "The buffaloes would be able to run down it much faster", "Mowgli could hide on top without being seen", "The echoes would frighten the tiger into running"],
+      "answer": 0,
+      "evidence": "would give no foothold to a tiger who wanted to get out"
+    },
+    {
+      "id": "jungle-book-06-07",
+      "type": "character",
+      "q": "Why did Shere Khan run from the herd instead of fighting?",
+      "choices": ["He was heavy with his dinner and his drink", "He was still badly burned from the Red Flower", "He did not see the buffaloes until it was too late", "He hoped Tabaqui would come to his rescue"],
+      "answer": 0,
+      "evidence": "heavy with his dinner and his drink, willing to do anything rather than fight"
+    },
+    {
+      "id": "jungle-book-06-08",
+      "type": "detail",
+      "q": "How did Shere Khan die?",
+      "choices": ["The buffalo herd trampled him in the ravine", "Mowgli stabbed him with his knife", "Akela and Gray Brother pulled him down together", "Buldeo shot him with his old Tower musket"],
+      "answer": 0,
+      "evidence": "Shere Khan needed no more trampling. He was dead"
+    },
+    {
+      "id": "jungle-book-06-09",
+      "type": "detail",
+      "q": "Why did Buldeo want to singe Shere Khan's whiskers?",
+      "choices": ["To keep the tiger's ghost from haunting him", "To prove to the Government that he had killed it", "To make the skin easier to take off the body", "To keep the whiskers as a lucky charm"],
+      "answer": 0,
+      "evidence": "Most native hunters always singe a tiger's whiskers to prevent his ghost from haunting them."
+    },
+    {
+      "id": "jungle-book-06-10",
+      "type": "character",
+      "q": "What did Buldeo plan to do with Shere Khan's skin?",
+      "choices": ["Take it to Khanhiwara for the hundred-rupee reward", "Give it to the priest to hang in the village temple", "Keep it on the floor of his own hut as a rug", "Sell it to Messua's husband for a good price"],
+      "answer": 0,
+      "evidence": "when I have taken the skin to Khanhiwara"
+    },
+    {
+      "id": "jungle-book-06-11",
+      "type": "inference",
+      "q": "Why did Buldeo call Mowgli \"Great King\" while lying on the grass?",
+      "choices": ["He feared Mowgli was a sorcerer who could command wolves", "He had learned that Mowgli was the son of a real king", "He wanted to trick Mowgli into giving him the skin", "He was thanking Mowgli for killing the man-eating tiger"],
+      "answer": 0,
+      "evidence": "It was sorcery, magic of the worst kind, thought Buldeo"
+    },
+    {
+      "id": "jungle-book-06-12",
+      "type": "vocabulary",
+      "q": "Buldeo \"embroidered the story of his adventures.\" What does \"embroidered\" mean here?",
+      "choices": ["Added made-up details to make it more exciting", "Sewed a picture of the story onto a cloth", "Told it very quietly so that no one could hear", "Wrote it down carefully in a little book"],
+      "answer": 0,
+      "evidence": "Buldeo embroidered the story of his adventures in the jungle"
+    },
+    {
+      "id": "jungle-book-06-13",
+      "type": "sequence",
+      "q": "What happened when Mowgli brought the buffaloes back to the village gate?",
+      "choices": ["The villagers threw stones and called him a sorcerer", "The villagers cheered him for killing the lame tiger", "The priest gave him the hundred-rupee reward", "Messua's husband locked him inside the hut"],
+      "answer": 0,
+      "evidence": "Sorcerer! Wolf's brat! Jungle demon!"
+    },
+    {
+      "id": "jungle-book-06-14",
+      "type": "detail",
+      "q": "What did Buldeo's musket shot hit at the village gate?",
+      "choices": ["A young buffalo", "Mowgli's shoulder", "Akela's back leg", "The temple bell"],
+      "answer": 0,
+      "evidence": "a young buffalo bellowed in pain"
+    },
+    {
+      "id": "jungle-book-06-15",
+      "type": "character",
+      "q": "What did Messua believe about Mowgli?",
+      "choices": ["He was no sorcerer and had avenged her son Nathoo's death", "He really was a wizard who could turn himself into a wolf", "He had stolen one of the buffaloes and must be punished", "He should stay and let the priest make him a man again"],
+      "answer": 0,
+      "evidence": "I know thou hast avenged Nathoo's death"
+    },
+    {
+      "id": "jungle-book-06-16",
+      "type": "inference",
+      "q": "Why did Mowgli decide not to hurt the village after he was driven out?",
+      "choices": ["Messua had been kind to him", "Akela told him it was against the Law", "He was too tired from the long day", "He was afraid of Buldeo's musket"],
+      "answer": 0,
+      "evidence": "we will not hurt the village, for Messua was kind to me"
+    },
+    {
+      "id": "jungle-book-06-17",
+      "type": "detail",
+      "q": "What did Mowgli do with Shere Khan's hide at the Council Rock?",
+      "choices": ["Spread it on Akela's rock and pegged it down", "Gave it to Mother Wolf to line the floor of her cave", "Buried it beneath the stones of the hill", "Wore it over his shoulders like a cloak"],
+      "answer": 0,
+      "evidence": "pegged it down with four slivers of bamboo"
+    },
+    {
+      "id": "jungle-book-06-18",
+      "type": "main-idea",
+      "q": "What is this part of the story mostly about?",
+      "choices": ["Mowgli kills Shere Khan, keeps his promise, and is cast out by men and wolves", "Mowgli becomes the leader of the Seeonee Pack after the tiger is killed", "Buldeo the hunter tracks and shoots Shere Khan for the Government reward", "Mowgli makes peace with the villagers and goes on living with Messua"],
+      "answer": 0,
+      "evidence": "Man-Pack and Wolf-Pack have cast me out"
+    }
+  ]
+}

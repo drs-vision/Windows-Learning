@@ -1,0 +1,126 @@
+{
+  "book": "kidnapped",
+  "chapter": 16,
+  "questions": [
+    {
+      "id": "kidnapped-16-01",
+      "type": "detail",
+      "q": "How did David cross the Linnhe Loch into Appin?",
+      "choices": ["He paid for two public ferries across the water", "A fisherman from Henderland's flock took him in his boat", "Neil Roy Macrob rowed him over in the ferry-boat", "He walked the long way around the head of the loch on foot"],
+      "answer": 1,
+      "evidence": "he was one of his flock"
+    },
+    {
+      "id": "kidnapped-16-02",
+      "type": "detail",
+      "q": "What was the moving clump of scarlet David saw along the water-side?",
+      "choices": ["A herd of red deer coming down to drink", "Red soldiers coming from Fort William into Appin", "Women in red cloaks walking to the kirk", "Tartan plaids that the tenants had hung out to dry upon the bushes"],
+      "answer": 1,
+      "evidence": "it was some of the red soldiers coming from Fort William into Appin"
+    },
+    {
+      "id": "kidnapped-16-03",
+      "type": "character",
+      "q": "As David sat by the spring in the wood of Lettermore, what doubts troubled him?",
+      "choices": ["Whether he had enough money left to buy food", "Whether he should join an outlaw like Alan at all", "Whether he had taken the wrong road to Balachulish", "Whether the boatman would tell the soldiers about him"],
+      "answer": 1,
+      "evidence": "why I was going to join myself with an outlaw and a would-be murderer like Alan"
+    },
+    {
+      "id": "kidnapped-16-04",
+      "type": "detail",
+      "q": "Which four travellers came through the wood?",
+      "choices": ["A red-headed gentleman, a lawyer, a servant and a sheriff's officer", "Three red-coat soldiers and the captain who led them", "James of the Glens with two of his sons and a piper", "A minister, a schoolmaster, a drover and a beggar"],
+      "answer": 0,
+      "evidence": "knew him at once to be a sheriff's officer"
+    },
+    {
+      "id": "kidnapped-16-05",
+      "type": "inference",
+      "q": "What did the servant's tartan, in Campbell colours, show about his master?",
+      "choices": ["That his master was a poor tenant of Appin", "That his master was a Campbell in favour with the Government", "That his master had just come home from France", "That his master was an old and trusted friend of James of the Glens"],
+      "answer": 1,
+      "evidence": "I would have known the tartan to be of the Argyle (or Campbell) colours"
+    },
+    {
+      "id": "kidnapped-16-06",
+      "type": "detail",
+      "q": "What question did David ask the red-headed gentleman?",
+      "choices": ["The way to Aucharn", "The way to Balachulish", "Where Alan Breck was", "Where to find a ferry"],
+      "answer": 0,
+      "evidence": "I rose up from the bracken and asked him the way to Aucharn"
+    },
+    {
+      "id": "kidnapped-16-07",
+      "type": "detail",
+      "q": "Who turned out to be the red-headed gentleman David had stopped?",
+      "choices": ["Mungo, a lawyer from Edinburgh", "Colin Roy Campbell of Glenure, the Red Fox", "Hector Maclean, the rich man of Mull", "The sheriff of Argyle, come to arrest James Stewart"],
+      "answer": 1,
+      "evidence": "Colin Roy Campbell of Glenure, him they called the Red Fox"
+    },
+    {
+      "id": "kidnapped-16-08",
+      "type": "vocabulary",
+      "q": "Glenure says the lad \"speers if I am on the way to Aucharn.\" What does \"speers\" mean here?",
+      "choices": ["Shouts", "Asks", "Hopes", "Warns"],
+      "answer": 1,
+      "evidence": "speers if I am on the way to Aucharn"
+    },
+    {
+      "id": "kidnapped-16-09",
+      "type": "sequence",
+      "q": "What happened just as Glenure turned to look at the lawyer?",
+      "choices": ["The soldiers came marching around the bend", "A shot was fired from up the hill and he fell", "Alan Breck stepped out from behind a tree", "His horse took fright on the narrow track and threw him down"],
+      "answer": 1,
+      "evidence": "there came the shot of a firelock from higher up the hill"
+    },
+    {
+      "id": "kidnapped-16-10",
+      "type": "detail",
+      "q": "What did the man David saw running away up the hill look like?",
+      "choices": ["A big man in a black coat with metal buttons and a long gun", "A small man in a tartan kilt carrying a sword", "A red-headed man in a long green coat carrying a brace of pistols", "A thin old man with a white wig and a staff"],
+      "answer": 0,
+      "evidence": "He was a big man, in a black coat, with metal buttons, and carried a long fowling-piece"
+    },
+    {
+      "id": "kidnapped-16-11",
+      "type": "detail",
+      "q": "What did the lawyer shout to the soldiers about David?",
+      "choices": ["That David was the one who fired the shot", "Ten pounds if they took him, since he was an accomplice", "That David was a brave lad who should be helped", "That David must be shot on sight as a rebel and a Jacobite spy"],
+      "answer": 1,
+      "evidence": "Ten pounds if ye take that lad!"
+    },
+    {
+      "id": "kidnapped-16-12",
+      "type": "character",
+      "q": "Why did the lawyer's words fill David with \"quite a new kind of terror\"?",
+      "choices": ["He was afraid the soldiers would beat him", "He was now in danger of losing both his life and his good name", "He realized the lawyer knew his uncle Ebenezer", "He thought the murderer would come back for him"],
+      "answer": 1,
+      "evidence": "it is one thing to stand the danger of your life, and quite another to run the peril of both life and character"
+    },
+    {
+      "id": "kidnapped-16-13",
+      "type": "vocabulary",
+      "q": "A voice tells David to \"Jock in here among the trees.\" What does \"jock\" mean here?",
+      "choices": ["Run fast", "Duck", "Climb", "Hide your face"],
+      "answer": 1,
+      "evidence": "* Duck."
+    },
+    {
+      "id": "kidnapped-16-14",
+      "type": "inference",
+      "q": "Why did Alan keep standing up to his full height and looking back as they ran?",
+      "choices": ["He wanted the soldiers to see them and follow the wrong way", "He was trying to spot where the man who had shot Glenure was hiding", "He was looking for a safe path back down to the loch", "He was checking that David was still keeping up"],
+      "answer": 0,
+      "evidence": "every time he did so, there came a great far-away cheering and crying of the soldiers"
+    },
+    {
+      "id": "kidnapped-16-15",
+      "type": "main-idea",
+      "q": "What is the most important event in this chapter?",
+      "choices": ["David being robbed by a fisherman on the Linnhe Loch", "The Red Fox being shot, and David being blamed as an accomplice", "David finally reaching the house of James of the Glens", "Alan and David being captured by the soldiers"],
+      "answer": 1,
+      "evidence": "He's an accomplice"
+    }
+  ]
+}

@@ -1,0 +1,150 @@
+{
+  "book": "jungle-book",
+  "chapter": 4,
+  "questions": [
+    {
+      "id": "jungle-book-04-01",
+      "type": "detail",
+      "q": "What were the Cold Lairs?",
+      "choices": ["An old deserted city buried in the jungle", "A group of caves high in the cold mountains", "The winter den of the Seeonee wolf pack", "A deep pool where the water-snakes lived"],
+      "answer": 0,
+      "evidence": "an old deserted city, lost and buried in the jungle"
+    },
+    {
+      "id": "jungle-book-04-02",
+      "type": "inference",
+      "q": "Why did Bagheera and Kaa leave Baloo behind on the journey to the Cold Lairs?",
+      "choices": ["Baloo was too slow, and they dared not wait for him", "Baloo was needed to guard the wolf cubs at home", "Baloo was afraid of Kaa and refused to travel with him", "Baloo had gone to find Hathi and ask for his help"],
+      "answer": 0,
+      "evidence": "We dare not wait for thee."
+    },
+    {
+      "id": "jungle-book-04-03",
+      "type": "detail",
+      "q": "On the way to the Cold Lairs, where did Bagheera get ahead of Kaa?",
+      "choices": ["At a hill stream, which he leaped across while Kaa swam", "On a steep hillside, where the snake slid back down", "In thick bamboo, where Kaa's long body got stuck", "On level ground, where his four feet were fastest"],
+      "answer": 0,
+      "evidence": "When they came to a hill stream, Bagheera gained"
+    },
+    {
+      "id": "jungle-book-04-04",
+      "type": "character",
+      "q": "How did the monkeys treat the ruined city they called their own?",
+      "choices": ["They pretended to be men but never knew what the buildings were for", "They kept it clean and repaired the old walls just as men had done", "They guarded it carefully and let no other animals come inside", "They used its rooms wisely to store food for the dry season"],
+      "answer": 0,
+      "evidence": "they never knew what the buildings were made for nor how to use them"
+    },
+    {
+      "id": "jungle-book-04-05",
+      "type": "sequence",
+      "q": "What happened when the monkeys tried to copy Mowgli weaving creepers?",
+      "choices": ["They lost interest in a few minutes and began to play", "They learned quickly and built a shelter from the rain", "They tore up his work and made him start all over", "They asked him to teach them every night for a week"],
+      "answer": 0,
+      "evidence": "in a very few minutes they lost interest"
+    },
+    {
+      "id": "jungle-book-04-06",
+      "type": "detail",
+      "q": "Why did Mowgli go hungry in the Cold Lairs?",
+      "choices": ["The monkeys sent for fruit but fought on the way and never brought it", "The monkeys ate all the nuts themselves and laughed at the hungry boy", "There was no food at all growing anywhere in the old ruined city", "Mowgli would not eat the monkeys' food because it was against the Law"],
+      "answer": 0,
+      "evidence": "they fell to fighting on the road"
+    },
+    {
+      "id": "jungle-book-04-07",
+      "type": "character",
+      "q": "What did Mowgli decide about Baloo's warnings while he wandered through the empty city?",
+      "choices": ["Everything Baloo said about the Bandar-log was true", "Baloo had been unfair to the friendly Monkey People", "Baloo should have taught him the monkeys' Master Word", "Baloo would never come to find him in such a far place"],
+      "answer": 0,
+      "evidence": "All that Baloo has said about the Bandar-log is true"
+    },
+    {
+      "id": "jungle-book-04-08",
+      "type": "detail",
+      "q": "What did the monkeys keep shouting to prove they were wonderful?",
+      "choices": ["This is true; we all say so", "We be of one blood, ye and I", "Good hunting to all the jungle", "The jungle has noticed us at last"],
+      "answer": 0,
+      "evidence": "This is true; we all say so."
+    },
+    {
+      "id": "jungle-book-04-09",
+      "type": "inference",
+      "q": "Why did Bagheera and Kaa wait for the cloud to cover the moon before attacking?",
+      "choices": ["The dark would help them attack the many monkeys by surprise", "They needed time for Baloo to catch up and join them", "Kaa could not see well at night just after changing his skin", "They hoped the monkeys would fall asleep when it grew dark"],
+      "answer": 0,
+      "evidence": "When that cloud covers the moon I shall go to the terrace"
+    },
+    {
+      "id": "jungle-book-04-10",
+      "type": "detail",
+      "q": "Where did the monkeys put Mowgli once Bagheera attacked?",
+      "choices": ["Down through a broken dome into the old summer-house", "Into a deep dry well in the middle of the city square", "Up into the highest tower on the crumbling west wall", "Inside a dark tunnel that led beneath the king's palace"],
+      "answer": 0,
+      "evidence": "pushed him through the hole of the broken dome"
+    },
+    {
+      "id": "jungle-book-04-11",
+      "type": "detail",
+      "q": "Why did the cobras in the summer-house not hurt Mowgli?",
+      "choices": ["He gave them the Snake's Call", "Kaa had ordered them to protect him", "They were all fast asleep in the rubbish", "He kept perfectly still and they never saw him"],
+      "answer": 0,
+      "evidence": "said Mowgli, quickly giving the Snake's Call"
+    },
+    {
+      "id": "jungle-book-04-12",
+      "type": "detail",
+      "q": "What advice did Mowgli shout to Bagheera during the fight?",
+      "choices": ["Roll to the water tanks", "Climb up onto the wall", "Run back into the jungle", "Call for Hathi the elephant"],
+      "answer": 0,
+      "evidence": "Roll to the water tanks."
+    },
+    {
+      "id": "jungle-book-04-13",
+      "type": "inference",
+      "q": "Why did Baloo chuckle when he heard Bagheera give the Snake's Call from the tank?",
+      "choices": ["The proud Black Panther was having to ask for help", "Bagheera had said the Snake's Call all wrong", "The monkeys had all run away from Bagheera at once", "Bagheera was soaking wet and looked very silly"],
+      "answer": 0,
+      "evidence": "could not help chuckling as he heard the Black Panther asking for help"
+    },
+    {
+      "id": "jungle-book-04-14",
+      "type": "vocabulary",
+      "q": "Mowgli hooted owl-fashion \"to show his derision and contempt.\" What does \"derision\" mean?",
+      "choices": ["Mocking laughter", "Great fear and terror", "Thanks and gratitude", "Deep sadness"],
+      "answer": 0,
+      "evidence": "to show his derision and contempt"
+    },
+    {
+      "id": "jungle-book-04-15",
+      "type": "detail",
+      "q": "How did Kaa get Mowgli out of the summer-house?",
+      "choices": ["He smashed a weak spot in the marble screen with his head", "He lowered his long tail through the broken dome for a rope", "He told the cobras to show Mowgli the secret passage out", "He wrapped his coils around the dome and pulled it down"],
+      "answer": 0,
+      "evidence": "sent home half a dozen full-power smashing blows, nose-first"
+    },
+    {
+      "id": "jungle-book-04-16",
+      "type": "vocabulary",
+      "q": "Kaa says Mowgli has \"a brave heart and a courteous tongue.\" What does \"courteous\" mean?",
+      "choices": ["Polite and respectful", "Sharp and quick to argue", "Shy and very quiet", "Loud and boastful"],
+      "answer": 0,
+      "evidence": "A brave heart and a courteous tongue"
+    },
+    {
+      "id": "jungle-book-04-17",
+      "type": "sequence",
+      "q": "During Kaa's Hunger Dance, what happened to Baloo and Bagheera?",
+      "choices": ["They stepped toward Kaa with the monkeys until Mowgli touched them", "They fell fast asleep and had to be carried home by Mowgli", "They ran off in fear before the dance had really begun", "They joined Kaa in hunting the monkeys along the walls"],
+      "answer": 0,
+      "evidence": "Baloo and Bagheera took one stiff step forward with them"
+    },
+    {
+      "id": "jungle-book-04-18",
+      "type": "main-idea",
+      "q": "What lesson does the end of the story teach about the Law of the Jungle?",
+      "choices": ["Wrongdoing is punished, and then the matter is settled for good", "The strongest animal is always allowed to do whatever it likes", "Friends should never ask a snake for help, whatever happens", "A young cub is never punished, no matter what he has done"],
+      "answer": 0,
+      "evidence": "punishment settles all scores. There is no nagging afterward."
+    }
+  ]
+}

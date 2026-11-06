@@ -2,12 +2,14 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "title": "CoinQuest book",
   "type": "object",
-  "required": ["id", "title", "author", "published", "grade", "summary", "source", "publicDomain", "chapters"],
+  "required": ["id", "title", "author", "published", "level", "grade", "summary", "source", "publicDomain", "chapters"],
   "properties": {
     "id": { "type": "string", "pattern": "^[a-z0-9-]+$" },
     "title": { "type": "string" },
     "author": { "type": "string" },
     "published": { "type": "integer", "maximum": 1930 },
+    "level": { "type": "integer", "minimum": 1, "description": "Reading level the child sees (1 = easiest). Books at about the same difficulty share a level." },
+    "edited": { "type": "string", "description": "If the public-domain text was changed, what and why." },
     "grade": {
       "type": "object", "required": ["min", "max", "label"],
       "properties": { "min": { "type": "integer", "minimum": 0, "maximum": 12 }, "max": { "type": "integer", "minimum": 0, "maximum": 12 }, "label": { "type": "string" } }

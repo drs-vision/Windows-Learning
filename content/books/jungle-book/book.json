@@ -1,0 +1,118 @@
+{
+  "id": "jungle-book",
+  "title": "The Jungle Book",
+  "author": "Rudyard Kipling",
+  "published": 1894,
+  "level": 4,
+  "grade": {
+    "min": 5,
+    "max": 7,
+    "label": "Grades 5-7"
+  },
+  "summary": "Mowgli is raised by wolves, Rikki-tikki-tavi the mongoose fights two cobras, and more animal stories.",
+  "source": {
+    "name": "Project Gutenberg eBook #236 (public-domain text; Gutenberg header, license and name removed)",
+    "url": "https://www.gutenberg.org/ebooks/236"
+  },
+  "publicDomain": "First published 1894; in the US public domain (published before 1931).",
+  "chapters": [
+    {
+      "n": 1,
+      "title": "Mowgli's Brothers (part 1)",
+      "text": "01-mowgli-s-brothers-part-1.txt",
+      "questions": "01-mowgli-s-brothers-part-1.questions.json",
+      "words": 3701
+    },
+    {
+      "n": 2,
+      "title": "Mowgli's Brothers (part 2)",
+      "text": "02-mowgli-s-brothers-part-2.txt",
+      "questions": "02-mowgli-s-brothers-part-2.questions.json",
+      "words": 3638
+    },
+    {
+      "n": 3,
+      "title": "Kaa's Hunting (part 1)",
+      "text": "03-kaa-s-hunting-part-1.txt",
+      "questions": "03-kaa-s-hunting-part-1.questions.json",
+      "words": 4480
+    },
+    {
+      "n": 4,
+      "title": "Kaa's Hunting (part 2)",
+      "text": "04-kaa-s-hunting-part-2.txt",
+      "questions": "04-kaa-s-hunting-part-2.questions.json",
+      "words": 4388
+    },
+    {
+      "n": 5,
+      "title": "Tiger! Tiger! (part 1)",
+      "text": "05-tiger-tiger-part-1.txt",
+      "questions": "05-tiger-tiger-part-1.questions.json",
+      "words": 3217
+    },
+    {
+      "n": 6,
+      "title": "Tiger! Tiger! (part 2)",
+      "text": "06-tiger-tiger-part-2.txt",
+      "questions": "06-tiger-tiger-part-2.questions.json",
+      "words": 3090
+    },
+    {
+      "n": 7,
+      "title": "The White Seal (part 1)",
+      "text": "07-the-white-seal-part-1.txt",
+      "questions": "07-the-white-seal-part-1.questions.json",
+      "words": 3518
+    },
+    {
+      "n": 8,
+      "title": "The White Seal (part 2)",
+      "text": "08-the-white-seal-part-2.txt",
+      "questions": "08-the-white-seal-part-2.questions.json",
+      "words": 3484
+    },
+    {
+      "n": 9,
+      "title": "Rikki-Tikki-Tavi (part 1)",
+      "text": "09-rikki-tikki-tavi-part-1.txt",
+      "questions": "09-rikki-tikki-tavi-part-1.questions.json",
+      "words": 2871
+    },
+    {
+      "n": 10,
+      "title": "Rikki-Tikki-Tavi (part 2)",
+      "text": "10-rikki-tikki-tavi-part-2.txt",
+      "questions": "10-rikki-tikki-tavi-part-2.questions.json",
+      "words": 2827
+    },
+    {
+      "n": 11,
+      "title": "Toomai of the Elephants (part 1)",
+      "text": "11-toomai-of-the-elephants-part-1.txt",
+      "questions": "11-toomai-of-the-elephants-part-1.questions.json",
+      "words": 3618
+    },
+    {
+      "n": 12,
+      "title": "Toomai of the Elephants (part 2)",
+      "text": "12-toomai-of-the-elephants-part-2.txt",
+      "questions": "12-toomai-of-the-elephants-part-2.questions.json",
+      "words": 3474
+    },
+    {
+      "n": 13,
+      "title": "Her Majesty's Servants (part 1)",
+      "text": "13-her-majesty-s-servants-part-1.txt",
+      "questions": "13-her-majesty-s-servants-part-1.questions.json",
+      "words": 2899
+    },
+    {
+      "n": 14,
+      "title": "Her Majesty's Servants (part 2)",
+      "text": "14-her-majesty-s-servants-part-2.txt",
+      "questions": "14-her-majesty-s-servants-part-2.questions.json",
+      "words": 2806
+    }
+  ]
+}

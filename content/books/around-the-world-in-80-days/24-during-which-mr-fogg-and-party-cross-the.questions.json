@@ -1,0 +1,126 @@
+{
+  "book": "around-the-world-in-80-days",
+  "chapter": 24,
+  "questions": [
+    {
+      "id": "around-the-world-in-80-days-24-01",
+      "type": "detail",
+      "q": "Why did the Yokohama steamer turn toward the Tankadere near Shanghai?",
+      "choices": ["Its captain saw the flag at half-mast and the signals", "Its captain was an old friend of John Bunsby's from Hong Kong", "It had to pick up the mail the little boat carried", "The Tankadere had run into its path by accident"],
+      "answer": 0,
+      "evidence": "espying the flag at half-mast"
+    },
+    {
+      "id": "around-the-world-in-80-days-24-02",
+      "type": "detail",
+      "q": "What did Fogg learn on board the Carnatic at Yokohama?",
+      "choices": ["That Passepartout had been arrested on landing", "That Passepartout had arrived the day before", "That the warrant for Fogg's arrest had arrived", "That Passepartout had sailed on to San Francisco"],
+      "answer": 1,
+      "evidence": "Passepartout, a Frenchman, had really arrived on her the day before"
+    },
+    {
+      "id": "around-the-world-in-80-days-24-03",
+      "type": "inference",
+      "q": "What really caused the human pyramid to fall in the theatre?",
+      "choices": ["The stage was too weak for fifty performers", "Passepartout jumped on seeing his master", "Fogg shouted Passepartout's name from the gallery", "Aouda fainted and the crowd rushed forward"],
+      "answer": 1,
+      "evidence": "He could not help starting, which so changed the position of his nose"
+    },
+    {
+      "id": "around-the-world-in-80-days-24-04",
+      "type": "character",
+      "q": "What did Passepartout tell his master about his absence?",
+      "choices": ["The whole truth about Fix being a detective", "Only that he had been overcome by smoking opium at a tavern", "That he had been kidnapped by sailors and put on the wrong ship", "Nothing at all, because Fogg never asked him"],
+      "answer": 1,
+      "evidence": "he simply excused himself for having been overtaken by drunkenness"
+    },
+    {
+      "id": "around-the-world-in-80-days-24-05",
+      "type": "detail",
+      "q": "What was the name of the steamer from Yokohama to San Francisco?",
+      "choices": ["The Carnatic", "The General Grant", "The Rangoon", "The Mongolia"],
+      "answer": 1,
+      "evidence": "was named the General Grant"
+    },
+    {
+      "id": "around-the-world-in-80-days-24-06",
+      "type": "character",
+      "q": "How were Aouda's feelings toward Fogg changing on the voyage?",
+      "choices": ["She was growing tired of his cold and silent ways", "She was becoming attached to him by more than gratitude", "She was beginning to fear that he was a criminal", "She wished she had stayed behind in Hong Kong to find her cousin"],
+      "answer": 1,
+      "evidence": "felt herself more and more attached to him by other ties than gratitude"
+    },
+    {
+      "id": "around-the-world-in-80-days-24-07",
+      "type": "inference",
+      "q": "By November 23rd, why had Fogg covered two-thirds of the trip though only half-way around the globe?",
+      "choices": ["He had to make long, roundabout trips between ports", "He had gone the wrong way and had to turn back", "The ship had sailed in circles during the storm", "He had added several extra stops along the way to see the sights"],
+      "answer": 0,
+      "evidence": "he had been obliged to make long circuits"
+    },
+    {
+      "id": "around-the-world-in-80-days-24-08",
+      "type": "detail",
+      "q": "What \"joyful discovery\" did Passepartout make on November 23rd?",
+      "choices": ["He found Fix's warrant hidden away in one of the cabins", "His watch agreed exactly with the ship's clocks", "Aouda had saved him a gift from Japan", "The ship was a whole day ahead of time"],
+      "answer": 1,
+      "evidence": "he found that his watch exactly agreed with the ship's chronometers"
+    },
+    {
+      "id": "around-the-world-in-80-days-24-09",
+      "type": "inference",
+      "q": "Why was Passepartout wrong to feel triumphant about his watch?",
+      "choices": ["It was really showing nine in the evening, London time, not nine in the morning", "The ship's clocks were all broken and showed the wrong hour", "His watch had stopped days before and only matched by chance", "Aouda had secretly set it to the right time the night before"],
+      "answer": 0,
+      "evidence": "indicate nine o'clock in the evening"
+    },
+    {
+      "id": "around-the-world-in-80-days-24-10",
+      "type": "detail",
+      "q": "Where had Fix's warrant of arrest finally been waiting?",
+      "choices": ["At the English consulate in Yokohama", "At the police station in the port of Shanghai", "On board the General Grant", "At the bank in Hong Kong"],
+      "answer": 0,
+      "evidence": "had repaired at once to the English consulate, where he at last found the warrant of arrest"
+    },
+    {
+      "id": "around-the-world-in-80-days-24-11",
+      "type": "inference",
+      "q": "Why was the warrant useless to Fix by the time he got it?",
+      "choices": ["It had Fogg's name spelled wrong on it", "Fogg had left English ground", "The bank had already found the real thief", "It had been torn and soaked by sea water"],
+      "answer": 1,
+      "evidence": "Mr. Fogg had left English ground"
+    },
+    {
+      "id": "around-the-world-in-80-days-24-12",
+      "type": "sequence",
+      "q": "What did Passepartout do when he met Fix face to face on deck?",
+      "choices": ["He pretended not to know him and walked away", "He grabbed him by the throat and gave him a beating", "He ran at once to tell Mr. Fogg everything", "He asked Fix to forgive him for what happened in the tavern"],
+      "answer": 1,
+      "evidence": "grasped him by the throat"
+    },
+    {
+      "id": "around-the-world-in-80-days-24-13",
+      "type": "character",
+      "q": "Why did Fix now say he would help Fogg on his way?",
+      "choices": ["He had become sure that Fogg was an honest man", "His warrant would only work in England, so he wanted Fogg to get there", "Aouda had begged him again and again to stop following them across the world", "Passepartout had paid him to leave them alone"],
+      "answer": 1,
+      "evidence": "it was for my interest to change it"
+    },
+    {
+      "id": "around-the-world-in-80-days-24-14",
+      "type": "vocabulary",
+      "q": "Passepartout says they are not friends, \"but allies, perhaps.\" What are allies?",
+      "choices": ["People who join together for a shared goal", "People who have known each other since childhood", "People who are enemies and fight each other", "People who travel on the same ship by chance"],
+      "answer": 0,
+      "evidence": "but allies, perhaps"
+    },
+    {
+      "id": "around-the-world-in-80-days-24-15",
+      "type": "main-idea",
+      "q": "What is this chapter mostly about?",
+      "choices": ["The Pacific crossing, where Passepartout and Fix become uneasy allies", "Fogg's arrest in Yokohama when the warrant at last arrives", "Aouda telling Fogg that she wants to return to India", "A terrible storm that wrecks the General Grant near America"],
+      "answer": 0,
+      "evidence": "Are we friends?"
+    }
+  ]
+}

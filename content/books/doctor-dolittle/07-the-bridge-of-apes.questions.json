@@ -1,0 +1,175 @@
+{
+  "book": "doctor-dolittle",
+  "chapter": 7,
+  "questions": [
+    {
+      "id": "doctor-dolittle-07-01",
+      "type": "detail",
+      "q": "What did the angry King throw at the palace cat?",
+      "choices": [
+        "His crown",
+        "His tooth-brush",
+        "A slipper",
+        "A pillow"
+      ],
+      "answer": 1,
+      "evidence": "He threw his tooth-brush at the palace cat."
+    },
+    {
+      "id": "doctor-dolittle-07-02",
+      "type": "detail",
+      "q": "Why did the Doctor have to carry Gub-Gub through the forest?",
+      "choices": [
+        "Gub-Gub had hurt his foot on a sharp stone in the dark",
+        "Gub-Gub's short legs got tired",
+        "Gub-Gub was too frightened of the jungle to walk by himself",
+        "Gub-Gub had eaten too many dates and figs to walk"
+      ],
+      "answer": 1,
+      "evidence": "Gub-Gub, with his short legs, soon got tired"
+    },
+    {
+      "id": "doctor-dolittle-07-03",
+      "type": "inference",
+      "q": "Why was the King wrong to think his army would easily find the Doctor?",
+      "choices": [
+        "The Doctor had a map of the jungle that the swallow gave him",
+        "Polynesia flew ahead of them and warned them whenever the soldiers came near",
+        "Chee-Chee knew all the jungle paths even better than the King's men did",
+        "The King's soldiers were too sleepy to search very carefully"
+      ],
+      "answer": 2,
+      "evidence": "Chee-Chee, knew all the paths through the jungle--better even than the King's men did"
+    },
+    {
+      "id": "doctor-dolittle-07-04",
+      "type": "detail",
+      "q": "Where did Chee-Chee hide the Doctor and the animals that first night?",
+      "choices": [
+        "In a dark cave behind a waterfall",
+        "In a big hollow tree between high rocks",
+        "Under the roots of a giant palm-tree by a river",
+        "In an old empty house deep in the forest"
+      ],
+      "answer": 1,
+      "evidence": "hid them all in a big hollow tree between high rocks"
+    },
+    {
+      "id": "doctor-dolittle-07-05",
+      "type": "detail",
+      "q": "How did the travelers make their lemonade in the jungle?",
+      "choices": [
+        "With juice of wild oranges, sweetened with honey from bees' nests",
+        "With water from a cool jungle spring, mixed with crushed sugar-cane juice",
+        "With lemons the monkeys picked, sweetened with ripe dates",
+        "With milk from cocoanuts, mixed with ginger and figs"
+      ],
+      "answer": 0,
+      "evidence": "lemonade out of the juice of wild oranges, sweetened with honey"
+    },
+    {
+      "id": "doctor-dolittle-07-06",
+      "type": "detail",
+      "q": "What did the travelers sleep in at night?",
+      "choices": [
+        "Hammocks hung up high between the trees, made of twisted vines",
+        "Tents made of palm-leaves, on beds of dried grass",
+        "The hollow trunks of old trees, lined with moss",
+        "Under the stars, on blankets from the trunk"
+      ],
+      "answer": 1,
+      "evidence": "they slept in tents made of palm-leaves"
+    },
+    {
+      "id": "doctor-dolittle-07-07",
+      "type": "inference",
+      "q": "How do monkeys remember their history, according to Chee-Chee?",
+      "choices": [
+        "They carve pictures of it into the trunks of old trees",
+        "They write it down in history-books kept in a hollow tree",
+        "They tell stories of what happens to their children",
+        "They sing songs about it every night around the fire"
+      ],
+      "answer": 2,
+      "evidence": "they remember everything that happens by telling stories to their children"
+    },
+    {
+      "id": "doctor-dolittle-07-08",
+      "type": "sequence",
+      "q": "How did the King's men finally find out where the Doctor was?",
+      "choices": [
+        "They heard the noise of the monkeys cheering to greet the Doctor",
+        "They followed the smoke from the Doctor's little fire of sticks",
+        "Gub-Gub cried so loudly that the soldiers heard him in the jungle",
+        "A bird flew back to the palace and told the King where to look"
+      ],
+      "answer": 0,
+      "evidence": "had heard the noise of the monkeys cheering"
+    },
+    {
+      "id": "doctor-dolittle-07-09",
+      "type": "detail",
+      "q": "What stopped the Captain just as he was about to catch the Doctor?",
+      "choices": [
+        "He fell into a deep swamp by the edge of the trees",
+        "He tripped over the Doctor's medicine-bag in the mud",
+        "One of his long ears caught fast in a tree",
+        "Jip the dog jumped up and barked at him"
+      ],
+      "answer": 2,
+      "evidence": "one of his ears caught fast in a tree"
+    },
+    {
+      "id": "doctor-dolittle-07-10",
+      "type": "detail",
+      "q": "What did the monkeys make the bridge out of?",
+      "choices": [
+        "Long boards they had hidden in the trees near the cliff",
+        "Strong vines and ropes tied across the deep river",
+        "Themselves, holding hands and feet",
+        "A big tree they pushed over the edge of the cliff"
+      ],
+      "answer": 2,
+      "evidence": "made themselves into a bridge, just by holding hands and feet"
+    },
+    {
+      "id": "doctor-dolittle-07-11",
+      "type": "character",
+      "q": "How did Gub-Gub feel walking across the bridge?",
+      "choices": [
+        "He was so happy that he sang a song all the way across",
+        "He was a bit scared on the narrow bridge so high above the river",
+        "He was too frightened to cross, so one of the big monkeys carried him over",
+        "He was angry that he had to be the very first to go over"
+      ],
+      "answer": 1,
+      "evidence": "Gub-Gub was a bit scared, walking on such a narrow bridge"
+    },
+    {
+      "id": "doctor-dolittle-07-12",
+      "type": "vocabulary",
+      "q": "The bridge was \"at that dizzy height above the river.\" What does \"dizzy height\" mean here?",
+      "choices": [
+        "A place that is very wet and slippery",
+        "A place so high it could make you feel faint",
+        "A place that keeps moving back and forth",
+        "A place where the wind blows very hard"
+      ],
+      "answer": 1,
+      "evidence": "at that dizzy height above the river"
+    },
+    {
+      "id": "doctor-dolittle-07-13",
+      "type": "main-idea",
+      "q": "What is this chapter mostly about?",
+      "choices": [
+        "How Chee-Chee told the stories his grandmother had told him of the days before Noah and the Flood",
+        "How the Doctor and his animals escaped the King's army and reached the Land of the Monkeys",
+        "How the King's Captain got his long ear stuck fast in a tree",
+        "How Polynesia and Chee-Chee found food and drink in the jungle"
+      ],
+      "answer": 1,
+      "evidence": "The Doctor and all his animals were safe in the Land of the Monkeys"
+    }
+  ]
+}

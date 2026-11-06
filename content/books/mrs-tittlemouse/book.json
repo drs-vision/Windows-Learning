@@ -1,0 +1,27 @@
+{
+  "id": "mrs-tittlemouse",
+  "title": "The Tale of Mrs. Tittlemouse",
+  "author": "Beatrix Potter",
+  "published": 1910,
+  "level": 1,
+  "grade": {
+    "min": 0,
+    "max": 2,
+    "label": "Grades K-2"
+  },
+  "summary": "A tidy wood-mouse keeps finding uninvited guests in her house under the bank.",
+  "source": {
+    "name": "Project Gutenberg eBook #17089 (public-domain text; Gutenberg header, license and name removed)",
+    "url": "https://www.gutenberg.org/ebooks/17089"
+  },
+  "publicDomain": "First published 1910; in the US public domain (published before 1931).",
+  "chapters": [
+    {
+      "n": 1,
+      "title": "The Tale of Mrs. Tittlemouse",
+      "text": "01-the-tale-of-mrs-tittlemouse.txt",
+      "questions": "01-the-tale-of-mrs-tittlemouse.questions.json",
+      "words": 1124
+    }
+  ]
+}

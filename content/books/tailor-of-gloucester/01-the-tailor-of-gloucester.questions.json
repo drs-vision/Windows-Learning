@@ -1,0 +1,253 @@
+{
+  "book": "tailor-of-gloucester",
+  "chapter": 1,
+  "questions": [
+    {
+      "id": "tailor-of-gloucester-01-01",
+      "type": "detail",
+      "q": "Where did the tailor sit while he sewed all day?",
+      "choices": [
+        "In the window of his shop, cross-legged on a table",
+        "By the fire in his kitchen in College Court",
+        "On a bench outside the big Cathedral",
+        "In a chair beside his four-post bed"
+      ],
+      "answer": 0,
+      "evidence": "He sat in the window of a little shop in Westgate Street, cross-legged on a table"
+    },
+    {
+      "id": "tailor-of-gloucester-01-02",
+      "type": "character",
+      "q": "What was the tailor himself like?",
+      "choices": [
+        "Rich and stout, with fine silk clothes and rings",
+        "Very poor, old, and in thread-bare clothes",
+        "Young and strong, with a loud voice",
+        "Cross and mean to everyone he met"
+      ],
+      "answer": 1,
+      "evidence": "he himself was very, very poor"
+    },
+    {
+      "id": "tailor-of-gloucester-01-03",
+      "type": "detail",
+      "q": "Who was the tailor making a coat for?",
+      "choices": [
+        "The Mayor of Gloucester",
+        "A rich London merchant",
+        "The King of England",
+        "Himself, for Christmas"
+      ],
+      "answer": 0,
+      "evidence": "for the Mayor of Gloucester"
+    },
+    {
+      "id": "tailor-of-gloucester-01-04",
+      "type": "detail",
+      "q": "What one thing was missing before the coat could be finished?",
+      "choices": [
+        "Yellow taffeta for the lining of the coat",
+        "A skein of cherry-coloured twisted silk",
+        "Twelve pieces of satin",
+        "A box of shiny gold buttons"
+      ],
+      "answer": 1,
+      "evidence": "there was wanting just one single skein of cherry-coloured twisted silk"
+    },
+    {
+      "id": "tailor-of-gloucester-01-05",
+      "type": "detail",
+      "q": "What was the name of the tailor's cat?",
+      "choices": [
+        "Tabitha",
+        "Simpkin",
+        "Ginger",
+        "Moppet"
+      ],
+      "answer": 1,
+      "evidence": "He lived alone with his cat; it was called Simpkin."
+    },
+    {
+      "id": "tailor-of-gloucester-01-06",
+      "type": "detail",
+      "q": "What was the last penny of the fourpence meant to buy?",
+      "choices": [
+        "A penn'orth of sausages for supper",
+        "A penn'orth of milk for Simpkin",
+        "A penn'orth of cherry-coloured silk",
+        "A candle to light up the dark little shop"
+      ],
+      "answer": 2,
+      "evidence": "buy me one penn'orth of cherry-coloured silk"
+    },
+    {
+      "id": "tailor-of-gloucester-01-07",
+      "type": "sequence",
+      "q": "What did the tailor find under the upside-down tea-cups?",
+      "choices": [
+        "Mice",
+        "Coins",
+        "Silk",
+        "Thread"
+      ],
+      "answer": 0,
+      "evidence": "Out stepped a little live lady mouse"
+    },
+    {
+      "id": "tailor-of-gloucester-01-08",
+      "type": "inference",
+      "q": "Why was Simpkin so cross when he came home?",
+      "choices": [
+        "He had lost the groat on his way to market",
+        "The mice he wanted for supper were gone",
+        "The tailor had eaten all the sausages",
+        "He had broken the china pipkin"
+      ],
+      "answer": 1,
+      "evidence": "He wanted his supper of little fat mouse!"
+    },
+    {
+      "id": "tailor-of-gloucester-01-09",
+      "type": "detail",
+      "q": "Where did Simpkin hide the twist?",
+      "choices": [
+        "Under the bed",
+        "In the tea-pot",
+        "In the coal-box",
+        "Behind the dresser"
+      ],
+      "answer": 1,
+      "evidence": "Simpkin hid a little parcel privately in the tea-pot"
+    },
+    {
+      "id": "tailor-of-gloucester-01-10",
+      "type": "detail",
+      "q": "What happened to the tailor after Simpkin hid the twist?",
+      "choices": [
+        "He went to the shop and worked all night",
+        "He became very ill with a fever",
+        "He went out to buy more silk himself",
+        "He chased the mice all over the town"
+      ],
+      "answer": 1,
+      "evidence": "the poor old tailor was very ill with a fever"
+    },
+    {
+      "id": "tailor-of-gloucester-01-11",
+      "type": "vocabulary",
+      "q": "The tailor says \"Alack, I am undone!\" What does he mean?",
+      "choices": [
+        "I am finished with my work",
+        "I am in great trouble",
+        "I am going to bed now",
+        "I am very rich today"
+      ],
+      "answer": 1,
+      "evidence": "Alack, I am undone!"
+    },
+    {
+      "id": "tailor-of-gloucester-01-12",
+      "type": "detail",
+      "q": "In the old story, what can all the beasts do on Christmas Eve night?",
+      "choices": [
+        "Fly",
+        "Talk",
+        "Swim",
+        "Grow"
+      ],
+      "answer": 1,
+      "evidence": "all the beasts can talk, in the night between Christmas Eve and Christmas Day"
+    },
+    {
+      "id": "tailor-of-gloucester-01-13",
+      "type": "detail",
+      "q": "What did Simpkin see when he peeped into the tailor's shop that night?",
+      "choices": [
+        "The shop was dark and empty",
+        "It was full of candles and mice sewing and singing",
+        "Cats dancing in the garret to the sound of a fiddle",
+        "The Mayor trying on his new coat"
+      ],
+      "answer": 1,
+      "evidence": "it was full of candles"
+    },
+    {
+      "id": "tailor-of-gloucester-01-14",
+      "type": "detail",
+      "q": "Why could Simpkin not get into the shop?",
+      "choices": [
+        "The mice were holding the door shut",
+        "The key was under the tailor's pillow",
+        "The snow had piled up against the door",
+        "The window was much too high to reach"
+      ],
+      "answer": 1,
+      "evidence": "But the key was under the tailor's pillow, he could not get in."
+    },
+    {
+      "id": "tailor-of-gloucester-01-15",
+      "type": "character",
+      "q": "How did Simpkin feel when he looked at the hidden silk in the moonlight?",
+      "choices": [
+        "Proud of how clever he was",
+        "Ashamed of his badness",
+        "Hungry for some more mice",
+        "Happy to have kept it"
+      ],
+      "answer": 1,
+      "evidence": "he felt quite ashamed of his badness compared with those good little mice"
+    },
+    {
+      "id": "tailor-of-gloucester-01-16",
+      "type": "sequence",
+      "q": "What was the first thing the tailor saw when he woke on Christmas morning?",
+      "choices": [
+        "The finished coat lying across the end of his bed",
+        "A skein of cherry-coloured silk on his quilt",
+        "Simpkin asleep on the warm hearth",
+        "A little mouse sitting on his pillow"
+      ],
+      "answer": 1,
+      "evidence": "the first thing which he saw upon the patchwork quilt, was a skein of cherry-coloured twisted silk"
+    },
+    {
+      "id": "tailor-of-gloucester-01-17",
+      "type": "detail",
+      "q": "What was pinned where the last button-hole was missing?",
+      "choices": [
+        "A note that said NO MORE TWIST",
+        "A tiny thimble made of silver",
+        "A thank-you letter from the Mayor",
+        "A little ribbon tied in a bow"
+      ],
+      "answer": 0,
+      "evidence": "NO MORE TWIST"
+    },
+    {
+      "id": "tailor-of-gloucester-01-18",
+      "type": "inference",
+      "q": "Who really finished the Mayor's coat?",
+      "choices": [
+        "The tailor, in his sleep",
+        "Simpkin the cat",
+        "The little mice",
+        "The Mayor's own tailor"
+      ],
+      "answer": 2,
+      "evidence": "they looked as if they had been made by little mice"
+    },
+    {
+      "id": "tailor-of-gloucester-01-19",
+      "type": "main-idea",
+      "q": "What is this story mostly about?",
+      "choices": [
+        "A cat who learns to sew a fine coat for a Mayor",
+        "Mice who help a kind, sick tailor by finishing his coat",
+        "A Mayor who gets married on Christmas Day morning",
+        "Birds who sing Christmas songs on the roofs of a town"
+      ],
+      "answer": 1,
+      "evidence": "compared with those good little mice"
+    }
+  ]
+}

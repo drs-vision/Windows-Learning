@@ -1,0 +1,134 @@
+{
+  "book": "around-the-world-in-80-days",
+  "chapter": 3,
+  "questions": [
+    {
+      "id": "around-the-world-in-80-days-03-01",
+      "type": "detail",
+      "q": "How did Fogg spend most of the afternoon at the Reform Club?",
+      "choices": ["Reading the Times and then the Standard", "Playing billiards with the club's bankers", "Writing letters in the club's law library", "Walking slowly in the club's autumn garden"],
+      "answer": 0,
+      "evidence": "The perusal of this paper absorbed Phileas Fogg until a quarter before four"
+    },
+    {
+      "id": "around-the-world-in-80-days-03-02",
+      "type": "detail",
+      "q": "Which of these men was one of Fogg's usual whist partners and a Director of the Bank of England?",
+      "choices": ["Andrew Stuart", "Gauthier Ralph", "Thomas Flanagan", "John Sullivan"],
+      "answer": 1,
+      "evidence": "Gauthier Ralph, one of the Directors of the Bank of England"
+    },
+    {
+      "id": "around-the-world-in-80-days-03-03",
+      "type": "detail",
+      "q": "How much money had been stolen from the Bank of England?",
+      "choices": ["Twenty thousand pounds", "Four thousand pounds", "Fifty-five thousand pounds", "Two thousand pounds"],
+      "answer": 2,
+      "evidence": "A package of banknotes, to the value of fifty-five thousand pounds"
+    },
+    {
+      "id": "around-the-world-in-80-days-03-04",
+      "type": "detail",
+      "q": "What was the principal cashier doing when the banknotes were taken from his table?",
+      "choices": ["Counting gold ingots in the back room", "Recording a payment of three shillings and sixpence", "Talking with Gauthier Ralph about the day's business", "Locking the doors of the bank at five o'clock"],
+      "answer": 1,
+      "evidence": "registering the receipt of three shillings and sixpence"
+    },
+    {
+      "id": "around-the-world-in-80-days-03-05",
+      "type": "inference",
+      "q": "What point does the story about the gold ingot being passed from hand to hand make?",
+      "choices": ["The Bank trusts the public and barely guards its treasures", "Gold ingots in the Bank are much lighter than most people believe", "The cashiers at the Bank watch every visitor with very great care", "Visitors to the Bank often try to steal the gold that they hold"],
+      "answer": 0,
+      "evidence": "the Bank of England reposes a touching confidence in the honesty of the public"
+    },
+    {
+      "id": "around-the-world-in-80-days-03-06",
+      "type": "detail",
+      "q": "What reward was offered to the detectives who caught the thief?",
+      "choices": ["Two thousand pounds and five per cent of the sum recovered", "Twenty thousand pounds paid by the directors of the Bank of England", "A place as a director of the Bank of England", "Half of all the stolen banknotes they recovered"],
+      "answer": 0,
+      "evidence": "the proffered reward of two thousand pounds, and five per cent."
+    },
+    {
+      "id": "around-the-world-in-80-days-03-07",
+      "type": "detail",
+      "q": "Who had been seen walking to and fro in the paying room on the day of the robbery?",
+      "choices": ["A shabby sailor who had just come from Liverpool", "A well-dressed gentleman of polished manners", "A young clerk who had recently been dismissed", "A group of men from a professional band of thieves"],
+      "answer": 1,
+      "evidence": "a well-dressed gentleman of polished manners"
+    },
+    {
+      "id": "around-the-world-in-80-days-03-08",
+      "type": "character",
+      "q": "Why did Ralph believe the detectives would probably catch the thief?",
+      "choices": ["He knew the thief's real name and address", "He thought the prize would stimulate their zeal", "He had hired the best detective in London himself", "He believed the thief was still hiding inside the Bank"],
+      "answer": 1,
+      "evidence": "he thought that the prize offered would greatly stimulate their zeal and activity"
+    },
+    {
+      "id": "around-the-world-in-80-days-03-09",
+      "type": "inference",
+      "q": "Fogg says the world \"was once\" big enough. What does he mean?",
+      "choices": ["People can now travel around it much faster than before", "Many small countries have joined together into one great empire", "Maps of the world used to show more land than there is", "Most of the world has now been explored and settled"],
+      "answer": 0,
+      "evidence": "a man can now go round it ten times more quickly than a hundred years ago"
+    },
+    {
+      "id": "around-the-world-in-80-days-03-10",
+      "type": "detail",
+      "q": "Why did John Sullivan say the trip could now be made in only eighty days?",
+      "choices": ["A new steamer line had begun sailing from Suez", "A new section of railway in India had been opened", "A canal across America had just been finished", "The trains to Dover had been made twice as fast"],
+      "answer": 1,
+      "evidence": "now that the section between Rothal and Allahabad, on the Great Indian Peninsula Railway, has been opened"
+    },
+    {
+      "id": "around-the-world-in-80-days-03-11",
+      "type": "character",
+      "q": "Each time Stuart named a danger like bad weather or shipwreck, how did Fogg answer?",
+      "choices": ["\"All included\"", "\"Quite impossible\"", "\"Deal over again\"", "\"Only a joke\""],
+      "answer": 0,
+      "evidence": "\"All included,\" returned Phileas Fogg"
+    },
+    {
+      "id": "around-the-world-in-80-days-03-12",
+      "type": "detail",
+      "q": "How much money did Fogg bet that he could go around the world in eighty days?",
+      "choices": ["Four thousand pounds", "Twenty thousand pounds", "Fifty-five thousand pounds", "Forty thousand pounds"],
+      "answer": 1,
+      "evidence": "I have a deposit of twenty thousand at Baring's which I will willingly risk upon it."
+    },
+    {
+      "id": "around-the-world-in-80-days-03-13",
+      "type": "vocabulary",
+      "q": "Fogg says, \"The unforeseen does not exist.\" What does unforeseen mean?",
+      "choices": ["Something that is very costly", "Something nobody expected ahead of time", "Something that is hidden from everyone's view", "Something that happens far away"],
+      "answer": 1,
+      "evidence": "The unforeseen does not exist"
+    },
+    {
+      "id": "around-the-world-in-80-days-03-14",
+      "type": "detail",
+      "q": "By what day and time must Fogg be back in the Reform Club to win the bet?",
+      "choices": ["Saturday, the 21st of December, at a quarter before nine p.m.", "Wednesday, the 2nd of October, at a quarter before nine p.m.", "Sunday, the 22nd of December, exactly at midnight in London", "Saturday, the 21st of December, at half-past eleven a.m."],
+      "answer": 0,
+      "evidence": "on Saturday, the 21st of December, at a quarter before nine p.m."
+    },
+    {
+      "id": "around-the-world-in-80-days-03-15",
+      "type": "inference",
+      "q": "Why did Fogg bet only half of his fortune?",
+      "choices": ["He did not trust the other men to pay if they lost", "He expected to need the other half to pay for the trip", "He had promised the other half to his favourite charities", "He was keeping the other half to pay his new servant"],
+      "answer": 1,
+      "evidence": "because he foresaw that he might have to expend the other half"
+    },
+    {
+      "id": "around-the-world-in-80-days-03-16",
+      "type": "main-idea",
+      "q": "What is the most important thing that happens in this chapter?",
+      "choices": ["The thief who robbed the Bank of England is finally caught", "Fogg bets his club friends he can go around the world in eighty days", "Fogg loses half of his whole fortune in a long game of whist at the club", "The detectives at the ports are given a description of the thief"],
+      "answer": 1,
+      "evidence": "I will bet twenty thousand pounds against anyone who wishes"
+    }
+  ]
+}

@@ -1,0 +1,110 @@
+{
+  "book": "benjamin-bunny",
+  "chapter": 1,
+  "questions": [
+    {
+      "id": "benjamin-bunny-01-01",
+      "type": "detail",
+      "q": "Who was riding in the gig at the start of the story?",
+      "choices": [
+        "Mr. and Mrs. McGregor",
+        "Old Mr. Bunny and his son",
+        "Old Mrs. Rabbit and Peter",
+        "Mr. McGregor and his cat"
+      ],
+      "answer": 0,
+      "evidence": "it was driven by Mr. McGregor, and beside him sat Mrs. McGregor in her best bonnet"
+    },
+    {
+      "id": "benjamin-bunny-01-02",
+      "type": "detail",
+      "q": "What was Peter wearing when Benjamin found him?",
+      "choices": [
+        "His blue coat and his little shoes",
+        "A red cotton pocket-handkerchief",
+        "An old tam-o'-shanter hat on his head",
+        "A pair of rabbit-wool mittens"
+      ],
+      "answer": 1,
+      "evidence": "was dressed in a red cotton pocket-handkerchief"
+    },
+    {
+      "id": "benjamin-bunny-01-03",
+      "type": "detail",
+      "q": "How did Benjamin say was the proper way to get into the garden?",
+      "choices": [
+        "Squeeze under the gate",
+        "Dig a hole under the wall",
+        "Climb down a pear-tree",
+        "Jump over the cabbages"
+      ],
+      "answer": 2,
+      "evidence": "the proper way to get in is to climb down a pear-tree"
+    },
+    {
+      "id": "benjamin-bunny-01-04",
+      "type": "detail",
+      "q": "What did the rabbits find wrong with Peter's clothes on the scarecrow?",
+      "choices": [
+        "The coat was torn and the buttons were gone",
+        "Water in the shoes and the coat had shrunk",
+        "Birds had made a nest inside the old shoes",
+        "The shoes were full of mud and little stones"
+      ],
+      "answer": 1,
+      "evidence": "there was water in the shoes, and the coat was somewhat shrunk"
+    },
+    {
+      "id": "benjamin-bunny-01-05",
+      "type": "character",
+      "q": "How did Peter feel while they were in the garden?",
+      "choices": [
+        "Happy, and he ate a great many lettuces",
+        "Scared, and he kept hearing noises",
+        "Sleepy, and he wanted to lie down",
+        "Brave, and he wanted to explore more"
+      ],
+      "answer": 1,
+      "evidence": "Peter did not seem to be enjoying himself; he kept hearing noises"
+    },
+    {
+      "id": "benjamin-bunny-01-06",
+      "type": "sequence",
+      "q": "What did Benjamin do as soon as he saw the cat?",
+      "choices": [
+        "Ran back up the pear-tree",
+        "Called loudly for his father",
+        "Hid himself and Peter under a basket",
+        "Threw the onions at the cat"
+      ],
+      "answer": 2,
+      "evidence": "he hid himself and Peter and the onions underneath a large basket"
+    },
+    {
+      "id": "benjamin-bunny-01-07",
+      "type": "detail",
+      "q": "How did old Mr. Bunny get rid of the cat?",
+      "choices": [
+        "He chased it right out of the garden gate",
+        "He jumped on it and kicked it into the greenhouse",
+        "He gave it the onions and it ran far away",
+        "He called for Mr. McGregor to come and take it away"
+      ],
+      "answer": 1,
+      "evidence": "kicked it into the greenhouse"
+    },
+    {
+      "id": "benjamin-bunny-01-08",
+      "type": "main-idea",
+      "q": "What is this story mostly about?",
+      "choices": [
+        "Peter and Benjamin getting Peter's clothes back from the garden",
+        "Mrs. Rabbit selling her mittens at a busy bazaar",
+        "Mr. McGregor going for a long ride in his gig",
+        "The mice cracking cherry-stones on their doorsteps"
+      ],
+      "answer": 0,
+      "evidence": "the first thing to be done was to get back Peter's clothes"
+    }
+  ]
+}

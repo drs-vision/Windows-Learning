@@ -1,0 +1,134 @@
+{
+  "book": "kidnapped",
+  "chapter": 12,
+  "questions": [
+    {
+      "id": "kidnapped-12-01",
+      "type": "detail",
+      "q": "Why did Captain Hoseason call Alan and David out of the round-house late at night?",
+      "choices": ["He wanted them to help pilot the brig because it was in danger", "He wanted to make peace with them and share a drink before landing", "He had spotted a ship of red-coats coming up behind them", "He needed them to help nurse the sailors wounded in the fight"],
+      "answer": 0,
+      "evidence": "come out and see if ye can pilot"
+    },
+    {
+      "id": "kidnapped-12-02",
+      "type": "detail",
+      "q": "What did the \"fountain\" rising out of the moonlit sea turn out to be?",
+      "choices": ["A whale blowing near the ship", "The sea breaking on a reef", "Spray from a hidden waterfall", "A signal rocket from the shore"],
+      "answer": 1,
+      "evidence": "The sea breaking on a reef"
+    },
+    {
+      "id": "kidnapped-12-03",
+      "type": "detail",
+      "q": "What name did Alan think the dangerous reefs were called?",
+      "choices": ["The Rocks of Iona", "The Torran Rocks", "The Ross of Mull", "The Teeth of Earraid"],
+      "answer": 1,
+      "evidence": "these'll be what they call the Torran Rocks"
+    },
+    {
+      "id": "kidnapped-12-04",
+      "type": "vocabulary",
+      "q": "Hoseason says he would never risk his brig \"in sic a stoneyard.\" What does he mean by a \"stoneyard\"?",
+      "choices": ["A harbour with a stone pier", "A sea full of rocks and reefs", "A quarry on the island shore", "A graveyard for drowned sailors"],
+      "answer": 1,
+      "evidence": "risk my brig in sic a stoneyard"
+    },
+    {
+      "id": "kidnapped-12-05",
+      "type": "detail",
+      "q": "Where did Alan remember the water was clearer of reefs?",
+      "choices": ["Out to the south, in the open sea", "Close in under the land", "Far out to the west of Tiree", "Straight through the Sound of Mull"],
+      "answer": 1,
+      "evidence": "it is clearer under the land"
+    },
+    {
+      "id": "kidnapped-12-06",
+      "type": "detail",
+      "q": "What was Mr. Riach's job while the brig sailed through the reefs?",
+      "choices": ["He steered the brig with the help of two seamen", "He sat aloft in the foretop calling out what he saw", "He stood in the bow measuring the depth with a line", "He guarded the round-house to keep Alan from escaping"],
+      "answer": 1,
+      "evidence": "sent Riach to the foretop"
+    },
+    {
+      "id": "kidnapped-12-07",
+      "type": "character",
+      "q": "What did David come to think of the captain and Mr. Riach as they worked through the reefs?",
+      "choices": ["That they were cowards in battle and just as cowardly at sea", "That they were brave and steady in their own trade", "That they were only pretending to be in danger", "That they cared more for the gold than the brig"],
+      "answer": 1,
+      "evidence": "I saw they were brave in their own trade"
+    },
+    {
+      "id": "kidnapped-12-08",
+      "type": "character",
+      "q": "How did Alan feel as the brig passed so close to the reefs?",
+      "choices": ["He was white and did not like the idea of such a cold death", "He was cheerful and sang songs to keep up the crew's courage", "He was angry that the captain had not bought a proper chart", "He was calm and bored, since he had sailed there many times"],
+      "answer": 0,
+      "evidence": "this is no the kind of death I fancy"
+    },
+    {
+      "id": "kidnapped-12-09",
+      "type": "sequence",
+      "q": "What happened just after Hoseason told Alan, \"Ye have saved the brig, sir\"?",
+      "choices": ["The brig sailed safely into Linnhe Loch", "The crew turned on Alan and tried to seize his belt", "The tide caught the brig and it struck a reef", "Mr. Riach fell from the mast into the sea"],
+      "answer": 2,
+      "evidence": "struck the reef with such a dunch as threw us all flat upon the deck"
+    },
+    {
+      "id": "kidnapped-12-10",
+      "type": "detail",
+      "q": "Near which little isle did the brig strike the reef?",
+      "choices": ["Iona", "Tiree", "Earraid", "Canna"],
+      "answer": 2,
+      "evidence": "off a little isle they call Earraid"
+    },
+    {
+      "id": "kidnapped-12-11",
+      "type": "character",
+      "q": "What did Captain Hoseason do while the men worked to launch the skiff?",
+      "choices": ["He gave sharp orders and worked hardest of all", "He stood holding the shrouds, groaning and talking to himself", "He rowed away alone in the skiff before it was ready", "He went below to save his papers and money from the cabin"],
+      "answer": 1,
+      "evidence": "He stood holding by the shrouds, talking to himself and groaning"
+    },
+    {
+      "id": "kidnapped-12-12",
+      "type": "detail",
+      "q": "What did Alan say about the country on the shore near the wreck?",
+      "choices": ["It was a land of the Campbells, the worst place for him", "It was his own country of Appin, full of friends", "It was an empty island where no one had ever lived", "It was the King's land, guarded day and night by many red-coat soldiers"],
+      "answer": 0,
+      "evidence": "it was a land of the Campbells"
+    },
+    {
+      "id": "kidnapped-12-13",
+      "type": "detail",
+      "q": "How did David end up in the sea?",
+      "choices": ["He jumped over to swim for the shore", "A huge sea tilted the ship and threw him over", "A sailor pushed him over during the confusion", "The skiff he was sitting in turned over in the heavy waves"],
+      "answer": 1,
+      "evidence": "I was cast clean over the bulwarks into the sea"
+    },
+    {
+      "id": "kidnapped-12-14",
+      "type": "inference",
+      "q": "What does David later understand had carried him so quickly away from the brig?",
+      "choices": ["A strong wind that blew him over the waves", "A roost, or tide race, in the water", "A sea serpent he glimpsed in the moonlight", "Alan towing him with an oar"],
+      "answer": 1,
+      "evidence": "it must have been the roost or tide race"
+    },
+    {
+      "id": "kidnapped-12-15",
+      "type": "detail",
+      "q": "Since David could not swim, how did he reach the shore?",
+      "choices": ["He held the spare yard and kicked with his feet", "A fisherman in a small boat pulled him in", "The waves washed him onto the sand while he slept", "He grabbed a rope that Alan threw to him"],
+      "answer": 0,
+      "evidence": "when I laid hold upon the yard with both arms, and kicked out with both feet"
+    },
+    {
+      "id": "kidnapped-12-16",
+      "type": "main-idea",
+      "q": "What is this chapter mostly about?",
+      "choices": ["Alan and David fighting off a second attack by the crew", "The brig hitting a reef and David washing ashore alone", "The captain putting Alan and David ashore on the Isle of Mull", "David learning how to sail the brig at night"],
+      "answer": 1,
+      "evidence": "I cannot tell if I was more tired or more grateful"
+    }
+  ]
+}

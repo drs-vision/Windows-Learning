@@ -1,0 +1,134 @@
+{
+  "book": "around-the-world-in-80-days",
+  "chapter": 12,
+  "questions": [
+    {
+      "id": "around-the-world-in-80-days-12-01",
+      "type": "detail",
+      "q": "Why did the Parsee guide leave the line of the railway and go through the forest?",
+      "choices": ["To stay out of sight of the railway workmen", "To gain twenty miles by going straight", "To find water and fresh branches for Kiouni", "To visit a village where he had family"],
+      "answer": 1,
+      "evidence": "they would gain twenty miles by striking directly through the forest"
+    },
+    {
+      "id": "around-the-world-in-80-days-12-02",
+      "type": "detail",
+      "q": "What advice from his master did Passepartout follow while riding the bouncing elephant?",
+      "choices": ["To hold tightly to the howdah ropes with both hands", "To keep his tongue from getting between his teeth", "To close his eyes whenever they went downhill", "To sit very still and never look at the ground"],
+      "answer": 1,
+      "evidence": "to keep his tongue from between his teeth"
+    },
+    {
+      "id": "around-the-world-in-80-days-12-03",
+      "type": "character",
+      "q": "How did Passepartout behave during the rough ride?",
+      "choices": ["He complained loudly to Mr. Fogg the whole way", "He laughed and fed Kiouni pieces of sugar", "He grew sick and begged the guide to stop", "He slept soundly in spite of all the bouncing"],
+      "answer": 1,
+      "evidence": "yet he laughed in the midst of his bouncing"
+    },
+    {
+      "id": "around-the-world-in-80-days-12-04",
+      "type": "inference",
+      "q": "When Sir Francis said Kiouni was \"made of iron,\" what did he mean?",
+      "choices": ["The elephant was very strong and tireless", "The elephant wore heavy armour for battle", "The elephant was stubborn and very hard to steer", "The elephant had a cold, unfeeling nature"],
+      "answer": 0,
+      "evidence": "Why, he's made of iron!"
+    },
+    {
+      "id": "around-the-world-in-80-days-12-05",
+      "type": "character",
+      "q": "What question worried Passepartout as they rode toward Allahabad?",
+      "choices": ["Whether Fix was secretly following them", "What Mr. Fogg would do with the elephant at Allahabad", "Whether they had brought enough food for the whole journey", "How he would ever replace his lost shoes"],
+      "answer": 1,
+      "evidence": "What would Mr. Fogg do with the elephant when he got to Allahabad?"
+    },
+    {
+      "id": "around-the-world-in-80-days-12-06",
+      "type": "detail",
+      "q": "Where did the travellers spend the first night?",
+      "choices": ["In a ruined bungalow on the northern slope", "In a tent the guide put up beside a spring", "In the hut of the elephant's former owner", "Up in the howdahs, tied to the elephant's back"],
+      "answer": 0,
+      "evidence": "another halt was made on the northern slope, in a ruined bungalow"
+    },
+    {
+      "id": "around-the-world-in-80-days-12-07",
+      "type": "character",
+      "q": "How did Mr. Fogg sleep that night?",
+      "choices": ["Badly, dreaming all night long of the bouncing elephant", "Hardly at all, keeping watch for panthers", "As peacefully as if he were at home in Saville Row", "Only an hour, while he checked his notebook"],
+      "answer": 2,
+      "evidence": "he slumbered as peacefully as if he had been in his serene mansion in Saville Row"
+    },
+    {
+      "id": "around-the-world-in-80-days-12-08",
+      "type": "vocabulary",
+      "q": "The travellers ate supper \"ravenously.\" What does ravenously mean?",
+      "choices": ["Very slowly", "Very hungrily", "Very quietly", "Very rudely"],
+      "answer": 1,
+      "evidence": "the travellers ate ravenously"
+    },
+    {
+      "id": "around-the-world-in-80-days-12-09",
+      "type": "sequence",
+      "q": "What made the elephant suddenly stop in the thick forest?",
+      "choices": ["A panther crossing the path ahead", "The sound of voices and brass instruments", "A fallen tree lying right across the narrow path", "A river too deep for him to cross"],
+      "answer": 1,
+      "evidence": "it now seemed like a distant concert of human voices accompanied by brass instruments"
+    },
+    {
+      "id": "around-the-world-in-80-days-12-10",
+      "type": "detail",
+      "q": "What did the guide do when he learned a procession was coming?",
+      "choices": ["Rode the elephant away as fast as he could", "Hid the elephant and travellers in a thicket", "Went out to ask the passing priests for directions", "Climbed a tall tree to watch it go by"],
+      "answer": 1,
+      "evidence": "The guide unloosed the elephant and led him into a thicket"
+    },
+    {
+      "id": "around-the-world-in-80-days-12-11",
+      "type": "detail",
+      "q": "Who was being carried on the palanquin in the procession?",
+      "choices": ["The body of an old rajah, the young woman's husband", "A sick priest being taken to the pagoda of Pillaji", "The young woman's father, who led the procession", "A rich merchant on his way to Allahabad"],
+      "answer": 0,
+      "evidence": "Is that of the prince, her husband"
+    },
+    {
+      "id": "around-the-world-in-80-days-12-12",
+      "type": "inference",
+      "q": "Why did the young woman in the procession not seem to resist?",
+      "choices": ["She had agreed to everything of her own free will", "She had been drugged with fumes of hemp and opium", "She did not know where she was being taken", "The guards had promised to set her free later that night"],
+      "answer": 1,
+      "evidence": "they had intoxicated her with fumes of hemp and opium"
+    },
+    {
+      "id": "around-the-world-in-80-days-12-13",
+      "type": "detail",
+      "q": "Where was the young woman to spend the night?",
+      "choices": ["At the station at Allahabad", "In the ruined bungalow on the hill", "At the pagoda of Pillaji, two miles away", "In the palace of the old rajah of Bundelcund"],
+      "answer": 2,
+      "evidence": "To the pagoda of Pillaji, two miles from here"
+    },
+    {
+      "id": "around-the-world-in-80-days-12-14",
+      "type": "character",
+      "q": "What did Fogg suggest just as the guide was about to ride on?",
+      "choices": ["That they hurry to Allahabad before dark", "That they save the young woman", "That they report what they saw to the governor", "That they follow the procession to watch it"],
+      "answer": 1,
+      "evidence": "Suppose we save this woman."
+    },
+    {
+      "id": "around-the-world-in-80-days-12-15",
+      "type": "character",
+      "q": "When Sir Francis called him \"a man of heart,\" how did Fogg reply?",
+      "choices": ["\"Never, sir; it is only good sense\"", "\"Sometimes, when I have the time\"", "\"Always, as every Englishman should be\"", "\"Only when there is a wager at stake\""],
+      "answer": 1,
+      "evidence": "Sometimes,\" replied Phileas Fogg, quietly; \"when I have the time."
+    },
+    {
+      "id": "around-the-world-in-80-days-12-16",
+      "type": "main-idea",
+      "q": "What is the most important thing that happens in this chapter?",
+      "choices": ["The elephant runs away and the travellers must walk", "Fogg decides to risk his spare time to rescue a woman in danger", "The travellers finally reach the station at Allahabad", "Passepartout is given the elephant Kiouni as a present"],
+      "answer": 1,
+      "evidence": "I have yet twelve hours to spare; I can devote them to that."
+    }
+  ]
+}

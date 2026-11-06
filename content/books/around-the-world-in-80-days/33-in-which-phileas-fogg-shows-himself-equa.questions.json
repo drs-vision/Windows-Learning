@@ -1,0 +1,150 @@
+{
+  "book": "around-the-world-in-80-days",
+  "chapter": 33,
+  "questions": [
+    {
+      "id": "around-the-world-in-80-days-33-01",
+      "type": "detail",
+      "q": "Who was on the bridge finding the ship's position at noon the next day?",
+      "choices": ["Captain Speedy", "Phileas Fogg", "The engineer", "Passepartout"],
+      "answer": 1,
+      "evidence": "It was Phileas Fogg, Esquire."
+    },
+    {
+      "id": "around-the-world-in-80-days-33-02",
+      "type": "detail",
+      "q": "Where was Captain Speedy while Fogg sailed the ship?",
+      "choices": ["Locked in his cabin, shouting angrily", "Down below, working with the stokers", "Asleep in a hammock on the main deck", "Steering the ship from the stern rudder"],
+      "answer": 0,
+      "evidence": "he was shut up in his cabin under lock and key"
+    },
+    {
+      "id": "around-the-world-in-80-days-33-03",
+      "type": "inference",
+      "q": "How did Fogg get the crew to follow him instead of their captain?",
+      "choices": ["He showed them a letter from the ship's owners", "He won them over with his banknotes", "He promised each sailor a home in London", "He frightened them with stories of pirates"],
+      "answer": 1,
+      "evidence": "had so shrewdly managed with his banknotes"
+    },
+    {
+      "id": "around-the-world-in-80-days-33-04",
+      "type": "character",
+      "q": "What did Passepartout think of his master taking over the ship?",
+      "choices": ["He thought it was a crime and was ashamed", "He thought it was simply glorious", "He was afraid they would all be hanged", "He wanted Fogg to free the captain at once"],
+      "answer": 1,
+      "evidence": "he thought Mr. Fogg's manoeuvre simply glorious"
+    },
+    {
+      "id": "around-the-world-in-80-days-33-05",
+      "type": "character",
+      "q": "How did Passepartout get along with the sailors in the first days?",
+      "choices": ["He kept to himself and spoke to no one", "He made warm friends and amazed them with acrobatics", "He quarrelled with the stokers over how they fed the fires", "He was seasick in his bunk most of the time"],
+      "answer": 1,
+      "evidence": "He formed warm friendships with the sailors"
+    },
+    {
+      "id": "around-the-world-in-80-days-33-06",
+      "type": "vocabulary",
+      "q": "\"His loquacious good-humour infected everyone.\" What does loquacious mean?",
+      "choices": ["Very quiet", "Very talkative", "Very tired", "Very rude"],
+      "answer": 1,
+      "evidence": "His loquacious good-humour infected everyone."
+    },
+    {
+      "id": "around-the-world-in-80-days-33-07",
+      "type": "inference",
+      "q": "What did Fix begin to suspect about where the Henrietta was going?",
+      "choices": ["That it was heading back to New York", "That Fogg was taking it somewhere safe, like a pirate", "That the ship would sink before reaching land", "That Fogg planned to hand him over to the angry crew at sea"],
+      "answer": 1,
+      "evidence": "the robber, turned into a pirate, would quietly put himself in safety"
+    },
+    {
+      "id": "around-the-world-in-80-days-33-08",
+      "type": "detail",
+      "q": "Why did the change in the wind on the 13th make the sails useless?",
+      "choices": ["It stopped blowing entirely", "It blew from the south-east", "It turned into a hurricane", "It swung around to the north"],
+      "answer": 1,
+      "evidence": "it remained obstinately in the south-east, rendering the sails useless"
+    },
+    {
+      "id": "around-the-world-in-80-days-33-09",
+      "type": "detail",
+      "q": "What problem did the engineer report to Mr. Fogg on the 16th?",
+      "choices": ["There was a leak in the iron hull", "There was not enough coal to go full steam to Liverpool", "The crew was planning to free the captain from his cabin", "The screw had been broken in the storm"],
+      "answer": 1,
+      "evidence": "we haven't enough to go with all steam from New York to Liverpool"
+    },
+    {
+      "id": "around-the-world-in-80-days-33-10",
+      "type": "character",
+      "q": "Why did Fix call Passepartout \"Ass!\"?",
+      "choices": ["Passepartout had dropped Fix's bag into the sea", "Passepartout believed they really were going to Liverpool", "Passepartout had laughed at Fix during the storm", "Passepartout had told the whole crew that Fix was a detective"],
+      "answer": 1,
+      "evidence": "Then you believe that we really are going to Liverpool?"
+    },
+    {
+      "id": "around-the-world-in-80-days-33-11",
+      "type": "detail",
+      "q": "What order did Mr. Fogg give the engineer that evening?",
+      "choices": ["Let the fires go out to save the coal", "Feed all the fires until the coal is exhausted", "Turn the ship toward the nearest port for more coal", "Raise the sails and stop the engine"],
+      "answer": 1,
+      "evidence": "Feed all the fires until the coal is exhausted."
+    },
+    {
+      "id": "around-the-world-in-80-days-33-12",
+      "type": "vocabulary",
+      "q": "Captain Speedy is called \"a bomb\" when he comes on deck. What does this tell you?",
+      "choices": ["He was carrying explosives", "He was ready to burst with anger", "He had been hurt in an accident", "He was very small and round"],
+      "answer": 1,
+      "evidence": "It was clear that he was on the point of bursting."
+    },
+    {
+      "id": "around-the-world-in-80-days-33-13",
+      "type": "detail",
+      "q": "Why did Mr. Fogg want to buy the Henrietta?",
+      "choices": ["To sell it later at a profit in Liverpool", "To burn its upper part because the coal was gone", "To give it as a gift to Passepartout", "To keep the captain from reporting him to the police"],
+      "answer": 1,
+      "evidence": "Yes; at least the upper part of her. The coal has given out."
+    },
+    {
+      "id": "around-the-world-in-80-days-33-14",
+      "type": "detail",
+      "q": "How much did Fogg pay for a ship the captain said was worth fifty thousand dollars?",
+      "choices": ["Twenty thousand dollars", "Sixty thousand dollars", "Forty thousand dollars", "Eight thousand dollars"],
+      "answer": 1,
+      "evidence": "Here are sixty thousand"
+    },
+    {
+      "id": "around-the-world-in-80-days-33-15",
+      "type": "character",
+      "q": "How did Captain Speedy's feelings change once he had the money?",
+      "choices": ["He grew angrier and called Fogg a pirate again", "He forgot his anger and paid Fogg a compliment", "He demanded that Fogg give back his iron hull", "He locked himself back in his cabin to sulk"],
+      "answer": 1,
+      "evidence": "The captain forgot in an instant his anger"
+    },
+    {
+      "id": "around-the-world-in-80-days-33-16",
+      "type": "sequence",
+      "q": "Which parts of the ship were burned first, on the day Fogg bought her?",
+      "choices": ["The masts, rafts and spars", "The poop, cabins, bunks and spare deck", "The railings, the fittings and the top sides", "The iron hull and the engine"],
+      "answer": 1,
+      "evidence": "the poop, cabins, bunks, and the spare deck were sacrificed"
+    },
+    {
+      "id": "around-the-world-in-80-days-33-17",
+      "type": "inference",
+      "q": "Why did Fogg decide to land at Queenstown instead of sailing on to Liverpool?",
+      "choices": ["The Henrietta was sinking and had to be left behind", "Mail trains and fast boats from there would save him twelve hours", "Captain Speedy refused to take the ship one mile further toward England", "Fix wanted to arrest him in Ireland, not England"],
+      "answer": 1,
+      "evidence": "Phileas Fogg counted on gaining twelve hours in the same way."
+    },
+    {
+      "id": "around-the-world-in-80-days-33-18",
+      "type": "main-idea",
+      "q": "What surprising thing happens at the very end of the chapter?",
+      "choices": ["Fogg misses the last train from Liverpool to London", "Fix arrests Fogg on the Liverpool quay", "Passepartout falls overboard near Dublin", "Captain Speedy has Fogg arrested for piracy"],
+      "answer": 1,
+      "evidence": "I arrest you in the Queen's name!"
+    }
+  ]
+}

@@ -1,0 +1,94 @@
+{
+  "book": "around-the-world-in-80-days",
+  "chapter": 18,
+  "questions": [
+    {
+      "id": "around-the-world-in-80-days-18-01",
+      "type": "detail",
+      "q": "How late did the captain expect the Rangoon to be because of the storm?",
+      "choices": ["Two days, or perhaps three", "Twenty hours, or more if the storm lasted", "Only a few hours at the very most", "A whole week, since the engine was broken"],
+      "answer": 1,
+      "evidence": "she would reach Hong Kong twenty hours behind time"
+    },
+    {
+      "id": "around-the-world-in-80-days-18-02",
+      "type": "character",
+      "q": "How did Mr. Fogg react to the storm that might cost him the wager?",
+      "choices": ["He paced the deck and complained to the captain", "He stayed calm, as if it were planned", "He shut himself in his cabin and would not come out", "He offered the crew money to sail faster through it"],
+      "answer": 1,
+      "evidence": "it seemed as if the storm were a part of his programme"
+    },
+    {
+      "id": "around-the-world-in-80-days-18-03",
+      "type": "character",
+      "q": "Why was Fix pleased by the storm, even though it made him sea-sick?",
+      "choices": ["Each delay made it likelier Fogg would be stuck in Hong Kong", "He enjoyed rough weather at sea and liked to stand and watch the big waves", "He hoped Passepartout would fall overboard in the gale", "It gave him time to read his letters from London"],
+      "answer": 0,
+      "evidence": "Each delay filled him with hope"
+    },
+    {
+      "id": "around-the-world-in-80-days-18-04",
+      "type": "detail",
+      "q": "What did Passepartout do to the barometer?",
+      "choices": ["He broke it", "He shook it", "He hid it", "He fixed it"],
+      "answer": 1,
+      "evidence": "Passepartout shook it, but with no perceptible effect"
+    },
+    {
+      "id": "around-the-world-in-80-days-18-05",
+      "type": "vocabulary",
+      "q": "\"Passepartout was enraged beyond expression by the unpropitious weather.\" What does \"unpropitious\" mean?",
+      "choices": ["Warm and sunny", "Unlucky", "Cold and snowy", "Quiet and still"],
+      "answer": 1,
+      "evidence": "Passepartout was enraged beyond expression by the unpropitious weather"
+    },
+    {
+      "id": "around-the-world-in-80-days-18-06",
+      "type": "detail",
+      "q": "Why had the Carnatic not left Hong Kong for Yokohama on time?",
+      "choices": ["One of her boilers had to be repaired", "Her captain was sick in the hospital", "She was waiting for the mail from India", "The storm had kept her in the harbour"],
+      "answer": 0,
+      "evidence": "they had to repair one of her boilers"
+    },
+    {
+      "id": "around-the-world-in-80-days-18-07",
+      "type": "character",
+      "q": "How did Passepartout show his joy at the pilot's news?",
+      "choices": ["He danced a jig on the deck of the Rangoon", "He shook the pilot's hand and called him the best of good fellows", "He ran straight down to the saloon to tell Aouda and Fix the good news at once", "He gave the pilot all the money he had in his pockets"],
+      "answer": 1,
+      "evidence": "Pilot, you are the best of good fellows!"
+    },
+    {
+      "id": "around-the-world-in-80-days-18-08",
+      "type": "inference",
+      "q": "Why was being a day late to Yokohama not a serious problem for Fogg?",
+      "choices": ["The Pacific steamer waited for the Hong Kong boat, and the time could be made up", "Fogg had planned for a whole extra week in Japan from the very start", "The bet allowed him to be late at any one stop along the route", "The captain of the Carnatic promised to sail twice as fast as usual"],
+      "answer": 0,
+      "evidence": "it could not sail until the latter reached Yokohama"
+    },
+    {
+      "id": "around-the-world-in-80-days-18-09",
+      "type": "detail",
+      "q": "What did Fogg learn about Aouda's cousin Jeejeeh?",
+      "choices": ["He had died the year before in Hong Kong", "He had moved to Europe, probably Holland, two years before", "He had gone to Bombay to look for Aouda", "He was away on business in Japan and would not be back for at least a month"],
+      "answer": 1,
+      "evidence": "Jeejeeh had left China two years before"
+    },
+    {
+      "id": "around-the-world-in-80-days-18-10",
+      "type": "sequence",
+      "q": "What did Fogg tell Passepartout to do after Aouda agreed to go on to Europe?",
+      "choices": ["Find her a safe hotel in Hong Kong", "Engage three cabins on the Carnatic", "Send a telegram to Holland at once", "Buy her new trunks and warm clothes"],
+      "answer": 1,
+      "evidence": "Go to the Carnatic, and engage three cabins."
+    },
+    {
+      "id": "around-the-world-in-80-days-18-11",
+      "type": "main-idea",
+      "q": "What is this chapter mostly about?",
+      "choices": ["A storm delays the ship, but Fogg can still catch the Carnatic, and Aouda joins the trip", "Fix arrests Fogg as soon as the Rangoon lands at the quay in Hong Kong", "Passepartout gets lost in the streets of Hong Kong and misses the boat", "Aouda finds her cousin and decides to stay in Hong Kong for good"],
+      "answer": 0,
+      "evidence": "Go on to Europe."
+    }
+  ]
+}

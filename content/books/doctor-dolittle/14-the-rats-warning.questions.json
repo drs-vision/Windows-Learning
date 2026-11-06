@@ -1,0 +1,110 @@
+{
+  "book": "doctor-dolittle",
+  "chapter": 14,
+  "questions": [
+    {
+      "id": "doctor-dolittle-14-01",
+      "type": "detail",
+      "q": "Why did the swallows pull the ship over to an island?",
+      "choices": [
+        "They saw a storm coming over the sea",
+        "They wanted to visit the canaries there",
+        "They were tired and needed to rest",
+        "The pirates had blocked the way home"
+      ],
+      "answer": 2,
+      "evidence": "they would have to take a rest soon"
+    },
+    {
+      "id": "doctor-dolittle-14-02",
+      "type": "detail",
+      "q": "Why did the Doctor want to get off the ship onto the island?",
+      "choices": [
+        "To find tall trees to make a new mast for the ship",
+        "To look for water, because none was left to drink",
+        "To hunt for the pirates who had chased them across the sea",
+        "To pick fruit for the animals"
+      ],
+      "answer": 1,
+      "evidence": "because there was none left to drink on his ship"
+    },
+    {
+      "id": "doctor-dolittle-14-03",
+      "type": "character",
+      "q": "How did the big black rat act when he came to speak to the Doctor?",
+      "choices": [
+        "Nervous and shy, coughing and watching the dog",
+        "Bold and proud, shouting so all could hear him",
+        "Angry and rude, telling the Doctor to go away",
+        "Sleepy and slow, yawning between every word"
+      ],
+      "answer": 0,
+      "evidence": "after he had coughed nervously two or three times"
+    },
+    {
+      "id": "doctor-dolittle-14-04",
+      "type": "detail",
+      "q": "What did the rat warn the Doctor about?",
+      "choices": [
+        "The pirates were hiding on the far side of the island",
+        "The spring water on this island was not safe to drink",
+        "A great storm would come in from the sea before morning",
+        "The ship's boards were rotten and it would sink"
+      ],
+      "answer": 3,
+      "evidence": "Its boards are rotten"
+    },
+    {
+      "id": "doctor-dolittle-14-05",
+      "type": "detail",
+      "q": "How do the rats know when a ship is going to sink?",
+      "choices": [
+        "They hear the old boards creak loudly in the night",
+        "They can smell the sea-water seeping in down below",
+        "The tips of their tails get a tingly feeling",
+        "Their whiskers droop and curl"
+      ],
+      "answer": 2,
+      "evidence": "The tips of our tails get that tingly feeling"
+    },
+    {
+      "id": "doctor-dolittle-14-06",
+      "type": "vocabulary",
+      "q": "The Doctor called the rat \"very considerate\" for coming to warn him. What does \"considerate\" mean?",
+      "choices": [
+        "Very clever and quick",
+        "Thinking kindly about other people",
+        "Frightened of being caught",
+        "Proud of being right"
+      ],
+      "answer": 1,
+      "evidence": "Very considerate of you--very!"
+    },
+    {
+      "id": "doctor-dolittle-14-07",
+      "type": "detail",
+      "q": "What did Gub-Gub find on the island that made him squeak for joy?",
+      "choices": [
+        "A whole valley full of wild sugarcane",
+        "A field of fat turnips by a little stream",
+        "A heap of apples under a tree",
+        "A wide, muddy pond to roll about in all day"
+      ],
+      "answer": 0,
+      "evidence": "a whole valley full of wild sugarcane"
+    },
+    {
+      "id": "doctor-dolittle-14-08",
+      "type": "sequence",
+      "q": "What did the two swallows come to tell the Doctor near the end of the chapter?",
+      "choices": [
+        "The ship had already sunk down to the bottom of the bay",
+        "The canaries had found a better ship on the far shore of the island",
+        "The other swallows were rested and ready to fly on",
+        "The pirates were on his ship and had left theirs empty"
+      ],
+      "answer": 3,
+      "evidence": "They have left their own ship with nobody on it"
+    }
+  ]
+}

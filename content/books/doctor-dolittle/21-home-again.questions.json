@@ -1,0 +1,110 @@
+{
+  "book": "doctor-dolittle",
+  "chapter": 21,
+  "questions": [
+    {
+      "id": "doctor-dolittle-21-01",
+      "type": "sequence",
+      "q": "What did the Doctor do when he first got back to his own country, before going home?",
+      "choices": [
+        "He went straight to the sailor to return the boat",
+        "He traveled to country-fairs with the pushmi-pullyu",
+        "He wrote a big new book about all the animals of Africa",
+        "He visited the King to tell him about the pirates"
+      ],
+      "answer": 1,
+      "evidence": "First he went traveling through the land with the pushmi-pullyu in a gipsy-wagon"
+    },
+    {
+      "id": "doctor-dolittle-21-02",
+      "type": "character",
+      "q": "Why did Dab-Dab keep scolding the Doctor at the fairs?",
+      "choices": [
+        "He let children in for nothing when she wasn't looking",
+        "He spent all the sixpences on candy and toys for the children",
+        "He forgot to feed the pushmi-pullyu every day",
+        "He fell asleep in his chair in front of the wagon"
+      ],
+      "answer": 0,
+      "evidence": "he would let the children in for nothing when she wasn't looking"
+    },
+    {
+      "id": "doctor-dolittle-21-03",
+      "type": "character",
+      "q": "What did the Doctor always say when circus-men wanted to buy the pushmi-pullyu?",
+      "choices": [
+        "Yes, but only if they gave the animal a big green garden to live in",
+        "No, because he was too shy to be seen",
+        "Yes, once he was home safe in Puddleby",
+        "No, because he should never be shut in a cage"
+      ],
+      "answer": 3,
+      "evidence": "The pushmi-pullyu shall never be shut up in a cage"
+    },
+    {
+      "id": "doctor-dolittle-21-04",
+      "type": "detail",
+      "q": "How did the Doctor come back to Puddleby at the end?",
+      "choices": [
+        "As a famous wizard",
+        "As a poor sailor",
+        "As a rich man",
+        "As a circus-man"
+      ],
+      "answer": 2,
+      "evidence": "he came back to Puddleby a rich man"
+    },
+    {
+      "id": "doctor-dolittle-21-05",
+      "type": "detail",
+      "q": "Why did the Doctor buy another piano?",
+      "choices": [
+        "To play songs for the animals",
+        "To put the white mice back in it",
+        "To give to the sailor's baby",
+        "To sell again at the country-fair"
+      ],
+      "answer": 1,
+      "evidence": "he bought another piano and put the white mice back in it"
+    },
+    {
+      "id": "doctor-dolittle-21-06",
+      "type": "detail",
+      "q": "What did Gub-Gub do when they got back to the garden?",
+      "choices": [
+        "Dug up the horseradish that had grown three feet high",
+        "Chased the rats out of the tool-shed by the wall",
+        "Rolled in the flower-beds where the hollyhocks grew",
+        "Ate up every one of the muffins that Dab-Dab was toasting for tea"
+      ],
+      "answer": 0,
+      "evidence": "Gub-Gub dug up the horseradish"
+    },
+    {
+      "id": "doctor-dolittle-21-07",
+      "type": "vocabulary",
+      "q": "The Doctor said money \"is a terrible nuisance.\" What is a \"nuisance\"?",
+      "choices": [
+        "Something that makes you very happy",
+        "Something that is easy to lose",
+        "Something that you must give away to the poor",
+        "Something that bothers or troubles you"
+      ],
+      "answer": 3,
+      "evidence": "Money,\" he said, \"is a terrible nuisance"
+    },
+    {
+      "id": "doctor-dolittle-21-08",
+      "type": "main-idea",
+      "q": "What is this last chapter mostly about?",
+      "choices": [
+        "The Doctor sets sail for Africa again to visit the monkeys and Polynesia",
+        "The Doctor sells the pushmi-pullyu to a circus and buys a new house",
+        "The Doctor comes home rich and happy, and his friends in Africa miss him",
+        "The Doctor and Jip dig up all the old bones that had been buried long ago"
+      ],
+      "answer": 2,
+      "evidence": "I think he will--I guess he will--I hope he will!"
+    }
+  ]
+}

@@ -1,0 +1,150 @@
+{
+  "book": "jungle-book",
+  "chapter": 8,
+  "questions": [
+    {
+      "id": "jungle-book-08-01",
+      "type": "detail",
+      "q": "What did Kotick shout at Sea Vitch until the gulls joined in and the walrus finally answered him?",
+      "choices": ["Sleepy-head", "Fish-thief", "Clam-eater", "Old tusker"],
+      "answer": 2,
+      "evidence": "Clam-eater! Clam-eater!"
+    },
+    {
+      "id": "jungle-book-08-02",
+      "type": "detail",
+      "q": "Who did Sea Vitch tell Kotick to go and ask about a place where men never come?",
+      "choices": ["The old albatross of Kerguelen", "Sea Cow, if he was still living", "Limmershin, the little Winter Wren", "The Burgomaster gulls on the islet"],
+      "answer": 1,
+      "evidence": "Go and ask Sea Cow"
+    },
+    {
+      "id": "jungle-book-08-03",
+      "type": "inference",
+      "q": "Why did the seals at Novastoshnah not understand why Kotick was so upset?",
+      "choices": ["None of them had seen the killing for themselves", "They were jealous that Kotick was the only white seal", "They thought Kotick had made up the whole story", "They were too busy fighting for places on the beach"],
+      "answer": 0,
+      "evidence": "none of the other seals had seen the killing"
+    },
+    {
+      "id": "jungle-book-08-04",
+      "type": "inference",
+      "q": "Even when Kotick found an island with a good hard beach, why would he not stay there?",
+      "choices": ["The fishing nearby was too poor to feed a large herd of seals", "The island was too far from Novastoshnah for the seals to swim", "Sharks and killer whales lived in the waters all around it", "He could tell men had come there before and would come again"],
+      "answer": 3,
+      "evidence": "where men had come once they would come again"
+    },
+    {
+      "id": "jungle-book-08-05",
+      "type": "detail",
+      "q": "What story did the dying old seal on the island of green trees tell Kotick?",
+      "choices": ["That Sea Cow lived in a warm sea far to the south of the Horn", "That a white seal would one day lead the seals to a quiet place", "That men had promised never to visit the Lost Rookery again", "That a great whale would one day carry the seals to safety"],
+      "answer": 1,
+      "evidence": "some day a white seal would come out of the North and lead the seal people to a quiet place"
+    },
+    {
+      "id": "jungle-book-08-06",
+      "type": "vocabulary",
+      "q": "Kotick \"set off alone because of a notion in his bullet-head.\" What does \"notion\" mean here?",
+      "choices": ["A pain", "A dream he had while sleeping", "An idea", "A bump from fighting"],
+      "answer": 2,
+      "evidence": "because of a notion in his bullet-head"
+    },
+    {
+      "id": "jungle-book-08-07",
+      "type": "character",
+      "q": "When Matkah begged him to marry and settle down, what did Kotick mean by \"it is always the seventh wave that goes farthest up the beach\"?",
+      "choices": ["He wanted to wait for calmer seas before leaving", "One more try might be the one that finally works", "He would marry after seven more years of travel", "The best beaches are always the farthest away"],
+      "answer": 1,
+      "evidence": "it is always the seventh wave that goes farthest up the beach"
+    },
+    {
+      "id": "jungle-book-08-08",
+      "type": "detail",
+      "q": "Why did Kotick swim westward on his last exploration?",
+      "choices": ["An albatross had told him of an island to the west", "He was chasing a sea cow he had seen in a storm", "He was following a great shoal of halibut", "The other seals had searched all the islands to the east"],
+      "answer": 2,
+      "evidence": "he had fallen on the trail of a great shoal of halibut"
+    },
+    {
+      "id": "jungle-book-08-09",
+      "type": "detail",
+      "q": "According to the story, why can Sea Cow not speak?",
+      "choices": ["He has six neck bones instead of seven", "His split upper lip cannot shape any words", "He has forgotten how after years of silence", "He only understands the language of the gulls"],
+      "answer": 0,
+      "evidence": "He has only six bones in his neck"
+    },
+    {
+      "id": "jungle-book-08-10",
+      "type": "sequence",
+      "q": "What made Kotick suddenly realize that the strange bowing creatures were Sea Cow?",
+      "choices": ["The old dying seal had described their split lips to him", "They waved their flippers to spell out their name in code", "He remembered what the Burgomaster gull had screamed at him", "He saw them swim into the dark tunnel under the cliff"],
+      "answer": 2,
+      "evidence": "he remembered in a flash what the Burgomaster gull had screamed"
+    },
+    {
+      "id": "jungle-book-08-11",
+      "type": "inference",
+      "q": "Why did Kotick begin to respect the slow sea cows more as he followed them north?",
+      "choices": ["He saw they were following a warm current on purpose", "He learned they could speak many languages after all", "They bravely chased away a shark that was hunting him", "They shared their seaweed with him when he was hungry"],
+      "answer": 0,
+      "evidence": "they were following up a warm current of water, and then he respected them more"
+    },
+    {
+      "id": "jungle-book-08-12",
+      "type": "detail",
+      "q": "How did the sea cows reach the hidden beaches?",
+      "choices": ["They waited for a very high tide to carry them over the rocks", "They swam through a dark tunnel deep under a cliff", "They followed a narrow river inland from the coast", "They climbed over a low sand bar at night when no one could see"],
+      "answer": 1,
+      "evidence": "plunged into a dark hole at the foot of it, twenty fathoms under the sea"
+    },
+    {
+      "id": "jungle-book-08-13",
+      "type": "vocabulary",
+      "q": "The deep water \"ran up to the perpendicular cliffs.\" What are perpendicular cliffs?",
+      "choices": ["Cliffs covered in long grass and moss", "Cliffs that go straight up and down", "Cliffs made of soft, crumbling sand", "Cliffs hidden under the rolling fog"],
+      "answer": 1,
+      "evidence": "ran up to the perpendicular cliffs"
+    },
+    {
+      "id": "jungle-book-08-14",
+      "type": "detail",
+      "q": "Besides the cliffs, what would keep ships away from the new beaches?",
+      "choices": ["Thick fog that hid the islands from every sailor's view", "A line of bars, shoals and rocks out to sea", "Strong whirlpools near the mouth of the tunnel", "Ice that covered the water for most of the year"],
+      "answer": 1,
+      "evidence": "would never let a ship come within six miles of the beach"
+    },
+    {
+      "id": "jungle-book-08-15",
+      "type": "character",
+      "q": "What reason did the young seal give for not following Kotick to the new island?",
+      "choices": ["Kotick had never fought for a nursery the way they had", "Kotick was too young to know where seals could live", "The new island was too far north for baby seals", "Kotick had lied to them about the Sea Cow before"],
+      "answer": 0,
+      "evidence": "we've been fighting for our nurseries, and that's a thing you never did"
+    },
+    {
+      "id": "jungle-book-08-16",
+      "type": "inference",
+      "q": "Why was Kotick able to beat even the biggest seals on the beach?",
+      "choices": ["His father had secretly trained him to fight every summer", "The other seals were too frightened of his white fur", "He had never fasted for months, and swimming kept him fit", "He attacked them at night while they were all asleep"],
+      "answer": 2,
+      "evidence": "Kotick had never fasted for four months as the big seals did every year"
+    },
+    {
+      "id": "jungle-book-08-17",
+      "type": "vocabulary",
+      "q": "Kotick \"would have scorned to look at or touch one of his wounds.\" What does \"scorned\" mean here?",
+      "choices": ["Been too tired and sleepy", "Been too proud", "Been too afraid of the pain", "Been unable to reach"],
+      "answer": 1,
+      "evidence": "he would have scorned to look at or touch one of his wounds"
+    },
+    {
+      "id": "jungle-book-08-18",
+      "type": "main-idea",
+      "q": "What is this part of the story mostly about?",
+      "choices": ["Kotick searching for a safe home for seals and leading them there", "Kotick learning to fish and hunt from the old walrus Sea Vitch", "Kotick racing the other seals to become the leader of the beach", "Kotick helping the sea cows escape from the whaling ships"],
+      "answer": 0,
+      "evidence": "I only want to show you all a place where you will be safe"
+    }
+  ]
+}

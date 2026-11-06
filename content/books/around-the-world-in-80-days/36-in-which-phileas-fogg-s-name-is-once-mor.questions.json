@@ -1,0 +1,70 @@
+{
+  "book": "around-the-world-in-80-days",
+  "chapter": 36,
+  "questions": [
+    {
+      "id": "around-the-world-in-80-days-36-01",
+      "type": "detail",
+      "q": "Who turned out to be the real bank robber?",
+      "choices": ["A man named James Strand", "Detective Fix himself", "A clerk at the Bank of England", "Colonel Stamp Proctor"],
+      "answer": 0,
+      "evidence": "the real bankrobber, a certain James Strand"
+    },
+    {
+      "id": "around-the-world-in-80-days-36-02",
+      "type": "main-idea",
+      "q": "How did public opinion about Phileas Fogg change after the real robber was caught?",
+      "choices": ["People stopped caring about the bet and forgot him", "He went from a criminal to an honourable gentleman", "People decided he had helped the robber escape", "He was blamed for making the police look foolish in public"],
+      "answer": 1,
+      "evidence": "now he was an honourable gentleman"
+    },
+    {
+      "id": "around-the-world-in-80-days-36-03",
+      "type": "detail",
+      "q": "How did people in London try to get news of Fogg during those three days?",
+      "choices": ["They sent telegrams to America and Asia", "They hired a ship to sail out and look for him", "They asked the Reform Club to send a search party", "They put notices in every newspaper in France"],
+      "answer": 0,
+      "evidence": "Telegrams were sent to America and Asia for news of Phileas Fogg."
+    },
+    {
+      "id": "around-the-world-in-80-days-36-04",
+      "type": "detail",
+      "q": "Where did a great crowd gather on Saturday evening?",
+      "choices": ["At the Liverpool railway station platform", "Around the Reform Club in Pall Mall", "Outside Fogg's house in Saville Row", "At the doors of the Bank of England"],
+      "answer": 1,
+      "evidence": "A great crowd was collected in Pall Mall and the neighbouring streets"
+    },
+    {
+      "id": "around-the-world-in-80-days-36-05",
+      "type": "character",
+      "q": "Why did Samuel Fallentin say they should not be too hasty to call the bet won?",
+      "choices": ["He had heard a rumour that Fogg had reached Liverpool", "Fogg was so punctual he might appear at the last minute", "He had secretly bet his own money on Fogg and hoped to win", "The club clock was known to run a little too fast"],
+      "answer": 1,
+      "evidence": "I should not be surprised if he appeared before us at the last minute"
+    },
+    {
+      "id": "around-the-world-in-80-days-36-06",
+      "type": "inference",
+      "q": "Why did Andrew Stuart feel so sure that Fogg had lost?",
+      "choices": ["Fogg's name was not on the China's passenger list", "Fix had sent a telegram saying Fogg was in jail in America", "A newspaper reported that Fogg had died of a fever in India", "Fogg's servant had come to the club that morning to say so"],
+      "answer": 0,
+      "evidence": "the name of Phileas Fogg is not among them"
+    },
+    {
+      "id": "around-the-world-in-80-days-36-07",
+      "type": "vocabulary",
+      "q": "The five gentlemen agreed to play \"a rubber\" while they waited. In this chapter, what is a rubber?",
+      "choices": ["A round of the card game", "A soft eraser for pencils", "A kind of strong drink", "A bet on a horse race"],
+      "answer": 0,
+      "evidence": "they readily assented to Mr. Fallentin's proposal of a rubber"
+    },
+    {
+      "id": "around-the-world-in-80-days-36-08",
+      "type": "sequence",
+      "q": "What happened just before the clock reached a quarter before nine?",
+      "choices": ["The players finished their game and went home", "Fogg walked in and said, \"Here I am, gentlemen!\"", "A messenger brought a letter from Fogg's bank", "The police cleared the crowd away from the doors"],
+      "answer": 1,
+      "evidence": "Here I am, gentlemen!"
+    }
+  ]
+}

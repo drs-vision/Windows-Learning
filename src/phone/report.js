@@ -31,10 +31,11 @@ const DONE = {
   'bible-typing:finished': 'Scripture passages typed',
   'my-passages:finished': 'Family passages typed',
   'books:chapters': 'Book chapters passed',
-  'books:correct': 'Reading quiz answers right',
   'rwt:finished': 'Read, Write & Type! activities',
   'discgames:finished': 'CD game progress',
 };
+/** Counted for the Reading tile, not listed under Finished. */
+const READING_KEYS = new Set(['books:correct', 'books:answered', 'books:readWords', 'books:readSec']);
 const doneName = (k) => DONE[k] ?? `${QUEST_NAMES[k.split(':')[0]] ?? k.split(':')[0]} finished`;
 
 export const dayKey = (d) => `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
@@ -50,7 +51,9 @@ export const daySeconds = (r) => (r?.time ?? []).reduce((a, t) => a + (t.sec || 
 export function merge(days) {
   const time = new Map(), done = {}, earned = {}, spent = {};
   const typing = { sessions: 0, chars: 0, ms: 0, best: 0 };
+  let reading = null;
   for (const r of days) {
+    if (r.reading) reading = r.reading; // all-time summary: the newest one wins
     for (const t of r.time ?? []) {
       // A learning site and its quest are one thing to a parent: "Khan Academy", not khanacademy.org + Khan Academy.
       const label = t.kind === 'site' ? SITE_NAMES[t.label] ?? t.label : t.label;
@@ -65,7 +68,7 @@ export function merge(days) {
     for (const [k, v] of Object.entries(r.spent ?? {})) spent[k] = (spent[k] ?? 0) + v;
   }
   const list = [...time.values()].sort((a, b) => b.sec - a.sec);
-  return { days: days.length, total: list.reduce((a, t) => a + t.sec, 0), time: list, typing, done, earned, spent, log: days.length === 1 ? days[0].log ?? [] : [] };
+  return { days: days.length, total: list.reduce((a, t) => a + t.sec, 0), time: list, typing, done, earned, spent, reading, log: days.length === 1 ? days[0].log ?? [] : [] };
 }
 
 export const fmtTime = (sec) => {
@@ -131,7 +134,7 @@ export function titleOf(selected, mode) {
 export function reportHtml(reports, { title, note } = {}) {
   const m = merge(reports);
   const head = title ? `<h3 class="rep-title">${esc(title)}</h3>` : '';
-  if (!m.total && !sum(m.earned) && !sum(m.spent) && !sum(m.done) && !m.log.length) {
+  if (!m.total && !sum(m.earned) && !sum(m.spent) && !sum(m.done) && !m.log.length && !m.reading?.chapters) {
     return `<div class="rep">${head}<p class="rep-empty">Nothing recorded${note ? '. ' + esc(note) : '.'}</p></div>`;
   }
   // Time by kind, as one stacked bar.
@@ -150,8 +153,9 @@ export function reportHtml(reports, { title, note } = {}) {
     `<div class="rep-tile"><small>Coins earned</small><b>${earned}</b></div>`,
     `<div class="rep-tile"><small>Coins spent</small><b>${spentTotal}</b></div>`,
     m.typing.sessions ? `<div class="rep-tile"><small>Typing speed</small><b>${wpm} <em>WPM</em></b><small>best ${m.typing.best} · ${Math.round(m.typing.chars / 5)} words</small></div>` : '',
+    readingTile(m),
   ].join('');
-  const done = Object.entries(m.done).filter(([, v]) => v > 0).sort((a, b) => b[1] - a[1]);
+  const done = Object.entries(m.done).filter(([k, v]) => v > 0 && !READING_KEYS.has(k)).sort((a, b) => b[1] - a[1]);
   const doneHtml = done.length ? `<h4>Finished</h4><ul class="rep-list">${done.map(([k, v]) => `<li><span>${esc(doneName(k))}</span><b>${v}</b></li>`).join('')}</ul>` : '';
   const byName = (o) => { const out = {}; for (const [k, v] of Object.entries(o)) { const n = QUEST_NAMES[k] ?? k; out[n] = (out[n] ?? 0) + v; } return out; };
   const src = Object.entries(byName(m.earned)).filter(([, v]) => v).sort((a, b) => b[1] - a[1]);
@@ -166,6 +170,25 @@ export function reportHtml(reports, { title, note } = {}) {
     ${topHtml}${doneHtml}${srcHtml}${spHtml}${logHtml(m.log)}
     ${note ? `<p class="rep-note">${esc(note)}</p>` : ''}
   </div>`;
+}
+
+/**
+ * Reading, for parents only. In the selection: quiz answers right, chapters passed, reading speed (words a minute
+ * while the chapter was on screen and in use). All time: the verified level (the highest level with 3+ chapters at
+ * 80%+ on the first try) and the level they're reading now.
+ */
+function readingTile(m) {
+  const d = m.done, r = m.reading;
+  const answered = d['books:answered'] || 0, right = d['books:correct'] || 0;
+  const speed = d['books:readSec'] > 0 ? Math.round(d['books:readWords'] / (d['books:readSec'] / 60)) : 0;
+  const now = answered ? `<div class="rep-tile"><small>Reading</small><b>${Math.round(100 * right / answered)}% <em>right</em></b><small>${[
+    d['books:chapters'] ? `${d['books:chapters']} chapter${d['books:chapters'] === 1 ? '' : 's'} passed` : '',
+    speed ? `${speed} words/min` : '',
+  ].filter(Boolean).join(' · ') || `${answered} questions`}</small></div>` : '';
+  const level = r && r.chapters ? `<div class="rep-tile"><small>Reading level</small><b>${r.verified ? `Level ${r.verified}` : '—'} <em>${r.verified ? 'verified' : 'not yet'}</em></b><small>${[
+    r.level ? `reading Level ${r.level}` : '', r.firstTry != null ? `${r.firstTry}% first try` : '', r.wpm ? `${r.wpm} words/min` : '', `${r.chapters} chapters`,
+  ].filter(Boolean).join(' · ')}</small></div>` : '';
+  return now + level;
 }
 
 const clock = (hhmm) => { const [h, mi] = String(hhmm).split(':').map(Number); return `${((h + 11) % 12) + 1}:${String(mi).padStart(2, '0')} ${h < 12 ? 'am' : 'pm'}`; };

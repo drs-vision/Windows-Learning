@@ -10,9 +10,9 @@ export interface TypingDone { typed: string; startedAt: number; finishedAt: numb
  */
 /**
  * errorless: a wrong key doesn't go in (the right key just stays lit), so there is nothing to "get wrong" and no
- * speed or accuracy to worry about; the stats bar is hidden too.
+ * accuracy to worry about. showSpeed adds live WPM to it (for typing practice that counts toward speed, like reading).
  */
-export function TypingBox({ text, onDone, highlightKeys, big, errorless }: { text: string; onDone: (d: TypingDone) => void; highlightKeys?: string; big?: boolean; errorless?: boolean }) {
+export function TypingBox({ text, onDone, highlightKeys, big, errorless, showSpeed }: { text: string; onDone: (d: TypingDone) => void; highlightKeys?: string; big?: boolean; errorless?: boolean; showSpeed?: boolean }) {
   const [typed, setTyped] = useState('');
   const [miss, setMiss] = useState<string | null>(null);
   const [startedAt, setStartedAt] = useState<number | null>(null);
@@ -69,7 +69,7 @@ export function TypingBox({ text, onDone, highlightKeys, big, errorless }: { tex
       </div>
       <textarea ref={inputRef} class="typing-input" value={typed} onInput={onInput} onKeyDown={onKey} spellcheck={false} autocomplete="off" autocapitalize="off" aria-label="type here" />
       {errorless
-        ? <div class="typing-stats"><span>{typed.length} / {text.length} <small>letters</small></span>{miss && <span class="muted">That was “{miss === ' ' ? 'space' : miss}” — look for the lit key{nextChar !== nextChar.toLowerCase() ? ' (hold Shift)' : ''}.</span>}</div>
+        ? <div class="typing-stats">{showSpeed && <span>{Math.round(wpm)} <small>WPM</small></span>}<span>{typed.length} / {text.length} <small>letters</small></span>{miss && <span class="muted">That was “{miss === ' ' ? 'space' : miss}” — look for the lit key{nextChar !== nextChar.toLowerCase() ? ' (hold Shift)' : ''}.</span>}</div>
         : <div class="typing-stats">
             <span>{Math.round(wpm)} <small>WPM</small></span>
             <span>{Math.round(accuracy * 100)}% <small>accuracy</small></span>

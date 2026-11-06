@@ -1,0 +1,110 @@
+{
+  "book": "doctor-dolittle",
+  "chapter": 16,
+  "questions": [
+    {
+      "id": "doctor-dolittle-16-01",
+      "type": "detail",
+      "q": "What was the Doctor doing while the animals first went downstairs on the new ship?",
+      "choices": [
+        "Leaning on the rail with a pipe, watching the islands fade",
+        "Steering the ship with the help of the tired swallows",
+        "Writing in his big notebook about the canaries and the sharks",
+        "Counting the bottles that were left in his medicine-bag"
+      ],
+      "answer": 0,
+      "evidence": "the Doctor leant on the rail at the back of the ship with a pipe in his mouth"
+    },
+    {
+      "id": "doctor-dolittle-16-02",
+      "type": "detail",
+      "q": "What were the beds on the pirate ship made of, according to Dab-Dab?",
+      "choices": [
+        "Old sail-cloth",
+        "Soft lamb's wool",
+        "Golden velvet",
+        "Primrose silk"
+      ],
+      "answer": 3,
+      "evidence": "The beds downstairs are made of primrose silk"
+    },
+    {
+      "id": "doctor-dolittle-16-03",
+      "type": "inference",
+      "q": "Why did Jip think the pirates kept something special behind the locked door?",
+      "choices": [
+        "He could smell gold and silver through the key-hole",
+        "He had seen a pirate carry a chest in there before",
+        "He guessed it was where the pirates kept their treasure",
+        "He heard coins jingling on the other side of the door"
+      ],
+      "answer": 2,
+      "evidence": "Jip says it must be where the pirates kept their treasure"
+    },
+    {
+      "id": "doctor-dolittle-16-04",
+      "type": "sequence",
+      "q": "What did the animals do after the Doctor found that the little door would not open?",
+      "choices": [
+        "They called the swallows to pull the door open",
+        "They hunted all over the ship for the key",
+        "They tried to dig a hole under the door with their paws",
+        "They gave up and went to have their supper"
+      ],
+      "answer": 1,
+      "evidence": "Then they all started to hunt for the key"
+    },
+    {
+      "id": "doctor-dolittle-16-05",
+      "type": "detail",
+      "q": "What did the walking-stick they found have inside it?",
+      "choices": [
+        "A sword",
+        "A map",
+        "A flute",
+        "A key"
+      ],
+      "answer": 0,
+      "evidence": "a walking-stick which had a sword inside it"
+    },
+    {
+      "id": "doctor-dolittle-16-06",
+      "type": "detail",
+      "q": "What was the first sound Too-Too said he heard behind the door?",
+      "choices": [
+        "Some one turning the pages of a book",
+        "Some one walking up and down on tiptoe",
+        "Some one whispering a song to himself",
+        "Some one putting his hand in his pocket"
+      ],
+      "answer": 3,
+      "evidence": "I hear the noise of some one putting his hand in his pocket"
+    },
+    {
+      "id": "doctor-dolittle-16-07",
+      "type": "character",
+      "q": "How could Too-Too tell the person behind the door was unhappy?",
+      "choices": [
+        "He heard the man sniffle and blow his nose",
+        "He heard the man calling out for his mother",
+        "He heard a tear fall on the man's sleeve",
+        "He heard the man kicking the door in anger"
+      ],
+      "answer": 2,
+      "evidence": "the sound of a tear falling on his sleeve"
+    },
+    {
+      "id": "doctor-dolittle-16-08",
+      "type": "main-idea",
+      "q": "What does this chapter mostly show about Too-Too the owl?",
+      "choices": [
+        "He knows the way across the wide sea better than the swallows",
+        "He can hear even the tiniest sounds that others cannot",
+        "He is the bravest of the animals when there is trouble",
+        "He can see in the dark better than any other creature"
+      ],
+      "answer": 1,
+      "evidence": "Almost everything makes SOME noise--if your ears are only sharp enough to catch it"
+    }
+  ]
+}

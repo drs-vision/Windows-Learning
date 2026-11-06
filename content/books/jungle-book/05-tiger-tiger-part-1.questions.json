@@ -1,0 +1,150 @@
+{
+  "book": "jungle-book",
+  "chapter": 5,
+  "questions": [
+    {
+      "id": "jungle-book-05-01",
+      "type": "inference",
+      "q": "Why did Mowgli not stay in the first village he came to after leaving the wolves?",
+      "choices": ["It was too near the jungle, and he had made an enemy at the Council", "The villagers there chased him away with sticks and their barking dogs", "Bagheera had told him to travel at least twenty miles from home", "He could not find any food or water anywhere near that village"],
+      "answer": 0,
+      "evidence": "he would not stop there because it was too near to the jungle"
+    },
+    {
+      "id": "jungle-book-05-02",
+      "type": "detail",
+      "q": "How did Mowgli show the man at the village gate that he wanted food?",
+      "choices": ["He opened his mouth and pointed down it", "He gave the Strangers' Hunting Call", "He held out an empty wicker pot to him", "He rubbed his stomach and howled"],
+      "answer": 0,
+      "evidence": "opened his mouth, and pointed down it to show that he wanted food"
+    },
+    {
+      "id": "jungle-book-05-03",
+      "type": "detail",
+      "q": "What did the priest say the scars on Mowgli's arms and legs were?",
+      "choices": ["The bites of wolves", "Burns from a fire", "Scratches from thorns", "Marks from a tiger's claws"],
+      "answer": 0,
+      "evidence": "They are the bites of wolves."
+    },
+    {
+      "id": "jungle-book-05-04",
+      "type": "inference",
+      "q": "Why did the priest tell Messua to take the boy into her house?",
+      "choices": ["Messua was the wife of the richest villager, and he wanted to please her", "He was afraid the wild boy would attack the village if he were turned away", "He knew for certain that Mowgli was really Messua's long-lost son", "The village head-man had ordered him to find the boy a home at once"],
+      "answer": 0,
+      "evidence": "he knew that Messua was wife to the richest villager in the place"
+    },
+    {
+      "id": "jungle-book-05-05",
+      "type": "detail",
+      "q": "How did Messua know that Mowgli was probably not her real son Nathoo?",
+      "choices": ["His feet were as hard as horn and had never worn shoes", "He did not answer when she called him by the name Nathoo", "He was much taller than her boy would have been by then", "He had eyes like red fire, and Nathoo's eyes were dark"],
+      "answer": 0,
+      "evidence": "those feet have never worn shoes"
+    },
+    {
+      "id": "jungle-book-05-06",
+      "type": "detail",
+      "q": "How did Mowgli learn to speak the villagers' language so quickly?",
+      "choices": ["He copied each word Messua said, as he copied jungle animals", "Messua's husband taught him for hours every night by the fire", "He remembered the words from when he was a baby in the village", "The village children played word games with him in the street"],
+      "answer": 0,
+      "evidence": "as soon as Messua pronounced a word Mowgli would imitate it almost perfectly"
+    },
+    {
+      "id": "jungle-book-05-07",
+      "type": "character",
+      "q": "Why did Mowgli go out through the window at bedtime?",
+      "choices": ["The hut looked too much like a panther trap to sleep in", "He wanted to slip back into the jungle to see Bagheera again", "He was too hot inside under the heavy thatched roof", "He heard Gray Brother calling him from the field"],
+      "answer": 0,
+      "evidence": "so like a panther trap as that hut"
+    },
+    {
+      "id": "jungle-book-05-08",
+      "type": "detail",
+      "q": "What news did Gray Brother bring about Shere Khan on Mowgli's first night in the village?",
+      "choices": ["He had gone far off to hunt until his singed coat grew again", "He had been made the new leader of the Seeonee wolf pack", "He was waiting in the bamboos to catch Mowgli that very night", "He had been shot by the village hunter beside the river"],
+      "answer": 0,
+      "evidence": "Shere Khan has gone away to hunt far off till his coat grows again"
+    },
+    {
+      "id": "jungle-book-05-09",
+      "type": "character",
+      "q": "What kept Mowgli from hurting the village children when they made fun of him?",
+      "choices": ["He knew it was unsportsmanlike to kill little naked cubs", "Messua had made him promise never to harm anyone", "He was afraid the priest would send him back to the jungle", "He did not know how strong he really was compared to them"],
+      "answer": 0,
+      "evidence": "it was unsportsmanlike to kill little naked cubs"
+    },
+    {
+      "id": "jungle-book-05-10",
+      "type": "sequence",
+      "q": "What led to Mowgli being sent out to herd the buffaloes?",
+      "choices": ["He helped the potter's donkey, then threatened the priest who scolded him", "He refused to wear a cloth and ran naked up and down the village streets", "He told Messua that he wanted to go back and live with the wolves", "He won a fight with the village boys and was made their leader"],
+      "answer": 0,
+      "evidence": "Mowgli threatened to put him on the donkey too"
+    },
+    {
+      "id": "jungle-book-05-11",
+      "type": "detail",
+      "q": "Who was Buldeo?",
+      "choices": ["The village hunter with a Tower musket", "The village priest who wore a red mark", "Messua's husband and the richest man", "The head-man who gave Mowgli his orders"],
+      "answer": 0,
+      "evidence": "old Buldeo, the village hunter, who had a Tower musket"
+    },
+    {
+      "id": "jungle-book-05-12",
+      "type": "inference",
+      "q": "Why did Mowgli have to hide his face while Buldeo told stories about the jungle?",
+      "choices": ["He was laughing, because he knew the stories were not true", "He was crying, because the stories made him miss his wolf family", "He was frightened by Buldeo's tales of ghosts and goblins", "He was falling asleep and did not want the old men to notice"],
+      "answer": 0,
+      "evidence": "had to cover his face not to show that he was laughing"
+    },
+    {
+      "id": "jungle-book-05-13",
+      "type": "detail",
+      "q": "According to Mowgli, why does Shere Khan really limp?",
+      "choices": ["He was born lame", "A hunter's bullet hit him", "He was hurt in a riot", "A ghost lives in his body"],
+      "answer": 0,
+      "evidence": "That tiger limps because he was born lame"
+    },
+    {
+      "id": "jungle-book-05-14",
+      "type": "vocabulary",
+      "q": "Buldeo \"puffed and snorted at Mowgli's impertinence.\" What does \"impertinence\" mean?",
+      "choices": ["Rude lack of respect", "Great skill at hunting", "Quiet, shy behavior", "Careless forgetfulness"],
+      "answer": 0,
+      "evidence": "puffed and snorted at Mowgli's impertinence"
+    },
+    {
+      "id": "jungle-book-05-15",
+      "type": "detail",
+      "q": "Why are herd boys usually safe from the tiger?",
+      "choices": ["Not even the tiger will charge a mob of cattle", "The tiger only hunts at night, when the boys are home", "Each herd boy carries a musket like Buldeo's", "The village dogs always follow the herds and bark"],
+      "answer": 0,
+      "evidence": "not even the tiger will charge a mob of cattle"
+    },
+    {
+      "id": "jungle-book-05-16",
+      "type": "detail",
+      "q": "What signal did Mowgli and Gray Brother agree on while Shere Khan was away?",
+      "choices": ["A wolf would sit on a rock where Mowgli could see it from the village", "Gray Brother would howl three times at sunset from the bamboo clump", "Mowgli would leave a buffalo near the river when he needed help", "A kite would circle over the plain whenever the tiger came back"],
+      "answer": 0,
+      "evidence": "sit on that rock, so that I can see thee as I come out of the village"
+    },
+    {
+      "id": "jungle-book-05-17",
+      "type": "detail",
+      "q": "What did Gray Brother learn from Tabaqui about Shere Khan's plan?",
+      "choices": ["He would wait for Mowgli at the village gate that evening", "He would attack the buffalo herd down at the river that noon", "He would hunt Mowgli at the dhak tree the next morning", "He would go back to the Council Rock to lead the wolves"],
+      "answer": 0,
+      "evidence": "Shere Khan's plan is to wait for thee at the village gate this evening"
+    },
+    {
+      "id": "jungle-book-05-18",
+      "type": "main-idea",
+      "q": "What is this part of the story mostly about?",
+      "choices": ["Mowgli learns to live among men as Shere Khan plans to kill him", "Mowgli finds his real mother and forgets all about the jungle", "Buldeo the hunter teaches Mowgli how to track and shoot tigers", "Gray Brother leads the wolf pack in a great hunt near the village"],
+      "answer": 0,
+      "evidence": "But he means to kill thee."
+    }
+  ]
+}

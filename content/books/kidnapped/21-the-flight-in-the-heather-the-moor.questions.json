@@ -1,0 +1,166 @@
+{
+  "book": "kidnapped",
+  "chapter": 21,
+  "questions": [
+    {
+      "id": "kidnapped-21-01",
+      "type": "detail",
+      "q": "What did David and Alan do while they waited in a hollow for the morning mist to rise?",
+      "choices": ["Made a dish of drammach and held a council of war", "Built a small fire of heather and dried their clothes", "Cut branches of fir to make a shelter for the day", "Slept in turns while the other watched the hill tops"],
+      "answer": 0,
+      "evidence": "made ourselves a dish of drammach, and held a council of war"
+    },
+    {
+      "id": "kidnapped-21-02",
+      "type": "vocabulary",
+      "q": "Alan says, \"this is the kittle bit.\" What does \"kittle\" mean here?",
+      "choices": ["Tricky and dangerous", "Short and easy", "Wet and muddy", "Already finished"],
+      "answer": 0,
+      "evidence": "this is the kittle bit"
+    },
+    {
+      "id": "kidnapped-21-03",
+      "type": "detail",
+      "q": "Which way did Alan decide they should go?",
+      "choices": ["East, across the open moors", "South, through the Campbell country", "North, toward the far coast", "West, back into the hills of Appin"],
+      "answer": 0,
+      "evidence": "we'll can strike east"
+    },
+    {
+      "id": "kidnapped-21-04",
+      "type": "inference",
+      "q": "When David said \"East be it!\" quite cheerily, what was he secretly thinking?",
+      "choices": ["That they would both be better off going separate ways", "That Alan had picked the most dangerous road on purpose", "That they ought to wait in the hollow until dark after all", "That he would rather go back and give himself up to the soldiers"],
+      "answer": 0,
+      "evidence": "let me take any other, it would be the best for both of us"
+    },
+    {
+      "id": "kidnapped-21-05",
+      "type": "detail",
+      "q": "Why did Alan say the flat moor was a bad place to cross by daylight?",
+      "choices": ["Soldiers coming over a hill could spy them miles away", "The bogs and peaty pools were too deep to wade", "Wild deer on the moor would give away their position", "There was no water anywhere on it for them to drink all day"],
+      "answer": 0,
+      "evidence": "they can spy you miles away"
+    },
+    {
+      "id": "kidnapped-21-06",
+      "type": "detail",
+      "q": "Since they had no clock, how was David to know when to wake Alan from his watch?",
+      "choices": ["By the shadow of a sprig of heath stuck in the ground", "By counting the cries of the moorfowl and the pewees", "By watching the herd of deer cross to the east", "By waiting until the water in the brandy bottle was gone"],
+      "answer": 0,
+      "evidence": "Alan stuck a sprig of heath in the ground to serve instead"
+    },
+    {
+      "id": "kidnapped-21-07",
+      "type": "sequence",
+      "q": "What happened while David was keeping the second watch?",
+      "choices": ["He dozed off, and horse-soldiers came near from the south-east", "He saw a herd of deer and woke Alan to hunt them", "Cluny's sentries crept up and took away all of their weapons and food", "A grouse flew up and he woke Alan by mistake too early"],
+      "answer": 0,
+      "evidence": "a body of horse-soldiers had come down during my sleep"
+    },
+    {
+      "id": "kidnapped-21-08",
+      "type": "character",
+      "q": "How did Alan react when he saw David had slept through his watch?",
+      "choices": ["He gave one quick ugly, anxious look, and that was all", "He shouted at David and called him a coward and a Whig", "He laughed and told David it did not matter at all", "He said he would never trust David with a watch again"],
+      "answer": 0,
+      "evidence": "which was all the reproach I had of him"
+    },
+    {
+      "id": "kidnapped-21-09",
+      "type": "detail",
+      "q": "Which mountain did Alan decide they must reach before morning?",
+      "choices": ["Ben Alder", "Ben Nevis", "Ben Lomond", "Ben More"],
+      "answer": 0,
+      "evidence": "Its name is Ben Alder"
+    },
+    {
+      "id": "kidnapped-21-10",
+      "type": "detail",
+      "q": "How did Alan and David move across the moor to get away from the soldiers?",
+      "choices": ["Running on their hands and knees in the low places", "Riding two horses that they took from the dragoons", "Wading along the bed of a shallow stream", "Walking upright behind a line of dead fir trees"],
+      "answer": 0,
+      "evidence": "run forward on his hands and knees"
+    },
+    {
+      "id": "kidnapped-21-11",
+      "type": "detail",
+      "q": "What sometimes made them lie as still as the dead, afraid to breathe?",
+      "choices": ["A grouse rising out of the heather with a clap of wings", "A trumpet blowing from the far side of the moor", "A dragoon riding straight toward their heather bush", "A hunting dog barking somewhere close behind them in the heather"],
+      "answer": 0,
+      "evidence": "when a grouse rose out of the heather with a clap of wings"
+    },
+    {
+      "id": "kidnapped-21-12",
+      "type": "character",
+      "q": "What kept David going when the pain was so bad he would gladly have given up?",
+      "choices": ["His fear of Alan", "His hope of reaching Queensferry", "His anger at the soldiers", "His wish to see Cluny"],
+      "answer": 0,
+      "evidence": "Nothing but the fear of Alan lent me enough of a false kind of courage"
+    },
+    {
+      "id": "kidnapped-21-13",
+      "type": "inference",
+      "q": "What does David's description of Alan's red-and-white face and whistling breath show?",
+      "choices": ["Alan was suffering as badly as David but would not give in", "Alan had been wounded by a shot from one of the dragoons", "Alan was sick with a fever he had caught in the bogs", "Alan was angry with David and could hardly bring himself to speak to him"],
+      "answer": 0,
+      "evidence": "I was driven to marvel at the man's endurance"
+    },
+    {
+      "id": "kidnapped-21-14",
+      "type": "sequence",
+      "q": "What did the soldiers do at the first gloaming of the night?",
+      "choices": ["Gathered at a trumpet call and camped by a fire", "Turned north and rode toward Ben Alder", "Split into small groups to search the bogs and hags", "Rode back south toward the Campbell country"],
+      "answer": 0,
+      "evidence": "they had built a fire and camped for the night"
+    },
+    {
+      "id": "kidnapped-21-15",
+      "type": "character",
+      "q": "When David said he had no strength left, what did Alan offer, and how did David respond?",
+      "choices": ["Alan offered to carry him, and David was shamed into following", "Alan offered to stop for an hour, and David fell asleep at once", "Alan offered him the last of the brandy, and David drank it all", "Alan offered to leave him hidden, and David begged him to stay"],
+      "answer": 0,
+      "evidence": "the sight of so much resolution shamed me"
+    },
+    {
+      "id": "kidnapped-21-16",
+      "type": "character",
+      "q": "During the long night march, how did David feel toward Alan?",
+      "choices": ["He hated him as the cause of all his pain", "He loved him like a brother for his courage", "He pitied him for carrying the heavy great-coat", "He trusted him more than ever before"],
+      "answer": 0,
+      "evidence": "of Alan, who was the cause of it, with hatred"
+    },
+    {
+      "id": "kidnapped-21-17",
+      "type": "detail",
+      "q": "What happened as Alan and David went down a heathery brae at dawn?",
+      "choices": ["Ragged men leaped out and held dirks at their throats", "They fell into a peaty pool and lost their weapons", "They saw the dragoons riding up the other side of the glen", "They found a shepherd's hut and slept inside it"],
+      "answer": 0,
+      "evidence": "three or four ragged men leaped out"
+    },
+    {
+      "id": "kidnapped-21-18",
+      "type": "detail",
+      "q": "Who turned out to be the men who ambushed them?",
+      "choices": ["Out-sentries belonging to Cluny Macpherson", "Campbell men hunting for the murderer of the Red Fox", "Robbers who lived wild in the hills of Ben Alder", "Red-coat soldiers dressed in Highland clothes"],
+      "answer": 0,
+      "evidence": "They are Cluny's men"
+    },
+    {
+      "id": "kidnapped-21-19",
+      "type": "inference",
+      "q": "Why was David so surprised to hear that Cluny was still in the country?",
+      "choices": ["He had thought that Cluny had long ago fled to France", "He had heard that Cluny had been hanged by the king", "He believed Cluny had joined the side of the Campbells", "He had been told Cluny was too old to lead his clan"],
+      "answer": 0,
+      "evidence": "I had supposed him long ago in France"
+    },
+    {
+      "id": "kidnapped-21-20",
+      "type": "main-idea",
+      "q": "What is this chapter mostly about?",
+      "choices": ["A painful escape across the moor that ends with Cluny's men taking them in", "A battle between Alan and the dragoons in the middle of the moor", "David and Alan splitting up so that each of them can go his own way home safely", "A long rest in a hidden cave while the soldiers search Appin"],
+      "answer": 0,
+      "evidence": "We got through in the nick of time"
+    }
+  ]
+}

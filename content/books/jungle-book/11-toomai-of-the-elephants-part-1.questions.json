@@ -1,0 +1,150 @@
+{
+  "book": "jungle-book",
+  "chapter": 11,
+  "questions": [
+    {
+      "id": "jungle-book-11-01",
+      "type": "detail",
+      "q": "About how old was Kala Nag at the start of the story?",
+      "choices": ["Nearly forty years old", "Nearly seventy years old", "Just over twenty years old", "Close to one hundred years old"],
+      "answer": 1,
+      "evidence": "that makes him nearly seventy"
+    },
+    {
+      "id": "jungle-book-11-02",
+      "type": "detail",
+      "q": "What advice did Kala Nag's mother, Radha Pyari, give him when he was young?",
+      "choices": ["Always obey the man who sits on your neck", "Elephants who are afraid always get hurt", "Never trust a tiger, even a wounded one", "Save your strength for the hardest work"],
+      "answer": 1,
+      "evidence": "elephants who were afraid always got hurt"
+    },
+    {
+      "id": "jungle-book-11-03",
+      "type": "inference",
+      "q": "How did Kala Nag learn that his mother's advice was true?",
+      "choices": ["He ran from a tiger and was clawed across the back", "He backed in fear into piled rifles and got pricked", "He refused to cross a river and was beaten by his driver", "He hid from a storm and was left behind by the herd"],
+      "answer": 1,
+      "evidence": "the bayonets pricked him in all his softest places"
+    },
+    {
+      "id": "jungle-book-11-04",
+      "type": "detail",
+      "q": "What was Kala Nag's special job once the wild elephants were trapped in the stockade?",
+      "choices": ["To beat down the biggest, wildest tusker", "To carry the men with ropes into the stockade", "To lead the frightened young calves to their mothers", "To push the heavy drop gate shut behind the herd"],
+      "answer": 0,
+      "evidence": "picking out the biggest and wildest tusker of the mob"
+    },
+    {
+      "id": "jungle-book-11-05",
+      "type": "vocabulary",
+      "q": "Kala Nag would go \"into that flaring, trumpeting pandemonium.\" What does \"pandemonium\" mean?",
+      "choices": ["A deep, muddy pit", "Wild, noisy confusion", "A quiet forest clearing", "A long line of tame animals"],
+      "answer": 1,
+      "evidence": "flaring, trumpeting pandemonium"
+    },
+    {
+      "id": "jungle-book-11-06",
+      "type": "character",
+      "q": "How did Little Toomai show that the great Kala Nag was \"afraid\" of him?",
+      "choices": ["He rode him across a deep river all by himself", "He called him a fat old pig and made him lift his feet", "He took away his food and made him wait for it", "He sat on his head and steered him with an ankus"],
+      "answer": 1,
+      "evidence": "made him lift up his feet one after the other"
+    },
+    {
+      "id": "jungle-book-11-07",
+      "type": "character",
+      "q": "What kind of life did Big Toomai say he would prefer?",
+      "choices": ["Hunting tigers in the hills with Petersen Sahib", "Brick elephant lines, smooth roads and little work", "Leading the King's elephant in grand processions", "Farming rice by the river with his family"],
+      "answer": 1,
+      "evidence": "Give me brick elephant lines"
+    },
+    {
+      "id": "jungle-book-11-08",
+      "type": "inference",
+      "q": "Why did Little Toomai say nothing when his father praised the Cawnpore barracks?",
+      "choices": ["He preferred camp life in the hills", "He was afraid his father would punish him", "He had never been to Cawnpore and could not say", "He agreed but did not want to seem lazy"],
+      "answer": 0,
+      "evidence": "He very much preferred the camp life"
+    },
+    {
+      "id": "jungle-book-11-09",
+      "type": "detail",
+      "q": "What brave thing did Little Toomai do one night during the elephant drive?",
+      "choices": ["He shut the drop gate when the men were too busy", "He threw a dropped rope up to a driver in the Keddah", "He rode Kala Nag into the stockade without his father", "He chased a wild calf back inside with his torch"],
+      "answer": 1,
+      "evidence": "threw up the loose end of a rope"
+    },
+    {
+      "id": "jungle-book-11-10",
+      "type": "sequence",
+      "q": "What happened right after Kala Nag saw Little Toomai down among the elephants?",
+      "choices": ["He picked him up and handed him to Big Toomai", "He trumpeted until the men stopped the drive", "He stood over the boy to guard him from the wild calf", "He carried him out of the stockade to his mother"],
+      "answer": 0,
+      "evidence": "caught him in his trunk, and handed him up to Big Toomai"
+    },
+    {
+      "id": "jungle-book-11-11",
+      "type": "inference",
+      "q": "Why was Big Toomai so upset that his son had joined in the elephant catching?",
+      "choices": ["He feared Little Toomai would become a hunter, not a mahout", "He was jealous that the hunters were paid more than he was", "He thought the boy had made Kala Nag disobey him", "He had promised Petersen Sahib the boy would stay home"],
+      "answer": 0,
+      "evidence": "Petersen Sahib will surely catch thee and make thee a wild hunter"
+    },
+    {
+      "id": "jungle-book-11-12",
+      "type": "detail",
+      "q": "Who was Petersen Sahib?",
+      "choices": ["The head of all the Keddah operations", "The rich rajah who wanted to buy Kala Nag", "The army officer who took Kala Nag to Abyssinia", "The clerk who paid the drivers their wages"],
+      "answer": 0,
+      "evidence": "He was the head of all the Keddah operations"
+    },
+    {
+      "id": "jungle-book-11-13",
+      "type": "detail",
+      "q": "When Petersen Sahib joked that Kala Nag's trick was for stealing green corn, what did Little Toomai answer?",
+      "choices": ["That it was for picking mangoes", "That it was for stealing melons", "That it was for reaching his bed", "That it was for catching birds"],
+      "answer": 1,
+      "evidence": "Not green corn, Protector of the Poor,--melons"
+    },
+    {
+      "id": "jungle-book-11-14",
+      "type": "vocabulary",
+      "q": "\"Except where elephants were concerned, he was just as bashful as a child could be.\" What does \"bashful\" mean?",
+      "choices": ["Shy", "Rude", "Wise", "Bold"],
+      "answer": 0,
+      "evidence": "he was just as bashful as a child could be"
+    },
+    {
+      "id": "jungle-book-11-15",
+      "type": "inference",
+      "q": "What did Petersen Sahib really mean by \"Come to me when thou hast seen the elephants dance\"?",
+      "choices": ["Come back next year, when you are a little older", "Never, since no man has ever seen such a dance", "Come back once you have learned to rope a calf", "Wait until the big festival in the spring"],
+      "answer": 1,
+      "evidence": "it means just never"
+    },
+    {
+      "id": "jungle-book-11-16",
+      "type": "detail",
+      "q": "What did the Assamese hill driver say Big Toomai should do that night?",
+      "choices": ["Sleep beside Kala Nag with a burning torch", "Double-chain the pickets of all his elephants", "Move the new elephants far away from the river", "Send the boy back to Petersen Sahib's camp"],
+      "answer": 1,
+      "evidence": "double-chain his pickets to-night"
+    },
+    {
+      "id": "jungle-book-11-17",
+      "type": "character",
+      "q": "Why did Little Toomai sit before Kala Nag thumping a tom-tom that evening?",
+      "choices": ["To keep the wild elephants away from the camp", "To practice for a feast the next morning", "He was full of joy that Petersen Sahib had noticed him", "His father had told him to call the elephants to supper"],
+      "answer": 2,
+      "evidence": "the more he thought of the great honor that had been done to him, the more he thumped"
+    },
+    {
+      "id": "jungle-book-11-18",
+      "type": "main-idea",
+      "q": "What is this part of the story mostly about?",
+      "choices": ["A boy who loves elephant catching and is noticed by its great leader", "An old elephant who is sold to a rajah and leads royal processions", "A father who teaches his son to become a wild elephant hunter", "A group of drivers who race their elephants down to the plains"],
+      "answer": 0,
+      "evidence": "Petersen Sahib had noticed him, and given him money"
+    }
+  ]
+}

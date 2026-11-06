@@ -1,0 +1,150 @@
+{
+  "book": "kidnapped",
+  "chapter": 15,
+  "questions": [
+    {
+      "id": "kidnapped-15-01",
+      "type": "detail",
+      "q": "Why was David eager to speak privately with Neil Roy Macrob, the ferry skipper?",
+      "choices": ["Macrob was a name of Alan's clan, and Alan had sent him there", "Neil Roy was said to be the best guide in all of Morven", "Neil Roy had been a sailor on the brig Covenant before", "David wanted to ask him for work on the ferry-boat"],
+      "answer": 0,
+      "evidence": "since Macrob was one of the names of Alan's clansmen"
+    },
+    {
+      "id": "kidnapped-15-02",
+      "type": "detail",
+      "q": "Why was the ferry crossing so slow?",
+      "choices": ["A storm kept pushing the boat back toward Mull", "There was no wind and the boat could pull only three oars", "The skipper kept stopping to talk to other boats", "The boat was so crowded that water kept coming in over the side"],
+      "answer": 1,
+      "evidence": "we could pull but two oars on one side, and one on the other"
+    },
+    {
+      "id": "kidnapped-15-03",
+      "type": "detail",
+      "q": "What was the big ship anchored in the mouth of Loch Aline?",
+      "choices": ["One of the King's cruisers watching the coast", "An emigrant ship bound for the American colonies", "A French ship that had come to carry away Jacobites", "A fishing ship bringing herring to the market"],
+      "answer": 1,
+      "evidence": "this was an emigrant ship bound for the American colonies"
+    },
+    {
+      "id": "kidnapped-15-04",
+      "type": "inference",
+      "q": "Why were the people on the ship and on the beach crying and lamenting?",
+      "choices": ["A storm had sunk one of the skiffs", "Friends and families were being parted for good", "The ship's captain would not let them come aboard", "They had heard that Ardshiel had died in France"],
+      "answer": 1,
+      "evidence": "the exiles leaned over the bulwarks, weeping and reaching out their hands"
+    },
+    {
+      "id": "kidnapped-15-05",
+      "type": "detail",
+      "q": "What was the name of the sad song sung as the ferry pulled away from the emigrant ship?",
+      "choices": ["\"Lochaber no more\"", "\"The Bonnie Banks of Loch Aline\"", "\"Farewell to the Heather\"", "\"The Road to Appin\""],
+      "answer": 0,
+      "evidence": "which is one called \"Lochaber no more\""
+    },
+    {
+      "id": "kidnapped-15-06",
+      "type": "character",
+      "q": "Why was Neil Roy offended when David first asked him about Alan?",
+      "choices": ["David called him by the wrong clan name", "David tried to hand him a shilling", "David asked him in front of a crowd of Macleans", "David said Alan was a rebel and a deserter"],
+      "answer": 1,
+      "evidence": "I sought to pass a shilling in his hand"
+    },
+    {
+      "id": "kidnapped-15-07",
+      "type": "sequence",
+      "q": "What did David do after Neil Roy claimed that Alan was in France?",
+      "choices": ["He offered Neil a whole guinea instead", "He showed him the silver button in his palm", "He gave up and asked the way to Torosay", "He told Neil the whole story of the fight in the round-house"],
+      "answer": 1,
+      "evidence": "showed him the button lying in the hollow of my palm"
+    },
+    {
+      "id": "kidnapped-15-08",
+      "type": "detail",
+      "q": "Where was the last place on the route Neil Roy gave David?",
+      "choices": ["The house of James of the Glens, at Aucharn in Duror of Appin", "The house of John of the Claymore, in the country of Ardgour", "The public inn at Kinlochaline, near the shore of Loch Aline", "The ferry at Corran, where Alan would be waiting with a boat"],
+      "answer": 0,
+      "evidence": "ask my way to the house of James of the Glens, at Aucharn in Duror of Appin"
+    },
+    {
+      "id": "kidnapped-15-09",
+      "type": "detail",
+      "q": "What did Neil tell David to do if he saw red-soldiers coming?",
+      "choices": ["Walk on boldly and greet them in English", "Leave the road and lie in a bush", "Show them Alan's silver button", "Run to the nearest Stewart house"],
+      "answer": 1,
+      "evidence": "to leave the road and lie in a bush if I saw any of the latter coming"
+    },
+    {
+      "id": "kidnapped-15-10",
+      "type": "detail",
+      "q": "What happened at the inn at Kinlochaline during the thunderstorm?",
+      "choices": ["Lightning set the turf roof on fire", "One end of the house became running water", "The innkeeper locked David out in the rain", "The storm blew the door off its hinges"],
+      "answer": 1,
+      "evidence": "one end of the house became a running water"
+    },
+    {
+      "id": "kidnapped-15-11",
+      "type": "detail",
+      "q": "What bond did David and Mr. Henderland discover they shared?",
+      "choices": ["They had both been kidnapped and sold at sea", "Henderland used Gaelic books translated by David's minister", "Henderland had known David's father as a schoolboy", "They were both on their way to see James of the Glens"],
+      "answer": 1,
+      "evidence": "had translated into the Gaelic in his by-time a number of hymns and pious books which Henderland used"
+    },
+    {
+      "id": "kidnapped-15-12",
+      "type": "inference",
+      "q": "Why did David tell Henderland he was going to Balachulish instead of Aucharn?",
+      "choices": ["He had changed his plans after the storm", "He did not want to lead anyone to Alan's friends", "Henderland had warned him that Aucharn was unsafe", "He had forgotten the name of the place Neil told him"],
+      "answer": 1,
+      "evidence": "might put him on the scent"
+    },
+    {
+      "id": "kidnapped-15-13",
+      "type": "vocabulary",
+      "q": "Henderland calls Alan Breck \"a fair heather-cat\" who is \"here to-day and gone to-morrow.\" What does he mean?",
+      "choices": ["That Alan is wild and hard to catch", "That Alan keeps a pet cat in the hills", "That Alan is gentle and friendly", "That Alan is lazy and sleeps all day"],
+      "answer": 0,
+      "evidence": "He's here and awa; here to-day and gone to-morrow: a fair heather-cat"
+    },
+    {
+      "id": "kidnapped-15-14",
+      "type": "detail",
+      "q": "What question did Henderland keep asking David over and over?",
+      "choices": ["Whether he had any money to spare", "Whether he carried any snuff", "Whether he had ever met Alan Breck", "Whether he could read the Gaelic"],
+      "answer": 1,
+      "evidence": "Ye'll no carry such a thing as snuff, will ye?"
+    },
+    {
+      "id": "kidnapped-15-15",
+      "type": "detail",
+      "q": "According to Henderland, where were the first tenants to be turned out the next day?",
+      "choices": ["At Duror, right under James's windows", "At Mamore, in the country of the Camerons", "At Kingairloch, near Henderland's own house", "At Torosay, on the far side of the Sound"],
+      "answer": 0,
+      "evidence": "It's to begin at Duror under James's very windows"
+    },
+    {
+      "id": "kidnapped-15-16",
+      "type": "inference",
+      "q": "What did Henderland believe might happen to Colin Campbell?",
+      "choices": ["He would be made a lord by the King for his work", "He would get his death from Appin or Mamore", "He would give up and go back to Edinburgh", "He would make peace with James of the Glens"],
+      "answer": 1,
+      "evidence": "if he escapes the one lot, he'll get his death by the other"
+    },
+    {
+      "id": "kidnapped-15-17",
+      "type": "character",
+      "q": "Why did Henderland rush in and take huge pinches of snuff the moment he got home?",
+      "choices": ["He had a cold and needed to clear his nose", "He had vowed never to carry snuff, so he craved it", "He wanted to hide it before David could take some", "He was showing David a Highland custom of welcome"],
+      "answer": 1,
+      "evidence": "I took a vow upon me that I wouldnae carry it"
+    },
+    {
+      "id": "kidnapped-15-18",
+      "type": "main-idea",
+      "q": "What does David learn about Mr. Henderland by the end of the chapter?",
+      "choices": ["That he is a spy for Colin Campbell", "That he is a truly good and humble man", "That he is a cheat like the guide on Mull", "That he is secretly one of Alan's clan"],
+      "answer": 1,
+      "evidence": "goodness and humility"
+    }
+  ]
+}

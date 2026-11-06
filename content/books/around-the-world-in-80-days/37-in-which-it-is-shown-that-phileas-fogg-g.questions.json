@@ -1,0 +1,70 @@
+{
+  "book": "around-the-world-in-80-days",
+  "chapter": 37,
+  "questions": [
+    {
+      "id": "around-the-world-in-80-days-37-01",
+      "type": "sequence",
+      "q": "Why did Passepartout come running back from the clergyman's house?",
+      "choices": ["The clergyman had refused to marry them", "He found out that the day was really Saturday", "He had lost his hat and money in the crowded street", "He saw Fix waiting outside the Reform Club"],
+      "answer": 1,
+      "evidence": "No--to-day is Saturday."
+    },
+    {
+      "id": "around-the-world-in-80-days-37-02",
+      "type": "detail",
+      "q": "What did Fogg promise the cabman to hurry him to the club?",
+      "choices": ["A hundred pounds", "Twenty shillings", "A new carriage", "Five hundred pounds"],
+      "answer": 0,
+      "evidence": "promised a hundred pounds to the cabman"
+    },
+    {
+      "id": "around-the-world-in-80-days-37-03",
+      "type": "main-idea",
+      "q": "Why had Fogg gained a whole day without knowing it?",
+      "choices": ["His watch had been set wrong in Hong Kong", "He had travelled always eastward, toward the sun", "He had slept through a day on the Henrietta", "The Liverpool clocks were set a day behind"],
+      "answer": 1,
+      "evidence": "because he had travelled constantly eastward"
+    },
+    {
+      "id": "around-the-world-in-80-days-37-04",
+      "type": "detail",
+      "q": "What did Fogg do with the thousand pounds left after his expenses?",
+      "choices": ["He gave it all to Aouda as a wedding gift", "He split it between Passepartout and Fix", "He paid it back to the Bank of England at once", "He kept it to start a new wager at the club"],
+      "answer": 1,
+      "evidence": "He divided the one thousand pounds that remained between Passepartout and the unfortunate Fix"
+    },
+    {
+      "id": "around-the-world-in-80-days-37-05",
+      "type": "character",
+      "q": "Why did Fogg take the cost of the gas out of Passepartout's share?",
+      "choices": ["He was angry about the lost day", "For the sake of regularity", "He needed the money to pay the cabman", "Passepartout asked him to do it"],
+      "answer": 1,
+      "evidence": "for the sake of regularity"
+    },
+    {
+      "id": "around-the-world-in-80-days-37-06",
+      "type": "vocabulary",
+      "q": "Fogg was \"as tranquil and phlegmatic as ever.\" What does phlegmatic mean here?",
+      "choices": ["Excited and loud", "Calm and unemotional", "Sick and feverish", "Proud and boastful"],
+      "answer": 1,
+      "evidence": "as tranquil and phlegmatic as ever"
+    },
+    {
+      "id": "around-the-world-in-80-days-37-07",
+      "type": "inference",
+      "q": "Why did Fogg tell Aouda that his fortune belonged to her?",
+      "choices": ["The law said a husband's money went to his wife", "Her idea of marriage led to finding his mistake in time", "She had paid for the special train to London out of her own purse", "He no longer wanted to be rich after such a long journey"],
+      "answer": 1,
+      "evidence": "If you had not suggested our marriage, my servant would not have gone to the Reverend Samuel Wilson's"
+    },
+    {
+      "id": "around-the-world-in-80-days-37-08",
+      "type": "character",
+      "q": "According to the last lines, what did Fogg truly gain from his journey?",
+      "choices": ["A fine new house and great fame in London", "A wife who made him the happiest of men", "A new respect for the Reform Club rules", "Many friends in every country he visited"],
+      "answer": 1,
+      "evidence": "made him the happiest of men"
+    }
+  ]
+}

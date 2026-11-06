@@ -1,0 +1,150 @@
+{
+  "book": "jungle-book",
+  "chapter": 13,
+  "questions": [
+    {
+      "id": "jungle-book-13-01",
+      "type": "detail",
+      "q": "Why were thirty thousand men and thousands of animals camped at Rawal Pindi?",
+      "choices": ["To be reviewed by the Viceroy of India", "To wait for the rain to stop before marching", "To guard the border against the Amir's army", "To train new horses brought from Australia"],
+      "answer": 0,
+      "evidence": "to be reviewed by the Viceroy of India"
+    },
+    {
+      "id": "jungle-book-13-02",
+      "type": "detail",
+      "q": "What made the narrator's tent cave in and dance about \"like a mad ghost\"?",
+      "choices": ["A gust of wind snapped the pole", "One of the Amir's wild horses kicked it", "A camel blundered into it in the dark", "Vixen the terrier tore the ropes loose"],
+      "answer": 2,
+      "evidence": "A camel had blundered into it"
+    },
+    {
+      "id": "jungle-book-13-03",
+      "type": "detail",
+      "q": "Where did the narrator finally make a place to rest for the night?",
+      "choices": ["Under a cart in the camel lines", "In a friend's tent near the horse lines", "Beside the guns in the artillery lines", "Inside a stable with the battery mules"],
+      "answer": 2,
+      "evidence": "I put my waterproof over the muzzle of one gun"
+    },
+    {
+      "id": "jungle-book-13-04",
+      "type": "detail",
+      "q": "What are screw-guns, as the narrator explains them?",
+      "choices": ["Huge siege guns pulled across plains by bullocks", "Small cannon in two pieces that mules carry up mountains", "Rifles that the cavalry carry tied to their saddles", "Guns fixed on the backs of elephants for battle"],
+      "answer": 1,
+      "evidence": "tiny little cannon made in two pieces"
+    },
+    {
+      "id": "jungle-book-13-05",
+      "type": "inference",
+      "q": "The camel says he fought \"a white thing that waved\" and it hit him with a stick. What was it really?",
+      "choices": ["A soldier in a white coat waving his rifle", "A flag on a pole outside the officers' tents", "The narrator's tent and its broken tent pole", "A sheet hung out to dry on the cannon"],
+      "answer": 2,
+      "evidence": "That was my broken tent pole"
+    },
+    {
+      "id": "jungle-book-13-06",
+      "type": "sequence",
+      "q": "What did Billy the mule do when he found out the camel had been disturbing the camp?",
+      "choices": ["He called the camel's driver to come and fetch him", "He kicked the camel twice in the ribs", "He chased the camel back to the camel lines", "He told the camel to lie quietly beside the bullocks"],
+      "answer": 1,
+      "evidence": "caught the camel two kicks in the ribs"
+    },
+    {
+      "id": "jungle-book-13-07",
+      "type": "character",
+      "q": "What reason did the baggage camel give for running all round the camp?",
+      "choices": ["He had dreamed bad dreams and was very afraid", "The Amir's horses had broken into the camel lines", "His driver had forgotten to tie his head-rope", "He was looking for better grass to eat"],
+      "answer": 0,
+      "evidence": "we dreamed bad dreams in the night, and we were very much afraid"
+    },
+    {
+      "id": "jungle-book-13-08",
+      "type": "vocabulary",
+      "q": "\"'My lords,' said the camel humbly.\" How did the camel speak?",
+      "choices": ["Loudly and angrily, as if insulted", "Meekly, as if he was less important", "Proudly, as if boasting of his deeds", "In a sleepy mumble, half awake"],
+      "answer": 1,
+      "evidence": "said the camel humbly"
+    },
+    {
+      "id": "jungle-book-13-09",
+      "type": "character",
+      "q": "How did the troop-horse try to make the frightened young mule feel better?",
+      "choices": ["He offered to stand guard while the mule slept", "He told how he once ran for half a day after seeing a man", "He said that camels were harmless and could not bite", "He promised to find the young mule's driver for him soon"],
+      "answer": 1,
+      "evidence": "I ran for half a day"
+    },
+    {
+      "id": "jungle-book-13-10",
+      "type": "detail",
+      "q": "What did the gun-bullocks do when the camels came through their lines?",
+      "choices": ["They charged the camels and drove them away", "They broke their chains and ran in a stampede", "They got up and walked away once they were trampled", "They bellowed until their drivers came to help"],
+      "answer": 2,
+      "evidence": "when we were trampled on we got up and walked away"
+    },
+    {
+      "id": "jungle-book-13-11",
+      "type": "detail",
+      "q": "According to the troop-horse, what is \"the worst kind of cowardice\"?",
+      "choices": ["Running away and leaving your rider behind", "Being angry after you have been afraid", "Pretending you were never scared at all", "Telling scary stories to frighten others"],
+      "answer": 1,
+      "evidence": "don't be angry after you've been afraid. That's the worst kind of cowardice"
+    },
+    {
+      "id": "jungle-book-13-12",
+      "type": "vocabulary",
+      "q": "What does the troop-horse mean when he says a horse must be \"bridle-wise\"?",
+      "choices": ["It knows how to slip out of its bridle at night", "It spins round at once when the rein presses its neck", "It stands still while the rider puts on the bridle", "It can find its way home with no rider at all"],
+      "answer": 1,
+      "evidence": "spin round at once when the rein is pressed on your neck"
+    },
+    {
+      "id": "jungle-book-13-13",
+      "type": "detail",
+      "q": "How did Billy say battery mules are taught, compared with the horse?",
+      "choices": ["To obey the man who walks at their head", "To kick at anyone carrying a knife", "To spin around whenever they hear a gun", "To follow the elephant wherever it goes"],
+      "answer": 0,
+      "evidence": "We're taught to obey the man at our head"
+    },
+    {
+      "id": "jungle-book-13-14",
+      "type": "inference",
+      "q": "What does the troop-horse believe matters most when he goes into battle?",
+      "choices": ["Being faster than all the other horses", "Being able to see the enemy's knives", "Trusting his own rider, Dick Cunliffe", "Staying far back from the fighting"],
+      "answer": 2,
+      "evidence": "If you don't trust your man, you may as well run away at once."
+    },
+    {
+      "id": "jungle-book-13-15",
+      "type": "detail",
+      "q": "What does Billy say is \"the science of the thing\" when climbing mountains with the guns?",
+      "choices": ["Always go straight up by the shortest path", "Never let a man hold your head while climbing", "Never show yourself against the sky line", "Always carry the heaviest load at the front"],
+      "answer": 2,
+      "evidence": "never to show up against the sky line"
+    },
+    {
+      "id": "jungle-book-13-16",
+      "type": "detail",
+      "q": "How did the baggage camels fight in battle?",
+      "choices": ["They charged in a long line across the plain", "They sat in a square while men fired over their backs", "They carried the screw-guns up into the hills", "They hid behind the elephants until the fighting was over"],
+      "answer": 1,
+      "evidence": "they fired over our backs"
+    },
+    {
+      "id": "jungle-book-13-17",
+      "type": "inference",
+      "q": "Why do the gun-bullocks call \"Two Tails\" the elephant a great coward?",
+      "choices": ["He runs away whenever a camel comes near him", "He will not go any nearer to the smoke of battle", "He refuses to pull the guns across the rivers", "He trumpets in fear at every little noise at night"],
+      "answer": 1,
+      "evidence": "he is not going any nearer to the smoke"
+    },
+    {
+      "id": "jungle-book-13-18",
+      "type": "main-idea",
+      "q": "What is this part of the story mostly about?",
+      "choices": ["Camp animals each describing their own way of serving in war", "A camel learning to be brave from an old battery mule", "Soldiers trying to catch the animals that ran loose at night", "A troop-horse teaching the young mules to be bridle-wise"],
+      "answer": 0,
+      "evidence": "That is the proper way to fight."
+    }
+  ]
+}

@@ -695,7 +695,7 @@ function Quests({ child, onSave }: { child: Child; onSave: (c: Child) => void })
         {isOpen && (
           <div class="quest-body">
             <p class="muted">{m.description}</p>
-            {id === 'books' && <BookPicker s={s} set={(p) => setMod(id, p)} />}
+            {id === 'books' && <BookPicker childId={child.id} s={s} set={(p) => setMod(id, p)} />}
             {id === 'discgames' && <DiscImport rwt={{ s: cur('rwt'), set: (p) => setMod('rwt', p) }} />}
             <div class="row">
               <label>{id === 'books' ? 'Coins per right answer' : id === 'discgames' ? 'Coins per bit of progress' : id === 'khan-academy' ? 'Coins per finished exercise' : id === 'duolingo' ? 'Coins per lesson' : id === 'sound-keys' ? 'Coins per lesson' : id === 'typing-quest' ? 'Coins per drill' : 'Coins each'}
@@ -735,10 +735,12 @@ function Quests({ child, onSave }: { child: Child; onSave: (c: Child) => void })
 const allowedLabel = (a?: string) => { if (!a || a === '*') return 'every book'; try { const n = (JSON.parse(a) as string[]).length; return `${n} book${n === 1 ? '' : 's'}`; } catch { return 'every book'; } };
 
 /** Choose the books on the child's shelf, grouped by US grade level. */
-function BookPicker({ s, set }: { s: ModSettings; set: (p: Partial<ModSettings>) => void }) {
+function BookPicker({ childId, s, set }: { childId: string; s: ModSettings; set: (p: Partial<ModSettings>) => void }) {
   const [cat, setCat] = useState<Awaited<ReturnType<typeof bridge.parentBooks>> | null>(null);
   const [err, setErr] = useState('');
-  useEffect(() => { bridge.parentBooks().then(setCat).catch((e) => setErr((e as Error).message)); }, []);
+  const [confirm, setConfirm] = useState<string | null>(null);
+  const load = () => bridge.parentBooks(childId).then(setCat).catch((e) => setErr((e as Error).message));
+  useEffect(() => { load(); }, [childId]);
   if (err) return <p class="error">{err}</p>;
   if (!cat) return <p class="muted">Loading the library…</p>;
   const all = cat.books.map((b) => b.id);
@@ -746,20 +748,30 @@ function BookPicker({ s, set }: { s: ModSettings; set: (p: Partial<ModSettings>)
   let chosen: string[];
   try { chosen = raw === '*' ? all : (JSON.parse(raw) as string[]); } catch { chosen = all; }
   const save = (ids: string[]) => set({ options: { ...(s.options ?? {}), allowed: ids.length === all.length && all.every((x) => ids.includes(x)) ? '*' : JSON.stringify(ids) } });
-  const groups = new Map<string, typeof cat.books>();
-  for (const b of cat.books) groups.set(b.grade.label, [...(groups.get(b.grade.label) ?? []), b]);
+  const levels = new Map<number, typeof cat.books>();
+  for (const b of cat.books) levels.set(b.level, [...(levels.get(b.level) ?? []), b]);
+  const grades = (list: typeof cat.books) => { const lo = Math.min(...list.map((b) => b.grade.min)), hi = Math.max(...list.map((b) => b.grade.max)); return `about grades ${lo === 0 ? 'K' : lo}–${hi}`; };
+  const reading = (w: number) => (w < 10800 ? `${Math.max(5, Math.round(w / 180 / 5) * 5)} minutes` : `${Math.round(w / 180 / 60)} hours`);
+  async function startOver(id: string) { setConfirm(null); try { await bridge.parentBooksReset(childId, id); await load(); } catch (e) { setErr((e as Error).message); } }
   return (
     <div class="book-picker">
       <div class="row between"><h4>Books on the shelf</h4><span><button class="ghost small" onClick={() => save(all)}>All</button><button class="ghost small" onClick={() => save([])}>None</button></span></div>
+      <p class="muted small">Your child sees only the level, never a grade. Each chapter pays once; <b>Start over</b> lets them read a book again for coins.</p>
       {cat.flagged > 0 && <p class="muted small">⚑ {cat.flagged} question{cat.flagged === 1 ? ' was' : 's were'} flagged as wrong by your kids — they're listed in the PC's data folder (books-flagged.json) for fixing.</p>}
-      {[...groups.entries()].map(([label, list]) => (
+      {[...levels.entries()].map(([level, list]) => (
         <div class="book-group">
-          <h5>{label}</h5>
+          <h5>Level {level} <span class="muted">· {grades(list)}</span></h5>
           {list.map((b) => (
-            <label class="book-pick">
-              <input type="checkbox" checked={chosen.includes(b.id)} onChange={(e) => save((e.target as HTMLInputElement).checked ? [...chosen, b.id] : chosen.filter((x) => x !== b.id))} />
-              <span><b>{b.title}</b> <span class="muted">· {b.author}, {b.published}</span><br /><small class="muted">{b.summary} {b.chapters} chapter{b.chapters === 1 ? '' : 's'}, about {b.words < 10800 ? `${Math.max(5, Math.round(b.words / 180 / 5) * 5)} minutes` : `${Math.round(b.words / 180 / 60)} hours`} of reading{b.ready < b.chapters ? ` · quizzes ready for ${b.ready} of ${b.chapters} chapters` : ''}.</small></span>
-            </label>
+            <div class="book-pick">
+              <input type="checkbox" checked={chosen.includes(b.id)} aria-label={b.title} onChange={(e) => save((e.target as HTMLInputElement).checked ? [...chosen, b.id] : chosen.filter((x) => x !== b.id))} />
+              <span>
+                <b>{b.title}</b> <span class="muted">· {b.author}, {b.published}</span><br />
+                <small class="muted">{b.summary} {b.chapters === 1 ? 'One story' : `${b.chapters} chapters`}, about {reading(b.words)} of reading{b.ready < b.chapters ? ` · quizzes ready for ${b.ready} of ${b.chapters}` : ''}.{b.edited ? ' Lightly edited for today\'s readers.' : ''}</small>
+                {b.started && <small class="book-progress">{b.done ? `✓ ${b.chapters === 1 ? 'Read' : `${b.done} of ${b.chapters} chapters passed`}` : 'Started'} · {confirm === b.id
+                  ? <><button class="ghost small danger" onClick={() => startOver(b.id)}>Yes, start over</button><button class="ghost small" onClick={() => setConfirm(null)}>Cancel</button></>
+                  : <button class="link small" onClick={() => setConfirm(b.id)}>Start over</button>}</small>}
+              </span>
+            </div>
           ))}
         </div>
       ))}

@@ -1,0 +1,150 @@
+{
+  "book": "kidnapped",
+  "chapter": 13,
+  "questions": [
+    {
+      "id": "kidnapped-13-01",
+      "type": "detail",
+      "q": "What did David do during his first cold night on the shore, before day began to break?",
+      "choices": ["Walked up and down the sand barefoot so he would not freeze", "Built a small fire from bits of driftwood to dry his wet clothes", "Slept curled up inside an old fisherman's hut", "Sat on a rock calling out for Alan and the crew"],
+      "answer": 0,
+      "evidence": "took off my shoes and walked to and fro upon the sand"
+    },
+    {
+      "id": "kidnapped-13-02",
+      "type": "detail",
+      "q": "What did David see when he climbed the hill at dawn?",
+      "choices": ["The brig still stuck fast upon the reef", "The ship's boat rowing toward the mainland", "No brig, no boat, no sail and no house", "A village of fishers just across the water"],
+      "answer": 2,
+      "evidence": "There was no sign of the brig"
+    },
+    {
+      "id": "kidnapped-13-03",
+      "type": "sequence",
+      "q": "As David followed the creek around, what did he suddenly realize?",
+      "choices": ["That he had walked in a full circle right back to the bay", "That he was on a small island cut off by the sea", "That the creek led to a fresh-water spring", "That the land he stood on was the Isle of Iona"],
+      "answer": 1,
+      "evidence": "I was cast upon a little barren isle, and cut off on every side by the salt seas"
+    },
+    {
+      "id": "kidnapped-13-04",
+      "type": "detail",
+      "q": "What happened when David first tried to wade across the creek?",
+      "choices": ["The water reached only to his knees", "He plunged in over his head", "A strong current pulled him out to sea", "He cut his feet on sharp shells"],
+      "answer": 1,
+      "evidence": "I plumped in head over ears"
+    },
+    {
+      "id": "kidnapped-13-05",
+      "type": "character",
+      "q": "Why did David fling himself down on the sand and weep the first time?",
+      "choices": ["He had found the body of one of the sailors", "He saw the spare yard floating just out of his reach", "He had lost the last of his money in the sea", "He realized that nobody in the world knew he was still alive"],
+      "answer": 1,
+      "evidence": "I saw it bobbing very quietly some twenty feet beyond"
+    },
+    {
+      "id": "kidnapped-13-06",
+      "type": "detail",
+      "q": "Unlike castaways in books, what did David have in his pockets?",
+      "choices": ["Only his money and Alan's silver button", "A knife, a flint and a bit of fishing string", "His uncle's letter and a small Bible", "Some bread and cheese from the brig"],
+      "answer": 0,
+      "evidence": "I had nothing in my pockets but money and Alan's silver button"
+    },
+    {
+      "id": "kidnapped-13-07",
+      "type": "detail",
+      "q": "What did David eat on the island?",
+      "choices": ["Gulls' eggs gathered from the outlying rocks", "Raw limpets and buckies from the rocks", "Fish he caught with a line from his stockings", "Berries from the heather"],
+      "answer": 1,
+      "evidence": "Of these two I made my whole diet, devouring them cold and raw"
+    },
+    {
+      "id": "kidnapped-13-08",
+      "type": "vocabulary",
+      "q": "David found \"some of the little shells that we call buckies.\" What are buckies?",
+      "choices": ["Periwinkles, a kind of small shellfish", "Pebbles that glitter in the sunlight", "Small crabs that hide in the seaweed", "Seeds that wash up on the shore"],
+      "answer": 0,
+      "evidence": "I think periwinkle is the English name"
+    },
+    {
+      "id": "kidnapped-13-09",
+      "type": "detail",
+      "q": "What happened after David ate his very first meal of shellfish?",
+      "choices": ["He felt strong enough to swim the creek", "He became giddy and very sick", "He fell into a long and peaceful sleep", "He felt hungrier than he had before"],
+      "answer": 1,
+      "evidence": "I was seized with giddiness and retching"
+    },
+    {
+      "id": "kidnapped-13-10",
+      "type": "character",
+      "q": "Why did David choose the part of the isle near the bay facing Iona as his \"home\"?",
+      "choices": ["It had the only dry cave on the whole island", "He could see Iona's church and the smoke of homes", "The fishers' hut there still had a good turf roof", "It was the only place where the gulls did not nest"],
+      "answer": 1,
+      "evidence": "I could catch a sight of the great, ancient church and the roofs of the people's houses in Iona"
+    },
+    {
+      "id": "kidnapped-13-11",
+      "type": "inference",
+      "q": "How did seeing the smoke and roofs of other people's homes affect David?",
+      "choices": ["It made him so angry that he stopped watching for boats", "It made him feel worse but also kept his hope alive", "It made him certain the people there were enemies", "It made him forget his hunger for a whole day"],
+      "answer": 1,
+      "evidence": "yet it kept hope alive"
+    },
+    {
+      "id": "kidnapped-13-12",
+      "type": "detail",
+      "q": "What animal did David see on the top of the island on the third morning?",
+      "choices": ["A red deer buck with fine antlers", "A wild goat with a broken horn", "A grey seal lying on the rocks", "A shaggy Highland cow"],
+      "answer": 0,
+      "evidence": "I saw a red deer, a buck with a fine spread of antlers"
+    },
+    {
+      "id": "kidnapped-13-13",
+      "type": "detail",
+      "q": "How had David lost most of his money?",
+      "choices": ["A gull snatched his purse from a rock", "It slipped out through a hole in his pocket", "He dropped it while wading in the creek", "The sailors had stolen every coin of it on the brig"],
+      "answer": 1,
+      "evidence": "I now saw there must be a hole"
+    },
+    {
+      "id": "kidnapped-13-14",
+      "type": "vocabulary",
+      "q": "David says patching his pocket then \"was to lock the stable door after the steed was stolen.\" What does he mean?",
+      "choices": ["He was being careful, just in time", "It was too late to do any good", "He was guarding the wrong thing", "He was afraid of being robbed again"],
+      "answer": 1,
+      "evidence": "this was to lock the stable door after the steed was stolen"
+    },
+    {
+      "id": "kidnapped-13-15",
+      "type": "character",
+      "q": "What did the two fishers do the first time their boat passed close to David?",
+      "choices": ["They waved and promised to come back after dark", "They threw him a loaf of bread and sailed off", "They shouted in Gaelic and laughed, but sailed on", "They pretended not to see him at all"],
+      "answer": 2,
+      "evidence": "they cried out in the Gaelic tongue, and laughed"
+    },
+    {
+      "id": "kidnapped-13-16",
+      "type": "detail",
+      "q": "When the boat came back, how did David know it was the same two fishers?",
+      "choices": ["By their hair, one bright yellow and one black", "By the brown sail with a patch in the middle", "By the Gaelic song they were always singing", "By the old blue coats both of them were wearing"],
+      "answer": 0,
+      "evidence": "This I knew by their hair"
+    },
+    {
+      "id": "kidnapped-13-17",
+      "type": "sequence",
+      "q": "What did David do after he understood the word \"tide\"?",
+      "choices": ["He swam out to the fishers' boat", "He ran across the isle and waded the creek", "He waited on his rock for the tide to come in", "He asked the third man to row him to Iona"],
+      "answer": 1,
+      "evidence": "set off running across the isle as I had never run before"
+    },
+    {
+      "id": "kidnapped-13-18",
+      "type": "main-idea",
+      "q": "What is the big lesson David draws from his days on Earraid?",
+      "choices": ["That fishers in the Highlands are cruel to strangers", "That the isle was tidal, and he suffered from his own folly", "That a castaway should always carry a set of tools in his pockets", "That he should never again go to sea in any ship"],
+      "answer": 1,
+      "evidence": "I might have left my bones there, in pure folly"
+    }
+  ]
+}

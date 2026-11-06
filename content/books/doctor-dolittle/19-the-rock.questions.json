@@ -1,0 +1,136 @@
+{
+  "book": "doctor-dolittle",
+  "chapter": 19,
+  "questions": [
+    {
+      "id": "doctor-dolittle-19-01",
+      "type": "detail",
+      "q": "Which way was the wind blowing when Jip finally smelled the snuff?",
+      "choices": [
+        "From the North",
+        "From the far East",
+        "From the South",
+        "From the West"
+      ],
+      "answer": 3,
+      "evidence": "The wind's from the West and it smells of nothing but snuff"
+    },
+    {
+      "id": "doctor-dolittle-19-02",
+      "type": "character",
+      "q": "How did the little boy feel when even the East wind brought no smell of snuff?",
+      "choices": [
+        "Cheerful, because he was sure Jip would find him",
+        "Angry with Jip for not trying hard enough",
+        "Terribly disappointed, and he began to cry again",
+        "Sleepy, so he went back down to his silk bed"
+      ],
+      "answer": 2,
+      "evidence": "The little boy was terribly disappointed and began to cry again"
+    },
+    {
+      "id": "doctor-dolittle-19-03",
+      "type": "detail",
+      "q": "How did Jip guide the Doctor to steer the ship?",
+      "choices": [
+        "Jip barked once for left and twice for right from the top of the mast",
+        "The Doctor turned the ship whichever way Jip pointed his nose",
+        "Jip ran along the deck to the side the ship should turn",
+        "Jip told Dab-Dab, who flew back and told the Doctor"
+      ],
+      "answer": 1,
+      "evidence": "whichever way I point it, you turn the ship the same way"
+    },
+    {
+      "id": "doctor-dolittle-19-04",
+      "type": "inference",
+      "q": "How did Jip know the boy's uncle was starving?",
+      "choices": [
+        "The wind smelled only of snuff, with no food at all",
+        "He could hear the man calling out that he was hungry",
+        "The eagles told him the man had nothing to eat",
+        "The man's handkerchief smelled thin and weak"
+      ],
+      "answer": 0,
+      "evidence": "there is no other smell in the West wind but snuff"
+    },
+    {
+      "id": "doctor-dolittle-19-05",
+      "type": "detail",
+      "q": "What did the swallows do after Jip said the man was starving?",
+      "choices": [
+        "They flew ahead to look for the starving man",
+        "They carried food to the man in their beaks",
+        "They sang to keep the little boy from crying",
+        "They pulled the ship very fast, as before"
+      ],
+      "answer": 3,
+      "evidence": "harnessed themselves to the ship"
+    },
+    {
+      "id": "doctor-dolittle-19-06",
+      "type": "detail",
+      "q": "Who first saw the great rock far ahead?",
+      "choices": [
+        "Jip, the dog",
+        "Dab-Dab, the duck",
+        "Too-Too, the owl",
+        "The little boy"
+      ],
+      "answer": 2,
+      "evidence": "the owl, Too-Too, who was perched on the tip of the mast"
+    },
+    {
+      "id": "doctor-dolittle-19-07",
+      "type": "vocabulary",
+      "q": "The rock was \"as smooth and as bare as the back of a tortoise.\" What does \"bare\" mean here?",
+      "choices": [
+        "Very hot from the sun shining on it",
+        "With nothing growing or lying on it",
+        "Very steep and hard to climb up",
+        "Covered with soft and slippery moss"
+      ],
+      "answer": 1,
+      "evidence": "No trees grew on it, no grass--nothing"
+    },
+    {
+      "id": "doctor-dolittle-19-08",
+      "type": "sequence",
+      "q": "What did Jip do after he and the Doctor got out onto the rock?",
+      "choices": [
+        "He ran all over it with his nose to the ground",
+        "He lay down on the rock and waited for the uncle to come out",
+        "He barked loudly till his voice was hoarse",
+        "He dug a hole in the rock with his paws"
+      ],
+      "answer": 0,
+      "evidence": "Jip at once put his nose down close to the ground and began to run all over the place"
+    },
+    {
+      "id": "doctor-dolittle-19-09",
+      "type": "detail",
+      "q": "Where did they finally find the boy's uncle?",
+      "choices": [
+        "Sitting on top of the rock, waving a red handkerchief",
+        "Floating on a raft in the water beside the rock",
+        "Hiding behind a pile of sea-weed by the little waves",
+        "Asleep in a tiny room of rock at the end of a tunnel"
+      ],
+      "answer": 3,
+      "evidence": "lay a man with very red hair--fast asleep!"
+    },
+    {
+      "id": "doctor-dolittle-19-10",
+      "type": "main-idea",
+      "q": "What is this chapter mostly about?",
+      "choices": [
+        "The swallows race the pirates' ship all the way across the open sea",
+        "Too-Too finds the uncle by listening at a key-hole",
+        "Jip's nose leads them to the lost uncle on a bare rock",
+        "The boy and his uncle sail home in The Saucy Sally"
+      ],
+      "answer": 2,
+      "evidence": "It takes a dog to find a man"
+    }
+  ]
+}

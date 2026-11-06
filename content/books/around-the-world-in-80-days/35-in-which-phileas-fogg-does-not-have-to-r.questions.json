@@ -1,0 +1,94 @@
+{
+  "book": "around-the-world-in-80-days",
+  "chapter": 35,
+  "questions": [
+    {
+      "id": "around-the-world-in-80-days-35-01",
+      "type": "detail",
+      "q": "How did the house in Saville Row look the day after Fogg came home?",
+      "choices": ["Its doors and windows were still closed", "Every lamp in the house was lit for a party", "Its door was hung with a sign saying For Sale", "A crowd of reporters was waiting on the steps"],
+      "answer": 0,
+      "evidence": "His doors and windows were still closed"
+    },
+    {
+      "id": "around-the-world-in-80-days-35-02",
+      "type": "inference",
+      "q": "The chapter says Fogg laid wagers \"for honour's sake.\" What does this suggest about why he made the bet?",
+      "choices": ["He badly needed the money to pay his debts", "He cared more about honour than about getting rich", "He wanted to become famous in the newspapers", "He wished to prove the Reform Club members wrong about India"],
+      "answer": 1,
+      "evidence": "laid wagers for honour's sake than for the stake proposed"
+    },
+    {
+      "id": "around-the-world-in-80-days-35-03",
+      "type": "detail",
+      "q": "What did Passepartout do first when he got back to the house?",
+      "choices": ["Put out the gas burner that had burned for eighty days", "Lit a fire in his master's room to warm the house", "Wrote a letter of apology to the Reform Club", "Opened all the windows wide to let in the cold fresh winter air"],
+      "answer": 0,
+      "evidence": "had extinguished the gas burner, which had been burning for eighty days"
+    },
+    {
+      "id": "around-the-world-in-80-days-35-04",
+      "type": "character",
+      "q": "How did Passepartout spend the first night back in London?",
+      "choices": ["Sleeping soundly after the long journey", "Keeping watch all night at his master's door", "Walking the streets looking for Fix", "Packing his bags to leave Mr. Fogg's service"],
+      "answer": 1,
+      "evidence": "Passepartout watched all night, like a faithful dog, at his master's door."
+    },
+    {
+      "id": "around-the-world-in-80-days-35-05",
+      "type": "character",
+      "q": "When Passepartout asked his master why he did not curse him, what did Mr. Fogg say?",
+      "choices": ["\"I blame no one.\"", "\"It was your fault.\"", "\"Fix is to blame.\"", "\"Leave my house now.\""],
+      "answer": 0,
+      "evidence": "I blame no one"
+    },
+    {
+      "id": "around-the-world-in-80-days-35-06",
+      "type": "detail",
+      "q": "What did Mr. Fogg not do on Sunday for the first time since he had lived in the house?",
+      "choices": ["Eat his breakfast of tea and a chop", "Set out for his club at half-past eleven", "Wind the great clock in the front hall", "Read the morning newspapers by the fire"],
+      "answer": 1,
+      "evidence": "did not set out for his club when Westminster clock struck half-past eleven"
+    },
+    {
+      "id": "around-the-world-in-80-days-35-07",
+      "type": "vocabulary",
+      "q": "Passepartout \"looked ruefully at the young woman.\" What does ruefully mean?",
+      "choices": ["Angrily", "Sadly and with regret", "With great surprise and joy", "Cheerfully"],
+      "answer": 1,
+      "evidence": "looked ruefully at the young woman"
+    },
+    {
+      "id": "around-the-world-in-80-days-35-08",
+      "type": "sequence",
+      "q": "What did Mr. Fogg first ask Aouda when he sat down with her that evening?",
+      "choices": ["Whether she would pardon him for bringing her to England", "Whether she wished to go back home to India", "Whether she knew where Fix had gone after Liverpool", "Whether she could lend him money to pay his debt to the club"],
+      "answer": 0,
+      "evidence": "will you pardon me for bringing you to England?"
+    },
+    {
+      "id": "around-the-world-in-80-days-35-09",
+      "type": "detail",
+      "q": "What did Mr. Fogg offer Aouda now that he was ruined?",
+      "choices": ["A ticket on a steamer back to Bombay", "The little he had left", "A place in his friend's house", "A letter to her relatives"],
+      "answer": 1,
+      "evidence": "I beg to place the little I have left at your service."
+    },
+    {
+      "id": "around-the-world-in-80-days-35-10",
+      "type": "character",
+      "q": "What did Aouda ask Mr. Fogg after he said he had no friends or relatives?",
+      "choices": ["If he would take her to see the Reform Club", "If he would have her for his wife", "If he would let her find work in London", "If he would forgive Passepartout at last"],
+      "answer": 1,
+      "evidence": "Will you have me for your wife?"
+    },
+    {
+      "id": "around-the-world-in-80-days-35-11",
+      "type": "main-idea",
+      "q": "What is the most important thing that happens in this chapter?",
+      "choices": ["Fogg and Aouda tell each other their feelings and plan to marry", "Fogg sells his house in Saville Row to pay what he owes the Reform Club", "Passepartout finds Fix and makes him apologise to Fogg", "Aouda decides to return to India with Passepartout"],
+      "answer": 0,
+      "evidence": "I love you!"
+    }
+  ]
+}

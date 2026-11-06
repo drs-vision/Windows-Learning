@@ -1,0 +1,166 @@
+{
+  "book": "call-of-the-wild",
+  "chapter": 2,
+  "questions": [
+    {
+      "id": "call-of-the-wild-02-01",
+      "type": "detail",
+      "q": "What law did the dogs and men on the Dyea beach follow?",
+      "choices": ["The law of love and fellowship", "The law of the Canadian Government", "The law of club and fang", "The law of the gold miners' camp"],
+      "answer": 2,
+      "evidence": "knew no law but the law of club and fang"
+    },
+    {
+      "id": "call-of-the-wild-02-02",
+      "type": "inference",
+      "q": "What lesson did Buck take from what happened to Curly in the fight with the husky?",
+      "choices": ["That a dog who fights fairly will always be protected", "That huskies are friendly and gentle once they get to know you well", "That there was no fair play, and once down, you were finished", "That the men would never let the dogs fight each other"],
+      "answer": 2,
+      "evidence": "No fair play. Once down, that was the end of you."
+    },
+    {
+      "id": "call-of-the-wild-02-03",
+      "type": "character",
+      "q": "Why did Buck begin to hate Spitz with a bitter hatred?",
+      "choices": ["Spitz stole Buck's fish on their very first night", "Spitz laughed while Curly was being attacked", "Spitz bit Buck's shoulder when he came too close", "Spitz was made leader in the place Buck wanted"],
+      "answer": 1,
+      "evidence": "Spitz ran out his tongue and laughed again"
+    },
+    {
+      "id": "call-of-the-wild-02-04",
+      "type": "detail",
+      "q": "What was Buck's first job after Francois put a harness on him?",
+      "choices": ["Hauling a sled to the forest and back with firewood", "Pulling a boat full of supplies up onto the beach", "Carrying letters from the ship to the log store", "Dragging heavy logs from the woods to build a cabin for the men"],
+      "answer": 0,
+      "evidence": "returning with a load of firewood"
+    },
+    {
+      "id": "call-of-the-wild-02-05",
+      "type": "vocabulary",
+      "q": "Buck's dignity was hurt \"by thus being made a draught animal.\" What is a draught animal?",
+      "choices": ["An animal kept as a family pet", "An animal used for pulling loads", "An animal trained to guard a camp", "An animal raised only for racing"],
+      "answer": 1,
+      "evidence": "being made a draught animal"
+    },
+    {
+      "id": "call-of-the-wild-02-06",
+      "type": "detail",
+      "q": "Which command did Buck learn meant \"go ahead\"?",
+      "choices": ["Ho", "Gee", "Mush", "Whoa"],
+      "answer": 2,
+      "evidence": "to go ahead at \"mush,\""
+    },
+    {
+      "id": "call-of-the-wild-02-07",
+      "type": "character",
+      "q": "How were the brothers Billee and Joe different from each other?",
+      "choices": ["Billee was very good-natured, while Joe was sour and snarling", "Billee was a strong, bold leader, while Joe was lazy and very slow", "Billee was old and blind, while Joe was young and quick", "Billee stole food all the time, while Joe never took any"],
+      "answer": 0,
+      "evidence": "Billee's one fault was his excessive good nature"
+    },
+    {
+      "id": "call-of-the-wild-02-08",
+      "type": "detail",
+      "q": "Why did Sol-leks suddenly slash Buck's shoulder?",
+      "choices": ["Buck had tried to take his place in the team", "Buck had come up on his blind side", "Buck had eaten part of his fish ration", "Buck had tangled the traces during a halt"],
+      "answer": 1,
+      "evidence": "He did not like to be approached on his blind side."
+    },
+    {
+      "id": "call-of-the-wild-02-09",
+      "type": "vocabulary",
+      "q": "Sol-leks's name has a meaning. What does it mean?",
+      "choices": ["The Silent One", "The Old Warrior", "The Angry One", "The One-Eyed Hunter"],
+      "answer": 2,
+      "evidence": "which means the Angry One"
+    },
+    {
+      "id": "call-of-the-wild-02-10",
+      "type": "sequence",
+      "q": "What happened when Buck first tried to sleep inside the warm tent?",
+      "choices": ["Perrault and Francois threw curses and pots at him until he fled", "Francois let him sleep by the candle until the morning", "Spitz growled at him from the corner and chased him back into the cold snow", "Perrault tied him to the sled outside the tent door"],
+      "answer": 0,
+      "evidence": "bombarded him with curses and cooking utensils"
+    },
+    {
+      "id": "call-of-the-wild-02-11",
+      "type": "detail",
+      "q": "How did Buck finally learn how sled dogs keep warm at night?",
+      "choices": ["He watched the men build a fire and lay down beside it", "He found Billee curled up in a snug ball under the snow", "He followed Dave into a hollow under a fallen tree", "He saw Spitz crawl under the sled out of the wind"],
+      "answer": 1,
+      "evidence": "curled up under the snow in a snug ball, lay Billee"
+    },
+    {
+      "id": "call-of-the-wild-02-12",
+      "type": "inference",
+      "q": "When Buck woke up buried in snow, he felt \"the fear of the wild thing for the trap.\" Why was this strange?",
+      "choices": ["He had been caught in many traps back in California", "He was a civilized dog who had never known a trap", "The men had told him that traps were set near the camp", "He had seen Curly caught in a trap the day before"],
+      "answer": 1,
+      "evidence": "of his own experience knew no trap"
+    },
+    {
+      "id": "call-of-the-wild-02-13",
+      "type": "character",
+      "q": "How did Dave and Sol-leks change once they were in harness on the trail?",
+      "choices": ["They became lazy and had to be whipped to keep pulling", "They became alert and eager, wanting the work to go well", "They became frightened and tried to slip out of the traces", "They became playful and kept wrestling with the other dogs"],
+      "answer": 1,
+      "evidence": "They were alert and active, anxious that the work should go well"
+    },
+    {
+      "id": "call-of-the-wild-02-14",
+      "type": "inference",
+      "q": "Why was Buck placed between Dave and Sol-leks in the team?",
+      "choices": ["So they could teach him the work", "So he could not run away from the sled", "Because he was the heaviest dog of all", "Because Spitz refused to run near him"],
+      "answer": 0,
+      "evidence": "so that he might receive instruction"
+    },
+    {
+      "id": "call-of-the-wild-02-15",
+      "type": "detail",
+      "q": "What did Perrault do as a rule to make the trail easier for the dogs?",
+      "choices": ["Travelled ahead packing the snow with webbed shoes", "Rode on the sled to steer it around thin ice", "Carried half the load on his own back", "Stopped every single hour to let the tired dogs rest and eat"],
+      "answer": 0,
+      "evidence": "packing the snow with webbed shoes"
+    },
+    {
+      "id": "call-of-the-wild-02-16",
+      "type": "detail",
+      "q": "Why did Buck always feel hungry on the trail?",
+      "choices": ["The men only fed him every second day to save the fish", "Spitz took half of his food every single night", "His daily pound and a half of dried salmon never seemed enough", "He refused to eat the frozen fish the other dogs ate"],
+      "answer": 2,
+      "evidence": "seemed to go nowhere"
+    },
+    {
+      "id": "call-of-the-wild-02-17",
+      "type": "sequence",
+      "q": "After Buck stole a whole chunk of bacon, what happened?",
+      "choices": ["Perrault caught him and whipped him in front of the team", "Dub was blamed and punished for what Buck had done", "Spitz saw him and tried to take the bacon away", "Pike told on him by howling until Francois came"],
+      "answer": 1,
+      "evidence": "Dub, an awkward blunderer who was always getting caught, was punished for Buck's misdeed"
+    },
+    {
+      "id": "call-of-the-wild-02-18",
+      "type": "vocabulary",
+      "q": "\"He swiftly lost the fastidiousness which had characterized his old life.\" Here, \"fastidiousness\" means being:",
+      "choices": ["Very fast and quick", "Fussy and dainty about things", "Lazy and fond of sleeping", "Brave and fond of fighting"],
+      "answer": 1,
+      "evidence": "A dainty eater"
+    },
+    {
+      "id": "call-of-the-wild-02-19",
+      "type": "detail",
+      "q": "What skill did Buck develop that let him always find shelter from the wind?",
+      "choices": ["He could smell the wind and forecast it a night ahead", "He could hear a storm coming from many miles away", "He could see dark clouds long before the men could", "He always followed Sol-leks, who knew the best places to sleep"],
+      "answer": 0,
+      "evidence": "ability to scent the wind and forecast it a night in advance"
+    },
+    {
+      "id": "call-of-the-wild-02-20",
+      "type": "main-idea",
+      "q": "What is this chapter mostly about?",
+      "choices": ["How Buck plans to escape and return to Judge Miller", "How Buck becomes the new leader of the dog team", "How Buck learns the harsh ways of the North and his wild instincts awaken", "How Perrault and Francois race across the frozen lakes to deliver gold to Seattle"],
+      "answer": 2,
+      "evidence": "instincts long dead became alive again"
+    }
+  ]
+}

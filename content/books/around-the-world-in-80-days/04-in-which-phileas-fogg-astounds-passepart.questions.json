@@ -1,0 +1,70 @@
+{
+  "book": "around-the-world-in-80-days",
+  "chapter": 4,
+  "questions": [
+    {
+      "id": "around-the-world-in-80-days-04-01",
+      "type": "inference",
+      "q": "Why didn't Passepartout answer the first time Fogg called him?",
+      "choices": ["He was asleep in his room upstairs", "It was not the right hour for his master to be home", "He was busy turning off the gas lamps down in the kitchen", "He did not hear the call over the noisy rain"],
+      "answer": 1,
+      "evidence": "It could not be he who was called; it was not the right hour."
+    },
+    {
+      "id": "around-the-world-in-80-days-04-02",
+      "type": "character",
+      "q": "How did Passepartout react when Fogg said they were going round the world?",
+      "choices": ["He laughed, thinking it was a joke", "He cheered loudly and began to pack at once with joy", "He was overcome with stupefied astonishment", "He refused to go and asked to quit"],
+      "answer": 2,
+      "evidence": "so overcome was he with stupefied astonishment"
+    },
+    {
+      "id": "around-the-world-in-80-days-04-03",
+      "type": "detail",
+      "q": "What luggage did Fogg say they would take?",
+      "choices": ["Two large trunks of clothes and shoes", "Only a carpet-bag with a few shirts and stockings", "A trunk each and a box of books", "Nothing at all, since they would buy everything on the way"],
+      "answer": 1,
+      "evidence": "We'll have no trunks; only a carpet-bag"
+    },
+    {
+      "id": "around-the-world-in-80-days-04-04",
+      "type": "character",
+      "q": "While packing, what thought cheered Passepartout a little?",
+      "choices": ["He might get to see France and Paris again", "He would earn much more money on the trip", "He could finally ride in a first-class train", "He would no longer have to follow the daily card"],
+      "answer": 0,
+      "evidence": "it would do his eyes good to see Paris once more"
+    },
+    {
+      "id": "around-the-world-in-80-days-04-05",
+      "type": "detail",
+      "q": "What did Fogg put into the carpet-bag before they left?",
+      "choices": ["His whist cards and a pocket almanac", "A roll of Bank of England notes", "A loaded pistol and some cartridges", "Letters of introduction to foreign banks"],
+      "answer": 1,
+      "evidence": "slipped into it a goodly roll of Bank of England notes"
+    },
+    {
+      "id": "around-the-world-in-80-days-04-06",
+      "type": "detail",
+      "q": "What did Fogg do with the twenty guineas he had won at whist?",
+      "choices": ["He gave them to a poor beggar-woman", "He paid the cabman at Charing Cross", "He bought two first-class tickets", "He left them at home in his safe"],
+      "answer": 0,
+      "evidence": "handed them to the beggar"
+    },
+    {
+      "id": "around-the-world-in-80-days-04-07",
+      "type": "detail",
+      "q": "What did Fogg tell his friends at the station they could check when he got back?",
+      "choices": ["His Bradshaw's guide with every train marked", "The carpet-bag and the money left in it", "His passport, to prove he made the journey", "Passepartout's diary of the whole long trip"],
+      "answer": 2,
+      "evidence": "if you will examine my passport when I get back"
+    },
+    {
+      "id": "around-the-world-in-80-days-04-08",
+      "type": "sequence",
+      "q": "As the train passed Sydenham, what did Passepartout suddenly remember?",
+      "choices": ["He had left Fogg's mackintosh in the cab", "He had forgotten to turn off the gas in his room", "He had not locked the street-door of the house", "He had left his silver watch on the mantel"],
+      "answer": 1,
+      "evidence": "To turn off the gas in my room!"
+    }
+  ]
+}

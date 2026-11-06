@@ -1,0 +1,292 @@
+{
+  "book": "kidnapped",
+  "chapter": 8,
+  "questions": [
+    {
+      "id": "kidnapped-08-01",
+      "type": "detail",
+      "q": "What whisper went around the forecastle one night at about eleven o'clock?",
+      "choices": [
+        "That Shuan had done for him at last",
+        "That the ship had struck a rock",
+        "That the captain had fallen overboard",
+        "That land had been sighted to the west"
+      ],
+      "answer": 0,
+      "evidence": "Shuan had done for him at last"
+    },
+    {
+      "id": "kidnapped-08-02",
+      "type": "detail",
+      "q": "Why did the captain come down and send David to the round-house?",
+      "choices": [
+        "David was to be punished for stealing food",
+        "David was needed to help steer in the storm",
+        "David and Ransome were to change berths",
+        "David was to be locked away from the crew"
+      ],
+      "answer": 2,
+      "evidence": "You and Ransome are to change berths"
+    },
+    {
+      "id": "kidnapped-08-03",
+      "type": "inference",
+      "q": "Why was the sunset still bright so late at night?",
+      "choices": [
+        "The brig was already more than half-way across the Atlantic",
+        "The light came from a lighthouse on the Isle of May",
+        "The brig was going north round Scotland, near Orkney and Shetland",
+        "A great fire was burning on a ship near the brig"
+      ],
+      "answer": 2,
+      "evidence": "we were going north-about round Scotland"
+    },
+    {
+      "id": "kidnapped-08-04",
+      "type": "detail",
+      "q": "What was kept in the round-house besides the officers' berths?",
+      "choices": [
+        "The sails, ropes and tools for mending the ship",
+        "The best food and drink, the powder and the firearms",
+        "The ship's cargo of tobacco leaf and bales of cloth",
+        "The sailors' sea-chests and their spare clothes"
+      ],
+      "answer": 1,
+      "evidence": "all the best of the meat and drink and the whole of the powder"
+    },
+    {
+      "id": "kidnapped-08-05",
+      "type": "sequence",
+      "q": "What did Mr. Riach do with Mr. Shuan's brandy bottle?",
+      "choices": [
+        "Drank it all himself",
+        "Tossed it into the sea",
+        "Locked it in a locker",
+        "Gave it to the captain"
+      ],
+      "answer": 1,
+      "evidence": "he tossed the bottle into the sea"
+    },
+    {
+      "id": "kidnapped-08-06",
+      "type": "character",
+      "q": "What excuse did Mr. Shuan give for what he had done to Ransome?",
+      "choices": [
+        "He brought me a dirty pannikin",
+        "He was rude to the captain",
+        "He stole a bottle of brandy",
+        "He would not stop his loud singing"
+      ],
+      "answer": 0,
+      "evidence": "he brought me a dirty pannikin!"
+    },
+    {
+      "id": "kidnapped-08-07",
+      "type": "detail",
+      "q": "What story did the captain say must be told in Dysart about Ransome?",
+      "choices": [
+        "That the boy died of a fever",
+        "That the boy ran away at a port",
+        "That the boy went overboard",
+        "That the boy was lost in a storm"
+      ],
+      "answer": 2,
+      "evidence": "The boy went overboard, sir; that's what the story is"
+    },
+    {
+      "id": "kidnapped-08-08",
+      "type": "inference",
+      "q": "Why does David think Mr. Riach and the captain were so patient with him in the round-house?",
+      "choices": [
+        "They had learned that he was really the heir of Shaws",
+        "They were hoping to sell him for a higher price as a servant",
+        "They felt guilty about how badly Ransome had been treated",
+        "They were afraid that he would tell the crew about Shuan"
+      ],
+      "answer": 2,
+      "evidence": "they would scarce have been so good with me if they had not been worse with Ransome"
+    },
+    {
+      "id": "kidnapped-08-09",
+      "type": "character",
+      "q": "How did Mr. Shuan behave toward David after Ransome's death?",
+      "choices": [
+        "He beat him every day, just as he had once beaten Ransome",
+        "He was very kind and gave him money and good food",
+        "He stared at him, sometimes with terror, and drew back from him",
+        "He never looked at him and would not speak to him"
+      ],
+      "answer": 2,
+      "evidence": "stared at me continually (sometimes, I could have thought, with terror)"
+    },
+    {
+      "id": "kidnapped-08-10",
+      "type": "detail",
+      "q": "How did the one survivor of the boat that the brig ran down save himself?",
+      "choices": [
+        "He swam to the brig and climbed up a rope ladder",
+        "He clung to a piece of the broken boat until the dawn",
+        "He leaped up and caught hold of the brig's bowsprit",
+        "He was pulled from the water by Mr. Riach's crew"
+      ],
+      "answer": 2,
+      "evidence": "had leaped up and caught hold of the brig's bowsprit"
+    },
+    {
+      "id": "kidnapped-08-11",
+      "type": "character",
+      "q": "What did David think of the stranger at first sight?",
+      "choices": [
+        "He was a man David would rather have as friend than enemy",
+        "He was a common sailor dressed up in fine clothes he had stolen",
+        "He was a weak and frightened gentleman lost at sea",
+        "He was a cruel man who would bring trouble to the ship"
+      ],
+      "answer": 0,
+      "evidence": "here was a man I would rather call my friend than my enemy"
+    },
+    {
+      "id": "kidnapped-08-12",
+      "type": "vocabulary",
+      "q": "The stranger asks the captain, \"are ye of the honest party?\" What does \"the honest party\" mean here?",
+      "choices": [
+        "Men who never told lies to their friends",
+        "The Protestants who went to church on shore",
+        "Sailors who paid their debts in every port",
+        "The Jacobites, who were against King George"
+      ],
+      "answer": 3,
+      "evidence": "meaning, Was he a Jacobite?"
+    },
+    {
+      "id": "kidnapped-08-13",
+      "type": "detail",
+      "q": "How much did the captain and the stranger agree on to set him on the Linnhe Loch?",
+      "choices": [
+        "Half the belt of gold",
+        "One hundred guineas",
+        "Thirty guineas",
+        "Sixty guineas"
+      ],
+      "answer": 3,
+      "evidence": "Sixty guineas, and done"
+    },
+    {
+      "id": "kidnapped-08-14",
+      "type": "detail",
+      "q": "Whose money did the stranger say was in his belt?",
+      "choices": [
+        "The French king's, sent to pay the rebels",
+        "His own, saved up from his years as a soldier",
+        "The captain's, paid for an earlier voyage",
+        "His exiled chieftain's, from the tenants' rents"
+      ],
+      "answer": 3,
+      "evidence": "It belongs to my chieftain"
+    },
+    {
+      "id": "kidnapped-08-15",
+      "type": "sequence",
+      "q": "What did David overhear when he went on deck to ask for the key?",
+      "choices": [
+        "The captain ordering the crew to turn back to Dysart",
+        "Mr. Riach saying that land was close by in the fog",
+        "The officers planning to seize and kill the stranger",
+        "The sailors singing a song about the Jacobite rebels"
+      ],
+      "answer": 2,
+      "evidence": "Couldn't we wile him out of the round-house?"
+    },
+    {
+      "id": "kidnapped-08-16",
+      "type": "detail",
+      "q": "What did the captain ask David to bring him from the round-house?",
+      "choices": [
+        "The belt of gold from the stranger",
+        "The key to the spirit locker",
+        "The stranger's great sword",
+        "A powder-horn and a pistol or two"
+      ],
+      "answer": 3,
+      "evidence": "might snap up a horn and a pistol or two without remark"
+    },
+    {
+      "id": "kidnapped-08-17",
+      "type": "character",
+      "q": "Why did David decide to warn the stranger instead of helping the captain?",
+      "choices": [
+        "He was promised half of all the gold in the belt if he warned the stranger",
+        "He hoped the stranger would take him to France on a French ship",
+        "He thought the stranger would surely win against the whole crew",
+        "He would not help with another murder, and his mind was made up in a moment"
+      ],
+      "answer": 3,
+      "evidence": "I am no thief, nor yet murderer"
+    },
+    {
+      "id": "kidnapped-08-18",
+      "type": "detail",
+      "q": "What was the stranger's name?",
+      "choices": [
+        "Ebenezer Balfour",
+        "Alan Breck Stewart",
+        "Colin Campbell",
+        "Hector Shuan"
+      ],
+      "answer": 1,
+      "evidence": "Alan Breck, they call me"
+    },
+    {
+      "id": "kidnapped-08-19",
+      "type": "character",
+      "q": "Why did Alan want to keep one of the round-house doors open?",
+      "choices": [
+        "So that fresh air could come in and clear away the smoke",
+        "So that most of his enemies would come at him from the front",
+        "So that he and David could run out if they lost the fight",
+        "So that the captain could plainly see that he had no plan to hide"
+      ],
+      "answer": 1,
+      "evidence": "the best part of my enemies will be in front of me"
+    },
+    {
+      "id": "kidnapped-08-20",
+      "type": "vocabulary",
+      "q": "Alan says loading pistols is better than \"raxing drams to a wheen tarry sailors.\" Using the note in the text, what does \"raxing\" mean?",
+      "choices": [
+        "Pouring",
+        "Reaching",
+        "Drinking",
+        "Stealing"
+      ],
+      "answer": 1,
+      "evidence": "*Reaching."
+    },
+    {
+      "id": "kidnapped-08-21",
+      "type": "detail",
+      "q": "How many men did David count that were against them?",
+      "choices": [
+        "Ten",
+        "Fifteen",
+        "Twenty",
+        "Twelve"
+      ],
+      "answer": 1,
+      "evidence": "Fifteen,\" said I"
+    },
+    {
+      "id": "kidnapped-08-22",
+      "type": "main-idea",
+      "q": "What is this chapter mostly about?",
+      "choices": [
+        "A great storm that drives the brig onto the rocks near Cape Wrath",
+        "The captain's friendship with Alan and their trip to the coast of France",
+        "David's work in the round-house and his secret plan to escape the brig in a boat",
+        "Ransome's death, Alan's arrival, and David siding with Alan against the crew"
+      ],
+      "answer": 3,
+      "evidence": "I'll stand by you"
+    }
+  ]
+}

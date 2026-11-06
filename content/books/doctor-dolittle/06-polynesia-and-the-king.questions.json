@@ -1,0 +1,136 @@
+{
+  "book": "doctor-dolittle",
+  "chapter": 6,
+  "questions": [
+    {
+      "id": "doctor-dolittle-06-01",
+      "type": "detail",
+      "q": "What was the King's palace made of?",
+      "choices": [
+        "Stone",
+        "Mud",
+        "Palm-leaves",
+        "Wood and grass"
+      ],
+      "answer": 1,
+      "evidence": "the King's palace which was made of mud"
+    },
+    {
+      "id": "doctor-dolittle-06-02",
+      "type": "detail",
+      "q": "Where was Prince Bumpo when the Doctor arrived at the palace?",
+      "choices": [
+        "Asleep in his bed-room at the back of the palace",
+        "Away fishing for salmon in the river",
+        "Out hunting elephants with the King's soldiers",
+        "At a dance at his cousin's house"
+      ],
+      "answer": 1,
+      "evidence": "The Prince was away fishing for salmon in the river."
+    },
+    {
+      "id": "doctor-dolittle-06-03",
+      "type": "character",
+      "q": "Why would the King not let the Doctor travel through his lands?",
+      "choices": [
+        "He was afraid the Doctor would make his people sick like the monkeys",
+        "A man he once helped took gold and ivory and left without thanks",
+        "He wanted the Doctor to stay and be the doctor for the royal family",
+        "He did not believe that any man could talk to animals at all"
+      ],
+      "answer": 1,
+      "evidence": "he went away secretly in his ship--without so much as saying 'Thank you.'"
+    },
+    {
+      "id": "doctor-dolittle-06-04",
+      "type": "detail",
+      "q": "Where had Polynesia hidden so she would not be put in a cage?",
+      "choices": [
+        "Under Queen Ermintrude's big umbrella by the palace door",
+        "Inside the Doctor's high hat",
+        "In the pocket in the tail of the Doctor's coat",
+        "In the trunk with the white mouse"
+      ],
+      "answer": 2,
+      "evidence": "climbing out of the pocket in the tail of the Doctor's coat"
+    },
+    {
+      "id": "doctor-dolittle-06-05",
+      "type": "vocabulary",
+      "q": "Polynesia calls her hiding trick a \"ruse.\" What is a ruse?",
+      "choices": [
+        "A loud noise made to frighten an enemy away",
+        "A clever trick to fool someone",
+        "A small cage for birds",
+        "A secret path through the jungle"
+      ],
+      "answer": 1,
+      "evidence": "That's what you call a 'ruse,'"
+    },
+    {
+      "id": "doctor-dolittle-06-06",
+      "type": "sequence",
+      "q": "How did Polynesia get into the palace that night?",
+      "choices": [
+        "She flew down the chimney into the kitchen",
+        "She slipped under the front door while all the guards were asleep",
+        "She went in through a pantry window broken by a tennis ball",
+        "She hid in the Queen's bag as the Queen came home"
+      ],
+      "answer": 2,
+      "evidence": "The pantry window had been broken by a tennis ball the week before"
+    },
+    {
+      "id": "doctor-dolittle-06-07",
+      "type": "inference",
+      "q": "Why did the King believe the voice in his bedroom was the Doctor?",
+      "choices": [
+        "Polynesia could mimic anyone, and she coughed, talked and laughed just like the Doctor",
+        "The King had never heard a parrot speak, so he did not know birds could talk",
+        "Polynesia stood in the dark doorway wearing the Doctor's high hat and coat",
+        "The Queen had told him the Doctor was coming to the palace that night"
+      ],
+      "answer": 0,
+      "evidence": "Polynesia could mimic any one."
+    },
+    {
+      "id": "doctor-dolittle-06-08",
+      "type": "detail",
+      "q": "What did Polynesia say would happen if the King did not open the dungeon door?",
+      "choices": [
+        "His palace would fall down before the morning sun rose",
+        "All the animals of the jungle would come and chase him away",
+        "He would have mumps before the morning sun had risen",
+        "The monkeys would steal all of the gold he had in the palace"
+      ],
+      "answer": 2,
+      "evidence": "you shall have mumps before the morning sun has risen"
+    },
+    {
+      "id": "doctor-dolittle-06-09",
+      "type": "sequence",
+      "q": "How did the King find out that he had been tricked?",
+      "choices": [
+        "A soldier saw the parrot fly out of the dungeon window in the moonlight",
+        "The Queen saw the parrot getting out through the broken glass",
+        "Prince Bumpo heard the parrot laughing in the stairway",
+        "The palace cat found green feathers under the King's bed"
+      ],
+      "answer": 1,
+      "evidence": "saw the parrot getting out through the broken glass"
+    },
+    {
+      "id": "doctor-dolittle-06-10",
+      "type": "main-idea",
+      "q": "What is this chapter mostly about?",
+      "choices": [
+        "How Queen Ermintrude went to a dance at her cousin's house",
+        "How Gub-Gub learned to stop crying when things went wrong",
+        "How Polynesia tricked the King into setting the Doctor free",
+        "How the King's soldiers built a strong new stone prison for the Doctor"
+      ],
+      "answer": 2,
+      "evidence": "Then the King understood that he had been tricked"
+    }
+  ]
+}

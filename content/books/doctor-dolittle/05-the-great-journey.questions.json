@@ -1,0 +1,162 @@
+{
+  "book": "doctor-dolittle",
+  "chapter": 5,
+  "questions": [
+    {
+      "id": "doctor-dolittle-05-01",
+      "type": "detail",
+      "q": "How did the swallow make sure the ship could follow her at night?",
+      "choices": [
+        "She sang a loud song so the sailors could hear her",
+        "She carried a tiny lantern",
+        "She rode on the top of the ship's mast",
+        "She flew low, right above the waves"
+      ],
+      "answer": 1,
+      "evidence": "At night she carried a tiny lantern"
+    },
+    {
+      "id": "doctor-dolittle-05-02",
+      "type": "detail",
+      "q": "What did the people on other ships think the swallow's light was?",
+      "choices": [
+        "A lighthouse on a faraway island",
+        "The moon shining on the waves",
+        "A shooting star",
+        "A signal from a pirate ship"
+      ],
+      "answer": 2,
+      "evidence": "the light must be a shooting star"
+    },
+    {
+      "id": "doctor-dolittle-05-03",
+      "type": "character",
+      "q": "How did the pig, the dog and Too-Too feel about the hot weather?",
+      "choices": [
+        "They could do nothing but sit in the shade drinking lemonade",
+        "They loved it and ran about the ship laughing and looking for Africa",
+        "They kept cool by jumping into the sea behind the ship",
+        "They hid down below in their bunks for the whole voyage"
+      ],
+      "answer": 0,
+      "evidence": "with their tongues hanging out, drinking lemonade"
+    },
+    {
+      "id": "doctor-dolittle-05-04",
+      "type": "inference",
+      "q": "Why did everyone on the boat eat fish on Tuesdays and Fridays?",
+      "choices": [
+        "The flying-fishes brought them a fresh catch on those days",
+        "Polynesia said sailors always eat fish twice a week",
+        "To make the canned beef last longer",
+        "Dab-Dab was only allowed to go swimming on those days"
+      ],
+      "answer": 2,
+      "evidence": "to make the beef last longer"
+    },
+    {
+      "id": "doctor-dolittle-05-05",
+      "type": "detail",
+      "q": "What did the porpoises bring the ship when Polynesia said they were short of something?",
+      "choices": [
+        "Fresh herrings from the sea",
+        "Bananas from Africa",
+        "Wild onions, in nets of seaweed",
+        "Fresh water in large shells"
+      ],
+      "answer": 2,
+      "evidence": "dragging the onions through the waves in big nets made of seaweed"
+    },
+    {
+      "id": "doctor-dolittle-05-06",
+      "type": "sequence",
+      "q": "What happened right after the great storm came up near Africa?",
+      "choices": [
+        "The swallow got lost and the ship sailed off the wrong way",
+        "The ship struck a rock, got a big hole in the bottom and began to sink",
+        "The porpoises pushed the ship safely onto a sandy beach",
+        "The anchor broke and the ship drifted far out into the open ocean all night"
+      ],
+      "answer": 1,
+      "evidence": "they had struck a rock"
+    },
+    {
+      "id": "doctor-dolittle-05-07",
+      "type": "detail",
+      "q": "How did Chee-Chee and Gub-Gub get to shore, since they could not swim?",
+      "choices": [
+        "Dab-Dab carried them on her back to the beach, one at a time",
+        "They floated to the beach inside the Doctor's trunk",
+        "They climbed along a rope that Dab-Dab tied to a palm-tree",
+        "The porpoises came back and carried them to land"
+      ],
+      "answer": 2,
+      "evidence": "those that can't swim must climb along the rope"
+    },
+    {
+      "id": "doctor-dolittle-05-08",
+      "type": "vocabulary",
+      "q": "Polynesia calls the rope a \"life-line.\" What is a life-line in this chapter?",
+      "choices": [
+        "A rope that people hold on to so they can get to safety",
+        "A line drawn on a map showing the safest way home",
+        "A song that sailors sing to keep each other brave in a storm",
+        "A long net used to catch fish to eat on a voyage"
+      ],
+      "answer": 0,
+      "evidence": "That's what you call a 'life-line.'"
+    },
+    {
+      "id": "doctor-dolittle-05-09",
+      "type": "character",
+      "q": "Why did Polynesia have tears in her eyes on the beach?",
+      "choices": [
+        "She was sad the ship was broken",
+        "She was afraid of the jungle",
+        "She was so pleased to see her own country again",
+        "She missed the Doctor's house in Puddleby"
+      ],
+      "answer": 2,
+      "evidence": "she was so pleased to see her country once again"
+    },
+    {
+      "id": "doctor-dolittle-05-10",
+      "type": "detail",
+      "q": "Where did Dab-Dab find the white mouse?",
+      "choices": [
+        "Hiding inside the Doctor's handbag on the beach",
+        "Clinging to a piece of wood from the broken ship far out at sea",
+        "Sitting inside the Doctor's high hat, floating on the sea",
+        "Curled up asleep in the dry cave in the cliffs"
+      ],
+      "answer": 2,
+      "evidence": "she found one of the white mice, very frightened, sitting inside it"
+    },
+    {
+      "id": "doctor-dolittle-05-11",
+      "type": "vocabulary",
+      "q": "Polynesia calls the white mouse a \"stowaway.\" What is a stowaway?",
+      "choices": [
+        "Someone who is very good at swimming in the sea",
+        "Someone who hides on a ship to travel without being asked",
+        "Someone who is lost and cannot find the way back home",
+        "Someone who looks after all the baggage on a long sea voyage"
+      ],
+      "answer": 1,
+      "evidence": "That's what you call a 'stowaway,'"
+    },
+    {
+      "id": "doctor-dolittle-05-12",
+      "type": "detail",
+      "q": "Who did the man from the jungle say they must all come before?",
+      "choices": [
+        "The Chief of the Monkeys",
+        "The Captain of the ship",
+        "The King of the Jolliginki",
+        "The Leader of all the Lions"
+      ],
+      "answer": 2,
+      "evidence": "You must all come before the King"
+    }
+  ]
+}

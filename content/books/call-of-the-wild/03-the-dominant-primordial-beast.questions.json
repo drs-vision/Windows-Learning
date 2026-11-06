@@ -1,0 +1,166 @@
+{
+  "book": "call-of-the-wild",
+  "chapter": 3,
+  "questions": [
+    {
+      "id": "call-of-the-wild-03-01",
+      "type": "character",
+      "q": "At the start of the chapter, how did Buck behave toward Spitz?",
+      "choices": ["He picked fights with Spitz every single evening in camp", "He was patient and avoided fights whenever he could", "He tried hard to make friends with Spitz by sharing food", "He stayed close to Francois so Spitz could never reach him"],
+      "answer": 1,
+      "evidence": "he avoided them whenever possible"
+    },
+    {
+      "id": "call-of-the-wild-03-02",
+      "type": "detail",
+      "q": "What made Buck finally spring at Spitz at the camp on Lake Le Barge?",
+      "choices": ["Spitz had taken over Buck's warm nest under the rock", "Spitz had eaten Buck's fish while he was away", "Spitz had bitten Billee while the men were asleep", "Spitz had tangled Buck's traces on purpose during the day's run"],
+      "answer": 0,
+      "evidence": "he found his nest occupied"
+    },
+    {
+      "id": "call-of-the-wild-03-03",
+      "type": "inference",
+      "q": "Why was Spitz so surprised when Buck attacked him that night?",
+      "choices": ["He had always thought of Buck as an unusually timid dog", "He thought Francois had already tied Buck up for the night", "He believed Buck was too tired from the long day's run", "He did not know that Buck had seen him take the nest"],
+      "answer": 0,
+      "evidence": "his rival was an unusually timid dog"
+    },
+    {
+      "id": "call-of-the-wild-03-04",
+      "type": "sequence",
+      "q": "What interrupted the first fight between Buck and Spitz?",
+      "choices": ["Perrault fired his rifle into the air to frighten them", "The ice of the lake broke and they fell into the water", "A crowd of starving huskies crept into the camp", "Francois pulled them apart and tied them to the sled"],
+      "answer": 2,
+      "evidence": "The camp was suddenly discovered to be alive with skulking furry forms"
+    },
+    {
+      "id": "call-of-the-wild-03-05",
+      "type": "detail",
+      "q": "What did the starving huskies want when they came into the camp?",
+      "choices": ["To drive the team-dogs away from their warm hunting grounds", "To find a new leader for their pack among the team-dogs", "The food, which had made them crazed with hunger", "To get warm by the men's driftwood fire on the lake ice"],
+      "answer": 2,
+      "evidence": "They were crazed by the smell of the food."
+    },
+    {
+      "id": "call-of-the-wild-03-06",
+      "type": "detail",
+      "q": "Besides food, what did the starving huskies eat in the camp?",
+      "choices": ["Perrault's moose-hide moccasins and part of Francois's whip", "Every one of the letters Perrault was carrying", "The canvas tent the men had brought from Dyea", "Every one of the dog harnesses, so that new ones had to be bought"],
+      "answer": 0,
+      "evidence": "They had eaten a pair of Perrault's moose-hide moccasins"
+    },
+    {
+      "id": "call-of-the-wild-03-07",
+      "type": "detail",
+      "q": "Why was crossing the Thirty Mile River so dangerous?",
+      "choices": ["The river was full of rocks that broke the runners", "The water was wide open and the ice held only in quiet places", "Hungry wolves followed the team closely along both banks of the river", "Deep snow had buried the trail and hidden the cliffs"],
+      "answer": 1,
+      "evidence": "The Thirty Mile River was wide open."
+    },
+    {
+      "id": "call-of-the-wild-03-08",
+      "type": "detail",
+      "q": "How did Perrault keep from going under when he broke through the ice?",
+      "choices": ["He held a long pole that fell across the hole", "He tied a rope from his belt to the loaded sled", "He wore snowshoes that spread out his weight", "He jumped back before the ice gave way under him"],
+      "answer": 0,
+      "evidence": "being saved by the long pole he carried"
+    },
+    {
+      "id": "call-of-the-wild-03-09",
+      "type": "vocabulary",
+      "q": "\"Nothing daunted him. It was because nothing daunted him that he had been chosen for government courier.\" What does \"daunted\" mean?",
+      "choices": ["Made him tired and sleepy", "Made him laugh or joke", "Made him afraid or discouraged", "Made him angry with the dogs"],
+      "answer": 2,
+      "evidence": "Nothing daunted him."
+    },
+    {
+      "id": "call-of-the-wild-03-10",
+      "type": "sequence",
+      "q": "When the rim ice broke away before and behind them, how did the team escape?",
+      "choices": ["They waded across to the far bank in shallow water", "They were hoisted one by one up the cliff with a rope", "They waited on a block of ice until it drifted ashore", "They broke a path through the ice with Perrault's axe"],
+      "answer": 1,
+      "evidence": "the dogs were hoisted, one by one, to the cliff crest"
+    },
+    {
+      "id": "call-of-the-wild-03-11",
+      "type": "character",
+      "q": "What did Francois do to help Buck when his feet became sore?",
+      "choices": ["He let Buck ride on top of the sled for several days", "He wrapped Buck's feet in strips torn from his blanket", "He made four moccasins for Buck from his own moccasins", "He gave Buck an extra ration of fish every night"],
+      "answer": 2,
+      "evidence": "sacrificed the tops of his own moccasins to make four moccasins for Buck"
+    },
+    {
+      "id": "call-of-the-wild-03-12",
+      "type": "inference",
+      "q": "Why did Perrault grin one morning at Buck?",
+      "choices": ["Buck lay on his back waving his feet, refusing to go without his moccasins", "Buck had stolen Perrault's whole breakfast right out of the hot frying pan by the fire", "Buck had pulled the whole loaded sled up a hill all by himself", "Buck had dug himself so deep in the snow nobody could find him"],
+      "answer": 0,
+      "evidence": "his four feet waving appealingly in the air"
+    },
+    {
+      "id": "call-of-the-wild-03-13",
+      "type": "sequence",
+      "q": "What did Spitz do right after Francois saved Buck from Dolly?",
+      "choices": ["He helped drive the other dogs away from Buck", "He attacked Buck while Buck was too exhausted to fight", "He ran off into the woods and hid until night", "He took Buck's place in the traces behind Dave"],
+      "answer": 1,
+      "evidence": "This was Spitz's opportunity."
+    },
+    {
+      "id": "call-of-the-wild-03-14",
+      "type": "character",
+      "q": "Why did Spitz see Buck as a danger to him?",
+      "choices": ["Buck was the only dog Perrault would let near the sled", "Buck was a Southland dog who endured and threatened his leadership", "Buck had already beaten Spitz badly in a fight back on the beach at Dyea", "Buck was much faster than Spitz at the head of the team"],
+      "answer": 1,
+      "evidence": "felt his supremacy threatened by this strange Southland dog"
+    },
+    {
+      "id": "call-of-the-wild-03-15",
+      "type": "detail",
+      "q": "What did Buck do when Spitz went to punish Pike for hiding?",
+      "choices": ["He helped Spitz drag Pike out of his hiding place", "He flew in between them and knocked Spitz off his feet", "He barked loudly to warn Francois about the fight", "He hid in the snow himself so Spitz would not see him"],
+      "answer": 1,
+      "evidence": "Buck flew, with equal rage, in between"
+    },
+    {
+      "id": "call-of-the-wild-03-16",
+      "type": "inference",
+      "q": "After Francois whipped him for helping Pike, how did Buck keep stirring up trouble?",
+      "choices": ["He did it slyly, when Francois was not around", "He did it only at night while the men were asleep", "He stopped completely and obeyed Spitz from then on", "He got Dave and Sol-leks to fight Spitz for him"],
+      "answer": 0,
+      "evidence": "he did it craftily, when Francois was not around"
+    },
+    {
+      "id": "call-of-the-wild-03-17",
+      "type": "vocabulary",
+      "q": "\"With the covert mutiny of Buck, a general insubordination sprang up.\" What does \"insubordination\" mean?",
+      "choices": ["Being very sick and weak", "Running away into the woods", "Refusing to obey the leader", "Working harder than before"],
+      "answer": 2,
+      "evidence": "a general insubordination sprang up"
+    },
+    {
+      "id": "call-of-the-wild-03-18",
+      "type": "detail",
+      "q": "In Dawson, what did Buck love to join in every night?",
+      "choices": ["The races down the main street with the other teams", "The weird and eerie song of the huskies", "The hunt for rabbits along the frozen creeks", "The fights between the miners' dogs by the saloon"],
+      "answer": 1,
+      "evidence": "a weird and eerie chant, in which it was Buck's delight to join"
+    },
+    {
+      "id": "call-of-the-wild-03-19",
+      "type": "sequence",
+      "q": "What began the chase that led to the final fight between Buck and Spitz?",
+      "choices": ["Dub turned up a snowshoe rabbit and missed it", "A moose wandered close to the police dogs' camp", "Spitz stole a fish and ran off across the river", "A wolf howled from the nearby hills"],
+      "answer": 0,
+      "evidence": "Dub turned up a snowshoe rabbit, blundered it, and missed"
+    },
+    {
+      "id": "call-of-the-wild-03-20",
+      "type": "main-idea",
+      "q": "What quality helped Buck win against Spitz, the practised fighter?",
+      "choices": ["His greater weight, which let him knock Spitz over easily", "His imagination, which let him fight with his head as well", "Francois's help, since he drove the other dogs away", "His speed, which let him outrun Spitz on the creek"],
+      "answer": 1,
+      "evidence": "But Buck possessed a quality that made for greatness--imagination."
+    }
+  ]
+}

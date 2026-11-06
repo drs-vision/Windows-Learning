@@ -1,0 +1,102 @@
+{
+  "book": "around-the-world-in-80-days",
+  "chapter": 1,
+  "questions": [
+    {
+      "id": "around-the-world-in-80-days-01-01",
+      "type": "detail",
+      "q": "Which London club was Phileas Fogg a member of?",
+      "choices": ["The Reform Club", "The Royal Institution", "The Artisan's Association", "The London Institution"],
+      "answer": 0,
+      "evidence": "Phileas Fogg was a member of the Reform, and that was all."
+    },
+    {
+      "id": "around-the-world-in-80-days-01-02",
+      "type": "inference",
+      "q": "What did the people who knew Phileas Fogg NOT know about his money?",
+      "choices": ["How he had made his fortune in the first place", "Which London bank he kept his account with", "Whether he gave any of it away to good causes", "Whether he had enough to belong to a club"],
+      "answer": 0,
+      "evidence": "could not imagine how he had made his fortune"
+    },
+    {
+      "id": "around-the-world-in-80-days-01-03",
+      "type": "vocabulary",
+      "q": "Fogg \"seemed all the more mysterious for his taciturn manner.\" What does taciturn mean here?",
+      "choices": ["Rude and quick to argue", "Saying very little", "Nervous and easily upset", "Cheerful and joking"],
+      "answer": 1,
+      "evidence": "He talked very little, and seemed all the more mysterious for his taciturn manner."
+    },
+    {
+      "id": "around-the-world-in-80-days-01-04",
+      "type": "detail",
+      "q": "What did Fogg do with the money he won playing whist?",
+      "choices": ["He spent it on fine wine at the club", "He saved it in the safe in his bedroom", "He kept it as a fund for his charities", "He used it to pay his servant's wages"],
+      "answer": 2,
+      "evidence": "his winnings never went into his purse, being reserved as a fund for his charities"
+    },
+    {
+      "id": "around-the-world-in-80-days-01-05",
+      "type": "character",
+      "q": "Why did Fogg play whist, according to the chapter?",
+      "choices": ["To win money from the other club members", "For the sake of playing, as a quiet struggle with a difficulty", "To make friends among the members of the Reform", "Because his doctor told him to rest his mind each night"],
+      "answer": 1,
+      "evidence": "Mr. Fogg played, not to win, but for the sake of playing."
+    },
+    {
+      "id": "around-the-world-in-80-days-01-06",
+      "type": "detail",
+      "q": "Where did Fogg eat his breakfast and dinner?",
+      "choices": ["At home in Saville Row, cooked by his servant", "At a different restaurant in the City each day", "At the club, at the same table at fixed hours", "At the homes of his few close friends in London"],
+      "answer": 2,
+      "evidence": "He breakfasted and dined at the club, at hours mathematically fixed"
+    },
+    {
+      "id": "around-the-world-in-80-days-01-07",
+      "type": "detail",
+      "q": "Why did Fogg dismiss his servant James Forster?",
+      "choices": ["He was late bringing the morning tea and toast", "He brought shaving-water two degrees too cool", "He forgot to wind the clock in the bedroom", "He laid out the wrong suit for the season"],
+      "answer": 1,
+      "evidence": "brought him shaving-water at eighty-four degrees Fahrenheit instead of eighty-six"
+    },
+    {
+      "id": "around-the-world-in-80-days-01-08",
+      "type": "detail",
+      "q": "Which of these jobs had Passepartout NOT done before coming to Fogg?",
+      "choices": ["Circus-rider", "Sergeant fireman in Paris", "Sailor on a merchant ship", "Professor of gymnastics"],
+      "answer": 2,
+      "evidence": "I was a sergeant fireman at Paris"
+    },
+    {
+      "id": "around-the-world-in-80-days-01-09",
+      "type": "character",
+      "q": "What was Passepartout hoping for when he came to work for Fogg?",
+      "choices": ["A chance to travel and see the world with a rich master", "A tranquil life serving a settled and exact gentleman", "Enough money to go back to France and open a shop", "A master who would help him become a famous performer"],
+      "answer": 1,
+      "evidence": "in the hope of living with him a tranquil life"
+    },
+    {
+      "id": "around-the-world-in-80-days-01-10",
+      "type": "detail",
+      "q": "What did Fogg say about Passepartout's silver watch?",
+      "choices": ["It was four minutes too slow", "It was a very handsome old watch", "It was two minutes too fast", "It ought to be cleaned and oiled"],
+      "answer": 0,
+      "evidence": "You are four minutes too slow."
+    },
+    {
+      "id": "around-the-world-in-80-days-01-11",
+      "type": "sequence",
+      "q": "What happened right after Fogg told Passepartout he was in his service?",
+      "choices": ["Fogg showed him around the house from top to bottom", "Fogg put on his hat and left the house without a word", "Fogg handed him a card listing all of his duties", "Fogg asked James Forster to explain the household rules"],
+      "answer": 1,
+      "evidence": "went off without a word"
+    },
+    {
+      "id": "around-the-world-in-80-days-01-12",
+      "type": "main-idea",
+      "q": "What is this chapter mostly about?",
+      "choices": ["Fogg making a bet with the members of his club", "A mysterious and exact man hires a new servant", "Passepartout's adventures as a fireman in Paris", "A thief breaking into the house in Saville Row"],
+      "answer": 1,
+      "evidence": "you are in my service"
+    }
+  ]
+}

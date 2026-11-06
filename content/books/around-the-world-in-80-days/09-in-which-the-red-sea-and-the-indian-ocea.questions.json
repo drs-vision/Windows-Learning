@@ -1,0 +1,102 @@
+{
+  "book": "around-the-world-in-80-days",
+  "chapter": 9,
+  "questions": [
+    {
+      "id": "around-the-world-in-80-days-09-01",
+      "type": "detail",
+      "q": "How did the passengers on the Mongolia pass the time when the sea was calm?",
+      "choices": ["With music, dancing, and games", "By fishing over the side of the ship", "By reading in the ship's large library", "With lessons in Arabic and Hindustani"],
+      "answer": 0,
+      "evidence": "with music, dancing, and games"
+    },
+    {
+      "id": "around-the-world-in-80-days-09-02",
+      "type": "detail",
+      "q": "What happened on board when the wind made the Mongolia roll?",
+      "choices": ["The captain stopped the engines until the storm passed", "The ladies went below and the pianos fell silent", "Everyone gathered on deck to watch the waves", "Fogg went up to speak with the ship's officers"],
+      "answer": 1,
+      "evidence": "Then the ladies speedily disappeared below; the pianos were silent"
+    },
+    {
+      "id": "around-the-world-in-80-days-09-03",
+      "type": "character",
+      "q": "How did Fogg act while the Mongolia crossed the Red Sea?",
+      "choices": ["He nervously watched the wind and waves all day", "He stayed calm and showed no sign of any worry", "He spent hours on deck admiring the old towns", "He grew seasick and stayed in his cabin in bed"],
+      "answer": 1,
+      "evidence": "he did not betray the fact by any outward sign"
+    },
+    {
+      "id": "around-the-world-in-80-days-09-04",
+      "type": "detail",
+      "q": "Who were Fogg's whist partners on the Mongolia?",
+      "choices": ["A tax-collector, a clergyman, and a brigadier-general", "Fix, Passepartout, and the captain of the steamer", "Three rich young Englishmen on their travels", "The purser, the engineer, and a ship's doctor"],
+      "answer": 0,
+      "evidence": "A tax-collector, on the way to his post at Goa; the Rev. Decimus Smith"
+    },
+    {
+      "id": "around-the-world-in-80-days-09-05",
+      "type": "inference",
+      "q": "What did Passepartout wrongly believe during the voyage?",
+      "choices": ["That Fix was secretly working for Mr. Fogg", "That his master's whim would surely end at Bombay", "That the Mongolia would sink in the Red Sea", "That he would be paid double wages for the whole trip"],
+      "answer": 1,
+      "evidence": "consoled himself with the delusion that his master's whim would end at Bombay"
+    },
+    {
+      "id": "around-the-world-in-80-days-09-06",
+      "type": "detail",
+      "q": "What did Fix tell Passepartout about himself on board?",
+      "choices": ["That he was a detective from Scotland Yard", "That he was a merchant who sold coffee in Mocha", "That he was an agent of the Peninsular Company", "That he was a soldier rejoining his regiment"],
+      "answer": 2,
+      "evidence": "I am one of the agents of the Peninsular Company."
+    },
+    {
+      "id": "around-the-world-in-80-days-09-07",
+      "type": "character",
+      "q": "Why did Fix keep offering Passepartout drinks in the steamer bar-room?",
+      "choices": ["To gain the servant's confidence", "Because he was lonely and wanted a friend", "To make Passepartout miss the boat at Aden", "Because Fogg had paid him to look after his servant"],
+      "answer": 0,
+      "evidence": "the latter making it a point to gain the worthy man's confidence"
+    },
+    {
+      "id": "around-the-world-in-80-days-09-08",
+      "type": "detail",
+      "q": "What did Passepartout think the town of Mocha looked like?",
+      "choices": ["A giant sandcastle on a beach", "A huge coffee-cup with a saucer", "A crown sitting on top of a hill", "An old fort made of gingerbread"],
+      "answer": 1,
+      "evidence": "it looked like an immense coffee-cup and saucer"
+    },
+    {
+      "id": "around-the-world-in-80-days-09-09",
+      "type": "vocabulary",
+      "q": "The Strait of Bab-el-Mandeb has a name that means what in Arabic?",
+      "choices": ["The Gate of Gold", "The Bridge of Tears", "The Road of Kings", "The Mouth of Storms"],
+      "answer": 1,
+      "evidence": "which means in Arabic The Bridge of Tears"
+    },
+    {
+      "id": "around-the-world-in-80-days-09-10",
+      "type": "detail",
+      "q": "Why did the Mongolia stop at Steamer Point near Aden?",
+      "choices": ["To repair damage from the storms", "To pick up the Indian mails", "To take in coal for the engines", "To let off the brigadier-general"],
+      "answer": 2,
+      "evidence": "to take in coal"
+    },
+    {
+      "id": "around-the-world-in-80-days-09-11",
+      "type": "character",
+      "q": "After walking around Aden, what did Passepartout decide about travel?",
+      "choices": ["It is by no means useless if you want to see something new", "It is far too tiring and he would rather stay at home", "It is only worth doing if you can stay a long time", "It is dangerous and his master should turn back now"],
+      "answer": 0,
+      "evidence": "I see that it is by no means useless to travel, if a man wants to see something new."
+    },
+    {
+      "id": "around-the-world-in-80-days-09-12",
+      "type": "main-idea",
+      "q": "How did the voyage from Suez to Bombay turn out for Fogg?",
+      "choices": ["He lost two days because of storms in the Red Sea", "He arrived exactly on the day the steamer was due", "He gained two days by arriving in Bombay early", "He missed the steamer at Aden and had to wait"],
+      "answer": 2,
+      "evidence": "This was a gain to Phileas Fogg of two days since his departure from London"
+    }
+  ]
+}

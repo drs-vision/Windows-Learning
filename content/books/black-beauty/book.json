@@ -3,6 +3,7 @@
   "title": "Black Beauty",
   "author": "Anna Sewell",
   "published": 1877,
+  "level": 3,
   "grade": {
     "min": 4,
     "max": 6,

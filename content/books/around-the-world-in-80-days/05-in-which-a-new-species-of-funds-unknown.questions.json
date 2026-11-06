@@ -1,0 +1,70 @@
+{
+  "book": "around-the-world-in-80-days",
+  "chapter": 5,
+  "questions": [
+    {
+      "id": "around-the-world-in-80-days-05-01",
+      "type": "detail",
+      "q": "Which newspaper was the only one to give Fogg's plan some support at first?",
+      "choices": ["The Times", "The Daily Telegraph", "The Morning Post", "The Standard"],
+      "answer": 1,
+      "evidence": "the Daily Telegraph alone hesitatingly supported him"
+    },
+    {
+      "id": "around-the-world-in-80-days-05-02",
+      "type": "detail",
+      "q": "What made Fogg's cause more popular for a while?",
+      "choices": ["A letter he sent home from Paris", "His portrait in the Illustrated London News", "A speech made at the Royal Geographical Society", "News that he had already reached Suez"],
+      "answer": 1,
+      "evidence": "the Illustrated London News came out with his portrait"
+    },
+    {
+      "id": "around-the-world-in-80-days-05-03",
+      "type": "detail",
+      "q": "What did the long article by the Royal Geographical Society argue?",
+      "choices": ["The trip was easy with the new Indian railway", "Fogg should have gone by way of America first", "A single missed steamer would ruin the whole attempt", "Fogg was surely the bank robber traveling in disguise"],
+      "answer": 2,
+      "evidence": "a single delay would suffice to fatally break the chain of communication"
+    },
+    {
+      "id": "around-the-world-in-80-days-05-04",
+      "type": "inference",
+      "q": "The narrator says Fogg was set down in the betting books \"as if he were a race-horse.\" What does this show?",
+      "choices": ["People bet on him the way they bet on horse races", "People thought he could run faster than other men", "Fogg had once owned a famous race-horse himself", "Fogg planned to travel part of the way on horseback"],
+      "answer": 0,
+      "evidence": "who was set down in the betting books as if he were a race-horse"
+    },
+    {
+      "id": "around-the-world-in-80-days-05-05",
+      "type": "vocabulary",
+      "q": "After the article, the demand for \"Phileas Fogg bonds\" began to \"subside.\" What does subside mean here?",
+      "choices": ["Grow quickly", "Become less", "Stay the same", "Change sides"],
+      "answer": 1,
+      "evidence": "the demand began to subside"
+    },
+    {
+      "id": "around-the-world-in-80-days-05-06",
+      "type": "character",
+      "q": "Why did Lord Albemarle bet five thousand pounds on Fogg?",
+      "choices": ["He was Fogg's oldest friend from the Reform Club", "He was sure the Geographical Society was mistaken", "He felt the first man to do it ought to be an Englishman", "He owed Fogg a large sum of money from a past game of whist"],
+      "answer": 2,
+      "evidence": "If the thing is feasible, the first to do it ought to be an Englishman."
+    },
+    {
+      "id": "around-the-world-in-80-days-05-07",
+      "type": "detail",
+      "q": "What did the telegram from Fix, the detective, ask the police to do?",
+      "choices": ["Send a warrant of arrest for Fogg to Bombay", "Stop Fogg's train before it left Paris", "Pay him the reward for catching the thief", "Search Fogg's house in Saville Row at once"],
+      "answer": 0,
+      "evidence": "Send with out delay warrant of arrest to Bombay"
+    },
+    {
+      "id": "around-the-world-in-80-days-05-08",
+      "type": "main-idea",
+      "q": "What is this chapter mostly about?",
+      "choices": ["How Fogg and Passepartout crossed from Dover to Calais", "How England turned against Fogg until he was called a thief", "How the Bank of England caught the real robber at Suez", "How Fogg's friends at the Reform Club tried to cancel the bet"],
+      "answer": 1,
+      "evidence": "The polished gentleman disappeared to give place to the bank robber."
+    }
+  ]
+}

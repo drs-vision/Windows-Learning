@@ -119,7 +119,8 @@ public sealed class RequestRouter
             Ops.ParentDiscHide => Parent(req, client, child, () => _discs.SetHidden(Str(req, "id"), req.Payload?["hidden"]?.GetValue<bool>() == true)),
             Ops.ParentDiscRemove => Parent(req, client, child, () => _discs.Remove(Str(req, "id"))),
             Ops.DiscLaunch => DiscLaunch(req, child),
-            Ops.ParentBooks => Parent(req, client, child, ParentBooks),
+            Ops.ParentBooks => Parent(req, client, child, () => ParentBooks(req)),
+            Ops.ParentBooksReset => Parent(req, client, child, () => ResetBook(req)),
             Ops.ParentActivity => Parent(req, client, child, () => ActivityDays(Str(req, "childId"), Str(req, "from"), Str(req, "to"))),
             Ops.ParentDiagnostics => Parent(req, client, child, () => new { version = Version, problems = CoinQuest.Guardian.FileLoggerProvider.Recent(), blocked = _gate.RecentlyBlocked().Take(20).Select(b => b.Host), internetLock = _netLock.Status, net = NetCheck().GetAwaiter().GetResult(), system = SystemCheck() }),
             Ops.ParentBlocked => Parent(req, client, child, () => _gate.RecentlyBlocked().Select(b => new { host = b.Host, at = b.At, reason = b.Reason })),
@@ -240,16 +241,77 @@ public sealed class RequestRouter
         try { return JsonSerializer.Deserialize<List<string>>(a)?.ToHashSet() ?? new(); } catch { return new(); }
     }
 
-    private object ParentBooks() => new
+    /// <summary>The whole library for choosing books, with how far this child has got in each.</summary>
+    private object ParentBooks(Request req)
     {
-        books = _library.Books().Select(b => new
+        var childId = req.Payload?["childId"]?.GetValue<string>();
+        var all = childId is null ? null : ProgressStore.Load(childId, "books") as JsonObject;
+        int Passed(string book) => all is null ? 0 : all.Count(kv => kv.Key.StartsWith(book + "/") && kv.Value?["passed"]?.GetValue<bool>() == true);
+        bool Started(string book) => all is not null && all.Any(kv => kv.Key.StartsWith(book + "/"));
+        return new
         {
-            id = b.Id, title = b.Title, author = b.Author, published = b.Published, grade = new { min = b.Grade.Min, max = b.Grade.Max, label = b.Grade.Label },
-            summary = b.Summary, chapters = b.Chapters.Count, words = b.Chapters.Sum(c => c.Words),
-            ready = b.Chapters.Count(c => _library.Questions(b.Id, c.N).Count >= Math.Ceiling(CoinQuest.Shared.Books.BookLibrary.QuizSize(c.Words) * 1.5)),
-        }).ToList(),
-        flagged = FlaggedQuestions().Count,
-    };
+            books = _library.Books().Select(b => new
+            {
+                id = b.Id, title = b.Title, author = b.Author, published = b.Published, level = b.Level,
+                grade = new { min = b.Grade.Min, max = b.Grade.Max, label = b.Grade.Label },
+                summary = b.Summary, edited = b.Edited, chapters = b.Chapters.Count, words = b.Chapters.Sum(c => c.Words),
+                ready = b.Chapters.Count(c => _library.Questions(b.Id, c.N).Count >= Math.Ceiling(CoinQuest.Shared.Books.BookLibrary.QuizSize(c.Words) * 1.5)),
+                done = Passed(b.Id), started = Started(b.Id),
+            }).ToList(),
+            flagged = FlaggedQuestions().Count,
+        };
+    }
+
+    /// <summary>A parent's "Start over" on a book: the child's progress on it is cleared, so its chapters pay again.</summary>
+    private object ResetBook(Request req)
+    {
+        var childId = Str(req, "childId");
+        var book = Str(req, "bookId");
+        if (_store.Current.Children.All(c => c.Id != childId)) throw new ArgumentException("That child isn't on this PC");
+        var all = ProgressStore.Load(childId, "books") as JsonObject ?? new JsonObject();
+        foreach (var k in all.Select(kv => kv.Key).Where(k => k.StartsWith(book + "/")).ToList()) all.Remove(k);
+        ProgressStore.Save(childId, "books", all);
+        _log.LogInformation("Reading progress reset for {Child}: {Book}", childId, book);
+        AfterChange();
+        return new { ok = true };
+    }
+
+    /// <summary>
+    /// What a parent sees about a child's reading, all time: chapters passed, % right on first tries, reading speed
+    /// (median words a minute while the chapter was on screen), the level they're reading at now, and a verified level:
+    /// the highest level with at least 3 chapters passed at 80% or better on the first try. Children never see this.
+    /// </summary>
+    private System.Text.Json.Nodes.JsonObject ReadingSummary(Child child)
+    {
+        var all = ProgressStore.Load(child.Id, "books") as JsonObject ?? new JsonObject();
+        int chapters = 0, right = 0, asked = 0; var speeds = new List<double>(); var strong = new Dictionary<int, int>();
+        (DateTimeOffset at, int level)? latest = null;
+        foreach (var (key, node) in all)
+        {
+            var slash = key.LastIndexOf('/');
+            if (slash < 0 || node is null || !int.TryParse(key[(slash + 1)..], out var n)) continue;
+            var book = _library.Find(key[..slash]);
+            var ch = book?.Chapters.FirstOrDefault(c => c.N == n);
+            if (book is null || ch is null) continue;
+            CoinQuest.Shared.Books.ChapterProgress p;
+            try { p = node.Deserialize<CoinQuest.Shared.Books.ChapterProgress>(ProgressJson) ?? new(); } catch { continue; }
+            if (p.FirstTotal > 0) { right += p.FirstCorrect; asked += p.FirstTotal; }
+            if (p.ReadMs > 0) { var wpm = ch.Words / (p.ReadMs / 60000.0); if (wpm is >= 40 and <= 600) speeds.Add(wpm); }
+            if (!p.Passed) continue;
+            chapters++;
+            if (p.FirstTotal > 0 && p.FirstCorrect >= 0.8 * p.FirstTotal) strong[book.Level] = strong.GetValueOrDefault(book.Level) + 1;
+            if (p.PassedAt is { } at && (latest is null || at > latest.Value.at)) latest = (at, book.Level);
+        }
+        speeds.Sort();
+        return new System.Text.Json.Nodes.JsonObject
+        {
+            ["chapters"] = chapters,
+            ["firstTry"] = asked > 0 ? (int)Math.Round(100.0 * right / asked) : null,
+            ["wpm"] = speeds.Count > 0 ? (int)Math.Round(speeds[speeds.Count / 2]) : null,
+            ["level"] = latest?.level,
+            ["verified"] = strong.Where(kv => kv.Value >= 3).Select(kv => kv.Key).DefaultIfEmpty(0).Max(),
+        };
+    }
 
     private static string FlagFile => Path.Combine(Paths.DataRoot, "books-flagged.json");
     private static List<JsonObject> FlaggedQuestions()
@@ -286,7 +348,7 @@ public sealed class RequestRouter
                 n = c.N, title = c.Title, words = c.Words, quizSize = Math.Min(bank.Count, CoinQuest.Shared.Books.BookLibrary.QuizSize(c.Words)), hasQuiz = bank.Count > 0,
                 passed = p.Passed, correct = p.Correct, total = p.Total, attempts = p.Attempts,
                 retakeAt = p.RetakeAt is { } t && t > DateTimeOffset.Now ? t : (DateTimeOffset?)null,
-                bonusLeft = CoinQuest.Shared.Books.Quiz.BonusLeft(p, bank), typed = p.TypedParts.Count,
+                bonusLeft = CoinQuest.Shared.Books.Quiz.BonusLeft(p, bank, CoinQuest.Shared.Books.BookLibrary.QuizSize(c.Words)), typed = p.TypedParts.Count,
             };
         }
         if (req.Op == Ops.BooksList)
@@ -295,7 +357,7 @@ public sealed class RequestRouter
                 perCorrect = s.CoinsPerActivity, wordsPer = int.TryParse(s.Options.GetValueOrDefault("wordsPer"), out var wp) && wp > 0 ? wp : 20,
                 books = _library.Books().Where(b => allowed is null || allowed.Contains(b.Id)).Select(b => new
                 {
-                    id = b.Id, title = b.Title, author = b.Author, grade = new { min = b.Grade.Min, max = b.Grade.Max, label = b.Grade.Label }, summary = b.Summary,
+                    id = b.Id, title = b.Title, author = b.Author, level = b.Level, summary = b.Summary,
                     chapters = b.Chapters.Select(c => Status(b.Id, c)).ToList(),
                 }).ToList(),
             };
@@ -308,7 +370,8 @@ public sealed class RequestRouter
         var bank = _library.Questions(bookId, n);
         var state = State(bookId, n);
         var now = DateTimeOffset.Now;
-        var label = $"{book.Title}, chapter {n}";
+        var label = book.Chapters.Count == 1 ? book.Title : $"{book.Title}, chapter {n}";
+        var size = CoinQuest.Shared.Books.BookLibrary.QuizSize(ch.Words);
         switch (req.Op)
         {
             case Ops.BooksChapter:
@@ -316,6 +379,9 @@ public sealed class RequestRouter
                     quiz = CoinQuest.Shared.Books.Quiz.Current(state, bank) is { } open ? new { id = state.Quiz!.Id, questions = open } : null };
             case Ops.BooksQuiz:
             {
+                // Reading time (the chapter on screen, window in use) before the first quiz: for the parents' reading speed.
+                if (state.Attempts == 0 && state.Quiz is null && req.Payload?["readMs"] is JsonValue rv && rv.TryGetValue<double>(out var readMs))
+                    state.ReadMs = Math.Min(state.ReadMs + (long)Math.Clamp(readMs, 0, 3 * 3600_000), 6 * 3600_000);
                 var shown = CoinQuest.Shared.Books.Quiz.Start(state, bank, CoinQuest.Shared.Books.BookLibrary.QuizSize(ch.Words), _rng, now);
                 Save(bookId, n, state);
                 return new { id = state.Quiz!.Id, questions = shown };
@@ -324,7 +390,7 @@ public sealed class RequestRouter
             {
                 var answers = (req.Payload?["answers"] as JsonArray)?.Select(a => a?.GetValue<int>() ?? -1).ToList() ?? new();
                 var flagged = (req.Payload?["flagged"] as JsonArray)?.Select(a => a?.GetValue<string>() ?? "").Where(x => x.Length > 0).ToHashSet() ?? new();
-                var wait = TimeSpan.FromMinutes(Math.Clamp(int.TryParse(s.Options.GetValueOrDefault("waitMinutes"), out var w) ? w : 10, 0, 240));
+                var wait = TimeSpan.FromMinutes(Math.Clamp(int.TryParse(s.Options.GetValueOrDefault("waitMinutes"), out var w) ? w : 5, 0, 240));
                 var g = CoinQuest.Shared.Books.Quiz.Grade(state, bank, Str(req, "quizId"), answers, flagged, wait, now);
                 Save(bookId, n, state);
                 if (flagged.Count > 0)
@@ -335,28 +401,38 @@ public sealed class RequestRouter
                     _log.LogInformation("Question(s) flagged as wrong in {Book} ch {N}: {Ids}", bookId, n, string.Join(", ", flagged));
                 }
                 var (coins, pending) = (0, false);
+                if (child.ActivityReports)
+                {
+                    _activity.Count(child.Id, DateTime.Now, "books:answered", g.Total);
+                    _activity.Count(child.Id, DateTime.Now, "books:correct", g.Correct);
+                    if (state.Attempts == 1 && state.ReadMs > 0 && ch.Words / (state.ReadMs / 60000.0) is >= 40 and <= 600)
+                    {
+                        _activity.Count(child.Id, DateTime.Now, "books:readWords", ch.Words);
+                        _activity.Count(child.Id, DateTime.Now, "books:readSec", (int)(state.ReadMs / 1000));
+                    }
+                }
                 if (g.Passed)
                 {
                     (coins, pending) = PayQuest(child, "books", s, g.Correct * s.CoinsPerActivity, $"{label}: {g.Correct}/{g.Total} on the quiz", account);
-                    if (child.ActivityReports) { _activity.Count(child.Id, DateTime.Now, "books:chapters"); _activity.Count(child.Id, DateTime.Now, "books:correct", g.Correct); }
+                    if (child.ActivityReports) _activity.Count(child.Id, DateTime.Now, "books:chapters");
                 }
                 AfterChange();
-                return new { g.Passed, g.Correct, g.Total, g.Percent, g.RetakeAt, g.Review, coins, pending, bonusLeft = CoinQuest.Shared.Books.Quiz.BonusLeft(state, bank), balance = _ledger.Balance(child.Id) };
+                return new { g.Passed, g.Correct, g.Total, g.Percent, g.RetakeAt, g.Review, coins, pending, bonusLeft = CoinQuest.Shared.Books.Quiz.BonusLeft(state, bank, size), balance = _ledger.Balance(child.Id) };
             }
             case Ops.BooksBonus:
             {
-                var q = CoinQuest.Shared.Books.Quiz.NextBonus(state, bank, _rng, now);
+                var q = CoinQuest.Shared.Books.Quiz.NextBonus(state, bank, size, _rng, now);
                 Save(bookId, n, state);
-                return new { question = q, left = CoinQuest.Shared.Books.Quiz.BonusLeft(state, bank) };
+                return new { question = q, left = CoinQuest.Shared.Books.Quiz.BonusLeft(state, bank, size) };
             }
             case Ops.BooksBonusAnswer:
             {
                 var (right, pos) = CoinQuest.Shared.Books.Quiz.AnswerBonus(state, bank, Str(req, "qid"), req.Payload?["choice"]?.GetValue<int>() ?? -1);
                 Save(bookId, n, state);
                 var (coins, pending) = right ? PayQuest(child, "books", s, s.CoinsPerActivity, $"{label}: bonus question", account) : (0, false);
-                if (right && child.ActivityReports) _activity.Count(child.Id, DateTime.Now, "books:correct");
+                if (child.ActivityReports) { _activity.Count(child.Id, DateTime.Now, "books:answered"); if (right) _activity.Count(child.Id, DateTime.Now, "books:correct"); }
                 AfterChange();
-                return new { right, rightChoice = pos, coins, pending, left = CoinQuest.Shared.Books.Quiz.BonusLeft(state, bank), balance = _ledger.Balance(child.Id) };
+                return new { right, rightChoice = pos, coins, pending, left = CoinQuest.Shared.Books.Quiz.BonusLeft(state, bank, size), balance = _ledger.Balance(child.Id) };
             }
             case Ops.BooksTyped:
             {
@@ -441,6 +517,10 @@ public sealed class RequestRouter
         for (var d = start; d <= end; d = d.AddDays(1))
             if (have.Contains(d) || _ledger.Recent(child.Id, 1, new DateTimeOffset(d)).Any(e => e.At < new DateTimeOffset(d.AddDays(1))))
                 days.Add(_activity.Report(child, _ledger, d));
+        // The reading summary is all-time, so it rides on the newest report — today's, even on a quiet day.
+        if (end == DateTime.Today && (days.Count == 0 || days[^1]["day"]?.GetValue<string>() != DateTime.Today.ToString("yyyy-MM-dd")))
+            days.Add(_activity.Report(child, _ledger, DateTime.Today));
+        if (days.Count > 0) days[^1]["reading"] = ReadingSummary(child);
         return new { childId = child.Id, kid = child.DisplayName, enabled = child.ActivityReports, days };
     }
 
@@ -455,6 +535,7 @@ public sealed class RequestRouter
         var reports = _activity.Days(child.Id)
             .Where(d => d < DateTime.Today && d >= DateTime.Today.AddDays(-60) && (last is null || d > last))
             .OrderBy(d => d).Select(d => _activity.Report(child, _ledger, d)).ToList();
+        if (reports.Count > 0) reports[^1]["reading"] = ReadingSummary(child);
         try { Directory.CreateDirectory(System.IO.Path.GetDirectoryName(marker)!); File.WriteAllText(marker, yesterday.ToString("yyyy-MM-dd")); } catch { }
         if (reports.Count > 0) _ = Task.Run(() => _phones.PostReports(reports));
     }

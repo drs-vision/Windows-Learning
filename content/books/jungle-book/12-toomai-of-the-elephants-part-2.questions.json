@@ -1,0 +1,150 @@
+{
+  "book": "jungle-book",
+  "chapter": 12,
+  "questions": [
+    {
+      "id": "jungle-book-12-01",
+      "type": "detail",
+      "q": "After Big Toomai used Kala Nag's leg chain on a new elephant, what did he tie Kala Nag with instead?",
+      "choices": ["A loop of grass string", "A thick rope of twisted hemp", "A spare leather harness strap", "The chain from Pudmini's leg"],
+      "answer": 0,
+      "evidence": "slipped a loop of grass string round Kala Nag's leg"
+    },
+    {
+      "id": "jungle-book-12-02",
+      "type": "sequence",
+      "q": "What did Kala Nag do when Little Toomai ran after him calling, \"Take me with you\"?",
+      "choices": ["He trumpeted loudly to wake Big Toomai in the hut", "He came back, lifted the boy onto his neck, and went on", "He pushed the boy gently back toward the camp", "He waited until the boy climbed up his tail"],
+      "answer": 1,
+      "evidence": "put down his trunk, swung him up to his neck"
+    },
+    {
+      "id": "jungle-book-12-03",
+      "type": "detail",
+      "q": "How did Kala Nag move through the forest as he climbed the first hill?",
+      "choices": ["Crashing and trumpeting so the wild herds would hear him", "Slowly, stopping every few steps to eat the grass", "Almost without a sound, drifting through like smoke", "Following a wide, bright road through the trees"],
+      "answer": 2,
+      "evidence": "drifting through the thick Garo forest as though it had been smoke"
+    },
+    {
+      "id": "jungle-book-12-04",
+      "type": "vocabulary",
+      "q": "\"Kala Nag reached the crest of the ascent and stopped for a minute.\" What is the \"crest of the ascent\"?",
+      "choices": ["The edge of a river", "The bottom of a steep valley", "The top of the climb", "A clearing in the forest"],
+      "answer": 2,
+      "evidence": "reached the crest of the ascent"
+    },
+    {
+      "id": "jungle-book-12-05",
+      "type": "character",
+      "q": "Why did Little Toomai lie down close to Kala Nag's neck as they rushed down into the valley?",
+      "choices": ["So the wild elephants would not see a man riding", "So a swinging bough would not sweep him off", "So he could keep warm in the cold night mist", "So he could whisper orders into the elephant's ear"],
+      "answer": 1,
+      "evidence": "lest a swinging bough should sweep him to the ground"
+    },
+    {
+      "id": "jungle-book-12-06",
+      "type": "inference",
+      "q": "After crossing the river, how could Little Toomai tell many elephants had just gone the same way?",
+      "choices": ["He could hear them all singing up ahead", "A wide path of bent grass was still trying to stand up", "Their footprints were full of fresh river water", "He saw their torches moving between the trees"],
+      "answer": 1,
+      "evidence": "the bent jungle-grass was trying to recover itself and stand up"
+    },
+    {
+      "id": "jungle-book-12-07",
+      "type": "detail",
+      "q": "What was the ground of the hilltop clearing like?",
+      "choices": ["Soft and muddy, full of deep footprints", "Covered with thick, sweet jungle grass", "Trampled down as hard as a brick floor", "Scattered with broken branches and nuts"],
+      "answer": 2,
+      "evidence": "trampled down as hard as a brick floor"
+    },
+    {
+      "id": "jungle-book-12-08",
+      "type": "inference",
+      "q": "Why did Little Toomai believe he was safe as long as he lay still on Kala Nag's neck?",
+      "choices": ["The wild elephants could not see in the dark", "Kala Nag had promised to fight any elephant for him", "Wild elephants do not drag a man off a tame elephant's neck", "Petersen Sahib's hunters were hiding in the trees nearby"],
+      "answer": 2,
+      "evidence": "a wild elephant does not reach up with his trunk and drag a man off the neck of a tame elephant"
+    },
+    {
+      "id": "jungle-book-12-09",
+      "type": "detail",
+      "q": "Which elephant that Little Toomai knew came up the hillside with a broken chain?",
+      "choices": ["Pudmini, Petersen Sahib's pet", "Hira Guj from the plains lines", "The young calf with the blotch", "The old tusker from the Keddah"],
+      "answer": 0,
+      "evidence": "it was Pudmini, Petersen Sahib's pet elephant"
+    },
+    {
+      "id": "jungle-book-12-10",
+      "type": "vocabulary",
+      "q": "Toomai heard \"the incessant flick and hissh of the great tails.\" What does \"incessant\" mean?",
+      "choices": ["Soft and gentle", "Never stopping", "Sharp and sudden", "Far away"],
+      "answer": 1,
+      "evidence": "the incessant flick and hissh of the great tails"
+    },
+    {
+      "id": "jungle-book-12-11",
+      "type": "detail",
+      "q": "What was the elephants' \"dance\" really like?",
+      "choices": ["They spun in circles, holding each other's tails", "They stamped their feet together like a great drum", "They trumpeted songs to the moon one after another", "They swayed in pairs while the calves ran between them"],
+      "answer": 1,
+      "evidence": "The elephants were stamping all together now"
+    },
+    {
+      "id": "jungle-book-12-12",
+      "type": "sequence",
+      "q": "What made the booming of the dance stop?",
+      "choices": ["A sudden storm swept over the hills", "Kala Nag trumpeted a warning to the herd", "The first ray of morning light", "The sound of Petersen Sahib's guns"],
+      "answer": 2,
+      "evidence": "the booming stopped with the first ray"
+    },
+    {
+      "id": "jungle-book-12-13",
+      "type": "inference",
+      "q": "Why did the clearing look bigger in the morning than it had at night?",
+      "choices": ["The moonlight had made it look smaller than it was", "The elephants had stamped the grass and cane into hard earth", "Kala Nag had carried Toomai to a different, larger clearing", "The elephants had pulled up trees to make a fence"],
+      "answer": 1,
+      "evidence": "The elephants had stamped out more room"
+    },
+    {
+      "id": "jungle-book-12-14",
+      "type": "detail",
+      "q": "What happened when Little Toomai reached Petersen Sahib's camp?",
+      "choices": ["He fainted after crying out that he had seen the dance", "He was scolded and sent straight back to his father", "He fell asleep on Kala Nag's back and could not be woken", "He ran to Petersen Sahib's tent to ask for his reward"],
+      "answer": 0,
+      "evidence": "he slid off his neck in a dead faint"
+    },
+    {
+      "id": "jungle-book-12-15",
+      "type": "detail",
+      "q": "What proof did Machua Appa find that the boy was telling the truth?",
+      "choices": ["Tusks left behind on the floor of the clearing", "Little Toomai's torch dropped near the river", "Seventy tracks and marks of Pudmini's leg-iron", "Trees knocked down along the road to the camp"],
+      "answer": 2,
+      "evidence": "I have counted seventy tracks crossing the river"
+    },
+    {
+      "id": "jungle-book-12-16",
+      "type": "character",
+      "q": "How did Big Toomai look at his son and Kala Nag when he found them again?",
+      "choices": ["As though he were tired of them both", "As though he were afraid of them both", "As though he were angry with them both", "As though he did not know them at all"],
+      "answer": 1,
+      "evidence": "he looked at them as though he were afraid of them both"
+    },
+    {
+      "id": "jungle-book-12-17",
+      "type": "detail",
+      "q": "What new name did Machua Appa give Little Toomai at the feast?",
+      "choices": ["Machua Appa the Younger", "Toomai of the Elephants", "Toomai the Brave Tracker", "Master of the Keddah"],
+      "answer": 1,
+      "evidence": "This little one shall no more be called Little Toomai, but Toomai of the Elephants"
+    },
+    {
+      "id": "jungle-book-12-18",
+      "type": "main-idea",
+      "q": "What is this part of the story mostly about?",
+      "choices": ["A boy who sees the elephants' secret dance and is honored for it", "A boy who tames a wild tusker and rides it into the Keddah", "An elephant who escapes the camp to rejoin his wild family", "A hunter who finally finds the hidden elephant ball-room"],
+      "answer": 0,
+      "evidence": "who had seen what never man had seen before"
+    }
+  ]
+}

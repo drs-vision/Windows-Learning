@@ -1,0 +1,150 @@
+{
+  "book": "jungle-book",
+  "chapter": 9,
+  "questions": [
+    {
+      "id": "jungle-book-09-01",
+      "type": "detail",
+      "q": "How did Rikki-tikki end up lying on the garden path of the bungalow?",
+      "choices": ["A hawk dropped him there after catching him in the fields", "A summer flood washed him out of his burrow and down a ditch", "Teddy found him in the long grass and carried him home", "He ran away from his family to look for a house to live in"],
+      "answer": 1,
+      "evidence": "a high summer flood washed him out of the burrow"
+    },
+    {
+      "id": "jungle-book-09-02",
+      "type": "vocabulary",
+      "q": "When Rikki-tikki woke on the path he was \"very draggled indeed.\" What does \"draggled\" mean here?",
+      "choices": ["Wet, dirty and messy", "Hungry and thin", "Angry and ready to fight", "Badly hurt and bleeding"],
+      "answer": 0,
+      "evidence": "very draggled indeed"
+    },
+    {
+      "id": "jungle-book-09-03",
+      "type": "character",
+      "q": "Why is it so hard to frighten a mongoose, according to the story?",
+      "choices": ["He has thick fur that no teeth can get through", "He is eaten up with curiosity from nose to tail", "His mother teaches him never to show any fear", "He is much stronger than he looks to other animals"],
+      "answer": 1,
+      "evidence": "he is eaten up from nose to tail with curiosity"
+    },
+    {
+      "id": "jungle-book-09-04",
+      "type": "detail",
+      "q": "What happened when Rikki-tikki climbed into the big man's lap to see how writing was done?",
+      "choices": ["He knocked the pen and the papers onto the floor", "He fell asleep there until the lamps were lit", "He burned his nose on the end of the man's cigar", "He bit the man's finger by mistake and was scolded"],
+      "answer": 2,
+      "evidence": "burned it on the end of the big man's cigar"
+    },
+    {
+      "id": "jungle-book-09-05",
+      "type": "inference",
+      "q": "Teddy's father says Teddy is \"safer with that little beast than if he had a bloodhound.\" What does he believe?",
+      "choices": ["The mongoose will keep burglars away from the house at night", "The mongoose will teach Teddy to be braver about the dark", "The mongoose would protect Teddy if a snake came in", "The mongoose is too small and gentle ever to bite a child"],
+      "answer": 2,
+      "evidence": "If a snake came into the nursery now"
+    },
+    {
+      "id": "jungle-book-09-06",
+      "type": "detail",
+      "q": "Why were Darzee and his wife crying in their nest?",
+      "choices": ["Nag had eaten one of their babies that fell out", "A storm had torn the leaves of their nest apart", "Rikki-tikki had frightened their babies away", "Their eggs had been stolen by the musk-rat"],
+      "answer": 0,
+      "evidence": "One of our babies fell out of the nest yesterday and Nag ate him."
+    },
+    {
+      "id": "jungle-book-09-07",
+      "type": "vocabulary",
+      "q": "\"Darzee and his wife only cowered down in the nest without answering.\" What does \"cowered\" mean?",
+      "choices": ["Sang softly to calm themselves", "Crouched low in fear", "Stood up tall to look brave", "Flew away as fast as they could"],
+      "answer": 1,
+      "evidence": "only cowered down in the nest without answering"
+    },
+    {
+      "id": "jungle-book-09-08",
+      "type": "inference",
+      "q": "Why was the big cobra Nag secretly afraid of Rikki-tikki?",
+      "choices": ["Rikki-tikki was much bigger than any mongoose he had seen", "He knew a grown mongoose's business is to fight and eat snakes", "The big man had told him the mongoose belonged to the house", "Darzee had warned him that the mongoose had killed his brother"],
+      "answer": 1,
+      "evidence": "at the bottom of his cold heart, he was afraid"
+    },
+    {
+      "id": "jungle-book-09-09",
+      "type": "sequence",
+      "q": "While Nag was talking to Rikki-tikki, what was Nagaina doing?",
+      "choices": ["Hiding the eggs deep in the melon bed", "Climbing the thorn-bush to reach Darzee's nest", "Creeping up behind Rikki-tikki to strike him", "Sliding into the bungalow through the bath sluice"],
+      "answer": 2,
+      "evidence": "She had crept up behind him as he was talking"
+    },
+    {
+      "id": "jungle-book-09-10",
+      "type": "character",
+      "q": "After the cobras disappeared into the grass, why did Rikki-tikki not follow them?",
+      "choices": ["He heard Teddy calling him in for breakfast", "He was not sure he could manage two snakes at once", "He had been bitten and needed to rest for a while", "Darzee begged him to stay and guard the nest"],
+      "answer": 1,
+      "evidence": "he did not feel sure that he could manage two snakes at once"
+    },
+    {
+      "id": "jungle-book-09-11",
+      "type": "detail",
+      "q": "According to the story, what really decides a fight between a mongoose and a snake?",
+      "choices": ["Which one is quicker with its eyes and its feet", "A magic herb the mongoose eats after being bitten", "Which animal is larger and heavier than the other", "How long each one can go without food or water"],
+      "answer": 0,
+      "evidence": "The victory is only a matter of quickness of eye and quickness of foot"
+    },
+    {
+      "id": "jungle-book-09-12",
+      "type": "detail",
+      "q": "Why does Karait, the dusty brown snakeling, do so much harm to people?",
+      "choices": ["He hides in shoes and beds inside houses", "He is so small that nobody thinks of him", "He can climb walls and reach any window", "He travels in large groups through gardens"],
+      "answer": 1,
+      "evidence": "he is so small that nobody thinks of him"
+    },
+    {
+      "id": "jungle-book-09-13",
+      "type": "character",
+      "q": "Why did Rikki-tikki decide not to eat Karait after killing him?",
+      "choices": ["Snake meat made young mongooses sick", "Teddy's father took the dead snake away at once", "A full meal would make him slow, and he must stay quick", "He was already full from his breakfast of banana and egg"],
+      "answer": 2,
+      "evidence": "a full meal makes a slow mongoose"
+    },
+    {
+      "id": "jungle-book-09-14",
+      "type": "vocabulary",
+      "q": "\"'Do you think a snake-killer kills muskrats?' said Rikki-tikki scornfully.\" How did Rikki-tikki say it?",
+      "choices": ["In a frightened, shaky whisper", "As if the idea was silly and beneath him", "In a kind voice, to comfort a friend", "Very slowly, as if he were half asleep"],
+      "answer": 1,
+      "evidence": "said Rikki-tikki scornfully"
+    },
+    {
+      "id": "jungle-book-09-15",
+      "type": "character",
+      "q": "What is Chuchundra the musk-rat like?",
+      "choices": ["Timid and sad, always creeping by the wall", "Brave and boastful, always picking fights", "Sly and tricky, a secret friend of the cobras", "Cheerful and noisy, the news-teller of the house"],
+      "answer": 0,
+      "evidence": "Chuchundra is a broken-hearted little beast"
+    },
+    {
+      "id": "jungle-book-09-16",
+      "type": "detail",
+      "q": "What faint sound did Rikki-tikki hear in the silent house at night?",
+      "choices": ["The tapping of a beak against the window glass", "The dry scratch of snake scales on brick-work", "Chua the rat gnawing at the kitchen door", "Water dripping slowly from the big bath jar"],
+      "answer": 1,
+      "evidence": "the dry scratch of a snake's scales on brick-work"
+    },
+    {
+      "id": "jungle-book-09-17",
+      "type": "inference",
+      "q": "Why did Nagaina want the people in the bungalow killed?",
+      "choices": ["The big man had cut down the thorn-bush where she hunted", "Teddy had thrown stones at her eggs in the garden", "Then the mongoose would leave and the garden would be theirs", "She wanted to live inside the cool bath-rooms all summer"],
+      "answer": 2,
+      "evidence": "When the house is emptied of people"
+    },
+    {
+      "id": "jungle-book-09-18",
+      "type": "main-idea",
+      "q": "What is this first part of the story mostly about?",
+      "choices": ["A mongoose who finds a new home and learns of its snake enemies", "A family who moves to India and learns how to garden in the hot sun", "A tailorbird who builds a nest that no snake in the garden can reach", "A musk-rat who finally finds the courage to run across the room"],
+      "answer": 0,
+      "evidence": "This is a splendid hunting-ground"
+    }
+  ]
+}

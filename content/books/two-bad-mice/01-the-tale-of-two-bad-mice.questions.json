@@ -1,0 +1,123 @@
+{
+  "book": "two-bad-mice",
+  "chapter": 1,
+  "questions": [
+    {
+      "id": "two-bad-mice-01-01",
+      "type": "detail",
+      "q": "What were the names of the two Dolls?",
+      "choices": [
+        "Lucinda and Jane",
+        "Hunca and Munca",
+        "Mittens and Moppet",
+        "Lucie and Sally"
+      ],
+      "answer": 0,
+      "evidence": "It belonged to two Dolls called Lucinda and Jane"
+    },
+    {
+      "id": "two-bad-mice-01-02",
+      "type": "detail",
+      "q": "Why did Jane the Cook never do any cooking?",
+      "choices": [
+        "She did not know how to cook",
+        "The dinner was bought ready-made",
+        "The stove in the kitchen was broken",
+        "Lucinda always cooked the meals"
+      ],
+      "answer": 1,
+      "evidence": "the dinner had been bought ready-made"
+    },
+    {
+      "id": "two-bad-mice-01-03",
+      "type": "detail",
+      "q": "Where did Tom Thumb and Hunca Munca live?",
+      "choices": [
+        "In the doll's-house kitchen upstairs",
+        "In a hole under the skirting-board",
+        "Behind the big coal-box",
+        "Inside the nursery chimney"
+      ],
+      "answer": 1,
+      "evidence": "where there was a hole under the skirting-board"
+    },
+    {
+      "id": "two-bad-mice-01-04",
+      "type": "sequence",
+      "q": "What happened when Tom Thumb tried to carve the ham?",
+      "choices": [
+        "The knife crumpled up and hurt him",
+        "The ham was so soft that it fell apart",
+        "Hunca Munca ate the whole ham up first",
+        "The plate broke into many little pieces"
+      ],
+      "answer": 0,
+      "evidence": "The knife crumpled up and hurt him"
+    },
+    {
+      "id": "two-bad-mice-01-05",
+      "type": "detail",
+      "q": "What was the ham really made of?",
+      "choices": [
+        "Soft wood",
+        "Plaster",
+        "Paper",
+        "Clay"
+      ],
+      "answer": 1,
+      "evidence": "it was made of nothing but plaster"
+    },
+    {
+      "id": "two-bad-mice-01-06",
+      "type": "character",
+      "q": "How did the mice feel when they found the food was not real?",
+      "choices": [
+        "Happy and full of joy",
+        "Angry and disappointed",
+        "Sleepy and very very tired",
+        "Calm and not bothered"
+      ],
+      "answer": 1,
+      "evidence": "there was no end to the rage and disappointment of Tom Thumb and Hunca Munca"
+    },
+    {
+      "id": "two-bad-mice-01-07",
+      "type": "detail",
+      "q": "What did Hunca Munca take home to make a feather bed?",
+      "choices": [
+        "Lucinda's bolster",
+        "All of Jane's clothes",
+        "The bird-cage",
+        "The tin spoons"
+      ],
+      "answer": 0,
+      "evidence": "she remembered that she herself was in want of a feather bed"
+    },
+    {
+      "id": "two-bad-mice-01-08",
+      "type": "inference",
+      "q": "Why does the story say the mice were not so very naughty after all?",
+      "choices": [
+        "They gave back every single thing they took",
+        "Tom paid for what he broke, and Hunca Munca sweeps",
+        "The dolls asked them to come in for dinner",
+        "The little girl said they could have it all"
+      ],
+      "answer": 1,
+      "evidence": "Tom Thumb paid for everything he broke"
+    },
+    {
+      "id": "two-bad-mice-01-09",
+      "type": "main-idea",
+      "q": "What is this story mostly about?",
+      "choices": [
+        "Two mice who make a mess of a doll's-house",
+        "Two dolls who go for a drive in the park",
+        "A little girl who gets a new doll for Christmas",
+        "A nurse who sets a trap to catch mice"
+      ],
+      "answer": 0,
+      "evidence": "Then those mice set to work to do all the mischief they could"
+    }
+  ]
+}

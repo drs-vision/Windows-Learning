@@ -1,0 +1,150 @@
+{
+  "book": "jungle-book",
+  "chapter": 14,
+  "questions": [
+    {
+      "id": "jungle-book-14-01",
+      "type": "character",
+      "q": "Why did Billy get angry when the troop-horse mentioned his \"family on his father's side\"?",
+      "choices": ["His father had been sold away when he was young", "Every mule hates to be reminded his father was a donkey", "His father had run away from a battle long ago", "He thought the horse was making fun of his name"],
+      "answer": 1,
+      "evidence": "every mule hates to be reminded that his father was a donkey"
+    },
+    {
+      "id": "jungle-book-14-02",
+      "type": "sequence",
+      "q": "Billy and the troop-horse reared up to fight. What stopped them?",
+      "choices": ["The narrator shouted at them from the gun", "Their drivers came running with lanterns", "Two Tails called out to them to be quiet", "The bullocks pushed in between them"],
+      "answer": 2,
+      "evidence": "Children, what are you fighting about there? Be quiet."
+    },
+    {
+      "id": "jungle-book-14-03",
+      "type": "inference",
+      "q": "Why did Billy and the troop-horse suddenly become friendly again after their quarrel?",
+      "choices": ["The narrator gave them both biscuits", "They both disliked Two Tails the elephant", "They realized they served in the same battery", "They were both too tired to keep on fighting"],
+      "answer": 1,
+      "evidence": "My feelings exactly"
+    },
+    {
+      "id": "jungle-book-14-04",
+      "type": "vocabulary",
+      "q": "Two Tails' captain called him a \"Pachydermatous Anachronism.\" What does Two Tails say this means?",
+      "choices": ["Betwixt and between", "Bravest of all the beasts", "Too old to work any longer", "Stronger than any gun in camp"],
+      "answer": 0,
+      "evidence": "It means betwixt and between"
+    },
+    {
+      "id": "jungle-book-14-05",
+      "type": "character",
+      "q": "According to Two Tails, why is he afraid when the guns fire?",
+      "choices": ["The loud noise hurts his very large ears", "He was once badly wounded by a bursting shell", "He can picture in his head what a shell will do", "The smoke makes it hard for him to breathe"],
+      "answer": 2,
+      "evidence": "I can see inside my head what will happen when a shell bursts"
+    },
+    {
+      "id": "jungle-book-14-06",
+      "type": "detail",
+      "q": "What is one difference between Two Tails and the troop-horse?",
+      "choices": ["Only the horse trusts the man who drives him", "The horse is afraid of dogs, but Two Tails is not", "The horse pulls guns, but Two Tails carries soldiers", "The horse has fought in wars, but Two Tails never has"],
+      "answer": 0,
+      "evidence": "I can't trust my driver"
+    },
+    {
+      "id": "jungle-book-14-07",
+      "type": "inference",
+      "q": "Two Tails says, \"I know just enough to be uncomfortable, and not enough to go on in spite of it.\" What does he mean?",
+      "choices": ["He has forgotten most of what his driver taught him at the camp", "He sees danger well enough to fear it, but can't overcome it", "He is too clever to obey any order that he does not like", "He needs more training before he can pull the big guns"],
+      "answer": 1,
+      "evidence": "I know just enough to be uncomfortable, and not enough to go on in spite of it."
+    },
+    {
+      "id": "jungle-book-14-08",
+      "type": "sequence",
+      "q": "To make the others understand fear, what did Two Tails do?",
+      "choices": ["He told them a story about a tiger hunt", "He stamped until the guns rattled", "He trumpeted furiously at the top of his trumpet", "He pulled up his picket and walked toward them"],
+      "answer": 2,
+      "evidence": "He began trumpeting furiously at the top of his trumpet."
+    },
+    {
+      "id": "jungle-book-14-09",
+      "type": "detail",
+      "q": "What is the one thing an elephant fears more than anything else, according to the narrator?",
+      "choices": ["A small dog barking at his feet", "A camel that runs loose at night", "The sound of a bugle in the dark", "A mouse running under his feet"],
+      "answer": 0,
+      "evidence": "it is a little barking dog"
+    },
+    {
+      "id": "jungle-book-14-10",
+      "type": "vocabulary",
+      "q": "The narrator never let Vixen know he understood beast talk, \"or she would have taken all sorts of liberties.\" What does this mean?",
+      "choices": ["She would have run away to live with the soldiers", "She would have behaved too boldly and done as she pleased", "She would have told all his secrets to the other animals in camp", "She would have refused to eat anything but biscuits"],
+      "answer": 1,
+      "evidence": "she would have taken all sorts of liberties"
+    },
+    {
+      "id": "jungle-book-14-11",
+      "type": "detail",
+      "q": "When the young mule asked why they have to fight at all, what did the animals answer?",
+      "choices": ["To protect the people of the camp", "To earn good food and warm stables", "Because they are told to; it is an order", "Because fighting is what they were born for"],
+      "answer": 2,
+      "evidence": "Because we're told to"
+    },
+    {
+      "id": "jungle-book-14-12",
+      "type": "character",
+      "q": "What did the gun-bullocks proudly say about themselves before leaving?",
+      "choices": ["They were the strongest beasts in all the army", "They were the only ones that night who had not been afraid", "They had pulled more big guns than any other yoke in the battery", "They were the cleverest animals in the whole camp"],
+      "answer": 1,
+      "evidence": "we are the only people to-night who have not been afraid"
+    },
+    {
+      "id": "jungle-book-14-13",
+      "type": "inference",
+      "q": "Why did the bullocks panic and run when they learned Vixen's master was a white man?",
+      "choices": ["He had beaten them once on the parade-ground", "Englishmen eat beef, and the cattle dislike it", "He was the officer who had them yoked to the gun", "They thought he had come to take their grazing"],
+      "answer": 1,
+      "evidence": "We eat beef"
+    },
+    {
+      "id": "jungle-book-14-14",
+      "type": "vocabulary",
+      "q": "\"Billy the Mule stumped off with the swaggering limp of an old campaigner.\" What does \"swaggering\" tell you about how he walked?",
+      "choices": ["Slowly and sadly, as if hurt", "Proudly and boldly, chest out", "Quietly, trying not to be seen", "Nervously, looking all around"],
+      "answer": 1,
+      "evidence": "the swaggering limp of an old campaigner"
+    },
+    {
+      "id": "jungle-book-14-15",
+      "type": "detail",
+      "q": "What was the troop-horse doing as the Lancers rode past in the grand parade?",
+      "choices": ["Leading the Viceroy's own carriage", "Setting the time for all his squadron", "Pulling a cart full of the band's drums", "Carrying the flag at the very front"],
+      "answer": 1,
+      "evidence": "setting the time for all his squadron"
+    },
+    {
+      "id": "jungle-book-14-16",
+      "type": "inference",
+      "q": "How did the Amir of Afghanistan feel as the long line of troops came straight toward him?",
+      "choices": ["Bored, since he had seen many parades", "Pleased, and he waved to the soldiers", "Alarmed, as if he might need to escape", "Angry that the rain had spoiled the day"],
+      "answer": 2,
+      "evidence": "his eyes began to get bigger and bigger"
+    },
+    {
+      "id": "jungle-book-14-17",
+      "type": "inference",
+      "q": "The Central Asian chief says, \"Would it were so in Afghanistan!\" What does he mean?",
+      "choices": ["He wishes Afghanistan had as many elephants", "He wishes his people obeyed orders like this", "He wishes it rained less in his own country", "He wishes his own army had such fine big guns"],
+      "answer": 1,
+      "evidence": "for there we obey only our own wills"
+    },
+    {
+      "id": "jungle-book-14-18",
+      "type": "main-idea",
+      "q": "What is the main lesson of this part of the story?",
+      "choices": ["The bravest animal is always the strongest one", "Each animal should fight in exactly the same way", "An army works because everyone obeys the one above", "Animals are always wiser than the men who drive them"],
+      "answer": 2,
+      "evidence": "An order was given, and they obeyed."
+    }
+  ]
+}

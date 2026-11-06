@@ -1,0 +1,126 @@
+{
+  "book": "around-the-world-in-80-days",
+  "chapter": 14,
+  "questions": [
+    {
+      "id": "around-the-world-in-80-days-14-01",
+      "type": "character",
+      "q": "When praised for the rescue, who did Passepartout say deserved the credit?",
+      "choices": ["Sir Francis Cromarty", "The Parsee guide", "Mr. Fogg", "Kiouni the elephant"],
+      "answer": 2,
+      "evidence": "all the credit of the affair belonged to Mr. Fogg"
+    },
+    {
+      "id": "around-the-world-in-80-days-14-02",
+      "type": "detail",
+      "q": "Why did Sir Francis worry about Aouda staying in India?",
+      "choices": ["She had no money and no family left anywhere in the country", "The fanatics would find her again, even in the big cities", "The English police wanted to question her about the rajah", "She was too weak from the hemp fumes to travel by train"],
+      "answer": 1,
+      "evidence": "would inevitably fall again into the hands of her executioners"
+    },
+    {
+      "id": "around-the-world-in-80-days-14-03",
+      "type": "detail",
+      "q": "What was Passepartout sent to buy for Aouda in Allahabad?",
+      "choices": ["Clothes such as a dress, shawl and furs", "Medicine and food for the train journey", "A ticket for the steamer to Hong Kong", "A trunk and a travelling-blanket"],
+      "answer": 0,
+      "evidence": "a dress, shawl, and some furs"
+    },
+    {
+      "id": "around-the-world-in-80-days-14-04",
+      "type": "vocabulary",
+      "q": "Fogg gave Passepartout \"unlimited credit\" for the shopping. What does this mean?",
+      "choices": ["He could only spend a few pounds and had to bring back change", "He could spend as much as he needed", "He had to borrow the money from a bank in the city", "He must pay with his own wages and be paid back later"],
+      "answer": 1,
+      "evidence": "his master gave him unlimited credit"
+    },
+    {
+      "id": "around-the-world-in-80-days-14-05",
+      "type": "detail",
+      "q": "Allahabad is built where two sacred rivers meet. Which two?",
+      "choices": ["The Indus and the Ganges", "The Ganges and the Jumna", "The Jumna and the Hugly", "The Nile and the Ganges"],
+      "answer": 1,
+      "evidence": "the two sacred rivers, Ganges and Jumna"
+    },
+    {
+      "id": "around-the-world-in-80-days-14-06",
+      "type": "inference",
+      "q": "Why did it surprise Passepartout that Fogg paid the guide only the agreed price?",
+      "choices": ["The guide had risked his life and might face revenge for helping", "The guide had asked to be paid twice the agreed price at the very start", "Fogg usually paid every servant much more than he owed", "The guide had also bought the clothes for Aouda himself"],
+      "answer": 0,
+      "evidence": "He had, indeed, risked his life in the adventure at Pillaji"
+    },
+    {
+      "id": "around-the-world-in-80-days-14-07",
+      "type": "detail",
+      "q": "What reward did Fogg give the guide for his devotion?",
+      "choices": ["A purse of fifty pounds", "The elephant Kiouni", "His gold pocket watch", "A free ticket to Calcutta"],
+      "answer": 1,
+      "evidence": "Would you like to have this elephant? He is yours."
+    },
+    {
+      "id": "around-the-world-in-80-days-14-08",
+      "type": "character",
+      "q": "What did Fogg mean when he said, \"I have paid for your service, but not for your devotion\"?",
+      "choices": ["The guide's loyalty was worth more than his wages, so he deserved a gift", "The guide had not finished the whole job, so he would not get the full price", "The guide still owed Fogg money for the damage to the pagoda", "The guide should work for Fogg for the rest of the journey"],
+      "answer": 0,
+      "evidence": "I have paid for your service, but not for your devotion."
+    },
+    {
+      "id": "around-the-world-in-80-days-14-09",
+      "type": "sequence",
+      "q": "What did Kiouni do after Passepartout fed him lumps of sugar?",
+      "choices": ["He knelt down so Passepartout could climb on his back", "He lifted Passepartout with his trunk and set him down gently", "He trumpeted loudly and ran off toward the forest", "He followed Passepartout onto the station platform"],
+      "answer": 1,
+      "evidence": "lifted him as high as his head"
+    },
+    {
+      "id": "around-the-world-in-80-days-14-10",
+      "type": "detail",
+      "q": "How did Aouda feel when she woke up on the train?",
+      "choices": ["Happy to be going home to Bombay", "Astonished to be among strangers in European clothes", "Angry that she had been taken from the pagoda", "Calm, because she remembered everything that happened"],
+      "answer": 1,
+      "evidence": "What was her astonishment to find herself in this carriage"
+    },
+    {
+      "id": "around-the-world-in-80-days-14-11",
+      "type": "detail",
+      "q": "Where did Fogg offer to take Aouda so she would be safe?",
+      "choices": ["To Calcutta, where the English police could guard her", "To Bombay, to the home of her late father", "To Hong Kong, where she had a relative who was a merchant", "To London, to live safely in his own house on Saville Row"],
+      "answer": 2,
+      "evidence": "offered, in order to reassure her, to escort her to Hong Kong"
+    },
+    {
+      "id": "around-the-world-in-80-days-14-12",
+      "type": "sequence",
+      "q": "Which companion left the group when the train reached Benares?",
+      "choices": ["The Parsee guide", "Sir Francis Cromarty", "Aouda", "Passepartout"],
+      "answer": 1,
+      "evidence": "Benares was Sir Francis Cromarty's destination"
+    },
+    {
+      "id": "around-the-world-in-80-days-14-13",
+      "type": "inference",
+      "q": "Why would Passepartout have liked to see Chandernagor in daylight?",
+      "choices": ["It was the town where he had been born and raised", "It was a French town where he hoped to see his country's flag", "It had the most famous rose-water factories anywhere in all of India", "His old fire brigade had once been stationed there"],
+      "answer": 1,
+      "evidence": "Passepartout would have been proud to see his country's flag flying"
+    },
+    {
+      "id": "around-the-world-in-80-days-14-14",
+      "type": "detail",
+      "q": "How did Fogg's arrival in Calcutta compare to the plan in his journal?",
+      "choices": ["He arrived two days early, thanks to the elephant", "He arrived on exactly the date he had planned", "He arrived one day late because of the rescue", "He arrived a week early and had to wait for the ship"],
+      "answer": 1,
+      "evidence": "that was the exact date of his actual arrival"
+    },
+    {
+      "id": "around-the-world-in-80-days-14-15",
+      "type": "main-idea",
+      "q": "What is this chapter mostly about?",
+      "choices": ["The journey from the pagoda across India to Calcutta with Aouda", "Fogg's arrest by the police as soon as he reaches Calcutta", "Passepartout's long tour of the city of Allahabad alone", "Sir Francis and Fogg playing whist on the train to Bombay"],
+      "answer": 0,
+      "evidence": "Calcutta was reached at seven in the morning"
+    }
+  ]
+}

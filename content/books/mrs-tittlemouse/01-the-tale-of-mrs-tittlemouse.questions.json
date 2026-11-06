@@ -1,0 +1,110 @@
+{
+  "book": "mrs-tittlemouse",
+  "chapter": 1,
+  "questions": [
+    {
+      "id": "mrs-tittlemouse-01-01",
+      "type": "detail",
+      "q": "Where did Mrs. Tittlemouse live?",
+      "choices": [
+        "In a bank under a hedge",
+        "In a drain by a ditch",
+        "In a hollow tree trunk",
+        "In a doll's-house upstairs"
+      ],
+      "answer": 0,
+      "evidence": "She lived in a bank under a hedge."
+    },
+    {
+      "id": "mrs-tittlemouse-01-02",
+      "type": "character",
+      "q": "What kind of mouse was Mrs. Tittlemouse?",
+      "choices": [
+        "Very lazy and messy",
+        "Terribly tidy and particular",
+        "Very greedy and loud",
+        "Shy and always asleep"
+      ],
+      "answer": 1,
+      "evidence": "Mrs. Tittlemouse was a most terribly tidy particular little mouse"
+    },
+    {
+      "id": "mrs-tittlemouse-01-03",
+      "type": "detail",
+      "q": "What did Mrs. Tittlemouse do with the big fat spider?",
+      "choices": [
+        "Gave him a cup of tea",
+        "Bundled him out of a window",
+        "Let him stay out of the rain",
+        "Sent him to Miss Muffet's"
+      ],
+      "answer": 1,
+      "evidence": "She bundled the spider out at a window."
+    },
+    {
+      "id": "mrs-tittlemouse-01-04",
+      "type": "detail",
+      "q": "What did Mrs. Tittlemouse find in the storeroom that should have been empty?",
+      "choices": [
+        "Bees and untidy moss",
+        "A sleeping spider",
+        "A heap of acorns and nuts",
+        "Mr. Jackson eating honey"
+      ],
+      "answer": 0,
+      "evidence": "But it was full of untidy dry moss."
+    },
+    {
+      "id": "mrs-tittlemouse-01-05",
+      "type": "inference",
+      "q": "What kind of animal was Mr. Jackson?",
+      "choices": [
+        "A newt",
+        "A toad",
+        "A rat",
+        "A mole"
+      ],
+      "answer": 1,
+      "evidence": "Get out, you nasty old toad!"
+    },
+    {
+      "id": "mrs-tittlemouse-01-06",
+      "type": "character",
+      "q": "Why did Mr. Jackson come to call on Mrs. Tittlemouse?",
+      "choices": [
+        "He wanted to help her clean",
+        "He smelled honey",
+        "He was lost in the rain",
+        "He wanted cherry-stones"
+      ],
+      "answer": 1,
+      "evidence": "I can smell it; that is why I came to call"
+    },
+    {
+      "id": "mrs-tittlemouse-01-07",
+      "type": "sequence",
+      "q": "What did Mrs. Tittlemouse do so Mr. Jackson could not come in again?",
+      "choices": [
+        "Locked the door with a big key",
+        "Made the front door too small",
+        "Put a sign on the door",
+        "Moved to a brand new house"
+      ],
+      "answer": 1,
+      "evidence": "I will make it too small for Mr. Jackson!"
+    },
+    {
+      "id": "mrs-tittlemouse-01-08",
+      "type": "main-idea",
+      "q": "What is this story mostly about?",
+      "choices": [
+        "A spider who spins webs all through a hedge",
+        "A tidy mouse whose clean house is messed up by visitors",
+        "A toad who gives a party for five little mice",
+        "A bumble bee who sells beeswax to the mice"
+      ],
+      "answer": 1,
+      "evidence": "all over my nice clean house"
+    }
+  ]
+}

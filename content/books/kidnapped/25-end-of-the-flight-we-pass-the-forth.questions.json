@@ -1,0 +1,158 @@
+{
+  "book": "kidnapped",
+  "chapter": 25,
+  "questions": [
+    {
+      "id": "kidnapped-25-01",
+      "type": "detail",
+      "q": "Why did David and Alan have to think first of all about speed when they set out?",
+      "choices": ["Their money was running very low", "The soldiers had found the Maclarens' house", "Winter snow would soon close the passes", "Mr. Rankeillor was about to leave Scotland"],
+      "answer": 0,
+      "evidence": "Our money was now run to so low an ebb that we must think first of all on speed"
+    },
+    {
+      "id": "kidnapped-25-02",
+      "type": "inference",
+      "q": "Why did Alan want to cross by the old Bridge of Stirling instead of going round the head of the Forth?",
+      "choices": ["It was the last place soldiers would expect them", "It was the shortest road and the soldiers had all gone home", "A friend of Duncan's kept the bridge and would let them by", "The fords at the head of the river were too deep after rain"],
+      "answer": 0,
+      "evidence": "to go where ye are least expected"
+    },
+    {
+      "id": "kidnapped-25-03",
+      "type": "detail",
+      "q": "Where did they hide during the day before trying the bridge?",
+      "choices": ["On a little sandy islet in Allan Water", "In a ruined tower beside Stirling Castle", "In a barn belonging to the shearers", "Under the arches of the bridge itself"],
+      "answer": 0,
+      "evidence": "we found a little sandy islet"
+    },
+    {
+      "id": "kidnapped-25-04",
+      "type": "character",
+      "q": "When they reached the quiet bridge, how did David and Alan differ?",
+      "choices": ["David wanted to push straight over; Alan wanted to wait and make sure", "Alan wanted to swim the river, and David wanted to go looking for a boat", "David wanted to turn back; Alan wanted to fight the sentry", "Both were afraid and wanted to wait until morning came"],
+      "answer": 0,
+      "evidence": "I was for pushing straight across; but Alan was more wary"
+    },
+    {
+      "id": "kidnapped-25-05",
+      "type": "sequence",
+      "q": "What happened as the old woman with the crutch stick went over the bridge?",
+      "choices": ["A sentry woke up and called out \"Who goes?\"", "She fell and David ran out to help her up", "She saw them behind the dyke and screamed", "A party of dragoons rode across behind her"],
+      "answer": 0,
+      "evidence": "\"Who goes?\" cried a voice"
+    },
+    {
+      "id": "kidnapped-25-06",
+      "type": "vocabulary",
+      "q": "Alan says the old woman's \"foot still sounds boss upon the bridge.\" What does \"boss\" mean?",
+      "choices": ["Hollow", "Quiet", "Heavy", "Quick"],
+      "answer": 0,
+      "evidence": "her foot still sounds boss"
+    },
+    {
+      "id": "kidnapped-25-07",
+      "type": "character",
+      "q": "How did David feel as they crawled away from the bridge?",
+      "choices": ["Bitterly disappointed to be back on the wrong side of Forth", "Relieved that the sentry had not fired his musket at them", "Proud that Alan had trusted him to keep watch so well", "Excited because he was sure Alan had a clever plan"],
+      "answer": 0,
+      "evidence": "I was so sharply cut by the disappointment"
+    },
+    {
+      "id": "kidnapped-25-08",
+      "type": "detail",
+      "q": "Why did Alan say swimming the river was no answer?",
+      "choices": ["He could not swim", "The current was too strong", "The water was too cold", "Soldiers watched the banks"],
+      "answer": 0,
+      "evidence": "I swim like a stone"
+    },
+    {
+      "id": "kidnapped-25-09",
+      "type": "detail",
+      "q": "What could David see from Limekilns that made the place a heart-break for him?",
+      "choices": ["Queensferry across the water, where Mr. Rankeillor lived", "Stirling Castle on its hill, with the red-coat drums beating", "The House of Shaws standing on its lonely hill", "The brig Covenant lying at anchor in the Hope"],
+      "answer": 0,
+      "evidence": "looks across the Hope to the town of the Queensferry"
+    },
+    {
+      "id": "kidnapped-25-10",
+      "type": "detail",
+      "q": "How much money did David have left by the time they reached Limekilns?",
+      "choices": ["Three silver shillings", "Five pounds in a green purse", "A single golden guinea piece", "Nothing but a copper penny"],
+      "answer": 0,
+      "evidence": "three silver shillings left to me of all my fortune"
+    },
+    {
+      "id": "kidnapped-25-11",
+      "type": "inference",
+      "q": "Why did Alan say he wanted the lass at the change-house to feel sorry for David, not to fall in love with him?",
+      "choices": ["Pity would make her want to help them get hold of a boat", "He wanted her to fall in love with Alan himself instead", "He was afraid she would tell her father about David", "He thought David was too young to be thinking of a lass"],
+      "answer": 0,
+      "evidence": "I want her to be sorry for ye, David"
+    },
+    {
+      "id": "kidnapped-25-12",
+      "type": "detail",
+      "q": "How did Alan act when they went back into the change-house?",
+      "choices": ["He half carried David and fed him like a sick child", "He bragged loudly about his battles with the soldiers", "He offered the maid his silver button for a boat", "He sat apart and pretended not to know David"],
+      "answer": 0,
+      "evidence": "he seemed to be half carrying me"
+    },
+    {
+      "id": "kidnapped-25-13",
+      "type": "inference",
+      "q": "What was Alan hinting when he whistled \"Charlie is my darling\" and tapped the back of his neck?",
+      "choices": ["That David was a Jacobite who could lose his head for it", "That David had a sore neck from sleeping in heather", "That he wanted the maid to sing along with the tune", "That soldiers were waiting outside the change-house"],
+      "answer": 0,
+      "evidence": "meaning that I was old enough to lose my head"
+    },
+    {
+      "id": "kidnapped-25-14",
+      "type": "character",
+      "q": "Why was David unhappy with the part he played at the change-house?",
+      "choices": ["He hated to take part in lies", "He was too hungry to listen", "He wanted to pay for the food", "He was afraid of the maid's father"],
+      "answer": 0,
+      "evidence": "I ever hated to take part in lies"
+    },
+    {
+      "id": "kidnapped-25-15",
+      "type": "sequence",
+      "q": "What did David tell the lass that finally made her face clear up and agree to help?",
+      "choices": ["That he was going to Mr. Rankeillor and was loyal to King George", "That he would pay her well once he had claimed his inheritance", "That Alan was a famous soldier who had fought for Prince Charlie", "That he had a rich uncle waiting for him at the House of Shaws"],
+      "answer": 0,
+      "evidence": "King George has no truer friend in all Scotland than myself"
+    },
+    {
+      "id": "kidnapped-25-16",
+      "type": "detail",
+      "q": "Who troubled them while they hid in the little wood by the sea?",
+      "choices": ["A drunken strolling piper", "A party of red-coat soldiers", "The maid's angry father", "Two fishermen mending nets"],
+      "answer": 0,
+      "evidence": "a strolling piper came and sat in the same wood with us"
+    },
+    {
+      "id": "kidnapped-25-17",
+      "type": "detail",
+      "q": "How did the lass get them across the water?",
+      "choices": ["She stole a neighbour's boat and rowed them over herself", "She paid an old fisherman to take them over the firth before dawn", "She took them to the ferry and spoke to the boatman", "She lent them her father's boat and they rowed alone"],
+      "answer": 0,
+      "evidence": "stolen a neighbour's boat, and come to our assistance single-handed"
+    },
+    {
+      "id": "kidnapped-25-18",
+      "type": "character",
+      "q": "Afterward, why did David feel remorse as well as gratitude toward the lass?",
+      "choices": ["They had traded on her simple trust, and she might be in danger", "She had refused to take any of their last three shillings", "He had forgotten to ask her name before she rowed away", "Alan had kept talking about her all night instead of sleeping"],
+      "answer": 0,
+      "evidence": "remorse because we had traded upon her ignorance"
+    },
+    {
+      "id": "kidnapped-25-19",
+      "type": "main-idea",
+      "q": "What is this chapter mostly about?",
+      "choices": ["Blocked at Stirling, they win a kind girl's help to cross the Forth", "Alan builds a raft out of driftwood to float the two of them over the firth", "The two are caught at the bridge and escape from Stirling Castle", "David swims the Forth alone while Alan stays behind in the hills"],
+      "answer": 0,
+      "evidence": "she had set us on the Lothian shore"
+    }
+  ]
+}

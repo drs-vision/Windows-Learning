@@ -1,0 +1,266 @@
+{
+  "book": "kidnapped",
+  "chapter": 4,
+  "questions": [
+    {
+      "id": "kidnapped-04-01",
+      "type": "detail",
+      "q": "What was Uncle Ebenezer's usual diet?",
+      "choices": [
+        "Porridge and small beer",
+        "Bread and boiled mutton",
+        "Oatcakes and buttermilk",
+        "Broth and cold herring"
+      ],
+      "answer": 0,
+      "evidence": "porridge and small beer was my uncle's diet"
+    },
+    {
+      "id": "kidnapped-04-02",
+      "type": "detail",
+      "q": "How did David spend the afternoon in the room next to the kitchen?",
+      "choices": [
+        "Reading the many Latin and English books there",
+        "Writing a long letter home to Mr. Campbell the minister",
+        "Searching the chests for his father's papers",
+        "Sweeping out dust and cobwebs for his uncle"
+      ],
+      "answer": 0,
+      "evidence": "I found a great number of books, both Latin and English"
+    },
+    {
+      "id": "kidnapped-04-03",
+      "type": "detail",
+      "q": "What did David's father write on the fly-leaf of a chap-book?",
+      "choices": [
+        "To my son David, to be read when he is grown",
+        "From Alexander Balfour, schoolmaster of Essendean",
+        "A gift to the house of Shaws from a loving son",
+        "To my brother Ebenezer on his fifth birthday"
+      ],
+      "answer": 3,
+      "evidence": "To my brother Ebenezer on his fifth birthday"
+    },
+    {
+      "id": "kidnapped-04-04",
+      "type": "inference",
+      "q": "Why did the writing in the chap-book puzzle David?",
+      "choices": [
+        "The handwriting looked nothing at all like his father's careful hand",
+        "The book was dated many, many years before his father was even born",
+        "His uncle had said that Alexander never learned to read at all",
+        "His father, the younger brother, wrote very well for a child under five"
+      ],
+      "answer": 3,
+      "evidence": "he must have written, before he was yet five, an excellent, clear manly hand of writing"
+    },
+    {
+      "id": "kidnapped-04-05",
+      "type": "character",
+      "q": "How did Uncle Ebenezer react when David asked if he and his father had been twins?",
+      "choices": [
+        "He laughed and said they were born ten years apart",
+        "He stood up and walked straight out of the kitchen in silence",
+        "He jumped, dropped his spoon and grabbed David's jacket",
+        "He quietly said yes and told David all about it"
+      ],
+      "answer": 2,
+      "evidence": "he caught me by the breast of the jacket"
+    },
+    {
+      "id": "kidnapped-04-06",
+      "type": "inference",
+      "q": "What story came into David's mind as he wondered why his uncle feared him?",
+      "choices": [
+        "A ballad of a rightful heir kept from his own by a wicked kinsman",
+        "A story of two brothers who fought over the love of one lady",
+        "A tale of a lonely miser who hid his gold and was robbed by a stranger",
+        "A legend of a haunted house cursed by a witch in the valley"
+      ],
+      "answer": 0,
+      "evidence": "a poor lad that was a rightful heir and a wicked kinsman"
+    },
+    {
+      "id": "kidnapped-04-07",
+      "type": "vocabulary",
+      "q": "David says he and his uncle sat \"like a cat and a mouse, each stealthily observing the other.\" What does \"stealthily\" mean?",
+      "choices": [
+        "Angrily, with loud and bitter words",
+        "Sleepily, hardly able to stay awake",
+        "Secretly, trying not to be noticed",
+        "Kindly, with friendly and warm looks"
+      ],
+      "answer": 2,
+      "evidence": "each stealthily observing the other"
+    },
+    {
+      "id": "kidnapped-04-08",
+      "type": "detail",
+      "q": "How much money did Uncle Ebenezer first say he had kept for David?",
+      "choices": [
+        "Ten pounds sterling",
+        "One hundred pounds",
+        "Twenty gold guineas",
+        "Forty pounds Scots"
+      ],
+      "answer": 3,
+      "evidence": "of just exactly forty pounds!"
+    },
+    {
+      "id": "kidnapped-04-09",
+      "type": "detail",
+      "q": "What did Uncle Ebenezer ask David to do while he got the money out?",
+      "choices": [
+        "Close his eyes and count slowly to one hundred",
+        "Fetch a bucket of water from the draw-well behind the house",
+        "Go up to his bedroom and wait until he was called",
+        "Step outside the door to see what kind of night it was"
+      ],
+      "answer": 3,
+      "evidence": "if you'll step out-by to the door a minute"
+    },
+    {
+      "id": "kidnapped-04-10",
+      "type": "detail",
+      "q": "How many golden guinea pieces did Uncle Ebenezer count into David's hand?",
+      "choices": [
+        "Thirty-seven",
+        "Forty",
+        "Twenty-five",
+        "Twelve"
+      ],
+      "answer": 0,
+      "evidence": "seven and thirty golden guinea pieces"
+    },
+    {
+      "id": "kidnapped-04-11",
+      "type": "detail",
+      "q": "What did Uncle Ebenezer ask David to bring from the top of the stair-tower?",
+      "choices": [
+        "A box of old candles",
+        "A bag of golden guineas",
+        "His father's old sword",
+        "A chest with papers in it"
+      ],
+      "answer": 3,
+      "evidence": "bring me down the chest that's at the top"
+    },
+    {
+      "id": "kidnapped-04-12",
+      "type": "detail",
+      "q": "What helped David see the danger on the dark tower stairs?",
+      "choices": [
+        "A lantern left on a step",
+        "Flashes of summer lightning",
+        "The light of the full moon",
+        "A candle he had hidden"
+      ],
+      "answer": 1,
+      "evidence": "a second blink of the summer lightning came and went"
+    },
+    {
+      "id": "kidnapped-04-13",
+      "type": "sequence",
+      "q": "After the lightning showed him the danger, how did David go on up the stair?",
+      "choices": [
+        "Holding tight to the old wooden bannister rail",
+        "Backwards, with one hand against the wall",
+        "Running quickly to get to the top at once",
+        "On his hands and knees, testing every stone"
+      ],
+      "answer": 3,
+      "evidence": "got me down upon my hands and knees"
+    },
+    {
+      "id": "kidnapped-04-14",
+      "type": "detail",
+      "q": "What did David find when he reached the corner near the top of the stair?",
+      "choices": [
+        "A window looking out over the whole valley",
+        "The stair stopped, with nothing but emptiness beyond",
+        "A small room full of bats and broken furniture",
+        "A heavy locked door with the chest of papers behind it"
+      ],
+      "answer": 1,
+      "evidence": "my hand slipped upon an edge and found nothing but emptiness beyond it"
+    },
+    {
+      "id": "kidnapped-04-15",
+      "type": "character",
+      "q": "What did David decide his uncle had meant to do by sending him up the tower?",
+      "choices": [
+        "Show him the family papers kept in the tower",
+        "Send him to run great risks, perhaps to die",
+        "Test whether David was brave enough to inherit",
+        "Keep him busy while the uncle hid his money"
+      ],
+      "answer": 1,
+      "evidence": "My uncle had sent me here, certainly to run great risks, perhaps to die"
+    },
+    {
+      "id": "kidnapped-04-16",
+      "type": "detail",
+      "q": "What was Uncle Ebenezer doing when David came quietly back into the kitchen?",
+      "choices": [
+        "Shuddering and drinking aqua vitae from a bottle",
+        "Counting the rest of his gold at the table",
+        "Praying aloud on his knees beside the chests",
+        "Loading the blunderbuss by the light of the fire"
+      ],
+      "answer": 0,
+      "evidence": "drink down the raw spirits by the mouthful"
+    },
+    {
+      "id": "kidnapped-04-17",
+      "type": "detail",
+      "q": "What did David take from one of the chests to arm himself?",
+      "choices": [
+        "A heavy walking staff",
+        "A rusty Highland dirk",
+        "A pair of old pistols",
+        "A loaded blunderbuss"
+      ],
+      "answer": 1,
+      "evidence": "a rusty, ugly-looking Highland dirk without the scabbard"
+    },
+    {
+      "id": "kidnapped-04-18",
+      "type": "inference",
+      "q": "Why was Uncle Ebenezer so terrified when he saw David after he came to?",
+      "choices": [
+        "He thought David had stolen all the money in the chests",
+        "He feared David would call Jennet Clouston to curse him",
+        "He believed David had fallen to his death in the tower",
+        "He had never seen anyone so angry in the house before"
+      ],
+      "answer": 2,
+      "evidence": "Are ye alive?"
+    },
+    {
+      "id": "kidnapped-04-19",
+      "type": "sequence",
+      "q": "What did David do with his uncle at the end of the night?",
+      "choices": [
+        "Sent him out into the rain and storm",
+        "Locked him in his room and kept the key",
+        "Left him lying asleep on the floor",
+        "Tied him to a chair in the kitchen"
+      ],
+      "answer": 1,
+      "evidence": "I locked him into his room, however, and pocketed the key"
+    },
+    {
+      "id": "kidnapped-04-20",
+      "type": "main-idea",
+      "q": "What is this chapter mostly about?",
+      "choices": [
+        "David's discovery of the old family papers hidden in the tower chest at the top",
+        "David's uncle telling him the true story of the two brothers",
+        "David's growing suspicion and his uncle's attempt to kill him on the stair",
+        "David's happy afternoon reading in the library of the house of Shaws"
+      ],
+      "answer": 2,
+      "evidence": "and, last of all, why he had tried to kill me"
+    }
+  ]
+}

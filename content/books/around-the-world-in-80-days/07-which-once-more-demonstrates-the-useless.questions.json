@@ -1,0 +1,70 @@
+{
+  "book": "around-the-world-in-80-days",
+  "chapter": 7,
+  "questions": [
+    {
+      "id": "around-the-world-in-80-days-07-01",
+      "type": "inference",
+      "q": "Why did the consul think the robber might not come to the consulate at all?",
+      "choices": ["A robber does not like to leave traces of his flight behind", "The consulate was too far away from the quay", "The steamer would leave before the office opened", "Robbers are always afraid of meeting the police"],
+      "answer": 0,
+      "evidence": "A robber doesn't quite like to leave traces of his flight behind him"
+    },
+    {
+      "id": "around-the-world-in-80-days-07-02",
+      "type": "detail",
+      "q": "What did Fix hope the consul would do with the stranger's passport?",
+      "choices": ["Keep it locked in the consulate safe", "Refuse to visa it", "Send it to Scotland Yard in London", "Copy out every word of it for him"],
+      "answer": 1,
+      "evidence": "I hope you will not visa the passport"
+    },
+    {
+      "id": "around-the-world-in-80-days-07-03",
+      "type": "character",
+      "q": "Why did the consul say he could not refuse to visa the passport?",
+      "choices": ["Fogg was a very rich and important gentleman", "Fix had no proof that he was really a detective", "If the passport was genuine, he had no right to refuse", "The law said every passport must be signed at Suez"],
+      "answer": 2,
+      "evidence": "If the passport is genuine I have no right to refuse."
+    },
+    {
+      "id": "around-the-world-in-80-days-07-04",
+      "type": "character",
+      "q": "Why did Fogg want his passport visaed, even though no passport was required?",
+      "choices": ["To prove that he came by Suez", "To be allowed to land later in Bombay", "Because the steamer captain asked him to", "To keep the police from following him"],
+      "answer": 0,
+      "evidence": "I wish to prove, by your visa, that I came by Suez."
+    },
+    {
+      "id": "around-the-world-in-80-days-07-05",
+      "type": "detail",
+      "q": "What did the consul think of Fogg after meeting him?",
+      "choices": ["He seemed nervous and in a great hurry", "He looked and acted like a perfectly honest man", "He seemed rude and refused to answer any questions", "He matched the robber in every single way"],
+      "answer": 1,
+      "evidence": "he looks and acts like a perfectly honest man"
+    },
+    {
+      "id": "around-the-world-in-80-days-07-06",
+      "type": "inference",
+      "q": "Why did Fix decide to go after Passepartout instead of Fogg?",
+      "choices": ["He thought the servant was the real robber", "He thought the talkative servant would reveal more", "He wanted to hire the clever servant to work for him", "He needed the servant to carry a letter to London"],
+      "answer": 1,
+      "evidence": "he's a Frenchman, and can't help talking"
+    },
+    {
+      "id": "around-the-world-in-80-days-07-07",
+      "type": "detail",
+      "q": "What did Fogg's notebook show when he reached Suez?",
+      "choices": ["He was two days ahead of his time", "He had lost half a day in Paris", "He had neither gained nor lost any time", "He was already one full day behind"],
+      "answer": 2,
+      "evidence": "he had as yet neither gained nor lost"
+    },
+    {
+      "id": "around-the-world-in-80-days-07-08",
+      "type": "character",
+      "q": "What did Fogg do instead of looking around the town of Suez?",
+      "choices": ["He went to the bazaar to buy some new shirts", "He sat down quietly to breakfast in his cabin", "He wrote a long letter home to his friends", "He walked up on deck to watch the boats come in"],
+      "answer": 1,
+      "evidence": "He sat down quietly to breakfast in his cabin, never once thinking of inspecting the town"
+    }
+  ]
+}

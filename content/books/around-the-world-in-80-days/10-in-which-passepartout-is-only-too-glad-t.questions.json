@@ -1,0 +1,102 @@
+{
+  "book": "around-the-world-in-80-days",
+  "chapter": 10,
+  "questions": [
+    {
+      "id": "around-the-world-in-80-days-10-01",
+      "type": "detail",
+      "q": "How long did the Great Indian Peninsula Railway take to cross from Bombay to Calcutta?",
+      "choices": ["Three days", "Ten days", "Two weeks", "One day and a night"],
+      "answer": 0,
+      "evidence": "traverses the peninsula from Bombay to Calcutta in three days"
+    },
+    {
+      "id": "around-the-world-in-80-days-10-02",
+      "type": "inference",
+      "q": "Why is the railway trip across India longer than the straight distance between Bombay and Calcutta?",
+      "choices": ["The trains stop for a whole day in every large town", "The railway does not run in a direct line", "The trains must go back and forth over the same hills", "The line goes north to the mountains and back down"],
+      "answer": 1,
+      "evidence": "This railway does not run in a direct line across India."
+    },
+    {
+      "id": "around-the-world-in-80-days-10-03",
+      "type": "character",
+      "q": "What did Fogg do about the famous sights of Bombay?",
+      "choices": ["He hired a guide to show him the city hall", "He did not care in the least to see any of them", "He sent Passepartout to sketch them in a notebook for him", "He visited only the pagoda on Malabar Hill before dinner"],
+      "answer": 1,
+      "evidence": "he cared not a straw to see them"
+    },
+    {
+      "id": "around-the-world-in-80-days-10-04",
+      "type": "inference",
+      "q": "When Fogg asked whether the \"rabbit\" had mewed when it was killed, what did he suspect?",
+      "choices": ["That the meat was really from a cat, not a rabbit", "That the rabbit had been cooked far too long", "That the landlord had stolen the rabbit from a farm", "That the spiced sauce was hiding spoiled meat"],
+      "answer": 0,
+      "evidence": "And this rabbit did not mew when he was killed?"
+    },
+    {
+      "id": "around-the-world-in-80-days-10-05",
+      "type": "detail",
+      "q": "Why couldn't Fix arrest Fogg as soon as they reached Bombay?",
+      "choices": ["Fogg had already left on an earlier train for Calcutta", "The warrant from London had not yet reached Bombay", "The Bombay police said Fogg was clearly an honest man", "Fix had lost the robber's description on the steamer"],
+      "answer": 1,
+      "evidence": "It had not reached the office; indeed, there had not yet been time for it to arrive."
+    },
+    {
+      "id": "around-the-world-in-80-days-10-06",
+      "type": "detail",
+      "q": "Why did the director of the Bombay police refuse to give Fix an order of arrest?",
+      "choices": ["Only the London office could legally deliver the warrant", "He did not believe that Fix was really a detective", "He was a friend of Mr. Fogg from the Reform Club", "He needed to see the stolen banknotes first"],
+      "answer": 0,
+      "evidence": "the London office, which alone could legally deliver the warrant"
+    },
+    {
+      "id": "around-the-world-in-80-days-10-07",
+      "type": "character",
+      "q": "When Passepartout heard his master's orders at Bombay, what did he begin to wonder?",
+      "choices": ["Whether Fogg was secretly the bank robber", "Whether the bet was really in good earnest", "Whether Fix was really an agent of the steamer company", "Whether he should quit and take a ship back to France"],
+      "answer": 1,
+      "evidence": "He began to ask himself if this bet that Mr. Fogg talked about was not really in good earnest"
+    },
+    {
+      "id": "around-the-world-in-80-days-10-08",
+      "type": "detail",
+      "q": "What was Passepartout watching in the streets of Bombay before he went to the pagoda?",
+      "choices": ["A Parsee festival with processions and dancing", "A parade of soldiers marching to the fort", "A large market where elephants were sold", "Workmen building a new railway station"],
+      "answer": 0,
+      "evidence": "It happened to be the day of a Parsee festival."
+    },
+    {
+      "id": "around-the-world-in-80-days-10-09",
+      "type": "inference",
+      "q": "What rule did Passepartout break by going into the pagoda on Malabar Hill?",
+      "choices": ["He went in during the hours it was closed to everyone", "He did not leave his shoes outside the door first", "He brought his package of new shirts and shoes inside", "He touched the ornaments without asking the priests"],
+      "answer": 1,
+      "evidence": "even the faithful must not go in without first leaving their shoes outside the door"
+    },
+    {
+      "id": "around-the-world-in-80-days-10-10",
+      "type": "vocabulary",
+      "q": "After Fogg spoke coldly to him, Passepartout was \"quite crestfallen.\" What does crestfallen mean?",
+      "choices": ["Sad and ashamed", "Angry and loud", "Tired and sleepy", "Proud and pleased"],
+      "answer": 0,
+      "evidence": "Poor Passepartout, quite crestfallen, followed his master without a word."
+    },
+    {
+      "id": "around-the-world-in-80-days-10-11",
+      "type": "sequence",
+      "q": "How did Passepartout arrive at the station at five minutes before eight?",
+      "choices": ["Calmly, carrying all the shirts and shoes he had bought", "Hatless and shoeless, having lost his package", "In a cab, with three angry priests chasing behind him", "Holding the hand of Fix, who had led him back"],
+      "answer": 1,
+      "evidence": "Passepartout, hatless, shoeless, and having in the squabble lost his package"
+    },
+    {
+      "id": "around-the-world-in-80-days-10-12",
+      "type": "character",
+      "q": "Why did Fix decide at the last moment to stay in Bombay instead of following Fogg onto the train?",
+      "choices": ["He had been ordered home by the police in London", "An offence had been committed on Indian soil, so he could act", "He thought the train was going in the wrong direction", "He wanted to wait for the next steamer to Hong Kong"],
+      "answer": 1,
+      "evidence": "An offence has been committed on Indian soil. I've got my man."
+    }
+  ]
+}

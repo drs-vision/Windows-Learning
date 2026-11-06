@@ -1,0 +1,175 @@
+{
+  "book": "doctor-dolittle",
+  "chapter": 18,
+  "questions": [
+    {
+      "id": "doctor-dolittle-18-01",
+      "type": "detail",
+      "q": "Why did Dab-Dab tell the Doctor to ask the eagles for help?",
+      "choices": [
+        "Eagles fly faster than any other bird in the whole sky",
+        "Eagles know every sailor on the seven seas",
+        "No living creature can see better than an eagle",
+        "Eagles are the only birds that fly at night"
+      ],
+      "answer": 2,
+      "evidence": "No living creature can see better than an eagle"
+    },
+    {
+      "id": "doctor-dolittle-18-02",
+      "type": "detail",
+      "q": "How many different kinds of eagles came to the ship?",
+      "choices": [
+        "Two",
+        "Six",
+        "Ten",
+        "Nine"
+      ],
+      "answer": 1,
+      "evidence": "six different kinds of eagles"
+    },
+    {
+      "id": "doctor-dolittle-18-03",
+      "type": "character",
+      "q": "Why did Gub-Gub hide behind a barrel when the eagles came?",
+      "choices": [
+        "He was scared of their terrible eyes",
+        "He wanted to play a hiding game",
+        "He was cold and the barrel was warm",
+        "He was eating lunch and did not want to share"
+      ],
+      "answer": 0,
+      "evidence": "Gub-Gub was scared of them and got behind a barrel"
+    },
+    {
+      "id": "doctor-dolittle-18-04",
+      "type": "detail",
+      "q": "What did the eagles find in the main street of Gibraltar?",
+      "choices": [
+        "A red handkerchief lying in front of a baker's door",
+        "An anchor painted on the side of a fishing-boat",
+        "A gold ring dropped in a horses' drinking-trough",
+        "Three red hairs from a fur-coat on a wheel-barrow"
+      ],
+      "answer": 3,
+      "evidence": "three red hairs lying on a wheel-barrow before a baker's door"
+    },
+    {
+      "id": "doctor-dolittle-18-05",
+      "type": "vocabulary",
+      "q": "Jip says the eagles are \"just conceited.\" What does \"conceited\" mean?",
+      "choices": [
+        "Very tired after a long trip",
+        "Afraid of being laughed at",
+        "Thinking too highly of yourself",
+        "Kind and helpful to others"
+      ],
+      "answer": 2,
+      "evidence": "They're just conceited"
+    },
+    {
+      "id": "doctor-dolittle-18-06",
+      "type": "character",
+      "q": "What was Jip's complaint about the porpoises?",
+      "choices": [
+        "They swam off toward Brazil without even saying good-by",
+        "They only told where the man ISN'T, not where he IS",
+        "They told the boy that his uncle had been drowned",
+        "They were too busy gossiping to look for the man"
+      ],
+      "answer": 1,
+      "evidence": "We don't want to know where he ISN'T--we want to know where he IS"
+    },
+    {
+      "id": "doctor-dolittle-18-07",
+      "type": "sequence",
+      "q": "What made Jip decide to start searching for the uncle himself?",
+      "choices": [
+        "Gub-Gub said Jip couldn't do as well as the eagles",
+        "The Doctor ordered him to go and find the man",
+        "The boy begged Jip to help him find his uncle",
+        "Dab-Dab said that dogs were no good at finding anybody at all"
+      ],
+      "answer": 0,
+      "evidence": "you couldn't do as well"
+    },
+    {
+      "id": "doctor-dolittle-18-08",
+      "type": "detail",
+      "q": "Why did Jip say the gold ring was no good?",
+      "choices": [
+        "It belonged to the boy, not the uncle",
+        "It had been washed in the salty sea",
+        "It was too small for him to sniff",
+        "He smelled it and it gave him no help"
+      ],
+      "answer": 3,
+      "evidence": "That's no good"
+    },
+    {
+      "id": "doctor-dolittle-18-09",
+      "type": "detail",
+      "q": "What smell did Jip find on the uncle's red handkerchief?",
+      "choices": [
+        "Tar and fish-oil",
+        "Burnt pipe-tobacco",
+        "Black Rappee snuff",
+        "Wet sea-weed and salt"
+      ],
+      "answer": 2,
+      "evidence": "Black Rappee snuff"
+    },
+    {
+      "id": "doctor-dolittle-18-10",
+      "type": "inference",
+      "q": "Why did Jip say he didn't need any light to look for the uncle?",
+      "choices": [
+        "He could see better in the dark than an owl",
+        "He would follow the man by smell, not by sight",
+        "The moon would be bright enough for him that night",
+        "The swallows would show him the way in the dark"
+      ],
+      "answer": 1,
+      "evidence": "I don't need any light to look for a man who smells of Black Rappee snuff"
+    },
+    {
+      "id": "doctor-dolittle-18-11",
+      "type": "detail",
+      "q": "According to Jip, what kind of wind is best for long-distance smelling?",
+      "choices": [
+        "A nice, steady, damp breeze",
+        "A fierce, cold wind from the North",
+        "A hot, dry wind from the desert",
+        "A gusty wind that changes often"
+      ],
+      "answer": 0,
+      "evidence": "A nice, steady, damp breeze is the best of all"
+    },
+    {
+      "id": "doctor-dolittle-18-12",
+      "type": "sequence",
+      "q": "After sniffing the North wind, what did Jip say they must do?",
+      "choices": [
+        "Sail North toward Devon and Wales at once",
+        "Ask the eagles to go and search once more",
+        "Go back to the island of the canaries",
+        "Wait till the wind changes to the South"
+      ],
+      "answer": 3,
+      "evidence": "We must wait till the wind changes to the South"
+    },
+    {
+      "id": "doctor-dolittle-18-13",
+      "type": "main-idea",
+      "q": "What is this chapter mostly about?",
+      "choices": [
+        "The eagles find the uncle on an island far away",
+        "Gub-Gub learns that he can smell things just as well as Jip",
+        "Jip shows how his sharp nose may find the lost uncle",
+        "The Doctor writes a new book about the eagles"
+      ],
+      "answer": 2,
+      "evidence": "The man's as good as found"
+    }
+  ]
+}

@@ -62,7 +62,10 @@ def slug(s: str) -> str:
 def title_case(s: str) -> str:
     small = {'a', 'an', 'and', 'at', 'by', 'for', 'in', 'of', 'on', 'or', 'the', 'to', 'with', 'from'}
     words = s.lower().split()
-    return ' '.join(w if (i and w in small) else w[:1].upper() + w[1:] for i, w in enumerate(words))
+    def cap(w):
+        k = len(w) - len(w.lstrip('"\'('))
+        return w[:k] + w[k:k + 1].upper() + w[k + 1:]
+    return ' '.join(w if (i and w in small) else cap(w) for i, w in enumerate(words))
 
 # ---- recipes: return [(title, text)] -----------------------------------------------------------------------------
 
@@ -113,26 +116,69 @@ def aesop(t):
         chapters.append((title, text))
     return chapters
 
-def mcguffey_first(t):
-    t = t[t.index('\nLESSON I.'):]
-    end = t.find('\nPHONIC CHART')
-    if end > 0:
-        t = t[:end]
-    lessons = split_on(t, r"^LESSON ([IVXLC]+)\.(?: .*)?$", lambda m: m.group(1))
-    groups = [lessons[i:i + 6] for i in range(0, len(lessons), 6)]
-    chapters = []
-    for g in groups:
-        def roman(r):
-            vals = {'I': 1, 'V': 5, 'X': 10, 'L': 50, 'C': 100}; n = 0
-            for a, b in zip(r, r[1:] + ' '):
-                n += -vals[a] if b != ' ' and vals[a] < vals.get(b, 0) else vals[a]
-            return n
-        first, last = roman(g[0][0]), roman(g[-1][0])
-        parts = []
-        for r, b in g:
-            parts.append(f'LESSON {roman(r)}\n\n' + b.strip())
-        chapters.append((f'Lessons {first}-{last}', '\n\n'.join(parts)))
-    return chapters
+
+def split_long(chapters, most=5000):
+    """Break a very long chapter or story into parts at a paragraph, so one sitting stays about a Treasure Island chapter."""
+    out = []
+    for title, text in chapters:
+        paras = [p for p in re.split(r"\n\s*\n", text) if p.strip()]
+        words = sum(len(p.split()) for p in paras)
+        pieces = -(-words // most)
+        if pieces <= 1:
+            out.append((title, text)); continue
+        target, cur, n, part = words / pieces, [], 0, 1
+        for p in paras:
+            cur.append(p); n += len(p.split())
+            if n >= target and part < pieces:
+                out.append((f'{title} (part {part})', '\n\n'.join(cur))); cur, n, part = [], 0, part + 1
+        out.append((f'{title} (part {part})', '\n\n'.join(cur)))
+    return out
+
+POTTER_START = {
+    'benjamin-bunny': 'One morning a little rabbit', 'squirrel-nutkin': 'This is a Tale about a tail', 'jemima-puddle-duck': 'What a funny sight',
+    'mrs-tiggy-winkle': 'Once upon a time there was a little girl', 'jeremy-fisher': 'Once upon a time there was a frog',
+    'tom-kitten': 'Once upon a time there were three', 'two-bad-mice': 'Once upon a time there was a very beautiful',
+    'flopsy-bunnies': 'It is said', 'mrs-tittlemouse': 'Once upon a time there was a wood', 'timmy-tiptoes': 'Once upon a time there was a little fat',
+    'johnny-town-mouse': 'Johnny Town-mouse was born', 'ginger-and-pickles': 'Once upon a time there was a village', 'tailor-of-gloucester': 'In the time of swords',
+}
+
+def potter(t, book_id):
+    """A Beatrix Potter tale: from its first line (POTTER_START) to THE END (or the back-cover title)."""
+    m = re.search(re.escape(POTTER_START[book_id]), t, re.I)
+    t = t[m.start():]
+    ends = [i for i in (t.find('THE END'), t.find('\nTHE TALE OF'), t.find('\nTHE TAILOR OF')) if i > 0]
+    t = t[:min(ends)] if ends else t
+    # Some printings start each page in capitals ("ONCE upon a time"): write those words normally.
+    t = re.sub(r"(^|\n)([A-Z])([A-Z]+)(?=[ ,'][a-z])", lambda m: m.group(1) + m.group(2) + m.group(3).lower(), t)
+    return [(None, t)]
+
+def call_of_the_wild(t):
+    t = t[t.index('\nChapter I. Into the Primitive'):]
+    return split_on(t, r"^Chapter [IVX]+\. (.+)$", lambda m: m.group(1).strip())
+
+def kidnapped(t):
+    t = t[t.index('\nCHAPTER I\n'):]
+    return split_on(t, r"^CHAPTER [IVXL]+\n\n(.+)$", lambda m: title_case(m.group(1).strip()))
+
+def around_the_world(t):
+    t = t[t.index('\nChapter I\n'):]
+    return split_on(t, r"^Chapter [IVXL]+\n\n+((?:.+\n)+)", lambda m: title_case(' '.join(m.group(1).split()).rstrip('.')))
+
+def doctor_dolittle(t):
+    t = t[t.index('\nTHE FIRST CHAPTER'):]
+    return split_on(t, r"^THE [A-Z-]+ CHAPTER\n\n(.+)$", lambda m: title_case(m.group(1).strip()))
+
+def jungle_book(t):
+    stories = ["Mowgli's Brothers", "Kaa's Hunting", '"Tiger! Tiger!"', 'The White Seal', '"Rikki-Tikki-Tavi"', 'Toomai of the Elephants', "Her Majesty's Servants"]
+    t = t[t.index("\nMowgli's Brothers\n"):]
+    pat = '^(' + '|'.join(re.escape(s) for s in stories) + ')$'
+    chapters = split_on(t, pat, lambda m: m.group(1).strip('"'))
+    # The songs and verses are indented; the stories are prose. Keep the prose (quizzes and typing are about the story).
+    def prose(text):
+        keep = [b for b in re.split(r"\n\s*\n", text) if not all(l.startswith('  ') or not l.strip() for l in b.split('\n'))]
+        # ...and the song titles left behind (a short line with no full stop, e.g. "Parade Song of the Camp Animals").
+        return '\n\n'.join(b for b in keep if not (len(b.split()) <= 8 and not re.search(r"[.!?\"']\s*$", b.strip())))
+    return split_long([(n, prose(b)) for n, b in chapters])
 
 RECIPES = {
     'wind-in-the-willows': (wind_in_the_willows, False),
@@ -140,13 +186,21 @@ RECIPES = {
     'treasure-island': (treasure_island, False),
     'peter-rabbit': (peter_rabbit, False),
     'aesop-for-children': (aesop, False),
-    'mcguffey-first-reader': (mcguffey_first, True),
+    'call-of-the-wild': (call_of_the_wild, False),
+    'kidnapped': (kidnapped, False),
+    'around-the-world-in-80-days': (around_the_world, False),
+    'doctor-dolittle': (doctor_dolittle, False),
+    'jungle-book': (jungle_book, False),
 }
+POTTER = ['benjamin-bunny', 'squirrel-nutkin', 'jemima-puddle-duck', 'mrs-tiggy-winkle', 'jeremy-fisher', 'tom-kitten', 'two-bad-mice',
+          'flopsy-bunnies', 'mrs-tittlemouse', 'timmy-tiptoes', 'johnny-town-mouse', 'ginger-and-pickles', 'tailor-of-gloucester']
+for _b in POTTER:
+    RECIPES[_b] = (potter, False)
 
 def main(book_id, src):
     recipe, keep_lines = RECIPES[book_id]
     text = keyboard(body(Path(src).read_text(encoding='utf-8', errors='replace')))
-    chapters = recipe(text)
+    chapters = recipe(text, book_id) if recipe is potter else recipe(text)
     d = ROOT / book_id
     d.mkdir(parents=True, exist_ok=True)
     meta_path = d / 'book.json'
@@ -156,6 +210,7 @@ def main(book_id, src):
         f.unlink()
     out = []
     for i, (title, raw) in enumerate(chapters, 1):
+        title = title or meta.get('title', book_id)
         txt = paragraphs(raw, keep_lines)
         base = f'{i:02d}-{slug(title)}'
         (d / f'{base}.txt').write_text(txt)

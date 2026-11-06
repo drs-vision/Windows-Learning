@@ -1,0 +1,136 @@
+{
+  "book": "jemima-puddle-duck",
+  "chapter": 1,
+  "questions": [
+    {
+      "id": "jemima-puddle-duck-01-01",
+      "type": "character",
+      "q": "Why was Jemima annoyed at the start of the story?",
+      "choices": [
+        "She was not allowed to hatch her own eggs",
+        "Her sister-in-law took her best shawl",
+        "The farmer's wife would not let her fly",
+        "The collie-dog Kep ate up all her corn"
+      ],
+      "answer": 0,
+      "evidence": "who was annoyed because the farmer's wife would not let her hatch her own eggs"
+    },
+    {
+      "id": "jemima-puddle-duck-01-02",
+      "type": "detail",
+      "q": "What was Jemima wearing when she set off?",
+      "choices": [
+        "A coat and a pair of goloshes",
+        "A shawl and a poke bonnet",
+        "A cap and a little apron",
+        "A red handkerchief and clogs"
+      ],
+      "answer": 1,
+      "evidence": "She was wearing a shawl and a poke bonnet."
+    },
+    {
+      "id": "jemima-puddle-duck-01-03",
+      "type": "detail",
+      "q": "What was the gentleman doing when Jemima first saw him?",
+      "choices": [
+        "Counting some eggs",
+        "Reading a newspaper",
+        "Picking some fox-gloves",
+        "Chopping wood for a fire"
+      ],
+      "answer": 1,
+      "evidence": "an elegantly dressed gentleman reading a newspaper"
+    },
+    {
+      "id": "jemima-puddle-duck-01-04",
+      "type": "inference",
+      "q": "What kind of animal was the gentleman with sandy whiskers?",
+      "choices": [
+        "A big rat",
+        "A sly fox",
+        "A hound pup",
+        "A brown hare"
+      ],
+      "answer": 1,
+      "evidence": "The foxy gentleman admired them immensely."
+    },
+    {
+      "id": "jemima-puddle-duck-01-05",
+      "type": "detail",
+      "q": "What was the gentleman's shed full of?",
+      "choices": [
+        "Bags of oats",
+        "Lots of feathers",
+        "Old soap-boxes",
+        "Onions and herbs"
+      ],
+      "answer": 1,
+      "evidence": "The shed was almost quite full of feathers"
+    },
+    {
+      "id": "jemima-puddle-duck-01-06",
+      "type": "detail",
+      "q": "How many eggs did Jemima lay in the nest in the shed?",
+      "choices": [
+        "Four eggs",
+        "Six eggs",
+        "Nine eggs",
+        "Twelve eggs"
+      ],
+      "answer": 2,
+      "evidence": "she laid nine eggs in the nest"
+    },
+    {
+      "id": "jemima-puddle-duck-01-07",
+      "type": "inference",
+      "q": "Why did the gentleman ask Jemima to bring sage and onions?",
+      "choices": [
+        "He wanted to plant a little herb garden",
+        "They were for stuffing a roast duck to eat",
+        "He needed them to keep the eggs warm",
+        "He liked to give them to his friends"
+      ],
+      "answer": 1,
+      "evidence": "all the different sorts of herbs that are used for stuffing roast duck"
+    },
+    {
+      "id": "jemima-puddle-duck-01-08",
+      "type": "sequence",
+      "q": "After Jemima told Kep the whole story, what did Kep do?",
+      "choices": [
+        "Went to find two fox-hound puppies",
+        "Told the farmer's wife about the eggs",
+        "Followed Jemima up the cart-road at once",
+        "Went back to sleep by the kitchen door"
+      ],
+      "answer": 0,
+      "evidence": "He went to look for two fox-hound puppies"
+    },
+    {
+      "id": "jemima-puddle-duck-01-09",
+      "type": "detail",
+      "q": "What happened to Jemima's eggs in the shed?",
+      "choices": [
+        "They all hatched into ducklings",
+        "The gentleman took them to his winter house",
+        "The puppies gobbled them up",
+        "Kep carried them home to the farm"
+      ],
+      "answer": 2,
+      "evidence": "the puppies rushed in and gobbled up all the eggs"
+    },
+    {
+      "id": "jemima-puddle-duck-01-10",
+      "type": "main-idea",
+      "q": "What is the lesson of this story?",
+      "choices": [
+        "Ducks should always learn to fly much better",
+        "Do not trust a stranger just because he is polite",
+        "Always bring a big bag of corn on a long trip",
+        "Farm dogs are never good friends for a duck"
+      ],
+      "answer": 1,
+      "evidence": "Jemima Puddle-duck was a simpleton: not even the mention of sage and onions made her suspicious."
+    }
+  ]
+}

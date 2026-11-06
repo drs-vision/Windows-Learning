@@ -1,0 +1,150 @@
+{
+  "book": "around-the-world-in-80-days",
+  "chapter": 28,
+  "questions": [
+    {
+      "id": "around-the-world-in-80-days-28-01",
+      "type": "detail",
+      "q": "How did the engineers handle the hard mountain country between the Wahsatch and the Rocky Mountains?",
+      "choices": ["They blasted many long tunnels straight through", "They wound the track around the difficulties", "They built tall bridges over every valley", "They gave up and sent travellers by stagecoach"],
+      "answer": 1,
+      "evidence": "avoided its difficulties by winding around"
+    },
+    {
+      "id": "around-the-world-in-80-days-28-02",
+      "type": "character",
+      "q": "Why did Passepartout wish his master had not made the journey in winter?",
+      "choices": ["He hated wearing heavy coats", "Snow on the wheels could ruin the tour", "Aouda had caught a bad cold in the mountains", "The trains did not run in winter"],
+      "answer": 1,
+      "evidence": "the accumulation of snow, by blocking the wheels of the cars, would certainly have been fatal"
+    },
+    {
+      "id": "around-the-world-in-80-days-28-03",
+      "type": "detail",
+      "q": "Whom did Aouda see walking on the platform at Green River?",
+      "choices": ["Elder William Hitch, the missionary", "Colonel Stamp Proctor, who had insulted Fogg", "A friend of Fogg's from the Reform Club", "A police officer from London who was looking for Fix"],
+      "answer": 1,
+      "evidence": "Aouda recognised Colonel Stamp Proctor"
+    },
+    {
+      "id": "around-the-world-in-80-days-28-04",
+      "type": "inference",
+      "q": "Aouda called her feeling for Mr. Fogg gratitude. What does the narrator suggest it really was?",
+      "choices": ["Only a fear of being left alone in America", "Something more than gratitude", "Respect for his skill at cards", "A wish to return home to India"],
+      "answer": 1,
+      "evidence": "which she called gratitude, but which, though she was unconscious of it, was really more than that"
+    },
+    {
+      "id": "around-the-world-in-80-days-28-05",
+      "type": "character",
+      "q": "Why did Aouda want to keep Mr. Fogg from seeing Colonel Proctor?",
+      "choices": ["She was afraid a meeting would lead to a dangerous fight", "She thought the colonel would tell Fogg the truth about Fix", "She wanted to speak to the colonel by herself first", "She knew the colonel owed Fogg a great deal of money"],
+      "answer": 0,
+      "evidence": "we could not prevent a collision which might have terrible results"
+    },
+    {
+      "id": "around-the-world-in-80-days-28-06",
+      "type": "character",
+      "q": "When Passepartout asked Fix if he would really fight for Mr. Fogg, what did Fix answer?",
+      "choices": ["He would only fight if the colonel struck first", "He would do anything to get him back living to Europe", "He would rather let Passepartout do all the fighting", "He would fight only if Mr. Fogg asked him to"],
+      "answer": 1,
+      "evidence": "\"I would do anything,\" replied Fix"
+    },
+    {
+      "id": "around-the-world-in-80-days-28-07",
+      "type": "inference",
+      "q": "Why did Fix suggest a game of whist to Mr. Fogg?",
+      "choices": ["To keep Fogg in his seat so he would not meet the colonel", "To win back the money he had spent on the long journey from Hong Kong", "To find out where Fogg had hidden the banknotes", "To pass the time until the train reached Omaha"],
+      "answer": 0,
+      "evidence": "we've got him. He won't budge."
+    },
+    {
+      "id": "around-the-world-in-80-days-28-08",
+      "type": "detail",
+      "q": "How did Aouda say she had learned to play whist?",
+      "choices": ["Her father taught her in Bombay", "It is part of an English education", "She learned it on the steamer", "Passepartout showed her the rules"],
+      "answer": 1,
+      "evidence": "It is part of an English education."
+    },
+    {
+      "id": "around-the-world-in-80-days-28-09",
+      "type": "vocabulary",
+      "q": "Fix \"was simply an adept\" at whist. What does adept mean here?",
+      "choices": ["A beginner", "An expert", "A cheater", "A watcher"],
+      "answer": 1,
+      "evidence": "he was simply an adept"
+    },
+    {
+      "id": "around-the-world-in-80-days-28-10",
+      "type": "detail",
+      "q": "Why did the train stop after the breakfast served in the car?",
+      "choices": ["It had run out of water for the engine", "A red signal blocked the way", "A herd of buffalo was on the track", "Snow had buried the rails ahead"],
+      "answer": 1,
+      "evidence": "The train had stopped before a red signal which blocked the way."
+    },
+    {
+      "id": "around-the-world-in-80-days-28-11",
+      "type": "detail",
+      "q": "What did the signal-man say was wrong at Medicine Bow?",
+      "choices": ["The station had burned down in the night", "The bridge was shaky and could not bear the train", "The track had been washed away by a flood", "Robbers were waiting beyond the river to stop the next train"],
+      "answer": 1,
+      "evidence": "The bridge at Medicine Bow is shaky"
+    },
+    {
+      "id": "around-the-world-in-80-days-28-12",
+      "type": "detail",
+      "q": "Why could the passengers not simply cross the river in a boat?",
+      "choices": ["There were no boats anywhere along the bank", "The creek was swelled by rain into a rapid", "The river was frozen too thin to hold a boat", "The colonel refused to let anyone use his boat"],
+      "answer": 1,
+      "evidence": "The creek is swelled by the rains."
+    },
+    {
+      "id": "around-the-world-in-80-days-28-13",
+      "type": "detail",
+      "q": "What plan did the engineer, Forster, suggest?",
+      "choices": ["Wait six hours for a train from Omaha", "Cross the bridge at the very highest speed", "Walk ten miles north to find a shallow ford", "Repair the broken wires of the bridge"],
+      "answer": 1,
+      "evidence": "by putting on the very highest speed we might have a chance of getting over"
+    },
+    {
+      "id": "around-the-world-in-80-days-28-14",
+      "type": "character",
+      "q": "How did Colonel Proctor feel about the engineer's plan?",
+      "choices": ["He was afraid and wanted to get off the train", "He was delighted and thought it would work", "He said the plan was foolish and dangerous", "He did not care and went back to sleep"],
+      "answer": 1,
+      "evidence": "Colonel Proctor was especially delighted"
+    },
+    {
+      "id": "around-the-world-in-80-days-28-15",
+      "type": "detail",
+      "q": "What \"simple idea\" did Passepartout try to tell the other passengers?",
+      "choices": ["Telegraph Omaha and ask for a stronger engine", "Cross the bridge on foot and let the train come after", "Take the luggage off so the train would be lighter", "Wait until morning, when the river would be lower"],
+      "answer": 1,
+      "evidence": "it would be more natural for us to cross the bridge on foot, and let the train come after"
+    },
+    {
+      "id": "around-the-world-in-80-days-28-16",
+      "type": "character",
+      "q": "Why did Passepartout finally get back on the train without arguing more?",
+      "choices": ["Mr. Fogg ordered him to take his seat", "He wanted to show a Frenchman could be as American as they", "Fix whispered to him that the bridge had been mended that morning", "He fell asleep and missed the rest of the talk"],
+      "answer": 1,
+      "evidence": "a Frenchman can be as American as they"
+    },
+    {
+      "id": "around-the-world-in-80-days-28-17",
+      "type": "sequence",
+      "q": "What did the engineer do just before rushing at the bridge?",
+      "choices": ["Uncoupled the last two cars of the train", "Backed the train nearly a mile", "Let all the passengers off to walk", "Added more coal and waited an hour"],
+      "answer": 1,
+      "evidence": "backed the train for nearly a mile"
+    },
+    {
+      "id": "around-the-world-in-80-days-28-18",
+      "type": "main-idea",
+      "q": "What is the main event at the end of this chapter?",
+      "choices": ["The train races over the weak bridge, which falls just after", "The train crashes into the river and everyone must swim to the far bank", "Fogg discovers Proctor and challenges him at the bridge", "The passengers walk fifteen miles through the snow"],
+      "answer": 0,
+      "evidence": "the bridge, completely ruined, fell with a crash into the rapids of Medicine Bow"
+    }
+  ]
+}

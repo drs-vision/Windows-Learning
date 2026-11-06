@@ -1,0 +1,149 @@
+{
+  "book": "doctor-dolittle",
+  "chapter": 8,
+  "questions": [
+    {
+      "id": "doctor-dolittle-08-01",
+      "type": "sequence",
+      "q": "What was the first thing the Doctor did when he found so many sick monkeys?",
+      "choices": [
+        "He sent messages to the lions and leopards asking them for help",
+        "He separated the sick monkeys from the well ones",
+        "He built a big house full of beds for all the monkeys to sleep in",
+        "He went to bed and slept for three whole days without waking"
+      ],
+      "answer": 1,
+      "evidence": "The first thing he did was to separate the sick ones from the well ones."
+    },
+    {
+      "id": "doctor-dolittle-08-02",
+      "type": "detail",
+      "q": "What did the Doctor do for the monkeys who were still well?",
+      "choices": [
+        "Gave them bitter medicine to drink every morning",
+        "Vaccinated them",
+        "Sent them far away into the hills",
+        "Gave them all a bath and a brushing"
+      ],
+      "answer": 1,
+      "evidence": "he made all the monkeys who were still well come and be vaccinated"
+    },
+    {
+      "id": "doctor-dolittle-08-03",
+      "type": "inference",
+      "q": "Why did the Doctor need the other animals to come and help?",
+      "choices": [
+        "There were so many sick monkeys that there were not enough well ones to nurse them",
+        "The lions and leopards were the only animals who knew how to make medicine",
+        "The monkeys were afraid of the Doctor and would not let him come near them",
+        "The Doctor had hurt his leg falling in the mud and could not walk around"
+      ],
+      "answer": 0,
+      "evidence": "there were not enough well ones to do the nursing"
+    },
+    {
+      "id": "doctor-dolittle-08-04",
+      "type": "character",
+      "q": "How did the Leader of the Lions act when the Doctor first asked for help?",
+      "choices": [
+        "He was shy and timid and said he had never been a nurse before",
+        "He was proud and scornful and refused to wait on the monkeys",
+        "He was kind and said he would bring all his friends to help at once",
+        "He was frightened and ran off because he thought the Doctor was angry"
+      ],
+      "answer": 1,
+      "evidence": "Do you dare to ask me--ME, THE KING OF BEASTS, to wait on a lot of dirty monkeys?"
+    },
+    {
+      "id": "doctor-dolittle-08-05",
+      "type": "detail",
+      "q": "What did the Doctor warn the lion might happen if the lions did not help now?",
+      "choices": [
+        "The monkeys would never let lions hunt in the jungle again",
+        "The Doctor would tell all the animals in Africa how rude he was",
+        "The lions might be left all alone when they were in trouble",
+        "The King of the Jolliginki would send soldiers to catch them"
+      ],
+      "answer": 2,
+      "evidence": "the lions may find themselves left all alone when THEY are in trouble"
+    },
+    {
+      "id": "doctor-dolittle-08-06",
+      "type": "detail",
+      "q": "What did the antelopes do when they were asked to help?",
+      "choices": [
+        "Ran off into the hills as fast as they could go",
+        "Pawed the ground, smiled foolishly and said they had never been nurses",
+        "Roared at the Doctor and said that the monkeys were much too dirty to touch",
+        "Said they would come later, after they had eaten their dinner"
+      ],
+      "answer": 1,
+      "evidence": "said they had never been nurses before"
+    },
+    {
+      "id": "doctor-dolittle-08-07",
+      "type": "sequence",
+      "q": "What was waiting for the Leader of the Lions when he got back to his den?",
+      "choices": [
+        "The leopards, who wanted to know what the Doctor had said",
+        "His wife, upset because one of the cubs would not eat",
+        "A message from the Doctor saying he was sorry",
+        "Two monkeys, sent to ask him again to help with the nursing"
+      ],
+      "answer": 1,
+      "evidence": "One of the cubs won't eat"
+    },
+    {
+      "id": "doctor-dolittle-08-08",
+      "type": "character",
+      "q": "Why was the Queen Lioness so angry with her husband?",
+      "choices": [
+        "He had forgotten to bring any food home for the cubs that day",
+        "He had been rude to the one good doctor just when their cub was sick",
+        "He had promised to help the Doctor without asking her first",
+        "He had told the leopards and antelopes not to help the monkeys"
+      ],
+      "answer": 1,
+      "evidence": "Nobody but a fool is ever rude to a GOOD doctor."
+    },
+    {
+      "id": "doctor-dolittle-08-09",
+      "type": "inference",
+      "q": "When the lion came back, he said, \"I happened to be passing this way.\" What does this show?",
+      "choices": [
+        "He really had been out hunting and only stopped by by chance",
+        "He was too proud to say that his wife had sent him back to say sorry",
+        "He wanted to check whether the monkeys were truly as dirty as he thought",
+        "He had come to tell the Doctor to leave Africa right away"
+      ],
+      "answer": 1,
+      "evidence": "I happened to be passing this way and thought I'd look in."
+    },
+    {
+      "id": "doctor-dolittle-08-10",
+      "type": "detail",
+      "q": "What did the Doctor do once the last monkey was well?",
+      "choices": [
+        "He held a great feast for all the animals who had helped him",
+        "He went straight to the lion's den to see the sick cub",
+        "He went to bed and slept for three days without turning over",
+        "He began packing his trunk to sail home to Puddleby that night"
+      ],
+      "answer": 2,
+      "evidence": "slept for three days without even turning over"
+    },
+    {
+      "id": "doctor-dolittle-08-11",
+      "type": "main-idea",
+      "q": "What is this chapter mostly about?",
+      "choices": [
+        "How the Queen Lioness scolded her husband and then went to tell the lioness next door",
+        "How the Doctor cured the monkeys, with help from a proud lion who changed his mind",
+        "How the antelopes and the leopards became good friends with the monkeys",
+        "How the Doctor built two houses of grass in the jungle"
+      ],
+      "answer": 1,
+      "evidence": "And now very soon the monkeys began to get better."
+    }
+  ]
+}

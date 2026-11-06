@@ -1,0 +1,253 @@
+{
+  "book": "kidnapped",
+  "chapter": 5,
+  "questions": [
+    {
+      "id": "kidnapped-05-01",
+      "type": "detail",
+      "q": "What did David do early in the morning before the sun was up?",
+      "choices": [
+        "Searched the chests for his father's letters",
+        "Walked to the village to buy some bread",
+        "Bathed in a deep pool in the burn",
+        "Climbed the stair-tower again to look around"
+      ],
+      "answer": 2,
+      "evidence": "had a plunge in a deep whirling pool"
+    },
+    {
+      "id": "kidnapped-05-02",
+      "type": "character",
+      "q": "How did David feel as he sat by the fire thinking about his uncle that morning?",
+      "choices": [
+        "Terrified and ready to run straight back home",
+        "Full of conceit, sure he could get the upper hand",
+        "Sorry for his old uncle and wishing to forgive him",
+        "Bored and hoping something exciting would happen"
+      ],
+      "answer": 1,
+      "evidence": "all swollen with conceit"
+    },
+    {
+      "id": "kidnapped-05-03",
+      "type": "inference",
+      "q": "David says the fire showed him \"never a ship, never a seaman with a hairy cap.\" What does this hint at?",
+      "choices": [
+        "David is dreaming about the ships he saw near Edinburgh",
+        "David has always wanted to become a sailor and see the whole world",
+        "Troubles with ships and seamen are coming that he did not foresee",
+        "The warlock of Essendean has put a spell on the kitchen fire"
+      ],
+      "answer": 2,
+      "evidence": "the least sign of all those tribulations that were ripe to fall on me"
+    },
+    {
+      "id": "kidnapped-05-04",
+      "type": "sequence",
+      "q": "What interrupted David just as his uncle was trying to think up a lie at breakfast?",
+      "choices": [
+        "A clap of thunder",
+        "A scream from upstairs",
+        "A knock at the door",
+        "A horse in the yard"
+      ],
+      "answer": 2,
+      "evidence": "we were interrupted by a knocking at the door"
+    },
+    {
+      "id": "kidnapped-05-05",
+      "type": "detail",
+      "q": "What did the boy in sea-clothes do as soon as he saw David?",
+      "choices": [
+        "Handed him a letter and ran off at once",
+        "Asked him for a coin to buy food",
+        "Danced some steps of the sea-hornpipe",
+        "Saluted him like a soldier on parade"
+      ],
+      "answer": 2,
+      "evidence": "he began to dance some steps of the sea-hornpipe"
+    },
+    {
+      "id": "kidnapped-05-06",
+      "type": "character",
+      "q": "What did David notice in the cabin-boy's face despite his cheerful dancing?",
+      "choices": [
+        "A proud look of a ship's captain",
+        "A cruel smile like a wicked man's",
+        "A bored look as if half asleep",
+        "A look between tears and laughter"
+      ],
+      "answer": 3,
+      "evidence": "a look between tears and laughter"
+    },
+    {
+      "id": "kidnapped-05-07",
+      "type": "detail",
+      "q": "Who wrote the letter that the cabin-boy brought?",
+      "choices": [
+        "Mr. Rankeillor, the lawyer and factor",
+        "Mr. Campbell, the minister of Essendean",
+        "Mr. Shuan, the mate of the trading brig",
+        "Elias Hoseason, captain of the Covenant"
+      ],
+      "answer": 3,
+      "evidence": "ELIAS HOSEASON"
+    },
+    {
+      "id": "kidnapped-05-08",
+      "type": "detail",
+      "q": "Where was Captain Hoseason staying when he wrote the letter?",
+      "choices": [
+        "With Mr. Rankeillor in his house in town",
+        "In a lodging house near Edinburgh castle",
+        "Aboard a ship docked at the port of Leith",
+        "At the Hawes Inn at the Queen's Ferry"
+      ],
+      "answer": 3,
+      "evidence": "The Hawes Inn, at the Queen's Ferry"
+    },
+    {
+      "id": "kidnapped-05-09",
+      "type": "vocabulary",
+      "q": "Uncle Ebenezer says David would be \"swier\" to believe him on his word. Using the note in the text, what does \"swier\" mean?",
+      "choices": [
+        "Unwilling",
+        "Afraid",
+        "Eager",
+        "Proud"
+      ],
+      "answer": 0,
+      "evidence": "* Unwilling."
+    },
+    {
+      "id": "kidnapped-05-10",
+      "type": "detail",
+      "q": "Whom did Uncle Ebenezer promise they could visit after seeing the captain?",
+      "choices": [
+        "Jennet Clouston, to make her stop her cursing",
+        "Mr. Rankeillor, the lawyer who knew David's father",
+        "A banker in Edinburgh who kept the family money",
+        "The minister of Cramond, to arrange David's schooling"
+      ],
+      "answer": 1,
+      "evidence": "we can jog on to the lawyer, Mr. Rankeillor's"
+    },
+    {
+      "id": "kidnapped-05-11",
+      "type": "character",
+      "q": "Why did David agree to go with his uncle to the Ferry?",
+      "choices": [
+        "He thought a busy shipping place would be safe, and he wanted to see ships",
+        "He hoped to find a ship that would carry him home to Essendean",
+        "He wanted to tell the ship's captain about his uncle's attempt to kill him",
+        "He believed his uncle had truly changed and could now be trusted"
+      ],
+      "answer": 0,
+      "evidence": "where my uncle durst attempt no violence"
+    },
+    {
+      "id": "kidnapped-05-12",
+      "type": "detail",
+      "q": "What was strange about the weather on the walk, though it was June?",
+      "choices": [
+        "It snowed heavily the whole way there",
+        "A thick fog hid the road completely",
+        "It was so hot that they had to rest often",
+        "It was so cold that it felt like winter"
+      ],
+      "answer": 3,
+      "evidence": "the time might have been winter"
+    },
+    {
+      "id": "kidnapped-05-13",
+      "type": "detail",
+      "q": "What was the cabin-boy's name?",
+      "choices": [
+        "Shuan",
+        "Riach",
+        "Hoseason",
+        "Ransome"
+      ],
+      "answer": 3,
+      "evidence": "He told me his name was Ransome"
+    },
+    {
+      "id": "kidnapped-05-14",
+      "type": "inference",
+      "q": "Why did David pity the cabin-boy rather than believe his boasts of wicked deeds?",
+      "choices": [
+        "David had heard the very same stories from Mr. Campbell",
+        "The boy was much too young to have been at sea for so many years",
+        "The boy admitted at once that he had made up every word",
+        "The stories were unlikely and told with a weak, crazy swagger"
+      ],
+      "answer": 3,
+      "evidence": "such a weak and crazy swagger in the delivery"
+    },
+    {
+      "id": "kidnapped-05-15",
+      "type": "detail",
+      "q": "What did the cabin-boy show David on his leg?",
+      "choices": [
+        "A scar from a fall on the deck",
+        "A raw red wound made by Mr. Shuan",
+        "A tattoo of the brig Covenant",
+        "A bite from a dog in the harbour"
+      ],
+      "answer": 1,
+      "evidence": "a great, raw, red wound that made my blood run cold"
+    },
+    {
+      "id": "kidnapped-05-16",
+      "type": "vocabulary",
+      "q": "The boy said the twenty-pounders included innocents who were \"kidnapped or trepanned.\" What does \"trepanned\" mean here?",
+      "choices": [
+        "Sent home to their families",
+        "Paid well for working at sea",
+        "Taught to sail and steer a ship",
+        "Tricked or taken away by force"
+      ],
+      "answer": 3,
+      "evidence": "kidnapped or trepanned"
+    },
+    {
+      "id": "kidnapped-05-17",
+      "type": "detail",
+      "q": "What was the building at the end of the pier at the Queen's Ferry?",
+      "choices": [
+        "A ruined castle",
+        "A customs house",
+        "The Hawes Inn",
+        "The parish kirk"
+      ],
+      "answer": 2,
+      "evidence": "I could see the building which they called the Hawes Inn"
+    },
+    {
+      "id": "kidnapped-05-18",
+      "type": "sequence",
+      "q": "What did David tell his uncle after they looked down on the Covenant from the hill?",
+      "choices": [
+        "That nothing would bring him on board that ship",
+        "That he was far too cold and wished to go home",
+        "That he had decided to become a cabin-boy",
+        "That he wanted to meet the captain right away"
+      ],
+      "answer": 0,
+      "evidence": "there's nothing that will bring me on board that Covenant"
+    },
+    {
+      "id": "kidnapped-05-19",
+      "type": "main-idea",
+      "q": "What is this chapter mostly about?",
+      "choices": [
+        "David meeting the lawyer Mr. Rankeillor and learning of his inheritance",
+        "David forcing his uncle to explain the truth about his father and the house",
+        "David walking to the Queen's Ferry and learning how cruel life on the Covenant is",
+        "David running away from Shaws by night and finding work on a ship"
+      ],
+      "answer": 2,
+      "evidence": "the brig Covenant (for all her pious name) was little better than a hell upon the seas"
+    }
+  ]
+}

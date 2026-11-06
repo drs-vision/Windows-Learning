@@ -1,0 +1,110 @@
+{
+  "book": "doctor-dolittle",
+  "chapter": 13,
+  "questions": [
+    {
+      "id": "doctor-dolittle-13-01",
+      "type": "detail",
+      "q": "What kind of place is the coast of Barbary?",
+      "choices": [
+        "A green coast covered with palm-trees",
+        "A wild, lonely place of sand and stones",
+        "A busy harbor full of fishing-boats",
+        "A rocky shore with tall white cliffs"
+      ],
+      "answer": 1,
+      "evidence": "It is a wild, lonely place--all sand and stones"
+    },
+    {
+      "id": "doctor-dolittle-13-02",
+      "type": "detail",
+      "q": "What did the Barbary pirates do to a ship after taking everything and the people off it?",
+      "choices": [
+        "They sank it",
+        "They painted its sails red",
+        "They sold it to the King",
+        "They let it drift away"
+      ],
+      "answer": 0,
+      "evidence": "they would sink the ship"
+    },
+    {
+      "id": "doctor-dolittle-13-03",
+      "type": "character",
+      "q": "How did Dab-Dab feel when she first saw the red sail far behind them?",
+      "choices": [
+        "She was glad because she hoped they would get help",
+        "She thought it was the Prince coming to visit",
+        "She was too busy walking to pay it much mind",
+        "She had a feeling it was not a friendly ship"
+      ],
+      "answer": 3,
+      "evidence": "I have a feeling it isn't a friendly ship"
+    },
+    {
+      "id": "doctor-dolittle-13-04",
+      "type": "detail",
+      "q": "What did Jip smell in his sleep at first?",
+      "choices": [
+        "Fresh fish frying in a pan of butter",
+        "Bread baking in the palace-kitchen",
+        "Underdone roast beef with brown gravy",
+        "Salty seaweed drying on the rocks"
+      ],
+      "answer": 2,
+      "evidence": "underdone roast beef--with brown gravy over it"
+    },
+    {
+      "id": "doctor-dolittle-13-05",
+      "type": "vocabulary",
+      "q": "Jip said he smelled \"six bad scoundrels fighting against one brave man.\" What does \"scoundrels\" mean?",
+      "choices": [
+        "Sailors who are lost",
+        "Wicked, dishonest people",
+        "Brave soldiers",
+        "Tired old fishermen"
+      ],
+      "answer": 1,
+      "evidence": "six bad scoundrels fighting against one brave man"
+    },
+    {
+      "id": "doctor-dolittle-13-06",
+      "type": "detail",
+      "q": "Why did Gub-Gub complain about the ship the Prince gave them?",
+      "choices": [
+        "It was so slow they could not outrun the pirates",
+        "It was so small there was no room for the pig to sleep",
+        "It was leaking water through holes in the bottom",
+        "It had no food on it except dry, hard biscuits"
+      ],
+      "answer": 0,
+      "evidence": "the slowest he could find, I should think"
+    },
+    {
+      "id": "doctor-dolittle-13-07",
+      "type": "sequence",
+      "q": "What did the Doctor do after putting up all the sails did not help?",
+      "choices": [
+        "He turned the ship around to fight the pirates",
+        "He told Jip to bark loudly to scare the men off",
+        "He threw the heavy boxes over the side of the ship",
+        "He sent Dab-Dab to ask the swallows what to do"
+      ],
+      "answer": 3,
+      "evidence": "Then the Doctor asked Dab-Dab to fly up and tell the swallows"
+    },
+    {
+      "id": "doctor-dolittle-13-08",
+      "type": "main-idea",
+      "q": "What is this chapter mostly about?",
+      "choices": [
+        "Jip learns how to smell things far away in his sleep",
+        "The Doctor and his animals capture a pirate ship",
+        "The swallows help the ship escape from the pirates",
+        "The pirates take the Doctor back to Barbary"
+      ],
+      "answer": 2,
+      "evidence": "The red sails were being left far, far behind."
+    }
+  ]
+}

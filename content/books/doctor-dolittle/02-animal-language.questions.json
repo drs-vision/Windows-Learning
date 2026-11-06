@@ -1,0 +1,201 @@
+{
+  "book": "doctor-dolittle",
+  "chapter": 2,
+  "questions": [
+    {
+      "id": "doctor-dolittle-02-01",
+      "type": "detail",
+      "q": "Who first suggested that the Doctor should become an animal-doctor?",
+      "choices": [
+        "The Cat's-meat-Man",
+        "Polynesia",
+        "The old lame horse",
+        "His sister, Sarah"
+      ],
+      "answer": 0,
+      "evidence": "Why don't you give up being a people's doctor, and be an animal-doctor?"
+    },
+    {
+      "id": "doctor-dolittle-02-02",
+      "type": "detail",
+      "q": "Who read the Doctor's book about cats to the Cat's-meat-Man?",
+      "choices": [
+        "His son, who had learned to read at school",
+        "The Parson of Puddleby",
+        "His wife, Theodosia",
+        "Polynesia, sitting on the kitchen table"
+      ],
+      "answer": 2,
+      "evidence": "my wife, Theodosia, she's a scholar"
+    },
+    {
+      "id": "doctor-dolittle-02-03",
+      "type": "character",
+      "q": "How did the Doctor answer when the Cat's-meat-Man said he could make animals sick with something in their meat?",
+      "choices": [
+        "He laughed and said it was a clever plan that would bring in plenty of money for them both",
+        "He said he would think about it and give an answer next week",
+        "He said quickly that the man must not do that because it would not be right",
+        "He said he could cure any animal no matter what had made it sick"
+      ],
+      "answer": 2,
+      "evidence": "You mustn't do that. That wouldn't be right."
+    },
+    {
+      "id": "doctor-dolittle-02-04",
+      "type": "detail",
+      "q": "According to Polynesia, what does \"Ka-ka oi-ee, fee-fee?\" mean in bird-language?",
+      "choices": [
+        "\"Where is the cracker you promised me?\"",
+        "\"Is the porridge hot yet?\"",
+        "\"Has it stopped raining?\"",
+        "\"Good morning, Doctor!\""
+      ],
+      "answer": 1,
+      "evidence": "Is the porridge hot yet?"
+    },
+    {
+      "id": "doctor-dolittle-02-05",
+      "type": "sequence",
+      "q": "What did the Doctor do right after Polynesia told him that animals can talk?",
+      "choices": [
+        "He went out into the garden in the pouring rain to listen to the birds there",
+        "He got the butcher's book and a pencil to write down bird words",
+        "He called Jip into the kitchen to test what the parrot said",
+        "He wrote a letter to the vet over the hill about it"
+      ],
+      "answer": 1,
+      "evidence": "came back with the butcher's book and a pencil"
+    },
+    {
+      "id": "doctor-dolittle-02-06",
+      "type": "inference",
+      "q": "Why had Polynesia never spoken bird-language to the Doctor before?",
+      "choices": [
+        "She was afraid he would tell other people her secret",
+        "She had forgotten most of it in all her years since leaving Africa",
+        "She thought he was too busy with his human patients",
+        "He would not have understood her, so there was no point"
+      ],
+      "answer": 3,
+      "evidence": "You wouldn't have understood me if I had."
+    },
+    {
+      "id": "doctor-dolittle-02-07",
+      "type": "detail",
+      "q": "When Jip twitched up one side of his nose, what was he asking?",
+      "choices": [
+        "\"When are you going to give me my supper tonight?\"",
+        "\"May I go out to play in the garden?\"",
+        "\"Can't you see that it has stopped raining?\"",
+        "\"Why is the parrot talking so much today?\""
+      ],
+      "answer": 2,
+      "evidence": "Can't you see that it has stopped raining?"
+    },
+    {
+      "id": "doctor-dolittle-02-08",
+      "type": "vocabulary",
+      "q": "Polynesia says animals talk \"with their ears, with their feet, with their tails.\" What does she mean?",
+      "choices": [
+        "Animals can only talk when they are moving around",
+        "Animals can send messages with their bodies, not only with sounds",
+        "Animals use their ears and tails to hear people and smell danger better",
+        "Animals have to learn to talk from parrots like her"
+      ],
+      "answer": 1,
+      "evidence": "They talk with their ears, with their feet, with their tails--with everything."
+    },
+    {
+      "id": "doctor-dolittle-02-09",
+      "type": "detail",
+      "q": "What did the plow-horse really need to fix his trouble?",
+      "choices": [
+        "Big pills for his spavins",
+        "A new pair of horseshoes",
+        "Spectacles, because he was going blind in one eye",
+        "A long rest from plowing the big field"
+      ],
+      "answer": 2,
+      "evidence": "I am going blind in one eye"
+    },
+    {
+      "id": "doctor-dolittle-02-10",
+      "type": "detail",
+      "q": "What color did the horse want his glasses to be?",
+      "choices": [
+        "Blue, to match the sky",
+        "Green",
+        "Brown, like the Doctor's suit",
+        "Clear, like the Doctor's own pair"
+      ],
+      "answer": 1,
+      "evidence": "only green"
+    },
+    {
+      "id": "doctor-dolittle-02-11",
+      "type": "character",
+      "q": "Why did the horse kick the farmer's boy into the duck-pond?",
+      "choices": [
+        "The boy tried to put a mustard-plaster on him",
+        "The boy had forgotten to give him his oats and water that morning",
+        "The boy was trying to take away his new green spectacles",
+        "The boy whipped him for plowing the field too slowly"
+      ],
+      "answer": 0,
+      "evidence": "He tried to put a mustard-plaster on me last week."
+    },
+    {
+      "id": "doctor-dolittle-02-12",
+      "type": "detail",
+      "q": "How did the Doctor make sure each kind of animal had its own way into the house?",
+      "choices": [
+        "He set up a different waiting room in the garden for each animal",
+        "He saw horses on Mondays, cows on Tuesdays and sheep on Wednesdays each week",
+        "He had special doors made and wrote the kind of animal over each one",
+        "He let Polynesia call each animal in by name, one at a time"
+      ],
+      "answer": 2,
+      "evidence": "he had to have special doors made for the different kinds"
+    },
+    {
+      "id": "doctor-dolittle-02-13",
+      "type": "inference",
+      "q": "How did animals in faraway lands come to hear about the Doctor?",
+      "choices": [
+        "The Cat's-meat-Man wrote about him in the newspapers",
+        "Birds that flew to other countries in winter told them",
+        "The Doctor sailed to other countries to cure animals there",
+        "Polynesia sent letters to her old friends in Africa"
+      ],
+      "answer": 1,
+      "evidence": "the birds who flew to other countries in the winter told the animals in foreign lands"
+    },
+    {
+      "id": "doctor-dolittle-02-14",
+      "type": "detail",
+      "q": "What is the one thing Polynesia says people have learned to understand in animal-language?",
+      "choices": [
+        "That a cat purrs when it wants its dinner",
+        "That a horse stamps its feet when it is angry",
+        "That a dog wagging his tail means \"I'm glad!\"",
+        "That a parrot squawks when it is frightened"
+      ],
+      "answer": 2,
+      "evidence": "when a dog wags his tail he means 'I'm glad!'"
+    },
+    {
+      "id": "doctor-dolittle-02-15",
+      "type": "main-idea",
+      "q": "What is this chapter mostly about?",
+      "choices": [
+        "How the Cat's-meat-Man became the Doctor's best friend and helper",
+        "How Polynesia came to England from Africa long ago and saw King Charles hiding",
+        "How the Doctor learned animal-language and became a famous animal-doctor",
+        "How the farmers of Puddleby learned to put glasses on their horses"
+      ],
+      "answer": 2,
+      "evidence": "the Doctor got to learn the language of the animals so well"
+    }
+  ]
+}

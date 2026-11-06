@@ -1,0 +1,150 @@
+{
+  "book": "kidnapped",
+  "chapter": 27,
+  "questions": [
+    {
+      "id": "kidnapped-27-01",
+      "type": "character",
+      "q": "How did David feel after washing and putting on clean clothes?",
+      "choices": ["Glad to be himself again, yet ashamed of the borrowed clothes", "Proud and handsome, and eager to show himself all over the town", "Uncomfortable, and wishing he had his old Highland clothes back", "Sad, because the new clothes reminded him of his dead father"],
+      "answer": 0,
+      "evidence": "I was ashamed of the change too, and, above all, of the borrowed clothes"
+    },
+    {
+      "id": "kidnapped-27-02",
+      "type": "detail",
+      "q": "According to Mr. Rankeillor, what did the whole trouble between David's father and uncle hinge on?",
+      "choices": ["A love affair", "A gambling debt", "A stolen horse", "A lost will"],
+      "answer": 0,
+      "evidence": "the matter hinges on a love affair"
+    },
+    {
+      "id": "kidnapped-27-03",
+      "type": "detail",
+      "q": "What was Ebenezer like when he was young?",
+      "choices": ["Handsome and gallant, so that people stood in doors to watch him", "Plain and shy, so that hardly anyone in the country noticed him at all", "Clever and studious, the best scholar at the college in his year", "Kind and generous, always helping the poor tenants of Shaws"],
+      "answer": 0,
+      "evidence": "people stood in their doors to look after him"
+    },
+    {
+      "id": "kidnapped-27-04",
+      "type": "detail",
+      "q": "What happened in 1715, when young Ebenezer ran away to join the rebels?",
+      "choices": ["David's father found him in a ditch and brought him back", "He fought bravely in a battle and came home a hero", "He was taken prisoner and kept for a year in a castle", "He sailed off to France and did not come back home for many years"],
+      "answer": 0,
+      "evidence": "found him in a ditch, and brought him back"
+    },
+    {
+      "id": "kidnapped-27-05",
+      "type": "sequence",
+      "q": "How did the two brothers finally settle their quarrel over the lady?",
+      "choices": ["One took the lady, and the other took the estate", "They both agreed to give her up and live at Shaws", "They fought a duel, and David's father won her hand", "Ebenezer married her and gave his brother money"],
+      "answer": 0,
+      "evidence": "The one man took the lady, the other the estate"
+    },
+    {
+      "id": "kidnapped-27-06",
+      "type": "inference",
+      "q": "Why does Rankeillor think Ebenezer grew so mean and fond of money?",
+      "choices": ["Money was the only thing he got from his bargain, and people shunned him", "He had always been poor as a boy and was terribly afraid of ever being poor again", "His wife had spent all his money and left him with heavy debts", "He was cheated by a lawyer when he was young and trusted no one"],
+      "answer": 0,
+      "evidence": "Money was all he got by his bargain"
+    },
+    {
+      "id": "kidnapped-27-07",
+      "type": "detail",
+      "q": "What did Rankeillor tell David about his right to the estate?",
+      "choices": ["It was his beyond doubt as heir of entail, whatever his father signed", "It belonged to Ebenezer by law because of the bargain that his father had made", "It would have to be split evenly between David and his uncle", "It had been sold years ago to pay off his uncle's many debts"],
+      "answer": 0,
+      "evidence": "you are the heir of entail"
+    },
+    {
+      "id": "kidnapped-27-08",
+      "type": "inference",
+      "q": "Why did Rankeillor not want to take the case to court?",
+      "choices": ["Witnesses might let slip something about Mr. Thomson", "The judges were all good friends of Ebenezer", "David was too young to bring a lawsuit at all", "The court would take ten years or more to decide it"],
+      "answer": 0,
+      "evidence": "some word of your friend Mr. Thomson must certainly crop out"
+    },
+    {
+      "id": "kidnapped-27-09",
+      "type": "character",
+      "q": "What was Rankeillor's first reaction to David's plan, since it meant meeting Mr. Thomson?",
+      "choices": ["He said it was inadmissible, but kept thinking about it all through dinner", "He agreed at once and sent Torrance off to find Alan hiding in the fields by the road", "He laughed and said it was the best plan he had ever heard", "He grew angry and told David to leave his house that night"],
+      "answer": 0,
+      "evidence": "I am afraid your scheme is inadmissible"
+    },
+    {
+      "id": "kidnapped-27-10",
+      "type": "detail",
+      "q": "Why did Rankeillor ask his clerk, Torrance, to come along?",
+      "choices": ["He would probably be wanted as a witness", "He knew the path to the House of Shaws", "He was to carry a pistol to guard them all", "He was an old friend of Uncle Ebenezer"],
+      "answer": 0,
+      "evidence": "you will probably be wanted as a witness"
+    },
+    {
+      "id": "kidnapped-27-11",
+      "type": "sequence",
+      "q": "What funny story did Rankeillor keep telling again and again over the wine?",
+      "choices": ["How he once failed to know his own clerk for lack of spectacles", "How Ebenezer once fell off his horse in front of the whole town", "How he once got lost on the road to Queensferry in a fog", "How a big dog once ran off with his best powdered wig at the market"],
+      "answer": 0,
+      "evidence": "I did not know my own clerk"
+    },
+    {
+      "id": "kidnapped-27-12",
+      "type": "inference",
+      "q": "Why had Rankeillor really \"forgotten\" his glasses?",
+      "choices": ["So he could never swear he had recognised Alan", "So he would have an excuse to lean on David's arm", "So that Torrance would have to read the deed aloud", "So that Ebenezer would think he was a harmless old man"],
+      "answer": 0,
+      "evidence": "it had been done on purpose"
+    },
+    {
+      "id": "kidnapped-27-13",
+      "type": "character",
+      "q": "What did David feel as they passed the Hawes Inn and the Ferry pier?",
+      "choices": ["Sorrow for those lost since that day, and a chill of remembered fear", "Anger at the landlord, who he believed had helped the captain to kidnap him that day", "Joy that he would soon be sailing away on another ship", "Nothing at all, because he did not recognise the place"],
+      "answer": 0,
+      "evidence": "I could not behold the place without sorrow for others and a chill of recollected fear"
+    },
+    {
+      "id": "kidnapped-27-14",
+      "type": "detail",
+      "q": "How did David find Alan when they came near the meeting place?",
+      "choices": ["He whistled the Gaelic air and Alan answered it", "He called out Alan's name loudly into the dark", "He saw the glow of Alan's pipe behind a dyke", "He followed Alan's footprints up from the sea-shore"],
+      "answer": 0,
+      "evidence": "I went up the hill, whistling from time to time my Gaelic air"
+    },
+    {
+      "id": "kidnapped-27-15",
+      "type": "character",
+      "q": "Why did Alan answer Rankeillor so stiffly when the lawyer said he might pass him by tomorrow?",
+      "choices": ["His pride was hurt", "He did not trust lawyers", "He was very hungry", "He disliked the plan"],
+      "answer": 0,
+      "evidence": "the Highlandman's vanity was ready to startle at a less matter than that"
+    },
+    {
+      "id": "kidnapped-27-16",
+      "type": "detail",
+      "q": "Why was it good that there was no light in the House of Shaws when they arrived?",
+      "choices": ["It meant Uncle Ebenezer was already in bed", "It meant the house was empty and unlocked", "It meant no soldiers were waiting inside", "It meant the servants had all gone home"],
+      "answer": 0,
+      "evidence": "It seemed my uncle was already in bed"
+    },
+    {
+      "id": "kidnapped-27-17",
+      "type": "sequence",
+      "q": "What did Alan do once the others were hidden by the corner of the house?",
+      "choices": ["Strode openly to the door and began to knock", "Climbed in through a window at the back", "Fired his pistol into the air to wake Ebenezer", "Called up to the tower in a loud Highland voice"],
+      "answer": 0,
+      "evidence": "Alan strode to the door without concealment and began to knock"
+    },
+    {
+      "id": "kidnapped-27-18",
+      "type": "main-idea",
+      "q": "What is this chapter mostly about?",
+      "choices": ["David learns his family's secret and joins the lawyer and Alan in a plan against his uncle", "David and Mr. Rankeillor take Uncle Ebenezer to the court in Edinburgh and win the whole case there", "Alan is arrested on the road to Shaws, and David must find a way to rescue him", "David decides to give up the estate and go away to France with Alan Breck"],
+      "answer": 0,
+      "evidence": "I began to see the outlines of that scheme on which we afterwards acted"
+    }
+  ]
+}
