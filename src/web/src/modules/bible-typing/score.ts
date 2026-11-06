@@ -9,17 +9,15 @@ export const DEFAULTS = { coinsPerActivity: 1, dailyCap: 60 };
 /** Local calendar day of a timestamp, e.g. "2026-10-17". */
 export const dayKey = (ms: number) => { const d = new Date(ms); return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`; };
 
+/** Words per coin for a passage quest (the parent's "1 coin per N words", default 20). */
+export const wordsPerCoin = (settings: Pick<ModuleSettings, 'options'> | undefined) => Math.max(1, Math.round(Number(settings?.options?.wordsPer ?? 20)) || 20);
+
 /**
- * What a finished passage pays. Parent's choice (option "wordsPer", default 20): the set coins for every N words,
- * rounded to the nearest N — with 20, 9 words pay nothing, 10–29 pay once, 30–49 twice — or, with 0, the set coins
- * for every passage whatever its length. A negative rate charges instead.
+ * What a finished passage pays: 1 coin per N words, rounded to the nearest — with 20, a 9-word passage pays
+ * nothing, 10–29 words pay 1, 30–49 pay 2. Scripture Typing and Family Passages both pay this way.
  */
 export function passagePay(settings: ModuleSettings, words: number): number {
-  const base = settings.coinsPerActivity;
-  const opt = settings.options?.wordsPer;
-  const per = Math.max(0, Math.round(Number(opt ?? 20)) || 0);
-  if (!per || !base) return base;
-  return base * Math.floor(words / per + 0.5);
+  return Math.floor(words / wordsPerCoin(settings) + 0.5);
 }
 
 /** Words in a passage, the way pay counts them. */

@@ -30,9 +30,10 @@ export function scoreModule(moduleId: string, activity: Activity, result: Result
     // Belt and braces: never more than 5× the set amount per activity, either way (a parent's negative rate charges).
     // Scripture paid per N words may go higher: up to what the passage's length allows.
     let times = 5;
-    const per = Number(st.options?.wordsPer ?? 20);
+    const per = Math.max(1, Number(st.options?.wordsPer ?? 20) || 20);
     if ((moduleId === 'bible-typing' || moduleId === 'my-passages') && per > 0) times = Math.max(5, Math.ceil(String(activity?.data?.text ?? '').split(/\s+/).filter(Boolean).length / per) + 1);
-    const cap = Math.max(Math.abs(st.coinsPerActivity) * times, moduleId === 'khan-academy' ? 60 : 0);
+    const unit = moduleId === 'bible-typing' || moduleId === 'my-passages' ? 1 : Math.abs(st.coinsPerActivity);
+    const cap = Math.max(unit * times, moduleId === 'khan-academy' ? 60 : 0);
     return { ...out, coins: Math.max(-cap, Math.min(cap, Math.round(out.coins || 0))) };
   } catch (e) {
     return { valid: false, reason: 'scorer error: ' + (e as Error).message, coins: 0, needsApproval: false, detail: '' };

@@ -73,7 +73,7 @@ describe('typing-quest', () => {
 describe('bible-typing', () => {
   const p = (starter as any).passages[1]; // Psalm 23
   const act = { moduleId: 'bible-typing', kind: 'passage', data: { ref: p.ref, text: p.text, done: [], totalWords: 0 }, issuedAt: 0 };
-  const s = { ...settings, coinsPerActivity: 15, options: { wordsPer: '0' } };
+  const s = { ...settings, coinsPerActivity: 1, options: { wordsPer: '20' } };
   const words = p.text.split(/\s+/).filter(Boolean).length;
 
   it('pays 1 coin per 20 words by default', () => {
@@ -81,25 +81,24 @@ describe('bible-typing', () => {
     expect(out.coins).toBe(Math.floor(words / 20 + 0.5));
   });
 
-  it('rounds to the nearest N words: with 20, 9 words pay 0, 10 pay 1, 29 pay 1, 30 pay 2', () => {
-    const st = { ...settings, coinsPerActivity: 1, options: { wordsPer: '20' } };
+  it('1 coin per N words, rounded to the nearest: with 20, 9 words pay 0, 10 pay 1, 29 pay 1, 30 pay 2', () => {
+    const st = { ...settings, options: { wordsPer: '20' } };
     expect([9, 10, 29, 30, 49, 50].map((w) => passagePay(st, w))).toEqual([0, 1, 1, 2, 2, 3]);
-    expect(passagePay({ ...st, coinsPerActivity: 3 }, 30)).toBe(6);
-    expect(passagePay({ ...st, coinsPerActivity: -1 }, 30)).toBe(-2);
+    expect(passagePay({ ...st, options: { wordsPer: '10' } }, 30)).toBe(3);
   });
 
-  it('wordsPer 0 pays the set amount per passage', () => {
+  it('a finished passage is recorded', () => {
     const out = scoreModule('bible-typing', act, typeIt(p.text, p.text, 120000), s);
     expect(out.valid).toBe(true);
-    expect(out.coins).toBe(15);
+    expect(out.coins).toBe(Math.floor(words / 20 + 0.5));
     expect(out.progressDelta?.done).toEqual([p.ref]);
     expect(out.repeatKey).toBe(p.ref);
     expect(out.detail.startsWith(p.ref + ' ·')).toBe(true); // the Guardian's daily-limit count relies on this
   });
 
   it('can pay per N words instead', () => {
-    const out = scoreModule('bible-typing', act, typeIt(p.text, p.text, 120000), { ...s, coinsPerActivity: 2, options: { wordsPer: '10' } });
-    expect(out.coins).toBe(2 * Math.floor(words / 10 + 0.5));
+    const out = scoreModule('bible-typing', act, typeIt(p.text, p.text, 120000), { ...s, options: { wordsPer: '10' } });
+    expect(out.coins).toBe(Math.floor(words / 10 + 0.5));
   });
 
   it('counts how often each passage was typed today', () => {
@@ -119,11 +118,11 @@ describe('bible-typing', () => {
     expect(out.progressDelta).toBeUndefined();
   });
 
-  it('a long passage pays the same as a short one', () => {
+  it('a long passage pays by its length (not capped short)', () => {
     const big = (starter as any).passages.find((x: any) => x.ref.startsWith('Exodus'));
     const a = { ...act, data: { ...act.data, ref: big.ref, text: big.text } };
-    const out = scoreModule('bible-typing', a, typeIt(big.text, big.text, 600000), s);
-    expect(out.coins).toBe(15);
+    const out = scoreModule('bible-typing', a, typeIt(big.text, big.text, 600000), { ...s, options: { wordsPer: '5' } });
+    expect(out.coins).toBe(Math.floor(big.text.split(/\s+/).filter(Boolean).length / 5 + 0.5));
   });
 });
 

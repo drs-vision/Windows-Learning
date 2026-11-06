@@ -614,3 +614,5 @@ button.big { font-size: 1.1em; padding: .7em 1.4em; }
 .passage-add label { display: grid; gap: 4px; }
 .passage-add textarea { width: 100%; font: inherit; resize: vertical; }
 .passage-add code { padding: 0 4px; margin: 0 2px; border-radius: 4px; background: rgba(127,127,127,.15); }
+
+.per-words { display: inline-flex; align-items: center; gap: 6px; white-space: nowrap; } .per-words input { width: 5.5em; }

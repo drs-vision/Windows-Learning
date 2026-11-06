@@ -260,9 +260,9 @@ const QUESTS = {
   'sound-keys': ['🔤', 'Letter Rescue'], 'typing-quest': ['⌨️', 'TypingQuest'], 'bible-typing': ['📖', 'Scripture Typing'], 'my-passages': ['📝', 'Family Passages'],
   'khan-academy': ['🎓', 'Khan Academy'], duolingo: ['🦉', 'Duolingo'], rwt: ['✏️', 'Read, Write & Type!'], discgames: ['💿', 'Classic CD games'],
 };
-const OPTION_LABELS = { perAnswer: 'Coins per correct answer', perVideo: 'Coins per finished video', perStory: 'Coins per finished story', wordsPer: 'Words per payment (0 = per passage)', repeatsPerDay: 'Each passage can earn' };
+const OPTION_LABELS = { perAnswer: 'Coins per correct answer', perVideo: 'Coins per finished video', perStory: 'Coins per finished story', repeatsPerDay: 'Each passage pays' };
 const OPTION_CHOICES = {
-  repeatsPerDay: [['1', 'Once a day'], ['2', 'Twice a day'], ['3', '3 times a day'], ['0', 'Any number of times']],
+  repeatsPerDay: [['1', 'Once a day'], ['2', 'Twice a day'], ['3', '3 times a day'], ['0', 'Every time']],
 };
 const quest = (id) => QUESTS[id] ?? ['⭐', id.charAt(0).toUpperCase() + id.slice(1).replace(/[-_]/g, ' ')];
 const KINDS = { RealWorld: ['🎁', 'Treat'], YouTube: ['▶️', 'YouTube time'], ScreenTimeExtension: ['⏰', 'Extra screen time'], SiteUnlock: ['🌐', 'Website time'], ArcadeUnlock: ['🕹️', 'Arcade time'], AppUnlock: ['💻', 'App time'] };
@@ -448,12 +448,13 @@ function rewardsScreen() {
     kc.modules.map((m) => {
       const [icon, title] = quest(m.id);
       const opts = Object.entries(m.options || {}).filter(([k]) => OPTION_LABELS[k]);
+      const byWords = m.id === 'bible-typing' || m.id === 'my-passages';
       return `
       <div class="card quest ${m.enabled ? '' : 'off'}">
         <div class="quest-top"><p class="kid-name">${icon} ${esc(title)}</p>${toggle(m.enabled, `data-q="${esc(m.id)}" data-f="enabled" aria-label="${esc(title)} on or off"`)}</div>
         ${m.enabled ? `
         <div class="grid2">
-          ${field(m.id === 'discgames' ? 'Coins per progress' : m.id === 'rwt' ? 'Coins per finished activity' : m.id === 'bible-typing' || m.id === 'my-passages' ? (+(m.options?.wordsPer ?? 20) ? `Coins per ${m.options?.wordsPer ?? 20} words` : 'Coins per passage') : 'Coins per activity', `type="text" inputmode="numeric" value="${m.coinsPerActivity}" data-q="${esc(m.id)}" data-f="coinsPerActivity"`)}
+          ${byWords ? field('1 🪙 per … words', `type="text" inputmode="numeric" value="${esc(m.options?.wordsPer ?? 20)}" data-q="${esc(m.id)}" data-opt="wordsPer"`) : field(m.id === 'discgames' ? 'Coins per progress' : m.id === 'rwt' ? 'Coins per finished activity' : 'Coins per activity', `type="text" inputmode="numeric" value="${m.coinsPerActivity}" data-q="${esc(m.id)}" data-f="coinsPerActivity"`)}
           ${field('Daily limit', `type="text" inputmode="numeric" value="${m.dailyCap}" data-q="${esc(m.id)}" data-f="dailyCap"`, '0 = none')}
           ${opts.filter(([k]) => !OPTION_CHOICES[k]).map(([k, v]) => field(OPTION_LABELS[k], `type="text" inputmode="numeric" value="${esc(v)}" data-q="${esc(m.id)}" data-opt="${esc(k)}"`)).join('')}
         </div>
@@ -715,7 +716,7 @@ app.addEventListener('change', (e) => {
   if (el.dataset?.actrep !== undefined) { act('setReports', { childId: kid().id, on: el.checked }, el.checked ? 'Activity reports on' : 'Activity reports off'); return; }
   if (!el.dataset?.q) return;
   const args = { childId: kidConfig().id, moduleId: el.dataset.q };
-  if (el.dataset.opt) args.options = { [el.dataset.opt]: el.tagName === 'SELECT' ? el.value : String(num(el.value)) };
+  if (el.dataset.opt) args.options = { [el.dataset.opt]: el.tagName === 'SELECT' ? el.value : String(el.dataset.opt === 'wordsPer' ? Math.max(1, num(el.value) || 20) : num(el.value)) };
   else if (el.type === 'checkbox') args[el.dataset.f] = el.checked;
   else args[el.dataset.f] = el.dataset.f === 'dailyCap' ? Math.max(0, num(el.value)) : num(el.value);
   el.blur();

@@ -635,13 +635,18 @@ function Quests({ child, onSave }: { child: Child; onSave: (c: Child) => void })
             {m.id === 'my-passages' && <PassageEditor s={s} set={(p) => setMod(m.id, p)} />}
             {m.id === 'discgames' && <DiscImport rwt={{ s: child.modules.rwt ?? { enabled: false, requireApproval: false, ...MODULES.find((x) => x.id === 'rwt')!.defaults }, set: (p) => setMod('rwt', p) }} />}
             <div class={'row' + (m.id === 'discgames' ? ' module-coins' : '')}>
-              <label>{m.id === 'discgames' ? 'Default coins per progress' : m.id === 'bible-typing' || m.id === 'my-passages' ? (Number(s.options?.wordsPer ?? 20) > 0 ? `Coins per ${s.options?.wordsPer ?? 20} words` : 'Coins per passage') : 'Coins per activity'}<input type="number" value={s.coinsPerActivity} onChange={(e) => setMod(m.id, { coinsPerActivity: Number((e.target as HTMLInputElement).value) })} /></label>
+              {m.paysByWords
+                ? <label title="Rounded to the nearest: with 20, a 9-word passage pays nothing, 10–29 words pay 1 coin, 30–49 pay 2.">Pay<span class="per-words">1 🪙 per <input type="number" min={1} max={500} value={s.options?.wordsPer ?? '20'} onChange={(e) => setMod(m.id, { options: { ...(s.options ?? {}), wordsPer: String(Math.max(1, Math.min(500, Math.round(Number((e.target as HTMLInputElement).value) || 20)))) } })} /> words</span></label>
+                : <label>{m.id === 'discgames' ? 'Default coins per progress' : 'Coins per activity'}<input type="number" value={s.coinsPerActivity} onChange={(e) => setMod(m.id, { coinsPerActivity: Number((e.target as HTMLInputElement).value) })} /></label>}
               <label>Daily limit (0 = none)<input type="number" min={0} value={s.dailyCap} onChange={(e) => setMod(m.id, { dailyCap: Number((e.target as HTMLInputElement).value) })} /></label>
+              {m.paysByWords && <label title="After that, typing it again is practice without coins until tomorrow.">Each passage pays<select value={s.options?.repeatsPerDay ?? '1'} onChange={(e) => setMod(m.id, { options: { ...(s.options ?? {}), repeatsPerDay: (e.target as HTMLSelectElement).value } })}>
+                {[['1', 'Once a day'], ['2', 'Twice a day'], ['3', '3 times a day'], ['0', 'Every time']].map(([v, l]) => <option value={v}>{l}</option>)}
+              </select></label>}
               <label class="check"><input type="checkbox" checked={s.requireApproval || m.verification === 'parent_approved'} disabled={m.verification === 'parent_approved'} onChange={(e) => setMod(m.id, { requireApproval: (e.target as HTMLInputElement).checked })} /> Needs my OK</label>
             </div>
-            {m.options && s.enabled && (
+            {m.options && s.enabled && !m.paysByWords && (
               <div class="row module-options">
-                {m.options.map((o) => (
+                {m.options.filter((o) => !(m.paysByWords && o.key === 'wordsPer')).map((o) => (
                   <label title={o.help}>{o.label}
                     {o.number
                       ? <input type="number" min={o.number.min} max={o.number.max} value={s.options?.[o.key] ?? o.default}

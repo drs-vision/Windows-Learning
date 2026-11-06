@@ -25,7 +25,9 @@ export interface LessonModule {
   defaults: { coinsPerActivity: number; dailyCap: number };
   requiredSites?: string[];
   /** Parent-facing settings shown on the Quests screen. Stored as strings in ModuleSettings.options. */
-  options?: { key: string; label: string; help?: string; choices?: [string, string][]; number?: { min: number; max: number }; default: string }[];
+  options?: { key: string; label: string; help?: string; suffix?: string; choices?: [string, string][]; number?: { min: number; max: number }; default: string }[];
+  /** Pays by passage length (1 coin per N words) instead of a set amount per activity. */
+  paysByWords?: boolean;
 
   nextActivity(progress: Progress, rng: () => number, settings?: ModuleSettings): Activity;
   /** Mount the activity UI. Return a cleanup function. */

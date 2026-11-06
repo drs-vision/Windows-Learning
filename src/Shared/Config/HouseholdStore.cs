@@ -88,7 +88,7 @@ public sealed class HouseholdStore
         }
     }
 
-    public const int CurrentSchema = 7;
+    public const int CurrentSchema = 8;
 
     /// <summary>Upgrade data written by older versions. Runs on every load; must be idempotent.</summary>
     public static Household Migrate(Household h)
@@ -148,6 +148,16 @@ public sealed class HouseholdStore
             if (h.SchemaVersion < 7 && modules.TryGetValue("bible-typing", out var b7) && b7.CoinsPerActivity == 15
                 && b7.Options.GetValueOrDefault("wordsPer", "0") == "0")
                 modules["bible-typing"] = b7 with { CoinsPerActivity = 1, Options = new Dictionary<string, string>(b7.Options) { ["wordsPer"] = "20" } };
+            // v8: passage quests have one pay setting, "1 coin per N words". "C coins per N words" becomes 1 per N/C;
+            // the old "same for every passage" (N = 0) becomes 1 per 20 words.
+            if (h.SchemaVersion < 8)
+                foreach (var id in new[] { "bible-typing", "my-passages" })
+                    if (modules.TryGetValue(id, out var m8))
+                    {
+                        var n = int.TryParse(m8.Options.GetValueOrDefault("wordsPer", "20"), out var w) ? w : 20;
+                        n = n <= 0 ? 20 : m8.CoinsPerActivity > 1 ? Math.Max(1, (int)Math.Round(n / (double)m8.CoinsPerActivity)) : n;
+                        modules[id] = m8 with { CoinsPerActivity = 1, Options = new Dictionary<string, string>(m8.Options) { ["wordsPer"] = n.ToString() } };
+                    }
             var allow = c.Allowlist;
             if (h.SchemaVersion < 3)
                 allow = allow with { Apps = allow.Apps.Where(a => !Allowlist.Browsers.Contains(Path.GetFileName(a), StringComparer.OrdinalIgnoreCase)).ToList() };

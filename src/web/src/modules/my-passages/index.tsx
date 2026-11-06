@@ -1,7 +1,7 @@
 import { render } from 'preact';
 import type { Activity, Progress } from '../../core/types';
 import type { LessonModule } from '../../core/module';
-import { PassageView, WORDS_PER_OPTION } from '../bible-typing';
+import { PassageView, WORDS_PER_OPTION, REPEATS_OPTION } from '../bible-typing';
 import { scoreMyPassages, familyPassages, DEFAULTS } from './score';
 
 interface MPProgress extends Progress { done?: string[]; totalWords?: number; chosenRef?: string; today?: { day?: string; counts?: Record<string, number> } }
@@ -11,13 +11,14 @@ export const myPassages: LessonModule = {
   id: 'my-passages',
   title: 'Family Passages',
   tagline: 'Type the passages your parents picked',
-  description: 'Paste in anything you want your child to type — a poem, a speech, scripture, spelling words, a chapter — below. Pasted text is cleaned up to keyboard characters (curly quotes and long dashes become plain ones). Same rules as Scripture Typing: errorless typing, pays per so many words, and each passage earns once a day to start. Verified automatically.',
+  description: 'Your own passages: a poem, spelling words, a talk, a chapter. Same typing and pay as Scripture Typing.',
   icon: '📝',
   verification: 'in_app',
+  paysByWords: true,
   defaults: DEFAULTS,
   options: [
     WORDS_PER_OPTION,
-    { key: 'repeatsPerDay', label: 'Each passage can earn', help: 'Typing a passage again after that still counts as practice, just without coins until tomorrow.', choices: [['1', 'Once a day'], ['2', 'Twice a day'], ['3', '3 times a day'], ['0', 'Any number of times']], default: '1' },
+    REPEATS_OPTION,
   ],
 
   nextActivity(progress: MPProgress, _rng, settings): Activity {

@@ -3,7 +3,7 @@ import { useEffect, useState } from 'preact/hooks';
 import type { Activity, Progress } from '../../core/types';
 import type { ActivityContext, LessonModule } from '../../core/module';
 import { TypingBox, type TypingDone } from '../../core/ui/TypingBox';
-import { scoreBibleTyping, DEFAULTS, passagePay, dayKey, wordCount } from './score';
+import { scoreBibleTyping, DEFAULTS, passagePay, dayKey, wordCount, wordsPerCoin } from './score';
 import starter from '../../../../../content/bible/kjv-starter.json';
 
 interface Passage { ref: string; level: number; text: string }
@@ -12,19 +12,23 @@ interface BTProgress extends Progress { done?: string[]; lastRef?: string; total
 const PASSAGES: Passage[] = (starter as { passages: Passage[] }).passages;
 
 /** Pay setting shared by every passage-typing quest: the coins are per this many words, rounded to the nearest. */
-export const WORDS_PER_OPTION = { key: 'wordsPer', label: 'Words per payment', help: 'The coins are paid for every this many words, rounded to the nearest: with 20, a 9-word passage pays nothing, 10–29 words pay once, 30–49 twice. 0 = the same coins for every passage, whatever its length.', number: { min: 0, max: 500 }, default: '20' };
+export const WORDS_PER_OPTION = { key: 'wordsPer', label: '1 🪙 per', suffix: 'words', help: 'Rounded to the nearest: with 20, a 9-word passage pays nothing, 10–29 words pay 1 coin, 30–49 pay 2.', number: { min: 1, max: 500 }, default: '20' };
+
+/** The repeat limit shared by every passage quest. */
+export const REPEATS_OPTION = { key: 'repeatsPerDay', label: 'Each passage pays', help: 'After that, typing it again is practice without coins until tomorrow.', choices: [['1', 'Once a day'], ['2', 'Twice a day'], ['3', '3 times a day'], ['0', 'Every time']] as [string, string][], default: '1' };
 
 export const bibleTyping: LessonModule = {
   id: 'bible-typing',
   title: 'Scripture Typing',
   tagline: 'Type a passage, keep it forever',
-  description: 'Type passages from the King James Bible (public domain). Pays per so many words (1 coin per 20 words to start), and each passage can earn a set number of times a day (so the same short one can\'t be repeated for coins). No speed or accuracy targets. Typing is errorless: a wrong key simply doesn\'t go in and the right key stays lit, so every finished passage is typed correctly and added to the child\'s collection. Verified automatically.',
+  description: 'King James Bible passages. Typing is errorless (only the right key goes in) with no clock. Pays by length.',
   icon: '📖',
   verification: 'in_app',
+  paysByWords: true,
   defaults: DEFAULTS,
   options: [
     WORDS_PER_OPTION,
-    { key: 'repeatsPerDay', label: 'Each passage can earn', help: 'Typing a passage again after that still counts as practice, just without coins until tomorrow.', choices: [['1', 'Once a day'], ['2', 'Twice a day'], ['3', '3 times a day'], ['0', 'Any number of times']], default: '1' },
+    REPEATS_OPTION,
   ],
 
   nextActivity(progress: BTProgress): Activity {
@@ -53,7 +57,7 @@ export function PassageView({ activity, ctx, passages }: { activity: Activity; c
   const today = activity.data.today as { day?: string; counts?: Record<string, number> } | undefined;
   const counts = today?.day === dayKey(Date.now()) ? today.counts ?? {} : {};
   const perDay = Number(ctx.settings.options?.repeatsPerDay ?? '1') || 0;
-  const per = Number(ctx.settings.options?.wordsPer ?? '20') || 0;
+  const per = wordsPerCoin(ctx.settings);
   const words = (p: { text: string }) => wordCount(p.text);
   const usedUp = (p: { ref: string }) => perDay > 0 && (counts[p.ref] ?? 0) >= perDay;
 
@@ -81,7 +85,7 @@ export function PassageView({ activity, ctx, passages }: { activity: Activity; c
           </button>
         ))}
       </div>
-      <p class="muted">{per > 0 ? `${ctx.settings.coinsPerActivity} 🪙 for every ${per} words.` : 'Every passage pays the same.'}{perDay > 0 ? ` Each one earns ${perDay === 1 ? 'once' : perDay === 2 ? 'twice' : perDay + ' times'} a day.` : ''} Take your time — there's no clock, and only the right key goes in.</p>
+      <p class="muted">{`1 🪙 for every ${per} words.`}{perDay > 0 ? ` Each one earns ${perDay === 1 ? 'once' : perDay === 2 ? 'twice' : perDay + ' times'} a day.` : ''} Take your time — there's no clock, and only the right key goes in.</p>
       {usedUp(passage) && <p class="muted"><b>{passage.ref}</b> has already earned today — you can still type it for practice, or pick another for coins.</p>}
       <button class="primary" onClick={() => setPhase('type')}>Type {passage.ref}</button>
       <button class="ghost" onClick={ctx.exit}>Back</button>
