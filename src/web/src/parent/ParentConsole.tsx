@@ -1190,6 +1190,30 @@ function RwtImport() {
 // ---------------------------------------------------------------- Settings
 
 /**
+ * How CoinQuest sits on this PC, in one picture: the kid's account is locked; the parent's account (and every other)
+ * stays normal, and that's where the Parent Console is. So other accounts need passwords the kid doesn't know.
+ */
+export function PcMap({ kids }: { kids: string[] }) {
+  const who = kids.length ? kids.join(' and ') : 'Your child';
+  const whose = kids.length === 1 ? `${kids[0]}'s account` : kids.length ? `${who}'s accounts` : "Your child's account";
+  return (
+    <div class="pc-map">
+      <div class="pc-side locked">
+        <span class="pc-ico" aria-hidden="true">🔒</span>
+        <b>{whose}</b>
+        <p>Only what you allow: CoinQuest, and the websites, apps and rewards you pick. Everything else is locked.</p>
+      </div>
+      <div class="pc-side open">
+        <span class="pc-ico" aria-hidden="true">🔓</span>
+        <b>Your account, and every other one</b>
+        <p>Normal: full internet, nothing locked. <b>The Parent Console lives here</b>: Start menu or desktop → <i>CoinQuest Parent Console</i>.</p>
+      </div>
+      <p class="pc-note">So keep a password on your account (and any other) that {kids.length === 1 ? `${kids[0]} doesn't` : kids.length ? "your kids don't" : "your child doesn't"} know. At {kids.length === 1 ? `${kids[0]}'s` : "a kid's"} account, Ctrl+Shift+P and your PIN open the Parent Console too.</p>
+    </div>
+  );
+}
+
+/**
  * Getting started: a short checklist that proves CoinQuest is working, checked live on this PC. Shown at the end of
  * setup and on Today until everything is done (or the parent hides it). Phone linking is optional.
  */
@@ -1203,7 +1227,8 @@ export function GettingStarted({ state, inSetup }: { state: ParentState; inSetup
   const tried = kids.filter((k) => state.gettingStarted?.used?.[k.id]);
   const notTried = kids.filter((k) => !state.gettingStarted?.used?.[k.id]);
   const phone = (state.gettingStarted?.phones ?? 0) > 0;
-  const done = kids.length > 0 && lockOn && notTried.length === 0 && phone;
+  const open = state.gettingStarted?.openAccounts ?? [];
+  const done = kids.length > 0 && lockOn && notTried.length === 0 && phone && open.length === 0;
   if (hidden || (done && !inSetup)) return null;
   const item = (ok: boolean, title: preact.ComponentChildren, detail?: preact.ComponentChildren, optional?: boolean) => (
     <li class={ok ? 'ok' : optional ? 'opt' : 'todo'}><span class="gs-mark" aria-label={ok ? 'done' : 'to do'}>{ok ? '✓' : ''}</span><div><b>{title}</b>{detail && <p class="muted small">{detail}</p>}</div></li>
@@ -1211,11 +1236,14 @@ export function GettingStarted({ state, inSetup }: { state: ParentState; inSetup
   return (
     <div class={'card getting-started' + (inSetup ? ' in-setup' : '')}>
       {!inSetup && <div class="row between"><h3>Getting started</h3><button class="ghost small" onClick={() => { setHidden(true); try { localStorage.setItem('cq.parent.gsHidden', '1'); } catch { /* fine */ } }}>Hide</button></div>}
+      <PcMap kids={kids.map((k) => k.displayName)} />
       <ul class="gs-list">
         {item(kids.length > 0, kids.length ? `${names} ${kids.length === 1 ? 'is' : 'are'} set up` : 'Add your child', kids.length ? 'Each kid has their own Windows sign-in, coins and rules.' : 'Use ＋ Add a kid above.')}
         {item(lockOn, lockOn ? 'Internet lock is on' : 'Internet lock is off', lockOn ? `${names} can only reach what you allow. Your own account isn't affected.` : `It couldn't be turned on (${net?.error ?? 'not yet'}). Restarting the computer usually fixes it.`)}
         {item(notTried.length === 0 && kids.length > 0, notTried.length ? `Try it: sign in to Windows as ${notTried.map((k) => k.displayName).join(' or ')}` : `${tried.map((k) => k.displayName).join(' and ')} ${tried.length === 1 ? 'has' : 'have'} used CoinQuest`,
           notTried.length ? <>Sign out of your account, then pick {notTried[0].displayName} on the sign-in screen: CoinQuest opens by itself. A new account takes a minute the first time. Sign back in as you to come back here; this ticks itself off.</> : undefined)}
+        {item(open.length === 0, open.length ? `${open.join(', ')} ${open.length === 1 ? 'has' : 'have'} no password` : 'Other accounts have passwords',
+          open.length ? <>{kids[0]?.displayName ?? 'Your child'} could sign in there and skip every rule. Add a password: sign in to that account, then Windows Settings → Accounts → Sign-in options → Password. This ticks itself off.</> : 'Nobody can just sign in to an unlocked account.')}
         {item(phone, phone ? 'Your phone is linked' : 'Link your phone (optional)',
           phone ? 'Coins, requests and reports from anywhere.' : <>See coins, answer requests and read reports from anywhere. <button class="link-btn" onClick={() => setShowCode(!showCode)}>{showCode ? 'Hide the code' : 'Show the code'}</button></>, true)}
       </ul>

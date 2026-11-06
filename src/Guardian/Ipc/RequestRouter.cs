@@ -1323,6 +1323,8 @@ public sealed class RequestRouter
             {
                 phones = _phones.UsedPhones,
                 used = h.Children.ToDictionary(c => c.Id, c => _activity.Days(c.Id).Count > 0 || _ledger.Recent(c.Id, 1, DateTimeOffset.MinValue).Count > 0),
+                // Other accounts (parents', older siblings') with no password: a child could sign in there and skip the rules.
+                openAccounts = OpenAccounts(),
             },
         };
     }
@@ -1412,6 +1414,21 @@ public sealed class RequestRouter
         if (_store.HasPin) return Response.Fail(req.Id, "already set up — use the Parent Console");
         if (!client.IsAdmin) return Response.Fail(req.Id, "setup must run from an administrator account");
         return Response.Success(req.Id, action());
+    }
+
+    private (List<string> List, DateTime At) _openAccounts = (new(), DateTime.MinValue);
+    private List<string> OpenAccounts()
+    {
+        if (DateTime.UtcNow - _openAccounts.At < TimeSpan.FromMinutes(1)) return _openAccounts.List;
+        try
+        {
+            var kids = _store.Current.Children.Select(c => c.WindowsSid).ToHashSet(StringComparer.OrdinalIgnoreCase);
+            var list = LocalAccounts.List().Where(a => !a.Disabled && !kids.Contains(a.Sid) && LocalAccounts.HasBlankPassword(a.Name) == true)
+                .Select(a => string.IsNullOrWhiteSpace(a.FullName) ? a.Name : a.FullName).ToList();
+            _openAccounts = (list, DateTime.UtcNow);
+            return list;
+        }
+        catch (Exception ex) { _log.LogDebug(ex, "password check failed"); return new(); }
     }
 
     /// <summary>A kid's color: their own, else the palette color for their place in the list.</summary>

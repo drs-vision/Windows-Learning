@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'preact/hooks';
 import { bridge } from '../core/bridge';
 import { KidAccount, type WinAccount } from './KidAccount';
-import { GettingStarted } from './ParentConsole';
+import { GettingStarted, PcMap } from './ParentConsole';
 import type { ParentState } from '../core/types';
 
 
@@ -46,6 +46,7 @@ export function SetupWizard({ onDone }: { onDone: () => void }) {
             <li><b>Choose a starting point</b> · you can change everything later.</li>
             <li><b>Check it works</b> · and link your phone if you like.</li>
           </ol>
+          <PcMap kids={[]} />
           <p class="muted small">About 2 minutes.</p>
           <button class="primary big" onClick={() => setStep(0)}>Start</button>
         </div>

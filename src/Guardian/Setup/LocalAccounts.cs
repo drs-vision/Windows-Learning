@@ -89,6 +89,30 @@ public static class LocalAccounts
         return (p.HasExited ? p.ExitCode : -1, output);
     }
 
+    private static readonly Dictionary<string, (bool? Blank, DateTime At)> _blankCache = new(StringComparer.OrdinalIgnoreCase);
+
+    /// <summary>
+    /// Does this account have no password (so a child could sign in to it and skip CoinQuest)? Asks Windows with a
+    /// network sign-in using an empty password: Windows refuses blank passwords there with "account restriction"
+    /// (1327), and says "wrong password" (1326) when there is one. Checked at most every 6 hours per account, since a
+    /// wrong try counts toward Windows' lockout limit (10 in a row by default). Null = couldn't tell.
+    /// </summary>
+    public static bool? HasBlankPassword(string userName)
+    {
+        lock (_blankCache)
+            if (_blankCache.TryGetValue(userName, out var c) && DateTime.UtcNow - c.At < TimeSpan.FromHours(6)) return c.Blank;
+        bool? blank;
+        if (LogonUser(userName, ".", "", 3 /* LOGON32_LOGON_NETWORK */, 0, out var token)) { CloseHandle(token); blank = true; }
+        else blank = System.Runtime.InteropServices.Marshal.GetLastWin32Error() switch { 1327 => true, 1326 => false, _ => null };
+        lock (_blankCache) _blankCache[userName] = (blank, DateTime.UtcNow);
+        return blank;
+    }
+
+    [System.Runtime.InteropServices.DllImport("advapi32.dll", SetLastError = true, CharSet = System.Runtime.InteropServices.CharSet.Unicode)]
+    private static extern bool LogonUser(string user, string domain, string password, int logonType, int provider, out IntPtr token);
+    [System.Runtime.InteropServices.DllImport("kernel32.dll")]
+    private static extern bool CloseHandle(IntPtr h);
+
     /// <summary>A managed child must be a Standard user. Removes them from Administrators if present.</summary>
     public static void EnsureStandardUser(string account)
     {

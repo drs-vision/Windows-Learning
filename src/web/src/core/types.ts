@@ -130,7 +130,7 @@ export interface ParentState {
   updateStatus: { current: string; latest?: string | null; state: string; message?: string | null; lastChecked?: string | null };
   ledgerIntact: boolean;
   /** Getting started: phones that have connected, and which kids have used CoinQuest at least once. */
-  gettingStarted?: { phones: number; used: Record<string, boolean> };
+  gettingStarted?: { phones: number; used: Record<string, boolean>; openAccounts?: string[] };
   enforcement?: {
     consoleAccount?: string | null;
     childAtKeyboard: boolean;
