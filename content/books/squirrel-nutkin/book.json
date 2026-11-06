@@ -9,6 +9,12 @@
     "max": 2,
     "label": "Grades K-2"
   },
+  "readability": {
+    "grade": 6.2,
+    "fk": 5.8,
+    "cli": 6.9,
+    "ari": 5.8
+  },
   "summary": "A cheeky red squirrel teases Old Brown the owl with riddles once too often.",
   "source": {
     "name": "Project Gutenberg eBook #14872 (public-domain text; Gutenberg header, license and name removed)",
@@ -21,7 +27,13 @@
       "title": "The Tale of Squirrel Nutkin",
       "text": "01-the-tale-of-squirrel-nutkin.txt",
       "questions": "01-the-tale-of-squirrel-nutkin.questions.json",
-      "words": 1207
+      "words": 1207,
+      "readability": {
+        "grade": 6.2,
+        "fk": 5.8,
+        "cli": 6.9,
+        "ari": 5.8
+      }
     }
   ]
 }

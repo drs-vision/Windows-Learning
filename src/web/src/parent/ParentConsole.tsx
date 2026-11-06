@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'preact/hooks';
 import type { Child, FlashpointGame, FpCatalogGame, Game, ParentState, Prize, WebGame } from '../core/types';
 import { BLOCK_MINUTES, autoSamplerPrice, defaultArcadePrice, youTubeBlockPrice } from '../core/types';
+import { ReadingAnalysis } from './reading';
 import { bridge, type DiscStatus, type FpStatus, type PhoneLinks, type RwtStatus } from '../core/bridge';
 import qrcode from 'qrcode-generator';
 import { MODULES } from '../modules/registry';
@@ -827,6 +828,7 @@ function ActivityPanel({ child }: { child: Child }) {
   const [month, setMonth] = useState(new Date(now.getFullYear(), now.getMonth(), 1));
   const [byDay, setByDay] = useState<Record<string, rep.DayReport>>({});
   const [err, setErr] = useState('');
+  const [reading, setReading] = useState(false);
   // Load the weeks around what's on screen (the calendar's month, or the selected day).
   const anchor = cal ? month : rep.parseDay(sel);
   const loadKey = `${anchor.getFullYear()}-${anchor.getMonth()}`;
@@ -845,7 +847,7 @@ function ActivityPanel({ child }: { child: Child }) {
   const days = rep.rangeOf(sel, mode);
   const html = rep.navHtml(sel, mode, cal)
     + (cal ? rep.calendarHtml(month, byDay, sel, mode) : '')
-    + rep.reportHtml(days.map((d) => byDay[d]).filter(Boolean) as rep.DayReport[]);
+    + rep.reportHtml(days.map((d) => byDay[d]).filter(Boolean) as rep.DayReport[], { readingLink: true });
   function click(e: MouseEvent) {
     const b = (e.target as HTMLElement).closest('button') as HTMLButtonElement | null;
     if (!b) return;
@@ -854,7 +856,9 @@ function ActivityPanel({ child }: { child: Child }) {
     else if (b.dataset.repStep) setSel(rep.step(sel, mode, Number(b.dataset.repStep)));
     else if (b.dataset.repCal !== undefined) { const d = rep.parseDay(sel); setMonth(new Date(d.getFullYear(), d.getMonth(), 1)); setCal(!cal); }
     else if (b.dataset.repMode) setMode(b.dataset.repMode as 'day' | 'week');
+    else if (b.dataset.repReading !== undefined) setReading(true);
   }
+  if (reading) return <div class="card activity"><ReadingAnalysis childId={child.id} kid={child.displayName} onBack={() => setReading(false)} /></div>;
   return (
     <div class="card activity">
       <style dangerouslySetInnerHTML={{ __html: rep.REPORT_CSS }} />

@@ -6,6 +6,7 @@
 import { readFileSync, readdirSync, existsSync, statSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { measure } from './readability.mjs';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..', '..', 'content', 'books');
 const args = process.argv.slice(2).filter((a) => !a.startsWith('--'));
@@ -31,6 +32,12 @@ for (const id of books) {
   if (book.published > 1930) err(id, `published ${book.published}: only books published before 1931 are public domain in the US`);
   if (!(Number.isInteger(book.level) && book.level >= 1 && book.level <= 12)) err(id, 'level must be a whole number from 1 (easiest) up');
   if (!(book.grade?.min >= 0 && book.grade?.max >= book.grade?.min)) err(id, 'grade.min / grade.max are wrong');
+  if (book.measures) {
+    const { lexile, atos } = book.measures;
+    if (lexile && !(Number.isInteger(lexile.value) && /^https:\/\//.test(lexile.url ?? ''))) err(id, 'measures.lexile needs a whole-number value and the https url it came from');
+    if (atos && !(typeof atos.level === 'number' && /^https:\/\//.test(atos.url ?? ''))) err(id, 'measures.atos needs a level and the https url it came from');
+  }
+  if (!book.readability) err(id, 'no readability: run node scripts/books/readability.mjs');
   const ids = new Set();
   for (const ch of book.chapters ?? []) {
     if (onlyChapter && ch.n !== onlyChapter) continue;
@@ -44,6 +51,9 @@ for (const id of books) {
       err(where, `text has characters that aren't on a keyboard: ${bad.join(' ')}`);
     }
     const words = text.split(/\s+/).filter(Boolean).length;
+    const rd = measure(text);
+    if (!ch.readability) err(where, 'no readability: run node scripts/books/readability.mjs');
+    else if (['grade', 'fk', 'cli', 'ari'].some((k) => Math.abs((ch.readability[k] ?? -99) - rd[k]) > 0.05)) err(where, 'readability is out of date with the text: run node scripts/books/readability.mjs');
     if (words !== ch.words) warn(where, `book.json says ${ch.words} words, the text has ${words}`);
     const qp = join(dir, ch.questions);
     if (!existsSync(qp)) { missing++; (allowMissing ? warn : err)(where, `no questions yet (${ch.questions})`); continue; }

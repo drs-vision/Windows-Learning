@@ -9,6 +9,12 @@
     "max": 8,
     "label": "Grades 6-8"
   },
+  "readability": {
+    "grade": 6.8,
+    "fk": 6.9,
+    "cli": 6.3,
+    "ari": 7.2
+  },
   "summary": "Young Jim Hawkins finds a treasure map and sails with pirates, including the cunning Long John Silver.",
   "source": {
     "name": "Project Gutenberg eBook #120 (public-domain text; Gutenberg header, license and name removed)",
@@ -21,238 +27,442 @@
       "title": "The Old Sea-dog at the Admiral Benbow",
       "text": "01-the-old-sea-dog-at-the-admiral-benbow.txt",
       "questions": "01-the-old-sea-dog-at-the-admiral-benbow.questions.json",
-      "words": 2203
+      "words": 2203,
+      "readability": {
+        "grade": 10,
+        "fk": 11,
+        "cli": 6.9,
+        "ari": 12.2
+      }
     },
     {
       "n": 2,
       "title": "Black Dog Appears and Disappears",
       "text": "02-black-dog-appears-and-disappears.txt",
       "questions": "02-black-dog-appears-and-disappears.questions.json",
-      "words": 2243
+      "words": 2243,
+      "readability": {
+        "grade": 6,
+        "fk": 6.3,
+        "cli": 5.5,
+        "ari": 6.3
+      }
     },
     {
       "n": 3,
       "title": "The Black Spot",
       "text": "03-the-black-spot.txt",
       "questions": "03-the-black-spot.questions.json",
-      "words": 2151
+      "words": 2151,
+      "readability": {
+        "grade": 5.8,
+        "fk": 6.2,
+        "cli": 5.2,
+        "ari": 6
+      }
     },
     {
       "n": 4,
       "title": "The Sea-chest",
       "text": "04-the-sea-chest.txt",
       "questions": "04-the-sea-chest.questions.json",
-      "words": 2134
+      "words": 2134,
+      "readability": {
+        "grade": 9.1,
+        "fk": 9.6,
+        "cli": 7,
+        "ari": 10.6
+      }
     },
     {
       "n": 5,
       "title": "The Last of the Blind Man",
       "text": "05-the-last-of-the-blind-man.txt",
       "questions": "05-the-last-of-the-blind-man.questions.json",
-      "words": 1849
+      "words": 1849,
+      "readability": {
+        "grade": 6.1,
+        "fk": 5.9,
+        "cli": 6.2,
+        "ari": 6.2
+      }
     },
     {
       "n": 6,
       "title": "The Captain's Papers",
       "text": "06-the-captain-s-papers.txt",
       "questions": "06-the-captain-s-papers.questions.json",
-      "words": 1949
+      "words": 1949,
+      "readability": {
+        "grade": 5.6,
+        "fk": 5.3,
+        "cli": 6.1,
+        "ari": 5.3
+      }
     },
     {
       "n": 7,
       "title": "I Go to Bristol",
       "text": "07-i-go-to-bristol.txt",
       "questions": "07-i-go-to-bristol.questions.json",
-      "words": 1816
+      "words": 1816,
+      "readability": {
+        "grade": 7.4,
+        "fk": 7.6,
+        "cli": 6.9,
+        "ari": 7.6
+      }
     },
     {
       "n": 8,
       "title": "At the Sign of the Spy-glass",
       "text": "08-at-the-sign-of-the-spy-glass.txt",
       "questions": "08-at-the-sign-of-the-spy-glass.questions.json",
-      "words": 1764
+      "words": 1764,
+      "readability": {
+        "grade": 4.6,
+        "fk": 4.4,
+        "cli": 5.3,
+        "ari": 4
+      }
     },
     {
       "n": 9,
       "title": "Powder and Arms",
       "text": "09-powder-and-arms.txt",
       "questions": "09-powder-and-arms.questions.json",
-      "words": 1711
+      "words": 1711,
+      "readability": {
+        "grade": 4.8,
+        "fk": 4.7,
+        "cli": 5.6,
+        "ari": 4.2
+      }
     },
     {
       "n": 10,
       "title": "The Voyage",
       "text": "10-the-voyage.txt",
       "questions": "10-the-voyage.questions.json",
-      "words": 1932
+      "words": 1932,
+      "readability": {
+        "grade": 7.1,
+        "fk": 7.2,
+        "cli": 6.5,
+        "ari": 7.6
+      }
     },
     {
       "n": 11,
       "title": "What I Heard in the Apple Barrel",
       "text": "11-what-i-heard-in-the-apple-barrel.txt",
       "questions": "11-what-i-heard-in-the-apple-barrel.questions.json",
-      "words": 2062
+      "words": 2062,
+      "readability": {
+        "grade": 4.1,
+        "fk": 3.9,
+        "cli": 5,
+        "ari": 3.5
+      }
     },
     {
       "n": 12,
       "title": "Council of War",
       "text": "12-council-of-war.txt",
       "questions": "12-council-of-war.questions.json",
-      "words": 1835
+      "words": 1835,
+      "readability": {
+        "grade": 5.8,
+        "fk": 5.8,
+        "cli": 5.8,
+        "ari": 5.7
+      }
     },
     {
       "n": 13,
       "title": "How My Shore Adventure Began",
       "text": "13-how-my-shore-adventure-began.txt",
       "questions": "13-how-my-shore-adventure-began.questions.json",
-      "words": 1788
+      "words": 1788,
+      "readability": {
+        "grade": 8,
+        "fk": 8.3,
+        "cli": 6.9,
+        "ari": 9
+      }
     },
     {
       "n": 14,
       "title": "The First Blow",
       "text": "14-the-first-blow.txt",
       "questions": "14-the-first-blow.questions.json",
-      "words": 1912
+      "words": 1912,
+      "readability": {
+        "grade": 7.6,
+        "fk": 7.8,
+        "cli": 6.7,
+        "ari": 8.3
+      }
     },
     {
       "n": 15,
       "title": "The Man of the Island",
       "text": "15-the-man-of-the-island.txt",
       "questions": "15-the-man-of-the-island.questions.json",
-      "words": 2219
+      "words": 2219,
+      "readability": {
+        "grade": 4.7,
+        "fk": 4.7,
+        "cli": 5.3,
+        "ari": 4.2
+      }
     },
     {
       "n": 16,
       "title": "Narrative Continued by the Doctor: How the Ship Was Abandoned",
       "text": "16-narrative-continued-by-the-doctor-how-th.txt",
       "questions": "16-narrative-continued-by-the-doctor-how-th.questions.json",
-      "words": 1634
+      "words": 1634,
+      "readability": {
+        "grade": 7.3,
+        "fk": 7.3,
+        "cli": 6.8,
+        "ari": 7.8
+      }
     },
     {
       "n": 17,
       "title": "Narrative Continued by the Doctor: The Jolly-boat's Last Trip",
       "text": "17-narrative-continued-by-the-doctor-the-jo.txt",
       "questions": "17-narrative-continued-by-the-doctor-the-jo.questions.json",
-      "words": 1470
+      "words": 1470,
+      "readability": {
+        "grade": 5.9,
+        "fk": 5.7,
+        "cli": 6.2,
+        "ari": 5.9
+      }
     },
     {
       "n": 18,
       "title": "Narrative Continued by the Doctor: End of the First Day's Fighting",
       "text": "18-narrative-continued-by-the-doctor-end-of.txt",
       "questions": "18-narrative-continued-by-the-doctor-end-of.questions.json",
-      "words": 1469
+      "words": 1469,
+      "readability": {
+        "grade": 6.4,
+        "fk": 6.2,
+        "cli": 6.8,
+        "ari": 6.2
+      }
     },
     {
       "n": 19,
       "title": "Narrative Resumed by Jim Hawkins: The Garrison in the Stockade",
       "text": "19-narrative-resumed-by-jim-hawkins-the-gar.txt",
       "questions": "19-narrative-resumed-by-jim-hawkins-the-gar.questions.json",
-      "words": 1998
+      "words": 1998,
+      "readability": {
+        "grade": 6.4,
+        "fk": 6.4,
+        "cli": 6.1,
+        "ari": 6.7
+      }
     },
     {
       "n": 20,
       "title": "Silver's Embassy",
       "text": "20-silver-s-embassy.txt",
       "questions": "20-silver-s-embassy.questions.json",
-      "words": 1884
+      "words": 1884,
+      "readability": {
+        "grade": 4.1,
+        "fk": 3.9,
+        "cli": 5,
+        "ari": 3.4
+      }
     },
     {
       "n": 21,
       "title": "The Attack",
       "text": "21-the-attack.txt",
       "questions": "21-the-attack.questions.json",
-      "words": 2004
+      "words": 2004,
+      "readability": {
+        "grade": 6,
+        "fk": 5.5,
+        "cli": 6.8,
+        "ari": 5.8
+      }
     },
     {
       "n": 22,
       "title": "How My Sea Adventure Began",
       "text": "22-how-my-sea-adventure-began.txt",
       "questions": "22-how-my-sea-adventure-began.questions.json",
-      "words": 2073
+      "words": 2073,
+      "readability": {
+        "grade": 10.8,
+        "fk": 11.8,
+        "cli": 7.3,
+        "ari": 13.3
+      }
     },
     {
       "n": 23,
       "title": "The Ebb-tide Runs",
       "text": "23-the-ebb-tide-runs.txt",
       "questions": "23-the-ebb-tide-runs.questions.json",
-      "words": 1578
+      "words": 1578,
+      "readability": {
+        "grade": 9.5,
+        "fk": 9.9,
+        "cli": 7.7,
+        "ari": 10.9
+      }
     },
     {
       "n": 24,
       "title": "The Cruise of the Coracle",
       "text": "24-the-cruise-of-the-coracle.txt",
       "questions": "24-the-cruise-of-the-coracle.questions.json",
-      "words": 1974
+      "words": 1974,
+      "readability": {
+        "grade": 9.2,
+        "fk": 9.5,
+        "cli": 7.4,
+        "ari": 10.6
+      }
     },
     {
       "n": 25,
       "title": "I Strike the Jolly Roger",
       "text": "25-i-strike-the-jolly-roger.txt",
       "questions": "25-i-strike-the-jolly-roger.questions.json",
-      "words": 1703
+      "words": 1703,
+      "readability": {
+        "grade": 7.2,
+        "fk": 7.3,
+        "cli": 6.5,
+        "ari": 7.8
+      }
     },
     {
       "n": 26,
       "title": "Israel Hands",
       "text": "26-israel-hands.txt",
       "questions": "26-israel-hands.questions.json",
-      "words": 2933
+      "words": 2933,
+      "readability": {
+        "grade": 7.5,
+        "fk": 8,
+        "cli": 6.2,
+        "ari": 8.4
+      }
     },
     {
       "n": 27,
       "title": "\"Pieces of Eight\"",
       "text": "27-pieces-of-eight.txt",
       "questions": "27-pieces-of-eight.questions.json",
-      "words": 2156
+      "words": 2156,
+      "readability": {
+        "grade": 8.2,
+        "fk": 8.5,
+        "cli": 7,
+        "ari": 9.2
+      }
     },
     {
       "n": 28,
       "title": "In the Enemy's Camp",
       "text": "28-in-the-enemy-s-camp.txt",
       "questions": "28-in-the-enemy-s-camp.questions.json",
-      "words": 2726
+      "words": 2726,
+      "readability": {
+        "grade": 4.8,
+        "fk": 4.7,
+        "cli": 5.2,
+        "ari": 4.5
+      }
     },
     {
       "n": 29,
       "title": "The Black Spot Again",
       "text": "29-the-black-spot-again.txt",
       "questions": "29-the-black-spot-again.questions.json",
-      "words": 2107
+      "words": 2107,
+      "readability": {
+        "grade": 4.6,
+        "fk": 4.2,
+        "cli": 5.7,
+        "ari": 3.8
+      }
     },
     {
       "n": 30,
       "title": "On Parole",
       "text": "30-on-parole.txt",
       "questions": "30-on-parole.questions.json",
-      "words": 2306
+      "words": 2306,
+      "readability": {
+        "grade": 5.7,
+        "fk": 5.7,
+        "cli": 5.9,
+        "ari": 5.6
+      }
     },
     {
       "n": 31,
       "title": "The Treasure-hunt--Flint's Pointer",
       "text": "31-the-treasure-hunt-flint-s-pointer.txt",
       "questions": "31-the-treasure-hunt-flint-s-pointer.questions.json",
-      "words": 2253
+      "words": 2253,
+      "readability": {
+        "grade": 7.3,
+        "fk": 7.2,
+        "cli": 6.9,
+        "ari": 7.7
+      }
     },
     {
       "n": 32,
       "title": "The Treasure-hunt--The Voice Among the Trees",
       "text": "32-the-treasure-hunt-the-voice-among-the-tr.txt",
       "questions": "32-the-treasure-hunt-the-voice-among-the-tr.questions.json",
-      "words": 1943
+      "words": 1943,
+      "readability": {
+        "grade": 6.6,
+        "fk": 6.1,
+        "cli": 7.2,
+        "ari": 6.6
+      }
     },
     {
       "n": 33,
       "title": "The Fall of a Chieftain",
       "text": "33-the-fall-of-a-chieftain.txt",
       "questions": "33-the-fall-of-a-chieftain.questions.json",
-      "words": 1985
+      "words": 1985,
+      "readability": {
+        "grade": 6.4,
+        "fk": 6.1,
+        "cli": 6.7,
+        "ari": 6.3
+      }
     },
     {
       "n": 34,
       "title": "And Last",
       "text": "34-and-last.txt",
       "questions": "34-and-last.questions.json",
-      "words": 1890
+      "words": 1890,
+      "readability": {
+        "grade": 10.1,
+        "fk": 10.5,
+        "cli": 7.6,
+        "ari": 12.1
+      }
     }
   ]
 }

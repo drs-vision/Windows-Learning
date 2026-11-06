@@ -9,6 +9,12 @@
     "max": 3,
     "label": "Grades 1-3"
   },
+  "readability": {
+    "grade": 7.6,
+    "fk": 6.7,
+    "cli": 8.4,
+    "ari": 7.7
+  },
   "summary": "A poor tailor falls ill before finishing the Mayor's wedding coat, and the mice he saved help him.",
   "source": {
     "name": "Project Gutenberg eBook #14868 (public-domain text; Gutenberg header, license and name removed)",
@@ -21,7 +27,13 @@
       "title": "The Tailor of Gloucester",
       "text": "01-the-tailor-of-gloucester.txt",
       "questions": "01-the-tailor-of-gloucester.questions.json",
-      "words": 2708
+      "words": 2708,
+      "readability": {
+        "grade": 7.6,
+        "fk": 6.7,
+        "cli": 8.4,
+        "ari": 7.7
+      }
     }
   ]
 }

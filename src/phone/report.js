@@ -131,7 +131,7 @@ export function titleOf(selected, mode) {
 }
 
 /** The report for a selection. reports: the daily reports it covers (missing days = nothing recorded). */
-export function reportHtml(reports, { title, note } = {}) {
+export function reportHtml(reports, { title, note, readingLink } = {}) {
   const m = merge(reports);
   const head = title ? `<h3 class="rep-title">${esc(title)}</h3>` : '';
   if (!m.total && !sum(m.earned) && !sum(m.spent) && !sum(m.done) && !m.log.length && !m.reading?.chapters) {
@@ -153,7 +153,7 @@ export function reportHtml(reports, { title, note } = {}) {
     `<div class="rep-tile"><small>Coins earned</small><b>${earned}</b></div>`,
     `<div class="rep-tile"><small>Coins spent</small><b>${spentTotal}</b></div>`,
     m.typing.sessions ? `<div class="rep-tile"><small>Typing speed</small><b>${wpm} <em>WPM</em></b><small>best ${m.typing.best} · ${Math.round(m.typing.chars / 5)} words</small></div>` : '',
-    readingTile(m),
+    readingTile(m, readingLink),
   ].join('');
   const done = Object.entries(m.done).filter(([k, v]) => v > 0 && !READING_KEYS.has(k)).sort((a, b) => b[1] - a[1]);
   const doneHtml = done.length ? `<h4>Finished</h4><ul class="rep-list">${done.map(([k, v]) => `<li><span>${esc(doneName(k))}</span><b>${v}</b></li>`).join('')}</ul>` : '';
@@ -177,7 +177,7 @@ export function reportHtml(reports, { title, note } = {}) {
  * while the chapter was on screen and in use). All time: the verified level (the highest level with 3+ chapters at
  * 80%+ on the first try) and the level they're reading now.
  */
-function readingTile(m) {
+function readingTile(m, link) {
   const d = m.done, r = m.reading;
   const answered = d['books:answered'] || 0, right = d['books:correct'] || 0;
   const speed = d['books:readSec'] > 0 ? Math.round(d['books:readWords'] / (d['books:readSec'] / 60)) : 0;
@@ -188,7 +188,9 @@ function readingTile(m) {
   const level = r && r.chapters ? `<div class="rep-tile"><small>Reading level</small><b>${r.verified ? `Level ${r.verified}` : '—'} <em>${r.verified ? 'verified' : 'not yet'}</em></b><small>${[
     r.level ? `reading Level ${r.level}` : '', r.firstTry != null ? `${r.firstTry}% first try` : '', r.wpm ? `${r.wpm} words/min` : '', `${r.chapters} chapters`,
   ].filter(Boolean).join(' · ')}</small></div>` : '';
-  return now + level;
+  const out = now + level;
+  // On the PC the tiles open the Reading analysis.
+  return link && out ? out.replace(/<div class="rep-tile">/g, '<button class="rep-tile rep-link" data-rep-reading title="Open the reading analysis">').replace(/<\/div>(?=<button|$)/g, '</button>') : out;
 }
 
 const clock = (hhmm) => { const [h, mi] = String(hhmm).split(':').map(Number); return `${((h + 11) % 12) + 1}:${String(mi).padStart(2, '0')} ${h < 12 ? 'am' : 'pm'}`; };
@@ -276,6 +278,9 @@ export const REPORT_CSS = `
 .activity .rep-tiles { display: grid; grid-template-columns: repeat(auto-fit, minmax(110px, 1fr)); gap: 8px; margin: 4px 0 6px; }
 .activity .rep-tile { border: 1px solid var(--line, rgba(127,127,127,.25)); border-radius: 12px; padding: 10px 12px; display: grid; gap: 2px; }
 .activity .rep-tile small { opacity: .65; font-size: 12px; } .activity .rep-tile b { font-size: 22px; } .activity .rep-tile em { font-style: normal; font-size: 13px; opacity: .7; }
+.activity button.rep-tile.rep-link { font: inherit; color: inherit; background: none; text-align: left; cursor: pointer; position: relative; }
+.activity button.rep-tile.rep-link:hover { border-color: var(--accent, #4f7cff); }
+.activity button.rep-tile.rep-link::after { content: 'Details ›'; position: absolute; top: 10px; right: 12px; font-size: 12px; color: var(--accent, #4f7cff); }
 .activity h4 { margin: 16px 0 6px; font-size: 13px; text-transform: uppercase; letter-spacing: .04em; opacity: .6; }
 .activity .rep-top, .activity .rep-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; }
 .activity .rep-top li { display: grid; grid-template-columns: 22px minmax(0, 1.4fr) 1fr auto; gap: 8px; align-items: center; font-size: 14px; }

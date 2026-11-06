@@ -9,6 +9,12 @@
     "max": 2,
     "label": "Grades K-2"
   },
+  "readability": {
+    "grade": 7.1,
+    "fk": 6.7,
+    "cli": 7.8,
+    "ari": 6.7
+  },
   "summary": "Two mice break into a doll's house and are very cross to find the food is pretend.",
   "source": {
     "name": "Project Gutenberg eBook #45264 (public-domain text; Gutenberg header, license and name removed)",
@@ -21,7 +27,13 @@
       "title": "The Tale of Two Bad Mice",
       "text": "01-the-tale-of-two-bad-mice.txt",
       "questions": "01-the-tale-of-two-bad-mice.questions.json",
-      "words": 883
+      "words": 883,
+      "readability": {
+        "grade": 7.1,
+        "fk": 6.7,
+        "cli": 7.8,
+        "ari": 6.7
+      }
     }
   ]
 }

@@ -9,6 +9,12 @@
     "max": 2,
     "label": "Grades K-2"
   },
+  "readability": {
+    "grade": 5.9,
+    "fk": 5.2,
+    "cli": 7.4,
+    "ari": 5.1
+  },
   "summary": "Benjamin's children fall asleep in Mr. McGregor's rubbish heap and get popped into a sack.",
   "source": {
     "name": "Project Gutenberg eBook #14220 (public-domain text; Gutenberg header, license and name removed)",
@@ -21,7 +27,13 @@
       "title": "The Tale of the Flopsy Bunnies",
       "text": "01-the-tale-of-the-flopsy-bunnies.txt",
       "questions": "01-the-tale-of-the-flopsy-bunnies.questions.json",
-      "words": 997
+      "words": 997,
+      "readability": {
+        "grade": 5.9,
+        "fk": 5.2,
+        "cli": 7.4,
+        "ari": 5.1
+      }
     }
   ]
 }

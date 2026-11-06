@@ -92,6 +92,7 @@ public static class Ops
     public const string ParentFpDownloadInstaller = "parent.fpDownloadInstaller";
     public const string ParentDiagnostics = "parent.diagnostics";
     public const string ParentBooks = "parent.books"; // { childId? } the whole library, for choosing books (+ that child's progress)
+    public const string ParentReading = "parent.reading"; // { childId } → the reading analysis (ReadingReport)
     public const string ParentBooksReset = "parent.booksReset"; // { childId, bookId } → the child starts that book over (it pays again)
     public const string ParentActivity = "parent.activity"; // { childId, from, to } → daily activity reports (yyyy-MM-dd, inclusive)
     public const string ParentRwtStatus = "parent.rwtStatus";         // Read, Write & Type: imported? otvdm? import progress

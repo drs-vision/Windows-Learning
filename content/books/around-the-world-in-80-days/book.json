@@ -9,6 +9,12 @@
     "max": 8,
     "label": "Grades 6-8"
   },
+  "readability": {
+    "grade": 8.8,
+    "fk": 8.3,
+    "cli": 9.3,
+    "ari": 8.8
+  },
   "summary": "Phileas Fogg bets his fortune that he can travel around the world in eighty days.",
   "source": {
     "name": "Project Gutenberg eBook #103 (public-domain text; Gutenberg header, license and name removed)",
@@ -21,259 +27,481 @@
       "title": "In Which Phileas Fogg and Passepartout Accept Each Other, the One As Master, the Other As Man",
       "text": "01-in-which-phileas-fogg-and-passepartout-a.txt",
       "questions": "01-in-which-phileas-fogg-and-passepartout-a.questions.json",
-      "words": 1453
+      "words": 1453,
+      "readability": {
+        "grade": 9.9,
+        "fk": 9.8,
+        "cli": 9.4,
+        "ari": 10.3
+      }
     },
     {
       "n": 2,
       "title": "In Which Passepartout Is Convinced That He Has at Last Found His Ideal",
       "text": "02-in-which-passepartout-is-convinced-that.txt",
       "questions": "02-in-which-passepartout-is-convinced-that.questions.json",
-      "words": 1114
+      "words": 1114,
+      "readability": {
+        "grade": 11.9,
+        "fk": 11.9,
+        "cli": 10.5,
+        "ari": 13.2
+      }
     },
     {
       "n": 3,
       "title": "In Which a Conversation Takes Place Which Seems Likely to Cost Phileas Fogg Dear",
       "text": "03-in-which-a-conversation-takes-place-whic.txt",
       "questions": "03-in-which-a-conversation-takes-place-whic.questions.json",
-      "words": 1991
+      "words": 1991,
+      "readability": {
+        "grade": 7.4,
+        "fk": 6.6,
+        "cli": 8.7,
+        "ari": 6.9
+      }
     },
     {
       "n": 4,
       "title": "In Which Phileas Fogg Astounds Passepartout, His Servant",
       "text": "04-in-which-phileas-fogg-astounds-passepart.txt",
       "questions": "04-in-which-phileas-fogg-astounds-passepart.questions.json",
-      "words": 942
+      "words": 942,
+      "readability": {
+        "grade": 6.9,
+        "fk": 5.8,
+        "cli": 8.7,
+        "ari": 6.1
+      }
     },
     {
       "n": 5,
       "title": "In Which a New Species of Funds, Unknown to the Moneyed Men, Appears on 'Change",
       "text": "05-in-which-a-new-species-of-funds-unknown.txt",
       "questions": "05-in-which-a-new-species-of-funds-unknown.questions.json",
-      "words": 933
+      "words": 933,
+      "readability": {
+        "grade": 11.4,
+        "fk": 11.4,
+        "cli": 10.3,
+        "ari": 12.4
+      }
     },
     {
       "n": 6,
       "title": "In Which Fix, the Detective, Betrays a Very Natural Impatience",
       "text": "06-in-which-fix-the-detective-betrays-a-ver.txt",
       "questions": "06-in-which-fix-the-detective-betrays-a-ver.questions.json",
-      "words": 1299
+      "words": 1299,
+      "readability": {
+        "grade": 8.5,
+        "fk": 8.1,
+        "cli": 9.1,
+        "ari": 8.3
+      }
     },
     {
       "n": 7,
       "title": "Which Once More Demonstrates the Uselessness of Passports As Aids to Detectives",
       "text": "07-which-once-more-demonstrates-the-useless.txt",
       "questions": "07-which-once-more-demonstrates-the-useless.questions.json",
-      "words": 763
+      "words": 763,
+      "readability": {
+        "grade": 6.3,
+        "fk": 6.1,
+        "cli": 7.4,
+        "ari": 5.5
+      }
     },
     {
       "n": 8,
       "title": "In Which Passepartout Talks Rather More, Perhaps, Than Is Prudent",
       "text": "08-in-which-passepartout-talks-rather-more.txt",
       "questions": "08-in-which-passepartout-talks-rather-more.questions.json",
-      "words": 1076
+      "words": 1076,
+      "readability": {
+        "grade": 5,
+        "fk": 4.8,
+        "cli": 6.3,
+        "ari": 3.9
+      }
     },
     {
       "n": 9,
       "title": "In Which the Red Sea and the Indian Ocean Prove Propitious to the Designs of Phileas Fogg",
       "text": "09-in-which-the-red-sea-and-the-indian-ocea.txt",
       "questions": "09-in-which-the-red-sea-and-the-indian-ocea.questions.json",
-      "words": 1547
+      "words": 1547,
+      "readability": {
+        "grade": 10.1,
+        "fk": 9.7,
+        "cli": 10.1,
+        "ari": 10.6
+      }
     },
     {
       "n": 10,
       "title": "In Which Passepartout Is Only Too Glad to Get Off with the Loss of His Shoes",
       "text": "10-in-which-passepartout-is-only-too-glad-t.txt",
       "questions": "10-in-which-passepartout-is-only-too-glad-t.questions.json",
-      "words": 1552
+      "words": 1552,
+      "readability": {
+        "grade": 12.2,
+        "fk": 12.2,
+        "cli": 10.9,
+        "ari": 13.6
+      }
     },
     {
       "n": 11,
       "title": "In Which Phileas Fogg Secures a Curious Means of Conveyance at a Fabulous Price",
       "text": "11-in-which-phileas-fogg-secures-a-curious.txt",
       "questions": "11-in-which-phileas-fogg-secures-a-curious.questions.json",
-      "words": 2530
+      "words": 2530,
+      "readability": {
+        "grade": 10.4,
+        "fk": 9.7,
+        "cli": 10.7,
+        "ari": 10.7
+      }
     },
     {
       "n": 12,
       "title": "In Which Phileas Fogg and His Companions Venture Across the Indian Forests, and What Ensued",
       "text": "12-in-which-phileas-fogg-and-his-companions.txt",
       "questions": "12-in-which-phileas-fogg-and-his-companions.questions.json",
-      "words": 2083
+      "words": 2083,
+      "readability": {
+        "grade": 9.7,
+        "fk": 8.8,
+        "cli": 10.3,
+        "ari": 9.9
+      }
     },
     {
       "n": 13,
       "title": "In Which Passepartout Receives a New Proof That Fortune Favors the Brave",
       "text": "13-in-which-passepartout-receives-a-new-pro.txt",
       "questions": "13-in-which-passepartout-receives-a-new-pro.questions.json",
-      "words": 2035
+      "words": 2035,
+      "readability": {
+        "grade": 8.3,
+        "fk": 7.6,
+        "cli": 8.9,
+        "ari": 8.5
+      }
     },
     {
       "n": 14,
       "title": "In Which Phileas Fogg Descends the Whole Length of the Beautiful Valley of the Ganges Without Ever Thinking of Seeing It",
       "text": "14-in-which-phileas-fogg-descends-the-whole.txt",
       "questions": "14-in-which-phileas-fogg-descends-the-whole.questions.json",
-      "words": 1917
+      "words": 1917,
+      "readability": {
+        "grade": 11.6,
+        "fk": 11.2,
+        "cli": 10.8,
+        "ari": 12.8
+      }
     },
     {
       "n": 15,
       "title": "In Which the Bag of Banknotes Disgorges Some Thousands of Pounds More",
       "text": "15-in-which-the-bag-of-banknotes-disgorges.txt",
       "questions": "15-in-which-the-bag-of-banknotes-disgorges.questions.json",
-      "words": 1829
+      "words": 1829,
+      "readability": {
+        "grade": 7.5,
+        "fk": 6.6,
+        "cli": 9,
+        "ari": 6.9
+      }
     },
     {
       "n": 16,
       "title": "In Which Fix Does Not Seem to Understand in the Least What Is Said to Him",
       "text": "16-in-which-fix-does-not-seem-to-understand.txt",
       "questions": "16-in-which-fix-does-not-seem-to-understand.questions.json",
-      "words": 1609
+      "words": 1609,
+      "readability": {
+        "grade": 9.6,
+        "fk": 9.4,
+        "cli": 9.4,
+        "ari": 9.9
+      }
     },
     {
       "n": 17,
       "title": "Showing What Happened on the Voyage from Singapore to Hong Kong",
       "text": "17-showing-what-happened-on-the-voyage-from.txt",
       "questions": "17-showing-what-happened-on-the-voyage-from.questions.json",
-      "words": 1718
+      "words": 1718,
+      "readability": {
+        "grade": 9.6,
+        "fk": 9.1,
+        "cli": 10,
+        "ari": 9.6
+      }
     },
     {
       "n": 18,
       "title": "In Which Phileas Fogg, Passepartout, and Fix Go Each About His Business",
       "text": "18-in-which-phileas-fogg-passepartout-and-f.txt",
       "questions": "18-in-which-phileas-fogg-passepartout-and-f.questions.json",
-      "words": 1340
+      "words": 1340,
+      "readability": {
+        "grade": 9.1,
+        "fk": 8.5,
+        "cli": 9.6,
+        "ari": 9.3
+      }
     },
     {
       "n": 19,
       "title": "In Which Passepartout Takes a Too Great Interest in His Master, and What Comes of It",
       "text": "19-in-which-passepartout-takes-a-too-great.txt",
       "questions": "19-in-which-passepartout-takes-a-too-great.questions.json",
-      "words": 2060
+      "words": 2060,
+      "readability": {
+        "grade": 6.8,
+        "fk": 6.2,
+        "cli": 8.2,
+        "ari": 6
+      }
     },
     {
       "n": 20,
       "title": "In Which Fix Comes Face to Face with Phileas Fogg",
       "text": "20-in-which-fix-comes-face-to-face-with-phi.txt",
       "questions": "20-in-which-fix-comes-face-to-face-with-phi.questions.json",
-      "words": 1740
+      "words": 1740,
+      "readability": {
+        "grade": 6.9,
+        "fk": 6.5,
+        "cli": 7.9,
+        "ari": 6.2
+      }
     },
     {
       "n": 21,
       "title": "In Which the Master of the \"Tankadere\" Runs Great Risk of Losing a Reward of Two Hundred Pounds",
       "text": "21-in-which-the-master-of-the-tankadere-run.txt",
       "questions": "21-in-which-the-master-of-the-tankadere-run.questions.json",
-      "words": 2563
+      "words": 2563,
+      "readability": {
+        "grade": 7.6,
+        "fk": 7.2,
+        "cli": 8.2,
+        "ari": 7.5
+      }
     },
     {
       "n": 22,
       "title": "In Which Passepartout Finds Out That, Even at the Antipodes, It Is Convenient to Have Some Money in One's Pocket",
       "text": "22-in-which-passepartout-finds-out-that-eve.txt",
       "questions": "22-in-which-passepartout-finds-out-that-eve.questions.json",
-      "words": 2064
+      "words": 2064,
+      "readability": {
+        "grade": 10.3,
+        "fk": 9.9,
+        "cli": 10.1,
+        "ari": 11
+      }
     },
     {
       "n": 23,
       "title": "In Which Passepartout's Nose Becomes Outrageously Long",
       "text": "23-in-which-passepartout-s-nose-becomes-out.txt",
       "questions": "23-in-which-passepartout-s-nose-becomes-out.questions.json",
-      "words": 1932
+      "words": 1932,
+      "readability": {
+        "grade": 9,
+        "fk": 8.3,
+        "cli": 9.6,
+        "ari": 9
+      }
     },
     {
       "n": 24,
       "title": "During Which Mr. Fogg and Party Cross the Pacific Ocean",
       "text": "24-during-which-mr-fogg-and-party-cross-the.txt",
       "questions": "24-during-which-mr-fogg-and-party-cross-the.questions.json",
-      "words": 1948
+      "words": 1948,
+      "readability": {
+        "grade": 9.6,
+        "fk": 9.3,
+        "cli": 9.6,
+        "ari": 9.9
+      }
     },
     {
       "n": 25,
       "title": "In Which a Slight Glimpse Is Had of San Francisco",
       "text": "25-in-which-a-slight-glimpse-is-had-of-san.txt",
       "questions": "25-in-which-a-slight-glimpse-is-had-of-san.questions.json",
-      "words": 2002
+      "words": 2002,
+      "readability": {
+        "grade": 9.1,
+        "fk": 8.7,
+        "cli": 9.5,
+        "ari": 9.2
+      }
     },
     {
       "n": 26,
       "title": "In Which Phileas Fogg and Party Travel by the Pacific Railroad",
       "text": "26-in-which-phileas-fogg-and-party-travel-b.txt",
       "questions": "26-in-which-phileas-fogg-and-party-travel-b.questions.json",
-      "words": 1605
+      "words": 1605,
+      "readability": {
+        "grade": 11.8,
+        "fk": 11.4,
+        "cli": 11,
+        "ari": 13
+      }
     },
     {
       "n": 27,
       "title": "In Which Passepartout Undergoes, at a Speed of Twenty Miles an Hour, a Course of Mormon History",
       "text": "27-in-which-passepartout-undergoes-at-a-spe.txt",
       "questions": "27-in-which-passepartout-undergoes-at-a-spe.questions.json",
-      "words": 1943
+      "words": 1943,
+      "readability": {
+        "grade": 12.1,
+        "fk": 11.9,
+        "cli": 11,
+        "ari": 13.5
+      }
     },
     {
       "n": 28,
       "title": "In Which Passepartout Does Not Succeed in Making Anybody Listen to Reason",
       "text": "28-in-which-passepartout-does-not-succeed-i.txt",
       "questions": "28-in-which-passepartout-does-not-succeed-i.questions.json",
-      "words": 2442
+      "words": 2442,
+      "readability": {
+        "grade": 8,
+        "fk": 7.2,
+        "cli": 9.2,
+        "ari": 7.6
+      }
     },
     {
       "n": 29,
       "title": "In Which Certain Incidents Are Narrated Which Are Only to Be Met with on American Railroads",
       "text": "29-in-which-certain-incidents-are-narrated.txt",
       "questions": "29-in-which-certain-incidents-are-narrated.questions.json",
-      "words": 2124
+      "words": 2124,
+      "readability": {
+        "grade": 8.2,
+        "fk": 7.4,
+        "cli": 9.1,
+        "ari": 8
+      }
     },
     {
       "n": 30,
       "title": "In Which Phileas Fogg Simply Does His Duty",
       "text": "30-in-which-phileas-fogg-simply-does-his-du.txt",
       "questions": "30-in-which-phileas-fogg-simply-does-his-du.questions.json",
-      "words": 2132
+      "words": 2132,
+      "readability": {
+        "grade": 6.6,
+        "fk": 5.8,
+        "cli": 8.2,
+        "ari": 5.8
+      }
     },
     {
       "n": 31,
       "title": "In Which Fix, the Detective, Considerably Furthers the Interests of Phileas Fogg",
       "text": "31-in-which-fix-the-detective-considerably.txt",
       "questions": "31-in-which-fix-the-detective-considerably.questions.json",
-      "words": 1842
+      "words": 1842,
+      "readability": {
+        "grade": 8.1,
+        "fk": 7.4,
+        "cli": 8.7,
+        "ari": 8.1
+      }
     },
     {
       "n": 32,
       "title": "In Which Phileas Fogg Engages in a Direct Struggle with Bad Fortune",
       "text": "32-in-which-phileas-fogg-engages-in-a-direc.txt",
       "questions": "32-in-which-phileas-fogg-engages-in-a-direc.questions.json",
-      "words": 1050
+      "words": 1050,
+      "readability": {
+        "grade": 6.3,
+        "fk": 5.7,
+        "cli": 7.7,
+        "ari": 5.5
+      }
     },
     {
       "n": 33,
       "title": "In Which Phileas Fogg Shows Himself Equal to the Occasion",
       "text": "33-in-which-phileas-fogg-shows-himself-equa.txt",
       "questions": "33-in-which-phileas-fogg-shows-himself-equa.questions.json",
-      "words": 2479
+      "words": 2479,
+      "readability": {
+        "grade": 7.4,
+        "fk": 6.8,
+        "cli": 8.4,
+        "ari": 7
+      }
     },
     {
       "n": 34,
       "title": "In Which Phileas Fogg at Last Reaches London",
       "text": "34-in-which-phileas-fogg-at-last-reaches-lo.txt",
       "questions": "34-in-which-phileas-fogg-at-last-reaches-lo.questions.json",
-      "words": 963
+      "words": 963,
+      "readability": {
+        "grade": 7.2,
+        "fk": 6.6,
+        "cli": 8.1,
+        "ari": 6.8
+      }
     },
     {
       "n": 35,
       "title": "In Which Phileas Fogg Does Not Have to Repeat His Orders to Passepartout Twice",
       "text": "35-in-which-phileas-fogg-does-not-have-to-r.txt",
       "questions": "35-in-which-phileas-fogg-does-not-have-to-r.questions.json",
-      "words": 1573
+      "words": 1573,
+      "readability": {
+        "grade": 6.6,
+        "fk": 6.3,
+        "cli": 7.6,
+        "ari": 5.9
+      }
     },
     {
       "n": 36,
       "title": "In Which Phileas Fogg's Name Is Once More at a Premium on 'Change",
       "text": "36-in-which-phileas-fogg-s-name-is-once-mor.txt",
       "questions": "36-in-which-phileas-fogg-s-name-is-once-mor.questions.json",
-      "words": 1058
+      "words": 1058,
+      "readability": {
+        "grade": 8.6,
+        "fk": 7.8,
+        "cli": 9.5,
+        "ari": 8.4
+      }
     },
     {
       "n": 37,
       "title": "In Which It Is Shown That Phileas Fogg Gained Nothing by His Tour Around the World, Unless It Were Happiness",
       "text": "37-in-which-it-is-shown-that-phileas-fogg-g.txt",
       "questions": "37-in-which-it-is-shown-that-phileas-fogg-g.questions.json",
-      "words": 938
+      "words": 938,
+      "readability": {
+        "grade": 7.5,
+        "fk": 6.6,
+        "cli": 9.1,
+        "ari": 6.8
+      }
     }
   ]
 }

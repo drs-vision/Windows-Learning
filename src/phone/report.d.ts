@@ -8,7 +8,7 @@ export function fmtTime(sec: number): string;
 export function calendarHtml(month: Date, byDay: Record<string, DayReport>, selected: string, mode: 'day' | 'week'): string;
 export function rangeOf(selected: string, mode: 'day' | 'week'): string[];
 export function titleOf(selected: string, mode: 'day' | 'week'): string;
-export function reportHtml(reports: DayReport[], opts?: { title?: string; note?: string }): string;
+export function reportHtml(reports: DayReport[], opts?: { title?: string; note?: string; readingLink?: boolean }): string;
 export const REPORT_CSS: string;
 export function step(selected: string, mode: 'day' | 'week', dir: number): string;
 export function navHtml(selected: string, mode: 'day' | 'week', calendarOpen: boolean): string;

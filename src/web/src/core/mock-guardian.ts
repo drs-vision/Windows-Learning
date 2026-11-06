@@ -191,6 +191,20 @@ export class MockGuardian {
       }
       // Reading, for the browser preview: one real book (Peter Rabbit). The real marking happens in the Guardian.
       case 'parent.books': return ok({ flagged: 0, books: shelf.map((b) => ({ id: b.id, title: b.title, author: b.author, published: b.published, level: b.level, grade: b.grade, summary: b.summary, edited: b.edited, chapters: b.chapters.length, words: b.chapters.reduce((t, c) => t + c.words, 0), ready: b.chapters.length, done: b.id === 'peter-rabbit' && mb.passed ? 1 : 0, started: b.id === 'peter-rabbit' && mb.attempts > 0 })) });
+      case 'parent.reading': {
+        // A sample history so the reading analysis can be seen in the browser preview.
+        const d = (n: number) => { const x = new Date(); x.setDate(x.getDate() - n); return `${x.getFullYear()}-${String(x.getMonth() + 1).padStart(2, '0')}-${String(x.getDate()).padStart(2, '0')}`; };
+        const row = (n: number, book: string, chapter: number | null, level: number, atos: number | null, lexile: number | null, c: number, t: number, tries: number, wpm: number | null) =>
+          ({ at: d(n), book, chapter, title: '', level, formula: null, atos, lexile, firstTry: Math.round(100 * c / t), correct: c, total: t, tries, passed: c * 10 >= t * 7 || tries > 1, wpm, status: c / t >= 0.8 ? 'comfortable' : c / t >= 0.6 ? 'challenge' : 'hard' });
+        const recent = [row(0, 'Treasure Island', 9, 4, 6.6, 1070, 6, 10, 1, 151), row(1, 'Kidnapped', 2, 5, 7.0, 1070, 5, 8, 2, 133), row(2, 'Treasure Island', 8, 4, 6.6, 1070, 9, 10, 1, 148),
+          row(4, 'Treasure Island', 7, 4, 6.6, 1070, 8, 9, 1, 156), row(6, 'Treasure Island', 6, 4, 6.6, 1070, 9, 9, 1, 139), row(9, 'The Call of the Wild', 1, 4, 6.9, 1120, 9, 10, 1, 144),
+          row(12, 'Black Beauty', 14, 3, 5.4, 1010, 7, 8, 1, 162), row(15, 'The Tale of Peter Rabbit', null, 1, 3.4, 660, 4, 4, 1, 210)];
+        const weeks = Array.from({ length: 12 }, (_, i) => { const n = (11 - i) * 7; return { start: d(n), chapters: [2, 3, 1, 4, 3, 5, 2, 4, 6, 3, 5, 4][i], firstTry: [70, 78, 80, 75, 83, 81, 86, 79, 88, 84, 85, 81][i], wpm: 120 + i * 3 }; });
+        return ok({ kid: 'Sam', comfortable: 4, comfortableAtos: 6.6, comfortableLexile: 1070, comfortableFormula: 6.8, current: 4, stretch: { chapters: 2, firstTry: 58, level: 5 },
+          firstTry30: 84, firstTryAll: 82, chapters30: 17, wpm: 148, chaptersPassed: 42, wordsRead: 96500, minutesReading: 690, windowDays: 90, strongPercent: 80, strongNeeded: 3,
+          levels: [{ level: 1, chapters: 6, strong: 6, firstTry: 96 }, { level: 2, chapters: 9, strong: 8, firstTry: 90 }, { level: 3, chapters: 14, strong: 11, firstTry: 85 }, { level: 4, chapters: 11, strong: 8, firstTry: 83 }, { level: 5, chapters: 2, strong: 0, firstTry: 58 }],
+          weeks, recent });
+      }
       case 'parent.booksReset': if (p.bookId === 'peter-rabbit') Object.assign(mb, { passed: false, correct: 0, total: 0, attempts: 0, retakeAt: null, seen: [], bonusDone: [], quiz: null, bonus: null, typed: 0 }); return ok({ ok: true });
       case 'books.list': case 'books.chapter': case 'books.quiz': case 'books.grade': case 'books.bonus': case 'books.bonusAnswer': case 'books.typed': {
         const r = mockBooks(req.op, p);

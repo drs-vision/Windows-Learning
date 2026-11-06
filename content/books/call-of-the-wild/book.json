@@ -9,6 +9,12 @@
     "max": 8,
     "label": "Grades 6-8"
   },
+  "readability": {
+    "grade": 8,
+    "fk": 7.4,
+    "cli": 8.1,
+    "ari": 8.5
+  },
   "summary": "Buck, a pet dog in California, is stolen and sold as a sled dog in the frozen Yukon.",
   "source": {
     "name": "Project Gutenberg eBook #215 (public-domain text; Gutenberg header, license and name removed)",
@@ -21,49 +27,91 @@
       "title": "Into the Primitive",
       "text": "01-into-the-primitive.txt",
       "questions": "01-into-the-primitive.questions.json",
-      "words": 3731
+      "words": 3731,
+      "readability": {
+        "grade": 8,
+        "fk": 7.5,
+        "cli": 8,
+        "ari": 8.5
+      }
     },
     {
       "n": 2,
       "title": "The Law of Club and Fang",
       "text": "02-the-law-of-club-and-fang.txt",
       "questions": "02-the-law-of-club-and-fang.questions.json",
-      "words": 3315
+      "words": 3315,
+      "readability": {
+        "grade": 8.5,
+        "fk": 8,
+        "cli": 8.4,
+        "ari": 9
+      }
     },
     {
       "n": 3,
       "title": "The Dominant Primordial Beast",
       "text": "03-the-dominant-primordial-beast.txt",
       "questions": "03-the-dominant-primordial-beast.questions.json",
-      "words": 5149
+      "words": 5149,
+      "readability": {
+        "grade": 7.8,
+        "fk": 7.1,
+        "cli": 8.1,
+        "ari": 8.3
+      }
     },
     {
       "n": 4,
       "title": "Who Has Won to Mastership",
       "text": "04-who-has-won-to-mastership.txt",
       "questions": "04-who-has-won-to-mastership.questions.json",
-      "words": 3219
+      "words": 3219,
+      "readability": {
+        "grade": 7,
+        "fk": 6.3,
+        "cli": 7.5,
+        "ari": 7.4
+      }
     },
     {
       "n": 5,
       "title": "The Toil of Trace and Trail",
       "text": "05-the-toil-of-trace-and-trail.txt",
       "questions": "05-the-toil-of-trace-and-trail.questions.json",
-      "words": 5336
+      "words": 5336,
+      "readability": {
+        "grade": 6.9,
+        "fk": 6,
+        "cli": 7.8,
+        "ari": 6.8
+      }
     },
     {
       "n": 6,
       "title": "For the Love of a Man",
       "text": "06-for-the-love-of-a-man.txt",
       "questions": "06-for-the-love-of-a-man.questions.json",
-      "words": 4736
+      "words": 4736,
+      "readability": {
+        "grade": 7.8,
+        "fk": 7.1,
+        "cli": 8.3,
+        "ari": 8.2
+      }
     },
     {
       "n": 7,
       "title": "The Sounding of the Call",
       "text": "07-the-sounding-of-the-call.txt",
       "questions": "07-the-sounding-of-the-call.questions.json",
-      "words": 6235
+      "words": 6235,
+      "readability": {
+        "grade": 9.5,
+        "fk": 9.1,
+        "cli": 8.5,
+        "ari": 10.8
+      }
     }
   ]
 }

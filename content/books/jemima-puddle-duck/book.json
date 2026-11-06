@@ -9,6 +9,12 @@
     "max": 2,
     "label": "Grades K-2"
   },
+  "readability": {
+    "grade": 6.3,
+    "fk": 5.8,
+    "cli": 7.5,
+    "ari": 5.5
+  },
   "summary": "A farm duck who wants to hatch her own eggs trusts a very polite gentleman with sandy whiskers.",
   "source": {
     "name": "Project Gutenberg eBook #14814 (public-domain text; Gutenberg header, license and name removed)",
@@ -21,7 +27,13 @@
       "title": "The Tale of Jemima Puddle-Duck",
       "text": "01-the-tale-of-jemima-puddle-duck.txt",
       "questions": "01-the-tale-of-jemima-puddle-duck.questions.json",
-      "words": 1245
+      "words": 1245,
+      "readability": {
+        "grade": 6.3,
+        "fk": 5.8,
+        "cli": 7.5,
+        "ari": 5.5
+      }
     }
   ]
 }

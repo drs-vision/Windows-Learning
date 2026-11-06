@@ -14,9 +14,15 @@ namespace CoinQuest.Shared.Books;
 public sealed class BookLibrary
 {
     public sealed record Grade(int Min, int Max, string Label);
-    public sealed record ChapterInfo(int N, string Title, string Text, string Questions, int Words);
+    /// <summary>Readability formulas on the text (scripts/books/readability.mjs): US grades; Grade is their average.</summary>
+    public sealed record Readability(double Grade, double Fk, double Cli, double Ari);
+    /// <summary>Published measures of the book: Lexile (MetaMetrics) and ATOS book level (Renaissance), with where they came from.</summary>
+    public sealed record Lexile(int Value, string? Code, string Url);
+    public sealed record Atos(double Level, string? Interest, string Url);
+    public sealed record Measures(Lexile? Lexile, Atos? Atos);
+    public sealed record ChapterInfo(int N, string Title, string Text, string Questions, int Words, Readability? Readability = null);
     /// <summary>Level: the reading level children see (1 = easiest). Grade is an approximate hint for parents.</summary>
-    public sealed record Book(string Id, string Title, string Author, int Published, int Level, Grade Grade, string Summary, List<ChapterInfo> Chapters, string? Edited = null);
+    public sealed record Book(string Id, string Title, string Author, int Published, int Level, Grade Grade, string Summary, List<ChapterInfo> Chapters, string? Edited = null, Readability? Readability = null, Measures? Measures = null);
     public sealed record Question(string Id, string Type, string Q, List<string> Choices, int Answer, string Evidence);
 
     private static readonly JsonSerializerOptions Json = new() { PropertyNameCaseInsensitive = true };
@@ -131,6 +137,7 @@ public sealed class ChapterProgress
     public int FirstCorrect { get; set; }
     public int FirstTotal { get; set; }
     public DateTimeOffset? PassedAt { get; set; }
+    public DateTimeOffset? FirstAt { get; set; }
     public OpenQuiz? Quiz { get; set; }
     public OpenQuiz? Bonus { get; set; }
 }
@@ -211,7 +218,7 @@ public static class Quiz
         }
         p.Quiz = null;
         p.Attempts++;
-        if (p.Attempts == 1) { p.FirstCorrect = correct; p.FirstTotal = total; }
+        if (p.Attempts == 1) { p.FirstCorrect = correct; p.FirstTotal = total; p.FirstAt = now; }
         var pct = total == 0 ? 100 : (int)Math.Round(100.0 * correct / total);
         if (total == 0 || correct >= Math.Ceiling(PassMark * total - 1e-9))
         {

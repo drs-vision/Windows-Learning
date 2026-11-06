@@ -99,6 +99,7 @@ class Bridge {
   parentArcadeRemove(gameId: string) { return this.call('parent.arcadeRemove', { gameId }, { parent: true }); }
   parentFpStatus() { return this.call<FpStatus>('parent.fpStatus', undefined, { parent: true }); }
   parentBooks(childId?: string) { return this.call<{ books: { id: string; title: string; author: string; published: number; level: number; grade: { min: number; max: number; label: string }; summary: string; edited?: string | null; chapters: number; words: number; ready: number; done: number; started: boolean }[]; flagged: number }>('parent.books', childId ? { childId } : undefined, { parent: true }); }
+  parentReading(childId: string) { return this.call<import('../parent/reading').ReadingData>('parent.reading', { childId }, { parent: true }); }
   parentBooksReset(childId: string, bookId: string) { return this.call<{ ok: boolean }>('parent.booksReset', { childId, bookId }, { parent: true }); }
   parentActivity(childId: string, from: string, to: string) { return this.call<{ childId: string; kid: string; enabled: boolean; days: import('../../../phone/report').DayReport[] }>('parent.activity', { childId, from, to }, { parent: true }); }
   parentDiagnostics() { return this.call<{ version: string; problems: string[]; blocked: string[]; internetLock: { applied: boolean; error?: string | null }; net?: { site: string; ok: boolean; detail: string }[]; system?: string[] }>('parent.diagnostics', undefined, { parent: true }); }

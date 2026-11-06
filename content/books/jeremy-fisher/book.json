@@ -9,6 +9,12 @@
     "max": 2,
     "label": "Grades K-2"
   },
+  "readability": {
+    "grade": 6.1,
+    "fk": 6.1,
+    "cli": 6.5,
+    "ari": 5.7
+  },
   "summary": "A frog goes fishing for minnows for his friends and nearly ends up as dinner himself.",
   "source": {
     "name": "Project Gutenberg eBook #15077 (public-domain text; Gutenberg header, license and name removed)",
@@ -21,7 +27,13 @@
       "title": "The Tale of Mr. Jeremy Fisher",
       "text": "01-the-tale-of-mr-jeremy-fisher.txt",
       "questions": "01-the-tale-of-mr-jeremy-fisher.questions.json",
-      "words": 792
+      "words": 792,
+      "readability": {
+        "grade": 6.1,
+        "fk": 6.1,
+        "cli": 6.5,
+        "ari": 5.7
+      }
     }
   ]
 }

@@ -9,6 +9,12 @@
     "max": 2,
     "label": "Grades K-2"
   },
+  "readability": {
+    "grade": 6.8,
+    "fk": 5.9,
+    "cli": 8.3,
+    "ari": 6.1
+  },
   "summary": "Lucie, looking for her lost handkerchiefs, finds a washerwoman hedgehog in the hills.",
   "source": {
     "name": "Project Gutenberg eBook #15137 (public-domain text; Gutenberg header, license and name removed)",
@@ -21,7 +27,13 @@
       "title": "The Tale of Mrs. Tiggy-Winkle",
       "text": "01-the-tale-of-mrs-tiggy-winkle.txt",
       "questions": "01-the-tale-of-mrs-tiggy-winkle.questions.json",
-      "words": 1272
+      "words": 1272,
+      "readability": {
+        "grade": 6.8,
+        "fk": 5.9,
+        "cli": 8.3,
+        "ari": 6.1
+      }
     }
   ]
 }

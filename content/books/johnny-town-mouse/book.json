@@ -9,6 +9,12 @@
     "max": 2,
     "label": "Grades K-2"
   },
+  "readability": {
+    "grade": 6.4,
+    "fk": 5.8,
+    "cli": 7.5,
+    "ari": 5.8
+  },
   "summary": "A country mouse visits the town, and a town mouse visits the country.",
   "source": {
     "name": "Project Gutenberg eBook #15284 (public-domain text; Gutenberg header, license and name removed)",
@@ -21,7 +27,13 @@
       "title": "The Tale of Johnny Town-Mouse",
       "text": "01-the-tale-of-johnny-town-mouse.txt",
       "questions": "01-the-tale-of-johnny-town-mouse.questions.json",
-      "words": 1277
+      "words": 1277,
+      "readability": {
+        "grade": 6.4,
+        "fk": 5.8,
+        "cli": 7.5,
+        "ari": 5.8
+      }
     }
   ]
 }

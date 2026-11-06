@@ -9,6 +9,12 @@
     "max": 2,
     "label": "Grades K-2"
   },
+  "readability": {
+    "grade": 6.6,
+    "fk": 5.8,
+    "cli": 7.9,
+    "ari": 6.1
+  },
   "summary": "A gray squirrel is blamed for stealing nuts and gets stuck inside a hollow tree.",
   "source": {
     "name": "Project Gutenberg eBook #14797 (public-domain text; Gutenberg header, license and name removed)",
@@ -21,7 +27,13 @@
       "title": "The Tale of Timmy Tiptoes",
       "text": "01-the-tale-of-timmy-tiptoes.txt",
       "questions": "01-the-tale-of-timmy-tiptoes.questions.json",
-      "words": 1297
+      "words": 1297,
+      "readability": {
+        "grade": 6.6,
+        "fk": 5.8,
+        "cli": 7.9,
+        "ari": 6.1
+      }
     }
   ]
 }

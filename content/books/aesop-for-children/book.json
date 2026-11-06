@@ -9,6 +9,12 @@
     "max": 4,
     "label": "Grades 2-4"
   },
+  "readability": {
+    "grade": 4.9,
+    "fk": 4.7,
+    "cli": 5.6,
+    "ari": 4.4
+  },
   "summary": "Short fables with animals, each ending in a lesson to remember.",
   "source": {
     "name": "Project Gutenberg eBook #19994 (public-domain text; Gutenberg header, license and name removed)",
@@ -21,231 +27,429 @@
       "title": "The Wolf and the Kid and 3 more",
       "text": "01-the-wolf-and-the-kid-and-3-more.txt",
       "questions": "01-the-wolf-and-the-kid-and-3-more.questions.json",
-      "words": 824
+      "words": 824,
+      "readability": {
+        "grade": 4.5,
+        "fk": 4.1,
+        "cli": 5.5,
+        "ari": 4
+      }
     },
     {
       "n": 2,
       "title": "The Dog, the Cock, and the Fox and 2 more",
       "text": "02-the-dog-the-cock-and-the-fox-and-2-more.txt",
       "questions": "02-the-dog-the-cock-and-the-fox-and-2-more.questions.json",
-      "words": 719
+      "words": 719,
+      "readability": {
+        "grade": 4.8,
+        "fk": 4.8,
+        "cli": 5.2,
+        "ari": 4.4
+      }
     },
     {
       "n": 3,
       "title": "The Boy and the Filberts and 3 more",
       "text": "03-the-boy-and-the-filberts-and-3-more.txt",
       "questions": "03-the-boy-and-the-filberts-and-3-more.questions.json",
-      "words": 768
+      "words": 768,
+      "readability": {
+        "grade": 6.4,
+        "fk": 6.4,
+        "cli": 6.2,
+        "ari": 6.7
+      }
     },
     {
       "n": 4,
       "title": "The Fox and the Grapes and 4 more",
       "text": "04-the-fox-and-the-grapes-and-4-more.txt",
       "questions": "04-the-fox-and-the-grapes-and-4-more.questions.json",
-      "words": 855
+      "words": 855,
+      "readability": {
+        "grade": 4.8,
+        "fk": 4.6,
+        "cli": 5.3,
+        "ari": 4.4
+      }
     },
     {
       "n": 5,
       "title": "The Lion and the Mouse and 4 more",
       "text": "05-the-lion-and-the-mouse-and-4-more.txt",
       "questions": "05-the-lion-and-the-mouse-and-4-more.questions.json",
-      "words": 833
+      "words": 833,
+      "readability": {
+        "grade": 4.4,
+        "fk": 4.1,
+        "cli": 5.4,
+        "ari": 3.8
+      }
     },
     {
       "n": 6,
       "title": "The Sheep and the Pig and 3 more",
       "text": "06-the-sheep-and-the-pig-and-3-more.txt",
       "questions": "06-the-sheep-and-the-pig-and-3-more.questions.json",
-      "words": 750
+      "words": 750,
+      "readability": {
+        "grade": 4.7,
+        "fk": 4.3,
+        "cli": 5.7,
+        "ari": 4.2
+      }
     },
     {
       "n": 7,
       "title": "The Owl and the Grasshopper and 3 more",
       "text": "07-the-owl-and-the-grasshopper-and-3-more.txt",
       "questions": "07-the-owl-and-the-grasshopper-and-3-more.questions.json",
-      "words": 913
+      "words": 913,
+      "readability": {
+        "grade": 5,
+        "fk": 4.8,
+        "cli": 5.7,
+        "ari": 4.5
+      }
     },
     {
       "n": 8,
       "title": "The Boys and the Frogs and 5 more",
       "text": "08-the-boys-and-the-frogs-and-5-more.txt",
       "questions": "08-the-boys-and-the-frogs-and-5-more.questions.json",
-      "words": 818
+      "words": 818,
+      "readability": {
+        "grade": 5.3,
+        "fk": 4.8,
+        "cli": 5.9,
+        "ari": 5.1
+      }
     },
     {
       "n": 9,
       "title": "The Ass and the Load of Salt and 4 more",
       "text": "09-the-ass-and-the-load-of-salt-and-4-more.txt",
       "questions": "09-the-ass-and-the-load-of-salt-and-4-more.questions.json",
-      "words": 780
+      "words": 780,
+      "readability": {
+        "grade": 6.1,
+        "fk": 5.9,
+        "cli": 6.6,
+        "ari": 5.9
+      }
     },
     {
       "n": 10,
       "title": "The Wild Boar and the Fox and 4 more",
       "text": "10-the-wild-boar-and-the-fox-and-4-more.txt",
       "questions": "10-the-wild-boar-and-the-fox-and-4-more.questions.json",
-      "words": 916
+      "words": 916,
+      "readability": {
+        "grade": 4.3,
+        "fk": 4.2,
+        "cli": 5.2,
+        "ari": 3.6
+      }
     },
     {
       "n": 11,
       "title": "The Wolf and the Sheep and 4 more",
       "text": "11-the-wolf-and-the-sheep-and-4-more.txt",
       "questions": "11-the-wolf-and-the-sheep-and-4-more.questions.json",
-      "words": 741
+      "words": 741,
+      "readability": {
+        "grade": 4.2,
+        "fk": 4,
+        "cli": 5,
+        "ari": 3.6
+      }
     },
     {
       "n": 12,
       "title": "The Stag and His Reflection and 3 more",
       "text": "12-the-stag-and-his-reflection-and-3-more.txt",
       "questions": "12-the-stag-and-his-reflection-and-3-more.questions.json",
-      "words": 834
+      "words": 834,
+      "readability": {
+        "grade": 6.1,
+        "fk": 5.9,
+        "cli": 6.6,
+        "ari": 5.9
+      }
     },
     {
       "n": 13,
       "title": "The Fox and the Lion and 4 more",
       "text": "13-the-fox-and-the-lion-and-4-more.txt",
       "questions": "13-the-fox-and-the-lion-and-4-more.questions.json",
-      "words": 843
+      "words": 843,
+      "readability": {
+        "grade": 5.2,
+        "fk": 4.8,
+        "cli": 6.2,
+        "ari": 4.5
+      }
     },
     {
       "n": 14,
       "title": "The Wolf and the Ass and 4 more",
       "text": "14-the-wolf-and-the-ass-and-4-more.txt",
       "questions": "14-the-wolf-and-the-ass-and-4-more.questions.json",
-      "words": 809
+      "words": 809,
+      "readability": {
+        "grade": 4.9,
+        "fk": 4.7,
+        "cli": 5.5,
+        "ari": 4.5
+      }
     },
     {
       "n": 15,
       "title": "The Bear and the Bees and 3 more",
       "text": "15-the-bear-and-the-bees-and-3-more.txt",
       "questions": "15-the-bear-and-the-bees-and-3-more.questions.json",
-      "words": 800
+      "words": 800,
+      "readability": {
+        "grade": 4.6,
+        "fk": 4.7,
+        "cli": 5.2,
+        "ari": 3.8
+      }
     },
     {
       "n": 16,
       "title": "The Dog in the Manger and 5 more",
       "text": "16-the-dog-in-the-manger-and-5-more.txt",
       "questions": "16-the-dog-in-the-manger-and-5-more.questions.json",
-      "words": 1035
+      "words": 1035,
+      "readability": {
+        "grade": 4.6,
+        "fk": 4.6,
+        "cli": 5.2,
+        "ari": 4
+      }
     },
     {
       "n": 17,
       "title": "The Wolf and the Shepherd and 4 more",
       "text": "17-the-wolf-and-the-shepherd-and-4-more.txt",
       "questions": "17-the-wolf-and-the-shepherd-and-4-more.questions.json",
-      "words": 870
+      "words": 870,
+      "readability": {
+        "grade": 4.8,
+        "fk": 4.4,
+        "cli": 5.5,
+        "ari": 4.5
+      }
     },
     {
       "n": 18,
       "title": "The Goose and the Golden Egg and 5 more",
       "text": "18-the-goose-and-the-golden-egg-and-5-more.txt",
       "questions": "18-the-goose-and-the-golden-egg-and-5-more.questions.json",
-      "words": 803
+      "words": 803,
+      "readability": {
+        "grade": 4.6,
+        "fk": 4.1,
+        "cli": 5.5,
+        "ari": 4.2
+      }
     },
     {
       "n": 19,
       "title": "The Spendthrift and the Swallow and 4 more",
       "text": "19-the-spendthrift-and-the-swallow-and-4-mo.txt",
       "questions": "19-the-spendthrift-and-the-swallow-and-4-mo.questions.json",
-      "words": 755
+      "words": 755,
+      "readability": {
+        "grade": 5.2,
+        "fk": 5.1,
+        "cli": 5.5,
+        "ari": 5
+      }
     },
     {
       "n": 20,
       "title": "Mercury and the Woodman and 2 more",
       "text": "20-mercury-and-the-woodman-and-2-more.txt",
       "questions": "20-mercury-and-the-woodman-and-2-more.questions.json",
-      "words": 741
+      "words": 741,
+      "readability": {
+        "grade": 4.7,
+        "fk": 4.4,
+        "cli": 5.4,
+        "ari": 4.2
+      }
     },
     {
       "n": 21,
       "title": "The Serpent and the Eagle and 4 more",
       "text": "21-the-serpent-and-the-eagle-and-4-more.txt",
       "questions": "21-the-serpent-and-the-eagle-and-4-more.questions.json",
-      "words": 830
+      "words": 830,
+      "readability": {
+        "grade": 5.6,
+        "fk": 5.2,
+        "cli": 6.3,
+        "ari": 5.3
+      }
     },
     {
       "n": 22,
       "title": "The Man and the Lion and 3 more",
       "text": "22-the-man-and-the-lion-and-3-more.txt",
       "questions": "22-the-man-and-the-lion-and-3-more.questions.json",
-      "words": 721
+      "words": 721,
+      "readability": {
+        "grade": 5.3,
+        "fk": 5.2,
+        "cli": 5.6,
+        "ari": 5.2
+      }
     },
     {
       "n": 23,
       "title": "The Goatherd and the Goat and 3 more",
       "text": "23-the-goatherd-and-the-goat-and-3-more.txt",
       "questions": "23-the-goatherd-and-the-goat-and-3-more.questions.json",
-      "words": 754
+      "words": 754,
+      "readability": {
+        "grade": 3.1,
+        "fk": 2.8,
+        "cli": 4.4,
+        "ari": 2.1
+      }
     },
     {
       "n": 24,
       "title": "The Bat and the Weasels and 4 more",
       "text": "24-the-bat-and-the-weasels-and-4-more.txt",
       "questions": "24-the-bat-and-the-weasels-and-4-more.questions.json",
-      "words": 898
+      "words": 898,
+      "readability": {
+        "grade": 4.5,
+        "fk": 4.5,
+        "cli": 5.3,
+        "ari": 3.7
+      }
     },
     {
       "n": 25,
       "title": "The Cat and the Fox and 4 more",
       "text": "25-the-cat-and-the-fox-and-4-more.txt",
       "questions": "25-the-cat-and-the-fox-and-4-more.questions.json",
-      "words": 766
+      "words": 766,
+      "readability": {
+        "grade": 4.6,
+        "fk": 4.5,
+        "cli": 5.1,
+        "ari": 4.3
+      }
     },
     {
       "n": 26,
       "title": "The Porcupine and the Snakes and 4 more",
       "text": "26-the-porcupine-and-the-snakes-and-4-more.txt",
       "questions": "26-the-porcupine-and-the-snakes-and-4-more.questions.json",
-      "words": 775
+      "words": 775,
+      "readability": {
+        "grade": 4.3,
+        "fk": 4.1,
+        "cli": 5.5,
+        "ari": 3.4
+      }
     },
     {
       "n": 27,
       "title": "The Stag, the Sheep, and the Wolf and 2 more",
       "text": "27-the-stag-the-sheep-and-the-wolf-and-2-mo.txt",
       "questions": "27-the-stag-the-sheep-and-the-wolf-and-2-mo.questions.json",
-      "words": 786
+      "words": 786,
+      "readability": {
+        "grade": 4.8,
+        "fk": 4.8,
+        "cli": 5.5,
+        "ari": 4.2
+      }
     },
     {
       "n": 28,
       "title": "The Dog and His Reflection and 3 more",
       "text": "28-the-dog-and-his-reflection-and-3-more.txt",
       "questions": "28-the-dog-and-his-reflection-and-3-more.questions.json",
-      "words": 965
+      "words": 965,
+      "readability": {
+        "grade": 5.6,
+        "fk": 5,
+        "cli": 6,
+        "ari": 5.7
+      }
     },
     {
       "n": 29,
       "title": "The Cat and the Old Rat and 2 more",
       "text": "29-the-cat-and-the-old-rat-and-2-more.txt",
       "questions": "29-the-cat-and-the-old-rat-and-2-more.questions.json",
-      "words": 797
+      "words": 797,
+      "readability": {
+        "grade": 5.2,
+        "fk": 5.2,
+        "cli": 5.4,
+        "ari": 5
+      }
     },
     {
       "n": 30,
       "title": "The Miller, His Son, and the Ass and 2 more",
       "text": "30-the-miller-his-son-and-the-ass-and-2-mor.txt",
       "questions": "30-the-miller-his-son-and-the-ass-and-2-mor.questions.json",
-      "words": 715
+      "words": 715,
+      "readability": {
+        "grade": 4.4,
+        "fk": 4.1,
+        "cli": 5,
+        "ari": 4
+      }
     },
     {
       "n": 31,
       "title": "The Wolf, the Kid, and the Goat and 4 more",
       "text": "31-the-wolf-the-kid-and-the-goat-and-4-more.txt",
       "questions": "31-the-wolf-the-kid-and-the-goat-and-4-more.questions.json",
-      "words": 750
+      "words": 750,
+      "readability": {
+        "grade": 4.7,
+        "fk": 4.5,
+        "cli": 5.6,
+        "ari": 4.1
+      }
     },
     {
       "n": 32,
       "title": "The Mole and His Mother and 4 more",
       "text": "32-the-mole-and-his-mother-and-4-more.txt",
       "questions": "32-the-mole-and-his-mother-and-4-more.questions.json",
-      "words": 806
+      "words": 806,
+      "readability": {
+        "grade": 4.7,
+        "fk": 4.4,
+        "cli": 5.6,
+        "ari": 4.2
+      }
     },
     {
       "n": 33,
       "title": "The Ass in the Lion's Skin and 2 more",
       "text": "33-the-ass-in-the-lion-s-skin-and-2-more.txt",
       "questions": "33-the-ass-in-the-lion-s-skin-and-2-more.questions.json",
-      "words": 398
+      "words": 398,
+      "readability": {
+        "grade": 4.7,
+        "fk": 4.4,
+        "cli": 5.3,
+        "ari": 4.2
+      }
     }
   ]
 }

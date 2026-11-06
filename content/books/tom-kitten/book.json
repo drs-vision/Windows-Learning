@@ -9,6 +9,12 @@
     "max": 2,
     "label": "Grades K-2"
   },
+  "readability": {
+    "grade": 6.2,
+    "fk": 5.3,
+    "cli": 7.5,
+    "ari": 5.8
+  },
   "summary": "Three kittens dressed up for company get their best clothes into a terrible mess.",
   "source": {
     "name": "Project Gutenberg eBook #14837 (public-domain text; Gutenberg header, license and name removed)",
@@ -21,7 +27,13 @@
       "title": "The Tale of Tom Kitten",
       "text": "01-the-tale-of-tom-kitten.txt",
       "questions": "01-the-tale-of-tom-kitten.questions.json",
-      "words": 691
+      "words": 691,
+      "readability": {
+        "grade": 6.2,
+        "fk": 5.3,
+        "cli": 7.5,
+        "ari": 5.8
+      }
     }
   ]
 }

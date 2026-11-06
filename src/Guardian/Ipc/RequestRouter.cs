@@ -121,6 +121,7 @@ public sealed class RequestRouter
             Ops.DiscLaunch => DiscLaunch(req, child),
             Ops.ParentBooks => Parent(req, client, child, () => ParentBooks(req)),
             Ops.ParentBooksReset => Parent(req, client, child, () => ResetBook(req)),
+            Ops.ParentReading => Parent(req, client, child, () => ReadingAnalysis(req)),
             Ops.ParentActivity => Parent(req, client, child, () => ActivityDays(Str(req, "childId"), Str(req, "from"), Str(req, "to"))),
             Ops.ParentDiagnostics => Parent(req, client, child, () => new { version = Version, problems = CoinQuest.Guardian.FileLoggerProvider.Recent(), blocked = _gate.RecentlyBlocked().Take(20).Select(b => b.Host), internetLock = _netLock.Status, net = NetCheck().GetAwaiter().GetResult(), system = SystemCheck() }),
             Ops.ParentBlocked => Parent(req, client, child, () => _gate.RecentlyBlocked().Select(b => new { host = b.Host, at = b.At, reason = b.Reason })),
@@ -276,47 +277,42 @@ public sealed class RequestRouter
         return new { ok = true };
     }
 
+    /// <summary>A child's chapters with a quiz taken, for the reading analysis (see ReadingReport).</summary>
+    private List<CoinQuest.Shared.Books.ReadingReport.Entry> ReadingEntries(string childId)
+    {
+        var all = ProgressStore.Load(childId, "books") as JsonObject ?? new JsonObject();
+        var progress = new List<KeyValuePair<string, CoinQuest.Shared.Books.ChapterProgress>>();
+        foreach (var (key, node) in all)
+        {
+            try { if (node?.Deserialize<CoinQuest.Shared.Books.ChapterProgress>(ProgressJson) is { } p) progress.Add(new(key, p)); } catch { }
+        }
+        return CoinQuest.Shared.Books.ReadingReport.Entries(_library, progress);
+    }
+
+    /// <summary>The parents' Reading analysis (Today → Reading).</summary>
+    private object ReadingAnalysis(Request req)
+    {
+        var child = _store.Current.Children.FirstOrDefault(c => c.Id == Str(req, "childId")) ?? throw new ArgumentException("That child isn't on this PC");
+        var r = CoinQuest.Shared.Books.ReadingReport.Build(ReadingEntries(child.Id), DateTimeOffset.Now);
+        r["kid"] = child.DisplayName;
+        return r;
+    }
+
     /// <summary>
-    /// What a parent sees about a child's reading, all time: chapters passed, % right on first tries, reading speed
-    /// (median words a minute while the chapter was on screen), the level they're reading at now, and a verified level:
-    /// the highest level with at least 3 chapters passed at 80% or better on the first try. Children never see this.
+    /// The all-time reading summary that rides on the newest daily report (the phone's and Today's "Reading level"
+    /// tile): chapters passed, first-try %, reading speed, the level being read now, and the comfortable level.
     /// </summary>
     private System.Text.Json.Nodes.JsonObject ReadingSummary(Child child)
     {
-        var all = ProgressStore.Load(child.Id, "books") as JsonObject ?? new JsonObject();
-        int chapters = 0, right = 0, asked = 0; var speeds = new List<double>(); var strong = new Dictionary<int, int>();
-        (DateTimeOffset at, int level)? latest = null;
-        foreach (var (key, node) in all)
-        {
-            var slash = key.LastIndexOf('/');
-            if (slash < 0 || node is null || !int.TryParse(key[(slash + 1)..], out var n)) continue;
-            var book = _library.Find(key[..slash]);
-            var ch = book?.Chapters.FirstOrDefault(c => c.N == n);
-            if (book is null || ch is null) continue;
-            CoinQuest.Shared.Books.ChapterProgress p;
-            try { p = node.Deserialize<CoinQuest.Shared.Books.ChapterProgress>(ProgressJson) ?? new(); } catch { continue; }
-            if (p.FirstTotal > 0) { right += p.FirstCorrect; asked += p.FirstTotal; }
-            if (p.ReadMs > 0) { var wpm = ch.Words / (p.ReadMs / 60000.0); if (wpm is >= 40 and <= 600) speeds.Add(wpm); }
-            if (!p.Passed) continue;
-            chapters++;
-            if (p.FirstTotal > 0 && p.FirstCorrect >= 0.8 * p.FirstTotal) strong[book.Level] = strong.GetValueOrDefault(book.Level) + 1;
-            if (p.PassedAt is { } at && (latest is null || at > latest.Value.at)) latest = (at, book.Level);
-        }
-        speeds.Sort();
+        var r = CoinQuest.Shared.Books.ReadingReport.Build(ReadingEntries(child.Id), DateTimeOffset.Now);
         return new System.Text.Json.Nodes.JsonObject
         {
-            ["chapters"] = chapters,
-            ["firstTry"] = asked > 0 ? (int)Math.Round(100.0 * right / asked) : null,
-            ["wpm"] = speeds.Count > 0 ? (int)Math.Round(speeds[speeds.Count / 2]) : null,
-            ["level"] = latest?.level,
-            ["verified"] = strong.Where(kv => kv.Value >= 3).Select(kv => kv.Key).DefaultIfEmpty(0).Max(),
+            ["chapters"] = r["chaptersPassed"]?.GetValue<int>() ?? 0,
+            ["firstTry"] = r["firstTryAll"]?.DeepClone(),
+            ["wpm"] = r["wpm"]?.DeepClone(),
+            ["level"] = r["current"]?.DeepClone(),
+            ["verified"] = r["comfortable"]?.GetValue<int>() ?? 0,
         };
-    }
-
-    private static string FlagFile => Path.Combine(Paths.DataRoot, "books-flagged.json");
-    private static List<JsonObject> FlaggedQuestions()
-    {
-        try { return File.Exists(FlagFile) ? JsonSerializer.Deserialize<List<JsonObject>>(File.ReadAllText(FlagFile)) ?? new() : new(); } catch { return new(); }
     }
 
     /// <summary>Pay coins for a quest within its daily limit (or ask the parent first when the quest says so).</summary>

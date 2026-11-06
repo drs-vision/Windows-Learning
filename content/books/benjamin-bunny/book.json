@@ -9,6 +9,12 @@
     "max": 2,
     "label": "Grades K-2"
   },
+  "readability": {
+    "grade": 7,
+    "fk": 6.7,
+    "cli": 7.6,
+    "ari": 6.7
+  },
   "summary": "Peter's cousin Benjamin takes him back to Mr. McGregor's garden to fetch Peter's lost clothes.",
   "source": {
     "name": "Project Gutenberg eBook #14407 (public-domain text; Gutenberg header, license and name removed)",
@@ -21,7 +27,13 @@
       "title": "The Tale of Benjamin Bunny",
       "text": "01-the-tale-of-benjamin-bunny.txt",
       "questions": "01-the-tale-of-benjamin-bunny.questions.json",
-      "words": 1123
+      "words": 1123,
+      "readability": {
+        "grade": 7,
+        "fk": 6.7,
+        "cli": 7.6,
+        "ari": 6.7
+      }
     }
   ]
 }
