@@ -27,6 +27,10 @@ public static class LearningObserver
     private static readonly HashSet<string> Paid = new();
     private static readonly Regex VideoId = new(@"""(?:videoId|contentId|readableId|youtubeId)""\s*:\s*""([^""]+)""", RegexOptions.Compiled);
     private static readonly PaidSet PaidVideos = new("khan-videos.txt");
+    /// <summary>Exercises, quizzes and unit tests already finished (by page). Finishing one again, or answering its
+    /// questions again, is practice without coins.</summary>
+    private static readonly PaidSet PaidTasks = new("khan-tasks.txt");
+    private static string Page(CoreWebView2 core) => (core.Source ?? "").Split('?', '#')[0].TrimEnd('/').ToLowerInvariant();
 
     /// <summary>Things already paid for, remembered across restarts (in this account's CoinQuest folder).</summary>
     private sealed class PaidSet
@@ -37,6 +41,7 @@ public static class LearningObserver
             _file = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "CoinQuest", name);
             try { _set = File.Exists(_file) ? new HashSet<string>(File.ReadAllLines(_file).Where(l => l.Length > 0)) : new(); } catch { _set = new(); }
         }
+        public bool Contains(string key) { lock (_set) return _set.Contains(key); }
         public bool Add(string key)
         {
             lock (_set)
@@ -73,8 +78,11 @@ public static class LearningObserver
                 if (isAnswer)
                 {
                     lock (SeenOps) if (SeenOps.Add("sample:" + op)) WebShellWindow.Log($"khan {op} reply sample: {Squash(body)}");
-                    if (Correct.IsMatch(body)) { raise("khan:correct"); WebShellWindow.Log($"khan: correct answer ({op})"); }
-                    if (TaskDone.IsMatch(body)) { raise("khan:done"); WebShellWindow.Log($"khan: task finished ({op})"); }
+                    var page = Page(core);
+                    var redo = PaidTasks.Contains(page);
+                    if (Correct.IsMatch(body) && !redo) { raise("khan:correct"); WebShellWindow.Log($"khan: correct answer ({op})"); }
+                    if (TaskDone.IsMatch(body) && PaidTasks.Add(page)) { raise("khan:done"); WebShellWindow.Log($"khan: task finished ({op})"); }
+                    else if (redo) WebShellWindow.Log($"khan: {page} was already finished once: practice, no coins");
                 }
                 else if (isVideo && VideoDone.IsMatch(body))
                 {
@@ -87,7 +95,7 @@ public static class LearningObserver
                     if (!PaidVideos.Add(key)) return;
                     raise("khan:video"); WebShellWindow.Log($"khan: video finished ({op}, {key})");
                 }
-                else if (isTaskOp) { raise("khan:done"); WebShellWindow.Log($"khan: task finished ({op})"); }
+                else if (isTaskOp && PaidTasks.Add(Page(core))) { raise("khan:done"); WebShellWindow.Log($"khan: task finished ({op})"); }
             }
             catch (Exception ex) { WebShellWindow.Log("learning observer: " + ex.Message); }
         };
@@ -102,7 +110,7 @@ public static class LearningObserver
         if (method == "PUT" && DuoSession.IsMatch(uri)) kind = "duolingo:lesson";
         else if (method == "POST" && DuoStory.IsMatch(uri)) kind = "duolingo:story";
         if (kind is null) return;
-        lock (Paid) if (!Paid.Add(path)) return; // the same lesson is only counted once
+        lock (Paid) if (!Paid.Add(path)) return; // the same session is only counted once
         raise(kind);
         WebShellWindow.Log($"duolingo: {kind} finished");
     }

@@ -98,6 +98,17 @@ public sealed class Ledger : IDisposable
     }
 
     /// <summary>How many times today something (whose ledger detail starts with <paramref name="detailPrefix"/>) has paid or been put up for approval.</summary>
+    /// <summary>How many times this child has ever been paid (or asked to be paid) for something whose detail starts with the prefix.</summary>
+    public int TimesEver(string childId, string source, string detailPrefix)
+    {
+        using var cmd = _db.CreateCommand();
+        cmd.CommandText = "SELECT COUNT(*) FROM ledger WHERE child=$c AND source=$s AND ((kind='Earn' AND delta>0) OR kind='Claim') AND substr(detail,1,length($p))=$p";
+        cmd.Parameters.AddWithValue("$c", childId);
+        cmd.Parameters.AddWithValue("$s", source);
+        cmd.Parameters.AddWithValue("$p", detailPrefix);
+        return Convert.ToInt32(cmd.ExecuteScalar());
+    }
+
     public int TimesToday(string childId, string source, string detailPrefix, DateTimeOffset? now = null)
     {
         var start = (now ?? DateTimeOffset.Now).Date;

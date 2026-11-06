@@ -28,7 +28,7 @@ export function scoreSoundKeys(activity: Activity, result: Result, settings: Mod
 
   const ratio = firstTry.filter(Boolean).length / expected.length;
   const mastered = ratio >= MASTERY;
-  // Every finished lesson pays the parent's set amount; first-try accuracy only decides whether it repeats.
+  // A finished lesson pays the parent's set amount, once (the Guardian checks onceKey); first-try accuracy only decides whether it repeats.
   const coins = settings.coinsPerActivity;
   const last = LESSONS[LESSONS.length - 1].id;
   const done = Array.isArray(activity.data.done) ? (activity.data.done as number[]) : [];
@@ -37,6 +37,8 @@ export function scoreSoundKeys(activity: Activity, result: Result, settings: Mod
   const best = Math.max(stars, Number(prevStars[String(lessonId)] ?? 0));
   return {
     valid: true, coins, needsApproval: false,
+    // Each lesson pays the first time it's finished; redoing it (to practise or to reach mastery) is free practice.
+    onceKey: lesson.title,
     detail: `${lesson.title} · ${Math.round(ratio * 100)}% first try${mastered ? '' : ' · will practise again'}`,
     progressDelta: {
       lesson: Math.min(last, Math.max(current, mastered ? lessonId + 1 : lessonId)),

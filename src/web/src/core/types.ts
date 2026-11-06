@@ -38,6 +38,8 @@ export interface ScoreOutcome {
   progressDelta?: Record<string, unknown>;
   /** What was done (e.g. a passage ref) for "pays N times a day" limits, enforced by the Guardian. Detail starts with it. */
   repeatKey?: string;
+  /** Pays only the first time ever: doing it again is practice without coins (enforced by the Guardian from the ledger). Detail starts with it. */
+  onceKey?: string;
 }
 
 /** Pure scorer: same inputs → same outputs, no I/O, no Date.now(). Runs in the UI and in the Guardian. */

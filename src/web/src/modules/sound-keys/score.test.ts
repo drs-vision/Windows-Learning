@@ -53,3 +53,8 @@ describe('sound-keys scoring', () => {
     expect(scoreModule('sound-keys', act(4), fast, settings).valid).toBe(false);
   });
 });
+
+it('lesson titles are unique (each lesson pays once, matched by its title)', () => {
+  const titles = LESSONS.map((l) => l.title);
+  expect(new Set(titles).size).toBe(titles.length);
+});

@@ -25,7 +25,7 @@ export function scoreTypingQuest(activity: Activity, result: Result, settings: M
   if (activity.kind === 'placement') {
     const lane = laneForPlacement(wpm, accuracy);
     return {
-      valid: true, coins: base, needsApproval: false,
+      valid: true, coins: base, needsApproval: false, onceKey: 'Placement test',
       detail: `Placement test · ${Math.round(wpm)} WPM · ${Math.round(accuracy * 100)}%`,
       progressDelta: { placed: true, lane, drill: 0, bestWpm: Math.round(wpm), placementWpm: Math.round(wpm) },
     };
@@ -52,8 +52,8 @@ export function scoreTypingQuest(activity: Activity, result: Result, settings: M
   }
 
   const passed = passedAccuracy && passedSpeed && qScore >= 0.5;
-  // Every finished drill pays the parent's set amount — the same whether it was fast, slow, passed or repeated.
-  // Passing only decides whether the next drill unlocks. Mashing keys (under half right) pays nothing.
+  // A finished drill pays the parent's set amount the first time only (the Guardian checks onceKey against the ledger),
+  // fast or slow, passed or not; redoing it is practice. Passing decides whether the next drill unlocks. Mashing keys pays nothing.
   const typedForReal = accuracy >= 0.5;
   const coins = typedForReal ? base : 0;
 
@@ -69,7 +69,7 @@ export function scoreTypingQuest(activity: Activity, result: Result, settings: M
 
   const detail = `${lane.name} ${drillIdx + 1}/${lane.drills.length} · ${Math.round(wpm)} WPM · ${Math.round(accuracy * 100)}%${passed ? '' : typedForReal ? ' · try again to move on' : ' · try again'}`;
   return {
-    valid: true, coins, needsApproval: false, detail,
+    valid: true, coins, needsApproval: false, detail, onceKey: `${lane.name} ${drillIdx + 1}/${lane.drills.length}`,
     progressDelta: { lane: nextLane, drill: nextDrill, bestWpm, lastAccuracy: Math.round(accuracy * 100), completed: passed ? ((activity.data.completed as number) ?? 0) + 1 : (activity.data.completed as number) ?? 0 },
   };
 }

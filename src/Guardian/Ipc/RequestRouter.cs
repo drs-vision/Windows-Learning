@@ -279,14 +279,28 @@ public sealed class RequestRouter
             return Response.Fail(req.Id, outcome.Reason ?? "that didn't check out");
         }
 
-        // "Each passage pays N times a day": after that it still counts as practice, without coins.
+        // "Each passage pays N times a day" (or only the first time ever): after that it still counts as practice, without coins.
         var repeatLimited = false;
-        if (outcome.RepeatKey is { Length: > 0 } rk && outcome.Coins > 0
-            && settings.Options.TryGetValue("repeatsPerDay", out var rs) && int.TryParse(rs, out var perDay) && perDay > 0
-            && _ledger.TimesToday(child.Id, moduleId, rk + " ·") >= perDay)
+        var repeats = settings.Options.GetValueOrDefault("repeatsPerDay", "");
+        if (outcome.RepeatKey is { Length: > 0 } rk && outcome.Coins > 0)
+        {
+            if (repeats == "ever" && _ledger.TimesEver(child.Id, moduleId, rk + " ·") > 0)
+            {
+                repeatLimited = true;
+                outcome = outcome with { Coins = 0, Detail = $"{outcome.Detail} · already earned (practice)" };
+            }
+            else if (int.TryParse(repeats, out var perDay) && perDay > 0 && _ledger.TimesToday(child.Id, moduleId, rk + " ·") >= perDay)
+            {
+                repeatLimited = true;
+                outcome = outcome with { Coins = 0, Detail = $"{outcome.Detail} · already earned {(perDay == 1 ? "once" : perDay == 2 ? "twice" : perDay + " times")} today" };
+            }
+        }
+        // Lessons and drills pay only the first time: redoing one (to practise, or to pass it) earns nothing. Checked
+        // against the ledger, so it holds for everything done before this rule too and can't be reset from the kid's side.
+        if (!repeatLimited && outcome.OnceKey is { Length: > 0 } ok && outcome.Coins > 0 && _ledger.TimesEver(child.Id, moduleId, ok + " ·") > 0)
         {
             repeatLimited = true;
-            outcome = outcome with { Coins = 0, Detail = $"{outcome.Detail} · already earned {(perDay == 1 ? "once" : perDay == 2 ? "twice" : perDay + " times")} today" };
+            outcome = outcome with { Coins = 0, Detail = $"{outcome.Detail} · already earned (practice)" };
         }
 
         // Scripture and the family's own passages are one quest to a parent: one daily limit for both.

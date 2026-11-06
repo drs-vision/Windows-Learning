@@ -95,6 +95,7 @@ function TypingQuestView({ activity, ctx }: { activity: Activity; ctx: ActivityC
   return (
     <div class="activity-result">
       <div class="coins-earned">{outcome?.coins ?? 0} 🪙</div>
+      {outcome && outcome.coins === 0 && outcome.detail.includes('already earned') && <p class="muted">Practice round: this drill already earned its coins. New drills earn more.</p>}
       <h2>{isPlacement ? 'All set!' : passed ? 'Nice work!' : 'Almost — go again'}</h2>
       <p>{outcome?.detail}</p>
       {typing && <p class="muted">{Math.round(typing.wpm)} WPM · {Math.round(typing.accuracy * 100)}% accuracy</p>}

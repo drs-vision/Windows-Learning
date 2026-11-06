@@ -847,7 +847,7 @@ function PassagesCard({ child, open, onToggle, cur, setMods }: { child: Child; o
   const both = ['bible-typing', 'my-passages'];
   const own = familyPassages(mine).length;
   const sources = [bible.enabled ? 'Scripture' : '', mine.enabled ? `${own} of your own` : ''].filter(Boolean).join(' + ');
-  const sum = `${sources || 'No passages chosen'} · 1 🪙 per ${bible.options?.wordsPer ?? 20} words · ${bible.options?.repeatsPerDay === '0' ? 'pays every time' : `each passage pays ${{ '1': 'once', '2': 'twice', '3': '3 times' }[bible.options?.repeatsPerDay ?? '1'] ?? 'once'} a day`}`;
+  const sum = `${sources || 'No passages chosen'} · 1 🪙 per ${bible.options?.wordsPer ?? 20} words · ${bible.options?.repeatsPerDay === '0' ? 'pays every time' : bible.options?.repeatsPerDay === 'ever' ? 'each passage pays once' : `each passage pays ${{ '1': 'once', '2': 'twice', '3': '3 times' }[bible.options?.repeatsPerDay ?? '1'] ?? 'once'} a day`}`;
   return (
     <div class={'card quest-row' + (on ? '' : ' off') + (open ? ' open' : '')}>
       <div class="quest-line">
@@ -865,8 +865,8 @@ function PassagesCard({ child, open, onToggle, cur, setMods }: { child: Child; o
           </div>
           <div class="row">
             <label title="Rounded to the nearest: with 20, a 9-word passage pays nothing, 10–29 words pay 1 coin, 30–49 pay 2.">Pay<span class="per-words">1 🪙 per <input type="number" min={1} max={500} value={bible.options?.wordsPer ?? '20'} onChange={(e) => setMods(both, { options: { wordsPer: String(Math.max(1, Math.min(500, Math.round(Number((e.target as HTMLInputElement).value) || 20)))) } })} /> words</span></label>
-            <label title="After that, typing it again is practice without coins until tomorrow.">Each passage pays<select value={bible.options?.repeatsPerDay ?? '1'} onChange={(e) => setMods(both, { options: { repeatsPerDay: (e.target as HTMLSelectElement).value } })}>
-              {[['1', 'Once a day'], ['2', 'Twice a day'], ['3', '3 times a day'], ['0', 'Every time']].map(([v, l]) => <option value={v}>{l}</option>)}
+            <label title="After that, typing it again is practice without coins.">Each passage pays<select value={bible.options?.repeatsPerDay ?? '1'} onChange={(e) => setMods(both, { options: { repeatsPerDay: (e.target as HTMLSelectElement).value } })}>
+              {[['ever', 'Only the first time'], ['1', 'Once a day'], ['2', 'Twice a day'], ['3', '3 times a day'], ['0', 'Every time']].map(([v, l]) => <option value={v}>{l}</option>)}
             </select></label>
             <label title="0 = no limit. Scripture and your own passages share this limit.">Most per day (0 = no limit)<input type="number" min={0} value={bible.dailyCap} onChange={(e) => setMods(both, { dailyCap: Number((e.target as HTMLInputElement).value) })} /></label>
             <label class="check"><input type="checkbox" checked={bible.requireApproval} onChange={(e) => setMods(both, { requireApproval: (e.target as HTMLInputElement).checked })} /> Ask me before paying</label>

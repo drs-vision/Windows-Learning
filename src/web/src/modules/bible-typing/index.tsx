@@ -16,7 +16,7 @@ const PASSAGES: Passage[] = (starter as { passages: Passage[] }).passages;
 export const WORDS_PER_OPTION = { key: 'wordsPer', label: '1 🪙 per', suffix: 'words', help: 'Rounded to the nearest: with 20, a 9-word passage pays nothing, 10–29 words pay 1 coin, 30–49 pay 2.', number: { min: 1, max: 500 }, default: '20' };
 
 /** The repeat limit shared by every passage quest. */
-export const REPEATS_OPTION = { key: 'repeatsPerDay', label: 'Each passage pays', help: 'After that, typing it again is practice without coins until tomorrow.', choices: [['1', 'Once a day'], ['2', 'Twice a day'], ['3', '3 times a day'], ['0', 'Every time']] as [string, string][], default: '1' };
+export const REPEATS_OPTION = { key: 'repeatsPerDay', label: 'Each passage pays', help: 'After that, typing it again is practice without coins until tomorrow.', choices: [['ever', 'Only the first time'], ['1', 'Once a day'], ['2', 'Twice a day'], ['3', '3 times a day'], ['0', 'Every time']] as [string, string][], default: '1' };
 
 export const bibleTyping: LessonModule = {
   id: 'bible-typing',
@@ -74,7 +74,8 @@ export function PassageView({ activity, ctx, groups }: { activity: Activity; ctx
   const perDay = Number(ctx.settings.options?.repeatsPerDay ?? '1') || 0;
   const per = wordsPerCoin(ctx.settings);
   const words = (p: { text: string }) => wordCount(p.text);
-  const usedUp = (g: PassageGroup, p: { ref: string }) => perDay > 0 && (g.counts[p.ref] ?? 0) >= perDay;
+  const once = ctx.settings.options?.repeatsPerDay === 'ever';
+  const usedUp = (g: PassageGroup, p: { ref: string }) => once ? g.done.includes(p.ref) : perDay > 0 && (g.counts[p.ref] ?? 0) >= perDay;
 
   // When the child picks a different passage we re-issue the activity so the Guardian scores the right text.
   useEffect(() => { if (sel.g?.moduleId === activity.moduleId) ctx.saveProgress({ ...ctx.progress, chosenRef: passage.ref }); }, [passage.ref]);
@@ -101,14 +102,14 @@ export function PassageView({ activity, ctx, groups }: { activity: Activity; ctx
             {g.passages.map((p) => (
               <button class={'passage' + (p.ref === passage.ref && g === sel.g ? ' picked' : '') + (g.done.includes(p.ref) ? ' done' : '') + (usedUp(g, p) ? ' used' : '')} onClick={() => setSel({ g, ...p })}>
                 <b>{p.ref}</b>
-                <small>{words(p)} words · {usedUp(g, p) ? 'earned today ✓' : `+${passagePay(g.settings, words(p))} 🪙`}{g.done.includes(p.ref) && !usedUp(g, p) ? ' · ✓ typed' : ''}</small>
+                <small>{words(p)} words · {usedUp(g, p) ? (once ? 'earned ✓' : 'earned today ✓') : `+${passagePay(g.settings, words(p))} 🪙`}{g.done.includes(p.ref) && !usedUp(g, p) ? ' · ✓ typed' : ''}</small>
               </button>
             ))}
           </div>
         </>
       ))}
-      <p class="muted">{`1 🪙 for every ${per} words.`}{perDay > 0 ? ` Each one earns ${perDay === 1 ? 'once' : perDay === 2 ? 'twice' : perDay + ' times'} a day.` : ''} Take your time — there's no clock, and only the right key goes in.</p>
-      {sel.g && usedUp(sel.g, passage) && <p class="muted"><b>{passage.ref}</b> has already earned today — you can still type it for practice, or pick another for coins.</p>}
+      <p class="muted">{`1 🪙 for every ${per} words.`}{once ? ' Each one earns once.' : perDay > 0 ? ` Each one earns ${perDay === 1 ? 'once' : perDay === 2 ? 'twice' : perDay + ' times'} a day.` : ''} Take your time — there's no clock, and only the right key goes in.</p>
+      {sel.g && usedUp(sel.g, passage) && <p class="muted"><b>{passage.ref}</b> has already earned{once ? '' : ' today'} — you can still type it for practice, or pick another for coins.</p>}
       {passage.text && <button class="primary" onClick={() => setPhase('type')}>Type {passage.ref}</button>}
       <button class="ghost" onClick={ctx.exit}>Back</button>
     </div>
@@ -128,7 +129,7 @@ export function PassageView({ activity, ctx, groups }: { activity: Activity; ctx
       <div class="coins-earned">{outcome?.coins ?? 0} 🪙</div>
       <h2>{outcome && outcome.coins > 0 ? 'Added to your collection' : outcome?.detail.includes('already earned') ? 'Great practice!' : 'Keep practicing'}</h2>
       <p>{outcome?.detail}</p>
-      {outcome?.detail.includes('already earned') && <p class="muted">That passage has earned its coins for today. Pick a different one to earn more.</p>}
+      {outcome?.detail.includes('already earned') && <p class="muted">That passage has earned its coins{once ? '' : ' for today'}. Pick a different one to earn more.</p>}
       <button class="primary" onClick={ctx.exit}>Continue</button>
     </div>
   );

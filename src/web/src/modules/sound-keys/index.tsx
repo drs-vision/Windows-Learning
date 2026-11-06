@@ -203,6 +203,7 @@ function Finished({ o, lesson, out, onNext, onMap }: { o: Opts; lesson: Lesson; 
       <div class="coins-earned">+{out.coins} 🪙</div>
       {out.pending && <p class="muted">Waiting for a parent to OK the coins.</p>}
       {out.capped && <p class="muted">That's all the coins for today — the practice still counts!</p>}
+      {!out.capped && out.coins === 0 && out.detail.includes('already earned') && <p class="muted">Practice round: this lesson already earned its coins. New lessons earn more.</p>}
       <div class="row center">
         <button class="primary big" onClick={() => { hush(); onNext(); }}>{out.mastered ? 'Next mission ▶' : 'Try again ▶'} <small class="muted">(Enter)</small></button>
         <button class="ghost" onClick={() => { hush(); onMap(); }}>🗺️ Map</button>
