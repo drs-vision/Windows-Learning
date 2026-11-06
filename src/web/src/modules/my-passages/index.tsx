@@ -1,7 +1,7 @@
 import { render } from 'preact';
 import type { Activity, Progress } from '../../core/types';
 import type { LessonModule } from '../../core/module';
-import { PassageView, WORDS_PER_OPTION, REPEATS_OPTION } from '../bible-typing';
+import { PassageView, WORDS_PER_OPTION, REPEATS_OPTION, groupFor } from '../bible-typing';
 import { scoreMyPassages, familyPassages, DEFAULTS } from './score';
 
 interface MPProgress extends Progress { done?: string[]; totalWords?: number; chosenRef?: string; today?: { day?: string; counts?: Record<string, number> } }
@@ -31,7 +31,7 @@ export const myPassages: LessonModule = {
   mount(el, activity, ctx) {
     const list = familyPassages(ctx.settings).map((p) => ({ ref: p.title, text: p.text }));
     render(list.length
-      ? <PassageView activity={activity} ctx={ctx} passages={list} />
+      ? <PassageView activity={activity} ctx={ctx} groups={[groupFor('my-passages', 'From your family', list, ctx.settings, ctx.progress as MPProgress)]} />
       : <div class="activity-intro"><h2>📝 No passages yet</h2><p>Ask a parent to add some in the Parent Console.</p><button class="ghost" onClick={ctx.exit}>Back</button></div>, el);
     return () => render(null, el);
   },

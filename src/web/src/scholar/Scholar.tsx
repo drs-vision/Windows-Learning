@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'preact/hooks';
 import type { ChildState, Prize, Unlock } from '../core/types';
 import { bridge } from '../core/bridge';
+import { familyPassages } from '../modules/my-passages/score';
 import { MODULES, moduleById } from '../modules/registry';
 import { Arcade, fmt } from '../modules/arcade/Arcade';
 import { ParentConsole } from '../parent/ParentConsole';
@@ -111,7 +112,9 @@ function TopBar({ state, unlocks, onHome, onShop }: { state: ChildState; unlocks
 }
 
 function Home({ state, arcadeUnlock, ytUnlock, onQuest, onArcade, onYouTube, onWeb, onShop }: { state: ChildState; arcadeUnlock?: Unlock; ytUnlock?: Unlock; onQuest: (id: string) => void; onArcade: () => void; onYouTube: () => void; onWeb: () => void; onShop: () => void }) {
-  const quests = MODULES.filter((m) => state.modules[m.id]?.enabled && (m.id !== 'rwt' || state.rwtInstalled) && (m.id !== 'discgames' || (state.discGames?.length ?? 0) > 0));
+  // Scripture and the family's own passages are one quest: "Passage Typing".
+  const family = !!state.modules['my-passages']?.enabled && familyPassages(state.modules['my-passages']).length > 0;
+  const quests = MODULES.filter((m) => m.id !== 'my-passages' && (state.modules[m.id]?.enabled || (m.id === 'bible-typing' && family)) && (m.id !== 'rwt' || state.rwtInstalled) && (m.id !== 'discgames' || (state.discGames?.length ?? 0) > 0));
   const pending = state.pendingClaims.length;
   return (
     <div class="home">
@@ -175,7 +178,8 @@ function QuestRunner({ module, state, onExit }: { module: LessonModule; state: C
     const activity = { ...module.nextActivity(progress, Math.random, settings), issuedAt: Date.now() };
     const unmount = module.mount(host.current, activity, {
       progress, settings,
-      submit: (result, act) => bridge.submit(module.id, act ?? activity, result),
+      submit: (result, act) => bridge.submit(act?.moduleId ?? module.id, act ?? activity, result),
+      others: Object.fromEntries(Object.keys(state.modules).map((id) => [id, { settings: state.modules[id], progress: state.progress[id] ?? undefined }])),
       saveProgress: (p) => bridge.saveProgress(module.id, p).then(() => { }),
       exit: onExit,
     });

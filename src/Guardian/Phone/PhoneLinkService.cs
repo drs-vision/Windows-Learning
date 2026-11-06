@@ -415,9 +415,12 @@ public sealed class PhoneLinkService : BackgroundService
                 var copy = (JsonObject)r.DeepClone();
                 string body;
                 // Very busy days are trimmed to fit the relay's 8 KB message size.
-                while ((body = "cq1:rep:1/1:" + PhoneWire.Seal(PhoneWire.FromB64Url(l.Key), new JsonObject { ["rep"] = true, ["d"] = copy.DeepClone() })).Length > 8000
-                       && copy["time"] is JsonArray t && t.Count > 5)
-                    t.RemoveAt(t.Count - 1);
+                while ((body = "cq1:rep:1/1:" + PhoneWire.Seal(PhoneWire.FromB64Url(l.Key), new JsonObject { ["rep"] = true, ["d"] = copy.DeepClone() })).Length > 8000)
+                {
+                    if (copy["log"] is JsonArray lg && lg.Count > 10) lg.RemoveAt(0);          // oldest coin entries first
+                    else if (copy["time"] is JsonArray t && t.Count > 5) t.RemoveAt(t.Count - 1); // then the smallest times
+                    else break;
+                }
                 if (body.Length > 8000) continue;
                 try { using var resp = await _post.PostAsync($"{cq}/{l.TopicOut}-rep", new StringContent(body, Encoding.UTF8, "text/plain")); }
                 catch (Exception ex) { _log.LogInformation("Report: {Msg}", ex.Message); }

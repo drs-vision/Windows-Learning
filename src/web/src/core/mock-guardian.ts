@@ -182,7 +182,8 @@ export class MockGuardian {
             { kind: 'youtube', label: 'Mark Rober', sec: 600 + seed * 90 }, { kind: 'quest', label: 'Scripture Typing', sec: 420 },
             { kind: 'arcade', label: '2048', sec: 300 + seed * 30 }, { kind: 'app', label: 'Read, Write & Type!', sec: 780 }, { kind: 'coinquest', label: 'Home', sec: 240 } ],
             typing: { sessions: 3, chars: 2400 + seed * 100, ms: 900000, best: 28 + seed }, done: { 'khan-academy:correct': 12 + seed, 'khan-academy:videos': 2, 'bible-typing:finished': 2, 'duolingo:lessons': seed % 3 },
-            earned: { 'khan-academy': 30 + seed, 'bible-typing': 9, rwt: 20 }, spent: { '20 minutes of YouTube': 48 } });
+            earned: { 'khan-academy': 30 + seed, 'bible-typing': 9, rwt: 20 }, spent: { '20 minutes of YouTube': 48 },
+            log: [{ t: '15:42', d: 9, k: 'Earn', s: 'bible-typing', x: 'Psalm 23 · 118 words' }, { t: '16:05', d: 12, k: 'Earn', s: 'khan-academy', x: 'Khan Academy: 1 finished exercise + 7 correct answers' }, { t: '16:30', d: -48, k: 'Spend', s: 'p-yt', x: '20 minutes of YouTube' }, { t: '17:10', d: 5, k: 'Adjust', s: 'parent', x: 'Cleaned his room' }] });
         }
         return ok({ childId: 'c1', kid: 'Sam', enabled: true, days });
       }

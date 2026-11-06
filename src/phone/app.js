@@ -203,9 +203,8 @@ async function refresh() {
   status = 'wait'; error = ''; render();
   try {
     await send('state');
-    if (tab === 'rewards' || tab === 'shop' || tab === 'allowed' || tab === 'activity') await loadConfig();
-    if (tab === 'activity') { actv.fetched = null; }
-    if (tab === 'history') await loadHistory(true);
+    if (tab === 'rewards' || tab === 'shop' || tab === 'allowed') await loadConfig();
+    if (tab === 'home') { actv.fetched = null; actv.checkedAt = 0; }
   } catch (e) { status = 'off'; error = state ? '' : e.message; render(); }
 }
 
@@ -257,7 +256,7 @@ function kid() {
 const kidConfig = () => config?.children.find((k) => k.id === (kid()?.id)) ?? null;
 
 const QUESTS = {
-  'sound-keys': ['🔤', 'Letter Rescue'], 'typing-quest': ['⌨️', 'TypingQuest'], 'bible-typing': ['📖', 'Scripture Typing'], 'my-passages': ['📝', 'Family Passages'],
+  'sound-keys': ['🔤', 'Letter Rescue'], 'typing-quest': ['⌨️', 'TypingQuest'], 'bible-typing': ['📖', 'Passage Typing'], 'my-passages': ['📝', 'Your passages'],
   'khan-academy': ['🎓', 'Khan Academy'], duolingo: ['🦉', 'Duolingo'], rwt: ['✏️', 'Read, Write & Type!'], discgames: ['💿', 'Classic CD games'],
 };
 const OPTION_LABELS = { perAnswer: 'Coins per correct answer', perVideo: 'Coins per finished video', repeatsPerDay: 'Each passage pays' };
@@ -307,8 +306,8 @@ function draw() {
   const statusText = status === 'on' ? `PC answered ${ago(new Date(updatedAt).toISOString())}`
     : status === 'wait' ? (state && asOf ? `Asking the PC… (showing ${asOf})` : 'Asking the PC…')
     : state && asOf ? `PC is offline — showing what it last sent (${asOf})` : 'Not connected to the PC';
-  const body = { home: homeScreen, history: historyScreen, activity: activityScreen, rewards: rewardsScreen, shop: shopScreen, allowed: allowedScreen }[tab]();
-  const tabs = [['home', '🏠', 'Home'], ['history', '🧾', 'History'], ['activity', '📊', 'Activity'], ['rewards', '⭐', 'Rewards'], ['shop', '🛍️', 'Shop'], ['allowed', '🌐', 'Allowed']];
+  const body = { home: homeScreen, rewards: rewardsScreen, shop: shopScreen, allowed: allowedScreen }[tab]?.() ?? homeScreen();
+  const tabs = [['home', '🏠', 'Today'], ['rewards', '⭐', 'Earn'], ['shop', '🛍️', 'Rewards'], ['allowed', '🌐', 'Allowed']];
   app.innerHTML = `
     <header><img src="icon-192.png" alt=""><h1>${esc(state?.household || link.household)}</h1><button class="icon" data-refresh aria-label="Refresh">↻</button></header>
     ${pcs}
@@ -338,29 +337,12 @@ function homeScreen() {
         <div class="today">Today: <span class="plus">+${k.earnedToday}</span> earned · <span class="minus">${k.spentToday ? '−' + k.spentToday : '0'}</span> spent</div>
         <div class="row"><button class="give" data-give="${esc(k.id)}">＋ Give</button><button class="take" data-take="${esc(k.id)}">－ Take</button></div>
         ${(k.unlocks || []).map((u) => `<div class="unlock"><span>▶ ${esc(u.name)} · ${mins(u.secondsLeft)} left</span><button data-end="${esc(u.id)}">End now</button></div>`).join('')}
-        ${k.recent?.length ? `<details><summary>Today's activity</summary><ul class="feed">${k.recent.map((e) => `<li><span class="what">${esc(e.what)}<br><span class="t">${ago(e.at)}</span></span><span class="${e.delta >= 0 ? 'plus' : 'minus'}">${signed(e.delta)}</span></li>`).join('')}</ul><button class="link" data-tab="history" data-kidgo="${esc(k.id)}">See all history →</button></details>` : ''}
       </div>`).join('');
   if (!(state.children || []).length) out += `<div class="card empty"><p>No children are set up on this PC yet.</p></div>`;
+  else out += activitySection();
   return out + `<p class="note">Linked as “${esc(link.phone)}”. To unlink, remove this phone in the parent app on the PC.<br><button data-forget class="small">Forget this PC on this phone</button></p>`;
 }
 
-function historyScreen() {
-  const k = kid();
-  if (!k) return `<div class="card empty"><p>Asking the PC…</p></div>`;
-  if (hist.kid !== k.id && !hist.loading) { setTimeout(() => loadHistory(true), 0); return `<div class="card empty"><p>Loading history…</p></div>`; }
-  if (!hist.entries.length) return hist.loading ? `<div class="card empty"><p>Loading history…</p></div>` : `<div class="card empty"><p>Nothing yet.</p></div>`;
-  let out = '', day = '';
-  for (const e of hist.entries) {
-    const d = dayLabel(e.at);
-    if (d !== day) { out += `${day ? '</ul></div>' : ''}<h2>${esc(d)}</h2><div class="card list"><ul class="feed">`; day = d; }
-    const pending = e.kind === 'Claim';
-    const who = e.source === 'parent' && e.actor ? (String(e.actor).startsWith('phone:') ? ` · ${esc(String(e.actor).slice(6))}` : ' · on the PC') : '';
-    out += `<li><span class="what">${esc(e.detail || sourceName(e.source))}<br><span class="t">${clock(e.at)} · ${esc(sourceName(e.source))}${who}${pending ? ' · waiting for you' : e.kind === 'ClaimDenied' ? ' · declined' : ''}</span></span><span class="${pending ? 't' : e.delta >= 0 ? 'plus' : 'minus'}">${pending ? '⏳' : signed(e.delta)}</span></li>`;
-  }
-  out += '</ul></div>';
-  if (hist.more) out += `<button class="wide" data-more ${hist.loading ? 'disabled' : ''}>${hist.loading ? 'Loading…' : 'Show older'}</button>`;
-  return out;
-}
 
 // ---- activity reports ----------------------------------------------------------------------------------------------
 // Daily reports wait on CoinQuest's relay (about two months) and are kept on this phone, so past days show with the
@@ -410,32 +392,29 @@ async function checkNow() {
   actv.checking = false; render();
 }
 
-function activityScreen() {
+/** On Today: what the child did on a day or in a week, with the day's coin history. */
+function activitySection() {
   const k = kid();
-  if (!k) return `<div class="card empty"><p>Asking the PC…</p></div>`;
+  if (!k) return '';
   if (actv.fetched !== link.topicIn) setTimeout(loadReports, 0);
-  if (!config && status !== 'off') setTimeout(() => loadConfig().catch(() => { }), 0);
   const byDay = repCache()[k.id] ?? {};
-  // Open on yesterday when today has nothing yet (today's report comes tomorrow).
-  if (!actv.picked) { const y = rep.dayKey(new Date(Date.now() - 86400e3)); if (!byDay[actv.sel] && byDay[y]) actv.sel = y; }
+  const today = rep.dayKey(new Date());
+  // Today comes live from the PC when it's on (at most every 2 minutes); otherwise open on yesterday.
+  if (status === 'on' && !actv.checking && Date.now() - actv.checkedAt > 120000 && rep.rangeOf(actv.sel, actv.mode).includes(today)) setTimeout(checkNow, 0);
+  if (!actv.picked) { const y = rep.dayKey(new Date(Date.now() - 86400e3)); if (!byDay[actv.sel] && byDay[y] && status !== 'on') actv.sel = y; }
   const days = rep.rangeOf(actv.sel, actv.mode);
   const reports = days.map((d) => byDay[d]).filter(Boolean);
-  const today = rep.dayKey(new Date());
   const note = days.includes(today) && !byDay[today]
-    ? "Today's report arrives tomorrow when your child first uses the PC — or tap Check now while the PC is on."
+    ? (status === 'on' ? 'Asking the PC…' : "The PC is off, so today isn't here yet. It arrives the next time it's on.")
     : '';
-  const kc = config?.children?.find((c) => c.id === k.id);
-  const on = kc ? kc.activityReports !== false : true;
-  return `<div class="activity">
-    <div class="act-bar">
-      <div class="seg"><button data-actmode="day" class="${actv.mode === 'day' ? 'on' : ''}">Day</button><button data-actmode="week" class="${actv.mode === 'week' ? 'on' : ''}">Week</button></div>
-      <button data-actcheck ${actv.checking ? 'disabled' : ''}>${actv.checking ? 'Asking the PC…' : '↻ Check now'}</button>
-    </div>
-    ${rep.calendarHtml(actv.month, byDay, actv.sel, actv.mode)}
-    <div class="card">${rep.reportHtml(reports, { title: rep.titleOf(actv.sel, actv.mode), note })}</div>
-    <div class="card row between"><span>Keep activity reports for ${esc(k.name)}</span>${toggle(on, 'data-actrep aria-label="Activity reports on or off"')}</div>
-    ${!on ? '<p class="note">Reports are off: nothing new is recorded for this child.</p>' : ''}
-  </div>`;
+  const kids = state?.children ?? [];
+  const pick = kids.length > 1 ? `<div class="pills">${kids.map((x) => `<button data-kid="${esc(x.id)}" class="${x.id === k.id ? 'on' : ''}">${esc(x.name)}</button>`).join('')}</div>` : '';
+  return `<h2>${kids.length > 1 ? 'Activity' : esc(k.name) + "'s activity"}</h2>${pick}
+    <div class="card activity">
+      ${rep.navHtml(actv.sel, actv.mode, !!actv.cal)}
+      ${actv.cal ? rep.calendarHtml(actv.month, byDay, actv.sel, actv.mode) : ''}
+      ${rep.reportHtml(reports, { note })}
+    </div>`;
 }
 
 const field = (label, attrs, hint = '') => `<label class="field"><span>${label}${hint ? `<small>${hint}</small>` : ''}</span><input ${attrs}></label>`;
@@ -444,8 +423,8 @@ const toggle = (on, attrs) => `<label class="switch"><input type="checkbox" ${on
 function rewardsScreen() {
   const kc = kidConfig();
   if (!kc) { if (status !== 'off') setTimeout(() => loadConfig().catch((e) => { error = e.message; render(); }), 0); return `<div class="card empty"><p>Loading quests…</p></div>`; }
-  return `<p class="lead">Coins ${esc(kc.name)} earns for each quest. A negative number takes coins away instead. Changes save as you go.</p>` +
-    kc.modules.map((m) => {
+  return `<p class="lead">How ${esc(kc.name)} earns coins. Changes save as you go.</p>` +
+    kc.modules.filter((m) => m.id !== 'my-passages').map((m) => {
       const [icon, title] = quest(m.id);
       const opts = Object.entries(m.options || {}).filter(([k]) => OPTION_LABELS[k]);
       const byWords = m.id === 'bible-typing' || m.id === 'my-passages';
@@ -454,15 +433,19 @@ function rewardsScreen() {
         <div class="quest-top"><p class="kid-name">${icon} ${esc(title)}</p>${toggle(m.enabled, `data-q="${esc(m.id)}" data-f="enabled" aria-label="${esc(title)} on or off"`)}</div>
         ${m.enabled ? `
         <div class="grid2">
-          ${byWords ? field('1 🪙 per … words', `type="text" inputmode="numeric" value="${esc(m.options?.wordsPer ?? 20)}" data-q="${esc(m.id)}" data-opt="wordsPer"`) : field(m.id === 'discgames' ? 'Coins per progress' : m.id === 'rwt' ? 'Coins per finished activity' : 'Coins per activity', `type="text" inputmode="numeric" value="${m.coinsPerActivity}" data-q="${esc(m.id)}" data-f="coinsPerActivity"`)}
-          ${field('Daily limit', `type="text" inputmode="numeric" value="${m.dailyCap}" data-q="${esc(m.id)}" data-f="dailyCap"`, '0 = none')}
+          ${byWords ? field('1 🪙 per … words', `type="text" inputmode="numeric" value="${esc(m.options?.wordsPer ?? 20)}" data-q="${esc(m.id)}" data-opt="wordsPer"`) : field(({ discgames: 'Coins per bit of progress', rwt: 'Coins per finished activity', 'khan-academy': 'Coins per finished exercise', duolingo: 'Coins per lesson', 'sound-keys': 'Coins per lesson', 'typing-quest': 'Coins per drill' })[m.id] ?? 'Coins each', `type="text" inputmode="numeric" value="${m.coinsPerActivity}" data-q="${esc(m.id)}" data-f="coinsPerActivity"`)}
+          ${field('Most per day', `type="text" inputmode="numeric" value="${m.dailyCap}" data-q="${esc(m.id)}" data-f="dailyCap"`, '0 = no limit')}
           ${opts.filter(([k]) => !OPTION_CHOICES[k]).map(([k, v]) => field(OPTION_LABELS[k], `type="text" inputmode="numeric" value="${esc(v)}" data-q="${esc(m.id)}" data-opt="${esc(k)}"`)).join('')}
         </div>
         ${opts.filter(([k]) => OPTION_CHOICES[k]).map(([k, v]) => `<label class="field"><span>${esc(OPTION_LABELS[k])}</span><select data-q="${esc(m.id)}" data-opt="${esc(k)}">${OPTION_CHOICES[k].map(([cv, cl]) => `<option value="${cv}" ${cv === String(v) ? 'selected' : ''}>${esc(cl)}</option>`).join('')}</select></label>`).join('')}
-        <div class="row between"><span>Needs my OK first</span>${toggle(m.requireApproval, `data-q="${esc(m.id)}" data-f="requireApproval" aria-label="Needs my OK"`)}</div>
+        <div class="row between"><span>Ask me before paying</span>${toggle(m.requireApproval, `data-q="${esc(m.id)}" data-f="requireApproval" aria-label="Ask me before paying"`)}</div>
         <p class="t">Earned today: ${signed(m.earnedToday)}</p>` : ''}
       </div>`;
-    }).join('');
+    }).join('') + reportsSwitch(kc);
+}
+
+function reportsSwitch(kc) {
+  return `<div class="card row between"><span>Activity reports for ${esc(kc.name)}<br><span class="t">Time on each quest, site, channel and app, shown on Today</span></span>${toggle(kc.activityReports !== false, 'data-actrep aria-label="Activity reports on or off"')}</div>`;
 }
 
 function shopScreen() {
@@ -533,7 +516,7 @@ function giveSheet(childId, sign) {
   sheet.querySelector('form').addEventListener('submit', () => {
     const why = sheet.querySelector('#why').value.trim();
     act('adjust', { childId, delta: sign * amount, reason: why || (sign > 0 ? 'From a parent (phone)' : 'Taken by a parent (phone)') },
-      `${sign > 0 ? 'Gave' : 'Took'} ${amount} ${sign > 0 ? 'to' : 'from'} ${k.name}`).then(() => { if (tab === 'history') loadHistory(true); });
+      `${sign > 0 ? 'Gave' : 'Took'} ${amount} ${sign > 0 ? 'to' : 'from'} ${k.name}`);
   });
   sheet.showModal();
 }
@@ -683,14 +666,14 @@ app.addEventListener('click', (e) => {
   else if (b.dataset.tab) {
     if (b.dataset.kidgo) kidId = b.dataset.kidgo;
     tab = b.dataset.tab; error = ''; window.scrollTo(0, 0);
-    if (tab === 'history') hist.kid = null; // the screen loads the newest page itself
     render();
   }
   else if (b.dataset.kid) { kidId = b.dataset.kid; render(); }
-  else if (b.dataset.calDay) { actv.sel = b.dataset.calDay; actv.picked = true; render(); }
+  else if (b.dataset.calDay) { actv.sel = b.dataset.calDay; actv.picked = true; actv.cal = false; render(); }
   else if (b.dataset.calMonth) { actv.month = new Date(actv.month.getFullYear(), actv.month.getMonth() + Number(b.dataset.calMonth), 1); render(); }
-  else if (b.dataset.actmode) { actv.mode = b.dataset.actmode; render(); }
-  else if (b.dataset.actcheck !== undefined) checkNow();
+  else if (b.dataset.repStep) { actv.sel = rep.step(actv.sel, actv.mode, Number(b.dataset.repStep)); actv.picked = true; render(); }
+  else if (b.dataset.repCal !== undefined) { const d = rep.parseDay(actv.sel); actv.month = new Date(d.getFullYear(), d.getMonth(), 1); actv.cal = !actv.cal; render(); }
+  else if (b.dataset.repMode) { actv.mode = b.dataset.repMode; render(); }
   else if (b.dataset.give) giveSheet(b.dataset.give, +1);
   else if (b.dataset.take) giveSheet(b.dataset.take, -1);
   else if (b.dataset.claim) act('claim', { seq: +b.dataset.claim, approve: b.dataset.ok === '1' }, b.dataset.ok === '1' ? 'Approved' : 'Declined');
@@ -716,10 +699,19 @@ app.addEventListener('change', (e) => {
   if (el.dataset?.actrep !== undefined) { act('setReports', { childId: kid().id, on: el.checked }, el.checked ? 'Activity reports on' : 'Activity reports off'); return; }
   if (!el.dataset?.q) return;
   const args = { childId: kidConfig().id, moduleId: el.dataset.q };
+  // Passage Typing is Scripture and the family's own passages: the same settings go to both.
+  const twin = el.dataset.q === 'bible-typing' && kidConfig().modules.some((m) => m.id === 'my-passages') ? 'my-passages' : null;
   if (el.dataset.opt) args.options = { [el.dataset.opt]: el.tagName === 'SELECT' ? el.value : String(el.dataset.opt === 'wordsPer' ? Math.max(1, num(el.value) || 20) : num(el.value)) };
   else if (el.type === 'checkbox') args[el.dataset.f] = el.checked;
   else args[el.dataset.f] = el.dataset.f === 'dailyCap' ? Math.max(0, num(el.value)) : num(el.value);
   el.blur();
+  if (twin) {
+    const fam = kidConfig().modules.find((m) => m.id === twin);
+    const hasOwn = (() => { try { return JSON.parse(fam?.options?.passages ?? '[]').length > 0; } catch { return false; } })();
+    const t = { ...args, moduleId: twin };
+    if ('enabled' in t && t.enabled && !hasOwn) delete t.enabled;
+    if (Object.keys(t).length > 2) act('setQuest', t);
+  }
   act('setQuest', args, 'Saved');
 });
 

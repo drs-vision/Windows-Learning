@@ -616,3 +616,47 @@ button.big { font-size: 1.1em; padding: .7em 1.4em; }
 .passage-add code { padding: 0 4px; margin: 0 2px; border-radius: 4px; background: rgba(127,127,127,.15); }
 
 .per-words { display: inline-flex; align-items: center; gap: 6px; white-space: nowrap; } .per-words input { width: 5.5em; }
+
+/* ---- Parent console: Today / Ways to earn / Rewards (2026-11 redesign) ---- */
+.parent nav.tabs button { position: relative; }
+.parent .tab-badge { display: inline-grid; place-items: center; min-width: 20px; height: 20px; padding: 0 6px; margin-left: 6px; border-radius: 10px; background: var(--red); color: #fff; font-style: normal; font-size: 12px; font-weight: 700; vertical-align: 1px; }
+.parent .lead { font-size: 1rem; margin: 0 0 1em; }
+.parent button.link { background: none; padding: 0 0 0 .5em; color: var(--blue); text-decoration: underline; font-weight: 600; }
+.parent button.danger:not(.ghost) { background: #b91c1c; color: #fff; font-weight: 700; }
+.parent .kid-head { display: grid; grid-template-columns: 1fr auto auto; gap: 8px 24px; align-items: center; }
+.parent .kid-head h2 { margin: 0; font-size: 1.6rem; }
+.parent .lock-line { margin: .25em 0 0; font-size: .95rem; color: var(--muted); }
+.parent .lock-line.bad { color: var(--red); font-weight: 600; }
+.parent .kid-balance { text-align: right; } .parent .kid-balance small { display: block; color: var(--muted); }
+.parent .kid-balance b { font-size: 2rem; line-height: 1.1; white-space: nowrap; }
+.parent .kid-actions { display: flex; gap: 8px; }
+.parent .kid-actions button { min-width: 6.5em; font-size: 1.05rem; padding: .7em 1.1em; }
+.parent .give-coins { grid-column: 1 / -1; display: flex; flex-wrap: wrap; gap: 10px; align-items: center; padding-top: 14px; margin-top: 4px; border-top: 1px solid var(--panel-2); }
+.parent .give-amounts { display: flex; gap: 6px; align-items: center; flex-wrap: wrap; }
+.parent .chip-btn { padding: .45em .9em; border-radius: 999px; background: var(--panel-2); font-weight: 600; min-width: 3em; }
+.parent .chip-btn.on { background: var(--blue); color: #fff; }
+.parent .give-coins .grow { flex: 1; min-width: 220px; }
+@media (max-width: 760px) { .parent .kid-head { grid-template-columns: 1fr auto; } .parent .kid-actions { grid-column: 1 / -1; } .parent .kid-actions button { flex: 1; } }
+.parent .today > .card + .card, .parent .today > .card + .activity { margin-top: 14px; }
+.parent .activity { padding-top: 14px; }
+
+.parent .quest-group { margin-bottom: 18px; }
+.parent .quest-group > h4 { margin: 0 0 8px 4px; font-size: .8rem; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); }
+.parent .quest-row { padding: 12px 16px; margin-bottom: 8px; }
+.parent .quest-row.off .quest-name b { color: var(--muted); }
+.parent .quest-line { display: flex; align-items: center; gap: 12px; }
+.parent .quest-ico { font-size: 1.6rem; width: 1.6em; text-align: center; flex: none; }
+.parent .quest-name { flex: 1; min-width: 0; display: grid; gap: 2px; }
+.parent .quest-name small { color: var(--muted); font-size: .9rem; }
+.parent .quest-line .switch { flex: none; }
+.parent .quest-body { margin: 12px 0 2px calc(1.6em * 1.6 + 12px); padding-top: 12px; border-top: 1px solid var(--panel-2); }
+.parent .quest-body .row { align-items: flex-end; }
+.parent .quest-body label small { display: block; font-weight: 400; }
+@media (max-width: 760px) { .parent .quest-body { margin-left: 0; } }
+.parent details.more { margin-top: 1.2em; border-top: 1px solid var(--panel-2); padding-top: .8em; }
+.parent details.more > summary { cursor: pointer; padding: 4px 0; }
+.passage-group { margin: 1em 0 .4em; font-size: .9rem; text-transform: uppercase; letter-spacing: .06em; opacity: .75; }
+
+.parent .quest-body .row > label:not(.check) { flex: 0 0 auto; }
+.parent .quest-body input[type=number] { width: 7.5em; }
+.parent .quest-body .per-words input[type=number] { width: 5.5em; }

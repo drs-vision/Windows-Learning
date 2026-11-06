@@ -13,6 +13,8 @@ export interface ActivityContext {
   exit(): void;
   progress: Progress;
   settings: ModuleSettings;
+  /** Other quests' settings and progress (Passage Typing shows Scripture and the family's own passages together). */
+  others?: Record<string, { settings?: ModuleSettings; progress?: Progress }>;
 }
 
 export interface LessonModule {

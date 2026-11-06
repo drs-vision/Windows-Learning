@@ -12,7 +12,7 @@ import { SetupWizard } from './SetupWizard';
 import { fmt } from '../modules/arcade/Arcade';
 import { merge3 } from '../core/merge';
 
-type Tab = 'today' | 'activity' | 'approvals' | 'allowed' | 'shop' | 'quests' | 'settings';
+type Tab = 'today' | 'earn' | 'rewards' | 'allowed' | 'settings';
 
 /** Five screens (plus Settings). Works standalone in the Parent Console app, or embedded in Scholar behind the PIN. */
 export function ParentConsole({ embedded, onClose }: { embedded?: boolean; onClose?: () => void }) {
@@ -59,8 +59,8 @@ export function ParentConsole({ embedded, onClose }: { embedded?: boolean; onClo
   return (
     <div class="parent">
       <nav class="tabs">
-        {([['today', 'Today'], ['activity', 'Activity'], ['approvals', pendingCount ? `Approvals (${pendingCount})` : 'Approvals'], ['allowed', 'Allowed'], ['shop', 'Shop'], ['quests', 'Quests'], ['settings', 'Settings']] as [Tab, string][]).map(([t, label]) => (
-          <button class={tab === t ? 'on' : ''} onClick={() => setTab(t)}>{label}</button>
+        {([['today', 'Today'], ['earn', 'Ways to earn'], ['rewards', 'Rewards'], ['allowed', 'Allowed'], ['settings', 'Settings']] as [Tab, string][]).map(([t, label]) => (
+          <button class={tab === t ? 'on' : ''} onClick={() => setTab(t)}>{label}{t === 'today' && pendingCount > 0 && <i class="tab-badge">{pendingCount}</i>}</button>
         ))}
         {embedded && <button class="ghost close" onClick={onClose}>✕ Close</button>}
       </nav>
@@ -68,11 +68,9 @@ export function ParentConsole({ embedded, onClose }: { embedded?: boolean; onClo
       <section class="tab-body">
         {!child && <p class="muted">No child set up yet.</p>}
         {child && tab === 'today' && <Today state={state} child={child} onChange={refresh} onGo={setTab} />}
-        {child && tab === 'activity' && <ActivityTab child={child} onSave={(c) => save(child, c, refresh, setError)} />}
-        {child && tab === 'approvals' && <Approvals state={state} onChange={refresh} />}
-        {child && tab === 'allowed' && <Allowed child={child} onSave={(c) => save(child, c, refresh, setError)} />}
-        {child && tab === 'shop' && <ShopEditor child={child} onSave={(c) => save(child, c, refresh, setError)} />}
-        {child && tab === 'quests' && <Quests child={child} onSave={(c) => save(child, c, refresh, setError)} />}
+        {child && tab === 'earn' && <Quests child={child} onSave={(c) => save(child, c, refresh, setError)} />}
+        {child && tab === 'rewards' && <ShopEditor child={child} onSave={(c) => save(child, c, refresh, setError)} />}
+        {child && tab === 'allowed' && <><LockStatus state={state} child={child} /><Allowed child={child} onSave={(c) => save(child, c, refresh, setError)} /></>}
         {child && tab === 'settings' && <Settings state={state} child={child} onSave={(c) => save(child, c, refresh, setError)} onChange={refresh} />}
       </section>
     </div>
@@ -138,32 +136,59 @@ function ClassicsNudge({ child, onGo }: { child: Child; onGo: () => void }) {
 
 function Today({ state, child, onChange, onGo }: { state: ParentState; child: Child; onChange: () => void; onGo: (t: Tab) => void }) {
   const pc = state.perChild[child.id];
-  const earned = pc.today.filter((e) => e.delta > 0).reduce((s, e) => s + e.delta, 0);
-  const spent = -pc.today.filter((e) => e.delta < 0).reduce((s, e) => s + e.delta, 0);
+  const [give, setGive] = useState<1 | -1 | null>(null);
+  const net = state.enforcement?.internetLock;
+  const netOk = !state.enforcement || (!!net?.applied && !net.error);
   return (
     <div class="today">
-      <LockStatus state={state} child={child} />
-      <ClassicsNudge child={child} onGo={() => { onGo('shop'); setTimeout(() => document.querySelector('.fp-panel')?.scrollIntoView({ behavior: 'smooth' }), 300); }} />
-      <div class="stat-row">
-        <div class="stat"><small>{child.displayName}'s balance</small><b>🪙 {pc.balance}</b></div>
-        <div class="stat"><small>Earned today</small><b>+{earned}</b></div>
-        <div class="stat"><small>Spent today</small><b>−{spent}</b></div>
-        <div class="stat"><small>Waiting on you</small><b>{state.pendingClaims.length}</b></div>
+      <div class="card kid-head">
+        <div class="kid-who">
+          <h2>{child.displayName}</h2>
+          <p class={'lock-line ' + (netOk ? 'ok' : 'bad')}>
+            {netOk ? '🔒 Internet lock on' : '⚠️ Internet lock is off'}
+            {state.enforcement?.childAtKeyboard ? ` · ${child.displayName} is on the computer now` : ''}
+            {!netOk && <button class="link" onClick={() => onGo('allowed')}>See why</button>}
+          </p>
+        </div>
+        <div class="kid-balance"><small>Coins</small><b>🪙 {pc.balance}</b></div>
+        <div class="kid-actions">
+          <button class="primary" onClick={() => setGive(give === 1 ? null : 1)}>＋ Give</button>
+          <button class="secondary" onClick={() => setGive(give === -1 ? null : -1)}>－ Take</button>
+        </div>
+        {give && <GiveCoins child={child} sign={give} onDone={() => { setGive(null); onChange(); }} />}
       </div>
+      {state.pendingClaims.length > 0 && (
+        <div class="card">
+          <h3>Waiting for your OK</h3>
+          <Approvals state={state} onChange={onChange} />
+        </div>
+      )}
       {pc.unlocks.length > 0 && (
         <div class="card">
           <h3>Running now</h3>
           {pc.unlocks.map((u) => <div class="row between"><span>{u.prizeName} · {fmt(Math.max(0, Math.round((Date.parse(u.expiresAt) - Date.now()) / 1000)))} left</span><button class="ghost small" onClick={() => bridge.parentEndUnlock(u.id).then(onChange)}>End now</button></div>)}
         </div>
       )}
-      <div class="card">
-        <h3>Today's activity</h3>
-        {pc.today.length === 0 && <p class="muted">Nothing yet today.</p>}
-        <ul class="ledger">
-          {pc.today.map((e) => <li class={e.kind}><span class="time">{new Date(e.at).toLocaleTimeString([], { hour: 'numeric', minute: '2-digit' })}</span><span class="delta">{e.kind === 'claim' ? '⏳' : signed(e.delta)}</span><span>{e.detail}</span></li>)}
-        </ul>
-      </div>
+      <ActivityPanel child={child} />
+      <ClassicsNudge child={child} onGo={() => { onGo('rewards'); setTimeout(() => document.querySelector('.fp-panel')?.scrollIntoView({ behavior: 'smooth' }), 300); }} />
       {!state.ledgerIntact && <p class="error">⚠️ The coin ledger failed its integrity check. Someone may have edited it directly.</p>}
+    </div>
+  );
+}
+
+/** Give or take coins, with a reason the child sees in their history. */
+function GiveCoins({ child, sign, onDone }: { child: Child; sign: 1 | -1; onDone: () => void }) {
+  const [n, setN] = useState(5);
+  const [reason, setReason] = useState('');
+  const [err, setErr] = useState('');
+  const go = () => bridge.parentAdjust(child.id, sign * Math.abs(n), reason.trim() || (sign > 0 ? 'From a parent' : 'Taken by a parent')).then(onDone).catch((e) => setErr(e.message));
+  return (
+    <div class="give-coins">
+      <div class="give-amounts">{[1, 5, 10, 25, 50].map((v) => <button class={'chip-btn' + (n === v ? ' on' : '')} onClick={() => setN(v)}>{v}</button>)}
+        <label class="coin-field"><input type="number" min={1} class="coins-input" value={n} onInput={(e) => setN(Math.abs(Math.round(Number((e.target as HTMLInputElement).value) || 0)))} /><span>🪙</span></label></div>
+      <input class="grow" placeholder={sign > 0 ? 'What for? (e.g. Cleaned his room)' : 'Why? (e.g. Didn\'t do chores)'} value={reason} onInput={(e) => setReason((e.target as HTMLInputElement).value)} onKeyDown={(e) => e.key === 'Enter' && n > 0 && go()} />
+      <button class={sign > 0 ? 'primary' : 'danger'} disabled={!n} onClick={go}>{sign > 0 ? `Give ${n} 🪙` : `Take ${n} 🪙`}</button>
+      {err && <p class="error">{err}</p>}
     </div>
   );
 }
@@ -177,13 +202,12 @@ function LockStatus({ state, child }: { state: ParentState; child: Child }) {
     <div class={'card lock-status ' + (netOk ? 'ok' : 'bad')}>
       <div class="lock-dot" />
       <div>
-        <b>{netOk ? `Internet lock is ON for ${child.displayName}'s account` : `Internet lock is NOT active`}</b>
+        <b>{netOk ? `Internet lock is on for ${child.displayName}` : `Internet lock is off`}</b>
         <p class="muted small">
           {netOk
-            ? `Every program on "${child.windowsAccount}" is blocked from the internet except the sites on your Allowed list (and YouTube channels you approved, during YouTube time). Your account is not affected.`
-            : `Problem: ${net?.error ?? 'not applied yet'}. Send guardian.log if this stays red.`}
+            ? `${child.displayName} can only reach the websites, apps and YouTube channels on this page. Your own account isn't affected.`
+            : `It couldn't be turned on (${net?.error ?? 'not applied yet'}). Restart the computer; if it stays off, see Settings → Advanced.`}
         </p>
-        <p class="muted small">{e.childAtKeyboard ? `${child.displayName} is using the computer right now.` : `Right now "${e.consoleAccount ?? 'nobody'}" is at the keyboard.`}</p>
       </div>
     </div>
   );
@@ -361,11 +385,11 @@ function ShopEditor({ child, onSave }: { child: Child; onSave: (c: Child) => voi
 
   return (
     <div class="shop-editor">
-      <p class="muted">What coins can buy. Tap one to change it.</p>
+      <p class="muted lead">What {child.displayName} can spend coins on. Tap one to change it.</p>
       <div class="prize-list">
         {prizes.map((p) => <button class={'prize-row' + (p.enabled === false ? ' off' : '')} onClick={() => setEditing({ ...p })}><span class="icon">{{ youTube: '▶️', siteUnlock: '🌐', arcadeUnlock: '🕹️', appUnlock: '💻', screenTimeExtension: '⏰', realWorld: '🎁' }[p.kind]}</span><b>{p.name}</b><span>🪙 {p.cost}</span><small class="muted">{[p.minutes ? `${p.minutes} min` : '', p.dailyCap ? `max ${p.dailyCap}/day` : '', p.enabled === false ? 'hidden' : ''].filter(Boolean).join(' · ')}</small></button>)}
       </div>
-      <div class="section-actions"><button class="secondary" onClick={() => setEditing(blank())}>+ New prize</button></div>
+      <div class="section-actions"><button class="secondary" onClick={() => setEditing(blank())}>＋ Add a reward</button></div>
       <ArcadeManager child={child} onSave={onSave} />
       {editing && (
         <div class="modal"><div class="card form">
@@ -415,9 +439,7 @@ function ArcadeManager({ child, onSave }: { child: Child; onSave: (c: Child) => 
   return (
     <div class="card arcade-manager">
       <h3>🕹️ Arcade</h3>
-      <FlashpointPanel child={child} onSave={onSave} onChanged={reload} />
-      <h4>Prices</h4>
-      <p class="muted">Like quarters in a machine: each <b>+</b> buys {BLOCK_MINUTES} more minutes of a game, then he presses Play. Games that take more thinking (🧠) cost less. Prices below are <b>coins per {BLOCK_MINUTES} minutes</b>. Time keeps counting once it starts; he can leave a game and come back while time is left.</p>
+      <p class="muted">Like quarters in a machine: each <b>+</b> buys {BLOCK_MINUTES} minutes of a game. Prices are <b>coins per {BLOCK_MINUTES} minutes</b>; games that take more thinking (🧠) cost less.</p>
       <div class="sentence">
         <span>🎟️ <b>Sampler pass</b> — any game for</span>
         <input type="number" min={5} max={60} step={5} value={settings.samplerMinutes ?? 10} class="num"
@@ -449,6 +471,9 @@ function ArcadeManager({ child, onSave }: { child: Child; onSave: (c: Child) => 
         </tbody>
       </table>
 
+      <details class="more" open={(games ?? []).filter((g) => g.available).length < 5}>
+      <summary><b>Add more games</b> <span class="muted small">— classic games library, your own game files, game websites</span></summary>
+      <FlashpointPanel child={child} onSave={onSave} onChanged={reload} />
       <div class="two-col">
         <div>
           <h4>Add a Flash game file (.swf)</h4>
@@ -471,6 +496,7 @@ function ArcadeManager({ child, onSave }: { child: Child; onSave: (c: Child) => 
           </div>
         </div>
       </div>
+      </details>
     </div>
   );
 }
@@ -609,108 +635,182 @@ function StrategyPicker({ value, onChange }: { value: number; onChange: (v: numb
 
 // ---------------------------------------------------------------- Quests
 
+/** How each quest pays, in one line: "10 🪙 each · up to 80 a day · asks you first". */
+function paySummary(m: (typeof MODULES)[number], s: ModSettings): string {
+  const o = s.options ?? {};
+  const pay = m.paysByWords ? `1 🪙 per ${o.wordsPer ?? 20} words`
+    : m.id === 'khan-academy' ? `${o.perAnswer ?? 1} 🪙 per right answer · ${o.perVideo ?? 3} per video · ${s.coinsPerActivity} per exercise`
+    : m.id === 'duolingo' ? `${s.coinsPerActivity} 🪙 per lesson`
+    : m.id === 'discgames' ? `${s.coinsPerActivity} 🪙 per bit of progress`
+    : m.id === 'sound-keys' ? `${s.coinsPerActivity} 🪙 per lesson`
+    : m.id === 'typing-quest' ? `${s.coinsPerActivity} 🪙 per drill`
+    : `${s.coinsPerActivity} 🪙 each`;
+  return [pay, s.dailyCap > 0 ? `up to ${s.dailyCap} a day` : 'no daily limit', s.requireApproval || m.verification === 'parent_approved' ? 'asks you first' : ''].filter(Boolean).join(' · ');
+}
+
+const EARN_GROUPS: [string, string[]][] = [
+  ['Typing', ['sound-keys', 'typing-quest', 'passages']],
+  ['Learning websites', ['khan-academy', 'duolingo']],
+  ['Classic games', ['discgames']],
+];
+
+/** Ways to earn: each quest is one line (what it pays) with a switch; Edit opens its settings. */
 function Quests({ child, onSave }: { child: Child; onSave: (c: Child) => void }) {
-  const setMod = (id: string, patch: Partial<Child['modules'][string]>) => {
-    const cur = child.modules[id] ?? { enabled: true, requireApproval: false, ...MODULES.find((m) => m.id === id)!.defaults };
-    const mod = MODULES.find((m) => m.id === id)!;
-    const next = { ...child, modules: { ...child.modules, [id]: { ...cur, ...patch } } };
-    // Turning a quest on adds the sites it needs.
-    if (patch.enabled && mod.requiredSites) next.allowlist = { ...next.allowlist, sites: [...new Set([...next.allowlist.sites, ...mod.requiredSites])] };
-    onSave(next);
+  const [open, setOpen] = useState<string | null>(null);
+  const cur = (id: string): ModSettings => child.modules[id] ?? { enabled: false, requireApproval: false, ...MODULES.find((m) => m.id === id)!.defaults };
+  /** Change one or more quests in one save. */
+  const setMods = (ids: string[], patch: Partial<ModSettings>) => {
+    const modules = { ...child.modules };
+    let allowlist = child.allowlist;
+    for (const id of ids) {
+      const mod = MODULES.find((m) => m.id === id)!;
+      const c = cur(id);
+      modules[id] = { ...c, ...patch, options: patch.options ? { ...(c.options ?? {}), ...patch.options } : c.options };
+      // Turning a quest on adds the sites it needs.
+      if (patch.enabled && mod.requiredSites) allowlist = { ...allowlist, sites: [...new Set([...allowlist.sites, ...mod.requiredSites])] };
+    }
+    onSave({ ...child, modules, allowlist });
   };
+  const setMod = (id: string, patch: Partial<ModSettings>) => setMods([id], patch);
+  const grouped = new Set(EARN_GROUPS.flatMap(([, ids]) => ids));
+  const others = MODULES.filter((m) => !grouped.has(m.id) && m.id !== 'rwt' && m.id !== 'bible-typing' && m.id !== 'my-passages').map((m) => m.id);
+  const groups = others.length ? [...EARN_GROUPS, ['More', others] as [string, string[]]] : EARN_GROUPS;
+
+  function card(id: string) {
+    if (id === 'passages') return <PassagesCard key="passages" child={child} open={open === 'passages'} onToggle={() => setOpen(open === 'passages' ? null : 'passages')} cur={cur} setMods={setMods} />;
+    const m = MODULES.find((x) => x.id === id);
+    if (!m) return null;
+    const s = cur(id);
+    const isOpen = open === id;
+    return (
+      <div class={'card quest-row' + (s.enabled ? '' : ' off') + (isOpen ? ' open' : '')}>
+        <div class="quest-line">
+          <span class="quest-ico">{m.icon}</span>
+          <div class="quest-name"><b>{m.title}</b><small>{s.enabled ? paySummary(m, s) : 'Off'}</small></div>
+          <button class="ghost small" onClick={() => setOpen(isOpen ? null : id)}>{isOpen ? 'Done' : 'Edit'}</button>
+          <label class="switch" title={s.enabled ? 'On' : 'Off'}><input type="checkbox" checked={s.enabled} onChange={(e) => setMod(id, { enabled: (e.target as HTMLInputElement).checked })} /><span>{s.enabled ? 'On' : 'Off'}</span></label>
+        </div>
+        {isOpen && (
+          <div class="quest-body">
+            <p class="muted">{m.description}</p>
+            {id === 'discgames' && <DiscImport rwt={{ s: cur('rwt'), set: (p) => setMod('rwt', p) }} />}
+            <div class="row">
+              <label>{id === 'discgames' ? 'Coins per bit of progress' : id === 'khan-academy' ? 'Coins per finished exercise' : id === 'duolingo' ? 'Coins per lesson' : id === 'sound-keys' ? 'Coins per lesson' : id === 'typing-quest' ? 'Coins per drill' : 'Coins each'}
+                <input type="number" value={s.coinsPerActivity} onChange={(e) => setMod(id, { coinsPerActivity: Number((e.target as HTMLInputElement).value) })} /></label>
+              {(m.options ?? []).map((o) => (
+                <label title={o.help}>{o.label}
+                  {o.number
+                    ? <input type="number" min={o.number.min} max={o.number.max} value={s.options?.[o.key] ?? o.default}
+                        onChange={(e) => { const v = Math.max(o.number!.min, Math.min(o.number!.max, Math.round(Number((e.target as HTMLInputElement).value) || 0))); setMod(id, { options: { [o.key]: String(v) } }); }} />
+                    : <select value={s.options?.[o.key] ?? o.default} onChange={(e) => setMod(id, { options: { [o.key]: (e.target as HTMLSelectElement).value } })}>
+                        {(o.choices ?? []).map(([v, l]) => <option value={v}>{l}</option>)}
+                      </select>}
+                </label>
+              ))}
+              <label title="0 = no limit">Most per day (0 = no limit)<input type="number" min={0} value={s.dailyCap} onChange={(e) => setMod(id, { dailyCap: Number((e.target as HTMLInputElement).value) })} /></label>
+              <label class="check"><input type="checkbox" checked={s.requireApproval || m.verification === 'parent_approved'} disabled={m.verification === 'parent_approved'} onChange={(e) => setMod(id, { requireApproval: (e.target as HTMLInputElement).checked })} /> Ask me before paying</label>
+            </div>
+          </div>
+        )}
+      </div>
+    );
+  }
+
   return (
     <div class="quests-editor">
-      {MODULES.map((m) => {
-        // Read, Write & Type! is listed (with its own switch and coins) among the Classic CD games.
-        if (m.id === 'rwt' && MODULES.some((x) => x.id === 'discgames')) return null;
-        const s = child.modules[m.id] ?? { enabled: false, requireApproval: false, ...m.defaults };
-        return (
-          <div class={'card quest-settings' + (s.enabled ? '' : ' off')}>
-            <div class="row between">
-              <h3>{m.icon} {m.title}</h3>
-              <label class="switch"><input type="checkbox" checked={s.enabled} onChange={(e) => setMod(m.id, { enabled: (e.target as HTMLInputElement).checked })} /><span>{s.enabled ? 'On' : 'Off'}</span></label>
-            </div>
-            <p class="muted">{m.description}</p>
-            {m.id === 'rwt' && <RwtImport />}
-            {m.id === 'my-passages' && <PassageEditor s={s} set={(p) => setMod(m.id, p)} />}
-            {m.id === 'discgames' && <DiscImport rwt={{ s: child.modules.rwt ?? { enabled: false, requireApproval: false, ...MODULES.find((x) => x.id === 'rwt')!.defaults }, set: (p) => setMod('rwt', p) }} />}
-            <div class={'row' + (m.id === 'discgames' ? ' module-coins' : '')}>
-              {m.paysByWords
-                ? <label title="Rounded to the nearest: with 20, a 9-word passage pays nothing, 10–29 words pay 1 coin, 30–49 pay 2.">Pay<span class="per-words">1 🪙 per <input type="number" min={1} max={500} value={s.options?.wordsPer ?? '20'} onChange={(e) => setMod(m.id, { options: { ...(s.options ?? {}), wordsPer: String(Math.max(1, Math.min(500, Math.round(Number((e.target as HTMLInputElement).value) || 20)))) } })} /> words</span></label>
-                : <label>{m.id === 'discgames' ? 'Default coins per progress' : 'Coins per activity'}<input type="number" value={s.coinsPerActivity} onChange={(e) => setMod(m.id, { coinsPerActivity: Number((e.target as HTMLInputElement).value) })} /></label>}
-              <label>Daily limit (0 = none)<input type="number" min={0} value={s.dailyCap} onChange={(e) => setMod(m.id, { dailyCap: Number((e.target as HTMLInputElement).value) })} /></label>
-              {m.paysByWords && <label title="After that, typing it again is practice without coins until tomorrow.">Each passage pays<select value={s.options?.repeatsPerDay ?? '1'} onChange={(e) => setMod(m.id, { options: { ...(s.options ?? {}), repeatsPerDay: (e.target as HTMLSelectElement).value } })}>
-                {[['1', 'Once a day'], ['2', 'Twice a day'], ['3', '3 times a day'], ['0', 'Every time']].map(([v, l]) => <option value={v}>{l}</option>)}
-              </select></label>}
-              <label class="check"><input type="checkbox" checked={s.requireApproval || m.verification === 'parent_approved'} disabled={m.verification === 'parent_approved'} onChange={(e) => setMod(m.id, { requireApproval: (e.target as HTMLInputElement).checked })} /> Needs my OK</label>
-            </div>
-            {m.options && s.enabled && !m.paysByWords && (
-              <div class="row module-options">
-                {m.options.filter((o) => !(m.paysByWords && o.key === 'wordsPer')).map((o) => (
-                  <label title={o.help}>{o.label}
-                    {o.number
-                      ? <input type="number" min={o.number.min} max={o.number.max} value={s.options?.[o.key] ?? o.default}
-                          onChange={(e) => { const v = Math.max(o.number!.min, Math.min(o.number!.max, Math.round(Number((e.target as HTMLInputElement).value) || 0))); setMod(m.id, { options: { ...(s.options ?? {}), [o.key]: String(v) } }); }} />
-                      : <select value={s.options?.[o.key] ?? o.default} onChange={(e) => setMod(m.id, { options: { ...(s.options ?? {}), [o.key]: (e.target as HTMLSelectElement).value } })}>
-                          {(o.choices ?? []).map(([v, l]) => <option value={v}>{l}</option>)}
-                        </select>}
-                  </label>
-                ))}
-              </div>
-            )}
-          </div>
-        );
-      })}
+      <p class="muted lead">What {child.displayName} can do to earn coins. Turn each one on or off; <b>Edit</b> changes what it pays.</p>
+      {groups.map(([name, ids]) => (
+        <section class="quest-group">
+          <h4>{name}</h4>
+          {ids.map(card)}
+        </section>
+      ))}
     </div>
   );
 }
 
-/** What the child did each day: a calendar, and a day or week report (same look as the parent's phone). */
-function ActivityTab({ child, onSave }: { child: Child; onSave: (c: Child) => void }) {
+/** Scripture and the family's own passages: one card, one set of pay rules for both. */
+function PassagesCard({ child, open, onToggle, cur, setMods }: { child: Child; open: boolean; onToggle: () => void; cur: (id: string) => ModSettings; setMods: (ids: string[], p: Partial<ModSettings>) => void }) {
+  const bible = cur('bible-typing'), mine = cur('my-passages');
+  const on = bible.enabled || mine.enabled;
+  const both = ['bible-typing', 'my-passages'];
+  const own = familyPassages(mine).length;
+  const sources = [bible.enabled ? 'Scripture' : '', mine.enabled ? `${own} of your own` : ''].filter(Boolean).join(' + ');
+  const sum = `${sources || 'No passages chosen'} · 1 🪙 per ${bible.options?.wordsPer ?? 20} words · ${bible.options?.repeatsPerDay === '0' ? 'pays every time' : `each passage pays ${{ '1': 'once', '2': 'twice', '3': '3 times' }[bible.options?.repeatsPerDay ?? '1'] ?? 'once'} a day`}`;
+  return (
+    <div class={'card quest-row' + (on ? '' : ' off') + (open ? ' open' : '')}>
+      <div class="quest-line">
+        <span class="quest-ico">📖</span>
+        <div class="quest-name"><b>Passage Typing</b><small>{on ? sum : 'Off'}</small></div>
+        <button class="ghost small" onClick={onToggle}>{open ? 'Done' : 'Edit'}</button>
+        <label class="switch"><input type="checkbox" checked={on} onChange={(e) => { const v = (e.target as HTMLInputElement).checked; setMods(v ? (own ? both : ['bible-typing']) : both, { enabled: v }); }} /><span>{on ? 'On' : 'Off'}</span></label>
+      </div>
+      {open && (
+        <div class="quest-body">
+          <p class="muted">Type a passage start to finish. Only the right key goes in, and there's no clock. Longer passages pay more.</p>
+          <div class="row">
+            <label class="check"><input type="checkbox" checked={bible.enabled} onChange={(e) => setMods(['bible-typing'], { enabled: (e.target as HTMLInputElement).checked })} /> 📖 Scripture (King James Bible)</label>
+            <label class="check"><input type="checkbox" checked={mine.enabled} onChange={(e) => setMods(['my-passages'], { enabled: (e.target as HTMLInputElement).checked })} /> 📝 Your own passages</label>
+          </div>
+          <div class="row">
+            <label title="Rounded to the nearest: with 20, a 9-word passage pays nothing, 10–29 words pay 1 coin, 30–49 pay 2.">Pay<span class="per-words">1 🪙 per <input type="number" min={1} max={500} value={bible.options?.wordsPer ?? '20'} onChange={(e) => setMods(both, { options: { wordsPer: String(Math.max(1, Math.min(500, Math.round(Number((e.target as HTMLInputElement).value) || 20)))) } })} /> words</span></label>
+            <label title="After that, typing it again is practice without coins until tomorrow.">Each passage pays<select value={bible.options?.repeatsPerDay ?? '1'} onChange={(e) => setMods(both, { options: { repeatsPerDay: (e.target as HTMLSelectElement).value } })}>
+              {[['1', 'Once a day'], ['2', 'Twice a day'], ['3', '3 times a day'], ['0', 'Every time']].map(([v, l]) => <option value={v}>{l}</option>)}
+            </select></label>
+            <label title="0 = no limit. Scripture and your own passages share this limit.">Most per day (0 = no limit)<input type="number" min={0} value={bible.dailyCap} onChange={(e) => setMods(both, { dailyCap: Number((e.target as HTMLInputElement).value) })} /></label>
+            <label class="check"><input type="checkbox" checked={bible.requireApproval} onChange={(e) => setMods(both, { requireApproval: (e.target as HTMLInputElement).checked })} /> Ask me before paying</label>
+          </div>
+          <h4>Your own passages</h4>
+          <PassageEditor s={mine} set={(p) => setMods(['my-passages'], p)} />
+        </div>
+      )}
+    </div>
+  );
+}
+
+/** What the child did on a day or in a week: time, coins, typing, things finished, and the coin history. Same look as the phone. */
+function ActivityPanel({ child }: { child: Child }) {
   const now = new Date();
   const [mode, setMode] = useState<'day' | 'week'>('day');
   const [sel, setSel] = useState(rep.dayKey(now));
+  const [cal, setCal] = useState(false);
   const [month, setMonth] = useState(new Date(now.getFullYear(), now.getMonth(), 1));
   const [byDay, setByDay] = useState<Record<string, rep.DayReport>>({});
   const [err, setErr] = useState('');
-  const [busy, setBusy] = useState(false);
-  async function load() {
-    setBusy(true); setErr('');
-    try {
-      const last = new Date(month.getFullYear(), month.getMonth() + 1, 6);
-      const to = rep.dayKey(last > new Date() ? new Date() : last);
-      const r = await bridge.parentActivity(child.id, rep.dayKey(rep.weekStart(month)), to);
-      setByDay((p) => ({ ...p, ...Object.fromEntries(r.days.map((d) => [d.day, d])) }));
-      // Open on yesterday when today has nothing yet.
-      const y = rep.dayKey(new Date(Date.now() - 86400e3));
-      if (!r.days.some((d) => d.day === rep.dayKey(new Date())) && r.days.some((d) => d.day === y)) setSel((s) => (s === rep.dayKey(new Date()) ? y : s));
-    } catch (e) { setErr((e as Error).message); }
-    setBusy(false);
-  }
-  useEffect(() => { load(); }, [child.id, month.getTime()]);
+  // Load the weeks around what's on screen (the calendar's month, or the selected day).
+  const anchor = cal ? month : rep.parseDay(sel);
+  const loadKey = `${anchor.getFullYear()}-${anchor.getMonth()}`;
+  useEffect(() => {
+    const first = new Date(anchor.getFullYear(), anchor.getMonth(), 1);
+    const last = new Date(anchor.getFullYear(), anchor.getMonth() + 1, 6);
+    bridge.parentActivity(child.id, rep.dayKey(rep.weekStart(first)), rep.dayKey(last > new Date() ? new Date() : last))
+      .then((r) => { setErr(''); setByDay((p) => ({ ...p, ...Object.fromEntries(r.days.map((d) => [d.day, d])) })); })
+      .catch((e) => setErr((e as Error).message));
+  }, [child.id, loadKey]);
+  // Refresh today now and then while the page is open.
+  useEffect(() => {
+    const t = setInterval(() => { const k = rep.dayKey(new Date()); bridge.parentActivity(child.id, k, k).then((r) => setByDay((p) => ({ ...p, ...Object.fromEntries(r.days.map((d) => [d.day, d])) }))).catch(() => undefined); }, 60000);
+    return () => clearInterval(t);
+  }, [child.id]);
   const days = rep.rangeOf(sel, mode);
-  const html = rep.calendarHtml(month, byDay, sel, mode)
-    + `<div class="card">${rep.reportHtml(days.map((d) => byDay[d]).filter(Boolean) as rep.DayReport[], { title: rep.titleOf(sel, mode) })}</div>`;
-  const on = child.activityReports !== false;
+  const html = rep.navHtml(sel, mode, cal)
+    + (cal ? rep.calendarHtml(month, byDay, sel, mode) : '')
+    + rep.reportHtml(days.map((d) => byDay[d]).filter(Boolean) as rep.DayReport[]);
   function click(e: MouseEvent) {
     const b = (e.target as HTMLElement).closest('button') as HTMLButtonElement | null;
     if (!b) return;
-    if (b.dataset.calDay) setSel(b.dataset.calDay);
+    if (b.dataset.calDay) { setSel(b.dataset.calDay); setCal(false); }
     else if (b.dataset.calMonth) setMonth(new Date(month.getFullYear(), month.getMonth() + Number(b.dataset.calMonth), 1));
+    else if (b.dataset.repStep) setSel(rep.step(sel, mode, Number(b.dataset.repStep)));
+    else if (b.dataset.repCal !== undefined) { const d = rep.parseDay(sel); setMonth(new Date(d.getFullYear(), d.getMonth(), 1)); setCal(!cal); }
+    else if (b.dataset.repMode) setMode(b.dataset.repMode as 'day' | 'week');
   }
   return (
-    <div class="activity">
+    <div class="card activity">
       <style dangerouslySetInnerHTML={{ __html: rep.REPORT_CSS }} />
-      <div class="act-bar">
-        <div class="seg">
-          <button class={mode === 'day' ? 'on' : ''} onClick={() => setMode('day')}>Day</button>
-          <button class={mode === 'week' ? 'on' : ''} onClick={() => setMode('week')}>Week</button>
-        </div>
-        <button class="ghost small" disabled={busy} onClick={load}>{busy ? 'Loading…' : '↻ Refresh'}</button>
-      </div>
       {err && <p class="error">{err}</p>}
-      <div class="act-body" onClick={click} dangerouslySetInnerHTML={{ __html: html }} />
-      <label class="check act-toggle"><input type="checkbox" checked={on} onChange={(e) => onSave({ ...child, activityReports: (e.target as HTMLInputElement).checked })} /> Keep activity reports for {child.displayName} (time in each quest, website, YouTube channel and app; typing; things finished). They stay on this PC and your linked phones.</label>
+      <div onClick={click} dangerouslySetInnerHTML={{ __html: html }} />
+      {child.activityReports === false && <p class="muted small">Activity reports are off for {child.displayName} (Settings), so only coins show.</p>}
     </div>
   );
 }
@@ -1041,7 +1141,6 @@ function PhoneControl() {
 
 function Settings({ state, child, onSave, onChange }: { state: ParentState; child: Child; onSave: (c: Child) => void; onChange: () => void }) {
   const [pin, setPin] = useState(''); const [pinMsg, setPinMsg] = useState('');
-  const [adj, setAdj] = useState(0); const [reason, setReason] = useState('');
   const [upd, setUpd] = useState(state.updateStatus);
   const u = upd;
   return (
@@ -1051,19 +1150,12 @@ function Settings({ state, child, onSave, onChange }: { state: ParentState; chil
       <div class="card">
         <h3>Child</h3>
         <label>Name<input value={child.displayName} onChange={(e) => onSave({ ...child, displayName: (e.target as HTMLInputElement).value })} /></label>
-        <p class="muted">Windows account: <code>{child.windowsAccount}</code></p>
-        <h3>Give or take coins</h3>
-        <p class="muted small">Use a negative number to take coins away.</p>
-        <div class="row nowrap"><label class="coin-field" title="Coins (negative takes them away)"><input type="number" class="coins-input" value={adj} onInput={(e) => setAdj(Number((e.target as HTMLInputElement).value))} /><span>🪙</span></label><input class="grow" placeholder="Reason (e.g. Cleaned room)" value={reason} onInput={(e) => setReason((e.target as HTMLInputElement).value)} /><button class="primary" disabled={!adj} onClick={() => bridge.parentAdjust(child.id, adj, reason || 'Parent adjustment').then(() => { setAdj(0); setReason(''); onChange(); })}>{adj < 0 ? 'Take' : 'Give'}</button></div>
+        <label class="check"><input type="checkbox" checked={child.activityReports !== false} onChange={(e) => onSave({ ...child, activityReports: (e.target as HTMLInputElement).checked })} /> Keep activity reports (time on each quest, site, channel and app; typing; what was finished)</label>
       </div>
       <div class="card">
         <h3>Parent PIN</h3>
         <div class="row nowrap"><input class="grow" type="password" inputMode="numeric" placeholder="New PIN (4–8 digits)" value={pin} onInput={(e) => setPin((e.target as HTMLInputElement).value)} /><button class="primary" disabled={!/^\d{4,8}$/.test(pin)} onClick={() => bridge.parentSetPin(pin).then(() => { setPin(''); setPinMsg('PIN changed.'); }).catch((e) => setPinMsg(e.message))}>Change</button></div>
         {pinMsg && <p class="muted">{pinMsg}</p>}
-      </div>
-      <div class="card">
-        <h3>Honest limits</h3>
-        <p class="muted small">A young child can't get around this. A determined teenager with physical access could boot from USB or reinstall Windows; BitLocker plus a BIOS password closes that.</p>
       </div>
         </div>
         <div class="settings-col">
@@ -1078,6 +1170,7 @@ function Settings({ state, child, onSave, onChange }: { state: ParentState; chil
       </div>
       <details class="card advanced">
         <summary><b>Advanced</b> <span class="muted small">— troubleshooting, recent problems, blocked addresses</span></summary>
+        <p class="muted small">Windows account: <code>{child.windowsAccount}</code>. How strong is the lock? A young child can't get around it. A determined teenager with the PC in hand could start it from a USB stick or reinstall Windows; turning on BitLocker and a BIOS password closes that.</p>
         <Troubleshooting />
         <RecentlyBlocked sites={child.allowlist.sites} onAllow={(h) => onSave({ ...child, allowlist: { ...child.allowlist, sites: [...new Set([...child.allowlist.sites, h])] } })} />
       </details>

@@ -114,6 +114,11 @@ public sealed class ActivityStore
             ["done"] = new JsonObject(d.Done.Select(kv => KeyValuePair.Create(kv.Key, (JsonNode?)kv.Value))),
             ["earned"] = earned,
             ["spent"] = spent,
+            // The day's coin history (newest last): time, change, what. Claims waiting for a parent show as 0.
+            ["log"] = new JsonArray(entries.OrderBy(e => e.Seq).TakeLast(80).Select(e => (JsonNode)new JsonObject
+            {
+                ["t"] = e.At.ToLocalTime().ToString("HH:mm"), ["d"] = e.Delta, ["k"] = e.Kind.ToString(), ["s"] = e.Source, ["x"] = e.Detail,
+            }).ToArray()),
         };
     }
 

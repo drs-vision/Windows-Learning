@@ -193,7 +193,10 @@ public sealed class RequestRouter
             outcome = outcome with { Coins = 0, Detail = $"{outcome.Detail} · already earned {(perDay == 1 ? "once" : perDay == 2 ? "twice" : perDay + " times")} today" };
         }
 
-        var earnedToday = _ledger.EarnedToday(child.Id, moduleId);
+        // Scripture and the family's own passages are one quest to a parent: one daily limit for both.
+        var earnedToday = moduleId is "bible-typing" or "my-passages"
+            ? _ledger.EarnedToday(child.Id, "bible-typing") + _ledger.EarnedToday(child.Id, "my-passages")
+            : _ledger.EarnedToday(child.Id, moduleId);
         var room = settings.DailyCap > 0 ? Math.Max(0, settings.DailyCap - earnedToday) : int.MaxValue;
         // The daily limit caps earning; a negative amount (a parent's negative rate) is charged in full.
         var coins = outcome.Coins < 0 ? outcome.Coins : Math.Min(outcome.Coins, room);

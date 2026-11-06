@@ -81,10 +81,11 @@ await check('setup wizard completes with the kid account', async () => {
   await shot(parent, 'parent-today');
 });
 await check('parent gives 400 coins', async () => {
-  await parent.click('nav.tabs >> text=Settings');
-  await parent.fill('input[placeholder^="Reason"]', 'E2E test');
-  await parent.locator('input[type=number]').first().fill('400');
-  await parent.click('button:text-is("Give")');
+  await parent.click('nav.tabs >> text=Today');
+  await parent.click('.kid-actions button.primary');
+  await parent.locator('.give-coins input[type=number]').fill('400');
+  await parent.fill('.give-coins input.grow', 'E2E test');
+  await parent.click('.give-coins button.primary');
   await sleep(1000);
   await shot(parent, 'parent-coins');
 });
@@ -107,8 +108,9 @@ await check('parent allows duolingo.com', async () => {
   expect(await parent.locator('.chip', { hasText: 'duolingo.com' }).count() > 0, 'duolingo.com chip not shown after adding');
 });
 await check('Flashpoint panel shows install steps', async () => {
-  await parent.click('nav.tabs >> text=Shop');
+  await parent.click('nav.tabs >> text=Rewards');
   await sleep(1500);
+  await parent.locator('details.more').evaluate((d) => { d.open = true; });
   await parent.locator('.fp-panel').scrollIntoViewIfNeeded();
   await shot(parent, 'parent-arcade-flashpoint');
 });
@@ -226,7 +228,9 @@ await check('HTML5 classic (Miniclip Bloxorz) plays, or is taken out of the arca
   if (await parent.locator('form.pin-gate').count()) { await parent.fill('form.pin-gate input', '2468'); await parent.click('form.pin-gate button[type=submit]'); }
   await parent.waitForSelector('nav.tabs', { timeout: 30000 });
   try {
-  await parent.click('nav.tabs >> text=Shop');
+  await parent.click('nav.tabs >> text=Rewards');
+  await parent.waitForSelector('details.more', { timeout: 60000 });
+  await parent.locator('details.more').evaluate((d) => { d.open = true; });
   await parent.waitForSelector('input[placeholder^="Search Flashpoint"]', { timeout: 60000 });
   await parent.fill('input[placeholder^="Search Flashpoint"]', 'Bloxorz');
   await parent.press('input[placeholder^="Search Flashpoint"]', 'Enter');

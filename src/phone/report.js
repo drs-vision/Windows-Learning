@@ -5,10 +5,12 @@
 const esc = (s) => String(s ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 
 export const QUEST_NAMES = {
-  'sound-keys': 'Letter Rescue', 'typing-quest': 'TypingQuest', 'bible-typing': 'Scripture Typing', 'my-passages': 'Family Passages',
+  'sound-keys': 'Letter Rescue', 'typing-quest': 'TypingQuest', 'bible-typing': 'Passage Typing', 'my-passages': 'Passage Typing',
   'khan-academy': 'Khan Academy', duolingo: 'Duolingo', rwt: 'Read, Write & Type!', discgames: 'Classic CD games',
   parent: 'Given by a parent', arcade: 'Arcade', youtube: 'YouTube',
 };
+
+const SITE_NAMES = { 'khanacademy.org': 'Khan Academy', 'duolingo.com': 'Duolingo', 'typing.com': 'Typing.com', 'scratch.mit.edu': 'Scratch' };
 
 const KINDS = {
   quest: ['🎯', 'Quests', '#4f7cff'],
@@ -48,8 +50,11 @@ export function merge(days) {
   const typing = { sessions: 0, chars: 0, ms: 0, best: 0 };
   for (const r of days) {
     for (const t of r.time ?? []) {
-      const k = t.kind + '|' + t.label;
-      time.set(k, { kind: t.kind, label: t.label, sec: (time.get(k)?.sec ?? 0) + (t.sec || 0) });
+      // A learning site and its quest are one thing to a parent: "Khan Academy", not khanacademy.org + Khan Academy.
+      const label = t.kind === 'site' ? SITE_NAMES[t.label] ?? t.label : t.label;
+      const k = label.toLowerCase();
+      const had = time.get(k);
+      time.set(k, { kind: had && had.sec > (t.sec || 0) ? had.kind : t.kind, label, sec: (had?.sec ?? 0) + (t.sec || 0) });
     }
     const ty = r.typing ?? {};
     typing.sessions += ty.sessions || 0; typing.chars += ty.chars || 0; typing.ms += ty.ms || 0; typing.best = Math.max(typing.best, ty.best || 0);
@@ -58,7 +63,7 @@ export function merge(days) {
     for (const [k, v] of Object.entries(r.spent ?? {})) spent[k] = (spent[k] ?? 0) + v;
   }
   const list = [...time.values()].sort((a, b) => b.sec - a.sec);
-  return { days: days.length, total: list.reduce((a, t) => a + t.sec, 0), time: list, typing, done, earned, spent };
+  return { days: days.length, total: list.reduce((a, t) => a + t.sec, 0), time: list, typing, done, earned, spent, log: days.length === 1 ? days[0].log ?? [] : [] };
 }
 
 export const fmtTime = (sec) => {
@@ -123,8 +128,9 @@ export function titleOf(selected, mode) {
 /** The report for a selection. reports: the daily reports it covers (missing days = nothing recorded). */
 export function reportHtml(reports, { title, note } = {}) {
   const m = merge(reports);
-  if (!m.total && !sum(m.earned) && !sum(m.spent) && !sum(m.done)) {
-    return `<div class="rep"><h3 class="rep-title">${esc(title)}</h3><p class="rep-empty">Nothing recorded${note ? '. ' + esc(note) : '.'}</p></div>`;
+  const head = title ? `<h3 class="rep-title">${esc(title)}</h3>` : '';
+  if (!m.total && !sum(m.earned) && !sum(m.spent) && !sum(m.done) && !m.log.length) {
+    return `<div class="rep">${head}<p class="rep-empty">Nothing recorded${note ? '. ' + esc(note) : '.'}</p></div>`;
   }
   // Time by kind, as one stacked bar.
   const byKind = {};
@@ -145,22 +151,77 @@ export function reportHtml(reports, { title, note } = {}) {
   ].join('');
   const done = Object.entries(m.done).filter(([, v]) => v > 0).sort((a, b) => b[1] - a[1]);
   const doneHtml = done.length ? `<h4>Finished</h4><ul class="rep-list">${done.map(([k, v]) => `<li><span>${esc(doneName(k))}</span><b>${v}</b></li>`).join('')}</ul>` : '';
-  const src = Object.entries(m.earned).filter(([, v]) => v).sort((a, b) => b[1] - a[1]);
-  const srcHtml = src.length ? `<h4>Coins came from</h4><ul class="rep-list">${src.map(([k, v]) => `<li><span>${esc(QUEST_NAMES[k] ?? k)}</span><b>+${v}</b></li>`).join('')}</ul>` : '';
+  const byName = (o) => { const out = {}; for (const [k, v] of Object.entries(o)) { const n = QUEST_NAMES[k] ?? k; out[n] = (out[n] ?? 0) + v; } return out; };
+  const src = Object.entries(byName(m.earned)).filter(([, v]) => v).sort((a, b) => b[1] - a[1]);
+  const srcHtml = src.length ? `<h4>Coins came from</h4><ul class="rep-list">${src.map(([k, v]) => `<li><span>${esc(k)}</span><b>+${v}</b></li>`).join('')}</ul>` : '';
   const sp = Object.entries(m.spent).filter(([, v]) => v).sort((a, b) => b[1] - a[1]).slice(0, 8);
   const spHtml = sp.length ? `<h4>Coins went to</h4><ul class="rep-list">${sp.map(([k, v]) => `<li><span>${esc(QUEST_NAMES[k] ?? k)}</span><b>−${v}</b></li>`).join('')}</ul>` : '';
   return `<div class="rep">
-    <h3 class="rep-title">${esc(title)}</h3>
+    ${head}
     <p class="rep-total"><b>${fmtTime(m.total)}</b> on the computer${m.days > 1 ? ` · ${fmtTime(m.total / Math.max(1, reports.filter((r) => daySeconds(r)).length))} a day on days used` : ''}</p>
     ${bar}
     <div class="rep-tiles">${tiles}</div>
-    ${topHtml}${doneHtml}${srcHtml}${spHtml}
+    ${topHtml}${doneHtml}${srcHtml}${spHtml}${logHtml(m.log)}
     ${note ? `<p class="rep-note">${esc(note)}</p>` : ''}
+  </div>`;
+}
+
+const clock = (hhmm) => { const [h, mi] = String(hhmm).split(':').map(Number); return `${((h + 11) % 12) + 1}:${String(mi).padStart(2, '0')} ${h < 12 ? 'am' : 'pm'}`; };
+
+/** The day's coin history, folded away under its count. */
+function logHtml(log) {
+  if (!log?.length) return '';
+  const rows = [...log].reverse().map((e) => {
+    const pending = e.k === 'Claim';
+    const amt = pending ? '<span class="rep-wait">asked</span>' : e.d > 0 ? `<b class="plus">+${e.d}</b>` : e.d < 0 ? `<b class="minus">−${-e.d}</b>` : '<b>0</b>';
+    return `<li><span class="rep-time">${clock(e.t)}</span><span class="rep-what">${esc(e.x || QUEST_NAMES[e.s] || e.s)}</span>${amt}</li>`;
+  }).join('');
+  return `<details class="rep-log"><summary>Coin history <span>${log.length}</span></summary><ul>${rows}</ul></details>`;
+}
+
+/** Move a selection back or forward a day (or a week); never past today. */
+export function step(selected, mode, dir) {
+  const d = addDays(parseDay(selected), dir * (mode === 'week' ? 7 : 1));
+  const today = dayKey(new Date());
+  const k = dayKey(d);
+  return k > today ? today : k;
+}
+
+/**
+ * The bar above a report: ‹ Yesterday ▾ › and Day / Week. Clicks: data-rep-step="-1|1", data-rep-cal (open the
+ * calendar), data-rep-mode="day|week".
+ */
+export function navHtml(selected, mode, calendarOpen) {
+  const today = dayKey(new Date());
+  const atEnd = mode === 'day' ? selected >= today : dayKey(weekStart(parseDay(selected))) >= dayKey(weekStart(new Date()));
+  return `<div class="rep-nav">
+    <div class="rep-when">
+      <button type="button" class="rep-step" data-rep-step="-1" aria-label="Earlier">‹</button>
+      <button type="button" class="rep-date ${calendarOpen ? 'open' : ''}" data-rep-cal aria-label="Pick a date">${esc(titleOf(selected, mode))} <span>▾</span></button>
+      <button type="button" class="rep-step" data-rep-step="1" aria-label="Later" ${atEnd ? 'disabled' : ''}>›</button>
+    </div>
+    <div class="seg"><button type="button" data-rep-mode="day" class="${mode === 'day' ? 'on' : ''}">Day</button><button type="button" data-rep-mode="week" class="${mode === 'week' ? 'on' : ''}">Week</button></div>
   </div>`;
 }
 
 /** Styles for both pages (scoped under .activity). Uses the page's own colour variables where they exist. */
 export const REPORT_CSS = `
+.activity .rep-nav { display: flex; align-items: center; justify-content: space-between; gap: 10px; flex-wrap: wrap; margin: 0 0 12px; }
+.activity .rep-when { display: flex; align-items: center; gap: 2px; min-width: 0; }
+.activity .rep-step { min-width: 40px; min-height: 40px; border: 0; border-radius: 10px; background: transparent; color: inherit; font-size: 24px; line-height: 1; cursor: pointer; }
+.activity .rep-step:disabled { opacity: .25; cursor: default; }
+.activity .rep-date { border: 0; background: transparent; color: inherit; font: inherit; font-size: 19px; font-weight: 700; padding: 6px 8px; border-radius: 10px; cursor: pointer; white-space: nowrap; }
+.activity .rep-date span { font-size: 12px; opacity: .55; margin-left: 2px; }
+.activity .rep-step:hover, .activity .rep-date:hover, .activity .rep-date.open { background: rgba(127,127,127,.12); }
+.activity .cal { margin: 0 0 12px; }
+.activity .rep-log { margin-top: 16px; }
+.activity .rep-log summary { cursor: pointer; font-size: 13px; text-transform: uppercase; letter-spacing: .04em; opacity: .7; padding: 4px 0; }
+.activity .rep-log summary span { display: inline-block; min-width: 20px; padding: 0 6px; margin-left: 4px; border-radius: 9px; background: rgba(127,127,127,.15); text-align: center; letter-spacing: 0; }
+.activity .rep-log ul { list-style: none; margin: 8px 0 0; padding: 0; display: grid; gap: 2px; }
+.activity .rep-log li { display: grid; grid-template-columns: 64px 1fr auto; gap: 10px; font-size: 14px; padding: 5px 0; border-bottom: 1px dashed rgba(127,127,127,.18); align-items: baseline; }
+.activity .rep-time { opacity: .6; font-variant-numeric: tabular-nums; font-size: 13px; }
+.activity .rep-what { min-width: 0; overflow-wrap: anywhere; }
+.activity .rep-log .plus { color: #15803d; } .activity .rep-log .minus { color: #b91c1c; } .activity .rep-wait { font-size: 12px; opacity: .6; }
 .activity .cal { border: 1px solid var(--line, rgba(127,127,127,.25)); border-radius: 14px; padding: 10px; }
 .activity .cal-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 6px; }
 .activity .cal-nav { min-width: 40px; min-height: 36px; border: 0; background: transparent; font-size: 22px; cursor: pointer; color: inherit; }
