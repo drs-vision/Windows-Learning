@@ -49,6 +49,13 @@ public static class Ops
     public const string Hello = "hello";
     public const string State = "state";               // child's current state (balance, unlocks, quests, shop)
     public const string Submit = "submit";             // { moduleId, activity, result }
+    public const string BooksList = "books.list";        // the child's allowed books, with progress per chapter
+    public const string BooksChapter = "books.chapter";  // { bookId, n } → text, parts for typing, progress, open quiz
+    public const string BooksQuiz = "books.quiz";        // { bookId, n } → start a quiz (questions + shuffled choices, no answers)
+    public const string BooksGrade = "books.grade";      // { bookId, n, quizId, answers[], flagged[] } → mark it, pay on a pass
+    public const string BooksBonus = "books.bonus";      // { bookId, n } → next bonus question after passing (or none)
+    public const string BooksBonusAnswer = "books.bonusAnswer"; // { bookId, n, qid, choice }
+    public const string BooksTyped = "books.typed";      // { bookId, n, part, typed, startedAt, finishedAt } typing mode
     public const string ActivityTick = "activity.tick"; // { kind, key, label, seconds } a minute of what the child is doing (from the CoinQuest window)
     public const string Buy = "buy";                   // { prizeId }
     public const string Progress = "progress";         // { moduleId, progress } save module progress
@@ -84,6 +91,7 @@ public static class Ops
     public const string ParentFpInstallClifp = "parent.fpInstallClifp";
     public const string ParentFpDownloadInstaller = "parent.fpDownloadInstaller";
     public const string ParentDiagnostics = "parent.diagnostics";
+    public const string ParentBooks = "parent.books"; // the whole library, for choosing books
     public const string ParentActivity = "parent.activity"; // { childId, from, to } → daily activity reports (yyyy-MM-dd, inclusive)
     public const string ParentRwtStatus = "parent.rwtStatus";         // Read, Write & Type: imported? otvdm? import progress
     public const string ParentRwtImport = "parent.rwtImport";         // { path } → import the family's disc image (background)

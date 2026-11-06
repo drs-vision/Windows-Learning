@@ -1,0 +1,86 @@
+{
+  "book": "peter-rabbit",
+  "chapter": 1,
+  "questions": [
+    {
+      "id": "peter-rabbit-01-01",
+      "type": "detail",
+      "q": "Where did Mrs. Rabbit tell her children NOT to go?",
+      "choices": ["Mr. McGregor's garden", "Down the lane", "Into the fields", "To the baker's"],
+      "answer": 0,
+      "evidence": "don't go into Mr. McGregor's garden"
+    },
+    {
+      "id": "peter-rabbit-01-02",
+      "type": "detail",
+      "q": "Where did the rabbit family live?",
+      "choices": ["In a sand-bank under a big fir-tree", "In a hole in Mr. McGregor's garden", "In a tool-shed", "Under a gooseberry bush"],
+      "answer": 0,
+      "evidence": "They lived with their Mother in a sand-bank, underneath the root of a very big fir-tree."
+    },
+    {
+      "id": "peter-rabbit-01-03",
+      "type": "character",
+      "q": "What did Flopsy, Mopsy, and Cotton-tail do while Peter went to the garden?",
+      "choices": ["Gathered blackberries in the lane", "Went to the baker's with Mother", "Stayed home and slept", "Followed Peter into the garden"],
+      "answer": 0,
+      "evidence": "went down the lane to gather blackberries"
+    },
+    {
+      "id": "peter-rabbit-01-04",
+      "type": "sequence",
+      "q": "What did Peter eat first in the garden?",
+      "choices": ["Lettuces and French beans", "Radishes", "Parsley", "Cabbages"],
+      "answer": 0,
+      "evidence": "First he ate some lettuces and some French beans"
+    },
+    {
+      "id": "peter-rabbit-01-05",
+      "type": "detail",
+      "q": "How did Peter get caught in the gooseberry net?",
+      "choices": ["The buttons on his jacket got stuck", "His shoes got tangled", "His ears got stuck", "He fell asleep in it"],
+      "answer": 0,
+      "evidence": "got caught by the large buttons on his jacket"
+    },
+    {
+      "id": "peter-rabbit-01-06",
+      "type": "detail",
+      "q": "Why was the watering can a bad place to hide?",
+      "choices": ["It had too much water in it", "It was too small", "Mr. McGregor was holding it", "It had a hole in the bottom"],
+      "answer": 0,
+      "evidence": "if it had not had so much water in it"
+    },
+    {
+      "id": "peter-rabbit-01-07",
+      "type": "detail",
+      "q": "What gave Peter away while he was hiding in the tool-shed?",
+      "choices": ["He sneezed", "He cried loudly", "His tail stuck out", "He knocked over a flower-pot"],
+      "answer": 0,
+      "evidence": "Presently Peter sneezed"
+    },
+    {
+      "id": "peter-rabbit-01-08",
+      "type": "inference",
+      "q": "Why did Peter leave the white cat alone?",
+      "choices": ["He had heard about cats from his cousin Benjamin", "The cat was asleep", "The cat was Mr. McGregor's friend", "He was too tired to talk"],
+      "answer": 0,
+      "evidence": "he had heard about cats from his cousin, little Benjamin Bunny"
+    },
+    {
+      "id": "peter-rabbit-01-09",
+      "type": "detail",
+      "q": "What did Mr. McGregor do with Peter's jacket and shoes?",
+      "choices": ["Made a scare-crow with them", "Gave them back to Mrs. Rabbit", "Threw them in the pond", "Burned them"],
+      "answer": 0,
+      "evidence": "hung up the little jacket and the shoes for a scare-crow"
+    },
+    {
+      "id": "peter-rabbit-01-10",
+      "type": "main-idea",
+      "q": "What happened to Peter because he didn't listen to his mother?",
+      "choices": ["He lost his clothes and felt sick that night", "He got a big supper of blackberries", "He made a new friend", "Nothing happened to him"],
+      "answer": 0,
+      "evidence": "Peter was not very well during the evening"
+    }
+  ]
+}

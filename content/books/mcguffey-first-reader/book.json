@@ -1,0 +1,96 @@
+{
+  "id": "mcguffey-first-reader",
+  "title": "McGuffey's First Eclectic Reader",
+  "author": "William Holmes McGuffey",
+  "published": 1879,
+  "grade": {
+    "min": 0,
+    "max": 1,
+    "label": "Grades K-1"
+  },
+  "summary": "The classic first reader: short lessons with new words, a picture and a few sentences each.",
+  "source": {
+    "name": "Project Gutenberg eBook #14640 (public-domain text; Gutenberg header, license and name removed)",
+    "url": "https://www.gutenberg.org/ebooks/14640"
+  },
+  "publicDomain": "First published 1879; in the US public domain (published before 1931).",
+  "chapters": [
+    {
+      "n": 1,
+      "title": "Lessons 1-6",
+      "text": "01-lessons-1-6.txt",
+      "questions": "01-lessons-1-6.questions.json",
+      "words": 168
+    },
+    {
+      "n": 2,
+      "title": "Lessons 7-12",
+      "text": "02-lessons-7-12.txt",
+      "questions": "02-lessons-7-13.questions.json",
+      "words": 315
+    },
+    {
+      "n": 3,
+      "title": "Lessons 13-18",
+      "text": "03-lessons-13-18.txt",
+      "questions": "03-lessons-14-20.questions.json",
+      "words": 327
+    },
+    {
+      "n": 4,
+      "title": "Lessons 19-24",
+      "text": "04-lessons-19-24.txt",
+      "questions": "04-lessons-21-26.questions.json",
+      "words": 406
+    },
+    {
+      "n": 5,
+      "title": "Lessons 25-30",
+      "text": "05-lessons-25-30.txt",
+      "questions": "05-lessons-28-34.questions.json",
+      "words": 586
+    },
+    {
+      "n": 6,
+      "title": "Lessons 31-36",
+      "text": "06-lessons-31-36.txt",
+      "questions": "06-lessons-35-40.questions.json",
+      "words": 490
+    },
+    {
+      "n": 7,
+      "title": "Lessons 37-42",
+      "text": "07-lessons-37-42.txt",
+      "questions": "07-lessons-41-47.questions.json",
+      "words": 573
+    },
+    {
+      "n": 8,
+      "title": "Lessons 43-48",
+      "text": "08-lessons-43-48.txt",
+      "questions": "08-lessons-48-53.questions.json",
+      "words": 777
+    },
+    {
+      "n": 9,
+      "title": "Lessons 49-54",
+      "text": "09-lessons-49-54.txt",
+      "questions": "09-lessons-54-59.questions.json",
+      "words": 679
+    },
+    {
+      "n": 10,
+      "title": "Lessons 55-60",
+      "text": "10-lessons-55-60.txt",
+      "questions": "10-lessons-60-63.questions.json",
+      "words": 669
+    },
+    {
+      "n": 11,
+      "title": "Lessons 61-63",
+      "text": "11-lessons-61-63.txt",
+      "questions": "11-lessons-61-63.questions.json",
+      "words": 571
+    }
+  ]
+}

@@ -7,7 +7,7 @@ const esc = (s) => String(s ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '
 export const QUEST_NAMES = {
   'sound-keys': 'Letter Rescue', 'typing-quest': 'TypingQuest', 'bible-typing': 'Passage Typing', 'my-passages': 'Passage Typing',
   'khan-academy': 'Khan Academy', duolingo: 'Duolingo', rwt: 'Read, Write & Type!', discgames: 'Classic CD games',
-  parent: 'Given by a parent', arcade: 'Arcade', youtube: 'YouTube',
+  books: 'Reading', parent: 'Given by a parent', arcade: 'Arcade', youtube: 'YouTube',
 };
 
 const SITE_NAMES = { 'khanacademy.org': 'Khan Academy', 'duolingo.com': 'Duolingo', 'typing.com': 'Typing.com', 'scratch.mit.edu': 'Scratch' };
@@ -30,6 +30,8 @@ const DONE = {
   'typing-quest:finished': 'TypingQuest drills',
   'bible-typing:finished': 'Scripture passages typed',
   'my-passages:finished': 'Family passages typed',
+  'books:chapters': 'Book chapters passed',
+  'books:correct': 'Reading quiz answers right',
   'rwt:finished': 'Read, Write & Type! activities',
   'discgames:finished': 'CD game progress',
 };

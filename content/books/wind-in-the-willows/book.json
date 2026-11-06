@@ -1,0 +1,103 @@
+{
+  "id": "wind-in-the-willows",
+  "title": "The Wind in the Willows",
+  "author": "Kenneth Grahame",
+  "published": 1908,
+  "grade": {
+    "min": 5,
+    "max": 7,
+    "label": "Grades 5-7"
+  },
+  "summary": "Mole, Rat, Badger and the boastful Toad have adventures on the river and in the Wild Wood.",
+  "source": {
+    "name": "Project Gutenberg eBook #289 (public-domain text; Gutenberg header, license and name removed)",
+    "url": "https://www.gutenberg.org/ebooks/289"
+  },
+  "publicDomain": "First published 1908; in the US public domain (published before 1931).",
+  "chapters": [
+    {
+      "n": 1,
+      "title": "The River Bank",
+      "text": "01-the-river-bank.txt",
+      "questions": "01-the-river-bank.questions.json",
+      "words": 4300
+    },
+    {
+      "n": 2,
+      "title": "The Open Road",
+      "text": "02-the-open-road.txt",
+      "questions": "02-the-open-road.questions.json",
+      "words": 4240
+    },
+    {
+      "n": 3,
+      "title": "The Wild Wood",
+      "text": "03-the-wild-wood.txt",
+      "questions": "03-the-wild-wood.questions.json",
+      "words": 4410
+    },
+    {
+      "n": 4,
+      "title": "Mr. Badger",
+      "text": "04-mr-badger.txt",
+      "questions": "04-mr-badger.questions.json",
+      "words": 4666
+    },
+    {
+      "n": 5,
+      "title": "Dulce Domum",
+      "text": "05-dulce-domum.txt",
+      "questions": "05-dulce-domum.questions.json",
+      "words": 5211
+    },
+    {
+      "n": 6,
+      "title": "Mr. Toad",
+      "text": "06-mr-toad.txt",
+      "questions": "06-mr-toad.questions.json",
+      "words": 4438
+    },
+    {
+      "n": 7,
+      "title": "The Piper at the Gates of Dawn",
+      "text": "07-the-piper-at-the-gates-of-dawn.txt",
+      "questions": "07-the-piper-at-the-gates-of-dawn.questions.json",
+      "words": 3728
+    },
+    {
+      "n": 8,
+      "title": "Toad's Adventures",
+      "text": "08-toad-s-adventures.txt",
+      "questions": "08-toad-s-adventures.questions.json",
+      "words": 4783
+    },
+    {
+      "n": 9,
+      "title": "Wayfarers All",
+      "text": "09-wayfarers-all.txt",
+      "questions": "09-wayfarers-all.questions.json",
+      "words": 5853
+    },
+    {
+      "n": 10,
+      "title": "The Further Adventures of Toad",
+      "text": "10-the-further-adventures-of-toad.txt",
+      "questions": "10-the-further-adventures-of-toad.questions.json",
+      "words": 5916
+    },
+    {
+      "n": 11,
+      "title": "Like Summer Tempests Came His Tears",
+      "text": "11-like-summer-tempests-came-his-tears.txt",
+      "questions": "11-like-summer-tempests-came-his-tears.questions.json",
+      "words": 6012
+    },
+    {
+      "n": 12,
+      "title": "The Return of Ulysses",
+      "text": "12-the-return-of-ulysses.txt",
+      "questions": "12-ho-ho-ho-wasn-t-i-funny-toad.questions.json",
+      "words": 4747
+    }
+  ]
+}

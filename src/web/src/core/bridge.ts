@@ -98,6 +98,7 @@ class Bridge {
   parentArcadeUpload(fileName: string, data: string, title: string, strategy: number) { return this.call<Game>('parent.arcadeUpload', { fileName, data, title, strategy }, { parent: true }); }
   parentArcadeRemove(gameId: string) { return this.call('parent.arcadeRemove', { gameId }, { parent: true }); }
   parentFpStatus() { return this.call<FpStatus>('parent.fpStatus', undefined, { parent: true }); }
+  parentBooks() { return this.call<{ books: { id: string; title: string; author: string; published: number; grade: { min: number; max: number; label: string }; summary: string; chapters: number; words: number; ready: number }[]; flagged: number }>('parent.books', undefined, { parent: true }); }
   parentActivity(childId: string, from: string, to: string) { return this.call<{ childId: string; kid: string; enabled: boolean; days: import('../../../phone/report').DayReport[] }>('parent.activity', { childId, from, to }, { parent: true }); }
   parentDiagnostics() { return this.call<{ version: string; problems: string[]; blocked: string[]; internetLock: { applied: boolean; error?: string | null }; net?: { site: string; ok: boolean; detail: string }[]; system?: string[] }>('parent.diagnostics', undefined, { parent: true }); }
   parentBlocked() { return this.call<{ host: string; at: string; reason: string }[]>('parent.blocked', undefined, { parent: true }); }

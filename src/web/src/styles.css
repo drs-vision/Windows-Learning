@@ -660,3 +660,48 @@ button.big { font-size: 1.1em; padding: .7em 1.4em; }
 .parent .quest-body .row > label:not(.check) { flex: 0 0 auto; }
 .parent .quest-body input[type=number] { width: 7.5em; }
 .parent .quest-body .per-words input[type=number] { width: 5.5em; }
+
+/* ---- Reading quest ---- */
+.reading { max-width: 860px; margin: 1.2em auto 3em; padding: 0 1em; }
+.reading .center, .reading-result .center { text-align: center; }
+.reading-head { display: grid; grid-template-columns: auto 1fr auto; gap: 12px; align-items: center; margin-bottom: .6em; }
+.reading-head h2 { margin: 0; text-align: center; font-size: 1.4rem; }
+.shelf-group h3 { margin: 1.4em 0 .6em; color: var(--ink-2); font-size: .95rem; text-transform: uppercase; letter-spacing: .06em; }
+.shelf { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 16px; }
+.book-card { background: none; padding: 0; display: grid; gap: 8px; text-align: left; }
+.book-spine { aspect-ratio: 3 / 4; border-radius: 6px 12px 12px 6px; padding: 14px 12px; display: flex; flex-direction: column; justify-content: space-between; color: #fff; box-shadow: inset 6px 0 0 rgba(0,0,0,.25), 0 6px 16px rgba(0,0,0,.35); }
+.book-spine b { font-family: Georgia, "Times New Roman", serif; font-size: 1.15rem; line-height: 1.2; }
+.book-spine small { opacity: .85; }
+.book-card:hover .book-spine { transform: translateY(-3px); }
+.book-meta { font-size: .85rem; color: var(--ink-2); }
+.book-bar { height: 5px; border-radius: 3px; background: rgba(255,255,255,.12); overflow: hidden; } .book-bar i { display: block; height: 100%; background: var(--green); }
+.chapter-list { margin: 1em 0; padding: 0; list-style: none; display: grid; gap: 6px; }
+.chapter-row { width: 100%; display: grid; grid-template-columns: 2.2em 1fr auto; gap: 12px; align-items: center; text-align: left; background: var(--panel); padding: .75em 1em; }
+.chapter-row .ch-n { font-weight: 800; color: var(--muted); text-align: center; }
+.chapter-row .ch-title { display: grid; } .chapter-row .ch-title small { color: var(--muted); }
+.chapter-row .ch-state { font-size: .9rem; color: var(--ink-2); white-space: nowrap; } .chapter-row .ch-state em { font-style: normal; color: var(--gold); }
+.chapter-row.passed .ch-n { color: var(--green); } .chapter-row.next { outline: 2px solid var(--gold); }
+.book-text { background: #fbf7ee; color: #2a2418; border-radius: 14px; padding: 2em clamp(1.2em, 5vw, 3em); font-family: Georgia, "Times New Roman", serif; font-size: 1.25rem; line-height: 1.75; max-height: none; }
+.book-text p { margin: 0 0 1em; }
+.type-toggle { font-size: .95rem; white-space: nowrap; background: var(--panel-2); } .type-toggle.on { background: var(--gold); color: #1a1400; }
+.quiz-bar { text-align: center; margin: 1.4em 0; } .quiz-bar p { font-size: 1.1rem; }
+.quiz-bar button { margin: .3em; font-size: 1.1rem; }
+.quiz-q { background: var(--panel); border-radius: var(--radius); padding: 1.1em 1.3em; margin: 0 0 12px; }
+.quiz-q.flagged { opacity: .6; }
+.quiz-q-head { display: flex; gap: 12px; justify-content: space-between; align-items: flex-start; font-size: 1.15rem; margin-bottom: .7em; }
+.quiz-q-head .flag { background: none; color: var(--muted); padding: 0 .3em; font-size: 1.1rem; }
+.quiz-choices { display: grid; gap: 8px; }
+.choice { text-align: left; display: flex; gap: 12px; align-items: center; background: var(--panel-2); font-size: 1.05rem; padding: .7em 1em; }
+.choice .letter { display: inline-grid; place-items: center; width: 1.8em; height: 1.8em; border-radius: 50%; background: rgba(255,255,255,.12); font-weight: 800; flex: none; }
+.choice.on { outline: 3px solid var(--gold); } .choice.right { background: #166534; color: #fff; } .choice.wrong { background: #7f1d1d; color: #fff; }
+.review { text-align: left; max-width: 640px; margin: 1em auto; display: grid; gap: 8px; }
+.review li { background: var(--panel-2); border-radius: 10px; padding: .6em .9em; display: grid; gap: 2px; }
+.review li.ok span { color: var(--green); } .review li.miss span { color: var(--red); } .review li.miss span b { color: var(--green); }
+.type-chapter .type-parts { display: flex; flex-wrap: wrap; gap: 6px; justify-content: center; margin: 0 0 1em; }
+.part-dot { width: 14px; height: 14px; padding: 0; border-radius: 50%; background: rgba(255,255,255,.15); } .part-dot.done { background: var(--green); } .part-dot.on { outline: 2px solid var(--gold); }
+.parent .book-picker { margin: .6em 0 1em; }
+.parent .book-picker h4 { margin: .3em 0; } .parent .book-picker h5 { margin: 1em 0 .4em; font-size: .8rem; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); }
+.parent .book-pick { display: flex; gap: 10px; align-items: flex-start; padding: .5em 0; border-bottom: 1px solid var(--panel-2); cursor: pointer; }
+.parent .book-pick input { margin-top: .3em; }
+
+.parent label.book-pick { flex-direction: row; display: flex; } .parent label.book-pick > span { flex: 1; }

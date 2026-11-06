@@ -129,7 +129,7 @@ function Home({ state, arcadeUnlock, ytUnlock, onQuest, onArcade, onYouTube, onW
                 <div class="quest-icon">{m.icon}</div>
                 <b>{m.title}</b>
                 <small>{m.tagline}</small>
-                <div class="quest-meta">{m.paysByWords ? `1 🪙 / ${s.options?.wordsPer ?? 20} words` : `${s.coinsPerActivity} 🪙 each`}{left !== null && <> · {left === 0 ? 'done for today' : `${left} left today`}</>}</div>
+                <div class="quest-meta">{m.paysByWords ? `1 🪙 / ${s.options?.wordsPer ?? 20} words` : m.id === 'books' ? `${s.coinsPerActivity} 🪙 per right answer` : `${s.coinsPerActivity} 🪙 each`}{left !== null && <> · {left === 0 ? 'done for today' : `${left} left today`}</>}</div>
                 <ProgressLine moduleId={m.id} state={state} />
               </button>
             );

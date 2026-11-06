@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "CoinQuest chapter questions",
+  "type": "object",
+  "required": ["book", "chapter", "questions"],
+  "properties": {
+    "book": { "type": "string" },
+    "chapter": { "type": "integer", "minimum": 1 },
+    "questions": {
+      "type": "array",
+      "minItems": 5,
+      "items": {
+        "type": "object",
+        "required": ["id", "type", "q", "choices", "answer", "evidence"],
+        "properties": {
+          "id": { "type": "string", "pattern": "^[a-z0-9-]+-\\d{2}-\\d{2}$" },
+          "type": { "enum": ["detail", "vocabulary", "sequence", "character", "inference", "main-idea"] },
+          "q": { "type": "string", "minLength": 8, "pattern": "^[\\x20-\\x7E]+$" },
+          "choices": { "type": "array", "minItems": 4, "maxItems": 4, "uniqueItems": true, "items": { "type": "string", "minLength": 1, "pattern": "^[\\x20-\\x7E]+$" } },
+          "answer": { "type": "integer", "minimum": 0, "maximum": 3 },
+          "evidence": { "type": "string", "minLength": 3, "pattern": "^[\\x20-\\x7E]+$" }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}

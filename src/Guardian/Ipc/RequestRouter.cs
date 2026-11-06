@@ -71,6 +71,8 @@ public sealed class RequestRouter
             // ---- child ----
             Ops.State => child is null ? Response.Fail(req.Id, "not a managed account") : Response.Success(req.Id, ChildState(child)),
             Ops.Submit => child is null ? Response.Fail(req.Id, "not a managed account") : Submit(req, child, client.Account),
+            Ops.BooksList or Ops.BooksChapter or Ops.BooksQuiz or Ops.BooksGrade or Ops.BooksBonus or Ops.BooksBonusAnswer or Ops.BooksTyped
+                => child is null ? Response.Fail(req.Id, "not a managed account") : Response.Success(req.Id, Books(req, child, client.Account)),
             Ops.ActivityTick => child is null ? Response.Success(req.Id, new { ok = false }) : ActivityTick(req, child),
             Ops.Buy => child is null ? Response.Fail(req.Id, "not a managed account") : Buy(req, child, client.Account),
             Ops.Progress => child is null ? Response.Fail(req.Id, "not a managed account") : SaveProgress(req, child),
@@ -117,6 +119,7 @@ public sealed class RequestRouter
             Ops.ParentDiscHide => Parent(req, client, child, () => _discs.SetHidden(Str(req, "id"), req.Payload?["hidden"]?.GetValue<bool>() == true)),
             Ops.ParentDiscRemove => Parent(req, client, child, () => _discs.Remove(Str(req, "id"))),
             Ops.DiscLaunch => DiscLaunch(req, child),
+            Ops.ParentBooks => Parent(req, client, child, ParentBooks),
             Ops.ParentActivity => Parent(req, client, child, () => ActivityDays(Str(req, "childId"), Str(req, "from"), Str(req, "to"))),
             Ops.ParentDiagnostics => Parent(req, client, child, () => new { version = Version, problems = CoinQuest.Guardian.FileLoggerProvider.Recent(), blocked = _gate.RecentlyBlocked().Take(20).Select(b => b.Host), internetLock = _netLock.Status, net = NetCheck().GetAwaiter().GetResult(), system = SystemCheck() }),
             Ops.ParentBlocked => Parent(req, client, child, () => _gate.RecentlyBlocked().Select(b => new { host = b.Host, at = b.At, reason = b.Reason })),
@@ -219,6 +222,163 @@ public sealed class RequestRouter
         if (child.ActivityReports) NoteDone(child, moduleId, req.Payload?["result"], outcome);
         AfterChange();
         return Response.Success(req.Id, result);
+    }
+
+    // ---- reading (books) ------------------------------------------------------------------------------------------
+
+    private readonly CoinQuest.Shared.Books.BookLibrary _library = new(Path.Combine(Paths.ContentRoot, "books"));
+    private readonly Random _rng = new();
+    private static readonly JsonSerializerOptions ProgressJson = new() { PropertyNamingPolicy = JsonNamingPolicy.CamelCase };
+
+    private static ModuleSettings BookSettings(Child c) => c.Modules.GetValueOrDefault("books") ?? ModuleSettings.Defaults()["books"];
+
+    /// <summary>null = every book; otherwise the ids a parent ticked.</summary>
+    private static HashSet<string>? AllowedBooks(ModuleSettings s)
+    {
+        var a = s.Options.GetValueOrDefault("allowed", "*");
+        if (a == "*") return null;
+        try { return JsonSerializer.Deserialize<List<string>>(a)?.ToHashSet() ?? new(); } catch { return new(); }
+    }
+
+    private object ParentBooks() => new
+    {
+        books = _library.Books().Select(b => new
+        {
+            id = b.Id, title = b.Title, author = b.Author, published = b.Published, grade = new { min = b.Grade.Min, max = b.Grade.Max, label = b.Grade.Label },
+            summary = b.Summary, chapters = b.Chapters.Count, words = b.Chapters.Sum(c => c.Words),
+            ready = b.Chapters.Count(c => _library.Questions(b.Id, c.N).Count >= Math.Ceiling(CoinQuest.Shared.Books.BookLibrary.QuizSize(c.Words) * 1.5)),
+        }).ToList(),
+        flagged = FlaggedQuestions().Count,
+    };
+
+    private static string FlagFile => Path.Combine(Paths.DataRoot, "books-flagged.json");
+    private static List<JsonObject> FlaggedQuestions()
+    {
+        try { return File.Exists(FlagFile) ? JsonSerializer.Deserialize<List<JsonObject>>(File.ReadAllText(FlagFile)) ?? new() : new(); } catch { return new(); }
+    }
+
+    /// <summary>Pay coins for a quest within its daily limit (or ask the parent first when the quest says so).</summary>
+    private (int coins, bool pending) PayQuest(Child child, string moduleId, ModuleSettings s, int want, string detail, string account)
+    {
+        if (want == 0) return (0, false);
+        var room = s.DailyCap > 0 ? Math.Max(0, s.DailyCap - _ledger.EarnedToday(child.Id, moduleId)) : int.MaxValue;
+        var coins = want < 0 ? want : Math.Min(want, room);
+        if (s.RequireApproval) { _ledger.FileClaim(child.Id, moduleId, coins, detail, account); ApprovalsChanged?.Invoke(); return (coins, true); }
+        if (coins != 0) _ledger.Append(child.Id, LedgerKind.Earn, coins, moduleId, detail, account);
+        return (coins, false);
+    }
+
+    private object Books(Request req, Child child, string account)
+    {
+        var s = BookSettings(child);
+        if (!s.Enabled) throw new InvalidOperationException("Reading isn't turned on");
+        var allowed = AllowedBooks(s);
+        var all = ProgressStore.Load(child.Id, "books") as JsonObject ?? new JsonObject();
+        CoinQuest.Shared.Books.ChapterProgress State(string book, int n) =>
+            all[$"{book}/{n}"]?.Deserialize<CoinQuest.Shared.Books.ChapterProgress>(ProgressJson) ?? new();
+        void Save(string book, int n, CoinQuest.Shared.Books.ChapterProgress p) { all[$"{book}/{n}"] = JsonSerializer.SerializeToNode(p, ProgressJson); ProgressStore.Save(child.Id, "books", all); }
+        object Status(string book, CoinQuest.Shared.Books.BookLibrary.ChapterInfo c)
+        {
+            var p = State(book, c.N);
+            var bank = _library.Questions(book, c.N);
+            return new
+            {
+                n = c.N, title = c.Title, words = c.Words, quizSize = Math.Min(bank.Count, CoinQuest.Shared.Books.BookLibrary.QuizSize(c.Words)), hasQuiz = bank.Count > 0,
+                passed = p.Passed, correct = p.Correct, total = p.Total, attempts = p.Attempts,
+                retakeAt = p.RetakeAt is { } t && t > DateTimeOffset.Now ? t : (DateTimeOffset?)null,
+                bonusLeft = CoinQuest.Shared.Books.Quiz.BonusLeft(p, bank), typed = p.TypedParts.Count,
+            };
+        }
+        if (req.Op == Ops.BooksList)
+            return new
+            {
+                perCorrect = s.CoinsPerActivity, wordsPer = int.TryParse(s.Options.GetValueOrDefault("wordsPer"), out var wp) && wp > 0 ? wp : 20,
+                books = _library.Books().Where(b => allowed is null || allowed.Contains(b.Id)).Select(b => new
+                {
+                    id = b.Id, title = b.Title, author = b.Author, grade = new { min = b.Grade.Min, max = b.Grade.Max, label = b.Grade.Label }, summary = b.Summary,
+                    chapters = b.Chapters.Select(c => Status(b.Id, c)).ToList(),
+                }).ToList(),
+            };
+
+        var bookId = Str(req, "bookId");
+        var n = req.Payload?["n"]?.GetValue<int>() ?? throw new ArgumentException("n required");
+        if (allowed is not null && !allowed.Contains(bookId)) throw new InvalidOperationException("That book isn't on your shelf");
+        var book = _library.Find(bookId) ?? throw new ArgumentException("That book isn't here");
+        var ch = _library.Chapter(bookId, n);
+        var bank = _library.Questions(bookId, n);
+        var state = State(bookId, n);
+        var now = DateTimeOffset.Now;
+        var label = $"{book.Title}, chapter {n}";
+        switch (req.Op)
+        {
+            case Ops.BooksChapter:
+                return new { book = book.Title, text = _library.Text(bookId, n), parts = _library.Parts(bookId, n), status = Status(bookId, ch),
+                    quiz = CoinQuest.Shared.Books.Quiz.Current(state, bank) is { } open ? new { id = state.Quiz!.Id, questions = open } : null };
+            case Ops.BooksQuiz:
+            {
+                var shown = CoinQuest.Shared.Books.Quiz.Start(state, bank, CoinQuest.Shared.Books.BookLibrary.QuizSize(ch.Words), _rng, now);
+                Save(bookId, n, state);
+                return new { id = state.Quiz!.Id, questions = shown };
+            }
+            case Ops.BooksGrade:
+            {
+                var answers = (req.Payload?["answers"] as JsonArray)?.Select(a => a?.GetValue<int>() ?? -1).ToList() ?? new();
+                var flagged = (req.Payload?["flagged"] as JsonArray)?.Select(a => a?.GetValue<string>() ?? "").Where(x => x.Length > 0).ToHashSet() ?? new();
+                var wait = TimeSpan.FromMinutes(Math.Clamp(int.TryParse(s.Options.GetValueOrDefault("waitMinutes"), out var w) ? w : 10, 0, 240));
+                var g = CoinQuest.Shared.Books.Quiz.Grade(state, bank, Str(req, "quizId"), answers, flagged, wait, now);
+                Save(bookId, n, state);
+                if (flagged.Count > 0)
+                {
+                    var list = FlaggedQuestions();
+                    foreach (var q in flagged) list.Add(new JsonObject { ["book"] = bookId, ["chapter"] = n, ["question"] = q, ["at"] = now.ToString("O"), ["child"] = child.DisplayName });
+                    try { File.WriteAllText(FlagFile, JsonSerializer.Serialize(list.TakeLast(500))); } catch { }
+                    _log.LogInformation("Question(s) flagged as wrong in {Book} ch {N}: {Ids}", bookId, n, string.Join(", ", flagged));
+                }
+                var (coins, pending) = (0, false);
+                if (g.Passed)
+                {
+                    (coins, pending) = PayQuest(child, "books", s, g.Correct * s.CoinsPerActivity, $"{label}: {g.Correct}/{g.Total} on the quiz", account);
+                    if (child.ActivityReports) { _activity.Count(child.Id, DateTime.Now, "books:chapters"); _activity.Count(child.Id, DateTime.Now, "books:correct", g.Correct); }
+                }
+                AfterChange();
+                return new { g.Passed, g.Correct, g.Total, g.Percent, g.RetakeAt, g.Review, coins, pending, bonusLeft = CoinQuest.Shared.Books.Quiz.BonusLeft(state, bank), balance = _ledger.Balance(child.Id) };
+            }
+            case Ops.BooksBonus:
+            {
+                var q = CoinQuest.Shared.Books.Quiz.NextBonus(state, bank, _rng, now);
+                Save(bookId, n, state);
+                return new { question = q, left = CoinQuest.Shared.Books.Quiz.BonusLeft(state, bank) };
+            }
+            case Ops.BooksBonusAnswer:
+            {
+                var (right, pos) = CoinQuest.Shared.Books.Quiz.AnswerBonus(state, bank, Str(req, "qid"), req.Payload?["choice"]?.GetValue<int>() ?? -1);
+                Save(bookId, n, state);
+                var (coins, pending) = right ? PayQuest(child, "books", s, s.CoinsPerActivity, $"{label}: bonus question", account) : (0, false);
+                if (right && child.ActivityReports) _activity.Count(child.Id, DateTime.Now, "books:correct");
+                AfterChange();
+                return new { right, rightChoice = pos, coins, pending, left = CoinQuest.Shared.Books.Quiz.BonusLeft(state, bank), balance = _ledger.Balance(child.Id) };
+            }
+            case Ops.BooksTyped:
+            {
+                var parts = _library.Parts(bookId, n);
+                var i = req.Payload?["part"]?.GetValue<int>() ?? -1;
+                if (i < 0 || i >= parts.Count) throw new ArgumentException("That part isn't in this chapter");
+                var typed = Str(req, "typed");
+                var ms = (req.Payload?["finishedAt"]?.GetValue<double>() ?? 0) - (req.Payload?["startedAt"]?.GetValue<double>() ?? 0);
+                var words = parts[i].Split(' ', StringSplitOptions.RemoveEmptyEntries).Length;
+                if (typed != parts[i]) throw new InvalidOperationException("That doesn't match this part of the chapter");
+                if (ms < 1000 || parts[i].Length / 5.0 / (ms / 60000.0) > 180) throw new InvalidOperationException("That was too fast to be real typing");
+                var first = !state.TypedParts.Contains(i);
+                if (first) state.TypedParts.Add(i);
+                Save(bookId, n, state);
+                if (child.ActivityReports) _activity.AddTyping(child.Id, DateTime.Now, typed.Length, (long)ms);
+                var per = int.TryParse(s.Options.GetValueOrDefault("wordsPer"), out var wpr) && wpr > 0 ? wpr : 20;
+                var (coins, pending) = first ? PayQuest(child, "books", s, (int)Math.Floor(words / (double)per + 0.5), $"{label}: typed part {i + 1} ({words} words)", account) : (0, false);
+                AfterChange();
+                return new { coins, pending, again = !first, typed = state.TypedParts.Count, balance = _ledger.Balance(child.Id) };
+            }
+        }
+        throw new ArgumentException("unknown books request");
     }
 
     // ---- activity reports ---------------------------------------------------------------------------------------

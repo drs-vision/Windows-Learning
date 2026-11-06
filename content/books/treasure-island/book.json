@@ -1,0 +1,257 @@
+{
+  "id": "treasure-island",
+  "title": "Treasure Island",
+  "author": "Robert Louis Stevenson",
+  "published": 1883,
+  "grade": {
+    "min": 6,
+    "max": 8,
+    "label": "Grades 6-8"
+  },
+  "summary": "Young Jim Hawkins finds a treasure map and sails with pirates, including the cunning Long John Silver.",
+  "source": {
+    "name": "Project Gutenberg eBook #120 (public-domain text; Gutenberg header, license and name removed)",
+    "url": "https://www.gutenberg.org/ebooks/120"
+  },
+  "publicDomain": "First published 1883; in the US public domain (published before 1931).",
+  "chapters": [
+    {
+      "n": 1,
+      "title": "The Old Sea-dog at the Admiral Benbow",
+      "text": "01-the-old-sea-dog-at-the-admiral-benbow.txt",
+      "questions": "01-the-old-sea-dog-at-the-admiral-benbow.questions.json",
+      "words": 2203
+    },
+    {
+      "n": 2,
+      "title": "Black Dog Appears and Disappears",
+      "text": "02-black-dog-appears-and-disappears.txt",
+      "questions": "02-black-dog-appears-and-disappears.questions.json",
+      "words": 2243
+    },
+    {
+      "n": 3,
+      "title": "The Black Spot",
+      "text": "03-the-black-spot.txt",
+      "questions": "03-the-black-spot.questions.json",
+      "words": 2151
+    },
+    {
+      "n": 4,
+      "title": "The Sea-chest",
+      "text": "04-the-sea-chest.txt",
+      "questions": "04-the-sea-chest.questions.json",
+      "words": 2134
+    },
+    {
+      "n": 5,
+      "title": "The Last of the Blind Man",
+      "text": "05-the-last-of-the-blind-man.txt",
+      "questions": "05-the-last-of-the-blind-man.questions.json",
+      "words": 1849
+    },
+    {
+      "n": 6,
+      "title": "The Captain's Papers",
+      "text": "06-the-captain-s-papers.txt",
+      "questions": "06-the-captain-s-papers.questions.json",
+      "words": 1949
+    },
+    {
+      "n": 7,
+      "title": "I Go to Bristol",
+      "text": "07-i-go-to-bristol.txt",
+      "questions": "07-i-go-to-bristol.questions.json",
+      "words": 1816
+    },
+    {
+      "n": 8,
+      "title": "At the Sign of the Spy-glass",
+      "text": "08-at-the-sign-of-the-spy-glass.txt",
+      "questions": "08-at-the-sign-of-the-spy-glass.questions.json",
+      "words": 1764
+    },
+    {
+      "n": 9,
+      "title": "Powder and Arms",
+      "text": "09-powder-and-arms.txt",
+      "questions": "09-powder-and-arms.questions.json",
+      "words": 1711
+    },
+    {
+      "n": 10,
+      "title": "The Voyage",
+      "text": "10-the-voyage.txt",
+      "questions": "10-the-voyage.questions.json",
+      "words": 1932
+    },
+    {
+      "n": 11,
+      "title": "What I Heard in the Apple Barrel",
+      "text": "11-what-i-heard-in-the-apple-barrel.txt",
+      "questions": "11-what-i-heard-in-the-apple-barrel.questions.json",
+      "words": 2062
+    },
+    {
+      "n": 12,
+      "title": "Council of War",
+      "text": "12-council-of-war.txt",
+      "questions": "12-council-of-war.questions.json",
+      "words": 1835
+    },
+    {
+      "n": 13,
+      "title": "How My Shore Adventure Began",
+      "text": "13-how-my-shore-adventure-began.txt",
+      "questions": "13-how-my-shore-adventure-began.questions.json",
+      "words": 1788
+    },
+    {
+      "n": 14,
+      "title": "The First Blow",
+      "text": "14-the-first-blow.txt",
+      "questions": "14-the-first-blow.questions.json",
+      "words": 1912
+    },
+    {
+      "n": 15,
+      "title": "The Man of the Island",
+      "text": "15-the-man-of-the-island.txt",
+      "questions": "15-the-man-of-the-island.questions.json",
+      "words": 2219
+    },
+    {
+      "n": 16,
+      "title": "Narrative Continued by the Doctor: How the Ship Was Abandoned",
+      "text": "16-narrative-continued-by-the-doctor-how-th.txt",
+      "questions": "16-narrative-continued-by-the-doctor-how-th.questions.json",
+      "words": 1634
+    },
+    {
+      "n": 17,
+      "title": "Narrative Continued by the Doctor: The Jolly-boat's Last Trip",
+      "text": "17-narrative-continued-by-the-doctor-the-jo.txt",
+      "questions": "17-narrative-continued-by-the-doctor-the-jo.questions.json",
+      "words": 1470
+    },
+    {
+      "n": 18,
+      "title": "Narrative Continued by the Doctor: End of the First Day's Fighting",
+      "text": "18-narrative-continued-by-the-doctor-end-of.txt",
+      "questions": "18-narrative-continued-by-the-doctor-end-of.questions.json",
+      "words": 1469
+    },
+    {
+      "n": 19,
+      "title": "Narrative Resumed by Jim Hawkins: The Garrison in the Stockade",
+      "text": "19-narrative-resumed-by-jim-hawkins-the-gar.txt",
+      "questions": "19-narrative-resumed-by-jim-hawkins-the-gar.questions.json",
+      "words": 1998
+    },
+    {
+      "n": 20,
+      "title": "Silver's Embassy",
+      "text": "20-silver-s-embassy.txt",
+      "questions": "20-silver-s-embassy.questions.json",
+      "words": 1884
+    },
+    {
+      "n": 21,
+      "title": "The Attack",
+      "text": "21-the-attack.txt",
+      "questions": "21-the-attack.questions.json",
+      "words": 2004
+    },
+    {
+      "n": 22,
+      "title": "How My Sea Adventure Began",
+      "text": "22-how-my-sea-adventure-began.txt",
+      "questions": "22-how-my-sea-adventure-began.questions.json",
+      "words": 2073
+    },
+    {
+      "n": 23,
+      "title": "The Ebb-tide Runs",
+      "text": "23-the-ebb-tide-runs.txt",
+      "questions": "23-the-ebb-tide-runs.questions.json",
+      "words": 1578
+    },
+    {
+      "n": 24,
+      "title": "The Cruise of the Coracle",
+      "text": "24-the-cruise-of-the-coracle.txt",
+      "questions": "24-the-cruise-of-the-coracle.questions.json",
+      "words": 1974
+    },
+    {
+      "n": 25,
+      "title": "I Strike the Jolly Roger",
+      "text": "25-i-strike-the-jolly-roger.txt",
+      "questions": "25-i-strike-the-jolly-roger.questions.json",
+      "words": 1703
+    },
+    {
+      "n": 26,
+      "title": "Israel Hands",
+      "text": "26-israel-hands.txt",
+      "questions": "26-israel-hands.questions.json",
+      "words": 2933
+    },
+    {
+      "n": 27,
+      "title": "\"Pieces of Eight\"",
+      "text": "27-pieces-of-eight.txt",
+      "questions": "27-pieces-of-eight.questions.json",
+      "words": 2156
+    },
+    {
+      "n": 28,
+      "title": "In the Enemy's Camp",
+      "text": "28-in-the-enemy-s-camp.txt",
+      "questions": "28-in-the-enemy-s-camp.questions.json",
+      "words": 2726
+    },
+    {
+      "n": 29,
+      "title": "The Black Spot Again",
+      "text": "29-the-black-spot-again.txt",
+      "questions": "29-the-black-spot-again.questions.json",
+      "words": 2107
+    },
+    {
+      "n": 30,
+      "title": "On Parole",
+      "text": "30-on-parole.txt",
+      "questions": "30-on-parole.questions.json",
+      "words": 2306
+    },
+    {
+      "n": 31,
+      "title": "The Treasure-hunt--Flint's Pointer",
+      "text": "31-the-treasure-hunt-flint-s-pointer.txt",
+      "questions": "31-the-treasure-hunt-flint-s-pointer.questions.json",
+      "words": 2253
+    },
+    {
+      "n": 32,
+      "title": "The Treasure-hunt--The Voice Among the Trees",
+      "text": "32-the-treasure-hunt-the-voice-among-the-tr.txt",
+      "questions": "32-the-treasure-hunt-the-voice-among-the-tr.questions.json",
+      "words": 1943
+    },
+    {
+      "n": 33,
+      "title": "The Fall of a Chieftain",
+      "text": "33-the-fall-of-a-chieftain.txt",
+      "questions": "33-the-fall-of-a-chieftain.questions.json",
+      "words": 1985
+    },
+    {
+      "n": 34,
+      "title": "And Last",
+      "text": "34-and-last.txt",
+      "questions": "34-and-last.questions.json",
+      "words": 1890
+    }
+  ]
+}

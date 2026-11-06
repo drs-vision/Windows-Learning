@@ -35,6 +35,7 @@ export class MockGuardian {
       'typing-quest': { enabled: false, coinsPerActivity: 10, dailyCap: 80, requireApproval: false },
       'bible-typing': { enabled: true, coinsPerActivity: 15, dailyCap: 60, requireApproval: false },
       'khan-academy': { enabled: true, coinsPerActivity: 5, dailyCap: 80, requireApproval: false },
+      books: { enabled: true, coinsPerActivity: 1, dailyCap: 60, requireApproval: false, options: { waitMinutes: '10', wordsPer: '20', allowed: '*' } },
     },
   };
   private ledger: LedgerEntry[] = JSON.parse(localStorage.getItem('cq.mock.ledger') ?? '[]');
@@ -187,6 +188,9 @@ export class MockGuardian {
         }
         return ok({ childId: 'c1', kid: 'Sam', enabled: true, days });
       }
+      // Reading, for the browser preview: one real book (Peter Rabbit). The real marking happens in the Guardian.
+      case 'parent.books': return ok({ flagged: 0, books: [{ id: 'peter-rabbit', title: 'The Tale of Peter Rabbit', author: 'Beatrix Potter', published: 1902, grade: { min: 0, max: 2, label: 'Grades K-2' }, summary: "Peter disobeys his mother, sneaks into Mr. McGregor's garden, and has to find his way out.", chapters: 1, words: 948, ready: 1 }] });
+      case 'books.list': case 'books.chapter': case 'books.quiz': case 'books.grade': case 'books.bonus': case 'books.bonusAnswer': case 'books.typed': return ok(mockBooks(req.op, p));
       case 'parent.rwtStatus': return ok({ installed: false, otvdm: false, stage: 'idle', patches: [], players: [], root: 'C:\\ProgramData\\CoinQuest\\rwt' });
       case 'shell.pickFile': return ok({ path: null });
       case 'parent.diagnostics': return ok({ version: '0.0.0-mock', problems: ['10-12 21:40 YouTubeService: Feed failed for Mark Rober — HttpRequestException: example'], blocked: ['d35aaqx5ub95lt.cloudfront.net'], internetLock: { applied: true } });
@@ -258,4 +262,35 @@ export class MockGuardian {
       default: return fail('unknown op ' + req.op);
     }
   }
+}
+
+// ---- Reading (preview only) ----
+import prText from '../../../../content/books/peter-rabbit/01-the-tale-of-peter-rabbit.txt?raw';
+import prQs from '../../../../content/books/peter-rabbit/01-the-tale-of-peter-rabbit.questions.json';
+const mb = { passed: false, correct: 0, total: 0, attempts: 0, retakeAt: null as string | null, seen: [] as string[], bonusDone: [] as string[], quiz: null as null | { id: string; ids: string[]; orders: number[][] }, bonus: null as null | { id: string; order: number[] }, typed: 0 };
+const mbBank = (prQs as { questions: { id: string; q: string; choices: string[]; answer: number }[] }).questions;
+const mbParts = prText.trim().split(/\n\s*\n/).reduce((acc: string[], p) => { const last = acc[acc.length - 1]; if (last && (last + ' ' + p).split(' ').length <= 170) acc[acc.length - 1] = last + ' ' + p; else acc.push(p); return acc; }, []);
+const shuffle = () => [0, 1, 2, 3].sort(() => Math.random() - 0.5);
+function mockBooks(op: string, p: any): any {
+  const status = () => ({ n: 1, title: 'The Tale of Peter Rabbit', words: 948, quizSize: 4, hasQuiz: true, passed: mb.passed, correct: mb.correct, total: mb.total, attempts: mb.attempts, retakeAt: mb.retakeAt && Date.parse(mb.retakeAt) > Date.now() ? mb.retakeAt : null, bonusLeft: mb.passed ? mbBank.filter((q) => !mb.seen.includes(q.id) && !mb.bonusDone.includes(q.id)).length : 0, typed: mb.typed });
+  const show = (id: string, order: number[]) => { const q = mbBank.find((x) => x.id === id)!; return { id, q: q.q, choices: order.map((i) => q.choices[i]) }; };
+  if (op === 'books.list') return { perCorrect: 1, wordsPer: 20, books: [{ id: 'peter-rabbit', title: 'The Tale of Peter Rabbit', author: 'Beatrix Potter', grade: { min: 0, max: 2, label: 'Grades K-2' }, summary: "Peter disobeys his mother and sneaks into Mr. McGregor's garden.", chapters: [status()] }] };
+  if (op === 'books.chapter') return { book: 'The Tale of Peter Rabbit', text: prText, parts: mbParts, status: status(), quiz: mb.quiz ? { id: mb.quiz.id, questions: mb.quiz.ids.map((id, i) => show(id, mb.quiz!.orders[i])) } : null };
+  if (op === 'books.quiz') {
+    if (mb.retakeAt && Date.parse(mb.retakeAt) > Date.now()) throw new Error('You can try again soon');
+    const ids = [...mbBank.filter((q) => !mb.seen.includes(q.id)), ...mbBank.filter((q) => mb.seen.includes(q.id))].slice(0, 4).map((q) => q.id);
+    mb.quiz = { id: 'q' + Date.now(), ids, orders: ids.map(shuffle) };
+    return { id: mb.quiz.id, questions: ids.map((id, i) => show(id, mb.quiz!.orders[i])) };
+  }
+  if (op === 'books.grade') {
+    const qz = mb.quiz!; let correct = 0; const review = qz.ids.map((id, i) => { const q = mbBank.find((x) => x.id === id)!; const right = qz.orders[i].indexOf(q.answer); if (p.answers[i] === right) correct++; if (!mb.seen.includes(id)) mb.seen.push(id); return { q: q.q, choices: qz.orders[i].map((k) => q.choices[k]), picked: p.answers[i], right }; });
+    mb.quiz = null; mb.attempts++;
+    const passed = correct >= Math.ceil(0.7 * qz.ids.length);
+    if (passed) { mb.passed = true; mb.correct = correct; mb.total = qz.ids.length; } else mb.retakeAt = new Date(Date.now() + 600000).toISOString();
+    return { passed, correct, total: qz.ids.length, percent: Math.round(100 * correct / qz.ids.length), retakeAt: passed ? null : mb.retakeAt, review: passed ? review : null, coins: passed ? correct : 0, pending: false, bonusLeft: status().bonusLeft };
+  }
+  if (op === 'books.bonus') { const q = mbBank.find((x) => !mb.seen.includes(x.id) && !mb.bonusDone.includes(x.id)); if (!q) return { question: null, left: 0 }; mb.bonus = { id: q.id, order: shuffle() }; return { question: show(q.id, mb.bonus.order), left: status().bonusLeft }; }
+  if (op === 'books.bonusAnswer') { const q = mbBank.find((x) => x.id === p.qid)!; const right = mb.bonus!.order.indexOf(q.answer); mb.bonusDone.push(q.id); return { right: p.choice === right, rightChoice: right, coins: p.choice === right ? 1 : 0, left: status().bonusLeft }; }
+  if (op === 'books.typed') { mb.typed = Math.max(mb.typed, p.part + 1); return { coins: 2, pending: false, again: false, typed: mb.typed }; }
+  return null;
 }

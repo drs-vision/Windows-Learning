@@ -1,0 +1,362 @@
+{
+  "id": "black-beauty",
+  "title": "Black Beauty",
+  "author": "Anna Sewell",
+  "published": 1877,
+  "grade": {
+    "min": 4,
+    "max": 6,
+    "label": "Grades 4-6"
+  },
+  "summary": "A horse tells his own life story, from a happy home to hard work in London, and how people treat animals.",
+  "source": {
+    "name": "Project Gutenberg eBook #271 (public-domain text; Gutenberg header, license and name removed)",
+    "url": "https://www.gutenberg.org/ebooks/271"
+  },
+  "publicDomain": "First published 1877; in the US public domain (published before 1931).",
+  "chapters": [
+    {
+      "n": 1,
+      "title": "My Early Home",
+      "text": "01-my-early-home.txt",
+      "questions": "01-my-early-home.questions.json",
+      "words": 777
+    },
+    {
+      "n": 2,
+      "title": "The Hunt",
+      "text": "02-the-hunt.txt",
+      "questions": "02-the-hunt.questions.json",
+      "words": 1020
+    },
+    {
+      "n": 3,
+      "title": "My Breaking In",
+      "text": "03-my-breaking-in.txt",
+      "questions": "03-my-breaking-in.questions.json",
+      "words": 1448
+    },
+    {
+      "n": 4,
+      "title": "Birtwick Park",
+      "text": "04-birtwick-park.txt",
+      "questions": "04-birtwick-park.questions.json",
+      "words": 980
+    },
+    {
+      "n": 5,
+      "title": "A Fair Start",
+      "text": "05-a-fair-start.txt",
+      "questions": "05-a-fair-start.questions.json",
+      "words": 1240
+    },
+    {
+      "n": 6,
+      "title": "Liberty",
+      "text": "06-liberty.txt",
+      "questions": "06-liberty.questions.json",
+      "words": 559
+    },
+    {
+      "n": 7,
+      "title": "Ginger",
+      "text": "07-ginger.txt",
+      "questions": "07-ginger.questions.json",
+      "words": 1579
+    },
+    {
+      "n": 8,
+      "title": "Ginger's Story Continued",
+      "text": "08-ginger-s-story-continued.txt",
+      "questions": "08-ginger-s-story-continued.questions.json",
+      "words": 1297
+    },
+    {
+      "n": 9,
+      "title": "Merrylegs",
+      "text": "09-merrylegs.txt",
+      "questions": "09-merrylegs.questions.json",
+      "words": 988
+    },
+    {
+      "n": 10,
+      "title": "A Talk in the Orchard",
+      "text": "10-a-talk-in-the-orchard.txt",
+      "questions": "10-a-talk-in-the-orchard.questions.json",
+      "words": 1938
+    },
+    {
+      "n": 11,
+      "title": "Plain Speaking",
+      "text": "11-plain-speaking.txt",
+      "questions": "11-plain-speaking.questions.json",
+      "words": 1052
+    },
+    {
+      "n": 12,
+      "title": "A Stormy Day",
+      "text": "12-a-stormy-day.txt",
+      "questions": "12-a-stormy-day.questions.json",
+      "words": 1151
+    },
+    {
+      "n": 13,
+      "title": "The Devil's Trade Mark",
+      "text": "13-the-devil-s-trade-mark.txt",
+      "questions": "13-the-devil-s-trade-mark.questions.json",
+      "words": 999
+    },
+    {
+      "n": 14,
+      "title": "James Howard",
+      "text": "14-james-howard.txt",
+      "questions": "14-james-howard.questions.json",
+      "words": 957
+    },
+    {
+      "n": 15,
+      "title": "The Old Hostler",
+      "text": "15-the-old-hostler.txt",
+      "questions": "15-the-old-hostler.questions.json",
+      "words": 991
+    },
+    {
+      "n": 16,
+      "title": "The Fire",
+      "text": "16-the-fire.txt",
+      "questions": "16-the-fire.questions.json",
+      "words": 1331
+    },
+    {
+      "n": 17,
+      "title": "John Manly's Talk",
+      "text": "17-john-manly-s-talk.txt",
+      "questions": "17-john-manly-s-talk.questions.json",
+      "words": 1278
+    },
+    {
+      "n": 18,
+      "title": "Going for the Doctor",
+      "text": "18-going-for-the-doctor.txt",
+      "questions": "18-going-for-the-doctor.questions.json",
+      "words": 1313
+    },
+    {
+      "n": 19,
+      "title": "Only Ignorance",
+      "text": "19-only-ignorance.txt",
+      "questions": "19-only-ignorance.questions.json",
+      "words": 756
+    },
+    {
+      "n": 20,
+      "title": "Joe Green",
+      "text": "20-joe-green.txt",
+      "questions": "20-joe-green.questions.json",
+      "words": 909
+    },
+    {
+      "n": 21,
+      "title": "The Parting",
+      "text": "21-the-parting.txt",
+      "questions": "21-the-parting.questions.json",
+      "words": 914
+    },
+    {
+      "n": 22,
+      "title": "Earlshall",
+      "text": "22-earlshall.txt",
+      "questions": "22-earlshall.questions.json",
+      "words": 1342
+    },
+    {
+      "n": 23,
+      "title": "A Strike for Liberty",
+      "text": "23-a-strike-for-liberty.txt",
+      "questions": "23-a-strike-for-liberty.questions.json",
+      "words": 1101
+    },
+    {
+      "n": 24,
+      "title": "The Lady Anne, or a Runaway Horse",
+      "text": "24-the-lady-anne-or-a-runaway-horse.txt",
+      "questions": "24-the-lady-anne-or-a-runaway-horse.questions.json",
+      "words": 2027
+    },
+    {
+      "n": 25,
+      "title": "Reuben Smith",
+      "text": "25-reuben-smith.txt",
+      "questions": "25-reuben-smith.questions.json",
+      "words": 1211
+    },
+    {
+      "n": 26,
+      "title": "How it Ended",
+      "text": "26-how-it-ended.txt",
+      "questions": "26-how-it-ended.questions.json",
+      "words": 926
+    },
+    {
+      "n": 27,
+      "title": "Ruined and Going Downhill",
+      "text": "27-ruined-and-going-downhill.txt",
+      "questions": "27-ruined-and-going-downhill.questions.json",
+      "words": 921
+    },
+    {
+      "n": 28,
+      "title": "A Job Horse and His Drivers",
+      "text": "28-a-job-horse-and-his-drivers.txt",
+      "questions": "28-a-job-horse-and-his-drivers.questions.json",
+      "words": 1206
+    },
+    {
+      "n": 29,
+      "title": "Cockneys",
+      "text": "29-cockneys.txt",
+      "questions": "29-cockneys.questions.json",
+      "words": 2183
+    },
+    {
+      "n": 30,
+      "title": "A Thief",
+      "text": "30-a-thief.txt",
+      "questions": "30-a-thief.questions.json",
+      "words": 840
+    },
+    {
+      "n": 31,
+      "title": "A Humbug",
+      "text": "31-a-humbug.txt",
+      "questions": "31-a-humbug.questions.json",
+      "words": 950
+    },
+    {
+      "n": 32,
+      "title": "A Horse Fair",
+      "text": "32-a-horse-fair.txt",
+      "questions": "32-a-horse-fair.questions.json",
+      "words": 1157
+    },
+    {
+      "n": 33,
+      "title": "A London Cab Horse",
+      "text": "33-a-london-cab-horse.txt",
+      "questions": "33-a-london-cab-horse.questions.json",
+      "words": 1338
+    },
+    {
+      "n": 34,
+      "title": "An Old War Horse",
+      "text": "34-an-old-war-horse.txt",
+      "questions": "34-an-old-war-horse.questions.json",
+      "words": 1671
+    },
+    {
+      "n": 35,
+      "title": "Jerry Barker",
+      "text": "35-jerry-barker.txt",
+      "questions": "35-jerry-barker.questions.json",
+      "words": 1864
+    },
+    {
+      "n": 36,
+      "title": "The Sunday Cab",
+      "text": "36-the-sunday-cab.txt",
+      "questions": "36-the-sunday-cab.questions.json",
+      "words": 1587
+    },
+    {
+      "n": 37,
+      "title": "The Golden Rule",
+      "text": "37-the-golden-rule.txt",
+      "questions": "37-the-golden-rule.questions.json",
+      "words": 1144
+    },
+    {
+      "n": 38,
+      "title": "Dolly and a Real Gentleman",
+      "text": "38-dolly-and-a-real-gentleman.txt",
+      "questions": "38-dolly-and-a-real-gentleman.questions.json",
+      "words": 1323
+    },
+    {
+      "n": 39,
+      "title": "Seedy Sam",
+      "text": "39-seedy-sam.txt",
+      "questions": "39-seedy-sam.questions.json",
+      "words": 1213
+    },
+    {
+      "n": 40,
+      "title": "Poor Ginger",
+      "text": "40-poor-ginger.txt",
+      "questions": "40-poor-ginger.questions.json",
+      "words": 717
+    },
+    {
+      "n": 41,
+      "title": "The Butcher",
+      "text": "41-the-butcher.txt",
+      "questions": "41-the-butcher.questions.json",
+      "words": 1005
+    },
+    {
+      "n": 42,
+      "title": "The Election",
+      "text": "42-the-election.txt",
+      "questions": "42-the-election.questions.json",
+      "words": 548
+    },
+    {
+      "n": 43,
+      "title": "A Friend in Need",
+      "text": "43-a-friend-in-need.txt",
+      "questions": "43-a-friend-in-need.questions.json",
+      "words": 1379
+    },
+    {
+      "n": 44,
+      "title": "Old Captain and His Successor",
+      "text": "44-old-captain-and-his-successor.txt",
+      "questions": "44-old-captain-and-his-successor.questions.json",
+      "words": 1472
+    },
+    {
+      "n": 45,
+      "title": "Jerry's New Year",
+      "text": "45-jerry-s-new-year.txt",
+      "questions": "45-jerry-s-new-year.questions.json",
+      "words": 1945
+    },
+    {
+      "n": 46,
+      "title": "Jakes and the Lady",
+      "text": "46-jakes-and-the-lady.txt",
+      "questions": "46-jakes-and-the-lady.questions.json",
+      "words": 1206
+    },
+    {
+      "n": 47,
+      "title": "Hard Times",
+      "text": "47-hard-times.txt",
+      "questions": "47-hard-times.questions.json",
+      "words": 1453
+    },
+    {
+      "n": 48,
+      "title": "Farmer Thoroughgood and His Grandson Willie",
+      "text": "48-farmer-thoroughgood-and-his-grandson-wil.txt",
+      "questions": "48-farmer-thoroughgood-and-his-grandson-wil.questions.json",
+      "words": 1230
+    },
+    {
+      "n": 49,
+      "title": "My Last Home",
+      "text": "49-my-last-home.txt",
+      "questions": "49-my-last-home.questions.json",
+      "words": 1051
+    }
+  ]
+}

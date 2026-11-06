@@ -174,6 +174,7 @@ public sealed record ModuleSettings
         ["sound-keys"] = new() { CoinsPerActivity = 12, DailyCap = 100 },
         ["typing-quest"] = new() { Enabled = false, CoinsPerActivity = 10, DailyCap = 80 },
         ["bible-typing"] = new() { CoinsPerActivity = 1, DailyCap = 60, Options = new() { ["wordsPer"] = "20", ["repeatsPerDay"] = "1" } },
+        ["books"] = new() { CoinsPerActivity = 1, DailyCap = 60, Options = new() { ["wordsPer"] = "20", ["waitMinutes"] = "10", ["allowed"] = "*" } },
         ["my-passages"] = new() { Enabled = false, CoinsPerActivity = 1, DailyCap = 60, Options = new() { ["wordsPer"] = "20", ["repeatsPerDay"] = "1", ["passages"] = "[]" } },
         ["khan-academy"] = new() { CoinsPerActivity = 5, DailyCap = 80, Options = new() { ["perAnswer"] = "1", ["perVideo"] = "3" } },
         ["duolingo"] = new() { Enabled = false, CoinsPerActivity = 5, DailyCap = 50 },

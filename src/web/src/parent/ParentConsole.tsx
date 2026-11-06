@@ -640,6 +640,7 @@ function paySummary(m: (typeof MODULES)[number], s: ModSettings): string {
   const o = s.options ?? {};
   const pay = m.paysByWords ? `1 🪙 per ${o.wordsPer ?? 20} words`
     : m.id === 'khan-academy' ? `${o.perAnswer ?? 1} 🪙 per right answer · ${o.perVideo ?? 3} per video · ${s.coinsPerActivity} per exercise`
+    : m.id === 'books' ? `${s.coinsPerActivity} 🪙 per right answer · ${allowedLabel(o.allowed)}`
     : m.id === 'duolingo' ? `${s.coinsPerActivity} 🪙 per lesson`
     : m.id === 'discgames' ? `${s.coinsPerActivity} 🪙 per bit of progress`
     : m.id === 'sound-keys' ? `${s.coinsPerActivity} 🪙 per lesson`
@@ -649,6 +650,7 @@ function paySummary(m: (typeof MODULES)[number], s: ModSettings): string {
 }
 
 const EARN_GROUPS: [string, string[]][] = [
+  ['Reading', ['books']],
   ['Typing', ['sound-keys', 'typing-quest', 'passages']],
   ['Learning websites', ['khan-academy', 'duolingo']],
   ['Classic games', ['discgames']],
@@ -693,15 +695,16 @@ function Quests({ child, onSave }: { child: Child; onSave: (c: Child) => void })
         {isOpen && (
           <div class="quest-body">
             <p class="muted">{m.description}</p>
+            {id === 'books' && <BookPicker s={s} set={(p) => setMod(id, p)} />}
             {id === 'discgames' && <DiscImport rwt={{ s: cur('rwt'), set: (p) => setMod('rwt', p) }} />}
             <div class="row">
-              <label>{id === 'discgames' ? 'Coins per bit of progress' : id === 'khan-academy' ? 'Coins per finished exercise' : id === 'duolingo' ? 'Coins per lesson' : id === 'sound-keys' ? 'Coins per lesson' : id === 'typing-quest' ? 'Coins per drill' : 'Coins each'}
+              <label>{id === 'books' ? 'Coins per right answer' : id === 'discgames' ? 'Coins per bit of progress' : id === 'khan-academy' ? 'Coins per finished exercise' : id === 'duolingo' ? 'Coins per lesson' : id === 'sound-keys' ? 'Coins per lesson' : id === 'typing-quest' ? 'Coins per drill' : 'Coins each'}
                 <input type="number" value={s.coinsPerActivity} onChange={(e) => setMod(id, { coinsPerActivity: Number((e.target as HTMLInputElement).value) })} /></label>
               {(m.options ?? []).map((o) => (
                 <label title={o.help}>{o.label}
                   {o.number
-                    ? <input type="number" min={o.number.min} max={o.number.max} value={s.options?.[o.key] ?? o.default}
-                        onChange={(e) => { const v = Math.max(o.number!.min, Math.min(o.number!.max, Math.round(Number((e.target as HTMLInputElement).value) || 0))); setMod(id, { options: { [o.key]: String(v) } }); }} />
+                    ? <span class="per-words"><input type="number" min={o.number.min} max={o.number.max} value={s.options?.[o.key] ?? o.default}
+                        onChange={(e) => { const v = Math.max(o.number!.min, Math.min(o.number!.max, Math.round(Number((e.target as HTMLInputElement).value) || 0))); setMod(id, { options: { [o.key]: String(v) } }); }} />{o.suffix && ` ${o.suffix}`}</span>
                     : <select value={s.options?.[o.key] ?? o.default} onChange={(e) => setMod(id, { options: { [o.key]: (e.target as HTMLSelectElement).value } })}>
                         {(o.choices ?? []).map(([v, l]) => <option value={v}>{l}</option>)}
                       </select>}
@@ -724,6 +727,41 @@ function Quests({ child, onSave }: { child: Child; onSave: (c: Child) => void })
           <h4>{name}</h4>
           {ids.map(card)}
         </section>
+      ))}
+    </div>
+  );
+}
+
+const allowedLabel = (a?: string) => { if (!a || a === '*') return 'every book'; try { const n = (JSON.parse(a) as string[]).length; return `${n} book${n === 1 ? '' : 's'}`; } catch { return 'every book'; } };
+
+/** Choose the books on the child's shelf, grouped by US grade level. */
+function BookPicker({ s, set }: { s: ModSettings; set: (p: Partial<ModSettings>) => void }) {
+  const [cat, setCat] = useState<Awaited<ReturnType<typeof bridge.parentBooks>> | null>(null);
+  const [err, setErr] = useState('');
+  useEffect(() => { bridge.parentBooks().then(setCat).catch((e) => setErr((e as Error).message)); }, []);
+  if (err) return <p class="error">{err}</p>;
+  if (!cat) return <p class="muted">Loading the library…</p>;
+  const all = cat.books.map((b) => b.id);
+  const raw = s.options?.allowed ?? '*';
+  let chosen: string[];
+  try { chosen = raw === '*' ? all : (JSON.parse(raw) as string[]); } catch { chosen = all; }
+  const save = (ids: string[]) => set({ options: { ...(s.options ?? {}), allowed: ids.length === all.length && all.every((x) => ids.includes(x)) ? '*' : JSON.stringify(ids) } });
+  const groups = new Map<string, typeof cat.books>();
+  for (const b of cat.books) groups.set(b.grade.label, [...(groups.get(b.grade.label) ?? []), b]);
+  return (
+    <div class="book-picker">
+      <div class="row between"><h4>Books on the shelf</h4><span><button class="ghost small" onClick={() => save(all)}>All</button><button class="ghost small" onClick={() => save([])}>None</button></span></div>
+      {cat.flagged > 0 && <p class="muted small">⚑ {cat.flagged} question{cat.flagged === 1 ? ' was' : 's were'} flagged as wrong by your kids — they're listed in the PC's data folder (books-flagged.json) for fixing.</p>}
+      {[...groups.entries()].map(([label, list]) => (
+        <div class="book-group">
+          <h5>{label}</h5>
+          {list.map((b) => (
+            <label class="book-pick">
+              <input type="checkbox" checked={chosen.includes(b.id)} onChange={(e) => save((e.target as HTMLInputElement).checked ? [...chosen, b.id] : chosen.filter((x) => x !== b.id))} />
+              <span><b>{b.title}</b> <span class="muted">· {b.author}, {b.published}</span><br /><small class="muted">{b.summary} {b.chapters} chapter{b.chapters === 1 ? '' : 's'}, about {b.words < 10800 ? `${Math.max(5, Math.round(b.words / 180 / 5) * 5)} minutes` : `${Math.round(b.words / 180 / 60)} hours`} of reading{b.ready < b.chapters ? ` · quizzes ready for ${b.ready} of ${b.chapters} chapters` : ''}.</small></span>
+            </label>
+          ))}
+        </div>
       ))}
     </div>
   );

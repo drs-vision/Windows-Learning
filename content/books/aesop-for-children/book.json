@@ -1,0 +1,250 @@
+{
+  "id": "aesop-for-children",
+  "title": "The Aesop for Children",
+  "author": "Aesop (retold)",
+  "published": 1919,
+  "grade": {
+    "min": 2,
+    "max": 4,
+    "label": "Grades 2-4"
+  },
+  "summary": "Short fables with animals, each ending in a lesson to remember.",
+  "source": {
+    "name": "Project Gutenberg eBook #19994 (public-domain text; Gutenberg header, license and name removed)",
+    "url": "https://www.gutenberg.org/ebooks/19994"
+  },
+  "publicDomain": "First published 1919; in the US public domain (published before 1931).",
+  "chapters": [
+    {
+      "n": 1,
+      "title": "The Wolf and the Kid and 3 more",
+      "text": "01-the-wolf-and-the-kid-and-3-more.txt",
+      "questions": "01-the-wolf-and-the-kid-and-3-more.questions.json",
+      "words": 824
+    },
+    {
+      "n": 2,
+      "title": "The Dog, the Cock, and the Fox and 2 more",
+      "text": "02-the-dog-the-cock-and-the-fox-and-2-more.txt",
+      "questions": "02-the-dog-the-cock-and-the-fox-and-2-more.questions.json",
+      "words": 719
+    },
+    {
+      "n": 3,
+      "title": "The Boy and the Filberts and 3 more",
+      "text": "03-the-boy-and-the-filberts-and-3-more.txt",
+      "questions": "03-the-boy-and-the-filberts-and-3-more.questions.json",
+      "words": 768
+    },
+    {
+      "n": 4,
+      "title": "The Fox and the Grapes and 4 more",
+      "text": "04-the-fox-and-the-grapes-and-4-more.txt",
+      "questions": "04-the-fox-and-the-grapes-and-4-more.questions.json",
+      "words": 855
+    },
+    {
+      "n": 5,
+      "title": "The Lion and the Mouse and 4 more",
+      "text": "05-the-lion-and-the-mouse-and-4-more.txt",
+      "questions": "05-the-lion-and-the-mouse-and-4-more.questions.json",
+      "words": 833
+    },
+    {
+      "n": 6,
+      "title": "The Sheep and the Pig and 3 more",
+      "text": "06-the-sheep-and-the-pig-and-3-more.txt",
+      "questions": "06-the-sheep-and-the-pig-and-3-more.questions.json",
+      "words": 750
+    },
+    {
+      "n": 7,
+      "title": "The Owl and the Grasshopper and 3 more",
+      "text": "07-the-owl-and-the-grasshopper-and-3-more.txt",
+      "questions": "07-the-owl-and-the-grasshopper-and-3-more.questions.json",
+      "words": 913
+    },
+    {
+      "n": 8,
+      "title": "The Boys and the Frogs and 5 more",
+      "text": "08-the-boys-and-the-frogs-and-5-more.txt",
+      "questions": "08-the-boys-and-the-frogs-and-5-more.questions.json",
+      "words": 818
+    },
+    {
+      "n": 9,
+      "title": "The Ass and the Load of Salt and 4 more",
+      "text": "09-the-ass-and-the-load-of-salt-and-4-more.txt",
+      "questions": "09-the-ass-and-the-load-of-salt-and-4-more.questions.json",
+      "words": 780
+    },
+    {
+      "n": 10,
+      "title": "The Wild Boar and the Fox and 4 more",
+      "text": "10-the-wild-boar-and-the-fox-and-4-more.txt",
+      "questions": "10-the-wild-boar-and-the-fox-and-4-more.questions.json",
+      "words": 916
+    },
+    {
+      "n": 11,
+      "title": "The Wolf and the Sheep and 4 more",
+      "text": "11-the-wolf-and-the-sheep-and-4-more.txt",
+      "questions": "11-the-wolf-and-the-sheep-and-4-more.questions.json",
+      "words": 741
+    },
+    {
+      "n": 12,
+      "title": "The Stag and His Reflection and 3 more",
+      "text": "12-the-stag-and-his-reflection-and-3-more.txt",
+      "questions": "12-the-stag-and-his-reflection-and-3-more.questions.json",
+      "words": 834
+    },
+    {
+      "n": 13,
+      "title": "The Fox and the Lion and 4 more",
+      "text": "13-the-fox-and-the-lion-and-4-more.txt",
+      "questions": "13-the-fox-and-the-lion-and-4-more.questions.json",
+      "words": 843
+    },
+    {
+      "n": 14,
+      "title": "The Wolf and the Ass and 4 more",
+      "text": "14-the-wolf-and-the-ass-and-4-more.txt",
+      "questions": "14-the-wolf-and-the-ass-and-4-more.questions.json",
+      "words": 809
+    },
+    {
+      "n": 15,
+      "title": "The Bear and the Bees and 3 more",
+      "text": "15-the-bear-and-the-bees-and-3-more.txt",
+      "questions": "15-the-bear-and-the-bees-and-3-more.questions.json",
+      "words": 800
+    },
+    {
+      "n": 16,
+      "title": "The Dog in the Manger and 5 more",
+      "text": "16-the-dog-in-the-manger-and-5-more.txt",
+      "questions": "16-the-dog-in-the-manger-and-5-more.questions.json",
+      "words": 1035
+    },
+    {
+      "n": 17,
+      "title": "The Wolf and the Shepherd and 4 more",
+      "text": "17-the-wolf-and-the-shepherd-and-4-more.txt",
+      "questions": "17-the-wolf-and-the-shepherd-and-4-more.questions.json",
+      "words": 870
+    },
+    {
+      "n": 18,
+      "title": "The Goose and the Golden Egg and 5 more",
+      "text": "18-the-goose-and-the-golden-egg-and-5-more.txt",
+      "questions": "18-the-goose-and-the-golden-egg-and-5-more.questions.json",
+      "words": 803
+    },
+    {
+      "n": 19,
+      "title": "The Spendthrift and the Swallow and 4 more",
+      "text": "19-the-spendthrift-and-the-swallow-and-4-mo.txt",
+      "questions": "19-the-spendthrift-and-the-swallow-and-4-mo.questions.json",
+      "words": 755
+    },
+    {
+      "n": 20,
+      "title": "Mercury and the Woodman and 2 more",
+      "text": "20-mercury-and-the-woodman-and-2-more.txt",
+      "questions": "20-mercury-and-the-woodman-and-2-more.questions.json",
+      "words": 741
+    },
+    {
+      "n": 21,
+      "title": "The Serpent and the Eagle and 4 more",
+      "text": "21-the-serpent-and-the-eagle-and-4-more.txt",
+      "questions": "21-the-serpent-and-the-eagle-and-4-more.questions.json",
+      "words": 830
+    },
+    {
+      "n": 22,
+      "title": "The Man and the Lion and 3 more",
+      "text": "22-the-man-and-the-lion-and-3-more.txt",
+      "questions": "22-the-man-and-the-lion-and-3-more.questions.json",
+      "words": 721
+    },
+    {
+      "n": 23,
+      "title": "The Goatherd and the Goat and 3 more",
+      "text": "23-the-goatherd-and-the-goat-and-3-more.txt",
+      "questions": "23-the-goatherd-and-the-goat-and-3-more.questions.json",
+      "words": 754
+    },
+    {
+      "n": 24,
+      "title": "The Bat and the Weasels and 4 more",
+      "text": "24-the-bat-and-the-weasels-and-4-more.txt",
+      "questions": "24-the-bat-and-the-weasels-and-4-more.questions.json",
+      "words": 898
+    },
+    {
+      "n": 25,
+      "title": "The Cat and the Fox and 4 more",
+      "text": "25-the-cat-and-the-fox-and-4-more.txt",
+      "questions": "25-the-cat-and-the-fox-and-4-more.questions.json",
+      "words": 766
+    },
+    {
+      "n": 26,
+      "title": "The Porcupine and the Snakes and 4 more",
+      "text": "26-the-porcupine-and-the-snakes-and-4-more.txt",
+      "questions": "26-the-porcupine-and-the-snakes-and-4-more.questions.json",
+      "words": 775
+    },
+    {
+      "n": 27,
+      "title": "The Stag, the Sheep, and the Wolf and 2 more",
+      "text": "27-the-stag-the-sheep-and-the-wolf-and-2-mo.txt",
+      "questions": "27-the-stag-the-sheep-and-the-wolf-and-2-mo.questions.json",
+      "words": 786
+    },
+    {
+      "n": 28,
+      "title": "The Dog and His Reflection and 3 more",
+      "text": "28-the-dog-and-his-reflection-and-3-more.txt",
+      "questions": "28-the-dog-and-his-reflection-and-3-more.questions.json",
+      "words": 965
+    },
+    {
+      "n": 29,
+      "title": "The Cat and the Old Rat and 2 more",
+      "text": "29-the-cat-and-the-old-rat-and-2-more.txt",
+      "questions": "29-the-cat-and-the-old-rat-and-2-more.questions.json",
+      "words": 797
+    },
+    {
+      "n": 30,
+      "title": "The Miller, His Son, and the Ass and 2 more",
+      "text": "30-the-miller-his-son-and-the-ass-and-2-mor.txt",
+      "questions": "30-the-miller-his-son-and-the-ass-and-2-mor.questions.json",
+      "words": 715
+    },
+    {
+      "n": 31,
+      "title": "The Wolf, the Kid, and the Goat and 4 more",
+      "text": "31-the-wolf-the-kid-and-the-goat-and-4-more.txt",
+      "questions": "31-the-wolf-the-kid-and-the-goat-and-4-more.questions.json",
+      "words": 750
+    },
+    {
+      "n": 32,
+      "title": "The Mole and His Mother and 4 more",
+      "text": "32-the-mole-and-his-mother-and-4-more.txt",
+      "questions": "32-the-mole-and-his-mother-and-4-more.questions.json",
+      "words": 806
+    },
+    {
+      "n": 33,
+      "title": "The Ass in the Lion's Skin and 2 more",
+      "text": "33-the-ass-in-the-lion-s-skin-and-2-more.txt",
+      "questions": "33-the-ass-in-the-lion-s-skin-and-2-more.questions.json",
+      "words": 398
+    }
+  ]
+}

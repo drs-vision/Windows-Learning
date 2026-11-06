@@ -256,10 +256,10 @@ function kid() {
 const kidConfig = () => config?.children.find((k) => k.id === (kid()?.id)) ?? null;
 
 const QUESTS = {
-  'sound-keys': ['🔤', 'Letter Rescue'], 'typing-quest': ['⌨️', 'TypingQuest'], 'bible-typing': ['📖', 'Passage Typing'], 'my-passages': ['📝', 'Your passages'],
+  'sound-keys': ['🔤', 'Letter Rescue'], 'typing-quest': ['⌨️', 'TypingQuest'], 'bible-typing': ['📖', 'Passage Typing'], books: ['📚', 'Reading'], 'my-passages': ['📝', 'Your passages'],
   'khan-academy': ['🎓', 'Khan Academy'], duolingo: ['🦉', 'Duolingo'], rwt: ['✏️', 'Read, Write & Type!'], discgames: ['💿', 'Classic CD games'],
 };
-const OPTION_LABELS = { perAnswer: 'Coins per correct answer', perVideo: 'Coins per finished video', repeatsPerDay: 'Each passage pays' };
+const OPTION_LABELS = { perAnswer: 'Coins per correct answer', perVideo: 'Coins per finished video', repeatsPerDay: 'Each passage pays', waitMinutes: 'Wait before a retake (minutes)' };
 const OPTION_CHOICES = {
   repeatsPerDay: [['1', 'Once a day'], ['2', 'Twice a day'], ['3', '3 times a day'], ['0', 'Every time']],
 };
@@ -433,8 +433,9 @@ function rewardsScreen() {
         <div class="quest-top"><p class="kid-name">${icon} ${esc(title)}</p>${toggle(m.enabled, `data-q="${esc(m.id)}" data-f="enabled" aria-label="${esc(title)} on or off"`)}</div>
         ${m.enabled ? `
         <div class="grid2">
-          ${byWords ? field('1 🪙 per … words', `type="text" inputmode="numeric" value="${esc(m.options?.wordsPer ?? 20)}" data-q="${esc(m.id)}" data-opt="wordsPer"`) : field(({ discgames: 'Coins per bit of progress', rwt: 'Coins per finished activity', 'khan-academy': 'Coins per finished exercise', duolingo: 'Coins per lesson', 'sound-keys': 'Coins per lesson', 'typing-quest': 'Coins per drill' })[m.id] ?? 'Coins each', `type="text" inputmode="numeric" value="${m.coinsPerActivity}" data-q="${esc(m.id)}" data-f="coinsPerActivity"`)}
+          ${byWords ? field('1 🪙 per … words', `type="text" inputmode="numeric" value="${esc(m.options?.wordsPer ?? 20)}" data-q="${esc(m.id)}" data-opt="wordsPer"`) : field(({ books: 'Coins per right answer', discgames: 'Coins per bit of progress', rwt: 'Coins per finished activity', 'khan-academy': 'Coins per finished exercise', duolingo: 'Coins per lesson', 'sound-keys': 'Coins per lesson', 'typing-quest': 'Coins per drill' })[m.id] ?? 'Coins each', `type="text" inputmode="numeric" value="${m.coinsPerActivity}" data-q="${esc(m.id)}" data-f="coinsPerActivity"`)}
           ${field('Most per day', `type="text" inputmode="numeric" value="${m.dailyCap}" data-q="${esc(m.id)}" data-f="dailyCap"`, '0 = no limit')}
+          ${m.id === 'books' ? field('Typing mode: 1 🪙 per … words', `type="text" inputmode="numeric" value="${esc(m.options?.wordsPer ?? 20)}" data-q="books" data-opt="wordsPer"`) : ''}
           ${opts.filter(([k]) => !OPTION_CHOICES[k]).map(([k, v]) => field(OPTION_LABELS[k], `type="text" inputmode="numeric" value="${esc(v)}" data-q="${esc(m.id)}" data-opt="${esc(k)}"`)).join('')}
         </div>
         ${opts.filter(([k]) => OPTION_CHOICES[k]).map(([k, v]) => `<label class="field"><span>${esc(OPTION_LABELS[k])}</span><select data-q="${esc(m.id)}" data-opt="${esc(k)}">${OPTION_CHOICES[k].map(([cv, cl]) => `<option value="${cv}" ${cv === String(v) ? 'selected' : ''}>${esc(cl)}</option>`).join('')}</select></label>`).join('')}
