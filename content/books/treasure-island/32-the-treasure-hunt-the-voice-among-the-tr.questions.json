@@ -1,0 +1,214 @@
+{
+  "book": "treasure-island",
+  "chapter": 32,
+  "questions": [
+    {
+      "id": "treasure-island-32-01",
+      "type": "detail",
+      "q": "Why did the party sit down at the top of the slope?",
+      "choices": [
+        "To recover from the alarm and rest Silver and the sick men",
+        "To eat the treasure they had found",
+        "To wait for the doctor",
+        "To hide from Ben Gunn"
+      ],
+      "answer": 0,
+      "evidence": "partly to rest Silver and the sick folk"
+    },
+    {
+      "id": "treasure-island-32-02",
+      "type": "detail",
+      "q": "How many \"tall trees\" did Silver find in about the right line from Skeleton Island?",
+      "choices": [
+        "Three",
+        "One",
+        "Six",
+        "Ten"
+      ],
+      "answer": 0,
+      "evidence": "There are three 'tall trees'"
+    },
+    {
+      "id": "treasure-island-32-03",
+      "type": "detail",
+      "q": "What song suddenly came from the trees?",
+      "choices": [
+        "Fifteen men on the dead man's chest",
+        "God save the King",
+        "Pieces of eight",
+        "A hymn from Dick's Bible"
+      ],
+      "answer": 0,
+      "evidence": "Fifteen men on the dead man's chest"
+    },
+    {
+      "id": "treasure-island-32-04",
+      "type": "character",
+      "q": "How did the pirates react when they heard the voice singing?",
+      "choices": [
+        "They went pale with terror, and Morgan grovelled on the ground",
+        "They laughed and sang along",
+        "They fired their guns into the trees",
+        "They ignored it and kept walking"
+      ],
+      "answer": 0,
+      "evidence": "Morgan grovelled on the ground"
+    },
+    {
+      "id": "treasure-island-32-05",
+      "type": "inference",
+      "q": "Why did the words \"Fetch aft the rum, Darby!\" terrify the pirates even more?",
+      "choices": [
+        "They were Flint's last words",
+        "They were Silver's favourite saying",
+        "Darby was the name of their ship",
+        "They meant the rum was gone"
+      ],
+      "answer": 0,
+      "evidence": "They was his last words"
+    },
+    {
+      "id": "treasure-island-32-06",
+      "type": "character",
+      "q": "What does Silver's speech about \"seven hundred thousand pound\" show about him?",
+      "choices": [
+        "His greed was stronger than his fear",
+        "He did not believe in the treasure",
+        "He wanted to give up and go home",
+        "He was afraid of the dead"
+      ],
+      "answer": 0,
+      "evidence": "I'll not be beat by man or devil"
+    },
+    {
+      "id": "treasure-island-32-07",
+      "type": "inference",
+      "q": "What reasoning did Silver use to prove the voice was not a spirit?",
+      "choices": [
+        "A spirit would not have an echo",
+        "Spirits only come out at night",
+        "Spirits cannot sing",
+        "Flint never knew the song"
+      ],
+      "answer": 0,
+      "evidence": "what's he doing with an echo to him"
+    },
+    {
+      "id": "treasure-island-32-08",
+      "type": "detail",
+      "q": "Whose voice did Silver decide it really was?",
+      "choices": [
+        "Ben Gunn's",
+        "Captain Flint's",
+        "Dick's",
+        "Doctor Livesey's"
+      ],
+      "answer": 0,
+      "evidence": "By the powers, Ben Gunn!"
+    },
+    {
+      "id": "treasure-island-32-09",
+      "type": "inference",
+      "q": "Why did the pirates quickly lose their fear once they decided the voice was Ben Gunn's?",
+      "choices": [
+        "Nobody cared about Ben Gunn, dead or alive",
+        "Ben Gunn was their friend",
+        "Ben Gunn had no weapons",
+        "Ben Gunn had already left the island"
+      ],
+      "answer": 0,
+      "evidence": "dead or alive, nobody minds him"
+    },
+    {
+      "id": "treasure-island-32-10",
+      "type": "detail",
+      "q": "What was happening to Dick as they walked on?",
+      "choices": [
+        "He was falling sick with the fever",
+        "He was finding gold on the path",
+        "He was becoming braver",
+        "He was getting lost"
+      ],
+      "answer": 0,
+      "evidence": "the lad was falling sick"
+    },
+    {
+      "id": "treasure-island-32-11",
+      "type": "detail",
+      "q": "How was the third tall tree different from the first two?",
+      "choices": [
+        "It was the right one, a giant nearly two hundred feet tall",
+        "It had been cut down",
+        "It was the smallest of the three",
+        "It had the skeleton under it"
+      ],
+      "answer": 0,
+      "evidence": "The third rose nearly two hundred feet into the air"
+    },
+    {
+      "id": "treasure-island-32-12",
+      "type": "inference",
+      "q": "What did Jim believe Silver planned to do once he had the gold?",
+      "choices": [
+        "Seize the ship at night, kill the honest men and sail away",
+        "Keep his promise to the doctor",
+        "Share the gold with Jim",
+        "Give the treasure to the squire"
+      ],
+      "answer": 0,
+      "evidence": "cut every honest throat about that island"
+    },
+    {
+      "id": "treasure-island-32-13",
+      "type": "vocabulary",
+      "q": "As the gold grew near, Silver's \"nostrils stood out and quivered.\" What does this show?",
+      "choices": [
+        "He was greedy and excited",
+        "He had a bad cold",
+        "He was falling asleep",
+        "He was calm and relaxed"
+      ],
+      "answer": 0,
+      "evidence": "his nostrils stood out and quivered"
+    },
+    {
+      "id": "treasure-island-32-14",
+      "type": "sequence",
+      "q": "What did the treasure hunters find when they reached the spot under the tree?",
+      "choices": [
+        "An old dug-out pit with broken boards and no treasure",
+        "A chest full of gold coins",
+        "Ben Gunn sleeping",
+        "Flint's ghost"
+      ],
+      "answer": 0,
+      "evidence": "Before us was a great excavation"
+    },
+    {
+      "id": "treasure-island-32-15",
+      "type": "detail",
+      "q": "What name was branded on one of the boards in the pit?",
+      "choices": [
+        "WALRUS",
+        "HISPANIOLA",
+        "FLINT",
+        "ADMIRAL BENBOW"
+      ],
+      "answer": 0,
+      "evidence": "the name WALRUS"
+    },
+    {
+      "id": "treasure-island-32-16",
+      "type": "main-idea",
+      "q": "What is the big surprise at the end of this chapter?",
+      "choices": [
+        "The treasure has already been dug up and taken",
+        "The pirates find more gold than they expected",
+        "Silver is shot by Ben Gunn",
+        "Jim discovers the treasure alone"
+      ],
+      "answer": 0,
+      "evidence": "the seven hundred thousand pounds were gone!"
+    }
+  ]
+}

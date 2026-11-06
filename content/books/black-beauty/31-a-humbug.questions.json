@@ -1,0 +1,70 @@
+{
+  "book": "black-beauty",
+  "chapter": 31,
+  "questions": [
+    {
+      "id": "black-beauty-31-01",
+      "type": "detail",
+      "q": "What was the name of Beauty's new groom?",
+      "choices": ["Alfred Smirk", "Filcher", "Reuben Smith", "Robert"],
+      "answer": 0,
+      "evidence": "Alfred Smirk was the man"
+    },
+    {
+      "id": "black-beauty-31-02",
+      "type": "vocabulary",
+      "q": "Beauty calls Alfred Smirk a \"humbug.\" What does \"humbug\" mean here?",
+      "choices": ["A person who pretends to be better than he is", "A person who hums while he works", "A very hard worker", "A kind of insect"],
+      "answer": 0,
+      "evidence": "if ever there was a humbug in the shape of a groom"
+    },
+    {
+      "id": "black-beauty-31-03",
+      "type": "character",
+      "q": "When did Alfred do a great deal of stroking and patting?",
+      "choices": ["When his master was there to see it", "Every night before bed", "Only when Beauty was sick", "Never at all"],
+      "answer": 0,
+      "evidence": "he did a great deal of stroking and patting when his master was there to see it"
+    },
+    {
+      "id": "black-beauty-31-04",
+      "type": "detail",
+      "q": "What did Alfred spend a great deal of time on in the harness-room?",
+      "choices": ["His hair, whiskers and necktie", "Cleaning the saddles", "Mixing horse food", "Reading books"],
+      "answer": 0,
+      "evidence": "he spent a great deal of time about his hair, whiskers and necktie"
+    },
+    {
+      "id": "black-beauty-31-05",
+      "type": "detail",
+      "q": "What was the real cause of the bad smell in Beauty's box?",
+      "choices": ["Alfred never took all the old straw away", "The drains were broken", "A dead rat under the floor", "The bricklayer's lime"],
+      "answer": 0,
+      "evidence": "He never took all the straw away"
+    },
+    {
+      "id": "black-beauty-31-06",
+      "type": "sequence",
+      "q": "What happened when the bricklayer came to check the drains?",
+      "choices": ["He found nothing wrong but charged five shillings", "He found a broken drain and fixed it", "He told Mr. Barry to fire Alfred", "He refused to come in"],
+      "answer": 0,
+      "evidence": "found nothing amiss; so he put down some lime and charged the master five shillings"
+    },
+    {
+      "id": "black-beauty-31-07",
+      "type": "detail",
+      "q": "What did the farrier say was wrong with Beauty's feet?",
+      "choices": ["He had the thrush", "He had a stone in his shoe", "He had broken a hoof", "He needed new shoes"],
+      "answer": 0,
+      "evidence": "Your horse has got the 'thrush', and badly, too"
+    },
+    {
+      "id": "black-beauty-31-08",
+      "type": "inference",
+      "q": "Why did Mr. Barry decide to give up keeping a horse?",
+      "choices": ["He was disgusted at being fooled by two grooms in a row", "He moved to London", "He could not afford the food", "His doctor told him to stop riding"],
+      "answer": 0,
+      "evidence": "Mr. Barry was so much disgusted at being twice deceived by his grooms"
+    }
+  ]
+}

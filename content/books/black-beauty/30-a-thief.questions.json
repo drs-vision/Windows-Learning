@@ -1,0 +1,70 @@
+{
+  "book": "black-beauty",
+  "chapter": 30,
+  "questions": [
+    {
+      "id": "black-beauty-30-01",
+      "type": "detail",
+      "q": "Why did Mr. Barry buy Black Beauty?",
+      "choices": ["His doctor advised him to take horse exercise", "He wanted to start a cab business", "He wanted to race him", "He needed a horse for his farm"],
+      "answer": 0,
+      "evidence": "His doctor advised him to take horse exercise"
+    },
+    {
+      "id": "black-beauty-30-02",
+      "type": "character",
+      "q": "What was Mr. Barry like as a master?",
+      "choices": ["He treated Beauty well but knew very little about horses", "He was cruel and used the whip often", "He was an expert horseman", "He never rode Beauty at all"],
+      "answer": 0,
+      "evidence": "My master knew very little about horses, but he treated me well"
+    },
+    {
+      "id": "black-beauty-30-03",
+      "type": "detail",
+      "q": "What was missing from Beauty's food?",
+      "choices": ["Most of his oats", "All of his hay", "His water", "His beans"],
+      "answer": 0,
+      "evidence": "certainly not more than a quarter of what there should have been"
+    },
+    {
+      "id": "black-beauty-30-04",
+      "type": "detail",
+      "q": "What excuse had the groom given Mr. Barry for Beauty being dull and weak?",
+      "choices": ["Horses are always dull and weak in the autumn", "Beauty was getting old", "Beauty was being ridden too fast", "The hay was bad this year"],
+      "answer": 0,
+      "evidence": "horses are always dull and weak in the autumn"
+    },
+    {
+      "id": "black-beauty-30-05",
+      "type": "inference",
+      "q": "Why did the gentleman farmer say \"Autumn, fiddlesticks!\"?",
+      "choices": ["It was only August, so the groom's excuse made no sense", "He hated autumn", "He thought Beauty was sick", "He wanted Barry to sell Beauty to him"],
+      "answer": 0,
+      "evidence": "Why, this is only August"
+    },
+    {
+      "id": "black-beauty-30-06",
+      "type": "sequence",
+      "q": "How were the oats being taken each morning?",
+      "choices": ["Filcher's little boy carried them away in a covered basket", "Rats were eating them at night", "Filcher sold them at the market himself", "Another horse was eating them"],
+      "answer": 0,
+      "evidence": "a little boy, who always had a covered basket with him"
+    },
+    {
+      "id": "black-beauty-30-07",
+      "type": "vocabulary",
+      "q": "When the police came, Filcher \"blustered a good deal.\" What does \"blustered\" mean here?",
+      "choices": ["Talked loudly and angrily", "Cried quietly", "Ran away fast", "Laughed happily"],
+      "answer": 0,
+      "evidence": "though he blustered a good deal they walked him off"
+    },
+    {
+      "id": "black-beauty-30-08",
+      "type": "detail",
+      "q": "What happened to Filcher in the end?",
+      "choices": ["He was sentenced to prison for two months", "He was let go with a warning", "He was made head groom", "He paid Mr. Barry back and stayed"],
+      "answer": 0,
+      "evidence": "the man was sentenced to prison for two months"
+    }
+  ]
+}

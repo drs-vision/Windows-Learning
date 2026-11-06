@@ -1,0 +1,214 @@
+{
+  "book": "treasure-island",
+  "chapter": 33,
+  "questions": [
+    {
+      "id": "treasure-island-33-01",
+      "type": "character",
+      "q": "How did Silver react in the first moment after seeing the empty pit?",
+      "choices": [
+        "He kept his head and changed his plan at once",
+        "He fainted from shock",
+        "He jumped into the pit to dig",
+        "He blamed Jim and struck him"
+      ],
+      "answer": 0,
+      "evidence": "he kept his head, found his temper, and changed his plan"
+    },
+    {
+      "id": "treasure-island-33-02",
+      "type": "detail",
+      "q": "What did Silver secretly hand to Jim?",
+      "choices": [
+        "A double-barrelled pistol",
+        "A bag of gold",
+        "A knife",
+        "The compass"
+      ],
+      "answer": 0,
+      "evidence": "And he passed me a double-barrelled pistol."
+    },
+    {
+      "id": "treasure-island-33-03",
+      "type": "character",
+      "q": "What did Jim whisper to Silver after seeing him move away from the pirates?",
+      "choices": [
+        "So you've changed sides again",
+        "Thank you for saving me",
+        "Let's run for the boats",
+        "Where is the treasure?"
+      ],
+      "answer": 0,
+      "evidence": "So you've changed sides again"
+    },
+    {
+      "id": "treasure-island-33-04",
+      "type": "detail",
+      "q": "What did Morgan find while digging in the pit?",
+      "choices": [
+        "A two-guinea piece",
+        "A bar of gold",
+        "A skeleton's skull",
+        "A map"
+      ],
+      "answer": 0,
+      "evidence": "It was a two-guinea piece"
+    },
+    {
+      "id": "treasure-island-33-05",
+      "type": "inference",
+      "q": "What did George Merry accuse Silver of?",
+      "choices": [
+        "Knowing all along that the treasure was gone",
+        "Stealing the two-guinea piece",
+        "Being afraid of Flint's ghost",
+        "Letting Jim escape"
+      ],
+      "answer": 0,
+      "evidence": "that man there knew it all along"
+    },
+    {
+      "id": "treasure-island-33-06",
+      "type": "sequence",
+      "q": "What happened just as Merry raised his arm to lead a charge?",
+      "choices": [
+        "Three musket-shots flashed out of the thicket",
+        "Silver threw down his crutch and ran",
+        "Jim fired his pistol in the air",
+        "The pirates surrendered"
+      ],
+      "answer": 0,
+      "evidence": "three musket-shots flashed out of the thicket"
+    },
+    {
+      "id": "treasure-island-33-07",
+      "type": "detail",
+      "q": "Who came out of the nutmeg-trees with smoking muskets?",
+      "choices": [
+        "The doctor, Gray and Ben Gunn",
+        "The squire and Captain Smollett",
+        "Three pirates from the ship",
+        "Israel Hands and O'Brien"
+      ],
+      "answer": 0,
+      "evidence": "the doctor, Gray, and Ben Gunn joined us"
+    },
+    {
+      "id": "treasure-island-33-08",
+      "type": "detail",
+      "q": "Why did the doctor hurry everyone forward after the shooting?",
+      "choices": [
+        "To get between the surviving pirates and the boats",
+        "To find the treasure before dark",
+        "To catch Ben Gunn",
+        "To reach the stockade for food"
+      ],
+      "answer": 0,
+      "evidence": "We must head 'em off the boats"
+    },
+    {
+      "id": "treasure-island-33-09",
+      "type": "detail",
+      "q": "Who had really dug up and moved Flint's treasure?",
+      "choices": [
+        "Ben Gunn",
+        "Captain Smollett",
+        "Doctor Livesey",
+        "George Merry"
+      ],
+      "answer": 0,
+      "evidence": "he had found the treasure; he had dug it up"
+    },
+    {
+      "id": "treasure-island-33-10",
+      "type": "detail",
+      "q": "Where had Ben Gunn hidden the treasure?",
+      "choices": [
+        "In his cave on the two-pointed hill",
+        "Inside the stockade",
+        "Aboard the HISPANIOLA",
+        "Under the tall pine"
+      ],
+      "answer": 0,
+      "evidence": "a cave he had on the two-pointed hill"
+    },
+    {
+      "id": "treasure-island-33-11",
+      "type": "inference",
+      "q": "Why had the doctor given Silver the chart?",
+      "choices": [
+        "It was now useless, and it bought them a safe move to the cave",
+        "He had been tricked by Silver",
+        "He wanted the pirates to find the gold",
+        "He had lost interest in the treasure"
+      ],
+      "answer": 0,
+      "evidence": "given him the chart, which was now useless"
+    },
+    {
+      "id": "treasure-island-33-12",
+      "type": "detail",
+      "q": "How did Ben Gunn slow down the pirates before the doctor arrived?",
+      "choices": [
+        "He played on their superstitions with Flint's song and words",
+        "He set fire to the woods",
+        "He stole their boats",
+        "He fired warning shots"
+      ],
+      "answer": 0,
+      "evidence": "it had occurred to him to work upon the superstitions of his former shipmates"
+    },
+    {
+      "id": "treasure-island-33-13",
+      "type": "detail",
+      "q": "What did they find just inside the mouth of North Inlet?",
+      "choices": [
+        "The HISPANIOLA, floating by herself",
+        "The pirates' camp",
+        "A second wrecked ship",
+        "The squire in a boat"
+      ],
+      "answer": 0,
+      "evidence": "what should we meet but the HISPANIOLA, cruising by herself?"
+    },
+    {
+      "id": "treasure-island-33-14",
+      "type": "vocabulary",
+      "q": "The squire calls Silver \"a prodigious villain and imposter.\" What does prodigious mean here?",
+      "choices": [
+        "Enormous, very great",
+        "Small and harmless",
+        "Clever and kind",
+        "Young and foolish"
+      ],
+      "answer": 0,
+      "evidence": "you're a prodigious villain and imposter"
+    },
+    {
+      "id": "treasure-island-33-15",
+      "type": "detail",
+      "q": "What did Jim see in the far corner of the cave?",
+      "choices": [
+        "Heaps of coin and bars of gold",
+        "The bones of Flint's men",
+        "The pirates' black flag",
+        "Ben Gunn's goats"
+      ],
+      "answer": 0,
+      "evidence": "great heaps of coin and quadrilaterals built of bars of gold"
+    },
+    {
+      "id": "treasure-island-33-16",
+      "type": "main-idea",
+      "q": "What is this chapter mostly about?",
+      "choices": [
+        "The mutineers are defeated, and Jim learns that Ben Gunn had moved the treasure to his cave",
+        "Silver escapes with the treasure",
+        "Jim and Silver fight the doctor",
+        "The pirates retake the HISPANIOLA"
+      ],
+      "answer": 0,
+      "evidence": "Ben Gunn, the half-idiot maroon, was the hero from beginning to end"
+    }
+  ]
+}

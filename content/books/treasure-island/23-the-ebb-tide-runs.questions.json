@@ -1,0 +1,94 @@
+{
+  "book": "treasure-island",
+  "chapter": 23,
+  "questions": [
+    {
+      "id": "treasure-island-23-01",
+      "type": "detail",
+      "q": "What was the coracle's worst habit?",
+      "choices": ["It kept turning round and round instead of going straight", "It leaked badly", "It was too heavy to carry", "It tipped over in small waves"],
+      "answer": 0,
+      "evidence": "turning round and round was the manoeuvre she was best at"
+    },
+    {
+      "id": "treasure-island-23-02",
+      "type": "inference",
+      "q": "How did Jim manage to reach the ship even though he could not steer the coracle well?",
+      "choices": ["The tide carried him down to it", "Ben Gunn towed him", "He swam the last part", "A pirate threw him a rope"],
+      "answer": 0,
+      "evidence": "I never should have made the ship at all but for the tide"
+    },
+    {
+      "id": "treasure-island-23-03",
+      "type": "character",
+      "q": "Why did Jim stop before cutting the tight hawser (anchor rope)?",
+      "choices": ["He realized a taut rope suddenly cut could knock him out of the water", "He heard Silver coming", "His knife was too dull", "He changed his mind about the plan"],
+      "answer": 0,
+      "evidence": "a taut hawser, suddenly cut, is a thing as dangerous as a kicking horse"
+    },
+    {
+      "id": "treasure-island-23-04",
+      "type": "sequence",
+      "q": "What did Jim do once a puff of wind made the hawser go slack?",
+      "choices": ["He cut the strands one after another until only two were left", "He climbed up the hawser onto the deck", "He cut the whole rope at once", "He tied the coracle to the ship"],
+      "answer": 0,
+      "evidence": "cut one strand after another, till the vessel swung only by two"
+    },
+    {
+      "id": "treasure-island-23-05",
+      "type": "detail",
+      "q": "Who were the two men on board the HISPANIOLA?",
+      "choices": ["Israel Hands and the man in the red night-cap", "Silver and Anderson", "Ben Gunn and Gray", "The doctor and the squire"],
+      "answer": 0,
+      "evidence": "The other was, of course, my friend of the red night-cap"
+    },
+    {
+      "id": "treasure-island-23-06",
+      "type": "detail",
+      "q": "What were the two men in the cabin doing?",
+      "choices": ["Drinking and quarreling angrily", "Sleeping soundly", "Counting gold", "Steering the ship"],
+      "answer": 0,
+      "evidence": "they were not only tipsy; it was plain that they were furiously angry"
+    },
+    {
+      "id": "treasure-island-23-07",
+      "type": "vocabulary",
+      "q": "Jim says the buccaneers \"were as callous as the sea they sailed on.\" \"Callous\" means:",
+      "choices": ["Not caring about others' suffering", "Very clever", "Easily frightened", "Always cheerful"],
+      "answer": 0,
+      "evidence": "all these buccaneers were as callous as the sea they sailed on"
+    },
+    {
+      "id": "treasure-island-23-08",
+      "type": "sequence",
+      "q": "After cutting the last fibres of the hawser, what did Jim grab as he pushed away from the ship?",
+      "choices": ["A light cord trailing over the stern", "The ship's anchor chain", "A floating barrel", "A pirate's hat"],
+      "answer": 0,
+      "evidence": "my hands came across a light cord that was trailing overboard"
+    },
+    {
+      "id": "treasure-island-23-09",
+      "type": "detail",
+      "q": "What did Jim see when he looked through the cabin window?",
+      "choices": ["Hands and his companion locked in a deadly wrestle", "Silver counting the treasure", "The cabin was empty", "The two men fast asleep"],
+      "answer": 0,
+      "evidence": "Hands and his companion locked together in deadly wrestle"
+    },
+    {
+      "id": "treasure-island-23-10",
+      "type": "inference",
+      "q": "Why was Jim's heart jumping when he saw the camp-fire behind him?",
+      "choices": ["The current had turned and was sweeping the ship and coracle out toward the open sea", "The pirates had spotted him", "The fire had spread to the woods", "He thought the stockade was burning"],
+      "answer": 0,
+      "evidence": "it went spinning through the narrows for the open sea"
+    },
+    {
+      "id": "treasure-island-23-11",
+      "type": "main-idea",
+      "q": "What is this chapter mostly about?",
+      "choices": ["Jim cuts the HISPANIOLA loose, and both the ship and his tiny boat are swept out to sea", "Jim captures the ship from the pirates", "Jim returns safely to the stockade", "Hands discovers Jim and takes him prisoner"],
+      "answer": 0,
+      "evidence": "with a good, tough effort, cut the last fibres through"
+    }
+  ]
+}
