@@ -439,19 +439,38 @@ public sealed class RequestRouter
         return (await Task.WhenAll(tasks)).ToList();
     }
 
-    private void PayRwt(List<string> players)
+    /// <summary>
+    /// Pays for real progress only: each stage finished (or each level reached, the parent's choice) beyond the
+    /// furthest this child has got before. Saves that aren't new progress — sign-in, sign-out, replaying an earlier
+    /// stage, a new player starting over — pay nothing.
+    /// </summary>
+    private void PayRwt(List<(string Player, int Stages)> saves)
     {
         lock (_sync)
         {
             var child = _session.Current?.Child ?? _store.Current.Children.FirstOrDefault();
-            if (child is null) return;
+            if (child is null || saves.Count == 0) return;
             var s = child.Modules.GetValueOrDefault("rwt") ?? new ModuleSettings { CoinsPerActivity = 5, DailyCap = 60 };
-            if (!s.Enabled) return;
-            var room = s.DailyCap > 0 ? Math.Max(0, s.DailyCap - _ledger.EarnedToday(child.Id, "rwt")) : s.CoinsPerActivity;
-            var coins = s.CoinsPerActivity < 0 ? s.CoinsPerActivity : Math.Min(s.CoinsPerActivity, room);
+            var (who, now) = saves.MaxBy(x => x.Stages);
+            var progress = ProgressStore.Load(child.Id, "rwt") as System.Text.Json.Nodes.JsonObject ?? new System.Text.Json.Nodes.JsonObject();
+            int? best = progress["bestStages"]?.GetValue<int>();
+            if (best is null || now > best)
+            {
+                progress["bestStages"] = now;
+                ProgressStore.Save(child.Id, "rwt", progress);
+            }
+            // First time we see this child's progress: start counting from here (no back-pay for earlier play).
+            if (best is null || now <= best || !s.Enabled) return;
+            var perLevel = s.Options.GetValueOrDefault("payFor") == "level";
+            var units = perLevel ? RwtService.LevelFor(now) - RwtService.LevelFor(best.Value) : now - best.Value;
+            if (units <= 0) return;
+            var want = s.CoinsPerActivity * units;
+            var room = s.DailyCap > 0 ? Math.Max(0, s.DailyCap - _ledger.EarnedToday(child.Id, "rwt")) : want;
+            var coins = want < 0 ? want : Math.Min(want, room);
             if (coins == 0) return;
-            _ledger.Append(child.Id, LedgerKind.Earn, coins, "rwt", $"Read, Write & Type!: progress saved ({string.Join(", ", players)})", "rwt");
-            _log.LogInformation("RWT progress for {Child}: +{Coins}", child.DisplayName, coins);
+            var what = perLevel ? $"reached level {RwtService.LevelFor(now)}" : units == 1 ? $"finished stage {now} of 40" : $"finished stages {best + 1}–{now} of 40";
+            _ledger.Append(child.Id, LedgerKind.Earn, coins, "rwt", $"Read, Write & Type!: {who} {what}", "rwt");
+            _log.LogInformation("RWT progress for {Child}: {What}, {Coins}", child.DisplayName, what, coins);
             AfterChange();
         }
     }

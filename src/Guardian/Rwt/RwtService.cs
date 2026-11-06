@@ -30,8 +30,9 @@ public sealed class RwtService
     public string? Message { get; private set; }
     public List<string> LastPatches { get; private set; } = new();
 
-    /// <summary>A player's progress file was saved with new content (player names). The router pays, under its lock.</summary>
-    public event Action<List<string>>? ProgressSaved;
+    /// <summary>A player's progress file was saved with new content: who, and how many stages they have finished
+    /// (0–40). The router pays only for stages beyond the child's best so far, under its lock.</summary>
+    public event Action<List<(string Player, int Stages)>>? ProgressSaved;
 
     public RwtService(ILogger<RwtService> log)
     {
@@ -171,9 +172,9 @@ public sealed class RwtService
     private sealed class ProgressState { public Dictionary<string, string> Hashes { get; set; } = new(); public DateTimeOffset LastPaid { get; set; } }
 
     /// <summary>
-    /// The game saves a player's file when real work is done (lessons, levels). Each new save pays the RWT rate
-    /// (at most once every few minutes, within the daily cap). Every saved version is kept under rwt\history so the
-    /// payout can be made level-by-level once the file format is decoded from real saves.
+    /// The game rewrites a player's file often (after activities, on sign-in and sign-out, when settings change), so
+    /// a save on its own is not progress. Each save is decoded and reported with the number of stages finished; the
+    /// router pays only when that goes past the child's best. Every saved version is kept under rwt\history.
     /// </summary>
     public void CheckProgress()
     {
@@ -181,18 +182,17 @@ public sealed class RwtService
         {
             ProgressState st;
             try { st = JsonSerializer.Deserialize<ProgressState>(File.ReadAllText(StateFile)) ?? new(); } catch { st = new(); }
-            var changed = new List<string>();
+            var changed = new List<(string, int)>();
             foreach (var f in Directory.EnumerateFiles(SigninDir, "*.dat", SearchOption.AllDirectories))
             {
                 var rel = Path.GetRelativePath(SigninDir, f);
                 // SIGNIN\RWTWINCD.DAT is only the sign-in list; each player's progress is SIGNIN\<name><n>\RWTWINCD.DAT,
-                // which the game rewrites after every finished activity.
+                // which the game rewrites often (activities, sign-in/out, settings) — a save alone isn't progress.
                 if (!rel.Contains(Path.DirectorySeparatorChar)) continue;
                 byte[] bytes;
                 try { bytes = File.ReadAllBytes(f); } catch { continue; } // still being written; the next change will catch it
                 var h = Convert.ToHexString(SHA256.HashData(bytes));
                 if (st.Hashes.TryGetValue(rel, out var old) && old == h) continue;
-                var isNew = !st.Hashes.ContainsKey(rel);
                 st.Hashes[rel] = h;
                 try
                 {
@@ -202,18 +202,11 @@ public sealed class RwtService
                 }
                 catch { }
                 var who = PlayerName(Path.GetDirectoryName(rel)!);
-                var lvl = LevelOf(bytes);
-                _log.LogInformation("RWT progress saved for {Player} (level {Level})", who, lvl);
-                // A player's file first appears when they finish their first activity (signing in alone writes nothing
-                // there), so a brand-new file counts too, unless it is old (found when tracking first started).
-                var fresh = DateTime.Now - File.GetLastWriteTime(f) < TimeSpan.FromMinutes(30);
-                if (!isNew || fresh) changed.Add(lvl > 0 ? $"{who}, level {lvl}" : who);
+                var stages = StagesDone(bytes);
+                _log.LogInformation("RWT progress saved for {Player} ({Stages} stages finished)", who, stages);
+                if (stages >= 0) changed.Add((who, stages));
             }
-            if (changed.Count > 0 && DateTimeOffset.UtcNow - st.LastPaid > TimeSpan.FromMinutes(2))
-            {
-                st.LastPaid = DateTimeOffset.UtcNow;
-                ProgressSaved?.Invoke(changed);
-            }
+            if (changed.Count > 0) ProgressSaved?.Invoke(changed);
             File.WriteAllText(StateFile, JsonSerializer.Serialize(st));
         }
     }
@@ -241,11 +234,17 @@ public sealed class RwtService
     /// A player's file starts with a 0x16C-byte header: format version (0x102+), the lesson stage (0–39) and the step
     /// within it (3 = stage finished). The game shows "Level n" as stage/4 + 1 — ten levels.
     /// </summary>
-    public static int LevelOf(byte[] b)
+    public static int LevelOf(byte[] b) => StagesDone(b) is var s and >= 0 ? LevelFor(s) : 0;
+
+    /// <summary>The level the game shows once this many stages are finished (1–10).</summary>
+    public static int LevelFor(int stagesDone) => Math.Min(stagesDone, 39) / 4 + 1;
+
+    /// <summary>Stages finished (0–40), or -1 if this isn't a progress file we understand.</summary>
+    public static int StagesDone(byte[] b)
     {
-        if (b.Length < 0x16C || BitConverter.ToUInt16(b, 0) < 0x102) return 0;
+        if (b.Length < 0x16C || BitConverter.ToUInt16(b, 0) < 0x102) return -1;
         int stage = BitConverter.ToUInt16(b, 2), step = BitConverter.ToUInt16(b, 4);
-        if (step == 3) stage++;
-        return Math.Min(stage, 39) / 4 + 1;
+        if (stage > 40 || step > 3) return -1;
+        return Math.Min(40, stage + (step == 3 ? 1 : 0));
     }
 }
