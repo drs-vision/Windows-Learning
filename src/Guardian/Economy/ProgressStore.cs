@@ -37,6 +37,12 @@ public static class ProgressStore
         }
     }
 
+    /// <summary>Remove everything saved for a child (when the parent removes them).</summary>
+    public static void DeleteAll(string childId)
+    {
+        lock (Gate) { try { if (Directory.Exists(Dir(childId))) Directory.Delete(Dir(childId), recursive: true); } catch { } }
+    }
+
     public static void Save(string childId, string moduleId, JsonNode progress)
     {
         lock (Gate)

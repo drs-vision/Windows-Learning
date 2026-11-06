@@ -79,6 +79,19 @@ public static class LocalAccounts
         return userName;
     }
 
+    /// <summary>
+    /// Delete a local account (only when a parent removes a kid and ticks "also delete their Windows account").
+    /// Never an administrator. The profile folder (C:\Users\name) is left for the parent to delete or keep.
+    /// </summary>
+    public static void DeleteUser(string userName)
+    {
+        var bare = userName.Contains('\\') ? userName[(userName.LastIndexOf('\\') + 1)..] : userName;
+        if (IsLocalAdmin(bare)) throw new InvalidOperationException("That's an administrator account; CoinQuest won't delete it.");
+        var (code, output) = RunArgs("net", new[] { "user", bare, "/delete" });
+        if (code != 0) throw new InvalidOperationException("Windows couldn't delete the account: " + output.Trim());
+        _adminCache = null;
+    }
+
     private static (int Code, string Output) RunArgs(string file, IEnumerable<string> args)
     {
         var psi = new ProcessStartInfo(file) { RedirectStandardOutput = true, RedirectStandardError = true, UseShellExecute = false, CreateNoWindow = true };

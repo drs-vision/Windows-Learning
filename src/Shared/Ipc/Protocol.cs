@@ -126,6 +126,7 @@ public static class Ops
     public const string SetupCreateAccount = "setup.createAccount"; // { userName, fullName, password? } first run: a new Standard account → { account }
     public const string ParentAccounts = "parent.accounts";          // Windows accounts on this PC, for "Add a kid"
     public const string ParentCreateAccount = "parent.createAccount"; // { userName, fullName, password? } → { account }
+    public const string ParentRemoveChild = "parent.removeChild";    // { childId, deleteAccount? } take a kid off CoinQuest (locks lifted, their data removed) → { ok, accountDeleted }
     public const string ParentAddChild = "parent.addChild";          // { displayName, windowsAccount } another child on this PC → { childId }
     public const string SetupComplete = "setup.complete";           // { pin, child: { displayName, windowsAccount } }
 

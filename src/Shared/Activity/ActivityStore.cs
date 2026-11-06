@@ -38,6 +38,13 @@ public sealed class ActivityStore
         try { return File.Exists(f) ? JsonSerializer.Deserialize<Day>(File.ReadAllText(f), Json) : null; } catch { return null; }
     }
 
+    /// <summary>Remove a child's whole activity history (when the parent removes them).</summary>
+    public void Forget(string childId)
+    {
+        var dir = Path.Combine(_root, Safe(childId));
+        try { if (Directory.Exists(dir)) Directory.Delete(dir, recursive: true); } catch { }
+    }
+
     /// <summary>Days with anything recorded, newest first.</summary>
     public List<DateTime> Days(string childId)
     {

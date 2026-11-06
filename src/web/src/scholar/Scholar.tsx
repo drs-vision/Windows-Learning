@@ -139,7 +139,30 @@ function TopBar({ state, unlocks, onHome, onShop }: { state: ChildState; unlocks
         })()}
       </div>
       <Wallet balance={state.balance} onClick={onShop} />
+      <SignOut />
     </header>
+  );
+}
+
+/** Sign out of Windows (asks once, so a stray tap doesn't close everything). */
+function SignOut() {
+  const [ask, setAsk] = useState(false);
+  const [err, setErr] = useState('');
+  async function go() {
+    setErr('');
+    try { await bridge.signOut(); } catch (e) { setErr((e as Error).message); }
+  }
+  return (
+    <div class="signout">
+      <button class="ghost signout-btn" onClick={() => setAsk(!ask)} aria-expanded={ask} title="Sign out of this computer">⏻ <span>Sign out</span></button>
+      {ask && (
+        <div class="signout-pop" role="dialog" aria-label="Sign out">
+          <p>Sign out of the computer? Your coins and progress are saved.</p>
+          {err && <p class="error small">{err}</p>}
+          <div class="row"><button class="primary" onClick={go}>Sign out</button><button class="ghost" onClick={() => setAsk(false)}>Stay</button></div>
+        </div>
+      )}
+    </div>
   );
 }
 

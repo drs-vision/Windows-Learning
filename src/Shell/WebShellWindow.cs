@@ -394,6 +394,12 @@ public class WebShellWindow : Window
                 return Response.Success("", new { ok = true });
             case "shell.info":
                 return Response.Success("", new { app = _app, kiosk = _kiosk, version = typeof(WebShellWindow).Assembly.GetName().Version?.ToString(3), account = Environment.UserName });
+            case "shell.signOut":
+                // Sign the child out of Windows (the kid's own session; this app runs as them, so no rights are needed).
+                // Windows closes open programs; CoinQuest has already saved everything.
+                if (!ExitWindowsEx(0 /* EWX_LOGOFF */, 0x00040000 /* SHTDN_REASON_FLAG_PLANNED */))
+                    return Response.Fail("", "Windows didn't sign out (error " + System.Runtime.InteropServices.Marshal.GetLastWin32Error() + ")");
+                return Response.Success("", new { ok = true });
             case "shell.exit":
                 Dispatcher.Invoke(Close);
                 return Response.Success("", new { ok = true });
@@ -473,6 +479,7 @@ public class WebShellWindow : Window
 
     [System.Runtime.InteropServices.StructLayout(System.Runtime.InteropServices.LayoutKind.Sequential)]
     private struct LASTINPUTINFO { public uint cbSize; public uint dwTime; }
+    [System.Runtime.InteropServices.DllImport("user32", SetLastError = true)] private static extern bool ExitWindowsEx(uint flags, uint reason);
     [System.Runtime.InteropServices.DllImport("user32")] private static extern bool GetLastInputInfo(ref LASTINPUTINFO plii);
     [System.Runtime.InteropServices.DllImport("user32")] private static extern IntPtr GetForegroundWindow();
     [System.Runtime.InteropServices.DllImport("user32")] private static extern uint GetWindowThreadProcessId(IntPtr hWnd, out uint pid);

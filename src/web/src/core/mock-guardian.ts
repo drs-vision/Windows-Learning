@@ -158,6 +158,7 @@ export class MockGuardian {
         this.unlocks.push(unlock); this.emit({ name: 'state' });
         return ok({ balance: this.balance(), unlock });
       }
+      case 'shell.signOut': console.info('[mock] signed out of Windows'); return ok({ ok: true });
       case 'shell.context': case 'shell.flashpoint': case 'shell.openGame': case 'shell.openSite': case 'shell.closeGame': case 'shell.launch': return ok({ ok: true });
       case 'youtube.library': return ok({ channels: this.child.youTubeChannels, errors: [], videos: Array.from({ length: 9 }, (_, i) => ({ id: 'dQw4w9WgXcQ', title: `Amazing science video #${i + 1}`, channelId: this.child.youTubeChannels![0].id, channelTitle: 'Mark Rober', published: new Date().toISOString(), thumbnail: '' })) });
       case 'youtube.channel': { const n = Number(p?.next || 0); return ok({ videos: Array.from({ length: 12 }, (_, i) => ({ id: 'vid' + String(n * 12 + i).padStart(8, '0'), title: `Older video #${n * 12 + i + 1}`, channelId: p?.channelId, channelTitle: 'Mark Rober', published: new Date().toISOString(), thumbnail: '' })), next: n < 2 ? String(n + 1) : null }); }
@@ -295,6 +296,17 @@ export class MockGuardian {
         const kid = { ...structuredClone(this.child), id: 'kid-' + Date.now().toString(36), displayName: p.displayName, windowsAccount: p.windowsAccount, color: p.color };
         localStorage.setItem('cq.mock.kids', JSON.stringify([...this.moreKids(), kid]));
         this.emit({ name: 'state' }); return ok({ childId: kid.id });
+      }
+      case 'parent.removeChild': {
+        if (!parentOk) return fail('parent PIN required');
+        const all = [this.child, ...this.moreKids()];
+        const kid = all.find((k) => k.id === p.childId);
+        if (!kid) return fail('No such kid');
+        if (all.length <= 1) return fail(`${kid.displayName} is the only kid on this PC. Add another kid first, or uninstall CoinQuest to remove it entirely.`);
+        const rest = all.filter((k) => k.id !== p.childId);
+        if (kid.id === this.child.id) { this.child = rest[0]; this.persist(); }
+        localStorage.setItem('cq.mock.kids', JSON.stringify(rest.filter((k) => k.id !== this.child.id)));
+        this.emit({ name: 'state' }); return ok({ ok: true, accountDeleted: !!p.deleteAccount, accountError: null });
       }
       case 'parent.resolveClaim': {
         if (!parentOk) return fail('parent PIN required');

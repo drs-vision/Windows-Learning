@@ -1310,18 +1310,66 @@ function PhoneControl({ compact }: { compact?: boolean } = {}) {
   );
 }
 
+/** "Remove {kid}": a clear warning, typing their name to confirm, and an opt-in to delete their Windows account too. */
+function RemoveKid({ child, only, onDone }: { child: Child; only: boolean; onDone: (message: string) => void }) {
+  const [open, setOpen] = useState(false);
+  const [typed, setTyped] = useState('');
+  const [alsoAccount, setAlsoAccount] = useState(false);
+  const [busy, setBusy] = useState(false);
+  const [err, setErr] = useState('');
+  const name = child.displayName;
+  const account = child.windowsAccount?.replace(/^.*\\/, '') ?? '';
+  if (!open) return (
+    <div class="danger-zone">
+      {!only && <button class="danger-ghost" onClick={() => setOpen(true)}>Remove {name}…</button>}
+      {only && <p class="muted small">{name} is the only kid here. To take CoinQuest off this PC entirely, uninstall it from Windows Settings → Apps.</p>}
+    </div>
+  );
+  async function go() {
+    setBusy(true); setErr('');
+    try {
+      const r = await bridge.parentRemoveChild(child.id, alsoAccount);
+      onDone(r.accountError ? `${name} was removed from CoinQuest, but their Windows account wasn't deleted: ${r.accountError}` : `${name} was removed${r.accountDeleted ? ', along with their Windows account' : ''}.`);
+    } catch (e) { setErr((e as Error).message); }
+    setBusy(false);
+  }
+  return (
+    <div class="danger-zone">
+      <div class="remove-kid" role="alertdialog" aria-label={`Remove ${name}`}>
+        <b>⚠️ Remove {name} from CoinQuest?</b>
+        <ul>
+          <li>Their coins, quest progress, books, reading history and activity reports are <b>deleted for good</b>.</li>
+          <li>Their Windows account{account ? <> (<b>{account}</b>)</> : null} is no longer locked: it gets the full internet and opens normally, without CoinQuest.</li>
+          <li>Linked phones stop showing {name} after they refresh.</li>
+        </ul>
+        <label class="check"><input type="checkbox" checked={alsoAccount} onChange={(e) => setAlsoAccount((e.target as HTMLInputElement).checked)} />
+          <span>Also delete their Windows account{account ? ` “${account}”` : ''}. <span class="muted small">Their files in {'C:\\Users\\' + (account || 'name')} stay on the PC until you delete them. They need to be signed out.</span></span></label>
+        <label class="confirm-label"><span>Type <b>{name}</b> to confirm</span><input type="text" value={typed} onInput={(e) => setTyped((e.target as HTMLInputElement).value)} autoComplete="off" /></label>
+        {err && <p class="error small">{err}</p>}
+        <div class="row">
+          <button class="danger" disabled={busy || only || typed.trim().toLowerCase() !== name.trim().toLowerCase()} onClick={go}>{busy ? 'Removing…' : `Remove ${name}`}</button>
+          <button class="ghost" onClick={() => { setOpen(false); setTyped(''); setAlsoAccount(false); setErr(''); }}>Cancel</button>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 function Settings({ state, child, onSave, onChange }: { state: ParentState; child: Child; onSave: (c: Child) => void; onChange: () => void }) {
   const [pin, setPin] = useState(''); const [pinMsg, setPinMsg] = useState('');
+  const [removed, setRemoved] = useState('');
   const [upd, setUpd] = useState(state.updateStatus);
   const u = upd;
   return (
     <div class="settings">
       <div class="settings-cols">
         <div class="settings-col">
+      {removed && <p class="notice-done">✓ {removed}</p>}
       <div class="card">
         <h3>Child</h3>
         <label>Name<input value={child.displayName} onChange={(e) => onSave({ ...child, displayName: (e.target as HTMLInputElement).value })} /></label>
         <label class="check"><input type="checkbox" checked={child.activityReports !== false} onChange={(e) => onSave({ ...child, activityReports: (e.target as HTMLInputElement).checked })} /> Keep activity reports (time on each quest, site, channel and app; typing; what was finished)</label>
+        <RemoveKid key={child.id} child={child} only={state.household.children.length <= 1} onDone={(m) => { setRemoved(m); onChange(); }} />
       </div>
       <div class="card">
         <h3>Parent PIN</h3>

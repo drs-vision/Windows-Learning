@@ -134,6 +134,7 @@ class Bridge {
   setupCreateAccount(userName: string, fullName: string, password: string) { return this.call<{ account: string }>('setup.createAccount', { userName, fullName, password }); }
   parentAccounts() { return this.call<{ name: string; fullName: string; isAdmin: boolean; disabled: boolean; sid: string; usedBy?: string | null }[]>('parent.accounts', {}, { parent: true }); }
   parentCreateAccount(userName: string, fullName: string, password: string) { return this.call<{ account: string }>('parent.createAccount', { userName, fullName, password }, { parent: true }); }
+  parentRemoveChild(childId: string, deleteAccount: boolean) { return this.call<{ ok: boolean; accountDeleted: boolean; accountError?: string | null }>('parent.removeChild', { childId, deleteAccount }, { parent: true }); }
   parentAddChild(displayName: string, windowsAccount: string, color?: string) { return this.call<{ childId: string }>('parent.addChild', { displayName, windowsAccount, color }, { parent: true }); }
   setupComplete(pin: string, child: { displayName: string; windowsAccount: string; color?: string }, preset: string) { return this.call('setup.complete', { pin, child, preset }); }
 
@@ -144,6 +145,8 @@ class Bridge {
   closeGame() { return this.call('shell.closeGame').catch(() => undefined); }
   /** Tell the CoinQuest window what is on screen, for the parent's activity report (kind: quest, youtube, arcade, coinquest). */
   context(kind: string, key: string, label: string) { return this.call('shell.context', { kind, key, label }).catch(() => undefined); }
+  /** Sign out of Windows (the kid's app only). */
+  signOut() { return this.call<{ ok: boolean }>('shell.signOut'); }
   shellInfo() { return this.call<{ app: string; kiosk: boolean; version: string; account: string }>('shell.info'); }
 }
 

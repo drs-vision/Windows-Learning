@@ -50,7 +50,7 @@ public sealed class RequestRouter
     /// </summary>
     private static readonly HashSet<string> Slow = new()
     {
-        Ops.ArcadePrepare, Ops.ArcadeClassicFile, Ops.YouTubeLibrary, Ops.YouTubeCheck, Ops.YouTubeChannel, Ops.ParentYouTubeResolve, Ops.ParentCheckUpdate, Ops.ParentInstalledApps, Ops.SetupAccounts, Ops.SetupCreateAccount, Ops.ParentAccounts, Ops.ParentCreateAccount, Ops.ParentAddChild,
+        Ops.ArcadePrepare, Ops.ArcadeClassicFile, Ops.YouTubeLibrary, Ops.YouTubeCheck, Ops.YouTubeChannel, Ops.ParentYouTubeResolve, Ops.ParentCheckUpdate, Ops.ParentInstalledApps, Ops.SetupAccounts, Ops.SetupCreateAccount, Ops.ParentAccounts, Ops.ParentCreateAccount, Ops.ParentAddChild, Ops.ParentRemoveChild,
         Ops.ParentFpStatus, Ops.ParentFpSearch, Ops.ParentFpSuggest, Ops.ParentFpInstallClifp, Ops.ParentFpDownloadInstaller, Ops.ParentFpThumbs, Ops.ParentFpStockNow, Ops.ParentBlocked, Ops.ParentDiagnostics, Ops.ParentRwtImport, Ops.RwtLaunch, Ops.ParentDiscImport, Ops.ParentDiscSetupBegin, Ops.ParentDiscSetupFinish, Ops.DiscLaunch, Ops.ParentDiscRemove,
     };
     private readonly object _sync = new();
@@ -157,6 +157,7 @@ public sealed class RequestRouter
                 usedBy = _store.Current.Children.FirstOrDefault(c => c.WindowsSid == a.Sid || string.Equals(Bare(c.WindowsAccount), a.Name, StringComparison.OrdinalIgnoreCase))?.DisplayName })),
             Ops.ParentCreateAccount => Parent(req, client, child, () => CreateAccount(req)),
             Ops.ParentAddChild => Parent(req, client, child, () => AddChild(req)),
+            Ops.ParentRemoveChild => Parent(req, client, child, () => RemoveChild(req)),
 
             _ => Response.Fail(req.Id, $"unknown op {req.Op}")
         });
@@ -1463,6 +1464,44 @@ public sealed class RequestRouter
         AfterChange();
         _log.LogInformation("Added child {Child} ({Account})", displayName, account);
         return new { ok = true, childId = c.Id };
+    }
+
+    /// <summary>
+    /// Take a kid off CoinQuest: their internet lock and browser rules are lifted (their Windows account becomes an
+    /// ordinary one again), and their progress, history and reports are deleted. The coin ledger is a tamper-evident
+    /// chain, so its old entries stay but no longer show anywhere. Optionally deletes their Windows account too (never an
+    /// administrator, never while they're signed in). The last kid can't be removed: CoinQuest needs someone to look after.
+    /// </summary>
+    private object RemoveChild(Request req)
+    {
+        var id = Str(req, "childId");
+        var kid = _store.Current.Children.FirstOrDefault(c => c.Id == id) ?? throw new ArgumentException("No such kid");
+        if (_store.Current.Children.Count <= 1)
+            throw new InvalidOperationException($"{kid.DisplayName} is the only kid on this PC. Add another kid first, or uninstall CoinQuest to remove it entirely.");
+        var deleteAccount = req.Payload?["deleteAccount"]?.GetValue<bool>() == true;
+        if (deleteAccount && _session.Current?.Child.Id == id)
+            throw new InvalidOperationException($"{kid.DisplayName} is signed in right now. Sign them out first, then remove them with their account.");
+
+        _store.Update(h => h with { Children = h.Children.Where(c => c.Id != id).ToList() });
+        if (!string.IsNullOrEmpty(kid.WindowsSid))
+        {
+            NetLock.RemoveAll(new[] { kid.WindowsSid });
+            try { _policy.Clear(kid.WindowsSid); } catch (Exception ex) { _log.LogWarning(ex, "Couldn't clear browser rules for {Sid}", kid.WindowsSid); }
+        }
+        _policy.Invalidate();
+        _netLock.Ensure(force: true);
+        ProgressStore.DeleteAll(id);
+        _activity.Forget(id);
+
+        string? accountError = null;
+        if (deleteAccount && !string.IsNullOrEmpty(kid.WindowsAccount))
+        {
+            try { LocalAccounts.DeleteUser(kid.WindowsAccount); }
+            catch (Exception ex) { accountError = ex.Message; }
+        }
+        AfterChange();
+        _log.LogInformation("Removed child {Child} ({Account}); account deleted: {Deleted}", kid.DisplayName, kid.WindowsAccount, deleteAccount && accountError is null);
+        return new { ok = true, accountDeleted = deleteAccount && accountError is null, accountError };
     }
 
     private object SetupComplete(Request req)
