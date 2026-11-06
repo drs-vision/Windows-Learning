@@ -692,7 +692,20 @@ button.big { font-size: 1.1em; padding: .7em 1.4em; }
 .chapter-row .ch-title { display: grid; } .chapter-row .ch-title small { color: var(--muted); }
 .chapter-row .ch-state { font-size: .9rem; color: var(--ink-2); white-space: nowrap; } .chapter-row .ch-state em { font-style: normal; color: var(--gold); }
 .chapter-row.passed .ch-n { color: var(--green); } .chapter-row.next { outline: 2px solid var(--gold); }
-.book-text { background: #fbf7ee; color: #2a2418; border-radius: 14px; padding: 2em clamp(1.2em, 5vw, 3em); font-family: Georgia, "Times New Roman", serif; font-size: 1.25rem; line-height: 1.75; max-height: none; }
+.book-text { background: #fbf7ee; color: #2a2418; border-radius: 14px; padding: 1.6em clamp(1.2em, 5vw, 2.6em); font-family: Georgia, "Times New Roman", serif; font-size: 1.35rem; line-height: 1.7; max-width: 38em; margin: 0 auto; letter-spacing: .005em; word-spacing: .04em; }
+.book-text.plain { font-family: Verdana, "Segoe UI", system-ui, sans-serif; line-height: 1.75; letter-spacing: .01em; word-spacing: .08em; }
+.book-text.compact { max-width: none; padding: 1.2em 1.4em; }
+.book-bar-top { display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; max-width: 52rem; margin: 0 auto .6em; }
+.reader-tools { display: flex; gap: 4px; }
+.reader-tools button { min-width: 2.6em; }
+.reader-tools .big-a { font-size: 1.1em; }
+.reader-tools .plain-a { font-family: Verdana, system-ui, sans-serif; }
+.reader-tools button.on, .side-toggle.on { background: var(--panel-2); color: var(--ink); }
+.reading.with-text { max-width: 1500px; }
+.quiz-split { display: block; }
+.reading.with-text .quiz-split { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: 20px; align-items: start; }
+.quiz-text { position: sticky; top: 8px; max-height: calc(100vh - 140px); overflow: auto; border-radius: 14px; }
+@media (max-width: 900px) { .reading.with-text .quiz-split { grid-template-columns: 1fr; } .quiz-text { position: static; max-height: 50vh; } }
 .book-text p { margin: 0 0 1em; }
 .book-text mark { background: #ffe66d; color: inherit; border-radius: 3px; padding: 0 1px; box-shadow: 0 0 0 1px #f5d33f; }
 .book-text ::selection { background: #ffe66d99; }

@@ -181,7 +181,7 @@ function ChapterView({ book, n, shelf, onBack, onNext }: { book: BookStatus; n: 
     </div>
   );
 
-  if (mode === 'quiz' && quiz) return <QuizView title={name} quiz={quiz} bookId={book.id} n={n} onDone={(g) => { setResult(g); setQuiz(null); setMode('result'); reload(); }} onBack={() => setMode('read')} />;
+  if (mode === 'quiz' && quiz) return <QuizView title={name} quiz={quiz} bookId={book.id} n={n} text={data.text} onDone={(g) => { setResult(g); setQuiz(null); setMode('result'); reload(); }} onBack={() => setMode('read')} />;
   if (mode === 'result' && result) return <ResultView g={result} onReread={() => setMode(typing ? 'type' : 'read')} onBonus={() => setMode('bonus')} onNext={hasNext ? () => onNext(n + 1) : undefined} onBack={onBack} />;
   if (mode === 'bonus') return <BonusView bookId={book.id} n={n} onDone={() => { reload(); setMode('read'); }} />;
 
@@ -195,11 +195,32 @@ function ChapterView({ book, n, shelf, onBack, onNext }: { book: BookStatus; n: 
   );
 }
 
+const SIZES = [1.05, 1.2, 1.35, 1.55, 1.8];
+type ReaderPrefs = { size: number; font: 'book' | 'plain' };
+/** Text size and font for reading, remembered on this PC. */
+function useReaderPrefs() {
+  const [prefs, setPrefs] = useState<ReaderPrefs>(() => { try { return { size: 2, font: 'book', ...JSON.parse(localStorage.getItem('cq.books.prefs') ?? '{}') }; } catch { return { size: 2, font: 'book' }; } });
+  const set = (p: Partial<ReaderPrefs>) => setPrefs((cur) => { const next = { ...cur, ...p }; try { localStorage.setItem('cq.books.prefs', JSON.stringify(next)); } catch { /* fine */ } return next; });
+  return [prefs, set] as const;
+}
+
+function ReaderTools({ prefs, set }: { prefs: ReaderPrefs; set: (p: Partial<ReaderPrefs>) => void }) {
+  return (
+    <div class="reader-tools" role="toolbar" aria-label="Text size and font">
+      <button class="ghost small" disabled={prefs.size <= 0} onClick={() => set({ size: prefs.size - 1 })} aria-label="Smaller text">A−</button>
+      <button class="ghost small big-a" disabled={prefs.size >= SIZES.length - 1} onClick={() => set({ size: prefs.size + 1 })} aria-label="Bigger text">A+</button>
+      <button class={'ghost small' + (prefs.font === 'book' ? ' on' : '')} onClick={() => set({ font: 'book' })}>Book</button>
+      <button class={'ghost small plain-a' + (prefs.font === 'plain' ? ' on' : '')} onClick={() => set({ font: 'plain' })}>Plain</button>
+    </div>
+  );
+}
+
 /**
  * The chapter text, with highlighting: select words to highlight them, select highlighted words again to clear them.
  * Highlights are kept per chapter on this PC, so they're still there when the child comes back to reread.
  */
-function BookText({ text, store }: { text: string; store: string }) {
+function BookText({ text, store, compact }: { text: string; store: string; compact?: boolean }) {
+  const [prefs, setPrefs] = useReaderPrefs();
   const paras = useMemo(() => text.split(/\n\s*\n/).map((p) => p.replace(/\s*\n\s*/g, ' ')), [text]);
   const [marks, setMarks] = useState<Marks>(() => { try { return JSON.parse(localStorage.getItem(store) ?? '{}') as Marks; } catch { return {}; } });
   const ref = useRef<HTMLElement>(null);
@@ -235,8 +256,8 @@ function BookText({ text, store }: { text: string; store: string }) {
   }
   return (
     <>
-      <p class="muted small center book-tip">Tip: select words to highlight them. Select them again to clear.</p>
-      <article class="book-text" ref={ref} onMouseUp={onSelect} onTouchEnd={() => setTimeout(onSelect, 0)}>
+      <div class="book-bar-top">{compact ? <span /> : <span class="muted small">Tip: select words to highlight them. Select them again to clear.</span>}<ReaderTools prefs={prefs} set={setPrefs} /></div>
+      <article class={'book-text' + (prefs.font === 'plain' ? ' plain' : '') + (compact ? ' compact' : '')} style={{ fontSize: `${SIZES[prefs.size] ?? 1.35}rem` }} ref={ref} onMouseUp={onSelect} onTouchEnd={() => setTimeout(onSelect, 0)}>
         {paras.map((p, i) => <p data-p={i}>{pieces(p, marks[i]).map((x) => (x.mark ? <mark>{x.text}</mark> : x.text))}</p>)}
       </article>
     </>
@@ -291,7 +312,9 @@ function TypeChapter({ data, bookId, n, wordsPer, onChanged }: { data: ChapterDa
   );
 }
 
-function QuizView({ title, quiz, bookId, n, onDone, onBack }: { title: string; quiz: { id: string; questions: Shown[] }; bookId: string; n: number; onDone: (g: Graded) => void; onBack: () => void }) {
+function QuizView({ title, quiz, bookId, n, text, onDone, onBack }: { title: string; quiz: { id: string; questions: Shown[] }; bookId: string; n: number; text: string; onDone: (g: Graded) => void; onBack: () => void }) {
+  const [side, setSide] = useState(() => { try { return localStorage.getItem('cq.books.side') === '1'; } catch { return false; } });
+  const toggleSide = () => { const v = !side; setSide(v); try { localStorage.setItem('cq.books.side', v ? '1' : '0'); } catch { /* fine */ } };
   // Picks are kept with the open quiz, so going back to reread and returning finds them as they were.
   const store = `cq.books.quiz.${quiz.id}`;
   const saved = (() => { try { return JSON.parse(localStorage.getItem(store) ?? 'null') as { answers: number[]; flagged: string[] } | null; } catch { return null; } })();
@@ -307,9 +330,13 @@ function QuizView({ title, quiz, bookId, n, onDone, onBack }: { title: string; q
     catch (e) { setErr((e as Error).message); setBusy(false); }
   }
   return (
-    <div class="reading quiz">
-      <div class="reading-head"><button class="ghost" onClick={onBack}>← Reread the chapter</button><h2>Quiz · {title}</h2><span class="muted">{answers.filter((a) => a >= 0).length}/{quiz.questions.length}</span></div>
-      <p class="muted center">Get 70% or more to pass. You can go back and reread — your quiz and answers stay the same. Something wrong with a question? Tap ⚑ and it won't count.</p>
+    <div class={'reading quiz' + (side ? ' with-text' : '')}>
+      <div class="reading-head"><button class="ghost" onClick={onBack}>← Reread the chapter</button><h2>Quiz · {title}</h2><button class={'ghost small side-toggle' + (side ? ' on' : '')} onClick={toggleSide}>📖 {side ? 'Hide' : 'Show'} the chapter</button></div>
+      <div class="quiz-split">
+      {side && <aside class="quiz-text"><BookText text={text} store={`cq.books.marks.${bookId}/${n}`} compact /></aside>}
+      <div class="quiz-main">
+      <p class="muted center">{answers.filter((a) => a >= 0).length} of {quiz.questions.length} answered</p>
+      <p class="muted center">Get 70% or more to pass. You can look at the chapter while you answer. Something wrong with a question? Tap ⚑ and it won't count.</p>
       {quiz.questions.map((q, i) => (
         <div class={'quiz-q' + (flagged.includes(q.id) ? ' flagged' : '')}>
           <div class="quiz-q-head"><b>{i + 1}. {q.q}</b><button class="flag" title="This question seems wrong" onClick={() => setFlagged(flagged.includes(q.id) ? flagged.filter((x) => x !== q.id) : [...flagged, q.id])}>⚑</button></div>
@@ -322,6 +349,8 @@ function QuizView({ title, quiz, bookId, n, onDone, onBack }: { title: string; q
       ))}
       {err && <p class="error">{err}</p>}
       <div class="quiz-bar"><button class="primary" disabled={!done || busy} onClick={submit}>{busy ? 'Checking…' : 'Check my answers'}</button></div>
+      </div>
+      </div>
     </div>
   );
 }
