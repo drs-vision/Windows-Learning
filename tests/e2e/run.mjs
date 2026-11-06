@@ -513,8 +513,8 @@ await sleep(1000);
 
 // ---------- Scripture typing (errorless, paid by length) ----------
 log('== Scripture typing');
-await check('Scripture passage typed and paid', async () => {
-  await kid.click('text=Scripture Typing');
+await check('Passage Typing: a scripture passage typed and paid', async () => {
+  await kid.click('text=Passage Typing');
   await sleep(1000);
   await shot(kid, 'bible-pick');
   await kid.click('.activity-intro button.primary');
