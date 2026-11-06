@@ -1,0 +1,134 @@
+{
+  "book": "around-the-world-in-80-days",
+  "chapter": 25,
+  "questions": [
+    {
+      "id": "around-the-world-in-80-days-25-01",
+      "type": "detail",
+      "q": "What happened when Passepartout tried a joyful vault on the San Francisco quay?",
+      "choices": ["He landed perfectly and the crowd clapped for him", "He fell through some worm-eaten planks", "He knocked Fix into the water by mistake", "He slipped and broke his famous family watch"],
+      "answer": 1,
+      "evidence": "tumbling upon some worm-eaten planks, he fell through them"
+    },
+    {
+      "id": "around-the-world-in-80-days-25-02",
+      "type": "detail",
+      "q": "When did the first train for New York leave San Francisco?",
+      "choices": ["At six o'clock in the evening", "At noon that very day", "At seven the next morning", "At midnight that night"],
+      "answer": 0,
+      "evidence": "this was at six o'clock p.m."
+    },
+    {
+      "id": "around-the-world-in-80-days-25-03",
+      "type": "inference",
+      "q": "How had San Francisco changed since the days of 1849?",
+      "choices": ["It had shrunk into a small and quiet fishing town", "It had gone from a city of outlaws to a great centre of trade", "It had been burned down and was still being rebuilt", "It had become the capital city of the whole of the United States of America"],
+      "answer": 1,
+      "evidence": "it was now a great commercial emporium"
+    },
+    {
+      "id": "around-the-world-in-80-days-25-04",
+      "type": "detail",
+      "q": "What seemed \"very American\" to Passepartout at the hotel bar?",
+      "choices": ["Food was free; people paid only for their drinks", "Guests had to pay before they were allowed inside", "Everyone ate standing up at one very long table", "The waiters sang songs while serving the meals"],
+      "answer": 0,
+      "evidence": "without taking out their purses"
+    },
+    {
+      "id": "around-the-world-in-80-days-25-05",
+      "type": "character",
+      "q": "Why did Passepartout want to buy rifles and revolvers?",
+      "choices": ["He wanted to protect his master from Fix", "He had heard stories of attacks on the trains", "He planned to sell them later at a good profit in New York", "Fogg had told him to buy them for the trip"],
+      "answer": 1,
+      "evidence": "He had been listening to stories of attacks upon the trains"
+    },
+    {
+      "id": "around-the-world-in-80-days-25-06",
+      "type": "inference",
+      "q": "Fogg met Fix \"by the greatest chance in the world.\" Why is this phrase in quotation marks?",
+      "choices": ["Fix had planned the meeting", "Fogg said the words out loud when he saw Fix", "It was the name of a famous American song", "Aouda said it to tease Fogg about his luck"],
+      "answer": 0,
+      "evidence": "by the greatest chance in the world"
+    },
+    {
+      "id": "around-the-world-in-80-days-25-07",
+      "type": "detail",
+      "q": "What was happening on Montgomery Street when they arrived?",
+      "choices": ["A parade for the opening of the new railway", "A great crowd at a political meeting", "A fire in a petroleum warehouse", "A sale of goods from all over the world"],
+      "answer": 1,
+      "evidence": "It was a political meeting"
+    },
+    {
+      "id": "around-the-world-in-80-days-25-08",
+      "type": "vocabulary",
+      "q": "Fogg, Aouda and Fix were caught in a \"tumultuous scene.\" What does \"tumultuous\" mean?",
+      "choices": ["Loud, wild and confused", "Quiet and peaceful", "Sad and gloomy", "Neat and orderly"],
+      "answer": 0,
+      "evidence": "observed the tumultuous scene with surprise"
+    },
+    {
+      "id": "around-the-world-in-80-days-25-09",
+      "type": "inference",
+      "q": "Why did Fix want Mr. Fogg to stay safe in the crowd?",
+      "choices": ["He had grown to like Fogg as a true friend", "He wanted Fogg unhurt until they got back to London", "He was afraid Aouda would blame him for any harm", "He owed Fogg money for the boat and wanted to repay it first"],
+      "answer": 1,
+      "evidence": "anxious that Mr. Fogg should not receive any injury, at least until they got back to London"
+    },
+    {
+      "id": "around-the-world-in-80-days-25-10",
+      "type": "sequence",
+      "q": "Why were Fogg, Aouda and Fix suddenly trapped on the steps?",
+      "choices": ["A band of Mandiboy voters charged from behind", "The police closed off both ends of the street", "The steps collapsed under the weight of the crowd", "A runaway omnibus blocked the only way out"],
+      "answer": 0,
+      "evidence": "Mr. Fogg, Aouda, and Fix found themselves between two fires"
+    },
+    {
+      "id": "around-the-world-in-80-days-25-11",
+      "type": "character",
+      "q": "What did Fix do when the red-bearded man tried to strike Mr. Fogg?",
+      "choices": ["He pulled Aouda away to safety behind the steps", "He rushed in and took the blow himself", "He called for the police to arrest the man", "He hit the man first with his walking-stick"],
+      "answer": 1,
+      "evidence": "had not Fix rushed in and received it in his stead"
+    },
+    {
+      "id": "around-the-world-in-80-days-25-12",
+      "type": "detail",
+      "q": "What was the name of the man who tried to hit Mr. Fogg?",
+      "choices": ["Mr. Camerfield", "Colonel Stamp Proctor", "Mr. Mandiboy", "Mr. Batulcar"],
+      "answer": 1,
+      "evidence": "Colonel Stamp Proctor"
+    },
+    {
+      "id": "around-the-world-in-80-days-25-13",
+      "type": "sequence",
+      "q": "Where did Fix suggest they go right after escaping the crowd?",
+      "choices": ["To a doctor", "To a tailor's", "To the police", "To the station"],
+      "answer": 1,
+      "evidence": "To a tailor's."
+    },
+    {
+      "id": "around-the-world-in-80-days-25-14",
+      "type": "character",
+      "q": "What did Fogg say he would do about Colonel Proctor?",
+      "choices": ["Forget all about him and never speak of him again", "Come back to America to find him", "Write a letter of complaint to the American government", "Ask Fix to arrest him before they left the city"],
+      "answer": 1,
+      "evidence": "I will come back to America to find him"
+    },
+    {
+      "id": "around-the-world-in-80-days-25-15",
+      "type": "inference",
+      "q": "What is funny about the porter's answer at the end of the chapter?",
+      "choices": ["The huge riot had been over choosing only a justice of the peace", "The porter had not even heard about the fight in the streets", "The porter thought Fogg was one of the men running for office", "The porter said the meeting had been about the Alabama question after all"],
+      "answer": 0,
+      "evidence": "No, sir; of a justice of the peace."
+    },
+    {
+      "id": "around-the-world-in-80-days-25-16",
+      "type": "main-idea",
+      "q": "What is this chapter mostly about?",
+      "choices": ["Fogg's day in San Francisco, where he is caught in a wild political brawl", "Passepartout buying weapons and getting lost in the Chinese quarter", "Fix arresting Fogg on Montgomery Street with an American warrant", "Aouda deciding to stay in San Francisco and open a shop"],
+      "answer": 0,
+      "evidence": "the contest between Camerfield and Mandiboy"
+    }
+  ]
+}

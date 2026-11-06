@@ -1,0 +1,162 @@
+{
+  "book": "kidnapped",
+  "chapter": 29,
+  "questions": [
+    {
+      "id": "kidnapped-29-01",
+      "type": "detail",
+      "q": "What two matters still weighed on David the morning after he won his estate?",
+      "choices": [
+        "Helping Alan escape, and the case of James of the Glens",
+        "Paying his uncle's debts, and mending the old house of Shaws",
+        "Finding a wife, and buying new horses for the estate",
+        "Writing to Mr. Campbell, and visiting his parents' graves"
+      ],
+      "answer": 0,
+      "evidence": "I had still Alan, to whom I was so much beholden, on my hands"
+    },
+    {
+      "id": "kidnapped-29-02",
+      "type": "detail",
+      "q": "What did Rankeillor say was David's clear duty to Alan?",
+      "choices": [
+        "To help him out of the county, at any risk",
+        "To hand him over to the Lord Advocate",
+        "To send him straight back to Cluny's Cage at once",
+        "To keep him hidden at Shaws for a year"
+      ],
+      "answer": 0,
+      "evidence": "I must help him out of the county at whatever risk"
+    },
+    {
+      "id": "kidnapped-29-03",
+      "type": "inference",
+      "q": "Why did Rankeillor at first warn David against speaking up for James of the Glens?",
+      "choices": [
+        "A great noble wanted vengeance, and David could be put on trial too",
+        "James was truly guilty, and David would only be telling a lie for him",
+        "The Lord Advocate had already set James free and needed no witnesses",
+        "David was too young for a court to listen to anything he had to say"
+      ],
+      "answer": 0,
+      "evidence": "there is one way to shut your testimony out; and that is to put you in the dock"
+    },
+    {
+      "id": "kidnapped-29-04",
+      "type": "character",
+      "q": "What did Rankeillor do when David simply said he would \"just have to be hanged\"?",
+      "choices": [
+        "Took back his advice and told David to go and do his duty",
+        "Laughed and said that David was talking like a foolish child",
+        "Grew angry and refused to write him any letters at all",
+        "Said he would go to the Lord Advocate in David's place"
+      ],
+      "answer": 0,
+      "evidence": "Go and do your duty; and be hanged, if you must, like a gentleman"
+    },
+    {
+      "id": "kidnapped-29-05",
+      "type": "detail",
+      "q": "What was the first of the two letters Rankeillor wrote for David?",
+      "choices": [
+        "A letter to his bankers, placing a credit in David's name",
+        "A letter to Uncle Ebenezer, ordering him to leave Shaws",
+        "A letter to Mr. Campbell, telling him David was alive",
+        "A letter to an Appin lawyer, asking him to hire a ship"
+      ],
+      "answer": 0,
+      "evidence": "is to my bankers, the British Linen Company, placing a credit to your name"
+    },
+    {
+      "id": "kidnapped-29-06",
+      "type": "detail",
+      "q": "To whom was the second letter addressed?",
+      "choices": [
+        "Mr. Balfour of Pilrig",
+        "Lord Advocate Grant himself",
+        "The Duke of Argyle",
+        "Captain Hoseason"
+      ],
+      "answer": 0,
+      "evidence": "a letter to a namesake of your own, the learned Mr. Balfour of Pilrig"
+    },
+    {
+      "id": "kidnapped-29-07",
+      "type": "inference",
+      "q": "As David left Shaws, a nightcap bobbed in a top window \"like the head of a rabbit from a burrow.\" Who was it?",
+      "choices": [
+        "Uncle Ebenezer",
+        "Torrance, the clerk",
+        "Mr. Rankeillor",
+        "A new servant"
+      ],
+      "answer": 0,
+      "evidence": "the peak of a nightcap bobbing up and down"
+    },
+    {
+      "id": "kidnapped-29-08",
+      "type": "character",
+      "q": "How did David and Alan feel as they walked toward Edinburgh?",
+      "choices": [
+        "Sad, because they knew they would soon part",
+        "Cheerful, because all their troubles were over",
+        "Nervous, because soldiers were close behind",
+        "Angry, because they had quarrelled again"
+      ],
+      "answer": 0,
+      "evidence": "we were nearer tears than laughter"
+    },
+    {
+      "id": "kidnapped-29-09",
+      "type": "sequence",
+      "q": "What was the plan for getting Alan safely away?",
+      "choices": [
+        "An Appin Stewart lawyer would find him a ship while Alan hid nearby",
+        "David would buy a horse so Alan could ride north to the Highlands",
+        "Rankeillor would hide Alan in his own house until the hunt was all over",
+        "Alan would walk to Queensferry and ask the lass to row him out"
+      ],
+      "answer": 0,
+      "evidence": "it should be his part to find a ship and to arrange for Alan's safe embarkation"
+    },
+    {
+      "id": "kidnapped-29-10",
+      "type": "detail",
+      "q": "Where did David and Alan say good-bye?",
+      "choices": [
+        "Near Rest-and-be-Thankful",
+        "At the gates of Shaws",
+        "At the Hawes Inn door",
+        "On the castle hill in Edinburgh"
+      ],
+      "answer": 0,
+      "evidence": "when we got near to the place called Rest-and-be-Thankful"
+    },
+    {
+      "id": "kidnapped-29-11",
+      "type": "character",
+      "q": "How did David feel after leaving Alan and walking down into the city?",
+      "choices": [
+        "So lost and lonesome he could have sat and cried",
+        "Free at last, and glad to be done with outlaws",
+        "Excited to spend his money in the shops",
+        "Afraid that Alan would be caught by soldiers that day"
+      ],
+      "answer": 0,
+      "evidence": "I felt so lost and lonesome"
+    },
+    {
+      "id": "kidnapped-29-12",
+      "type": "main-idea",
+      "q": "What is this last chapter mostly about?",
+      "choices": [
+        "David plans his next duties and sadly parts from Alan",
+        "David and Alan sail away together to begin new lives in France",
+        "David moves into the House of Shaws and sends his uncle away",
+        "Alan is captured by soldiers on the road into Edinburgh"
+      ],
+      "answer": 0,
+      "evidence": "we had come to where our ways parted"
+    }
+  ]
+}

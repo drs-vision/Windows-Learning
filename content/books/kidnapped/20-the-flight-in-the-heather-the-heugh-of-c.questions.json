@@ -1,0 +1,150 @@
+{
+  "book": "kidnapped",
+  "chapter": 20,
+  "questions": [
+    {
+      "id": "kidnapped-20-01",
+      "type": "detail",
+      "q": "Where did Alan and David sleep at the Heugh of Corrynakiegh?",
+      "choices": ["In a shallow cave on a bed of heather", "In a shepherd's hut beside the burn", "Under a pine tree wrapped in plaids", "In a hollow on top of two great rocks"],
+      "answer": 0,
+      "evidence": "We slept in the cave, making our bed of heather bushes"
+    },
+    {
+      "id": "kidnapped-20-02",
+      "type": "vocabulary",
+      "q": "They spent their days at the water-side, \"groping about or (as they say) guddling\" for trout. What is \"guddling\"?",
+      "choices": ["Catching fish with your bare hands", "Fishing with a rod and a fly", "Spearing fish with a sharp stick", "Trapping fish in a woven basket"],
+      "answer": 0,
+      "evidence": "the little trouts that we caught with our hands under the stones"
+    },
+    {
+      "id": "kidnapped-20-03",
+      "type": "character",
+      "q": "How did Alan behave while teaching David to use a sword?",
+      "choices": ["He was patient and praised every small step", "He stormed and scolded and pushed him very close", "He laughed so hard that he could hardly teach", "He gave up after the first lesson in disgust"],
+      "answer": 1,
+      "evidence": "he stormed at me all through the lessons in a very violent manner of scolding"
+    },
+    {
+      "id": "kidnapped-20-04",
+      "type": "inference",
+      "q": "Why does David think Alan was glad to give him sword lessons?",
+      "choices": ["David sometimes beat him at fishing, and Alan was far better at swords", "Alan was afraid that soldiers would soon find them in the cave", "Alan had promised James that he would teach David", "Alan needed practice himself after so long at sea"],
+      "answer": 0,
+      "evidence": "as I had sometimes the upper-hand of him in the fishing"
+    },
+    {
+      "id": "kidnapped-20-05",
+      "type": "detail",
+      "q": "What did Alan make to send as a signal to his friend John Breck Maccoll?",
+      "choices": ["A small wooden cross with blackened ends", "A tartan flag tied to a long pole", "A letter written on birch bark", "A ring of stones in front of the house"],
+      "answer": 0,
+      "evidence": "he fashioned it in a cross, the four ends of which he blackened on the coals"
+    },
+    {
+      "id": "kidnapped-20-06",
+      "type": "detail",
+      "q": "What did Alan tie onto the cross along with the silver button?",
+      "choices": ["A sprig of birch and a sprig of fir", "A lock of his hair and a feather", "A trout and a bit of oatmeal", "A scrap of red cloth and a ribbon"],
+      "answer": 0,
+      "evidence": "tying in a little sprig of birch and another of fir"
+    },
+    {
+      "id": "kidnapped-20-07",
+      "type": "inference",
+      "q": "What was the button on the cross meant to tell John Breck?",
+      "choices": ["That the son of Duncan Stewart was in the heather and needed him", "That the whole clan was to rise up and fight the Campbells", "That John Breck should bring the button to James at once", "That Alan was leaving for France and would not return"],
+      "answer": 0,
+      "evidence": "THE SON OF DUNCAN IS IN THE HEATHER, AND HAS NEED OF ME"
+    },
+    {
+      "id": "kidnapped-20-08",
+      "type": "detail",
+      "q": "Why didn't Alan just write John Breck a letter in the first place?",
+      "choices": ["He had no paper", "John Breck could not read", "Letters might be stolen", "He had forgotten how"],
+      "answer": 1,
+      "evidence": "it would be a sore job for John Breck to read it"
+    },
+    {
+      "id": "kidnapped-20-09",
+      "type": "sequence",
+      "q": "What did Alan and David do the day after Alan placed the cross in the window?",
+      "choices": ["Lay at the edge of the wood keeping a close look-out", "Went down to the clachan to find John Breck", "Moved to a new hiding place farther up the mountain", "Fished all day in the burn as if nothing had happened"],
+      "answer": 0,
+      "evidence": "we lay the next day in the borders of the wood and kept a close look-out"
+    },
+    {
+      "id": "kidnapped-20-10",
+      "type": "detail",
+      "q": "How did Alan guide John Breck to their hiding place?",
+      "choices": ["By whistling to him again and again", "By lighting a small fire as a signal", "By waving the great-coat from a rock", "By sending David down to meet him"],
+      "answer": 0,
+      "evidence": "so by the sound of whistling, he was guided to the spot where we lay"
+    },
+    {
+      "id": "kidnapped-20-11",
+      "type": "detail",
+      "q": "What did Alan use to write the letter to James?",
+      "choices": ["A dove's quill, gunpowder ink, and a corner of his commission", "A burnt stick, and a page torn from David's book", "A pen and ink borrowed from the bouman's house", "A sharp stone, and a flat piece of birch bark"],
+      "answer": 0,
+      "evidence": "found the quill of a cushat-dove, which he shaped into a pen"
+    },
+    {
+      "id": "kidnapped-20-12",
+      "type": "detail",
+      "q": "What news did the bouman bring back about James of the Glens?",
+      "choices": ["He had fled to France", "He was in prison at Fort William", "He had been hanged at Inverara", "He was hiding in Mamore"],
+      "answer": 1,
+      "evidence": "James and some of his servants were already clapped in prison at Fort William"
+    },
+    {
+      "id": "kidnapped-20-13",
+      "type": "detail",
+      "q": "What reward did the bill offer for Alan and David?",
+      "choices": ["Ten pounds", "Fifty pounds", "One hundred pounds", "Five hundred pounds"],
+      "answer": 2,
+      "evidence": "one hundred pounds reward"
+    },
+    {
+      "id": "kidnapped-20-14",
+      "type": "inference",
+      "q": "Why did the description of David on the bill make him feel safer instead of more afraid?",
+      "choices": ["It said he was much older than he really was", "He had already changed out of the clothes it described", "It gave the wrong colour for his hair and eyes", "It said that he spoke only the Gaelic tongue"],
+      "answer": 1,
+      "evidence": "since I had changed these rags, the description had ceased to be a danger"
+    },
+    {
+      "id": "kidnapped-20-15",
+      "type": "character",
+      "q": "Why would Alan not change out of his fine clothes?",
+      "choices": ["He had no others and would not go to France in a bonnet", "He thought no soldier would dare to stop a gentleman", "He had promised his father never to wear Lowland clothes", "He believed the bill described someone else entirely"],
+      "answer": 0,
+      "evidence": "A fine sight I would be, if I went back to France in a bonnet!"
+    },
+    {
+      "id": "kidnapped-20-16",
+      "type": "character",
+      "q": "What did David privately think, but not say, after seeing the bill?",
+      "choices": ["That he would be safer apart from Alan", "That Alan had truly fired the shot", "That James had betrayed them both", "That he should give himself up"],
+      "answer": 0,
+      "evidence": "if I were to separate from Alan and his tell-tale clothes I should be safe against arrest"
+    },
+    {
+      "id": "kidnapped-20-17",
+      "type": "sequence",
+      "q": "What happened when Alan asked John Breck for his button back?",
+      "choices": ["The bouman said he had lost it, then suddenly found it", "The bouman said James had kept it as a keepsake", "The bouman refused to give it back without more money", "The bouman said soldiers had taken it from him"],
+      "answer": 0,
+      "evidence": "he seemed to find that button and handed it to Alan"
+    },
+    {
+      "id": "kidnapped-20-18",
+      "type": "main-idea",
+      "q": "What is this chapter mostly about?",
+      "choices": ["Alan and David hiding in Corrynakiegh while getting money sent from James", "Alan and David being chased out of Corrynakiegh by soldiers", "David learning to fish and deciding to live in the Highlands", "John Breck leading the soldiers to Alan and David's cave"],
+      "answer": 0,
+      "evidence": "we must get word sent to James, and he must find the siller for us"
+    }
+  ]
+}
