@@ -7,7 +7,8 @@ const esc = (s) => String(s ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '
 export const QUEST_NAMES = {
   'sound-keys': 'Letter Rescue', 'typing-quest': 'TypingQuest', 'bible-typing': 'Passage Typing', 'my-passages': 'Passage Typing',
   'khan-academy': 'Khan Academy', duolingo: 'Duolingo', rwt: 'Read, Write & Type!', discgames: 'Classic CD games',
-  books: 'Reading', parent: 'Given by a parent', arcade: 'Arcade', youtube: 'YouTube',
+  books: 'Reading',
+  'reading-quest': 'Reading Quest', parent: 'Given by a parent', arcade: 'Arcade', youtube: 'YouTube',
 };
 
 const SITE_NAMES = { 'khanacademy.org': 'Khan Academy', 'duolingo.com': 'Duolingo', 'typing.com': 'Typing.com', 'scratch.mit.edu': 'Scratch' };
@@ -35,7 +36,7 @@ const DONE = {
   'discgames:finished': 'CD game progress',
 };
 /** Counted for the Reading tile, not listed under Finished. */
-const READING_KEYS = new Set(['books:correct', 'books:answered', 'books:readWords', 'books:readSec']);
+const READING_KEYS = new Set(['books:correct', 'books:answered', 'books:readWords', 'books:readSec', 'reading-quest:correct', 'reading-quest:answered']);
 const doneName = (k) => DONE[k] ?? `${QUEST_NAMES[k.split(':')[0]] ?? k.split(':')[0]} finished`;
 
 export const dayKey = (d) => `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
@@ -188,7 +189,9 @@ function readingTile(m, link) {
   const level = r && r.chapters ? `<div class="rep-tile"><small>Reading level</small><b>${r.verified ? `Level ${r.verified}` : '—'} <em>${r.verified ? 'verified' : 'not yet'}</em></b><small>${[
     r.level ? `reading Level ${r.level}` : '', r.firstTry != null ? `${r.firstTry}% first try` : '', r.wpm ? `${r.wpm} words/min` : '', `${r.chapters} chapters`,
   ].filter(Boolean).join(' · ')}</small></div>` : '';
-  const out = now + level;
+  const qa = d['reading-quest:answered'] || 0;
+  const quest = qa ? `<div class="rep-tile"><small>Reading Quest</small><b>${Math.round(100 * (d['reading-quest:correct'] || 0) / qa)}% <em>right</em></b><small>${qa} paragraph${qa === 1 ? '' : 's'}</small></div>` : '';
+  const out = quest + now + level;
   // On the PC the tiles open the Reading analysis.
   return link && out ? out.replace(/<div class="rep-tile">/g, '<button class="rep-tile rep-link" data-rep-reading title="Open the reading analysis">').replace(/<\/div>(?=<button|$)/g, '</button>') : out;
 }

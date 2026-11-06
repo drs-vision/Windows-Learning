@@ -642,6 +642,7 @@ function paySummary(m: (typeof MODULES)[number], s: ModSettings): string {
   const pay = m.paysByWords ? `1 🪙 per ${o.wordsPer ?? 20} words`
     : m.id === 'khan-academy' ? `${o.perAnswer ?? 1} 🪙 per right answer · ${o.perVideo ?? 3} per video · ${s.coinsPerActivity} per exercise`
     : m.id === 'books' ? `${s.coinsPerActivity} 🪙 per right answer · ${allowedLabel(o.allowed)}`
+    : m.id === 'reading-quest' ? `${s.coinsPerActivity} 🪙 per right answer (×2 for longer paragraphs) · streak bonus every ${o.streakEvery ?? 5}`
     : m.id === 'duolingo' ? `${s.coinsPerActivity} 🪙 per lesson`
     : m.id === 'discgames' ? `${s.coinsPerActivity} 🪙 per bit of progress`
     : m.id === 'sound-keys' ? `${s.coinsPerActivity} 🪙 per lesson`
@@ -651,7 +652,7 @@ function paySummary(m: (typeof MODULES)[number], s: ModSettings): string {
 }
 
 const EARN_GROUPS: [string, string[]][] = [
-  ['Reading', ['books']],
+  ['Reading', ['reading-quest', 'books']],
   ['Typing', ['sound-keys', 'typing-quest', 'passages']],
   ['Learning websites', ['khan-academy', 'duolingo']],
   ['Classic games', ['discgames']],

@@ -92,6 +92,10 @@ public static class Ops
     public const string ParentFpDownloadInstaller = "parent.fpDownloadInstaller";
     public const string ParentDiagnostics = "parent.diagnostics";
     public const string ParentBooks = "parent.books"; // { childId? } the whole library, for choosing books (+ that child's progress)
+    public const string QuestState = "quest.state";    // Reading Quest: level, streak, ...
+    public const string QuestNext = "quest.next";      // → the next paragraph and its question (the open one if any)
+    public const string QuestAnswer = "quest.answer";  // { id, pick, readMs } → right?, the right choice, evidence, coins, streak
+    public const string ParentQuest = "parent.quest";  // { childId } → the parents' Reading Quest numbers
     public const string ParentReading = "parent.reading"; // { childId } → the reading analysis (ReadingReport)
     public const string ParentBooksReset = "parent.booksReset"; // { childId, bookId } → the child starts that book over (it pays again)
     public const string ParentActivity = "parent.activity"; // { childId, from, to } → daily activity reports (yyyy-MM-dd, inclusive)

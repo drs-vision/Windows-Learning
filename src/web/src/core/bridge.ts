@@ -99,6 +99,7 @@ class Bridge {
   parentArcadeRemove(gameId: string) { return this.call('parent.arcadeRemove', { gameId }, { parent: true }); }
   parentFpStatus() { return this.call<FpStatus>('parent.fpStatus', undefined, { parent: true }); }
   parentBooks(childId?: string) { return this.call<{ books: { id: string; title: string; author: string; published: number; level: number; grade: { min: number; max: number; label: string }; summary: string; edited?: string | null; measures?: { lexile?: { value: number; code?: string | null; url: string; note?: string | null } | null; atos?: { level: number; interest?: string | null; url: string; note?: string | null } | null } | null; formulaGrade?: number | null; chapters: number; words: number; ready: number; done: number; started: boolean }[]; flagged: number }>('parent.books', childId ? { childId } : undefined, { parent: true }); }
+  parentQuest(childId: string) { return this.call<import('../parent/reading').QuestData>('parent.quest', { childId }, { parent: true }); }
   parentReading(childId: string) { return this.call<import('../parent/reading').ReadingData>('parent.reading', { childId }, { parent: true }); }
   parentBooksReset(childId: string, bookId: string) { return this.call<{ ok: boolean }>('parent.booksReset', { childId, bookId }, { parent: true }); }
   parentActivity(childId: string, from: string, to: string) { return this.call<{ childId: string; kid: string; enabled: boolean; days: import('../../../phone/report').DayReport[] }>('parent.activity', { childId, from, to }, { parent: true }); }

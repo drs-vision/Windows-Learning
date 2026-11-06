@@ -122,6 +122,9 @@ public sealed class RequestRouter
             Ops.ParentBooks => Parent(req, client, child, () => ParentBooks(req)),
             Ops.ParentBooksReset => Parent(req, client, child, () => ResetBook(req)),
             Ops.ParentReading => Parent(req, client, child, () => ReadingAnalysis(req)),
+            Ops.ParentQuest => Parent(req, client, child, () => QuestReport(req)),
+            Ops.QuestState or Ops.QuestNext or Ops.QuestAnswer
+                => child is null ? Response.Fail(req.Id, "not a managed account") : Response.Success(req.Id, Quest(req, child, client.Account)),
             Ops.ParentActivity => Parent(req, client, child, () => ActivityDays(Str(req, "childId"), Str(req, "from"), Str(req, "to"))),
             Ops.ParentDiagnostics => Parent(req, client, child, () => new { version = Version, problems = CoinQuest.Guardian.FileLoggerProvider.Recent(), blocked = _gate.RecentlyBlocked().Take(20).Select(b => b.Host), internetLock = _netLock.Status, net = NetCheck().GetAwaiter().GetResult(), system = SystemCheck() }),
             Ops.ParentBlocked => Parent(req, client, child, () => _gate.RecentlyBlocked().Select(b => new { host = b.Host, at = b.At, reason = b.Reason })),
@@ -331,6 +334,72 @@ public sealed class RequestRouter
         if (s.RequireApproval) { _ledger.FileClaim(child.Id, moduleId, coins, detail, account); ApprovalsChanged?.Invoke(); return (coins, true); }
         if (coins != 0) _ledger.Append(child.Id, LedgerKind.Earn, coins, moduleId, detail, account);
         return (coins, false);
+    }
+
+    // ---- Reading Quest: one paragraph, one question, adaptive (ReadingQuest.cs) -------------------------------------
+
+    private readonly CoinQuest.Shared.Books.QuestLibrary _quest = new(Path.Combine(Paths.ContentRoot, "passages"));
+    private readonly Dictionary<string, string> _questLastTopic = new();
+
+    private static CoinQuest.Shared.Books.QuestState QuestState(string childId) =>
+        ProgressStore.Load(childId, "reading-quest")?.Deserialize<CoinQuest.Shared.Books.QuestState>(ProgressJson) ?? new();
+    private static void SaveQuest(string childId, CoinQuest.Shared.Books.QuestState st) =>
+        ProgressStore.Save(childId, "reading-quest", JsonSerializer.SerializeToNode(st, ProgressJson)!);
+
+    private object Quest(Request req, Child child, string account)
+    {
+        var s = child.Modules.GetValueOrDefault("reading-quest") ?? ModuleSettings.Defaults()["reading-quest"];
+        if (!s.Enabled) throw new InvalidOperationException("Reading Quest isn't turned on");
+        var st = QuestState(child.Id);
+        var all = _quest.All();
+        var streakEvery = Math.Clamp(int.TryParse(s.Options.GetValueOrDefault("streakEvery"), out var se) ? se : 5, 2, 50);
+        object Me() => new
+        {
+            level = CoinQuest.Shared.Books.ReadingQuest.Level(st.Rating), progress = Math.Round(CoinQuest.Shared.Books.ReadingQuest.LevelProgress(st.Rating), 2),
+            streak = st.Streak, bestStreak = st.BestStreak, streakEvery, answered = st.Answered,
+            perQuest = Math.Clamp(int.TryParse(s.Options.GetValueOrDefault("perQuest"), out var pq) ? pq : 6, 3, 20),
+            earnedToday = _ledger.EarnedToday(child.Id, "reading-quest"), dailyCap = s.DailyCap, left = all.Count(p => !st.Done.ContainsKey(p.Id)),
+        };
+        switch (req.Op)
+        {
+            case Ops.QuestState: return Me();
+            case Ops.QuestNext:
+            {
+                var shown = CoinQuest.Shared.Books.ReadingQuest.Next(st, all, _rng, _questLastTopic.GetValueOrDefault(child.Id), DateTimeOffset.Now);
+                SaveQuest(child.Id, st);
+                return new { passage = shown, me = Me() };
+            }
+            case Ops.QuestAnswer:
+            {
+                var id = Str(req, "id");
+                var p = _quest.Find(id) ?? throw new InvalidOperationException("That paragraph isn't here any more");
+                var picked = req.Payload?["pick"]?.GetValue<int>() ?? -1;
+                var ms = (long)(req.Payload?["readMs"]?.GetValue<double>() ?? 0);
+                var a = CoinQuest.Shared.Books.ReadingQuest.Answer(st, p, id, picked, ms, streakEvery, DateTimeOffset.Now);
+                SaveQuest(child.Id, st);
+                _questLastTopic[child.Id] = p.Topic;
+                var (coins, pending) = (0, false);
+                var (bonus, bonusPending) = (0, false);
+                if (a.Right && !a.Retry) (coins, pending) = PayQuest(child, "reading-quest", s, CoinQuest.Shared.Books.ReadingQuest.Pay(p.Words, s.CoinsPerActivity), $"Reading Quest: {p.Title}", account);
+                // A streak step (every N right in a row) pays its step number: 1, then 2, then 3...
+                if (a.StreakUp) (bonus, bonusPending) = PayQuest(child, "reading-quest", s, a.Streak / streakEvery, $"Reading Quest streak: {a.Streak} in a row", account);
+                if (child.ActivityReports && !a.Retry)
+                {
+                    _activity.Count(child.Id, DateTime.Now, "reading-quest:answered");
+                    if (a.Right) _activity.Count(child.Id, DateTime.Now, "reading-quest:correct");
+                }
+                AfterChange();
+                return new { a.Right, a.RightChoice, a.Evidence, a.Explain, a.Streak, a.StreakUp, a.Retry, coins, bonus, pending = pending || bonusPending, levelBefore = CoinQuest.Shared.Books.ReadingQuest.Level(a.Before), me = Me(), balance = _ledger.Balance(child.Id) };
+            }
+            default: throw new ArgumentException("Unknown Reading Quest request");
+        }
+    }
+
+    /// <summary>The parents' Reading Quest numbers (Today → Reading).</summary>
+    private object QuestReport(Request req)
+    {
+        var child = _store.Current.Children.FirstOrDefault(c => c.Id == Str(req, "childId")) ?? throw new ArgumentException("That child isn't on this PC");
+        return CoinQuest.Shared.Books.ReadingQuest.Report(QuestState(child.Id), _quest, DateTimeOffset.Now);
     }
 
     private object Books(Request req, Child child, string account)

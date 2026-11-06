@@ -206,6 +206,12 @@ export class MockGuardian {
           weeks, recent });
       }
       case 'parent.booksReset': if (p.bookId === 'peter-rabbit') Object.assign(mb, { passed: false, correct: 0, total: 0, attempts: 0, retakeAt: null, seen: [], bonusDone: [], quiz: null, bonus: null, typed: 0 }); return ok({ ok: true });
+      case 'quest.state': case 'quest.next': case 'quest.answer': {
+        const r = await mockQuest(req.op, p);
+        if (r?.coins > 0 || r?.bonus > 0) { this.append('earn', (r.coins ?? 0) + (r.bonus ?? 0), 'reading-quest', 'Reading Quest'); this.persist(); this.emit({ name: 'state' }); }
+        return ok(r);
+      }
+      case 'parent.quest': return ok(mockQuestReport());
       case 'books.list': case 'books.chapter': case 'books.quiz': case 'books.grade': case 'books.bonus': case 'books.bonusAnswer': case 'books.typed': {
         const r = mockBooks(req.op, p);
         if (r?.coins > 0) { this.append('earn', r.coins, 'books', 'Reading'); r.balance = this.balance(); this.persist(); this.emit({ name: 'state' }); }
@@ -320,4 +326,56 @@ function mockBooks(op: string, p: any): any {
   if (op === 'books.bonusAnswer') { const q = mbBank.find((x) => x.id === p.qid)!; const right = mb.bonus!.order.indexOf(q.answer); mb.bonusDone.push(q.id); return { right: p.choice === right, rightChoice: right, coins: p.choice === right ? 1 : 0, left: status().bonusLeft }; }
   if (op === 'books.typed') { mb.typed = Math.max(mb.typed, p.part + 1); return { coins: 2, pending: false, again: false, typed: mb.typed }; }
   return null;
+}
+
+
+// ---- Reading Quest preview: the same rules as ReadingQuest.cs, on the real paragraphs (loaded only in the preview) ----
+type QP = { id: string; title: string; topic: string; text: string; source: { name: string; url: string; license: string; author?: string }; readability: { grade: number }; question: { type: string; q: string; choices: string[]; answer: number; evidence: string; explain: string } };
+let qpool: QP[] | null = null;
+const qs = { rating: 1, answered: 0, streak: 0, best: 0, misses: 0, done: {} as Record<string, boolean>, retry: {} as Record<string, number>, open: null as null | { id: string; order: number[]; at: number; retry: boolean } };
+async function questPool(): Promise<QP[]> {
+  if (qpool) return qpool;
+  const files = import.meta.glob('../../../../content/passages/*.json', { import: 'default' });
+  const docs = await Promise.all(Object.values(files).map((f) => f() as Promise<{ passages: QP[] }>));
+  qpool = docs.flatMap((d) => d.passages ?? []);
+  return qpool;
+}
+const qme = (pool: QP[]) => ({ level: Math.floor(qs.rating) + 1, progress: Math.round((qs.rating - Math.floor(qs.rating)) * 100) / 100, streak: qs.streak, bestStreak: qs.best, streakEvery: 5, answered: qs.answered, perQuest: 6, earnedToday: 0, dailyCap: 40, left: pool.filter((p) => !(p.id in qs.done)).length });
+async function mockQuest(op: string, p: any): Promise<any> {
+  const pool = await questPool();
+  const secs = (x: QP) => Math.min(30, Math.max(15, Math.round(x.text.split(/\s+/).length / 4)));
+  const show = (x: QP, o: { order: number[]; at: number; retry: boolean }) => ({ id: x.id, title: x.title, text: x.text, q: x.question.q, choices: o.order.map((i) => x.question.choices[i]), sourceName: x.source.name, sourceUrl: x.source.url, license: x.source.license, author: x.source.author ?? null, retry: o.retry, readSeconds: secs(x), waitLeft: Math.max(0, Math.ceil(secs(x) - (Date.now() - o.at) / 1000)) });
+  if (op === 'quest.state') return qme(pool);
+  if (op === 'quest.next') {
+    if (qs.open) { const x = pool.find((y) => y.id === qs.open!.id)!; return { passage: show(x, qs.open), me: qme(pool) }; }
+    const due = Object.entries(qs.retry).find(([, n]) => n <= qs.answered);
+    if (due) { const x = pool.find((y) => y.id === due[0])!; qs.open = { id: x.id, order: [0, 1, 2, 3].sort(() => Math.random() - 0.5), at: Date.now(), retry: true }; return { passage: show(x, qs.open), me: qme(pool) }; }
+    const target = qs.misses >= 2 ? qs.rating - 1 : qs.rating + 0.3;
+    const near = pool.filter((x) => !(x.id in qs.done)).sort((a, b) => Math.abs(a.readability.grade - target) - Math.abs(b.readability.grade - target)).slice(0, 6);
+    if (!near.length) return { passage: null, me: qme(pool) };
+    const x = near[Math.floor(Math.random() * near.length)];
+    const order = [0, 1, 2, 3].sort(() => Math.random() - 0.5);
+    qs.open = { id: x.id, order, at: Date.now(), retry: false };
+    return { passage: show(x, qs.open), me: qme(pool) };
+  }
+  const x = pool.find((y) => y.id === p.id)!;
+  const rightChoice = qs.open!.order.indexOf(x.question.answer);
+  const right = p.pick === rightChoice;
+  if (qs.open!.retry) { delete qs.retry[x.id]; qs.open = null; return { retry: true, right, rightChoice, evidence: x.question.evidence, explain: x.question.explain, streak: qs.streak, streakUp: false, coins: 0, bonus: 0, pending: false, levelBefore: Math.floor(qs.rating) + 1, me: qme(pool) }; }
+  const before = qs.rating;
+  const e = 1 / (1 + Math.pow(10, (x.readability.grade - qs.rating) / 2));
+  qs.rating = Math.min(13, Math.max(0, qs.rating + (qs.answered < 15 ? 0.8 : 0.4) * ((right ? 1 : 0) - e)));
+  qs.answered++; qs.done[x.id] = right; qs.open = null; if (!right) qs.retry[x.id] = qs.answered + 5;
+  let streakUp = false;
+  if (right) { qs.streak++; qs.best = Math.max(qs.best, qs.streak); streakUp = qs.streak % 5 === 0; qs.misses = 0; } else { qs.streak = 0; qs.misses++; }
+  const words = x.text.split(/\s+/).length;
+  return { retry: false, right, rightChoice, evidence: x.question.evidence, explain: x.question.explain, streak: qs.streak, streakUp, coins: right ? Math.max(1, Math.ceil(words / 100)) : 0, bonus: streakUp ? qs.streak / 5 : 0, pending: false, levelBefore: Math.floor(before) + 1, me: qme(pool) };
+}
+function mockQuestReport() {
+  const d = (n: number) => { const x = new Date(); x.setDate(x.getDate() - n); return x.toISOString().slice(0, 10); };
+  return { rating: 2.8, level: 3, answered: 64, percent30: 78, answered30: 41, percentAll: 75, streak: 3, bestStreak: 11, wpm: 118, minutes: 52,
+    history: Array.from({ length: 21 }, (_, i) => ({ day: d(20 - i), rating: Math.round((1 + i * 0.09 + Math.sin(i) * 0.15) * 10) / 10 })),
+    types: [{ type: 'detail', answered: 20, right: 18, percent: 90 }, { type: 'main-idea', answered: 11, right: 8, percent: 73 }, { type: 'vocabulary', answered: 9, right: 7, percent: 78 }, { type: 'inference', answered: 12, right: 6, percent: 50 }, { type: 'sequence', answered: 6, right: 5, percent: 83 }, { type: 'cause-effect', answered: 6, right: 4, percent: 67 }],
+    bands: [{ grade: 0, answered: 9, percent: 100 }, { grade: 1, answered: 14, percent: 86 }, { grade: 2, answered: 20, percent: 75 }, { grade: 3, answered: 15, percent: 60 }, { grade: 4, answered: 6, percent: 50 }],
+    recent: [], pool: 300, left: 236 };
 }
