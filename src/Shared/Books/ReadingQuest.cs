@@ -12,7 +12,7 @@ namespace CoinQuest.Shared.Books;
 /// </code>
 /// Like game matchmaking (Brawl Stars trophies, chess Elo): a right answer on a hard paragraph moves the rating up a lot, on an easy one a little; a miss on an easy one
 /// moves it down more than a miss on a hard one. Everything is on the US-grade scale of the readability formulas
-/// (content/passages/README.md), which is what parents see; children see "Quest level" = whole part + 1.
+/// (content/passages/README.md), which is what parents see; children see "Level" (see Level()).
 /// </summary>
 public sealed class QuestLibrary
 {
@@ -111,8 +111,10 @@ public static class ReadingQuest
 
     public static double Expected(double rating, double grade) => 1 / (1 + Math.Pow(10, (grade - rating) / Scale));
     public static double K(int answered) => answered < 15 ? 0.8 : 0.4;
-    public static int Level(double rating) => (int)Math.Floor(Math.Max(0, rating)) + 1;
-    public static double LevelProgress(double rating) => Math.Max(0, rating) - Math.Floor(Math.Max(0, rating));
+    /// <summary>What a child sees: Level 1 below a rating of 2, then the rating's whole number (new players start at Level 1).</summary>
+    public static int Level(double rating) => Math.Max(1, (int)Math.Floor(rating));
+    /// <summary>The bar towards the next level (0-1).</summary>
+    public static double LevelProgress(double rating) => rating < 1 ? Math.Max(0, rating) / 2 : rating < 2 ? 0.5 + (rating - 1) / 2 : rating - Math.Floor(rating);
 
     /// <summary>The next paragraph: the open one if there is one, else one not read yet near the rating (a little above;
     /// about a grade below after two misses in a row).</summary>

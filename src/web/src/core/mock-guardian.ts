@@ -35,6 +35,7 @@ export class MockGuardian {
       'typing-quest': { enabled: false, coinsPerActivity: 10, dailyCap: 80, requireApproval: false },
       'bible-typing': { enabled: true, coinsPerActivity: 15, dailyCap: 60, requireApproval: false },
       'khan-academy': { enabled: true, coinsPerActivity: 5, dailyCap: 80, requireApproval: false },
+      'reading-quest': { enabled: true, coinsPerActivity: 1, dailyCap: 40, requireApproval: false, options: { perQuest: '6', streakEvery: '2' } },
       books: { enabled: true, coinsPerActivity: 3, dailyCap: 120, requireApproval: false, options: { waitMinutes: '5', wordsPer: '20', allowed: '*' } },
     },
   };
@@ -340,7 +341,8 @@ async function questPool(): Promise<QP[]> {
   qpool = docs.flatMap((d) => d.passages ?? []);
   return qpool;
 }
-const qme = (pool: QP[]) => ({ level: Math.floor(qs.rating) + 1, progress: Math.round((qs.rating - Math.floor(qs.rating)) * 100) / 100, streak: qs.streak, bestStreak: qs.best, streakEvery: 5, answered: qs.answered, perQuest: 6, earnedToday: 0, dailyCap: 40, left: pool.filter((p) => !(p.id in qs.done)).length });
+const qlevel = (r: number) => Math.max(1, Math.floor(r));
+const qme = (pool: QP[]) => ({ level: qlevel(qs.rating), progress: Math.round((qs.rating < 1 ? qs.rating / 2 : qs.rating < 2 ? 0.5 + (qs.rating - 1) / 2 : qs.rating - Math.floor(qs.rating)) * 100) / 100, streak: qs.streak, bestStreak: qs.best, streakEvery: 2, answered: qs.answered, perQuest: 6, earnedToday: 0, dailyCap: 40, left: pool.filter((p) => !(p.id in qs.done)).length });
 async function mockQuest(op: string, p: any): Promise<any> {
   const pool = await questPool();
   const secs = (x: QP) => Math.min(30, Math.max(15, Math.round(x.text.split(/\s+/).length / 4)));
@@ -361,15 +363,15 @@ async function mockQuest(op: string, p: any): Promise<any> {
   const x = pool.find((y) => y.id === p.id)!;
   const rightChoice = qs.open!.order.indexOf(x.question.answer);
   const right = p.pick === rightChoice;
-  if (qs.open!.retry) { delete qs.retry[x.id]; qs.open = null; return { retry: true, right, rightChoice, evidence: x.question.evidence, explain: x.question.explain, streak: qs.streak, streakUp: false, coins: 0, bonus: 0, pending: false, levelBefore: Math.floor(qs.rating) + 1, me: qme(pool) }; }
+  if (qs.open!.retry) { delete qs.retry[x.id]; qs.open = null; return { retry: true, right, rightChoice, evidence: x.question.evidence, explain: x.question.explain, streak: qs.streak, streakUp: false, coins: 0, bonus: 0, pending: false, levelBefore: qlevel(qs.rating), me: qme(pool) }; }
   const before = qs.rating;
   const e = 1 / (1 + Math.pow(10, (x.readability.grade - qs.rating) / 2));
   qs.rating = Math.min(13, Math.max(0, qs.rating + (qs.answered < 15 ? 0.8 : 0.4) * ((right ? 1 : 0) - e)));
   qs.answered++; qs.done[x.id] = right; qs.open = null; if (!right) qs.retry[x.id] = qs.answered + 5;
   let streakUp = false;
-  if (right) { qs.streak++; qs.best = Math.max(qs.best, qs.streak); streakUp = qs.streak % 5 === 0; qs.misses = 0; } else { qs.streak = 0; qs.misses++; }
+  if (right) { qs.streak++; qs.best = Math.max(qs.best, qs.streak); streakUp = qs.streak % 2 === 0; qs.misses = 0; } else { qs.streak = 0; qs.misses++; }
   const words = x.text.split(/\s+/).length;
-  return { retry: false, right, rightChoice, evidence: x.question.evidence, explain: x.question.explain, streak: qs.streak, streakUp, coins: right ? Math.max(1, Math.ceil(words / 100)) : 0, bonus: streakUp ? qs.streak / 5 : 0, pending: false, levelBefore: Math.floor(before) + 1, me: qme(pool) };
+  return { retry: false, right, rightChoice, evidence: x.question.evidence, explain: x.question.explain, streak: qs.streak, streakUp, coins: right ? Math.max(1, Math.ceil(words / 100)) : 0, bonus: streakUp ? Math.min(3, qs.streak / 2) : 0, pending: false, levelBefore: qlevel(before), me: qme(pool) };
 }
 function mockQuestReport() {
   const d = (n: number) => { const x = new Date(); x.setDate(x.getDate() - n); return x.toISOString().slice(0, 10); };

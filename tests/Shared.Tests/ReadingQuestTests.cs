@@ -26,6 +26,9 @@ public class ReadingQuestTests
         var s = new QuestState(); var rng = new Random(3);
         for (var i = 0; i < 12; i++) Do(s, all, true, rng);
         Assert.True(s.Rating > 3, $"rating {s.Rating}");
+        Assert.Equal(1, ReadingQuest.Level(1.0));
+        Assert.Equal(1, ReadingQuest.Level(1.9));
+        Assert.Equal(3, ReadingQuest.Level(3.2));
         var next = ReadingQuest.Next(s, all, rng)!;
         Assert.InRange(all.First(x => x.Id == next.Id).Grade, s.Rating - 1, s.Rating + 1.5);
         var before = s.Rating;

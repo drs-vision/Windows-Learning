@@ -63,9 +63,10 @@ One file per source, e.g. `content/passages/noaa-scijinks.json`:
 * Matchmaking like a game rating (Elo / Brawl Stars trophies): each paragraph's difficulty is its readability grade;
   the child's rating moves up after a right answer (more for a hard paragraph) and down after a miss (more for an easy
   one); the next paragraph is picked near the rating, a little above it, and about a grade below after two misses in a
-  row. Children see "Level" = whole rating + 1 and a bar to the next level.
+  row. Children see "Level" (1 below a rating of 2, then the whole rating) and a bar to the next level.
 * Read first: the answers unlock after about 4 words a second (15-30 seconds); the PC refuses earlier answers.
 * A right answer finishes a paragraph for good and pays 1 coin per 100 words (rounded up) x the parent's setting.
   A miss brings the paragraph back 5 answers later as a "second look" (choices reshuffled): no coins, and the rating
   and streak don't change. A second miss retires it.
-* Streak: right answers in a row; every N in a row (default 5) is a streak step that pays its number (1, 2, 3, ...).
+* Streak: right answers in a row fill a ring split into N parts (default 2); a full ring adds 1 to the number in its
+  middle and pays that number (1, 2, then 3 at most). A miss empties the ring and resets the number.

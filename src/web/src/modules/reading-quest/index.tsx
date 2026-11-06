@@ -21,7 +21,7 @@ export const readingQuest: LessonModule = {
   defaults: { coinsPerActivity: 1, dailyCap: 40 },
   options: [
     { key: 'perQuest', label: 'Paragraphs per quest', number: { min: 3, max: 20 }, default: '6' },
-    { key: 'streakEvery', label: 'Streak bonus every', suffix: 'right in a row', number: { min: 2, max: 50 }, default: '5' },
+    { key: 'streakEvery', label: 'Streak bonus every', suffix: 'right in a row', number: { min: 2, max: 50 }, default: '2' },
   ],
   nextActivity(): Activity { return { moduleId: 'reading-quest', kind: 'quest', data: {}, issuedAt: 0 }; },
   mount(el, activity, ctx) { render(<Quest activity={activity} ctx={ctx} />, el); return () => render(null, el); },
@@ -34,6 +34,34 @@ interface Result { retry: boolean; right: boolean; rightChoice: number; evidence
 type Step = { at: 'start' } | { at: 'read'; p: Shown; shownAt: number; openAt: number; pick?: number; r?: Result } | { at: 'done' } | { at: 'empty' };
 
 const call = <T,>(op: string, p?: unknown) => bridge.call<T>(op, p);
+
+/**
+ * The streak: a ring in `every` parts. Each right answer in a row fills a part; a full ring adds 1 to the number in
+ * the middle (and pays it as a bonus) and starts again. A miss empties it. One soft pulse when it fills; nothing loops.
+ */
+function StreakRing({ streak, every, best }: { streak: number; every: number; best: number }) {
+  const level = Math.floor(streak / every);
+  const filled = streak % every;
+  const prev = useRef(level);
+  const [pulse, setPulse] = useState(false);
+  useEffect(() => {
+    if (level > prev.current) { setPulse(true); const t = setTimeout(() => setPulse(false), 700); prev.current = level; return () => clearTimeout(t); }
+    prev.current = level;
+  }, [level]);
+  const r = 15, c = 2 * Math.PI * r, gap = every > 1 ? 3 : 0, seg = c / every - gap;
+  return (
+    <span class={'rq-ring-streak' + (pulse ? ' pulse' : '') + (streak ? ' on' : '')} title={`Streak: ${streak} in a row (best ${best})`} aria-label={`Streak ${streak} in a row`}>
+      <svg viewBox="0 0 40 40" width="44" height="44" aria-hidden="true">
+        {Array.from({ length: every }, (_, i) => (
+          <circle cx="20" cy="20" r={r} fill="none" stroke-width="4" stroke-linecap="round"
+            class={i < (pulse ? every : filled) ? 'seg full' : 'seg'} stroke-dasharray={`${seg} ${c - seg}`} stroke-dashoffset={-(i * c) / every - gap / 2}
+            transform="rotate(-90 20 20)" />
+        ))}
+        <text x="20" y="21" text-anchor="middle" dominant-baseline="middle">{level}</text>
+      </svg>
+    </span>
+  );
+}
 
 /** The paragraph, with the evidence highlighted after a wrong answer. */
 function Paragraph({ text, mark }: { text: string; mark?: string }) {
@@ -73,7 +101,7 @@ function Quest({ ctx }: { activity: Activity; ctx: ActivityContext }) {
       setStep({ ...step, pick, r });
       setMe(r.me);
       setRound((x) => ({ ...x, n: x.n + 1, results: [...x.results, r.right], coins: x.coins + r.coins + r.bonus }));
-      const msgs = [r.streakUp ? `🔥 ${r.streak} in a row! +${r.bonus} bonus 🪙` : '', r.me.level > r.levelBefore ? `⬆ Level ${r.me.level}!` : ''].filter(Boolean);
+      const msgs = [r.me.level > r.levelBefore ? `⬆ Level ${r.me.level}!` : ''].filter(Boolean);
       if (msgs.length) { setToast(msgs.join('  ')); setTimeout(() => setToast(''), 3500); }
     } catch (e) { setErr((e as Error).message); setStep({ ...step, pick: undefined }); }
   }
@@ -89,7 +117,7 @@ function Quest({ ctx }: { activity: Activity; ctx: ActivityContext }) {
         <b>Level {me.level}</b>
         <span class="rq-bar"><i style={{ width: `${Math.round(me.progress * 100)}%` }} /></span>
       </div>
-      <span class={'rq-streak' + (me.streak ? ' hot' : '')} title={`Best: ${me.bestStreak} in a row`}>🔥 {me.streak}</span>
+      <StreakRing streak={me.streak} every={me.streakEvery} best={me.bestStreak} />
     </div>
   );
 
@@ -102,7 +130,7 @@ function Quest({ ctx }: { activity: Activity; ctx: ActivityContext }) {
           ? <p>You've read every paragraph there is right now — amazing! New ones come with updates.</p>
           : <>
             <p>{per} short paragraphs, one question each. About 5 minutes.</p>
-            <p class="muted">Every {me.streakEvery} right in a row adds to your 🔥 streak and earns bonus coins.</p>
+            <p class="muted">Right answers fill your streak ring. Fill it ({me.streakEvery} in a row) and the number in the middle goes up — with bonus coins.</p>
             {capped && <p class="muted">You've earned today's Reading Quest coins — you can still read for practice.</p>}
             <button class="primary big" onClick={() => next(true)}>Start the quest</button>
           </>}
@@ -120,7 +148,7 @@ function Quest({ ctx }: { activity: Activity; ctx: ActivityContext }) {
           <h2>Quest complete! 🎉</h2>
           <p class="rq-big">{right} of {round.results.length} right{round.coins ? <> · +{round.coins} 🪙</> : null}</p>
           {me.level > round.startLevel && <p>⬆ You reached <b>Level {me.level}</b>!</p>}
-          <p class="muted">🔥 Streak: {me.streak} · best {me.bestStreak}</p>
+          <p class="muted">Streak: {me.streak} in a row · best {me.bestStreak}</p>
           <div class="row center">
             <button class="primary" onClick={() => next(true)}>Another quest</button>
             <button class="ghost" onClick={ctx.exit}>Done</button>
