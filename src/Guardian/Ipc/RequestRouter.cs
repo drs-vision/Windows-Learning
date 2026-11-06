@@ -1318,6 +1318,12 @@ public sealed class RequestRouter
                 browserLock = _policy.Status,
                 internetLock = _netLock.Status,
             },
+            // The Parent Console's "Getting started" list: what's done, checked live on this PC.
+            gettingStarted = new
+            {
+                phones = _phones.UsedPhones,
+                used = h.Children.ToDictionary(c => c.Id, c => _activity.Days(c.Id).Count > 0 || _ledger.Recent(c.Id, 1, DateTimeOffset.MinValue).Count > 0),
+            },
         };
     }
 

@@ -102,6 +102,7 @@ export class MockGuardian {
       version: '0.1.0-dev',
       updateStatus: { current: '0.1.0-dev', latest: null, state: 'upToDate', lastChecked: new Date().toISOString() },
       ledgerIntact: true,
+      gettingStarted: { phones: Number(localStorage.getItem('cq.mock.phones') ?? 0), used: Object.fromEntries([this.child, ...this.moreKids()].map((k) => [k.id, k.id === this.child.id && this.ledger.length > 0])) },
       enforcement: { consoleAccount: 'DESKTOP\\you', childAtKeyboard: false, childAccount: this.child.windowsAccount, browserLock: { entries: 0 }, internetLock: { applied: true, at: new Date().toISOString() } },
     };
   }

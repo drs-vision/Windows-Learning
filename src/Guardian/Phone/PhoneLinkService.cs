@@ -144,6 +144,9 @@ public sealed class PhoneLinkService : BackgroundService
         return new { id = link.Id, name = link.Name, url };
     }
 
+    /// <summary>Phones that have connected at least once (for the Parent Console's getting-started list).</summary>
+    public int UsedPhones { get { lock (_gate) return _store.Links.Count(l => l.LastSeen is not null); } }
+
     public object List()
     {
         lock (_gate) return new { relay = _store.CqRelay ?? Ntfy, status = Status, phones = _store.Links.Select(l => new { l.Id, l.Name, l.Created, l.LastSeen }).ToList() };

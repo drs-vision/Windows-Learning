@@ -870,3 +870,16 @@ button.big { font-size: 1.1em; padding: .7em 1.4em; }
 .kid-account .kid-colors { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
 .kid-account .swatch { width: 28px; height: 28px; min-height: 0; padding: 0; border-radius: 50%; border: 3px solid transparent; box-shadow: 0 0 0 1px rgba(0,0,0,.12); }
 .kid-account .swatch.on { border-color: #fff; box-shadow: 0 0 0 2px var(--ink, #111); }
+
+/* Setup welcome and the Getting started checklist. */
+.wizard .welcome-steps { line-height: 1.7; padding-left: 1.3em; }
+.getting-started h3 { margin: 0; }
+.getting-started .gs-list { list-style: none; margin: .6em 0 0; padding: 0; display: grid; gap: 12px; }
+.getting-started .gs-list li { display: grid; grid-template-columns: 28px 1fr; gap: 10px; align-items: start; }
+.getting-started .gs-list li p { margin: .15em 0 0; }
+.getting-started .gs-mark { width: 24px; height: 24px; border-radius: 50%; border: 2px solid var(--line, #cbd5e1); display: grid; place-items: center; font-weight: 800; font-size: 14px; color: #fff; }
+.getting-started li.ok .gs-mark { background: #16a34a; border-color: #16a34a; }
+.getting-started li.todo .gs-mark { border-color: #f59e0b; }
+.getting-started li.ok b { opacity: .75; }
+.getting-started .link-btn { background: none; border: 0; padding: 0; color: var(--accent, #2f5bd3); font: inherit; text-decoration: underline; cursor: pointer; min-height: 0; }
+.getting-started.in-setup { box-shadow: none; border: 0; padding: 0; margin: 0 0 1em; }

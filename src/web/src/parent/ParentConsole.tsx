@@ -79,6 +79,7 @@ export function ParentConsole({ embedded, onClose }: { embedded?: boolean; onClo
       {error && <p class="error">{error}</p>}
       <section class="tab-body">
         {!child && <p class="muted">No child set up yet.</p>}
+        {tab === 'today' && <GettingStarted state={state} />}
         {child && tab === 'today' && <Today state={state} child={child} onChange={refresh} onGo={setTab} />}
         {child && tab === 'earn' && <Quests child={child} onSave={(c) => save(child, c, refresh, setError)} />}
         {child && tab === 'rewards' && <ShopEditor child={child} onSave={(c) => save(child, c, refresh, setError)} />}
@@ -1187,6 +1188,41 @@ function RwtImport() {
 }
 
 // ---------------------------------------------------------------- Settings
+
+/**
+ * Getting started: a short checklist that proves CoinQuest is working, checked live on this PC. Shown at the end of
+ * setup and on Today until everything is done (or the parent hides it). Phone linking is optional.
+ */
+export function GettingStarted({ state, inSetup }: { state: ParentState; inSetup?: boolean }) {
+  const [hidden, setHidden] = useState(() => { try { return !inSetup && localStorage.getItem('cq.parent.gsHidden') === '1'; } catch { return false; } });
+  const [showCode, setShowCode] = useState(false);
+  const kids = state.household.children;
+  const names = kids.map((k) => k.displayName).join(' and ') || 'your child';
+  const net = state.enforcement?.internetLock;
+  const lockOn = !!net?.applied && !net.error;
+  const tried = kids.filter((k) => state.gettingStarted?.used?.[k.id]);
+  const notTried = kids.filter((k) => !state.gettingStarted?.used?.[k.id]);
+  const phone = (state.gettingStarted?.phones ?? 0) > 0;
+  const done = kids.length > 0 && lockOn && notTried.length === 0 && phone;
+  if (hidden || (done && !inSetup)) return null;
+  const item = (ok: boolean, title: preact.ComponentChildren, detail?: preact.ComponentChildren, optional?: boolean) => (
+    <li class={ok ? 'ok' : optional ? 'opt' : 'todo'}><span class="gs-mark" aria-label={ok ? 'done' : 'to do'}>{ok ? '✓' : ''}</span><div><b>{title}</b>{detail && <p class="muted small">{detail}</p>}</div></li>
+  );
+  return (
+    <div class={'card getting-started' + (inSetup ? ' in-setup' : '')}>
+      {!inSetup && <div class="row between"><h3>Getting started</h3><button class="ghost small" onClick={() => { setHidden(true); try { localStorage.setItem('cq.parent.gsHidden', '1'); } catch { /* fine */ } }}>Hide</button></div>}
+      <ul class="gs-list">
+        {item(kids.length > 0, kids.length ? `${names} ${kids.length === 1 ? 'is' : 'are'} set up` : 'Add your child', kids.length ? 'Each kid has their own Windows sign-in, coins and rules.' : 'Use ＋ Add a kid above.')}
+        {item(lockOn, lockOn ? 'Internet lock is on' : 'Internet lock is off', lockOn ? `${names} can only reach what you allow. Your own account isn't affected.` : `It couldn't be turned on (${net?.error ?? 'not yet'}). Restarting the computer usually fixes it.`)}
+        {item(notTried.length === 0 && kids.length > 0, notTried.length ? `Try it: sign in to Windows as ${notTried.map((k) => k.displayName).join(' or ')}` : `${tried.map((k) => k.displayName).join(' and ')} ${tried.length === 1 ? 'has' : 'have'} used CoinQuest`,
+          notTried.length ? <>Sign out of your account, then pick {notTried[0].displayName} on the sign-in screen: CoinQuest opens by itself. A new account takes a minute the first time. Sign back in as you to come back here; this ticks itself off.</> : undefined)}
+        {item(phone, phone ? 'Your phone is linked' : 'Link your phone (optional)',
+          phone ? 'Coins, requests and reports from anywhere.' : <>See coins, answer requests and read reports from anywhere. <button class="link-btn" onClick={() => setShowCode(!showCode)}>{showCode ? 'Hide the code' : 'Show the code'}</button></>, true)}
+      </ul>
+      {showCode && !phone && <PhoneControl compact />}
+    </div>
+  );
+}
 
 /** "Control from my phone": a QR code a parent scans once; then coins and requests from their phone, anywhere. */
 function PhoneControl({ compact }: { compact?: boolean } = {}) {
