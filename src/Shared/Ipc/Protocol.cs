@@ -55,6 +55,7 @@ public static class Ops
     public const string BooksGrade = "books.grade";      // { bookId, n, quizId, answers[], flagged[] } → mark it, pay on a pass
     public const string BooksBonus = "books.bonus";      // { bookId, n } → next bonus question after passing (or none)
     public const string BooksBonusAnswer = "books.bonusAnswer"; // { bookId, n, qid, choice }
+    public const string BooksRead = "books.read";        // { bookId, n, readMs } → the chapter was read to the end (quiz optional): { read, status }
     public const string BooksTyped = "books.typed";      // { bookId, n, part, typed, startedAt, finishedAt } typing mode
     public const string ActivityTick = "activity.tick"; // { kind, key, label, seconds } a minute of what the child is doing (from the CoinQuest window)
     public const string Buy = "buy";                   // { prizeId }
@@ -94,7 +95,7 @@ public static class Ops
     public const string ParentBooks = "parent.books"; // { childId? } the whole library, for choosing books (+ that child's progress)
     public const string QuestState = "quest.state";    // Reading Quest: level, streak, ...
     public const string QuestNext = "quest.next";      // → the next paragraph and its question (the open one if any)
-    public const string QuestAnswer = "quest.answer";  // { id, pick, readMs } → right?, the right choice, evidence, coins, streak
+    public const string QuestAnswer = "quest.answer";  // { id, q, pick, readMs } → one question marked: right?, the right choice (only when it won't come back), coins, streak
     public const string ParentQuest = "parent.quest";  // { childId } → the parents' Reading Quest numbers
     public const string ParentReading = "parent.reading"; // { childId } → the reading analysis (ReadingReport)
     public const string ParentBooksReset = "parent.booksReset"; // { childId, bookId } → the child starts that book over (it pays again)

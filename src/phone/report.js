@@ -32,11 +32,12 @@ const DONE = {
   'bible-typing:finished': 'Scripture passages typed',
   'my-passages:finished': 'Family passages typed',
   'books:chapters': 'Book chapters passed',
+  'books:chaptersRead': 'Book chapters read',
   'rwt:finished': 'Read, Write & Type! activities',
   'discgames:finished': 'CD game progress',
 };
 /** Counted for the Reading tile, not listed under Finished. */
-const READING_KEYS = new Set(['books:correct', 'books:answered', 'books:readWords', 'books:readSec', 'reading-quest:correct', 'reading-quest:answered']);
+const READING_KEYS = new Set(['books:chaptersRead', 'books:chapters', 'books:correct', 'books:answered', 'books:readWords', 'books:readSec', 'reading-quest:correct', 'reading-quest:answered']);
 const doneName = (k) => DONE[k] ?? `${QUEST_NAMES[k.split(':')[0]] ?? k.split(':')[0]} finished`;
 
 export const dayKey = (d) => `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
@@ -174,7 +175,7 @@ export function reportHtml(reports, { title, note, readingLink } = {}) {
 }
 
 /**
- * Reading, for parents only. In the selection: quiz answers right, chapters passed, reading speed (words a minute
+ * Reading, for parents only. In the selection: chapters read (quiz or not), quiz answers right, quizzes passed, reading speed (words a minute
  * while the chapter was on screen and in use). All time: the verified level (the highest level with 3+ chapters at
  * 80%+ on the first try) and the level they're reading now.
  */
@@ -182,10 +183,12 @@ function readingTile(m, link) {
   const d = m.done, r = m.reading;
   const answered = d['books:answered'] || 0, right = d['books:correct'] || 0;
   const speed = d['books:readSec'] > 0 ? Math.round(d['books:readWords'] / (d['books:readSec'] / 60)) : 0;
-  const now = answered ? `<div class="rep-tile"><small>Reading</small><b>${Math.round(100 * right / answered)}% <em>right</em></b><small>${[
-    d['books:chapters'] ? `${d['books:chapters']} chapter${d['books:chapters'] === 1 ? '' : 's'} passed` : '',
+  const read = d['books:chaptersRead'] || 0, passed = d['books:chapters'] || 0;
+  const now = answered || read ? `<div class="rep-tile"><small>Reading</small><b>${read ? `${read} <em>chapter${read === 1 ? '' : 's'} read</em>` : `${Math.round(100 * right / answered)}% <em>right</em>`}</b><small>${[
+    read && answered ? `${Math.round(100 * right / answered)}% of quiz answers right` : '',
+    passed ? `${passed} quiz${passed === 1 ? '' : 'zes'} passed` : '',
     speed ? `${speed} words/min` : '',
-  ].filter(Boolean).join(' · ') || `${answered} questions`}</small></div>` : '';
+  ].filter(Boolean).join(' · ') || (answered ? `${answered} questions` : 'no quizzes')}</small></div>` : '';
   const level = r && r.chapters ? `<div class="rep-tile"><small>Reading level</small><b>${r.verified ? `Level ${r.verified}` : '—'} <em>${r.verified ? 'verified' : 'not yet'}</em></b><small>${[
     r.level ? `reading Level ${r.level}` : '', r.firstTry != null ? `${r.firstTry}% first try` : '', r.wpm ? `${r.wpm} words/min` : '', `${r.chapters} chapters`,
   ].filter(Boolean).join(' · ')}</small></div>` : '';

@@ -197,13 +197,14 @@ export class MockGuardian {
         const d = (n: number) => { const x = new Date(); x.setDate(x.getDate() - n); return `${x.getFullYear()}-${String(x.getMonth() + 1).padStart(2, '0')}-${String(x.getDate()).padStart(2, '0')}`; };
         const row = (n: number, book: string, chapter: number | null, level: number, atos: number | null, lexile: number | null, c: number, t: number, tries: number, wpm: number | null) =>
           ({ at: d(n), book, chapter, title: '', level, formula: null, atos, lexile, firstTry: Math.round(100 * c / t), correct: c, total: t, tries, passed: c * 10 >= t * 7 || tries > 1, wpm, status: c / t >= 0.8 ? 'comfortable' : c / t >= 0.6 ? 'challenge' : 'hard' });
-        const recent = [row(0, 'Treasure Island', 9, 4, 6.6, 1070, 6, 10, 1, 151), row(1, 'Kidnapped', 2, 5, 7.0, 1070, 5, 8, 2, 133), row(2, 'Treasure Island', 8, 4, 6.6, 1070, 9, 10, 1, 148),
-          row(4, 'Treasure Island', 7, 4, 6.6, 1070, 8, 9, 1, 156), row(6, 'Treasure Island', 6, 4, 6.6, 1070, 9, 9, 1, 139), row(9, 'The Call of the Wild', 1, 4, 6.9, 1120, 9, 10, 1, 144),
-          row(12, 'Black Beauty', 14, 3, 5.4, 1010, 7, 8, 1, 162), row(15, 'The Tale of Peter Rabbit', null, 1, 3.4, 660, 4, 4, 1, 210)];
-        const weeks = Array.from({ length: 12 }, (_, i) => { const n = (11 - i) * 7; return { start: d(n), chapters: [2, 3, 1, 4, 3, 5, 2, 4, 6, 3, 5, 4][i], firstTry: [70, 78, 80, 75, 83, 81, 86, 79, 88, 84, 85, 81][i], wpm: 120 + i * 3 }; });
-        return ok({ kid: 'Sam', comfortable: 4, comfortableAtos: 6.6, comfortableLexile: 1070, comfortableFormula: 6.8, current: 4, stretch: { chapters: 2, firstTry: 58, level: 5 },
-          firstTry30: 84, firstTryAll: 82, chapters30: 17, wpm: 148, chaptersPassed: 42, wordsRead: 96500, minutesReading: 690, windowDays: 90, strongPercent: 80, strongNeeded: 3,
-          levels: [{ level: 1, chapters: 6, strong: 6, firstTry: 96 }, { level: 2, chapters: 9, strong: 8, firstTry: 90 }, { level: 3, chapters: 14, strong: 11, firstTry: 85 }, { level: 4, chapters: 11, strong: 8, firstTry: 83 }, { level: 5, chapters: 2, strong: 0, firstTry: 58 }],
+        const readOnly = (n: number, book: string, chapter: number, level: number, wpm: number) => ({ at: d(n), book, chapter, title: '', level, formula: null, atos: null, lexile: null, read: true, quizzed: false, firstTry: null, correct: 0, total: 0, tries: 0, passed: false, wpm, status: 'read' });
+        const recent = [readOnly(0, 'Treasure Island', 10, 8, 158), row(0, 'Treasure Island', 9, 8, 8.3, 850, 6, 10, 1, 151), row(1, 'Kidnapped', 2, 7, 7.6, 990, 5, 8, 2, 133), readOnly(1, 'Kidnapped', 1, 7, 140), row(2, 'Treasure Island', 8, 8, 8.3, 850, 9, 10, 1, 148),
+          row(4, 'Treasure Island', 7, 8, 8.3, 850, 8, 9, 1, 156), row(6, 'Treasure Island', 6, 8, 8.3, 850, 9, 9, 1, 139), row(9, 'The Call of the Wild', 1, 8, 8.0, 1120, 9, 10, 1, 144),
+          row(12, 'Black Beauty', 14, 7, 7.7, 990, 7, 8, 1, 162), row(15, 'The Tale of Peter Rabbit', null, 4, 4.2, 660, 4, 4, 1, 210)];
+        const weeks = Array.from({ length: 12 }, (_, i) => { const n = (11 - i) * 7; return { start: d(n), chapters: [2, 3, 1, 4, 3, 5, 2, 4, 6, 3, 5, 4][i] + (i % 3), firstTry: [70, 78, 80, 75, 83, 81, 86, 79, 88, 84, 85, 81][i], wpm: 120 + i * 3 }; });
+        return ok({ kid: 'Sam', comfortable: 7, comfortableAtos: 7.7, comfortableLexile: 990, comfortableFormula: 6.8, current: 8, stretch: { chapters: 6, firstTry: 81, level: 8 },
+          firstTry30: 84, firstTryAll: 82, chapters30: 17, wpm: 148, wpmLow: 136, wpmHigh: 157, wpmChapters: 26, chaptersPassed: 42, chaptersRead: 55, chaptersRead30: 23, chaptersQuizzed: 44, wordsRead: 121500, minutesReading: 860, windowDays: 90, strongPercent: 80, strongNeeded: 3,
+          levels: [{ level: 4, read: 13, words: 12400, wpm: 196, chapters: 9, strong: 9, firstTry: 94 }, { level: 5, read: 12, words: 21000, wpm: 171, chapters: 10, strong: 9, firstTry: 88 }, { level: 7, read: 18, words: 52000, wpm: 150, chapters: 15, strong: 11, firstTry: 84 }, { level: 8, read: 12, words: 36100, wpm: 146, chapters: 10, strong: 6, firstTry: 81 }],
           weeks, recent });
       }
       case 'parent.booksReset': if (p.bookId === 'peter-rabbit') Object.assign(mb, { passed: false, correct: 0, total: 0, attempts: 0, retakeAt: null, seen: [], bonusDone: [], quiz: null, bonus: null, typed: 0 }); return ok({ ok: true });
@@ -213,7 +214,7 @@ export class MockGuardian {
         return ok(r);
       }
       case 'parent.quest': return ok(mockQuestReport());
-      case 'books.list': case 'books.chapter': case 'books.quiz': case 'books.grade': case 'books.bonus': case 'books.bonusAnswer': case 'books.typed': {
+      case 'books.list': case 'books.chapter': case 'books.read': case 'books.quiz': case 'books.grade': case 'books.bonus': case 'books.bonusAnswer': case 'books.typed': {
         const r = mockBooks(req.op, p);
         if (r?.coins > 0) { this.append('earn', r.coins, 'books', 'Reading'); r.balance = this.balance(); this.persist(); this.emit({ name: 'state' }); }
         return ok(r);
@@ -303,11 +304,27 @@ const shelf = Object.values(import.meta.glob('../../../../content/books/*/book.j
   .sort((a, b) => a.level - b.level || a.grade.min - b.grade.min || a.title.localeCompare(b.title));
 const quizSize = (w: number) => Math.max(4, Math.min(10, Math.round(w / 250)));
 const shuffle = () => [0, 1, 2, 3].sort(() => Math.random() - 0.5);
+/** Chapters read / opened ("book/n"), seeded so the preview shows Reading now and Finished. */
+const mread: Record<string, { read?: boolean; opened?: boolean; ms: number }> = {
+  'treasure-island/1': { read: true, opened: true, ms: 0 }, 'treasure-island/2': { read: true, opened: true, ms: 0 }, 'treasure-island/3': { opened: true, ms: 0 },
+  'mrs-tittlemouse/1': { read: true, opened: true, ms: 0 },
+};
 function mockBooks(op: string, p: any): any {
-  const status = () => ({ n: 1, title: 'The Tale of Peter Rabbit', words: 948, quizSize: 4, hasQuiz: true, passed: mb.passed, correct: mb.correct, total: mb.total, attempts: mb.attempts, retakeAt: mb.retakeAt && Date.parse(mb.retakeAt) > Date.now() ? mb.retakeAt : null, bonusLeft: mb.passed ? Math.min(mbBank.filter((q) => !mb.seen.includes(q.id) && !mb.bonusDone.includes(q.id)).length, 4 - mb.bonusDone.length) : 0, typed: mb.typed });
+  const rd = (book: string, n: number) => (mread[`${book}/${n}`] ??= { ms: 0 });
+  const flags = (book: string, n: number) => ({ read: !!rd(book, n).read || (book === 'peter-rabbit' && mb.passed), opened: !!rd(book, n).opened });
+  const status = () => ({ n: 1, title: 'The Tale of Peter Rabbit', words: 948, quizSize: 4, hasQuiz: true, passed: mb.passed, correct: mb.correct, total: mb.total, attempts: mb.attempts, retakeAt: mb.retakeAt && Date.parse(mb.retakeAt) > Date.now() ? mb.retakeAt : null, bonusLeft: mb.passed ? Math.min(mbBank.filter((q) => !mb.seen.includes(q.id) && !mb.bonusDone.includes(q.id)).length, 4 - mb.bonusDone.length) : 0, typed: mb.typed, ...flags('peter-rabbit', 1) });
+  const other = (b: ShelfBook, c: { n: number; title: string; words: number }) => ({ n: c.n, title: c.title, words: c.words, quizSize: quizSize(c.words), hasQuiz: false, passed: false, correct: 0, total: 0, attempts: 0, retakeAt: null, bonusLeft: 0, typed: 0, ...flags(b.id, c.n) });
+  if (op === 'books.read') {
+    const words = p.bookId === 'peter-rabbit' ? 948 : shelf.find((x) => x.id === p.bookId)!.chapters.find((x) => x.n === p.n)!.words;
+    const r = rd(p.bookId, p.n); r.opened = true; r.ms += p.readMs ?? 0;
+    if (r.ms >= words * 100) r.read = true; // 600 words a minute at most, as on the PC
+    const b = shelf.find((x) => x.id === p.bookId)!;
+    return { read: !!r.read, status: p.bookId === 'peter-rabbit' ? status() : other(b, b.chapters.find((x) => x.n === p.n)!) };
+  }
   const show = (id: string, order: number[]) => { const q = mbBank.find((x) => x.id === id)!; return { id, q: q.q, choices: order.map((i) => q.choices[i]) }; };
-  if (op === 'books.list') return { perCorrect: 3, wordsPer: 20, books: shelf.map((b) => ({ id: b.id, title: b.title, author: b.author, level: b.level, summary: b.summary, chapters: b.id === 'peter-rabbit' ? [status()] : b.chapters.map((c) => ({ n: c.n, title: c.title, words: c.words, quizSize: quizSize(c.words), hasQuiz: true, passed: false, correct: 0, total: 0, attempts: 0, retakeAt: null, bonusLeft: 0, typed: 0 })) })) };
-  if (op === 'books.chapter' && p.bookId !== 'peter-rabbit') { const b = shelf.find((x) => x.id === p.bookId)!; const c = b.chapters.find((x) => x.n === p.n)!; return { book: b.title, text: `(This preview only opens The Tale of Peter Rabbit. In CoinQuest, "${c.title}" opens here.)`, parts: [], status: { n: c.n, title: c.title, words: c.words, quizSize: quizSize(c.words), hasQuiz: false, passed: false, correct: 0, total: 0, attempts: 0, retakeAt: null, bonusLeft: 0, typed: 0 }, quiz: null }; }
+  if (op === 'books.list') return { perCorrect: 3, wordsPer: 20, books: shelf.map((b) => ({ id: b.id, title: b.title, author: b.author, level: b.level, summary: b.summary, chapters: b.id === 'peter-rabbit' ? [status()] : b.chapters.map((c) => other(b, c)) })) };
+  if (op === 'books.chapter') rd(p.bookId, p.n).opened = true;
+  if (op === 'books.chapter' && p.bookId !== 'peter-rabbit') { const b = shelf.find((x) => x.id === p.bookId)!; const c = b.chapters.find((x) => x.n === p.n)!; return { book: b.title, text: `(This preview only opens The Tale of Peter Rabbit. In CoinQuest, "${c.title}" opens here.)`, parts: [], status: other(b, c), quiz: null }; }
   if (op === 'books.chapter') return { book: 'The Tale of Peter Rabbit', text: prText, parts: mbParts, status: status(), quiz: mb.quiz ? { id: mb.quiz.id, questions: mb.quiz.ids.map((id, i) => show(id, mb.quiz!.orders[i])) } : null };
   if (op === 'books.quiz') {
     if (mb.quiz) return { id: mb.quiz.id, questions: mb.quiz.ids.map((id, i) => show(id, mb.quiz!.orders[i])) }; // still open: the same quiz
@@ -331,9 +348,12 @@ function mockBooks(op: string, p: any): any {
 
 
 // ---- Reading Quest preview: the same rules as ReadingQuest.cs, on the real paragraphs (loaded only in the preview) ----
-type QP = { id: string; title: string; topic: string; text: string; source: { name: string; url: string; license: string; author?: string }; readability: { grade: number }; question: { type: string; q: string; choices: string[]; answer: number; evidence: string; explain: string } };
+type QQ = { type: string; q: string; choices: string[]; answer: number; evidence: string; explain: string };
+type QP = { id: string; title: string; topic: string; text: string; source: { name: string; url: string; license: string; author?: string }; readability: { grade: number }; question?: QQ; questions?: QQ[] };
 let qpool: QP[] | null = null;
-const qs = { rating: 1, answered: 0, streak: 0, best: 0, misses: 0, done: {} as Record<string, boolean>, retry: {} as Record<string, number>, open: null as null | { id: string; order: number[]; at: number; retry: boolean } };
+/** Mirrors ReadingQuest.cs: questions keyed "id#n", each marked on its own; a miss comes back no sooner than tomorrow. */
+const qs = { rating: 1, answered: 0, streak: 0, best: 0, misses: 0, done: {} as Record<string, { right: boolean; retried?: boolean }>, later: {} as Record<string, string>, lastRetry: false,
+  open: null as null | { id: string; at: number; qs: { index: number; order: number[]; retry: boolean; done: boolean }[] } };
 async function questPool(): Promise<QP[]> {
   if (qpool) return qpool;
   const files = import.meta.glob('../../../../content/passages/*.json', { import: 'default' });
@@ -341,37 +361,67 @@ async function questPool(): Promise<QP[]> {
   qpool = docs.flatMap((d) => d.passages ?? []);
   return qpool;
 }
-const qlevel = (r: number) => Math.max(1, Math.floor(r));
-const qme = (pool: QP[]) => ({ level: qlevel(qs.rating), progress: Math.round((qs.rating < 1 ? qs.rating / 2 : qs.rating < 2 ? 0.5 + (qs.rating - 1) / 2 : qs.rating - Math.floor(qs.rating)) * 100) / 100, streak: qs.streak, bestStreak: qs.best, streakEvery: 2, answered: qs.answered, earnedToday: 0, dailyCap: 40, left: pool.filter((p) => !(p.id in qs.done)).length });
+const qsOf = (x: QP) => x.questions ?? (x.question ? [x.question] : []);
+const qday = (d = new Date()) => `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
+// One level scale with Books (ReadingLevels.cs): the level of text he gets about 3 in 4 right, one grade under the rating.
+const qlevel = (r: number) => Math.max(1, Math.floor(r - 1));
+const qprogress = (r: number) => (r < 3 ? Math.min(1, Math.max(0, r / 3)) : r - 1 - Math.floor(r - 1));
+const qwords = (x: QP) => x.text.split(/\s+/).length;
+const qme = (pool: QP[]) => ({ level: qlevel(qs.rating), progress: Math.round(qprogress(qs.rating) * 100) / 100, streak: qs.streak, bestStreak: qs.best, streakEvery: 2, answered: qs.answered, earnedToday: 0, dailyCap: 40,
+  left: pool.reduce((t, x) => t + qsOf(x).filter((_, i) => !(`${x.id}#${i}` in qs.done)).length, 0) });
+function qeligible(x: QP, today: string) {
+  return qsOf(x).map((_, i) => i).flatMap((i) => {
+    const d = qs.done[`${x.id}#${i}`];
+    if (!d) return [{ index: i, retry: false }];
+    if (d.right || d.retried != null) return [];
+    return (qs.later[`${x.id}#${i}`] ?? '') <= today ? [{ index: i, retry: true }] : [];
+  });
+}
 async function mockQuest(op: string, p: any): Promise<any> {
   const pool = await questPool();
-  const secs = (x: QP) => Math.min(30, Math.max(15, Math.round(x.text.split(/\s+/).length / 4)));
-  const show = (x: QP, o: { order: number[]; at: number; retry: boolean }) => ({ id: x.id, title: x.title, text: x.text, q: x.question.q, choices: o.order.map((i) => x.question.choices[i]), sourceName: x.source.name, sourceUrl: x.source.url, license: x.source.license, author: x.source.author ?? null, retry: o.retry, readSeconds: secs(x), waitLeft: Math.max(0, Math.ceil(secs(x) - (Date.now() - o.at) / 1000)) });
+  const secs = (x: QP) => Math.min(30, Math.max(15, Math.round(qwords(x) / 4)));
+  const shuffle = () => [0, 1, 2, 3].sort(() => Math.random() - 0.5);
+  const show = (x: QP) => {
+    const o = qs.open!;
+    return { id: x.id, title: x.title, text: x.text, questions: o.qs.filter((q) => !q.done).map((q) => ({ index: q.index, q: qsOf(x)[q.index].q, choices: q.order.map((i) => qsOf(x)[q.index].choices[i]), retry: q.retry })),
+      sourceName: x.source.name, sourceUrl: x.source.url, license: x.source.license, author: x.source.author ?? null, readSeconds: secs(x), waitLeft: Math.max(0, Math.ceil(secs(x) - (Date.now() - o.at) / 1000)) };
+  };
   if (op === 'quest.state') return qme(pool);
   if (op === 'quest.next') {
-    if (qs.open) { const x = pool.find((y) => y.id === qs.open!.id)!; return { passage: show(x, qs.open), me: qme(pool) }; }
-    const due = Object.entries(qs.retry).find(([, n]) => n <= qs.answered);
-    if (due) { const x = pool.find((y) => y.id === due[0])!; qs.open = { id: x.id, order: [0, 1, 2, 3].sort(() => Math.random() - 0.5), at: Date.now(), retry: true }; return { passage: show(x, qs.open), me: qme(pool) }; }
-    const target = qs.misses >= 2 ? qs.rating - 1 : qs.rating + 0.3;
-    const near = pool.filter((x) => !(x.id in qs.done)).sort((a, b) => Math.abs(a.readability.grade - target) - Math.abs(b.readability.grade - target)).slice(0, 6);
-    if (!near.length) return { passage: null, me: qme(pool) };
-    const x = near[Math.floor(Math.random() * near.length)];
-    const order = [0, 1, 2, 3].sort(() => Math.random() - 0.5);
-    qs.open = { id: x.id, order, at: Date.now(), retry: false };
-    return { passage: show(x, qs.open), me: qme(pool) };
+    if (qs.open && qs.open.qs.some((q) => !q.done)) return { passage: show(pool.find((y) => y.id === qs.open!.id)!), me: qme(pool) };
+    qs.open = null;
+    const today = qday();
+    const ready = pool.map((x) => ({ x, q: qeligible(x, today) })).filter((r) => r.q.length);
+    const retries = ready.filter((r) => r.q.some((q) => q.retry)), fresh = ready.filter((r) => r.q.some((q) => !q.retry));
+    let pick: { x: QP; q: { index: number; retry: boolean }[] } | undefined;
+    if (retries.length && (!qs.lastRetry || !fresh.length)) { pick = retries[0]; qs.lastRetry = true; }
+    else {
+      const r = qs.misses >= 2 ? qs.rating - 1 : qs.rating, target = qs.misses >= 2 ? r : r + 0.3, tw = Math.min(230, Math.max(60, 60 + 35 * (r - 2)));
+      const near = fresh.sort((a, b) => (Math.abs(a.x.readability.grade - target) + Math.abs(qwords(a.x) - tw) / 120) - (Math.abs(b.x.readability.grade - target) + Math.abs(qwords(b.x) - tw) / 120)).slice(0, 6);
+      pick = near[Math.floor(Math.random() * near.length)]; qs.lastRetry = false;
+    }
+    if (!pick) return { passage: null, me: qme(pool) };
+    qs.open = { id: pick.x.id, at: Date.now(), qs: pick.q.map((q) => ({ index: q.index, order: shuffle(), retry: q.retry, done: false })) };
+    return { passage: show(pick.x), me: qme(pool) };
   }
   const x = pool.find((y) => y.id === p.id)!;
-  const rightChoice = qs.open!.order.indexOf(x.question.answer);
+  const oq = qs.open!.qs.find((q) => q.index === (p.q ?? 0) && !q.done)!;
+  const qq = qsOf(x)[oq.index];
+  const rightChoice = oq.order.indexOf(qq.answer);
   const right = p.pick === rightChoice;
-  if (qs.open!.retry) { delete qs.retry[x.id]; qs.open = null; return { retry: true, right, rightChoice, evidence: x.question.evidence, streak: qs.streak, streakUp: false, coins: 0, bonus: 0, pending: false, levelBefore: qlevel(qs.rating), me: qme(pool) }; }
+  oq.done = true;
+  const finished = qs.open!.qs.every((q) => q.done);
+  if (finished) qs.open = null;
+  const key = `${x.id}#${oq.index}`;
+  if (oq.retry) { qs.done[key].retried = right; delete qs.later[key]; return { index: oq.index, finished, retry: true, right, rightChoice, evidence: qq.evidence, streak: qs.streak, streakUp: false, coins: 0, bonus: 0, pending: false, levelBefore: qlevel(qs.rating), me: qme(pool) }; }
   const before = qs.rating;
   const e = 1 / (1 + Math.pow(10, (x.readability.grade - qs.rating) / 2));
   qs.rating = Math.min(13, Math.max(0, qs.rating + (qs.answered < 15 ? 0.8 : 0.4) * ((right ? 1 : 0) - e)));
-  qs.answered++; qs.done[x.id] = right; qs.open = null; if (!right) qs.retry[x.id] = qs.answered + 5;
+  qs.answered++; qs.done[key] = { right };
+  if (!right) { const t = new Date(); t.setDate(t.getDate() + 1); qs.later[key] = qday(t); }
   let streakUp = false;
   if (right) { qs.streak++; qs.best = Math.max(qs.best, qs.streak); streakUp = qs.streak % 2 === 0; qs.misses = 0; } else { qs.streak = 0; qs.misses++; }
-  const words = x.text.split(/\s+/).length;
-  return { retry: false, right, rightChoice: right ? rightChoice : -1, evidence: right ? x.question.evidence : '', streak: qs.streak, streakUp, coins: right ? Math.max(1, Math.ceil(words / 100)) : 0, bonus: streakUp ? Math.min(3, qs.streak / 2) : 0, pending: false, levelBefore: qlevel(before), me: qme(pool) };
+  return { index: oq.index, finished, retry: false, right, rightChoice: right ? rightChoice : -1, evidence: right ? qq.evidence : '', streak: qs.streak, streakUp, coins: right ? Math.max(1, Math.ceil(qwords(x) / qsOf(x).length / 100)) : 0, bonus: streakUp ? Math.min(3, qs.streak / 2) : 0, pending: false, levelBefore: qlevel(before), me: qme(pool) };
 }
 function mockQuestReport() {
   const d = (n: number) => { const x = new Date(); x.setDate(x.getDate() - n); return x.toISOString().slice(0, 10); };

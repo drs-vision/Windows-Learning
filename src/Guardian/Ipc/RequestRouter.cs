@@ -71,7 +71,7 @@ public sealed class RequestRouter
             // ---- child ----
             Ops.State => child is null ? Response.Fail(req.Id, "not a managed account") : Response.Success(req.Id, ChildState(child)),
             Ops.Submit => child is null ? Response.Fail(req.Id, "not a managed account") : Submit(req, child, client.Account),
-            Ops.BooksList or Ops.BooksChapter or Ops.BooksQuiz or Ops.BooksGrade or Ops.BooksBonus or Ops.BooksBonusAnswer or Ops.BooksTyped
+            Ops.BooksList or Ops.BooksChapter or Ops.BooksRead or Ops.BooksQuiz or Ops.BooksGrade or Ops.BooksBonus or Ops.BooksBonusAnswer or Ops.BooksTyped
                 => child is null ? Response.Fail(req.Id, "not a managed account") : Response.Success(req.Id, Books(req, child, client.Account)),
             Ops.ActivityTick => child is null ? Response.Success(req.Id, new { ok = false }) : ActivityTick(req, child),
             Ops.Buy => child is null ? Response.Fail(req.Id, "not a managed account") : Buy(req, child, client.Account),
@@ -311,7 +311,8 @@ public sealed class RequestRouter
         var r = CoinQuest.Shared.Books.ReadingReport.Build(ReadingEntries(child.Id), DateTimeOffset.Now);
         return new System.Text.Json.Nodes.JsonObject
         {
-            ["chapters"] = r["chaptersPassed"]?.GetValue<int>() ?? 0,
+            ["chapters"] = r["chaptersRead"]?.GetValue<int>() ?? 0,
+            ["passed"] = r["chaptersPassed"]?.GetValue<int>() ?? 0,
             ["firstTry"] = r["firstTryAll"]?.DeepClone(),
             ["wpm"] = r["wpm"]?.DeepClone(),
             ["level"] = r["current"]?.DeepClone(),
@@ -357,7 +358,7 @@ public sealed class RequestRouter
         {
             level = CoinQuest.Shared.Books.ReadingQuest.Level(st.Rating), progress = Math.Round(CoinQuest.Shared.Books.ReadingQuest.LevelProgress(st.Rating), 2),
             streak = st.Streak, bestStreak = st.BestStreak, streakEvery, answered = st.Answered,
-            earnedToday = _ledger.EarnedToday(child.Id, "reading-quest"), dailyCap = s.DailyCap, left = all.Count(p => !st.Done.ContainsKey(p.Id)),
+            earnedToday = _ledger.EarnedToday(child.Id, "reading-quest"), dailyCap = s.DailyCap, left = CoinQuest.Shared.Books.ReadingQuest.Left(st, all),
         };
         switch (req.Op)
         {
@@ -372,14 +373,16 @@ public sealed class RequestRouter
             {
                 var id = Str(req, "id");
                 var p = _quest.Find(id) ?? throw new InvalidOperationException("That paragraph isn't here any more");
+                var index = req.Payload?["q"]?.GetValue<int>() ?? 0;
                 var picked = req.Payload?["pick"]?.GetValue<int>() ?? -1;
                 var ms = (long)(req.Payload?["readMs"]?.GetValue<double>() ?? 0);
-                var a = CoinQuest.Shared.Books.ReadingQuest.Answer(st, p, id, picked, ms, streakEvery, DateTimeOffset.Now);
+                // Each question is marked (and paid) the moment it's clicked, in any order.
+                var a = CoinQuest.Shared.Books.ReadingQuest.Answer(st, p, id, index, picked, ms, streakEvery, DateTimeOffset.Now);
                 SaveQuest(child.Id, st);
                 _questLastTopic[child.Id] = p.Topic;
                 var (coins, pending) = (0, false);
                 var (bonus, bonusPending) = (0, false);
-                if (a.Right && !a.Retry) (coins, pending) = PayQuest(child, "reading-quest", s, CoinQuest.Shared.Books.ReadingQuest.Pay(p.Words, s.CoinsPerActivity), $"Reading Quest: {p.Title}", account);
+                if (a.Right && !a.Retry) (coins, pending) = PayQuest(child, "reading-quest", s, CoinQuest.Shared.Books.ReadingQuest.Pay(p.Words, p.Questions.Count, s.CoinsPerActivity), $"Reading Quest: {p.Title}", account);
                 // A full streak ring (every N right in a row) pays its number: 1, then 2, then 3 at most.
                 if (a.StreakUp) (bonus, bonusPending) = PayQuest(child, "reading-quest", s, Math.Min(3, a.Streak / streakEvery), $"Reading Quest streak: {a.Streak} in a row", account);
                 if (child.ActivityReports && !a.Retry)
@@ -389,9 +392,9 @@ public sealed class RequestRouter
                 }
                 AfterChange();
                 // A miss that will come back later reveals nothing (no right answer, no highlight), so the second look is a real
-                // second try. The answer is shown only when the paragraph is finished for good (right, or a second-look miss).
+                // second try. The answer is shown only when the question is finished for good (right, or a second-look miss).
                 var reveal = a.Right || a.Retry;
-                return new { a.Right, rightChoice = reveal ? a.RightChoice : -1, evidence = reveal ? a.Evidence : "", a.Streak, a.StreakUp, a.Retry, coins, bonus, pending = pending || bonusPending, levelBefore = CoinQuest.Shared.Books.ReadingQuest.Level(a.Before), me = Me(), balance = _ledger.Balance(child.Id) };
+                return new { a.Index, a.Finished, a.Right, rightChoice = reveal ? a.RightChoice : -1, evidence = reveal ? a.Evidence : "", a.Streak, a.StreakUp, a.Retry, coins, bonus, pending = pending || bonusPending, levelBefore = CoinQuest.Shared.Books.ReadingQuest.Level(a.Before), me = Me(), balance = _ledger.Balance(child.Id) };
             }
             default: throw new ArgumentException("Unknown Reading Quest request");
         }
@@ -421,6 +424,7 @@ public sealed class RequestRouter
             {
                 n = c.N, title = c.Title, words = c.Words, quizSize = Math.Min(bank.Count, CoinQuest.Shared.Books.BookLibrary.QuizSize(c.Words)), hasQuiz = bank.Count > 0,
                 passed = p.Passed, correct = p.Correct, total = p.Total, attempts = p.Attempts,
+                read = p.ReadAt is not null || p.Passed, opened = p.OpenedAt is not null || p.ReadAt is not null || p.Passed || p.Attempts > 0,
                 retakeAt = p.RetakeAt is { } t && t > DateTimeOffset.Now ? t : (DateTimeOffset?)null,
                 bonusLeft = CoinQuest.Shared.Books.Quiz.BonusLeft(p, bank, CoinQuest.Shared.Books.BookLibrary.QuizSize(c.Words)), typed = p.TypedParts.Count,
             };
@@ -446,16 +450,44 @@ public sealed class RequestRouter
         var now = DateTimeOffset.Now;
         var label = book.Chapters.Count == 1 ? book.Title : $"{book.Title}, chapter {n}";
         var size = CoinQuest.Shared.Books.BookLibrary.QuizSize(ch.Words);
+        // Reading time (the chapter on screen, window in use) until it's first read to the end: for the parents' reading
+        // speed. Reaching the end after a believable time marks it read (progress bar, chapters read), quiz or not.
+        void AddReading()
+        {
+            if (state.ReadAt is null && state.Attempts == 0 && req.Payload?["readMs"] is JsonValue rv && rv.TryGetValue<double>(out var readMs))
+                state.ReadMs = Math.Min(state.ReadMs + (long)Math.Clamp(readMs, 0, 3 * 3600_000), 6 * 3600_000);
+            // A chapter quizzed before reading was tracked: it was read (its time isn't a clean first read, so no speed).
+            if (state.ReadAt is null && state.Attempts > 0) { state.ReadAt = now; return; }
+            if (state.ReadAt is null && CoinQuest.Shared.Books.BookLibrary.ReadEnough(ch.Words, state.ReadMs))
+            {
+                state.ReadAt = now;
+                if (child.ActivityReports)
+                {
+                    _activity.Count(child.Id, DateTime.Now, "books:chaptersRead");
+                    if (ch.Words / (state.ReadMs / 60000.0) is >= 40 and <= 600)
+                    {
+                        _activity.Count(child.Id, DateTime.Now, "books:readWords", ch.Words);
+                        _activity.Count(child.Id, DateTime.Now, "books:readSec", (int)(state.ReadMs / 1000));
+                    }
+                }
+            }
+        }
         switch (req.Op)
         {
+            case Ops.BooksRead:
+            {
+                AddReading();
+                state.OpenedAt ??= now;
+                Save(bookId, n, state);
+                return new { read = state.ReadAt is not null || state.Passed, status = Status(bookId, ch) };
+            }
             case Ops.BooksChapter:
+                if (state.OpenedAt is null) { state.OpenedAt = now; Save(bookId, n, state); }
                 return new { book = book.Title, text = _library.Text(bookId, n), parts = _library.Parts(bookId, n), status = Status(bookId, ch),
                     quiz = CoinQuest.Shared.Books.Quiz.Current(state, bank) is { } open ? new { id = state.Quiz!.Id, questions = open } : null };
             case Ops.BooksQuiz:
             {
-                // Reading time (the chapter on screen, window in use) before the first quiz: for the parents' reading speed.
-                if (state.Attempts == 0 && req.Payload?["readMs"] is JsonValue rv && rv.TryGetValue<double>(out var readMs))
-                    state.ReadMs = Math.Min(state.ReadMs + (long)Math.Clamp(readMs, 0, 3 * 3600_000), 6 * 3600_000);
+                AddReading();
                 var shown = CoinQuest.Shared.Books.Quiz.Start(state, bank, CoinQuest.Shared.Books.BookLibrary.QuizSize(ch.Words), _rng, now);
                 Save(bookId, n, state);
                 return new { id = state.Quiz!.Id, questions = shown };
@@ -472,11 +504,6 @@ public sealed class RequestRouter
                 {
                     _activity.Count(child.Id, DateTime.Now, "books:answered", g.Total);
                     _activity.Count(child.Id, DateTime.Now, "books:correct", g.Correct);
-                    if (state.Attempts == 1 && state.ReadMs > 0 && ch.Words / (state.ReadMs / 60000.0) is >= 40 and <= 600)
-                    {
-                        _activity.Count(child.Id, DateTime.Now, "books:readWords", ch.Words);
-                        _activity.Count(child.Id, DateTime.Now, "books:readSec", (int)(state.ReadMs / 1000));
-                    }
                 }
                 if (g.Passed)
                 {
@@ -513,6 +540,13 @@ public sealed class RequestRouter
                 if (ms < 1000 || parts[i].Length / 5.0 / (ms / 60000.0) > 180) throw new InvalidOperationException("That was too fast to be real typing");
                 var first = !state.TypedParts.Contains(i);
                 if (first) state.TypedParts.Add(i);
+                // Typing every part of a chapter reads it too.
+                if (state.ReadAt is null && parts.Count > 0 && Enumerable.Range(0, parts.Count).All(state.TypedParts.Contains))
+                {
+                    state.ReadAt = now;
+                    if (child.ActivityReports) _activity.Count(child.Id, DateTime.Now, "books:chaptersRead");
+                }
+                state.OpenedAt ??= now;
                 Save(bookId, n, state);
                 if (child.ActivityReports) _activity.AddTyping(child.Id, DateTime.Now, typed.Length, (long)ms);
                 var per = int.TryParse(s.Options.GetValueOrDefault("wordsPer"), out var wpr) && wpr > 0 ? wpr : 20;

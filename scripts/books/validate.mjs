@@ -36,6 +36,8 @@ for (const id of books) {
     const { lexile, atos } = book.measures;
     if (lexile && !(Number.isInteger(lexile.value) && /^https:\/\//.test(lexile.url ?? ''))) err(id, 'measures.lexile needs a whole-number value and the https url it came from');
     if (atos && !(typeof atos.level === 'number' && /^https:\/\//.test(atos.url ?? ''))) err(id, 'measures.atos needs a level and the https url it came from');
+    // One level scale with Reading Quest (src/Shared/Books/ReadingLevels.cs): the level is the ATOS book level's whole number.
+    else if (atos && book.level !== Math.max(1, Math.floor(atos.level))) err(id, `level ${book.level} should be ${Math.max(1, Math.floor(atos.level))} (ATOS ${atos.level}; one scale with Reading Quest)`);
   }
   if (!book.readability) err(id, 'no readability: run node scripts/books/readability.mjs');
   const ids = new Set();

@@ -34,12 +34,16 @@ content/books/
 }
 ```
 
-* `level` is the reading level children see: 1 is easiest, and books of about the same difficulty share a level.
-  Children only ever see "Level N" (no grades, so nobody feels behind). The app sorts the shelf by it.
-  Levels follow the published ATOS book levels (below), nudged for old-fashioned language or dialect. Current scale:
-  1 = Beatrix Potter tales (ATOS ~3.5-4.7); 2 = Aesop, The Tailor of Gloucester (5.3); 3 = Doctor Dolittle (5.1);
-  4 = The Jungle Book (7.5), Black Beauty (7.7), The Call of the Wild (8.0), Treasure Island (8.3);
-  5 = Kidnapped (7.6, heavy Scots dialect), The Wind in the Willows (8.2), Around the World in Eighty Days (9.6).
+* `level` is the reading level children see, on the **same scale as Reading Quest** (src/Shared/Books/ReadingLevels.cs):
+  Level 1 is below grade 2, then Level N = grade-equivalent N to N+1, so a child at Reading Quest Level 4 is ready for
+  Level 4 books. Children only ever see "Level N" (no grades, so nobody feels behind). The app sorts the shelf by it.
+  The level is the whole number of the published ATOS book level (below); the validator checks this. A book without an
+  ATOS level is placed by hand next to similar books (listed here). Current:
+  3 = Mrs. Tittlemouse (3.5); 4 = the other Beatrix Potter tales (4.0-4.7; Tom Kitten and Ginger and Pickles have no
+  ATOS level and sit with the series); 5 = Doctor Dolittle (5.1), The Tailor of Gloucester (5.3), Aesop for Children
+  (no ATOS level; Lexile 940, next to Tailor's 960); 7 = The Jungle Book (7.5), Kidnapped (7.6), Black Beauty (7.7);
+  8 = The Call of the Wild (8.0), The Wind in the Willows (8.2), Treasure Island (8.3); 9 = Around the World in
+  Eighty Days (9.6).
 * `readability` (book and each chapter): Flesch-Kincaid, Coleman-Liau and ARI grades and their average, written by
   `node scripts/books/readability.mjs` (the validator fails if they're missing or out of date with the text).
 * `measures` (optional): published difficulty, each with the `url` of the page the number came from and an optional

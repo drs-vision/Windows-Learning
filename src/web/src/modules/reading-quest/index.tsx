@@ -7,7 +7,8 @@ import { bridge } from '../../core/bridge';
 import { pieces, toggle } from '../books/highlights';
 
 /**
- * Reading Quest: a bite-size paragraph (3-6 sentences) with one question right under it, one after another for as long
+ * Reading Quest: a paragraph with its question(s) right under it (longer paragraphs with more questions at higher
+ * levels; each question marked and paid the moment it's clicked), one after another for as long
  * as the child likes (no set length; the daily coin limit caps the pay, not the reading).
  * The PC picks each paragraph near the child's rating and moves the rating with every answer (ReadingQuest.cs), pays
  * coins for right answers and a bonus for every few in a row. Paragraphs are written by people (public-domain and
@@ -30,9 +31,11 @@ export const readingQuest: LessonModule = {
 };
 
 interface Me { level: number; progress: number; streak: number; bestStreak: number; streakEvery: number; answered: number; earnedToday: number; dailyCap: number; left: number }
-interface Shown { id: string; title: string; text: string; q: string; choices: string[]; sourceName: string; sourceUrl: string; license: string; author: string | null; retry: boolean; readSeconds: number; waitLeft: number }
-interface Result { retry: boolean; right: boolean; rightChoice: number; evidence: string; streak: number; streakUp: boolean; coins: number; bonus: number; pending: boolean; levelBefore: number; me: Me }
-type Step = { at: 'loading' } | { at: 'read'; p: Shown; shownAt: number; openAt: number; pick?: number; r?: Result } | { at: 'empty' };
+interface ShownQ { index: number; q: string; choices: string[]; retry: boolean }
+interface Shown { id: string; title: string; text: string; questions: ShownQ[]; sourceName: string; sourceUrl: string; license: string; author: string | null; readSeconds: number; waitLeft: number }
+interface Result { index: number; finished: boolean; retry: boolean; right: boolean; rightChoice: number; evidence: string; streak: number; streakUp: boolean; coins: number; bonus: number; pending: boolean; levelBefore: number; me: Me }
+/** A paragraph on screen: each question keeps its own pick and result (they're answered one at a time, in any order). */
+type Step = { at: 'loading' } | { at: 'read'; p: Shown; shownAt: number; openAt: number; picks: Record<number, number>; results: Record<number, Result> } | { at: 'empty' };
 
 /** How many of this sitting's answers show as dots (a trail, not a count-down: the quest never ends). */
 const TRAIL = 10;
@@ -121,21 +124,26 @@ function Quest({ ctx }: { activity: Activity; ctx: ActivityContext }) {
       const r = await call<{ passage: Shown | null; me: Me }>('quest.next');
       setMe(r.me);
       if (!r.passage) { setStep({ at: 'empty' }); return; }
-      setStep({ at: 'read', p: r.passage, shownAt: Date.now(), openAt: Date.now() + r.passage.waitLeft * 1000 });
+      setStep({ at: 'read', p: r.passage, shownAt: Date.now(), openAt: Date.now() + r.passage.waitLeft * 1000, picks: {}, results: {} });
       top.current?.scrollIntoView?.({ block: 'start' });
     } catch (e) { setErr((e as Error).message); }
   }
 
-  async function answer(pick: number) {
-    if (step.at !== 'read' || step.r) return;
-    setStep({ ...step, pick });
+  /** Each question is marked (and paid) the moment it's clicked. */
+  async function answer(index: number, pick: number) {
+    if (step.at !== 'read' || step.results[index] || step.picks[index] != null) return;
+    const shownAt = step.shownAt;
+    setStep((s) => (s.at === 'read' ? { ...s, picks: { ...s.picks, [index]: pick } } : s));
     try {
-      const r = await call<Result>('quest.answer', { id: step.p.id, pick, readMs: Date.now() - step.shownAt });
-      setStep({ ...step, pick, r });
+      const r = await call<Result>('quest.answer', { id: step.p.id, q: index, pick, readMs: Date.now() - shownAt });
+      setStep((s) => (s.at === 'read' ? { ...s, results: { ...s.results, [index]: r } } : s));
       setMe(r.me);
       setTrail((t) => [...t, r.right].slice(-TRAIL));
       if (r.me.level > r.levelBefore) { setToast(`⬆ Level ${r.me.level}!`); setTimeout(() => setToast(''), 3500); }
-    } catch (e) { setErr((e as Error).message); setStep({ ...step, pick: undefined }); }
+    } catch (e) {
+      setErr((e as Error).message);
+      setStep((s) => { if (s.at !== 'read') return s; const picks = { ...s.picks }; delete picks[index]; return { ...s, picks }; });
+    }
   }
 
   if (!me) return <div class="rq">{err ? <p class="error">{err}</p> : <p class="muted center">Loading…</p>}</div>;
@@ -164,43 +172,63 @@ function Quest({ ctx }: { activity: Activity; ctx: ActivityContext }) {
     </div>
   );
 
-  return <QuestCard p={step.p} pick={step.pick} r={step.r} openAt={step.openAt} head={head} trail={trail} capped={capped} err={err} toast={toast} onAnswer={answer} onNext={next} />;
+  return <QuestCard p={step.p} picks={step.picks} results={step.results} openAt={step.openAt} head={head} trail={trail} capped={capped} err={err} toast={toast} onAnswer={answer} onNext={next} />;
 }
 
-/** One paragraph and its question. The answers unlock after the reading time (the PC checks it too). */
-function QuestCard({ p, pick, r, openAt, head, trail, capped, err, toast, onAnswer, onNext }: {
-  p: Shown; pick?: number; r?: Result; openAt: number; head: preact.JSX.Element; trail: boolean[]; capped: boolean;
-  err: string; toast: string; onAnswer: (k: number) => void; onNext: () => void;
+/** One paragraph and its question(s). The answers unlock after the reading time (the PC checks it too). */
+function QuestCard({ p, picks, results, openAt, head, trail, capped, err, toast, onAnswer, onNext }: {
+  p: Shown; picks: Record<number, number>; results: Record<number, Result>; openAt: number; head: preact.JSX.Element; trail: boolean[]; capped: boolean;
+  err: string; toast: string; onAnswer: (index: number, pick: number) => void; onNext: () => void;
 }) {
   const [now, setNow] = useState(Date.now());
-  useEffect(() => { if (Date.now() >= openAt) return; const t = setInterval(() => setNow(Date.now()), 250); return () => clearInterval(t); }, [openAt]);
+  useEffect(() => { if (Date.now() >= openAt) return; const t = setInterval(() => setNow(Date.now()), 100); return () => clearInterval(t); }, [openAt]);
   const wait = Math.max(0, Math.ceil((openAt - now) / 1000));
-  const locked = wait > 0 && !r;
+  const done = p.questions.every((q) => results[q.index]);
+  const locked = wait > 0 && !done;
+  const many = p.questions.length > 1;
+  // The answer is highlighted only for a question that won't come back (a second-look miss).
+  const reveal = done ? p.questions.map((q) => results[q.index]).find((r) => r && !r.right && r.evidence)?.evidence : undefined;
   return (
     <div class="rq">
       {head}
       {trail.length > 0 && (
         <div class="rq-dots" aria-label={`Last answers: ${trail.filter(Boolean).length} of ${trail.length} right`}>
-          {trail.map((ok) => <i class={ok ? 'ok' : 'miss'} />)}{!r && <i class="now" />}
+          {trail.map((ok) => <i class={ok ? 'ok' : 'miss'} />)}{!done && <i class="now" />}
         </div>
       )}
       <div class="rq-card">
         <h3 class="rq-title">{p.title}</h3>
-        <Paragraph key={p.id} text={p.text} canMark={!r} reveal={r && !r.right && r.evidence ? r.evidence : undefined} />
+        <Paragraph key={p.id} text={p.text} canMark={!done} reveal={reveal} />
         <p class="rq-credit">From {p.sourceName}{p.author ? `, by ${p.author}` : ''} · {p.license}</p>
-        <div class="rq-q">{p.retry && <span class="rq-retry">Second look</span>}<b>{p.q}</b></div>
-        {locked && <div class="rq-wait" role="timer"><span class="rq-ring" style={{ '--p': `${Math.round((1 - wait / p.readSeconds) * 100)}` } as any}>{wait}</span> Read the paragraph first — the answers open in {wait} second{wait === 1 ? '' : 's'}. Tip: select words to highlight them.</div>}
-        <div class="rq-choices">
-          {p.choices.map((c, k) => {
-            const cls = !r ? (pick === k ? ' on' : '') : k === r.rightChoice ? ' right' : k === pick ? ' wrong' : ' dim'; // rightChoice is -1 when the paragraph comes back
-            return <button class={'choice' + cls} disabled={locked || !!r || pick != null} onClick={() => onAnswer(k)}><span class="letter">{'ABCD'[k]}</span>{c}</button>;
-          })}
-        </div>
-        {r && (
-          <div class={'rq-feedback ' + (r.right ? 'ok' : 'miss')}>
-            <b>{r.right ? (r.retry ? '✓ Got it this time!' : `✓ Right!${r.coins ? ` +${r.coins} 🪙` : ''}${r.pending ? ' (waiting for a parent)' : ''}`)
-              : r.retry ? 'Not this time — here is the answer.' : 'Not quite. This one will come back later for another try.'}</b>
-            {capped && r.right && !r.retry && <span class="muted small">That's all of today's Reading Quest coins — keep reading for practice and your level.</span>}
+        {locked && (
+          // Just a circle that drains; the answers open when it's empty. No words, no number.
+          <div class="rq-wait" role="timer" aria-label={`Answers open in ${wait} seconds`}>
+            <span class="rq-ring" style={{ '--p': `${Math.max(0, Math.min(100, ((openAt - now) / (p.readSeconds * 1000)) * 100))}` } as any} />
+          </div>
+        )}
+        {p.questions.map((q, i) => {
+          const r = results[q.index], pick = picks[q.index];
+          return (
+            <div class={'rq-question' + (many ? ' many' : '')}>
+              <div class="rq-q">{many && <span class="rq-num">{i + 1}</span>}{q.retry && <span class="rq-retry">Second look</span>}<b>{q.q}</b></div>
+              <div class="rq-choices">
+                {q.choices.map((c, k) => {
+                  const cls = !r ? (pick === k ? ' on' : '') : k === r.rightChoice ? ' right' : k === pick ? ' wrong' : ' dim'; // rightChoice is -1 when the question comes back
+                  return <button class={'choice' + cls} disabled={locked || !!r || pick != null} onClick={() => onAnswer(q.index, k)}><span class="letter">{'ABCD'[k]}</span>{c}</button>;
+                })}
+              </div>
+              {r && (
+                <p class={'rq-mark ' + (r.right ? 'ok' : 'miss')}>
+                  {r.right ? (r.retry ? '✓ Got it this time!' : `✓ Right!${r.coins ? ` +${r.coins} 🪙` : ''}${r.bonus ? ` · streak +${r.bonus} 🪙` : ''}${r.pending ? ' (waiting for a parent)' : ''}`)
+                    : r.retry ? 'Not this time — here is the answer.' : 'Not quite. This one will come back another day.'}
+                </p>
+              )}
+            </div>
+          );
+        })}
+        {done && (
+          <div class="rq-feedback">
+            {capped && <span class="muted small">That's all of today's Reading Quest coins — keep reading for practice and your level.</span>}
             <button class="primary" onClick={onNext}>Next paragraph →</button>
           </div>
         )}

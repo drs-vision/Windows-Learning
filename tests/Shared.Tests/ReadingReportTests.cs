@@ -50,4 +50,23 @@ public class ReadingReportTests
         var list = new List<ReadingReport.Entry> { E(2, 8, 8, 200), E(2, 8, 8, 200), E(2, 8, 8, 200), E(3, 4, 8, 2) };
         Assert.Equal(2, ReadingReport.Build(list, Now)["comfortable"]!.GetValue<int>());
     }
+
+    [Fact]
+    public void Chapters_read_without_a_quiz_count_as_reading_but_not_toward_ability()
+    {
+        var list = new List<ReadingReport.Entry> { E(4, 8, 8, wpm: 140), E(4, 9, 10), E(4, 8, 10) };
+        // Two chapters read for fun at level 7 (no quiz): read and timed, but they say nothing about ability.
+        list.Add(E(7, 0, 0, daysAgo: 0, wpm: 160));
+        list.Add(E(7, 0, 0, wpm: 180));
+        var r = ReadingReport.Build(list, Now);
+        Assert.Equal(4, r["comfortable"]!.GetValue<int>());
+        Assert.Equal(0, r["stretch"]!["chapters"]!.GetValue<int>());
+        Assert.Equal(5, r["chaptersRead"]!.GetValue<int>());
+        Assert.Equal(3, r["chaptersQuizzed"]!.GetValue<int>());
+        Assert.Equal(160, r["wpm"]!.GetValue<int>());
+        var seven = r["levels"]!.AsArray().First(l => l!["level"]!.GetValue<int>() == 7)!;
+        Assert.Equal((2, 0, 4000), (seven["read"]!.GetValue<int>(), seven["chapters"]!.GetValue<int>(), seven["words"]!.GetValue<int>()));
+        Assert.Null(seven["firstTry"]);
+        Assert.Equal(7, r["current"]!.GetValue<int>());
+    }
 }

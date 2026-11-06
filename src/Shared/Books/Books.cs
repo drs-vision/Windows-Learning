@@ -97,6 +97,10 @@ public sealed class BookLibrary
         }
     }
 
+    /// <summary>Fastest believable reading: 600 words a minute. A chapter only counts as read after at least that long.</summary>
+    public const int MaxWpm = 600;
+    public static bool ReadEnough(int words, long readMs) => readMs >= words * 60_000L / MaxWpm;
+
     /// <summary>Questions in a quiz: about one per 250 words, 4 to 10 (4 so one miss still passes).</summary>
     public static int QuizSize(int words) => Math.Clamp((int)Math.Round(words / 250.0, MidpointRounding.AwayFromZero), 4, 10);
 
@@ -131,8 +135,14 @@ public sealed class ChapterProgress
     public List<string> Seen { get; set; } = new();
     public List<string> BonusDone { get; set; } = new();
     public List<int> TypedParts { get; set; } = new();
-    /// <summary>Time the chapter was on screen and in use before the first quiz (for the parents' reading speed).</summary>
+    /// <summary>Time the chapter was on screen and in use until it was first read to the end (or its first quiz), for
+    /// the parents' reading speed.</summary>
     public long ReadMs { get; set; }
+    /// <summary>First opened (the book shows under "Reading now").</summary>
+    public DateTimeOffset? OpenedAt { get; set; }
+    /// <summary>First read to the end, quiz or not (counts for the book's progress and the parents' chapters read).
+    /// Set only when the time spent is believable for its length (see BookLibrary.ReadEnough).</summary>
+    public DateTimeOffset? ReadAt { get; set; }
     /// <summary>The first quiz's score (for the parents' "% right" and the verified reading level).</summary>
     public int FirstCorrect { get; set; }
     public int FirstTotal { get; set; }

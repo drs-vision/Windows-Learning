@@ -2,15 +2,16 @@ import { useEffect, useState } from 'preact/hooks';
 import { bridge } from '../core/bridge';
 
 /** The PC's reading analysis (ReadingReport.cs): plain rules, so a parent can check every number by hand. */
-export interface ReadingRow { at: string; book: string; chapter: number | null; title: string; level: number; formula: number | null; atos: number | null; lexile: number | null; firstTry: number; correct: number; total: number; tries: number; passed: boolean; wpm: number | null; status: 'comfortable' | 'challenge' | 'hard' }
+export interface ReadingRow { at: string; book: string; chapter: number | null; title: string; level: number; formula: number | null; atos: number | null; lexile: number | null; read?: boolean; quizzed?: boolean; firstTry: number | null; correct: number; total: number; tries: number; passed: boolean; wpm: number | null; status: 'comfortable' | 'challenge' | 'hard' | 'read' }
 export interface ReadingData {
   kid?: string;
   comfortable: number; comfortableAtos: number | null; comfortableLexile: number | null; comfortableFormula: number | null; current: number | null;
   stretch: { chapters: number; firstTry: number | null; level: number };
   firstTry30: number | null; firstTryAll: number | null; chapters30: number; wpm: number | null;
   chaptersPassed: number; wordsRead: number; minutesReading: number;
+  chaptersRead?: number; chaptersRead30?: number; chaptersQuizzed?: number; wpmLow?: number | null; wpmHigh?: number | null; wpmChapters?: number;
   windowDays: number; strongPercent: number; strongNeeded: number;
-  levels: { level: number; chapters: number; strong: number; firstTry: number | null }[];
+  levels: { level: number; read?: number; words?: number; wpm?: number | null; chapters: number; strong: number; firstTry: number | null }[];
   weeks: { start: string; chapters: number; firstTry: number | null; wpm: number | null }[];
   recent: ReadingRow[];
 }
@@ -75,15 +76,16 @@ function QuestSection({ q, kid }: { q: QuestData; kid: string }) {
   );
 }
 
-const STATUS = { comfortable: ['Comfortable', 'ok'], challenge: ['Good challenge', 'mid'], hard: ['Hard for now', 'low'] } as const;
+const STATUS = { comfortable: ['Comfortable', 'ok'], challenge: ['Good challenge', 'mid'], hard: ['Hard for now', 'low'], read: ['Read', 'read'] } as const;
 const fmtDate = (s: string) => { const [y, m, d] = s.split('-').map(Number); return new Date(y, m - 1, d).toLocaleDateString(undefined, { month: 'short', day: 'numeric' }); };
 const measures = (r: { atos: number | null; lexile: number | null; formula: number | null }) =>
   [r.atos != null ? `ATOS ${r.atos.toFixed(1)}` : '', r.lexile != null ? `${r.lexile}L` : '', r.atos == null && r.lexile == null && r.formula != null ? `formula grade ${r.formula.toFixed(1)}` : ''].filter(Boolean).join(' · ');
 
 /** One plain sentence a parent can take away. Fixed wording from the numbers, nothing guessed. */
 function insight(d: ReadingData, kid: string) {
-  if (!d.recent.length) return `${kid} hasn't taken a reading quiz yet. Numbers appear after the first chapter.`;
+  if (!d.recent.length) return `${kid} hasn't read a chapter yet. Numbers appear after the first one.`;
   const parts: string[] = [];
+  if (!d.chaptersQuizzed) return `${kid} has read ${d.chaptersRead ?? 0} chapter${d.chaptersRead === 1 ? '' : 's'} so far, without quizzes (they're optional). A comfortable level shows once ${d.strongNeeded} chapters at one level score ${d.strongPercent}%+ on a first-try quiz.`;
   if (d.comfortable) parts.push(`${kid} reads Level ${d.comfortable} books comfortably`);
   else parts.push(`${kid} is getting started — a comfortable level shows after ${d.strongNeeded} chapters at one level score ${d.strongPercent}% or more on the first try`);
   if (d.stretch.chapters && d.comfortable) parts.push(d.stretch.firstTry != null && d.stretch.firstTry >= 70
@@ -126,34 +128,34 @@ export function ReadingAnalysis({ childId, kid, onBack }: { childId: string; kid
           <small>{d.firstTry30 != null ? `last 30 days · ${d.chapters30} quiz${d.chapters30 === 1 ? '' : 'zes'}` : 'all time'}</small>
         </div>
         <div class="ra-stat">
-          <small>Reading speed</small>
+          <small>Reading speed (estimate)</small>
           <b>{d.wpm ?? '—'}{d.wpm != null && <em> words/min</em>}</b>
-          <small>silent reading, median</small>
+          <small>{d.wpm != null ? `median of ${d.wpmChapters ?? 0} chapter${d.wpmChapters === 1 ? '' : 's'}${d.wpmLow != null && d.wpmHigh != null && d.wpmChapters! >= 4 ? ` · usually ${d.wpmLow}–${d.wpmHigh}` : ''}` : 'after the first chapter read'}</small>
         </div>
         <div class="ra-stat">
-          <small>Read so far</small>
-          <b>{d.chaptersPassed} <em>{d.chaptersPassed === 1 ? 'chapter' : 'chapters'}</em></b>
-          <small>{d.wordsRead.toLocaleString()} words · {d.minutesReading >= 90 ? `${Math.round(d.minutesReading / 60)} hours` : `${d.minutesReading} min`} reading</small>
+          <small>Chapters read</small>
+          <b>{d.chaptersRead ?? d.chaptersPassed} <em>{(d.chaptersRead ?? d.chaptersPassed) === 1 ? 'chapter' : 'chapters'}</em></b>
+          <small>{d.chaptersRead30 != null ? `${d.chaptersRead30} in the last 30 days · ` : ''}{d.wordsRead.toLocaleString()} words · {d.minutesReading >= 90 ? `${Math.round(d.minutesReading / 60)} hours` : `${d.minutesReading} min`} · {d.chaptersQuizzed ?? 0} with a quiz</small>
         </div>
       </div>
 
       <h4>Last 12 weeks</h4>
       <div class="ra-weeks" role="img" aria-label="Chapters and first-try accuracy by week">
         {d.weeks.map((w) => (
-          <div class="ra-week" title={`Week of ${fmtDate(w.start)}: ${w.chapters} quiz${w.chapters === 1 ? '' : 'zes'}${w.firstTry != null ? `, ${w.firstTry}% first try` : ''}${w.wpm ? `, ${w.wpm} words/min` : ''}`}>
+          <div class="ra-week" title={`Week of ${fmtDate(w.start)}: ${w.chapters} chapter${w.chapters === 1 ? '' : 's'} read${w.firstTry != null ? `, ${w.firstTry}% first try` : ''}${w.wpm ? `, ${w.wpm} words/min` : ''}`}>
             <span class="ra-pct">{w.firstTry != null ? `${w.firstTry}%` : ''}</span>
             <span class="ra-bar"><i class={w.firstTry == null ? '' : w.firstTry >= d.strongPercent ? 'ok' : w.firstTry >= 60 ? 'mid' : 'low'} style={{ height: `${Math.round(w.chapters / maxWeek * 100)}%` }} /></span>
             <small>{fmtDate(w.start)}</small>
           </div>
         ))}
       </div>
-      <p class="muted small">Bar height: quizzes taken that week. Colour and number: first-try accuracy (green {d.strongPercent}%+, amber 60–{d.strongPercent - 1}%, red under 60%).</p>
+      <p class="muted small">Bar height: chapters read that week. Colour and number: first-try quiz accuracy (green {d.strongPercent}%+, amber 60–{d.strongPercent - 1}%, red under 60%; grey = no quizzes).</p>
 
       {d.levels.length > 0 && <>
-        <h4>By level</h4>
+        <h4>Chapters read by level</h4>
         <table class="ra-table">
-          <thead><tr><th>Level</th><th>Quizzes</th><th>First-try accuracy</th><th>At {d.strongPercent}%+</th></tr></thead>
-          <tbody>{d.levels.map((l) => <tr class={l.level === d.comfortable ? 'here' : ''}><td>Level {l.level}{l.level === d.comfortable ? ' ✓' : ''}</td><td>{l.chapters}</td><td>{l.firstTry != null ? `${l.firstTry}%` : '—'}</td><td>{l.strong}</td></tr>)}</tbody>
+          <thead><tr><th>Level</th><th>Chapters read</th><th>Words</th><th>Speed</th><th>Quizzes</th><th>First-try accuracy</th><th>At {d.strongPercent}%+</th></tr></thead>
+          <tbody>{d.levels.map((l) => <tr class={l.level === d.comfortable ? 'here' : ''}><td>Level {l.level}{l.level === d.comfortable ? ' ✓' : ''}</td><td>{l.read ?? l.chapters}</td><td>{l.words != null ? l.words.toLocaleString() : '—'}</td><td>{l.wpm ? `${l.wpm}/min` : '—'}</td><td>{l.chapters}</td><td>{l.firstTry != null ? `${l.firstTry}%` : '—'}</td><td>{l.strong}</td></tr>)}</tbody>
         </table>
       </>}
 
@@ -164,7 +166,9 @@ export function ReadingAnalysis({ childId, kid, onBack }: { childId: string; kid
             <li>
               <span class="ra-date">{fmtDate(r.at)}</span>
               <span class="ra-what"><b>{r.book}</b>{r.chapter != null && <> · ch. {r.chapter}</>}<small>Level {r.level}{measures(r) && ` · ${measures(r)}`}{r.wpm ? ` · ${r.wpm} words/min` : ''}</small></span>
-              <span class="ra-score">{r.firstTry}%<small>{r.correct}/{r.total} first try{r.tries > 1 ? ` · ${r.passed ? 'passed' : 'tried'} on try ${r.tries}` : ''}</small></span>
+              {r.firstTry != null
+                ? <span class="ra-score">{r.firstTry}%<small>{r.correct}/{r.total} first try{r.tries > 1 ? ` · ${r.passed ? 'passed' : 'tried'} on try ${r.tries}` : ''}</small></span>
+                : <span class="ra-score">—<small>no quiz</small></span>}
               <span class={'ra-chip ' + STATUS[r.status][1]}>{STATUS[r.status][0]}</span>
             </li>
           ))}
@@ -185,10 +189,10 @@ function AboutReading({ d, onClose }: { d: ReadingData; onClose: () => void }) {
         <p>Everything here is worked out on the PC with fixed rules — no AI and nothing sent anywhere — so the same reading always gives the same numbers. Your child never sees any of it; on their shelf, books just say <b>Level 1, 2, 3…</b> so reading an easier book never feels like being "behind".</p>
 
         <h4>Levels</h4>
-        <p>CoinQuest's own shelf order, 1 = easiest. Books are placed by the published measures below (mainly ATOS), adjusted a little for old-fashioned language and dialect. A level is a group of books of about the same difficulty, not a school grade.</p>
+        <p>One scale for the bookshelf and Reading Quest, so "Level 4" means the same in both. A level is a band of difficulty: Level 1 is below grade 2, then Level N is grade N up to N+1. A book's level is the whole number of its published ATOS book level (below); a book without one sits next to similar books. In Reading Quest, your child's level is the level of text they get about 3 in 4 questions right, so a child at Quest Level 4 is ready for Level 4 books. Your child only sees the number.</p>
 
         <h4>Reading Quest rating</h4>
-        <p>Reading Quest shows one short paragraph (3–6 sentences, written by real authors) and one question. Each paragraph's difficulty is its readability grade (below). The rating works like a chess rating (Elo): a right answer raises it — more for a hard paragraph, less for an easy one — and a miss lowers it — more for an easy paragraph. The next paragraph is picked near the rating, a little above it, so it stays challenging but doable; after two misses in a row an easier one comes next. A rating of 3.0 means your child usually gets paragraphs of about grade-3 difficulty right. Your child only sees "Level" (1 until the rating reaches 2, then the rating's whole number) and a bar towards the next level.</p>
+        <p>Reading Quest shows a paragraph written by real authors with a question under it; at higher levels the paragraphs get longer (up to about 280 words) with a question per ~100 words. Each question is marked the moment it's answered; a missed one comes back by itself on a later day (no sooner than the next day), and a right one never comes back. Each paragraph's difficulty is its readability grade (below). The rating works like a chess rating (Elo): a right answer raises it — more for a hard paragraph, less for an easy one — and a miss lowers it — more for an easy paragraph. The next paragraph is picked near the rating, a little above it, so it stays challenging but doable; after two misses in a row an easier one comes next. A rating of 5.0 means your child gets about half of the questions on grade-5 paragraphs right, and about 3 in 4 on grade-4 ones, which is Level 4. Your child only sees "Level" and a bar towards the next level.</p>
         <p><b>By reading skill</b> groups the questions by what they ask: details, main idea, word meaning, reading between the lines (inference), order of events and cause and effect. A lower score in one skill shows what to practise together.</p>
         <h4>Comfortable level</h4>
         <p>The highest level where at least <b>{d.strongNeeded} chapters</b> scored <b>{d.strongPercent}% or better on the first try</b>, over the last {d.windowDays} days (or all time, if there's been little reading lately). It's deliberately cautious: one great chapter in a hard book doesn't set it, and a missed quiz in a hard book or a perfect score in an easy one doesn't move it. For scale: reading teachers traditionally call about 90%+ comprehension "independent" (reads it alone with ease) and about 75–89% "instructional" (learning, with a little help), after Emmett Betts' reading levels; Accelerated Reader suggests an average of 85% on its quizzes. 80% sits in that instructional-to-independent range: solid understanding.</p>
@@ -205,13 +209,13 @@ function AboutReading({ d, onClose }: { d: ReadingData; onClose: () => void }) {
         </ul>
 
         <h4>Reading speed</h4>
-        <p>Chapter words ÷ minutes the chapter was on screen and in use before its first quiz (the window open and focused, with some scrolling, clicking or typing in the last 2 minutes). The median is shown, so one distracted session doesn't skew it; anything under 40 or over 600 words a minute is ignored. Typing mode doesn't count as reading time.</p>
+        <p>An estimate, from time on the page: chapter words ÷ minutes the chapter was on screen and in use until it was first read to the end (the window open and focused, with some scrolling, clicking or typing in the last 2 minutes; time away isn't counted). Quizzes are optional, so every chapter read counts, quiz or not. A chapter only counts as read after a believable time for its length (600 words a minute at most), so flicking through doesn't count. The median over the last 30 days is shown, so one distracted or skimmed chapter doesn't skew it, with the middle half of his chapters as "usually"; anything under 40 or over 600 words a minute is left out. Over weeks of reading it settles; a single chapter can be off either way. Typing mode doesn't count as reading time.</p>
         <p>For a sense of scale, average silent reading rates with comprehension measured across US students (Spichtig et al., 2016):</p>
         <table class="ra-table small"><thead><tr><th>Grade</th><th>2</th><th>4</th><th>6</th><th>8</th><th>10</th><th>11–12</th></tr></thead><tbody><tr><td>Words/min</td><td>115</td><td>147</td><td>165</td><td>166</td><td>185</td><td>192</td></tr></tbody></table>
         <p class="muted small">Averages; children vary a lot (roughly ±40–60 words/min). Source: <a href="https://ila.onlinelibrary.wiley.com/doi/full/10.1002/rrq.137" target="_blank" rel="noreferrer">"The Decline of Comprehension-Based Silent Reading Efficiency in the United States", Reading Research Quarterly 51(2), 2016</a>.</p>
 
         <h4>What these numbers can't tell you</h4>
-        <p>Each quiz is short (4–10 questions), so one result can be luck either way. Look at the trend over weeks, not a single day. The quizzes check that a chapter was read and understood; they aren't a standardized reading test.</p>
+        <p>Chapters read without a quiz show how much and how fast your child reads, but not how well they understood it; only quizzes feed the comfortable level. Each quiz is short (4–10 questions), so one result can be luck either way. Look at the trend over weeks, not a single day. The quizzes check that a chapter was read and understood; they aren't a standardized reading test.</p>
       </div>
     </div>
   );

@@ -1,4 +1,4 @@
-# Reading Quest — bite-size paragraphs, one question each
+# Reading Quest — bite-size paragraphs with questions under them
 
 A child reads one short paragraph (a few sentences) and answers one question right under it, then the next one comes
 up: there is no set length, the child reads as many as they like (the daily coin limit caps pay, not reading). The next paragraph is chosen near the child's rating, which goes up and down with each answer
@@ -13,7 +13,7 @@ After any change run (CI runs it before every release; it must report 0 errors):
 ## Files
 
 Paragraphs are grouped by difficulty, one file per band: `k1.json` (kindergarten-grade 1), `g1.json` ... `g8.json`
-(about that grade and up). The band is just for tidiness: the app uses each paragraph's own measured difficulty.
+(about that grade and up); the longer multi-question paragraphs are in `long-*.json`. The band is just for tidiness: the app uses each paragraph's own measured difficulty.
 
 ```json
 {
@@ -46,7 +46,13 @@ Where the paragraphs come from (all written by people; only the questions were w
   good addition; they need fetching from the web, which the build workspace can't do by itself.
 
 * `id`: unique across all files, lowercase-with-dashes. Never change a shipped id (children's progress uses it).
-* `text`: **30 to 120 words, 3 to 12 (short) sentences**, one paragraph, copied from the source. Allowed edits: cut sentences
+* `text`: one paragraph, copied from the source. **Length grows with difficulty**: below readability grade 3 at most
+  120 words; grade 3-5 up to 200; grade 5 and up to 280 (30 words minimum). 3-12 short sentences up to 120 words,
+  up to 22 for longer ones.
+* Questions: **one per ~100 words**: up to 120 words `"question": {...}`; 121-200 words `"questions": [{...}, {...}]`;
+  201-280 words three in `"questions"`. Each question stands alone (a child may answer them in any order, and a missed
+  one comes back by itself on another day), asks about a different part or skill, and has its own `evidence`. Never
+  reorder or remove a shipped question (progress is kept per question number); add new ones at the end. Allowed edits: cut sentences
   from the start or end, cut a sentence that refers to a picture/link/"click here", fix spacing, and replace
   characters not on a keyboard (curly quotes -> straight, em dash -> --). Don't reword: the point is that people
   wrote these. For CC BY sources, say what was changed in `source.note` (e.g. "shortened").
@@ -65,13 +71,17 @@ Where the paragraphs come from (all written by people; only the questions were w
 
 ## How a quest plays (for reference; rules in `src/Shared/Books/ReadingQuest.cs`)
 
+* Endless: one paragraph after another for as long as the child likes; the daily coin limit caps pay, not reading.
 * Matchmaking like a game rating (Elo / Brawl Stars trophies): each paragraph's difficulty is its readability grade;
-  the child's rating moves up after a right answer (more for a hard paragraph) and down after a miss (more for an easy
-  one); the next paragraph is picked near the rating, a little above it, and about a grade below after two misses in a
-  row. Children see "Level" (1 below a rating of 2, then the whole rating) and a bar to the next level.
-* Read first: the answers unlock after about 4 words a second (15-30 seconds); the PC refuses earlier answers.
-* A right answer finishes a paragraph for good and pays 1 coin per 100 words (rounded up) x the parent's setting.
-  A miss brings the paragraph back 5 answers later as a "second look" (choices reshuffled): no coins, and the rating
-  and streak don't change. A second miss retires it.
+  every answered question moves the rating up (more for a hard paragraph) or down (more for an easy one). The next
+  paragraph is picked near the rating, a little above it, and about a grade below after two misses in a row; higher
+  ratings also lean towards longer paragraphs. Children see "Level" (1 below a rating of 2, then the whole rating).
+* Read first: a circle drains for about 4 words a second (15-30 seconds), then the answers open; the PC refuses
+  earlier answers.
+* Each question is marked the moment it's clicked, in any order: a right answer pays right away (1 coin per 100 words
+  of the paragraph, shared between its questions, rounded up, x the parent's setting) and fills the streak ring.
+  A right question is done for good. A missed question reveals nothing and comes back (alone, choices reshuffled) on a
+  later day, no sooner than tomorrow: no coins, and the rating and streak don't change; a second miss retires it and
+  shows the answer. A paragraph is only shown while it has a question the child may answer.
 * Streak: right answers in a row fill a ring split into N parts (default 2); a full ring adds 1 to the number in its
   middle and pays that number (1, 2, then 3 at most). A miss empties the ring and resets the number.

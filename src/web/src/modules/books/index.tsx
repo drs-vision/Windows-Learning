@@ -18,7 +18,7 @@ export const books: LessonModule = {
   id: 'books',
   title: 'Reading',
   tagline: 'Read a chapter, pass the quiz',
-  description: 'Classic public-domain books, sorted by reading level from short picture-book tales up to adventure novels. Your child reads a chapter (or types it, for extra coins), then takes a short quiz: 70% or better pays coins for each correct answer. A failed quiz waits a few minutes before a retake, so there is time to reread. After passing, extra questions can be answered as bonus questions.',
+  description: 'Classic public-domain books on the same level scale as Reading Quest, from Beatrix Potter tales up to adventure novels. Your child can just read (books in progress show on top with a progress bar, finished ones at the bottom) or take a chapter\'s short quiz whenever they like: 70% or better pays coins for each correct answer. A failed quiz waits a few minutes before a retake. After passing, extra questions can be answered as bonus questions. Typing a chapter also pays.',
   icon: '📚',
   verification: 'in_app',
   defaults: { coinsPerActivity: 3, dailyCap: 120 },
@@ -32,7 +32,7 @@ export const books: LessonModule = {
 };
 
 // ---- types from the Guardian ----------------------------------------------------------------------------------
-interface ChapterStatus { n: number; title: string; words: number; quizSize: number; hasQuiz: boolean; passed: boolean; correct: number; total: number; attempts: number; retakeAt: string | null; bonusLeft: number; typed: number }
+interface ChapterStatus { n: number; title: string; words: number; quizSize: number; hasQuiz: boolean; passed: boolean; read: boolean; opened: boolean; correct: number; total: number; attempts: number; retakeAt: string | null; bonusLeft: number; typed: number }
 interface BookStatus { id: string; title: string; author: string; level: number; summary: string; chapters: ChapterStatus[] }
 interface Shelf { perCorrect: number; wordsPer: number; books: BookStatus[] }
 interface Shown { id: string; q: string; choices: string[] }
@@ -62,35 +62,57 @@ function Reading({ ctx }: { activity: Activity; ctx: ActivityContext }) {
   return <ShelfView shelf={shelf} onOpen={(id) => setView(single(shelf.books.find((b) => b.id === id)) ? { name: 'chapter', id, n: 1 } : { name: 'book', id })} onExit={ctx.exit} />;
 }
 
+/** How far through a book he is: chapters read (quiz or not). */
+const progress = (b: BookStatus) => ({ read: b.chapters.filter((c) => c.read).length, total: b.chapters.length });
+const started = (b: BookStatus) => b.chapters.some((c) => c.opened || c.read);
+const finished = (b: BookStatus) => b.chapters.every((c) => c.read);
+
+function BookCard({ b, onOpen }: { b: BookStatus; onOpen: (id: string) => void }) {
+  const { read, total } = progress(b);
+  const meta = total === 1 ? (read ? 'Read ✓' : `${minutesRead(b.chapters[0].words)} min story`)
+    : read === total ? `All ${total} chapters ✓` : read ? `${read} of ${total} chapters` : `${total} chapters`;
+  return (
+    <button class="book-card" onClick={() => onOpen(b.id)}>
+      <span class="book-spine" style={{ background: spine(b.id) }}><b>{b.title}</b><small>{b.author}</small></span>
+      <span class="book-meta">{meta}{total > 1 && <> · Level {b.level}</>}</span>
+      <span class="book-bar" title={`${read} of ${total} read`}><i style={{ width: `${Math.round(read / total * 100)}%` }} /></span>
+    </button>
+  );
+}
+
+/** Reading now (started, not finished) on top, then the library by level, then finished books at the bottom. */
 function ShelfView({ shelf, onOpen, onExit }: { shelf: Shelf; onOpen: (id: string) => void; onExit: () => void }) {
-  // Easiest first (the Guardian sends the books in level order), one row of covers per level.
+  const reading = shelf.books.filter((b) => started(b) && !finished(b));
+  const done = shelf.books.filter(finished);
   const levels = useMemo(() => {
     const m = new Map<number, BookStatus[]>();
-    for (const b of shelf.books) m.set(b.level, [...(m.get(b.level) ?? []), b]);
-    return [...m.entries()];
+    for (const b of shelf.books) if (!started(b) && !finished(b)) m.set(b.level, [...(m.get(b.level) ?? []), b]);
+    return [...m.entries()].sort((x, y) => x[0] - y[0]);
   }, [shelf]);
   return (
     <div class="reading">
       <div class="reading-head"><button class="ghost" onClick={onExit}>← Back</button><h2>📚 Bookshelf</h2><span /></div>
-      <p class="muted center">Read a story or a chapter, then pass its quiz: <b>{shelf.perCorrect} 🪙</b> for every right answer.</p>
+      <p class="muted center">Read whatever you like. Quizzes are optional: pass a chapter's quiz to earn <b>{shelf.perCorrect} 🪙</b> for every right answer.</p>
       {shelf.books.length === 0 && <p class="muted center">No books yet — ask a parent to pick some.</p>}
+      {reading.length > 0 && (
+        <section class="shelf-group shelf-now">
+          <h3>Reading now</h3>
+          <div class="shelf">{reading.map((b) => <BookCard b={b} onOpen={onOpen} />)}</div>
+        </section>
+      )}
+      {levels.length > 0 && <h3 class="shelf-title">Library</h3>}
       {levels.map(([level, list]) => (
         <section class="shelf-group">
-          <h3>Level {level}</h3>
-          <div class="shelf">
-            {list.map((b) => {
-              const done = b.chapters.filter((c) => c.passed).length;
-              return (
-                <button class="book-card" onClick={() => onOpen(b.id)}>
-                  <span class="book-spine" style={{ background: spine(b.id) }}><b>{b.title}</b><small>{b.author}</small></span>
-                  <span class="book-meta">{b.chapters.length === 1 ? (done ? 'Read ✓' : `${minutesRead(b.chapters[0].words)} min story`) : done ? `${done} of ${b.chapters.length} chapters ✓` : `${b.chapters.length} chapters`}</span>
-                  <span class="book-bar"><i style={{ width: `${Math.round(done / b.chapters.length * 100)}%` }} /></span>
-                </button>
-              );
-            })}
-          </div>
+          <h4>Level {level}</h4>
+          <div class="shelf">{list.map((b) => <BookCard b={b} onOpen={onOpen} />)}</div>
         </section>
       ))}
+      {done.length > 0 && (
+        <section class="shelf-group shelf-done">
+          <h3>Finished</h3>
+          <div class="shelf">{done.map((b) => <BookCard b={b} onOpen={onOpen} />)}</div>
+        </section>
+      )}
     </div>
   );
 }
@@ -102,21 +124,23 @@ function spine(id: string) {
 }
 
 function BookView({ book, onOpen, onBack }: { book: BookStatus; shelf: Shelf; onOpen: (n: number) => void; onBack: () => void }) {
-  const next = book.chapters.find((c) => !c.passed)?.n;
+  const next = book.chapters.find((c) => !c.read)?.n;
+  const { read, total } = progress(book);
   return (
     <div class="reading">
       <div class="reading-head"><button class="ghost" onClick={onBack}>← Bookshelf</button><h2>{book.title}</h2><span class="muted">Level {book.level}</span></div>
       <p class="muted center">{book.author} · {book.summary}</p>
+      <div class="book-progress"><span class="book-bar"><i style={{ width: `${Math.round(read / total * 100)}%` }} /></span><small>{read} of {total} chapters read</small></div>
       <ol class="chapter-list">
         {book.chapters.map((c) => {
           const wait = left(c.retakeAt);
           return (
             <li>
-              <button class={'chapter-row' + (c.passed ? ' passed' : '') + (c.n === next ? ' next' : '')} onClick={() => onOpen(c.n)}>
+              <button class={'chapter-row' + (c.read ? ' passed' : '') + (c.n === next ? ' next' : '')} onClick={() => onOpen(c.n)}>
                 <span class="ch-n">{c.n}</span>
-                <span class="ch-title"><b>{c.title}</b><small>{minutesRead(c.words)} min read · {c.quizSize}-question quiz{!c.hasQuiz ? ' (coming soon)' : ''}</small></span>
+                <span class="ch-title"><b>{c.title}</b><small>{minutesRead(c.words)} min read{c.hasQuiz ? ` · ${c.quizSize}-question quiz (optional)` : ''}</small></span>
                 <span class="ch-state">
-                  {c.passed ? <>✓ {c.correct}/{c.total}{c.bonusLeft > 0 && <em> · ⭐ {c.bonusLeft} bonus</em>}</> : wait > 0 ? <>⏳ {clock(wait)}</> : c.n === next ? 'Read next →' : ''}
+                  {c.passed ? <>✓ Quiz {c.correct}/{c.total}{c.bonusLeft > 0 && <em> · ⭐ {c.bonusLeft} bonus</em>}</> : wait > 0 ? <>{c.read && '✓ Read · '}⏳ {clock(wait)}</> : c.read ? <>✓ Read{c.hasQuiz && <em> · quiz open</em>}</> : c.n === next ? 'Read next →' : ''}
                 </span>
               </button>
             </li>
@@ -131,12 +155,32 @@ function ChapterView({ book, n, shelf, onBack, onNext }: { book: BookStatus; n: 
   const [data, setData] = useState<ChapterData | null>(null);
   const [mode, setMode] = useState<'read' | 'type' | 'quiz' | 'result' | 'bonus'>('read');
   const [typing, setTyping] = useState(() => { try { return localStorage.getItem('cq.books.typing') === '1'; } catch { return false; } });
-  const readTime = useReadTime(`${book.id}/${n}`, mode === 'read' && !!data && !data.status.passed && data.status.attempts === 0);
+  const readTime = useReadTime(`${book.id}/${n}`, mode === 'read' && !!data && !data.status.read && !data.status.passed && data.status.attempts === 0);
+  const end = useRef<HTMLDivElement>(null);
   const [quiz, setQuiz] = useState<{ id: string; questions: Shown[] } | null>(null);
   const [result, setResult] = useState<Graded | null>(null);
   const [err, setErr] = useState('');
   const [, tick] = useState(0);
-  const reload = () => call<ChapterData>('books.chapter', { bookId: book.id, n }).then((d) => { setData(d); if (d.quiz) { setQuiz(d.quiz); setMode('quiz'); } }).catch((e) => setErr((e as Error).message));
+  // An unfinished quiz waits (he can keep reading or go on); it doesn't take over the chapter.
+  const reload = () => call<ChapterData>('books.chapter', { bookId: book.id, n }).then((d) => { setData(d); setQuiz(d.quiz ?? null); }).catch((e) => setErr((e as Error).message));
+  // Reaching the end of the chapter (after a believable reading time; the PC checks) marks it read, quiz or not.
+  // While the end is on screen it checks again every 10 seconds, so a short story that fits on one screen counts too.
+  useEffect(() => {
+    if (!data || data.status.read || mode !== 'read' || !end.current || typeof IntersectionObserver === 'undefined') return;
+    let timer: ReturnType<typeof setInterval> | undefined;
+    const send = () => call<{ read: boolean; status: ChapterStatus }>('books.read', { bookId: book.id, n, readMs: readTime.take() })
+      .then((r) => { if (r.read) { clearInterval(timer); setData((d) => (d ? { ...d, status: r.status } : d)); } }).catch(() => { /* try again later */ });
+    const io = new IntersectionObserver(([e]) => {
+      clearInterval(timer);
+      if (e.isIntersecting) { send(); timer = setInterval(send, 10_000); }
+    });
+    io.observe(end.current);
+    return () => { io.disconnect(); clearInterval(timer); };
+  }, [data?.status.read, mode, book.id, n]);
+  async function goNext() {
+    if (data && !data.status.read) await call('books.read', { bookId: book.id, n, readMs: readTime.take() }).catch(() => undefined);
+    onNext(n + 1);
+  }
   useEffect(() => { setData(null); setMode(typing ? 'type' : 'read'); setResult(null); setQuiz(null); reload(); window.scrollTo?.(0, 0); }, [book.id, n]);
   useEffect(() => { const t = setInterval(() => tick((x) => x + 1), 1000); return () => clearInterval(t); }, []);
   useEffect(() => { try { localStorage.setItem('cq.books.typing', typing ? '1' : '0'); } catch { /* fine */ } }, [typing]);
@@ -164,25 +208,30 @@ function ChapterView({ book, n, shelf, onBack, onNext }: { book: BookStatus; n: 
     </div>
   );
 
+  const nextBtn = (primary: boolean) => hasNext && <button class={primary ? 'primary' : 'ghost'} onClick={goNext}>Next chapter →</button>;
   const quizBar = (
-    <div class="quiz-bar">
+    <div class="quiz-bar" ref={end}>
       {err && <p class="error">{err}</p>}
+      {st.read && !st.passed && <p class="read-mark">✓ You read this {book.chapters.length === 1 ? 'story' : 'chapter'}!</p>}
       {st.passed ? (
         <>
-          <p>✓ You passed this chapter with <b>{st.correct}/{st.total}</b>.</p>
+          <p>✓ You passed this chapter's quiz with <b>{st.correct}/{st.total}</b>.</p>
           {st.bonusLeft > 0 && <button class="primary" onClick={() => setMode('bonus')}>⭐ Bonus questions ({st.bonusLeft})</button>}
-          {hasNext && <button class={st.bonusLeft > 0 ? 'ghost' : 'primary'} onClick={() => onNext(n + 1)}>Next chapter →</button>}
+          {nextBtn(st.bonusLeft === 0)}
           <p class="muted small">Each chapter pays once.</p>
         </>
-      ) : !st.hasQuiz ? <p class="muted">This chapter's quiz isn't ready yet.</p>
-        : wait > 0 ? <><p>⏳ You can take the quiz again in <b>{clock(wait)}</b>. Reading the chapter again helps!</p><button class="primary" disabled>Take the quiz</button></>
-        : quiz ? <><p>Your quiz is waiting, just as you left it.</p><button class="primary" onClick={() => { setMode('quiz'); window.scrollTo?.(0, 0); }}>Back to the quiz</button></>
-        : <><p>Finished reading? The quiz has <b>{st.quizSize} questions</b>; get 70% to earn <b>{shelf.perCorrect} 🪙</b> for each right answer.</p><button class="primary" onClick={startQuiz}>Take the quiz</button></>}
+      ) : !st.hasQuiz ? <><p class="muted">This chapter's quiz isn't ready yet.</p>{nextBtn(true)}</>
+        : wait > 0 ? <><p>⏳ You can take the quiz again in <b>{clock(wait)}</b>. Reading the chapter again helps!</p>{nextBtn(true)}</>
+        : quiz ? <><p>Your quiz is waiting, just as you left it.</p><button class="primary" onClick={() => { setMode('quiz'); window.scrollTo?.(0, 0); }}>Back to the quiz</button>{nextBtn(false)}</>
+        : <>
+          <p>Want coins? The quiz is optional: <b>{st.quizSize} questions</b>, get 70% to earn <b>{shelf.perCorrect} 🪙</b> for each right answer. You can come back for it any time.</p>
+          <button class={hasNext ? 'ghost' : 'primary'} onClick={startQuiz}>Take the quiz</button>{nextBtn(true)}
+        </>}
     </div>
   );
 
   if (mode === 'quiz' && quiz) return <QuizView title={name} quiz={quiz} bookId={book.id} n={n} text={data.text} onDone={(g) => { setResult(g); setQuiz(null); setMode('result'); reload(); }} onBack={() => setMode('read')} />;
-  if (mode === 'result' && result) return <ResultView g={result} bookId={book.id} n={n} onReread={() => setMode(typing ? 'type' : 'read')} onBonus={() => setMode('bonus')} onNext={hasNext ? () => onNext(n + 1) : undefined} onBack={onBack} />;
+  if (mode === 'result' && result) return <ResultView g={result} bookId={book.id} n={n} onReread={() => setMode(typing ? 'type' : 'read')} onBonus={() => setMode('bonus')} onNext={hasNext ? goNext : undefined} onBack={onBack} />;
   if (mode === 'bonus') return <BonusView bookId={book.id} n={n} onDone={() => { reload(); setMode('read'); }} />;
 
   if (typing && !st.passed && mode !== 'read') return <div class="reading">{head}<TypeChapter data={data} bookId={book.id} n={n} wordsPer={shelf.wordsPer} onChanged={reload} />{quizBar}</div>;
@@ -298,7 +347,7 @@ function TypeChapter({ data, bookId, n, wordsPer, onChanged }: { data: ChapterDa
       setMsg(r.again ? `${speed} — typed again, great practice` : r.pending ? `${speed} · +${r.coins} 🪙 waiting for a parent's OK` : `${speed} · +${r.coins} 🪙`);
       onChanged();
       if (part + 1 < data.parts.length) setPart(part + 1);
-      else setMsg((m) => m + ' · Chapter typed! Now take the quiz.');
+      else setMsg((m) => m + ' · Chapter typed! The quiz is next if you want coins for it.');
     } catch (e) { setMsg((e as Error).message); }
     setBusy(false);
   }
@@ -376,6 +425,7 @@ function ResultView({ g, bookId, n, onReread, onBonus, onNext, onBack }: { g: Gr
         {g.passed && g.bonusLeft > 0 && <button class="primary" onClick={onBonus}>⭐ Bonus questions ({g.bonusLeft})</button>}
         {g.passed && onNext && <button class={g.bonusLeft > 0 ? 'ghost' : 'primary'} onClick={onNext}>Next chapter →</button>}
         {!g.passed && <button class="primary" onClick={onReread}>Read it again</button>}
+        {!g.passed && onNext && <button class="ghost" onClick={onNext}>Next chapter →</button>}
         <button class="ghost" onClick={onBack}>Chapters</button>
       </div>
     </div>
