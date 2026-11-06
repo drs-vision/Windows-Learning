@@ -53,6 +53,9 @@ jobs:
       - name: Books — check texts and question banks
         run: node scripts/books/validate.mjs
 
+      - name: Reading Quest — check paragraphs and questions
+        run: node scripts/passages/validate.mjs
+
       - name: Fetch arcade games (best effort)
         continue-on-error: true
         run: node scripts/fetch-games.mjs

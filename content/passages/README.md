@@ -1,6 +1,6 @@
 # Reading Quest — bite-size paragraphs, one question each
 
-A child reads one short paragraph (3-6 sentences) and answers one question right under it, about 5 minutes and 5-6
+A child reads one short paragraph (a few sentences) and answers one question right under it, about 5 minutes and 5-6
 paragraphs a session. The next paragraph is chosen near the child's rating, which goes up and down with each answer
 (see `src/Shared/Books/ReadingQuest.cs`). Paragraphs are **written by people, not AI**: public-domain US government
 pages and freely licensed (CC BY) children's stories, each with its source. Only the questions are written for this.
@@ -12,37 +12,41 @@ After any change run (CI runs it before every release; it must report 0 errors):
 
 ## Files
 
-One file per source, e.g. `content/passages/noaa-scijinks.json`:
+Paragraphs are grouped by difficulty, one file per band: `k1.json` (kindergarten-grade 1), `g1.json` ... `g8.json`
+(about that grade and up). The band is just for tidiness: the app uses each paragraph's own measured difficulty.
 
 ```json
 {
-  "source": "NOAA SciJinks",
-  "license": "Public domain (US government work)",
-  "licenseUrl": "https://scijinks.gov/about/",
+  "about": "Reading Quest paragraphs, readability grade 3-4",
   "passages": [
     {
-      "id": "scijinks-what-is-a-rainbow",
-      "title": "What Is a Rainbow?",
-      "kind": "facts",
-      "topic": "weather",
-      "text": "A rainbow is ... (3-6 sentences, copied from the source)",
-      "source": { "name": "NOAA SciJinks", "url": "https://scijinks.gov/rainbow/", "license": "Public domain", "author": null },
-      "readability": { "grade": 3.4, "fk": 3.1, "cli": 4.0, "ari": 3.2 },
-      "question": {
-        "type": "cause-effect",
-        "q": "What makes the colors in a rainbow?",
-        "choices": ["Sunlight bending in raindrops", "...", "...", "..."],
-        "answer": 0,
-        "evidence": "exact words from the text that prove the answer",
-        "explain": "One short, kind sentence saying why."
-      }
+      "id": "asp-a-very-tall-man",
+      "title": "A Very Tall Man",
+      "kind": "story",
+      "topic": "people",
+      "text": "His hoe was too short. His doorway was too low. ...",
+      "source": { "name": "African Storybook", "url": "https://github.com/global-asp/asp-source/blob/master/en/...", "license": "CC BY 4.0", "author": "Cornelius Gulere", "note": "Whole story; illustrations not included." },
+      "readability": { "grade": 1.2, "fk": 0.9, "cli": 2.1, "ari": 0.6 },
+      "question": { "type": "detail", "q": "...", "choices": ["...", "...", "...", "..."], "answer": 0, "evidence": "...", "explain": "..." }
     }
   ]
 }
 ```
 
+Where the paragraphs come from (all written by people; only the questions were written for CoinQuest):
+
+* **CC BY 4.0 picture books** from African Storybook, Pratham Books / StoryWeaver and Storybooks Canada, via the
+  `global-asp/asp-source`, `pb-source` and `sbc-source` repositories on GitHub. Credit (`author`, plus the
+  translator in `note` if any) is required. Whole short stories, or a few consecutive pages ("excerpt").
+* **Public-domain children's books** in plain early-1900s English, via the GITenberg mirrors of Project Gutenberg:
+  Thornton W. Burgess (Burgess Animal Book, Burgess Bird Book, Mother West Wind books), James Baldwin (Fifty Famous
+  Stories Retold, Fifty Famous People), J.-H. Fabre (The Story-Book of Science), H. W. van Loon (The Story of Mankind).
+  Paragraphs with outdated science or dated attitudes about people are left out.
+* US-government kids' science pages (NASA Knows, NOAA Ocean Facts, USGS, NPS, EIA) are public domain and would be a
+  good addition; they need fetching from the web, which the build workspace can't do by itself.
+
 * `id`: unique across all files, lowercase-with-dashes. Never change a shipped id (children's progress uses it).
-* `text`: **3 to 6 sentences, 30 to 120 words**, one paragraph, copied from the source. Allowed edits: cut sentences
+* `text`: **30 to 120 words, 3 to 12 (short) sentences**, one paragraph, copied from the source. Allowed edits: cut sentences
   from the start or end, cut a sentence that refers to a picture/link/"click here", fix spacing, and replace
   characters not on a keyboard (curly quotes -> straight, em dash -> --). Don't reword: the point is that people
   wrote these. For CC BY sources, say what was changed in `source.note` (e.g. "shortened").

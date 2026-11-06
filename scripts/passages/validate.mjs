@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 // Checks content/passages (format: content/passages/README.md). No dependencies.
-//   node scripts/passages/validate.mjs [--write]     --write also recomputes each paragraph's readability
+//   node scripts/passages/validate.mjs [--write] [file.json ...]   --write also recomputes readability; files limit the check
 import { readFileSync, writeFileSync, readdirSync, existsSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -8,6 +8,7 @@ import { measure } from '../books/readability.mjs';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..', '..', 'content', 'passages');
 const write = process.argv.includes('--write');
+const only = process.argv.slice(2).filter((a) => a.endsWith('.json')).map((a) => a.split('/').pop());
 const TYPES = new Set(['detail', 'main-idea', 'vocabulary', 'inference', 'sequence', 'cause-effect']);
 const KINDS = new Set(['story', 'facts', 'fable', 'poem']);
 const KEYBOARD = /^[\x20-\x7E\n]*$/;
@@ -19,17 +20,17 @@ let errors = 0, count = 0;
 const err = (where, msg) => { errors++; console.log(`ERROR ${where}: ${msg}`); };
 const ids = new Set();
 const grades = [];
-const files = existsSync(ROOT) ? readdirSync(ROOT).filter((f) => f.endsWith('.json')) : [];
+const files = (existsSync(ROOT) ? readdirSync(ROOT).filter((f) => f.endsWith('.json')) : []).filter((f) => !only.length || only.includes(f));
 for (const f of files.sort()) {
   let doc;
   try { doc = JSON.parse(readFileSync(join(ROOT, f), 'utf8')); } catch (e) { err(f, e.message); continue; }
-  for (const k of ['source', 'license', 'licenseUrl']) if (!doc[k]) err(f, `"${k}" missing at the top`);
   const list = Array.isArray(doc.passages) ? doc.passages : [];
   let longest = 0, shortest = 0;
   for (const p of list) {
     count++;
     const where = `${f} ${p?.id ?? '?'}`;
     const extra = Object.keys(p ?? {}).filter((k) => !['id', 'title', 'kind', 'topic', 'text', 'source', 'readability', 'question'].includes(k));
+    for (const k of Object.keys(p?.source ?? {})) if (!['name', 'url', 'license', 'author', 'note'].includes(k)) err(where, `unknown source field: ${k}`);
     if (extra.length) err(where, `unknown fields: ${extra.join(', ')}`);
     if (!/^[a-z0-9]+(-[a-z0-9]+)*$/.test(p?.id ?? '')) err(where, 'id should be lowercase-with-dashes');
     if (ids.has(p.id)) err(where, 'duplicate id'); ids.add(p.id);
@@ -41,7 +42,7 @@ for (const f of files.sort()) {
     if (/\n\s*\n/.test(text.trim())) err(where, 'one paragraph only');
     const m = measure(text), n = sentences(text);
     if (m.words < 30 || m.words > 120) err(where, `${m.words} words; bite-size is 30-120`);
-    if (n < 3 || n > 6) err(where, `${n} sentences; bite-size is 3-6`);
+    if (n < 3 || n > 12) err(where, `${n} sentences; bite-size is 3-12 (short sentences)`);
     const src = p.source ?? {};
     if (!/^https:\/\//.test(src.url ?? '')) err(where, 'source.url (https) missing');
     if (!src.name || !src.license) err(where, 'source.name and source.license are required');
