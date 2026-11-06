@@ -1,0 +1,1409 @@
+{
+  "about": "Reading Quest paragraphs, about grade 2-3",
+  "passages": [
+    {
+      "id": "asp-anansi-and-wisdom",
+      "title": "Anansi and Wisdom",
+      "kind": "story",
+      "topic": "learning",
+      "text": "Long long ago people didn't know anything. They didn't know how to plant crops, or how to weave cloth, or how to make iron tools. The god Nyame up in the sky had all the wisdom of the world. He kept it safe in a clay pot. One day, Nyame decided that he would give the pot of wisdom to Anansi. Every time Anansi looked in the clay pot, he learned something new. It was so exciting!",
+      "source": {
+        "name": "African Storybook",
+        "url": "https://github.com/global-asp/asp-source/blob/master/en/0006_anansi-and-wisdom.md",
+        "license": "CC BY 4.0",
+        "author": "Ghanaian folktale",
+        "note": "Excerpt (pages 1-2)."
+      },
+      "question": {
+        "type": "detail",
+        "q": "Where did Nyame keep all the wisdom of the world?",
+        "choices": [
+          "In a cloth bag",
+          "In a clay pot",
+          "In a gold box",
+          "In a stone jar"
+        ],
+        "answer": 1,
+        "evidence": "He kept it safe in a clay pot.",
+        "explain": "The story says Nyame kept the wisdom safe in a clay pot."
+      }
+    },
+    {
+      "id": "sbc-the-honeyguides-revenge",
+      "title": "The Honeyguide's Revenge",
+      "kind": "story",
+      "topic": "animals",
+      "text": "After half an hour, they reached a huge wild fig tree. Ngede hopped about madly among the branches. He then settled on one branch and cocked his head at Gingile as if to say, \"Here it is! Come now! What is taking you so long?\" Gingile couldn't see any bees from under the tree, but he trusted Ngede.",
+      "source": {
+        "name": "Storybooks Canada",
+        "url": "https://github.com/global-asp/sbc-source/blob/master/en/0072_the-honeyguides-revenge.md",
+        "license": "CC BY 4.0",
+        "author": "Zulu folktale",
+        "note": "Excerpt (page 2)."
+      },
+      "question": {
+        "type": "inference",
+        "q": "Who is Ngede?",
+        "choices": [
+          "A bird who shows the way",
+          "A boy who climbs trees",
+          "A bee who guards honey",
+          "A man who sells figs"
+        ],
+        "answer": 0,
+        "evidence": "Ngede hopped about madly among the branches.",
+        "explain": "Ngede hops in the branches and leads Gingile to the tree, just like a bird."
+      }
+    },
+    {
+      "id": "sbc-tom-the-banana-seller",
+      "title": "Tom the Banana Seller",
+      "kind": "story",
+      "topic": "people",
+      "text": "One woman picks up a bunch of bananas from the tray. She looks at the bananas carefully. The woman buys the bananas. More people come to the stall. They buy Tom's bananas and eat them. Soon, the tray is empty. Tom counts the money he earned. Then Tom buys soap, sugar, and bread. He puts the things in his tray.",
+      "source": {
+        "name": "Storybooks Canada",
+        "url": "https://github.com/global-asp/sbc-source/blob/master/en/0296_tom-the-banana-seller.md",
+        "license": "CC BY 4.0",
+        "author": "Humphreys Odunga",
+        "note": "Excerpt (pages 7-11)."
+      },
+      "question": {
+        "type": "sequence",
+        "q": "What did Tom do right after he counted his money?",
+        "choices": [
+          "He sold more bananas at the stall",
+          "He bought soap, sugar, and bread",
+          "He went home and took a long nap",
+          "He gave the money to the woman"
+        ],
+        "answer": 1,
+        "evidence": "Then Tom buys soap, sugar, and bread.",
+        "explain": "After counting his money, Tom bought soap, sugar, and bread."
+      }
+    },
+    {
+      "id": "sbc-goat-dog-and-cow",
+      "title": "Goat, Dog, and Cow",
+      "kind": "story",
+      "topic": "friendship",
+      "text": "Goat, Dog, and Cow were great friends. One day they went on a journey in a taxi. When they reached the end of their journey, the driver asked them to pay their fares. Cow paid her fare. Dog paid a bit extra, because he did not have the correct money.",
+      "source": {
+        "name": "Storybooks Canada",
+        "url": "https://github.com/global-asp/sbc-source/blob/master/en/0004_goat-dog-and-cow.md",
+        "license": "CC BY 4.0",
+        "author": "Fabian Wakholi",
+        "note": "Excerpt (pages 1-3)."
+      },
+      "question": {
+        "type": "cause-effect",
+        "q": "Why did Dog pay a bit extra?",
+        "choices": [
+          "He wanted to be kind to the driver",
+          "He did not have the correct money",
+          "He had the longest ride of all",
+          "He was carrying a very big bag"
+        ],
+        "answer": 1,
+        "evidence": "because he did not have the correct money",
+        "explain": "Dog paid extra because he did not have the correct money."
+      }
+    },
+    {
+      "id": "sbc-children-of-wax",
+      "title": "Children of Wax",
+      "kind": "story",
+      "topic": "family",
+      "text": "Once upon a time, there lived a happy family. They never fought with each other. They helped their parents at home and in the fields. But they were not allowed to go near a fire. They had to do all their work during the night. Because they were made of wax!",
+      "source": {
+        "name": "Storybooks Canada",
+        "url": "https://github.com/global-asp/sbc-source/blob/master/en/0337_children-of-wax.md",
+        "license": "CC BY 4.0",
+        "author": "Southern African Folktale",
+        "note": "Excerpt (pages 1-4)."
+      },
+      "question": {
+        "type": "inference",
+        "q": "Why were the children not allowed to go near a fire?",
+        "choices": [
+          "The heat would melt them",
+          "Fire made them sneeze a lot",
+          "They might burn the food",
+          "The smoke hurt their eyes"
+        ],
+        "answer": 0,
+        "evidence": "Because they were made of wax!",
+        "explain": "The children were made of wax, and wax melts when it gets hot."
+      }
+    },
+    {
+      "id": "sbc-khalai-talks-to-plants",
+      "title": "Khalai Talks to Plants",
+      "kind": "story",
+      "topic": "plants",
+      "text": "This is Khalai. She is seven years old. Her name means 'the good one' in her language, Lubukusu. Khalai wakes up and talks to the orange tree. \"Please orange tree, grow big and give us lots of ripe oranges.\" Khalai walks to school. On the way she talks to the grass. \"Please grass, grow greener and don't dry up.\"",
+      "source": {
+        "name": "Storybooks Canada",
+        "url": "https://github.com/global-asp/sbc-source/blob/master/en/0089_khalai-talks-to-plants.md",
+        "license": "CC BY 4.0",
+        "author": "Ursula Nafula",
+        "note": "Excerpt (pages 1-3)."
+      },
+      "question": {
+        "type": "main-idea",
+        "q": "What does Khalai seem to care about most?",
+        "choices": [
+          "Plants and growing things",
+          "Toys and games at home",
+          "Running fast at school",
+          "Cooking food for her family"
+        ],
+        "answer": 0,
+        "evidence": "Khalai wakes up and talks to the orange tree.",
+        "explain": "Khalai talks kindly to the orange tree and the grass, so she cares about plants."
+      }
+    },
+    {
+      "id": "sbc-nozibele-and-the-three-hairs",
+      "title": "Nozibele and the Three Hairs",
+      "kind": "story",
+      "topic": "friendship",
+      "text": "A long time ago, three girls went out to collect wood. It was a hot day so they went down to the river to swim. They played and splashed and swam in the water. Suddenly, they realised that it was late. They hurried back to the village. When they were nearly home, Nozibele put her hand to her neck. She had forgotten her necklace! \"Please come back with me!\" she begged her friends. But her friends said it was too late.",
+      "source": {
+        "name": "Storybooks Canada",
+        "url": "https://github.com/global-asp/sbc-source/blob/master/en/0066_nozibele-and-the-three-hairs.md",
+        "license": "CC BY 4.0",
+        "author": "Tessa Welch",
+        "note": "Excerpt (pages 1-4)."
+      },
+      "question": {
+        "type": "detail",
+        "q": "What had Nozibele forgotten at the river?",
+        "choices": [
+          "Her basket",
+          "Her necklace",
+          "Her shoes",
+          "Her bundle of wood"
+        ],
+        "answer": 1,
+        "evidence": "She had forgotten her necklace!",
+        "explain": "Nozibele touched her neck and found her necklace was gone."
+      }
+    },
+    {
+      "id": "sbc-zama-is-great",
+      "title": "Zama Is Great!",
+      "kind": "story",
+      "topic": "family",
+      "text": "After washing, I greet Grandpa and Auntie, and wish them a good day. Then I dress myself, \"I'm big now Ma,\" I say. I can close my buttons and buckle my shoes. And I make sure little brother knows all the school news. In class I do my best in every way.",
+      "source": {
+        "name": "Storybooks Canada",
+        "url": "https://github.com/global-asp/sbc-source/blob/master/en/0095_zama-is-great.md",
+        "license": "CC BY 4.0",
+        "author": "Michael Oguttu",
+        "note": "Excerpt (pages 7-11)."
+      },
+      "question": {
+        "type": "inference",
+        "q": "Why does Zama say \"I'm big now\"?",
+        "choices": [
+          "Zama can get dressed alone",
+          "Zama is taller than Ma",
+          "Zama just had a birthday",
+          "Zama goes to a new school"
+        ],
+        "answer": 0,
+        "evidence": "I can close my buttons and buckle my shoes.",
+        "explain": "Zama can do buttons and shoes without help, which shows Zama is growing up."
+      }
+    },
+    {
+      "id": "asp-rats",
+      "title": "Rats!",
+      "kind": "story",
+      "topic": "animals",
+      "text": "The rats tried to tip over the bottles. But the oil would not flow out. The rats had a meeting to discuss the problem. After a while, one rat said, \"Let's put our tails into the bottles. Then we can lick the oil off our tails.\" And that's exactly what the rats did. They put their tails into the bottles, and then licked the oil off each other's tails. The rats did this until they had licked up all the oil.",
+      "source": {
+        "name": "African Storybook",
+        "url": "https://github.com/global-asp/asp-source/blob/master/en/0153_rats.md",
+        "license": "CC BY 4.0",
+        "author": "Lourenço Magaia Sabão",
+        "note": "Excerpt (pages 5-7)."
+      },
+      "question": {
+        "type": "detail",
+        "q": "How did the rats get the oil out of the bottles?",
+        "choices": [
+          "They tipped the bottles over",
+          "They dipped their tails in",
+          "They broke the bottles open",
+          "They poured it into a bowl"
+        ],
+        "answer": 1,
+        "evidence": "Let's put our tails into the bottles.",
+        "explain": "The rats put their tails in the bottles and licked off the oil."
+      }
+    },
+    {
+      "id": "asp-teacher-akinyi",
+      "title": "Teacher Akinyi",
+      "kind": "story",
+      "topic": "school",
+      "text": "This is my teacher. Her name is Teacher Akinyi. She loves me a lot. Teacher Akinyi teaches us the alphabet and the vowels. I can say the letters a, e, i, o, u. Teacher Akinyi has taught us the colours red, blue, green, yellow, and black. During nap time Teacher Akinyi sings us to sleep. She sings a lullaby to us.",
+      "source": {
+        "name": "African Storybook",
+        "url": "https://github.com/global-asp/asp-source/blob/master/en/0283_teacher-akinyi.md",
+        "license": "CC BY 4.0",
+        "author": "Lawrence A. Konjuro",
+        "note": "Excerpt (pages 1-4)."
+      },
+      "question": {
+        "type": "detail",
+        "q": "What does Teacher Akinyi do during nap time?",
+        "choices": [
+          "She reads a story",
+          "She sings a lullaby",
+          "She plays a drum",
+          "She paints a picture"
+        ],
+        "answer": 1,
+        "evidence": "She sings a lullaby to us.",
+        "explain": "At nap time Teacher Akinyi sings a lullaby to the children."
+      }
+    },
+    {
+      "id": "asp-girl-called-norah",
+      "title": "Girl Called Norah",
+      "kind": "story",
+      "topic": "family",
+      "text": "This is a girl called Norah. Her doll's name is Selah. Norah loves her doll very much. Norah plays with Selah every day. She sleeps with her doll every night. One day, Norah could not find her doll. She looked everywhere, but could not find Selah. Norah got very worried.",
+      "source": {
+        "name": "African Storybook",
+        "url": "https://github.com/global-asp/asp-source/blob/master/en/0014_girl-called-norah.md",
+        "license": "CC BY 4.0",
+        "author": "Annet Ssebaggala",
+        "note": "Excerpt (pages 1-3)."
+      },
+      "question": {
+        "type": "vocabulary",
+        "q": "Norah got very \"worried.\" What does worried mean?",
+        "choices": [
+          "Feeling sleepy and tired",
+          "Feeling upset and afraid",
+          "Feeling proud and happy",
+          "Feeling hungry and cross"
+        ],
+        "answer": 1,
+        "evidence": "Norah got very worried.",
+        "explain": "Norah could not find her doll, so she felt upset and afraid."
+      }
+    },
+    {
+      "id": "asp-how-night-came-to-opios-village",
+      "title": "How Night Came to Opio's Village",
+      "kind": "story",
+      "topic": "people",
+      "text": "Long ago, there was no night in Opio's village. People slept when they were tired and worked when they were awake. One day Opio went out hunting with his dogs. After a short time, his dogs started to chase an antelope. Opio followed them. He ran for many hours. Every time he became tired, he rested. Then he would run again. But he could not find his dogs.",
+      "source": {
+        "name": "African Storybook",
+        "url": "https://github.com/global-asp/asp-source/blob/master/en/0185_how-night-came-to-opios-village.md",
+        "license": "CC BY 4.0",
+        "author": "Robert Ekuka",
+        "note": "Excerpt (pages 1-2)."
+      },
+      "question": {
+        "type": "detail",
+        "q": "What was different about Opio's village long ago?",
+        "choices": [
+          "There was no night",
+          "There was no rain",
+          "There were no dogs",
+          "There was no school"
+        ],
+        "answer": 0,
+        "evidence": "Long ago, there was no night in Opio's village.",
+        "explain": "The very first sentence tells us there was no night in the village."
+      }
+    },
+    {
+      "id": "asp-soccer-game",
+      "title": "Soccer Game",
+      "kind": "story",
+      "topic": "sports",
+      "text": "We love soccer. Moloko is teaching us soccer. We are playing soccer. Moloko is the best teacher! After the game, Moloko told us that she has a surprise for us. But she will only let us know tomorrow. The next day we all came early to the field. We all love surprises. Moloko has new soccer kits and balls for all of us! What a great surprise!",
+      "source": {
+        "name": "African Storybook",
+        "url": "https://github.com/global-asp/asp-source/blob/master/en/0058_soccer-game.md",
+        "license": "CC BY 4.0",
+        "author": "Letta Machoga",
+        "note": "Whole story."
+      },
+      "question": {
+        "type": "detail",
+        "q": "What was Moloko's surprise?",
+        "choices": [
+          "A party with cake and juice",
+          "New soccer kits and balls",
+          "A trip to a big stadium",
+          "Gold medals for every child"
+        ],
+        "answer": 1,
+        "evidence": "Moloko has new soccer kits and balls for all of us!",
+        "explain": "Moloko brought new soccer kits and balls for everyone."
+      }
+    },
+    {
+      "id": "asp-clever-cat",
+      "title": "Clever Cat",
+      "kind": "story",
+      "topic": "animals",
+      "text": "When a neighbour appears, Safi is ready to scratch. The neighbour turns and runs away. When Safi feels hungry, she pushes the door and then closes it with her paws. She goes inside and eats her food. When Safi finishes, she jumps onto the sofa and sleeps. All you hear is, \"Purr! Purr! Purr!\"",
+      "source": {
+        "name": "African Storybook",
+        "url": "https://github.com/global-asp/asp-source/blob/master/en/0056_clever-cat.md",
+        "license": "CC BY 4.0",
+        "author": "Ursula Nafula",
+        "note": "Excerpt (pages 5-10). Shortened."
+      },
+      "question": {
+        "type": "sequence",
+        "q": "What does Safi do after she eats her food?",
+        "choices": [
+          "She sleeps on the sofa",
+          "She scratches a visitor",
+          "She runs out the door",
+          "She hides under a bed"
+        ],
+        "answer": 0,
+        "evidence": "she jumps onto the sofa and sleeps",
+        "explain": "When Safi finishes eating, she jumps onto the sofa and sleeps."
+      }
+    },
+    {
+      "id": "asp-the-day-i-left-home-for-the-city",
+      "title": "The Day I Left Home for the City",
+      "kind": "story",
+      "topic": "places",
+      "text": "The small bus stop in my village was busy with people and overloaded buses. On the ground were even more things to load. Touts were shouting the names where their buses were going. \"City! City! Going west!\" I heard a tout shouting. That was the bus I needed to catch.",
+      "source": {
+        "name": "African Storybook",
+        "url": "https://github.com/global-asp/asp-source/blob/master/en/0324_the-day-i-left-home-for-the-city.md",
+        "license": "CC BY 4.0",
+        "author": "Lesley Koyi, Ursula Nafula",
+        "note": "Excerpt (pages 1-2)."
+      },
+      "question": {
+        "type": "vocabulary",
+        "q": "In this story, what are \"touts\"?",
+        "choices": [
+          "People shouting where buses go",
+          "People selling food and drinks",
+          "People fixing broken buses",
+          "People waiting for their friends"
+        ],
+        "answer": 0,
+        "evidence": "Touts were shouting the names where their buses were going.",
+        "explain": "The touts shout out the places where their buses are going."
+      }
+    },
+    {
+      "id": "pb-trip-to-the-dragon-land",
+      "title": "Trip to the Dragon Land",
+      "kind": "story",
+      "topic": "imagination",
+      "text": "Varun is going on his summer holidays to Hubli. Varun likes to travel. Varun likes to eat icecreams. But what he loves the most is reading. And what he reads he dreams, and what he dreams becomes true. Suddenly he hears a loud roar. He peeps out of the window and yelps! He sees a dragon racing with his car. The dragon puffs out big grey clouds of smoke.",
+      "source": {
+        "name": "Pratham Books (StoryWeaver)",
+        "url": "https://github.com/global-asp/pb-source/blob/master/en/0325_trip-to-the-dragon-land.md",
+        "license": "CC BY 4.0",
+        "author": "Payoshni Saraf",
+        "note": "Excerpt (pages 1-2)."
+      },
+      "question": {
+        "type": "sequence",
+        "q": "What did Varun do right after he heard a loud roar?",
+        "choices": [
+          "He peeped out of the window",
+          "He ate an ice cream cone",
+          "He fell asleep and dreamed",
+          "He read a book about dragons"
+        ],
+        "answer": 0,
+        "evidence": "He peeps out of the window and yelps!",
+        "explain": "After the roar, Varun peeped out of the window and saw a dragon."
+      }
+    },
+    {
+      "id": "pb-paper-play",
+      "title": "Paper Play",
+      "kind": "story",
+      "topic": "family",
+      "text": "Wasim threw the crumpled paper ball up into the air and watched it come down. He threw it higher, and it came down faster. Wasim aimed the paper ball at Syeda, his sister. \"Got you!\" he shouted with glee. Syeda picked up the crumpled paper. She stuck a pencil into it and said, \"Would you like this lollipop? When I am big, I am going to sell many kinds of lollipops in my sweet shop.\"",
+      "source": {
+        "name": "Pratham Books (StoryWeaver)",
+        "url": "https://github.com/global-asp/pb-source/blob/master/en/0032_paper-play.md",
+        "license": "CC BY 4.0",
+        "author": "Mala Kumar",
+        "note": "Excerpt (pages 2-3)."
+      },
+      "question": {
+        "type": "vocabulary",
+        "q": "Wasim shouted with \"glee.\" What does glee mean?",
+        "choices": [
+          "Joy and fun",
+          "Anger and upset",
+          "Fear and worry",
+          "Tiredness"
+        ],
+        "answer": 0,
+        "evidence": "he shouted with glee",
+        "explain": "Wasim was having fun playing, so glee means joy."
+      }
+    },
+    {
+      "id": "pb-can-you-smile-when-you-snore",
+      "title": "Can You Smile When You Snore?",
+      "kind": "story",
+      "topic": "animals",
+      "text": "Beena's friends were all sleeping. They were making a lot of noise. Hoiinnnnkkkkhoinnnkkk, snored the pigs. Keekkkeek, snored the mice. Ssssssss snored the hens. Do your friends snore, dear reader? \"We could not sleep all night,\" said Minti Uncle. \"We could not sleep a wink,\" said Kajal Aunty. \"I could not sleep at all,\" said Big Bird. \"What can I do if my friends snore?\" wailed Beena. What would you do, dear reader?",
+      "source": {
+        "name": "Pratham Books (StoryWeaver)",
+        "url": "https://github.com/global-asp/pb-source/blob/master/en/0418_can-you-smile-when-you-snore.md",
+        "license": "CC BY 4.0",
+        "author": "Mala Kumar",
+        "note": "Excerpt (pages 1-2)."
+      },
+      "question": {
+        "type": "cause-effect",
+        "q": "Why could Minti Uncle not sleep all night?",
+        "choices": [
+          "Her friends snored",
+          "The rain was too loud",
+          "Big Bird sang all night",
+          "The room was cold"
+        ],
+        "answer": 0,
+        "evidence": "They were making a lot of noise.",
+        "explain": "Beena's friends snored so loudly that nobody could sleep."
+      }
+    },
+    {
+      "id": "pb-how-do-aeroplanes-fly",
+      "title": "How Do Aeroplanes Fly?",
+      "kind": "story",
+      "topic": "school",
+      "text": "Sarla liked to watch birds fly. One day, during science class, she looked out of the window and saw an eagle gliding in the sky. How happy the bird must be! She also liked to see planes flying. \"Here, what's your name? Should you not be looking at the board?\" asked the new teacher in Sarla's class. Sarla got up hastily and said, \"Sorry Madam, I was watching an eagle. I wish we could fly like a bird, or like an aeroplane....\"",
+      "source": {
+        "name": "Pratham Books (StoryWeaver)",
+        "url": "https://github.com/global-asp/pb-source/blob/master/en/0348_how-do-aeroplanes-fly.md",
+        "license": "CC BY 4.0",
+        "author": "Aditi Sarawagi",
+        "note": "Excerpt (page 1). Shortened."
+      },
+      "question": {
+        "type": "cause-effect",
+        "q": "Why did the new teacher speak to Sarla?",
+        "choices": [
+          "She was looking out the window",
+          "She was talking to a friend",
+          "She came late to science class",
+          "She forgot to bring her book"
+        ],
+        "answer": 0,
+        "evidence": "Should you not be looking at the board?",
+        "explain": "Sarla was watching an eagle instead of looking at the board."
+      }
+    },
+    {
+      "id": "pb-the-scarecrows-on-parade",
+      "title": "The Scarecrows on Parade",
+      "kind": "story",
+      "topic": "family",
+      "text": "\"Please Ma, may I help you make scarecrows?\" asked Gauri. Ma was tying some sticks together to make a scarecrow. She put an old shirt over the sticks, and then stuffed it with hay. Gauri walked to the clothesline where the washed clothes were drying. She picked up a dress. \"I will dress her up in my new red frock and tie her hair with red ribbons too! She will look so lovely!\"",
+      "source": {
+        "name": "Pratham Books (StoryWeaver)",
+        "url": "https://github.com/global-asp/pb-source/blob/master/en/0035_the-scarecrows-on-parade.md",
+        "license": "CC BY 4.0",
+        "author": "Shamim Padamsee",
+        "note": "Excerpt (pages 1-2)."
+      },
+      "question": {
+        "type": "detail",
+        "q": "What did Ma stuff the scarecrow with?",
+        "choices": [
+          "Dry hay",
+          "Old rags",
+          "Cotton",
+          "Leaves"
+        ],
+        "answer": 0,
+        "evidence": "then stuffed it with hay",
+        "explain": "Ma put an old shirt over the sticks and stuffed it with hay."
+      }
+    },
+    {
+      "id": "pb-phanis-funny-chappals",
+      "title": "Phani's Funny Chappals",
+      "kind": "story",
+      "topic": "family",
+      "text": "Phani is always late. Or not where he is supposed to be. \"Why does your teacher say you're always late for school, Phani?\" asks his father. \"You leave home quite early.\" \"I can't help it, Baba,\" Phani says. His mother wants to know why he is sitting in front of the TV every evening instead of playing with the other children. \"I can't help it, Ma,\" says Phani.",
+      "source": {
+        "name": "Pratham Books (StoryWeaver)",
+        "url": "https://github.com/global-asp/pb-source/blob/master/en/0112_phani-s-funny-chappals.md",
+        "license": "CC BY 4.0",
+        "author": "Sridala Swami",
+        "note": "Excerpt (pages 1-2)."
+      },
+      "question": {
+        "type": "main-idea",
+        "q": "What is Phani's problem?",
+        "choices": [
+          "He is never on time",
+          "He dislikes school",
+          "He is always hungry",
+          "He loses his toys"
+        ],
+        "answer": 0,
+        "evidence": "Phani is always late.",
+        "explain": "The story begins by telling us Phani is always late."
+      }
+    },
+    {
+      "id": "pb-ammus-puppy",
+      "title": "Ammu's Puppy",
+      "kind": "story",
+      "topic": "friendship",
+      "text": "Ammu did not have a puppy. But she told everyone in school that she did. \"My puppy's name is Shankar,\" she told Venu. \"Shankar eats bananas,\" she told Abdul. \"Shankar is black,\" she told Kumari. \"Shankar plays ball with me,\" she told Unni. So Venu, Abdul, Kumari, and Unni told Ammu that they would come home. To see Shankar. Ammu shook her head. \"You can't,\" she said.",
+      "source": {
+        "name": "Pratham Books (StoryWeaver)",
+        "url": "https://github.com/global-asp/pb-source/blob/master/en/0151_ammu-s-puppy.md",
+        "license": "CC BY 4.0",
+        "author": "Sowmya Rajendran",
+        "note": "Excerpt (pages 1-3)."
+      },
+      "question": {
+        "type": "inference",
+        "q": "Why did Ammu say her friends could not come to see Shankar?",
+        "choices": [
+          "Shankar was not real",
+          "Shankar was sick",
+          "Her house was far away",
+          "Her mother said no"
+        ],
+        "answer": 0,
+        "evidence": "Ammu did not have a puppy.",
+        "explain": "Ammu did not really have a puppy, so there was no Shankar to see."
+      }
+    },
+    {
+      "id": "pb-the-boy-who-hated-vegetables",
+      "title": "The Boy Who Hated Vegetables",
+      "kind": "story",
+      "topic": "food",
+      "text": "This is Chinnu. He is 5 years old. Chinnu loves to eat chocolates. Chocolates for breakfast. Chocolates for lunch. Chocolates for dinner. Yum! Amma would try to coax him to eat other food. But he only wanted chocolates. Amma even hid them on the top of the cupboard. But Chinnu found them. He even gave some to the dog.",
+      "source": {
+        "name": "Pratham Books (StoryWeaver)",
+        "url": "https://github.com/global-asp/pb-source/blob/master/en/0184_the-boy-who-hated-vegetables.md",
+        "license": "CC BY 4.0",
+        "author": "Prakruti & Shruti Bhat",
+        "note": "Excerpt (pages 1-4)."
+      },
+      "question": {
+        "type": "vocabulary",
+        "q": "Amma would try to \"coax\" Chinnu to eat other food. What does coax mean?",
+        "choices": [
+          "Gently persuade him",
+          "Shout at him loudly",
+          "Send him off to bed",
+          "Hide food from him"
+        ],
+        "answer": 0,
+        "evidence": "Amma would try to coax him to eat other food.",
+        "explain": "To coax someone is to kindly try to get them to do something."
+      }
+    },
+    {
+      "id": "pb-where-is-gogo",
+      "title": "Where Is Gogo?",
+      "kind": "story",
+      "topic": "animals",
+      "text": "Toto loved animals. He worked in a zoo. One day he saw that Gogo, the gorilla's cage was empty. Toto was shocked. He set off to find him. Gogo must have run towards the jungle, thought Toto. He looked behind every bush and tree. The animals in the forest watched Toto. But Toto could not find Gogo anywhere.",
+      "source": {
+        "name": "Pratham Books (StoryWeaver)",
+        "url": "https://github.com/global-asp/pb-source/blob/master/en/0149_where-is-gogo.md",
+        "license": "CC BY 4.0",
+        "author": "Mala Kumar, Manisha Chaudhry",
+        "note": "Excerpt (pages 1-2). Translated by Mala Kumar and Manisha Chaudhry."
+      },
+      "question": {
+        "type": "vocabulary",
+        "q": "Toto was \"shocked\" to see the empty cage. What does shocked mean?",
+        "choices": [
+          "Surprised and upset",
+          "Bored and sleepy all day",
+          "Proud and pleased",
+          "Hungry and grumpy"
+        ],
+        "answer": 0,
+        "evidence": "Toto was shocked.",
+        "explain": "Toto did not expect the cage to be empty, so he was surprised and upset."
+      }
+    },
+    {
+      "id": "pb-reeti-and-mithu",
+      "title": "Reeti and Mithu",
+      "kind": "story",
+      "topic": "family",
+      "text": "Reeti's holidays have begun. But Reeti isn't happy. She doesn't like holidays. She likes going to school! In school Reeti has lots of friends. At home she has no one to play with. She has a Papa who brings her toys and books and tells her stories. Reeti likes that. Her Papa does yoga every morning. Reeti likes that too and tries to imitate him.",
+      "source": {
+        "name": "Pratham Books (StoryWeaver)",
+        "url": "https://github.com/global-asp/pb-source/blob/master/en/0360_reeti-and-mithu.md",
+        "license": "CC BY 4.0",
+        "author": "Anupa Lal",
+        "note": "Excerpt (pages 1-2)."
+      },
+      "question": {
+        "type": "cause-effect",
+        "q": "Why is Reeti not happy about her holidays?",
+        "choices": [
+          "She has no one to play with at home",
+          "Her Papa will not tell her stories",
+          "She has to do yoga every morning",
+          "She has too much homework to do"
+        ],
+        "answer": 0,
+        "evidence": "At home she has no one to play with.",
+        "explain": "Reeti misses her school friends because at home she has no one to play with."
+      }
+    },
+    {
+      "id": "pb-shriya-and-her-piyali",
+      "title": "Shriya and Her Piyali",
+      "kind": "story",
+      "topic": "friendship",
+      "text": "Shriya could not sleep that night. Next morning, when she woke up, she went straight to the balcony where Piyali's cage was hung. She opened the cage and set Piyali free, saying \"Go home Piyali. Go back to your amma and appa. Go back to your friends. But do not forget me. Do visit me.\" Piyali was very happy. She turned towards Shriya, waved her a Bye and said \"Thank you Shriya. We will be friends forever. I will visit you often.\"",
+      "source": {
+        "name": "Pratham Books (StoryWeaver)",
+        "url": "https://github.com/global-asp/pb-source/blob/master/en/0362_shriya-and-her-piyali.md",
+        "license": "CC BY 4.0",
+        "author": "Anusha Parthasarathy",
+        "note": "Excerpt (page 6)."
+      },
+      "question": {
+        "type": "cause-effect",
+        "q": "Why did Shriya open Piyali's cage?",
+        "choices": [
+          "She wanted Piyali to go home",
+          "Piyali was making too much noise",
+          "She wanted to clean the cage",
+          "Her mother told her to do it"
+        ],
+        "answer": 0,
+        "evidence": "Go home Piyali.",
+        "explain": "Shriya set Piyali free so she could go back to her family and friends."
+      }
+    },
+    {
+      "id": "pb-listen-to-my-body",
+      "title": "Listen to My Body",
+      "kind": "facts",
+      "topic": "body",
+      "text": "Can I make my heart go faster or louder? Yes, by jumping up and down twenty times. Now see, my heart is beating faster. Doodom, doodoom, dooodooom! And if I put my fingers on my wrist then I can hear my pulse! And I can hear myself laughing Haha haha haaah haaa!",
+      "source": {
+        "name": "Pratham Books (StoryWeaver)",
+        "url": "https://github.com/global-asp/pb-source/blob/master/en/0007_listen-to-my-body.md",
+        "license": "CC BY 4.0",
+        "author": "Rohini Nilekani",
+        "note": "Excerpt (pages 11-14)."
+      },
+      "question": {
+        "type": "detail",
+        "q": "How can you make your heart beat faster?",
+        "choices": [
+          "Jump up and down a lot",
+          "Sit still and rest a while",
+          "Drink a cold glass of water",
+          "Hum a quiet little song"
+        ],
+        "answer": 0,
+        "evidence": "Yes, by jumping up and down twenty times.",
+        "explain": "Jumping up and down twenty times makes your heart beat faster."
+      }
+    },
+    {
+      "id": "pb-what-does-anu-see",
+      "title": "What Does Anu See?",
+      "kind": "poem",
+      "topic": "nature",
+      "text": "Lines on a leaf, just like lines on her hand. The marks of her feet in wet seaside sand. Waves in the water, waves in her hair. Mushrooms on tree trunks, birds in the air. Words in a book that can take her to places, full of new colours, new stories, new faces.",
+      "source": {
+        "name": "Pratham Books (StoryWeaver)",
+        "url": "https://github.com/global-asp/pb-source/blob/master/en/0036_what-does-anu-see.md",
+        "license": "CC BY 4.0",
+        "author": "Lavanya Karthik",
+        "note": "Excerpt (pages 5-7)."
+      },
+      "question": {
+        "type": "main-idea",
+        "q": "What is this poem mostly about?",
+        "choices": [
+          "Patterns Anu sees all around her",
+          "A trip Anu takes to the seaside",
+          "Anu learning to read a book",
+          "Birds that Anu feeds in the park"
+        ],
+        "answer": 0,
+        "evidence": "Lines on a leaf, just like lines on her hand.",
+        "explain": "Anu notices lines, waves and shapes everywhere she looks."
+      }
+    },
+    {
+      "id": "burgess-slaty-the-snowbird",
+      "title": "Slaty the Snowbird",
+      "kind": "story",
+      "topic": "animals",
+      "text": "\"I certainly am,\" was Slaty's prompt response. \"It will take pretty bad weather to drive me away from here. If the snow gets too deep I'll just go up to Farmer Brown's barnyard. I can always pick up a meal there, for Farmer Brown's boy is a very good friend of mine. I know he won't let me starve, no matter what the weather is. I think it is going to snow some more. I like the snow. You know I am sometimes called the Snowbird.\"",
+      "source": {
+        "name": "The Burgess Bird Book for Children (Thornton W. Burgess, 1919)",
+        "url": "https://www.gutenberg.org/ebooks/3074",
+        "license": "Public domain",
+        "author": "Thornton W. Burgess",
+        "note": "Paragraph from the book."
+      },
+      "question": {
+        "type": "cause-effect",
+        "q": "Why is Slaty sure he will not starve in the snow?",
+        "choices": [
+          "A boy at the farm helps him",
+          "He hides seeds in the fall",
+          "He flies south in the winter",
+          "He finds bugs under the snow"
+        ],
+        "answer": 0,
+        "evidence": "Farmer Brown's boy is a very good friend of mine",
+        "explain": "Farmer Brown's boy is Slaty's friend and will not let him go hungry."
+      }
+    },
+    {
+      "id": "burgess-honker-the-goose",
+      "title": "Honker the Goose",
+      "kind": "facts",
+      "topic": "animals",
+      "text": "\"Of course I can,\" replied Honker. \"Why, we Geese get a lot of our food on land. When it is safe to do so we visit the grain fields and pick up the grain that has been shaken out during harvest. Of course we couldn't do that if we couldn't fly from the land. We can rise from either land or water equally well. Now if you'll excuse me, Peter, I'll take a nap. My, but I'm tired! And I've got a long journey to-morrow.\"",
+      "source": {
+        "name": "The Burgess Bird Book for Children (Thornton W. Burgess, 1919)",
+        "url": "https://www.gutenberg.org/ebooks/3074",
+        "license": "Public domain",
+        "author": "Thornton W. Burgess",
+        "note": "Paragraph from the book."
+      },
+      "question": {
+        "type": "cause-effect",
+        "q": "Why does Honker want to take a nap?",
+        "choices": [
+          "He has a long trip ahead",
+          "He ate too much grain today",
+          "It is getting dark outside",
+          "He has no more to say"
+        ],
+        "answer": 0,
+        "evidence": "And I've got a long journey to-morrow.",
+        "explain": "Honker is tired and has a long journey the next day."
+      }
+    },
+    {
+      "id": "burgess-chippys-nest",
+      "title": "Chippy's Nest",
+      "kind": "facts",
+      "topic": "animals",
+      "text": "Johnny Chuck laughed. \"I should say not!\" he exclaimed. \"Twice Chippy and Mrs. Chippy have built their nest in this very old apple-tree. There is no trash in their nest, I can tell you! It is just as dainty as they are, and not a bit bigger than it has to be. It is made mostly of little fine, dry roots, and it is lined inside with horse-hair.\"",
+      "source": {
+        "name": "The Burgess Bird Book for Children (Thornton W. Burgess, 1919)",
+        "url": "https://www.gutenberg.org/ebooks/3074",
+        "license": "Public domain",
+        "author": "Thornton W. Burgess",
+        "note": "Paragraph from the book."
+      },
+      "question": {
+        "type": "detail",
+        "q": "What is the inside of Chippy's nest lined with?",
+        "choices": [
+          "Horse-hair",
+          "Soft feathers",
+          "Green moss",
+          "Cotton fluff"
+        ],
+        "answer": 0,
+        "evidence": "it is lined inside with horse-hair",
+        "explain": "Johnny Chuck says the nest is lined inside with horse-hair."
+      }
+    },
+    {
+      "id": "burgess-the-oven-bird",
+      "title": "The Oven Bird",
+      "kind": "facts",
+      "topic": "animals",
+      "text": "\"Is that all?\" asked Teacher. Then without waiting for a reply he added, \"It is because of the way Mrs. Teacher and I build our nest. Some people think it is like an oven and so they call us Oven Birds. I think that is a silly name myself, quite as silly as Golden Crowned Thrush, which is what some people call me. I'm not a Thrush. I'm not even related to the Thrush family. I'm a Warbler, a Wood Warbler.\"",
+      "source": {
+        "name": "The Burgess Bird Book for Children (Thornton W. Burgess, 1919)",
+        "url": "https://www.gutenberg.org/ebooks/3074",
+        "license": "Public domain",
+        "author": "Thornton W. Burgess",
+        "note": "Paragraph from the book."
+      },
+      "question": {
+        "type": "detail",
+        "q": "What family does Teacher say he belongs to?",
+        "choices": [
+          "The Thrush family",
+          "The Warbler family",
+          "The Sparrow family",
+          "The Wren family"
+        ],
+        "answer": 1,
+        "evidence": "I'm a Warbler, a Wood Warbler.",
+        "explain": "Teacher says he is not a Thrush at all but a Wood Warbler."
+      }
+    },
+    {
+      "id": "burgess-a-sudden-boom",
+      "title": "A Sudden Boom",
+      "kind": "story",
+      "topic": "animals",
+      "text": "Boom! Peter Rabbit jumped as if he had been shot. It was all so sudden and unexpected that Peter jumped before he had time to think. Then he looked foolish. He felt foolish. He had been scared when there was nothing to be afraid of.",
+      "source": {
+        "name": "The Burgess Bird Book for Children (Thornton W. Burgess, 1919)",
+        "url": "https://www.gutenberg.org/ebooks/3074",
+        "license": "Public domain",
+        "author": "Thornton W. Burgess",
+        "note": "Paragraph from the book."
+      },
+      "question": {
+        "type": "cause-effect",
+        "q": "Why did Peter feel foolish?",
+        "choices": [
+          "He got scared for nothing",
+          "He tripped on a big root",
+          "He forgot where he was going",
+          "His friends laughed at him"
+        ],
+        "answer": 0,
+        "evidence": "He had been scared when there was nothing to be afraid of.",
+        "explain": "Peter jumped at the boom, but there was nothing to be afraid of."
+      }
+    },
+    {
+      "id": "burgess-sleeping-through-the-winter",
+      "title": "Sleeping Through the Winter",
+      "kind": "facts",
+      "topic": "animals",
+      "text": "\"I know,\" spoke up Striped Chipmunk. \"I sleep most of the winter myself. Of course I have a lot of food stored away down in my house, and once in a while I wake up and eat a little. Do you ever wake up in the winter, Johnny Chuck?\"",
+      "source": {
+        "name": "The Burgess Animal Book for Children (Thornton W. Burgess, 1920)",
+        "url": "https://www.gutenberg.org/ebooks/2441",
+        "license": "Public domain",
+        "author": "Thornton W. Burgess",
+        "note": "Paragraph from the book."
+      },
+      "question": {
+        "type": "detail",
+        "q": "What does Striped Chipmunk do when he wakes up in winter?",
+        "choices": [
+          "He eats a little stored food",
+          "He digs a brand new tunnel",
+          "He goes out to play in snow",
+          "He visits Johnny Chuck"
+        ],
+        "answer": 0,
+        "evidence": "once in a while I wake up and eat a little",
+        "explain": "He keeps food in his house and eats a little when he wakes."
+      }
+    },
+    {
+      "id": "burgess-a-new-home-each-spring",
+      "title": "A New Home Each Spring",
+      "kind": "facts",
+      "topic": "animals",
+      "text": "Johnny shook his head. \"No,\" said he. \"I dig a new hole each spring. Mrs. Chuck and I like a change of scene. Usually my new home isn't very far from my old one, because I am not fond of traveling. Sometimes, however, if we cannot find a place that just suits us, we go quite a distance.\"",
+      "source": {
+        "name": "The Burgess Animal Book for Children (Thornton W. Burgess, 1920)",
+        "url": "https://www.gutenberg.org/ebooks/2441",
+        "license": "Public domain",
+        "author": "Thornton W. Burgess",
+        "note": "Paragraph from the book."
+      },
+      "question": {
+        "type": "detail",
+        "q": "How often does Johnny Chuck dig a new hole?",
+        "choices": [
+          "Every spring",
+          "Every winter",
+          "Every week",
+          "Every night"
+        ],
+        "answer": 0,
+        "evidence": "I dig a new hole each spring.",
+        "explain": "Johnny Chuck says he digs a new hole each spring."
+      }
+    },
+    {
+      "id": "burgess-little-joe-in-winter",
+      "title": "Little Joe in Winter",
+      "kind": "facts",
+      "topic": "animals",
+      "text": "\"I should say not,\" exclaimed Little Joe. \"I like the winter, too. I have such a warm coat that I never get cold. There are always places where the water doesn't freeze. I can swim for long distances under ice and so I can always get plenty of food.\"",
+      "source": {
+        "name": "The Burgess Animal Book for Children (Thornton W. Burgess, 1920)",
+        "url": "https://www.gutenberg.org/ebooks/2441",
+        "license": "Public domain",
+        "author": "Thornton W. Burgess",
+        "note": "Paragraph from the book."
+      },
+      "question": {
+        "type": "inference",
+        "q": "What can you tell about Little Joe?",
+        "choices": [
+          "He is a good swimmer",
+          "He sleeps all winter",
+          "He lives in a tree",
+          "He hates the cold"
+        ],
+        "answer": 0,
+        "evidence": "I can swim for long distances under ice",
+        "explain": "Little Joe swims a long way under the ice, so he swims very well."
+      }
+    },
+    {
+      "id": "burgess-farmer-browns-corn",
+      "title": "Farmer Brown's Corn",
+      "kind": "story",
+      "topic": "animals",
+      "text": "\"I'll tell you why,\" replied Old Mother Nature. \"Farmer Brown planted that corn and took care of it. If he hadn't planted it, there wouldn't have been any corn there. That makes it his corn. If it grew wild, you would have a perfect right to it. As it is, you haven't any right to it at all. Now take my advice, Bobby, and keep away from that cornfield. If you don't, you will get in trouble. One of these fine nights Bowser the Hound will find you there and you will have to run for your life. Keep away from temptation.\"",
+      "source": {
+        "name": "The Burgess Animal Book for Children (Thornton W. Burgess, 1920)",
+        "url": "https://www.gutenberg.org/ebooks/2441",
+        "license": "Public domain",
+        "author": "Thornton W. Burgess",
+        "note": "Paragraph from the book."
+      },
+      "question": {
+        "type": "main-idea",
+        "q": "What is Old Mother Nature teaching Bobby?",
+        "choices": [
+          "The corn is not Bobby's to take",
+          "Corn is the best food for coons",
+          "Bowser the Hound is a good friend",
+          "Wild corn grows all over the field"
+        ],
+        "answer": 0,
+        "evidence": "That makes it his corn.",
+        "explain": "Farmer Brown planted the corn, so it is his and not Bobby's."
+      }
+    },
+    {
+      "id": "burgess-old-mother-natures-school",
+      "title": "Old Mother Nature's School",
+      "kind": "story",
+      "topic": "animals",
+      "text": "\"I am glad you are so prompt,\" said she. \"Promptness is one of the most important things in life. Now I am very, very busy these days, as you know, so we will begin school at once. Before either of you ask any questions, I am going to ask some myself. Peter, what do you look like? Where do you live? What do you eat? I want to find out just how much you really know about yourself.\"",
+      "source": {
+        "name": "The Burgess Animal Book for Children (Thornton W. Burgess, 1920)",
+        "url": "https://www.gutenberg.org/ebooks/2441",
+        "license": "Public domain",
+        "author": "Thornton W. Burgess",
+        "note": "Paragraph from the book."
+      },
+      "question": {
+        "type": "vocabulary",
+        "q": "Old Mother Nature is glad they are \"prompt.\" What does prompt mean?",
+        "choices": [
+          "Right on time",
+          "Very sleepy",
+          "Loud and noisy",
+          "Very hungry"
+        ],
+        "answer": 0,
+        "evidence": "I am glad you are so prompt",
+        "explain": "Being prompt means coming right on time, so school can start at once."
+      }
+    },
+    {
+      "id": "burgess-a-nut-from-the-sky",
+      "title": "A Nut from the Sky",
+      "kind": "story",
+      "topic": "animals",
+      "text": "\"Hello, Johnny Chuck!\" said a voice that seemed to come right out of the sky. Johnny Chuck tipped his head way, way back and looked up. He was just in time to see Happy Jack Squirrel drop a nut. Down it came and hit Johnny Chuck right on the tip of his funny, black, little nose.",
+      "source": {
+        "name": "Old Mother West Wind (Thornton W. Burgess, 1910)",
+        "url": "https://www.gutenberg.org/ebooks/2557",
+        "license": "Public domain",
+        "author": "Thornton W. Burgess",
+        "note": "Paragraph from the book."
+      },
+      "question": {
+        "type": "detail",
+        "q": "Where did the nut hit Johnny Chuck?",
+        "choices": [
+          "On his nose",
+          "On his back",
+          "On his tail",
+          "On his ear"
+        ],
+        "answer": 0,
+        "evidence": "right on the tip of his funny, black, little nose",
+        "explain": "The nut came down and hit the tip of his little nose."
+      }
+    },
+    {
+      "id": "burgess-what-do-you-wonder",
+      "title": "What Do You Wonder?",
+      "kind": "story",
+      "topic": "animals",
+      "text": "\"What do you wonder?\" The voice was so close to Striped Chipmunk that it made him jump. He whirled about. There was Johnny Chuck, who had tiptoed up as softly as he knew how, to give Striped Chipmunk a scare. Johnny grinned. \"What do you wonder?\" he repeated.",
+      "source": {
+        "name": "Mother West Wind 'Why' Stories (Thornton W. Burgess, 1915)",
+        "url": "https://www.gutenberg.org/ebooks/14958",
+        "license": "Public domain",
+        "author": "Thornton W. Burgess",
+        "note": "Paragraph from the book."
+      },
+      "question": {
+        "type": "cause-effect",
+        "q": "Why did Johnny Chuck tiptoe up so softly?",
+        "choices": [
+          "To surprise Striped Chipmunk",
+          "To keep from waking the baby",
+          "To sneak some of Chipmunk's nuts",
+          "To hide from Reddy Fox nearby"
+        ],
+        "answer": 0,
+        "evidence": "to give Striped Chipmunk a scare",
+        "explain": "Johnny Chuck crept up quietly to give Striped Chipmunk a scare."
+      }
+    },
+    {
+      "id": "burgess-who-is-it",
+      "title": "Who Is It?",
+      "kind": "poem",
+      "topic": "animals",
+      "text": "\"Who is it hops and skips and jumps? Who is it sometimes loudly thumps? Who is it dearly loves to play, But when there's danger runs away? Peter Rabbit! Peter Rabbit!\"",
+      "source": {
+        "name": "Mother West Wind 'Why' Stories (Thornton W. Burgess, 1915)",
+        "url": "https://www.gutenberg.org/ebooks/14958",
+        "license": "Public domain",
+        "author": "Thornton W. Burgess",
+        "note": "Paragraph from the book."
+      },
+      "question": {
+        "type": "detail",
+        "q": "In the song, what does Peter Rabbit do when there is danger?",
+        "choices": [
+          "He runs off",
+          "He hides in a log",
+          "He calls for help",
+          "He thumps"
+        ],
+        "answer": 0,
+        "evidence": "But when there's danger runs away?",
+        "explain": "The song says Peter loves to play but runs away from danger."
+      }
+    },
+    {
+      "id": "burgess-time-for-a-winter-sleep",
+      "title": "Time for a Winter Sleep",
+      "kind": "story",
+      "topic": "animals",
+      "text": "\"That's better,\" said Grandfather Frog gruffly. \"Always tell the truth. The fact is I am tired. I am so tired that I'm going to sleep for the winter, and I'm going to do it this very day.\"",
+      "source": {
+        "name": "Mother West Wind 'How' Stories (Thornton W. Burgess, 1916)",
+        "url": "https://www.gutenberg.org/ebooks/21286",
+        "license": "Public domain",
+        "author": "Thornton W. Burgess",
+        "note": "Paragraph from the book."
+      },
+      "question": {
+        "type": "detail",
+        "q": "What is Grandfather Frog going to do?",
+        "choices": [
+          "Sleep for the winter",
+          "Swim to a new pond",
+          "Catch fat green flies",
+          "Tell a long story"
+        ],
+        "answer": 0,
+        "evidence": "I'm going to sleep for the winter",
+        "explain": "Grandfather Frog is tired and will sleep all winter."
+      }
+    },
+    {
+      "id": "burgess-sammy-jay-flies-off",
+      "title": "Sammy Jay Flies Off",
+      "kind": "story",
+      "topic": "animals",
+      "text": "Everybody turned to look at Sammy Jay, but he was flying off through the wood as fast as he could go. \"Stop thief!\" cried Old Mother West Wind. \"Stop thief!\" cried all the Merry Little Breezes and Johnny Chuck and Billy Mink and all the rest. But Sammy Jay didn't stop.",
+      "source": {
+        "name": "Old Mother West Wind (Thornton W. Burgess, 1910)",
+        "url": "https://www.gutenberg.org/ebooks/2557",
+        "license": "Public domain",
+        "author": "Thornton W. Burgess",
+        "note": "Paragraph from the book."
+      },
+      "question": {
+        "type": "inference",
+        "q": "What did Sammy Jay most likely do?",
+        "choices": [
+          "He stole something",
+          "He broke a big nest",
+          "He told a secret",
+          "He woke everyone up"
+        ],
+        "answer": 0,
+        "evidence": "Stop thief!",
+        "explain": "Everyone shouts \"Stop thief!\" as he flies away, so he must have taken something."
+      }
+    },
+    {
+      "id": "baldwin-the-inchcape-rock",
+      "title": "The Inchcape Rock",
+      "kind": "story",
+      "topic": "ocean",
+      "text": "Ralph the Rover was walking on the deck. He looked out upon the glassy sea. He saw the buoy floating above the Inchcape Rock. It looked like a big black speck upon the water. But the bell was not ringing that day. There were no waves to set it in motion.",
+      "source": {
+        "name": "Fifty Famous Stories Retold (James Baldwin, 1896)",
+        "url": "https://www.gutenberg.org/ebooks/18442",
+        "license": "Public domain",
+        "author": "James Baldwin",
+        "note": "Paragraph from the book."
+      },
+      "question": {
+        "type": "cause-effect",
+        "q": "Why was the bell not ringing that day?",
+        "choices": [
+          "There were no waves",
+          "The bell was broken",
+          "The wind was too strong",
+          "Ralph had taken it"
+        ],
+        "answer": 0,
+        "evidence": "There were no waves to set it in motion.",
+        "explain": "The sea was calm, and without waves the bell could not ring."
+      }
+    },
+    {
+      "id": "baldwin-king-john-and-the-abbot",
+      "title": "King John and the Abbot",
+      "kind": "story",
+      "topic": "history",
+      "text": "\"O king!\" said the abbot, \"these are deep, hard questions, and I cannot answer them just now. But if you will give me two weeks to think about them, I will do the best that I can.\"",
+      "source": {
+        "name": "Fifty Famous Stories Retold (James Baldwin, 1896)",
+        "url": "https://www.gutenberg.org/ebooks/18442",
+        "license": "Public domain",
+        "author": "James Baldwin",
+        "note": "Paragraph from the book."
+      },
+      "question": {
+        "type": "detail",
+        "q": "How long does the abbot ask for to answer the questions?",
+        "choices": [
+          "Two weeks",
+          "Two days",
+          "One year",
+          "Three hours"
+        ],
+        "answer": 0,
+        "evidence": "if you will give me two weeks to think about them",
+        "explain": "The abbot asks the king for two weeks to think."
+      }
+    },
+    {
+      "id": "baldwin-paul-reveres-signal",
+      "title": "Paul Revere's Signal",
+      "kind": "story",
+      "topic": "history",
+      "text": "\"Well, then,\" said Paul Revere, \"you must go back to Boston and watch. Watch, and as soon as the soldiers are ready to start, hang a lantern in the tower of the old North Church. If they are to cross the river, hang two. I will be here, ready. As soon as I see the light, I will mount my horse and ride out to give the alarm.\"",
+      "source": {
+        "name": "Fifty Famous People (James Baldwin, 1912)",
+        "url": "https://www.gutenberg.org/ebooks/6168",
+        "license": "Public domain",
+        "author": "James Baldwin",
+        "note": "Paragraph from the book."
+      },
+      "question": {
+        "type": "detail",
+        "q": "How many lanterns mean the soldiers will cross the river?",
+        "choices": [
+          "One",
+          "Two",
+          "Three",
+          "Four"
+        ],
+        "answer": 1,
+        "evidence": "If they are to cross the river, hang two.",
+        "explain": "Paul Revere says to hang two lanterns if the soldiers cross the river."
+      }
+    },
+    {
+      "id": "baldwin-the-robins-in-the-storm",
+      "title": "The Robins in the Storm",
+      "kind": "story",
+      "topic": "animals",
+      "text": "\"What is the matter here?\" asked the first lawyer, whose name was Speed. \"Oh, it's only some old robins!\" said the second lawyer, whose name was Hardin. \"The storm has blown two of the little ones out of the nest. They are too young to fly, and the mother bird is making a great fuss about it.\"",
+      "source": {
+        "name": "Fifty Famous People (James Baldwin, 1912)",
+        "url": "https://www.gutenberg.org/ebooks/6168",
+        "license": "Public domain",
+        "author": "James Baldwin",
+        "note": "Paragraph from the book."
+      },
+      "question": {
+        "type": "cause-effect",
+        "q": "Why was the mother bird making a great fuss?",
+        "choices": [
+          "Two of her babies fell out",
+          "A big cat climbed the tree",
+          "Rain made her nest soggy",
+          "She could not find any worms"
+        ],
+        "answer": 0,
+        "evidence": "The storm has blown two of the little ones out of the nest.",
+        "explain": "The storm blew two baby robins out of the nest."
+      }
+    },
+    {
+      "id": "baldwin-the-dark-day",
+      "title": "The Dark Day",
+      "kind": "story",
+      "topic": "weather",
+      "text": "The birds flew to their nests. The chickens went to roost. The cows came home from the pasture and stood mooing at the gate. It grew so dark that the people could not see their way along the streets.",
+      "source": {
+        "name": "Fifty Famous People (James Baldwin, 1912)",
+        "url": "https://www.gutenberg.org/ebooks/6168",
+        "license": "Public domain",
+        "author": "James Baldwin",
+        "note": "Paragraph from the book."
+      },
+      "question": {
+        "type": "vocabulary",
+        "q": "The chickens went to \"roost.\" What does roost mean?",
+        "choices": [
+          "Settle in to sleep",
+          "Look for some corn",
+          "Run around in circles",
+          "Lay a big egg"
+        ],
+        "answer": 0,
+        "evidence": "The chickens went to roost.",
+        "explain": "Like the birds flying to their nests, the chickens settled down to sleep."
+      }
+    },
+    {
+      "id": "baldwin-on-the-way-to-school",
+      "title": "On the Way to School",
+      "kind": "story",
+      "topic": "family",
+      "text": "Two children, brother and sister, were on their way to school. Both were very small. The boy was only four years old, and the girl was not yet six. \"Come, Edward, we must hurry,\" said the sister. \"We must not be late.\" With one hand the little boy clung to his sister's arm, and with the other he held his primer.",
+      "source": {
+        "name": "Fifty Famous People (James Baldwin, 1912)",
+        "url": "https://www.gutenberg.org/ebooks/6168",
+        "license": "Public domain",
+        "author": "James Baldwin",
+        "note": "Paragraph from the book."
+      },
+      "question": {
+        "type": "detail",
+        "q": "How old was Edward?",
+        "choices": [
+          "Four",
+          "Six",
+          "Five",
+          "Seven"
+        ],
+        "answer": 0,
+        "evidence": "The boy was only four years old",
+        "explain": "Edward was only four, and his sister was not yet six."
+      }
+    },
+    {
+      "id": "baldwin-mr-jefferson-at-the-inn",
+      "title": "Mr. Jefferson at the Inn",
+      "kind": "story",
+      "topic": "history",
+      "text": "\"Mr. Jefferson!\" cried the landlord. \"Was that the vice president? Here, Dick! build a fire in the best room. Put everything in tiptop order, Sally. What a dunce I was to turn Mr. Jefferson away! He shall have all the rooms in the house, and the ladies' parlor, too, I'll go right round to the Planters' and fetch him back.\"",
+      "source": {
+        "name": "Fifty Famous People (James Baldwin, 1912)",
+        "url": "https://www.gutenberg.org/ebooks/6168",
+        "license": "Public domain",
+        "author": "James Baldwin",
+        "note": "Paragraph from the book."
+      },
+      "question": {
+        "type": "inference",
+        "q": "How does the landlord feel after he learns who Mr. Jefferson is?",
+        "choices": [
+          "Sorry he sent him away",
+          "Glad he sent him away",
+          "Angry at Dick and Sally",
+          "Sleepy and ready for bed"
+        ],
+        "answer": 0,
+        "evidence": "What a dunce I was to turn Mr. Jefferson away!",
+        "explain": "He calls himself a dunce, so he is sorry he turned Mr. Jefferson away."
+      }
+    },
+    {
+      "id": "fabre-how-old-is-a-tree",
+      "title": "How Old Is a Tree?",
+      "kind": "facts",
+      "topic": "plants",
+      "text": "\"What a singular thing!\" Jules exclaimed. \"You can know the age of a tree as if you saw its birth. You count the layers of wood; so many layers, so many years. One must be with you, Uncle, to learn those things. And the other trees, oak, beech, chestnut, do they do the same?\"",
+      "source": {
+        "name": "The Story-Book of Science (Jean-Henri Fabre, 1917)",
+        "url": "https://www.gutenberg.org/ebooks/56795",
+        "license": "Public domain",
+        "author": "Jean-Henri Fabre",
+        "note": "Paragraph from the book. Translated by Florence Constable Bicknell."
+      },
+      "question": {
+        "type": "main-idea",
+        "q": "What is Jules mostly learning about?",
+        "choices": [
+          "How to tell a tree's age",
+          "How to plant a new tree",
+          "Why trees lose their leaves",
+          "Which trees grow the tallest"
+        ],
+        "answer": 0,
+        "evidence": "You count the layers of wood; so many layers, so many years.",
+        "explain": "Jules learns that each layer of wood in a tree stands for one year."
+      }
+    },
+    {
+      "id": "fabre-what-feeds-the-wolf",
+      "title": "What Feeds the Wolf?",
+      "kind": "facts",
+      "topic": "nature",
+      "text": "\"I understand,\" said Jules. \"A sheep browses the grass, a wolf eats the sheep, and so it is the grass that nourishes the wolf. There are, then, plants in the sea?\"",
+      "source": {
+        "name": "The Story-Book of Science (Jean-Henri Fabre, 1917)",
+        "url": "https://www.gutenberg.org/ebooks/56795",
+        "license": "Public domain",
+        "author": "Jean-Henri Fabre",
+        "note": "Paragraph from the book. Translated by Florence Constable Bicknell."
+      },
+      "question": {
+        "type": "inference",
+        "q": "Why does Jules say the grass feeds the wolf?",
+        "choices": [
+          "The sheep it eats ate grass",
+          "Wolves like to chew on grass",
+          "Grass grows where wolves sleep",
+          "Sheep bring grass to wolves"
+        ],
+        "answer": 0,
+        "evidence": "A sheep browses the grass, a wolf eats the sheep",
+        "explain": "The wolf eats sheep, and the sheep ate grass, so the grass feeds the wolf."
+      }
+    }
+  ]
+}

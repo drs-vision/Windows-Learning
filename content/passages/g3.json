@@ -1,0 +1,1787 @@
+{
+  "about": "Reading Quest paragraphs, about grade 3-4",
+  "passages": [
+    {
+      "id": "sbc-counting-animals",
+      "title": "Counting animals",
+      "kind": "story",
+      "topic": "animals",
+      "text": "One elephant is going to drink water. Two giraffes are going to drink water. Three buffaloes and four birds are also going to drink water. Five impalas and six warthogs are walking to the water. Seven zebras are running to the water. Eight frogs and nine fish are swimming in the water. One lion roars. He also wants to drink. Who is afraid of the lion? One elephant is drinking water with the lion.",
+      "source": {
+        "name": "Storybooks Canada",
+        "url": "https://github.com/global-asp/sbc-source/blob/master/en/0327_counting-animals.md",
+        "license": "CC BY 4.0",
+        "author": "Zanele Buthelezi, Thembani Dladla, Clare Verbeek",
+        "note": "Whole story. Illustrations not included."
+      },
+      "question": {
+        "type": "detail",
+        "q": "How many zebras are running to the water?",
+        "choices": [
+          "Five",
+          "Nine",
+          "Seven",
+          "Three"
+        ],
+        "answer": 2,
+        "evidence": "Seven zebras are running to the water.",
+        "explain": "The story says seven zebras are running to the water."
+      },
+      "readability": {
+        "grade": 3.6,
+        "fk": 3.2,
+        "cli": 5.3,
+        "ari": 2.4
+      }
+    },
+    {
+      "id": "sbc-grandmas-bananas",
+      "title": "Grandma's bananas",
+      "kind": "story",
+      "topic": "family",
+      "text": "One day I saw a big straw basket placed in the sun outside Grandma's house. When I asked what it was for, the only answer I got was, \"It's my magic basket.\" Next to the basket, there were several banana leaves that Grandma turned from time to time. I was curious. \"What are the leaves for, Grandma?\" I asked. The only answer I got was, \"They are my magic leaves.\"",
+      "source": {
+        "name": "Storybooks Canada",
+        "url": "https://github.com/global-asp/sbc-source/blob/master/en/0294_grandmas-bananas.md",
+        "license": "CC BY 4.0",
+        "author": "Ursula Nafula",
+        "note": "Excerpt. Illustrations not included."
+      },
+      "question": {
+        "type": "inference",
+        "q": "Why does the child keep asking Grandma questions?",
+        "choices": [
+          "The child wants Grandma to bake a cake today.",
+          "The child wants to know what the things are for.",
+          "The child is hungry and wants a banana now.",
+          "The child is bored and wants to go play."
+        ],
+        "answer": 1,
+        "evidence": "I was curious.",
+        "explain": "The child was curious about the basket and the leaves, so they kept asking."
+      },
+      "readability": {
+        "grade": 3.2,
+        "fk": 3.3,
+        "cli": 4.3,
+        "ari": 2
+      }
+    },
+    {
+      "id": "sbc-khalai-talks-to-plants",
+      "title": "Khalai talks to plants",
+      "kind": "story",
+      "topic": "plants",
+      "text": "Khalai passes wild flowers. \"Please flowers, keep blooming so I can put you in my hair.\" At school, Khalai talks to the tree in the middle of the compound. \"Please tree, put out big branches so we can read under your shade.\" Khalai talks to the hedge around her school. \"Please grow strong and stop bad people from coming in.\"",
+      "source": {
+        "name": "Storybooks Canada",
+        "url": "https://github.com/global-asp/sbc-source/blob/master/en/0089_khalai-talks-to-plants.md",
+        "license": "CC BY 4.0",
+        "author": "Ursula Nafula",
+        "note": "Excerpt. Illustrations not included."
+      },
+      "question": {
+        "type": "main-idea",
+        "q": "What is this passage mostly about?",
+        "choices": [
+          "Khalai picks flowers to sell at the market.",
+          "Khalai plants a new tree at her school.",
+          "Khalai cuts the hedge around her school.",
+          "Khalai asks plants to grow in helpful ways."
+        ],
+        "answer": 3,
+        "evidence": "Khalai talks to the tree in the middle of the compound.",
+        "explain": "Khalai talks to the flowers, the tree and the hedge, asking each one to help."
+      },
+      "readability": {
+        "grade": 3.9,
+        "fk": 2.5,
+        "cli": 5.9,
+        "ari": 3.4
+      }
+    },
+    {
+      "id": "sbc-simbegwire",
+      "title": "Simbegwire",
+      "kind": "story",
+      "topic": "family",
+      "text": "One day, Simbegwire's father came home later than usual. \"Where are you my child?\" he called. Simbegwire ran to her father. She stopped still when she saw that he was holding a woman's hand. \"I want you to meet someone special, my child. This is Anita,\" he said smiling. \"Hello Simbegwire, your father told me a lot about you,\" said Anita. But she did not smile or take the girl's hand. Simbegwire's father was happy and excited. He talked about the three of them living together, and how good their life would be. \"My child, I hope you will accept Anita as your mother,\" he said.",
+      "source": {
+        "name": "Storybooks Canada",
+        "url": "https://github.com/global-asp/sbc-source/blob/master/en/0052_simbegwire.md",
+        "license": "CC BY 4.0",
+        "author": "Rukia Nantale",
+        "note": "Excerpt. Illustrations not included."
+      },
+      "question": {
+        "type": "inference",
+        "q": "How does Anita seem to act when she meets Simbegwire?",
+        "choices": [
+          "Not very warm toward her",
+          "Very happy and friendly",
+          "Angry at Simbegwire's father",
+          "Too shy to say anything"
+        ],
+        "answer": 0,
+        "evidence": "But she did not smile or take the girl's hand.",
+        "explain": "Anita said hello, but she did not smile or take Simbegwire's hand."
+      },
+      "readability": {
+        "grade": 3.9,
+        "fk": 3.7,
+        "cli": 5.4,
+        "ari": 2.7
+      }
+    },
+    {
+      "id": "asp-hare-and-elephant",
+      "title": "Hare and Elephant",
+      "kind": "fable",
+      "topic": "animals",
+      "text": "Long, long time ago, there lived Hare and Elephant. Hare was clever and cunning. Elephant was slow and vain. One day, Hare went to the market and bought a pair of beautiful shoes made of iron. On his way home, Hare met Elephant. Elephant liked Hare's shoes so much that he asked Hare to take him to the place where he bought them.",
+      "source": {
+        "name": "African Storybook",
+        "url": "https://github.com/global-asp/asp-source/blob/master/en/0164_hare-and-elephant.md",
+        "license": "CC BY 4.0",
+        "author": "Lawrence A. Konjuro",
+        "note": "Beginning of the story. Illustrations not included."
+      },
+      "question": {
+        "type": "detail",
+        "q": "What were Hare's new shoes made of?",
+        "choices": [
+          "Wood",
+          "Iron",
+          "Grass",
+          "Leather"
+        ],
+        "answer": 1,
+        "evidence": "a pair of beautiful shoes made of iron",
+        "explain": "Hare bought beautiful shoes made of iron."
+      },
+      "readability": {
+        "grade": 3.8,
+        "fk": 3.1,
+        "cli": 5.4,
+        "ari": 3
+      }
+    },
+    {
+      "id": "asp-ismails-day",
+      "title": "The Hours and Minutes in Ismail's Day",
+      "kind": "story",
+      "topic": "time",
+      "text": "At seven thirty he goes to school. Ismail has a long way to walk, since his school is in another village. At 8:10 he reaches his school. How long was the walk? Ismail likes the forty-minute walk to school every morning since it is cool outside. In the afternoon it is too hot to walk that far, he thinks. Ismail reaches school 20 minutes before the first lesson. What time is the first lesson?",
+      "source": {
+        "name": "African Storybook",
+        "url": "https://github.com/global-asp/asp-source/blob/master/en/0290_the-hours-and-minutes-in-ismails-day.md",
+        "license": "CC BY 4.0",
+        "author": "Espen Stranger-Johannessen",
+        "note": "Excerpt. Illustrations not included."
+      },
+      "question": {
+        "type": "cause-effect",
+        "q": "Why does Ismail like his walk to school in the morning?",
+        "choices": [
+          "His friends walk with him.",
+          "The road is very short.",
+          "He gets a ride part of the way.",
+          "It is cool outside then."
+        ],
+        "answer": 3,
+        "evidence": "since it is cool outside",
+        "explain": "Ismail likes the morning walk because it is cool outside."
+      },
+      "readability": {
+        "grade": 3.9,
+        "fk": 3.2,
+        "cli": 5.7,
+        "ari": 2.9
+      }
+    },
+    {
+      "id": "asp-our-river-our-life",
+      "title": "Our river, our life",
+      "kind": "story",
+      "topic": "water",
+      "text": "Two small streams formed River Temu. The sheep, goats and deer lived because of River Temu. But when Matata became headman, he cut down trees. He made a path from the top of the hill to the bottom. Matata's children and their friends ran all over the place. They broke branches. They lit fires and left them burning.",
+      "source": {
+        "name": "African Storybook",
+        "url": "https://github.com/global-asp/asp-source/blob/master/en/0071_our-river-our-life.md",
+        "license": "CC BY 4.0",
+        "author": "Rebecca Njuguna",
+        "note": "Beginning of the story. Illustrations not included."
+      },
+      "question": {
+        "type": "detail",
+        "q": "What did Matata do when he became headman?",
+        "choices": [
+          "He planted new trees.",
+          "He built a big bridge.",
+          "He cut down trees.",
+          "He dug a new well."
+        ],
+        "answer": 2,
+        "evidence": "when Matata became headman, he cut down trees",
+        "explain": "The story says that when Matata became headman, he cut down trees."
+      },
+      "readability": {
+        "grade": 3.8,
+        "fk": 2.5,
+        "cli": 5.9,
+        "ari": 2.9
+      }
+    },
+    {
+      "id": "asp-what-vusis-sister-said",
+      "title": "What Vusi's sister said",
+      "kind": "story",
+      "topic": "family",
+      "text": "Early one morning Vusi's granny called him, \"Vusi, please take this egg to your parents. They want to make a large cake for your sister's wedding.\" On his way to his parents, Vusi met two boys picking fruit. One boy grabbed the egg from Vusi and shot it at a tree. The egg broke.",
+      "source": {
+        "name": "African Storybook",
+        "url": "https://github.com/global-asp/asp-source/blob/master/en/0291_what-vusis-sister-said.md",
+        "license": "CC BY 4.0",
+        "author": "Nina Orange",
+        "note": "Beginning of the story. Illustrations not included."
+      },
+      "question": {
+        "type": "sequence",
+        "q": "What happened right after one boy grabbed the egg?",
+        "choices": [
+          "He shot it at a tree.",
+          "He gave it back to Vusi.",
+          "He hid it in the grass.",
+          "He took it to Granny."
+        ],
+        "answer": 0,
+        "evidence": "One boy grabbed the egg from Vusi and shot it at a tree.",
+        "explain": "The boy grabbed the egg and then shot it at a tree, so it broke."
+      },
+      "readability": {
+        "grade": 3.5,
+        "fk": 3,
+        "cli": 4.8,
+        "ari": 2.6
+      }
+    },
+    {
+      "id": "asp-rooster-and-hare",
+      "title": "Rooster and Hare",
+      "kind": "fable",
+      "topic": "friendship",
+      "text": "Once upon a time, there was a rooster and a hare. They were very good friends. One night, Hare visited Rooster and his family at home. They enjoyed supper together. Then came the time to go to bed. Hare saw that as Rooster and his family slept, their heads were hidden.",
+      "source": {
+        "name": "African Storybook",
+        "url": "https://github.com/global-asp/asp-source/blob/master/en/0213_rooster-and-hare.md",
+        "license": "CC BY 4.0",
+        "author": "Geoffrey Thiiru",
+        "note": "Beginning of the story. Illustrations not included."
+      },
+      "question": {
+        "type": "detail",
+        "q": "What did Hare notice when Rooster's family slept?",
+        "choices": [
+          "Their eyes were open.",
+          "Their heads were hidden.",
+          "They snored very loudly.",
+          "They slept in a tree."
+        ],
+        "answer": 1,
+        "evidence": "their heads were hidden",
+        "explain": "Hare saw that their heads were hidden while they slept."
+      },
+      "readability": {
+        "grade": 3.4,
+        "fk": 3,
+        "cli": 4.9,
+        "ari": 2.2
+      }
+    },
+    {
+      "id": "asp-little-badger-goes-to-the-moon",
+      "title": "Little Badger goes to the moon",
+      "kind": "story",
+      "topic": "space",
+      "text": "The big bright moon rose up in the dark night sky. Little Badger was sitting under the stars, dreaming about one day going to visit the moon. Badger was a little grey dog, he had big ears and a large black and grey beard. He is a schnauzer dog. One morning at breakfast Badger said to his mother; \"Mum, please can you go to the train station and buy me a ticket to go to the moon?\" His mother laughed, \"Oh dear little Badger, I am afraid you are too small to go to the moon.\"",
+      "source": {
+        "name": "African Storybook",
+        "url": "https://github.com/global-asp/asp-source/blob/master/en/0133_little-badger-goes-to-the-moon.md",
+        "license": "CC BY 4.0",
+        "author": "Melissa Anne Bottcher",
+        "note": "Beginning of the story. Illustrations not included."
+      },
+      "question": {
+        "type": "inference",
+        "q": "Why did Badger's mother laugh?",
+        "choices": [
+          "She had already bought him a train ticket.",
+          "Badger had made a mess at the breakfast table.",
+          "She thought his wish was sweet but could not happen.",
+          "She wanted to go to the moon with Badger."
+        ],
+        "answer": 2,
+        "evidence": "I am afraid you are too small to go to the moon.",
+        "explain": "His mother laughed kindly because a little dog cannot really go to the moon."
+      },
+      "readability": {
+        "grade": 4.7,
+        "fk": 4.9,
+        "cli": 4.6,
+        "ari": 4.4
+      }
+    },
+    {
+      "id": "asp-lions-fire-sticks",
+      "title": "Lion's fire sticks",
+      "kind": "fable",
+      "topic": "people",
+      "text": "This story starts in the old times when animals and people lived together. In those days people did not have the right to fire. They ate their food raw. Only Lion had the power of fire. The people and the animals came together to make a plan. \"What can we do to get the fire from Lion so that we can cook our food?\" they asked. They decided to wait until evening and started singing and singing, clapping and clapping, calling everyone together. \"Come dance with us. Come dance with us. Come dance with us.\"",
+      "source": {
+        "name": "African Storybook",
+        "url": "https://github.com/global-asp/asp-source/blob/master/en/0272_lions-fire-sticks.md",
+        "license": "CC BY 4.0",
+        "author": "Traditional San story",
+        "note": "Beginning of the story. Illustrations not included."
+      },
+      "question": {
+        "type": "cause-effect",
+        "q": "Why did the people want to get fire from Lion?",
+        "choices": [
+          "So they could scare Lion away",
+          "So they could cook their food",
+          "So they could see in the dark",
+          "So they could keep warm at night"
+        ],
+        "answer": 1,
+        "evidence": "so that we can cook our food",
+        "explain": "They ate their food raw, and they wanted fire to cook it."
+      },
+      "readability": {
+        "grade": 3.6,
+        "fk": 2.9,
+        "cli": 5.3,
+        "ari": 2.5
+      }
+    },
+    {
+      "id": "asp-locusts",
+      "title": "Locusts",
+      "kind": "story",
+      "topic": "animals",
+      "text": "We hit tins and metal pots. But the locusts would not go. We lit fires to chase the locusts away. But they would not go. They settled on trees. Branches broke because of the weight of all the locusts. Then we remembered that roasted locusts are good to eat! Everyone started to collect the locusts in sacks and nets.",
+      "source": {
+        "name": "African Storybook",
+        "url": "https://github.com/global-asp/asp-source/blob/master/en/0137_locusts.md",
+        "license": "CC BY 4.0",
+        "author": "Mary Okere",
+        "note": "Excerpt. Illustrations not included."
+      },
+      "question": {
+        "type": "sequence",
+        "q": "What did the people do after they remembered that roasted locusts are good to eat?",
+        "choices": [
+          "They hit tins and metal pots.",
+          "They lit fires to chase them.",
+          "They climbed up into the trees.",
+          "They collected locusts in sacks."
+        ],
+        "answer": 3,
+        "evidence": "Everyone started to collect the locusts in sacks and nets.",
+        "explain": "Once they remembered locusts are good to eat, everyone started collecting them."
+      },
+      "readability": {
+        "grade": 3,
+        "fk": 1.7,
+        "cli": 5.1,
+        "ari": 2.2
+      }
+    },
+    {
+      "id": "asp-greedy-hyena",
+      "title": "Greedy Hyena",
+      "kind": "story",
+      "topic": "family",
+      "text": "Atabo and Akiru went to collect water at the river. On their way back home they rested on a big rock. Atabo tried to stand up to continue home but was stuck to the rock. Akiru ran home to call mother. When mother arrived at the rock, she found Atabo truly stuck.",
+      "source": {
+        "name": "African Storybook",
+        "url": "https://github.com/global-asp/asp-source/blob/master/en/0034_greedy-hyena.md",
+        "license": "CC BY 4.0",
+        "author": "John Nga'sike",
+        "note": "Beginning of the story. Illustrations not included."
+      },
+      "question": {
+        "type": "detail",
+        "q": "Who ran home to call mother?",
+        "choices": [
+          "Atabo",
+          "Hyena",
+          "Akiru",
+          "Grandma"
+        ],
+        "answer": 2,
+        "evidence": "Akiru ran home to call mother.",
+        "explain": "Atabo was stuck, so Akiru ran home to get mother."
+      },
+      "readability": {
+        "grade": 3.8,
+        "fk": 4.6,
+        "cli": 4.5,
+        "ari": 2.3
+      }
+    },
+    {
+      "id": "asp-dembe-the-shopkeeper",
+      "title": "Dembe the shopkeeper",
+      "kind": "story",
+      "topic": "people",
+      "text": "In my home village, there is a trader called Dembe. Dembe has a big shop in the village. The shop sells flour, sugar, rice, beans, and many more things. Dembe and his wife have three children. They all work hard in the shop. During the holidays, the children help their parents to serve customers. They count the money and give change.",
+      "source": {
+        "name": "African Storybook",
+        "url": "https://github.com/global-asp/asp-source/blob/master/en/0021_dembe-the-shopkeeper.md",
+        "license": "CC BY 4.0",
+        "author": "Annet Ssebaggala",
+        "note": "Beginning of the story. Illustrations not included."
+      },
+      "question": {
+        "type": "main-idea",
+        "q": "What is this passage mostly about?",
+        "choices": [
+          "How to bake bread with flour and sugar at home",
+          "Dembe and his family running their village shop",
+          "A long trip the children take in the holidays",
+          "How Dembe built a new house for his family"
+        ],
+        "answer": 1,
+        "evidence": "Dembe has a big shop in the village.",
+        "explain": "The passage tells about Dembe's shop and how his family works in it."
+      },
+      "readability": {
+        "grade": 3.8,
+        "fk": 2.3,
+        "cli": 6.1,
+        "ari": 3.2
+      }
+    },
+    {
+      "id": "pb-inside-the-world-wide-web",
+      "title": "Inside the World Wide Web",
+      "kind": "facts",
+      "topic": "technology",
+      "text": "So Nettikutti, here's what everyone wants to know - What IS the Internet? Ooooh. BIG question. Let's see how I can put it simply. The Internet (short for 'INTERconnected NETworks') is a large, large, LARGE collection of computers from all over the world that are connected to each other.",
+      "source": {
+        "name": "Pratham Books (StoryWeaver)",
+        "url": "https://github.com/global-asp/pb-source/blob/master/en/0410_inside-the-world-wide-web.md",
+        "license": "CC BY 4.0",
+        "author": "Roopa Pai",
+        "note": "Excerpt. Shortened. Illustrations not included."
+      },
+      "question": {
+        "type": "vocabulary",
+        "q": "The Internet is computers \"connected to each other.\" What does connected mean here?",
+        "choices": [
+          "Kept far apart",
+          "Joined together",
+          "Turned off",
+          "Painted bright"
+        ],
+        "answer": 1,
+        "evidence": "connected to each other",
+        "explain": "Connected means joined together, so the computers can share with each other."
+      },
+      "readability": {
+        "grade": 6.5,
+        "fk": 5.6,
+        "cli": 8.6,
+        "ari": 5.4
+      }
+    },
+    {
+      "id": "pb-its-bath-time",
+      "title": "It's Bath Time!",
+      "kind": "story",
+      "topic": "family",
+      "text": "\"Nandu, Chinku, come here. It's time for your bath \", mummy called. Nandu and Chinku came running to the bathroom with their toy elephant. Mummy turned on the tap. Whooosh!!! whoosh!!! gushed water from the tap!!! They jumped into their bath tubs. Splish splash, splish splash, they played in the water. Nandu poured water all over his head. \"Ooh, Ooh \" squealed Chinku, playing in his tub.",
+      "source": {
+        "name": "Pratham Books (StoryWeaver)",
+        "url": "https://github.com/global-asp/pb-source/blob/master/en/0247_it-s-bath-time.md",
+        "license": "CC BY 4.0",
+        "author": "Akshara Rajesh",
+        "note": "Beginning of the story. Illustrations not included."
+      },
+      "question": {
+        "type": "main-idea",
+        "q": "What is this passage mostly about?",
+        "choices": [
+          "Two children tidying up their toy box",
+          "Mummy fixing a broken water tap",
+          "Two children swimming at the beach",
+          "Two children having fun at bath time"
+        ],
+        "answer": 3,
+        "evidence": "they played in the water",
+        "explain": "Nandu and Chinku splash and play in their bath tubs."
+      },
+      "readability": {
+        "grade": 3.6,
+        "fk": 2.1,
+        "cli": 5.9,
+        "ari": 2.9
+      }
+    },
+    {
+      "id": "pb-the-generous-crow",
+      "title": "The Generous Crow",
+      "kind": "story",
+      "topic": "animals",
+      "text": "Kaage went looking for the koel, and found her at last. The koel looked at her a little suspiciously, but Kaage was very respectful. \"Will you teach me to sing?\" Kaage asked humbly. \"All right,\" said the koel. \"But on one condition. You have to be here very early each morning, at daybreak.\" Kaage nodded. \"Good. Class begins tomorrow,\" said the koel, flying off on her errands.",
+      "source": {
+        "name": "Pratham Books (StoryWeaver)",
+        "url": "https://github.com/global-asp/pb-source/blob/master/en/0081_the-generous-crow.md",
+        "license": "CC BY 4.0",
+        "author": "Venkatramana Gowda",
+        "note": "Excerpt. Translated by Divaspathy Hegde. Illustrations not included."
+      },
+      "question": {
+        "type": "vocabulary",
+        "q": "Kaage asked the koel \"humbly.\" What does humbly mean?",
+        "choices": [
+          "Politely, without showing off",
+          "Loudly, in an angry voice",
+          "Quickly, in a big rush",
+          "Sadly, while crying hard"
+        ],
+        "answer": 0,
+        "evidence": "Kaage was very respectful.",
+        "explain": "Kaage was very respectful, which is what asking humbly means."
+      },
+      "readability": {
+        "grade": 3.2,
+        "fk": 2.3,
+        "cli": 5.1,
+        "ari": 2.2
+      }
+    },
+    {
+      "id": "pb-bani",
+      "title": "Bani",
+      "kind": "story",
+      "topic": "school",
+      "text": "Bani is a little girl of four. She lives in a house with a green door. She goes to a school with bright yellow windows and red doors. Bani loves her school. Along with lessons, she dances, sings and plays with her friends. One night, Bani was really tired. As she closed her eyes to sleep, she felt herself floating away, out of the house, down the hill into a grove of trees.",
+      "source": {
+        "name": "Pratham Books (StoryWeaver)",
+        "url": "https://github.com/global-asp/pb-source/blob/master/en/0070_bani.md",
+        "license": "CC BY 4.0",
+        "author": "Herminder Ohri",
+        "note": "Beginning of the story. Illustrations not included."
+      },
+      "question": {
+        "type": "detail",
+        "q": "What color are the windows at Bani's school?",
+        "choices": [
+          "Bright yellow",
+          "Dark green",
+          "Bright red",
+          "Light blue"
+        ],
+        "answer": 0,
+        "evidence": "a school with bright yellow windows",
+        "explain": "Bani's school has bright yellow windows and red doors."
+      },
+      "readability": {
+        "grade": 3.3,
+        "fk": 2.5,
+        "cli": 4.8,
+        "ari": 2.6
+      }
+    },
+    {
+      "id": "pb-the-missing-cat",
+      "title": "The missing cat",
+      "kind": "story",
+      "topic": "animals",
+      "text": "Ruchi had a cat named Reena. Ruchi loved and cared for Reena so much that she would not let anyone touch Reena. Ruchi played with Reena day and night till they got tired. Ruchi fed Reena fish and milk. After a few years, Ruchi was sent to school. So when Ruchi was studying under a tree, Reena would sit on top of the tree and listen.",
+      "source": {
+        "name": "Pratham Books (StoryWeaver)",
+        "url": "https://github.com/global-asp/pb-source/blob/master/en/0237_the-missing-cat.md",
+        "license": "CC BY 4.0",
+        "author": "Rachita Uday Kumar",
+        "note": "Beginning of the story. Illustrations not included."
+      },
+      "question": {
+        "type": "main-idea",
+        "q": "What is this passage mostly about?",
+        "choices": [
+          "Ruchi is looking for a new pet cat.",
+          "Reena the cat learns to climb trees.",
+          "Ruchi and her cat love being together.",
+          "Ruchi does not like going to school."
+        ],
+        "answer": 2,
+        "evidence": "Ruchi loved and cared for Reena so much",
+        "explain": "The passage tells how Ruchi loves Reena and how Reena stays near her."
+      },
+      "readability": {
+        "grade": 3.7,
+        "fk": 3.5,
+        "cli": 4.8,
+        "ari": 2.7
+      }
+    },
+    {
+      "id": "pb-a-kind-boy",
+      "title": "A Kind Boy",
+      "kind": "story",
+      "topic": "family",
+      "text": "There was once a boy called Raj. He lived with his mother in a small house. He had no father, and was very poor. His mother was very kind and taught Raj everything about helping other people. One day at Raj's school, his teacher said that they would go and visit the Museum. Raj's mother gave him a small backpack with a water bottle and his lunch.",
+      "source": {
+        "name": "Pratham Books (StoryWeaver)",
+        "url": "https://github.com/global-asp/pb-source/blob/master/en/0309_a-kind-boy.md",
+        "license": "CC BY 4.0",
+        "author": "Arushi Raj",
+        "note": "Beginning of the story. Shortened. Illustrations not included."
+      },
+      "question": {
+        "type": "detail",
+        "q": "Where was Raj's class going to visit?",
+        "choices": [
+          "The zoo",
+          "The park",
+          "The beach",
+          "The museum"
+        ],
+        "answer": 3,
+        "evidence": "they would go and visit the Museum",
+        "explain": "The teacher said the class would visit the museum."
+      },
+      "readability": {
+        "grade": 4.2,
+        "fk": 3.9,
+        "cli": 5.4,
+        "ari": 3.3
+      }
+    },
+    {
+      "id": "pb-bheema-the-sleepyhead",
+      "title": "Bheema, the Sleepyhead",
+      "kind": "story",
+      "topic": "animals",
+      "text": "Bheema loves to sleep and just cannot get up early. Ramu, the washerman, scolds Bheema often. One day, Gauri, the cow, asked him, \"Bheema, why are you so sad?\" Bheema said, \"I cannot get up early and Ramu shouts at me every day. Will you wake me up every morning, please?\" \"Yes, I will,\" said Gauri. Early next morning, Gauri mooed loudly, but Bheema did not wake up.",
+      "source": {
+        "name": "Pratham Books (StoryWeaver)",
+        "url": "https://github.com/global-asp/pb-source/blob/master/en/0062_bheema-the-sleepyhead.md",
+        "license": "CC BY 4.0",
+        "author": "Kiran Kasturia",
+        "note": "Beginning of the story. Translated by Rajesh Khar. Illustrations not included."
+      },
+      "question": {
+        "type": "detail",
+        "q": "Why does Ramu shout at Bheema?",
+        "choices": [
+          "Bheema eats all the grass.",
+          "Bheema cannot get up early.",
+          "Bheema runs off every day.",
+          "Bheema sings too loudly."
+        ],
+        "answer": 1,
+        "evidence": "I cannot get up early and Ramu shouts at me every day.",
+        "explain": "Bheema says Ramu shouts at him because he cannot get up early."
+      },
+      "readability": {
+        "grade": 3.9,
+        "fk": 4.3,
+        "cli": 4.8,
+        "ari": 2.4
+      }
+    },
+    {
+      "id": "pb-karthik-loves-to-read",
+      "title": "Karthik loves to read",
+      "kind": "story",
+      "topic": "books",
+      "text": "Karthik loved to read. He loved to read about Fairies, Rain, Sun and Flowers. During holidays, he would go to the park with his books, sit under a tree and simply begin to read. He would sit in his room on his play mat and lean against his dog and begin to read. He loved animals. He loved reading about animals. Karthik's favorite book was the one on animals. His dad had gifted him one on his 5th birthday.",
+      "source": {
+        "name": "Pratham Books (StoryWeaver)",
+        "url": "https://github.com/global-asp/pb-source/blob/master/en/0369_karthik-loves-to-read.md",
+        "license": "CC BY 4.0",
+        "author": "Anusha Parthasarathy",
+        "note": "Beginning of the story. Illustrations not included."
+      },
+      "question": {
+        "type": "main-idea",
+        "q": "What is the main idea of this passage?",
+        "choices": [
+          "Karthik loves to play football in the park.",
+          "Karthik loves reading, most of all about animals.",
+          "Karthik wants a new dog for his birthday.",
+          "Karthik does not like sitting on his mat."
+        ],
+        "answer": 1,
+        "evidence": "Karthik loved to read.",
+        "explain": "The passage is all about how much Karthik loves to read."
+      },
+      "readability": {
+        "grade": 3.6,
+        "fk": 3.6,
+        "cli": 4.8,
+        "ari": 2.4
+      }
+    },
+    {
+      "id": "pb-the-royal-toothache",
+      "title": "The Royal Toothache",
+      "kind": "fable",
+      "topic": "animals",
+      "text": "\"You will dare to kick the king?\" roared the lion peevishly. The donkey tucked his tail between his legs and ran off. The elephant, cheetah, bear and deer were all worried. Who would stick their hand into the lion's mouth? Two days passed. The toothache was getting unbearable. \"Should I take a look?\" asked the mouse one night when the lion and he were alone. \"Alright,\" said the lion and opened his mouth wide.",
+      "source": {
+        "name": "Pratham Books (StoryWeaver)",
+        "url": "https://github.com/global-asp/pb-source/blob/master/en/0108_the-royal-toothache.md",
+        "license": "CC BY 4.0",
+        "author": "Sanjiv Jaiswal 'Sanjay'",
+        "note": "Excerpt. Translated by Manisha Chaudhry. Illustrations not included."
+      },
+      "question": {
+        "type": "vocabulary",
+        "q": "\"The toothache was getting unbearable.\" What does unbearable mean?",
+        "choices": [
+          "A little bit better",
+          "Gone away for good",
+          "Too bad to put up with",
+          "Funny and silly"
+        ],
+        "answer": 2,
+        "evidence": "The toothache was getting unbearable.",
+        "explain": "Unbearable means so bad that you can hardly stand it."
+      },
+      "readability": {
+        "grade": 3.3,
+        "fk": 1.8,
+        "cli": 5.5,
+        "ari": 2.6
+      }
+    },
+    {
+      "id": "burgess-paddy-builds-a-pond",
+      "title": "Paddy the Beaver's Pond",
+      "kind": "story",
+      "topic": "animals",
+      "text": "\"Why, I had to have a pond, if I was to stay here,\" replied Paddy, as if every one must understand that. \"The Laughing Brook wasn't deep or big enough for me to live here safely. If it had been, I would have made my home in the bank and not bothered with a house or dam. But it wasn't, so I had to make a pond. It required a lot of hard work, but it is worth all it cost.",
+      "source": {
+        "name": "The Burgess Animal Book for Children (Thornton W. Burgess, 1920)",
+        "url": "https://www.gutenberg.org/ebooks/2441",
+        "license": "Public domain",
+        "author": "Thornton W. Burgess",
+        "note": "Paragraph from the book."
+      },
+      "question": {
+        "type": "cause-effect",
+        "q": "Why did Paddy have to make a pond?",
+        "choices": [
+          "He wanted a place for his friends to swim.",
+          "The Laughing Brook was too small for him.",
+          "The old pond had dried up in the summer.",
+          "Farmer Brown asked him to build one."
+        ],
+        "answer": 1,
+        "evidence": "The Laughing Brook wasn't deep or big enough for me to live here safely.",
+        "explain": "Paddy made a pond because the brook was not deep or big enough to live in safely."
+      },
+      "readability": {
+        "grade": 3,
+        "fk": 4.3,
+        "cli": 2.3,
+        "ari": 2.6
+      }
+    },
+    {
+      "id": "burgess-miner-the-mole-ridge",
+      "title": "Peter Trips Over a Mole Ridge",
+      "kind": "story",
+      "topic": "animals",
+      "text": "Peter chuckled. \"Now isn't that funny?\" he demanded of no one at all, for he was quite alone. Then he answered himself. \"It certainly is,\" said he. \"Here I am on my way to learn something about Miner the Mole, and I trip over one of the queer little ridges he is forever making. It wasn't here yesterday, so that means that he is at work right around here now. Hello, I thought so!\"",
+      "source": {
+        "name": "The Burgess Animal Book for Children (Thornton W. Burgess, 1920)",
+        "url": "https://www.gutenberg.org/ebooks/2441",
+        "license": "Public domain",
+        "author": "Thornton W. Burgess",
+        "note": "Paragraph from the book."
+      },
+      "question": {
+        "type": "inference",
+        "q": "How does Peter know Miner the Mole is working close by?",
+        "choices": [
+          "He can hear Miner digging under him.",
+          "Jumper the Hare told him about it.",
+          "He sees Miner's tracks in the snow.",
+          "The ridge was not there the day before."
+        ],
+        "answer": 3,
+        "evidence": "It wasn't here yesterday, so that means that he is at work right around here now.",
+        "explain": "The ridge is new since yesterday, so Miner must be digging nearby."
+      },
+      "readability": {
+        "grade": 3,
+        "fk": 3.5,
+        "cli": 3.9,
+        "ari": 1.5
+      }
+    },
+    {
+      "id": "burgess-johnny-chuck-winter-sleep",
+      "title": "Johnny Chuck's Winter Sleep",
+      "kind": "facts",
+      "topic": "animals",
+      "text": "\"No,\" replied Johnny. \"I sleep right through, thank goodness. Sometimes I wake up very early in the spring before the snow is all gone, earlier than I wish I did. That is where my fat comes in handy. It keeps me warm and keeps me alive until I can find the first green plants. Perhaps you have noticed that early in the spring I am as thin as I was fat in the fall. This is because I have used up the fat, waiting for the first green things to appear.\"",
+      "source": {
+        "name": "The Burgess Animal Book for Children (Thornton W. Burgess, 1920)",
+        "url": "https://www.gutenberg.org/ebooks/2441",
+        "license": "Public domain",
+        "author": "Thornton W. Burgess",
+        "note": "Paragraph from the book."
+      },
+      "question": {
+        "type": "cause-effect",
+        "q": "Why is Johnny Chuck thin in early spring?",
+        "choices": [
+          "He used up his fat waiting for plants.",
+          "He ran far away to find a new home.",
+          "He gave all his food to his friends.",
+          "He was sick all through the winter."
+        ],
+        "answer": 0,
+        "evidence": "This is because I have used up the fat, waiting for the first green things to appear.",
+        "explain": "His fat keeps him alive until green plants grow, so he uses it up."
+      },
+      "readability": {
+        "grade": 3.7,
+        "fk": 3.6,
+        "cli": 4.3,
+        "ari": 3
+      }
+    },
+    {
+      "id": "burgess-prickly-porky-grumbles",
+      "title": "Prickly Porky Grumbles",
+      "kind": "story",
+      "topic": "animals",
+      "text": "\"Don't believe it,\" grunted Prickly Porky, still shuffling along. \"Don't believe it. Don't want to be related to anybody as heedless as you. What is this school, anyway? Don't want to go to school. Know all I want to know. Know how to get all I want to eat and how to make everybody get out of my way and leave me alone, and that's enough to know.\" He rattled the thousand little spears hidden in his coat, and Peter shivered at the sound. It was a most unpleasant sound.",
+      "source": {
+        "name": "The Burgess Animal Book for Children (Thornton W. Burgess, 1920)",
+        "url": "https://www.gutenberg.org/ebooks/2441",
+        "license": "Public domain",
+        "author": "Thornton W. Burgess",
+        "note": "Paragraph from the book."
+      },
+      "question": {
+        "type": "inference",
+        "q": "What are the \"thousand little spears hidden in his coat\"?",
+        "choices": [
+          "Sticks he carries to school",
+          "Long grass stuck in his fur",
+          "Sharp quills on Prickly Porky",
+          "Tiny swords he made himself"
+        ],
+        "answer": 2,
+        "evidence": "He rattled the thousand little spears hidden in his coat",
+        "explain": "A porcupine has sharp quills in its coat, and they rattle when he shakes."
+      },
+      "readability": {
+        "grade": 3.5,
+        "fk": 3.5,
+        "cli": 4.7,
+        "ari": 2.4
+      }
+    },
+    {
+      "id": "burgess-buster-bear",
+      "title": "What Buster Bear Looks Like",
+      "kind": "facts",
+      "topic": "animals",
+      "text": "As Buster sat there, every one had a splendid chance to see just how he looked. His coat was all black; in fact he was black all over, with the exception of his nose, which was brown. His fur was long and rather shaggy. His ears were round. His paws were big and armed with strong, wicked looking claws.",
+      "source": {
+        "name": "The Burgess Animal Book for Children (Thornton W. Burgess, 1920)",
+        "url": "https://www.gutenberg.org/ebooks/2441",
+        "license": "Public domain",
+        "author": "Thornton W. Burgess",
+        "note": "Paragraph from the book."
+      },
+      "question": {
+        "type": "detail",
+        "q": "What part of Buster Bear was brown?",
+        "choices": [
+          "His ears",
+          "His nose",
+          "His paws",
+          "His back"
+        ],
+        "answer": 1,
+        "evidence": "with the exception of his nose, which was brown",
+        "explain": "Buster was black all over except his nose, which was brown."
+      },
+      "readability": {
+        "grade": 3.7,
+        "fk": 2.8,
+        "cli": 5.1,
+        "ari": 3.2
+      }
+    },
+    {
+      "id": "burgess-snow-king-the-polar-bear",
+      "title": "Snow King the Polar Bear",
+      "kind": "facts",
+      "topic": "animals",
+      "text": "\"The last of the Bear cousins is Snow King the Polar Bear. Snow King is king of the Frozen North. He lives in the region of snow and ice, and his coat is all white. He also is a big Bear, and of somewhat different shape from his cousins. He is longer, and has a much longer neck and a long head. His ears are rather small and close to his head. Snow King lives the year round where it would seem that no animal could live, and he manages to live well. Though his home is in the coldest part of the Great World, he does not mind the cold at all.",
+      "source": {
+        "name": "The Burgess Animal Book for Children (Thornton W. Burgess, 1920)",
+        "url": "https://www.gutenberg.org/ebooks/2441",
+        "license": "Public domain",
+        "author": "Thornton W. Burgess",
+        "note": "Paragraph from the book."
+      },
+      "question": {
+        "type": "main-idea",
+        "q": "What is this passage mostly about?",
+        "choices": [
+          "How Snow King looks and lives in the cold North",
+          "How bears catch fish in the Laughing Brook",
+          "Why Snow King wants to move somewhere warm",
+          "How the bear cousins share food in winter"
+        ],
+        "answer": 0,
+        "evidence": "Snow King is king of the Frozen North.",
+        "explain": "The passage tells what the Polar Bear looks like and where he lives."
+      },
+      "readability": {
+        "grade": 3.5,
+        "fk": 3.5,
+        "cli": 3.9,
+        "ari": 3.1
+      }
+    },
+    {
+      "id": "burgess-deer-antlers",
+      "title": "A Deer Loses His Antlers",
+      "kind": "facts",
+      "topic": "animals",
+      "text": "\"Don't you know that he loses his horns, I mean antlers, every year?\" demanded Jumper the Hare. \"I thought every one knew that. His old ones fell off late last winter. I know, for I saw him just afterward, and he looked sort of ashamed. Anyway, he didn't carry his head as proudly as he does now. He looked a lot like Mrs. Lightfoot; you know she hasn't any antlers.\"",
+      "source": {
+        "name": "The Burgess Animal Book for Children (Thornton W. Burgess, 1920)",
+        "url": "https://www.gutenberg.org/ebooks/2441",
+        "license": "Public domain",
+        "author": "Thornton W. Burgess",
+        "note": "Paragraph from the book."
+      },
+      "question": {
+        "type": "detail",
+        "q": "When did the deer's old antlers fall off?",
+        "choices": [
+          "Early last summer",
+          "In the middle of fall",
+          "Late last winter",
+          "Just last night"
+        ],
+        "answer": 2,
+        "evidence": "His old ones fell off late last winter.",
+        "explain": "Jumper says the old antlers fell off late last winter."
+      },
+      "readability": {
+        "grade": 3.2,
+        "fk": 3,
+        "cli": 4.5,
+        "ari": 2.2
+      }
+    },
+    {
+      "id": "burgess-plunger-and-his-fish",
+      "title": "Plunger Keeps His Fish",
+      "kind": "story",
+      "topic": "birds",
+      "text": "Plunger didn't intend to drop that fish if he could help himself. It was his fish. Hadn't he caught it himself? He didn't intend to give it up to any robber of the air, even though that robber was King Eagle himself, unless he was actually forced to. So Plunger began to dodge and twist and turn in the air, all the time mounting higher and higher, and all the time screaming harshly, \"Robber! Thief! I won't drop this fish! It's mine! It's mine!\"",
+      "source": {
+        "name": "The Burgess Bird Book for Children (Thornton W. Burgess, 1919)",
+        "url": "https://www.gutenberg.org/ebooks/3074",
+        "license": "Public domain",
+        "author": "Thornton W. Burgess",
+        "note": "Paragraph from the book."
+      },
+      "question": {
+        "type": "detail",
+        "q": "Who was trying to take Plunger's fish?",
+        "choices": [
+          "Blacky the Crow",
+          "Reddy Fox",
+          "Mrs. Plunger",
+          "King Eagle"
+        ],
+        "answer": 3,
+        "evidence": "even though that robber was King Eagle himself",
+        "explain": "The robber of the air was King Eagle himself."
+      },
+      "readability": {
+        "grade": 3.4,
+        "fk": 2.8,
+        "cli": 5,
+        "ari": 2.4
+      }
+    },
+    {
+      "id": "burgess-sprites-moss-nest",
+      "title": "Sprite's Moss Nest",
+      "kind": "facts",
+      "topic": "birds",
+      "text": "Sprite saw at once that it would be quite useless to try to deceive Peter. \"Yes,\" said he, \"Mrs. Sprite and I have a nest in there. We've just finished it. I think myself it is rather nice. We always build in moss like this. All we have to do is to find a nice thick bunch and then weave it together at the bottom and line the inside with fine grasses. It looks so much like all the rest of the bunches of moss that it is seldom any one finds it. I wouldn't trade nests with anybody I know.\"",
+      "source": {
+        "name": "The Burgess Bird Book for Children (Thornton W. Burgess, 1919)",
+        "url": "https://www.gutenberg.org/ebooks/3074",
+        "license": "Public domain",
+        "author": "Thornton W. Burgess",
+        "note": "Paragraph from the book."
+      },
+      "question": {
+        "type": "main-idea",
+        "q": "What is Sprite mostly telling Peter about?",
+        "choices": [
+          "Why he wants to trade nests with Peter",
+          "How he and his wife make a hidden nest",
+          "Where he flies when winter comes",
+          "What he likes to eat in the forest"
+        ],
+        "answer": 1,
+        "evidence": "We always build in moss like this.",
+        "explain": "Sprite explains how they weave a nest in moss so it is hard to find."
+      },
+      "readability": {
+        "grade": 3,
+        "fk": 3,
+        "cli": 3.6,
+        "ari": 2.3
+      }
+    },
+    {
+      "id": "burgess-brown-creeper-nest",
+      "title": "The Brown Creeper's Nest",
+      "kind": "facts",
+      "topic": "birds",
+      "text": "\"Does he build his nest in a hole in a tree?\" asked Peter of Yank-Yank. Yank-Yank shook his head. \"No,\" he replied. \"He hunts for a tree or stub with a piece of loose bark hanging to it. In behind this he tucks his nest made of twigs, strips of bark and moss. He's a funny little fellow and I don't know of any one in all the great world who more strictly attends to his own business than does Seep-Seep the Brown Creeper.",
+      "source": {
+        "name": "The Burgess Bird Book for Children (Thornton W. Burgess, 1919)",
+        "url": "https://www.gutenberg.org/ebooks/3074",
+        "license": "Public domain",
+        "author": "Thornton W. Burgess",
+        "note": "Paragraph from the book. Shortened."
+      },
+      "question": {
+        "type": "detail",
+        "q": "Where does Seep-Seep tuck his nest?",
+        "choices": [
+          "Behind loose bark on a tree",
+          "Inside a hole in the ground",
+          "On a flat rock by the water",
+          "In the chimney of a house"
+        ],
+        "answer": 0,
+        "evidence": "He hunts for a tree or stub with a piece of loose bark hanging to it.",
+        "explain": "He tucks his nest in behind a piece of loose bark."
+      },
+      "readability": {
+        "grade": 3.3,
+        "fk": 3.1,
+        "cli": 4.1,
+        "ari": 2.5
+      }
+    },
+    {
+      "id": "burgess-hummingbird-babies",
+      "title": "Hummer the Hummingbird",
+      "kind": "facts",
+      "topic": "birds",
+      "text": "\"Huh!\" exclaimed Jenny Wren. \"Distance doesn't bother Hummer any. You needn't worry about those wings of his. He goes clear down to South America. He has ever so many relatives down there. You ought to see his babies when they first hatch out. They are no bigger than bees. But they certainly do grow fast. Why, they are flying three weeks from the time they hatch. I'm glad I don't have to pump food down the throats of my youngsters the way Mrs. Hummingbird has to down hers.\"",
+      "source": {
+        "name": "The Burgess Bird Book for Children (Thornton W. Burgess, 1919)",
+        "url": "https://www.gutenberg.org/ebooks/3074",
+        "license": "Public domain",
+        "author": "Thornton W. Burgess",
+        "note": "Paragraph from the book."
+      },
+      "question": {
+        "type": "detail",
+        "q": "How big are baby hummingbirds when they first hatch?",
+        "choices": [
+          "As big as robins",
+          "As big as mice",
+          "No bigger than bees",
+          "No bigger than ants"
+        ],
+        "answer": 2,
+        "evidence": "They are no bigger than bees.",
+        "explain": "Jenny Wren says the babies are no bigger than bees."
+      },
+      "readability": {
+        "grade": 3.2,
+        "fk": 2.1,
+        "cli": 5.2,
+        "ari": 2.4
+      }
+    },
+    {
+      "id": "burgess-forktail-the-barn-swallow",
+      "title": "Forktail's Home",
+      "kind": "story",
+      "topic": "birds",
+      "text": "Skimmer chuckled. \"Forktail isn't crazy,\" said he, \"and he goes in and out of that barn all day long. I must say I wouldn't care to build in such a place myself, but he seems to like it. There's one thing about it, his home is warm and dry and comfortable, no matter what the weather is. I wouldn't trade with him, though. No, sir, I wouldn't trade with him for anything. Give me a hollow in a tree well lined with feathers to a nest made of mud and straw, even if it is feather-lined.\"",
+      "source": {
+        "name": "The Burgess Bird Book for Children (Thornton W. Burgess, 1919)",
+        "url": "https://www.gutenberg.org/ebooks/3074",
+        "license": "Public domain",
+        "author": "Thornton W. Burgess",
+        "note": "Paragraph from the book."
+      },
+      "question": {
+        "type": "inference",
+        "q": "Where does Forktail build his home?",
+        "choices": [
+          "In a hollow tree",
+          "On the ground",
+          "In tall grass",
+          "In a barn"
+        ],
+        "answer": 3,
+        "evidence": "he goes in and out of that barn all day long",
+        "explain": "Forktail goes in and out of the barn because his nest is inside it."
+      },
+      "readability": {
+        "grade": 3.8,
+        "fk": 3.6,
+        "cli": 4.4,
+        "ari": 3.3
+      }
+    },
+    {
+      "id": "burgess-sammy-jay",
+      "title": "Sammy Jay",
+      "kind": "facts",
+      "topic": "birds",
+      "text": "Sammy looked pleased. He is a little bit vain, is Sammy Jay. There is no denying that he is handsome. He is just a bit bigger than Welcome Robin. His back is grayish-blue. His tail is a bright blue crossed with little black bars and edged with white. His wings are blue with white and black bars. His throat and breast are a soft grayish-white, and he wears a collar of black. On his head he wears a pointed cap, a very convenient cap, for at times he draws it down so that it is not pointed at all.",
+      "source": {
+        "name": "The Burgess Bird Book for Children (Thornton W. Burgess, 1919)",
+        "url": "https://www.gutenberg.org/ebooks/3074",
+        "license": "Public domain",
+        "author": "Thornton W. Burgess",
+        "note": "Paragraph from the book."
+      },
+      "question": {
+        "type": "vocabulary",
+        "q": "Sammy Jay is \"a little bit vain.\" What does vain mean?",
+        "choices": [
+          "Afraid of the dark",
+          "Proud of how he looks",
+          "Too tired to fly",
+          "Angry at everyone"
+        ],
+        "answer": 1,
+        "evidence": "He is a little bit vain, is Sammy Jay.",
+        "explain": "Vain means proud of your looks, and Sammy is handsome and pleased."
+      },
+      "readability": {
+        "grade": 3.1,
+        "fk": 2.5,
+        "cli": 4.4,
+        "ari": 2.4
+      }
+    },
+    {
+      "id": "burgess-why-birds-fly-south",
+      "title": "Why Birds Go Away for Winter",
+      "kind": "facts",
+      "topic": "birds",
+      "text": "\"No more silly than asking me why I leave the Old Orchard,\" replied Jenny. \"Do give us birds credit for a little common sense, Peter. We can't live without eating any more than you can, and in winter there is no food at all here for most of us, so we go where there is food. Those who are lucky enough to eat the kinds of food that can be found here in winter stay here. They are lucky. That's what they are--lucky. Still--\" Jenny Wren paused.",
+      "source": {
+        "name": "The Burgess Bird Book for Children (Thornton W. Burgess, 1919)",
+        "url": "https://www.gutenberg.org/ebooks/3074",
+        "license": "Public domain",
+        "author": "Thornton W. Burgess",
+        "note": "Paragraph from the book."
+      },
+      "question": {
+        "type": "cause-effect",
+        "q": "Why do most birds leave the Old Orchard in winter?",
+        "choices": [
+          "The snow hurts their feathers.",
+          "They want to visit their cousins.",
+          "There is no food for them there.",
+          "Peter Rabbit scares them off."
+        ],
+        "answer": 2,
+        "evidence": "in winter there is no food at all here for most of us, so we go where there is food",
+        "explain": "Jenny Wren says they go away to find food."
+      },
+      "readability": {
+        "grade": 3.8,
+        "fk": 3.8,
+        "cli": 4.5,
+        "ari": 3
+      }
+    },
+    {
+      "id": "burgess-nighthawk-eggs",
+      "title": "The Nighthawk's Eggs",
+      "kind": "facts",
+      "topic": "birds",
+      "text": "\"Didn't I say they don't have a nest?\" sputtered Jenny. \"Mrs. Nighthawk doesn't lay but two eggs, anyway. Perhaps she thinks it isn't worth while building a nest for just two eggs. Anyway, she lays them on the ground or on a flat rock and lets it go at that. She isn't quite as bad as Sally Sly the Cowbird, for she does sit on those eggs and she is a good mother. But just think of those Nighthawk children never having any home! It doesn't seem to me right and it never will.",
+      "source": {
+        "name": "The Burgess Bird Book for Children (Thornton W. Burgess, 1919)",
+        "url": "https://www.gutenberg.org/ebooks/3074",
+        "license": "Public domain",
+        "author": "Thornton W. Burgess",
+        "note": "Paragraph from the book. Shortened."
+      },
+      "question": {
+        "type": "detail",
+        "q": "Where does Mrs. Nighthawk lay her eggs?",
+        "choices": [
+          "In a nest high in a tree",
+          "On the ground or a flat rock",
+          "In a hole in a sandy bank",
+          "Inside a warm chimney"
+        ],
+        "answer": 1,
+        "evidence": "she lays them on the ground or on a flat rock",
+        "explain": "Mrs. Nighthawk does not build a nest; she lays her eggs on the ground or a rock."
+      },
+      "readability": {
+        "grade": 3.4,
+        "fk": 3.1,
+        "cli": 4.4,
+        "ari": 2.6
+      }
+    },
+    {
+      "id": "burgess-reddy-fox-falls-asleep",
+      "title": "Reddy Fox Falls Asleep",
+      "kind": "story",
+      "topic": "animals",
+      "text": "Reddy Fox lay down again on the Big Rock and peeped into the Dear Little Pool. Not a single Trout could he see. They were all hiding safely with Mr. and Mrs. Trout. Reddy Fox watched and watched. The sun was warm, the Laughing Brook was singing a lullaby and--what do you think? Why, Reddy Fox went fast asleep on the edge of the great Big Rock.",
+      "source": {
+        "name": "Old Mother West Wind (Thornton W. Burgess, 1910)",
+        "url": "https://www.gutenberg.org/ebooks/2557",
+        "license": "Public domain",
+        "author": "Thornton W. Burgess",
+        "note": "Paragraph from the book."
+      },
+      "question": {
+        "type": "sequence",
+        "q": "What did Reddy Fox do at the end?",
+        "choices": [
+          "He caught a big Trout.",
+          "He ran home to his den.",
+          "He jumped into the pool.",
+          "He fell asleep on the Big Rock."
+        ],
+        "answer": 3,
+        "evidence": "Reddy Fox went fast asleep on the edge of the great Big Rock.",
+        "explain": "After watching and watching, Reddy Fox fell fast asleep."
+      },
+      "readability": {
+        "grade": 3.8,
+        "fk": 3.4,
+        "cli": 5,
+        "ari": 2.9
+      }
+    },
+    {
+      "id": "burgess-a-long-hungry-day",
+      "title": "A Long, Hungry Day",
+      "kind": "story",
+      "topic": "animals",
+      "text": "When the long day was over they started up the Lone Little Path past Johnny Chuck's house to their own homes. They didn't hurry now for they were so very, very tired! And they were cross--oh so cross! Striped Chipmunk hadn't found a single nut. Peter Rabbit hadn't found so much as the leaf of a cabbage. Bobby Coon hadn't found the tiniest bit of sweet milky corn. Jimmy Skunk hadn't seen a single beetle. Reddy Fox hadn't heard so much as the peep of a chicken. And all were as hungry as hungry could be.",
+      "source": {
+        "name": "Old Mother West Wind (Thornton W. Burgess, 1910)",
+        "url": "https://www.gutenberg.org/ebooks/2557",
+        "license": "Public domain",
+        "author": "Thornton W. Burgess",
+        "note": "Paragraph from the book."
+      },
+      "question": {
+        "type": "detail",
+        "q": "What did Striped Chipmunk not find all day?",
+        "choices": [
+          "A single nut",
+          "A cabbage leaf",
+          "Any sweet corn",
+          "A beetle"
+        ],
+        "answer": 0,
+        "evidence": "Striped Chipmunk hadn't found a single nut.",
+        "explain": "The story says Striped Chipmunk hadn't found a single nut."
+      },
+      "readability": {
+        "grade": 3.9,
+        "fk": 3.1,
+        "cli": 5.4,
+        "ari": 3.1
+      }
+    },
+    {
+      "id": "burgess-the-best-thing-in-the-world",
+      "title": "The Best Thing in the World",
+      "kind": "story",
+      "topic": "animals",
+      "text": "Striped Chipmunk was sitting under the Slender Fir Tree and he couldn't help hearing what Old Mother West Wind said. \"The Best Thing in the World--now what can that be?\" thought Striped Chipmunk. \"Why, it must be heaps and heaps of nuts and acorns! I'll go and find it.\"",
+      "source": {
+        "name": "Old Mother West Wind (Thornton W. Burgess, 1910)",
+        "url": "https://www.gutenberg.org/ebooks/2557",
+        "license": "Public domain",
+        "author": "Thornton W. Burgess",
+        "note": "Paragraph from the book."
+      },
+      "question": {
+        "type": "inference",
+        "q": "What food does Striped Chipmunk most likely love?",
+        "choices": [
+          "Carrots and lettuce",
+          "Fish and frogs",
+          "Nuts and acorns",
+          "Bugs and beetles"
+        ],
+        "answer": 2,
+        "evidence": "it must be heaps and heaps of nuts and acorns",
+        "explain": "He thinks the best thing must be nuts and acorns, so he must love them."
+      },
+      "readability": {
+        "grade": 3.9,
+        "fk": 2.2,
+        "cli": 6.1,
+        "ari": 3.5
+      }
+    },
+    {
+      "id": "burgess-mr-toads-two-suits",
+      "title": "Mr. Toad's Two Suits",
+      "kind": "story",
+      "topic": "animals",
+      "text": "\"But Mr. Toad couldn't see the need of such a fuss. He thought his neighbors spent altogether too much time and thought on dress. To be sure he was anxious to look his best when old Mother Nature came, so he got a new suit all ready. But Mr. Toad couldn't afford to sit around in idleness admiring his new clothes. No indeed! Mr. Toad had too much to do. He was altogether too busy. He had a large garden to take care of, had Mr. Toad, and work in a garden is very hard on clothes. So Mr. Toad just wore his old suit over his new one and went on about his business.",
+      "source": {
+        "name": "Mother West Wind's Children (Thornton W. Burgess, 1911)",
+        "url": "https://www.gutenberg.org/ebooks/20877",
+        "license": "Public domain",
+        "author": "Thornton W. Burgess",
+        "note": "Paragraph from the book."
+      },
+      "question": {
+        "type": "cause-effect",
+        "q": "Why did Mr. Toad wear his old suit over his new one?",
+        "choices": [
+          "His new suit was much too big.",
+          "Garden work is hard on clothes.",
+          "He wanted to keep extra warm.",
+          "He forgot he had a new suit."
+        ],
+        "answer": 1,
+        "evidence": "work in a garden is very hard on clothes",
+        "explain": "He was busy in his garden, and garden work is hard on clothes."
+      },
+      "readability": {
+        "grade": 3.5,
+        "fk": 4,
+        "cli": 3.9,
+        "ari": 2.6
+      }
+    },
+    {
+      "id": "burgess-mr-coon-washes-up",
+      "title": "Mr. Coon Washes Up",
+      "kind": "story",
+      "topic": "animals",
+      "text": "\"'What good does it do to wash my food, if I eat it out of dirty hands?' said Mr. Coon to himself, and he hurried to a quiet little pool to give them a good scrubbing. Then he washed his face and brushed his coat. 'Now I feel better, and I know my supper will taste better,' said he.",
+      "source": {
+        "name": "Mother West Wind 'Why' Stories (Thornton W. Burgess, 1915)",
+        "url": "https://www.gutenberg.org/ebooks/14958",
+        "license": "Public domain",
+        "author": "Thornton W. Burgess",
+        "note": "Paragraph from the book."
+      },
+      "question": {
+        "type": "sequence",
+        "q": "What did Mr. Coon do after he scrubbed his hands?",
+        "choices": [
+          "He ate his supper right away.",
+          "He climbed up a tree to sleep.",
+          "He washed his face and brushed his coat.",
+          "He went to look for more food."
+        ],
+        "answer": 2,
+        "evidence": "Then he washed his face and brushed his coat.",
+        "explain": "After scrubbing his hands, he washed his face and brushed his coat."
+      },
+      "readability": {
+        "grade": 3.3,
+        "fk": 3.8,
+        "cli": 3.2,
+        "ari": 2.8
+      }
+    },
+    {
+      "id": "burgess-peter-is-bothered",
+      "title": "Peter Rabbit Is Bothered",
+      "kind": "story",
+      "topic": "animals",
+      "text": "Peter Rabbit was bothered. He was bothered in his mind, and when Peter is bothered in his mind, he loses his appetite. It was so now. He had been up in the Old Orchard and, as is his way, had stopped at Johnny Chuck's for a bit of gossip. As he sat there talking, it suddenly came over him that Johnny was looking unusually fat. He said so.",
+      "source": {
+        "name": "Mother West Wind 'How' Stories (Thornton W. Burgess, 1916)",
+        "url": "https://www.gutenberg.org/ebooks/21286",
+        "license": "Public domain",
+        "author": "Thornton W. Burgess",
+        "note": "Paragraph from the book. Shortened."
+      },
+      "question": {
+        "type": "vocabulary",
+        "q": "When Peter is bothered, he \"loses his appetite.\" What is an appetite?",
+        "choices": [
+          "A wish to run",
+          "A wish to sleep",
+          "A wish to talk",
+          "A wish to eat"
+        ],
+        "answer": 3,
+        "evidence": "he loses his appetite",
+        "explain": "Your appetite is how much you want to eat."
+      },
+      "readability": {
+        "grade": 3.5,
+        "fk": 4.1,
+        "cli": 4.2,
+        "ari": 2.3
+      }
+    },
+    {
+      "id": "burgess-peter-watches-king-eagle",
+      "title": "Peter Watches King Eagle",
+      "kind": "story",
+      "topic": "birds",
+      "text": "Peter Rabbit sat on the edge of the dear Old Briar-patch, staring up into the sky with his head tipped back until it made his neck ache. Way, way up in the sky was a black speck sailing across the snowy white face of a cloud. It didn't seem possible that it could be alive way up there. But it was. Peter knew that it was, and he knew who it was. It was King Eagle. By and by it disappeared over towards the Great Mountain. Peter rubbed the back of his neck, which ached because he had tipped his head back so long. Then he gave a little sigh.",
+      "source": {
+        "name": "Mother West Wind 'How' Stories (Thornton W. Burgess, 1916)",
+        "url": "https://www.gutenberg.org/ebooks/21286",
+        "license": "Public domain",
+        "author": "Thornton W. Burgess",
+        "note": "Paragraph from the book."
+      },
+      "question": {
+        "type": "sequence",
+        "q": "What did Peter do after King Eagle disappeared?",
+        "choices": [
+          "He rubbed the back of his neck.",
+          "He ran into the Old Briar-patch.",
+          "He called to King Eagle loudly.",
+          "He tipped his head back again."
+        ],
+        "answer": 0,
+        "evidence": "Peter rubbed the back of his neck",
+        "explain": "After the speck disappeared, Peter rubbed his aching neck and sighed."
+      },
+      "readability": {
+        "grade": 3.4,
+        "fk": 3.3,
+        "cli": 4.2,
+        "ari": 2.6
+      }
+    },
+    {
+      "id": "fabre-the-lady-bug",
+      "title": "The Lady-Bug",
+      "kind": "facts",
+      "topic": "insects",
+      "text": "\"Is that all? Oh, no. Here is the lady-bug, the good God's bug. It is round and red, with black spots. It is very pleasing; it has an innocent air. Who would take it also to be a devourer, filling its stomach with plant-lice? Look at it closely on the rosebush, and you will see it at its ferocious feasting. It is very pretty and innocent-looking; but it is a glutton, there is no denying the fact, so fond is it of plant-lice.",
+      "source": {
+        "name": "The Story-Book of Science (Jean-Henri Fabre, 1917)",
+        "url": "https://www.gutenberg.org/ebooks/56795",
+        "license": "Public domain",
+        "author": "Jean-Henri Fabre",
+        "note": "Paragraph from the book. Translated by Florence Constable Bicknell."
+      },
+      "question": {
+        "type": "vocabulary",
+        "q": "The lady-bug is called \"a glutton.\" What is a glutton?",
+        "choices": [
+          "Someone who sings well",
+          "Someone who eats a lot",
+          "Someone who is very shy",
+          "Someone who builds homes"
+        ],
+        "answer": 1,
+        "evidence": "it is a glutton, there is no denying the fact, so fond is it of plant-lice",
+        "explain": "A glutton eats a lot, like the lady-bug eating plant-lice."
+      },
+      "readability": {
+        "grade": 3.6,
+        "fk": 4.4,
+        "cli": 4.2,
+        "ari": 2.1
+      }
+    },
+    {
+      "id": "fabre-can-a-spider-build-a-bridge",
+      "title": "Can a Spider Build a Bridge?",
+      "kind": "story",
+      "topic": "insects",
+      "text": "\"Build a bridge from one side to the other, without crossing the water or moving away from its place? If the spider can do that it is cleverer than I am.\" Thus spoke Jules.",
+      "source": {
+        "name": "The Story-Book of Science (Jean-Henri Fabre, 1917)",
+        "url": "https://www.gutenberg.org/ebooks/56795",
+        "license": "Public domain",
+        "author": "Jean-Henri Fabre",
+        "note": "Paragraph from the book. Translated by Florence Constable Bicknell."
+      },
+      "question": {
+        "type": "inference",
+        "q": "What does Jules think about a spider building a bridge?",
+        "choices": [
+          "He is sure it is very easy.",
+          "He has seen it many times.",
+          "He thinks it is very scary.",
+          "He finds it hard to believe."
+        ],
+        "answer": 3,
+        "evidence": "If the spider can do that it is cleverer than I am.",
+        "explain": "Jules does not think the spider can do it, so he finds it hard to believe."
+      },
+      "readability": {
+        "grade": 3.8,
+        "fk": 4.1,
+        "cli": 4.6,
+        "ari": 2.7
+      }
+    },
+    {
+      "id": "fabre-from-cotton-to-paper",
+      "title": "From Cotton to Paper",
+      "kind": "facts",
+      "topic": "science",
+      "text": "\"In that case, I should soon have my five lines on paper. I should write: 'Cotton is a flock that is found in the bolls of a shrub called the cotton plant. With this flock they make thread; and with this thread, cloth. When the cloth is worn out, machines tear it into little pieces, and mill-stones grind it with water to make it into a pulp. This pulp is stretched in thin layers which are pressed and dried. Then it is paper.' There! Is that right, Uncle?\"",
+      "source": {
+        "name": "The Story-Book of Science (Jean-Henri Fabre, 1917)",
+        "url": "https://www.gutenberg.org/ebooks/56795",
+        "license": "Public domain",
+        "author": "Jean-Henri Fabre",
+        "note": "Paragraph from the book. Translated by Florence Constable Bicknell."
+      },
+      "question": {
+        "type": "sequence",
+        "q": "What happens to worn-out cloth before it becomes pulp?",
+        "choices": [
+          "Machines tear it into little pieces.",
+          "It is pressed and dried in layers.",
+          "It is spun into long, thin thread.",
+          "It is picked from the cotton plant."
+        ],
+        "answer": 0,
+        "evidence": "machines tear it into little pieces",
+        "explain": "First the cloth is torn into pieces, then ground with water into pulp."
+      },
+      "readability": {
+        "grade": 3.3,
+        "fk": 2.1,
+        "cli": 5,
+        "ari": 2.9
+      }
+    },
+    {
+      "id": "baldwin-androclus-and-the-lion",
+      "title": "Androclus and the Lion",
+      "kind": "story",
+      "topic": "friendship",
+      "text": "Androclus lifted the paw from the ground, and saw that it was a long, sharp thorn which hurt the lion so much. He took the end of the thorn in his fingers; then he gave a strong, quick pull, and out it came. The lion was full of joy. He jumped about like a dog, and licked the hands and feet of his new friend.",
+      "source": {
+        "name": "Fifty Famous Stories Retold (James Baldwin, 1896)",
+        "url": "https://www.gutenberg.org/ebooks/18442",
+        "license": "Public domain",
+        "author": "James Baldwin",
+        "note": "Paragraph from the book."
+      },
+      "question": {
+        "type": "main-idea",
+        "q": "What is this passage mostly about?",
+        "choices": [
+          "Androclus teaches a lion to jump like a dog.",
+          "A lion chases Androclus away from its home.",
+          "Androclus finds a thorn bush and cuts it down.",
+          "Androclus helps a hurt lion, and it becomes friendly."
+        ],
+        "answer": 3,
+        "evidence": "The lion was full of joy.",
+        "explain": "Androclus pulls the thorn out, and the happy lion licks his hands like a friend."
+      },
+      "readability": {
+        "grade": 3.6,
+        "fk": 3.3,
+        "cli": 3.7,
+        "ari": 3.8
+      }
+    },
+    {
+      "id": "baldwin-alfred-learns-to-read",
+      "title": "Alfred Learns to Read",
+      "kind": "story",
+      "topic": "history",
+      "text": "\"I asked the monk, Brother Felix, to teach me,\" said Alfred. \"And every day since you showed me the book, he has given me a lesson. It was no easy thing to learn these letters and how they are put together to make words. Now, Brother Felix says I can read almost as well as he.\"",
+      "source": {
+        "name": "Fifty Famous People (James Baldwin, 1912)",
+        "url": "https://www.gutenberg.org/ebooks/6168",
+        "license": "Public domain",
+        "author": "James Baldwin",
+        "note": "Paragraph from the book."
+      },
+      "question": {
+        "type": "detail",
+        "q": "Who taught Alfred to read?",
+        "choices": [
+          "His mother",
+          "Brother Felix",
+          "The king",
+          "His teacher"
+        ],
+        "answer": 1,
+        "evidence": "I asked the monk, Brother Felix, to teach me",
+        "explain": "Alfred asked the monk, Brother Felix, to teach him."
+      },
+      "readability": {
+        "grade": 3.9,
+        "fk": 4.4,
+        "cli": 4.1,
+        "ari": 3.2
+      }
+    },
+    {
+      "id": "baldwin-cimabue-leaves-his-painting",
+      "title": "Cimabue's Painting",
+      "kind": "story",
+      "topic": "history",
+      "text": "One day Cimabue was painting the picture of a man's face. Night came on before he had finished it. \"I will leave it till morning,\" he said; \"then the light will be better.\"",
+      "source": {
+        "name": "Fifty Famous People (James Baldwin, 1912)",
+        "url": "https://www.gutenberg.org/ebooks/6168",
+        "license": "Public domain",
+        "author": "James Baldwin",
+        "note": "Paragraph from the book."
+      },
+      "question": {
+        "type": "cause-effect",
+        "q": "Why did Cimabue leave the picture until morning?",
+        "choices": [
+          "He was too hungry to keep painting.",
+          "He had run out of paint.",
+          "The light would be better then.",
+          "A friend asked him to stop."
+        ],
+        "answer": 2,
+        "evidence": "then the light will be better",
+        "explain": "Night had come, and he wanted better light to paint."
+      },
+      "readability": {
+        "grade": 3.6,
+        "fk": 3.4,
+        "cli": 4.7,
+        "ari": 2.6
+      }
+    },
+    {
+      "id": "baldwin-george-washington-wants-to-sail",
+      "title": "George Washington Wants to Be a Sailor",
+      "kind": "story",
+      "topic": "history",
+      "text": "\"I should like to be a sailor,\" said George Washington. \"Then I could go to many strange lands and see many wonderful things. And, by and by, I might become the captain of a ship.\"",
+      "source": {
+        "name": "Fifty Famous People (James Baldwin, 1912)",
+        "url": "https://www.gutenberg.org/ebooks/6168",
+        "license": "Public domain",
+        "author": "James Baldwin",
+        "note": "Paragraph from the book."
+      },
+      "question": {
+        "type": "inference",
+        "q": "What does this tell you about young George Washington?",
+        "choices": [
+          "He was afraid of deep water.",
+          "He wanted to travel and explore.",
+          "He wanted to stay home always.",
+          "He did not like ships at all."
+        ],
+        "answer": 1,
+        "evidence": "Then I could go to many strange lands and see many wonderful things.",
+        "explain": "George wanted to see strange lands, so he wanted to travel."
+      },
+      "readability": {
+        "grade": 3.7,
+        "fk": 3.8,
+        "cli": 4.5,
+        "ari": 2.7
+      }
+    },
+    {
+      "id": "baldwin-pittacus",
+      "title": "Pittacus the Wise",
+      "kind": "story",
+      "topic": "history",
+      "text": "The name of Pittacus was known all over the world. He was a brave soldier and a wise teacher. The people of his country had made him their king; but as soon as he had made good laws for them he gave up his crown.",
+      "source": {
+        "name": "Fifty Famous People (James Baldwin, 1912)",
+        "url": "https://www.gutenberg.org/ebooks/6168",
+        "license": "Public domain",
+        "author": "James Baldwin",
+        "note": "Paragraph from the book."
+      },
+      "question": {
+        "type": "inference",
+        "q": "What does giving up his crown tell you about Pittacus?",
+        "choices": [
+          "He did not want power for himself.",
+          "He was tired of being brave.",
+          "He wanted to fight in a war.",
+          "He did not like his people."
+        ],
+        "answer": 0,
+        "evidence": "as soon as he had made good laws for them he gave up his crown",
+        "explain": "After making good laws, he gave up the crown instead of keeping power."
+      },
+      "readability": {
+        "grade": 3.6,
+        "fk": 3.9,
+        "cli": 3.7,
+        "ari": 3.2
+      }
+    },
+    {
+      "id": "baldwin-schacabac",
+      "title": "The Happy Poor Man",
+      "kind": "story",
+      "topic": "people",
+      "text": "In the same land there was a poor man whose name was Schac-a-bac. His clothing was rags, and his food was the scraps which other people had thrown away. But he had a light heart, and was as happy as a king.",
+      "source": {
+        "name": "Fifty Famous Stories Retold (James Baldwin, 1896)",
+        "url": "https://www.gutenberg.org/ebooks/18442",
+        "license": "Public domain",
+        "author": "James Baldwin",
+        "note": "Paragraph from the book."
+      },
+      "question": {
+        "type": "vocabulary",
+        "q": "Schac-a-bac \"had a light heart.\" What does that mean?",
+        "choices": [
+          "He was very thin.",
+          "He was often sick.",
+          "He was cheerful.",
+          "He was easy to lift."
+        ],
+        "answer": 2,
+        "evidence": "he had a light heart, and was as happy as a king",
+        "explain": "A light heart means a cheerful one, and he was as happy as a king."
+      },
+      "readability": {
+        "grade": 3.7,
+        "fk": 3.6,
+        "cli": 4.2,
+        "ari": 3.3
+      }
+    }
+  ]
+}
