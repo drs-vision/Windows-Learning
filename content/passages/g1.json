@@ -1,0 +1,1382 @@
+{
+  "about": "Reading Quest paragraphs, about grade 1-2",
+  "passages": [
+    {
+      "id": "pb-going-to-a-wedding",
+      "title": "Going to a Wedding",
+      "kind": "story",
+      "topic": "family",
+      "text": "My youngest uncle is getting married. The wedding is in the village. We are all going to the wedding. We are going by train. We are the first to come to the station. My father, my mother, my brother and I. We have one big bag and two small bags. And we have a red water bottle.",
+      "source": {
+        "name": "Pratham Books (StoryWeaver)",
+        "url": "https://github.com/global-asp/pb-source/blob/master/en/0028_going-to-a-wedding.md",
+        "license": "CC BY 4.0",
+        "author": "Rukmini Banerji",
+        "note": "Beginning of the story. Illustrations not included."
+      },
+      "question": {
+        "type": "detail",
+        "q": "How is the family going to the wedding?",
+        "choices": [
+          "By boat",
+          "By car",
+          "By bus",
+          "By train"
+        ],
+        "answer": 3,
+        "evidence": "We are going by train.",
+        "explain": "The story says, \"We are going by train.\""
+      }
+    },
+    {
+      "id": "pb-goodnight-tinku",
+      "title": "Goodnight, Tinku!",
+      "kind": "story",
+      "topic": "animals",
+      "text": "It was a bright moonlit night. All the animals in Mangu's farm were sleeping. Except Tinku! \"I am not sleepy, Ma,\" murmured Tinku. But Ma did not hear him. She was fast asleep. He turned left, and he turned right. He lay on his tummy, and rolled on his back. But he could not sleep!",
+      "source": {
+        "name": "Pratham Books (StoryWeaver)",
+        "url": "https://github.com/global-asp/pb-source/blob/master/en/0056_goodnight-tinku.md",
+        "license": "CC BY 4.0",
+        "author": "Preethi Nambiar",
+        "note": "Beginning of the story. Illustrations not included."
+      },
+      "question": {
+        "type": "main-idea",
+        "q": "What is Tinku's problem?",
+        "choices": [
+          "He cannot find his Ma.",
+          "He is too cold at night.",
+          "He is too hungry to play.",
+          "He cannot fall asleep."
+        ],
+        "answer": 3,
+        "evidence": "But he could not sleep!",
+        "explain": "Tinku turned and rolled, but he could not sleep."
+      }
+    },
+    {
+      "id": "pb-my-home",
+      "title": "My Home",
+      "kind": "story",
+      "topic": "family",
+      "text": "This is my home. I live here with my whole family. We take off our shoes and chappals here. This is where we wash our face and hands. I hang my clothes on the hook. My grandfather keeps his stick in the corner. We also keep our mats there. My father keeps his motorcycle outside.",
+      "source": {
+        "name": "Pratham Books (StoryWeaver)",
+        "url": "https://github.com/global-asp/pb-source/blob/master/en/0048_my-home.md",
+        "license": "CC BY 4.0",
+        "author": "Rukmini Banerji",
+        "note": "Beginning of the story. Illustrations not included. Translated by Manisha Chaudhry."
+      },
+      "question": {
+        "type": "detail",
+        "q": "Where does Grandfather keep his stick?",
+        "choices": [
+          "Outside the door",
+          "In the corner",
+          "Under the bed",
+          "On the hook"
+        ],
+        "answer": 1,
+        "evidence": "My grandfather keeps his stick in the corner.",
+        "explain": "Grandfather keeps his stick in the corner."
+      }
+    },
+    {
+      "id": "pb-the-many-tails-of-jiril-the-squirrel",
+      "title": "The Many Tails of Jiril the Squirrel",
+      "kind": "story",
+      "topic": "friendship",
+      "text": "Jiril the squirrel sat on the branch of a tree. He was all alone. Jiril felt lonely. He wished he could play with his friends. He ran down the tree to the ground. He did not find his friends but he did find an acorn to eat. Jiril looked and looked for his friends but he could not find them. He took a nap because he was tired. When Jiril woke up, he decided to climb the tree again. But he was still half asleep and he rolled down to the ground. Soon he found his friends playing and eating. Jiril was happy now as he was not alone.",
+      "source": {
+        "name": "Pratham Books (StoryWeaver)",
+        "url": "https://github.com/global-asp/pb-source/blob/master/en/0385_the-many-tails-of-jiril-the-squirrel.md",
+        "license": "CC BY 4.0",
+        "author": "Jill Keeler",
+        "note": "Whole story. Illustrations not included."
+      },
+      "question": {
+        "type": "cause-effect",
+        "q": "Why did Jiril roll down to the ground?",
+        "choices": [
+          "The branch broke under him.",
+          "He was chasing an acorn.",
+          "His friends pushed him.",
+          "He was still half asleep."
+        ],
+        "answer": 3,
+        "evidence": "he was still half asleep and he rolled down to the ground",
+        "explain": "Jiril had just woken up, so he was still sleepy."
+      }
+    },
+    {
+      "id": "pb-vayu-the-wind",
+      "title": "Vayu, the Wind",
+      "kind": "poem",
+      "topic": "weather",
+      "text": "A bolt of lightning far away. Black clouds moving my way. Who makes that happen? Vayu, the Wind! Branches sway and leaves tremble. Flowers gently fall. Who did it all? Vayu, the Wind! Far from the house, we are playing, Yet, I can smell the sweets mother is preparing. Who makes it happen? Vayu, the Wind!",
+      "source": {
+        "name": "Pratham Books (StoryWeaver)",
+        "url": "https://github.com/global-asp/pb-source/blob/master/en/0003_vayu-the-wind.md",
+        "license": "CC BY 4.0",
+        "author": "Madhuri Pai",
+        "note": "Excerpt. Illustrations not included. Translated by Rohini Nilekani."
+      },
+      "question": {
+        "type": "detail",
+        "q": "What can the child smell from far away?",
+        "choices": [
+          "Sweets Mother is making",
+          "Rain on the grass",
+          "Flowers in the garden",
+          "Smoke from a fire"
+        ],
+        "answer": 0,
+        "evidence": "I can smell the sweets mother is preparing",
+        "explain": "The wind brings the smell of the sweets Mother is making."
+      }
+    },
+    {
+      "id": "pb-little-painters",
+      "title": "Little Painters",
+      "kind": "story",
+      "topic": "people",
+      "text": "The painter gave each of them a brush. \"Paint the inside of the gate,\" he said to Veena. \"Paint the outside of the gate,\" he said to Vinay. They picked up two tins of paint and set to work. Veena painted one side of the gate. Vinay painted the other side of the gate.",
+      "source": {
+        "name": "Pratham Books (StoryWeaver)",
+        "url": "https://github.com/global-asp/pb-source/blob/master/en/0052_little-painters.md",
+        "license": "CC BY 4.0",
+        "author": "Cheryl Rao",
+        "note": "Excerpt. Illustrations not included."
+      },
+      "question": {
+        "type": "detail",
+        "q": "Which part of the gate did Vinay paint?",
+        "choices": [
+          "The inside",
+          "The top",
+          "The outside",
+          "The bottom"
+        ],
+        "answer": 2,
+        "evidence": "\"Paint the outside of the gate,\" he said to Vinay.",
+        "explain": "The painter told Vinay to paint the outside."
+      }
+    },
+    {
+      "id": "pb-the-moon-and-the-cap",
+      "title": "The Moon and The Cap",
+      "kind": "story",
+      "topic": "family",
+      "text": "All of us went to the Dasara fair. Papa bought Chintu fancy glasses. Mother bought me a bright blue cap. The baby got sugar candy. On the way home, a very strong wind came. It blew my cap away. My cap got stuck on a branch of the old Pipal tree.",
+      "source": {
+        "name": "Pratham Books (StoryWeaver)",
+        "url": "https://github.com/global-asp/pb-source/blob/master/en/0053_the-moon-and-the-cap.md",
+        "license": "CC BY 4.0",
+        "author": "Rohini Nilekani",
+        "note": "Beginning of the story. Illustrations not included."
+      },
+      "question": {
+        "type": "cause-effect",
+        "q": "What made the cap get stuck in the tree?",
+        "choices": [
+          "A very strong wind blew it.",
+          "The baby threw it up there.",
+          "Chintu tossed it in a game.",
+          "A bird carried it away."
+        ],
+        "answer": 0,
+        "evidence": "a very strong wind came. It blew my cap away.",
+        "explain": "A strong wind blew the cap away and into the tree."
+      }
+    },
+    {
+      "id": "pb-curly-and-straight",
+      "title": "Curly and Straight",
+      "kind": "poem",
+      "topic": "art",
+      "text": "I like straight hair. I like curly hair. I like curly tails. I like straight tails. I like staircases which curl upwards. I like straight staircases. I like the straight road up the hill. I like the road that curls around the hill. I like to draw straight lines... I always draw curly lines...",
+      "source": {
+        "name": "Pratham Books (StoryWeaver)",
+        "url": "https://github.com/global-asp/pb-source/blob/master/en/0055_curly-and-straight.md",
+        "license": "CC BY 4.0",
+        "author": "Radha HS",
+        "note": "Beginning of the story. Illustrations not included."
+      },
+      "question": {
+        "type": "detail",
+        "q": "What kind of lines does the child always draw?",
+        "choices": [
+          "Dotted lines",
+          "Thick lines",
+          "Straight lines",
+          "Curly lines"
+        ],
+        "answer": 3,
+        "evidence": "I always draw curly lines",
+        "explain": "The child likes straight lines but always draws curly ones."
+      }
+    },
+    {
+      "id": "pb-the-boat-ride",
+      "title": "The Boat Ride",
+      "kind": "story",
+      "topic": "friendship",
+      "text": "\"Today we shall go on a big boat,\" said Vikki to Kato. \"B... B... But, I... I...am afraid of water, I cannot swim,\" mumbled Kato. \"Come on, you scrappy squirrel! With Vikki around, you need not be afraid. I have been on a boat many times.\" Vikki importantly leading the way, they reached the river.",
+      "source": {
+        "name": "Pratham Books (StoryWeaver)",
+        "url": "https://github.com/global-asp/pb-source/blob/master/en/0091_the-boat-ride.md",
+        "license": "CC BY 4.0",
+        "author": "Herminder Ohri",
+        "note": "Excerpt. Illustrations not included."
+      },
+      "question": {
+        "type": "cause-effect",
+        "q": "Why is Kato afraid of the boat ride?",
+        "choices": [
+          "Kato cannot swim.",
+          "The river is too cold.",
+          "Kato gets seasick.",
+          "The boat is too small."
+        ],
+        "answer": 0,
+        "evidence": "I...am afraid of water, I cannot swim",
+        "explain": "Kato is afraid because Kato cannot swim."
+      }
+    },
+    {
+      "id": "pb-rain-rain",
+      "title": "Rain, Rain",
+      "kind": "story",
+      "topic": "weather",
+      "text": "A cloud rolled along merrily in the sky. The peacock said, \"Why don't you rain? I will dance for you.\" The fish said, \"Please rain. I need more water.\" The farmer said, \"Please rain. I'll plant seeds for the next crop.\" Raju said, \"If you rain, I'll sail paper boats.\"",
+      "source": {
+        "name": "Pratham Books (StoryWeaver)",
+        "url": "https://github.com/global-asp/pb-source/blob/master/en/0087_rain-rain.md",
+        "license": "CC BY 4.0",
+        "author": "Sanjiv Jaiswal 'Sanjay'",
+        "note": "Beginning of the story. Illustrations not included. Translated by Manisha Chaudhry."
+      },
+      "question": {
+        "type": "detail",
+        "q": "What does the peacock say it will do if the cloud rains?",
+        "choices": [
+          "Dance for the cloud",
+          "Swim in the water",
+          "Plant some seeds",
+          "Sail paper boats"
+        ],
+        "answer": 0,
+        "evidence": "\"Why don't you rain? I will dance for you.\"",
+        "explain": "The peacock promises to dance for the cloud."
+      }
+    },
+    {
+      "id": "pb-chhuk-chhuk-chhak",
+      "title": "Chhuk-Chhuk-Chhak",
+      "kind": "story",
+      "topic": "art",
+      "text": "Nanhi picked up her slate and chalk. She wanted to draw a long, l-o-n-g train. Nanhi first drew an engine which gave out a lot of smoke, for the long, long train. \"Oh dear! Now where shall I make the coaches?\" Nanhi wondered, for there was no more space on the slate.",
+      "source": {
+        "name": "Pratham Books (StoryWeaver)",
+        "url": "https://github.com/global-asp/pb-source/blob/master/en/0021_chhuk-chhuk-chhak.md",
+        "license": "CC BY 4.0",
+        "author": "Vinita Krishna",
+        "note": "Beginning of the story. Illustrations not included. Translated by Ritu Singh."
+      },
+      "question": {
+        "type": "cause-effect",
+        "q": "Why couldn't Nanhi draw the coaches on her slate?",
+        "choices": [
+          "There was no more space.",
+          "Her brother took the slate.",
+          "Her chalk was broken.",
+          "She forgot how to draw them."
+        ],
+        "answer": 0,
+        "evidence": "there was no more space on the slate",
+        "explain": "The engine filled the slate, so there was no room left."
+      }
+    },
+    {
+      "id": "pb-up-world-down-world",
+      "title": "Up World, Down World",
+      "kind": "story",
+      "topic": "plants",
+      "text": "Fatima would sit down in the shade of the Arjuna tree and gaze into the leafy Up World. Maa had warned her not to climb the tree's branches. It was safe down below. Fatima didn't know what was in the scary Up World. But that day, Fatima was in for a surprise. As she turned a page, Fatima felt a dull THUMP! on her head. \"Ouch!\" she yelled, rubbing her sore head. It was a tiny book, barely the size of a pea.",
+      "source": {
+        "name": "Pratham Books (StoryWeaver)",
+        "url": "https://github.com/global-asp/pb-source/blob/master/en/0391_up-world-down-world.md",
+        "license": "CC BY 4.0",
+        "author": "Padmaparna Ghosh",
+        "note": "Excerpt. Illustrations not included."
+      },
+      "question": {
+        "type": "detail",
+        "q": "What fell on Fatima's head?",
+        "choices": [
+          "A green leaf",
+          "A small fruit",
+          "A bird's nest",
+          "A tiny book"
+        ],
+        "answer": 3,
+        "evidence": "It was a tiny book, barely the size of a pea.",
+        "explain": "A tiny book, as small as a pea, landed on her head."
+      }
+    },
+    {
+      "id": "pb-bheema-the-sleepyhead",
+      "title": "Bheema, the Sleepyhead",
+      "kind": "story",
+      "topic": "animals",
+      "text": "Coming back from the river in the evening, Bheema met Moti, the dog. \"I can never get up in the morning on time. Will you wake me up?\" Bheema asked Moti. \"Yes, I will,\" said Moti and the next morning he barked and barked but did Bheema wake up? No Sir!",
+      "source": {
+        "name": "Pratham Books (StoryWeaver)",
+        "url": "https://github.com/global-asp/pb-source/blob/master/en/0062_bheema-the-sleepyhead.md",
+        "license": "CC BY 4.0",
+        "author": "Kiran Kasturia",
+        "note": "Excerpt. Illustrations not included. Translated by Rajesh Khar."
+      },
+      "question": {
+        "type": "inference",
+        "q": "Did Moti's barking wake Bheema up?",
+        "choices": [
+          "No, he kept on sleeping.",
+          "No, because Moti forgot.",
+          "Yes, but he was very cross.",
+          "Yes, he woke up right away."
+        ],
+        "answer": 0,
+        "evidence": "did Bheema wake up? No Sir!",
+        "explain": "Moti barked and barked, but Bheema did not wake up."
+      }
+    },
+    {
+      "id": "pb-goloo-the-circle",
+      "title": "Goloo the Circle",
+      "kind": "story",
+      "topic": "shapes",
+      "text": "I am Goloo the circle. Everyone likes me. You can find me everywhere, any time! The sun looks like me. When it's too hot, you need an umbrella which also looks like half of me. At night, the moon looks like me with a smile. I look at it through the owl's round eyes.",
+      "source": {
+        "name": "Pratham Books (StoryWeaver)",
+        "url": "https://github.com/global-asp/pb-source/blob/master/en/0018_goloo-the-circle.md",
+        "license": "CC BY 4.0",
+        "author": "Jagdish Joshi",
+        "note": "Beginning of the story. Illustrations not included."
+      },
+      "question": {
+        "type": "detail",
+        "q": "What looks like half of Goloo?",
+        "choices": [
+          "An owl's eye",
+          "The sun",
+          "The moon",
+          "An umbrella"
+        ],
+        "answer": 3,
+        "evidence": "you need an umbrella which also looks like half of me",
+        "explain": "An open umbrella looks like half a circle."
+      }
+    },
+    {
+      "id": "pb-crocky-and-friends",
+      "title": "Crocky and friends",
+      "kind": "story",
+      "topic": "friendship",
+      "text": "Crocky the crocodile was sad. He had no friends to play with. Babloo, the butterfly said, \"I will play with you, Crocky. Do not cry.\" Tutoo, the turtle said, \"I will play with you, Crocky. Do not cry.\" Susie, the snake said, \"I will also play with you, Crocky. Do not cry.\" Fred, the frog and Fenny, the fish also came to play. So, Crocky found new friends to play with. He became happy.",
+      "source": {
+        "name": "Pratham Books (StoryWeaver)",
+        "url": "https://github.com/global-asp/pb-source/blob/master/en/0382_crocky-and-friends.md",
+        "license": "CC BY 4.0",
+        "author": "Khushboo Awasthi",
+        "note": "Whole story. Illustrations not included."
+      },
+      "question": {
+        "type": "main-idea",
+        "q": "What is this story mostly about?",
+        "choices": [
+          "Crocky gets lost in a pond.",
+          "Crocky learns how to swim.",
+          "Crocky finds new friends.",
+          "Crocky looks for some food."
+        ],
+        "answer": 2,
+        "evidence": "So, Crocky found new friends to play with.",
+        "explain": "Crocky was sad with no friends, then many animals came to play."
+      }
+    },
+    {
+      "id": "pb-under-my-bed",
+      "title": "Under My Bed",
+      "kind": "story",
+      "topic": "family",
+      "text": "\"What happened dear? Did you call me?\" asks Ma. I point towards the tiger. Ma bends and pulls the tiger out from under the bed! Hey, this is no tiger. This is my thick yellow and black sweater. Its buttons shine like a tiger's eyes. I got scared for nothing! Ma gets me some water.",
+      "source": {
+        "name": "Pratham Books (StoryWeaver)",
+        "url": "https://github.com/global-asp/pb-source/blob/master/en/0123_under-my-bed.md",
+        "license": "CC BY 4.0",
+        "author": "Anupa Lal",
+        "note": "Excerpt. Illustrations not included."
+      },
+      "question": {
+        "type": "detail",
+        "q": "What was really under the bed?",
+        "choices": [
+          "A toy tiger",
+          "A yellow blanket",
+          "A thick sweater",
+          "A sleepy cat"
+        ],
+        "answer": 2,
+        "evidence": "This is my thick yellow and black sweater.",
+        "explain": "The \"tiger\" was a yellow and black sweater."
+      }
+    },
+    {
+      "id": "pb-saboo-and-jojo",
+      "title": "Saboo and Jojo",
+      "kind": "story",
+      "topic": "animals",
+      "text": "\"Hello! Who are you?\" asked a surprised Saboo. \"Hello yourself, I am a giraffe. My name is Jojo. I can play with you. If you climb up on to my back, I will take you for a ride.\" Saboo climbed up and away they went down the road, up the hill, and into town. Saboo shouted happily, \"Jojo turn right, now left, and again right,\" till they came to his friend Munni's house.",
+      "source": {
+        "name": "Pratham Books (StoryWeaver)",
+        "url": "https://github.com/global-asp/pb-source/blob/master/en/0121_saboo-and-jojo.md",
+        "license": "CC BY 4.0",
+        "author": "Herminder Ohri",
+        "note": "Excerpt. Illustrations not included."
+      },
+      "question": {
+        "type": "sequence",
+        "q": "What did Saboo do right after Jojo offered a ride?",
+        "choices": [
+          "He climbed up on Jojo's back.",
+          "He went home to his mother.",
+          "He asked Jojo his name.",
+          "He ran to Munni's house."
+        ],
+        "answer": 0,
+        "evidence": "Saboo climbed up and away they went",
+        "explain": "Jojo offered a ride, so Saboo climbed up on his back."
+      }
+    },
+    {
+      "id": "pb-aunty-juis-baby",
+      "title": "Aunty Jui's Baby",
+      "kind": "story",
+      "topic": "family",
+      "text": "Anu got ready in a jiffy. She gulped down her milk without a fuss. She didn't even cry when her mother combed her hair. The moment Anu entered Aunty's house she shouted, \"Aunty! Where is the baby?\" \"Shhhh...\" said Aunty Jui, with her finger on her lips. \"Softly. The baby is sleeping.\" Sleeping? What a bore. Anu began to sulk.",
+      "source": {
+        "name": "Pratham Books (StoryWeaver)",
+        "url": "https://github.com/global-asp/pb-source/blob/master/en/0013_aunty-jui-s-baby.md",
+        "license": "CC BY 4.0",
+        "author": "Madhuri Purandare",
+        "note": "Excerpt. Illustrations not included. Translated by Pratham Books Team."
+      },
+      "question": {
+        "type": "vocabulary",
+        "q": "Anu \"got ready in a jiffy.\" What does \"in a jiffy\" mean?",
+        "choices": [
+          "Very slowly",
+          "Very quickly",
+          "Very quietly",
+          "Very sadly"
+        ],
+        "answer": 1,
+        "evidence": "Anu got ready in a jiffy.",
+        "explain": "\"In a jiffy\" means very fast. Anu was in a hurry to see the baby."
+      }
+    },
+    {
+      "id": "asp-king-of-the-birds",
+      "title": "King of the birds",
+      "kind": "fable",
+      "topic": "animals",
+      "text": "Once long ago, the birds had a meeting. They wanted a king, just like people and animals. Which bird should be king? \"The Eagle, he is strong and kingly!\" said one. \"No, he has no crown, and when he calls, he sounds too sad,\" said another. \"Then Ostrich, because he is the largest and roars like a lion,\" one called out. \"No, he can't fly. The king of the birds must be able to fly.\"",
+      "source": {
+        "name": "African Storybook",
+        "url": "https://github.com/global-asp/asp-source/blob/master/en/0037_king-of-the-birds.md",
+        "license": "CC BY 4.0",
+        "author": "South African Folktale",
+        "note": "Beginning of the story. Illustrations not included."
+      },
+      "question": {
+        "type": "cause-effect",
+        "q": "Why did the birds say Ostrich could not be king?",
+        "choices": [
+          "He had no crown.",
+          "He could not fly.",
+          "He was too small.",
+          "He sounded too sad."
+        ],
+        "answer": 1,
+        "evidence": "\"No, he can't fly. The king of the birds must be able to fly.\"",
+        "explain": "The birds wanted a king who could fly, and Ostrich can't."
+      }
+    },
+    {
+      "id": "asp-colours-of-a-rainbow",
+      "title": "Colours of a rainbow",
+      "kind": "facts",
+      "topic": "weather",
+      "text": "A rainbow has seven colours. The first colour is red. Kewyu is wearing a red shirt. The second colour is orange. What else can you see that is the colour orange? The third colour is yellow. The yolk of an egg is yellow. What else can you see that is the colour yellow?",
+      "source": {
+        "name": "African Storybook",
+        "url": "https://github.com/global-asp/asp-source/blob/master/en/0257_colours-of-a-rainbow.md",
+        "license": "CC BY 4.0",
+        "author": "Caren Echesa",
+        "note": "Beginning of the story. Illustrations not included. Shortened."
+      },
+      "question": {
+        "type": "sequence",
+        "q": "Which colour comes third in the rainbow?",
+        "choices": [
+          "Orange",
+          "Red",
+          "Green",
+          "Yellow"
+        ],
+        "answer": 3,
+        "evidence": "The third colour is yellow.",
+        "explain": "Red is first, orange is second, and yellow is third."
+      }
+    },
+    {
+      "id": "asp-the-race",
+      "title": "The Race",
+      "kind": "fable",
+      "topic": "animals",
+      "text": "One day the rabbit found a snail. He said to the snail, \"You can't run! All you know is how to crawl on the ground.\" The snail said, \"Come on Sunday and you will see.\" The snail prepared a hundred bits of paper and wrote the same message on them.",
+      "source": {
+        "name": "African Storybook",
+        "url": "https://github.com/global-asp/asp-source/blob/master/en/0028_the-race.md",
+        "license": "CC BY 4.0",
+        "author": "Mozambican folktale",
+        "note": "Beginning of the story. Illustrations not included."
+      },
+      "question": {
+        "type": "detail",
+        "q": "What did the snail get ready?",
+        "choices": [
+          "A fast pair of shoes",
+          "A big lunch for Sunday",
+          "A map of the race",
+          "A hundred bits of paper"
+        ],
+        "answer": 3,
+        "evidence": "The snail prepared a hundred bits of paper",
+        "explain": "The snail made a hundred bits of paper with a message."
+      }
+    },
+    {
+      "id": "asp-kekes-swing",
+      "title": "Keke's swing",
+      "kind": "story",
+      "topic": "play",
+      "text": "Keke sat on her swing. She loved her swing. It was the best swing at her school. Keke moved slowly on her swing. Backwards and forwards. Backwards and forwards. When Keke moved, her swing went faster and faster. Soon she was right at the top. Keke looked down at the ground. She was very high up. \"Aeei,\" she called, \"Look how high I am!\"",
+      "source": {
+        "name": "African Storybook",
+        "url": "https://github.com/global-asp/asp-source/blob/master/en/0161_kekes-swing.md",
+        "license": "CC BY 4.0",
+        "author": "Marion Drew, Khothatso Ranoosi",
+        "note": "Beginning of the story. Illustrations not included."
+      },
+      "question": {
+        "type": "sequence",
+        "q": "What happened when Keke moved on her swing?",
+        "choices": [
+          "It stopped all at once.",
+          "It went faster and faster.",
+          "It went slower and slower.",
+          "It broke and she fell."
+        ],
+        "answer": 1,
+        "evidence": "her swing went faster and faster",
+        "explain": "Keke moved, and the swing went faster until she was high up."
+      }
+    },
+    {
+      "id": "asp-m-e-maneos-pumpkin",
+      "title": "'M'e Maneo's pumpkin",
+      "kind": "story",
+      "topic": "plants",
+      "text": "\"Stop! You are tickling me,\" said the pumpkin. \"I don't like it.\" And the pumpkin rolled away down the hill. The pumpkin stopped in a field at the bottom of the hill. Two shepherds found it. \"What shall we do with this pumpkin?\" they asked. \"Let's eat it,\" they said, \"it looks delicious.\"",
+      "source": {
+        "name": "African Storybook",
+        "url": "https://github.com/global-asp/asp-source/blob/master/en/0338_me-maneos-pumpkin.md",
+        "license": "CC BY 4.0",
+        "author": "Marion Drew",
+        "note": "Excerpt. Illustrations not included."
+      },
+      "question": {
+        "type": "detail",
+        "q": "Who found the pumpkin in the field?",
+        "choices": [
+          "A little girl",
+          "Two shepherds",
+          "A hungry goat",
+          "Two farmers"
+        ],
+        "answer": 1,
+        "evidence": "Two shepherds found it.",
+        "explain": "Two shepherds found the pumpkin at the bottom of the hill."
+      }
+    },
+    {
+      "id": "asp-lazy-anansi",
+      "title": "Lazy Anansi",
+      "kind": "fable",
+      "topic": "animals",
+      "text": "\"How will I call you when they're ready?\" asked Rabbit. Anansi thought for a minute. \"I'll spin a web,\" he said, \"and tie one end around my leg and one end to your pot. When the greens are ready, pull on the web string and I'll come right away.\" So Anansi tied the web to the pot, and walked on.",
+      "source": {
+        "name": "African Storybook",
+        "url": "https://github.com/global-asp/asp-source/blob/master/en/0329_lazy-anansi.md",
+        "license": "CC BY 4.0",
+        "author": "Ghanaian folktale",
+        "note": "Excerpt. Illustrations not included."
+      },
+      "question": {
+        "type": "detail",
+        "q": "How will Rabbit tell Anansi the greens are ready?",
+        "choices": [
+          "By sending a bird",
+          "By pulling the web string",
+          "By shouting his name",
+          "By ringing a bell"
+        ],
+        "answer": 1,
+        "evidence": "pull on the web string and I'll come right away",
+        "explain": "Anansi tied a web string to the pot for Rabbit to pull."
+      }
+    },
+    {
+      "id": "asp-fox-and-rooster",
+      "title": "Fox and Rooster",
+      "kind": "fable",
+      "topic": "animals",
+      "text": "There was a time when all the animals lived together as friends. One day they decided to have a meeting to elect a king. Rooster wanted to be king. So he lied to the other animals. He told them, \"The red comb on my head is fire! Don't touch the comb on my head!\"",
+      "source": {
+        "name": "African Storybook",
+        "url": "https://github.com/global-asp/asp-source/blob/master/en/0314_fox-and-rooster.md",
+        "license": "CC BY 4.0",
+        "author": "Vincent Afeku",
+        "note": "Beginning of the story. Illustrations not included."
+      },
+      "question": {
+        "type": "detail",
+        "q": "What did Rooster say his red comb was?",
+        "choices": [
+          "A crown",
+          "A flower",
+          "Fire",
+          "A jewel"
+        ],
+        "answer": 2,
+        "evidence": "The red comb on my head is fire!",
+        "explain": "Rooster lied and said his comb was fire."
+      }
+    },
+    {
+      "id": "asp-a-house-for-mouse",
+      "title": "A house for Mouse",
+      "kind": "story",
+      "topic": "animals",
+      "text": "Mouse was looking for a new house. \"You can come and sleep with me,\" said Puppy. \"Thank you,\" said Mouse. That night, Mouse's dreams were bouncy and muddy. \"You can come and sleep with me,\" said Parrot. \"Thank you,\" said Mouse. That night, Mouse's dreams were noisy and wild.",
+      "source": {
+        "name": "African Storybook",
+        "url": "https://github.com/global-asp/asp-source/blob/master/en/0350_a-house-for-mouse.md",
+        "license": "CC BY 4.0",
+        "author": "Michele Fry",
+        "note": "Beginning of the story. Illustrations not included. Shortened."
+      },
+      "question": {
+        "type": "cause-effect",
+        "q": "Why were Mouse's dreams noisy and wild?",
+        "choices": [
+          "Mouse slept with Parrot.",
+          "Mouse slept by the road.",
+          "Mouse slept next to Puppy.",
+          "Mouse slept in the rain."
+        ],
+        "answer": 0,
+        "evidence": "\"You can come and sleep with me,\" said Parrot.",
+        "explain": "Mouse slept with Parrot that night, and Parrot's home is noisy."
+      }
+    },
+    {
+      "id": "asp-tortoise-finds-his-house",
+      "title": "Tortoise finds his house",
+      "kind": "story",
+      "topic": "animals",
+      "text": "\"Are you looking for something?\" Snail asked. \"Yes, Snail, I'm looking for my house. Have you seen it, by any chance?\" Snail said: \"No, I haven't, but I'll help you look!\" She climbed onto Tortoise's shell. Tortoise walked on with Snail on his back. They looked and looked, but there was no sign of a house. The sun was high in the sky.",
+      "source": {
+        "name": "African Storybook",
+        "url": "https://github.com/global-asp/asp-source/blob/master/en/0299_tortoise-finds-his-house.md",
+        "license": "CC BY 4.0",
+        "author": "Maya Fowler",
+        "note": "Excerpt. Illustrations not included."
+      },
+      "question": {
+        "type": "detail",
+        "q": "Where did Snail ride while they looked?",
+        "choices": [
+          "In a basket",
+          "On a leaf",
+          "On a bird's back",
+          "On Tortoise's shell"
+        ],
+        "answer": 3,
+        "evidence": "She climbed onto Tortoise's shell.",
+        "explain": "Snail climbed onto Tortoise's shell to help him look."
+      }
+    },
+    {
+      "id": "asp-friends",
+      "title": "Friends",
+      "kind": "story",
+      "topic": "friendship",
+      "text": "My name is Simo. I have four friends. Their names are Zizo, Lele, Sisa and Ayanda. My friend Zizo likes to play soccer. My friend Lele likes to swim. My friend Sisa likes to play hide-and-seek. My friend Ayanda likes to read. Me? I like to do all the things they like to do.",
+      "source": {
+        "name": "African Storybook",
+        "url": "https://github.com/global-asp/asp-source/blob/master/en/0277_friends.md",
+        "license": "CC BY 4.0",
+        "author": "Zimbili Dlamini, Hlengiwe Zondi",
+        "note": "Beginning of the story. Illustrations not included."
+      },
+      "question": {
+        "type": "detail",
+        "q": "What does Lele like to do?",
+        "choices": [
+          "Swim",
+          "Play hide-and-seek",
+          "Play soccer",
+          "Read"
+        ],
+        "answer": 0,
+        "evidence": "My friend Lele likes to swim.",
+        "explain": "The story says Lele likes to swim."
+      }
+    },
+    {
+      "id": "asp-tell-me-now-colours",
+      "title": "Tell me...now! Colours",
+      "kind": "facts",
+      "topic": "plants",
+      "text": "Why are leaves green? They are not always green. Are they? Why are bananas yellow? Ripe bananas are yellow. Unripe bananas are green. Why are umbrellas black? Not all umbrellas are black. Why is blood red? There is iron in the blood. That makes it red.",
+      "source": {
+        "name": "African Storybook",
+        "url": "https://github.com/global-asp/asp-source/blob/master/en/0355_tell-me.now-colours.md",
+        "license": "CC BY 4.0",
+        "author": "Madhav Chavan",
+        "note": "Excerpt. Illustrations not included. Shortened."
+      },
+      "question": {
+        "type": "detail",
+        "q": "What colour are bananas that are not ripe?",
+        "choices": [
+          "Yellow",
+          "Green",
+          "Brown",
+          "Red"
+        ],
+        "answer": 1,
+        "evidence": "Unripe bananas are green.",
+        "explain": "Bananas are green before they get ripe."
+      }
+    },
+    {
+      "id": "asp-big-blue-bus",
+      "title": "Big blue bus",
+      "kind": "story",
+      "topic": "people",
+      "text": "Ebei was already dressed when his mother came to wake him. Ebei and his mother walked to the bus stop. They waited for the big blue bus. But the bus did not come. Other people arrived at the bus stop. They complained because the bus was late. \"Has the bus left us?\" they asked.",
+      "source": {
+        "name": "African Storybook",
+        "url": "https://github.com/global-asp/asp-source/blob/master/en/0276_big-blue-bus.md",
+        "license": "CC BY 4.0",
+        "author": "Mecelin Kakoro",
+        "note": "Excerpt. Illustrations not included."
+      },
+      "question": {
+        "type": "cause-effect",
+        "q": "Why did the people at the bus stop complain?",
+        "choices": [
+          "The bus was late.",
+          "It started to rain.",
+          "The bus was too full.",
+          "The bus was dirty."
+        ],
+        "answer": 0,
+        "evidence": "They complained because the bus was late.",
+        "explain": "The people were upset because the bus was late."
+      }
+    },
+    {
+      "id": "asp-disability-is-not-inability",
+      "title": "Disability is Not Inability",
+      "kind": "facts",
+      "topic": "people",
+      "text": "This is Agnes. She is my teacher. Agnes uses crutches to walk. This is Metobo. He is my favourite radio DJ. Metobo has problems with his eyes. This is Moraa, my neighbour. Moraa is a farmer. Moraa cannot hear. She speaks using Sign Language. This is Osero. He is the best soccer player at my school.",
+      "source": {
+        "name": "African Storybook",
+        "url": "https://github.com/global-asp/asp-source/blob/master/en/0160_disability-is-not-inability.md",
+        "license": "CC BY 4.0",
+        "author": "Agnes Mabururu",
+        "note": "Beginning of the story. Illustrations not included."
+      },
+      "question": {
+        "type": "detail",
+        "q": "How does Moraa speak with people?",
+        "choices": [
+          "She talks on the radio.",
+          "She writes notes.",
+          "She uses Sign Language.",
+          "She uses a phone."
+        ],
+        "answer": 2,
+        "evidence": "She speaks using Sign Language.",
+        "explain": "Moraa cannot hear, so she speaks using Sign Language."
+      }
+    },
+    {
+      "id": "asp-my-teacher",
+      "title": "My teacher",
+      "kind": "story",
+      "topic": "school",
+      "text": "I love my teacher. She is beautiful. She is a good teacher. She is kind and patient. She has braided her hair very nicely today. She has decorated her hair with colourful beads. Her beads are green, white, red, and yellow. Mom, please would you braid my hair like my teacher's? When I am older I will also put beads in my hair. I will grow up to be just like my teacher!",
+      "source": {
+        "name": "African Storybook",
+        "url": "https://github.com/global-asp/asp-source/blob/master/en/0217_my-teacher.md",
+        "license": "CC BY 4.0",
+        "author": "Zimbili Dlamini, Hlengiwe Zondi",
+        "note": "Whole story. Illustrations not included."
+      },
+      "question": {
+        "type": "detail",
+        "q": "What did the teacher put in her hair?",
+        "choices": [
+          "A pretty hat",
+          "A red ribbon",
+          "Fresh flowers",
+          "Colourful beads"
+        ],
+        "answer": 3,
+        "evidence": "She has decorated her hair with colourful beads.",
+        "explain": "The teacher put colourful beads in her braids."
+      }
+    },
+    {
+      "id": "asp-rats",
+      "title": "Rats!",
+      "kind": "story",
+      "topic": "animals",
+      "text": "There was a man who sold oil that he made in his house. And in that house there were rats. Lots of rats! Every day the rats looked at the oil and said, \"How can we get that oil?\" The rats tried to put their mouths into the bottles. But the spaces in the bottles were too small.",
+      "source": {
+        "name": "African Storybook",
+        "url": "https://github.com/global-asp/asp-source/blob/master/en/0153_rats.md",
+        "license": "CC BY 4.0",
+        "author": "Louren\u00e7o Magaia Sab\u00e3o",
+        "note": "Beginning of the story. Illustrations not included."
+      },
+      "question": {
+        "type": "cause-effect",
+        "q": "Why couldn't the rats get the oil?",
+        "choices": [
+          "A cat kept them away.",
+          "The spaces were too small.",
+          "The man hid the bottles.",
+          "The bottles were too high."
+        ],
+        "answer": 1,
+        "evidence": "But the spaces in the bottles were too small.",
+        "explain": "The rats' mouths did not fit in the small bottle tops."
+      }
+    },
+    {
+      "id": "sbc-zama-is-great",
+      "title": "Zama is great!",
+      "kind": "story",
+      "topic": "family",
+      "text": "My little brother sleeps very late. I wake early, because I am great! I am the one who lets in the sun. \"You're my morning star,\" says Ma. I wash myself, I don't need any help. I can cope with cold water and blue smelly soap. Ma reminds, \"Don't forget teeth.\" I reply, \"Never, not me!\"",
+      "source": {
+        "name": "Storybooks Canada",
+        "url": "https://github.com/global-asp/sbc-source/blob/master/en/0095_zama-is-great.md",
+        "license": "CC BY 4.0",
+        "author": "Michael Oguttu",
+        "note": "Beginning of the story. Illustrations not included."
+      },
+      "question": {
+        "type": "detail",
+        "q": "What does Ma call Zama?",
+        "choices": [
+          "Her big helper",
+          "Her early bird",
+          "Her morning star",
+          "Her little sun"
+        ],
+        "answer": 2,
+        "evidence": "\"You're my morning star,\" says Ma.",
+        "explain": "Ma calls Zama her morning star."
+      }
+    },
+    {
+      "id": "sbc-hen-and-eagle",
+      "title": "Hen and Eagle",
+      "kind": "fable",
+      "topic": "animals",
+      "text": "Once upon a time, Hen and Eagle were friends. They lived in peace with all the other birds. None of them could fly. One day, there was famine in the land. Eagle had to walk very far to find food. She came back very tired. \"There must be an easier way to travel!\" said Eagle.",
+      "source": {
+        "name": "Storybooks Canada",
+        "url": "https://github.com/global-asp/sbc-source/blob/master/en/0158_hen-and-eagle.md",
+        "license": "CC BY 4.0",
+        "author": "Ann Nduku",
+        "note": "Beginning of the story. Illustrations not included."
+      },
+      "question": {
+        "type": "cause-effect",
+        "q": "Why did Eagle come back very tired?",
+        "choices": [
+          "She had been flying all day long.",
+          "She played with the other birds.",
+          "She had to walk very far for food.",
+          "She was building a new nest."
+        ],
+        "answer": 2,
+        "evidence": "Eagle had to walk very far to find food. She came back very tired.",
+        "explain": "Birds could not fly yet, so Eagle had to walk far."
+      }
+    },
+    {
+      "id": "sbc-what-vusis-sister-said",
+      "title": "What Vusi's sister said",
+      "kind": "story",
+      "topic": "family",
+      "text": "\"What have you done?\" cried Vusi. \"That egg was for a cake. The cake was for my sister's wedding. What will my sister say if there is no wedding cake?\" The boys were sorry for teasing Vusi. \"We can't help with the cake, but here is a walking stick for your sister,\" said one. Vusi continued on his journey.",
+      "source": {
+        "name": "Storybooks Canada",
+        "url": "https://github.com/global-asp/sbc-source/blob/master/en/0291_what-vusis-sister-said.md",
+        "license": "CC BY 4.0",
+        "author": "Nina Orange",
+        "note": "Excerpt. Illustrations not included."
+      },
+      "question": {
+        "type": "detail",
+        "q": "What did the boys give Vusi for his sister?",
+        "choices": [
+          "A wedding cake",
+          "A new egg",
+          "A basket",
+          "A walking stick"
+        ],
+        "answer": 3,
+        "evidence": "here is a walking stick for your sister",
+        "explain": "The boys gave Vusi a walking stick for his sister."
+      }
+    },
+    {
+      "id": "burgess-tommy-likes-winter",
+      "title": "Tommy Likes Winter",
+      "kind": "story",
+      "topic": "animals",
+      "text": "\"Not a bit,\" replied Tommy. \"I like winter. I like cold weather. It makes a fellow feel good from the tips of his claws to the tip of his bill. I'm thankful I don't have to take that long journey most of the birds have to. I discovered a secret a long time ago, Peter; shall I tell it to you?\"",
+      "source": {
+        "name": "The Burgess Bird Book for Children (Thornton W. Burgess, 1919)",
+        "url": "https://www.gutenberg.org/ebooks/3074",
+        "license": "Public domain",
+        "author": "Thornton W. Burgess",
+        "note": "Paragraph from the book."
+      },
+      "question": {
+        "type": "cause-effect",
+        "q": "Why is Tommy thankful?",
+        "choices": [
+          "He doesn't have to make a long trip.",
+          "He found lots of seeds.",
+          "He can sing a pretty song.",
+          "He has a warm nest."
+        ],
+        "answer": 0,
+        "evidence": "I'm thankful I don't have to take that long journey",
+        "explain": "Tommy likes winter, so he does not have to fly far away like other birds."
+      }
+    },
+    {
+      "id": "burgess-reddys-big-tail",
+      "title": "Reddy's Big Tail",
+      "kind": "story",
+      "topic": "animals",
+      "text": "\"There's one thing I do envy Reddy,\" spoke up Peter Rabbit, \"and that is that big tail of his. It is a wonderful tail. I wish I had one like it.\"",
+      "source": {
+        "name": "The Burgess Animal Book for Children (Thornton W. Burgess, 1920)",
+        "url": "https://www.gutenberg.org/ebooks/2441",
+        "license": "Public domain",
+        "author": "Thornton W. Burgess",
+        "note": "Paragraph from the book."
+      },
+      "question": {
+        "type": "detail",
+        "q": "What does Peter Rabbit wish he had?",
+        "choices": [
+          "Long ears like Reddy's",
+          "Sharp teeth like Reddy's",
+          "A big tail like Reddy's",
+          "Fast feet like Reddy's"
+        ],
+        "answer": 2,
+        "evidence": "I wish I had one like it.",
+        "explain": "Peter wishes he had a big tail like Reddy's."
+      }
+    },
+    {
+      "id": "burgess-billy-mink-counts-to-three",
+      "title": "Billy Mink Counts to Three",
+      "kind": "story",
+      "topic": "animals",
+      "text": "\"Now when I count three we'll all dive into the Smiling Pool together and see who can dive the deepest. One!\" said Billy Mink. \"Two!\" said Billy Mink. \"Three!\" said Billy Mink.",
+      "source": {
+        "name": "Old Mother West Wind (Thornton W. Burgess, 1910)",
+        "url": "https://www.gutenberg.org/ebooks/2557",
+        "license": "Public domain",
+        "author": "Thornton W. Burgess",
+        "note": "Paragraph from the book."
+      },
+      "question": {
+        "type": "detail",
+        "q": "Where will they all dive?",
+        "choices": [
+          "Into the Smiling Pool",
+          "Into the Laughing Brook",
+          "Into the Muddy Pond",
+          "Into the Big River"
+        ],
+        "answer": 0,
+        "evidence": "we'll all dive into the Smiling Pool together",
+        "explain": "Billy Mink says they will dive into the Smiling Pool."
+      }
+    },
+    {
+      "id": "burgess-paddy-the-beavers-feet",
+      "title": "Paddy the Beaver's Feet",
+      "kind": "facts",
+      "topic": "animals",
+      "text": "\"Only my hind feet,\" said Paddy. \"They have webs between the toes just as Honker's have. That is for swimming. But there are no webs between my fingers.\" He held up a hand for all to see. Sure enough, the fingers were free.",
+      "source": {
+        "name": "The Burgess Animal Book for Children (Thornton W. Burgess, 1920)",
+        "url": "https://www.gutenberg.org/ebooks/2441",
+        "license": "Public domain",
+        "author": "Thornton W. Burgess",
+        "note": "Paragraph from the book."
+      },
+      "question": {
+        "type": "detail",
+        "q": "What are the webs on Paddy's hind feet for?",
+        "choices": [
+          "Running",
+          "Climbing",
+          "Swimming",
+          "Digging"
+        ],
+        "answer": 2,
+        "evidence": "That is for swimming.",
+        "explain": "The webs between his toes help Paddy swim."
+      }
+    },
+    {
+      "id": "burgess-teachers-hidden-nest",
+      "title": "Teacher's Hidden Nest",
+      "kind": "story",
+      "topic": "animals",
+      "text": "Teacher's eyes twinkled. \"I guess it won't do any harm to tell you that much,\" said he. \"No, it isn't in a tree. It is on the ground and, if I do say it, it is as well hidden a nest as anybody can build. Oh, Peter, watch your step! Watch your step!\" Teacher fairly shrieked this warning.",
+      "source": {
+        "name": "The Burgess Bird Book for Children (Thornton W. Burgess, 1919)",
+        "url": "https://www.gutenberg.org/ebooks/3074",
+        "license": "Public domain",
+        "author": "Thornton W. Burgess",
+        "note": "Paragraph from the book."
+      },
+      "question": {
+        "type": "detail",
+        "q": "Where is Teacher's nest?",
+        "choices": [
+          "High in a tree",
+          "Under a roof",
+          "On the ground",
+          "In a tall bush"
+        ],
+        "answer": 2,
+        "evidence": "It is on the ground",
+        "explain": "Teacher says the nest is not in a tree. It is on the ground."
+      }
+    },
+    {
+      "id": "burgess-whitefoot-likes-the-night",
+      "title": "Whitefoot Likes the Night",
+      "kind": "facts",
+      "topic": "animals",
+      "text": "\"I don't,\" replied Whitefoot. \"I sleep most of the time during the day, and work and play at night. I feel safer then. But on dull days I often come out. It is the bright sunlight I don't like. That is one reason I stick to the Green Forest. I don't see how Cousin Danny stands it out there on the Green Meadows.\"",
+      "source": {
+        "name": "The Burgess Animal Book for Children (Thornton W. Burgess, 1920)",
+        "url": "https://www.gutenberg.org/ebooks/2441",
+        "license": "Public domain",
+        "author": "Thornton W. Burgess",
+        "note": "Paragraph from the book. Shortened."
+      },
+      "question": {
+        "type": "detail",
+        "q": "When does Whitefoot work and play?",
+        "choices": [
+          "In the bright sun",
+          "At noon",
+          "At night",
+          "In the morning"
+        ],
+        "answer": 2,
+        "evidence": "work and play at night",
+        "explain": "Whitefoot sleeps in the day and works and plays at night."
+      }
+    },
+    {
+      "id": "burgess-why-come-south",
+      "title": "Why Come South?",
+      "kind": "story",
+      "topic": "animals",
+      "text": "\"If you are so fond of the cold in the Far North, the snow and the ice, what did you come south at all for? Why don't you stay up there all the year around?\" demanded Peter.",
+      "source": {
+        "name": "The Burgess Bird Book for Children (Thornton W. Burgess, 1919)",
+        "url": "https://www.gutenberg.org/ebooks/3074",
+        "license": "Public domain",
+        "author": "Thornton W. Burgess",
+        "note": "Paragraph from the book."
+      },
+      "question": {
+        "type": "detail",
+        "q": "What does Peter say his friend is fond of?",
+        "choices": [
+          "Rain in the spring",
+          "The cold, snow and ice",
+          "Seeds in the garden",
+          "Warm sun and flowers"
+        ],
+        "answer": 1,
+        "evidence": "If you are so fond of the cold in the Far North, the snow and the ice",
+        "explain": "Peter says his friend is fond of the cold, the snow and the ice."
+      }
+    },
+    {
+      "id": "burgess-prickly-porky-in-winter",
+      "title": "Prickly Porky in Winter",
+      "kind": "facts",
+      "topic": "animals",
+      "text": "\"What should I sleep for?\" grumbled Prickly Porky. \"Cold weather doesn't bother me. I like it. I have the Green Forest pretty much to myself then. I like to be alone. And as long as there are trees, there is plenty to eat. I sleep a great deal in the daytime because I like night best.\"",
+      "source": {
+        "name": "The Burgess Animal Book for Children (Thornton W. Burgess, 1920)",
+        "url": "https://www.gutenberg.org/ebooks/2441",
+        "license": "Public domain",
+        "author": "Thornton W. Burgess",
+        "note": "Paragraph from the book."
+      },
+      "question": {
+        "type": "detail",
+        "q": "Why doesn't Prickly Porky need to sleep all winter?",
+        "choices": [
+          "He lives in a warm cave.",
+          "He stores lots of nuts.",
+          "Cold weather doesn't bother him.",
+          "He goes south for winter."
+        ],
+        "answer": 2,
+        "evidence": "Cold weather doesn't bother me.",
+        "explain": "Prickly Porky says cold weather doesn't bother him, and trees give him food."
+      }
+    },
+    {
+      "id": "burgess-jenny-wren-and-snake-skins",
+      "title": "Jenny Wren and Snake Skins",
+      "kind": "story",
+      "topic": "animals",
+      "text": "\"Snake skins! Snake skins!\" shrieked Jenny Wren. \"What are you talking about, Peter Rabbit? I never have anything to do with Snake skins and don't want to. Ugh! It makes me shiver just to think of it.\"",
+      "source": {
+        "name": "The Burgess Bird Book for Children (Thornton W. Burgess, 1919)",
+        "url": "https://www.gutenberg.org/ebooks/3074",
+        "license": "Public domain",
+        "author": "Thornton W. Burgess",
+        "note": "Paragraph from the book."
+      },
+      "question": {
+        "type": "inference",
+        "q": "How does Jenny Wren feel about snake skins?",
+        "choices": [
+          "She thinks they are pretty.",
+          "She wants Peter to find one.",
+          "She does not like them at all.",
+          "She likes to collect them."
+        ],
+        "answer": 2,
+        "evidence": "Ugh! It makes me shiver just to think of it.",
+        "explain": "Jenny says \"Ugh!\" and shivers, so she does not like them."
+      }
+    },
+    {
+      "id": "baldwin-the-blind-men-and-the-elephant",
+      "title": "The Blind Men and the Elephant",
+      "kind": "fable",
+      "topic": "animals",
+      "text": "The second felt only of the elephant's tusk. \"My brother,\" he said, \"you are mistaken. He is not at all like a wall. He is round and smooth and sharp. He is more like a spear than anything else.\"",
+      "source": {
+        "name": "Fifty Famous Stories Retold (James Baldwin, 1896)",
+        "url": "https://www.gutenberg.org/ebooks/18442",
+        "license": "Public domain",
+        "author": "James Baldwin",
+        "note": "Paragraph from the book."
+      },
+      "question": {
+        "type": "detail",
+        "q": "The second man felt the tusk. What did he think the elephant was like?",
+        "choices": [
+          "A wall",
+          "A tree",
+          "A spear",
+          "A rope"
+        ],
+        "answer": 2,
+        "evidence": "He is more like a spear than anything else.",
+        "explain": "The tusk is round, smooth and sharp, so he thought of a spear."
+      }
+    },
+    {
+      "id": "baldwin-fog-at-sea",
+      "title": "Fog at Sea",
+      "kind": "story",
+      "topic": "ocean",
+      "text": "The wind had blown hard all day. The waves rolled high. The ship was moving swiftly. But in the evening the wind died away, and a thick fog came on.",
+      "source": {
+        "name": "Fifty Famous Stories Retold (James Baldwin, 1896)",
+        "url": "https://www.gutenberg.org/ebooks/18442",
+        "license": "Public domain",
+        "author": "James Baldwin",
+        "note": "Paragraph from the book."
+      },
+      "question": {
+        "type": "sequence",
+        "q": "What came after the wind died away?",
+        "choices": [
+          "A big storm",
+          "A thick fog",
+          "A bright moon",
+          "A warm rain"
+        ],
+        "answer": 1,
+        "evidence": "the wind died away, and a thick fog came on",
+        "explain": "In the evening the wind stopped, and then a thick fog came."
+      }
+    },
+    {
+      "id": "baldwin-the-kings-hawk",
+      "title": "The King and His Hawk",
+      "kind": "story",
+      "topic": "animals",
+      "text": "The day had been warm, and the king was very thirsty. His pet hawk had left his wrist and flown away. It would be sure to find its way home.",
+      "source": {
+        "name": "Fifty Famous Stories Retold (James Baldwin, 1896)",
+        "url": "https://www.gutenberg.org/ebooks/18442",
+        "license": "Public domain",
+        "author": "James Baldwin",
+        "note": "Paragraph from the book."
+      },
+      "question": {
+        "type": "detail",
+        "q": "How did the king feel after the warm day?",
+        "choices": [
+          "Very thirsty",
+          "Very hungry",
+          "Very cold",
+          "Very sleepy"
+        ],
+        "answer": 0,
+        "evidence": "the king was very thirsty",
+        "explain": "The day was warm, and the king was very thirsty."
+      }
+    },
+    {
+      "id": "baldwin-a-good-dinner-for-the-lad",
+      "title": "A Good Dinner for the Lad",
+      "kind": "story",
+      "topic": "people",
+      "text": "\"Poor little fellow!\" said Mr. Fitz-war-ren. \"Come in, and I will see what I can do for you.\" And he ordered the cook to give the lad a good dinner, and then to find some light work for him to do.",
+      "source": {
+        "name": "Fifty Famous Stories Retold (James Baldwin, 1896)",
+        "url": "https://www.gutenberg.org/ebooks/18442",
+        "license": "Public domain",
+        "author": "James Baldwin",
+        "note": "Paragraph from the book."
+      },
+      "question": {
+        "type": "inference",
+        "q": "What kind of man is Mr. Fitz-war-ren?",
+        "choices": [
+          "Silly",
+          "Angry",
+          "Kind",
+          "Lazy"
+        ],
+        "answer": 2,
+        "evidence": "\"Come in, and I will see what I can do for you.\"",
+        "explain": "He helped the poor boy and gave him dinner, so he is kind."
+      }
+    },
+    {
+      "id": "baldwin-at-the-blacksmiths",
+      "title": "At the Blacksmith's",
+      "kind": "story",
+      "topic": "people",
+      "text": "The smith went on with his work. From a bar of iron he made four horseshoes. These he hammered and shaped and fitted to the horse's feet. Then he began to nail them on.",
+      "source": {
+        "name": "Fifty Famous People (James Baldwin, 1912)",
+        "url": "https://www.gutenberg.org/ebooks/6168",
+        "license": "Public domain",
+        "author": "James Baldwin",
+        "note": "Paragraph from the book."
+      },
+      "question": {
+        "type": "sequence",
+        "q": "What did the smith do last?",
+        "choices": [
+          "He found a bar of iron.",
+          "He began to nail them on.",
+          "He made four horseshoes.",
+          "He fitted them to the feet."
+        ],
+        "answer": 1,
+        "evidence": "Then he began to nail them on.",
+        "explain": "First he made and fitted the shoes. Then he nailed them on."
+      }
+    },
+    {
+      "id": "fabre-the-wasp-sting",
+      "title": "The Wasp Sting",
+      "kind": "story",
+      "topic": "animals",
+      "text": "\"The wasp too, then?\" asked Jules. \"One stung me once when I tried to drive it from a bunch of grapes. I did not say anything, but all the same I was not very comfortable. To think that such a tiny thing can hurt one so! It seemed as if my hands were on fire.\"",
+      "source": {
+        "name": "The Story-Book of Science (Jean-Henri Fabre, 1917)",
+        "url": "https://www.gutenberg.org/ebooks/56795",
+        "license": "Public domain",
+        "author": "Jean-Henri Fabre",
+        "note": "Paragraph from the book."
+      },
+      "question": {
+        "type": "detail",
+        "q": "How did Jules's hands feel after the wasp stung him?",
+        "choices": [
+          "Cold as ice",
+          "As if on fire",
+          "Wet and sticky",
+          "Soft and sleepy"
+        ],
+        "answer": 1,
+        "evidence": "It seemed as if my hands were on fire.",
+        "explain": "Jules said it felt as if his hands were on fire."
+      }
+    }
+  ]
+}

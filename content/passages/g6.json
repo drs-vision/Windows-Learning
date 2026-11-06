@@ -1,0 +1,1160 @@
+{
+  "about": "Reading Quest paragraphs, about grade 6-7",
+  "passages": [
+    {
+      "id": "asp-holidays-with-grandmother",
+      "title": "Holidays with grandmother",
+      "kind": "story",
+      "topic": "family",
+      "text": "Odongo and Apiyo lived in the city with their father. They looked forward to the holidays. Not just because school was closed, but because they went to visit their grandmother. She lived in a fishing village near a large lake. Odongo and Apiyo were excited because it was time to visit their grandmother again. The night before, they packed their bags and got ready for the long journey to her village. They could not sleep and talked the whole night about the holiday.",
+      "source": {
+        "name": "African Storybook",
+        "url": "https://github.com/global-asp/asp-source/blob/master/en/0243_holidays-with-grandmother.md",
+        "license": "CC BY 4.0",
+        "author": "Violet Otieno",
+        "note": "Beginning of the story."
+      },
+      "question": {
+        "type": "sequence",
+        "q": "What did Odongo and Apiyo do the night before the trip?",
+        "choices": [
+          "They visited the fishing village",
+          "They packed their bags for the journey",
+          "They went fishing in the big lake",
+          "They said goodbye to their school friends"
+        ],
+        "answer": 1,
+        "evidence": "The night before, they packed their bags",
+        "explain": "The paragraph says they packed their bags the night before the long journey."
+      },
+      "readability": {
+        "grade": 6.7,
+        "fk": 5.7,
+        "cli": 8.5,
+        "ari": 5.9
+      }
+    },
+    {
+      "id": "sbc-chicken-and-millipede",
+      "title": "Chicken and Millipede",
+      "kind": "story",
+      "topic": "friendship",
+      "text": "Chicken and Millipede were friends. But they were always competing with each other. One day they decided to play football to see who the best player was. They went to the football field and started their game. Chicken was fast, but Millipede was faster. Chicken kicked far, but Millipede kicked further. Chicken started to feel grumpy.",
+      "source": {
+        "name": "Storybooks Canada",
+        "url": "https://github.com/global-asp/sbc-source/blob/master/en/0141_chicken-and-millipede.md",
+        "license": "CC BY 4.0",
+        "author": "Winny Asara",
+        "note": "Beginning of the story."
+      },
+      "question": {
+        "type": "cause-effect",
+        "q": "Why did Chicken start to feel grumpy?",
+        "choices": [
+          "Millipede was beating her at everything",
+          "The football field was far too muddy",
+          "Her friends would not let her play",
+          "She had hurt her foot kicking the ball"
+        ],
+        "answer": 0,
+        "evidence": "Chicken was fast, but Millipede was faster.",
+        "explain": "Millipede was faster and kicked further, so Chicken was losing."
+      },
+      "readability": {
+        "grade": 6,
+        "fk": 3.8,
+        "cli": 9,
+        "ari": 5.4
+      }
+    },
+    {
+      "id": "asp-grandmas-bananas",
+      "title": "Grandma's bananas",
+      "kind": "story",
+      "topic": "family",
+      "text": "Grandma's garden was wonderful, full of sorghum, millet, and cassava. But best of all were the bananas. Although Grandma had many grandchildren, I secretly knew that I was her favourite. She invited me often to her house. She also told me little secrets. But there was one secret she did not share with me: where she ripened bananas.",
+      "source": {
+        "name": "African Storybook",
+        "url": "https://github.com/global-asp/asp-source/blob/master/en/0294_grandmas-bananas.md",
+        "license": "CC BY 4.0",
+        "author": "Ursula Nafula",
+        "note": "Beginning of the story."
+      },
+      "question": {
+        "type": "inference",
+        "q": "How does the girl telling the story feel about Grandma?",
+        "choices": [
+          "Afraid of her strict rules",
+          "Bored by her long stories",
+          "Annoyed that she keeps secrets",
+          "Close to her and loved by her"
+        ],
+        "answer": 3,
+        "evidence": "I secretly knew that I was her favourite",
+        "explain": "She visits often, hears secrets and feels like the favourite, so they are close."
+      },
+      "readability": {
+        "grade": 6.1,
+        "fk": 5.7,
+        "cli": 7.9,
+        "ari": 4.8
+      }
+    },
+    {
+      "id": "asp-the-happy-revival",
+      "title": "The happy revival",
+      "kind": "story",
+      "topic": "water",
+      "text": "For ages, Olokwango hill stood smiling at the middle of Kwere plains. From the two dimples on its side came springs which converged downhill to form a river. River Temu meandered silently across the Kwere plains. Its waters were a gift to the sheep and goats of the area as well as the deer that dwelt in the plains.",
+      "source": {
+        "name": "African Storybook",
+        "url": "https://github.com/global-asp/asp-source/blob/master/en/0340_the-happy-revival.md",
+        "license": "CC BY 4.0",
+        "author": "Rebecca Njuguna",
+        "note": "Beginning of the story."
+      },
+      "question": {
+        "type": "vocabulary",
+        "q": "River Temu \"meandered\" across the plains. What does meandered mean?",
+        "choices": [
+          "Rushed straight down in a flood",
+          "Dried up in the hot season",
+          "Flowed in a slow, winding path",
+          "Froze into a sheet of ice"
+        ],
+        "answer": 2,
+        "evidence": "River Temu meandered silently across the Kwere plains",
+        "explain": "A river that meanders moves slowly and quietly, twisting and turning."
+      },
+      "readability": {
+        "grade": 6.3,
+        "fk": 5.4,
+        "cli": 7.4,
+        "ari": 6.1
+      }
+    },
+    {
+      "id": "sbc-the-day-i-left-home-for-the-city",
+      "title": "The day I left home for the city",
+      "kind": "story",
+      "topic": "places",
+      "text": "The city bus was almost full, but more people were still pushing to get on. Some packed their luggage under the bus. Others put theirs on the racks inside. New passengers clutched their tickets as they looked for somewhere to sit in the crowded bus. Women with young children made them comfortable for the long journey.",
+      "source": {
+        "name": "Storybooks Canada",
+        "url": "https://github.com/global-asp/sbc-source/blob/master/en/0324_the-day-i-left-home-for-the-city.md",
+        "license": "CC BY 4.0",
+        "author": "Lesley Koyi, Ursula Nafula",
+        "note": "Excerpt."
+      },
+      "question": {
+        "type": "main-idea",
+        "q": "What is this paragraph mostly about?",
+        "choices": [
+          "A family packing their bags at home at night",
+          "People crowding onto a bus for a long trip",
+          "A driver fixing a broken bus by the road",
+          "Children playing games while waiting at a station"
+        ],
+        "answer": 1,
+        "evidence": "The city bus was almost full, but more people were still pushing to get on.",
+        "explain": "Every sentence describes passengers getting on and settling into a crowded bus."
+      },
+      "readability": {
+        "grade": 6.4,
+        "fk": 4.6,
+        "cli": 8.6,
+        "ari": 5.9
+      }
+    },
+    {
+      "id": "asp-gracas-dream",
+      "title": "Graca's dream",
+      "kind": "story",
+      "topic": "people",
+      "text": "Graca was about to be born in a small village in Mozambique. The country was poor and the people did not yet rule themselves. Children didn't have good schools and many couldn't read. Graca's mother dreamed of giving her children better opportunities. But without education there was little hope. Baby Graca would be the sixth child. But with this joyous event there was great sadness. Their beloved father was dying. He dreamed that his youngest daughter would go to a good school. He knew that education would give her opportunities he never had. His family promised to make their dad's dream come true.",
+      "source": {
+        "name": "African Storybook",
+        "url": "https://github.com/global-asp/asp-source/blob/master/en/0083_gracas-dream.md",
+        "license": "CC BY 4.0",
+        "author": "Melissa Fagan",
+        "note": "Beginning of the story."
+      },
+      "question": {
+        "type": "inference",
+        "q": "What did Graca's family believe about school?",
+        "choices": [
+          "It would give Graca a better life",
+          "It was only for the oldest child",
+          "It mattered less than work on the farm",
+          "It was too far away to reach"
+        ],
+        "answer": 0,
+        "evidence": "He knew that education would give her opportunities he never had.",
+        "explain": "Her parents dreamed of school for her because education brings opportunities."
+      },
+      "readability": {
+        "grade": 6.5,
+        "fk": 5.1,
+        "cli": 8.9,
+        "ari": 5.6
+      }
+    },
+    {
+      "id": "asp-queen-of-soweto",
+      "title": "Queen of Soweto: The Story of Basetsana Kumalo",
+      "kind": "story",
+      "topic": "people",
+      "text": "Basetsana Makgalemele was born in a township called Soweto. She was her parents' third daughter. They named her Basetsana, which means \"girls\". In Tswana culture, calling your daughter that means your next child will be a boy. This actually happened. Her parents' next child was a boy. Her parents, big sisters and younger brother all called her Bassie for short.",
+      "source": {
+        "name": "African Storybook",
+        "url": "https://github.com/global-asp/asp-source/blob/master/en/0263_queen-of-soweto-the-story-of-basetsana-kumalo.md",
+        "license": "CC BY 4.0",
+        "author": "Jessica Taylor",
+        "note": "Beginning of the story."
+      },
+      "question": {
+        "type": "detail",
+        "q": "In Tswana culture, what does naming a daughter Basetsana mean?",
+        "choices": [
+          "She will become a queen one day",
+          "She will be the last child born",
+          "The family will move to the city",
+          "The family's next child will be a boy"
+        ],
+        "answer": 3,
+        "evidence": "calling your daughter that means your next child will be a boy",
+        "explain": "The paragraph explains the name means the next child will be a boy."
+      },
+      "readability": {
+        "grade": 6.6,
+        "fk": 5.1,
+        "cli": 9.2,
+        "ari": 5.6
+      }
+    },
+    {
+      "id": "asp-namoratunga",
+      "title": "Namoratunga",
+      "kind": "story",
+      "topic": "people",
+      "text": "Long time ago, in a Turkana village, people loved to dance the edonga dance. Every evening they gathered together and danced edonga. The whole region came to know of this village and its dancers. People from the nearby villages also came to dance edonga. A stranger heard of the famous village. He sent his messenger to go there before him.",
+      "source": {
+        "name": "African Storybook",
+        "url": "https://github.com/global-asp/asp-source/blob/master/en/0080_namoratunga.md",
+        "license": "CC BY 4.0",
+        "author": "Simon Ipoo",
+        "note": "Beginning of the story."
+      },
+      "question": {
+        "type": "sequence",
+        "q": "What did the stranger do after he heard about the famous village?",
+        "choices": [
+          "He came to teach them a new dance",
+          "He told the nearby villages to stay away",
+          "He sent a messenger there ahead of him",
+          "He built a house next to the dancers"
+        ],
+        "answer": 2,
+        "evidence": "He sent his messenger to go there before him.",
+        "explain": "First the stranger heard of the village, then he sent his messenger ahead."
+      },
+      "readability": {
+        "grade": 6.4,
+        "fk": 6.2,
+        "cli": 8,
+        "ari": 5
+      }
+    },
+    {
+      "id": "asp-anansi-and-vulture",
+      "title": "Anansi and Vulture",
+      "kind": "story",
+      "topic": "friendship",
+      "text": "Anansi the Spider and Rabbit were friends. They lived in a peaceful village in the mountains. Rabbit owned a big farm with lots of vegetables and fruit. Even though Rabbit shared generously with his friend, Anansi was unhappy and jealous. So Anansi thought of a clever plan to take over Rabbit's farm. Soon Rabbit was left poor and homeless. Anansi was the proud owner of all Rabbit's land, vegetables, and fruit.",
+      "source": {
+        "name": "African Storybook",
+        "url": "https://github.com/global-asp/asp-source/blob/master/en/0289_anansi-and-vulture.md",
+        "license": "CC BY 4.0",
+        "author": "Ghanaian folktale",
+        "note": "Beginning of the story."
+      },
+      "question": {
+        "type": "inference",
+        "q": "What kind of friend was Anansi to Rabbit?",
+        "choices": [
+          "A loyal friend who shared his food",
+          "A jealous friend who tricked him",
+          "A shy friend who rarely visited",
+          "A helpful friend who worked his farm"
+        ],
+        "answer": 1,
+        "evidence": "Anansi was unhappy and jealous",
+        "explain": "Anansi was jealous and used a plan to take everything Rabbit owned."
+      },
+      "readability": {
+        "grade": 6.9,
+        "fk": 6.3,
+        "cli": 8.7,
+        "ari": 5.6
+      }
+    },
+    {
+      "id": "asp-grandmother-and-the-smelly-girl",
+      "title": "Grandmother and the Smelly Girl",
+      "kind": "story",
+      "topic": "family",
+      "text": "Tasneem was a very beautiful girl and her grandmother was very kind. Her grandmother spent many hours making a handsome makgabe for Tasneem. Tasneem loved to wear that apron. The other girls in that place were jealous of Tasneem's makgabe. They thought that it would be better to get rid of it. But it is a difficult thing to take a person's clothes when that person is wearing them.",
+      "source": {
+        "name": "African Storybook",
+        "url": "https://github.com/global-asp/asp-source/blob/master/en/0218_grandmother-and-the-smelly-girl.md",
+        "license": "CC BY 4.0",
+        "author": "Southern African Folktale",
+        "note": "Beginning of the story."
+      },
+      "question": {
+        "type": "vocabulary",
+        "q": "From the paragraph, what is a makgabe?",
+        "choices": [
+          "A kind of apron",
+          "A kind of necklace",
+          "A kind of hat",
+          "A kind of basket"
+        ],
+        "answer": 0,
+        "evidence": "Tasneem loved to wear that apron.",
+        "explain": "Right after the makgabe is mentioned, the paragraph calls it \"that apron.\""
+      },
+      "readability": {
+        "grade": 6.1,
+        "fk": 5.3,
+        "cli": 7.8,
+        "ari": 5.3
+      }
+    },
+    {
+      "id": "pb-bonda-and-devi",
+      "title": "Bonda and Devi",
+      "kind": "story",
+      "topic": "friendship",
+      "text": "\"Again! Stack them up again, Bonda! I want to try knocking them down from a different angle!\" Without hesitating for a moment, without even frowning, Bonda puts one battered box on top of the other for the fiftieth time. The high, shaky, cardboard tower is perfectly balanced, the way only Bonda knows how to build it.",
+      "source": {
+        "name": "Pratham Books (StoryWeaver)",
+        "url": "https://github.com/global-asp/pb-source/blob/master/en/0380_bonda-and-devi.md",
+        "license": "CC BY 4.0",
+        "author": "Roopa Pai",
+        "note": "Beginning of the story."
+      },
+      "question": {
+        "type": "inference",
+        "q": "What does the paragraph show about Bonda?",
+        "choices": [
+          "He is tired of building towers",
+          "He is angry about the broken boxes",
+          "He wants a turn knocking them down",
+          "He is patient and glad to keep helping"
+        ],
+        "answer": 3,
+        "evidence": "Without hesitating for a moment, without even frowning",
+        "explain": "Bonda rebuilds the tower for the fiftieth time without even frowning."
+      },
+      "readability": {
+        "grade": 6.4,
+        "fk": 6.3,
+        "cli": 7.8,
+        "ari": 5.2
+      }
+    },
+    {
+      "id": "pb-rupas-vacation",
+      "title": "Rupa's Vacation",
+      "kind": "story",
+      "topic": "family",
+      "text": "Rini, Neha and Rupa are three friends. Rini and Neha are twins and Rupa's mother is the elder sister of Rini and Neha, so Rini and Neha are actually Rupa's 'mausis'. But Rini and Neha are only one year older than Rupa and they are close friends. Rini and Neha live in Murshidabad a town in West Bengal. They go to a village school, Rupa lives in a big city Kolkata and goes to a school there. The friends would very much love to be together but cannot because of school.",
+      "source": {
+        "name": "Pratham Books (StoryWeaver)",
+        "url": "https://github.com/global-asp/pb-source/blob/master/en/0367_rupa-s-vacation.md",
+        "license": "CC BY 4.0",
+        "author": "Bhasyati Sinha",
+        "note": "Beginning of the story."
+      },
+      "question": {
+        "type": "vocabulary",
+        "q": "Rini and Neha are Rupa's \"mausis.\" From the paragraph, a mausi is",
+        "choices": [
+          "your father's brother",
+          "your older cousin",
+          "your mother's sister",
+          "your school teacher"
+        ],
+        "answer": 2,
+        "evidence": "Rupa's mother is the elder sister of Rini and Neha",
+        "explain": "Rini and Neha are sisters of Rupa's mother, so a mausi is a mother's sister."
+      },
+      "readability": {
+        "grade": 6.1,
+        "fk": 7.1,
+        "cli": 6,
+        "ari": 5.1
+      }
+    },
+    {
+      "id": "burgess-jimmy-skunks-black-coat",
+      "title": "Jimmy Skunk's Black Coat",
+      "kind": "story",
+      "topic": "animals",
+      "text": "Jimmy Skunk, as everybody knows, wears a striped suit, a suit of black and white. There was a time, long, long ago, when all the Skunk family wore black. Very handsome their coats were, too, a beautiful, glossy black. They were very, very proud of them and took the greatest care of them, brushing them carefully ever so many times a day.",
+      "source": {
+        "name": "Old Mother West Wind (Thornton W. Burgess, 1910)",
+        "url": "https://www.gutenberg.org/ebooks/2557",
+        "license": "Public domain",
+        "author": "Thornton W. Burgess",
+        "note": "Paragraph from the book."
+      },
+      "question": {
+        "type": "detail",
+        "q": "Long ago, what did the coats of all the Skunk family look like?",
+        "choices": [
+          "Black and white",
+          "Shiny all black",
+          "Striped brown",
+          "Gray and white"
+        ],
+        "answer": 1,
+        "evidence": "all the Skunk family wore black",
+        "explain": "Long ago all the Skunks wore glossy black coats, not stripes."
+      },
+      "readability": {
+        "grade": 6.6,
+        "fk": 6.4,
+        "cli": 7.1,
+        "ari": 6.2
+      }
+    },
+    {
+      "id": "burgess-the-great-race",
+      "title": "The Great Race",
+      "kind": "story",
+      "topic": "animals",
+      "text": "The Merry Little Breezes flew along, too, to see that the race was fair. Peter Rabbit went with great big jumps. Whenever he came to a little bush he jumped right over it, for Peter Rabbit's legs are long and meant for jumping. Billy Mink is so slim that he slipped between the bushes and through the long grass like a little brown streak. Reddy Fox, who is bigger than either Peter Rabbit or Billy Mink, had no trouble in keeping up with them. Not one of them noticed that Spotty the Turtle was hanging fast to the end of Reddy's tail.",
+      "source": {
+        "name": "Old Mother West Wind (Thornton W. Burgess, 1910)",
+        "url": "https://www.gutenberg.org/ebooks/2557",
+        "license": "Public domain",
+        "author": "Thornton W. Burgess",
+        "note": "Paragraph from the book."
+      },
+      "question": {
+        "type": "inference",
+        "q": "How was slow Spotty the Turtle able to keep up with the racers?",
+        "choices": [
+          "He was riding along on Reddy Fox's tail",
+          "He took a shortcut through the long grass",
+          "The Merry Little Breezes carried him",
+          "He jumped over the bushes like Peter"
+        ],
+        "answer": 0,
+        "evidence": "Spotty the Turtle was hanging fast to the end of Reddy's tail",
+        "explain": "Spotty held on to Reddy's tail, so Reddy carried him along."
+      },
+      "readability": {
+        "grade": 6.5,
+        "fk": 6.1,
+        "cli": 6.8,
+        "ari": 6.6
+      }
+    },
+    {
+      "id": "burgess-flies-for-grandfather-frog",
+      "title": "Flies for Grandfather Frog",
+      "kind": "story",
+      "topic": "animals",
+      "text": "Old Grandfather Frog sat on his big green lily pad blinking in the sun. It was very still, very, very still indeed. Suddenly out of the brown bulrushes burst the Merry Little Breezes and surrounded old Grandfather Frog. And every one of them had brought to him a fat, foolish, green fly.",
+      "source": {
+        "name": "Mother West Wind's Children (Thornton W. Burgess, 1911)",
+        "url": "https://www.gutenberg.org/ebooks/20877",
+        "license": "Public domain",
+        "author": "Thornton W. Burgess",
+        "note": "Paragraph from the book."
+      },
+      "question": {
+        "type": "sequence",
+        "q": "What broke the stillness around Grandfather Frog?",
+        "choices": [
+          "A fat green fly buzzed past his nose",
+          "Grandfather Frog dove into the water",
+          "A loud splash came from the bulrushes",
+          "The Merry Little Breezes burst in"
+        ],
+        "answer": 3,
+        "evidence": "Suddenly out of the brown bulrushes burst the Merry Little Breezes",
+        "explain": "After the quiet, the Merry Little Breezes suddenly burst out of the bulrushes."
+      },
+      "readability": {
+        "grade": 6.3,
+        "fk": 5.6,
+        "cli": 7.7,
+        "ari": 5.7
+      }
+    },
+    {
+      "id": "burgess-sammy-jays-blue-coat",
+      "title": "Sammy Jay's Blue Coat",
+      "kind": "story",
+      "topic": "animals",
+      "text": "Sammy Jay has a very fine coat, a very beautiful coat. Everybody knows that. In fact, Sammy's coat has long been the envy of a great many of his neighbors in the Green Forest. Some of them, you know, have very modest coats. They are not beautiful at all. And yet the owners of some of these plain coats are among the most honest and hard-working of all the little people who live in the Green Forest. They find it hard, very hard indeed, to understand why such a scamp and mischiefmaker as Sammy Jay should be given such a wonderful blue coat with white trimmings.",
+      "source": {
+        "name": "Mother West Wind 'Why' Stories (Thornton W. Burgess, 1915)",
+        "url": "https://www.gutenberg.org/ebooks/14958",
+        "license": "Public domain",
+        "author": "Thornton W. Burgess",
+        "note": "Paragraph from the book."
+      },
+      "question": {
+        "type": "main-idea",
+        "q": "What puzzles some of Sammy Jay's neighbors?",
+        "choices": [
+          "Why Sammy Jay works so much harder than they do",
+          "Why their own coats are so colorful",
+          "Why a mischief-maker has such a fine coat",
+          "Why Sammy Jay never leaves the forest"
+        ],
+        "answer": 2,
+        "evidence": "They find it hard, very hard indeed, to understand why such a scamp and mischiefmaker as Sammy Jay should be given such a wonderful blue coat",
+        "explain": "Honest, hard-working neighbors wonder why a scamp gets the beautiful coat."
+      },
+      "readability": {
+        "grade": 6.4,
+        "fk": 6.6,
+        "cli": 6.9,
+        "ari": 5.9
+      }
+    },
+    {
+      "id": "burgess-flitter-the-bat",
+      "title": "Watching Flitter the Bat",
+      "kind": "story",
+      "topic": "animals",
+      "text": "Flitter the Bat made Peter Rabbit's head dizzy. Peter couldn't help watching him. He just had to. It seemed so wonderful that Flitter could really fly, that whenever he saw him, Peter had to stop and watch. And then, as he saw Flitter twist and turn, fly high, fly low, and go round and round, Peter's head would begin to swim and grow dizzy, and he wondered and wondered how it was that Flitter himself didn't grow dizzy.",
+      "source": {
+        "name": "Mother West Wind 'Why' Stories (Thornton W. Burgess, 1915)",
+        "url": "https://www.gutenberg.org/ebooks/14958",
+        "license": "Public domain",
+        "author": "Thornton W. Burgess",
+        "note": "Paragraph from the book."
+      },
+      "question": {
+        "type": "main-idea",
+        "q": "What is this paragraph mostly about?",
+        "choices": [
+          "Flitter teaching Peter how to fly",
+          "Peter getting dizzy watching Flitter fly",
+          "Peter chasing Flitter all around the Smiling Pool",
+          "Flitter getting dizzy from flying"
+        ],
+        "answer": 1,
+        "evidence": "Peter's head would begin to swim and grow dizzy",
+        "explain": "Peter cannot stop watching Flitter twist and turn, and it makes him dizzy."
+      },
+      "readability": {
+        "grade": 6.3,
+        "fk": 5.6,
+        "cli": 7,
+        "ari": 6.2
+      }
+    },
+    {
+      "id": "burgess-thinking-of-winter",
+      "title": "Thinking of Winter",
+      "kind": "story",
+      "topic": "animals",
+      "text": "Peter Rabbit had been making fun of Happy Jack Squirrel because Happy Jack said that he had too much to do to stop and play that morning. Here it was summer, and winter was a long way off. What was summer for if not to play in and have a good time? Yet Happy Jack was already thinking of winter and was hunting for a new storehouse so as to have it ready when the time to fill it with nuts should come. It was much better to play and take sun-naps among the buttercups and daisies and just have a good time all day long.",
+      "source": {
+        "name": "Mother West Wind 'How' Stories (Thornton W. Burgess, 1916)",
+        "url": "https://www.gutenberg.org/ebooks/21286",
+        "license": "Public domain",
+        "author": "Thornton W. Burgess",
+        "note": "Paragraph from the book."
+      },
+      "question": {
+        "type": "inference",
+        "q": "Who is planning ahead in this paragraph, and how?",
+        "choices": [
+          "Happy Jack, by readying a storehouse",
+          "Peter, by saving buttercups for winter",
+          "Peter, by taking sun-naps every day",
+          "Happy Jack, by playing all summer long"
+        ],
+        "answer": 0,
+        "evidence": "Yet Happy Jack was already thinking of winter",
+        "explain": "Happy Jack is hunting for a storehouse now so it is ready for winter nuts."
+      },
+      "readability": {
+        "grade": 6.7,
+        "fk": 7.4,
+        "cli": 5.4,
+        "ari": 7.3
+      }
+    },
+    {
+      "id": "burgess-carol-the-meadow-lark",
+      "title": "Carol the Meadow Lark",
+      "kind": "facts",
+      "topic": "animals",
+      "text": "Somehow Peter never before had realized how handsome Carol the Meadow Lark was. As he faced Peter, the latter saw a beautiful yellow throat and waistcoat, with a broad black crescent on his breast. There was a yellow line above each eye. His back was of brown with black markings. His sides were whitish, with spats and streaks of black. The outer edges of his tail were white. Altogether he was really handsome, far handsomer than one would suspect, seeing him at a distance.",
+      "source": {
+        "name": "The Burgess Bird Book for Children (Thornton W. Burgess, 1919)",
+        "url": "https://www.gutenberg.org/ebooks/3074",
+        "license": "Public domain",
+        "author": "Thornton W. Burgess",
+        "note": "Paragraph from the book."
+      },
+      "question": {
+        "type": "detail",
+        "q": "What mark did Carol the Meadow Lark have on his breast?",
+        "choices": [
+          "A round bright red spot",
+          "A long thin white stripe",
+          "A yellow ring",
+          "A black crescent shape"
+        ],
+        "answer": 3,
+        "evidence": "a broad black crescent on his breast",
+        "explain": "The paragraph says he had a broad black crescent on his breast."
+      },
+      "readability": {
+        "grade": 6.6,
+        "fk": 5.4,
+        "cli": 8.4,
+        "ari": 5.9
+      }
+    },
+    {
+      "id": "burgess-jimmy-skunk-on-the-hunt",
+      "title": "Jimmy Skunk on the Hunt",
+      "kind": "story",
+      "topic": "animals",
+      "text": "Jimmy Skunk raised himself on his hind-legs a little to see just where Bubbling Bob dropped down in the grass. Then Jimmy began to move in that direction. Suddenly Peter understood. He remembered that Bubbling Bob's nest is always on the ground. It was his eggs that Jimmy Skunk was looking for.",
+      "source": {
+        "name": "The Burgess Bird Book for Children (Thornton W. Burgess, 1919)",
+        "url": "https://www.gutenberg.org/ebooks/3074",
+        "license": "Public domain",
+        "author": "Thornton W. Burgess",
+        "note": "Paragraph from the book."
+      },
+      "question": {
+        "type": "cause-effect",
+        "q": "Why was Jimmy Skunk moving toward the spot where Bubbling Bob landed?",
+        "choices": [
+          "He wanted to listen to Bubbling Bob's song",
+          "He was hiding from Peter Rabbit",
+          "He was looking for Bubbling Bob's eggs",
+          "He was going home to his own nest"
+        ],
+        "answer": 2,
+        "evidence": "It was his eggs that Jimmy Skunk was looking for.",
+        "explain": "Bubbling Bob's nest is on the ground, and Jimmy wanted the eggs."
+      },
+      "readability": {
+        "grade": 6.1,
+        "fk": 4.8,
+        "cli": 8.2,
+        "ari": 5.2
+      }
+    },
+    {
+      "id": "burgess-true-seals",
+      "title": "True Seals",
+      "kind": "facts",
+      "topic": "ocean",
+      "text": "The true Seals are short-necked, thick-bodied, and have rather round heads with no visible ears. The Walrus and Sea Lions can turn their hind flippers forward to use as feet on land, but this the true Seals cannot do. Therefore they are more clumsy out of water. Their front flippers are covered with hair.",
+      "source": {
+        "name": "The Burgess Animal Book for Children (Thornton W. Burgess, 1920)",
+        "url": "https://www.gutenberg.org/ebooks/2441",
+        "license": "Public domain",
+        "author": "Thornton W. Burgess",
+        "note": "Paragraph from the book."
+      },
+      "question": {
+        "type": "cause-effect",
+        "q": "Why are true Seals more clumsy out of water?",
+        "choices": [
+          "Their front flippers are covered with thick hair",
+          "They cannot turn their hind flippers forward",
+          "Their necks are too long and thin",
+          "They have no ears to hear danger"
+        ],
+        "answer": 1,
+        "evidence": "Therefore they are more clumsy out of water",
+        "explain": "Walruses and Sea Lions use turned-forward hind flippers as feet; true Seals cannot."
+      },
+      "readability": {
+        "grade": 6.7,
+        "fk": 5,
+        "cli": 8.6,
+        "ari": 6.6
+      }
+    },
+    {
+      "id": "burgess-nimbleheels-jumps",
+      "title": "A Wonderful Jump",
+      "kind": "story",
+      "topic": "animals",
+      "text": "Nimbleheels hopped down from the log on which he had been sitting and at once shot into the air in such a high, long, beautiful jump that everybody exclaimed. This way and that way he went in great leaps. It was truly wonderful.",
+      "source": {
+        "name": "The Burgess Animal Book for Children (Thornton W. Burgess, 1920)",
+        "url": "https://www.gutenberg.org/ebooks/2441",
+        "license": "Public domain",
+        "author": "Thornton W. Burgess",
+        "note": "Paragraph from the book."
+      },
+      "question": {
+        "type": "inference",
+        "q": "What is Nimbleheels especially good at?",
+        "choices": [
+          "Leaping high and far",
+          "Climbing very tall trees",
+          "Digging deep holes",
+          "Swimming fast"
+        ],
+        "answer": 0,
+        "evidence": "such a high, long, beautiful jump that everybody exclaimed",
+        "explain": "Everybody exclaimed at his great leaps, so he is a fine jumper."
+      },
+      "readability": {
+        "grade": 6.1,
+        "fk": 5.9,
+        "cli": 6.9,
+        "ari": 5.6
+      }
+    },
+    {
+      "id": "baldwin-william-tell",
+      "title": "William Tell",
+      "kind": "story",
+      "topic": "history",
+      "text": "William Tell's home was among the mountains, and he was a famous hunter. No one in all the land could shoot with bow and arrow so well as he. Gessler knew this, and so he thought of a cruel plan to make the hunter's own skill bring him to grief. He ordered that Tell's little boy should be made to stand up in the public square with an apple on his head; and then he bade Tell shoot the apple with one of his arrows.",
+      "source": {
+        "name": "Fifty Famous Stories Retold (James Baldwin, 1896)",
+        "url": "https://www.gutenberg.org/ebooks/18442",
+        "license": "Public domain",
+        "author": "James Baldwin",
+        "note": "Paragraph from the book."
+      },
+      "question": {
+        "type": "inference",
+        "q": "Why was Gessler's plan so cruel?",
+        "choices": [
+          "Tell had never used a bow before",
+          "The apple was poisoned with something",
+          "The square was too far for any arrow",
+          "Tell might hit his own son by mistake"
+        ],
+        "answer": 3,
+        "evidence": "Tell's little boy should be made to stand up in the public square with an apple on his head",
+        "explain": "If Tell missed the apple, the arrow could hit his little boy."
+      },
+      "readability": {
+        "grade": 6.2,
+        "fk": 6.4,
+        "cli": 5.1,
+        "ari": 7
+      }
+    },
+    {
+      "id": "baldwin-the-butter-lion",
+      "title": "The Butter Lion",
+      "kind": "story",
+      "topic": "people",
+      "text": "On the kitchen table there was a large square lump of yellow butter. Two hundred pounds the lump weighed, and it had just come in, fresh and clean, from the dairy on the mountain. With a kitchen knife in his hand, Antonio began to cut and carve this butter. In a few minutes he had molded it into the shape of a crouching lion; and all the servants crowded around to see it.",
+      "source": {
+        "name": "Fifty Famous Stories Retold (James Baldwin, 1896)",
+        "url": "https://www.gutenberg.org/ebooks/18442",
+        "license": "Public domain",
+        "author": "James Baldwin",
+        "note": "Paragraph from the book."
+      },
+      "question": {
+        "type": "vocabulary",
+        "q": "Antonio made \"a crouching lion.\" What does crouching mean?",
+        "choices": [
+          "Roaring with its mouth open",
+          "Running fast across a field",
+          "Bent low, close to the ground",
+          "Sleeping curled up in a ball"
+        ],
+        "answer": 2,
+        "evidence": "he had molded it into the shape of a crouching lion",
+        "explain": "A crouching animal bends its legs and stays low to the ground."
+      },
+      "readability": {
+        "grade": 6.2,
+        "fk": 5.9,
+        "cli": 6.2,
+        "ari": 6.6
+      }
+    },
+    {
+      "id": "baldwin-alexander-and-bucephalus",
+      "title": "Alexander and Bucephalus",
+      "kind": "story",
+      "topic": "history",
+      "text": "Everybody expected to see the boy killed outright. But he kept his place, and let the horse run as fast as he would. By and by, when Bucephalus had become tired, Alexander reined him in, and rode back to the place where his father was standing.",
+      "source": {
+        "name": "Fifty Famous Stories Retold (James Baldwin, 1896)",
+        "url": "https://www.gutenberg.org/ebooks/18442",
+        "license": "Public domain",
+        "author": "James Baldwin",
+        "note": "Paragraph from the book."
+      },
+      "question": {
+        "type": "sequence",
+        "q": "What did Alexander do once Bucephalus had become tired?",
+        "choices": [
+          "He jumped down and let the tired horse go free",
+          "He reined him in and rode back to his father",
+          "He gave the horse a long drink of water",
+          "He kept riding faster until night came"
+        ],
+        "answer": 1,
+        "evidence": "when Bucephalus had become tired, Alexander reined him in",
+        "explain": "First the horse ran until tired; then Alexander reined him in and rode back."
+      },
+      "readability": {
+        "grade": 6.2,
+        "fk": 6,
+        "cli": 6.8,
+        "ari": 5.9
+      }
+    },
+    {
+      "id": "baldwin-prince-gautama",
+      "title": "Prince Gautama",
+      "kind": "story",
+      "topic": "history",
+      "text": "In the Far East there was once a prince whose name was Gautama. He lived in a splendid palace where there was everything that could give delight. It was the wish of his father and mother that every day of his life should be a day of perfect happiness.",
+      "source": {
+        "name": "Fifty Famous People (James Baldwin, 1912)",
+        "url": "https://www.gutenberg.org/ebooks/6168",
+        "license": "Public domain",
+        "author": "James Baldwin",
+        "note": "Paragraph from the book."
+      },
+      "question": {
+        "type": "detail",
+        "q": "What did Gautama's father and mother wish for him?",
+        "choices": [
+          "That every day would be perfectly happy",
+          "That he would become a great soldier",
+          "That he would travel far across the world",
+          "That he would leave the palace soon"
+        ],
+        "answer": 0,
+        "evidence": "every day of his life should be a day of perfect happiness",
+        "explain": "His parents wished every day of his life to be perfectly happy."
+      },
+      "readability": {
+        "grade": 6.2,
+        "fk": 6.2,
+        "cli": 6.4,
+        "ari": 6
+      }
+    },
+    {
+      "id": "baldwin-st-francis",
+      "title": "St. Francis",
+      "kind": "story",
+      "topic": "people",
+      "text": "The man of whom I am now going to tell you was famous, not for his wealth or his power or his deeds in war, but for his great gentleness. He lived more than seven hundred years ago in a quaint little town of Italy. His name was Francis, and because of his goodness, all men now call him St. Francis.",
+      "source": {
+        "name": "Fifty Famous People (James Baldwin, 1912)",
+        "url": "https://www.gutenberg.org/ebooks/6168",
+        "license": "Public domain",
+        "author": "James Baldwin",
+        "note": "Paragraph from the book."
+      },
+      "question": {
+        "type": "main-idea",
+        "q": "Why was Francis famous, according to the paragraph?",
+        "choices": [
+          "For his wealth and great power",
+          "For his brave deeds in war",
+          "For building a little Italian town",
+          "For being so gentle and good"
+        ],
+        "answer": 3,
+        "evidence": "famous, not for his wealth or his power or his deeds in war, but for his great gentleness",
+        "explain": "He was famous for his gentleness and goodness, not wealth, power or war."
+      },
+      "readability": {
+        "grade": 6.1,
+        "fk": 6.7,
+        "cli": 5,
+        "ari": 6.6
+      }
+    },
+    {
+      "id": "baldwin-zeuxis-and-the-cherries",
+      "title": "Zeuxis and the Cherries",
+      "kind": "story",
+      "topic": "people",
+      "text": "Some time after this, Zeuxis painted another wonderful picture. It was that of a boy carrying a basket of ripe red cherries. When he hung this painting outside of his door, some birds flew down and tried to carry the cherries away.",
+      "source": {
+        "name": "Fifty Famous People (James Baldwin, 1912)",
+        "url": "https://www.gutenberg.org/ebooks/6168",
+        "license": "Public domain",
+        "author": "James Baldwin",
+        "note": "Paragraph from the book."
+      },
+      "question": {
+        "type": "inference",
+        "q": "What does the birds' visit show about the painting?",
+        "choices": [
+          "The painting was hung too low",
+          "The birds liked the boy",
+          "The cherries looked very real",
+          "The colors were fading quickly"
+        ],
+        "answer": 2,
+        "evidence": "some birds flew down and tried to carry the cherries away",
+        "explain": "The birds were fooled into thinking the painted cherries were real fruit."
+      },
+      "readability": {
+        "grade": 6.7,
+        "fk": 5.9,
+        "cli": 8,
+        "ari": 6.3
+      }
+    },
+    {
+      "id": "baldwin-the-box-of-treasure",
+      "title": "The Box of Treasure",
+      "kind": "story",
+      "topic": "people",
+      "text": "\"Well, it is this way,\" answered the man: \"I bought a piece of ground from this neighbor of mine, and paid him a fair price for it. Yesterday, when I was digging in it, I found a box full of gold and jewels. This treasure does not belong to me, for I bought only the ground; but when I offered it to my neighbor he refused it.\"",
+      "source": {
+        "name": "Fifty Famous People (James Baldwin, 1912)",
+        "url": "https://www.gutenberg.org/ebooks/6168",
+        "license": "Public domain",
+        "author": "James Baldwin",
+        "note": "Paragraph from the book."
+      },
+      "question": {
+        "type": "cause-effect",
+        "q": "Why does the man say the treasure does not belong to him?",
+        "choices": [
+          "He found it while digging on his neighbor's land",
+          "He bought only the ground, not the box",
+          "The box was too heavy to carry home",
+          "The jewels turned out to be fake"
+        ],
+        "answer": 1,
+        "evidence": "This treasure does not belong to me, for I bought only the ground",
+        "explain": "He paid for the land only, so he feels the treasure is not his."
+      },
+      "readability": {
+        "grade": 6.2,
+        "fk": 7,
+        "cli": 4.5,
+        "ari": 7
+      }
+    },
+    {
+      "id": "fabre-the-coming-rain",
+      "title": "The Coming Rain",
+      "kind": "facts",
+      "topic": "weather",
+      "text": "Rain forms in the distance like a dim curtain extending clear across the sky. The sheet of water advances rapidly; it would beat the fastest racing horse. It is coming, it has come. Violent flashes of lightning furrow it, thunder roars in its depths.",
+      "source": {
+        "name": "The Story-Book of Science (Jean-Henri Fabre, 1917)",
+        "url": "https://www.gutenberg.org/ebooks/56795",
+        "license": "Public domain",
+        "author": "Jean-Henri Fabre",
+        "note": "Paragraph from the book."
+      },
+      "question": {
+        "type": "vocabulary",
+        "q": "Flashes of lightning \"furrow\" the rain. What does furrow mean here?",
+        "choices": [
+          "Cut lines across it",
+          "Make it grow warmer",
+          "Push it backward",
+          "Turn it into snow"
+        ],
+        "answer": 0,
+        "evidence": "Violent flashes of lightning furrow it",
+        "explain": "A furrow is a long line cut into something, like a plow line in a field."
+      },
+      "readability": {
+        "grade": 6.2,
+        "fk": 4.8,
+        "cli": 8.2,
+        "ari": 5.5
+      }
+    },
+    {
+      "id": "fabre-counting-tree-rings",
+      "title": "Counting Tree Rings",
+      "kind": "facts",
+      "topic": "plants",
+      "text": "\"I must tell you,\" continued Uncle Paul, \"that those circles are called annual layers. Why annual, if you please? Because one is formed every year; one only, understand, neither more nor less. The learned who spend their lives studying plants, and who are called botanists, tell us that no doubt is possible on that point. From the moment the little tree springs from the seed to the time when the old tree dies, every year there is formed a ring, a layer of wood. This understood, let us count the layers of our pear-tree.\"",
+      "source": {
+        "name": "The Story-Book of Science (Jean-Henri Fabre, 1917)",
+        "url": "https://www.gutenberg.org/ebooks/56795",
+        "license": "Public domain",
+        "author": "Jean-Henri Fabre",
+        "note": "Paragraph from the book."
+      },
+      "question": {
+        "type": "detail",
+        "q": "How often does a tree form an annual layer?",
+        "choices": [
+          "Two layers every year",
+          "One layer every month",
+          "One layer after every big rainstorm",
+          "Exactly one each year"
+        ],
+        "answer": 3,
+        "evidence": "every year there is formed a ring, a layer of wood",
+        "explain": "Uncle Paul says one layer forms every year, neither more nor less."
+      },
+      "readability": {
+        "grade": 6.9,
+        "fk": 5.8,
+        "cli": 7.9,
+        "ari": 6.9
+      }
+    },
+    {
+      "id": "fabre-the-bees-harvest",
+      "title": "The Bee's Harvest",
+      "kind": "facts",
+      "topic": "animals",
+      "text": "The bee enters a flower, plunges to the bottom of the corolla a long and flexible trunk, a kind of tongue that laps the sweet liquor. Droplet by droplet, drawn from this flower and that, the crop is filled. The bee at the same time nibbles a few grains of pollen. Moreover, it proposes to carry a good load of it to the hive. It has special utensils for this work: first, the down of its body, then the brushes and baskets that its legs supply. The down and the brushes are used for harvesting; the baskets for carrying.",
+      "source": {
+        "name": "The Story-Book of Science (Jean-Henri Fabre, 1917)",
+        "url": "https://www.gutenberg.org/ebooks/56795",
+        "license": "Public domain",
+        "author": "Jean-Henri Fabre",
+        "note": "Paragraph from the book."
+      },
+      "question": {
+        "type": "detail",
+        "q": "What does the bee use the baskets on its legs for?",
+        "choices": [
+          "For harvesting the pollen",
+          "For lapping up sweet liquid",
+          "For carrying pollen loads",
+          "For storing wax in the hive"
+        ],
+        "answer": 2,
+        "evidence": "the baskets for carrying",
+        "explain": "The down and brushes harvest the pollen; the baskets carry it."
+      },
+      "readability": {
+        "grade": 6.2,
+        "fk": 6,
+        "cli": 6.6,
+        "ari": 6.2
+      }
+    },
+    {
+      "id": "fabre-an-evening-story",
+      "title": "An Evening Story",
+      "kind": "story",
+      "topic": "family",
+      "text": "In the evening Mother Ambroisine, her large round spectacles on her nose, was knitting stockings. On her knees the cat slept and mingled its purring with the tick-tack of the needles. The children were waiting for the story of the spider. Their uncle began.",
+      "source": {
+        "name": "The Story-Book of Science (Jean-Henri Fabre, 1917)",
+        "url": "https://www.gutenberg.org/ebooks/56795",
+        "license": "Public domain",
+        "author": "Jean-Henri Fabre",
+        "note": "Paragraph from the book."
+      },
+      "question": {
+        "type": "main-idea",
+        "q": "What scene does this paragraph describe?",
+        "choices": [
+          "A busy morning at the town market",
+          "A quiet evening before a story",
+          "A noisy party in the kitchen",
+          "A stormy night with no lights"
+        ],
+        "answer": 1,
+        "evidence": "The children were waiting for the story of the spider.",
+        "explain": "It is a calm evening, with knitting and a purring cat, as the children wait for a story."
+      },
+      "readability": {
+        "grade": 6.9,
+        "fk": 5.3,
+        "cli": 9.2,
+        "ari": 6.2
+      }
+    },
+    {
+      "id": "vanloon-telling-history-fairly",
+      "title": "Telling History Fairly",
+      "kind": "facts",
+      "topic": "history",
+      "text": "Few things in human life are either entirely good or entirely bad. Few things are either black or white. It is the duty of the honest chronicler to give a true account of all the good and bad sides of every historical event. It is very difficult to do this because we all have our personal likes and dislikes. But we ought to try and be as fair as we can be, and must not allow our prejudices to influence us too much.",
+      "source": {
+        "name": "The Story of Mankind (Hendrik Willem van Loon, 1921)",
+        "url": "https://www.gutenberg.org/ebooks/754",
+        "license": "Public domain",
+        "author": "Hendrik Willem van Loon",
+        "note": "Paragraph from the book."
+      },
+      "question": {
+        "type": "main-idea",
+        "q": "What is the main point of this paragraph?",
+        "choices": [
+          "Historians should try to tell both sides",
+          "History is mostly about bad events",
+          "Only the good events should ever be written down",
+          "Personal likes make history more fun"
+        ],
+        "answer": 0,
+        "evidence": "give a true account of all the good and bad sides of every historical event",
+        "explain": "The writer says a historian must show good and bad sides and be fair."
+      },
+      "readability": {
+        "grade": 6.2,
+        "fk": 7.1,
+        "cli": 5.8,
+        "ari": 5.6
+      }
+    },
+    {
+      "id": "vanloon-dates-play-tricks",
+      "title": "Dates Play Tricks",
+      "kind": "facts",
+      "topic": "history",
+      "text": "Dates are a very useful invention. We could not do without them but unless we are very careful, they will play tricks with us. They are apt to make history too precise. For example, when I talk of the point-of-view of mediaeval man, I do not mean that on the 31st of December of the year 476, suddenly all the people of Europe said, \"Ah, now the Roman Empire has come to an end and we are living in the Middle Ages. How interesting!\"",
+      "source": {
+        "name": "The Story of Mankind (Hendrik Willem van Loon, 1921)",
+        "url": "https://www.gutenberg.org/ebooks/754",
+        "license": "Public domain",
+        "author": "Hendrik Willem van Loon",
+        "note": "Paragraph from the book."
+      },
+      "question": {
+        "type": "inference",
+        "q": "What trick can dates play on us?",
+        "choices": [
+          "They make history seem far too long",
+          "They make old events seem very recent",
+          "They make us forget the names of important people",
+          "They make changes seem to happen in one day"
+        ],
+        "answer": 3,
+        "evidence": "They are apt to make history too precise.",
+        "explain": "People did not suddenly enter the Middle Ages on one date, though dates make it seem so."
+      },
+      "readability": {
+        "grade": 6.3,
+        "fk": 7.4,
+        "cli": 5.9,
+        "ari": 5.7
+      }
+    }
+  ]
+}

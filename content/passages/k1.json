@@ -1,0 +1,1325 @@
+{
+  "about": "Reading Quest paragraphs, easiest (kindergarten-grade 1)",
+  "passages": [
+    {
+      "id": "asp-rain",
+      "title": "Rain",
+      "kind": "story",
+      "topic": "weather",
+      "text": "I love water. I enjoy playing with water. It is raining. Rain gives us water. I enjoy playing outside. But it is raining. I enjoy playing out in the rain. My hair is wet from playing in the rain. My father is fixing my hair.",
+      "source": {
+        "name": "African Storybook",
+        "url": "https://github.com/global-asp/asp-source/blob/master/en/0331_rain.md",
+        "license": "CC BY 4.0",
+        "author": "Letta Machoga",
+        "note": "Whole story."
+      },
+      "question": {
+        "type": "cause-effect",
+        "q": "Why is the child's hair wet?",
+        "choices": [
+          "From washing in the river",
+          "From taking a long bath",
+          "From playing in the rain",
+          "From swimming in a pool"
+        ],
+        "answer": 2,
+        "evidence": "My hair is wet from playing in the rain",
+        "explain": "The child played out in the rain, so the hair got wet."
+      },
+      "readability": {
+        "grade": 0.6,
+        "fk": 2.1,
+        "cli": 0.6,
+        "ari": 0
+      }
+    },
+    {
+      "id": "asp-the-moon-and-the-cap",
+      "title": "The Moon and the Cap",
+      "kind": "story",
+      "topic": "family",
+      "text": "All of us went to the fun fair. Father bought brother fancy glasses. Mother bought me a bright blue cap. The baby got sugar candy. On the way home, a very strong wind came. It blew my cap away. My cap got stuck on a branch of a big old tree.",
+      "source": {
+        "name": "African Storybook",
+        "url": "https://github.com/global-asp/asp-source/blob/master/en/0149_the-moon-and-the-cap.md",
+        "license": "CC BY 4.0",
+        "author": "Noni",
+        "note": "Excerpt (beginning of the story)."
+      },
+      "question": {
+        "type": "detail",
+        "q": "What color was the cap Mother bought?",
+        "choices": [
+          "Shiny red",
+          "Dark green",
+          "Soft yellow",
+          "Bright blue"
+        ],
+        "answer": 3,
+        "evidence": "Mother bought me a bright blue cap.",
+        "explain": "Mother bought a bright blue cap at the fun fair."
+      },
+      "readability": {
+        "grade": 0.5,
+        "fk": 1.1,
+        "cli": 1.2,
+        "ari": 0
+      }
+    },
+    {
+      "id": "asp-a-fish-and-a-gift",
+      "title": "A Fish and a Gift",
+      "kind": "story",
+      "topic": "family",
+      "text": "A fish and a gift? Oh, what will it be? Papa cycles down to Muizenberg Beach. Squeak squeak go the wheels all the way to Surfer's Corner. Gulls circle the sky. \"Whaaat? Whaaat? Whaaat?\" they cry. \"What will you bring back for Yusuf?\" Papa rings his bell. \"Wait and see what it will be!\"",
+      "source": {
+        "name": "African Storybook",
+        "url": "https://github.com/global-asp/asp-source/blob/master/en/0124_a-fish-and-a-gift.md",
+        "license": "CC BY 4.0",
+        "author": "Liesl Jobson",
+        "note": "Excerpt from the story."
+      },
+      "question": {
+        "type": "vocabulary",
+        "q": "Papa cycles to the beach. How does he go?",
+        "choices": [
+          "He drives a car",
+          "He rides a bike",
+          "He walks there",
+          "He takes the bus"
+        ],
+        "answer": 1,
+        "evidence": "Papa cycles down to Muizenberg Beach",
+        "explain": "To cycle means to ride a bike. You can hear his wheels and his bell!"
+      },
+      "readability": {
+        "grade": 0.4,
+        "fk": 1,
+        "cli": 0.8,
+        "ari": 0
+      }
+    },
+    {
+      "id": "asp-fires-story",
+      "title": "Fire's story",
+      "kind": "story",
+      "topic": "safety",
+      "text": "Let me tell you my story. I start as a small spark. I run wild when the wind carries me. We are good friends, you and I. I cook your food. I light your night. I have many tricks. I am part of your family. But be careful when you invite me to your home. I don't like to be left alone.",
+      "source": {
+        "name": "African Storybook",
+        "url": "https://github.com/global-asp/asp-source/blob/master/en/0043_fires-story.md",
+        "license": "CC BY 4.0",
+        "author": "Deborah Namugosa, Beatrice Nabune, Alison Tukei, Rose Sabano",
+        "note": "Whole story."
+      },
+      "question": {
+        "type": "main-idea",
+        "q": "Who is telling this story?",
+        "choices": [
+          "The wind",
+          "The sun",
+          "Fire",
+          "Water"
+        ],
+        "answer": 2,
+        "evidence": "I start as a small spark.",
+        "explain": "Fire starts as a spark and cooks your food, so Fire is telling it."
+      },
+      "readability": {
+        "grade": 0,
+        "fk": 0.3,
+        "cli": 0,
+        "ari": 0
+      }
+    },
+    {
+      "id": "asp-my-little-goat",
+      "title": "My little goat",
+      "kind": "poem",
+      "topic": "animals",
+      "text": "Where are you going my little goat? I am going to market to buy a new coat. A coat for a goat? Can a goat have a coat? People will laugh at a goat with a coat!",
+      "source": {
+        "name": "African Storybook",
+        "url": "https://github.com/global-asp/asp-source/blob/master/en/0212_my-little-goat.md",
+        "license": "CC BY 4.0",
+        "author": "Bukheye Mulongo",
+        "note": "Whole story."
+      },
+      "question": {
+        "type": "detail",
+        "q": "What does the goat want to buy?",
+        "choices": [
+          "Some grass",
+          "A new coat",
+          "A new hat",
+          "A red bag"
+        ],
+        "answer": 1,
+        "evidence": "I am going to market to buy a new coat.",
+        "explain": "The little goat is going to market to buy a coat."
+      },
+      "readability": {
+        "grade": 0,
+        "fk": 0.1,
+        "cli": 0,
+        "ari": 0
+      }
+    },
+    {
+      "id": "asp-a-very-tall-man",
+      "title": "A very tall man",
+      "kind": "story",
+      "topic": "people",
+      "text": "His hoe was too short. His doorway was too low. His bed was too short. His bicycle was too short. This man was too tall! He made a very long hoe handle. He made very high door frames. He made a very long bed. He bought a very high bicycle.",
+      "source": {
+        "name": "African Storybook",
+        "url": "https://github.com/global-asp/asp-source/blob/master/en/0001_a-very-tall-man.md",
+        "license": "CC BY 4.0",
+        "author": "Cornelius Gulere",
+        "note": "Excerpt (beginning of the story)."
+      },
+      "question": {
+        "type": "cause-effect",
+        "q": "Why did the man make a very long bed?",
+        "choices": [
+          "His bed broke",
+          "He liked to roll",
+          "He was too tall",
+          "He had a big dog"
+        ],
+        "answer": 2,
+        "evidence": "This man was too tall!",
+        "explain": "His old bed was too short, because he was so tall."
+      },
+      "readability": {
+        "grade": 0,
+        "fk": 0.7,
+        "cli": 0.2,
+        "ari": 0
+      }
+    },
+    {
+      "id": "asp-where-is-my-bat",
+      "title": "Where is my bat?",
+      "kind": "story",
+      "topic": "home",
+      "text": "I have lost my bat, and I cannot find it. I looked behind the door. It was not there. I looked for it on the shelf. I could not find it there. I looked for it under the bed. Not there either. I searched inside the box. There was no sign of it.",
+      "source": {
+        "name": "African Storybook",
+        "url": "https://github.com/global-asp/asp-source/blob/master/en/0356_where-is-my-bat.md",
+        "license": "CC BY 4.0",
+        "author": "Meera Tendolkar, Madhav Chavan",
+        "note": "Excerpt (beginning of the story)."
+      },
+      "question": {
+        "type": "sequence",
+        "q": "Where did the child look first?",
+        "choices": [
+          "Under the table",
+          "Inside the box",
+          "Under the bed",
+          "Behind the door"
+        ],
+        "answer": 3,
+        "evidence": "I looked behind the door.",
+        "explain": "The child looked behind the door first."
+      },
+      "readability": {
+        "grade": 0,
+        "fk": 0,
+        "cli": 0,
+        "ari": 0
+      }
+    },
+    {
+      "id": "asp-who-is-big",
+      "title": "Who is Big?",
+      "kind": "story",
+      "topic": "animals",
+      "text": "\"No, Ant. You are not big,\" said Squirrel. \"I am big!\" \"No, Squirrel. You are not big,\" said Cat. \"I am big!\" \"No, Cat. You are not big,\" said Hyena, \"I am big!\" \"No, Hyena. You are not big,\" said Rhinoceros, \"I am big!\" \"No, Rhinoceros. You are not big,\" said Elephant, \"I am big!\"",
+      "source": {
+        "name": "African Storybook",
+        "url": "https://github.com/global-asp/asp-source/blob/master/en/0174_who-is-big.md",
+        "license": "CC BY 4.0",
+        "author": "Sara Saunders",
+        "note": "Excerpt from the story."
+      },
+      "question": {
+        "type": "sequence",
+        "q": "Who says \"I am big!\" at the very end?",
+        "choices": [
+          "Squirrel",
+          "Elephant",
+          "Hyena",
+          "Rhinoceros"
+        ],
+        "answer": 1,
+        "evidence": "said Elephant, \"I am big!\"",
+        "explain": "Elephant is the last one to say, I am big!"
+      },
+      "readability": {
+        "grade": 0,
+        "fk": 0.6,
+        "cli": 0,
+        "ari": 0
+      }
+    },
+    {
+      "id": "asp-the-chase",
+      "title": "The Chase",
+      "kind": "story",
+      "topic": "animals",
+      "text": "Once upon a time there lived a cat and a rat. The cat ran after the rat. The rat hid under the stone. The cat looked for the rat and the cat saw a dog! The dog ran after the cat. The cat hid in the bush. The dog looked for the cat and the dog saw a big, big lion. The lion chased the dog. The dog ran in the bush.",
+      "source": {
+        "name": "African Storybook",
+        "url": "https://github.com/global-asp/asp-source/blob/master/en/0175_the-chase.md",
+        "license": "CC BY 4.0",
+        "author": "Masika Grace, Sara Saunders",
+        "note": "Excerpt (beginning of the story)."
+      },
+      "question": {
+        "type": "detail",
+        "q": "Where did the cat hide?",
+        "choices": [
+          "Under the stone",
+          "In a tree",
+          "In the bush",
+          "Behind a wall"
+        ],
+        "answer": 2,
+        "evidence": "The cat hid in the bush.",
+        "explain": "The rat hid under the stone, and the cat hid in the bush."
+      },
+      "readability": {
+        "grade": 0,
+        "fk": 0,
+        "cli": 0,
+        "ari": 0
+      }
+    },
+    {
+      "id": "asp-little-dog",
+      "title": "Little Dog",
+      "kind": "story",
+      "topic": "friendship",
+      "text": "One day Little Dog was playing with a ball. He saw a cat. He said, \"Hello, Little Cat. Can I play with you?\" Little Cat said, \"I will play with you. Can I play with your ball?\" \"Yes,\" said Little Dog. \"It is a red ball. I will kick it to you and you can hit it back to me.\"",
+      "source": {
+        "name": "African Storybook",
+        "url": "https://github.com/global-asp/asp-source/blob/master/en/0177_little-dog.md",
+        "license": "CC BY 4.0",
+        "author": "Val Morris",
+        "note": "Excerpt (beginning of the story)."
+      },
+      "question": {
+        "type": "detail",
+        "q": "What does Little Dog ask Little Cat?",
+        "choices": [
+          "Can I have your ball?",
+          "Are you hungry today?",
+          "Where do you live?",
+          "Can I play with you?"
+        ],
+        "answer": 3,
+        "evidence": "Can I play with you?",
+        "explain": "Little Dog wants to play with Little Cat."
+      },
+      "readability": {
+        "grade": 0,
+        "fk": 0,
+        "cli": 0,
+        "ari": 0
+      }
+    },
+    {
+      "id": "asp-mr-fly-and-mr-big-head",
+      "title": "Mr Fly and Mr Big Head",
+      "kind": "story",
+      "topic": "friendship",
+      "text": "Mr Big Head and Mr Fly were friends. One day, they went for a walk together. They came to the edge of a river, and started arguing with each other. Mr Fly said, \"You can't jump over this river!\" \"Yes, I can! It's you who can't!\" replied Mr Big Head.",
+      "source": {
+        "name": "African Storybook",
+        "url": "https://github.com/global-asp/asp-source/blob/master/en/0287_mr-fly-and-mr-big-head.md",
+        "license": "CC BY 4.0",
+        "author": "Dorothy Fetaru",
+        "note": "Excerpt (beginning of the story). Shortened."
+      },
+      "question": {
+        "type": "detail",
+        "q": "Where did the two friends walk to?",
+        "choices": [
+          "To a forest",
+          "To a river",
+          "To a market",
+          "To a school"
+        ],
+        "answer": 1,
+        "evidence": "They came to the edge of a river",
+        "explain": "They walked to the edge of a river."
+      },
+      "readability": {
+        "grade": 0.5,
+        "fk": 0.9,
+        "cli": 1.5,
+        "ari": 0
+      }
+    },
+    {
+      "id": "asp-my-red-ball",
+      "title": "My red ball",
+      "kind": "story",
+      "topic": "play",
+      "text": "My big red ball. I kick. I kick my ball. I kick my red ball. I kick my red ball hard! Where? Where is my ball? Where is my ball now? Where is my red ball now? It is up. It is high up. It is high up in the sky.",
+      "source": {
+        "name": "African Storybook",
+        "url": "https://github.com/global-asp/asp-source/blob/master/en/0143_my-red-ball.md",
+        "license": "CC BY 4.0",
+        "author": "Marion Drew",
+        "note": "Excerpt from the story. Translated by Khothatso Ranoosi, Marion Drew."
+      },
+      "question": {
+        "type": "detail",
+        "q": "Where is the ball at the end?",
+        "choices": [
+          "Over the wall",
+          "Down in a hole",
+          "Under the car",
+          "Up in the sky"
+        ],
+        "answer": 3,
+        "evidence": "It is high up in the sky.",
+        "explain": "The child kicked the ball hard, and it went high up in the sky."
+      },
+      "readability": {
+        "grade": 0,
+        "fk": 0,
+        "cli": 0,
+        "ari": 0
+      }
+    },
+    {
+      "id": "asp-nanus-taxi",
+      "title": "Nanu's taxi",
+      "kind": "story",
+      "topic": "family",
+      "text": "Hello! My name is Nanu. I am waiting with my mother for a taxi. We are going home. Here I am standing in line. My mother sings me a song. \"Come Mr Taxi can't you see? We are waiting, Nanu and me!\" The lady next to me is taking her chickens home. They will lay eggs for her to eat.",
+      "source": {
+        "name": "African Storybook",
+        "url": "https://github.com/global-asp/asp-source/blob/master/en/0362_nanus-taxi.md",
+        "license": "CC BY 4.0",
+        "author": "Marion Drew",
+        "note": "Excerpt (beginning of the story)."
+      },
+      "question": {
+        "type": "detail",
+        "q": "What are Nanu and Mother waiting for?",
+        "choices": [
+          "A boat",
+          "A bus",
+          "A taxi",
+          "A train"
+        ],
+        "answer": 2,
+        "evidence": "I am waiting with my mother for a taxi.",
+        "explain": "Nanu and Mother are waiting for a taxi to go home."
+      },
+      "readability": {
+        "grade": 0,
+        "fk": 1.1,
+        "cli": 0,
+        "ari": 0
+      }
+    },
+    {
+      "id": "asp-what-type-of-teeth",
+      "title": "What type of teeth?",
+      "kind": "facts",
+      "topic": "animals",
+      "text": "A crocodile has sharp teeth. A lion has sharp teeth as well. A shark has very sharp teeth! Why do some animals have sharp teeth? A cow has strong teeth for grinding. A bird does not have teeth. How does a bird eat? Rats have big front teeth. I used to have front teeth. My front teeth fell out! How many teeth do you have?",
+      "source": {
+        "name": "African Storybook",
+        "url": "https://github.com/global-asp/asp-source/blob/master/en/0050_what-type-of-teeth.md",
+        "license": "CC BY 4.0",
+        "author": "Zanele Buthelezi, Thembani Dladla, Clare Verbeek, Abu Enock, Dudu Mary, Ajuru Florence",
+        "note": "Whole story."
+      },
+      "question": {
+        "type": "main-idea",
+        "q": "What is this mostly about?",
+        "choices": [
+          "Animal homes",
+          "Animal teeth",
+          "Animal food",
+          "Animal tails"
+        ],
+        "answer": 1,
+        "evidence": "Why do some animals have sharp teeth?",
+        "explain": "It tells about the teeth of a crocodile, a lion, a cow and more."
+      },
+      "readability": {
+        "grade": 0.3,
+        "fk": 0,
+        "cli": 1.5,
+        "ari": 0
+      }
+    },
+    {
+      "id": "asp-clouds",
+      "title": "Clouds",
+      "kind": "poem",
+      "topic": "weather",
+      "text": "Clouds can bring rain. I like clouds. Clouds can bring snow. I like clouds. Clouds can hide the sun. I like clouds. Clouds can hide the stars. I like clouds.",
+      "source": {
+        "name": "African Storybook",
+        "url": "https://github.com/global-asp/asp-source/blob/master/en/0126_clouds.md",
+        "license": "CC BY 4.0",
+        "author": "Clark Ness",
+        "note": "Whole story."
+      },
+      "question": {
+        "type": "detail",
+        "q": "What can clouds hide?",
+        "choices": [
+          "The sea",
+          "The hills",
+          "The roads",
+          "The sun"
+        ],
+        "answer": 3,
+        "evidence": "Clouds can hide the sun.",
+        "explain": "Clouds can hide the sun and the stars."
+      },
+      "readability": {
+        "grade": 0,
+        "fk": 0,
+        "cli": 0,
+        "ari": 0
+      }
+    },
+    {
+      "id": "pb-king-of-birds",
+      "title": "King of Birds",
+      "kind": "fable",
+      "topic": "animals",
+      "text": "\"I think I should be king,\" said Peacock, fanning his tail. \"I am so beautiful.\" \"You are too proud,\" said Owl. \"I have the largest eyes of any bird. I should be king.\" \"No, not you, Owl,\" they shouted. \"You go to sleep when the sun rises.\" And so they didn't get very far. Then one bird had an idea. \"He who can fly the highest will be king,\" he said. \"Yes, yes,\" they shouted, and they all flew up, up, into the sky.",
+      "source": {
+        "name": "Pratham Books (StoryWeaver)",
+        "url": "https://github.com/global-asp/pb-source/blob/master/en/0276_king-of-birds.md",
+        "license": "CC BY 4.0",
+        "author": "African Storybook Initiative",
+        "note": "Excerpt from the story."
+      },
+      "question": {
+        "type": "cause-effect",
+        "q": "Why did the birds say Owl could not be king?",
+        "choices": [
+          "He sleeps when the sun comes up",
+          "He has a tail that is too big",
+          "He cannot fly very high at all",
+          "He sings too loud in the night"
+        ],
+        "answer": 0,
+        "evidence": "You go to sleep when the sun rises.",
+        "explain": "Owl goes to sleep when the sun rises, so the birds said no."
+      },
+      "readability": {
+        "grade": 0.2,
+        "fk": 0.7,
+        "cli": 1,
+        "ari": 0
+      }
+    },
+    {
+      "id": "pb-happy-and-sad",
+      "title": "Happy and Sad (Tell me now series)",
+      "kind": "story",
+      "topic": "feelings",
+      "text": "Why is the baby crying? I think she is hungry. Why is the boy sad? I think he is missing his father. Why is the girl happy? She has a new dress. Why is the old man laughing? He read a good joke. Why is the lady smiling? Her children are reading quietly. What is this lady feeling? I think she is feeling shy.",
+      "source": {
+        "name": "Pratham Books (StoryWeaver)",
+        "url": "https://github.com/global-asp/pb-source/blob/master/en/0072_happy-and-sad-tell-me-now-series.md",
+        "license": "CC BY 4.0",
+        "author": "Madhav Chavan",
+        "note": "Whole story."
+      },
+      "question": {
+        "type": "detail",
+        "q": "Why is the girl happy?",
+        "choices": [
+          "She has a new dress",
+          "She ate a big cake",
+          "She read a good joke",
+          "She has a new puppy"
+        ],
+        "answer": 0,
+        "evidence": "She has a new dress.",
+        "explain": "The girl is happy because she has a new dress."
+      },
+      "readability": {
+        "grade": 0,
+        "fk": 1.1,
+        "cli": 0.1,
+        "ari": 0
+      }
+    },
+    {
+      "id": "pb-what-makes-you-special",
+      "title": "What Makes You Special?",
+      "kind": "poem",
+      "topic": "animals",
+      "text": "Who are you? I am a whale. What makes you special? I have the biggest tummy, of all the whales in the world! North, South, East, West, Of all the whales, I'm the best! Who are you? I am a canary. What makes you special? I have the sweetest voice, of all the canaries in the world! North, South, East, West, Of all the canaries, I'm the best!",
+      "source": {
+        "name": "Pratham Books (StoryWeaver)",
+        "url": "https://github.com/global-asp/pb-source/blob/master/en/0170_what-makes-you-special.md",
+        "license": "CC BY 4.0",
+        "author": "Nalini Sorensen",
+        "note": "Excerpt from the story."
+      },
+      "question": {
+        "type": "detail",
+        "q": "What makes the canary special?",
+        "choices": [
+          "The shiniest coat",
+          "The sweetest voice",
+          "The biggest tummy",
+          "The fastest feet"
+        ],
+        "answer": 1,
+        "evidence": "I have the sweetest voice",
+        "explain": "The canary has the sweetest voice. The whale has the biggest tummy."
+      },
+      "readability": {
+        "grade": 0.7,
+        "fk": 1.3,
+        "cli": 1.5,
+        "ari": 0
+      }
+    },
+    {
+      "id": "pb-going-to-buy-a-book",
+      "title": "Going to Buy a Book",
+      "kind": "story",
+      "topic": "books",
+      "text": "We like the small bookshop. It is small but it has many books. The man in the shop likes us. He always helps us. Should I buy a book with a lot of pictures? Should I buy a book with many stories? Should I buy a thin book? I could not decide.",
+      "source": {
+        "name": "Pratham Books (StoryWeaver)",
+        "url": "https://github.com/global-asp/pb-source/blob/master/en/0094_going-to-buy-a-book.md",
+        "license": "CC BY 4.0",
+        "author": "Rukmini Banerji",
+        "note": "Excerpt from the story."
+      },
+      "question": {
+        "type": "detail",
+        "q": "What does the small shop have a lot of?",
+        "choices": [
+          "Sweet cakes",
+          "Many books",
+          "Fresh fruit",
+          "Many toys"
+        ],
+        "answer": 1,
+        "evidence": "It is small but it has many books.",
+        "explain": "The shop is small, but it has many books."
+      },
+      "readability": {
+        "grade": 0,
+        "fk": 0.3,
+        "cli": 0.2,
+        "ari": 0
+      }
+    },
+    {
+      "id": "pb-noisy-crows",
+      "title": "Noisy Crows",
+      "kind": "story",
+      "topic": "animals",
+      "text": "I sit on the tree and look around for some tasty bits of food. I look to my right. I look to my left. I love fish. When I spot it, I fly down to pick it up. With my cawing I call my friends to share the feast with me.",
+      "source": {
+        "name": "Pratham Books (StoryWeaver)",
+        "url": "https://github.com/global-asp/pb-source/blob/master/en/0128_noisy-crows.md",
+        "license": "CC BY 4.0",
+        "author": "Kanchan Bannerjee",
+        "note": "Excerpt from the story."
+      },
+      "question": {
+        "type": "cause-effect",
+        "q": "Why does the crow call its friends?",
+        "choices": [
+          "To fly to the sea",
+          "To play a game",
+          "To build a nest",
+          "To share the food"
+        ],
+        "answer": 3,
+        "evidence": "I call my friends to share the feast with me.",
+        "explain": "The crow calls its friends to share the food."
+      },
+      "readability": {
+        "grade": 0,
+        "fk": 0.2,
+        "cli": 0,
+        "ari": 0
+      }
+    },
+    {
+      "id": "pb-lost-and-found",
+      "title": "Lost and Found",
+      "kind": "story",
+      "topic": "family",
+      "text": "I have looked under the chair, I have looked under the stool. Where have you gone? Soon granny came back from her walk. \"Look what I found in the park.\" \"It can sway, it can bounce. It can spin, it can dangle. Ha-ha, hee-hee,\" said Granny with a giggle. Oh Granny! Thank you so much! You have found my dear yo-yo!",
+      "source": {
+        "name": "Pratham Books (StoryWeaver)",
+        "url": "https://github.com/global-asp/pb-source/blob/master/en/0067_lost-and-found.md",
+        "license": "CC BY 4.0",
+        "author": "Sukhada Rahalkar",
+        "note": "Excerpt from the story."
+      },
+      "question": {
+        "type": "detail",
+        "q": "Who found the yo-yo?",
+        "choices": [
+          "Granny",
+          "Sister",
+          "Mother",
+          "Grandpa"
+        ],
+        "answer": 0,
+        "evidence": "You have found my dear yo-yo!",
+        "explain": "Granny found the yo-yo in the park."
+      },
+      "readability": {
+        "grade": 0.5,
+        "fk": 0.5,
+        "cli": 1.6,
+        "ari": 0
+      }
+    },
+    {
+      "id": "pb-grandmas-glasses",
+      "title": "Grandma's Glasses",
+      "kind": "story",
+      "topic": "family",
+      "text": "Nani keeps losing her glasses. \"Where did I keep them?\" she always asks. Without her glasses, she cannot find her glasses. So she needs me. To be her eyes, to find her own eyes! Sometimes her spectacles are in the bathroom. Or on her bed. Or on her head. \"Nani,\" I say, \"they are on your head!\"",
+      "source": {
+        "name": "Pratham Books (StoryWeaver)",
+        "url": "https://github.com/global-asp/pb-source/blob/master/en/0124_grandma-s-glasses.md",
+        "license": "CC BY 4.0",
+        "author": "Rohini Nilekani",
+        "note": "Excerpt (beginning of the story)."
+      },
+      "question": {
+        "type": "detail",
+        "q": "Where are Nani's glasses at the end?",
+        "choices": [
+          "In her bag",
+          "On her head",
+          "In a cup",
+          "On the shelf"
+        ],
+        "answer": 1,
+        "evidence": "they are on your head!",
+        "explain": "Nani's glasses were on her head all the time!"
+      },
+      "readability": {
+        "grade": 0.7,
+        "fk": 1.1,
+        "cli": 1.5,
+        "ari": 0
+      }
+    },
+    {
+      "id": "pb-can-and-cant",
+      "title": "Can and Can't",
+      "kind": "poem",
+      "topic": "animals",
+      "text": "I can't knit, cats can't write, fish can't blink... ... pigs can't fly! Dogs can't dance, ants can't read, crows can't sing... ... monkeys can't cook! But, monkeys can swing! Crows can caw... ants can bite... dogs can bark! Pigs can eat, fish can swim, cats can jump... and I can read!",
+      "source": {
+        "name": "Pratham Books (StoryWeaver)",
+        "url": "https://github.com/global-asp/pb-source/blob/master/en/0026_can-and-can-t.md",
+        "license": "CC BY 4.0",
+        "author": "Radha HS",
+        "note": "Whole story."
+      },
+      "question": {
+        "type": "detail",
+        "q": "What can the child do?",
+        "choices": [
+          "Bark",
+          "Fly",
+          "Knit",
+          "Read"
+        ],
+        "answer": 3,
+        "evidence": "and I can read!",
+        "explain": "The child can't knit, but the child can read!"
+      },
+      "readability": {
+        "grade": 0,
+        "fk": 0,
+        "cli": 0,
+        "ari": 0
+      }
+    },
+    {
+      "id": "pb-many-bananas",
+      "title": "Many Bananas",
+      "kind": "story",
+      "topic": "food",
+      "text": "I go to the tree. I pluck bananas. I have bananas, now. I eat a banana. I eat two bananas. I eat three bananas. I eat many bananas. I am not hungry, now.",
+      "source": {
+        "name": "Pratham Books (StoryWeaver)",
+        "url": "https://github.com/global-asp/pb-source/blob/master/en/0262_many-bananas.md",
+        "license": "CC BY 4.0",
+        "author": "Smruthi K",
+        "note": "Excerpt from the story. Shortened."
+      },
+      "question": {
+        "type": "cause-effect",
+        "q": "Why is the child not hungry now?",
+        "choices": [
+          "Drank some milk",
+          "Ate many bananas",
+          "Ate rice and dal",
+          "Had a big lunch"
+        ],
+        "answer": 1,
+        "evidence": "I eat many bananas.",
+        "explain": "The child ate many bananas, so now the child is full."
+      },
+      "readability": {
+        "grade": 0,
+        "fk": 2.8,
+        "cli": 0,
+        "ari": 0
+      }
+    },
+    {
+      "id": "pb-i-can-help",
+      "title": "I Can Help!",
+      "kind": "story",
+      "topic": "family",
+      "text": "I am a big girl. I can help other people. After school, I like to feed my brother. He loves it. When I have a holiday, I help my mother to get ready to go to the office. In the evening, I help my father in his shop. But sometimes my mother says, \"Please, do not help me!\"",
+      "source": {
+        "name": "Pratham Books (StoryWeaver)",
+        "url": "https://github.com/global-asp/pb-source/blob/master/en/0115_i-can-help.md",
+        "license": "CC BY 4.0",
+        "author": "Mini Shrinivasan",
+        "note": "Excerpt (beginning of the story)."
+      },
+      "question": {
+        "type": "detail",
+        "q": "Who does the girl help in the shop?",
+        "choices": [
+          "Her brother",
+          "Her father",
+          "Her mother",
+          "Her teacher"
+        ],
+        "answer": 1,
+        "evidence": "In the evening, I help my father in his shop.",
+        "explain": "She helps her father in his shop."
+      },
+      "readability": {
+        "grade": 0.8,
+        "fk": 2.5,
+        "cli": 0.9,
+        "ari": 0
+      }
+    },
+    {
+      "id": "pb-ranis-first-day-at-school",
+      "title": "Rani's First Day at School",
+      "kind": "story",
+      "topic": "school",
+      "text": "It is my first day at school. Mummy is holding my hand and walking with me. \"I am grown up now,\" I say. \"Let go, let go!\" Mummy holds my hand very tight. There are many children near the school. They come by bus. They come by car. They come by rickshaw. They cycle. They walk, like me.",
+      "source": {
+        "name": "Pratham Books (StoryWeaver)",
+        "url": "https://github.com/global-asp/pb-source/blob/master/en/0020_rani-s-first-day-at-school.md",
+        "license": "CC BY 4.0",
+        "author": "Cheryl Rao",
+        "note": "Excerpt (beginning of the story)."
+      },
+      "question": {
+        "type": "detail",
+        "q": "How does Rani get to school?",
+        "choices": [
+          "She rides a bike",
+          "She rides a bus",
+          "She goes by car",
+          "She walks there"
+        ],
+        "answer": 3,
+        "evidence": "Mummy is holding my hand and walking with me.",
+        "explain": "Rani walks to school with Mummy."
+      },
+      "readability": {
+        "grade": 0,
+        "fk": 0.1,
+        "cli": 0,
+        "ari": 0
+      }
+    },
+    {
+      "id": "pb-timmy-and-pepe",
+      "title": "Timmy and Pepe",
+      "kind": "story",
+      "topic": "pets",
+      "text": "I like to tease Pepe. I tell him I am better than him. He does not like it. \"Look, I have a nose!\" I say. \"Woof,\" says Pepe. That means he has a nose too. \"Look, I have ears!\" I say. \"Woof,\" says Pepe. That means he has ears too.",
+      "source": {
+        "name": "Pratham Books (StoryWeaver)",
+        "url": "https://github.com/global-asp/pb-source/blob/master/en/0030_timmy-and-pepe.md",
+        "license": "CC BY 4.0",
+        "author": "Madhav Chavan",
+        "note": "Excerpt from the story."
+      },
+      "question": {
+        "type": "inference",
+        "q": "What kind of animal is Pepe?",
+        "choices": [
+          "A dog",
+          "A cat",
+          "A bird",
+          "A cow"
+        ],
+        "answer": 0,
+        "evidence": "\"Woof,\" says Pepe.",
+        "explain": "Pepe says woof, so Pepe is a dog."
+      },
+      "readability": {
+        "grade": 0,
+        "fk": 0,
+        "cli": 0,
+        "ari": 0
+      }
+    },
+    {
+      "id": "pb-everything-looks-new",
+      "title": "Everything looks new!",
+      "kind": "story",
+      "topic": "plants",
+      "text": "Grandpa wants me to plant a tree. \"But why?\" I ask. \"So that you will have a friend to grow up with, Meenu,\" he says. \"Spring is a good season to start something new.\" We go to the garden. Grandpa and I dig a hole in the ground and plant a sapling. \"How tall will it grow?\" I ask him.",
+      "source": {
+        "name": "Pratham Books (StoryWeaver)",
+        "url": "https://github.com/global-asp/pb-source/blob/master/en/0012_everything-looks-new.md",
+        "license": "CC BY 4.0",
+        "author": "Mala Kumar, Manisha Chaudhry",
+        "note": "Excerpt from the story."
+      },
+      "question": {
+        "type": "cause-effect",
+        "q": "Why does Grandpa want Meenu to plant a tree?",
+        "choices": [
+          "So she has a friend to grow with",
+          "So she can pick lots of sweet fruit",
+          "So the house can have cool shade",
+          "So the birds can have a new home"
+        ],
+        "answer": 0,
+        "evidence": "So that you will have a friend to grow up with, Meenu",
+        "explain": "Grandpa says the tree will be a friend to grow up with."
+      },
+      "readability": {
+        "grade": 0,
+        "fk": 0.6,
+        "cli": 0,
+        "ari": 0
+      }
+    },
+    {
+      "id": "pb-i-can-climb",
+      "title": "I Can Climb!",
+      "kind": "story",
+      "topic": "family",
+      "text": "I can climb up the steps. But I cannot climb down again. I can climb on a chair. But I cannot climb down again. I climb on to the chair, and then on the table! But I cannot climb down again. \"Papa! Papa!\" I shout. Papa laughs. \"Sonu, learn to climb down!\" he says.",
+      "source": {
+        "name": "Pratham Books (StoryWeaver)",
+        "url": "https://github.com/global-asp/pb-source/blob/master/en/0100_i-can-climb.md",
+        "license": "CC BY 4.0",
+        "author": "Mini Shrinivasan",
+        "note": "Excerpt from the story."
+      },
+      "question": {
+        "type": "detail",
+        "q": "What can't Sonu do?",
+        "choices": [
+          "Climb on a chair",
+          "Climb up the steps",
+          "Shout for Papa",
+          "Climb down again"
+        ],
+        "answer": 3,
+        "evidence": "But I cannot climb down again.",
+        "explain": "Sonu can climb up, but Sonu cannot climb down."
+      },
+      "readability": {
+        "grade": 0,
+        "fk": 0.4,
+        "cli": 0,
+        "ari": 0
+      }
+    },
+    {
+      "id": "pb-the-red-raincoat",
+      "title": "The Red Raincoat",
+      "kind": "story",
+      "topic": "weather",
+      "text": "On Sunday, Manu's parents got him a red raincoat. \"Ma, may I wear it now?\" asked Manu. \"No, my dear, the rains are near, but just now the sky is clear,\" said Ma. Monday was bright and sunny. \"WILL it rain today, Mummy?\" asked Manu. \"No Manu, not today. If you wear your raincoat, you will look quite funny!\" said Ma.",
+      "source": {
+        "name": "Pratham Books (StoryWeaver)",
+        "url": "https://github.com/global-asp/pb-source/blob/master/en/0069_the-red-raincoat.md",
+        "license": "CC BY 4.0",
+        "author": "Kiran Kasturia",
+        "note": "Excerpt (beginning of the story)."
+      },
+      "question": {
+        "type": "detail",
+        "q": "What did Manu get on Sunday?",
+        "choices": [
+          "A blue umbrella",
+          "A red raincoat",
+          "A new toy car",
+          "A pair of boots"
+        ],
+        "answer": 1,
+        "evidence": "On Sunday, Manu's parents got him a red raincoat.",
+        "explain": "On Sunday, Manu got a red raincoat."
+      },
+      "readability": {
+        "grade": 0.6,
+        "fk": 1.3,
+        "cli": 1.3,
+        "ari": 0
+      }
+    },
+    {
+      "id": "pb-fat-king-thin-dog",
+      "title": "Fat King Thin Dog",
+      "kind": "story",
+      "topic": "animals",
+      "text": "This is a fat king. The fat king has a thin dog. The fat king and his thin dog go for a walk. The dog sees a bird. The dog runs after the bird. The king runs after the dog. They run and run. They run and run for many days. The king catches the dog. Now the fat king is thin.",
+      "source": {
+        "name": "Pratham Books (StoryWeaver)",
+        "url": "https://github.com/global-asp/pb-source/blob/master/en/0002_fat-king-thin-dog.md",
+        "license": "CC BY 4.0",
+        "author": "Parismita",
+        "note": "Whole story."
+      },
+      "question": {
+        "type": "cause-effect",
+        "q": "Why is the king thin at the end?",
+        "choices": [
+          "He gave his food away",
+          "He ate too little food",
+          "He was sick in bed",
+          "He ran for many days"
+        ],
+        "answer": 3,
+        "evidence": "They run and run for many days.",
+        "explain": "The king ran after his dog for many days, so he got thin."
+      },
+      "readability": {
+        "grade": 0,
+        "fk": 0,
+        "cli": 0,
+        "ari": 0
+      }
+    },
+    {
+      "id": "sbc-i-like-to-read",
+      "title": "I like to read!",
+      "kind": "story",
+      "topic": "books",
+      "text": "I like to read. Who can I read to? My sister is asleep. Who can I read to? My mother and grandmother are busy. Who can I read to? My father and grandfather are busy. Who can I read to? I can read to myself!",
+      "source": {
+        "name": "Storybooks Canada",
+        "url": "https://github.com/global-asp/sbc-source/blob/master/en/0087_i-like-to-read.md",
+        "license": "CC BY 4.0",
+        "author": "Letta Machoga",
+        "note": "Whole story."
+      },
+      "question": {
+        "type": "detail",
+        "q": "At the end, who does the child read to?",
+        "choices": [
+          "The child alone",
+          "The busy mother",
+          "The sleepy sister",
+          "The grandfather"
+        ],
+        "answer": 0,
+        "evidence": "I can read to myself!",
+        "explain": "Everyone was busy, so the child read alone."
+      },
+      "readability": {
+        "grade": 0,
+        "fk": 1,
+        "cli": 0,
+        "ari": 0
+      }
+    },
+    {
+      "id": "burgess-peter-asks-for-a-story",
+      "title": "Peter Asks for a Story",
+      "kind": "story",
+      "topic": "animals",
+      "text": "\"You want a story,\" finished Grandfather Frog for him. \"You can't fool me, Peter Rabbit. You came over here just to ask me for a story. I know you, Peter! I know you! Well, what is it this time?\"",
+      "source": {
+        "name": "Mother West Wind 'Why' Stories (Thornton W. Burgess, 1915)",
+        "url": "https://www.gutenberg.org/ebooks/14958",
+        "license": "Public domain",
+        "author": "Thornton W. Burgess",
+        "note": "Paragraph from the book."
+      },
+      "question": {
+        "type": "detail",
+        "q": "What did Peter come to ask for?",
+        "choices": [
+          "A song",
+          "A snack",
+          "A story",
+          "A hat"
+        ],
+        "answer": 2,
+        "evidence": "You came over here just to ask me for a story.",
+        "explain": "Grandfather Frog knew Peter came for a story."
+      },
+      "readability": {
+        "grade": 0.5,
+        "fk": 1.5,
+        "cli": 1.1,
+        "ari": 0
+      }
+    },
+    {
+      "id": "burgess-mr-toad-finds-shade",
+      "title": "Mr. Toad Finds Shade",
+      "kind": "story",
+      "topic": "animals",
+      "text": "Old Mr. Toad hopped into the shade of a big mullein leaf. \"I guess so, if it is anything important,\" said he. \"Phew! Hot, isn't it? I simply can't stand the sun. Now what is that you've got on your mind, Peter?\"",
+      "source": {
+        "name": "Mother West Wind 'How' Stories (Thornton W. Burgess, 1916)",
+        "url": "https://www.gutenberg.org/ebooks/21286",
+        "license": "Public domain",
+        "author": "Thornton W. Burgess",
+        "note": "Paragraph from the book."
+      },
+      "question": {
+        "type": "cause-effect",
+        "q": "Why did Mr. Toad hop into the shade?",
+        "choices": [
+          "He wanted to sleep",
+          "He was hiding from Peter",
+          "He can't stand the sun",
+          "He saw a big bug"
+        ],
+        "answer": 2,
+        "evidence": "I simply can't stand the sun.",
+        "explain": "It was hot, and Mr. Toad can't stand the sun."
+      },
+      "readability": {
+        "grade": 0.5,
+        "fk": 1.2,
+        "cli": 1.3,
+        "ari": 0
+      }
+    },
+    {
+      "id": "burgess-jenny-wren-is-back",
+      "title": "Jenny Wren Is Back",
+      "kind": "story",
+      "topic": "animals",
+      "text": "Peter cut a long hop short right in the middle, to sit up with shining eyes. \"Oh, Jenny Wren, I'm so glad to see you! When did you arrive?\" he cried.",
+      "source": {
+        "name": "The Burgess Bird Book for Children (Thornton W. Burgess, 1919)",
+        "url": "https://www.gutenberg.org/ebooks/3074",
+        "license": "Public domain",
+        "author": "Thornton W. Burgess",
+        "note": "Paragraph from the book."
+      },
+      "question": {
+        "type": "detail",
+        "q": "Who is Peter glad to see?",
+        "choices": [
+          "Mr. Toad",
+          "Old Owl",
+          "Jenny Wren",
+          "Mother Duck"
+        ],
+        "answer": 2,
+        "evidence": "Oh, Jenny Wren, I'm so glad to see you!",
+        "explain": "Peter is glad that Jenny Wren is back."
+      },
+      "readability": {
+        "grade": 0.5,
+        "fk": 1.5,
+        "cli": 1.1,
+        "ari": 0
+      }
+    },
+    {
+      "id": "baldwin-the-bishop-and-the-harp",
+      "title": "The Bishop and the Harp",
+      "kind": "story",
+      "topic": "music",
+      "text": "\"I am glad you have come,\" said the bishop kindly. \"There is no music that I like so well as that of the harp. Come in, and play for us.\"",
+      "source": {
+        "name": "Fifty Famous Stories Retold (James Baldwin, 1896)",
+        "url": "https://www.gutenberg.org/ebooks/18442",
+        "license": "Public domain",
+        "author": "James Baldwin",
+        "note": "Paragraph from the book."
+      },
+      "question": {
+        "type": "detail",
+        "q": "What music does the bishop like best?",
+        "choices": [
+          "Drum music",
+          "Horn music",
+          "Harp music",
+          "Bell music"
+        ],
+        "answer": 2,
+        "evidence": "There is no music that I like so well as that of the harp.",
+        "explain": "The bishop likes harp music best of all."
+      },
+      "readability": {
+        "grade": 0.3,
+        "fk": 1.3,
+        "cli": 0.6,
+        "ari": 0
+      }
+    },
+    {
+      "id": "baldwin-the-king-and-the-miller",
+      "title": "The King and the Happy Miller",
+      "kind": "story",
+      "topic": "people",
+      "text": "\"Say no more,\" said the king. \"Stay where you are, and be happy still. But I envy you. Your dusty cap is worth more than my golden crown. Your mill does more for you than my kingdom can do for me. If there were more such men as you, what a good place this world would be! Good-by, my friend!\"",
+      "source": {
+        "name": "Fifty Famous Stories Retold (James Baldwin, 1896)",
+        "url": "https://www.gutenberg.org/ebooks/18442",
+        "license": "Public domain",
+        "author": "James Baldwin",
+        "note": "Paragraph from the book."
+      },
+      "question": {
+        "type": "detail",
+        "q": "What does the king say is worth more than his crown?",
+        "choices": [
+          "Your dusty cap",
+          "Your big horse",
+          "Your new coat",
+          "Your old shoes"
+        ],
+        "answer": 0,
+        "evidence": "Your dusty cap is worth more than my golden crown.",
+        "explain": "The king says the miller's dusty cap is worth more than his crown."
+      },
+      "readability": {
+        "grade": 0.9,
+        "fk": 0.7,
+        "cli": 2,
+        "ari": 0
+      }
+    },
+    {
+      "id": "baldwin-benjamin-and-the-whistle",
+      "title": "Benjamin and the Whistle",
+      "kind": "story",
+      "topic": "people",
+      "text": "\"I have some pennies,\" said Benjamin. He held them in his hand, and showed them to the boy. \"You may have them, if you will give me the whistle.\" \"All of them?\"",
+      "source": {
+        "name": "Fifty Famous People (James Baldwin, 1912)",
+        "url": "https://www.gutenberg.org/ebooks/6168",
+        "license": "Public domain",
+        "author": "James Baldwin",
+        "note": "Paragraph from the book."
+      },
+      "question": {
+        "type": "detail",
+        "q": "What does Benjamin want?",
+        "choices": [
+          "A new hat",
+          "The pennies",
+          "A red ball",
+          "The whistle"
+        ],
+        "answer": 3,
+        "evidence": "You may have them, if you will give me the whistle.",
+        "explain": "Benjamin will give his pennies for the whistle."
+      },
+      "readability": {
+        "grade": 0.8,
+        "fk": 0.8,
+        "cli": 1.8,
+        "ari": 0
+      }
+    },
+    {
+      "id": "baldwin-waiting-for-the-king",
+      "title": "Waiting for the King",
+      "kind": "story",
+      "topic": "people",
+      "text": "\"No, sir,\" answered the boy. \"I am looking for the king. They say he is hunting in the woods, and perhaps will ride out this way. So I'm waiting to see him.\"",
+      "source": {
+        "name": "Fifty Famous People (James Baldwin, 1912)",
+        "url": "https://www.gutenberg.org/ebooks/6168",
+        "license": "Public domain",
+        "author": "James Baldwin",
+        "note": "Paragraph from the book."
+      },
+      "question": {
+        "type": "detail",
+        "q": "Who is the boy waiting to see?",
+        "choices": [
+          "The king",
+          "A farmer",
+          "A soldier",
+          "His uncle"
+        ],
+        "answer": 0,
+        "evidence": "I am looking for the king.",
+        "explain": "The boy is waiting to see the king ride by."
+      },
+      "readability": {
+        "grade": 0.7,
+        "fk": 1.2,
+        "cli": 1.4,
+        "ari": 0
+      }
+    },
+    {
+      "id": "fabre-how-old-is-the-pear-tree",
+      "title": "How Old Is the Pear Tree?",
+      "kind": "facts",
+      "topic": "plants",
+      "text": "\"Eh! Eh! what did I tell you?\" cried Uncle Paul, in triumph. \"Has not the pear-tree talked? It has begun its history by telling us its age. Truly, the tree is forty-five years old.\"",
+      "source": {
+        "name": "The Story-Book of Science (Jean-Henri Fabre, 1917)",
+        "url": "https://www.gutenberg.org/ebooks/56795",
+        "license": "Public domain",
+        "author": "Jean-Henri Fabre",
+        "note": "Paragraph from the book."
+      },
+      "question": {
+        "type": "detail",
+        "q": "How old is the pear tree?",
+        "choices": [
+          "Forty-five years",
+          "Sixty years",
+          "Ninety-one years",
+          "Twenty-two years"
+        ],
+        "answer": 0,
+        "evidence": "the tree is forty-five years old.",
+        "explain": "Uncle Paul says the tree is forty-five years old."
+      },
+      "readability": {
+        "grade": 0.6,
+        "fk": 1.2,
+        "cli": 1.1,
+        "ari": 0
+      }
+    }
+  ]
+}
