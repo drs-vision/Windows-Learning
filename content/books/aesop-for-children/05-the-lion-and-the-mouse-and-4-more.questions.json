@@ -6,7 +6,12 @@
       "id": "aesop-for-children-05-01",
       "type": "detail",
       "q": "In 'The Lion and the Mouse', what woke the Lion from his nap?",
-      "choices": ["The Mouse ran across his nose", "A hunter shouted in the forest", "The Mouse squeaked loudly in his ear", "It started to rain on his head"],
+      "choices": [
+        "The Mouse ran across his nose",
+        "A hunter shouted in the forest",
+        "The Mouse squeaked loudly in his ear",
+        "It started to rain on his head"
+      ],
       "answer": 0,
       "evidence": "ran across the Lion's nose"
     },
@@ -14,7 +19,12 @@
       "id": "aesop-for-children-05-02",
       "type": "character",
       "q": "In 'The Lion and the Mouse', how did the Mouse help the Lion?",
-      "choices": ["She gnawed the rope of the net until it broke", "She ran to call the other lions to come and help", "She bit the hunter's foot and chased him far away", "She brought the Lion food and water while he waited"],
+      "choices": [
+        "She gnawed the rope of the net until it broke",
+        "She ran to call the other lions to come and help",
+        "She bit the hunter's foot",
+        "She brought the Lion food and water while he waited"
+      ],
       "answer": 0,
       "evidence": "she gnawed it until it parted"
     },
@@ -22,7 +32,12 @@
       "id": "aesop-for-children-05-03",
       "type": "main-idea",
       "q": "What is the lesson of 'The Lion and the Mouse'?",
-      "choices": ["A kindness is never wasted", "Big animals are always strong", "Never wake a sleeping lion", "Stay far away from all hunters"],
+      "choices": [
+        "A kindness is never wasted",
+        "Big animals are always strong",
+        "Never wake a sleeping lion",
+        "Stay far away from all hunters"
+      ],
       "answer": 0,
       "evidence": "A kindness is never wasted."
     },
@@ -30,7 +45,12 @@
       "id": "aesop-for-children-05-04",
       "type": "character",
       "q": "In 'The Shepherd Boy and the Wolf', why did the Boy first shout \"Wolf! Wolf!\"?",
-      "choices": ["He was bored and wanted to play a trick", "He really saw a Wolf coming out of the forest", "His dog had run away and he needed help to find it", "He wanted to go home early to his supper"],
+      "choices": [
+        "He was bored and wanted to play a trick",
+        "He really saw a Wolf coming out of the forest",
+        "His dog had run away and he needed help to find it",
+        "He wanted to go home early to his supper"
+      ],
       "answer": 0,
       "evidence": "he thought of a plan to amuse himself"
     },
@@ -38,7 +58,12 @@
       "id": "aesop-for-children-05-05",
       "type": "inference",
       "q": "In 'The Shepherd Boy and the Wolf', why didn't the Villagers come when the Wolf really came?",
-      "choices": ["They thought the Boy was tricking them again", "They were too far away in the fields to hear him", "They were too afraid of the Wolf to come out", "They were all fast asleep in their houses"],
+      "choices": [
+        "They thought the Boy was tricking them again",
+        "They were too far away in the fields to hear him",
+        "They were too afraid of the Wolf to come out",
+        "They were all fast asleep in their houses"
+      ],
       "answer": 0,
       "evidence": "He cannot fool us again"
     },
@@ -46,7 +71,12 @@
       "id": "aesop-for-children-05-06",
       "type": "detail",
       "q": "In 'The Gnat and the Bull', what did the Bull say when the Gnat was leaving?",
-      "choices": ["He did not even know the Gnat was there", "He was very glad the Gnat was finally going", "He begged the Gnat to stay a little longer", "The Gnat had grown far too heavy for his horn"],
+      "choices": [
+        "He did not even know the Gnat was there",
+        "He was very glad the Gnat was finally going",
+        "He begged the Gnat to stay",
+        "The Gnat had grown far too heavy for his horn"
+      ],
       "answer": 0,
       "evidence": "I did not even know you were there."
     },
@@ -54,7 +84,12 @@
       "id": "aesop-for-children-05-07",
       "type": "main-idea",
       "q": "In 'The Plane Tree', why did the Tree call the Travellers ungrateful?",
-      "choices": ["They rested in its shade but called it useless", "They broke off its branches to make a fire", "They climbed up and picked all of its fruit", "They would not give it water on a hot day"],
+      "choices": [
+        "They rested in its shade but called it useless",
+        "They broke off its branches to make a fire",
+        "They climbed up and picked all of its fruit",
+        "They would not give it water on a hot day"
+      ],
       "answer": 0,
       "evidence": "You lie here in my cooling shade, and yet you say I am useless!"
     },
@@ -62,7 +97,12 @@
       "id": "aesop-for-children-05-08",
       "type": "main-idea",
       "q": "In 'The Farmer and the Stork', why was the Stork punished even though he did not steal?",
-      "choices": ["He was caught with the thieving Cranes", "He told the Farmer a lie about it", "He ate the seeds the Farmer planted", "He tore a hole in the Farmer's net"],
+      "choices": [
+        "He was caught with the thieving Cranes",
+        "He told the Farmer a lie about it",
+        "He ate the seeds the Farmer planted",
+        "He tore a hole in the Farmer's net"
+      ],
       "answer": 0,
       "evidence": "You are judged by the company you keep."
     }

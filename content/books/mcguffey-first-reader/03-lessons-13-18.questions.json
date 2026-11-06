@@ -6,12 +6,7 @@
       "id": "mcguffey-first-reader-03-01",
       "type": "detail",
       "q": "What is on the back of Tom's dog?",
-      "choices": [
-        "A black spot",
-        "A hat",
-        "A doll",
-        "A top"
-      ],
+      "choices": ["A black spot", "A red hat", "A big doll", "A red top"],
       "answer": 0,
       "evidence": "The dog has a black spot on his back."
     },
@@ -19,12 +14,7 @@
       "id": "mcguffey-first-reader-03-02",
       "type": "detail",
       "q": "What does Tom have on the box?",
-      "choices": [
-        "A big top",
-        "A duck",
-        "A pen",
-        "A whip"
-      ],
+      "choices": ["A big top", "A fat duck", "A pen", "A whip"],
       "answer": 0,
       "evidence": "Tom has a big top, too."
     },
@@ -32,12 +22,7 @@
       "id": "mcguffey-first-reader-03-03",
       "type": "detail",
       "q": "Where will the duck swim?",
-      "choices": [
-        "In the pond",
-        "In the tub",
-        "In the box",
-        "In the nest"
-      ],
+      "choices": ["In the pond", "In the tub", "In the box", "In the nest"],
       "answer": 0,
       "evidence": "the duck will swim in the pond"
     },
@@ -45,12 +30,7 @@
       "id": "mcguffey-first-reader-03-04",
       "type": "inference",
       "q": "Why do they not stop at the pond?",
-      "choices": [
-        "It is hot",
-        "It is dark",
-        "The duck is mad",
-        "The dog ran"
-      ],
+      "choices": ["It is hot", "It is dark", "The duck is mad", "The dog ran"],
       "answer": 0,
       "evidence": "for it is hot"
     },
@@ -58,12 +38,7 @@
       "id": "mcguffey-first-reader-03-05",
       "type": "detail",
       "q": "Where is the duck's nest?",
-      "choices": [
-        "Under the rock",
-        "In the box",
-        "In the cage",
-        "On the mat"
-      ],
+      "choices": ["Under the rock", "In the box", "In the cage", "On the mat"],
       "answer": 0,
       "evidence": "Her nest is up on the bank, under the rock."
     },
@@ -71,12 +46,7 @@
       "id": "mcguffey-first-reader-03-06",
       "type": "detail",
       "q": "What must we not do to the duck's nest?",
-      "choices": [
-        "Touch it",
-        "Look at it",
-        "See it",
-        "Think of it"
-      ],
+      "choices": ["Touch it", "Look at it", "See it", "Think of it"],
       "answer": 0,
       "evidence": "We must not touch the nest"
     },
@@ -84,12 +54,7 @@
       "id": "mcguffey-first-reader-03-07",
       "type": "detail",
       "q": "Where is Kitty's doll?",
-      "choices": [
-        "On the rock",
-        "In the pond",
-        "In the cage",
-        "On the hen"
-      ],
+      "choices": ["On the rock", "In the pond", "In the cage", "On the hen"],
       "answer": 0,
       "evidence": "Kitty's doll is on the rock."
     },
@@ -97,12 +62,7 @@
       "id": "mcguffey-first-reader-03-08",
       "type": "detail",
       "q": "What does Tom have in his hand?",
-      "choices": [
-        "His hat",
-        "His top",
-        "A pen",
-        "A whip"
-      ],
+      "choices": ["His hat", "His top", "A pen", "A whip"],
       "answer": 0,
       "evidence": "Tom has his hat in his hand."
     }

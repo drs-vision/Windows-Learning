@@ -53,9 +53,12 @@ for (const id of books) {
     const need = Math.ceil(quizSize(words) * 1.5);
     if (list.length < need) err(where, `${list.length} questions; needs at least ${need} (quiz of ${quizSize(words)} x 1.5)`);
     const body = norm(text);
-    // Guessing guard: if the right answer is usually the longest choice, a child can pass without reading.
-    const longest = list.filter((q) => Array.isArray(q?.choices) && q.choices.length === 4 && q.choices.every((c, k) => k === q.answer || String(c).length < String(q.choices[q.answer]).length)).length;
-    if (list.length >= 6 && longest / list.length > 0.4) (process.argv.includes("--lenient-choices") ? warn : err)(where, `the right answer is the longest choice in ${longest} of ${list.length} questions; make the wrong choices as long and specific as the right one (at most 40%)`);
+    // Guessing guard: if the right answer is usually the longest (or shortest) choice, a child can pass without reading.
+    const ok4 = (q) => Array.isArray(q?.choices) && q.choices.length === 4 && Number.isInteger(q.answer) && q.answer >= 0 && q.answer < 4;
+    const most = (cmp) => list.filter((q) => ok4(q) && q.choices.every((c, k) => k === q.answer || cmp(String(q.choices[q.answer]).length, String(c).length))).length;
+    const longest = most((a, b) => a > b), shortest = most((a, b) => a < b);
+    if (list.length >= 6 && longest / list.length > 0.4) err(where, `the right answer is the longest choice in ${longest} of ${list.length} questions; make the wrong choices as long and specific as the right one (at most 40%)`);
+    if (list.length >= 6 && shortest / list.length > 0.4) err(where, `the right answer is the shortest choice in ${shortest} of ${list.length} questions; vary the lengths (at most 40%)`);
     for (const [i, q] of list.entries()) {
       const qw = `${where} q${i + 1}${q?.id ? ' (' + q.id + ')' : ''}`;
       questions++;

@@ -6,7 +6,12 @@
       "id": "aesop-for-children-02-01",
       "type": "detail",
       "q": "In 'The Dog, the Cock, and the Fox', where did the two friends sleep for the night?",
-      "choices": ["In a hollow tree", "In the farmer's barn", "In a cave near the road", "Under a little bridge"],
+      "choices": [
+        "In a hollow tree",
+        "In the farmer's barn",
+        "In a cave near the road",
+        "Under a little bridge"
+      ],
       "answer": 0,
       "evidence": "spied nearby a hollow tree"
     },
@@ -14,7 +19,12 @@
       "id": "aesop-for-children-02-02",
       "type": "character",
       "q": "In 'The Dog, the Cock, and the Fox', why did the Fox speak so politely to the Cock?",
-      "choices": ["He wanted to eat the Cock for breakfast", "He wanted the Cock to become his new friend", "He was lost and wanted the Cock to show him the way", "He wanted the Cock to stop crowing so early"],
+      "choices": [
+        "He wanted to eat the Cock for breakfast",
+        "He wanted the Cock to become his new friend",
+        "He was lost and wanted the Cock to show him the way",
+        "He wanted the Cock to stop crowing"
+      ],
       "answer": 0,
       "evidence": "rosy visions of a very delicious breakfast"
     },
@@ -22,7 +32,12 @@
       "id": "aesop-for-children-02-03",
       "type": "inference",
       "q": "In 'The Dog, the Cock, and the Fox', who was the 'porter' the Cock told the Fox about?",
-      "choices": ["The Dog", "The farmer", "Another Cock", "A wise Owl"],
+      "choices": [
+        "The Dog",
+        "The farmer",
+        "Another Cock",
+        "A wise Owl"
+      ],
       "answer": 0,
       "evidence": "in a twinkling the Dog had seized him"
     },
@@ -30,7 +45,12 @@
       "id": "aesop-for-children-02-04",
       "type": "main-idea",
       "q": "What is the lesson of 'The Dog, the Cock, and the Fox'?",
-      "choices": ["Those who try to deceive may expect to be paid in their own coin", "It is wise to wake up early and greet the morning with a song", "Never leave the safety of the farmyard to travel in the woods", "A fox who speaks politely can always be trusted as a friend"],
+      "choices": [
+        "Those who try to deceive may expect to be paid in their own coin",
+        "It is wise to wake up early and greet the morning with a song",
+        "Never leave the safety of the farmyard to travel in the woods",
+        "A fox who speaks politely can always be trusted as a friend"
+      ],
       "answer": 0,
       "evidence": "Those who try to deceive may expect to be paid in their own coin."
     },
@@ -38,7 +58,12 @@
       "id": "aesop-for-children-02-05",
       "type": "detail",
       "q": "In 'Belling the Cat', what plan did the young Mouse suggest?",
-      "choices": ["Hang a bell around the Cat's neck", "Move the whole family to a new house", "Build a trap and catch the Cat in it", "Ask the Dog to chase the Cat far away"],
+      "choices": [
+        "Hang a bell around the Cat's neck",
+        "Move the whole family to a new house",
+        "Build a trap and catch the Cat in it",
+        "Ask the Dog to chase the Cat"
+      ],
       "answer": 0,
       "evidence": "hang a bell about the Cat's neck"
     },
@@ -46,7 +71,12 @@
       "id": "aesop-for-children-02-06",
       "type": "main-idea",
       "q": "In 'Belling the Cat', what did the old Mouse's question show?",
-      "choices": ["Saying something should be done is easier than doing it", "The young Mouse was the bravest one in the meeting", "A bell would be much too heavy for any mouse to carry", "The Cat was really friendly and no one needed to fear her"],
+      "choices": [
+        "Saying something should be done is easier than doing it",
+        "The young Mouse was the bravest one in the meeting",
+        "A bell would be much too heavy for any mouse to carry",
+        "The Cat was really friendly and no one needed to fear her"
+      ],
       "answer": 0,
       "evidence": "It is one thing to say that something should be done, but quite a different matter to do it."
     },
@@ -54,7 +84,12 @@
       "id": "aesop-for-children-02-07",
       "type": "detail",
       "q": "In 'The Eagle and the Jackdaw', why couldn't the Jackdaw fly away with the Ram?",
-      "choices": ["His claws were tangled in the wool", "The Ram kicked him and he fell down", "The Shepherd's dog chased him off", "His wings were too small and too weak"],
+      "choices": [
+        "His claws were tangled in the wool",
+        "The Ram kicked him and he fell down",
+        "The Shepherd's dog chased him off",
+        "His wings were too small and too weak"
+      ],
       "answer": 0,
       "evidence": "his claws were tangled in the wool"
     },
@@ -62,7 +97,12 @@
       "id": "aesop-for-children-02-08",
       "type": "sequence",
       "q": "In 'The Eagle and the Jackdaw', what did the Shepherd do after catching the Jackdaw?",
-      "choices": ["Clipped its wings and gave it to his children", "Let it fly away after scolding it for trying", "Gave it to the Eagle that had taken the Lamb", "Set it back on the Ram's back to try again"],
+      "choices": [
+        "Clipped its wings and gave it to his children",
+        "Let it fly away after scolding it for trying",
+        "Gave it to the Eagle that had taken the Lamb",
+        "Set it back on the Ram's back to try again"
+      ],
       "answer": 0,
       "evidence": "clipped its wings"
     }

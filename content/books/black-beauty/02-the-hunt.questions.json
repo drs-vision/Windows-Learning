@@ -9,7 +9,7 @@
       "choices": [
         "The cry of dogs in the distance",
         "A church bell ringing over the fields",
-        "A gunshot from the edge of the wood",
+        "A distant gunshot",
         "Horses galloping along the high road"
       ],
       "answer": 0,
@@ -62,7 +62,7 @@
         "Two fine horses were down",
         "The master's house was on fire",
         "The colts were stuck in the mud",
-        "One of the dogs had drowned"
+        "A dog had drowned"
       ],
       "answer": 0,
       "evidence": "two fine horses were down"
@@ -99,7 +99,7 @@
       "q": "Why was the black horse Rob Roy shot?",
       "choices": [
         "One of his legs was broken",
-        "He had bitten one of the riders",
+        "He had bitten a rider",
         "He was too old to be ridden again",
         "He had run off and spoiled the hunt"
       ],

@@ -6,12 +6,7 @@
       "id": "mcguffey-first-reader-11-01",
       "type": "detail",
       "q": "How many little chickens did the white hen have?",
-      "choices": [
-        "Twelve",
-        "Four",
-        "Eight",
-        "Two"
-      ],
+      "choices": ["Twelve", "Four", "Eight", "Eleven"],
       "answer": 0,
       "evidence": "had twelve little chickens"
     },
@@ -19,12 +14,7 @@
       "id": "mcguffey-first-reader-11-02",
       "type": "detail",
       "q": "Where did the hen take her chickens?",
-      "choices": [
-        "To a small brook",
-        "To the barn",
-        "To the woods",
-        "To the market"
-      ],
+      "choices": ["To a small brook", "To the big barn", "To the woods", "To the market"],
       "answer": 0,
       "evidence": "took her chickens down to a small brook"
     },
@@ -32,12 +22,7 @@
       "id": "mcguffey-first-reader-11-03",
       "type": "detail",
       "q": "What was in the brook?",
-      "choices": [
-        "A large stone",
-        "A log",
-        "A boat",
-        "A tub"
-      ],
+      "choices": ["A large stone", "An old log", "A little boat", "A big tub"],
       "answer": 0,
       "evidence": "There was a large stone in the brook"
     },
@@ -45,12 +30,7 @@
       "id": "mcguffey-first-reader-11-04",
       "type": "detail",
       "q": "What did the hen tell the chickens to flap?",
-      "choices": [
-        "Their wings",
-        "Their feet",
-        "Their heads",
-        "Their bills"
-      ],
+      "choices": ["Their wings", "Their feet", "Their heads", "Their bills"],
       "answer": 0,
       "evidence": "Just flap your wings"
     },
@@ -58,12 +38,7 @@
       "id": "mcguffey-first-reader-11-05",
       "type": "character",
       "q": "Which chicken really tried to jump?",
-      "choices": [
-        "Chippy",
-        "Polly",
-        "Fido",
-        "Ponto"
-      ],
+      "choices": ["Chippy", "Brownie", "Fido", "Ponto"],
       "answer": 0,
       "evidence": "the only one of my children that really tried"
     },
@@ -71,12 +46,7 @@
       "id": "mcguffey-first-reader-11-06",
       "type": "detail",
       "q": "What did the hen find near the back door?",
-      "choices": [
-        "A piece of bread",
-        "A worm",
-        "Some corn",
-        "An egg"
-      ],
+      "choices": ["A piece of bread", "A big fat worm", "Some corn", "A white egg"],
       "answer": 0,
       "evidence": "a piece of bread"
     },
@@ -84,12 +54,7 @@
       "id": "mcguffey-first-reader-11-07",
       "type": "main-idea",
       "q": "Why did Chippy get the bread?",
-      "choices": [
-        "He tried",
-        "He was the biggest",
-        "He ran the fastest",
-        "He found it"
-      ],
+      "choices": ["He tried", "He was the biggest", "He ran the fastest", "He found it"],
       "answer": 0,
       "evidence": "He is the only one of my children that really tried"
     },
@@ -97,12 +62,7 @@
       "id": "mcguffey-first-reader-11-08",
       "type": "detail",
       "q": "What should children keep neat and clean?",
-      "choices": [
-        "Their books",
-        "Their hats",
-        "Their dolls",
-        "Their pets"
-      ],
+      "choices": ["Their books", "Their hats", "Their dolls", "Their pets"],
       "answer": 0,
       "evidence": "keep their books neat and clean"
     }

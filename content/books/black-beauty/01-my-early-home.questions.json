@@ -9,7 +9,7 @@
       "choices": [
         "His mother's milk",
         "Sweet oats and hay from the rack",
-        "Bread the master brought him",
+        "Grass and clover",
         "Water from the pond in the meadow"
       ],
       "answer": 0,
@@ -35,7 +35,7 @@
       "choices": [
         "Bite or kick",
         "Gallop around the meadow",
-        "Drink from the pond",
+        "Roll in mud",
         "Eat the blackberries"
       ],
       "answer": 0,
@@ -59,7 +59,7 @@
       "type": "detail",
       "q": "Why did the master call the young horse Darkie?",
       "choices": [
-        "Because he was a dull black",
+        "Because his coat was a dull black",
         "Because he was born late at night",
         "Because he hid in the dark shed",
         "Because his father was called Dark"

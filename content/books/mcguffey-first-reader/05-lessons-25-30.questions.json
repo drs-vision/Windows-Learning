@@ -6,12 +6,7 @@
       "id": "mcguffey-first-reader-05-01",
       "type": "detail",
       "q": "What will James dig with?",
-      "choices": [
-        "A little spade",
-        "A pole",
-        "A whip",
-        "A pen"
-      ],
+      "choices": ["A little spade", "A long pole", "A little stick", "A big tin pan"],
       "answer": 0,
       "evidence": "dig in the sand with this little spade"
     },
@@ -19,12 +14,7 @@
       "id": "mcguffey-first-reader-05-02",
       "type": "character",
       "q": "Why can Kate not play with James at first?",
-      "choices": [
-        "She must make her doll's bed",
-        "She is too hot",
-        "She lost her hat",
-        "She has to feed the hen"
-      ],
+      "choices": ["She must make her doll's bed", "She has to hunt for eggs", "She lost her hat in the sand", "She is too hot"],
       "answer": 0,
       "evidence": "I must make my doll's bed"
     },
@@ -32,12 +22,7 @@
       "id": "mcguffey-first-reader-05-03",
       "type": "detail",
       "q": "What does Mary pick up?",
-      "choices": [
-        "Little stones",
-        "Eggs",
-        "Shells",
-        "Flowers"
-      ],
+      "choices": ["Little stones", "Brown eggs", "Big shells", "Red flowers"],
       "answer": 0,
       "evidence": "Mary picks up little stones"
     },
@@ -45,12 +30,7 @@
       "id": "mcguffey-first-reader-05-04",
       "type": "detail",
       "q": "Where do James, Mary and Kate play?",
-      "choices": [
-        "By the brook",
-        "In the barn",
-        "On the boat",
-        "In the cage"
-      ],
+      "choices": ["By the brook", "In the big barn", "In the woods", "By the pond"],
       "answer": 0,
       "evidence": "by the brook"
     },
@@ -58,12 +38,7 @@
       "id": "mcguffey-first-reader-05-05",
       "type": "detail",
       "q": "Where does Fanny want to hunt for eggs?",
-      "choices": [
-        "In the barn",
-        "In the pond",
-        "In the tent",
-        "In the cart"
-      ],
+      "choices": ["In the barn", "In the pond", "In the tent", "In the cart"],
       "answer": 0,
       "evidence": "hunt for eggs in the barn"
     },
@@ -71,12 +46,7 @@
       "id": "mcguffey-first-reader-05-06",
       "type": "detail",
       "q": "Where does the hen put the little chick?",
-      "choices": [
-        "Under her wing",
-        "In a box",
-        "In the cage",
-        "On the fence"
-      ],
+      "choices": ["Under her wing", "In a little box", "In the cage", "On the high fence"],
       "answer": 0,
       "evidence": "take this little chick under your wing"
     },
@@ -84,12 +54,7 @@
       "id": "mcguffey-first-reader-05-07",
       "type": "detail",
       "q": "What flies high?",
-      "choices": [
-        "My kite",
-        "My dog",
-        "The hen",
-        "The flag"
-      ],
+      "choices": ["My kite", "My dog", "The hen", "The flag"],
       "answer": 0,
       "evidence": "my kite flies high"
     },
@@ -97,12 +62,7 @@
       "id": "mcguffey-first-reader-05-08",
       "type": "detail",
       "q": "What will be the boat for the dolls?",
-      "choices": [
-        "The little tub",
-        "A box",
-        "A basket",
-        "The cart"
-      ],
+      "choices": ["The little tub", "A big box", "A basket", "The cart"],
       "answer": 0,
       "evidence": "get the little tub"
     }

@@ -51,7 +51,7 @@ jobs:
           npm run build
 
       - name: Books — check texts and question banks
-        run: node scripts/books/validate.mjs --lenient-choices
+        run: node scripts/books/validate.mjs
 
       - name: Fetch arcade games (best effort)
         continue-on-error: true

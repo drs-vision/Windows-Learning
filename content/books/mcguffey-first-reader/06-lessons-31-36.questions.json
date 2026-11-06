@@ -6,12 +6,7 @@
       "id": "mcguffey-first-reader-06-01",
       "type": "detail",
       "q": "Who got the dolls out of the pond?",
-      "choices": [
-        "Ponto",
-        "Prince",
-        "Jip",
-        "Rab"
-      ],
+      "choices": ["Ponto", "Prince", "Jip", "Rab"],
       "answer": 0,
       "evidence": "Ponto came with a bound, and jumped into the pond."
     },
@@ -19,12 +14,7 @@
       "id": "mcguffey-first-reader-06-02",
       "type": "detail",
       "q": "Which doll went under the water?",
-      "choices": [
-        "Rose",
-        "Bess",
-        "Kate",
-        "Lucy"
-      ],
+      "choices": ["Rose", "Bess", "Kate", "Lucy"],
       "answer": 0,
       "evidence": "Rose went under, but she did not drown."
     },
@@ -32,12 +22,7 @@
       "id": "mcguffey-first-reader-06-03",
       "type": "character",
       "q": "What kind of dog is Ponto?",
-      "choices": [
-        "A brave dog",
-        "A bad dog",
-        "A lazy dog",
-        "A little dog"
-      ],
+      "choices": ["A brave dog", "A bad dog", "A lazy dog", "A little dog"],
       "answer": 0,
       "evidence": "Brave old dog!"
     },
@@ -45,12 +30,7 @@
       "id": "mcguffey-first-reader-06-04",
       "type": "detail",
       "q": "What color is the sky?",
-      "choices": [
-        "Blue",
-        "Gray",
-        "Black",
-        "White"
-      ],
+      "choices": ["Blue", "Gray", "Black", "White"],
       "answer": 0,
       "evidence": "The sky is as blue as it can be."
     },
@@ -58,12 +38,7 @@
       "id": "mcguffey-first-reader-06-05",
       "type": "detail",
       "q": "What will Lucy have when papa gets a tent?",
-      "choices": [
-        "A picnic",
-        "A boat",
-        "A swing",
-        "A kite"
-      ],
+      "choices": ["A picnic", "A boat", "A swing", "A kite"],
       "answer": 0,
       "evidence": "they will have a picnic"
     },
@@ -71,12 +46,7 @@
       "id": "mcguffey-first-reader-06-06",
       "type": "detail",
       "q": "Who found the lost ball?",
-      "choices": [
-        "Ponto",
-        "Lucy",
-        "James",
-        "Mary"
-      ],
+      "choices": ["Ponto", "Lucy", "James", "Mary"],
       "answer": 0,
       "evidence": "Ponto has found it."
     },
@@ -84,12 +54,7 @@
       "id": "mcguffey-first-reader-06-07",
       "type": "detail",
       "q": "What are the boys playing?",
-      "choices": [
-        "Fourth of July",
-        "School",
-        "Ball",
-        "Train"
-      ],
+      "choices": ["Fourth of July", "School", "Ball", "Train"],
       "answer": 0,
       "evidence": "We are playing Fourth of July."
     },
@@ -97,12 +62,7 @@
       "id": "mcguffey-first-reader-06-08",
       "type": "detail",
       "q": "What color is Frank's boat?",
-      "choices": [
-        "White",
-        "Black",
-        "Blue",
-        "Gray"
-      ],
+      "choices": ["White", "Black", "Blue", "Gray"],
       "answer": 0,
       "evidence": "It is white, with a black line"
     }

@@ -6,12 +6,7 @@
       "id": "mcguffey-first-reader-02-01",
       "type": "detail",
       "q": "Who fed the hen?",
-      "choices": [
-        "Ned",
-        "Nat",
-        "Nell",
-        "Ben"
-      ],
+      "choices": ["Ned", "Nat", "Nell", "Ben"],
       "answer": 0,
       "evidence": "Ned has fed the hen."
     },
@@ -19,12 +14,7 @@
       "id": "mcguffey-first-reader-02-02",
       "type": "detail",
       "q": "What color is the hen?",
-      "choices": [
-        "Black",
-        "White",
-        "Brown",
-        "Gray"
-      ],
+      "choices": ["Black", "White", "Brown", "Gray"],
       "answer": 0,
       "evidence": "She is a black hen."
     },
@@ -32,12 +22,7 @@
       "id": "mcguffey-first-reader-02-03",
       "type": "detail",
       "q": "What does Ned put on his head?",
-      "choices": [
-        "The black hat",
-        "The pan",
-        "The box",
-        "The pen"
-      ],
+      "choices": ["The black hat", "The big pan", "The big box", "The red pen"],
       "answer": 0,
       "evidence": "Ned has it on his head"
     },
@@ -45,12 +30,7 @@
       "id": "mcguffey-first-reader-02-04",
       "type": "detail",
       "q": "What does Nell have in her pan?",
-      "choices": [
-        "Eggs",
-        "A rat",
-        "A pen",
-        "A hat"
-      ],
+      "choices": ["Eggs", "A rat", "A pen", "A hat"],
       "answer": 0,
       "evidence": "she has a pan with some eggs in it"
     },
@@ -58,12 +38,7 @@
       "id": "mcguffey-first-reader-02-05",
       "type": "detail",
       "q": "What does Ann ask Ben to hand her?",
-      "choices": [
-        "The whip",
-        "The pan",
-        "The hat",
-        "The eggs"
-      ],
+      "choices": ["The whip", "The pan", "The hat", "The eggs"],
       "answer": 0,
       "evidence": "Now, Ben, hand me the whip."
     },
@@ -71,12 +46,7 @@
       "id": "mcguffey-first-reader-02-06",
       "type": "detail",
       "q": "Who must stand still?",
-      "choices": [
-        "Jip",
-        "Nat",
-        "Rab",
-        "Ned"
-      ],
+      "choices": ["Jip", "Nat", "Rab", "Ned"],
       "answer": 0,
       "evidence": "Stand still, Jip"
     },
@@ -84,12 +54,7 @@
       "id": "mcguffey-first-reader-02-07",
       "type": "detail",
       "q": "What can Kitty's pet do?",
-      "choices": [
-        "Sing a sweet song",
-        "Swim in the pond",
-        "Catch a rat",
-        "Run fast"
-      ],
+      "choices": ["Sing a sweet song", "Swim in the big pond", "Catch a fat rat", "Run very fast"],
       "answer": 0,
       "evidence": "It can sing a sweet song."
     },
@@ -97,12 +62,7 @@
       "id": "mcguffey-first-reader-02-08",
       "type": "inference",
       "q": "Why does Kitty put her pet in the cage?",
-      "choices": [
-        "So the cat can not catch it",
-        "So it can swim",
-        "So it can eat eggs",
-        "So it can run"
-      ],
+      "choices": ["So the cat can not catch it", "So it can sing for the man", "So the hen can not peck it", "So it can sleep on the mat"],
       "answer": 0,
       "evidence": "Then the cat can not catch it."
     }

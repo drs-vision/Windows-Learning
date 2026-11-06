@@ -6,12 +6,7 @@
       "id": "mcguffey-first-reader-07-01",
       "type": "detail",
       "q": "What will John give Lucy?",
-      "choices": [
-        "A little boat",
-        "A doll",
-        "A kite",
-        "A basket"
-      ],
+      "choices": ["A little boat", "A new doll", "A big kite", "A basket"],
       "answer": 0,
       "evidence": "I will give it to you when it is finished"
     },
@@ -19,12 +14,7 @@
       "id": "mcguffey-first-reader-07-02",
       "type": "detail",
       "q": "What is in Lucy's pan?",
-      "choices": [
-        "Corn for her hens",
-        "Eggs",
-        "Milk",
-        "Honey"
-      ],
+      "choices": ["Corn for her hens", "Milk for the cat", "Bread for birds", "Eggs for grandma"],
       "answer": 0,
       "evidence": "Some corn for my hens"
     },
@@ -32,12 +22,7 @@
       "id": "mcguffey-first-reader-07-03",
       "type": "detail",
       "q": "What did mamma buy at the market?",
-      "choices": [
-        "Bread, meat, and tea",
-        "Eggs and milk",
-        "Corn and hay",
-        "Shells and stones"
-      ],
+      "choices": ["Bread, meat, and tea", "Eggs, milk, and corn", "Corn, hay, and oats", "Cake and candy"],
       "answer": 0,
       "evidence": "some bread, some meat, and some tea"
     },
@@ -45,12 +30,7 @@
       "id": "mcguffey-first-reader-07-04",
       "type": "detail",
       "q": "What does grandma wear when she reads?",
-      "choices": [
-        "Glasses",
-        "A big hat",
-        "A flower",
-        "A flag"
-      ],
+      "choices": ["Glasses", "A big hat", "A flower", "A flag"],
       "answer": 0,
       "evidence": "She wears glasses when she reads."
     },
@@ -58,12 +38,7 @@
       "id": "mcguffey-first-reader-07-05",
       "type": "detail",
       "q": "What was shut up in the flower?",
-      "choices": [
-        "A bee",
-        "A bird",
-        "A chick",
-        "A kitten"
-      ],
+      "choices": ["A bee", "A bird", "A chick", "A kitten"],
       "answer": 0,
       "evidence": "it is a bee"
     },
@@ -71,12 +46,7 @@
       "id": "mcguffey-first-reader-07-06",
       "type": "inference",
       "q": "Why did the bee go into the flower?",
-      "choices": [
-        "To get honey",
-        "To get out of the rain",
-        "To find its mother",
-        "To sing a song"
-      ],
+      "choices": ["To get honey", "To get out of the rain", "To find its mother", "To sing a song"],
       "answer": 0,
       "evidence": "It went into the flower for some honey"
     },
@@ -84,12 +54,7 @@
       "id": "mcguffey-first-reader-07-07",
       "type": "detail",
       "q": "What will the boys give the horses?",
-      "choices": [
-        "Hay or corn",
-        "Milk",
-        "Bread and tea",
-        "Honey"
-      ],
+      "choices": ["Hay or corn", "Bread and tea", "Milk and honey", "Apples and cake"],
       "answer": 0,
       "evidence": "give the horses some hay or corn"
     },
@@ -97,12 +62,7 @@
       "id": "mcguffey-first-reader-07-08",
       "type": "detail",
       "q": "What did the little girl find besides flowers?",
-      "choices": [
-        "A nest with young birds",
-        "A lost doll",
-        "A white kitten",
-        "A ball"
-      ],
+      "choices": ["A nest with young birds", "A lost doll in the grass", "A white kitten asleep", "A ball under a tree"],
       "answer": 0,
       "evidence": "A nest with young birds"
     }
