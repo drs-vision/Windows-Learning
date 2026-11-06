@@ -685,7 +685,6 @@ button.big { font-size: 1.1em; padding: .7em 1.4em; }
 .shelf-done { opacity: .85; }
 .book-progress { display: flex; align-items: center; gap: 12px; max-width: 30rem; margin: 0 auto 1em; } .book-progress .book-bar { flex: 1; height: 8px; } .book-progress small { color: var(--ink-2); white-space: nowrap; }
 .read-mark { color: var(--green); font-weight: 800; }
-.shelf-intro { display: flex; justify-content: center; align-items: center; gap: 10px; max-width: 46rem; margin-left: auto; margin-right: auto; } .shelf-intro span { flex: 1; } .shelf-intro .dismiss { padding: .1em .5em; line-height: 1; opacity: .45; transition: opacity .15s; } .shelf-intro .dismiss:hover, .shelf-intro .dismiss:focus-visible { opacity: 1; }
 .shelf { display: grid; grid-template-columns: repeat(auto-fill, minmax(130px, 150px)); gap: 20px 16px; }
 .book-grade { align-self: flex-start; font-style: normal; font-size: .72rem; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; background: rgba(0,0,0,.28); border-radius: 999px; padding: .2em .6em; }
 .book-card { background: none; padding: 0; display: grid; gap: 8px; text-align: left; }
@@ -843,3 +842,11 @@ button.big { font-size: 1.1em; padding: .7em 1.4em; }
 .rq-ring-streak.pulse svg { animation: rq-ring-pulse .7s ease-out; }
 @keyframes rq-ring-pulse { 0% { transform: scale(1); } 35% { transform: scale(1.12); } 100% { transform: scale(1); } }
 @media (prefers-reduced-motion: reduce) { .rq-ring-streak.pulse svg { animation: none; } .rq-ring-streak .seg { transition: none; } }
+
+/* Pale, dismissible hints (core/Notice.tsx): quieter than the content, with a faint ✕ that brightens on hover. */
+.notice { display: flex; align-items: center; gap: 10px; max-width: 46rem; margin: 0 auto 1em; padding: .55em .6em .55em 1em;
+  border-radius: 10px; background: rgba(255,255,255,.035); border: 1px solid rgba(255,255,255,.06); color: var(--ink-2); opacity: .75; font-size: .95rem; text-align: center; }
+.notice-text { flex: 1; }
+.notice-close { flex: none; background: none; border: 0; color: inherit; cursor: pointer; padding: .2em .45em; line-height: 1; border-radius: 6px; opacity: .55; transition: opacity .15s; }
+.notice-close:hover, .notice-close:focus-visible { opacity: 1; background: rgba(255,255,255,.08); }
+.notice.inline { margin: 0; max-width: none; padding: .3em .4em .3em .8em; font-size: .85rem; text-align: left; }

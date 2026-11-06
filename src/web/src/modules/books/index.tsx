@@ -3,6 +3,7 @@ import { useEffect, useMemo, useRef, useState } from 'preact/hooks';
 import type { Activity } from '../../core/types';
 import type { ActivityContext, LessonModule } from '../../core/module';
 import { invalid } from '../../core/module';
+import { Notice } from '../../core/Notice';
 import { bridge } from '../../core/bridge';
 import { TypingBox, type TypingDone } from '../../core/ui/TypingBox';
 import { applySelection, pieces, type Marks } from './highlights';
@@ -82,9 +83,6 @@ function BookCard({ b, onOpen }: { b: BookStatus; onOpen: (id: string) => void }
 
 /** Reading now (started, not finished) on top, then the library by level, then finished books at the bottom. */
 function ShelfView({ shelf, onOpen, onExit }: { shelf: Shelf; onOpen: (id: string) => void; onExit: () => void }) {
-  // The intro line can be closed once; it stays closed on this PC.
-  const [introHidden, setIntroHidden] = useState(() => { try { return localStorage.getItem('cq.books.introHidden') === '1'; } catch { return false; } });
-  const hideIntro = () => { setIntroHidden(true); try { localStorage.setItem('cq.books.introHidden', '1'); } catch { /* fine */ } };
   const reading = shelf.books.filter((b) => started(b) && !finished(b));
   const done = shelf.books.filter(finished);
   const levels = useMemo(() => {
@@ -95,10 +93,7 @@ function ShelfView({ shelf, onOpen, onExit }: { shelf: Shelf; onOpen: (id: strin
   return (
     <div class="reading">
       <div class="reading-head"><button class="ghost" onClick={onExit}>← Back</button><h2>📚 Bookshelf</h2><span /></div>
-      {!introHidden && (
-        <p class="muted center shelf-intro"><span>Read whatever you like. Quizzes are optional: pass a chapter's quiz to earn <b>{shelf.perCorrect} 🪙</b> for every right answer.</span>
-          <button class="ghost small dismiss" aria-label="Got it, hide this" title="Got it" onClick={hideIntro}>✕</button></p>
-      )}
+      <Notice id="books.shelf">Read whatever you like. Quizzes are optional: pass a chapter's quiz to earn coins for each answer.</Notice>
       {shelf.books.length === 0 && <p class="muted center">No books yet — ask a parent to pick some.</p>}
       {reading.length > 0 && (
         <section class="shelf-group shelf-now">
@@ -311,7 +306,7 @@ function BookText({ text, store, compact }: { text: string; store: string; compa
   }
   return (
     <>
-      <div class="book-bar-top">{compact ? <span /> : <span class="muted small">Tip: select words to highlight them. Select them again to clear.</span>}<ReaderTools prefs={prefs} set={setPrefs} /></div>
+      <div class="book-bar-top">{compact ? <span /> : <Notice id="books.highlight" class="inline">Tip: select words to highlight them. Select them again to clear.</Notice>}<ReaderTools prefs={prefs} set={setPrefs} /></div>
       <article class={'book-text' + (prefs.font === 'plain' ? ' plain' : '') + (compact ? ' compact' : '')} style={{ fontSize: `${SIZES[prefs.size] ?? 1.35}rem` }} ref={ref} onMouseUp={onSelect} onTouchEnd={() => setTimeout(onSelect, 0)}>
         {paras.map((p, i) => <p data-p={i}>{pieces(p, marks[i]).map((x) => (x.mark ? <mark>{x.text}</mark> : x.text))}</p>)}
       </article>
@@ -390,7 +385,7 @@ function QuizView({ title, quiz, bookId, n, text, onDone, onBack }: { title: str
       {side && <aside class="quiz-text"><BookText text={text} store={`cq.books.marks.${bookId}/${n}`} compact /></aside>}
       <div class="quiz-main">
       <p class="muted center">{answers.filter((a) => a >= 0).length} of {quiz.questions.length} answered</p>
-      <p class="muted center">Get 70% or more to pass. You can look at the chapter while you answer.</p>
+      <Notice id="books.quiz">Get 70% or more to pass. You can look at the chapter while you answer.</Notice>
       {quiz.questions.map((q, i) => (
         <div class="quiz-q">
           <div class="quiz-q-head"><b>{i + 1}. {q.q}</b></div>
