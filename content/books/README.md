@@ -78,6 +78,9 @@ content/books/
 * Keep questions answerable from **this chapter alone**, at the book's grade level, with one clearly right answer and
   three wrong answers that are believable but clearly wrong to someone who read it. Avoid "all of the above",
   "none of the above", trick wording and questions about tiny details nobody would remember.
+* **No giveaways:** the wrong choices must be as long, specific and detailed as the right one, so "pick the longest
+  answer" doesn't work. The validator fails a chapter where the right answer is the longest choice in more than 40%
+  of its questions (by chance it would be about 25%). Also avoid wrong choices that are silly or obviously off-topic.
 * Same keyboard-only character rule as the text.
 
 ### How many questions

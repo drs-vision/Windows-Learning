@@ -1,0 +1,110 @@
+{
+  "book": "treasure-island",
+  "chapter": 12,
+  "questions": [
+    {
+      "id": "treasure-island-12-01",
+      "type": "detail",
+      "q": "What did the crew see when the fog lifted?",
+      "choices": ["Two low hills and a third, higher hill behind them", "A pirate ship at anchor", "A lighthouse on a cliff", "A wide sandy beach with palm trees"],
+      "answer": 0,
+      "evidence": "we saw two low hills, about a couple of miles apart"
+    },
+    {
+      "id": "treasure-island-12-02",
+      "type": "detail",
+      "q": "When the captain asked if anyone had seen the island before, who answered?",
+      "choices": ["Silver", "Israel Hands", "Dick", "Job Anderson"],
+      "answer": 0,
+      "evidence": "\"I have, sir,\" said Silver."
+    },
+    {
+      "id": "treasure-island-12-03",
+      "type": "detail",
+      "q": "Why was the big main hill called the Spy-glass, according to Silver?",
+      "choices": ["Pirates kept a lookout there while cleaning their ships", "It was shaped like a telescope", "Flint lost his spy-glass there", "It was named after Silver's tavern"],
+      "answer": 0,
+      "evidence": "by reason of a lookout they kept when they was in the anchorage cleaning"
+    },
+    {
+      "id": "treasure-island-12-04",
+      "type": "inference",
+      "q": "Why was Silver disappointed when he looked at the captain's chart?",
+      "choices": ["It was a copy without the red crosses and notes", "It showed the wrong island", "It was torn and unreadable", "It was written in Spanish"],
+      "answer": 0,
+      "evidence": "with the single exception of the red crosses and the written notes"
+    },
+    {
+      "id": "treasure-island-12-05",
+      "type": "character",
+      "q": "How did Silver handle his annoyance about the chart?",
+      "choices": ["He hid it and praised the chart", "He threw the chart overboard", "He accused the captain of lying", "He stormed off below deck"],
+      "answer": 0,
+      "evidence": "Silver had the strength of mind to hide it"
+    },
+    {
+      "id": "treasure-island-12-06",
+      "type": "vocabulary",
+      "q": "Jim says he had a horror of Silver's \"cruelty, duplicity, and power.\" What does \"duplicity\" mean?",
+      "choices": ["Deceitfulness; pretending to be one thing while being another", "Great strength", "Bad temper", "Clumsiness"],
+      "answer": 0,
+      "evidence": "his cruelty, duplicity, and power"
+    },
+    {
+      "id": "treasure-island-12-07",
+      "type": "character",
+      "q": "How did Silver treat Jim after handing back the chart?",
+      "choices": ["In a friendly way, offering to pack him a snack for exploring", "Coldly, ignoring him", "Angrily, threatening him", "Suspiciously, asking where he had been"],
+      "answer": 0,
+      "evidence": "he'll put up a snack for you to take along"
+    },
+    {
+      "id": "treasure-island-12-08",
+      "type": "sequence",
+      "q": "What did Jim ask Dr. Livesey to do when he got the chance to speak quietly?",
+      "choices": ["Get the captain and squire to the cabin and send for him with some excuse", "Arrest Silver at once", "Turn the ship around", "Hide the map in his pocket"],
+      "answer": 0,
+      "evidence": "Get the captain and squire down to the cabin, and then make some pretence to send for me."
+    },
+    {
+      "id": "treasure-island-12-09",
+      "type": "inference",
+      "q": "Why did the doctor loudly say, \"Thank you, Jim, that was all I wanted to know\"?",
+      "choices": ["To make the crew think Jim had simply answered a question", "Because Jim had brought his pipe", "To embarrass Jim in front of the crew", "Because he did not believe Jim"],
+      "answer": 0,
+      "evidence": "as if he had asked me a question"
+    },
+    {
+      "id": "treasure-island-12-10",
+      "type": "detail",
+      "q": "What sign told Jim that the doctor was agitated in the cabin?",
+      "choices": ["He had his wig on his lap", "His hands were shaking", "He was pacing the room", "He had stopped smoking"],
+      "answer": 0,
+      "evidence": "with his wig on his lap, and that, I knew, was a sign that he was agitated"
+    },
+    {
+      "id": "treasure-island-12-11",
+      "type": "character",
+      "q": "What did the squire admit to Captain Smollett after hearing Jim's story?",
+      "choices": ["That the captain was right and he was wrong", "That he had told Silver about the map", "That he wanted to turn back", "That he had known about the plot all along"],
+      "answer": 0,
+      "evidence": "you were right, and I was wrong"
+    },
+    {
+      "id": "treasure-island-12-12",
+      "type": "detail",
+      "q": "Why did the captain say they must go on instead of turning back?",
+      "choices": ["The crew would rise against them at once", "They had run out of food", "The wind would not allow it", "The squire refused"],
+      "answer": 0,
+      "evidence": "If I gave the word to go about, they would rise at once."
+    },
+    {
+      "id": "treasure-island-12-13",
+      "type": "main-idea",
+      "q": "What is this chapter mostly about?",
+      "choices": ["Reaching the island and the honest men secretly planning how to deal with the mutineers", "The pirates taking over the ship", "Jim finding the treasure on the island", "Silver confessing his plan to the captain"],
+      "answer": 0,
+      "evidence": "I put prodigious faith in you"
+    }
+  ]
+}
