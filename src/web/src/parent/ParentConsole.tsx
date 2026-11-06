@@ -770,7 +770,7 @@ function DiscImport({ rwt }: { rwt: { s: ModSettings; set: (p: Partial<ModSettin
                 <div class="row" style="gap:.4em;margin-top:.3em;flex-wrap:wrap;align-items:center">
                   {rw.installed ? <button class="ghost small" onClick={rwtTry}>Try it</button> : null}
                   <button class="ghost small" onClick={rwtPick}>{rw.installed ? 'Import again…' : 'Import its disc…'}</button>
-                  <label class="small inline-num">🪙 per level<input type="number" value={rwt.s.coinsPerActivity} onChange={(e) => rwt.set({ coinsPerActivity: Number((e.target as HTMLInputElement).value) })} /></label>
+                  <label class="small inline-num">🪙 per finished activity<input type="number" value={rwt.s.coinsPerActivity} onChange={(e) => rwt.set({ coinsPerActivity: Number((e.target as HTMLInputElement).value) })} /></label>
                   <label class="small inline-num">daily limit<input type="number" min={0} value={rwt.s.dailyCap} onChange={(e) => rwt.set({ dailyCap: Number((e.target as HTMLInputElement).value) })} /></label>
                   <label class="check small"><input type="checkbox" checked={rwt.s.requireApproval} onChange={(e) => rwt.set({ requireApproval: (e.target as HTMLInputElement).checked })} /> Needs my OK</label>
                 </div>

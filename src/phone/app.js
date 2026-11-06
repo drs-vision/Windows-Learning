@@ -375,7 +375,7 @@ function rewardsScreen() {
         <div class="quest-top"><p class="kid-name">${icon} ${esc(title)}</p>${toggle(m.enabled, `data-q="${esc(m.id)}" data-f="enabled" aria-label="${esc(title)} on or off"`)}</div>
         ${m.enabled ? `
         <div class="grid2">
-          ${field(m.id === 'discgames' ? 'Coins per progress' : m.id === 'rwt' ? 'Coins per level' : m.id === 'bible-typing' ? (+m.options?.wordsPer ? `Coins per ${m.options.wordsPer} words` : 'Coins per passage') : 'Coins per activity', `type="text" inputmode="numeric" value="${m.coinsPerActivity}" data-q="${esc(m.id)}" data-f="coinsPerActivity"`)}
+          ${field(m.id === 'discgames' ? 'Coins per progress' : m.id === 'rwt' ? 'Coins per finished activity' : m.id === 'bible-typing' ? (+m.options?.wordsPer ? `Coins per ${m.options.wordsPer} words` : 'Coins per passage') : 'Coins per activity', `type="text" inputmode="numeric" value="${m.coinsPerActivity}" data-q="${esc(m.id)}" data-f="coinsPerActivity"`)}
           ${field('Daily limit', `type="text" inputmode="numeric" value="${m.dailyCap}" data-q="${esc(m.id)}" data-f="dailyCap"`, '0 = none')}
           ${opts.filter(([k]) => !OPTION_CHOICES[k]).map(([k, v]) => field(OPTION_LABELS[k], `type="text" inputmode="numeric" value="${esc(v)}" data-q="${esc(m.id)}" data-opt="${esc(k)}"`)).join('')}
         </div>
