@@ -4,6 +4,9 @@ import { BLOCK_MINUTES, autoSamplerPrice, defaultArcadePrice, youTubeBlockPrice 
 import { bridge, type DiscStatus, type FpStatus, type PhoneLinks, type RwtStatus } from '../core/bridge';
 import qrcode from 'qrcode-generator';
 import { MODULES } from '../modules/registry';
+import { familyPassages, type FamilyPassage } from '../modules/my-passages/score';
+import { wordCount } from '../modules/bible-typing/score';
+import { keyboardText } from '../core/keyboardText';
 import { SetupWizard } from './SetupWizard';
 import { fmt } from '../modules/arcade/Arcade';
 import { merge3 } from '../core/merge';
@@ -627,9 +630,10 @@ function Quests({ child, onSave }: { child: Child; onSave: (c: Child) => void })
             </div>
             <p class="muted">{m.description}</p>
             {m.id === 'rwt' && <RwtImport />}
+            {m.id === 'my-passages' && <PassageEditor s={s} set={(p) => setMod(m.id, p)} />}
             {m.id === 'discgames' && <DiscImport rwt={{ s: child.modules.rwt ?? { enabled: false, requireApproval: false, ...MODULES.find((x) => x.id === 'rwt')!.defaults }, set: (p) => setMod('rwt', p) }} />}
             <div class={'row' + (m.id === 'discgames' ? ' module-coins' : '')}>
-              <label>{m.id === 'discgames' ? 'Default coins per progress' : m.id === 'bible-typing' ? (Number(s.options?.wordsPer ?? 0) > 0 ? `Coins per ${s.options?.wordsPer} words` : 'Coins per passage') : 'Coins per activity'}<input type="number" value={s.coinsPerActivity} onChange={(e) => setMod(m.id, { coinsPerActivity: Number((e.target as HTMLInputElement).value) })} /></label>
+              <label>{m.id === 'discgames' ? 'Default coins per progress' : m.id === 'bible-typing' || m.id === 'my-passages' ? (Number(s.options?.wordsPer ?? 20) > 0 ? `Coins per ${s.options?.wordsPer ?? 20} words` : 'Coins per passage') : 'Coins per activity'}<input type="number" value={s.coinsPerActivity} onChange={(e) => setMod(m.id, { coinsPerActivity: Number((e.target as HTMLInputElement).value) })} /></label>
               <label>Daily limit (0 = none)<input type="number" min={0} value={s.dailyCap} onChange={(e) => setMod(m.id, { dailyCap: Number((e.target as HTMLInputElement).value) })} /></label>
               <label class="check"><input type="checkbox" checked={s.requireApproval || m.verification === 'parent_approved'} disabled={m.verification === 'parent_approved'} onChange={(e) => setMod(m.id, { requireApproval: (e.target as HTMLInputElement).checked })} /> Needs my OK</label>
             </div>
@@ -650,6 +654,53 @@ function Quests({ child, onSave }: { child: Child; onSave: (c: Child) => void })
           </div>
         );
       })}
+    </div>
+  );
+}
+
+/** The family's own typing passages: paste text in, it's cleaned to keyboard characters, and it's ready to type. */
+function PassageEditor({ s, set }: { s: Child['modules'][string]; set: (p: Partial<Child['modules'][string]>) => void }) {
+  const list = familyPassages(s);
+  const [title, setTitle] = useState('');
+  const [raw, setRaw] = useState('');
+  const clean = keyboardText(raw);
+  const name = title.trim().replace(/\s+/g, ' ').slice(0, 60);
+  const clash = list.some((p) => p.title.toLowerCase() === name.toLowerCase());
+  const save = (next: FamilyPassage[], extra: Partial<Child['modules'][string]> = {}) =>
+    set({ ...extra, options: { wordsPer: '20', repeatsPerDay: '1', ...(s.options ?? {}), passages: JSON.stringify(next) } });
+  function add() {
+    if (!name || !clean.text || clash) return;
+    // The first passage turns the quest on, so it shows up for the child straight away.
+    save([...list, { id: Date.now().toString(36), title: name, text: clean.text.slice(0, 3000) }], list.length === 0 ? { enabled: true } : {});
+    setTitle(''); setRaw('');
+  }
+  return (
+    <div class="passage-editor">
+      {list.length > 0 && (
+        <ul class="passage-rows">
+          {list.map((p) => (
+            <li>
+              <div><b>{p.title}</b><small class="muted"> · {wordCount(p.text)} words</small><p class="muted small clip">{p.text}</p></div>
+              <button class="ghost small" onClick={() => save(list.filter((x) => x !== p))}>Remove</button>
+            </li>
+          ))}
+        </ul>
+      )}
+      <div class="passage-add">
+        <label>Title<input type="text" maxLength={60} placeholder="e.g. The Road Not Taken" value={title} onInput={(e) => setTitle((e.target as HTMLInputElement).value)} /></label>
+        <label>Passage<textarea rows={4} placeholder="Paste or type the passage here" value={raw} onInput={(e) => setRaw((e.target as HTMLTextAreaElement).value)} /></label>
+        {raw && (clean.swapped.length > 0 || clean.removed.length > 0) && (
+          <p class="muted small">
+            {clean.swapped.length > 0 && <>Changed to keyboard characters: {clean.swapped.map((c) => <code>{c}</code>)}. </>}
+            {clean.removed.length > 0 && <>Removed (not on a keyboard): {clean.removed.map((c) => <code>{c}</code>)}.</>}
+          </p>
+        )}
+        {clash && <p class="error small">There's already a passage called “{name}”.</p>}
+        <div class="row between">
+          <small class="muted">{clean.text ? `${wordCount(clean.text)} words` : ''}{clean.text.length > 3000 ? ' · only the first 3,000 characters are kept' : ''}</small>
+          <button class="primary small" disabled={!name || !clean.text || clash} onClick={add}>Add passage</button>
+        </div>
+      </div>
     </div>
   );
 }

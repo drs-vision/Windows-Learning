@@ -254,12 +254,11 @@ function kid() {
 const kidConfig = () => config?.children.find((k) => k.id === (kid()?.id)) ?? null;
 
 const QUESTS = {
-  'sound-keys': ['🔤', 'Letter Rescue'], 'typing-quest': ['⌨️', 'TypingQuest'], 'bible-typing': ['📖', 'Scripture Typing'],
+  'sound-keys': ['🔤', 'Letter Rescue'], 'typing-quest': ['⌨️', 'TypingQuest'], 'bible-typing': ['📖', 'Scripture Typing'], 'my-passages': ['📝', 'Family Passages'],
   'khan-academy': ['🎓', 'Khan Academy'], duolingo: ['🦉', 'Duolingo'], rwt: ['✏️', 'Read, Write & Type!'], discgames: ['💿', 'Classic CD games'],
 };
-const OPTION_LABELS = { perAnswer: 'Coins per correct answer', perVideo: 'Coins per finished video', perStory: 'Coins per finished story', wordsPer: 'Pay', repeatsPerDay: 'Each passage can earn' };
+const OPTION_LABELS = { perAnswer: 'Coins per correct answer', perVideo: 'Coins per finished video', perStory: 'Coins per finished story', wordsPer: 'Words per payment (0 = per passage)', repeatsPerDay: 'Each passage can earn' };
 const OPTION_CHOICES = {
-  wordsPer: [['0', 'Same for every passage'], ['10', 'Per 10 words'], ['20', 'Per 20 words'], ['25', 'Per 25 words'], ['50', 'Per 50 words']],
   repeatsPerDay: [['1', 'Once a day'], ['2', 'Twice a day'], ['3', '3 times a day'], ['0', 'Any number of times']],
 };
 const quest = (id) => QUESTS[id] ?? ['⭐', id.charAt(0).toUpperCase() + id.slice(1).replace(/[-_]/g, ' ')];
@@ -375,7 +374,7 @@ function rewardsScreen() {
         <div class="quest-top"><p class="kid-name">${icon} ${esc(title)}</p>${toggle(m.enabled, `data-q="${esc(m.id)}" data-f="enabled" aria-label="${esc(title)} on or off"`)}</div>
         ${m.enabled ? `
         <div class="grid2">
-          ${field(m.id === 'discgames' ? 'Coins per progress' : m.id === 'rwt' ? 'Coins per finished activity' : m.id === 'bible-typing' ? (+m.options?.wordsPer ? `Coins per ${m.options.wordsPer} words` : 'Coins per passage') : 'Coins per activity', `type="text" inputmode="numeric" value="${m.coinsPerActivity}" data-q="${esc(m.id)}" data-f="coinsPerActivity"`)}
+          ${field(m.id === 'discgames' ? 'Coins per progress' : m.id === 'rwt' ? 'Coins per finished activity' : m.id === 'bible-typing' || m.id === 'my-passages' ? (+(m.options?.wordsPer ?? 20) ? `Coins per ${m.options?.wordsPer ?? 20} words` : 'Coins per passage') : 'Coins per activity', `type="text" inputmode="numeric" value="${m.coinsPerActivity}" data-q="${esc(m.id)}" data-f="coinsPerActivity"`)}
           ${field('Daily limit', `type="text" inputmode="numeric" value="${m.dailyCap}" data-q="${esc(m.id)}" data-f="dailyCap"`, '0 = none')}
           ${opts.filter(([k]) => !OPTION_CHOICES[k]).map(([k, v]) => field(OPTION_LABELS[k], `type="text" inputmode="numeric" value="${esc(v)}" data-q="${esc(m.id)}" data-opt="${esc(k)}"`)).join('')}
         </div>

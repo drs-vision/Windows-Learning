@@ -144,7 +144,7 @@ function ProgressLine({ moduleId, state }: { moduleId: string; state: ChildState
   const p = (state.progress[moduleId] ?? {}) as Record<string, any>;
   if (moduleId === 'sound-keys') return <small class="muted">{p.done?.length ? `${p.done.length} of 39 lessons` : 'Start here — lesson 1'}</small>;
   if (moduleId === 'typing-quest') return <small class="muted">{p.placed ? `Row ${(p.lane ?? 0) + 1} · best ${p.bestWpm ?? 0} WPM` : 'Start with a placement test'}</small>;
-  if (moduleId === 'bible-typing') return <small class="muted">{(p.done?.length ?? 0)} passages · {p.totalWords ?? 0} words</small>;
+  if (moduleId === 'bible-typing' || moduleId === 'my-passages') return <small class="muted">{(p.done?.length ?? 0)} passages · {p.totalWords ?? 0} words</small>;
   return null;
 }
 
@@ -166,8 +166,8 @@ function QuestRunner({ module, state, onExit }: { module: LessonModule; state: C
   useEffect(() => {
     if (!host.current) return;
     const progress = (state.progress[module.id] ?? {}) as Record<string, unknown>;
-    const activity = { ...module.nextActivity(progress, Math.random), issuedAt: Date.now() };
     const settings = state.modules[module.id];
+    const activity = { ...module.nextActivity(progress, Math.random, settings), issuedAt: Date.now() };
     const unmount = module.mount(host.current, activity, {
       progress, settings,
       submit: (result, act) => bridge.submit(module.id, act ?? activity, result),

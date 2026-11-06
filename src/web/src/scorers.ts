@@ -8,6 +8,7 @@ import { scoreTypingQuest, DEFAULTS as TQ } from './modules/typing-quest/score';
 import { scoreSoundKeys, DEFAULTS as SK } from './modules/sound-keys/score';
 import { LESSONS as SK_LESSONS, buildLesson as skBuildLesson } from './modules/sound-keys/content';
 import { scoreBibleTyping, DEFAULTS as BT } from './modules/bible-typing/score';
+import { scoreMyPassages, DEFAULTS as MP } from './modules/my-passages/score';
 import { scoreKhanAcademy, DEFAULTS as KA } from './modules/khan-academy/score';
 import { scoreDuolingo, DEFAULTS as DU } from './modules/duolingo/score';
 
@@ -15,6 +16,7 @@ const scorers: Record<string, { fn: (a: Activity, r: Result, s: ModuleSettings) 
   'sound-keys': { fn: scoreSoundKeys, defaults: SK },
   'typing-quest': { fn: scoreTypingQuest, defaults: TQ },
   'bible-typing': { fn: scoreBibleTyping, defaults: BT },
+  'my-passages': { fn: scoreMyPassages, defaults: MP },
   'khan-academy': { fn: scoreKhanAcademy, defaults: KA },
   'duolingo': { fn: scoreDuolingo, defaults: DU },
 };
@@ -28,8 +30,8 @@ export function scoreModule(moduleId: string, activity: Activity, result: Result
     // Belt and braces: never more than 5× the set amount per activity, either way (a parent's negative rate charges).
     // Scripture paid per N words may go higher: up to what the passage's length allows.
     let times = 5;
-    const per = Number(st.options?.wordsPer ?? 0);
-    if (moduleId === 'bible-typing' && per > 0) times = Math.max(5, Math.ceil(String(activity?.data?.text ?? '').split(/\s+/).filter(Boolean).length / per) + 1);
+    const per = Number(st.options?.wordsPer ?? 20);
+    if ((moduleId === 'bible-typing' || moduleId === 'my-passages') && per > 0) times = Math.max(5, Math.ceil(String(activity?.data?.text ?? '').split(/\s+/).filter(Boolean).length / per) + 1);
     const cap = Math.max(Math.abs(st.coinsPerActivity) * times, moduleId === 'khan-academy' ? 60 : 0);
     return { ...out, coins: Math.max(-cap, Math.min(cap, Math.round(out.coins || 0))) };
   } catch (e) {

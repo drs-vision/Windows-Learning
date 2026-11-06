@@ -603,3 +603,14 @@ button.big { font-size: 1.1em; padding: .7em 1.4em; }
 .pin-gate button.wide { width: 100%; }
 :is(input, select, textarea):focus-visible { outline: 2px solid var(--blue); outline-offset: 1px; }
 .parent .advanced[open] > summary { margin-bottom: .8em; padding-bottom: .6em; border-bottom: 1px solid rgba(127,140,200,.2); }
+
+/* Family Passages editor */
+.passage-editor { display: grid; gap: 12px; margin: 8px 0 12px; }
+.passage-rows { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
+.passage-rows li { display: flex; gap: 12px; align-items: flex-start; justify-content: space-between; padding: 10px 12px; border: 1px solid var(--line, rgba(127,127,127,.25)); border-radius: 10px; }
+.passage-rows li > div { min-width: 0; }
+.passage-rows .clip { margin: 4px 0 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 52ch; }
+.passage-add { display: grid; gap: 8px; }
+.passage-add label { display: grid; gap: 4px; }
+.passage-add textarea { width: 100%; font: inherit; resize: vertical; }
+.passage-add code { padding: 0 4px; margin: 0 2px; border-radius: 4px; background: rgba(127,127,127,.15); }

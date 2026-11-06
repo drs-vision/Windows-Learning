@@ -88,7 +88,7 @@ public sealed class HouseholdStore
         }
     }
 
-    public const int CurrentSchema = 6;
+    public const int CurrentSchema = 7;
 
     /// <summary>Upgrade data written by older versions. Runs on every load; must be idempotent.</summary>
     public static Household Migrate(Household h)
@@ -143,6 +143,11 @@ public sealed class HouseholdStore
                     modules["duolingo"] = d6 with { Enabled = true };
                 prizes = prizes.Select(p => p.Kind == PrizeKind.YouTube && p.Cost == 40 && p.Minutes == 20 ? p with { Cost = 48 } : p).ToList();
             }
+            // v7: Scripture typing pays per so many words (1 coin per 20 words, rounded to the nearest). Only a
+            // household still on the old flat default (15 per passage) moves; a parent's own choice is kept.
+            if (h.SchemaVersion < 7 && modules.TryGetValue("bible-typing", out var b7) && b7.CoinsPerActivity == 15
+                && b7.Options.GetValueOrDefault("wordsPer", "0") == "0")
+                modules["bible-typing"] = b7 with { CoinsPerActivity = 1, Options = new Dictionary<string, string>(b7.Options) { ["wordsPer"] = "20" } };
             var allow = c.Allowlist;
             if (h.SchemaVersion < 3)
                 allow = allow with { Apps = allow.Apps.Where(a => !Allowlist.Browsers.Contains(Path.GetFileName(a), StringComparer.OrdinalIgnoreCase)).ToList() };

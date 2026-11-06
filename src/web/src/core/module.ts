@@ -27,7 +27,7 @@ export interface LessonModule {
   /** Parent-facing settings shown on the Quests screen. Stored as strings in ModuleSettings.options. */
   options?: { key: string; label: string; help?: string; choices?: [string, string][]; number?: { min: number; max: number }; default: string }[];
 
-  nextActivity(progress: Progress, rng: () => number): Activity;
+  nextActivity(progress: Progress, rng: () => number, settings?: ModuleSettings): Activity;
   /** Mount the activity UI. Return a cleanup function. */
   mount(el: HTMLElement, activity: Activity, ctx: ActivityContext): () => void;
   score: Scorer;

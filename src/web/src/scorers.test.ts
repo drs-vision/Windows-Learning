@@ -2,6 +2,8 @@ import { describe, expect, it } from 'vitest';
 import { scoreModule } from './scorers';
 import { LANES, PLACEMENT_TEXT } from './modules/typing-quest/content';
 import starter from '../../../content/bible/kjv-starter.json';
+import { passagePay } from './modules/bible-typing/score';
+import { keyboardText } from './core/keyboardText';
 
 const settings = { enabled: true, coinsPerActivity: 10, dailyCap: 80, requireApproval: false };
 const typeIt = (text: string, typed: string, ms: number) => ({ startedAt: 1_000_000, finishedAt: 1_000_000 + ms, data: { typed } });
@@ -71,22 +73,33 @@ describe('typing-quest', () => {
 describe('bible-typing', () => {
   const p = (starter as any).passages[1]; // Psalm 23
   const act = { moduleId: 'bible-typing', kind: 'passage', data: { ref: p.ref, text: p.text, done: [], totalWords: 0 }, issuedAt: 0 };
-  const s = { ...settings, coinsPerActivity: 15 };
+  const s = { ...settings, coinsPerActivity: 15, options: { wordsPer: '0' } };
+  const words = p.text.split(/\s+/).filter(Boolean).length;
 
-  it('a finished passage pays the set amount', () => {
+  it('pays 1 coin per 20 words by default', () => {
+    const out = scoreModule('bible-typing', act, typeIt(p.text, p.text, 120000), { ...settings, coinsPerActivity: 1 });
+    expect(out.coins).toBe(Math.floor(words / 20 + 0.5));
+  });
+
+  it('rounds to the nearest N words: with 20, 9 words pay 0, 10 pay 1, 29 pay 1, 30 pay 2', () => {
+    const st = { ...settings, coinsPerActivity: 1, options: { wordsPer: '20' } };
+    expect([9, 10, 29, 30, 49, 50].map((w) => passagePay(st, w))).toEqual([0, 1, 1, 2, 2, 3]);
+    expect(passagePay({ ...st, coinsPerActivity: 3 }, 30)).toBe(6);
+    expect(passagePay({ ...st, coinsPerActivity: -1 }, 30)).toBe(-2);
+  });
+
+  it('wordsPer 0 pays the set amount per passage', () => {
     const out = scoreModule('bible-typing', act, typeIt(p.text, p.text, 120000), s);
     expect(out.valid).toBe(true);
-    const words = p.text.split(/\s+/).length;
-    expect(out.coins).toBe(15); void words;
+    expect(out.coins).toBe(15);
     expect(out.progressDelta?.done).toEqual([p.ref]);
     expect(out.repeatKey).toBe(p.ref);
     expect(out.detail.startsWith(p.ref + ' ·')).toBe(true); // the Guardian's daily-limit count relies on this
   });
 
   it('can pay per N words instead', () => {
-    const words = p.text.split(/\s+/).filter(Boolean).length;
     const out = scoreModule('bible-typing', act, typeIt(p.text, p.text, 120000), { ...s, coinsPerActivity: 2, options: { wordsPer: '10' } });
-    expect(out.coins).toBe(Math.round(2 * words / 10));
+    expect(out.coins).toBe(2 * Math.floor(words / 10 + 0.5));
   });
 
   it('counts how often each passage was typed today', () => {
@@ -148,5 +161,33 @@ describe('registry', () => {
     const text = LANES[0].drills[0].text;
     const out = scoreModule('typing-quest', { moduleId: 'typing-quest', kind: 'keys', data: { lane: 0, drill: 0, text }, issuedAt: 0 }, typeIt(text, text, 20000), undefined);
     expect(out.coins).toBe(10);
+  });
+});
+
+describe('my-passages', () => {
+  const text = 'The quick brown fox jumps over the lazy dog, again and again and again.';
+  const st = { ...settings, coinsPerActivity: 1, options: { wordsPer: '5', repeatsPerDay: '1', passages: JSON.stringify([{ id: 'a', title: 'Fox', text }]) } };
+  const act = { moduleId: 'my-passages', kind: 'passage', data: { ref: 'Fox', text, done: [], totalWords: 0 }, issuedAt: 0 };
+
+  it("pays a parent's passage per N words", () => {
+    const out = scoreModule('my-passages', act, typeIt(text, text, 30000), st);
+    expect(out.valid).toBe(true);
+    expect(out.coins).toBe(3); // 14 words / 5 = 2.8 → 3
+    expect(out.repeatKey).toBe('Fox');
+    expect(out.detail.startsWith('Fox ·')).toBe(true);
+  });
+
+  it('rejects text that is not one of the parent\'s passages', () => {
+    const a = { ...act, data: { ...act.data, text: text + ' extra' } };
+    expect(scoreModule('my-passages', a, typeIt(a.data.text, a.data.text, 30000), st).valid).toBe(false);
+  });
+});
+
+describe('keyboardText', () => {
+  it('turns pasted punctuation into keyboard characters and removes the rest', () => {
+    const r = keyboardText('\u201CHello\u201D \u2014 it\u2019s caf\u00E9\u2026\n\nNext\u00A0line \u2764');
+    expect(r.text).toBe('"Hello" - it\'s cafe... Next line');
+    expect(r.removed).toEqual(['\u2764']);
+    expect(r.swapped.length).toBeGreaterThan(0);
   });
 });
