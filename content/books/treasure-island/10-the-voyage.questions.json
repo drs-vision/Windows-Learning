@@ -14,7 +14,7 @@
       "id": "treasure-island-10-02",
       "type": "inference",
       "q": "Why did the crew's song carry Jim back to the Admiral Benbow?",
-      "choices": ["It was the same song the old captain used to sing", "It was a song his father taught him", "The inn's name was in the song", "His mother sang it to him at night"],
+      "choices": ["It was the old captain's song", "It was a song his father had taught him as a small boy", "The name of the inn was sung in the chorus", "His mother used to sing it to him at night"],
       "answer": 0,
       "evidence": "I seemed to hear the voice of the captain piping in the chorus"
     },
@@ -22,7 +22,7 @@
       "id": "treasure-island-10-03",
       "type": "detail",
       "q": "What problem did Mr. Arrow have on the voyage?",
-      "choices": ["He was often drunk and had no command over the men", "He was seasick the whole time", "He kept getting the ship lost", "He fought with Silver every day"],
+      "choices": ["He was often drunk and had no command over the men", "He was terribly seasick for the whole of the voyage", "He kept getting the ship lost in the fog", "He quarrelled loudly with Silver every single day"],
       "answer": 0,
       "evidence": "other marks of drunkenness"
     },
@@ -30,7 +30,7 @@
       "id": "treasure-island-10-04",
       "type": "detail",
       "q": "What was \"the ship's mystery\"?",
-      "choices": ["Where Mr. Arrow got his drink", "Who had stolen the map", "Where the parrot came from", "Why the captain disliked the squire"],
+      "choices": ["Where Mr. Arrow got his drink", "Who had stolen the captain's chart", "Where Silver's parrot had come from", "Why the captain disliked the squire"],
       "answer": 0,
       "evidence": "we could never make out where he got the drink. That was the ship's mystery."
     },
@@ -38,7 +38,7 @@
       "id": "treasure-island-10-05",
       "type": "sequence",
       "q": "What happened to Mr. Arrow one dark night?",
-      "choices": ["He disappeared overboard and was never seen again", "He was locked in irons", "He was made captain", "He jumped into a lifeboat and rowed away"],
+      "choices": ["He vanished overboard and was never seen again", "He was put in irons for being drunk on watch", "He was made captain in Smollett's place", "He took a boat and rowed away in the dark"],
       "answer": 0,
       "evidence": "he disappeared entirely and was seen no more"
     },
@@ -46,7 +46,7 @@
       "id": "treasure-island-10-06",
       "type": "detail",
       "q": "Who served in a way as mate after Mr. Arrow was gone?",
-      "choices": ["Job Anderson, the boatswain", "Israel Hands", "Long John Silver", "Tom Redruth"],
+      "choices": ["Job Anderson, the boatswain", "Israel Hands, the coxswain", "Long John Silver, the ship's cook", "Tom Redruth"],
       "answer": 0,
       "evidence": "The boatswain, Job Anderson, was the likeliest man aboard"
     },
@@ -54,7 +54,7 @@
       "id": "treasure-island-10-07",
       "type": "detail",
       "q": "How did Silver manage to cross the deck in heavy weather?",
-      "choices": ["He used lines rigged up across the deck, called \"Long John's earrings\"", "Other sailors carried him", "He crawled on his hands and knees", "He stayed in the galley and never crossed"],
+      "choices": ["He used lines rigged across the deck, \"Long John's earrings\"", "Two of the other sailors carried him across between them", "He crawled across the deck on his hands and knees", "He stayed in the galley and never crossed the deck at all"],
       "answer": 0,
       "evidence": "Long John's earrings, they were called"
     },
@@ -62,7 +62,7 @@
       "id": "treasure-island-10-08",
       "type": "character",
       "q": "What did Israel Hands tell Jim about Silver?",
-      "choices": ["He was educated and braver than a lion", "He was a coward who feared the sea", "He could not read or write", "He was the squire's cousin"],
+      "choices": ["He was educated and braver than a lion", "He was a coward who was afraid of the sea", "He could not read or write a single word", "He was a cousin of the squire's"],
       "answer": 0,
       "evidence": "a lion's nothing alongside of Long John!"
     },
@@ -78,7 +78,7 @@
       "id": "treasure-island-10-10",
       "type": "vocabulary",
       "q": "Silver says, \"you can't touch pitch and not be mucked.\" What does he mean?",
-      "choices": ["If you spend time around bad things, some of the bad rubs off on you", "Tar is hard to clean off a ship", "You should never touch a parrot", "Sailors must keep their hands clean"],
+      "choices": ["Being around bad things makes some of the bad rub off on you", "Tar is very hard to scrub off the deck of a ship", "You should never let a parrot sit on your shoulder", "Sailors must always keep their hands clean at sea"],
       "answer": 0,
       "evidence": "you can't touch pitch and not be mucked, lad"
     },
@@ -86,7 +86,7 @@
       "id": "treasure-island-10-11",
       "type": "character",
       "q": "How did the squire feel about Captain Smollett during the voyage?",
-      "choices": ["He despised him", "He admired him", "He feared him", "He felt sorry for him"],
+      "choices": ["He despised him", "He admired him greatly", "He was afraid of him", "He felt sorry for him"],
       "answer": 0,
       "evidence": "he despised the captain"
     },
@@ -94,7 +94,7 @@
       "id": "treasure-island-10-12",
       "type": "inference",
       "q": "Why did the captain think spoiling the crew with double grog and treats was a bad idea?",
-      "choices": ["He believed it would turn the men into devils", "He thought it was too expensive", "He wanted the treats for himself", "He thought it would make them seasick"],
+      "choices": ["He believed it would turn the men into devils", "He thought it cost far too much of the squire's money", "He wanted to keep the treats for the cabin", "He thought rich food would make the men seasick"],
       "answer": 0,
       "evidence": "Spoil forecastle hands, make devils."
     },
@@ -102,7 +102,7 @@
       "id": "treasure-island-10-13",
       "type": "sequence",
       "q": "Why did Jim climb into the apple barrel just after sundown?",
-      "choices": ["He wanted an apple", "He was hiding from the captain", "He was told to clean it", "He wanted to spy on Silver"],
+      "choices": ["He wanted an apple", "He was hiding from the captain", "He had been told to clean it out", "He wanted to spy on Silver"],
       "answer": 0,
       "evidence": "it occurred to me that I should like an apple"
     },
@@ -110,7 +110,7 @@
       "id": "treasure-island-10-14",
       "type": "inference",
       "q": "Why did Jim decide not to show himself after hearing Silver speak?",
-      "choices": ["He realized the lives of the honest men depended on what he heard", "He was too sleepy to move", "He was stuck in the barrel", "He wanted to surprise Silver"],
+      "choices": ["The lives of the honest men depended on what he heard", "He was too sleepy to climb out", "He was stuck fast in the bottom of the barrel", "He wanted to jump out and surprise Silver"],
       "answer": 0,
       "evidence": "the lives of all the honest men aboard depended upon me alone"
     }

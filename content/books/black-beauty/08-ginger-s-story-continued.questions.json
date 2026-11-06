@@ -8,7 +8,7 @@
       "q": "Where were Ginger and the other chestnut horse sent after they were sold to a fashionable gentleman?",
       "choices": [
         "London",
-        "The country",
+        "Brighton",
         "Birtwick Park",
         "A farm by the railway"
       ],
@@ -21,9 +21,9 @@
       "q": "Ginger says a check-rein held her head up \"for hours together.\" What was a check-rein?",
       "choices": [
         "A rein that forced a horse to hold its head up high",
-        "A rope used to tie a horse to a post",
-        "A soft halter for leading a foal",
-        "A rein used only for racing"
+        "A rope used to tie a horse to a post in the yard",
+        "A soft halter used for leading a young foal",
+        "A long rein that jockeys use only when racing"
       ],
       "answer": 0,
       "evidence": "if you tossed your head up high and were obliged to hold it there"
@@ -34,9 +34,9 @@
       "q": "Why did the coachman and his master rein Ginger so tightly?",
       "choices": [
         "They thought it made the horses look more stylish",
-        "It helped the horses run faster",
-        "It kept the horses warm",
-        "The doctor said it was healthy"
+        "They believed it helped the horses trot much faster",
+        "It kept the horses' heads warm in the cold wind",
+        "A horse doctor told them it was good for the neck"
       ],
       "answer": 0,
       "evidence": "thinking we looked more stylish so"
@@ -48,8 +48,8 @@
       "choices": [
         "The whip was laid on",
         "She was given a bran mash",
-        "She was let out to graze",
-        "The mistress came out to pat her"
+        "She was taken home early",
+        "The lady came out to pat her"
       ],
       "answer": 0,
       "evidence": "the whip was laid on"
@@ -60,9 +60,9 @@
       "q": "How did Ginger's time with the London gentleman end?",
       "choices": [
         "She plunged and kicked and broke a lot of harness",
-        "She ran away in the park",
-        "She got sick and was sent to the country",
-        "The coachman bought her for himself"
+        "She ran away in the park and upset the carriage",
+        "She fell sick and was sent off to the country",
+        "The coachman liked her and bought her for himself"
       ],
       "answer": 0,
       "evidence": "I soon broke a lot of harness, and kicked myself clear"
@@ -72,10 +72,10 @@
       "type": "detail",
       "q": "How did the second dealer find out how to manage Ginger?",
       "choices": [
-        "He tried different bits and drove her without a check-rein",
-        "He whipped her until she behaved",
-        "He asked Samson for advice",
-        "He kept her in a field for a year"
+        "He tried other bits and drove her with no check-rein",
+        "He whipped her hard every day until she behaved",
+        "He wrote to Samson Ryder to ask for his advice",
+        "He turned her out in a field for a whole year"
       ],
       "answer": 0,
       "evidence": "At last he drove me quite without a check-rein"
@@ -86,9 +86,9 @@
       "q": "Why did Ginger bite the new groom at the country gentleman's place?",
       "choices": [
         "He was rough and hit her with a broom or fork",
-        "He forgot to feed her",
-        "He rode her too fast",
-        "He took away her blanket"
+        "He kept forgetting to give her any oats or hay",
+        "He rode her much too fast on the hard roads",
+        "He took away her rug on the coldest nights"
       ],
       "answer": 0,
       "evidence": "he would hit me above the hocks with his stable broom or the fork"
@@ -99,9 +99,9 @@
       "q": "What did Ginger believe about men by the time she came to Birtwick?",
       "choices": [
         "That men were her natural enemies",
-        "That all men were kind",
-        "That only boys were cruel",
-        "That men could not ride well"
+        "That nearly all men were kind to horses",
+        "That only young boys were ever cruel",
+        "That men could never ride a horse well"
       ],
       "answer": 0,
       "evidence": "men were my natural enemies"
@@ -112,9 +112,9 @@
       "q": "What did James do after Ginger bit him, following John's advice?",
       "choices": [
         "Brought her a bran mash and stroked her",
-        "Beat her with a whip",
-        "Asked the master to sell her",
-        "Stopped going into her stall"
+        "Gave her a sharp cut with the whip",
+        "Asked the master to sell her at once",
+        "Stopped going into her stall at all"
       ],
       "answer": 0,
       "evidence": "brought me a bran mash and stroked me"
@@ -124,10 +124,10 @@
       "type": "main-idea",
       "q": "What were John's joking \"Birtwick horseballs\" really made of?",
       "choices": [
-        "Patience, gentleness, firmness, petting, and common sense",
-        "Oats, bran, and honey",
-        "Medicine from the doctor",
-        "Apples and carrots"
+        "Patience, gentleness, firmness, petting and sense",
+        "Oats, bran, treacle, honey and a little linseed oil",
+        "Powders and pills that the horse doctor sent over",
+        "Chopped apples, carrots and sugar rolled together"
       ],
       "answer": 0,
       "evidence": "made up of patience and gentleness, firmness and petting"

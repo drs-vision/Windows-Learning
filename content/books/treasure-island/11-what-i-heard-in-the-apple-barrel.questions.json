@@ -6,7 +6,7 @@
       "id": "treasure-island-11-01",
       "type": "detail",
       "q": "What position did Silver say he held on Flint's ship?",
-      "choices": ["Quartermaster", "Cook", "Captain", "Gunner"],
+      "choices": ["Quartermaster", "Ship's cook", "Captain", "Master gunner"],
       "answer": 0,
       "evidence": "Flint was cap'n; I was quartermaster"
     },
@@ -14,7 +14,7 @@
       "id": "treasure-island-11-02",
       "type": "detail",
       "q": "According to Silver, what happened to Pew in the same broadside that cost Silver his leg?",
-      "choices": ["Pew lost his sight", "Pew lost an arm", "Pew was killed", "Pew was captured"],
+      "choices": ["Pew lost his sight", "Pew lost his right arm", "Pew was killed outright", "Pew was taken prisoner"],
       "answer": 0,
       "evidence": "The same broadside I lost my leg, old Pew lost his deadlights."
     },
@@ -22,7 +22,7 @@
       "id": "treasure-island-11-03",
       "type": "character",
       "q": "How was Silver different from Pew in handling his money?",
-      "choices": ["Silver saved his money, while Pew spent his and ended up starving", "Silver spent everything, while Pew saved", "Both buried their money on the island", "Neither of them ever had any money"],
+      "choices": ["Silver saved his money, while Pew spent his and starved", "Silver spent everything at once, while Pew saved every coin", "Both of them buried their money on the island", "Neither of them ever had any money at all"],
       "answer": 0,
       "evidence": "'Tain't earning now, it's saving does it"
     },
@@ -30,7 +30,7 @@
       "id": "treasure-island-11-04",
       "type": "character",
       "q": "Why was Jim so angry when he heard Silver tell the young sailor he was \"as smart as paint\"?",
-      "choices": ["Silver had used the very same flattery on Jim", "It was an insult in sailor talk", "Jim wanted the young sailor's job", "Silver said it about the captain"],
+      "choices": ["Silver had used the same flattery on Jim", "It was a deadly insult in sailor talk", "Jim had wanted the young sailor's job", "Silver had said it about the captain"],
       "answer": 0,
       "evidence": "the very same words of flattery as he had used to myself"
     },
@@ -46,7 +46,7 @@
       "id": "treasure-island-11-06",
       "type": "detail",
       "q": "Where did Silver say his money from the Bristol banks was now?",
-      "choices": ["With his wife, who was off to meet him", "Buried on Treasure Island", "Hidden in the Spy-glass tavern", "In his sea-chest on board"],
+      "choices": ["With his wife, who was off to meet him", "Buried in a secret place on Treasure Island", "Hidden under the floor of the Spy-glass tavern", "In his sea-chest on board the ship"],
       "answer": 0,
       "evidence": "my old missis has it all by now"
     },
@@ -62,7 +62,7 @@
       "id": "treasure-island-11-08",
       "type": "detail",
       "q": "Who was the third man who joined Silver and Dick?",
-      "choices": ["Israel Hands, the coxswain", "Job Anderson", "Captain Smollett", "Tom Redruth"],
+      "choices": ["Israel Hands, the coxswain", "Job Anderson, the boatswain", "Captain Smollett", "Tom Redruth"],
       "answer": 0,
       "evidence": "returned the voice of the coxswain, Israel Hands"
     },
@@ -70,7 +70,7 @@
       "id": "treasure-island-11-09",
       "type": "inference",
       "q": "Why did Silver want to wait as long as possible before taking over the ship?",
-      "choices": ["He needed the squire and doctor to find the treasure and the captain to sail them home", "He was afraid of Israel Hands", "He wanted to be sure Jim was on their side", "He was waiting for his wife's ship"],
+      "choices": ["He needed the gentlemen to find the treasure and the captain to sail home", "He was afraid that Israel Hands would turn against him and take charge", "He wanted to make quite sure that Jim would join the pirates first", "He was waiting for his wife to arrive with another ship and more men"],
       "answer": 0,
       "evidence": "I mean this squire and doctor shall find the stuff, and help us to get it aboard"
     },
@@ -86,7 +86,7 @@
       "id": "treasure-island-11-11",
       "type": "sequence",
       "q": "What did Silver ask Dick to fetch, which terrified Jim?",
-      "choices": ["An apple from the barrel", "A pistol", "The map", "A lantern"],
+      "choices": ["An apple from the barrel", "A loaded pistol", "The captain's map", "A lantern"],
       "answer": 0,
       "evidence": "get me an apple, to wet my pipe like"
     },
@@ -94,7 +94,7 @@
       "id": "treasure-island-11-12",
       "type": "inference",
       "q": "What did Jim figure out when Silver gave Dick the key to the rum keg?",
-      "choices": ["That this was how Mr. Arrow had got his drink", "That Silver was the ship's captain", "That the rum was poisoned", "That Dick was a spy for the squire"],
+      "choices": ["That this was how Mr. Arrow had got his drink", "That Silver was secretly the ship's real captain", "That the rum in the keg had been poisoned", "That Dick was a spy working for the squire"],
       "answer": 0,
       "evidence": "this must have been how Mr. Arrow got the strong waters that destroyed him"
     },
@@ -102,7 +102,7 @@
       "id": "treasure-island-11-13",
       "type": "inference",
       "q": "What hopeful news did Jim learn from Israel's whisper, \"Not another man of them'll jine\"?",
-      "choices": ["There were still faithful men on board", "The pirates had given up their plan", "The captain knew about the plot", "The island was close"],
+      "choices": ["There were still faithful men on board", "The pirates had given up their whole plan", "The captain already knew about the plot", "The island was only a day away"],
       "answer": 0,
       "evidence": "Hence there were still faithful men on board."
     },

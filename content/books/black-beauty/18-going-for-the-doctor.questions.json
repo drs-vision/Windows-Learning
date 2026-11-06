@@ -6,7 +6,12 @@
       "id": "black-beauty-18-01",
       "type": "detail",
       "q": "What woke Black Beauty up in the night?",
-      "choices": ["The stable bell ringing very loud", "A fire in the hayloft", "Ginger kicking the stall", "Thunder from a storm"],
+      "choices": [
+        "The stable bell ringing very loud",
+        "The smell of fire in the hayloft",
+        "Ginger kicking the side of her stall",
+        "Thunder rolling from a summer storm"
+      ],
       "answer": 0,
       "evidence": "I was suddenly roused by the stable bell ringing very loud"
     },
@@ -14,7 +19,12 @@
       "id": "black-beauty-18-02",
       "type": "detail",
       "q": "Why did the squire send John to fetch Dr. White?",
-      "choices": ["The mistress was very ill", "Joe Green was hurt", "Ginger was sick", "The squire had broken his leg"],
+      "choices": [
+        "The mistress was very ill",
+        "Joe Green had been hurt",
+        "Ginger had fallen sick",
+        "The squire had broken his leg"
+      ],
       "answer": 0,
       "evidence": "ride for your life--that is, for your mistress' life"
     },
@@ -22,7 +32,12 @@
       "id": "black-beauty-18-03",
       "type": "sequence",
       "q": "What did John do at the toll-gate?",
-      "choices": ["Paid the man and told him to keep the gate open for the doctor", "Stopped to let Beauty rest", "Asked the man to ride for the doctor", "Waited for the gate to be fixed"],
+      "choices": [
+        "Paid the man and told him to keep the gate open for the doctor",
+        "Stopped for a few minutes to let Beauty drink and get his breath",
+        "Asked the gatekeeper to ride ahead on his own horse for the doctor",
+        "Waited while the man found the key to unlock the heavy gate"
+      ],
       "answer": 0,
       "evidence": "do you keep the gate open for the doctor; here's the money"
     },
@@ -30,7 +45,12 @@
       "id": "black-beauty-18-04",
       "type": "character",
       "q": "Why did Black Beauty need no whip or spur on the ride?",
-      "choices": ["He wanted to do his best for the mistress", "John did not own a whip", "The road was all downhill", "He was trying to get back to his stable"],
+      "choices": [
+        "He wanted to do his best for the mistress",
+        "John had left his whip at home in the hurry",
+        "The road was downhill nearly the whole way",
+        "He was in a hurry to get back to his warm stall"
+      ],
       "answer": 0,
       "evidence": "I wanted no whip nor spur"
     },
@@ -38,7 +58,12 @@
       "id": "black-beauty-18-05",
       "type": "detail",
       "q": "What time did the church clock strike when they reached Dr. White's door?",
-      "choices": ["Three", "Midnight", "Six", "One"],
+      "choices": [
+        "Three",
+        "Midnight",
+        "Six",
+        "One"
+      ],
       "answer": 0,
       "evidence": "The church clock struck three as we drew up at Dr. White's door"
     },
@@ -46,7 +71,12 @@
       "id": "black-beauty-18-06",
       "type": "detail",
       "q": "Why did Dr. White ride Black Beauty back instead of his own horse?",
-      "choices": ["His horse was worn out and his son had taken the other", "His horse was lame", "He did not own a horse", "John insisted on it"],
+      "choices": [
+        "His horse was worn out and his son had taken the other",
+        "His horse had gone lame on a stony road the day before",
+        "He had sold his horse and had not yet bought another",
+        "John told him Beauty knew the way home better than any"
+      ],
       "answer": 0,
       "evidence": "my horse has been out all day and is quite done up"
     },
@@ -54,7 +84,12 @@
       "id": "black-beauty-18-07",
       "type": "character",
       "q": "What did John tell the doctor about his riding-whip?",
-      "choices": ["He did not need it because Beauty would go till he dropped", "He should use it to make Beauty go faster", "He could borrow John's whip instead", "He should give it to the toll-gate man"],
+      "choices": [
+        "He did not need it, for Beauty would go till he dropped",
+        "He should use it freely to make Beauty go a little faster",
+        "He could borrow John's own whip if he needed one on the way",
+        "He should leave it with the man at the toll-gate till morning"
+      ],
       "answer": 0,
       "evidence": "Black Beauty will go till he drops"
     },
@@ -62,7 +97,12 @@
       "id": "black-beauty-18-08",
       "type": "sequence",
       "q": "What mistakes did Joe make when caring for Beauty after the ride?",
-      "choices": ["He left off the warm cloth and gave him cold water", "He rode him again too soon", "He forgot to give him any food", "He left the stable door open all night"],
+      "choices": [
+        "He left off the warm cloth and gave him cold water",
+        "He rode him out again before he had rested enough",
+        "He forgot to give him any oats or hay at all",
+        "He left the stable door wide open all night"
+      ],
       "answer": 0,
       "evidence": "he did not put my warm cloth on me"
     },
@@ -70,7 +110,12 @@
       "id": "black-beauty-18-09",
       "type": "vocabulary",
       "q": "Beauty's lungs were attacked by \"inflammation.\" What does that mean here?",
-      "choices": ["A painful, swollen sickness", "A cool, healthy feeling", "A kind of horse food", "A deep sleep"],
+      "choices": [
+        "A painful, swollen sickness",
+        "A cool and healthy feeling",
+        "A special kind of horse food",
+        "A long, deep, restful sleep"
+      ],
       "answer": 0,
       "evidence": "a strong inflammation had attacked my lungs, and I could not draw my breath without pain"
     },
@@ -78,7 +123,12 @@
       "id": "black-beauty-18-10",
       "type": "inference",
       "q": "What did the master mean when he told Beauty, \"you saved your mistress' life\"?",
-      "choices": ["The doctor arrived just in time because Beauty ran so fast", "Beauty pulled the mistress out of a fire", "Beauty carried the mistress to town", "Beauty found the mistress when she was lost"],
+      "choices": [
+        "The doctor came just in time because Beauty ran so fast",
+        "Beauty had pulled the mistress out of a burning stable",
+        "Beauty had carried the mistress safely to the town doctor",
+        "Beauty found the mistress when she was lost on the common"
+      ],
       "answer": 0,
       "evidence": "the doctor had said if we had been a little longer it would have been too late"
     }

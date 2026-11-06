@@ -10,7 +10,7 @@
         "John Manly",
         "James Howard",
         "Old Daniel",
-        "Mr. Bond"
+        "Joe Green"
       ],
       "answer": 0,
       "evidence": "The name of the coachman was John Manly"
@@ -21,9 +21,9 @@
       "q": "What did John do when he saw the first saddle was not broad enough for Black Beauty's back?",
       "choices": [
         "He went for another saddle that fitted nicely",
-        "He rode him anyway",
-        "He rode him with no saddle",
-        "He tightened the straps more"
+        "He rode him anyway and let the saddle settle in",
+        "He took the saddle off and rode him bareback",
+        "He pulled the girth tighter to make it fit"
       ],
       "answer": 0,
       "evidence": "he saw it in a minute and went for another, which fitted nicely"
@@ -34,9 +34,9 @@
       "q": "How did Black Beauty behave when a gun went off close by near the Highwood?",
       "choices": [
         "He pulled up a little and looked, but did not stir a step",
-        "He bolted across the common",
-        "He threw John off",
-        "He reared up and kicked"
+        "He bolted across the common and nearly threw John off",
+        "He shied to one side and ran into the hedge in fright",
+        "He reared up on his hind legs and kicked out at the air"
       ],
       "answer": 0,
       "evidence": "did not stir a step to right or left"
@@ -46,10 +46,10 @@
       "type": "inference",
       "q": "From the way Black Beauty behaved on the ride, what did John decide about his past?",
       "choices": [
-        "He had not been frightened or ill-used while he was young",
-        "He had been a racehorse",
-        "He had been badly treated",
-        "He had never been ridden before"
+        "He had not been frightened or ill-used when young",
+        "He must have been trained as a racehorse at first",
+        "He had been badly treated by someone in the past",
+        "He had never been ridden by anyone before that day"
       ],
       "answer": 0,
       "evidence": "he has not been frightened or ill-used while he was young"
@@ -61,7 +61,7 @@
       "choices": [
         "Ebony and Blackbird",
         "Darkie and Pet",
-        "Marengo and Pegasus",
+        "Midnight and Raven",
         "Rob Roy and Duchess"
       ],
       "answer": 0,
@@ -72,10 +72,10 @@
       "type": "detail",
       "q": "Why did the mistress want to call him Black Beauty?",
       "choices": [
-        "He was really quite a beauty with a sweet, good-tempered face",
-        "He was named after the squire's uncle's horse",
-        "He was the fastest horse in the park",
-        "John asked for that name"
+        "He was really quite a beauty, with a sweet face",
+        "He was named after the squire's uncle's old horse",
+        "He was the fastest horse anyone had seen in the park",
+        "John Manly had asked for that name the night before"
       ],
       "answer": 0,
       "evidence": "he is really quite a beauty"
@@ -86,9 +86,9 @@
       "q": "What surprising news did Black Beauty learn about Rob Roy?",
       "choices": [
         "Rob Roy was his brother",
-        "Rob Roy was still alive",
-        "Rob Roy was Ginger's father",
-        "Rob Roy had belonged to John"
+        "Rob Roy was still alive and well",
+        "Rob Roy was Ginger's own father",
+        "Rob Roy had once belonged to John"
       ],
       "answer": 0,
       "evidence": "poor Rob Roy who was killed at that hunt was my brother"
@@ -98,10 +98,10 @@
       "type": "character",
       "q": "Why did Black Beauty grow very fond of John?",
       "choices": [
-        "John was gentle and kind and seemed to know how a horse feels",
-        "John gave him extra oats every hour",
-        "John let him run free all day",
-        "John never made him work"
+        "John was gentle and seemed to know how a horse feels",
+        "John gave him extra oats and apples every single hour",
+        "John let him run loose in the paddock all day long",
+        "John never made him go out in the rain or the cold"
       ],
       "answer": 0,
       "evidence": "he seemed to know just how a horse feels"
@@ -112,9 +112,9 @@
       "q": "What did Ginger do when they came to a hill while pulling the carriage?",
       "choices": [
         "She threw her weight into the collar and pulled straight up",
-        "She slowed down and stopped",
-        "She tried to bite Black Beauty",
-        "She refused to go on"
+        "She slowed down halfway and left Black Beauty to do the work",
+        "She swung her head over and tried to bite Black Beauty",
+        "She stopped at the bottom and refused to go another step"
       ],
       "answer": 0,
       "evidence": "she would throw her weight right into the collar"
@@ -125,9 +125,9 @@
       "q": "\"Black Beauty and Ginger grew quite friendly and sociable.\" What does sociable mean here?",
       "choices": [
         "Friendly and enjoying each other's company",
-        "Tired and sleepy",
-        "Angry and cross",
-        "Shy and quiet"
+        "Tired and sleepy after a long day's work",
+        "Cross and ready to snap at each other",
+        "Shy and quiet, keeping well to themselves"
       ],
       "answer": 0,
       "evidence": "we grew quite friendly and sociable"

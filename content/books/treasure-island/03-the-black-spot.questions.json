@@ -22,7 +22,7 @@
       "id": "treasure-island-03-03",
       "type": "character",
       "q": "How did Jim respond when the captain offered him a golden guinea for rum?",
-      "choices": ["He refused the money but brought one glass", "He took the money and brought a whole bottle", "He refused to bring any rum at all", "He ran to tell the doctor"],
+      "choices": ["He refused the money but brought one glass", "He took the money and brought a bottle", "He refused to bring any rum at all", "He ran to tell the doctor"],
       "answer": 0,
       "evidence": "I want none of your money"
     },
@@ -30,7 +30,7 @@
       "id": "treasure-island-03-04",
       "type": "inference",
       "q": "Why was the captain upset to hear he had to stay in bed for a week?",
-      "choices": ["His enemies would give him the black spot before then", "He wanted to go fishing", "He had to catch a ship to Bristol", "He would miss Jim's father's funeral"],
+      "choices": ["His enemies would give him the black spot first", "He wanted to go fishing", "He had to catch a ship that was leaving from Bristol", "He would miss the market day in the nearby hamlet"],
       "answer": 0,
       "evidence": "they'd have the black spot on me by then"
     },
@@ -38,7 +38,7 @@
       "id": "treasure-island-03-05",
       "type": "detail",
       "q": "According to the captain, what were his enemies really after?",
-      "choices": ["His old sea-chest", "His gold guineas", "His cutlass", "The Admiral Benbow inn"],
+      "choices": ["His old sea-chest", "His bag of gold guineas", "His cutlass", "The Admiral Benbow inn itself"],
       "answer": 0,
       "evidence": "it's my old sea-chest they're after"
     },
@@ -46,7 +46,7 @@
       "id": "treasure-island-03-06",
       "type": "detail",
       "q": "What position did the captain say he had held under Flint?",
-      "choices": ["First mate", "Cook", "Cabin boy", "Gunner"],
+      "choices": ["First mate", "Ship's cook", "Cabin boy", "Master gunner"],
       "answer": 0,
       "evidence": "I was first mate, I was, old Flint's first mate"
     },
@@ -54,7 +54,7 @@
       "id": "treasure-island-03-07",
       "type": "vocabulary",
       "q": "When Jim asks what the black spot is, the captain says \"That's a summons.\" What is a summons?",
-      "choices": ["An order or warning to appear or face something", "A kind of treasure map", "A sailor's tattoo", "A sickness caught at sea"],
+      "choices": ["An order to appear or face something", "A kind of treasure map", "A tattoo that sailors get after a voyage", "A fever that sailors catch on long trips at sea"],
       "answer": 0,
       "evidence": "\"That's a summons, mate."
     },
@@ -62,7 +62,7 @@
       "id": "treasure-island-03-08",
       "type": "sequence",
       "q": "What sad event happened the same evening the captain told Jim his secrets?",
-      "choices": ["Jim's father died", "The inn caught fire", "Black Dog returned", "Jim's mother fell ill"],
+      "choices": ["Jim's father died", "The inn caught fire in the night", "The inn burned", "Jim's mother fell badly ill"],
       "answer": 0,
       "evidence": "my poor father died quite suddenly that evening"
     },
@@ -70,7 +70,7 @@
       "id": "treasure-island-03-09",
       "type": "character",
       "q": "How did the captain behave in the days after Jim's father died?",
-      "choices": ["He drank more and became more violent and wandering", "He stopped drinking and helped with the funeral", "He left the inn to hide in the hills", "He became cheerful and friendly to everyone"],
+      "choices": ["He drank more and grew more violent", "He stopped drinking entirely", "He went to hide in the hills", "He became cheerful and friendly"],
       "answer": 0,
       "evidence": "more violent than ever"
     },
@@ -78,7 +78,7 @@
       "id": "treasure-island-03-10",
       "type": "detail",
       "q": "What did the stranger who came along the road wear over his eyes and nose?",
-      "choices": ["A great green shade", "A black eye-patch", "A red scarf", "A pair of dark spectacles"],
+      "choices": ["A great green shade", "A black leather eye-patch", "A red scarf", "A pair of dark spectacles"],
       "answer": 0,
       "evidence": "wore a great green shade over his eyes and nose"
     },
@@ -86,7 +86,7 @@
       "id": "treasure-island-03-11",
       "type": "character",
       "q": "How did the blind man's manner change once Jim took his hand?",
-      "choices": ["He went from polite to cruel, gripping Jim and threatening to break his arm", "He went from rude to kind and thanked Jim", "He began to cry and ask for food", "He became confused and wandered away"],
+      "choices": ["He turned cruel, gripping Jim and threatening to break his arm", "He went from rude to kind and thanked Jim warmly for his help", "He began to weep and begged Jim for some bread and a warm fire", "He became muddled and wandered off down the road toward the cove"],
       "answer": 0,
       "evidence": "Take me in straight or I'll break your arm."
     },
@@ -94,7 +94,7 @@
       "id": "treasure-island-03-12",
       "type": "detail",
       "q": "What words did the blind man force Jim to cry out at the parlour door?",
-      "choices": ["\"Here's a friend for you, Bill.\"", "\"Black Dog is back, Bill.\"", "\"The doctor is here, Bill.\"", "\"Your time is up, Bill.\""],
+      "choices": ["\"Here's a friend for you, Bill.\"", "\"Black Dog is back for you, Bill.\"", "\"Your time is up, Bill.\"", "\"The doctor is here to see you, Bill.\""],
       "answer": 0,
       "evidence": "Here's a friend for you, Bill."
     },
@@ -102,7 +102,7 @@
       "id": "treasure-island-03-13",
       "type": "sequence",
       "q": "What did the blind man do right after passing something into the captain's palm?",
-      "choices": ["Skipped quickly out into the road and tapped away", "Sat down and ordered rum", "Searched the captain's room", "Drew a knife on Jim"],
+      "choices": ["Skipped out into the road and tapped away", "Sat down at the table and called for rum", "Searched the captain's room upstairs", "Pulled out a knife and held it to Jim"],
       "answer": 0,
       "evidence": "skipped out of the parlour and into the road"
     },
@@ -110,7 +110,7 @@
       "id": "treasure-island-03-14",
       "type": "inference",
       "q": "When the captain read \"Ten o'clock!\" and said \"Six hours,\" what did he mean?",
-      "choices": ["His enemies would come for him at ten, giving him six hours", "He needed six hours of sleep", "His ship would sail at ten", "The doctor would arrive in six hours"],
+      "choices": ["His enemies would come at ten, giving him six hours", "He needed six hours of sleep before he could fight again", "His ship would sail at ten", "The doctor promised to come back in six hours, at ten o'clock"],
       "answer": 0,
       "evidence": "\"Ten o'clock!\" he cried. \"Six hours. We'll do them yet,\""
     },
@@ -118,7 +118,7 @@
       "id": "treasure-island-03-15",
       "type": "detail",
       "q": "How did the captain die?",
-      "choices": ["He was struck dead by apoplexy (a stroke)", "The blind man stabbed him", "He fell down the stairs", "He drank poison"],
+      "choices": ["He was struck dead by a stroke", "The blind man stabbed him", "He fell down the stairs", "He drank poison in his rum"],
       "answer": 0,
       "evidence": "The captain had been struck dead by thundering apoplexy."
     },
@@ -126,7 +126,7 @@
       "id": "treasure-island-03-16",
       "type": "main-idea",
       "q": "What is this chapter mostly about?",
-      "choices": ["The captain reveals his danger, receives the black spot, and dies", "Jim and Dr. Livesey hunt down Black Dog", "The captain recovers and leaves the inn", "Jim's mother sells the Admiral Benbow"],
+      "choices": ["The captain reveals his danger, gets the black spot, and dies", "Jim and Dr. Livesey hunt down Black Dog along the coast road", "The captain gets better, pays his bill, and leaves the inn", "Jim's mother decides to sell the Admiral Benbow and move away"],
       "answer": 0,
       "evidence": "and they tip me the black spot, mind you, it's my old sea-chest they're after"
     }

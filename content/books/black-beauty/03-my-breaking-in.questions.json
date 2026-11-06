@@ -8,9 +8,9 @@
       "q": "What white markings did Black Beauty have?",
       "choices": [
         "One white foot and a white star on his forehead",
-        "Four white socks",
-        "A white tail",
-        "A white stripe down his back"
+        "Four white socks and a white blaze on his nose",
+        "A white tail and a white patch on his left side",
+        "A white stripe running all the way down his back"
       ],
       "answer": 0,
       "evidence": "I had one white foot and a pretty white star on my forehead"
@@ -22,7 +22,7 @@
       "choices": [
         "Four years old",
         "Two years old",
-        "One year old",
+        "Three years old",
         "Six years old"
       ],
       "answer": 0,
@@ -33,10 +33,10 @@
       "type": "vocabulary",
       "q": "In this chapter, what does \"breaking in\" a horse mean?",
       "choices": [
-        "Teaching a horse to wear a saddle and bridle and obey its rider",
-        "Breaking a horse's spirit with a whip",
-        "Letting a horse break out of its stable",
-        "Teaching a horse to race"
+        "Teaching a horse to wear saddle and bridle and obey",
+        "Breaking a horse's spirit with a whip until it gives in",
+        "Letting a young horse break out of its stable at night",
+        "Teaching a horse to race fast on the open common"
       ],
       "answer": 0,
       "evidence": "It means to teach a horse to wear a saddle and bridle"
@@ -47,9 +47,9 @@
       "q": "Why did the master decide to break in Black Beauty himself?",
       "choices": [
         "He did not want him to be frightened or hurt",
-        "He wanted to save money",
-        "Squire Gordon told him to",
-        "No one else knew how"
+        "He wanted to save the money a trainer would cost",
+        "Squire Gordon had asked him to do it that way",
+        "None of the men on the farm knew how to do it"
       ],
       "answer": 0,
       "evidence": "as he should not like me to be frightened or hurt"
@@ -60,9 +60,9 @@
       "q": "How did Black Beauty feel about the bit when it was first put in his mouth?",
       "choices": [
         "He thought it was a nasty, very bad thing",
-        "He liked the taste of the steel",
-        "He did not notice it at all",
-        "He thought it was fun to chew"
+        "He liked the taste of the cold steel bar",
+        "He hardly noticed it was there at all",
+        "He thought it was fun to chew and play with"
       ],
       "answer": 0,
       "evidence": "it was a nasty thing"
@@ -73,9 +73,9 @@
       "q": "What helped Black Beauty get used to wearing the bit and bridle?",
       "choices": [
         "Nice oats and his master's pats and kind words",
-        "Being whipped when he refused",
-        "Watching the cows",
-        "Being left alone in the field"
+        "Being whipped by old Daniel every time he refused",
+        "Watching the cows wear bridles in the next field",
+        "Being left alone in the field for a few weeks"
       ],
       "answer": 0,
       "evidence": "what with the nice oats, and what with my master's pats, kind words, and gentle ways"
@@ -86,9 +86,9 @@
       "q": "Which came after the bit and bridle in Black Beauty's training?",
       "choices": [
         "The saddle",
-        "The first train",
+        "Seeing his first train go by",
         "Being sold to Squire Gordon",
-        "Meeting Merrylegs"
+        "Meeting Merrylegs and Ginger"
       ],
       "answer": 0,
       "evidence": "Next came the saddle"
@@ -111,10 +111,10 @@
       "type": "vocabulary",
       "q": "What were the blinkers?",
       "choices": [
-        "Side-pieces on the bridle that stopped him from seeing to the sides",
-        "Lights on the front of a carriage",
-        "Iron shoes for his feet",
-        "Straps that went under his tail"
+        "Side-pieces on the bridle so he could not see sideways",
+        "Lamps on the front of a carriage for driving at night",
+        "Iron shoes nailed onto his feet by the blacksmith",
+        "Straps that went under his tail to hold the saddle"
       ],
       "answer": 0,
       "evidence": "great side-pieces against my eyes called blinkers"
@@ -124,10 +124,10 @@
       "type": "sequence",
       "q": "How did Black Beauty react the very first time a train went by?",
       "choices": [
-        "He galloped to the far side of the meadow, snorting with fear",
-        "He kept eating quietly like the cows",
-        "He jumped over the fence",
-        "He ran up to the train to look at it"
+        "He galloped to the far side of the meadow, snorting",
+        "He went on eating quietly beside the cows and sheep",
+        "He jumped clean over the fence and ran down the lane",
+        "He trotted right up to the train to see what it was"
       ],
       "answer": 0,
       "evidence": "I turned and galloped to the further side of the meadow"
@@ -138,9 +138,9 @@
       "q": "Why did the master send Black Beauty to a farm next to the railway?",
       "choices": [
         "So he would learn not to be afraid of trains",
-        "So he could eat better grass",
-        "So he could make friends with sheep",
-        "So the farmer could buy him"
+        "So he could eat the better grass growing there",
+        "So he could be broken in to harness by the farmer",
+        "So the farmer could look him over and buy him"
       ],
       "answer": 0,
       "evidence": "I am as fearless at railway stations as in my own stable"
@@ -150,10 +150,10 @@
       "type": "character",
       "q": "What did Black Beauty's mother say about foolish, careless men?",
       "choices": [
-        "They spoil more horses than all, just for want of sense",
-        "They are the kindest masters",
-        "They never own horses",
-        "They always use whips"
+        "They spoil more horses than all, for want of sense",
+        "They make the kindest masters because they never worry",
+        "They hardly ever own horses, so they do little harm",
+        "They always carry whips but are too lazy to use them"
       ],
       "answer": 0,
       "evidence": "these spoil more horses than all, just for want of sense"

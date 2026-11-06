@@ -6,7 +6,12 @@
       "id": "black-beauty-24-01",
       "type": "detail",
       "q": "What name did Lady Anne give Black Beauty?",
-      "choices": ["Black Auster", "Baron", "Darkie", "Max"],
+      "choices": [
+        "Black Auster",
+        "Baron",
+        "Darkie",
+        "Black Prince"
+      ],
       "answer": 0,
       "evidence": "She chose me for her horse, and named me \"Black Auster\"."
     },
@@ -14,7 +19,12 @@
       "id": "black-beauty-24-02",
       "type": "character",
       "q": "What kind of rider was Lady Anne?",
-      "choices": ["A perfect horsewoman, gay and gentle", "A nervous beginner", "A cruel rider who used a whip", "A rider who never went out"],
+      "choices": [
+        "A perfect horsewoman, gay and gentle",
+        "A nervous beginner who had just learned",
+        "A cruel rider who always used a whip",
+        "A lady who almost never rode out"
+      ],
       "answer": 0,
       "evidence": "She was a perfect horsewoman, and as gay and gentle as she was beautiful."
     },
@@ -22,7 +32,12 @@
       "id": "black-beauty-24-03",
       "type": "detail",
       "q": "What had Ginger told Beauty about Lizzie?",
-      "choices": ["She was rather nervous", "She was very lazy", "She was the fastest horse in England", "She was blind in one eye"],
+      "choices": [
+        "She was rather nervous",
+        "She was very lazy",
+        "She was the fastest of all",
+        "She was blind in one eye"
+      ],
       "answer": 0,
       "evidence": "she was rather nervous"
     },
@@ -30,7 +45,12 @@
       "id": "black-beauty-24-04",
       "type": "character",
       "q": "Why did Blantyre beg Lady Anne not to ride Lizzie?",
-      "choices": ["He thought Lizzie was too nervous to be safe for a lady", "He wanted to ride Lizzie himself", "Lizzie was lame that day", "Lizzie had never worn a side-saddle"],
+      "choices": [
+        "He thought Lizzie was too nervous to be safe for a lady",
+        "He wanted to ride Lizzie himself and try her paces",
+        "Lizzie had gone lame in one foot the day before",
+        "Lizzie had never been ridden with a side-saddle"
+      ],
       "answer": 0,
       "evidence": "she is too nervous for a lady"
     },
@@ -38,7 +58,12 @@
       "id": "black-beauty-24-05",
       "type": "detail",
       "q": "Why did they stop at Dr. Ashley's house?",
-      "choices": ["To ask a question for the Lady Harriet", "Because Lady Anne felt ill", "To have Lizzie's shoe fixed", "To deliver a basket of food"],
+      "choices": [
+        "To ask a question for the Lady Harriet",
+        "Because Lady Anne suddenly felt faint",
+        "To have a loose shoe on Lizzie fixed",
+        "To leave a basket of food for the poor"
+      ],
       "answer": 0,
       "evidence": "Would they ask this question for her at Dr. Ashley's, and bring the answer?"
     },
@@ -46,7 +71,12 @@
       "id": "black-beauty-24-06",
       "type": "sequence",
       "q": "What made Lizzie kick and dash off at a gallop?",
-      "choices": ["A colt bumped her hind legs while a boy cracked a whip", "A dog jumped out from the trees", "A train whistle blew", "Lady Anne hit her with a stick"],
+      "choices": [
+        "A colt bumped her hind legs while a boy cracked a whip",
+        "A dog sprang out at her from the trees beside the road",
+        "A train whistle shrieked from the railway below the hill",
+        "Lady Anne struck her sharply with her riding whip"
+      ],
       "answer": 0,
       "evidence": "one of them bolted across the road and blundered up against Lizzie's hind legs"
     },
@@ -54,7 +84,12 @@
       "id": "black-beauty-24-07",
       "type": "character",
       "q": "What did Beauty do to call for help when Lizzie ran off?",
-      "choices": ["Neighed loudly again and again", "Broke the gate and chased her alone", "Lay down in the road", "Ran to the hall"],
+      "choices": [
+        "Neighed loudly again and again",
+        "Broke loose and chased her alone",
+        "Stamped and pawed at the gate",
+        "Ran straight back to the hall"
+      ],
       "answer": 0,
       "evidence": "I gave a loud, shrill neigh for help"
     },
@@ -62,7 +97,12 @@
       "id": "black-beauty-24-08",
       "type": "detail",
       "q": "How did Blantyre find out which way Lizzie had gone at the fork in the road?",
-      "choices": ["A woman at her garden gate pointed to the right", "He followed Lizzie's hoofprints", "Beauty smelled the way", "Lady Anne dropped her hat there"],
+      "choices": [
+        "A woman at her garden gate pointed to the right",
+        "He followed Lizzie's hoofprints in the dusty road",
+        "Beauty put his nose down and found the way",
+        "Lady Anne had dropped her hat at the corner"
+      ],
       "answer": 0,
       "evidence": "To the right!\" cried the woman"
     },
@@ -70,7 +110,12 @@
       "id": "black-beauty-24-09",
       "type": "detail",
       "q": "Who told Blantyre that Lizzie had turned off to the common?",
-      "choices": ["An old road-mender", "A turf-cutter's wife", "The doctor", "Lord George"],
+      "choices": [
+        "An old road-mender",
+        "A turf-cutter's wife",
+        "Dr. Ashley",
+        "Lord George"
+      ],
       "answer": 0,
       "evidence": "An old road-mender was standing near a heap of stones"
     },
@@ -78,7 +123,12 @@
       "id": "black-beauty-24-10",
       "type": "vocabulary",
       "q": "Beauty calls the common \"the worst place I ever knew for a headlong gallop.\" What does \"headlong\" mean here?",
-      "choices": ["Wild and very fast, without stopping", "Slow and careful", "Backward", "In a straight line"],
+      "choices": [
+        "Wild and very fast, without stopping",
+        "Slow and careful, picking each step",
+        "Going backward with the head down",
+        "Steady and straight, in a line"
+      ],
       "answer": 0,
       "evidence": "the worst place I ever knew for a headlong gallop"
     },
@@ -86,7 +136,12 @@
       "id": "black-beauty-24-11",
       "type": "sequence",
       "q": "What happened when Lizzie jumped the newly cut dike?",
-      "choices": ["She stumbled on the rough clods and fell", "She cleared it and kept running", "She stopped and refused to jump", "She fell into the water and swam"],
+      "choices": [
+        "She stumbled on the rough clods and fell",
+        "She cleared it easily and kept on running",
+        "She stopped short and refused to jump it",
+        "She fell into the water and swam across"
+      ],
       "answer": 0,
       "evidence": "Lizzie took the leap, stumbled among the rough clods and fell"
     },
@@ -94,7 +149,12 @@
       "id": "black-beauty-24-12",
       "type": "detail",
       "q": "How did Black Beauty get over the dike?",
-      "choices": ["With one determined leap over both dike and bank", "He walked around it", "He waded through it", "Blantyre led him across a bridge"],
+      "choices": [
+        "With one determined leap over both dike and bank",
+        "He walked all the way around the end of the dike",
+        "He waded slowly through the water at the bottom",
+        "Blantyre led him across a little wooden bridge"
+      ],
       "answer": 0,
       "evidence": "with one determined leap cleared both dike and bank"
     },
@@ -102,7 +162,12 @@
       "id": "black-beauty-24-13",
       "type": "character",
       "q": "Why was the turf-cutter willing to ride for help even though he was not much of a horseman?",
-      "choices": ["Lady Anne had been very good to his wife in the winter", "Blantyre offered him money", "He wanted to ride a fine horse", "He worked for Lord W----"],
+      "choices": [
+        "Lady Anne had been very good to his wife in the winter",
+        "Blantyre promised to pay him well when they got back",
+        "He had always wanted the chance to ride a fine horse",
+        "He had once worked in the stables for Lord W----"
+      ],
       "answer": 0,
       "evidence": "she was uncommon good to my wife in the winter"
     },
@@ -110,7 +175,12 @@
       "id": "black-beauty-24-14",
       "type": "detail",
       "q": "What did Ginger hear the doctor say about Lady Anne?",
-      "choices": ["She is not dead", "She has broken her leg", "She must go to London", "She will never ride again"],
+      "choices": [
+        "She is not dead",
+        "She has broken her leg",
+        "She must go to London",
+        "She will never ride again"
+      ],
       "answer": 0,
       "evidence": "She is not dead"
     },
@@ -118,7 +188,12 @@
       "id": "black-beauty-24-15",
       "type": "inference",
       "q": "Why did York shake his head when Lord George took Ginger for hunting?",
-      "choices": ["He thought Lord George was too careless a rider to train a young hunter", "He wanted to hunt with Ginger himself", "He thought Ginger was too old", "He did not like hunting at all"],
+      "choices": [
+        "He thought Lord George too careless to train a young hunter",
+        "He had hoped to take Ginger out hunting with him himself",
+        "He thought Ginger was now too old to begin hunting",
+        "He did not approve of hunting of any kind at all"
+      ],
       "answer": 0,
       "evidence": "not a random rider like Lord George"
     },
@@ -126,7 +201,12 @@
       "id": "black-beauty-24-16",
       "type": "main-idea",
       "q": "What is this chapter mostly about?",
-      "choices": ["Beauty helping to rescue Lady Anne after a runaway horse accident", "Lady Anne learning to ride for the first time", "A horse race across the common", "Lord W---- moving to London for good"],
+      "choices": [
+        "Beauty helping to rescue Lady Anne after a runaway",
+        "Lady Anne learning to ride a horse for the first time",
+        "A race between Beauty and Lizzie across the common",
+        "Lord W---- and his family moving to London for good"
+      ],
       "answer": 0,
       "evidence": "he was sure the horse knew of Annie's danger as well as he did"
     }

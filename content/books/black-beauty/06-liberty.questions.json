@@ -8,9 +8,9 @@
       "q": "What was the one thing Black Beauty missed in his new place?",
       "choices": [
         "Liberty, or freedom to run as he liked",
-        "His mother's milk",
-        "Good food",
-        "A clean stable"
+        "His mother's milk and her kind advice",
+        "Plenty of good oats and sweet hay",
+        "A clean, bright stable with a window"
       ],
       "answer": 0,
       "evidence": "Why, liberty!"
@@ -21,9 +21,9 @@
       "q": "For how long had Black Beauty had all the liberty he could wish for?",
       "choices": [
         "Three years and a half",
-        "Ten years",
-        "Six months",
-        "One week"
+        "Ten years and more",
+        "About six months",
+        "Only a week or two"
       ],
       "answer": 0,
       "evidence": "For three years and a half of my life"
@@ -33,10 +33,10 @@
       "type": "character",
       "q": "How did Black Beauty sometimes act when John took him out after he had had little exercise?",
       "choices": [
-        "He could not keep quiet and wanted to jump, dance, or prance",
-        "He refused to leave the stable",
-        "He walked very slowly and sadly",
-        "He lay down in the road"
+        "He could not keep quiet and wanted to jump or prance",
+        "He refused to leave the stable and backed into his stall",
+        "He walked very slowly with his head hanging down sadly",
+        "He lay down in the middle of the road and would not rise"
       ],
       "answer": 0,
       "evidence": "it seemed as if I must jump, or dance, or prance"
@@ -47,9 +47,9 @@
       "q": "What did John say to calm Black Beauty when he was full of spirit?",
       "choices": [
         "\"Steady, steady, my boy\"",
-        "\"Bad horse!\"",
-        "\"Go home now\"",
-        "\"Whoa, Ginger\""
+        "\"Bad horse! Stop that at once!\"",
+        "\"Go home now, back to your box\"",
+        "\"Whoa there, Ginger, whoa now\""
       ],
       "answer": 0,
       "evidence": "Steady, steady, my boy"
@@ -60,9 +60,9 @@
       "q": "Spirited horses that are not exercised enough are called \"skittish.\" What does skittish mean here?",
       "choices": [
         "Jumpy and full of nervous energy",
-        "Sick and weak",
-        "Lazy and slow",
-        "Hungry and thin"
+        "Sick and weak from too little food",
+        "Lazy and slow from too much rest",
+        "Thin and hungry from poor oats"
       ],
       "answer": 0,
       "evidence": "are often called skittish, when it is only play"
@@ -73,9 +73,9 @@
       "q": "Why did John not punish Black Beauty for being lively?",
       "choices": [
         "He knew it was only high spirits",
-        "He was afraid of Black Beauty",
-        "The squire told him not to",
-        "He did not notice it"
+        "He was afraid of being thrown off",
+        "The squire had told him not to",
+        "He was too busy to notice it"
       ],
       "answer": 0,
       "evidence": "he knew it was only high spirits"
@@ -86,9 +86,9 @@
       "q": "Why did the horses get their liberty on fine summer Sundays?",
       "choices": [
         "The carriage never went out on Sundays because the church was near",
-        "Sunday was John's day to clean the stable",
-        "The squire went away every Sunday",
-        "It was too hot to work on Sundays"
+        "Sunday was the one day John spent cleaning out the whole stable",
+        "The squire and his family went away to London every Sunday",
+        "It was always far too hot for the horses to work on Sundays"
       ],
       "answer": 0,
       "evidence": "The carriage never went out on Sundays"
@@ -99,9 +99,9 @@
       "q": "Where did the horses stand to talk on Sundays in the paddock?",
       "choices": [
         "Under the shade of the large chestnut tree",
-        "Beside the watermill",
-        "Inside the coach house",
-        "Next to the church"
+        "Beside the old watermill at the bottom of the field",
+        "Inside the coach house out of the hot sun",
+        "Next to the gate that led to the church"
       ],
       "answer": 0,
       "evidence": "under the shade of the large chestnut tree"

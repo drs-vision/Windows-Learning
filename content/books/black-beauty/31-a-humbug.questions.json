@@ -6,7 +6,7 @@
       "id": "black-beauty-31-01",
       "type": "detail",
       "q": "What was the name of Beauty's new groom?",
-      "choices": ["Alfred Smirk", "Filcher", "Reuben Smith", "Robert"],
+      "choices": ["Alfred Smirk", "Reuben Smith", "James Howard", "Joe Green"],
       "answer": 0,
       "evidence": "Alfred Smirk was the man"
     },
@@ -14,7 +14,7 @@
       "id": "black-beauty-31-02",
       "type": "vocabulary",
       "q": "Beauty calls Alfred Smirk a \"humbug.\" What does \"humbug\" mean here?",
-      "choices": ["A person who pretends to be better than he is", "A person who hums while he works", "A very hard worker", "A kind of insect"],
+      "choices": ["A person who pretends to be better than he is", "A person who hums a tune while he works", "A very hard worker who never takes a rest", "A small insect that buzzes around stables"],
       "answer": 0,
       "evidence": "if ever there was a humbug in the shape of a groom"
     },
@@ -22,7 +22,7 @@
       "id": "black-beauty-31-03",
       "type": "character",
       "q": "When did Alfred do a great deal of stroking and patting?",
-      "choices": ["When his master was there to see it", "Every night before bed", "Only when Beauty was sick", "Never at all"],
+      "choices": ["When his master was there to see it", "Every night before he went home to bed", "Only when Beauty was feeling sick", "Each morning while the horses were fed"],
       "answer": 0,
       "evidence": "he did a great deal of stroking and patting when his master was there to see it"
     },
@@ -30,7 +30,7 @@
       "id": "black-beauty-31-04",
       "type": "detail",
       "q": "What did Alfred spend a great deal of time on in the harness-room?",
-      "choices": ["His hair, whiskers and necktie", "Cleaning the saddles", "Mixing horse food", "Reading books"],
+      "choices": ["His hair, whiskers and necktie", "Cleaning and oiling the saddles", "Mixing the horses' food and mash", "Reading the newspaper by the fire"],
       "answer": 0,
       "evidence": "he spent a great deal of time about his hair, whiskers and necktie"
     },
@@ -38,7 +38,7 @@
       "id": "black-beauty-31-05",
       "type": "detail",
       "q": "What was the real cause of the bad smell in Beauty's box?",
-      "choices": ["Alfred never took all the old straw away", "The drains were broken", "A dead rat under the floor", "The bricklayer's lime"],
+      "choices": ["Alfred never took all the old straw away", "The drains under the stable were broken", "A dead rat was lying under the floor boards", "The bricklayer had left wet lime in the corner"],
       "answer": 0,
       "evidence": "He never took all the straw away"
     },
@@ -46,7 +46,7 @@
       "id": "black-beauty-31-06",
       "type": "sequence",
       "q": "What happened when the bricklayer came to check the drains?",
-      "choices": ["He found nothing wrong but charged five shillings", "He found a broken drain and fixed it", "He told Mr. Barry to fire Alfred", "He refused to come in"],
+      "choices": ["He found nothing wrong but charged five shillings", "He found a broken drain and mended it the same day", "He told Mr. Barry to send Alfred away at once", "He would not come in until the smell was gone"],
       "answer": 0,
       "evidence": "found nothing amiss; so he put down some lime and charged the master five shillings"
     },
@@ -62,7 +62,7 @@
       "id": "black-beauty-31-08",
       "type": "inference",
       "q": "Why did Mr. Barry decide to give up keeping a horse?",
-      "choices": ["He was disgusted at being fooled by two grooms in a row", "He moved to London", "He could not afford the food", "His doctor told him to stop riding"],
+      "choices": ["He was disgusted at being cheated by two grooms", "He was moving to London to live with his son", "He could no longer afford the oats and hay", "His doctor told him to stop riding for good"],
       "answer": 0,
       "evidence": "Mr. Barry was so much disgusted at being twice deceived by his grooms"
     }

@@ -6,12 +6,7 @@
       "id": "treasure-island-31-01",
       "type": "character",
       "q": "Why did Silver thank Jim at the start of the chapter?",
-      "choices": [
-        "Jim had refused to run away when the doctor urged him",
-        "Jim had told him where the treasure was",
-        "Jim had bandaged his leg",
-        "Jim had cooked his breakfast"
-      ],
+      "choices": ["Jim had refused to run away when the doctor urged him", "Jim had told him the place where the treasure was buried", "Jim had washed and bandaged his sore leg in the night", "Jim had cooked the whole crew's breakfast for them"],
       "answer": 0,
       "evidence": "I seen you say no, as plain as hearing"
     },
@@ -19,12 +14,7 @@
       "id": "treasure-island-31-02",
       "type": "inference",
       "q": "What did the pirates' wasteful breakfast show Jim about them?",
-      "choices": [
-        "They were unfit for a long campaign",
-        "They had plenty of food stored away",
-        "They were excellent cooks",
-        "They were planning a feast for Silver"
-      ],
+      "choices": ["They were unfit for a long campaign", "They had plenty of food stored away", "They were all excellent ship's cooks", "They were planning a feast for Silver"],
       "answer": 0,
       "evidence": "I could see their entire unfitness for anything like a prolonged campaign"
     },
@@ -32,12 +22,7 @@
       "id": "treasure-island-31-03",
       "type": "detail",
       "q": "What did one pirate do with the leftover food?",
-      "choices": [
-        "Threw it into the fire",
-        "Saved it for supper",
-        "Gave it to the parrot",
-        "Buried it in the sand"
-      ],
+      "choices": ["Threw it into the fire", "Saved it for their supper", "Fed it to the parrot", "Buried it in the sand"],
       "answer": 0,
       "evidence": "threw what was left into the fire"
     },
@@ -45,12 +30,7 @@
       "id": "treasure-island-31-04",
       "type": "character",
       "q": "What did Silver tell his crew he planned to do once they found the treasure?",
-      "choices": [
-        "Find the ship and take it, since they had the boats",
-        "Share the treasure with the doctor",
-        "Bury it again somewhere safer",
-        "Sail home in the gigs"
-      ],
+      "choices": ["Find the ship and take it, since they had the boats", "Share out the treasure fairly with the doctor's party", "Bury the gold again somewhere much safer on the island", "Row straight out to sea and sail home in the gigs"],
       "answer": 0,
       "evidence": "us that has the boats, I reckon, has the upper hand"
     },
@@ -58,12 +38,7 @@
       "id": "treasure-island-31-05",
       "type": "inference",
       "q": "Why was Jim \"horribly cast down\" after hearing Silver's plan?",
-      "choices": [
-        "He believed Silver would betray him if the pirates' scheme could work",
-        "He was sick from the bacon",
-        "He had lost his pistols",
-        "He missed his mother"
-      ],
+      "choices": ["Silver would betray him if the pirates' plan could work", "He felt sick from eating too much of the fried bacon", "He had lost his pistols on the walk up from the shore", "He missed his mother and the Admiral Benbow inn"],
       "answer": 0,
       "evidence": "Silver, already doubly a traitor, would not hesitate to adopt it"
     },
@@ -71,12 +46,7 @@
       "id": "treasure-island-31-06",
       "type": "detail",
       "q": "Which of the doctor's words still puzzled and worried Jim?",
-      "choices": [
-        "Look out for squalls when you find it",
-        "Keep the boy close beside you",
-        "Duty first and pleasure afterwards",
-        "Camp in a bog, would you?"
-      ],
+      "choices": ["Look out for squalls when you find it", "Keep the boy close beside you, Silver", "Duty first and pleasure afterwards", "Camp in a bog, would you? Not I"],
       "answer": 0,
       "evidence": "\"Look out for squalls when you find it,\""
     },
@@ -84,12 +54,7 @@
       "id": "treasure-island-31-07",
       "type": "vocabulary",
       "q": "Jim says he \"was led like a dancing bear.\" What does he mean?",
-      "choices": [
-        "He was tied by a rope and led along by Silver",
-        "He danced to cheer up the pirates",
-        "He walked slowly and heavily",
-        "He growled at the pirates"
-      ],
+      "choices": ["He was tied by a rope and led along by Silver", "He had to dance in front of the pirates to cheer them", "He walked slowly and heavily, like a tired animal", "He growled and snapped at the pirates as he went"],
       "answer": 0,
       "evidence": "I was led like a dancing bear"
     },
@@ -97,12 +62,7 @@
       "id": "treasure-island-31-08",
       "type": "detail",
       "q": "Where did the pirates' food and stores come from?",
-      "choices": [
-        "From Jim's friends' supplies",
-        "From hunting goats on the island",
-        "From Ben Gunn's cave",
-        "From the wrecked ship"
-      ],
+      "choices": ["From Jim's friends' supplies", "From hunting goats on the island", "From Ben Gunn's cave in the hill", "From the old wreck in North Inlet"],
       "answer": 0,
       "evidence": "All the stores, I observed, came from our stock"
     },
@@ -110,12 +70,7 @@
       "id": "treasure-island-31-09",
       "type": "detail",
       "q": "According to the note on the chart, what was the main landmark?",
-      "choices": [
-        "A tall tree",
-        "A big rock",
-        "A cave",
-        "A spring of water"
-      ],
+      "choices": ["A tall tree", "A big rock", "A deep cave", "A spring"],
       "answer": 0,
       "evidence": "A tall tree was thus the principal mark"
     },
@@ -123,12 +78,7 @@
       "id": "treasure-island-31-10",
       "type": "inference",
       "q": "Why was it hard to tell which tree was Flint's \"tall tree\"?",
-      "choices": [
-        "Several pines rose far above their neighbours on the plateau",
-        "All the trees had been cut down",
-        "The chart showed no trees at all",
-        "It was too dark to see the trees"
-      ],
+      "choices": ["Several pines rose far above their neighbours on the plateau", "All the tall trees on the hill had been cut down long ago", "The chart showed only rocks and no trees at all", "It was too misty that morning to see any of the trees"],
       "answer": 0,
       "evidence": "Every here and there, one of a different species rose forty or fifty feet clear above its neighbours"
     },
@@ -136,12 +86,7 @@
       "id": "treasure-island-31-11",
       "type": "character",
       "q": "How did Jim help Silver as they climbed the hill?",
-      "choices": [
-        "He lent him a hand so he would not fall",
-        "He carried Silver's guns",
-        "He held the parrot",
-        "He read the compass for him"
-      ],
+      "choices": ["He lent him a hand so he would not fall", "He carried Silver's guns and the pickaxe", "He held the parrot on his own shoulder", "He read the compass bearings out for him"],
       "answer": 0,
       "evidence": "I had to lend him a hand"
     },
@@ -149,12 +94,7 @@
       "id": "treasure-island-31-12",
       "type": "detail",
       "q": "What did the pirate on the far left find that made him cry out?",
-      "choices": [
-        "A human skeleton under a pine",
-        "The treasure chest",
-        "A live snake",
-        "Ben Gunn's boat"
-      ],
+      "choices": ["A human skeleton under a pine", "The corner of the treasure chest", "A live snake coiled on a rock", "Ben Gunn's goat-skin boat"],
       "answer": 0,
       "evidence": "a human skeleton lay, with a few shreds of clothing"
     },
@@ -162,12 +102,7 @@
       "id": "treasure-island-31-13",
       "type": "detail",
       "q": "What was strange about the way the skeleton lay?",
-      "choices": [
-        "It was perfectly straight with its hands pointing above its head",
-        "It was curled up in a ball",
-        "It was sitting against the tree",
-        "It had no head"
-      ],
+      "choices": ["It lay straight with its hands pointing above its head", "It was curled up tightly in a ball beside the roots", "It was sitting up with its back against the tree trunk", "It had no head, and its arms were folded on its chest"],
       "answer": 0,
       "evidence": "his hands, raised above his head like a diver's"
     },
@@ -175,12 +110,7 @@
       "id": "treasure-island-31-14",
       "type": "inference",
       "q": "What did Silver figure out about the skeleton?",
-      "choices": [
-        "Flint had laid it down as a pointer toward the treasure",
-        "It was a sailor who died of fever",
-        "It belonged to Ben Gunn",
-        "It was a warning to leave the island"
-      ],
+      "choices": ["Flint had laid it down as a pointer toward the treasure", "It was a poor sailor who had died there of the fever", "It belonged to Ben Gunn, who had died long ago", "It was meant as a warning to leave the island at once"],
       "answer": 0,
       "evidence": "this here is a p'inter"
     },
@@ -188,12 +118,7 @@
       "id": "treasure-island-31-15",
       "type": "detail",
       "q": "Whose bones did Silver think the skeleton was?",
-      "choices": [
-        "Allardyce",
-        "Billy Bones",
-        "Captain Flint",
-        "Black Dog"
-      ],
+      "choices": ["Allardyce", "Billy Bones", "Captain Flint", "Black Dog"],
       "answer": 0,
       "evidence": "that would be Allardyce"
     },
@@ -201,12 +126,7 @@
       "id": "treasure-island-31-16",
       "type": "sequence",
       "q": "How did the pirates behave after finding the skeleton?",
-      "choices": [
-        "They kept side by side and spoke quietly in fear",
-        "They ran ahead shouting and leaping",
-        "They turned back to the boats",
-        "They began fighting each other"
-      ],
+      "choices": ["They kept side by side and spoke quietly in fear", "They ran ahead up the hill, shouting and leaping", "They turned around and went back to the boats", "They began quarrelling and fighting with each other"],
       "answer": 0,
       "evidence": "The terror of the dead buccaneer had fallen on their spirits"
     },
@@ -214,12 +134,7 @@
       "id": "treasure-island-31-17",
       "type": "main-idea",
       "q": "What is this chapter mostly about?",
-      "choices": [
-        "The treasure hunt begins and the pirates find a skeleton Flint left as a pointer",
-        "The pirates find the treasure and divide it",
-        "Jim escapes from Silver in the woods",
-        "The doctor attacks the pirates' camp"
-      ],
+      "choices": ["The treasure hunt begins, and the pirates find Flint's skeleton pointer", "The pirates reach the tall tree, dig up the treasure and share it out", "Jim slips his rope and escapes from Silver in the thick woods", "The doctor and the squire attack the pirates' camp in the marsh"],
       "answer": 0,
       "evidence": "Right up there is our line for the Pole Star and the jolly dollars"
     }

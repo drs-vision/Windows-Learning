@@ -6,7 +6,7 @@
       "id": "treasure-island-22-01",
       "type": "detail",
       "q": "Of the three wounded men who were still alive after the battle, who survived?",
-      "choices": ["Captain Smollett", "Hunter", "The pirate shot at the loophole", "None of them"],
+      "choices": ["Captain Smollett", "Hunter, the squire's servant", "The pirate shot at the loophole", "None of them lived the night"],
       "answer": 0,
       "evidence": "He was sure to recover, the doctor said"
     },
@@ -14,7 +14,7 @@
       "id": "treasure-island-22-02",
       "type": "detail",
       "q": "What did the doctor say Captain Smollett must not do for weeks?",
-      "choices": ["Walk, move his arm, or speak when he could help it", "Eat solid food", "Go out in the sun", "Drink any water"],
+      "choices": ["Walk, move his arm, or speak when he could help it", "Eat any solid food or drink anything but water", "Go out of the shade into the hot afternoon sun", "Sleep lying down, in case his wound opened again"],
       "answer": 0,
       "evidence": "he must not walk nor move his arm, nor so much as speak when he could help it"
     },
@@ -22,7 +22,7 @@
       "id": "treasure-island-22-03",
       "type": "sequence",
       "q": "What did the doctor do after talking with the squire and the captain?",
-      "choices": ["Took the chart and his weapons and set off through the trees", "Lay down to sleep", "Went down to the shore to signal the ship", "Began to dig a grave for Joyce"],
+      "choices": ["Took the chart and his weapons and set off through the trees", "Lay down in a corner of the log-house and went to sleep", "Went down to the shore to wave a signal to the ship", "Began to dig a grave for Joyce just outside the fence"],
       "answer": 0,
       "evidence": "put the chart in his pocket, and with a musket over his shoulder crossed the palisade"
     },
@@ -30,7 +30,7 @@
       "id": "treasure-island-22-04",
       "type": "inference",
       "q": "Where did Jim guess the doctor was going?",
-      "choices": ["To see Ben Gunn", "To make peace with Silver", "To dig up the treasure alone", "To swim out to the ship"],
+      "choices": ["To see Ben Gunn", "To make peace with Silver", "To dig up the treasure alone", "To swim out to the ship at anchor"],
       "answer": 0,
       "evidence": "he's going now to see Ben Gunn"
     },
@@ -38,7 +38,7 @@
       "id": "treasure-island-22-05",
       "type": "character",
       "q": "What feelings led Jim to want to leave the stockade?",
-      "choices": ["Envy of the doctor in the cool woods and disgust at the hot, bloody block house", "Anger at the captain for scolding him", "Fear that the pirates would attack again at once", "Hunger, because there was no food left"],
+      "choices": ["Envy of the doctor in the cool woods and disgust at the hot block house", "Anger at the captain for scolding him in front of the squire and Gray", "Fear that the pirates would attack the stockade again within an hour", "Hunger, because there was not a single biscuit left in the stockade"],
       "answer": 0,
       "evidence": "this disgust and envy kept growing stronger and stronger"
     },
@@ -46,7 +46,7 @@
       "id": "treasure-island-22-06",
       "type": "detail",
       "q": "What did Jim take with him before slipping away?",
-      "choices": ["Biscuits in his pockets and a brace of pistols", "The treasure chart and a cutlass", "A lantern and a rope", "A musket and the captain's log"],
+      "choices": ["Biscuits in his pockets and a brace of pistols", "The treasure chart and the captain's cutlass", "A lantern and a long coil of rope for climbing", "A musket and the captain's log-book"],
       "answer": 0,
       "evidence": "filled both pockets of my coat with biscuit"
     },
@@ -54,7 +54,7 @@
       "id": "treasure-island-22-07",
       "type": "vocabulary",
       "q": "Jim says he planned \"to take French leave.\" From the story, taking French leave means:",
-      "choices": ["Leaving secretly without permission", "Asking politely to leave", "Going on a holiday to France", "Leaving with a large group"],
+      "choices": ["Leaving secretly without permission", "Asking the captain politely to go", "Going on a holiday trip to France", "Leaving together with a large group"],
       "answer": 0,
       "evidence": "my only plan was to take French leave and slip out when nobody was watching"
     },
@@ -62,7 +62,7 @@
       "id": "treasure-island-22-08",
       "type": "inference",
       "q": "Why does Jim call his escape \"far worse than the first\" folly?",
-      "choices": ["He left only two healthy men to guard the house", "He forgot to take any food", "He stole the captain's chart", "He told the pirates where the stockade was"],
+      "choices": ["He left only two healthy men to guard the house", "He forgot to take any food or water with him", "He stole the chart from the captain's coat pocket", "He told the pirates where the stockade gate was"],
       "answer": 0,
       "evidence": "I left but two sound men to guard the house"
     },
@@ -70,7 +70,7 @@
       "id": "treasure-island-22-09",
       "type": "detail",
       "q": "What did Jim notice about the sea around Treasure Island?",
-      "choices": ["The surf was never quiet; great rollers thundered day and night", "It was always calm and silent", "It was full of sharks", "It froze over at night"],
+      "choices": ["The surf was never quiet; great rollers thundered day and night", "The sea was always calm and silent, like a pond in summer", "The water near the shore was full of hungry sharks", "The waves froze into ice along the beach at night"],
       "answer": 0,
       "evidence": "I have never seen the sea quiet round Treasure Island."
     },
@@ -78,7 +78,7 @@
       "id": "treasure-island-22-10",
       "type": "detail",
       "q": "What strange screaming did Jim hear from the ship, and what was it?",
-      "choices": ["Captain Flint, Silver's parrot", "A wounded pirate", "Ben Gunn calling", "A seagull caught in the rigging"],
+      "choices": ["Captain Flint, Silver's parrot", "A wounded pirate crying out in pain", "Ben Gunn calling to him from the shore", "A seagull caught in the ship's rigging"],
       "answer": 0,
       "evidence": "I had soon remembered the voice of Captain Flint"
     },
@@ -86,7 +86,7 @@
       "id": "treasure-island-22-11",
       "type": "detail",
       "q": "Where did Jim find Ben Gunn's boat?",
-      "choices": ["In a goat-skin tent in a hollow below the white rock", "Tied to a tree by the river", "Buried in the sand at the beach", "Inside the old stockade"],
+      "choices": ["In a goat-skin tent in a hollow below the white rock", "Tied to a tree on the bank of the little river", "Buried in the sand at the head of the beach", "Hidden under the floor of the old stockade house"],
       "answer": 0,
       "evidence": "a little tent of goat-skins"
     },
@@ -94,7 +94,7 @@
       "id": "treasure-island-22-12",
       "type": "detail",
       "q": "What was Ben Gunn's boat made of?",
-      "choices": ["A wooden frame covered with goat-skin", "Hollowed-out logs", "Planks from an old ship", "Woven reeds and mud"],
+      "choices": ["A wooden frame covered with goat-skin", "Two logs hollowed out and tied together", "Planks taken from an old wrecked ship", "Woven reeds plastered over with mud"],
       "answer": 0,
       "evidence": "stretched upon that a covering of goat-skin, with the hair inside"
     },
@@ -102,7 +102,7 @@
       "id": "treasure-island-22-13",
       "type": "character",
       "q": "What new plan did Jim decide on after finding the boat?",
-      "choices": ["To cut the HISPANIOLA adrift in the dark", "To row back to England", "To bring the boat to the doctor", "To find the treasure by himself"],
+      "choices": ["To cut the HISPANIOLA adrift in the dark", "To row the little boat all the way to England", "To carry the boat back to show the doctor", "To find the treasure by himself before dawn"],
       "answer": 0,
       "evidence": "cut the HISPANIOLA adrift, and let her go ashore where she fancied"
     },
@@ -110,7 +110,7 @@
       "id": "treasure-island-22-14",
       "type": "main-idea",
       "q": "What is this chapter mostly about?",
-      "choices": ["After the battle, Jim sneaks away, finds Ben Gunn's boat, and plans a daring night trip to the ship", "The doctor and Ben Gunn dig up the treasure", "The pirates attack the stockade a second time", "Silver captures Jim at the white rock"],
+      "choices": ["After the battle, Jim sneaks away, finds Ben Gunn's boat, and plans a night trip", "The doctor and Ben Gunn dig up the treasure and carry it to the stockade", "The pirates attack the stockade a second time and set the log-house on fire", "Silver catches Jim hiding near the white rock and takes him to the pirates' camp"],
       "answer": 0,
       "evidence": "I was a fool, if you like, and certainly I was going to do a foolish, over-bold act"
     }

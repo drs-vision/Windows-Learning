@@ -6,7 +6,7 @@
       "id": "black-beauty-27-01",
       "type": "character",
       "q": "Why did Beauty feel lonely in the small meadow?",
-      "choices": ["No other creature was there and he missed Ginger", "The grass was dry and bitter", "He could not see the road", "He was tied up all day"],
+      "choices": ["No other creature was there and he missed Ginger", "The grass was dry and bitter and he was hungry", "He could not see the road or the horses passing", "He was tied up all day in a corner of the field"],
       "answer": 0,
       "evidence": "Ginger and I had become fast friends, and now I missed her company extremely"
     },
@@ -14,7 +14,7 @@
       "id": "black-beauty-27-02",
       "type": "detail",
       "q": "How had Ginger been ruined?",
-      "choices": ["By hard riding in a steeplechase", "By the tight check-rein", "By a fall on sharp stones", "By being left out in the cold"],
+      "choices": ["By hard riding in a steeplechase", "By years of wearing the tight check-rein", "By a fall on sharp stones in the dark", "By being left out in the cold and rain"],
       "answer": 0,
       "evidence": "she had been ruined by hard riding"
     },
@@ -22,7 +22,7 @@
       "id": "black-beauty-27-03",
       "type": "character",
       "q": "What kind of person was Lord George?",
-      "choices": ["A young, careless hard rider who would take no warning", "A gentle, careful rider", "An old man who never rode", "A horse-doctor"],
+      "choices": ["A careless young hard rider who took no warning", "A gentle, careful rider who always spared his horse", "An old man who never rode and drove only in a carriage", "A horse-doctor who came to look after the earl's horses"],
       "answer": 0,
       "evidence": "Lord George was young and would take no warning"
     },
@@ -30,7 +30,7 @@
       "id": "black-beauty-27-04",
       "type": "detail",
       "q": "According to Ginger, who ruined Beauty and who ruined her?",
-      "choices": ["Beauty by a drunkard, and Ginger by a fool", "Both by the tight rein", "Beauty by a fool, and Ginger by a drunkard", "Both by a cruel dealer"],
+      "choices": ["Beauty by a drunkard, and Ginger by a fool", "Both of them by the tight bearing rein", "Beauty by a fool, and Ginger by a drunkard", "Both of them by a cruel horse dealer"],
       "answer": 0,
       "evidence": "you by a drunkard, and I by a fool"
     },
@@ -38,7 +38,7 @@
       "id": "black-beauty-27-05",
       "type": "inference",
       "q": "Why did the earl decide Beauty must be sold?",
-      "choices": ["He could not have a horse with scarred knees in his stables", "Beauty had become bad-tempered", "He needed the money", "Beauty could no longer walk"],
+      "choices": ["He would not keep a horse with scarred knees", "Beauty had become bad-tempered and bit the grooms", "He needed money to pay for Lord George's horses", "Beauty could no longer walk without going lame"],
       "answer": 0,
       "evidence": "I could not have knees like these in my stables"
     },
@@ -46,7 +46,7 @@
       "id": "black-beauty-27-06",
       "type": "detail",
       "q": "Where did York suggest Beauty could be sold?",
-      "choices": ["To the master of some livery stables in Bath", "To a cab driver in London", "To a farmer near Birtwick", "Back to Squire Gordon"],
+      "choices": ["To the master of some livery stables in Bath", "To a cab driver he knew in the middle of London", "To a farmer near Birtwick who wanted a cob", "Back to Squire Gordon, his old master"],
       "answer": 0,
       "evidence": "I know a man in Bath, the master of some livery stables"
     },
@@ -54,7 +54,7 @@
       "id": "black-beauty-27-07",
       "type": "sequence",
       "q": "What did Ginger do as Beauty was led away?",
-      "choices": ["Trotted along the hedge, calling to him", "Lay down under the lime-tree", "Jumped the gate to follow him", "Turned away and ate grass"],
+      "choices": ["Trotted along the hedge, calling to him", "Lay down quietly under the lime-tree", "Jumped the gate and tried to follow him", "Turned away and went on eating grass"],
       "answer": 0,
       "evidence": "she trotted anxiously along by the hedge, calling to me"
     },
@@ -62,7 +62,7 @@
       "id": "black-beauty-27-08",
       "type": "detail",
       "q": "Why was standing in the new stable so tiring for Beauty?",
-      "choices": ["The stalls were on a slope and his head was tied", "The stable was too cold", "There was no straw", "The stalls were too small to lie down"],
+      "choices": ["The stalls were on a slope and his head was tied", "The stable was cold and the wind came under the door", "There was no straw and the floor was hard stone", "The stalls were too narrow for him to lie down"],
       "answer": 0,
       "evidence": "The stalls were laid on a slope instead of being level"
     }

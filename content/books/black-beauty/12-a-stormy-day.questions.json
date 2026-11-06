@@ -10,7 +10,7 @@
         "The dog-cart",
         "The heavy carriage",
         "A farm wagon",
-        "A hearse"
+        "Captain Langley's cart"
       ],
       "answer": 0,
       "evidence": "I was put into the dog-cart"
@@ -21,9 +21,9 @@
       "q": "What did the man at the toll-gate say in the morning?",
       "choices": [
         "The river was rising fast",
-        "The bridge was broken",
-        "The road was closed",
-        "A tree had fallen"
+        "The bridge had been mended",
+        "The road was closed ahead",
+        "A storm would come by noon"
       ],
       "answer": 0,
       "evidence": "the river was rising fast"
@@ -34,9 +34,9 @@
       "q": "What happened as they drove past the wood on the way home?",
       "choices": [
         "An oak tree crashed down across the road just before them",
-        "A wheel came off the dog-cart",
-        "Black Beauty lost a shoe",
-        "They met James on Justice"
+        "A wheel came off the dog-cart in a deep muddy rut",
+        "Black Beauty cast a shoe on the stony road",
+        "They met James riding Justice with a message"
       ],
       "answer": 0,
       "evidence": "came an oak, torn up by the roots, and it fell right across the road just before us"
@@ -47,9 +47,9 @@
       "q": "How did Black Beauty act when the tree fell?",
       "choices": [
         "He was frightened and stopped still, but did not run away",
-        "He bolted back to town",
-        "He jumped over the tree",
-        "He was not frightened at all"
+        "He bolted back toward the town as fast as he could go",
+        "He leaped clean over the fallen branches and kept going",
+        "He was not frightened at all and just trotted on calmly"
       ],
       "answer": 0,
       "evidence": "I stopped still, and I believe I trembled"
@@ -59,10 +59,10 @@
       "type": "detail",
       "q": "Why did they have to go back to the four crossways?",
       "choices": [
-        "They could not drive over or around the fallen tree",
-        "The master forgot something in town",
-        "John wanted a shorter road",
-        "The horse was too tired"
+        "They could not get over or around the fallen tree",
+        "The master had left his papers back in the town",
+        "John wanted to try a shorter road through the wood",
+        "Black Beauty was too tired to go on that way"
       ],
       "answer": 0,
       "evidence": "we can't drive over that tree, nor yet get round it"
@@ -72,10 +72,10 @@
       "type": "sequence",
       "q": "What did Black Beauty do the moment his feet touched the bridge?",
       "choices": [
-        "He made a dead stop and would not go forward",
-        "He galloped across",
-        "He turned and ran",
-        "He lay down"
+        "He made a dead stop and would not go on",
+        "He galloped across as fast as he could",
+        "He turned and ran back up the road",
+        "He reared up and nearly upset the cart"
       ],
       "answer": 0,
       "evidence": "I made a dead stop"
@@ -86,8 +86,8 @@
       "q": "Why did Black Beauty refuse to cross the bridge even when the master used the whip?",
       "choices": [
         "He knew the bridge was not safe",
-        "He was afraid of the dark",
-        "He was too tired",
+        "He was afraid of the dark water",
+        "He was too tired to go any farther",
         "He wanted to go home another way"
       ],
       "answer": 0,
@@ -99,9 +99,9 @@
       "q": "What did the toll-gate man shout to warn them?",
       "choices": [
         "The bridge was broken in the middle",
-        "The river was full of fish",
-        "The road ahead was flooded",
-        "A tree had fallen on his house"
+        "The river was full of floating logs",
+        "The road ahead was flooded and closed",
+        "A tree had fallen across his gate"
       ],
       "answer": 0,
       "evidence": "The bridge is broken in the middle"
@@ -112,9 +112,9 @@
       "q": "What did the master say God had given animals that saved them that night?",
       "choices": [
         "Knowledge that does not depend on reason",
-        "Strong legs for running",
-        "Good eyesight in the day",
-        "Loud voices to warn people"
+        "Strong legs that can outrun any danger",
+        "Sharp eyes that see far in daylight",
+        "Loud voices to call out a warning"
       ],
       "answer": 0,
       "evidence": "he had given animals knowledge which did not depend on reason"
@@ -125,8 +125,8 @@
       "q": "How had the mistress felt while waiting for them at home?",
       "choices": [
         "Very anxious, fearing an accident",
-        "Happy and calm",
-        "Angry that they were late",
+        "Happy and calm, reading by the fire",
+        "Cross with them for being so late",
         "She had not noticed they were gone"
       ],
       "answer": 0,

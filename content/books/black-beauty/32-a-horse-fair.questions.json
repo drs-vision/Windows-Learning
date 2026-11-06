@@ -6,7 +6,7 @@
       "id": "black-beauty-32-01",
       "type": "detail",
       "q": "Why were horses like Beauty, handsome and high-bred, at the fair with the middle class of horses?",
-      "choices": ["Some accident or blemish had lowered them", "They were too young to sell", "They had never been trained", "Their owners were moving abroad"],
+      "choices": ["Some accident or blemish had lowered them", "They were still too young to be sold", "They had never been broken in or trained", "Their owners were moving abroad and needed quick money"],
       "answer": 0,
       "evidence": "fallen into the middle class, through some accident or blemish"
     },
@@ -14,7 +14,7 @@
       "id": "black-beauty-32-02",
       "type": "inference",
       "q": "Why were the broken-down old horses \"sad sights\" for Beauty?",
-      "choices": ["He knew he might end up in the same state one day", "They were his old friends", "They were blocking his view", "They were making too much noise"],
+      "choices": ["He knew he might end up in the same state one day", "They were old friends he had known at Birtwick", "They were blocking his view of the buyers", "They kept making too much noise all day"],
       "answer": 0,
       "evidence": "who knows not but he may come to the same state"
     },
@@ -22,7 +22,7 @@
       "id": "black-beauty-32-03",
       "type": "detail",
       "q": "What did Beauty say there was a lot of at the horse fair?",
-      "choices": ["Lies and trickery", "Good food", "Kind grooms", "Horse races"],
+      "choices": ["Lies and trickery", "Good food and water", "Kind, gentle grooms", "Horse racing and betting"],
       "answer": 0,
       "evidence": "there were more lies told and more trickery at that horse fair"
     },
@@ -30,7 +30,7 @@
       "id": "black-beauty-32-04",
       "type": "detail",
       "q": "Why did the gentlemen always turn away from Beauty?",
-      "choices": ["They saw his broken knees", "He was too small", "He tried to bite them", "His price was too high"],
+      "choices": ["They saw his broken knees", "He was too small for a carriage", "He tried to bite their hands", "His price was much too high"],
       "answer": 0,
       "evidence": "The gentlemen always turned from me when they saw my broken knees"
     },
@@ -38,7 +38,7 @@
       "id": "black-beauty-32-05",
       "type": "character",
       "q": "How did Beauty judge the buyers who came to look at him?",
-      "choices": ["By how they handled and treated him", "By how much money they offered", "By the clothes they wore", "By how tall they were"],
+      "choices": ["By how they handled and treated him", "By how much money they offered", "By the fine clothes they wore", "By how loudly they talked to the salesman"],
       "answer": 0,
       "evidence": "I judged a good deal of the buyers by their manners to myself"
     },
@@ -46,7 +46,7 @@
       "id": "black-beauty-32-06",
       "type": "character",
       "q": "Besides his gentle way, what else made Beauty take to the gray-eyed man?",
-      "choices": ["His clean, fresh smell, like a hayloft", "His fine gentleman's clothes", "His loud, cheerful voice", "The apple in his pocket"],
+      "choices": ["His clean, fresh smell, like a hayloft", "His fine gentleman's clothes and hat", "His loud and cheerful laughing voice", "The red apple he held out in his hand"],
       "answer": 0,
       "evidence": "a fresh smell as if he had come out of a hayloft"
     },
@@ -54,7 +54,7 @@
       "id": "black-beauty-32-07",
       "type": "sequence",
       "q": "What did Beauty do when the gray-eyed man came back?",
-      "choices": ["Reached out his head toward him", "Turned his back on him", "Reared up in fear", "Neighed for the salesman"],
+      "choices": ["Reached out his head toward him", "Turned his back on him and stamped", "Reared up in fear and pulled away", "Neighed loudly for the salesman"],
       "answer": 0,
       "evidence": "I could not help reaching out my head toward him"
     },
@@ -62,7 +62,7 @@
       "id": "black-beauty-32-08",
       "type": "detail",
       "q": "What price did the gray-eyed man finally pay for Beauty?",
-      "choices": ["Twenty-four ten", "Twenty-three pounds", "Twenty-five pounds", "Three hundred pounds"],
+      "choices": ["Twenty-four ten", "Twenty-three pounds", "Twenty-five pounds", "Thirty pounds"],
       "answer": 0,
       "evidence": "Twenty-four ten,\" said my friend"
     },
@@ -70,7 +70,7 @@
       "id": "black-beauty-32-09",
       "type": "vocabulary",
       "q": "Some old horses at the fair looked \"dejected.\" What does \"dejected\" mean here?",
-      "choices": ["Sad and hopeless", "Proud and lively", "Fat and lazy", "Young and wild"],
+      "choices": ["Sad and hopeless", "Proud and lively", "Fat and very lazy", "Young and wild"],
       "answer": 0,
       "evidence": "some very dejected-looking old horses"
     },
@@ -78,7 +78,7 @@
       "id": "black-beauty-32-10",
       "type": "main-idea",
       "q": "How does the chapter end for Beauty?",
-      "choices": ["He goes to a loving family in London and thinks he will be happy", "He is sold to the hard-faced man", "He is left unsold at the fair", "He is sent back to Earlshall"],
+      "choices": ["He goes to a kind family in London, hoping to be happy", "He is sold to the hard-faced man with the loud voice", "He is left unsold at the fair and sent back to Bath", "He is sent home to Earlshall to work in the fields"],
       "answer": 0,
       "evidence": "thinking I was going to be happy"
     }

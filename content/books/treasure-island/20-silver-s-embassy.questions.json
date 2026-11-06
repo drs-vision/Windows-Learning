@@ -6,7 +6,7 @@
       "id": "treasure-island-20-01",
       "type": "inference",
       "q": "What did the cold morning and the white vapour from the marsh tell Jim about the island?",
-      "choices": ["It was a damp, feverish, unhealthy place", "Winter was coming soon", "A storm was on the way", "The treasure was buried in the marsh"],
+      "choices": ["It was a damp, feverish, unhealthy place", "Winter was coming soon and the nights would freeze", "A great storm was on the way from the open sea", "The treasure was buried somewhere in the marsh"],
       "answer": 0,
       "evidence": "It was plainly a damp, feverish, unhealthy spot."
     },
@@ -14,7 +14,7 @@
       "id": "treasure-island-20-02",
       "type": "character",
       "q": "What did Captain Smollett first suspect about Silver's flag of truce?",
-      "choices": ["That it was a trick", "That Silver wanted to surrender", "That Silver was badly hurt", "That the pirates had found the treasure"],
+      "choices": ["That it was a trick", "That Silver wanted to surrender", "That Silver was badly wounded", "That the pirates had found the gold"],
       "answer": 0,
       "evidence": "Ten to one this is a trick."
     },
@@ -30,7 +30,7 @@
       "id": "treasure-island-20-04",
       "type": "vocabulary",
       "q": "Silver says the men chose him captain \"after your desertion,\" stressing that word. What does \"desertion\" mean here?",
-      "choices": ["Leaving the ship and the crew behind", "A large dry area of sand", "Winning a fight", "Giving a sweet treat after dinner"],
+      "choices": ["Leaving the ship and the crew behind", "A large, dry area of sand with no water", "Winning a hard fight against an enemy", "Giving out a sweet treat after dinner"],
       "answer": 0,
       "evidence": "laying a particular emphasis upon the word \"desertion.\""
     },
@@ -38,7 +38,7 @@
       "id": "treasure-island-20-05",
       "type": "detail",
       "q": "How did Silver get over the stockade fence?",
-      "choices": ["He threw his crutch over and climbed the fence", "The captain opened a gate for him", "His companion carried him over", "He crawled under it"],
+      "choices": ["He threw his crutch over and climbed the fence", "The captain unbarred a gate and let him walk in", "His companion lifted him up and carried him over", "He crawled underneath it through a gap in the logs"],
       "answer": 0,
       "evidence": "threw over his crutch, got a leg up"
     },
@@ -46,7 +46,7 @@
       "id": "treasure-island-20-06",
       "type": "character",
       "q": "What did Jim do during the meeting instead of guarding his eastern loophole?",
-      "choices": ["He crept up behind the captain to listen", "He went to sleep", "He slipped out to find Ben Gunn", "He aimed his musket at Silver"],
+      "choices": ["He crept up behind the captain to listen", "He lay down in a corner and went to sleep", "He slipped out the back to find Ben Gunn", "He aimed his musket at Silver through a loophole"],
       "answer": 0,
       "evidence": "I had already deserted my eastern loophole and crept up behind the captain"
     },
@@ -54,7 +54,7 @@
       "id": "treasure-island-20-07",
       "type": "detail",
       "q": "How was Silver dressed when he came to make terms?",
-      "choices": ["In a huge blue coat with brass buttons and a fine laced hat", "In rags of old sail canvas", "In his cook's apron", "In a red soldier's uniform"],
+      "choices": ["In a huge blue coat with brass buttons and a laced hat", "In ragged clothes sewn out of pieces of old sail canvas", "In his greasy cook's apron with a ladle at his belt", "In a red soldier's uniform taken from the ship's stores"],
       "answer": 0,
       "evidence": "an immense blue coat, thick with brass buttons"
     },
@@ -62,7 +62,7 @@
       "id": "treasure-island-20-08",
       "type": "character",
       "q": "Why did the captain make Silver sit outside on the cold sand?",
-      "choices": ["Silver had chosen to be a mutineer instead of an honest man", "There was no room inside", "The doctor was treating the sick inside", "Silver had a fever"],
+      "choices": ["Silver had chosen to be a mutineer instead of an honest man", "There was no room left inside for one more man to sit", "The doctor was busy treating the wounded men indoors", "Silver had a fever and the captain feared he would spread it"],
       "answer": 0,
       "evidence": "if you had pleased to be an honest man, you might have been sitting in your galley"
     },
@@ -70,7 +70,7 @@
       "id": "treasure-island-20-09",
       "type": "inference",
       "q": "From Silver's talk about a man being attacked in the night, what did Jim guess had happened?",
-      "choices": ["Ben Gunn had visited the drunken pirates and killed one", "The doctor had sneaked out and attacked them", "The pirates had fought among themselves over rum", "A wild animal had attacked their camp"],
+      "choices": ["Ben Gunn had visited the drunken pirates and killed one", "The doctor had sneaked out in the dark and attacked them", "The pirates had fought each other over the last of the rum", "A wild goat had charged into their camp and hurt a man"],
       "answer": 0,
       "evidence": "he had paid the buccaneers a visit while they all lay drunk together round their fire"
     },
@@ -78,7 +78,7 @@
       "id": "treasure-island-20-10",
       "type": "detail",
       "q": "What did Silver demand from the captain?",
-      "choices": ["The chart to find the treasure", "The ship's cannon", "All of the food", "The doctor's medicine chest"],
+      "choices": ["The chart to find the treasure", "The ship's long brass cannon", "All of the food and the brandy", "The doctor's medicine chest"],
       "answer": 0,
       "evidence": "we want your chart"
     },
@@ -86,7 +86,7 @@
       "id": "treasure-island-20-11",
       "type": "detail",
       "q": "What did Captain Smollett offer the pirates instead?",
-      "choices": ["To put them in irons and take them home to a fair trial in England", "Half of the treasure", "Free passage to any port they wanted", "To leave them the ship if they left the stockade"],
+      "choices": ["To put them in irons and take them home to a fair trial", "To give them half of the treasure if they gave up the ship", "To carry them free to any port they wanted to be left at", "To leave them the ship if they marched out of the stockade"],
       "answer": 0,
       "evidence": "I'll engage to clap you all in irons and take you home to a fair trial in England"
     },
@@ -94,7 +94,7 @@
       "id": "treasure-island-20-12",
       "type": "inference",
       "q": "Why did the captain say the pirates could not succeed without the loyal party?",
-      "choices": ["None of them could find the treasure or sail the ship", "They had no food at all", "Most of them were already dead", "Their ship had sunk"],
+      "choices": ["None of them could find the treasure or sail the ship", "They had no food left at all and would soon starve", "Most of their men were already dead or badly wounded", "Their ship had run aground and was sinking in the bay"],
       "answer": 0,
       "evidence": "there's not a man among you fit to sail the ship"
     },
@@ -102,7 +102,7 @@
       "id": "treasure-island-20-13",
       "type": "sequence",
       "q": "What happened after Silver asked someone to give him a hand up?",
-      "choices": ["No one moved, so he crawled to the porch and pulled himself up", "The captain helped him up kindly", "Jim helped him up", "His companion came inside to lift him"],
+      "choices": ["No one moved, so he crawled to the porch and pulled himself up", "The captain took his arm and kindly helped him to his feet", "Jim ran over and gave him a hand without being asked to", "His companion climbed into the stockade and lifted him up"],
       "answer": 0,
       "evidence": "Not a man among us moved"
     },
@@ -110,7 +110,7 @@
       "id": "treasure-island-20-14",
       "type": "main-idea",
       "q": "What is the main event of this chapter?",
-      "choices": ["Silver comes under a flag of truce to bargain for the chart, the captain refuses, and Silver leaves threatening an attack", "Silver surrenders and is put in irons", "The captain gives Silver the treasure map", "Jim is taken prisoner by Silver"],
+      "choices": ["Silver comes to bargain for the chart, is refused, and threatens an attack", "Silver comes under a flag of truce to surrender and is put in irons", "The captain agrees to trade the treasure map for the ship and safety", "Jim sneaks out to listen to the pirates and is taken prisoner by Silver"],
       "answer": 0,
       "evidence": "Before an hour's out, I'll stove in your old block house like a rum puncheon."
     }

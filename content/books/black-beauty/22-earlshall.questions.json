@@ -6,7 +6,12 @@
       "id": "black-beauty-22-01",
       "type": "sequence",
       "q": "Where did Joe take Merrylegs the morning Beauty left?",
-      "choices": ["To the vicarage", "To Earlshall Park", "To the railway station", "To Mr. Clay's brick-yard"],
+      "choices": [
+        "To the vicarage",
+        "To Earlshall Park",
+        "To the railway station",
+        "To Mr. Clay's brick-yard"
+      ],
       "answer": 0,
       "evidence": "to take him to the vicarage"
     },
@@ -14,7 +19,12 @@
       "id": "black-beauty-22-02",
       "type": "detail",
       "q": "Who was to be the new coachman at Earlshall?",
-      "choices": ["Mr. York", "Mr. Manly", "Lord W----", "Max"],
+      "choices": [
+        "Mr. York",
+        "Mr. Manly",
+        "Mr. Bond",
+        "Max"
+      ],
       "answer": 0,
       "evidence": "Mr. York, who was to be our new coachman"
     },
@@ -22,7 +32,12 @@
       "id": "black-beauty-22-03",
       "type": "character",
       "q": "How did John describe Black Beauty's temper to York?",
-      "choices": ["The most perfect temper he ever knew", "Snappish and suspicious", "Lazy and slow", "Nervous around noise"],
+      "choices": [
+        "The most perfect temper he ever knew",
+        "Snappish and suspicious of strangers",
+        "Lazy and slow to start in the morning",
+        "Nervous and jumpy around loud noises"
+      ],
       "answer": 0,
       "evidence": "The black one is the most perfect temper I ever knew"
     },
@@ -30,7 +45,12 @@
       "id": "black-beauty-22-04",
       "type": "character",
       "q": "What did John warn York might happen if Ginger were treated unfairly?",
-      "choices": ["She might fight back", "She might stop eating", "She might run away to Birtwick", "She might get sick"],
+      "choices": [
+        "She might fight back",
+        "She might stop eating",
+        "She might run back to Birtwick",
+        "She might fall sick"
+      ],
       "answer": 0,
       "evidence": "she would not be unlikely to give tit for tat"
     },
@@ -38,7 +58,12 @@
       "id": "black-beauty-22-05",
       "type": "detail",
       "q": "Who insisted that the carriage horses be reined up tight?",
-      "choices": ["My lady", "Lord W----", "York", "The groom"],
+      "choices": [
+        "My lady",
+        "Lord W----",
+        "York",
+        "Lady Anne"
+      ],
       "answer": 0,
       "evidence": "she will have style, and if her carriage horses are not reined up tight she wouldn't look at them"
     },
@@ -46,7 +71,12 @@
       "id": "black-beauty-22-06",
       "type": "inference",
       "q": "How did Beauty feel about John leaving?",
-      "choices": ["Very sad, and he never saw John again", "Glad to have a new coachman", "Angry that John sold him", "He did not notice John leave"],
+      "choices": [
+        "Very sad, and he never saw John again",
+        "Glad to have a new coachman to drive him",
+        "Angry with John for selling him to the Earl",
+        "He was busy and did not notice John go"
+      ],
       "answer": 0,
       "evidence": "then he was gone, and I have never seen him since"
     },
@@ -54,7 +84,12 @@
       "id": "black-beauty-22-07",
       "type": "detail",
       "q": "How did Beauty compare the grand house at Earlshall to his old home at Birtwick?",
-      "choices": ["It was much larger but not half so pleasant", "It was smaller but much nicer", "It was exactly the same", "It was larger and much more pleasant"],
+      "choices": [
+        "It was much larger but not half so pleasant",
+        "It was smaller but much nicer to live in",
+        "It was very like Birtwick in every way",
+        "It was larger and much more pleasant too"
+      ],
       "answer": 0,
       "evidence": "three or four times as large as the old house at Birtwick, but not half so pleasant"
     },
@@ -62,7 +97,12 @@
       "id": "black-beauty-22-08",
       "type": "vocabulary",
       "q": "My lady spoke to York \"in an imperious voice.\" What does \"imperious\" mean here?",
-      "choices": ["Bossy and proud, expecting to be obeyed", "Soft and kind", "Shaky and afraid", "Quiet and sleepy"],
+      "choices": [
+        "Bossy and proud, expecting to be obeyed",
+        "Soft and kind, like a gentle mother",
+        "Shaky and afraid, as if she might cry",
+        "Quiet and sleepy, almost a whisper"
+      ],
       "answer": 0,
       "evidence": "in an imperious voice she said, \"York, you must put those horses' heads higher"
     },
@@ -70,7 +110,12 @@
       "id": "black-beauty-22-09",
       "type": "detail",
       "q": "Why was pulling up a steep hill so hard with the check-rein shortened?",
-      "choices": ["Beauty could not put his head forward, so the strain went to his back and legs", "The carriage was full of heavy luggage", "Ginger refused to pull", "The road was covered in ice"],
+      "choices": [
+        "He could not put his head forward, so the strain fell on his back and legs",
+        "The carriage was full of my lady's heavy trunks and boxes for the journey",
+        "Ginger stopped pulling her share halfway up and left the work to him",
+        "The road up to the hall was covered in ice and the wheels kept slipping"
+      ],
       "answer": 0,
       "evidence": "the strain came on my back and legs"
     },
@@ -78,7 +123,12 @@
       "id": "black-beauty-22-10",
       "type": "sequence",
       "q": "As the bearing reins were shortened hole by hole, how did Beauty's feelings about his harness change?",
-      "choices": ["He began to dread it instead of looking forward to it", "He started to enjoy it more", "He stopped noticing it", "He tried to bite the groom"],
+      "choices": [
+        "He began to dread it instead of looking forward to it",
+        "He began to enjoy it more than he ever had at Birtwick",
+        "He soon got used to it and stopped noticing it at all",
+        "He grew so cross that he tried to bite the groom"
+      ],
       "answer": 0,
       "evidence": "I began to dread it"
     }

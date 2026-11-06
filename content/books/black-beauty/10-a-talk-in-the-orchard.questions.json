@@ -7,10 +7,10 @@
       "type": "detail",
       "q": "Why were Ginger and Black Beauty good for both riding and driving?",
       "choices": [
-        "They had racing blood and were about fifteen and a half hands high",
-        "They were very old and calm",
-        "They were cart-horses",
-        "They had been trained in London"
+        "They had racing blood and were about fifteen and a half hands",
+        "They were both quite old and calm and never shied at anything",
+        "They were strong cart-horses bred for heavy farm work",
+        "They had both been trained by the best grooms in London"
       ],
       "answer": 0,
       "evidence": "We stood about fifteen and a half hands high"
@@ -23,7 +23,7 @@
         "The mistress",
         "The master",
         "Miss Jessie",
-        "James"
+        "James Howard"
       ],
       "answer": 0,
       "evidence": "the mistress on me"
@@ -35,8 +35,8 @@
       "choices": [
         "A rider who holds the reins gently",
         "A rider who weighs very little",
-        "A rider who carries a lamp",
-        "A rider who uses a short whip"
+        "A rider who carries a lamp at night",
+        "A rider who uses only a short whip"
       ],
       "answer": 0,
       "evidence": "her hand was so light on the rein that I was guided almost without feeling it"
@@ -46,10 +46,10 @@
       "type": "character",
       "q": "Why did Ginger say her mouth was not as perfect as Black Beauty's?",
       "choices": [
-        "Because of her breaking in and the gag bit in London",
-        "Because she had eaten bad hay",
-        "Because she was older",
-        "Because Merrylegs bit her"
+        "Her breaking in and the gag bit in London",
+        "She had been fed on bad, musty hay for years",
+        "She was older than Black Beauty",
+        "Merrylegs had bitten her mouth once"
       ],
       "answer": 0,
       "evidence": "it was all the fault of breaking in, and the gag bit in London"
@@ -60,9 +60,9 @@
       "q": "What was unusual about Sir Oliver's tail?",
       "choices": [
         "It was only six or seven inches long",
-        "It was pure white",
-        "It was braided with ribbons",
-        "It was longer than his body"
+        "It was pure white, though he was dark",
+        "It was braided with ribbons for shows",
+        "It was longer than the rest of his body"
       ],
       "answer": 0,
       "evidence": "it really was only six or seven inches long"
@@ -73,9 +73,9 @@
       "q": "How did Sir Oliver feel when Black Beauty asked what accident took his tail?",
       "choices": [
         "Angry, because it was a cruel act and no accident",
-        "Happy to tell a funny story",
-        "Embarrassed and silent",
-        "Confused because he did not remember"
+        "Happy to tell what he thought was a funny story",
+        "Embarrassed, so he turned away and said nothing",
+        "Confused, because he could not remember how"
       ],
       "answer": 0,
       "evidence": "it was no accident! it was a cruel, shameful, cold-blooded act!"
@@ -86,9 +86,9 @@
       "q": "Why was losing his tail a lifelong problem for Sir Oliver?",
       "choices": [
         "He could never brush the flies off his sides again",
-        "He could no longer run fast",
-        "He could not keep warm in winter",
-        "Other horses laughed at him"
+        "He could never run as fast as the other horses again",
+        "He could not keep himself warm in the winter",
+        "The other horses all laughed at him for it"
       ],
       "answer": 0,
       "evidence": "how could I ever brush the flies off my sides"
@@ -101,7 +101,7 @@
         "Fashion",
         "Bad weather",
         "Lazy grooms",
-        "Wild dogs"
+        "The farmers"
       ],
       "answer": 0,
       "evidence": "For fashion!"
@@ -112,9 +112,9 @@
       "q": "What happened to the puppies of Sir Oliver's friend Skye?",
       "choices": [
         "Their tails and ear flaps were cut off",
-        "They were sold to a lady",
-        "They ran away into the woods",
-        "They were drowned in the pond"
+        "They were all sold to a lady in town",
+        "They ran away into the woods and were lost",
+        "They were given away to the farmer's boys"
       ],
       "answer": 0,
       "evidence": "they had all had a piece of their tails cut off"
@@ -124,10 +124,10 @@
       "type": "character",
       "q": "How did Merrylegs cool everyone down when they began talking against men?",
       "choices": [
-        "He reminded them that their master, John, and James were always good to them",
-        "He told them to go to sleep",
-        "He started a race",
-        "He said all men were cruel"
+        "He reminded them their master, John and James were always good to them",
+        "He told them it was late and they should all go off to sleep",
+        "He started a race to the end of the orchard to cheer them up",
+        "He agreed that all men were cruel and none could be trusted"
       ],
       "answer": 0,
       "evidence": "You know that master, and John and James are always good to us"
@@ -138,9 +138,9 @@
       "q": "According to Justice, what are blinkers supposed to do?",
       "choices": [
         "Prevent horses from shying and getting frightened",
-        "Keep the sun out of a horse's eyes",
-        "Make horses look handsome",
-        "Help horses see in the dark"
+        "Keep the bright sun and the dust out of a horse's eyes",
+        "Make carriage horses look neat and handsome",
+        "Help horses find their way in the dark"
       ],
       "answer": 0,
       "evidence": "to prevent horses from shying and starting"
@@ -151,9 +151,9 @@
       "q": "Why did Sir Oliver think blinkers were dangerous at night?",
       "choices": [
         "Horses see better in the dark than men and need full use of their eyes",
-        "Blinkers glow in the dark and scare horses",
-        "Blinkers get wet and heavy",
-        "Blinkers fall off easily at night"
+        "Blinkers shine in the lamplight and frighten the other horses on the road",
+        "Blinkers soak up the night dew and become too heavy for the horse to wear",
+        "Blinkers come loose easily at night and fall down over the horse's eyes"
       ],
       "answer": 0,
       "evidence": "we horses can see much better in the dark than men can"
@@ -164,9 +164,9 @@
       "q": "What happened to the hearse near Farmer Sparrow's house?",
       "choices": [
         "It overturned into the pond and both horses drowned",
-        "It lost a wheel in the road",
-        "It crashed into a tree",
-        "It was struck by lightning"
+        "It lost a wheel in a deep rut in the road",
+        "It ran into a big oak tree beside the lane",
+        "It was struck by lightning during a storm"
       ],
       "answer": 0,
       "evidence": "the hearse was overturned into the water"
@@ -177,9 +177,9 @@
       "q": "What secret did Merrylegs share about John?",
       "choices": [
         "John does not approve of blinkers",
-        "John was going to leave Birtwick",
-        "John wanted to buy Ginger",
-        "John was afraid of horses"
+        "John is going to leave Birtwick",
+        "John wants to buy Ginger himself",
+        "John is secretly afraid of horses"
       ],
       "answer": 0,
       "evidence": "I believe John does not approve of blinkers"
@@ -190,9 +190,9 @@
       "q": "How did the long talk in the orchard end?",
       "choices": [
         "The horses ran off to eat apples the wind had blown down",
-        "The master called them in to work",
-        "A storm began",
-        "Sir Oliver fell asleep"
+        "The master called them all in to work in the carriage",
+        "A thunderstorm began and they ran under the trees",
+        "Sir Oliver grew tired and fell asleep in the shade"
       ],
       "answer": 0,
       "evidence": "munching some very sweet apples"

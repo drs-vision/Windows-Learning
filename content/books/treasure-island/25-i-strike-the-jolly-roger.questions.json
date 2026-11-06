@@ -6,12 +6,7 @@
       "id": "treasure-island-25-01",
       "type": "detail",
       "q": "What nearly tossed Jim off the bowsprit into the sea?",
-      "choices": [
-        "The flying jib filling with a report like a gun",
-        "A pirate pushing him",
-        "A huge wave breaking over the bow",
-        "The anchor chain snapping"
-      ],
+      "choices": ["The flying jib filling with a report like a gun", "A pirate rushing up the deck and pushing him off", "A huge green wave breaking right over the bow", "The anchor chain snapping and whipping past him"],
       "answer": 0,
       "evidence": "the flying jib flapped and filled upon the other tack, with a report like a gun"
     },
@@ -19,12 +14,7 @@
       "id": "treasure-island-25-02",
       "type": "detail",
       "q": "What did Jim find when the main-boom swung and showed him the after-deck?",
-      "choices": [
-        "The two watchmen, one dead and one badly hurt",
-        "Long John Silver steering the ship",
-        "The whole pirate crew asleep",
-        "Captain Smollett tied to the mast"
-      ],
+      "choices": ["The two watchmen, one dead and one badly hurt", "Long John Silver standing at the tiller steering", "The whole pirate crew asleep on the bare planks", "Captain Smollett tied up hand and foot to the mast"],
       "answer": 0,
       "evidence": "There were the two watchmen, sure enough"
     },
@@ -32,12 +22,7 @@
       "id": "treasure-island-25-03",
       "type": "inference",
       "q": "Seeing the blood on the planks, what did Jim decide had happened?",
-      "choices": [
-        "The two men had killed each other in a drunken fight",
-        "The doctor had shot them",
-        "They had fallen from the rigging",
-        "Ben Gunn had attacked them"
-      ],
+      "choices": ["The two men had killed each other in a drunken fight", "The doctor had rowed out in the night and shot them", "They had both fallen from the rigging while drunk", "Ben Gunn had climbed aboard and attacked them both"],
       "answer": 0,
       "evidence": "they had killed each other in their drunken wrath"
     },
@@ -45,12 +30,7 @@
       "id": "treasure-island-25-04",
       "type": "character",
       "q": "Why did Jim stop feeling pity for the moaning Israel Hands?",
-      "choices": [
-        "He remembered what he had overheard from the apple barrel",
-        "Hands threatened to kill him",
-        "Hands laughed at him",
-        "He saw Hands holding a pistol"
-      ],
+      "choices": ["He remembered what he had heard from the apple barrel", "Hands snarled and threatened to cut his throat", "Hands laughed at him and called him a little fool", "He saw that Hands was gripping a loaded pistol"],
       "answer": 0,
       "evidence": "when I remembered the talk I had overheard from the apple barrel, all pity left me"
     },
@@ -58,12 +38,7 @@
       "id": "treasure-island-25-05",
       "type": "vocabulary",
       "q": "Jim says \"Come aboard, Mr. Hands\" ironically. What does ironically mean here?",
-      "choices": [
-        "Saying something mocking that is the opposite of the real situation",
-        "Speaking very loudly",
-        "Speaking in a frightened whisper",
-        "Giving a formal military order"
-      ],
+      "choices": ["Saying something mocking that is the opposite of what is true", "Speaking in a very loud voice so people far away can hear", "Speaking in a small, frightened whisper so no one notices", "Giving a stiff, formal order the way a ship's officer does"],
       "answer": 0,
       "evidence": "I said ironically"
     },
@@ -71,12 +46,7 @@
       "id": "treasure-island-25-06",
       "type": "detail",
       "q": "What was the one word Hands was able to say to Jim at first?",
-      "choices": [
-        "Brandy",
-        "Water",
-        "Help",
-        "Silver"
-      ],
+      "choices": ["Brandy", "Water", "Mercy", "Silver"],
       "answer": 0,
       "evidence": "All he could do was to utter one word"
     },
@@ -84,12 +54,7 @@
       "id": "treasure-island-25-07",
       "type": "detail",
       "q": "Why had all the locked places in the cabin been broken open?",
-      "choices": [
-        "The pirates were searching for the chart",
-        "The pirates were looking for food",
-        "The doctor had hidden medicine there",
-        "A storm had smashed them"
-      ],
+      "choices": ["The pirates were searching for the chart", "The pirates were hunting for more food", "The doctor had hidden his medicines there", "The storm had thrown things and smashed them"],
       "answer": 0,
       "evidence": "All the lockfast places had been broken open in quest of the chart"
     },
@@ -97,12 +62,7 @@
       "id": "treasure-island-25-08",
       "type": "inference",
       "q": "What did the empty cellar and bottles tell Jim about the pirates?",
-      "choices": [
-        "They had been drunk ever since the mutiny began",
-        "They had saved their rum for later",
-        "They had thrown the barrels at the stockade",
-        "They had not eaten in days"
-      ],
+      "choices": ["They had been drunk ever since the mutiny began", "They had carefully saved their rum to drink later", "They had rolled the full barrels ashore to the camp", "They had eaten nothing but biscuit for many days"],
       "answer": 0,
       "evidence": "not a man of them could ever have been sober"
     },
@@ -110,12 +70,7 @@
       "id": "treasure-island-25-09",
       "type": "sequence",
       "q": "What did Jim do just before he gave Hands the brandy?",
-      "choices": [
-        "Had a good deep drink of water",
-        "Tied up Hands's wound",
-        "Lowered the black flag",
-        "Steered the ship toward shore"
-      ],
+      "choices": ["Had a good deep drink of water", "Tied a bandage over Hands's leg", "Pulled down the pirates' black flag", "Turned the ship's head toward shore"],
       "answer": 0,
       "evidence": "and then, and not till then, gave Hands the brandy"
     },
@@ -123,12 +78,7 @@
       "id": "treasure-island-25-10",
       "type": "character",
       "q": "Why did Jim put his own food behind the rudder head?",
-      "choices": [
-        "To keep it out of the coxswain's reach",
-        "To keep it dry from the spray",
-        "To hide it from the sea birds",
-        "To share it later with the doctor"
-      ],
+      "choices": ["To keep it out of the coxswain's reach", "To keep it dry from the spray over the bow", "To hide it from the sea birds on the rail", "To save some of it for the doctor later on"],
       "answer": 0,
       "evidence": "well out of the coxswain's reach"
     },
@@ -136,12 +86,7 @@
       "id": "treasure-island-25-11",
       "type": "detail",
       "q": "What did Jim do with the pirates' black flag?",
-      "choices": [
-        "Took it down and threw it overboard",
-        "Hid it in his chest",
-        "Gave it to Israel Hands",
-        "Used it as a bandage"
-      ],
+      "choices": ["Took it down and threw it overboard", "Folded it and hid it in the sea-chest", "Handed it to Israel Hands as a pillow", "Tore it into strips to make a bandage"],
       "answer": 0,
       "evidence": "handed down their cursed black flag, and chucked it overboard"
     },
@@ -149,12 +94,7 @@
       "id": "treasure-island-25-12",
       "type": "detail",
       "q": "What deal did Hands offer Jim?",
-      "choices": [
-        "Food, drink and a bandage in return for teaching Jim to sail the ship",
-        "Half the treasure if Jim set him free",
-        "A pistol in return for the brandy",
-        "A map in exchange for a boat"
-      ],
+      "choices": ["Food, drink and a bandage, if Hands taught Jim to sail", "Half of Flint's treasure, if Jim would set him free", "A loaded pistol in return for a bottle of the brandy", "A copy of the map, in exchange for the little coracle"],
       "answer": 0,
       "evidence": "I'll tell you how to sail her"
     },
@@ -162,12 +102,7 @@
       "id": "treasure-island-25-13",
       "type": "detail",
       "q": "Where did Jim say he meant to take the ship?",
-      "choices": [
-        "Into North Inlet, to beach her quietly",
-        "Back to Captain Kidd's anchorage",
-        "Out to sea and home to Bristol",
-        "To the stockade on the shore"
-      ],
+      "choices": ["Into North Inlet, to beach her quietly", "Back to Captain Kidd's old anchorage", "Out to sea and all the way home to Bristol", "Up to the beach right below the stockade"],
       "answer": 0,
       "evidence": "I mean to get into North Inlet and beach her quietly there"
     },
@@ -175,12 +110,7 @@
       "id": "treasure-island-25-14",
       "type": "detail",
       "q": "What did Jim use to help Hands bind up his wound?",
-      "choices": [
-        "A soft silk handkerchief of his mother's",
-        "The black flag",
-        "A piece of sail",
-        "His own shirt"
-      ],
+      "choices": ["A soft silk handkerchief of his mother's", "A strip torn off the pirates' black flag", "A piece of old sail cut from the main-sail", "The sleeve torn off his own linen shirt"],
       "answer": 0,
       "evidence": "a soft silk handkerchief of my mother's"
     },
@@ -188,12 +118,7 @@
       "id": "treasure-island-25-15",
       "type": "inference",
       "q": "What does the coxswain's smile at the end of the chapter suggest?",
-      "choices": [
-        "Hands is secretly planning to betray Jim",
-        "Hands is grateful and wants to be friends",
-        "Hands is about to die",
-        "Hands is proud of Jim's sailing"
-      ],
+      "choices": ["Hands is secretly planning to betray Jim", "Hands is grateful and wants to be Jim's friend", "Hands is weak and about to die from his wound", "Hands is proud of how well Jim sails the ship"],
       "answer": 0,
       "evidence": "a shadow of treachery"
     }

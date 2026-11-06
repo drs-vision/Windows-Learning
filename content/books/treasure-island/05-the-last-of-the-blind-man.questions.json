@@ -6,7 +6,7 @@
       "id": "treasure-island-05-01",
       "type": "character",
       "q": "Why did Jim creep back up the bank instead of staying hidden under the bridge?",
-      "choices": ["His curiosity was stronger than his fear", "He wanted to fight the pirates", "He needed to fetch the pistol", "His mother told him to go"],
+      "choices": ["His curiosity was stronger than his fear", "He wanted to fight the pirates himself", "He went back to fetch the pistol he dropped", "His mother told him to go and look"],
       "answer": 0,
       "evidence": "My curiosity, in a sense, was stronger than my fear"
     },
@@ -14,7 +14,7 @@
       "id": "treasure-island-05-02",
       "type": "detail",
       "q": "Who was giving orders to the pirates who rushed the inn?",
-      "choices": ["The blind beggar", "Black Dog", "The man with the lantern", "Dirk"],
+      "choices": ["The blind beggar", "Black Dog", "The man with the lantern", "Dirk, the lookout"],
       "answer": 0,
       "evidence": "the middle man of this trio was the blind beggar"
     },
@@ -30,7 +30,7 @@
       "id": "treasure-island-05-04",
       "type": "inference",
       "q": "When Pew asks for \"Flint's fist,\" what is he really looking for?",
-      "choices": ["Something written by Flint, not the money", "Flint's severed hand", "A gold ring Flint wore", "Flint's old cutlass"],
+      "choices": ["Something written by Flint, not the money", "Flint's own hand, cut off and kept", "A gold ring that Flint always wore", "Flint's old cutlass and pistols"],
       "answer": 0,
       "evidence": "The blind man cursed the money."
     },
@@ -38,7 +38,7 @@
       "id": "treasure-island-05-05",
       "type": "character",
       "q": "Whom did Pew blame when the pirates could not find what they wanted?",
-      "choices": ["The people of the inn, especially the boy", "Black Dog", "Dirk", "The revenue officers"],
+      "choices": ["The people of the inn, mostly the boy", "Black Dog, for warning the captain", "Dirk, for searching too slowly", "The revenue officers on the road"],
       "answer": 0,
       "evidence": "It's these people of the inn--it's that boy."
     },
@@ -46,7 +46,7 @@
       "id": "treasure-island-05-06",
       "type": "detail",
       "q": "What did the whistle from the hillside turn out to be?",
-      "choices": ["A signal warning the pirates of approaching danger", "Pew calling his crew to attack", "A shepherd calling his dog", "The lugger signalling from the sea"],
+      "choices": ["A signal warning the pirates of danger", "Pew calling his crew in to attack the inn", "A shepherd calling his dog on the hill", "The lugger signalling from out at sea"],
       "answer": 0,
       "evidence": "a signal to warn them of approaching danger"
     },
@@ -54,7 +54,7 @@
       "id": "treasure-island-05-07",
       "type": "vocabulary",
       "q": "Two pirates searched \"half-heartedly\" while the rest stood \"irresolute on the road.\" What does \"irresolute\" mean?",
-      "choices": ["Unsure what to do", "Very angry", "Ready to fight", "Badly hurt"],
+      "choices": ["Unsure what to do", "Very angry and loud", "Ready to fight", "Badly hurt and bleeding"],
       "answer": 0,
       "evidence": "the rest stood irresolute on the road"
     },
@@ -62,7 +62,7 @@
       "id": "treasure-island-05-08",
       "type": "sequence",
       "q": "What did Pew do when his men argued that they already had the money?",
-      "choices": ["Struck at them with his stick", "Gave up and walked home", "Offered them all a share", "Ran into the inn himself"],
+      "choices": ["Struck at them with his stick", "Gave up and walked off home", "Offered them all a share of gold", "Ran into the inn himself"],
       "answer": 0,
       "evidence": "he struck at them right and left in his blindness"
     },
@@ -70,7 +70,7 @@
       "id": "treasure-island-05-09",
       "type": "character",
       "q": "What happened to Pew when the horses and pistol-shot frightened the pirates away?",
-      "choices": ["His comrades deserted him", "His comrades carried him off", "He hid in the inn", "He escaped on the lugger"],
+      "choices": ["His comrades deserted him", "His comrades carried him off", "He hid inside the inn", "He escaped on the lugger"],
       "answer": 0,
       "evidence": "Him they had deserted"
     },
@@ -78,7 +78,7 @@
       "id": "treasure-island-05-10",
       "type": "detail",
       "q": "How did Pew die?",
-      "choices": ["He ran under a galloping horse and was trampled", "He was shot by a revenue officer", "He fell off the cliff", "He drowned in the cove"],
+      "choices": ["He ran under a horse and was trampled", "He was shot by one of the revenue officers", "He tripped and fell off the cliff", "He drowned in the cove at Kitt's Hole"],
       "answer": 0,
       "evidence": "the four hoofs trampled and spurned him and passed by"
     },
@@ -94,7 +94,7 @@
       "id": "treasure-island-05-12",
       "type": "sequence",
       "q": "What happened when Supervisor Dance reached Kitt's Hole?",
-      "choices": ["The lugger was already sailing away and someone shot at him", "He captured the lugger and its crew", "He found the captain's money", "He found the pirates asleep on the beach"],
+      "choices": ["The lugger was sailing off and someone shot at him", "He captured the lugger and its whole crew", "He found the captain's money hidden in the rocks", "He found the pirates asleep on the beach"],
       "answer": 0,
       "evidence": "a bullet whistled close by his arm"
     },
@@ -102,7 +102,7 @@
       "id": "treasure-island-05-13",
       "type": "inference",
       "q": "Why did Jim want to take the packet to Dr. Livesey?",
-      "choices": ["He believed it was what the pirates wanted and wanted it kept safe", "He wanted to sell it to the doctor", "The doctor had asked for it earlier", "He thought it was medicine for his mother"],
+      "choices": ["He thought it was what the pirates wanted and should be kept safe", "He hoped to sell it to the doctor for enough to repair the inn", "The doctor had asked him to bring it over earlier in the week", "He thought it held medicine the doctor could use for his mother"],
       "answer": 0,
       "evidence": "I believe I have the thing in my breast pocket"
     }

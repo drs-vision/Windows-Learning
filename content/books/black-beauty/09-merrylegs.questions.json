@@ -8,9 +8,9 @@
       "q": "Who were the children who came to play and ride Merrylegs?",
       "choices": [
         "The vicar Mr. Blomefield's children",
-        "The squire's nephews",
-        "Children from London",
-        "John Manly's children"
+        "The squire's nephews from the city",
+        "Some children visiting from London",
+        "John Manly's own sons and daughters"
       ],
       "answer": 0,
       "evidence": "Mr. Blomefield, the vicar, had a large family of boys and girls"
@@ -21,8 +21,8 @@
       "q": "What did Merrylegs do to the boys who rode him too long?",
       "choices": [
         "He pitched them off backward",
-        "He bit them",
-        "He kicked them",
+        "He gave them a sharp bite",
+        "He kicked out at their legs",
         "He ran home without them"
       ],
       "answer": 0,
@@ -34,9 +34,9 @@
       "q": "How did Merrylegs treat the little children who were frightened on his back?",
       "choices": [
         "He went smooth and quiet until they were all right",
-        "He galloped faster to make them brave",
-        "He refused to let them ride",
-        "He threw them off gently"
+        "He galloped faster to help them learn to be brave",
+        "He would not let them climb on his back at all",
+        "He tipped them gently off into the soft grass"
       ],
       "answer": 0,
       "evidence": "I go as smooth and as quiet as old pussy when she is after a bird"
@@ -47,9 +47,9 @@
       "q": "What did the boys use as riding-whips?",
       "choices": [
         "Hazel sticks they had cut",
-        "Their belts",
-        "James's whip",
-        "Long pieces of rope"
+        "Their own leather belts",
+        "James's old riding whip",
+        "Long pieces of garden rope"
       ],
       "answer": 0,
       "evidence": "They had each cut a great hazel stick for a riding-whip"
@@ -60,9 +60,9 @@
       "q": "What did Merrylegs mean when he said boys think a pony is like a steam-engine?",
       "choices": [
         "They think a pony never gets tired and has no feelings",
-        "They think a pony is very fast",
-        "They think a pony makes loud noises",
-        "They think a pony is made of metal"
+        "They think a pony can go as fast as any railway train",
+        "They think a pony should puff and whistle when it runs",
+        "They think a pony must be fed on coal instead of oats"
       ],
       "answer": 0,
       "evidence": "they never think that a pony can get tired, or have any feelings"
@@ -73,9 +73,9 @@
       "q": "What did Merrylegs do before he finally made the boys slip off?",
       "choices": [
         "He stopped two or three times as a hint",
-        "He bit the boy's foot",
-        "He ran into the stable",
-        "He lay down in the grass"
+        "He nipped the boy's foot to warn him",
+        "He trotted straight into the stable",
+        "He lay down and rolled in the grass"
       ],
       "answer": 0,
       "evidence": "I stopped two or three times by way of a hint"
@@ -85,10 +85,10 @@
       "type": "character",
       "q": "Why did Merrylegs refuse to kick the boys as Ginger said she would have done?",
       "choices": [
-        "He did not want to anger the master or make James ashamed",
-        "He was too old and weak to kick",
-        "He was afraid of the boys",
-        "He did not know how to kick"
+        "He did not want to anger the master or shame James",
+        "He was getting too old and weak to kick anyone",
+        "He was afraid the boys would beat him with sticks",
+        "He had never learned how to kick in his whole life"
       ],
       "answer": 0,
       "evidence": "as to anger our master or make James ashamed of me"
@@ -99,9 +99,9 @@
       "q": "What did Merrylegs mean by \"good places make good horses\"?",
       "choices": [
         "Horses that are treated kindly become good and trustworthy",
-        "Horses need big fields to grow strong",
-        "Only expensive stables are good",
-        "Horses should never be ridden by children"
+        "Horses need large, open fields to grow up strong and fast",
+        "Only a costly stable with fine stalls can make a good horse",
+        "Horses turn out best if children are never allowed to ride"
       ],
       "answer": 0,
       "evidence": "good places make good horses"

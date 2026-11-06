@@ -6,7 +6,7 @@
       "id": "wind-in-the-willows-03-01",
       "type": "detail",
       "q": "Who had the Mole long wanted to meet at the start of this chapter?",
-      "choices": ["The Badger", "The Otter", "Toad", "The Water Rat's cousin"],
+      "choices": ["The Badger", "The Otter", "Mr. Toad", "The Rat's cousin"],
       "answer": 0,
       "evidence": "The Mole had long wanted to make the acquaintance of the Badger."
     },
@@ -14,7 +14,7 @@
       "id": "wind-in-the-willows-03-02",
       "type": "character",
       "q": "Why did the Rat say they could not invite the Badger to dinner?",
-      "choices": ["Badger hates Society, invitations and dinners", "Badger was away on a long journey", "Badger and the Rat had quarreled", "Badger only ate at night"],
+      "choices": ["Badger hates Society, invitations and dinners", "Badger was away on a long journey to the Wide World", "Badger and the Rat had quarreled over Toad", "Badger only ever eats alone at midnight"],
       "answer": 0,
       "evidence": "Badger hates Society, and invitations, and dinner"
     },
@@ -22,7 +22,7 @@
       "id": "wind-in-the-willows-03-03",
       "type": "vocabulary",
       "q": "The Rat answered the Mole \"evasively\" about the Wild Wood. What does \"evasively\" mean?",
-      "choices": ["Avoiding giving a straight answer", "Very loudly and angrily", "Cheerfully and eagerly", "Slowly and sleepily"],
+      "choices": ["Avoiding giving a straight answer", "Very loudly and rather angrily", "Cheerfully and eagerly, with a smile", "Slowly and sleepily, half awake"],
       "answer": 0,
       "evidence": "replied the Rat evasively"
     },
@@ -30,7 +30,7 @@
       "id": "wind-in-the-willows-03-04",
       "type": "detail",
       "q": "What season was it when the Mole decided to go into the Wild Wood?",
-      "choices": ["Winter", "Spring", "Summer", "Early autumn"],
+      "choices": ["Winter", "Spring", "Summer", "Autumn"],
       "answer": 0,
       "evidence": "In the winter time the Rat slept a great deal"
     },
@@ -38,7 +38,7 @@
       "id": "wind-in-the-willows-03-05",
       "type": "sequence",
       "q": "What was the Rat doing when the Mole slipped out of the house alone?",
-      "choices": ["Dozing by the fire and trying to write rhymes", "Visiting Toad Hall", "Out fishing on the river", "Cooking supper in the kitchen"],
+      "choices": ["Dozing by the fire and trying to write rhymes", "Visiting Toad Hall to see how Toad was getting on", "Out fishing on the river with the Otter", "Cooking a hot supper in the kitchen"],
       "answer": 0,
       "evidence": "alternately dozing and trying over rhymes that wouldn't fit"
     },
@@ -46,7 +46,7 @@
       "id": "wind-in-the-willows-03-06",
       "type": "detail",
       "q": "What was the first frightening thing the Mole saw in the Wild Wood?",
-      "choices": ["Little evil faces looking out at him from holes", "A huge fox blocking the path", "Glowing eyes high up in the trees", "A broken cart in a ditch"],
+      "choices": ["Little evil faces looking out at him from holes", "A huge red fox blocking the narrow path ahead", "Glowing yellow eyes high up in the bare trees", "A broken cart lying on its side in a ditch"],
       "answer": 0,
       "evidence": "a little evil wedge-shaped face, looking out at him from a hole"
     },
@@ -62,7 +62,7 @@
       "id": "wind-in-the-willows-03-08",
       "type": "detail",
       "q": "What did the rabbit say as it dashed past the Mole?",
-      "choices": ["'Get out of this, you fool, get out!'", "'Follow me to safety!'", "'Have you seen the Badger?'", "'Sixpence to pass this way!'"],
+      "choices": ["'Get out of this, you fool, get out!'", "'Follow me, quickly, to somewhere safe!'", "'Have you seen the Badger anywhere about?'", "'Sixpence to pass along this way!'"],
       "answer": 0,
       "evidence": "'Get out of this, you fool, get out!'"
     },
@@ -70,7 +70,7 @@
       "id": "wind-in-the-willows-03-09",
       "type": "detail",
       "q": "Where did the Mole hide when he was too tired to run any further?",
-      "choices": ["In the hollow of an old beech tree", "Under a pile of rocks", "Inside a rabbit burrow", "Behind a fallen log by a stream"],
+      "choices": ["In the hollow of an old beech tree", "Under a heap of mossy rocks and leaves", "Deep inside an empty rabbit burrow", "Behind a fallen log by a frozen stream"],
       "answer": 0,
       "evidence": "he took refuge in the deep dark hollow of an old beech tree"
     },
@@ -78,7 +78,7 @@
       "id": "wind-in-the-willows-03-10",
       "type": "inference",
       "q": "How did the Rat figure out where the Mole had gone?",
-      "choices": ["He followed the prints of the Mole's new goloshes in the mud", "The Otter told him", "The Mole had left a note", "He heard the Mole calling from far away"],
+      "choices": ["He followed the prints of Mole's new goloshes", "The Otter told him he had seen the Mole go by", "The Mole had left a note on the kitchen table", "He heard the Mole calling to him from far away"],
       "answer": 0,
       "evidence": "He could see the imprints of them in the mud"
     },
@@ -86,7 +86,7 @@
       "id": "wind-in-the-willows-03-11",
       "type": "detail",
       "q": "What did the Rat take with him when he went to find the Mole?",
-      "choices": ["A brace of pistols and a stout cudgel", "A lantern and a map", "A basket of food and a blanket", "A rope and a fishing net"],
+      "choices": ["A brace of pistols and a stout cudgel", "A lantern, a rope and a map of the wood", "A basket of food and a warm blanket", "A long rope and a heavy fishing net"],
       "answer": 0,
       "evidence": "shoved a brace of pistols into it, took up a stout cudgel"
     },
@@ -94,7 +94,7 @@
       "id": "wind-in-the-willows-03-12",
       "type": "character",
       "q": "What did the Rat say river-bankers usually do if they must go into the Wild Wood?",
-      "choices": ["Go in couples, at least, and know passwords and signs", "Go only at midnight", "Go alone and very quietly", "Never go there at all, for any reason"],
+      "choices": ["Go in pairs at least, and know the passwords", "Go only at midnight, when the weasels are asleep", "Go alone and very quietly, keeping to the paths", "Take the Badger along to protect them the whole way"],
       "answer": 0,
       "evidence": "If we have to come, we come in couples, at least"
     },
@@ -102,7 +102,7 @@
       "id": "wind-in-the-willows-03-13",
       "type": "character",
       "q": "What does the Rat say about whether Toad would come into the Wild Wood alone?",
-      "choices": ["Toad would never dare, not for a hatful of golden guineas", "Toad comes there every week", "Toad is the bravest animal in the wood", "Toad lives right next to it"],
+      "choices": ["Toad would never dare, not for a hatful of guineas", "Toad comes there every week to visit his cousins", "Toad is the bravest animal who goes in the wood", "Toad often walks there alone on dark winter evenings"],
       "answer": 0,
       "evidence": "He wouldn't show his face here alone, not for a whole hatful of golden guineas"
     },
@@ -118,7 +118,7 @@
       "id": "wind-in-the-willows-03-15",
       "type": "detail",
       "q": "What had the Mole tripped over and cut his shin on?",
-      "choices": ["A door-scraper hidden in the snow", "A sharp rock", "A fallen branch", "A broken bottle"],
+      "choices": ["A door-scraper hidden in the snow", "A sharp rock hidden under the snow", "A fallen branch from a beech tree", "A broken bottle left by the weasels"],
       "answer": 0,
       "evidence": "A door-scraper!"
     },
@@ -126,7 +126,7 @@
       "id": "wind-in-the-willows-03-16",
       "type": "vocabulary",
       "q": "The Rat was \"in despair at his obtuseness.\" What does \"obtuseness\" mean here?",
-      "choices": ["Being slow to understand something", "Being very rude", "Being badly hurt", "Being too noisy"],
+      "choices": ["Being slow to understand something", "Being very rude to a friend", "Being badly hurt and bruised", "Being far too noisy"],
       "answer": 0,
       "evidence": "in despair at his obtuseness"
     },
@@ -134,7 +134,7 @@
       "id": "wind-in-the-willows-03-17",
       "type": "inference",
       "q": "Why did the Rat get so excited about the door-scraper and the door-mat?",
-      "choices": ["He realized they meant a front door, and shelter, must be close by", "He wanted to take them home to Toad Hall", "He thought they could sled home on the mat", "He collected old things he found"],
+      "choices": ["He saw that a front door, and shelter, must be near", "He wanted to carry them home as a gift for Toad Hall", "He thought they could use the mat as a sled home", "He liked to collect odd old things he found lying about"],
       "answer": 0,
       "evidence": "that door exists, as plain as if I saw it"
     },
@@ -142,7 +142,7 @@
       "id": "wind-in-the-willows-03-18",
       "type": "main-idea",
       "q": "What is this chapter mostly about?",
-      "choices": ["The Mole gets lost and frightened in the Wild Wood, and the Rat rescues him and finds Badger's door", "The Mole and the Rat go on a summer picnic", "Toad crashes his new motor-car", "The Badger throws a party in the snow"],
+      "choices": ["The Mole is lost in the Wild Wood until the Rat rescues him", "The Mole and the Rat go on a long summer picnic by the river", "Toad crashes his new motor-car into the Wild Wood", "The Badger throws a winter party for all the animals"],
       "answer": 0,
       "evidence": "they could read by the aid of moonlight MR. BADGER."
     }

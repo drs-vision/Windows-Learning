@@ -6,7 +6,12 @@
       "id": "black-beauty-20-01",
       "type": "detail",
       "q": "Why did Joe ride Black Beauty that morning?",
-      "choices": ["To take a note from the master to a gentleman's house", "To fetch the doctor", "To exercise him in the park", "To bring back bricks"],
+      "choices": [
+        "To take a note from the master to a gentleman's house",
+        "To fetch Dr. White because the mistress was ill again",
+        "To give him some gentle exercise in the park",
+        "To bring back a load of bricks for the new stable"
+      ],
       "answer": 0,
       "evidence": "the master wanted a note to be taken immediately to a gentleman's house"
     },
@@ -14,7 +19,12 @@
       "id": "black-beauty-20-02",
       "type": "detail",
       "q": "What did Joe and Beauty see at the brick-field?",
-      "choices": ["A carter flogging two horses whose cart was stuck in mud", "A runaway horse", "A cart that had tipped over", "A fire in the brick kiln"],
+      "choices": [
+        "A carter flogging two horses whose cart was stuck in mud",
+        "A runaway horse that had broken loose from its cart",
+        "A cart full of bricks that had tipped over in the lane",
+        "A fire that had broken out in one of the brick kilns"
+      ],
       "answer": 0,
       "evidence": "the carter was shouting and flogging the two horses unmercifully"
     },
@@ -22,7 +32,12 @@
       "id": "black-beauty-20-03",
       "type": "character",
       "q": "What did Joe first offer to do to help the horses?",
-      "choices": ["Help lighten the cart", "Pull the cart with Beauty", "Pay the carter some money", "Fetch more horses"],
+      "choices": [
+        "Help lighten the cart",
+        "Pull the cart out with Beauty",
+        "Pay the carter some money",
+        "Fetch more horses from the farm"
+      ],
       "answer": 0,
       "evidence": "I'll help you to lighten the cart"
     },
@@ -30,7 +45,12 @@
       "id": "black-beauty-20-04",
       "type": "vocabulary",
       "q": "The carter called Joe an \"impudent young rascal.\" What does \"impudent\" mean here?",
-      "choices": ["Rude and too bold", "Very helpful", "Shy and quiet", "Clever and wise"],
+      "choices": [
+        "Rude and too bold",
+        "Very kind and helpful",
+        "Shy and very quiet",
+        "Clever and wise for his age"
+      ],
       "answer": 0,
       "evidence": "Mind your own business, you impudent young rascal"
     },
@@ -38,7 +58,12 @@
       "id": "black-beauty-20-05",
       "type": "sequence",
       "q": "What did Joe do after the carter refused to stop?",
-      "choices": ["Galloped to tell the master brick-maker, Mr. Clay", "Rode home to tell John", "Grabbed the whip from the carter", "Called for a policeman"],
+      "choices": [
+        "Galloped to tell the master brick-maker, Mr. Clay",
+        "Rode straight home to Birtwick to tell John Manly",
+        "Jumped down and snatched the whip from the carter",
+        "Rode into the village to look for a policeman"
+      ],
       "answer": 0,
       "evidence": "we were going at a round gallop toward the house of the master brick-maker"
     },
@@ -46,7 +71,12 @@
       "id": "black-beauty-20-06",
       "type": "character",
       "q": "What did John think about what Joe did?",
-      "choices": ["Joe did right, because stopping cruelty is everybody's business", "Joe should have minded his own business", "Joe rode Beauty too fast and was foolish", "Joe should have fought the carter"],
+      "choices": [
+        "Joe did right, because stopping cruelty is everybody's business",
+        "Joe should have minded his own business and ridden on",
+        "Joe had ridden Beauty much too fast and been foolish",
+        "Joe ought to have stayed and fought the carter himself"
+      ],
       "answer": 0,
       "evidence": "with cruelty and oppression it is everybody's business to interfere"
     },
@@ -54,7 +84,12 @@
       "id": "black-beauty-20-07",
       "type": "detail",
       "q": "What happened to the carter after Joe gave his evidence?",
-      "choices": ["He was sent for trial and might go to prison", "He was let go with a warning", "He was given a new cart", "He apologized to Joe"],
+      "choices": [
+        "He was sent for trial and might go to prison",
+        "He was let off with a warning from the magistrate",
+        "He was given a lighter cart and two fresh horses",
+        "He came to Birtwick and said he was sorry to Joe"
+      ],
       "answer": 0,
       "evidence": "the carter was committed to take his trial"
     },
@@ -62,7 +97,12 @@
       "id": "black-beauty-20-08",
       "type": "inference",
       "q": "What did John mean when he said Joe \"had grown an inch taller\" that week?",
-      "choices": ["Joe had become more grown-up and sure of himself", "Joe had really grown much bigger", "Joe was standing on a box", "Joe had new boots"],
+      "choices": [
+        "Joe had become more grown-up and sure of himself",
+        "Joe really had grown a great deal taller that week",
+        "Joe had taken to standing on a box to groom Beauty",
+        "Joe had a new pair of boots with thick heels"
+      ],
       "answer": 0,
       "evidence": "as if he had jumped at once from a boy into a man"
     }

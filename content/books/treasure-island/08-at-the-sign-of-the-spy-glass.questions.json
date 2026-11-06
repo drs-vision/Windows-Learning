@@ -6,7 +6,7 @@
       "id": "treasure-island-08-01",
       "type": "detail",
       "q": "What was the sign outside Long John Silver's tavern?",
-      "choices": ["A large brass telescope", "A ship's anchor", "A painted parrot", "A wooden leg"],
+      "choices": ["A large brass telescope", "A big ship's anchor made of iron", "A painted green parrot", "A wooden leg"],
       "answer": 0,
       "evidence": "a little tavern with a large brass telescope for sign"
     },
@@ -14,7 +14,7 @@
       "id": "treasure-island-08-02",
       "type": "detail",
       "q": "How did Long John Silver get around?",
-      "choices": ["On a crutch, hopping like a bird", "In a wheeled chair", "On a wooden leg with a cane", "Carried by his men"],
+      "choices": ["On a crutch, hopping like a bird", "In a chair with wheels pushed by a boy", "On a wooden leg with a cane", "Carried about by his men"],
       "answer": 0,
       "evidence": "hopping about upon it like a bird"
     },
@@ -22,7 +22,7 @@
       "id": "treasure-island-08-03",
       "type": "character",
       "q": "Why did Jim stop worrying that Silver was the one-legged sailor he had watched for?",
-      "choices": ["Silver seemed clean and pleasant, not like the pirates Jim had met", "Silver showed Jim proof he had never been to sea", "The squire told Jim that Silver was a different man", "Silver had two legs"],
+      "choices": ["Silver seemed clean and pleasant, not like the pirates Jim had met", "Silver showed Jim papers proving he had never been to sea", "The squire told Jim that Silver was a different man", "Silver said he had lost his leg only a month before"],
       "answer": 0,
       "evidence": "this clean and pleasant-tempered landlord"
     },
@@ -30,7 +30,7 @@
       "id": "treasure-island-08-04",
       "type": "inference",
       "q": "What small reaction from Silver hints that he knew more than he said when he saw the squire's letter?",
-      "choices": ["He gave something almost like a start", "He tore the letter up", "He went pale and sat down", "He refused to read it"],
+      "choices": ["He gave something almost like a start", "He tore the letter up into pieces", "He went pale and had to sit down on a bench", "He refused to read it"],
       "answer": 0,
       "evidence": "he seemed to me to give something almost like a start"
     },
@@ -38,7 +38,7 @@
       "id": "treasure-island-08-05",
       "type": "detail",
       "q": "Whom did Jim recognize hurrying out of the tavern?",
-      "choices": ["Black Dog", "Pew", "Mr. Dance", "Tom Redruth"],
+      "choices": ["Black Dog", "Blind Pew", "Mr. Dance", "Tom Redruth"],
       "answer": 0,
       "evidence": "It's Black Dog!"
     },
@@ -46,7 +46,7 @@
       "id": "treasure-island-08-06",
       "type": "detail",
       "q": "What reason did Silver first give for sending Harry after the man?",
-      "choices": ["He hadn't paid his score", "He had stolen a crutch", "He was a wanted pirate", "He owed Silver a favor"],
+      "choices": ["He hadn't paid his score", "He had stolen Silver's crutch", "He was a wanted pirate", "He owed Silver a favor"],
       "answer": 0,
       "evidence": "But he hasn't paid his score."
     },
@@ -54,7 +54,7 @@
       "id": "treasure-island-08-07",
       "type": "detail",
       "q": "What did Tom Morgan say he and Black Dog had been talking about?",
-      "choices": ["Keel-hauling", "Treasure maps", "The squire's ship", "The weather"],
+      "choices": ["Keel-hauling", "Treasure maps", "The squire's new ship", "The weather"],
       "answer": 0,
       "evidence": "We was a-talkin' of keel-hauling"
     },
@@ -62,7 +62,7 @@
       "id": "treasure-island-08-08",
       "type": "vocabulary",
       "q": "Jim says Silver's show of excitement \"would have convinced an Old Bailey judge.\" What does this tell us?",
-      "choices": ["Silver's act was so believable it could fool even an expert in spotting lies", "Silver had once been a judge", "Silver was being arrested", "Silver wanted to go to court"],
+      "choices": ["Silver's act was so good it could fool an expert at spotting lies", "Silver had once worked as a judge in the courts of London", "Silver was about to be arrested and taken to court", "Silver wanted to bring Black Dog before a judge"],
       "answer": 0,
       "evidence": "such a show of excitement as would have convinced an Old Bailey judge"
     },
@@ -70,7 +70,7 @@
       "id": "treasure-island-08-09",
       "type": "character",
       "q": "How did Jim feel about Silver by the time the runners came back without Black Dog?",
-      "choices": ["He was convinced Silver was innocent", "He was sure Silver was a pirate", "He was afraid of Silver", "He was angry at Silver"],
+      "choices": ["He was convinced Silver was innocent", "He was sure Silver was a pirate", "He was very afraid of Silver", "He was angry with Silver for lying to the squire"],
       "answer": 0,
       "evidence": "I would have gone bail for the innocence of Long John Silver"
     },
@@ -78,7 +78,7 @@
       "id": "treasure-island-08-10",
       "type": "sequence",
       "q": "What made Silver suddenly burst out laughing until tears ran down his cheeks?",
-      "choices": ["He remembered Black Dog had left without paying for three goes of rum", "Jim told him a joke", "Morgan fell off his bench", "Harry came back with Black Dog"],
+      "choices": ["He remembered Black Dog left without paying for his rum", "Jim told him a funny story about the old captain", "Morgan fell off his bench and spilled his drink", "Harry came back into the tavern dragging Black Dog by the collar"],
       "answer": 0,
       "evidence": "Three goes o' rum!"
     },
@@ -86,7 +86,7 @@
       "id": "treasure-island-08-11",
       "type": "detail",
       "q": "What did Silver do on the walk along the quays that made Jim like him?",
-      "choices": ["Told him about the ships and taught him sea phrases", "Bought him a new hat", "Showed him a treasure map", "Let him steer a boat"],
+      "choices": ["Told him about the ships and taught him sea phrases", "Bought him a new hat and coat for the voyage", "Showed him a treasure map he kept in his apron", "Let him steer a small boat across the harbour"],
       "answer": 0,
       "evidence": "telling me about the different ships that we passed by"
     },
@@ -94,7 +94,7 @@
       "id": "treasure-island-08-12",
       "type": "inference",
       "q": "Why might Silver have told the squire the story of Black Dog \"with the most perfect truth\"?",
-      "choices": ["To earn the gentlemen's trust", "Because Jim forced him to", "Because he did not know how to lie", "To get Black Dog arrested"],
+      "choices": ["To earn the gentlemen's trust", "Because Jim forced him to tell it", "Because he did not know how to lie", "To get Black Dog arrested quickly"],
       "answer": 0,
       "evidence": "with a great deal of spirit and the most perfect truth"
     },
@@ -102,7 +102,7 @@
       "id": "treasure-island-08-13",
       "type": "character",
       "q": "What did Dr. Livesey say about Silver after he left?",
-      "choices": ["\"John Silver suits me.\"", "\"I do not trust that man.\"", "\"He is too old to sail.\"", "\"He should be the captain.\""],
+      "choices": ["\"John Silver suits me.\"", "\"I do not trust that man.\"", "\"He is too old to sail.\"", "\"He should be captain.\""],
       "answer": 0,
       "evidence": "John Silver suits me."
     }

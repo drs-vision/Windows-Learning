@@ -14,7 +14,7 @@
       "id": "treasure-island-01-02",
       "type": "detail",
       "q": "What mark did the old seaman have on his face?",
-      "choices": ["A sabre cut across one cheek", "A black patch over one eye", "A tattoo of an anchor", "A burn on his forehead"],
+      "choices": ["A sabre cut across one cheek", "A black patch over his left eye", "A tattoo of an anchor on his chin", "A burn on his forehead"],
       "answer": 0,
       "evidence": "the sabre cut across one cheek"
     },
@@ -22,7 +22,7 @@
       "id": "treasure-island-01-03",
       "type": "detail",
       "q": "What did the seaman say people might call him?",
-      "choices": ["Captain", "Matey", "Black Dog", "Old Salt"],
+      "choices": ["Captain", "Matey", "Black Dog", "Old Billy"],
       "answer": 0,
       "evidence": "You mought call me captain."
     },
@@ -38,7 +38,7 @@
       "id": "treasure-island-01-05",
       "type": "inference",
       "q": "Why did the captain choose the Admiral Benbow over the other inns on the coast?",
-      "choices": ["It was described as lonely", "It was the cheapest inn", "It had the best rum", "It was close to Bristol"],
+      "choices": ["It was described as lonely", "It was the cheapest inn on the coast", "It had the best rum", "It was the closest inn to Bristol"],
       "answer": 0,
       "evidence": "described as lonely, had chosen it from the others"
     },
@@ -46,7 +46,7 @@
       "id": "treasure-island-01-06",
       "type": "detail",
       "q": "How did the captain spend most of his days?",
-      "choices": ["Watching from the cove and cliffs with a brass telescope", "Fishing from a small boat", "Sleeping in his room upstairs", "Walking to the village to buy rum"],
+      "choices": ["Watching the cove and cliffs with a brass telescope", "Fishing for mackerel from a small boat in the cove", "Sleeping late in his room above the parlour", "Walking to the village each day to buy more rum"],
       "answer": 0,
       "evidence": "All day he hung round the cove or upon the cliffs with a brass telescope"
     },
@@ -54,7 +54,7 @@
       "id": "treasure-island-01-07",
       "type": "inference",
       "q": "Why did the captain ask every day whether seafaring men had gone by?",
-      "choices": ["He wanted to avoid them", "He missed company of his own kind", "He hoped to hire a crew", "He was waiting for a letter"],
+      "choices": ["He wanted to avoid them", "He missed the company of his own kind", "He hoped to find a crew", "He was waiting for a letter from Bristol"],
       "answer": 0,
       "evidence": "at last we began to see he was desirous to avoid them"
     },
@@ -62,7 +62,7 @@
       "id": "treasure-island-01-08",
       "type": "detail",
       "q": "What did the captain pay the narrator to watch out for?",
-      "choices": ["A seafaring man with one leg", "A blind beggar", "A ship flying a black flag", "A man with two fingers missing"],
+      "choices": ["A seafaring man with one leg", "A blind beggar with a stick", "A ship flying a black flag in the bay", "A man with two fingers missing"],
       "answer": 0,
       "evidence": "weather-eye open for a seafaring man with one leg"
     },
@@ -70,7 +70,7 @@
       "id": "treasure-island-01-09",
       "type": "detail",
       "q": "How much did the captain promise to pay the narrator each month?",
-      "choices": ["A silver fourpenny", "A gold guinea", "Three gold pieces", "A shilling"],
+      "choices": ["A silver fourpenny", "A golden guinea", "Three golden guineas", "A silver shilling"],
       "answer": 0,
       "evidence": "promised me a silver fourpenny on the first of every month"
     },
@@ -78,7 +78,7 @@
       "id": "treasure-island-01-10",
       "type": "character",
       "q": "How did the one-legged man affect the narrator?",
-      "choices": ["He haunted the narrator's dreams on stormy nights", "He made the narrator want to become a sailor", "He made the narrator laugh", "He made the narrator stop working at the inn"],
+      "choices": ["He haunted the narrator's dreams on stormy nights", "He made the narrator long to become a sailor", "He made the narrator laugh at the captain's fears", "He made the narrator want to stop working at the inn"],
       "answer": 0,
       "evidence": "How that personage haunted my dreams"
     },
@@ -86,7 +86,7 @@
       "id": "treasure-island-01-11",
       "type": "vocabulary",
       "q": "The narrator says the captain was \"the most overriding companion ever known.\" What does \"overriding\" mean here?",
-      "choices": ["Bossy and controlling", "Quiet and shy", "Funny and cheerful", "Generous and kind"],
+      "choices": ["Bossy and controlling", "Quiet, shy and timid", "Funny and always cheerful", "Generous and very kind"],
       "answer": 0,
       "evidence": "he was the most overriding companion ever known"
     },
@@ -94,7 +94,7 @@
       "id": "treasure-island-01-12",
       "type": "inference",
       "q": "Why does the narrator believe the captain's presence actually did the inn some good?",
-      "choices": ["He brought fine excitement to a quiet country life", "He paid far more than other guests", "He scared away thieves", "He helped with the work"],
+      "choices": ["He brought excitement to a quiet country life", "He paid far more than any of the other guests", "He scared away the thieves who robbed travellers", "He helped the family with the work of the inn"],
       "answer": 0,
       "evidence": "it was a fine excitement in a quiet country life"
     },
@@ -102,7 +102,7 @@
       "id": "treasure-island-01-13",
       "type": "character",
       "q": "What happened when the narrator's father tried to ask the captain for more money?",
-      "choices": ["The captain roared through his nose and stared him out of the room", "The captain paid him at once", "The captain threatened him with a knife", "The captain left the inn for a week"],
+      "choices": ["The captain stared him out of the room", "The captain paid him in full at once", "The captain drew a knife on him", "The captain left the inn for a week"],
       "answer": 0,
       "evidence": "stared my poor father out of the room"
     },
@@ -110,7 +110,7 @@
       "id": "treasure-island-01-14",
       "type": "sequence",
       "q": "What did the captain do right after Dr. Livesey kept talking instead of falling silent?",
-      "choices": ["Shouted \"Silence, there, between decks!\"", "Left the parlour and went to bed", "Bought the doctor a glass of rum", "Began singing even louder"],
+      "choices": ["Shouted \"Silence, there, between decks!\"", "Left the parlour and went up to bed", "Bought the doctor a glass of rum", "Began singing his song even louder"],
       "answer": 0,
       "evidence": "\"Silence, there, between decks!\""
     },
@@ -118,7 +118,7 @@
       "id": "treasure-island-01-15",
       "type": "character",
       "q": "How did Dr. Livesey react when the captain threatened him with a clasp-knife?",
-      "choices": ["He stayed perfectly calm and warned the captain he would hang", "He ran out of the inn", "He drew a pistol", "He called for the narrator's father"],
+      "choices": ["He stayed calm and warned the captain he would hang", "He ran out of the inn and rode off on his horse", "He drew a pistol and pointed it at the captain", "He called loudly for the narrator's father to help"],
       "answer": 0,
       "evidence": "The doctor never so much as moved."
     },
@@ -126,7 +126,7 @@
       "id": "treasure-island-01-16",
       "type": "main-idea",
       "q": "What is this chapter mostly about?",
-      "choices": ["A frightening old sea captain moving into the inn and being stood up to by Dr. Livesey", "The narrator sailing away to find treasure", "Pirates attacking the Admiral Benbow at night", "The narrator's father buying a new inn"],
+      "choices": ["A frightening old captain moves into the inn and Dr. Livesey stands up to him", "The narrator sails away with the captain to find his treasure", "Pirates attack the Admiral Benbow at night and the narrator's family must flee", "The narrator's father sells the Admiral Benbow and buys a bigger inn in Bristol"],
       "answer": 0,
       "evidence": "the brown old seaman with the sabre cut first took up his lodging under our roof"
     }

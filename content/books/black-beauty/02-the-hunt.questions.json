@@ -8,9 +8,9 @@
       "q": "What sound first told the colts that something was happening?",
       "choices": [
         "The cry of dogs in the distance",
-        "A church bell",
-        "A gunshot",
-        "Horses galloping on the road"
+        "A church bell ringing over the fields",
+        "A gunshot from the edge of the wood",
+        "Horses galloping along the high road"
       ],
       "answer": 0,
       "evidence": "what sounded like the cry of dogs"
@@ -23,7 +23,7 @@
         "A hare",
         "A fox",
         "A stag",
-        "A wild dog"
+        "A badger"
       ],
       "answer": 0,
       "evidence": "They have found a hare"
@@ -34,9 +34,9 @@
       "q": "When the old horse said the dogs \"have lost the scent,\" what did he mean?",
       "choices": [
         "They could no longer smell where the hare went",
-        "They had run out of breath",
-        "They had lost their way home",
-        "They had forgotten their names"
+        "They were too out of breath to keep running",
+        "They had lost their way back to the kennels",
+        "They could no longer hear the huntsman's horn"
       ],
       "answer": 0,
       "evidence": "They have lost the scent"
@@ -47,9 +47,9 @@
       "q": "What happened to the hare in the end?",
       "choices": [
         "The dogs caught her near the fence",
-        "She escaped into the woods",
-        "She hid in the brook",
-        "A huntsman let her go"
+        "She escaped safely into the plantation",
+        "She hid among the reeds by the brook",
+        "A huntsman picked her up and let her go"
       ],
       "answer": 0,
       "evidence": "the dogs were upon her with their wild cries"
@@ -62,7 +62,7 @@
         "Two fine horses were down",
         "The master's house was on fire",
         "The colts were stuck in the mud",
-        "A dog had drowned"
+        "One of the dogs had drowned"
       ],
       "answer": 0,
       "evidence": "two fine horses were down"
@@ -72,10 +72,10 @@
       "type": "character",
       "q": "How did Black Beauty's mother feel about men hunting?",
       "choices": [
-        "She could not understand why men liked a sport that hurt people and horses",
-        "She thought it was the best sport of all",
-        "She wished she could join them",
-        "She thought only foxes should be hunted"
+        "She could not see why men liked a sport that hurt men and horses",
+        "She thought it was the finest sport and wished the colts could join",
+        "She was proud that her own son Rob Roy was the best hunter there",
+        "She said hunting was fine as long as only foxes were ever chased"
       ],
       "answer": 0,
       "evidence": "I never yet could make out why men are so fond of this sport"
@@ -86,9 +86,9 @@
       "q": "Who was the young man who was badly hurt?",
       "choices": [
         "George Gordon, the squire's only son",
-        "Old Daniel",
-        "Mr. Bond, the farrier",
-        "Dick, the plowboy"
+        "Old Daniel, who looked after the horses",
+        "Dick, the plowboy who threw the stones",
+        "Mr. Bond, the farrier from the village"
       ],
       "answer": 0,
       "evidence": "it was young George Gordon, the squire's only son"
@@ -99,9 +99,9 @@
       "q": "Why was the black horse Rob Roy shot?",
       "choices": [
         "One of his legs was broken",
-        "He had bitten a rider",
-        "He was too old to work",
-        "He ran away from the hunt"
+        "He had bitten one of the riders",
+        "He was too old to be ridden again",
+        "He had run off and spoiled the hunt"
       ],
       "answer": 0,
       "evidence": "one of his legs was broken"
@@ -112,9 +112,9 @@
       "q": "What lesson does the last line of the chapter suggest?",
       "choices": [
         "A young man and a good horse were lost just to catch one little hare",
-        "Hunting is a safe and happy sport",
-        "Horses should never jump over brooks",
-        "Dogs are smarter than horses"
+        "Hunting is a safe sport as long as riders take care at the brooks",
+        "Horses should never be ridden over brooks or high hedges at all",
+        "A good hunting dog is worth far more than a horse or a hare"
       ],
       "answer": 0,
       "evidence": "'twas all for one little hare"

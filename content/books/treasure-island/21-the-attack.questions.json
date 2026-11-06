@@ -6,7 +6,7 @@
       "id": "treasure-island-21-01",
       "type": "character",
       "q": "Why was Captain Smollett angry right after Silver left?",
-      "choices": ["Everyone except Gray had left their posts", "Silver had stolen the chart", "Jim had run away again", "Someone had shot at Silver"],
+      "choices": ["Everyone except Gray had left their posts", "Silver had stolen the chart from the doctor", "Jim had run off into the woods yet again", "Someone had fired a shot at Silver's back as he left"],
       "answer": 0,
       "evidence": "found not a man of us at his post but Gray"
     },
@@ -14,7 +14,7 @@
       "id": "treasure-island-21-02",
       "type": "inference",
       "q": "Why did the captain say he had spoken so harshly (\"red-hot\") to Silver?",
-      "choices": ["He did it on purpose, knowing it would bring an attack", "He lost his temper by accident", "He wanted Silver to cry", "He hoped Silver would give up the ship"],
+      "choices": ["He did it on purpose, knowing it would bring an attack", "He lost his temper by accident and was sorry for it", "He wanted to shame Silver in front of his own men", "He hoped harsh words would make Silver give up the ship"],
       "answer": 0,
       "evidence": "I pitched it in red-hot on purpose"
     },
@@ -22,7 +22,7 @@
       "id": "treasure-island-21-03",
       "type": "detail",
       "q": "How were the loaded muskets arranged for the defenders?",
-      "choices": ["On four piles of firewood, one near the middle of each side", "Hanging on the walls by the door", "In a locked chest in the centre", "Buried in the sand outside"],
+      "choices": ["On four piles of firewood, one near the middle of each side", "Hanging from pegs on the walls on either side of the door", "Locked in the doctor's chest in the centre of the house", "Buried in the sand outside, ready to be dug up quickly"],
       "answer": 0,
       "evidence": "the firewood had been built into four piles"
     },
@@ -30,7 +30,7 @@
       "id": "treasure-island-21-04",
       "type": "detail",
       "q": "Why did the captain order the fire to be tossed out?",
-      "choices": ["So smoke would not get in their eyes during the fight", "To save firewood for later", "Because the house might burn down", "To hide from the cannon on the ship"],
+      "choices": ["So smoke would not get in their eyes during the fight", "To save the firewood for cooking the next day's dinner", "Because sparks might set the log-house roof on fire", "So the gunners on the ship could not aim at the light"],
       "answer": 0,
       "evidence": "we mustn't have smoke in our eyes"
     },
@@ -38,7 +38,7 @@
       "id": "treasure-island-21-05",
       "type": "detail",
       "q": "Why did the captain put the squire and Gray on the long north side?",
-      "choices": ["It had five loopholes and was where the danger was", "It was the coolest side of the house", "It faced the ship", "It had the best view of the sea"],
+      "choices": ["It had five loopholes and was where the danger was", "It was the coolest and shadiest side of the house", "It faced the anchorage where the ship was lying", "It had the best view down the hill to the sea"],
       "answer": 0,
       "evidence": "it's there the danger is"
     },
@@ -46,7 +46,7 @@
       "id": "treasure-island-21-06",
       "type": "character",
       "q": "What job did the captain give Jim during the attack?",
-      "choices": ["To help load the muskets", "To guard the door with a pistol", "To fire from the north side", "To run for help"],
+      "choices": ["To help load the muskets", "To guard the door with a pistol", "To fire from the long north side", "To run to the woods for Ben Gunn"],
       "answer": 0,
       "evidence": "we'll stand by to load and bear a hand"
     },
@@ -54,7 +54,7 @@
       "id": "treasure-island-21-07",
       "type": "sequence",
       "q": "What started the shooting after the long, hot wait?",
-      "choices": ["Joyce fired his musket", "A cannonball hit the roof", "Silver blew his whistle", "Anderson shouted a war cry"],
+      "choices": ["Joyce fired his musket", "A cannonball struck the roof", "Silver blew a shrill whistle", "Anderson shouted a war cry"],
       "answer": 0,
       "evidence": "suddenly Joyce whipped up his musket and fired"
     },
@@ -62,7 +62,7 @@
       "id": "treasure-island-21-08",
       "type": "inference",
       "q": "Why did the defenders decide the real attack would come from the north?",
-      "choices": ["Most of the first shots came from the north side", "The north side had no wall", "The doctor saw Silver there", "The wind was blowing from the north"],
+      "choices": ["Most of the first shots came from the north side", "The north side was the only wall without loopholes", "The doctor had seen Silver hiding to the north", "The wind was blowing their smoke toward the north"],
       "answer": 0,
       "evidence": "It was plain, therefore, that the attack would be developed from the north"
     },
@@ -70,7 +70,7 @@
       "id": "treasure-island-21-09",
       "type": "detail",
       "q": "What happened to Hunter when a pirate reached his loophole?",
-      "choices": ["The pirate yanked away his musket and knocked him senseless", "He was shot through the head", "He ran out the door", "He was taken prisoner"],
+      "choices": ["A pirate yanked away his musket and knocked him senseless", "He was shot through the head and fell dead at his post", "He threw open the door and ran out into the stockade", "He was dragged out over the fence and taken prisoner"],
       "answer": 0,
       "evidence": "laid the poor fellow senseless on the floor"
     },
@@ -78,7 +78,7 @@
       "id": "treasure-island-21-10",
       "type": "vocabulary",
       "q": "\"Our position was utterly reversed.\" Here \"reversed\" means:",
-      "choices": ["Turned the opposite way", "Made much stronger", "Kept exactly the same", "Hidden from sight"],
+      "choices": ["Turned the opposite way", "Made much stronger and safer", "Kept exactly the same as before", "Hidden from the enemy's sight"],
       "answer": 0,
       "evidence": "Our position was utterly reversed."
     },
@@ -86,7 +86,7 @@
       "id": "treasure-island-21-11",
       "type": "sequence",
       "q": "What happened when Jim came face to face with Anderson?",
-      "choices": ["Jim leaped aside, slipped in the soft sand, and rolled down the slope", "Jim cut Anderson down with his cutlass", "Anderson took Jim prisoner", "Jim ran back into the house"],
+      "choices": ["Jim leaped aside, slipped in the soft sand, and rolled down", "Jim swung his cutlass and cut Anderson down at the door", "Anderson grabbed Jim by the collar and took him prisoner", "Jim turned and ran back inside the house to the captain"],
       "answer": 0,
       "evidence": "missing my foot in the soft sand, rolled headlong down the slope"
     },
@@ -102,7 +102,7 @@
       "id": "treasure-island-21-13",
       "type": "detail",
       "q": "What price did the loyal party pay for the victory?",
-      "choices": ["Joyce was killed, Hunter was stunned, and the captain was wounded", "The squire and the doctor were both killed", "They lost the stockade and the flag", "Gray was captured by the pirates"],
+      "choices": ["Joyce was killed, Hunter was stunned, and the captain was hurt", "The squire and the doctor were both shot dead at the loopholes", "They lost the stockade and the pirates pulled down their flag", "Gray was carried off as a prisoner by the fleeing pirates"],
       "answer": 0,
       "evidence": "Joyce by his, shot through the head, never to move again"
     },
@@ -110,7 +110,7 @@
       "id": "treasure-island-21-14",
       "type": "main-idea",
       "q": "What is this chapter mostly about?",
-      "choices": ["The pirates attack the stockade and are driven off, but the loyal party suffers losses", "The loyal party sails away on the HISPANIOLA", "Silver and the captain agree to share the treasure", "Jim sneaks out to find Ben Gunn's boat"],
+      "choices": ["The pirates attack the stockade and are beaten off, but at a cost", "The loyal party slips away at night and sails off on the HISPANIOLA", "Silver and the captain shake hands and agree to share the treasure", "Jim sneaks out of the stockade alone to look for Ben Gunn's boat"],
       "answer": 0,
       "evidence": "the fight was over and the victory was ours"
     }

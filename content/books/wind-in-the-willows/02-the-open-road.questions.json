@@ -6,7 +6,7 @@
       "id": "wind-in-the-willows-02-01",
       "type": "detail",
       "q": "What was the Rat doing when the Mole asked him a favour?",
-      "choices": ["Sitting on the bank singing a song he had made up about ducks", "Rowing his boat up the river", "Fishing with the Otter", "Cooking breakfast by the fire"],
+      "choices": ["Sitting on the bank, singing a song he made up about ducks", "Rowing his blue-and-white boat up the river toward Toad Hall", "Fishing with the Otter from the end of the little jetty", "Cooking a big breakfast of eggs and bacon by the fire"],
       "answer": 0,
       "evidence": "made up a song about them"
     },
@@ -14,7 +14,7 @@
       "id": "wind-in-the-willows-02-02",
       "type": "detail",
       "q": "What favour did the Mole ask of the Rat?",
-      "choices": ["To take him to call on Mr. Toad", "To teach him to write poetry", "To show him the Wild Wood", "To lend him the boat for the day"],
+      "choices": ["To take him to call on Mr. Toad", "To teach him how to write poetry", "To show him the way into the Wild Wood", "To lend him the boat for the day"],
       "answer": 0,
       "evidence": "won't you take me to call on Mr. Toad?"
     },
@@ -22,7 +22,7 @@
       "id": "wind-in-the-willows-02-03",
       "type": "character",
       "q": "How did the Rat describe Toad on the way to Toad Hall?",
-      "choices": ["Good-natured and affectionate, but boastful and conceited", "Clever, quiet and very wise", "Grumpy and unfriendly to visitors", "Shy and afraid of strangers"],
+      "choices": ["Good-natured and affectionate, but boastful and conceited", "Clever, quiet and very wise, but rather shy with strangers", "Grumpy and unfriendly, and rude to every visitor", "Brave and hard-working, but rather slow and dull"],
       "answer": 0,
       "evidence": "it may be that he is both boastful and conceited"
     },
@@ -30,7 +30,7 @@
       "id": "wind-in-the-willows-02-04",
       "type": "inference",
       "q": "When the Rat saw Toad's boat-house full of boats with none in the water, what did he figure out?",
-      "choices": ["Toad had grown tired of boating and taken up a new fad", "Toad had gone away on a long trip", "Toad was too sick to row", "Toad had sold all his boats"],
+      "choices": ["Toad had grown tired of boating and taken up a new fad", "Toad had gone away on a long trip to the Wide World", "Toad was too sick with a cold to row on the river", "Toad had sold every one of his boats to the Otter"],
       "answer": 0,
       "evidence": "Boating is played out. He's tired of it, and done with it."
     },
@@ -38,7 +38,7 @@
       "id": "wind-in-the-willows-02-05",
       "type": "character",
       "q": "Toad said his house was the finest on the river \"or anywhere else.\" What does this show about Toad?",
-      "choices": ["He likes to boast", "He is very humble", "He wants to sell his house", "He has never seen other houses"],
+      "choices": ["He likes to boast and show off", "He is very humble and modest", "He wants to sell his house", "He has never seen other houses"],
       "answer": 0,
       "evidence": "Or anywhere else, for that matter,' he could not help adding."
     },
@@ -46,7 +46,7 @@
       "id": "wind-in-the-willows-02-06",
       "type": "detail",
       "q": "What was Toad's new passion that he showed his friends in the stable-yard?",
-      "choices": ["A canary-yellow gipsy caravan", "A brand-new rowing boat", "A shiny motor-car", "A racing horse"],
+      "choices": ["A canary-yellow gipsy caravan", "A brand-new rowing boat with red oars", "A shiny new motor-car with brass lamps", "A racing horse with a silver saddle"],
       "answer": 0,
       "evidence": "they saw a gipsy caravan, shining with newness, painted a canary-yellow"
     },
@@ -54,7 +54,7 @@
       "id": "wind-in-the-willows-02-07",
       "type": "character",
       "q": "How did the Rat feel at first about going on the caravan trip?",
-      "choices": ["He refused flatly and wanted to stay with his river", "He was thrilled and packed at once", "He wanted to go but had no time", "He was afraid of the horse"],
+      "choices": ["He refused flatly and wanted to stay with his river", "He was thrilled and began packing at once", "He wanted to go but had too much work at home", "He was afraid of the old grey horse and the road"],
       "answer": 0,
       "evidence": "I'm not coming, and that's flat."
     },
@@ -62,7 +62,7 @@
       "id": "wind-in-the-willows-02-08",
       "type": "character",
       "q": "Why did the Rat finally agree to go on the trip?",
-      "choices": ["He could not bear to disappoint the Mole and Toad", "Toad paid him a large sum of money", "He wanted to see the Wide World", "The river had flooded his home"],
+      "choices": ["He could not bear to disappoint the Mole and Toad", "Toad paid him a large sum of money to come along", "He had always wanted to see the Wide World for himself", "The river had flooded and washed his home away"],
       "answer": 0,
       "evidence": "He could not bear to disappoint his two friends"
     },
@@ -70,7 +70,7 @@
       "id": "wind-in-the-willows-02-09",
       "type": "vocabulary",
       "q": "Toad was \"naturally a voluble animal.\" What does \"voluble\" mean?",
-      "choices": ["Talking a lot, quickly and easily", "Very quiet and shy", "Large and heavy", "Easily frightened"],
+      "choices": ["Talking a lot, quickly and easily", "Very quiet and shy around others", "Large, heavy and slow-moving", "Easily frightened by loud noises"],
       "answer": 0,
       "evidence": "Naturally a voluble animal"
     },
@@ -78,7 +78,7 @@
       "id": "wind-in-the-willows-02-10",
       "type": "detail",
       "q": "How did the old grey horse feel about pulling the caravan?",
-      "choices": ["Annoyed, because he preferred staying in his paddock", "Proud to be chosen", "Excited to see new places", "Happy because Toad fed him well"],
+      "choices": ["Annoyed, as he'd rather stay in his paddock", "Proud to be chosen to pull such a fine caravan", "Excited to see new places along the road", "Happy because Toad fed him well on oats"],
       "answer": 0,
       "evidence": "He frankly preferred the paddock, and took a deal of catching."
     },
@@ -86,7 +86,7 @@
       "id": "wind-in-the-willows-02-11",
       "type": "character",
       "q": "On the first night, what did the Rat admit about his river?",
-      "choices": ["He did not talk about it, but he thought about it all the time", "He never wanted to see it again", "He had forgotten all about it", "He planned to sell his house there"],
+      "choices": ["He didn't talk of it, but thought of it all the time", "He never wanted to see it again after the long winter", "He had already forgotten all about it in the excitement", "He planned to sell his house there and travel for good"],
       "answer": 0,
       "evidence": "But I THINK about it,"
     },
@@ -94,7 +94,7 @@
       "id": "wind-in-the-willows-02-12",
       "type": "character",
       "q": "Why did the Rat refuse the Mole's offer to run away home early the next morning?",
-      "choices": ["He felt he should stick by Toad because Toad was not safe alone", "He was enjoying the trip too much", "He did not know the way home", "He was afraid of the dark"],
+      "choices": ["He felt he must stick by Toad, who was not safe alone", "He was secretly enjoying the trip far too much to leave", "He did not know the way home across the open common", "He was afraid of walking home alone in the dark lanes"],
       "answer": 0,
       "evidence": "It wouldn't be safe for him to be left to himself."
     },
@@ -102,7 +102,7 @@
       "id": "wind-in-the-willows-02-13",
       "type": "sequence",
       "q": "What happened on the first morning while Toad was still asleep?",
-      "choices": ["The Rat and Mole did all the chores and the Mole walked to the village for supplies", "The horse ran away", "Toad cooked breakfast for everyone", "They all went swimming in a pond"],
+      "choices": ["The Rat and Mole did the chores and Mole fetched supplies", "The old grey horse broke loose and ran away down the road", "Toad got up early and cooked a fine breakfast for everyone", "They all went swimming together in a pond near the camp"],
       "answer": 0,
       "evidence": "the Mole trudged off to the nearest village, a long way off, for milk and eggs"
     },
@@ -110,7 +110,7 @@
       "id": "wind-in-the-willows-02-14",
       "type": "detail",
       "q": "What wrecked the caravan on the high-road?",
-      "choices": ["A speeding motor-car frightened the horse, who backed the cart into a ditch", "A wheel fell off on a steep hill", "A storm blew it over", "Weasels attacked it in the night"],
+      "choices": ["A motor-car scared the horse, who backed the cart into a ditch", "A wheel came off as they rattled down a steep hill near the town", "A sudden storm blew it over while they slept on the common", "Weasels crept up in the night and cut the horse loose"],
       "answer": 0,
       "evidence": "he drove the cart backwards towards the deep ditch at the side of the road"
     },
@@ -118,7 +118,7 @@
       "id": "wind-in-the-willows-02-15",
       "type": "character",
       "q": "How did Toad react right after the motor-car wrecked his caravan?",
-      "choices": ["He sat in the road in a happy trance, murmuring 'Poop-poop!'", "He shouted angrily at the driver", "He cried over his broken cart", "He ran to help the Mole calm the horse"],
+      "choices": ["He sat in the road in a happy trance, murmuring 'Poop-poop!'", "He shouted angrily at the driver and shook his fist at the car", "He sat down and cried over his poor broken canary-yellow cart", "He ran to help the Mole calm the frightened old horse"],
       "answer": 0,
       "evidence": "at intervals he faintly murmured 'Poop-poop!'"
     },
@@ -126,7 +126,7 @@
       "id": "wind-in-the-willows-02-16",
       "type": "vocabulary",
       "q": "The Rat said Toad was \"possessed\" by a new craze. What does \"possessed\" mean here?",
-      "choices": ["Completely taken over by one idea", "Owning a lot of things", "Badly hurt", "Very sleepy"],
+      "choices": ["Completely taken over by one idea", "Owning a great many things", "Badly hurt in an accident", "Very sleepy and slow"],
       "answer": 0,
       "evidence": "He is now possessed. He has got a new craze"
     },
@@ -134,7 +134,7 @@
       "id": "wind-in-the-willows-02-17",
       "type": "sequence",
       "q": "How did the three friends finally get back home?",
-      "choices": ["They walked to the town and took a train back", "They fixed the caravan and drove it home", "A farmer gave them a ride in his wagon", "They rode the horse all the way"],
+      "choices": ["They walked to the town and took a train back", "They fixed the caravan and drove it home again", "A farmer gave them a ride home in his hay wagon", "They took turns riding the old horse all the way"],
       "answer": 0,
       "evidence": "a slow train having landed them at a station not very far from Toad Hall"
     },
@@ -142,7 +142,7 @@
       "id": "wind-in-the-willows-02-18",
       "type": "main-idea",
       "q": "What is the big turning point for Toad in this chapter?",
-      "choices": ["He gives up caravans and becomes crazy about motor-cars", "He learns to work hard and do his share", "He decides to stay home on the river forever", "He makes friends with the old grey horse"],
+      "choices": ["He gives up caravans and becomes crazy about motor-cars", "He learns to work hard and always do his share of chores", "He decides to stay home on the river and never travel", "He makes friends with the old grey horse and buys him"],
       "answer": 0,
       "evidence": "And he has ordered a large and very expensive motor-car."
     }

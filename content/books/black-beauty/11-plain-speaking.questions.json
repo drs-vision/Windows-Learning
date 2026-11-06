@@ -8,9 +8,9 @@
       "q": "How did the master and mistress treat animals and people?",
       "choices": [
         "They were good and kind to everybody and everything",
-        "They were kind only to horses",
-        "They were strict with everyone",
-        "They did not care about animals"
+        "They were kind to their own horses but not to others",
+        "They were strict and stern with nearly everyone",
+        "They cared about people but not much about animals"
       ],
       "answer": 0,
       "evidence": "they were good and kind to everybody and everything"
@@ -21,9 +21,9 @@
       "q": "What had the squire and Farmer Grey worked for more than twenty years to get rid of?",
       "choices": [
         "Check-reins on the cart-horses",
-        "Blinkers on carriage horses",
-        "Hunting in the fields",
-        "Whips in the village"
+        "Blinkers on the carriage horses",
+        "Fox hunting across their fields",
+        "Cruel whips used in the village"
       ],
       "answer": 0,
       "evidence": "to get check-reins on the cart-horses done away with"
@@ -34,9 +34,9 @@
       "q": "What did the mistress do when she met a heavily laden horse with its head strained up?",
       "choices": [
         "She got out and reasoned with the driver",
-        "She bought the horse",
-        "She called for the police",
-        "She drove past quickly"
+        "She offered the carter money to buy the horse",
+        "She sent John to fetch a policeman",
+        "She told John to drive past quickly"
       ],
       "answer": 0,
       "evidence": "reason with the driver in her sweet serious voice"
@@ -47,9 +47,9 @@
       "q": "What did Sawyer do when his pony turned toward the park gates?",
       "choices": [
         "Wrenched its head round and lashed it with the whip",
-        "Let it go into the park",
-        "Patted it and turned it gently",
-        "Got out and led it on foot"
+        "Let it trot on into the park and right up to the house",
+        "Patted its neck and turned it round gently",
+        "Got down from the cart and led it on foot"
       ],
       "answer": 0,
       "evidence": "he began to lash it furiously"
@@ -59,10 +59,10 @@
       "type": "inference",
       "q": "Why did the master say the pony turned toward the park gates?",
       "choices": [
-        "Sawyer had often driven it there, so it remembered the way",
-        "The pony was trying to run away",
-        "The pony saw Black Beauty",
-        "The pony was hungry"
+        "Sawyer had often driven it there, so it knew the way",
+        "The pony was frightened and trying to run away",
+        "The pony had seen Black Beauty and wanted to follow him",
+        "The pony was hungry and smelled the hay in the park"
       ],
       "answer": 0,
       "evidence": "it only shows the creature's memory and intelligence"
@@ -72,10 +72,10 @@
       "type": "character",
       "q": "What did the master tell Sawyer about losing his temper with the pony?",
       "choices": [
-        "It hurt Sawyer's own character as much as it hurt the horse",
-        "It was a good way to train a pony",
-        "It would make the pony faster",
-        "It was none of his business"
+        "It hurt Sawyer's own character as much as the horse",
+        "It was a good, firm way to train a young and willful pony",
+        "It would make the pony go faster in the end",
+        "It was not really any of the master's business"
       ],
       "answer": 0,
       "evidence": "you injure your own character as much, nay more, than you injure your horse"
@@ -86,9 +86,9 @@
       "q": "Captain Langley wanted to know the master's opinion of what?",
       "choices": [
         "His new pair of gray horses",
-        "His new carriage house",
-        "His soldiers",
-        "His dog"
+        "His new carriage and harness",
+        "His regiment of soldiers",
+        "His new hunting dogs"
       ],
       "answer": 0,
       "evidence": "What do you think of my new team, Mr. Douglas?"
@@ -98,10 +98,10 @@
       "type": "inference",
       "q": "Why did the master compare Langley's horses to soldiers with their heads tied to a backboard?",
       "choices": [
-        "To show that tying heads up takes away strength and freedom to work",
-        "To show that soldiers should ride horses",
-        "To praise how neat the horses looked",
-        "To tell Langley to join the army"
+        "To show that tying heads up takes away strength and freedom",
+        "To show that soldiers should ride horses instead of marching",
+        "To praise how smart and neat the grays looked in harness",
+        "To tell Captain Langley he ought to go back to the army"
       ],
       "answer": 0,
       "evidence": "you fret and worry their tempers, and decrease their power"
@@ -111,10 +111,10 @@
       "type": "main-idea",
       "q": "What is this chapter mostly about?",
       "choices": [
-        "The master and mistress speaking up plainly against cruelty to horses",
-        "A long trip to London",
-        "How Black Beauty was trained",
-        "A race between two carriages"
+        "The master and mistress speaking up plainly against cruelty",
+        "A long journey to London that the master made with Ginger",
+        "How John Manly trained Black Beauty to pull the carriage",
+        "A race between two carriages along the road to the village"
       ],
       "answer": 0,
       "evidence": "there was no oppressed or ill-used creature that had not a friend in them"

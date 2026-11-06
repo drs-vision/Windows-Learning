@@ -6,7 +6,7 @@
       "id": "treasure-island-09-01",
       "type": "detail",
       "q": "Who met Jim and the gentlemen as they stepped aboard the Hispaniola?",
-      "choices": ["Mr. Arrow, the mate", "Captain Smollett", "Long John Silver", "Tom Morgan"],
+      "choices": ["Mr. Arrow, the mate", "Captain Smollett", "Long John Silver", "Tom Morgan, the bosun"],
       "answer": 0,
       "evidence": "met and saluted as we stepped aboard by the mate, Mr. Arrow"
     },
@@ -14,7 +14,7 @@
       "id": "treasure-island-09-02",
       "type": "detail",
       "q": "What three things did Captain Smollett say he didn't like?",
-      "choices": ["The cruise, the men, and his officer", "The ship, the food, and the weather", "The squire, the doctor, and Jim", "The map, the island, and the treasure"],
+      "choices": ["The cruise, the men, and his officer", "The ship, the food, and the weather", "The squire, the doctor, and Jim", "The map, the island, and the gold"],
       "answer": 0,
       "evidence": "I don't like this cruise; I don't like the men; and I don't like my officer."
     },
@@ -22,7 +22,7 @@
       "id": "treasure-island-09-03",
       "type": "character",
       "q": "How did the squire feel during the captain's complaints?",
-      "choices": ["Very angry", "Amused", "Frightened", "Bored"],
+      "choices": ["Very angry", "Amused and laughing", "Frightened", "Bored and sleepy"],
       "answer": 0,
       "evidence": "inquired the squire, very angry, as I could see"
     },
@@ -30,7 +30,7 @@
       "id": "treasure-island-09-04",
       "type": "vocabulary",
       "q": "When the captain says the secret \"has been told to the parrot,\" what does he mean?",
-      "choices": ["The secret has been blabbed to everyone", "Silver's parrot can talk", "The secret is written on a bird", "Only one person knows the secret"],
+      "choices": ["The secret has been blabbed to everyone", "Silver's parrot can say the word treasure", "The secret is written on a bird's leg band", "Only one person on board knows it"],
       "answer": 0,
       "evidence": "\"It's a way of speaking,\" said the captain. \"Blabbed, I mean."
     },
@@ -38,7 +38,7 @@
       "id": "treasure-island-09-05",
       "type": "detail",
       "q": "Why did the captain dislike Mr. Arrow as an officer?",
-      "choices": ["He was too familiar with the crew", "He was a poor seaman", "He drank too much", "He was rude to the squire"],
+      "choices": ["He was too familiar with the crew", "He was a poor and careless seaman", "He drank too much rum", "He was rude to the squire at dinner"],
       "answer": 0,
       "evidence": "he's too free with the crew to be a good officer"
     },
@@ -46,7 +46,7 @@
       "id": "treasure-island-09-06",
       "type": "detail",
       "q": "Where did the captain want the powder and arms moved?",
-      "choices": ["To the good place under the cabin", "To the fore hold", "Onto a shore-boat", "Into the galley"],
+      "choices": ["To the good place under the cabin", "To the fore hold, near the men", "Onto a shore-boat", "Into the galley beside the cook's stove"],
       "answer": 0,
       "evidence": "you have a good place under the cabin; why not put them there?"
     },
@@ -54,7 +54,7 @@
       "id": "treasure-island-09-07",
       "type": "inference",
       "q": "What did the captain know that shocked the squire?",
-      "choices": ["The exact latitude and longitude of the island", "The name of the squire's banker", "That Silver had been a pirate", "That Pew was dead"],
+      "choices": ["The exact latitude and longitude of the island", "The name of the squire's banker in London", "That Silver had once been a pirate", "That Pew was dead"],
       "answer": 0,
       "evidence": "he named the latitude and longitude exactly"
     },
@@ -62,7 +62,7 @@
       "id": "treasure-island-09-08",
       "type": "inference",
       "q": "When the doctor sums up the captain's worries, what does he say the captain really fears?",
-      "choices": ["A mutiny", "A storm", "Running out of food", "Getting lost at sea"],
+      "choices": ["A mutiny", "A storm at sea", "Running out of food", "Getting lost"],
       "answer": 0,
       "evidence": "In other words, you fear a mutiny."
     },
@@ -70,7 +70,7 @@
       "id": "treasure-island-09-09",
       "type": "character",
       "q": "What did the captain admit he had meant to do when he came into the cabin?",
-      "choices": ["Get himself discharged", "Ask for more pay", "Steal the map", "Fire Mr. Arrow"],
+      "choices": ["Get himself discharged", "Ask the squire for more pay", "Steal the map", "Fire Mr. Arrow on the spot"],
       "answer": 0,
       "evidence": "When I came in here I meant to get discharged."
     },
@@ -78,7 +78,7 @@
       "id": "treasure-island-09-10",
       "type": "character",
       "q": "Which two men did Dr. Livesey believe were honest?",
-      "choices": ["Captain Smollett and John Silver", "Mr. Arrow and Tom Morgan", "The squire and Blandly", "Redruth and Hunter"],
+      "choices": ["Captain Smollett and John Silver", "Mr. Arrow and Tom Morgan", "The squire and Mr. Blandly", "Redruth and Hunter"],
       "answer": 0,
       "evidence": "two honest men on board with you--that man and John Silver"
     },
@@ -86,7 +86,7 @@
       "id": "treasure-island-09-11",
       "type": "sequence",
       "q": "What did Long John Silver say when he came aboard and saw the powder being moved?",
-      "choices": ["That they would miss the morning tide", "That it was a fine idea", "That the powder was wet", "That he wanted to help carry it"],
+      "choices": ["That they would miss the morning tide", "That moving it was a fine idea", "That the powder had got wet", "That he wanted to help carry it below"],
       "answer": 0,
       "evidence": "if we do, we'll miss the morning tide!"
     },
@@ -94,7 +94,7 @@
       "id": "treasure-island-09-12",
       "type": "sequence",
       "q": "What did the captain do when he saw Jim examining the long brass gun?",
-      "choices": ["Sent him off to the cook to get some work", "Taught him how to fire it", "Praised him for his interest", "Had him locked in his cabin"],
+      "choices": ["Sent him off to the cook to get some work", "Showed him how to load and fire it", "Praised him for taking such an interest", "Had him locked in his cabin for the night"],
       "answer": 0,
       "evidence": "Off with you to the cook and get some work."
     },

@@ -6,7 +6,7 @@
       "id": "black-beauty-30-01",
       "type": "detail",
       "q": "Why did Mr. Barry buy Black Beauty?",
-      "choices": ["His doctor advised him to take horse exercise", "He wanted to start a cab business", "He wanted to race him", "He needed a horse for his farm"],
+      "choices": ["His doctor advised him to take horse exercise", "He wanted to start his own cab business", "He wanted to race him at the country fairs", "He needed a strong horse for his new farm"],
       "answer": 0,
       "evidence": "His doctor advised him to take horse exercise"
     },
@@ -14,7 +14,7 @@
       "id": "black-beauty-30-02",
       "type": "character",
       "q": "What was Mr. Barry like as a master?",
-      "choices": ["He treated Beauty well but knew very little about horses", "He was cruel and used the whip often", "He was an expert horseman", "He never rode Beauty at all"],
+      "choices": ["He was kind but knew very little about horses", "He was cruel and used the whip on every ride", "He was an expert horseman who had raced for years", "He never rode Beauty and left him to the groom"],
       "answer": 0,
       "evidence": "My master knew very little about horses, but he treated me well"
     },
@@ -22,7 +22,7 @@
       "id": "black-beauty-30-03",
       "type": "detail",
       "q": "What was missing from Beauty's food?",
-      "choices": ["Most of his oats", "All of his hay", "His water", "His beans"],
+      "choices": ["Most of his oats", "All of his hay", "His clean water", "His beans and bran"],
       "answer": 0,
       "evidence": "certainly not more than a quarter of what there should have been"
     },
@@ -30,7 +30,7 @@
       "id": "black-beauty-30-04",
       "type": "detail",
       "q": "What excuse had the groom given Mr. Barry for Beauty being dull and weak?",
-      "choices": ["Horses are always dull and weak in the autumn", "Beauty was getting old", "Beauty was being ridden too fast", "The hay was bad this year"],
+      "choices": ["Horses are always dull and weak in the autumn", "Beauty was getting old and would soon be done", "Beauty was being ridden far too fast and far", "The hay was poor this year after the wet spring"],
       "answer": 0,
       "evidence": "horses are always dull and weak in the autumn"
     },
@@ -38,7 +38,7 @@
       "id": "black-beauty-30-05",
       "type": "inference",
       "q": "Why did the gentleman farmer say \"Autumn, fiddlesticks!\"?",
-      "choices": ["It was only August, so the groom's excuse made no sense", "He hated autumn", "He thought Beauty was sick", "He wanted Barry to sell Beauty to him"],
+      "choices": ["It was only August, so the excuse made no sense", "He had always hated the autumn and its weather", "He thought Beauty was ill and needed a farrier", "He wanted Mr. Barry to sell Beauty to him cheap"],
       "answer": 0,
       "evidence": "Why, this is only August"
     },
@@ -46,7 +46,7 @@
       "id": "black-beauty-30-06",
       "type": "sequence",
       "q": "How were the oats being taken each morning?",
-      "choices": ["Filcher's little boy carried them away in a covered basket", "Rats were eating them at night", "Filcher sold them at the market himself", "Another horse was eating them"],
+      "choices": ["Filcher's boy carried them off in a covered basket", "Rats were creeping into the corn bin each night and eating them", "Filcher sold them himself at the Saturday market", "A cab horse in the next stall was eating them"],
       "answer": 0,
       "evidence": "a little boy, who always had a covered basket with him"
     },
@@ -54,7 +54,7 @@
       "id": "black-beauty-30-07",
       "type": "vocabulary",
       "q": "When the police came, Filcher \"blustered a good deal.\" What does \"blustered\" mean here?",
-      "choices": ["Talked loudly and angrily", "Cried quietly", "Ran away fast", "Laughed happily"],
+      "choices": ["Talked loudly and angrily", "Cried quietly to himself", "Ran away as fast as he could", "Laughed and made jokes"],
       "answer": 0,
       "evidence": "though he blustered a good deal they walked him off"
     },
@@ -62,7 +62,7 @@
       "id": "black-beauty-30-08",
       "type": "detail",
       "q": "What happened to Filcher in the end?",
-      "choices": ["He was sentenced to prison for two months", "He was let go with a warning", "He was made head groom", "He paid Mr. Barry back and stayed"],
+      "choices": ["He was sentenced to prison for two months", "He was let go with only a warning", "He was made head groom in the end", "He paid Mr. Barry back and kept his place"],
       "answer": 0,
       "evidence": "the man was sentenced to prison for two months"
     }

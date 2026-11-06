@@ -7,10 +7,10 @@
       "type": "detail",
       "q": "How did James help the horses on long uphill roads?",
       "choices": [
-        "He set the wheels a little across the road and gave them a breathing",
-        "He made them gallop faster",
-        "He got out and pushed the carriage",
-        "He took off their harness"
+        "He set the wheels a little across the road to give them a breathing",
+        "He made them trot faster so they would reach the top of the hill sooner",
+        "He got down from the box and pushed the carriage from behind",
+        "He stopped and took off their harness so they could rest"
       ],
       "answer": 0,
       "evidence": "he set the carriage wheels a little across the road"
@@ -20,10 +20,10 @@
       "type": "detail",
       "q": "What did the head hostler at the hotel look like?",
       "choices": [
-        "A pleasant, active little man with a crooked leg and yellow striped waistcoat",
-        "A tall, broad man with a beard",
-        "A young boy with a pipe",
-        "An old lady in an apron"
+        "A pleasant little man with a crooked leg and a yellow striped waistcoat",
+        "A tall, broad man with a thick black beard and a very loud and gruff voice",
+        "A young stable boy with a pipe always stuck in his mouth",
+        "A thin, bent old man who walked slowly with a stick"
       ],
       "answer": 0,
       "evidence": "with a crooked leg, and a yellow striped waistcoat"
@@ -34,9 +34,9 @@
       "q": "What surprised James about the way the old hostler cleaned Black Beauty?",
       "choices": [
         "He was quick and thorough at the same time",
-        "He used cold water",
-        "He talked to the horse in French",
-        "He did not clean the feet"
+        "He washed him all over with icy cold water",
+        "He talked to the horse the whole time in French",
+        "He never touched the feet or the mane at all"
       ],
       "answer": 0,
       "evidence": "you do beat all I ever saw for being quick and thorough at the same time"
@@ -47,9 +47,9 @@
       "q": "The hostler said \"practice makes perfect.\" What did he mean?",
       "choices": [
         "Doing something many times makes you good at it",
-        "You should never practice",
-        "Perfect people do not need practice",
-        "Practice is only for children"
+        "It is better not to practice too much at anything",
+        "Only perfect people can do a job without practice",
+        "Practice is something only children need to do"
       ],
       "answer": 0,
       "evidence": "Practice makes perfect"
@@ -60,9 +60,9 @@
       "q": "How did the hostler's job as a jockey come to an end?",
       "choices": [
         "His horse Larkspur fell at Goodwood and he broke his knee",
-        "He grew too tall",
-        "He was fired for being slow",
-        "He got tired of racing"
+        "He grew too tall and too heavy to ride in the races any more",
+        "He was sent away for being too slow on the course",
+        "He grew tired of racing and asked to work in a stable"
       ],
       "answer": 0,
       "evidence": "my poor Larkspur got a fall, and I broke my knee"
@@ -73,9 +73,9 @@
       "q": "What did the hostler say he could tell after handling a horse for twenty minutes?",
       "choices": [
         "What sort of groom the horse has had",
-        "How old the horse is",
-        "How fast the horse can run",
-        "What the horse likes to eat"
+        "Exactly how old the horse is in years",
+        "How fast the horse can run a mile",
+        "What the horse likes best to eat"
       ],
       "answer": 0,
       "evidence": "I'll tell you what sort of a groom he has had"
@@ -85,10 +85,10 @@
       "type": "character",
       "q": "What did the hostler say about the leap where young Gordon was killed?",
       "choices": [
-        "It was a bad place to leap, with no chance for a horse to see where it was going",
-        "It was an easy jump",
-        "The horse was to blame",
-        "The fence was too low"
+        "It was a bad place, where a horse had no chance to see where it was going",
+        "It was an easy jump that any good hunter could take without trouble",
+        "The horse was to blame because it had refused the same jump before",
+        "The fence there was too low to stop a horse from jumping it"
       ],
       "answer": 0,
       "evidence": "No chance for a horse to see where he is going"
@@ -99,9 +99,9 @@
       "q": "What is the old hostler's main lesson about horses?",
       "choices": [
         "Their tempers are made by how they are treated when young",
-        "Horses should be cleaned slowly",
-        "Only racehorses are well-mannered",
-        "Horses never remember how they were treated"
+        "Horses should always be cleaned slowly and very gently",
+        "Only racehorses ever have good manners in the stable",
+        "Horses soon forget how they were treated as foals"
       ],
       "answer": 0,
       "evidence": "their tempers are mostly made when they are young"

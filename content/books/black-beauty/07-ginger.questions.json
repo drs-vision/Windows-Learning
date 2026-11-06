@@ -7,10 +7,10 @@
       "type": "character",
       "q": "What did Ginger think might have happened if she had had Black Beauty's bringing up?",
       "choices": [
-        "She might have had as good a temper as he did",
-        "She would have become a racehorse",
-        "She would have been sold sooner",
-        "She would never have been broken in"
+        "She might have had as good a temper as he had",
+        "She would have been trained to win races in London",
+        "She would have been sold to Squire Gordon much sooner",
+        "She would never have needed to be broken in at all"
       ],
       "answer": 0,
       "evidence": "I might have had as good a temper as you"
@@ -22,8 +22,8 @@
       "choices": [
         "As soon as she was weaned",
         "When she was four years old",
-        "On the day she was born",
-        "After she was broken in"
+        "On the very day she was born",
+        "Just after she was broken in"
       ],
       "answer": 0,
       "evidence": "I was taken from my mother as soon as I was weaned"
@@ -34,9 +34,9 @@
       "q": "What did the boys who passed through Ginger's field do?",
       "choices": [
         "Threw stones to make the colts gallop",
-        "Fed the colts apples",
-        "Rode the colts bareback",
-        "Opened the gate to let them out"
+        "Fed the colts apples over the hedge",
+        "Rode the colts bareback around the field",
+        "Left the gate open so the colts got out"
       ],
       "answer": 0,
       "evidence": "the great boys passing through would fling stones to make us gallop"
@@ -47,9 +47,9 @@
       "q": "How did the men first get the halter and bit on Ginger?",
       "choices": [
         "They cornered her and forced her mouth open",
-        "They coaxed her gently with oats",
-        "They waited until she was asleep",
-        "Her mother led her into the stall"
+        "They coaxed her gently with a sieve of oats",
+        "They waited until she was lying down asleep",
+        "They let her mother lead her into the stall first"
       ],
       "answer": 0,
       "evidence": "so by force they got on the halter and the bar into my mouth"
@@ -59,10 +59,10 @@
       "type": "character",
       "q": "What kind of man was Samson, Mr. Ryder's son?",
       "choices": [
-        "Hard, with a hard voice, hard eye, and hard hand",
-        "Gentle and patient like his father",
-        "Shy and afraid of horses",
-        "Kind but forgetful"
+        "Hard, with a hard voice, hard eye and hard hand",
+        "Gentle and patient, just like his old father",
+        "Shy, and rather afraid of the young horses",
+        "Kind enough, but careless and forgetful"
       ],
       "answer": 0,
       "evidence": "a hard voice, a hard eye, a hard hand"
@@ -73,9 +73,9 @@
       "q": "What did Ginger believe Samson really wanted to do to her?",
       "choices": [
         "Wear all the spirit out of her",
-        "Teach her to win races",
-        "Make her his favorite horse",
-        "Sell her to a kind family"
+        "Train her to win races at the fair",
+        "Make her his own favorite riding horse",
+        "Get her ready to sell to a kind family"
       ],
       "answer": 0,
       "evidence": "what he wanted was to wear all the spirit out of me"
@@ -86,9 +86,9 @@
       "q": "What happened during the fight between Ginger and Samson on the training ground?",
       "choices": [
         "She threw him off backward and galloped away",
-        "He tied her up in the stable",
-        "She ran out through the gate",
-        "He gave up and patted her"
+        "He tied her up in the stable and left her there",
+        "She broke through the gate and ran down the road",
+        "He gave up, got down and patted her neck"
       ],
       "answer": 0,
       "evidence": "I threw him off backward"
@@ -98,10 +98,10 @@
       "type": "detail",
       "q": "What did Ginger have to put up with while standing alone in the hot field afterward?",
       "choices": [
-        "Flies, hunger, thirst, and a tight saddle",
-        "Rain and cold wind",
-        "Barking dogs",
-        "Boys throwing stones"
+        "Flies, hunger, thirst and a tight saddle",
+        "Cold rain and a strong wind all afternoon",
+        "Dogs barking at her from across the hedge",
+        "Boys throwing stones at her over the fence"
       ],
       "answer": 0,
       "evidence": "the flies swarmed round me and settled on my bleeding flanks"
@@ -112,9 +112,9 @@
       "q": "What did old Mr. Ryder bring when he came out to get Ginger at sunset?",
       "choices": [
         "A sieve with oats in it",
-        "A whip",
-        "A carrot and an apple",
-        "A new bridle"
+        "A long whip and a rope",
+        "A carrot and a red apple",
+        "A new bridle and a halter"
       ],
       "answer": 0,
       "evidence": "I saw the old master come out with a sieve in his hand"
@@ -125,9 +125,9 @@
       "q": "What did old Mr. Ryder say to Samson about tempers?",
       "choices": [
         "A bad-tempered man will never make a good-tempered horse",
-        "Ginger is a vicious brute",
-        "Horses must always be whipped",
-        "Samson had done a fine day's work"
+        "A vicious brute like Ginger needs a firmer hand every day",
+        "A horse must always be whipped if it will not obey at once",
+        "A hard day's work like that will settle any young horse"
       ],
       "answer": 0,
       "evidence": "a bad-tempered man will never make a good-tempered horse"
@@ -138,9 +138,9 @@
       "q": "Why did Mr. Ryder have a bran mash made for Ginger?",
       "choices": [
         "Her mouth was so sore she could not eat hay",
-        "She was too fat for oats",
-        "It was her birthday",
-        "She did not like grass"
+        "She had grown too fat to be given oats",
+        "It was a treat to reward her for good work",
+        "She would not touch the grass in the field"
       ],
       "answer": 0,
       "evidence": "I could not eat the hay, the stalks hurt me"
@@ -150,10 +150,10 @@
       "type": "main-idea",
       "q": "What is the main idea of Ginger's story in this chapter?",
       "choices": [
-        "Being treated by force made her angry, but kindness took her fear away",
-        "Horses should always be kept in stables",
-        "Training horses is easy",
-        "Ginger was born with a bad temper"
+        "Force made her angry, but kindness took away her fear",
+        "Young horses should be kept shut in stables until broken",
+        "Training a horse is easy if the trainer is strong enough",
+        "Ginger was simply born with a bad and vicious temper"
       ],
       "answer": 0,
       "evidence": "his voice took all my fear away"

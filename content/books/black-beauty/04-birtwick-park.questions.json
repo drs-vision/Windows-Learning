@@ -8,9 +8,9 @@
       "q": "What did Black Beauty's first master say when he left?",
       "choices": [
         "\"Good-by, Darkie; be a good horse, and always do your best.\"",
-        "\"I will buy you back someday.\"",
-        "\"Never trust a new master.\"",
-        "\"Watch out for Ginger.\""
+        "\"I will come and buy you back when I can, Darkie.\"",
+        "\"Never trust a new master until he has earned it.\"",
+        "\"Mind your manners, Darkie, and watch out for Ginger.\""
       ],
       "answer": 0,
       "evidence": "be a good horse, and always do your best"
@@ -21,9 +21,9 @@
       "q": "Why was the first stall called a \"loose box\"?",
       "choices": [
         "The horse in it was not tied up but left loose",
-        "Its gate was broken and loose",
-        "It held loose hay",
-        "Its boards were loose"
+        "Its gate was broken and swung loose on its hinges",
+        "It was where the loose hay for the horses was kept",
+        "Its old wooden boards had worked loose over time"
       ],
       "answer": 0,
       "evidence": "because the horse that was put into it was not tied up, but left loose"
@@ -34,9 +34,9 @@
       "q": "What did Merrylegs look like?",
       "choices": [
         "A little fat gray pony with a thick mane and tail",
-        "A tall chestnut mare",
-        "A big black cart-horse",
-        "A brown racehorse"
+        "A tall chestnut mare with a long, handsome neck",
+        "A big black cart-horse with heavy, hairy feet",
+        "A thin brown racehorse with one white stocking"
       ],
       "answer": 0,
       "evidence": "a little fat gray pony"
@@ -47,9 +47,9 @@
       "q": "What did Merrylegs say he did not like in a neighbor?",
       "choices": [
         "A horse that bites",
-        "A horse that snores",
-        "A horse that eats too much",
-        "A horse that is too handsome"
+        "A horse that snores all night",
+        "A horse that eats too much hay",
+        "A horse that kicks at the stall"
       ],
       "answer": 0,
       "evidence": "I do not like any one next door who bites"
@@ -60,9 +60,9 @@
       "q": "How did Ginger act toward Black Beauty when they first met?",
       "choices": [
         "She was cross and said he had turned her out of her box",
-        "She was friendly and welcomed him",
-        "She ignored him completely",
-        "She asked him to be her friend"
+        "She was friendly and showed him around the whole stable",
+        "She ignored him and kept her head in the manger all day",
+        "She asked him to be her friend and share her loose box"
       ],
       "answer": 0,
       "evidence": "So it is you who have turned me out of my box"
@@ -73,9 +73,9 @@
       "q": "Why were Miss Flora and Miss Jessie afraid to come into the stable?",
       "choices": [
         "Ginger had bitten James and made his arm bleed",
-        "Merrylegs kicked them",
-        "The stable was dark",
-        "The groom told them to stay away"
+        "Merrylegs had kicked Miss Flora the week before",
+        "The stable was dark and full of strange noises",
+        "John Manly told them they must stay out of it"
       ],
       "answer": 0,
       "evidence": "she bit James in the arm and made it bleed"
@@ -86,9 +86,9 @@
       "q": "What did Merrylegs think was the reason Ginger bit and snapped?",
       "choices": [
         "She had been badly treated before she came",
-        "She was hungry all the time",
-        "She was jealous of Merrylegs",
-        "She was too young to know better"
+        "She was always hungry and never got enough oats",
+        "She was jealous of Merrylegs and the young ladies",
+        "She was very young and had not learned better yet"
       ],
       "answer": 0,
       "evidence": "she must have been very ill-used before she came here"
@@ -99,9 +99,9 @@
       "q": "What did Merrylegs think of Birtwick Park as a home for horses?",
       "choices": [
         "There was no better place for a horse in the whole country",
-        "It was too crowded",
-        "The grooms were unkind",
-        "It was the worst place he had lived"
+        "It was too crowded, with too many horses for one stable",
+        "It was a nice place, but the grooms were often unkind",
+        "It was the worst place he had ever lived in his life"
       ],
       "answer": 0,
       "evidence": "there is not a better place for a horse all round the country than this"

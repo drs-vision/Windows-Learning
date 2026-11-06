@@ -10,7 +10,7 @@
         "A pipe",
         "An apple",
         "A whistle",
-        "A piece of straw"
+        "A straw"
       ],
       "answer": 0,
       "evidence": "a young man with a pipe in his mouth lounged into the stable"
@@ -20,10 +20,10 @@
       "type": "detail",
       "q": "What did the hostler ask Towler to do?",
       "choices": [
-        "Put some hay down from the loft, after laying down his pipe",
-        "Lock the stable door",
-        "Water the horses",
-        "Clean the traveler's horse"
+        "Put down some hay from the loft, but lay down his pipe first",
+        "Lock the stable door and take the key up to the house",
+        "Fetch water from the pump for all the horses in the stalls",
+        "Clean the traveler's horse and rub down its legs"
       ],
       "answer": 0,
       "evidence": "only lay down your pipe"
@@ -34,9 +34,9 @@
       "q": "What woke Black Beauty in the night?",
       "choices": [
         "Thick, choking smoke in the stable",
-        "James calling his name",
-        "A loud bell",
-        "Ginger kicking the wall"
+        "James calling his name from the yard",
+        "The loud clang of the fire bell",
+        "Ginger kicking at the wall of her stall"
       ],
       "answer": 0,
       "evidence": "the stable seemed full of smoke"
@@ -46,10 +46,10 @@
       "type": "inference",
       "q": "Why would the horses not go with the first frightened hostler?",
       "choices": [
-        "He was in a hurry and so frightened that he frightened them more",
-        "They were tied with chains",
-        "They were asleep",
-        "The door was locked"
+        "He was so frightened that he frightened them more",
+        "They were tied fast to their stalls with iron chains",
+        "They were fast asleep and would not wake up",
+        "The stable door was locked and he had no key"
       ],
       "answer": 0,
       "evidence": "he seemed in such a hurry and so frightened himself that he frightened me still more"
@@ -60,9 +60,9 @@
       "q": "What did James tie over Black Beauty's eyes to lead him out?",
       "choices": [
         "The scarf from his neck",
-        "A wet blanket",
-        "His cap",
-        "A feed bag"
+        "A wet horse blanket",
+        "His own cap",
+        "An empty feed bag"
       ],
       "answer": 0,
       "evidence": "he took the scarf off his neck, and tied it lightly over my eyes"
@@ -73,9 +73,9 @@
       "q": "How did James's voice sound when he came into the burning stable?",
       "choices": [
         "Quiet and cheery, as it always was",
-        "Loud and angry",
-        "Shaky and scared",
-        "Silent; he did not speak"
+        "Loud and angry, shouting at the hostlers",
+        "Shaky and scared, as if he might cry",
+        "Silent, for he did not say a word"
       ],
       "answer": 0,
       "evidence": "James' voice, quiet and cheery, as it always was"
@@ -86,9 +86,9 @@
       "q": "Why did Ginger say Black Beauty's whinny was the best thing he could have done?",
       "choices": [
         "Hearing him outside gave her courage to come out",
-        "It warned the firemen",
-        "It woke up the master",
-        "It scared away the fire"
+        "It warned the firemen that horses were still inside",
+        "It woke the master, who was asleep at the hotel",
+        "It frightened the hostlers into opening the doors"
       ],
       "answer": 0,
       "evidence": "had she not heard me outside she would never have had courage to come out"
@@ -101,7 +101,7 @@
         "\"My brave lad!\"",
         "\"You foolish boy!\"",
         "\"My clever horse!\"",
-        "\"Young Towler!\""
+        "\"Well done, Towler!\""
       ],
       "answer": 0,
       "evidence": "My brave lad!"
@@ -114,7 +114,7 @@
         "The fire-engine",
         "The mistress in a carriage",
         "A doctor's gig",
-        "A mail coach"
+        "The London mail coach"
       ],
       "answer": 0,
       "evidence": "'Tis the fire-engine!"
@@ -125,9 +125,9 @@
       "q": "What rule of John Manly's did Black Beauty think should be the rule everywhere?",
       "choices": [
         "Never allow a pipe in the stable",
-        "Always lock the stable door",
-        "Never travel at night",
-        "Always keep water in a bucket"
+        "Always lock the stable door at night",
+        "Never travel with the horses after dark",
+        "Always keep a full water bucket by the door"
       ],
       "answer": 0,
       "evidence": "never to allow a pipe in the stable"

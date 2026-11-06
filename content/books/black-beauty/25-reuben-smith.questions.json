@@ -6,7 +6,7 @@
       "id": "black-beauty-25-01",
       "type": "character",
       "q": "What was Reuben Smith's one great fault?",
-      "choices": ["The love of drink", "He was cruel to horses", "He was lazy", "He told lies"],
+      "choices": ["The love of drink", "A cruel temper with horses", "Laziness about his work", "A habit of telling lies"],
       "answer": 0,
       "evidence": "he had one great fault and that was the love of drink"
     },
@@ -14,7 +14,7 @@
       "id": "black-beauty-25-02",
       "type": "detail",
       "q": "Why was Reuben able to doctor horses almost as well as a farrier?",
-      "choices": ["He had lived two years with a veterinary surgeon", "He had read many books about horses", "His father was a farrier", "York taught him"],
+      "choices": ["He had lived two years with a veterinary surgeon", "He had read many books about horse doctoring", "His father had been a village farrier for years", "York had taught him all about horse medicine at Earlshall"],
       "answer": 0,
       "evidence": "he had lived two years with a veterinary surgeon"
     },
@@ -22,7 +22,7 @@
       "id": "black-beauty-25-03",
       "type": "sequence",
       "q": "Why was Reuben dismissed the first time?",
-      "choices": ["He was too drunk to hold the reins after a ball", "He lamed one of the earl's horses", "He stole money from the earl", "He fought with York"],
+      "choices": ["He was too drunk to hold the reins after a ball", "He lamed one of the earl's best carriage horses", "He stole money from the earl's purse", "He fought with York in the yard"],
       "answer": 0,
       "evidence": "he was so drunk that he could not hold the reins"
     },
@@ -30,7 +30,7 @@
       "id": "black-beauty-25-04",
       "type": "detail",
       "q": "What did Reuben promise when he was taken back again?",
-      "choices": ["He would never taste another drop while he lived there", "He would work without pay", "He would never ride Black Auster", "He would leave in a year"],
+      "choices": ["Never to taste another drop while he lived there", "To work for half pay until he had earned their trust", "Never to ride Black Auster or any of the young horses", "To leave the place in a year if he broke a rule"],
       "answer": 0,
       "evidence": "he would never taste another drop as long as he lived there"
     },
@@ -38,7 +38,7 @@
       "id": "black-beauty-25-05",
       "type": "detail",
       "q": "What problem with Beauty's shoe did the hostler notice at the White Lion?",
-      "choices": ["A nail had started coming loose", "The shoe was too small", "The shoe was missing", "The shoe had a crack"],
+      "choices": ["A nail had started coming loose", "The shoe had worn thin at the toe", "The shoe had come off on the road", "The shoe had a crack along one side"],
       "answer": 0,
       "evidence": "A nail in one of my front shoes had started"
     },
@@ -46,7 +46,7 @@
       "id": "black-beauty-25-06",
       "type": "inference",
       "q": "Why did Beauty think it was strange that Smith would not have the shoe fixed?",
-      "choices": ["Smith was usually very careful about loose nails", "Smith had no money", "The hostler was a farrier", "It was Beauty's new shoe"],
+      "choices": ["Smith was usually very careful about loose nails", "Smith had spent all his money at the inn already", "The hostler was offering to fix it for nothing", "The farrier's shop stood just across the yard from the inn"],
       "answer": 0,
       "evidence": "he was generally wonderfully particular about loose nails in our shoes"
     },
@@ -54,7 +54,7 @@
       "id": "black-beauty-25-07",
       "type": "sequence",
       "q": "About what time did Smith finally call for Beauty to leave the inn?",
-      "choices": ["Nearly nine o'clock", "Four o'clock", "Six o'clock", "Midnight"],
+      "choices": ["Nearly nine o'clock", "About four o'clock", "Just after six", "Close to midnight"],
       "answer": 0,
       "evidence": "it was nearly nine o'clock before he called for me"
     },
@@ -62,7 +62,7 @@
       "id": "black-beauty-25-08",
       "type": "detail",
       "q": "What made Beauty stumble and fall?",
-      "choices": ["Galloping over sharp new stones with a shoe gone", "A rabbit hole in the road", "Ice on the bridge", "A cart coming the other way"],
+      "choices": ["Galloping over sharp new stones with a shoe gone", "Stepping into a rabbit hole on the dark road", "Slipping on a patch of ice near the bridge", "Swerving suddenly to miss a cart that was coming the other way"],
       "answer": 0,
       "evidence": "with one shoe gone, I was forced to gallop at my utmost speed"
     },
@@ -70,7 +70,7 @@
       "id": "black-beauty-25-09",
       "type": "vocabulary",
       "q": "Beauty says the road \"was not much frequented.\" What does \"frequented\" mean here?",
-      "choices": ["Traveled on or visited often", "Fixed or mended", "Lit by lamps", "Fenced in"],
+      "choices": ["Traveled on or visited often", "Mended or kept in good repair", "Lit by lamps along the way", "Fenced in on both sides"],
       "answer": 0,
       "evidence": "The road was not much frequented"
     },
@@ -78,7 +78,7 @@
       "id": "black-beauty-25-10",
       "type": "character",
       "q": "What did Beauty think about as he stood waiting alone in the moonlight?",
-      "choices": ["Summer nights long ago with his mother at Farmer Grey's", "The fire at the inn", "His race with Lizzie", "His trip on the train"],
+      "choices": ["Summer nights with his mother at Farmer Grey's", "The warm fire in the stable yard at the White Lion", "The night he galloped to fetch the doctor for his mistress", "The cozy stable at Birtwick on a winter evening"],
       "answer": 0,
       "evidence": "when I used to lie beside my mother in the green pleasant meadow at Farmer Grey's"
     }

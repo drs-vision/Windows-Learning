@@ -6,7 +6,7 @@
       "id": "treasure-island-04-01",
       "type": "inference",
       "q": "Why didn't Jim ride straight to Dr. Livesey as the captain had told him?",
-      "choices": ["It would have left his mother alone and unprotected", "He did not know how to ride a horse", "The doctor had moved away", "The road was blocked by snow"],
+      "choices": ["It would have left his mother alone", "He did not know how to ride a horse well enough", "The doctor had moved away from the area", "The road to the doctor's was blocked by deep snow"],
       "answer": 0,
       "evidence": "would have left my mother alone and unprotected"
     },
@@ -14,7 +14,7 @@
       "id": "treasure-island-04-02",
       "type": "detail",
       "q": "Where did Jim and his mother first go for help?",
-      "choices": ["The neighbouring hamlet", "Bristol", "Dr. Livesey's house", "The Royal George inn"],
+      "choices": ["The neighbouring hamlet", "The town of Bristol", "Dr. Livesey's house in the village", "The squire's hall"],
       "answer": 0,
       "evidence": "seek help in the neighbouring hamlet"
     },
@@ -22,7 +22,7 @@
       "id": "treasure-island-04-03",
       "type": "detail",
       "q": "How did the people of the hamlet respond when asked to come back to the inn?",
-      "choices": ["No one would agree to return with them", "All the men grabbed weapons and came along", "They laughed and said the danger was imaginary", "They sent for soldiers from the town"],
+      "choices": ["No one would agree to return with them", "All the men grabbed weapons and came", "They laughed and said the danger was imaginary", "They sent a boy to fetch soldiers"],
       "answer": 0,
       "evidence": "no soul would consent to return with us to the Admiral Benbow"
     },
@@ -30,7 +30,7 @@
       "id": "treasure-island-04-04",
       "type": "inference",
       "q": "Why were the people of the hamlet so afraid?",
-      "choices": ["The name of Captain Flint filled them with terror", "They thought the inn was haunted", "A storm was coming", "They owed money to the captain"],
+      "choices": ["The name of Captain Flint filled them with terror", "They believed the inn was haunted by ghosts", "A great storm was coming in from the sea", "They owed the captain money and feared him"],
       "answer": 0,
       "evidence": "The name of Captain Flint, though it was strange to me, was well enough known to some there and carried a great weight of terror."
     },
@@ -38,7 +38,7 @@
       "id": "treasure-island-04-05",
       "type": "character",
       "q": "What does Jim's mother's speech to the neighbours show about her?",
-      "choices": ["She was brave and determined to get what was owed to her son", "She was eager to give up and leave the area", "She wanted the neighbours to keep the gold", "She was more frightened than anyone"],
+      "choices": ["She was brave and set on getting what her son was owed", "She was eager to give up and move far away from the area", "She wanted the neighbours to keep the captain's gold", "She was more frightened of the pirates than anyone else"],
       "answer": 0,
       "evidence": "If none of the rest of you dare,\" she said, \"Jim and I dare."
     },
@@ -46,7 +46,7 @@
       "id": "treasure-island-04-06",
       "type": "vocabulary",
       "q": "The neighbours cried out at Jim and his mother's \"foolhardiness.\" What does \"foolhardiness\" mean?",
-      "choices": ["Reckless boldness", "Clever planning", "Great laziness", "Silly joking"],
+      "choices": ["Reckless boldness", "Clever, careful planning", "Great laziness", "Silly joking around"],
       "answer": 0,
       "evidence": "they all cried out at our foolhardiness"
     },
@@ -54,7 +54,7 @@
       "id": "treasure-island-04-07",
       "type": "detail",
       "q": "What did the neighbours give Jim before he went back to the inn?",
-      "choices": ["A loaded pistol", "A sword", "A lantern", "A horse"],
+      "choices": ["A loaded pistol", "A short sword", "A lantern and candle", "A fast horse"],
       "answer": 0,
       "evidence": "give me a loaded pistol lest we were attacked"
     },
@@ -70,7 +70,7 @@
       "id": "treasure-island-04-09",
       "type": "detail",
       "q": "Where did Jim finally find the key to the sea-chest?",
-      "choices": ["On a string around the captain's neck", "In the captain's coat pocket", "Under the captain's pillow", "Inside his boot"],
+      "choices": ["On a string around the captain's neck", "In the captain's coat pocket", "Under the pillow in the captain's room", "Inside one of the captain's boots"],
       "answer": 0,
       "evidence": "hanging to a bit of tarry string"
     },
@@ -86,7 +86,7 @@
       "id": "treasure-island-04-11",
       "type": "detail",
       "q": "What were the last two things at the bottom of the chest?",
-      "choices": ["A bundle in oilcloth and a canvas bag of gold", "A map and a compass", "A pistol and a sword", "A Bible and a letter"],
+      "choices": ["A bundle in oilcloth and a canvas bag of gold", "A rolled-up map and a brass ship's compass", "A pair of pistols and a rusty sword", "A Bible and an old letter tied with string"],
       "answer": 0,
       "evidence": "a bundle tied up in oilcloth, and looking like papers, and a canvas bag that gave forth, at a touch, the jingle of gold"
     },
@@ -94,7 +94,7 @@
       "id": "treasure-island-04-12",
       "type": "character",
       "q": "How much money did Jim's mother insist on taking from the captain's bag?",
-      "choices": ["Exactly what was owed, and not a farthing more", "All of it", "Half of it", "None of it"],
+      "choices": ["Exactly what was owed, and not a farthing more", "All of it, to pay for the trouble he had caused", "Half of it, leaving the rest in the chest", "None of it, because she was afraid to touch it"],
       "answer": 0,
       "evidence": "I'll have my dues, and not a farthing over."
     },
@@ -102,7 +102,7 @@
       "id": "treasure-island-04-13",
       "type": "inference",
       "q": "Why was counting the money so slow and difficult?",
-      "choices": ["The coins were from many countries, and she could count only in guineas", "The candle kept going out", "Jim's mother could not read numbers", "The bag had a hole in it"],
+      "choices": ["The coins came from many countries and she knew only guineas", "The candle kept going out and they had to light it again", "Jim's mother could not read the numbers on the coins", "The bag had a hole in it and coins kept falling out"],
       "answer": 0,
       "evidence": "the coins were of all countries and sizes"
     },
@@ -110,7 +110,7 @@
       "id": "treasure-island-04-14",
       "type": "sequence",
       "q": "What sound made Jim stop his mother while she was counting the coins?",
-      "choices": ["The tap-tapping of the blind man's stick", "The church bell", "A gunshot on the hill", "Horses galloping"],
+      "choices": ["The tapping of the blind man's stick", "The church bell ringing in the hamlet", "A gunshot from the top of the hill", "Horses galloping along the road"],
       "answer": 0,
       "evidence": "the tap-tapping of the blind man's stick upon the frozen road"
     },
@@ -118,7 +118,7 @@
       "id": "treasure-island-04-15",
       "type": "sequence",
       "q": "What finally made Jim's mother stop arguing and leave with the money she had counted?",
-      "choices": ["A low whistle from the hill", "The clock striking ten", "Dr. Livesey knocking at the door", "The candle burning out"],
+      "choices": ["A low whistle from the hill", "The clock striking ten o'clock", "Dr. Livesey knocking at the door", "The last candle burning out"],
       "answer": 0,
       "evidence": "a little low whistle sounded a good way off upon the hill"
     },
@@ -126,7 +126,7 @@
       "id": "treasure-island-04-16",
       "type": "detail",
       "q": "Where did Jim and his mother end up hiding at the end of the chapter?",
-      "choices": ["Under the little bridge", "In the hamlet's church", "In a hedge by the inn", "Inside the inn's cellar"],
+      "choices": ["Under the little bridge", "In the hamlet's old church", "In a thick hedge by the inn", "Down in the inn's cellar"],
       "answer": 0,
       "evidence": "drag her down the bank and a little way under the arch"
     }
