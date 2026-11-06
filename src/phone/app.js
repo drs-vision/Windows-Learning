@@ -292,12 +292,12 @@ const canScan = () => 'BarcodeDetector' in window && !!navigator.mediaDevices?.g
 function addKidHtml(first) {
   return `<h2>${first ? 'Link your kids' : 'Add a kid'}</h2>
     <ol class="steps-mini">
-      <li>On your kid's computer, open the <b>CoinQuest parent app</b>.</li>
-      <li>Go to <b>Settings → Show the code</b>.</li>
-      <li>${canScan() ? 'Scan it:' : "Point your phone's <b>Camera</b> at the code."}</li>
+      <li>On the computer, open the <b>CoinQuest parent app</b>.</li>
+      <li>Tap <b>＋ Add a kid</b>.</li>
+      <li>${canScan() ? 'Scan the code it shows:' : "Scan the code it shows with your phone's <b>Camera</b>."}</li>
     </ol>
     ${canScan() ? `<div class="scan">${scanning ? '<video id="scan-video" playsinline muted></video><p class="t">Point at the code…</p>' : '<button class="primary" data-scan>📷 Scan the code</button>'}</div>` : ''}
-    <p class="t">Every kid on that computer shows up here, including kids added there later. Another parent scans the same code on their phone.</p>
+    <p class="t">Kid already set up there? Use <b>Settings → Show the code</b> instead. Every kid on that computer shows up here, including kids added later.</p>
     ${first ? '' : '<button class="link" data-add-close>Cancel</button>'}`;
 }
 async function startScan() {
