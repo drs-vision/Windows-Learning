@@ -9,6 +9,7 @@ using CoinQuest.Guardian.Updates;
 using CoinQuest.Shared.Config;
 using CoinQuest.Shared.Ipc;
 using CoinQuest.Shared.Ledgers;
+using CoinQuest.Shared.Locks;
 using CoinQuest.Shared.Models;
 using CoinQuest.Shared.Scoring;
 
@@ -54,6 +55,7 @@ public sealed class RequestRouter
         Ops.ParentFpStatus, Ops.ParentFpSearch, Ops.ParentFpSuggest, Ops.ParentFpInstallClifp, Ops.ParentFpDownloadInstaller, Ops.ParentFpThumbs, Ops.ParentFpStockNow, Ops.ParentBlocked, Ops.ParentDiagnostics, Ops.ParentRwtImport, Ops.RwtLaunch, Ops.ParentDiscImport, Ops.ParentDiscSetupBegin, Ops.ParentDiscSetupFinish, Ops.DiscLaunch, Ops.ParentDiscRemove,
     };
     private readonly object _sync = new();
+    private static readonly HashSet<string> WhileLocked = new() { Ops.Hello, Ops.State, Ops.LockAsk, Ops.ActivityTick, Ops.AdsState };
 
     public Task<Response> Handle(Request req, PipeServer.Client client)
     {
@@ -64,8 +66,13 @@ public sealed class RequestRouter
     private Task<Response> HandleCore(Request req, PipeServer.Client client)
     {
         var child = _store.FindChildByAccount(client.Account);
+        // A locked profile can only show its lock screen, ask to be opened, and let a parent in.
+        if (child is not null && ProfileLockRules.Now(child.Lock, DateTimeOffset.Now).Locked && !WhileLocked.Contains(req.Op) && !req.Op.StartsWith("parent.") && !req.Op.StartsWith("setup."))
+            return Task.FromResult(Response.Fail(req.Id, "locked"));
         return Task.FromResult(req.Op switch
         {
+            Ops.LockAsk => child is null ? Response.Fail(req.Id, "only a child account can ask") : Response.Success(req.Id, LockAsk(child, client.Account)),
+            Ops.ParentLock => Parent(req, client, child, () => ParentLock(req)),
             Ops.Hello => Response.Success(req.Id, new { version = Version, account = client.Account, isAdmin = client.IsAdmin, childId = child?.Id, setupNeeded = !_store.HasPin }),
 
             // ---- child ----
@@ -186,7 +193,76 @@ public sealed class RequestRouter
             rwtInstalled = CoinQuest.Guardian.Rwt.RwtService.Installed,
             discGames = CoinQuest.Guardian.DiscGames.DiscGameService.Games().Where(g => g.Mode != "pending" && !g.Hidden).Select(g => new { g.Id, g.Title }),
             arcadeMinutesPerPlay = child.Arcade.MinutesPerPlay,
+            locked = LockInfo(child),
         };
+    }
+
+    // ---- full profile lock: nothing opens (apps, quests, arcade, websites) while it's on ------------------------------
+
+    private const string LockModule = "open-profile";
+
+    private object? LockInfo(Child c)
+    {
+        var st = ProfileLockRules.Now(c.Lock, DateTimeOffset.Now);
+        return st.Locked ? new { until = st.Until, scheduled = st.Scheduled, asked = _ledger.PendingClaims(c.Id).Any(p => p.ModuleId == LockModule) } : null;
+    }
+
+    /// <summary>What a parent's screens show: locked now (and until), and the schedule.</summary>
+    private object LockSummary(Child c)
+    {
+        var st = ProfileLockRules.Now(c.Lock, DateTimeOffset.Now);
+        return new { locked = st.Locked, until = st.Until, scheduled = st.Scheduled, schedule = c.Lock.Schedule };
+    }
+
+    private object LockAsk(Child child, string account)
+    {
+        if (!ProfileLockRules.Now(child.Lock, DateTimeOffset.Now).Locked) return new { ok = true, already = "open" };
+        if (_ledger.PendingClaims(child.Id).Any(p => p.ModuleId == LockModule)) return new { ok = true, already = "asked" };
+        _ledger.FileClaim(child.Id, LockModule, 0, $"Open {child.DisplayName}'s computer", account);
+        ApprovalsChanged?.Invoke();
+        AfterChange();
+        return new { ok = true };
+    }
+
+    /// <summary>Lock now (for some minutes, or until opened), open now, or set the schedule. Parent Console (PIN) and phones.</summary>
+    private object ParentLock(Request req)
+    {
+        var id = Str(req, "childId");
+        if (_store.Current.Children.All(c => c.Id != id)) throw new ArgumentException("That child isn't on this PC");
+        var now = DateTimeOffset.Now;
+        var action = OptStr(req, "action");
+        int? minutes = req.Payload?["minutes"] is JsonValue mv && mv.TryGetValue<int>(out var m) && m > 0 ? m : null;
+        List<LockTime>? schedule = null;
+        if (req.Payload?["schedule"] is JsonArray arr)
+            schedule = arr.Select(n => n is null ? null : new LockTime
+            {
+                Days = (n["days"] as JsonArray)?.Select(d => d?.GetValue<int>() ?? -1).Where(d => d is >= 0 and <= 6).Distinct().OrderBy(d => d).ToList() ?? new(),
+                From = n["from"]?.GetValue<string>() ?? "",
+                To = n["to"]?.GetValue<string>() ?? "",
+            }).Where(t => t is not null && t.Days.Count > 0 && ProfileLockRules.TryTime(t.From, out var f) && ProfileLockRules.TryTime(t.To, out var to) && f != to).Select(t => t!).Take(20).ToList();
+        EditChild(id, c =>
+        {
+            var l = c.Lock;
+            if (schedule is not null) l = l with { Schedule = schedule };
+            if (action == "lock") l = ProfileLockRules.LockFor(l, now, minutes);
+            else if (action == "open") l = ProfileLockRules.Open(l, now);
+            // An open that has run out is just clutter.
+            if (l.OpenUntil is { } o && o <= now) l = l with { OpenUntil = null };
+            if (l.Until is { } u && u <= now) l = l with { Until = null };
+            return c with { Lock = l };
+        });
+        if (action == "open") ResolveLockAsks(id, true);
+        if (action == "lock") _log.LogInformation("Profile locked for {Child} ({Minutes})", id, minutes?.ToString() ?? "until opened");
+        var kid = _store.FindChild(id)!;
+        return LockSummary(kid);
+    }
+
+    /// <summary>Opening the profile answers the kid's "please open it" request too.</summary>
+    private void ResolveLockAsks(string childId, bool approve)
+    {
+        foreach (var p in _ledger.PendingClaims(childId).Where(p => p.ModuleId == LockModule).ToList())
+            try { _ledger.ResolveClaim(p.LedgerSeq, approve, "parent", 0); } catch { }
+        ApprovalsChanged?.Invoke();
     }
 
     private Response Submit(Request req, Child child, string account)
@@ -1072,6 +1148,7 @@ public sealed class RequestRouter
                 "setPrize" => PhoneSetPrize(req),
                 "deletePrize" => PhoneEditChild(Str(req, "childId"), c => c with { Prizes = c.Prizes.Where(p => p.Id != Str(req, "id")).ToList() }),
                 "setSites" => PhoneSetSites(req),
+                "lock" => ParentLock(req),
                 "setColor" => PhoneEditChild(Str(req, "childId"), c => System.Text.RegularExpressions.Regex.IsMatch(Str(req, "color"), "^#[0-9a-fA-F]{6}$") ? c with { Color = Str(req, "color") } : c),
                 "setAds" => PhoneEditChild(Str(req, "childId"), c =>
                 {
@@ -1275,6 +1352,7 @@ public sealed class RequestRouter
                     id = c.Id,
                     name = c.DisplayName,
                     color = ColorOf(c),
+                    lockState = LockSummary(c),
                     balance = _ledger.Balance(c.Id),
                     earnedToday = recent.Where(e => e.Delta > 0).Sum(e => e.Delta),
                     spentToday = -recent.Where(e => e.Delta < 0).Sum(e => e.Delta),
@@ -1299,6 +1377,7 @@ public sealed class RequestRouter
         {
             household = new { h.Id, h.Name, children = h.Children },
             pendingClaims = _ledger.PendingClaims(),
+            locks = h.Children.ToDictionary(c => c.Id, c => LockSummary(c)),
             perChild = h.Children.ToDictionary(c => c.Id, c => new
             {
                 balance = _ledger.Balance(c.Id),
@@ -1339,7 +1418,8 @@ public sealed class RequestRouter
             var i = list.FindIndex(c => c.Id == incoming.Id);
             var sid = incoming.WindowsSid;
             if (string.IsNullOrEmpty(sid) && !string.IsNullOrEmpty(incoming.WindowsAccount)) sid = Wts.SidForAccount(incoming.WindowsAccount) ?? "";
-            var fixedUp = incoming with { WindowsSid = sid };
+            // The lock only changes through parent.lock (a settings screen open for a while mustn't undo a phone's "open it").
+            var fixedUp = incoming with { WindowsSid = sid, Lock = i >= 0 ? list[i].Lock : incoming.Lock };
             if (i >= 0) list[i] = fixedUp; else list.Add(fixedUp);
             return h with { Children = list };
         });
@@ -1392,6 +1472,9 @@ public sealed class RequestRouter
         // An approved "allow ads on <site>" request turns ads on for that site (from the Parent Console or a phone).
         if (approve && entry is { Source: AdsModule } && AdsSiteOf(entry.Detail) is { } adsSite)
             EditChild(entry.ChildId, c => c.Allowlist.AdsAllowed.Contains(adsSite, StringComparer.OrdinalIgnoreCase) ? c : c with { Allowlist = c.Allowlist with { AdsAllowed = c.Allowlist.AdsAllowed.Append(adsSite).ToList() } });
+        // An approved "please open it" opens the kid's locked profile until the current lock would have ended.
+        if (approve && entry is { Source: LockModule })
+            EditChild(entry.ChildId, c => c with { Lock = ProfileLockRules.Open(c.Lock, DateTimeOffset.Now) });
         ApprovalsChanged?.Invoke();
         AfterChange();
         return new { ok = entry is not null, entry };

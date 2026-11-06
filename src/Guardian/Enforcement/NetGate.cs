@@ -116,6 +116,10 @@ public sealed class NetGate
         bool Match(string domain) { domain = domain.Trim().ToLowerInvariant().TrimStart('.'); if (domain.StartsWith("www.")) domain = domain[4..]; return host == domain || host.EndsWith("." + domain); }
 
         if (Infrastructure.Any(Match)) return new(true, "infrastructure");
+        // A locked profile reaches nothing but CoinQuest's own infrastructure.
+        var now = DateTimeOffset.Now;
+        children = children.Where(c => !CoinQuest.Shared.Locks.ProfileLockRules.Now(c.Lock, now).Locked).ToList();
+        if (children.Count == 0) return new(false, "profile locked");
         if (children.Any(c => c.Allowlist.Sites.Any(Match))) return new(true, "allowed site");
         foreach (var c in children)
             foreach (var site in c.Allowlist.Sites)

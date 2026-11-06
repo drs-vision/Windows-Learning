@@ -98,7 +98,13 @@ export interface ChildState {
   rwtInstalled?: boolean;
   discGames?: { id: string; title: string }[];
   arcadeMinutesPerPlay?: number;
+  /** Set while the whole profile is locked (until: null = until a parent opens it). */
+  locked?: { until: string | null; scheduled: boolean; asked: boolean } | null;
 }
+
+/** A recurring lock: days 0 = Sunday … 6 = Saturday, "HH:mm" local; To before From runs past midnight. */
+export interface LockTime { days: number[]; from: string; to: string }
+export interface LockSummary { locked: boolean; until: string | null; scheduled: boolean; schedule: LockTime[] }
 
 export interface YouTubeChannel { id: string; title: string; url: string }
 export interface WebGame { id: string; title: string; url: string; strategy: number }
@@ -124,6 +130,7 @@ export interface Child {
 export interface ParentState {
   household: { id: string; name: string; children: Child[] };
   pendingClaims: PendingClaim[];
+  locks?: Record<string, LockSummary>;
   perChild: Record<string, { balance: number; today: LedgerEntry[]; unlocks: Unlock[]; earnedToday: Record<string, number> }>;
   activeChildId?: string | null;
   version: string;

@@ -42,6 +42,31 @@ public sealed record Child
     public int? DailyScreenTimeCapMinutes { get; init; }
     /// <summary>Keep daily activity reports for the parent (time per quest/site/channel/app, typing, things finished).</summary>
     public bool ActivityReports { get; init; } = true;
+    /// <summary>The whole profile locked (nothing opens, no internet), now or on a schedule. See ProfileLockRules.</summary>
+    public ProfileLock Lock { get; init; } = new();
+}
+
+/// <summary>
+/// A full lock of a kid's profile: everything closes and stays closed (apps, CoinQuest's quests and arcade, websites),
+/// only the lock screen shows, where the kid can ask a parent to open it. E.g. "4–5 pm weekdays is Ava's turn".
+/// </summary>
+public sealed record ProfileLock
+{
+    /// <summary>Locked right now until this time (a parent's "Lock now"). DateTimeOffset.MaxValue = until a parent opens it.</summary>
+    public DateTimeOffset? Until { get; init; }
+    /// <summary>Recurring lock times.</summary>
+    public List<LockTime> Schedule { get; init; } = new();
+    /// <summary>A parent opened it (or approved the kid's ask) until this time: scheduled locks before then are skipped.</summary>
+    public DateTimeOffset? OpenUntil { get; init; }
+}
+
+/// <summary>A recurring lock: on these days (0 = Sunday … 6 = Saturday), from From to To ("HH:mm", local time).
+/// A To earlier than From runs past midnight (e.g. 21:00–07:00 is bedtime; the day is the evening's).</summary>
+public sealed record LockTime
+{
+    public List<int> Days { get; init; } = new() { 1, 2, 3, 4, 5 };
+    public string From { get; init; } = "16:00";
+    public string To { get; init; } = "17:00";
 }
 
 public sealed record Allowlist

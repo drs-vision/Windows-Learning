@@ -8,6 +8,7 @@ import { ParentConsole } from '../parent/ParentConsole';
 import { YouTube } from './YouTube';
 import { Websites } from './Websites';
 import type { LessonModule } from '../core/module';
+import { untilText } from '../core/lock';
 
 type View = { name: 'home' } | { name: 'quest'; moduleId: string } | { name: 'shop' } | { name: 'arcade' } | { name: 'youtube' } | { name: 'web' } | { name: 'parent' };
 
@@ -75,6 +76,9 @@ export function Scholar() {
   const arcadeUnlock = unlocks.find((u) => u.kind === 'arcadeUnlock' && u.secondsLeft > 0);
   const ytUnlock = unlocks.find((u) => u.kind === 'youTube' && u.secondsLeft > 0);
 
+  // The whole profile is locked: only the lock screen (a parent can still open the Parent Console).
+  if (state.locked && view.name !== 'parent') return <LockScreen state={state} onAsked={refresh} />;
+
   return (
     <div class="scholar">
       {view.name !== 'parent' && <TopBar state={state} unlocks={unlocks} onHome={() => setView({ name: 'home' })} onShop={() => setView({ name: 'shop' })} />}
@@ -141,6 +145,43 @@ function TopBar({ state, unlocks, onHome, onShop }: { state: ChildState; unlocks
       <Wallet balance={state.balance} onClick={onShop} />
       <SignOut />
     </header>
+  );
+}
+
+/**
+ * The profile is locked (a parent's "lock now", or a scheduled time like "4–5 pm is Ava's turn"). Calm, no countdown
+ * pressure: when it opens again, and a way to ask a parent to open it now.
+ */
+function LockScreen({ state, onAsked }: { state: ChildState; onAsked: () => void }) {
+  const l = state.locked!;
+  const [asking, setAsking] = useState(false);
+  const [err, setErr] = useState('');
+  // Close any game or site window, and come back on our own when the lock is over.
+  useEffect(() => { bridge.closeGame(); }, []);
+  useEffect(() => {
+    if (!l.until) return;
+    const ms = Date.parse(l.until) - Date.now();
+    const t = setTimeout(onAsked, Math.max(1000, Math.min(ms + 1500, 2 ** 31 - 1)));
+    return () => clearTimeout(t);
+  }, [l.until]);
+  async function ask() {
+    setAsking(true); setErr('');
+    try { await bridge.lockAsk(); onAsked(); } catch (e) { setErr((e as Error).message); }
+    setAsking(false);
+  }
+  return (
+    <div class="lock-screen">
+      <div class="lock-card">
+        <div class="lock-icon" aria-hidden="true">🔒</div>
+        <h1>Taking a break</h1>
+        <p class="lock-when">{l.until ? <>Back at <b>{untilText(l.until)}</b></> : 'Until a parent opens it'}</p>
+        {l.asked
+          ? <p class="lock-asked">✓ Asked. A parent will see it.</p>
+          : <button class="primary" disabled={asking} onClick={ask}>{asking ? 'Asking…' : 'Ask to open'}</button>}
+        {err && <p class="error small">{err}</p>}
+        <div class="lock-foot"><span class="muted">Hi, {state.child.displayName}</span><SignOut /></div>
+      </div>
+    </div>
   );
 }
 

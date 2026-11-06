@@ -86,6 +86,9 @@ public sealed class GuardianWorker : BackgroundService
                 Step("browser policy", () => _policy.Apply(s.Child)); // belt and braces; real browsers are also closed outright
                 Step("apps", _enforcer.Sweep);
                 Step("scholar", () => EnsureScholarRunning(s));
+                // A scheduled lock starting or ending: the kid's screen switches to (or away from) the lock screen.
+                var locked = CoinQuest.Shared.Locks.ProfileLockRules.Now(s.Child.Lock, DateTimeOffset.Now).Locked;
+                if (locked != _wasLocked) { _wasLocked = locked; _log.LogInformation("{Child}'s profile {State}", s.Child.DisplayName, locked ? "locked" : "open"); _policy.Invalidate(); PushState(); }
             }
             Step("grace", RunGraceCloses);
             Step("classics", () => _stocker.Tick());
@@ -102,6 +105,7 @@ public sealed class GuardianWorker : BackgroundService
     }
 
     private DateTime _lastHeartbeatLog = DateTime.MinValue;
+    private bool _wasLocked;
     private readonly Dictionary<string, DateTime> _lastStepError = new();
 
     private void Step(string name, Action a)

@@ -1,7 +1,8 @@
 import { useEffect, useRef, useState } from 'preact/hooks';
-import type { Child, FlashpointGame, FpCatalogGame, Game, ParentState, Prize, WebGame } from '../core/types';
+import type { Child, FlashpointGame, FpCatalogGame, Game, LockSummary, LockTime, ParentState, Prize, WebGame } from '../core/types';
 import { BLOCK_MINUTES, kidColor, autoSamplerPrice, defaultArcadePrice, youTubeBlockPrice } from '../core/types';
 import { ReadingAnalysis } from './reading';
+import { DAY_LETTERS, DAY_NAMES, daysText, timeText, untilText } from '../core/lock';
 import { KidAccount, type WinAccount } from './KidAccount';
 import { bridge, type DiscStatus, type FpStatus, type PhoneLinks, type RwtStatus } from '../core/bridge';
 import qrcode from 'qrcode-generator';
@@ -72,8 +73,9 @@ export function ParentConsole({ embedded, onClose }: { embedded?: boolean; onClo
       </nav>
       {/* Kids on this PC: tap to switch; every tab follows the chosen kid. */}
       <div class="kid-row" role="tablist" aria-label="Kids">
-        {kids.map((k) => <button role="tab" class={'kid-pill' + (k.id === child?.id ? ' on' : '')} style={{ '--kid': kidColor(kids, k.id) } as any} onClick={() => pickKid(k.id)}>{k.displayName}</button>)}
+        {kids.map((k) => <button role="tab" class={'kid-pill' + (k.id === child?.id ? ' on' : '')} style={{ '--kid': kidColor(kids, k.id) } as any} onClick={() => pickKid(k.id)}>{state.locks?.[k.id]?.locked && <span class="pill-lock" aria-label="locked">🔒</span>}{k.displayName}</button>)}
         <button class="kid-pill add" onClick={() => setAdding(true)}>＋ Add a kid</button>
+        {child && <LockControl child={child} lock={state.locks?.[child.id]} onChange={refresh} />}
       </div>
       {adding && <AddKid taken={kids.map((k) => kidColor(kids, k.id))} onClose={() => setAdding(false)} onAdded={(id) => { setAdding(false); pickKid(id); refresh(); }} />}
       {error && <p class="error">{error}</p>}
@@ -266,8 +268,11 @@ function Approvals({ state, onChange }: { state: ParentState; onChange: () => vo
     <div class="approvals">
       {state.pendingClaims.map((c) => (
         <div class="card claim">
-          <div class="claim-text">{state.household.children.length > 1 && <small class="claim-kid">{state.household.children.find((k) => k.id === c.childId)?.displayName}</small>}<b>{c.moduleId === 'allow-ads' ? '🚫 Allow ads?' : labelFor(c.moduleId)}</b><p>{c.detail}{c.moduleId === 'allow-ads' && <><br /><small class="muted">Ads are hidden on every site. Allow them here only if the site won't work without them.</small></>}</p><small class="muted">{when(c.at)}</small></div>
-          {c.moduleId === 'allow-ads' ? <div class="claim-actions">
+          <div class="claim-text">{state.household.children.length > 1 && <small class="claim-kid">{state.household.children.find((k) => k.id === c.childId)?.displayName}</small>}<b>{c.moduleId === 'allow-ads' ? '🚫 Allow ads?' : c.moduleId === 'open-profile' ? '🔒 Open the computer?' : labelFor(c.moduleId)}</b><p>{c.detail}{c.moduleId === 'allow-ads' && <><br /><small class="muted">Ads are hidden on every site. Allow them here only if the site won't work without them.</small></>}</p><small class="muted">{when(c.at)}</small></div>
+          {c.moduleId === 'open-profile' ? <div class="claim-actions">
+            <button class="primary" onClick={() => bridge.parentResolveClaim(c.ledgerSeq, true, 0).then(onChange)}>Open it</button>
+            <button class="ghost" onClick={() => bridge.parentResolveClaim(c.ledgerSeq, false).then(onChange)}>Keep locked</button>
+          </div> : c.moduleId === 'allow-ads' ? <div class="claim-actions">
             <button class="primary" onClick={() => bridge.parentResolveClaim(c.ledgerSeq, true, 0).then(onChange)}>Allow ads</button>
             <button class="ghost" onClick={() => bridge.parentResolveClaim(c.ledgerSeq, false).then(onChange)}>Keep hidden</button>
           </div> : <div class="claim-actions">
@@ -1306,6 +1311,56 @@ function PhoneControl({ compact }: { compact?: boolean } = {}) {
       )}
       {!compact && st && st.phones.length > 0 && <p class="muted small">Connection: {st.status}</p>}
       {err && <p class="error small">{err}</p>}
+    </div>
+  );
+}
+
+/**
+ * Lock a kid's whole profile (nothing opens, no internet) now or on a schedule — e.g. "4–5 pm is Ava's turn".
+ * Tucked away as one small lock button at the end of the kid row; the kid can ask to open it from their lock screen.
+ */
+function LockControl({ child, lock, onChange }: { child: Child; lock?: LockSummary; onChange: () => void }) {
+  const [open, setOpen] = useState(false);
+  const [editing, setEditing] = useState<LockTime | null>(null);
+  const [err, setErr] = useState('');
+  const name = child.displayName;
+  const schedule = lock?.schedule ?? [];
+  const run = (change: Parameters<typeof bridge.parentLock>[1]) => { setErr(''); return bridge.parentLock(child.id, change).then(onChange).catch((e) => setErr((e as Error).message)); };
+  const saveTime = () => { if (!editing) return; const t = editing; if (!t.days.length || !t.from || !t.to || t.from === t.to) { setErr('Pick at least one day and two different times.'); return; } run({ schedule: [...schedule, t] }).then(() => setEditing(null)); };
+  return (
+    <div class="lock-ctl">
+      <button class={'lock-btn' + (lock?.locked ? ' on' : '') + (schedule.length ? ' sched' : '')} title={lock?.locked ? `${name} is locked` : `Lock ${name}`} aria-label={`Lock ${name}`} aria-expanded={open} onClick={() => setOpen(!open)}>🔒</button>
+      {open && <>
+        <div class="lock-back" onClick={() => { setOpen(false); setEditing(null); }} />
+        <div class="lock-pop card" role="dialog" aria-label={`Lock ${name}`}>
+          {lock?.locked ? (
+            <div class="row between"><span>🔒 <b>{name}</b> is locked{lock.until ? <> until <b>{untilText(lock.until)}</b></> : ''}</span><button class="primary small" onClick={() => run({ action: 'open' })}>Open now</button></div>
+          ) : (
+            <div class="lock-now">
+              <span>Lock <b>{name}</b> now</span>
+              <div class="chips">
+                {[[30, '30 min'], [60, '1 hr'], [120, '2 hr']].map(([m, l]) => <button class="chip" onClick={() => run({ action: 'lock', minutes: m as number })}>{l}</button>)}
+                <button class="chip" onClick={() => run({ action: 'lock', minutes: null })}>Until I open it</button>
+              </div>
+            </div>
+          )}
+          <div class="lock-sched">
+            <small class="muted">Every week</small>
+            {schedule.map((t, i) => (
+              <div class="lock-time"><span>{daysText(t.days)} · {timeText(t.from)}–{timeText(t.to)}</span><button class="ghost small" aria-label="Remove" onClick={() => run({ schedule: schedule.filter((_, j) => j !== i) })}>✕</button></div>
+            ))}
+            {editing ? (
+              <div class="lock-edit">
+                <div class="days">{DAY_LETTERS.map((d, i) => <button class={'day' + (editing.days.includes(i) ? ' on' : '')} aria-label={DAY_NAMES[i]} aria-pressed={editing.days.includes(i)} onClick={() => setEditing({ ...editing, days: editing.days.includes(i) ? editing.days.filter((x) => x !== i) : [...editing.days, i].sort() })}>{d}</button>)}</div>
+                <div class="row nowrap"><input type="time" value={editing.from} onInput={(e) => setEditing({ ...editing, from: (e.target as HTMLInputElement).value })} /><span class="muted">to</span><input type="time" value={editing.to} onInput={(e) => setEditing({ ...editing, to: (e.target as HTMLInputElement).value })} /></div>
+                <div class="row"><button class="primary small" onClick={saveTime}>Add</button><button class="ghost small" onClick={() => setEditing(null)}>Cancel</button></div>
+              </div>
+            ) : <button class="link small" onClick={() => setEditing({ days: [1, 2, 3, 4, 5], from: '16:00', to: '17:00' })}>＋ Add a time</button>}
+          </div>
+          {err && <p class="error small">{err}</p>}
+          <p class="muted small">While locked, nothing opens and there's no internet. {name} can ask you to open it.</p>
+        </div>
+      </>}
     </div>
   );
 }

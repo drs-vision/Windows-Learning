@@ -2,7 +2,7 @@
 // Inside the Windows shell: window.chrome.webview.postMessage → C# → named pipe → Guardian.
 // In a plain browser (npm run dev): an in-memory mock Guardian so the whole UI can be developed and demoed.
 
-import type { ArcadeSettings, ChildState, FpCatalogGame, Game, ParentState, Unlock, Video, YouTubeChannel } from './types';
+import type { ArcadeSettings, ChildState, FpCatalogGame, Game, LockSummary, LockTime, ParentState, Unlock, Video, YouTubeChannel } from './types';
 import { MockGuardian } from './mock-guardian';
 
 interface Req { id: string; op: string; token?: string; payload?: unknown }
@@ -134,6 +134,10 @@ class Bridge {
   setupCreateAccount(userName: string, fullName: string, password: string) { return this.call<{ account: string }>('setup.createAccount', { userName, fullName, password }); }
   parentAccounts() { return this.call<{ name: string; fullName: string; isAdmin: boolean; disabled: boolean; sid: string; usedBy?: string | null }[]>('parent.accounts', {}, { parent: true }); }
   parentCreateAccount(userName: string, fullName: string, password: string) { return this.call<{ account: string }>('parent.createAccount', { userName, fullName, password }, { parent: true }); }
+  /** Lock a kid's whole profile now (minutes; none = until opened), open it, and/or set the lock schedule. */
+  parentLock(childId: string, change: { action?: 'lock' | 'open'; minutes?: number | null; schedule?: LockTime[] }) { return this.call<LockSummary>('parent.lock', { childId, ...change }, { parent: true }); }
+  /** The child asks a parent to open their locked profile. */
+  lockAsk() { return this.call<{ ok: boolean; already?: string }>('lock.ask'); }
   parentRemoveChild(childId: string, deleteAccount: boolean) { return this.call<{ ok: boolean; accountDeleted: boolean; accountError?: string | null }>('parent.removeChild', { childId, deleteAccount }, { parent: true }); }
   parentAddChild(displayName: string, windowsAccount: string, color?: string) { return this.call<{ childId: string }>('parent.addChild', { displayName, windowsAccount, color }, { parent: true }); }
   setupComplete(pin: string, child: { displayName: string; windowsAccount: string; color?: string }, preset: string) { return this.call('setup.complete', { pin, child, preset }); }

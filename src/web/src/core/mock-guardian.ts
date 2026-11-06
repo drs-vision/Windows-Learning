@@ -5,6 +5,7 @@ import type { Child, ChildState, LedgerEntry, ParentState, PendingClaim, Prize, 
 import { scoreModule } from '../scorers';
 import { autoSamplerPrice, defaultArcadePrice, youTubeBlockPrice } from './types';
 import type { Ev } from './bridge';
+import { lockFor, lockNow, openLock, type StoredLock } from './lock';
 
 const STARTER_PRIZES: Prize[] = [
   { id: 'p-yt', name: '20 minutes of YouTube', cost: 48, kind: 'youTube', minutes: 20, dailyCap: 3, boughtToday: 0, targets: [] },
@@ -76,6 +77,9 @@ export class MockGuardian {
   private earnedToday(source: string) { const t = this.todayStart(); return this.ledger.filter((e) => e.source === source && e.at >= t && (e.kind === 'earn' || e.kind === 'claimApproved')).reduce((s, e) => s + e.delta, 0); }
   private boughtToday(prizeId: string) { const t = this.todayStart(); return this.ledger.filter((e) => e.source === prizeId && e.kind === 'spend' && e.at >= t).length; }
 
+  private lockOf(id: string): StoredLock { try { return JSON.parse(localStorage.getItem('cq.mock.lock.' + id) ?? 'null') ?? { schedule: [] }; } catch { return { schedule: [] }; } }
+  private setLock(id: string, l: StoredLock) { localStorage.setItem('cq.mock.lock.' + id, JSON.stringify(l)); }
+
   private childState(): ChildState {
     const t = this.todayStart();
     return {
@@ -89,6 +93,7 @@ export class MockGuardian {
       pendingClaims: this.claims,
       progress: this.progress,
       sites: this.child.allowlist.sites,
+      locked: (() => { const st = lockNow(this.lockOf(this.child.id)); return st.locked ? { until: st.until, scheduled: st.scheduled, asked: this.claims.some((c) => c.moduleId === 'open-profile' && c.childId === this.child.id) } : null; })(),
     };
   }
 
@@ -97,6 +102,7 @@ export class MockGuardian {
     return {
       household: { id: 'local', name: 'My family', children: [this.child, ...this.moreKids()] },
       pendingClaims: this.claims,
+      locks: Object.fromEntries([this.child, ...this.moreKids()].map((k) => [k.id, lockNow(this.lockOf(k.id))])),
       perChild: { ...Object.fromEntries(this.moreKids().map((k) => [k.id, { balance: 0, today: [], unlocks: [], earnedToday: {} }])), [this.child.id]: { balance: this.balance(), today: this.ledger.filter((e) => e.at >= t).reverse(), unlocks: this.unlocks, earnedToday: Object.fromEntries(Object.keys(this.child.modules).map((m) => [m, this.earnedToday(m)])) } },
       activeChildId: this.child.id,
       version: '0.1.0-dev',
@@ -118,6 +124,24 @@ export class MockGuardian {
       case 'shell.info': return ok({ app: new URLSearchParams(location.search).get('app') ?? 'scholar', kiosk: false, version: '0.1.0-dev', account: 'you' });
       case 'shell.openBrowser': window.open(p.url, '_blank'); return ok({ ok: true });
       case 'state': return ok(this.childState());
+      case 'lock.ask': {
+        if (!lockNow(this.lockOf(this.child.id)).locked) return ok({ ok: true, already: 'open' });
+        if (this.claims.some((c) => c.moduleId === 'open-profile' && c.childId === this.child.id)) return ok({ ok: true, already: 'asked' });
+        const e = this.append('claim', 0, 'open-profile', `Open ${this.child.displayName}'s computer`);
+        this.claims.push({ ledgerSeq: e.seq, childId: this.child.id, moduleId: 'open-profile', coins: 0, detail: e.detail, at: e.at });
+        this.persist(); this.emit({ name: 'approvals' }); this.emit({ name: 'state' }); return ok({ ok: true });
+      }
+      case 'parent.lock': {
+        if (!parentOk) return fail('parent PIN required');
+        let l = this.lockOf(p.childId);
+        if (Array.isArray(p.schedule)) l = { ...l, schedule: p.schedule };
+        if (p.action === 'lock') l = lockFor(l, p.minutes);
+        if (p.action === 'open') {
+          l = openLock(l);
+          this.claims = this.claims.filter((c) => !(c.moduleId === 'open-profile' && c.childId === p.childId)); this.persist(); this.emit({ name: 'approvals' });
+        }
+        this.setLock(p.childId, l); this.emit({ name: 'state' }); return ok(lockNow(l));
+      }
       case 'progress': this.progress[p.moduleId] = p.progress; this.persist(); return ok();
       case 'arcade.list': {
         const a = this.child.arcade!;
@@ -314,6 +338,7 @@ export class MockGuardian {
         if (i < 0) return ok({ ok: false });
         const [c] = this.claims.splice(i, 1);
         const entry = this.append(p.approve ? 'claimApproved' : 'claimDenied', p.approve ? (p.coins ?? c.coins) : 0, c.moduleId, c.detail);
+        if (p.approve && c.moduleId === 'open-profile') this.setLock(c.childId, openLock(this.lockOf(c.childId)));
         this.emit({ name: 'approvals' }); this.emit({ name: 'state' });
         return ok({ ok: true, entry });
       }

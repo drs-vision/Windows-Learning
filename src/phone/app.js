@@ -404,7 +404,10 @@ function homeScreen() {
   let out = claims.length ? `<h2>Waiting for you</h2>` + claims.map((c) => `
       <div class="card claim">
         <div><span class="who">${esc(c.child)}</span> <span class="t">${ago(c.at)}</span></div>
-        ${c.kind === 'allow-ads'
+        ${c.kind === 'open-profile'
+          ? `<p>🔒 ${esc(c.what)}<br><span class="t">Locked right now. Opening it lasts until the lock would have ended.</span></p>
+        <div class="row"><button class="give" data-claim="${c.seq}" data-ok="1">Open it</button><button class="take" data-claim="${c.seq}" data-ok="0">Keep locked</button></div>`
+          : c.kind === 'allow-ads'
           ? `<p>🚫 ${esc(c.what)}<br><span class="t">This site's ads are hidden. Allow them if it won't work without them.</span></p>
         <div class="row"><button class="give" data-claim="${c.seq}" data-ok="1">Allow ads</button><button class="take" data-claim="${c.seq}" data-ok="0">Keep hidden</button></div>`
           : `<p>${esc(c.what)} · ${coins(c.coins)}</p>
@@ -415,7 +418,9 @@ function homeScreen() {
         <div class="kid-top">
           <p class="kid-name">${esc(k.name)}${state.atKeyboard === k.id ? '<span class="here">at the PC</span>' : ''}</p>
           <div class="balance">${coins(k.balance)}</div>
+          <button class="lock-mini ${k.lockState?.locked ? 'on' : ''}" data-lock="${esc(k.id)}" aria-label="Lock ${esc(k.name)}">🔒</button>
         </div>
+        ${k.lockState?.locked ? `<div class="locked-line">🔒 Locked${k.lockState.until ? ` until ${esc(untilText(k.lockState.until))}` : ''}<button data-lock-open="${esc(k.id)}">Open now</button></div>` : ''}
         <div class="today">Today: <span class="plus">+${k.earnedToday}</span> earned · <span class="minus">${k.spentToday ? '−' + k.spentToday : '0'}</span> spent</div>
         <div class="row"><button class="give" data-give="${esc(k.id)}">＋ Give</button><button class="take" data-take="${esc(k.id)}">－ Take</button></div>
         ${(k.unlocks || []).map((u) => `<div class="unlock"><span>▶ ${esc(u.name)} · ${mins(u.secondsLeft)} left</span><button data-end="${esc(u.id)}">End now</button></div>`).join('')}
@@ -631,6 +636,62 @@ function giveSheet(childId, sign) {
   sheet.showModal();
 }
 
+// ---- lock a kid's whole profile (now or every week) ----------------------------------------------------------------
+const DAY_NAMES = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+function untilText(iso) {
+  const d = new Date(iso), now = new Date();
+  const t = d.toLocaleTimeString([], { hour: 'numeric', minute: '2-digit' });
+  return d.toDateString() === now.toDateString() ? t : `${d.toLocaleDateString([], { weekday: 'short' })} ${t}`;
+}
+function timeText(hhmm) { const [h, m] = hhmm.split(':').map(Number); return new Date(2000, 0, 1, h, m).toLocaleTimeString([], { hour: 'numeric', minute: '2-digit' }); }
+function daysText(days) {
+  const d = [...new Set(days)].sort().join();
+  return d === '0,1,2,3,4,5,6' ? 'Every day' : d === '1,2,3,4,5' ? 'Weekdays' : d === '0,6' ? 'Weekends' : days.map((x) => DAY_NAMES[x]).join(', ');
+}
+async function lockAct(childId, change, label) { const d = await act('lock', { childId, ...change }, label); await refresh(); return d; }
+function lockSheet(childId) {
+  const k = state.children.find((c) => c.id === childId);
+  const l = k.lockState ?? { locked: false, schedule: [] };
+  const schedule = l.schedule ?? [];
+  let edit = null;
+  const draw = () => {
+    sheet.innerHTML = `
+      <form method="dialog" class="lock-sheet">
+        <h3>${l.locked ? `${esc(k.name)} is locked${l.until ? ` until ${esc(untilText(l.until))}` : ''}` : `Lock ${esc(k.name)}`}</h3>
+        ${l.locked
+          ? `<button type="button" class="give" data-l-open>Open now</button>`
+          : `<p class="t">Nothing opens and there's no internet. ${esc(k.name)} can ask you to open it.</p>
+             <div class="amounts">${[[30, '30 min'], [60, '1 hr'], [120, '2 hr'], [0, 'Until I open']].map(([m, t]) => `<button type="button" data-l-min="${m}">${t}</button>`).join('')}</div>`}
+        <p class="t" style="margin:14px 0 4px">Every week</p>
+        ${schedule.map((t, i) => `<div class="lock-row"><span>${esc(daysText(t.days))} · ${esc(timeText(t.from))}–${esc(timeText(t.to))}</span><button type="button" data-l-del="${i}" aria-label="Remove">✕</button></div>`).join('') || '<p class="t">No regular times.</p>'}
+        ${edit ? `<div class="lock-edit">
+            <div class="days">${DAY_NAMES.map((n, i) => `<button type="button" class="${edit.days.includes(i) ? 'on' : ''}" data-l-day="${i}" aria-label="${n}">${n[0]}</button>`).join('')}</div>
+            <div class="row" style="gap:8px"><input type="time" id="l-from" value="${edit.from}"><span class="t">to</span><input type="time" id="l-to" value="${edit.to}"></div>
+            <div class="row"><button type="button" data-l-cancel>Cancel</button><button type="button" class="give" data-l-add>Add</button></div>
+          </div>` : `<button type="button" class="link" data-l-new>＋ Add a time</button>`}
+        <div class="row" style="margin-top:12px"><button type="button" data-cancel>Done</button></div>
+      </form>`;
+  };
+  draw();
+  sheet.addEventListener('close', () => { sheet.onclick = null; }, { once: true });
+  sheet.onclick = async (e) => {
+    const b = e.target.closest('button'); if (!b) return;
+    if (edit) { edit.from = sheet.querySelector('#l-from')?.value || edit.from; edit.to = sheet.querySelector('#l-to')?.value || edit.to; }
+    if (b.dataset.cancel !== undefined) { sheet.onclick = null; sheet.close(); }
+    else if (b.dataset.lOpen !== undefined) { sheet.close(); sheet.onclick = null; await lockAct(childId, { action: 'open' }, `${k.name} is open`); }
+    else if (b.dataset.lMin !== undefined) { const m = +b.dataset.lMin; sheet.close(); sheet.onclick = null; await lockAct(childId, { action: 'lock', minutes: m || null }, `${k.name} is locked`); }
+    else if (b.dataset.lDel !== undefined) { schedule.splice(+b.dataset.lDel, 1); await lockAct(childId, { schedule }, 'Removed'); draw(); }
+    else if (b.dataset.lNew !== undefined) { edit = { days: [1, 2, 3, 4, 5], from: '16:00', to: '17:00' }; draw(); }
+    else if (b.dataset.lCancel !== undefined) { edit = null; draw(); }
+    else if (b.dataset.lDay !== undefined) { const d = +b.dataset.lDay; edit.days = edit.days.includes(d) ? edit.days.filter((x) => x !== d) : [...edit.days, d].sort(); draw(); }
+    else if (b.dataset.lAdd !== undefined) {
+      if (!edit.days.length || edit.from === edit.to) return;
+      schedule.push({ ...edit }); edit = null; await lockAct(childId, { schedule }, 'Lock time added'); draw();
+    }
+  };
+  sheet.showModal();
+}
+
 // ---- apps on the PC (for app prizes and allowed apps) ------------------------------------------------------------
 let pcApps = null; // [{ name, exe }] from the PC's Start menu, loaded once
 const appName = (exe) => pcApps?.find((a) => a.exe.toLowerCase() === exe.toLowerCase())?.name ?? exe.replace(/\.exe$/i, '');
@@ -794,6 +855,8 @@ app.addEventListener('click', (e) => {
   else if (b.dataset.repStep) { actv.sel = rep.step(actv.sel, actv.mode, Number(b.dataset.repStep)); actv.picked = true; render(); }
   else if (b.dataset.repCal !== undefined) { const d = rep.parseDay(actv.sel); actv.month = new Date(d.getFullYear(), d.getMonth(), 1); actv.cal = !actv.cal; render(); }
   else if (b.dataset.repMode) { actv.mode = b.dataset.repMode; render(); }
+  else if (b.dataset.lock) lockSheet(b.dataset.lock);
+  else if (b.dataset.lockOpen) lockAct(b.dataset.lockOpen, { action: 'open' }, 'Opened');
   else if (b.dataset.give) giveSheet(b.dataset.give, +1);
   else if (b.dataset.take) giveSheet(b.dataset.take, -1);
   else if (b.dataset.claim) act('claim', { seq: +b.dataset.claim, approve: b.dataset.ok === '1' }, b.dataset.ok === '1' ? 'Approved' : 'Declined');

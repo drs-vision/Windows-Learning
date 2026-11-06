@@ -87,12 +87,17 @@ public sealed class ProcessEnforcer
         var s = _session.Current;
         if (s is null) return;
 
+        // A locked profile: nothing but Windows itself and CoinQuest's lock screen (no allowed apps, unlocks, games).
+        var locked = CoinQuest.Shared.Locks.ProfileLockRules.Now(s.Child.Lock, DateTimeOffset.Now).Locked;
         var allowed = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
-        foreach (var a in s.Child.Allowlist.Apps) allowed.Add(Path.GetFileName(a));
-        foreach (var u in _unlocks.ActiveFor(s.Child.Id)) if (u.Kind == PrizeKind.AppUnlock) foreach (var t in u.Targets) allowed.Add(Path.GetFileName(t));
+        if (!locked)
+        {
+            foreach (var a in s.Child.Allowlist.Apps) allowed.Add(Path.GetFileName(a));
+            foreach (var u in _unlocks.ActiveFor(s.Child.Id)) if (u.Kind == PrizeKind.AppUnlock) foreach (var t in u.Targets) allowed.Add(Path.GetFileName(t));
+        }
 
-        var fullPaths = new HashSet<string>(s.Child.Allowlist.Apps.Where(a => a.Contains('\\')), StringComparer.OrdinalIgnoreCase);
-        var fpRoot = ActiveFlashpointRoot(s);
+        var fullPaths = locked ? new HashSet<string>() : new HashSet<string>(s.Child.Allowlist.Apps.Where(a => a.Contains('\\')), StringComparer.OrdinalIgnoreCase);
+        var fpRoot = locked ? null : ActiveFlashpointRoot(s);
 
         foreach (var p in Process.GetProcesses())
         {
@@ -108,10 +113,10 @@ public sealed class ProcessEnforcer
                 if (!isBrowser && path is not null && fullPaths.Contains(path)) continue;
                 if (path is not null && fpRoot is not null && path.StartsWith(fpRoot, StringComparison.OrdinalIgnoreCase)) continue;
                 // otvdm: the 16-bit helper that runs Read, Write & Type! (only CoinQuest's own copy).
-                if (path is not null && path.StartsWith(CoinQuest.Guardian.Rwt.RwtService.OtvdmDir + Path.DirectorySeparatorChar, StringComparison.OrdinalIgnoreCase)) continue;
+                if (!locked && path is not null && path.StartsWith(CoinQuest.Guardian.Rwt.RwtService.OtvdmDir + Path.DirectorySeparatorChar, StringComparison.OrdinalIgnoreCase)) continue;
                 // The family's classic CD games (CoinQuest's own copies).
-                if (path is not null && path.StartsWith(CoinQuest.Guardian.DiscGames.DiscGameService.Root + Path.DirectorySeparatorChar, StringComparison.OrdinalIgnoreCase)) continue;
-                if (path is not null && CoinQuest.Guardian.DiscGames.DiscGameService.InstalledDirs().Any(d => path.StartsWith(d, StringComparison.OrdinalIgnoreCase))) continue;
+                if (!locked && path is not null && path.StartsWith(CoinQuest.Guardian.DiscGames.DiscGameService.Root + Path.DirectorySeparatorChar, StringComparison.OrdinalIgnoreCase)) continue;
+                if (!locked && path is not null && CoinQuest.Guardian.DiscGames.DiscGameService.InstalledDirs().Any(d => path.StartsWith(d, StringComparison.OrdinalIgnoreCase))) continue;
                 // Anything living under Windows\SystemApps is treated as safe.
                 if (path is not null && (path.StartsWith(@"C:\Windows\SystemApps", StringComparison.OrdinalIgnoreCase) ||
                                          path.StartsWith(@"C:\Windows\ImmersiveControlPanel", StringComparison.OrdinalIgnoreCase))) continue;

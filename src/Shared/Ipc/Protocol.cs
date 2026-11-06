@@ -58,6 +58,7 @@ public static class Ops
     public const string BooksRead = "books.read";        // { bookId, n, readMs } → the chapter was read to the end (quiz optional): { read, status }
     public const string BooksTyped = "books.typed";      // { bookId, n, part, typed, startedAt, finishedAt } typing mode
     public const string AdsState = "ads.state";        // → { allowed[] } sites where ads are shown for the child at the keyboard, { pending[] } sites asked about
+    public const string LockAsk = "lock.ask";          // the child asks a parent to open their locked profile (a request the parent approves with the PIN or from the phone)
     public const string AdsRequest = "ads.request";    // { site } the child asks a parent to allow ads on a site (a request the parent approves with the PIN or from the phone)
     public const string PageParts = "shell.pageParts"; // { site, hosts[] } kid app only: hosts a page on an allowed site loads for itself → { allowed[] }
     public const string ActivityTick = "activity.tick"; // { kind, key, label, seconds } a minute of what the child is doing (from the CoinQuest window)
@@ -126,6 +127,7 @@ public static class Ops
     public const string SetupCreateAccount = "setup.createAccount"; // { userName, fullName, password? } first run: a new Standard account → { account }
     public const string ParentAccounts = "parent.accounts";          // Windows accounts on this PC, for "Add a kid"
     public const string ParentCreateAccount = "parent.createAccount"; // { userName, fullName, password? } → { account }
+    public const string ParentLock = "parent.lock";                  // { childId, action: "lock"|"open", minutes? (lock; none = until opened), schedule? [{days,from,to}] } → the child's lock state
     public const string ParentRemoveChild = "parent.removeChild";    // { childId, deleteAccount? } take a kid off CoinQuest (locks lifted, their data removed) → { ok, accountDeleted }
     public const string ParentAddChild = "parent.addChild";          // { displayName, windowsAccount } another child on this PC → { childId }
     public const string SetupComplete = "setup.complete";           // { pin, child: { displayName, windowsAccount } }
