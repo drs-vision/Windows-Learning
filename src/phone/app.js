@@ -260,7 +260,7 @@ const QUESTS = {
   'sound-keys': ['🔤', 'Letter Rescue'], 'typing-quest': ['⌨️', 'TypingQuest'], 'bible-typing': ['📖', 'Scripture Typing'], 'my-passages': ['📝', 'Family Passages'],
   'khan-academy': ['🎓', 'Khan Academy'], duolingo: ['🦉', 'Duolingo'], rwt: ['✏️', 'Read, Write & Type!'], discgames: ['💿', 'Classic CD games'],
 };
-const OPTION_LABELS = { perAnswer: 'Coins per correct answer', perVideo: 'Coins per finished video', perStory: 'Coins per finished story', repeatsPerDay: 'Each passage pays' };
+const OPTION_LABELS = { perAnswer: 'Coins per correct answer', perVideo: 'Coins per finished video', repeatsPerDay: 'Each passage pays' };
 const OPTION_CHOICES = {
   repeatsPerDay: [['1', 'Once a day'], ['2', 'Twice a day'], ['3', '3 times a day'], ['0', 'Every time']],
 };

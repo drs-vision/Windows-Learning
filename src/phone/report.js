@@ -24,7 +24,6 @@ const DONE = {
   'khan-academy:videos': 'Khan Academy videos',
   'khan-academy:exercises': 'Khan Academy exercises & quizzes',
   'duolingo:lessons': 'Duolingo lessons',
-  'duolingo:stories': 'Duolingo stories',
   'sound-keys:finished': 'Letter Rescue lessons',
   'typing-quest:finished': 'TypingQuest drills',
   'bible-typing:finished': 'Scripture passages typed',

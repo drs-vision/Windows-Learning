@@ -141,7 +141,7 @@ describe('khan-academy', () => {
 
 describe('duolingo', () => {
   const act = { moduleId: 'duolingo', kind: 'observed', data: {}, issuedAt: 0 };
-  it('pays per finished lesson and story', () => {
+  it('pays per finished lesson (a story counts as a lesson)', () => {
     const out = scoreModule('duolingo', act, { startedAt: 0, finishedAt: 1000, data: { lesson: 2, story: 1 } }, { ...settings, coinsPerActivity: 5 });
     expect(out.valid).toBe(true);
     expect(out.needsApproval).toBe(false);

@@ -250,8 +250,7 @@ public sealed class RequestRouter
                     _activity.Count(child.Id, now, "khan-academy:exercises", N("done"));
                     break;
                 case "duolingo":
-                    _activity.Count(child.Id, now, "duolingo:lessons", N("lesson"));
-                    _activity.Count(child.Id, now, "duolingo:stories", N("story"));
+                    _activity.Count(child.Id, now, "duolingo:lessons", N("lesson") + N("story"));
                     break;
                 default:
                     if (result?["data"]?["typed"] is JsonValue t && t.TryGetValue<string>(out var typed))
