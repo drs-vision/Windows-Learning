@@ -1,0 +1,134 @@
+{
+  "book": "black-beauty",
+  "chapter": 29,
+  "questions": [
+    {
+      "id": "black-beauty-29-01",
+      "type": "detail",
+      "q": "What did \"steam-engine\" drivers seem to think a horse was like?",
+      "choices": ["A steam-engine, only smaller", "A pet dog", "A wild animal", "A child"],
+      "answer": 0,
+      "evidence": "a horse was something like a steam-engine, only smaller"
+    },
+    {
+      "id": "black-beauty-29-02",
+      "type": "character",
+      "q": "Why did steam-engine drivers refuse to get out and walk up steep hills?",
+      "choices": ["They had paid to ride, so they would ride", "They were too old to walk", "They were afraid of getting lost", "The horse would not let them"],
+      "answer": 0,
+      "evidence": "they have paid to ride, and ride they will"
+    },
+    {
+      "id": "black-beauty-29-03",
+      "type": "inference",
+      "q": "Why would Beauty rather go twenty miles with a good driver than ten with a steam-engine driver?",
+      "choices": ["The steam-engine style wore horses out faster", "Good drivers always went slower", "Steam-engine drivers paid less", "Ten miles was always uphill"],
+      "answer": 0,
+      "evidence": "This steam-engine style of driving wears us up faster than any other kind"
+    },
+    {
+      "id": "black-beauty-29-04",
+      "type": "detail",
+      "q": "What mistake did these drivers make with the brake?",
+      "choices": ["They forgot to take it off at the bottom of the hill", "They put it on going uphill", "They broke it on purpose", "They let the horse work it"],
+      "answer": 0,
+      "evidence": "they often forget to take it off at the bottom of the hill"
+    },
+    {
+      "id": "black-beauty-29-05",
+      "type": "detail",
+      "q": "Who was Rory?",
+      "choices": ["The horse that mostly went with Beauty when a pair was ordered", "The driver of the gig", "The stable owner", "A coal-cart horse from the start"],
+      "answer": 0,
+      "evidence": "Rory was the horse that mostly went with me when a pair was ordered"
+    },
+    {
+      "id": "black-beauty-29-06",
+      "type": "sequence",
+      "q": "What happened to Rory at the sharp corner?",
+      "choices": ["A gig shaft ran into his chest", "He slipped on ice and fell", "He was hit by a train", "He ran into the hedge"],
+      "answer": 0,
+      "evidence": "The gig shaft ran right into the chest"
+    },
+    {
+      "id": "black-beauty-29-07",
+      "type": "character",
+      "q": "What was wrong with the driver who crashed into Rory?",
+      "choices": ["He was random and ignorant about which side of the road to drive on", "He had fallen asleep", "He was blind", "His horse had run away from him"],
+      "answer": 0,
+      "evidence": "who don't even know which is their own side of the road"
+    },
+    {
+      "id": "black-beauty-29-08",
+      "type": "detail",
+      "q": "What happened to Rory after his wound healed?",
+      "choices": ["He was sold for coal-carting", "He went back to work with Beauty", "He was given to a vicar", "He was turned out to rest in a meadow"],
+      "answer": 0,
+      "evidence": "he was sold for coal-carting"
+    },
+    {
+      "id": "black-beauty-29-09",
+      "type": "detail",
+      "q": "Why did Peggy have such an odd, awkward pace?",
+      "choices": ["Her legs were short and she was whipped to keep up", "She had a stone in her shoe", "She had never been trained", "She was very old"],
+      "answer": 0,
+      "evidence": "it is just because my legs are so short"
+    },
+    {
+      "id": "black-beauty-29-10",
+      "type": "vocabulary",
+      "q": "Peggy spoke \"in a desponding tone.\" What does \"desponding\" mean here?",
+      "choices": ["Sad and without hope", "Excited and happy", "Angry and loud", "Proud and boastful"],
+      "answer": 0,
+      "evidence": "said Peggy, in a desponding tone"
+    },
+    {
+      "id": "black-beauty-29-11",
+      "type": "character",
+      "q": "What was Peggy's first master, the young clergyman, like?",
+      "choices": ["Kind, and he never whipped her for not going faster", "Always in a hurry and cruel", "A farmer who drove home late", "A racing man"],
+      "answer": 0,
+      "evidence": "he never scolded or whipped me for not going faster"
+    },
+    {
+      "id": "black-beauty-29-12",
+      "type": "sequence",
+      "q": "How did Peggy's time with the farmer end?",
+      "choices": ["His gig turned over and he broke his arm", "He sold her to the clergyman", "She ran away", "He moved to a large town"],
+      "answer": 0,
+      "evidence": "He was thrown out and his arm broken"
+    },
+    {
+      "id": "black-beauty-29-13",
+      "type": "inference",
+      "q": "How did Peggy's life turn out after she was sold to two ladies?",
+      "choices": ["She was happy, going at a steady pace", "She became lame", "She was sold again for coal-carting", "She grew bad-tempered"],
+      "answer": 0,
+      "evidence": "looking as gay and contented as a horse could be"
+    },
+    {
+      "id": "black-beauty-29-14",
+      "type": "character",
+      "q": "According to the old gentleman, why should you never whip a horse for shying?",
+      "choices": ["The horse is frightened, and whipping makes it more afraid", "It makes the horse lazy", "It breaks the whip", "It is against the law"],
+      "answer": 0,
+      "evidence": "he shies because he is frightened, and you only frighten him more"
+    },
+    {
+      "id": "black-beauty-29-15",
+      "type": "detail",
+      "q": "What did the tall gentleman in Pulteney Street ask the hostler to take off?",
+      "choices": ["The curb", "The saddle", "The blinkers", "The collar"],
+      "answer": 0,
+      "evidence": "I don't like it,\" said the gentleman; \"be so good as to take it off"
+    },
+    {
+      "id": "black-beauty-29-16",
+      "type": "main-idea",
+      "q": "What is the main idea of this chapter?",
+      "choices": ["Careless, hurried driving harms horses, while gentle driving helps them", "Horses enjoy pulling heavy loads uphill", "Short-legged horses should never be used", "Deer are dangerous for horses"],
+      "answer": 0,
+      "evidence": "I found I had some one behind me who knew how a good horse ought to be driven"
+    }
+  ]
+}

@@ -1,0 +1,110 @@
+{
+  "book": "treasure-island",
+  "chapter": 9,
+  "questions": [
+    {
+      "id": "treasure-island-09-01",
+      "type": "detail",
+      "q": "Who met Jim and the gentlemen as they stepped aboard the Hispaniola?",
+      "choices": ["Mr. Arrow, the mate", "Captain Smollett", "Long John Silver", "Tom Morgan"],
+      "answer": 0,
+      "evidence": "met and saluted as we stepped aboard by the mate, Mr. Arrow"
+    },
+    {
+      "id": "treasure-island-09-02",
+      "type": "detail",
+      "q": "What three things did Captain Smollett say he didn't like?",
+      "choices": ["The cruise, the men, and his officer", "The ship, the food, and the weather", "The squire, the doctor, and Jim", "The map, the island, and the treasure"],
+      "answer": 0,
+      "evidence": "I don't like this cruise; I don't like the men; and I don't like my officer."
+    },
+    {
+      "id": "treasure-island-09-03",
+      "type": "character",
+      "q": "How did the squire feel during the captain's complaints?",
+      "choices": ["Very angry", "Amused", "Frightened", "Bored"],
+      "answer": 0,
+      "evidence": "inquired the squire, very angry, as I could see"
+    },
+    {
+      "id": "treasure-island-09-04",
+      "type": "vocabulary",
+      "q": "When the captain says the secret \"has been told to the parrot,\" what does he mean?",
+      "choices": ["The secret has been blabbed to everyone", "Silver's parrot can talk", "The secret is written on a bird", "Only one person knows the secret"],
+      "answer": 0,
+      "evidence": "\"It's a way of speaking,\" said the captain. \"Blabbed, I mean."
+    },
+    {
+      "id": "treasure-island-09-05",
+      "type": "detail",
+      "q": "Why did the captain dislike Mr. Arrow as an officer?",
+      "choices": ["He was too familiar with the crew", "He was a poor seaman", "He drank too much", "He was rude to the squire"],
+      "answer": 0,
+      "evidence": "he's too free with the crew to be a good officer"
+    },
+    {
+      "id": "treasure-island-09-06",
+      "type": "detail",
+      "q": "Where did the captain want the powder and arms moved?",
+      "choices": ["To the good place under the cabin", "To the fore hold", "Onto a shore-boat", "Into the galley"],
+      "answer": 0,
+      "evidence": "you have a good place under the cabin; why not put them there?"
+    },
+    {
+      "id": "treasure-island-09-07",
+      "type": "inference",
+      "q": "What did the captain know that shocked the squire?",
+      "choices": ["The exact latitude and longitude of the island", "The name of the squire's banker", "That Silver had been a pirate", "That Pew was dead"],
+      "answer": 0,
+      "evidence": "he named the latitude and longitude exactly"
+    },
+    {
+      "id": "treasure-island-09-08",
+      "type": "inference",
+      "q": "When the doctor sums up the captain's worries, what does he say the captain really fears?",
+      "choices": ["A mutiny", "A storm", "Running out of food", "Getting lost at sea"],
+      "answer": 0,
+      "evidence": "In other words, you fear a mutiny."
+    },
+    {
+      "id": "treasure-island-09-09",
+      "type": "character",
+      "q": "What did the captain admit he had meant to do when he came into the cabin?",
+      "choices": ["Get himself discharged", "Ask for more pay", "Steal the map", "Fire Mr. Arrow"],
+      "answer": 0,
+      "evidence": "When I came in here I meant to get discharged."
+    },
+    {
+      "id": "treasure-island-09-10",
+      "type": "character",
+      "q": "Which two men did Dr. Livesey believe were honest?",
+      "choices": ["Captain Smollett and John Silver", "Mr. Arrow and Tom Morgan", "The squire and Blandly", "Redruth and Hunter"],
+      "answer": 0,
+      "evidence": "two honest men on board with you--that man and John Silver"
+    },
+    {
+      "id": "treasure-island-09-11",
+      "type": "sequence",
+      "q": "What did Long John Silver say when he came aboard and saw the powder being moved?",
+      "choices": ["That they would miss the morning tide", "That it was a fine idea", "That the powder was wet", "That he wanted to help carry it"],
+      "answer": 0,
+      "evidence": "if we do, we'll miss the morning tide!"
+    },
+    {
+      "id": "treasure-island-09-12",
+      "type": "sequence",
+      "q": "What did the captain do when he saw Jim examining the long brass gun?",
+      "choices": ["Sent him off to the cook to get some work", "Taught him how to fire it", "Praised him for his interest", "Had him locked in his cabin"],
+      "answer": 0,
+      "evidence": "Off with you to the cook and get some work."
+    },
+    {
+      "id": "treasure-island-09-13",
+      "type": "character",
+      "q": "How did Jim feel about Captain Smollett at the end of the chapter?",
+      "choices": ["He hated him deeply", "He admired him greatly", "He felt sorry for him", "He didn't care about him"],
+      "answer": 0,
+      "evidence": "hated the captain deeply"
+    }
+  ]
+}
