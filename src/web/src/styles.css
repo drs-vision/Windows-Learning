@@ -58,6 +58,7 @@ label.check, label.switch { flex-direction: row; align-items: center; gap: .5em;
 .chips { display: flex; flex-wrap: wrap; gap: .4em; margin: .6em 0; }
 .chip { background: var(--panel-2); border-radius: 999px; padding: .3em .4em .3em .8em; display: inline-flex; align-items: center; gap: .3em; font-size: .9em; }
 .chip button { padding: .1em .5em; background: transparent; color: var(--muted); } .chip button:hover { color: var(--red); }
+.chip .chip-ads { font-size: .78em; padding: .15em .6em; margin-left: .2em; border-radius: 999px; background: rgba(127,127,127,.14); color: var(--muted); } .chip .chip-ads:hover { color: var(--ink); } .chip .chip-ads.on { background: #f59e0b33; color: #b45309; }
 .form { display: flex; flex-direction: column; gap: .8em; margin: 1em 0; }
 .modal { position: fixed; inset: 0; background: rgba(10,14,40,.5); display: flex; align-items: center; justify-content: center; z-index: 40; }
 .modal .card { width: min(560px, 92vw); }
@@ -851,3 +852,21 @@ button.big { font-size: 1.1em; padding: .7em 1.4em; }
 .notice-close { flex: none; background: none; border: 0; color: inherit; cursor: pointer; padding: .2em .45em; line-height: 1; border-radius: 6px; opacity: .55; transition: opacity .15s; }
 .notice-close:hover, .notice-close:focus-visible { opacity: 1; background: rgba(255,255,255,.08); }
 .notice.inline { margin: 0; max-width: none; padding: .3em .4em .3em .8em; font-size: .85rem; text-align: left; }
+
+/* Parent Console: kids on this PC (switch with a tap) and "Add a kid". */
+.parent .kid-row { display: flex; flex-wrap: wrap; gap: 8px; margin: 10px 0 4px; }
+.parent .kid-pill { display: inline-flex; align-items: center; padding: .45em 1.1em; border-radius: 999px; background: var(--panel); border: 2px solid var(--kid, #2f5bd3); color: var(--ink); font-weight: 600; }
+.parent .kid-pill.on { background: var(--kid, #2f5bd3); color: #fff; }
+.parent .claim-kid { display: block; font-size: .8em; font-weight: 700; text-transform: uppercase; letter-spacing: .04em; color: var(--accent, #2f5bd3); }
+.parent .kid-pill.add { padding-left: .95em; background: transparent; border-style: dashed; border-color: var(--line, #cbd5e1); color: var(--muted, #64748b); font-weight: 500; }
+.kid-account { display: grid; gap: 12px; }
+.kid-account label { display: grid; gap: 4px; }
+.kid-account .kid-mode { justify-self: start; display: inline-flex; border: 1px solid var(--line, #cbd5e1); border-radius: 10px; overflow: hidden; }
+.kid-account .kid-mode button { border: 0; border-radius: 0; background: transparent; padding: .5em 1em; }
+.kid-account .kid-mode button.on { background: var(--accent, #2f5bd3); color: #fff; }
+.kid-account .kid-new { display: grid; gap: 10px; }
+.kid-account .account.used { opacity: .55; padding: .6em .9em; display: grid; }
+.parent .modal .card.add-kid { width: min(560px, 94vw); max-height: 90vh; overflow: auto; }
+.kid-account .kid-colors { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.kid-account .swatch { width: 28px; height: 28px; min-height: 0; padding: 0; border-radius: 50%; border: 3px solid transparent; box-shadow: 0 0 0 1px rgba(0,0,0,.12); }
+.kid-account .swatch.on { border-color: #fff; box-shadow: 0 0 0 2px var(--ink, #111); }

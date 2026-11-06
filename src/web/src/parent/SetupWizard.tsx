@@ -1,14 +1,15 @@
 import { useEffect, useState } from 'preact/hooks';
 import { bridge } from '../core/bridge';
+import { KidAccount, type WinAccount } from './KidAccount';
 
-interface Account { name: string; fullName: string; isAdmin: boolean; disabled: boolean; sid: string }
 
 /** First run. Three questions, then done. */
 export function SetupWizard({ onDone }: { onDone: () => void }) {
   const [step, setStep] = useState(0);
-  const [accounts, setAccounts] = useState<Account[] | null>(null);
+  const [accounts, setAccounts] = useState<WinAccount[] | null>(null);
   const [account, setAccount] = useState('');
   const [displayName, setDisplayName] = useState('');
+  const [color, setColor] = useState('');
   const [pin, setPin] = useState(''); const [pin2, setPin2] = useState('');
   const [preset, setPreset] = useState('school');
   const [error, setError] = useState('');
@@ -19,7 +20,7 @@ export function SetupWizard({ onDone }: { onDone: () => void }) {
   async function finish() {
     setBusy(true); setError('');
     try {
-      await bridge.setupComplete(pin, { displayName: displayName || account, windowsAccount: account }, preset);
+      await bridge.setupComplete(pin, { displayName: displayName || account, windowsAccount: account, color }, preset);
       await bridge.parentLogin(pin).catch(() => { /* admin accounts don't need it */ });
       onDone();
     }
@@ -27,7 +28,7 @@ export function SetupWizard({ onDone }: { onDone: () => void }) {
     finally { setBusy(false); }
   }
 
-  const steps = ['Child\'s account', 'Parent PIN', 'Starting point'];
+  const steps = ['Your child', 'Parent PIN', 'Starting point'];
   return (
     <div class="wizard">
       <h1>Welcome to CoinQuest</h1>
@@ -35,19 +36,11 @@ export function SetupWizard({ onDone }: { onDone: () => void }) {
 
       {step === 0 && (
         <div class="card">
-          <h2>Which Windows account is your child's?</h2>
-          <p class="muted">Rules apply only to this account. Your own account is never restricted. It must be a Standard account — we'll make sure.</p>
-          {accounts === null && <p class="muted">Looking…</p>}
-          {accounts && accounts.length === 0 && <p class="error">No accounts found. Create a Standard account for your child in Windows Settings → Accounts → Family &amp; other users, then come back.</p>}
-          <div class="account-list">
-            {accounts?.map((a) => (
-              <button class={'account' + (account === a.name ? ' picked' : '') + (a.isAdmin ? ' admin' : '')} onClick={() => { setAccount(a.name); if (!displayName) setDisplayName(a.fullName || a.name); }}>
-                <b>{a.fullName || a.name}</b><small>{a.name}{a.isAdmin ? ' · administrator (will be changed to Standard)' : ''}{a.disabled ? ' · disabled' : ''}</small>
-              </button>
-            ))}
-          </div>
-          <label>What should we call them?<input value={displayName} onInput={(e) => setDisplayName((e.target as HTMLInputElement).value)} placeholder="Sam" /></label>
-          <button class="primary" disabled={!account} onClick={() => setStep(1)}>Next</button>
+          <h2>Who's the child?</h2>
+          <p class="muted">Rules apply only to their Windows account; your own account is never restricted. You can add more kids later in the Parent Console.</p>
+          <KidAccount accounts={accounts} allowAdmin create={(u, f, p) => bridge.setupCreateAccount(u, f, p)}
+            onPicked={(k) => { setAccount(k.account); setDisplayName(k.displayName); setColor(k.color); setStep(1); }} />
+          {account && <p class="muted small">Chosen: {displayName} ({account})</p>}
         </div>
       )}
 

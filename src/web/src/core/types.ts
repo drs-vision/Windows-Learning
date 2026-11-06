@@ -108,9 +108,11 @@ export interface Video { id: string; title: string; channelId: string; channelTi
 export interface Child {
   id: string;
   displayName: string;
+  /** #rrggbb; empty = palette color by position (KID_COLORS). */
+  color?: string;
   windowsAccount: string;
   windowsSid: string;
-  allowlist: { apps: string[]; sites: string[] };
+  allowlist: { apps: string[]; sites: string[]; adsAllowed?: string[] };
   prizes: Prize[];
   modules: Record<string, ModuleSettings>;
   dailyScreenTimeCapMinutes?: number | null;
@@ -171,3 +173,10 @@ export function autoSamplerPrice(prices: number[], minutes: number) {
   const blocks = Math.max(1, Math.ceil(minutes / BLOCK_MINUTES));
   return max * blocks + Math.max(2, Math.floor((max * blocks) / 5));
 }
+
+/** Kid colors (same list as Child.Palette on the PC). */
+export const KID_COLORS = ['#2f5bd3', '#16a34a', '#db2777', '#f59e0b', '#7c3aed', '#0891b2', '#dc2626', '#ea580c'];
+export const kidColor = (kids: { id: string; color?: string }[], id: string) => {
+  const k = kids.find((x) => x.id === id);
+  return k?.color && /^#[0-9a-f]{6}$/i.test(k.color) ? k.color : KID_COLORS[Math.max(0, kids.findIndex((x) => x.id === id)) % KID_COLORS.length];
+};

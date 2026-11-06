@@ -94,8 +94,8 @@ class Bridge {
   parentCheckUpdate() { return this.call<ParentState['updateStatus']>('parent.checkUpdate', undefined, { parent: true }); }
   parentEndUnlock(unlockId: string) { return this.call('parent.endUnlock', { unlockId }, { parent: true }); }
   parentYouTubeResolve(url: string) { return this.call<YouTubeChannel>('parent.youtubeResolve', { url }, { parent: true }); }
-  parentArcadeCatalog() { return this.call<{ games: Game[]; settings: ArcadeSettings }>('parent.arcadeCatalog', undefined, { parent: true }); }
-  parentArcadeUpload(fileName: string, data: string, title: string, strategy: number) { return this.call<Game>('parent.arcadeUpload', { fileName, data, title, strategy }, { parent: true }); }
+  parentArcadeCatalog(childId?: string) { return this.call<{ games: Game[]; settings: ArcadeSettings }>('parent.arcadeCatalog', { childId }, { parent: true }); }
+  parentArcadeUpload(fileName: string, data: string, title: string, strategy: number, childId?: string) { return this.call<Game>('parent.arcadeUpload', { fileName, data, title, strategy, childId }, { parent: true }); }
   parentArcadeRemove(gameId: string) { return this.call('parent.arcadeRemove', { gameId }, { parent: true }); }
   parentFpStatus() { return this.call<FpStatus>('parent.fpStatus', undefined, { parent: true }); }
   parentBooks(childId?: string) { return this.call<{ books: { id: string; title: string; author: string; published: number; level: number; grade: { min: number; max: number; label: string }; summary: string; edited?: string | null; measures?: { lexile?: { value: number; code?: string | null; url: string; note?: string | null } | null; atos?: { level: number; interest?: string | null; url: string; note?: string | null } | null } | null; formulaGrade?: number | null; chapters: number; words: number; ready: number; done: number; started: boolean }[]; flagged: number }>('parent.books', childId ? { childId } : undefined, { parent: true }); }
@@ -131,7 +131,11 @@ class Bridge {
   async playDisc(id: string) { const info = await this.call<Record<string, string>>('disc.launch', { id }); const r = await this.call<{ ok: boolean }>('shell.launchProgram', info); return { ...r, drive: info.drive ?? '' }; }
   async playRwt() { const info = await this.call<Record<string, string>>('rwt.launch'); return this.call<{ ok: boolean }>('shell.launchRwt', info); }
   setupAccounts() { return this.call<{ name: string; fullName: string; isAdmin: boolean; disabled: boolean; sid: string }[]>('setup.accounts'); }
-  setupComplete(pin: string, child: { displayName: string; windowsAccount: string }, preset: string) { return this.call('setup.complete', { pin, child, preset }); }
+  setupCreateAccount(userName: string, fullName: string, password: string) { return this.call<{ account: string }>('setup.createAccount', { userName, fullName, password }); }
+  parentAccounts() { return this.call<{ name: string; fullName: string; isAdmin: boolean; disabled: boolean; sid: string; usedBy?: string | null }[]>('parent.accounts', {}, { parent: true }); }
+  parentCreateAccount(userName: string, fullName: string, password: string) { return this.call<{ account: string }>('parent.createAccount', { userName, fullName, password }, { parent: true }); }
+  parentAddChild(displayName: string, windowsAccount: string, color?: string) { return this.call<{ childId: string }>('parent.addChild', { displayName, windowsAccount, color }, { parent: true }); }
+  setupComplete(pin: string, child: { displayName: string; windowsAccount: string; color?: string }, preset: string) { return this.call('setup.complete', { pin, child, preset }); }
 
   // shell-local
   openBrowser(url: string) { return this.call('shell.openBrowser', { url }); }

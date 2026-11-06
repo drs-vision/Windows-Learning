@@ -25,6 +25,9 @@ public sealed record Child
 {
     public string Id { get; init; } = Guid.NewGuid().ToString("N");
     public string DisplayName { get; init; } = "";
+    /// <summary>The kid's color (#rrggbb) on the parent's phone and in the Parent Console. Empty = one from the palette by position.</summary>
+    public string Color { get; init; } = "";
+    public static readonly string[] Palette = { "#2f5bd3", "#16a34a", "#db2777", "#f59e0b", "#7c3aed", "#0891b2", "#dc2626", "#ea580c" };
     /// <summary>Windows account name, e.g. "MACHINE\\sam" or "sam".</summary>
     public string WindowsAccount { get; init; } = "";
     /// <summary>Windows SID, resolved at setup. Used for HKU policy writes.</summary>
@@ -47,6 +50,9 @@ public sealed record Allowlist
     public List<string> Apps { get; init; } = new();
     /// <summary>Domains, e.g. "khanacademy.org". Subdomains are implied.</summary>
     public List<string> Sites { get; init; } = new();
+    /// <summary>Sites where ads are shown (CoinQuest's site window blocks ads everywhere else). Only a parent can add one:
+    /// in the Parent Console (PIN), from a linked phone, or by approving the child's "allow ads here" request.</summary>
+    public List<string> AdsAllowed { get; init; } = new();
 
     /// <summary>Real web browsers are never allowed on a managed account — their own lockdown settings can't be trusted on a home PC.</summary>
     public static readonly string[] Browsers = { "msedge.exe", "chrome.exe", "firefox.exe", "brave.exe", "opera.exe", "opera_gx.exe", "vivaldi.exe", "iexplore.exe", "waterfox.exe", "librewolf.exe", "tor.exe", "duckduckgo.exe", "arc.exe" };

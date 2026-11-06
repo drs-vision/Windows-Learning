@@ -256,6 +256,74 @@ function kid() {
   const list = (config?.children ?? state?.children ?? []);
   return list.find((k) => k.id === kidId) ?? list[0] ?? null;
 }
+/**
+ * Every kid on every PC this phone is linked to, as one list (parents never need to think about which PC): the current
+ * PC's from its live state, the others' from what each last sent. Picking a kid on another PC switches to that PC.
+ */
+function allKids() {
+  const out = [];
+  for (const l of links) {
+    const st = l === link ? state : store.get('cq.state.' + l.topicIn, null)?.state;
+    const list = st?.children ?? [];
+    if (!list.length) out.push({ id: null, name: meta[l.topicIn]?.pcName || l.household || 'Kids', color: '', link: l });
+    list.forEach((k, i) => out.push({ id: k.id, name: k.name, color: /^#[0-9a-f]{6}$/i.test(k.color || '') ? k.color : KID_COLORS[i % KID_COLORS.length], link: l }));
+  }
+  return out;
+}
+const KID_COLORS = ['#2f5bd3', '#16a34a', '#db2777', '#f59e0b', '#7c3aed', '#0891b2', '#dc2626', '#ea580c'];
+/** Each kid: their name in their color (set on the PC). Tap to switch; ＋ to add. */
+function kidRowHtml() {
+  const cur = kid();
+  return `<div class="kids" role="tablist" aria-label="Kids">${allKids().map((k, i) => {
+    const on = k.link === link && (k.id ?? null) === (cur?.id ?? null);
+    return `<button role="tab" class="kid-chip ${on ? 'on' : ''}" style="--kid:${k.color || 'var(--accent)'}" data-kidx="${i}">${esc(k.name)}</button>`;
+  }).join('')}<button class="kid-chip add" data-add-kid>＋ Add</button></div>`;
+}
+function pickKid(i) {
+  const k = allKids()[i];
+  if (!k) return;
+  kidId = k.id; reading = null;
+  if (k.link !== link) { link = k.link; connect(); } else render();
+}
+
+// ---- adding a kid: scan the code their PC shows (same code for a second parent) ----
+let adding = false, scanning = null;
+const canScan = () => 'BarcodeDetector' in window && !!navigator.mediaDevices?.getUserMedia;
+function addKidHtml(first) {
+  return `<h2>${first ? 'Link your kids' : 'Add a kid'}</h2>
+    <ol class="steps-mini">
+      <li>On your kid's computer, open the <b>CoinQuest parent app</b>.</li>
+      <li>Go to <b>Settings → Show the code</b>.</li>
+      <li>${canScan() ? 'Scan it:' : "Point your phone's <b>Camera</b> at the code."}</li>
+    </ol>
+    ${canScan() ? `<div class="scan">${scanning ? '<video id="scan-video" playsinline muted></video><p class="t">Point at the code…</p>' : '<button class="primary" data-scan>📷 Scan the code</button>'}</div>` : ''}
+    <p class="t">Every kid on that computer shows up here, including kids added there later. Another parent scans the same code on their phone.</p>
+    ${first ? '' : '<button class="link" data-add-close>Cancel</button>'}`;
+}
+async function startScan() {
+  try {
+    const stream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: 'environment' } });
+    const detector = new window.BarcodeDetector({ formats: ['qr_code'] });
+    scanning = { stream };
+    render();
+    const v = document.getElementById('scan-video');
+    v.srcObject = stream; await v.play();
+    const tick = async () => {
+      if (!scanning) return;
+      try {
+        for (const c of await detector.detect(v)) {
+          const hash = (() => { try { return new URL(c.rawValue).hash; } catch { return c.rawValue.includes('#') ? c.rawValue.slice(c.rawValue.indexOf('#')) : ''; } })();
+          const nl = hash ? w.parseLink(hash) : null;
+          if (nl) { stopScan(); const added = addLink(nl); saveLinks(); adding = false; if (added) { link = added; kidId = null; connect(); toast('Linked'); } return; }
+        }
+      } catch { /* keep looking */ }
+      requestAnimationFrame(tick);
+    };
+    tick();
+  } catch (e) { stopScan(); error = "Couldn't open the camera. Use your phone's Camera app to scan the code instead."; render(); }
+}
+function stopScan() { scanning?.stream?.getTracks().forEach((t) => t.stop()); scanning = null; }
+
 const kidConfig = () => config?.children.find((k) => k.id === (kid()?.id)) ?? null;
 
 const QUESTS = {
@@ -286,22 +354,10 @@ function draw() {
   if (!link) {
     app.innerHTML = `
       <header><img src="icon-192.png" alt=""><h1>CoinQuest</h1></header>
-      <div class="card empty">
-        <h2>Link this phone to your kids' PC</h2>
-        <ol>
-          <li>On the kids' PC, open the <b>parent app</b> (enter your parent PIN).</li>
-          <li>Go to <b>Settings</b> and press <b>Show the code</b> under <b>Control from my phone</b>.</li>
-          <li>Point this phone's camera at the code that appears.</li>
-        </ol>
-        <p class="note">No account or password — the code is the key. You can remove this phone from the PC any time.</p>
-      </div>`;
+      <div class="card empty add-kid">${addKidHtml(true)}</div>`;
     return;
   }
-  const pcs = links.length > 1
-    ? `<div class="pills">${links.map((l, i) => { const pcName = meta[l.topicIn]?.pcName || l.pcName; return `<button data-pc="${i}" class="${l === link ? 'on' : ''}">${esc(pcName && links.some((x) => x !== l && x.household === l.household) ? pcName : l.household)}</button>`; }).join('')}</div>` : '';
-  const kids = (config?.children ?? state?.children ?? []);
-  const kidPicker = tab !== 'home' && kids.length > 1
-    ? `<div class="pills">${kids.map((k) => `<button data-kid="${esc(k.id)}" class="${k.id === kid()?.id ? 'on' : ''}">${esc(k.name)}</button>`).join('')}</div>` : '';
+  const kidsRow = kidRowHtml();
   const standalone = matchMedia('(display-mode: standalone)').matches || navigator.standalone;
   const hint = tab === 'home' && !standalone && !store.get('cq.hintDone', false)
     ? `<div class="hint"><div><b>Tip:</b> add this to your home screen so it opens like an app — in Safari tap <b>Share → Add to Home Screen</b>; in Chrome tap <b>⋮ → Add to Home screen</b>.</div><button data-hint aria-label="Dismiss">×</button></div>` : '';
@@ -313,12 +369,12 @@ function draw() {
   const tabs = [['home', '🏠', 'Today'], ['rewards', '⭐', 'Earn'], ['shop', '🛍️', 'Rewards'], ['allowed', '🌐', 'Allowed']];
   app.innerHTML = `
     <header><img src="icon-192.png" alt=""><h1>${esc(state?.household || link.household)}</h1><button class="icon" data-refresh aria-label="Refresh">↻</button></header>
-    ${pcs}
+    ${kidsRow}
     <div class="status"><span class="dot ${status}"></span>${statusText}</div>
     ${hint}
     ${error ? `<div class="err">${esc(error)}</div>` : ''}
-    ${kidPicker}
     ${body}
+    ${adding ? `<div class="sheet-back" data-add-close><div class="sheet add-kid" role="dialog" aria-label="Add a kid">${addKidHtml(false)}</div></div>` : ''}
     <nav class="tabbar">${tabs.map(([id, icon, label]) => `<button data-tab="${id}" class="${tab === id ? 'on' : ''}" aria-label="${label}"><span>${icon}</span>${label}${id === 'home' && state?.claims?.length ? `<i>${state.claims.length}</i>` : ''}</button>`).join('')}</nav>`;
 }
 
@@ -328,10 +384,13 @@ function homeScreen() {
   let out = claims.length ? `<h2>Waiting for you</h2>` + claims.map((c) => `
       <div class="card claim">
         <div><span class="who">${esc(c.child)}</span> <span class="t">${ago(c.at)}</span></div>
-        <p>${esc(c.what)} · ${coins(c.coins)}</p>
-        <div class="row"><button class="give" data-claim="${c.seq}" data-ok="1">Approve</button><button class="take" data-claim="${c.seq}" data-ok="0">Not this time</button></div>
+        ${c.kind === 'allow-ads'
+          ? `<p>🚫 ${esc(c.what)}<br><span class="t">This site's ads are hidden. Allow them if it won't work without them.</span></p>
+        <div class="row"><button class="give" data-claim="${c.seq}" data-ok="1">Allow ads</button><button class="take" data-claim="${c.seq}" data-ok="0">Keep hidden</button></div>`
+          : `<p>${esc(c.what)} · ${coins(c.coins)}</p>
+        <div class="row"><button class="give" data-claim="${c.seq}" data-ok="1">Approve</button><button class="take" data-claim="${c.seq}" data-ok="0">Not this time</button></div>`}
       </div>`).join('') : '';
-  out += (state.children || []).map((k) => `
+  out += (state.children || []).filter((k) => k.id === kid()?.id).map((k) => `
       <div class="card">
         <div class="kid-top">
           <p class="kid-name">${esc(k.name)}${state.atKeyboard === k.id ? '<span class="here">at the PC</span>' : ''}</p>
@@ -343,7 +402,8 @@ function homeScreen() {
       </div>`).join('');
   if (!(state.children || []).length) out += `<div class="card empty"><p>No children are set up on this PC yet.</p></div>`;
   else out += activitySection();
-  return out + `<p class="note">Linked as “${esc(link.phone)}”. To unlink, remove this phone in the parent app on the PC.<br><button data-forget class="small">Forget this PC on this phone</button></p>`;
+  const here = (state.children || []).map((k) => k.name).join(', ');
+  return out + `<p class="note">Linked as “${esc(link.phone)}”. To unlink, remove this phone in the parent app on the PC.<br><button data-forget class="small">Remove ${esc(here || 'these kids')} from this phone</button></p>`;
 }
 
 
@@ -410,9 +470,7 @@ function activitySection() {
   const note = days.includes(today) && !byDay[today]
     ? (status === 'on' ? 'Asking the PC…' : "The PC is off, so today isn't here yet. It arrives the next time it's on.")
     : '';
-  const kids = state?.children ?? [];
-  const pick = kids.length > 1 ? `<div class="pills">${kids.map((x) => `<button data-kid="${esc(x.id)}" class="${x.id === k.id ? 'on' : ''}">${esc(x.name)}</button>`).join('')}</div>` : '';
-  return `<h2>${kids.length > 1 ? 'Activity' : esc(k.name) + "'s activity"}</h2>${pick}
+  return `<h2>${esc(k.name)}'s activity</h2>
     <div class="card activity">
       ${rep.navHtml(actv.sel, actv.mode, !!actv.cal)}
       ${actv.cal ? rep.calendarHtml(actv.month, byDay, actv.sel, actv.mode) : ''}
@@ -497,7 +555,8 @@ function allowedScreen() {
     <h2>Websites</h2>
     <div class="card">
       <p class="t" style="margin-top:0">The only websites that open for ${esc(kc.name)} (inside CoinQuest's locked browser).</p>
-      <div class="chips">${kc.sites.map((s) => `<span class="chip">${esc(s)}<button data-unsite="${esc(s)}" aria-label="Remove ${esc(s)}">×</button></span>`).join('') || '<span class="t">None yet.</span>'}</div>
+      <div class="chips">${kc.sites.map((s) => { const on = (kc.adsAllowed ?? []).includes(s); return `<span class="chip">${esc(s)}<button class="chip-ads ${on ? 'on' : ''}" data-ads="${esc(s)}" data-on="${on ? '1' : '0'}" aria-label="${on ? 'Ads shown on' : 'Ads hidden on'} ${esc(s)}; tap to change">${on ? 'ads shown' : 'ads hidden'}</button><button data-unsite="${esc(s)}" aria-label="Remove ${esc(s)}">×</button></span>`; }).join('') || '<span class="t">None yet.</span>'}</div>
+      <p class="t">Ads are hidden on every site. Tap "ads hidden" to allow them on a site that won't work without them.</p>
       <form class="row" data-addsite><input type="text" inputmode="url" autocapitalize="off" autocomplete="off" placeholder="e.g. duolingo.com" name="site"><button class="primary" type="submit">Add</button></form>
     </div>
     <h2>Apps</h2>
@@ -691,9 +750,14 @@ function toast(text) {
 // ---- events ------------------------------------------------------------------------------------------------------
 
 app.addEventListener('click', (e) => {
+  if (e.target.classList?.contains('sheet-back')) { adding = false; stopScan(); render(); return; }
   const b = e.target.closest('button');
   if (!b || (b.type === 'submit' && b.form)) return;
   if (b.dataset.refresh !== undefined) { if (tab !== 'home') config = null; refresh(); }
+  else if (b.dataset.kidx !== undefined) pickKid(+b.dataset.kidx);
+  else if (b.dataset.addKid !== undefined) { adding = true; render(); }
+  else if (b.dataset.addClose !== undefined && b.closest('.sheet')) { adding = false; stopScan(); render(); }
+  else if (b.dataset.scan !== undefined) startScan();
   else if (b.dataset.repReading !== undefined) { const k = kid(); if (k) openReading(k.id); }
   else if (b.dataset.rdBack !== undefined) { reading = null; render(); }
   else if (b.dataset.tab) {
@@ -717,6 +781,7 @@ app.addEventListener('click', (e) => {
   else if (b.dataset.newprize !== undefined) prizeSheet(null);
   else if (b.dataset.addapp !== undefined) addAppSheet();
   else if (b.dataset.unapp) act('setApps', { childId: kidConfig().id, remove: b.dataset.unapp }, `Removed ${appName(b.dataset.unapp)}`);
+  else if (b.dataset.ads) { const on = b.dataset.on !== '1'; act('setAds', { childId: kidConfig().id, site: b.dataset.ads, allow: on }, on ? `Ads allowed on ${b.dataset.ads}` : `Ads hidden on ${b.dataset.ads}`).then(() => { config = null; loadConfig().then(render); }); }
   else if (b.dataset.unsite) act('setSites', { childId: kidConfig().id, remove: b.dataset.unsite }, `Removed ${b.dataset.unsite}`);
   else if (b.dataset.unchan) act('removeChannel', { childId: kidConfig().id, id: b.dataset.unchan }, 'Channel removed');
   else if (b.dataset.pc) { link = links[+b.dataset.pc]; connect(); }

@@ -33,7 +33,12 @@ public sealed class GameWindow : Window
     /// <summary>Hosts already reported or allowed (per window), and reports still on their way.</summary>
     private readonly HashSet<string> _partsKnown = new(StringComparer.OrdinalIgnoreCase);
     private readonly Dictionary<string, Task> _partsPending = new(StringComparer.OrdinalIgnoreCase);
-    private System.Windows.Controls.Button? _navBack, _navForward, _navReload;
+    private System.Windows.Controls.Button? _navBack, _navForward, _navReload, _askAds;
+
+    /// <summary>Set by the kid app: sites where a parent allows ads (and sites already asked about), and a way to ask.</summary>
+    public static Func<Task<(string[] Allowed, string[] Pending)>>? GetAdsState { get; set; }
+    public static Func<string, Task>? AskForAds { get; set; }
+    private string[] _adsAllowed = Array.Empty<string>(), _adsPending = Array.Empty<string>();
 
     /// <param name="allowed">Domains this window may navigate to. Null = only the start URL's own site (a game).</param>
     public GameWindow(string url, string title, bool kiosk, IEnumerable<string>? allowed = null)
@@ -64,8 +69,19 @@ public sealed class GameWindow : Window
         _navForward = NavButton("→", "Forward (Alt+Right)", () => { if (_web.CoreWebView2?.CanGoForward == true) _web.CoreWebView2.GoForward(); });
         _navReload = NavButton("⟳", "Reload (F5)", () => _web.CoreWebView2?.Reload());
         var label = new System.Windows.Controls.TextBlock { Text = title, FontSize = 18, Foreground = System.Windows.Media.Brushes.White, VerticalAlignment = VerticalAlignment.Center, Margin = new Thickness(16, 0, 0, 0) };
+        // Shown only after this window has hidden an ad: lets the child ask a parent to allow ads on the site
+        // (for a site that won't work without them). A parent says yes with the PIN on the PC or from the phone.
+        _askAds = new System.Windows.Controls.Button
+        {
+            Content = "🚫 Ads hidden · Ask to allow", FontSize = 14, Padding = new Thickness(12, 4, 12, 4), Margin = new Thickness(0, 6, 12, 6),
+            Foreground = System.Windows.Media.Brushes.White, Background = new System.Windows.Media.SolidColorBrush(System.Windows.Media.Color.FromArgb(0x33, 0xFF, 0xFF, 0xFF)),
+            BorderThickness = new Thickness(0), Visibility = Visibility.Collapsed, Cursor = System.Windows.Input.Cursors.Hand,
+            ToolTip = "If this site doesn't work with ads hidden, ask a parent to allow ads here.",
+        };
+        _askAds.Click += async (_, _) => await AskAds();
+        System.Windows.Controls.DockPanel.SetDock(_askAds, System.Windows.Controls.Dock.Right);
         var bar = new System.Windows.Controls.DockPanel { Background = new System.Windows.Media.SolidColorBrush(System.Windows.Media.Color.FromRgb(0x0F, 0x1B, 0x3D)), LastChildFill = true };
-        bar.Children.Add(home); bar.Children.Add(_navBack); bar.Children.Add(_navForward); bar.Children.Add(_navReload); bar.Children.Add(label);
+        bar.Children.Add(home); bar.Children.Add(_navBack); bar.Children.Add(_navForward); bar.Children.Add(_navReload); bar.Children.Add(_askAds); bar.Children.Add(label);
         var root = new System.Windows.Controls.DockPanel();
         System.Windows.Controls.DockPanel.SetDock(bar, System.Windows.Controls.Dock.Top);
         root.Children.Add(bar); root.Children.Add(_web);
@@ -113,13 +129,82 @@ public sealed class GameWindow : Window
             // Back / Forward light up when there's somewhere to go; Reload once a page is showing.
             core.HistoryChanged += (_, _) => UpdateNav(core);
             core.NavigationCompleted += (_, _) => UpdateNav(core);
-            if (ReportPageParts is not null)
-            {
-                core.AddWebResourceRequestedFilter("*", CoreWebView2WebResourceContext.All, CoreWebView2WebResourceRequestSourceKinds.All);
-                core.WebResourceRequested += (_, e) => OnPagePart(core, e);
-            }
+            // Every request the page makes: ads and trackers are answered quietly on the PC (AdBlock); a new host an
+            // allowed page needs is reported to the gate first (OnPagePart).
+            core.AddWebResourceRequestedFilter("*", CoreWebView2WebResourceContext.All, CoreWebView2WebResourceRequestSourceKinds.All);
+            core.WebResourceRequested += (_, e) => { if (!BlockAd(core, env, e) && ReportPageParts is not null) OnPagePart(core, e); };
+            // Which sites show ads: asked when the window opens and again on each new page (a parent may have just said yes).
+            await RefreshAds();
+            core.NavigationStarting += async (_, e) => { if (e.IsRedirected == false) { await RefreshAds(); UpdateAskAds(core); } };
             core.Navigate(_start.ToString());
         };
+    }
+
+    private static readonly Lazy<CoinQuest.Shared.Web.AdBlock> Ads = new(() =>
+    {
+        var a = CoinQuest.Shared.Web.AdBlock.Load(System.IO.Path.Combine(CoinQuest.Shared.Config.Paths.ContentRoot, "adblock", "hosts.txt"));
+        WebShellWindow.Log($"ad blocker: {a.Count} hosts");
+        return a;
+    });
+    private int _adsBlocked;
+
+    /// <summary>An ad or tracker request: answer it here with a normal-looking reply, so it never reaches the internet
+    /// and the page doesn't see an error. A host the parent allowed is never treated as an ad.</summary>
+    private bool BlockAd(CoreWebView2 core, CoreWebView2Environment env, CoreWebView2WebResourceRequestedEventArgs e)
+    {
+        if (!Uri.TryCreate(e.Request.Uri, UriKind.Absolute, out var u) || u.Scheme is not ("https" or "http") || Allowed(u)) return false;
+        if (PageSite(core) is { } site && AdsAllowedOn(site)) return false;
+        var referer = e.Request.Headers.Contains("Referer") ? e.Request.Headers.GetHeader("Referer") : null;
+        var pageHost = Uri.TryCreate(core.Source, UriKind.Absolute, out var pg) ? pg.Host : null;
+        if (!Ads.Value.IsAd(u.Host, referer) && !CoinQuest.Shared.Web.AdBlock.IsAdUrl(u, pageHost)) return false;
+        var kind = e.ResourceContext switch
+        {
+            CoreWebView2WebResourceContext.Script => "script",
+            CoreWebView2WebResourceContext.Image => "image",
+            CoreWebView2WebResourceContext.Document => "document",
+            CoreWebView2WebResourceContext.Stylesheet => "style",
+            CoreWebView2WebResourceContext.XmlHttpRequest or CoreWebView2WebResourceContext.Fetch or CoreWebView2WebResourceContext.Ping => "xhr",
+            _ => "other",
+        };
+        var r = CoinQuest.Shared.Web.AdBlock.ReplyFor(kind, u.ToString());
+        e.Response = env.CreateWebResourceResponse(new System.IO.MemoryStream(r.Body), r.Status, r.Reason,
+            $"Content-Type: {r.ContentType}\r\nAccess-Control-Allow-Origin: *\r\nCache-Control: no-store");
+        if (++_adsBlocked % 50 == 1) WebShellWindow.Log($"ad blocker: {_adsBlocked} blocked in this window (latest {u.Host})");
+        if (_adsBlocked == 1) UpdateAskAds(core);
+        return true;
+    }
+
+    /// <summary>The allowed site the window is showing ("coolmathgames.com"), or null.</summary>
+    private string? PageSite(CoreWebView2 core) =>
+        Uri.TryCreate(core.Source, UriKind.Absolute, out var p) && p.Scheme.StartsWith("http") && Allowed(p) ? p.Host.ToLowerInvariant() : null;
+    private static bool Under(string host, string domain) { domain = domain.ToLowerInvariant(); return host == domain || host.EndsWith("." + domain); }
+    private bool AdsAllowedOn(string host) => _adsAllowed.Any(d => Under(host, d));
+
+    private async Task RefreshAds()
+    {
+        if (GetAdsState is null) return;
+        try { (_adsAllowed, _adsPending) = await GetAdsState(); } catch (Exception ex) { WebShellWindow.Log("ads state: " + ex.Message); }
+    }
+
+    private void UpdateAskAds(CoreWebView2 core)
+    {
+        if (_askAds is null) return;
+        var site = PageSite(core);
+        var show = AskForAds is not null && site is not null && _adsBlocked > 0 && !AdsAllowedOn(site);
+        _askAds.Visibility = show ? Visibility.Visible : Visibility.Collapsed;
+        if (show && _adsPending.Any(d => Under(site!, d))) { _askAds.Content = "🚫 Ads hidden · Asked a parent ✓"; _askAds.IsEnabled = false; }
+    }
+
+    private async Task AskAds()
+    {
+        if (_askAds is null || AskForAds is null || PageSite(_web.CoreWebView2) is not { } site) return;
+        _askAds.IsEnabled = false;
+        try
+        {
+            await AskForAds(site);
+            _askAds.Content = "🚫 Ads hidden · Asked a parent ✓";
+        }
+        catch (Exception ex) { _askAds.Content = "Couldn't ask: " + ex.Message; _askAds.IsEnabled = true; }
     }
 
     private void UpdateNav(CoreWebView2 core)

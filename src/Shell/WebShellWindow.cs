@@ -72,6 +72,21 @@ public class WebShellWindow : Window
             // Site windows tell the Guardian's gate which hosts an allowed page loads (its CDNs, images, APIs).
             if (ManagedChild && _app == "scholar")
                 GameWindow.ReportPageParts = (site, hosts) => _pipe.SendAsync(Ops.PageParts, new { site, hosts }, timeoutMs: 5000);
+            // Ads: blocked in site windows except where a parent allowed them; the child can ask from the window.
+            if (ManagedChild && _app == "scholar")
+            {
+                GameWindow.GetAdsState = async () =>
+                {
+                    var r = await _pipe.SendAsync(Ops.AdsState, timeoutMs: 5000);
+                    string[] List(string k) => (r.Payload?[k] as System.Text.Json.Nodes.JsonArray)?.Select(n => n?.GetValue<string>() ?? "").Where(x => x.Length > 0).ToArray() ?? Array.Empty<string>();
+                    return (List("allowed"), List("pending"));
+                };
+                GameWindow.AskForAds = async site =>
+                {
+                    var r = await _pipe.SendAsync(Ops.AdsRequest, new { site }, timeoutMs: 8000);
+                    if (!r.Ok) throw new InvalidOperationException(r.Error ?? "the PC said no");
+                };
+            }
         }
         catch { ManagedChild = _kiosk; }
         var env = await CoreWebView2Environment.CreateAsync(null, userData, ProxyOptions());

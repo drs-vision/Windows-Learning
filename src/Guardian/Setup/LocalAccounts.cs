@@ -58,6 +58,37 @@ public static class LocalAccounts
         return set;
     }
 
+    /// <summary>
+    /// Create a local Standard account for a child (CoinQuest setup / "Add a kid"). The Guardian runs as SYSTEM, so it
+    /// can. Sign-in name: letters, digits, spaces, '.', '-', '_' (20 at most, Windows' limit). An empty password means
+    /// the child signs in without one. Windows creates the profile folder on the first sign-in. Returns the name.
+    /// </summary>
+    public static string CreateStandardUser(string userName, string fullName, string? password)
+    {
+        userName = userName.Trim();
+        if (userName.Length is 0 or > 20 || !userName.All(c => char.IsLetterOrDigit(c) || c is ' ' or '.' or '-' or '_') || userName.Trim('.', ' ').Length == 0)
+            throw new ArgumentException("Pick a sign-in name of up to 20 letters or numbers");
+        if (List().Any(a => a.Name.Equals(userName, StringComparison.OrdinalIgnoreCase)))
+            throw new ArgumentException($"There's already an account called “{userName}” — pick it under “Use an existing account”, or choose another name");
+        var args = new List<string> { "user", userName, password ?? "", "/add", $"/fullname:{fullName.Trim()}", "/comment:Child account managed by CoinQuest", "/passwordchg:yes" };
+        if (string.IsNullOrEmpty(password)) args.Add("/passwordreq:no");
+        var (code, output) = RunArgs("net", args);
+        if (code != 0) throw new InvalidOperationException("Windows couldn't create the account: " + output.Trim());
+        EnsureStandardUser(userName);
+        _adminCache = null;
+        return userName;
+    }
+
+    private static (int Code, string Output) RunArgs(string file, IEnumerable<string> args)
+    {
+        var psi = new ProcessStartInfo(file) { RedirectStandardOutput = true, RedirectStandardError = true, UseShellExecute = false, CreateNoWindow = true };
+        foreach (var a in args) psi.ArgumentList.Add(a);
+        using var p = Process.Start(psi)!;
+        var output = p.StandardOutput.ReadToEnd() + p.StandardError.ReadToEnd();
+        p.WaitForExit(20000);
+        return (p.HasExited ? p.ExitCode : -1, output);
+    }
+
     /// <summary>A managed child must be a Standard user. Removes them from Administrators if present.</summary>
     public static void EnsureStandardUser(string account)
     {

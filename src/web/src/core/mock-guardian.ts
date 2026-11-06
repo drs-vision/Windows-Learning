@@ -58,6 +58,8 @@ export class MockGuardian {
     }, 1000);
   }
 
+  /** Preview only: kids added with "Add a kid" (the first kid is this.child). */
+  private moreKids(): Child[] { try { return JSON.parse(localStorage.getItem('cq.mock.kids') ?? '[]'); } catch { return []; } }
   private persist() {
     localStorage.setItem('cq.mock.ledger', JSON.stringify(this.ledger));
     localStorage.setItem('cq.mock.claims', JSON.stringify(this.claims));
@@ -93,9 +95,9 @@ export class MockGuardian {
   private parentState(): ParentState {
     const t = this.todayStart();
     return {
-      household: { id: 'local', name: 'My family', children: [this.child] },
+      household: { id: 'local', name: 'My family', children: [this.child, ...this.moreKids()] },
       pendingClaims: this.claims,
-      perChild: { [this.child.id]: { balance: this.balance(), today: this.ledger.filter((e) => e.at >= t).reverse(), unlocks: this.unlocks, earnedToday: Object.fromEntries(Object.keys(this.child.modules).map((m) => [m, this.earnedToday(m)])) } },
+      perChild: { ...Object.fromEntries(this.moreKids().map((k) => [k.id, { balance: 0, today: [], unlocks: [], earnedToday: {} }])), [this.child.id]: { balance: this.balance(), today: this.ledger.filter((e) => e.at >= t).reverse(), unlocks: this.unlocks, earnedToday: Object.fromEntries(Object.keys(this.child.modules).map((m) => [m, this.earnedToday(m)])) } },
       activeChildId: this.child.id,
       version: '0.1.0-dev',
       updateStatus: { current: '0.1.0-dev', latest: null, state: 'upToDate', lastChecked: new Date().toISOString() },
@@ -266,7 +268,33 @@ export class MockGuardian {
         if (p.pin !== this.pin) return fail('wrong PIN');
         this.token = 't' + Math.random(); return ok({ token: this.token, expiresInSeconds: 1800 });
       case 'parent.state': if (!parentOk) return fail('parent PIN required'); return ok(this.parentState());
-      case 'parent.updateChild': if (!parentOk) return fail('parent PIN required'); this.child = p.child; this.persist(); this.emit({ name: 'state' }); return ok({ ok: true });
+      case 'parent.updateChild': {
+        if (!parentOk) return fail('parent PIN required');
+        if (p.child.id === this.child.id) { this.child = p.child; this.persist(); }
+        else localStorage.setItem('cq.mock.kids', JSON.stringify(this.moreKids().map((k) => (k.id === p.child.id ? p.child : k))));
+        this.emit({ name: 'state' }); return ok({ ok: true });
+      }
+      case 'parent.accounts': {
+        if (!parentOk) return fail('parent PIN required');
+        const used = [this.child, ...this.moreKids()];
+        const extra = JSON.parse(localStorage.getItem('cq.mock.accounts') ?? '[]') as string[];
+        return ok([{ name: 'david', fullName: 'David', isAdmin: true, disabled: false, sid: 'S-1' }, { name: 'sam', fullName: 'Sam', isAdmin: false, disabled: false, sid: 'S-2' }, { name: 'ella', fullName: 'Ella', isAdmin: false, disabled: false, sid: 'S-3' }, ...extra.map((n, i) => ({ name: n, fullName: n, isAdmin: false, disabled: false, sid: 'S-x' + i }))]
+          .map((a) => ({ ...a, usedBy: used.find((k) => k.windowsAccount === a.name)?.displayName ?? null })));
+      }
+      case 'parent.createAccount': case 'setup.createAccount': {
+        if (req.op === 'parent.createAccount' && !parentOk) return fail('parent PIN required');
+        const extra = JSON.parse(localStorage.getItem('cq.mock.accounts') ?? '[]') as string[];
+        if (['david', 'sam', 'ella', ...extra].includes(String(p.userName).toLowerCase())) return fail(`There's already an account called “${p.userName}”`);
+        localStorage.setItem('cq.mock.accounts', JSON.stringify([...extra, String(p.userName).toLowerCase()]));
+        return ok({ account: String(p.userName).toLowerCase() });
+      }
+      case 'parent.addChild': {
+        if (!parentOk) return fail('parent PIN required');
+        if (p.windowsAccount === 'david') return fail("That's an administrator account (a parent's?). Pick your child's account, or create a new one for them.");
+        const kid = { ...structuredClone(this.child), id: 'kid-' + Date.now().toString(36), displayName: p.displayName, windowsAccount: p.windowsAccount, color: p.color };
+        localStorage.setItem('cq.mock.kids', JSON.stringify([...this.moreKids(), kid]));
+        this.emit({ name: 'state' }); return ok({ childId: kid.id });
+      }
       case 'parent.resolveClaim': {
         if (!parentOk) return fail('parent PIN required');
         const i = this.claims.findIndex((c) => c.ledgerSeq === p.seq);

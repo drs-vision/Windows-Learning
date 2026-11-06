@@ -1,7 +1,8 @@
 import { useEffect, useRef, useState } from 'preact/hooks';
 import type { Child, FlashpointGame, FpCatalogGame, Game, ParentState, Prize, WebGame } from '../core/types';
-import { BLOCK_MINUTES, autoSamplerPrice, defaultArcadePrice, youTubeBlockPrice } from '../core/types';
+import { BLOCK_MINUTES, kidColor, autoSamplerPrice, defaultArcadePrice, youTubeBlockPrice } from '../core/types';
 import { ReadingAnalysis } from './reading';
+import { KidAccount, type WinAccount } from './KidAccount';
 import { bridge, type DiscStatus, type FpStatus, type PhoneLinks, type RwtStatus } from '../core/bridge';
 import qrcode from 'qrcode-generator';
 import { MODULES } from '../modules/registry';
@@ -21,6 +22,9 @@ export function ParentConsole({ embedded, onClose }: { embedded?: boolean; onClo
   const [authed, setAuthed] = useState(false);
   const [state, setState] = useState<ParentState | null>(null);
   const [tab, setTab] = useState<Tab>('today');
+  const [kidId, setKidId] = useState<string | null>(() => { try { return localStorage.getItem('cq.parent.kid'); } catch { return null; } });
+  const [adding, setAdding] = useState(false);
+  const pickKid = (id: string) => { setKidId(id); try { localStorage.setItem('cq.parent.kid', id); } catch { /* fine */ } };
   const [error, setError] = useState('');
 
   const sayHello = () => { setError(''); bridge.hello().then(setHello).catch((e) => setError(e.message)); };
@@ -54,7 +58,8 @@ export function ParentConsole({ embedded, onClose }: { embedded?: boolean; onClo
   if (!authed) { setAuthed(true); return null; }
   if (!state) return <div class="screen center"><p class="muted">Loading…</p>{error && <p class="error">{error}</p>}</div>;
 
-  const child = state.household.children[0];
+  const kids = state.household.children;
+  const child = kids.find((k) => k.id === kidId) ?? kids[0];
   const pendingCount = state.pendingClaims.length;
 
   return (
@@ -65,6 +70,12 @@ export function ParentConsole({ embedded, onClose }: { embedded?: boolean; onClo
         ))}
         {embedded && <button class="ghost close" onClick={onClose}>✕ Close</button>}
       </nav>
+      {/* Kids on this PC: tap to switch; every tab follows the chosen kid. */}
+      <div class="kid-row" role="tablist" aria-label="Kids">
+        {kids.map((k) => <button role="tab" class={'kid-pill' + (k.id === child?.id ? ' on' : '')} style={{ '--kid': kidColor(kids, k.id) } as any} onClick={() => pickKid(k.id)}>{k.displayName}</button>)}
+        <button class="kid-pill add" onClick={() => setAdding(true)}>＋ Add a kid</button>
+      </div>
+      {adding && <AddKid taken={kids.map((k) => kidColor(kids, k.id))} onClose={() => setAdding(false)} onAdded={(id) => { setAdding(false); pickKid(id); refresh(); }} />}
       {error && <p class="error">{error}</p>}
       <section class="tab-body">
         {!child && <p class="muted">No child set up yet.</p>}
@@ -96,6 +107,23 @@ function save(base: Child, mine: Child, refresh: () => void, setError: (s: strin
   return saveChain;
 }
 
+
+/** "Add a kid": a new Windows account for them (or one already on this PC), then they get their own coins, quests and limits. */
+function AddKid({ onClose, onAdded, taken }: { onClose: () => void; onAdded: (childId: string) => void; taken: string[] }) {
+  const [accounts, setAccounts] = useState<WinAccount[] | null>(null);
+  useEffect(() => { bridge.parentAccounts().then(setAccounts).catch(() => setAccounts([])); }, []);
+  useEffect(() => { const k = (e: KeyboardEvent) => { if (e.key === 'Escape') onClose(); }; window.addEventListener('keydown', k); return () => window.removeEventListener('keydown', k); }, []);
+  return (
+    <div class="modal" onClick={onClose}>
+      <div class="card add-kid" role="dialog" aria-label="Add a kid" onClick={(e) => e.stopPropagation()}>
+        <div class="row between"><h3>Add a kid</h3><button class="ghost small" onClick={onClose}>Close</button></div>
+        <p class="muted small">They get their own Windows sign-in, coins, quests and limits. Linked phones see them automatically.</p>
+        <KidAccount accounts={accounts} action="Add" taken={taken} create={(u, f, p) => bridge.parentCreateAccount(u, f, p)}
+          onPicked={async (k) => { const r = await bridge.parentAddChild(k.displayName, k.account, k.color); onAdded(r.childId); }} />
+      </div>
+    </div>
+  );
+}
 
 function PinGate({ onOk, onCancel }: { onOk: () => void; onCancel?: () => void }) {
   const [pin, setPin] = useState('');
@@ -223,12 +251,15 @@ function Approvals({ state, onChange }: { state: ParentState; onChange: () => vo
     <div class="approvals">
       {state.pendingClaims.map((c) => (
         <div class="card claim">
-          <div class="claim-text"><b>{labelFor(c.moduleId)}</b><p>{c.detail}</p><small class="muted">{when(c.at)}</small></div>
-          <div class="claim-actions">
+          <div class="claim-text">{state.household.children.length > 1 && <small class="claim-kid">{state.household.children.find((k) => k.id === c.childId)?.displayName}</small>}<b>{c.moduleId === 'allow-ads' ? '🚫 Allow ads?' : labelFor(c.moduleId)}</b><p>{c.detail}{c.moduleId === 'allow-ads' && <><br /><small class="muted">Ads are hidden on every site. Allow them here only if the site won't work without them.</small></>}</p><small class="muted">{when(c.at)}</small></div>
+          {c.moduleId === 'allow-ads' ? <div class="claim-actions">
+            <button class="primary" onClick={() => bridge.parentResolveClaim(c.ledgerSeq, true, 0).then(onChange)}>Allow ads</button>
+            <button class="ghost" onClick={() => bridge.parentResolveClaim(c.ledgerSeq, false).then(onChange)}>Keep hidden</button>
+          </div> : <div class="claim-actions">
             <label class="coin-field" title="Coins to give (can be negative)"><input type="number" class="coins-input" value={coins[c.ledgerSeq] ?? c.coins} min={-500} max={500} onInput={(e) => setCoins({ ...coins, [c.ledgerSeq]: Number((e.target as HTMLInputElement).value) })} /><span>🪙</span></label>
             <button class="primary" onClick={() => bridge.parentResolveClaim(c.ledgerSeq, true, coins[c.ledgerSeq] ?? c.coins).then(onChange)}>Approve</button>
             <button class="ghost" onClick={() => bridge.parentResolveClaim(c.ledgerSeq, false).then(onChange)}>Deny</button>
-          </div>
+          </div>}
         </div>
       ))}
     </div>
@@ -261,6 +292,8 @@ function Allowed({ child, onSave }: { child: Child; onSave: (c: Child) => void }
   const [apps, setApps] = useState<{ name: string; exe: string; path: string }[] | null>(null);
   const [showApps, setShowApps] = useState(false);
   const sites = child.allowlist.sites; const appList = child.allowlist.apps;
+  const ads = child.allowlist.adsAllowed ?? [];
+  const setAds = (site: string, on: boolean) => onSave({ ...child, allowlist: { ...child.allowlist, adsAllowed: on ? [...new Set([...ads, site])] : ads.filter((x) => x !== site) } });
 
   const setSites = (s: string[]) => {
     // Allowing a learning site that pays (Duolingo, Khan Academy) switches on its quest too.
@@ -282,7 +315,11 @@ function Allowed({ child, onSave }: { child: Child; onSave: (c: Child) => void }
         <h3>Websites</h3>
         <p class="muted">These are the only websites that open (inside CoinQuest's locked browser). Everything else is blocked.</p>
         <div class="row"><input value={site} placeholder="e.g. duolingo.com" onInput={(e) => setSite((e.target as HTMLInputElement).value)} onKeyDown={(e) => e.key === 'Enter' && addSite()} /><button class="primary" onClick={addSite}>Add</button></div>
-        <div class="chips">{sites.map((s) => <span class="chip">{s}<button onClick={() => setSites(sites.filter((x) => x !== s))}>✕</button></span>)}</div>
+        <div class="chips">{sites.map((s) => {
+          const adsOn = ads.includes(s);
+          return <span class="chip">{s}<button class={'chip-ads' + (adsOn ? ' on' : '')} title={adsOn ? 'Ads are shown on this site. Click to hide them again.' : 'Ads are hidden on this site. Click to allow them (for a site that won\'t work without them).'} onClick={() => setAds(s, !adsOn)}>{adsOn ? 'ads shown' : 'ads hidden'}</button><button aria-label={`Remove ${s}`} onClick={() => setSites(sites.filter((x) => x !== s))}>✕</button></span>;
+        })}</div>
+        <p class="muted small">CoinQuest hides ads on every site. If a site won't work without them, click "ads hidden" to allow them there. Your child can also ask from the site; you'll see it under requests.</p>
         <div class="presets">{Object.entries(SITE_PRESETS).map(([name, list]) => <button class="ghost small" onClick={() => setSites([...new Set([...sites, ...list])])}>+ {name}</button>)}</div>
       </div>
       <div class="card">
@@ -422,7 +459,7 @@ function ArcadeManager({ child, onSave }: { child: Child; onSave: (c: Child) => 
   const [web, setWeb] = useState<WebGame>({ id: '', title: '', url: '', strategy: 3 });
   const [upload, setUpload] = useState<{ file: File; title: string; strategy: number } | null>(null);
   const settings = child.arcade ?? { minutesPerPlay: 10, priceOverrides: {}, hidden: [], webGames: [] };
-  const reload = () => bridge.parentArcadeCatalog().then((r) => setGames(r.games)).catch((e) => setErr(e.message));
+  const reload = () => bridge.parentArcadeCatalog(child.id).then((r) => setGames(r.games)).catch((e) => setErr(e.message));
   useEffect(() => { reload(); }, [child]);
   const saveArcade = (a: typeof settings) => onSave({ ...child, arcade: a });
 
@@ -432,7 +469,7 @@ function ArcadeManager({ child, onSave }: { child: Child; onSave: (c: Child) => 
     try {
       const buf = new Uint8Array(await upload.file.arrayBuffer());
       let bin = ''; for (let i = 0; i < buf.length; i += 0x8000) bin += String.fromCharCode(...buf.subarray(i, i + 0x8000));
-      await bridge.parentArcadeUpload(upload.file.name, btoa(bin), upload.title || upload.file.name.replace(/\.swf$/i, ''), upload.strategy);
+      await bridge.parentArcadeUpload(upload.file.name, btoa(bin), upload.title || upload.file.name.replace(/\.swf$/i, ''), upload.strategy, child.id);
       setUpload(null); reload();
     } catch (e) { setErr((e as Error).message); }
   }

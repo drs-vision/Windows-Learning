@@ -50,7 +50,7 @@ public sealed class RequestRouter
     /// </summary>
     private static readonly HashSet<string> Slow = new()
     {
-        Ops.ArcadePrepare, Ops.ArcadeClassicFile, Ops.YouTubeLibrary, Ops.YouTubeCheck, Ops.YouTubeChannel, Ops.ParentYouTubeResolve, Ops.ParentCheckUpdate, Ops.ParentInstalledApps, Ops.SetupAccounts,
+        Ops.ArcadePrepare, Ops.ArcadeClassicFile, Ops.YouTubeLibrary, Ops.YouTubeCheck, Ops.YouTubeChannel, Ops.ParentYouTubeResolve, Ops.ParentCheckUpdate, Ops.ParentInstalledApps, Ops.SetupAccounts, Ops.SetupCreateAccount, Ops.ParentAccounts, Ops.ParentCreateAccount, Ops.ParentAddChild,
         Ops.ParentFpStatus, Ops.ParentFpSearch, Ops.ParentFpSuggest, Ops.ParentFpInstallClifp, Ops.ParentFpDownloadInstaller, Ops.ParentFpThumbs, Ops.ParentFpStockNow, Ops.ParentBlocked, Ops.ParentDiagnostics, Ops.ParentRwtImport, Ops.RwtLaunch, Ops.ParentDiscImport, Ops.ParentDiscSetupBegin, Ops.ParentDiscSetupFinish, Ops.DiscLaunch, Ops.ParentDiscRemove,
     };
     private readonly object _sync = new();
@@ -74,6 +74,8 @@ public sealed class RequestRouter
             Ops.BooksList or Ops.BooksChapter or Ops.BooksRead or Ops.BooksQuiz or Ops.BooksGrade or Ops.BooksBonus or Ops.BooksBonusAnswer or Ops.BooksTyped
                 => child is null ? Response.Fail(req.Id, "not a managed account") : Response.Success(req.Id, Books(req, child, client.Account)),
             Ops.ActivityTick => child is null ? Response.Success(req.Id, new { ok = false }) : ActivityTick(req, child),
+            Ops.AdsState => child is null ? Response.Success(req.Id, new { allowed = Array.Empty<string>(), pending = Array.Empty<string>() }) : Response.Success(req.Id, AdsState(child)),
+            Ops.AdsRequest => child is null ? Response.Fail(req.Id, "only a child account can ask") : Response.Success(req.Id, AdsRequest(req, child, client.Account)),
             // Only CoinQuest's own kid app (checked by its program file, which the child can't change) may open a page's parts.
             Ops.PageParts => client.IsKidApp
                 ? Response.Success(req.Id, new { allowed = _gate.AllowPageParts(Str(req, "site"), (req.Payload?["hosts"] as JsonArray)?.Select(h => h?.GetValue<string>() ?? "") ?? Enumerable.Empty<string>()) })
@@ -106,8 +108,8 @@ public sealed class RequestRouter
             Ops.ParentEndUnlock => Parent(req, client, child, () => { var ok = _unlocks.End(Str(req, "unlockId")); AfterChange(); return new { ok }; }),
             Ops.ParentVersion => Response.Success(req.Id, new { version = Version, status = _updates.Status }),
             Ops.ParentYouTubeResolve => Parent(req, client, child, () => _youtube.Resolve(Str(req, "url")).GetAwaiter().GetResult()),
-            Ops.ParentArcadeCatalog => Parent(req, client, child, () => FirstChild() is { } c ? new { games = Arcade.Catalog(c), settings = c.Arcade } : new { games = new List<Arcade.Game>(), settings = new ArcadeSettings() }),
-            Ops.ParentArcadeUpload => Parent(req, client, child, () => Arcade.Upload(FirstChild() ?? throw new InvalidOperationException("set up a child first"),
+            Ops.ParentArcadeCatalog => Parent(req, client, child, () => ChildFor(req) is { } c ? new { games = Arcade.Catalog(c), settings = c.Arcade } : new { games = new List<Arcade.Game>(), settings = new ArcadeSettings() }),
+            Ops.ParentArcadeUpload => Parent(req, client, child, () => Arcade.Upload(ChildFor(req) ?? throw new InvalidOperationException("set up a child first"),
                 Str(req, "fileName"), Str(req, "data"), req.Payload?["title"]?.GetValue<string>(), req.Payload?["strategy"]?.GetValue<int>() ?? 3)),
             Ops.ParentRwtStatus => Parent(req, client, child, () => _rwt.Status()),
             Ops.ParentRwtImport => Parent(req, client, child, () => { _rwt.StartImport(Str(req, "path")); return _rwt.Status(); }),
@@ -150,6 +152,11 @@ public sealed class RequestRouter
             // ---- setup ----
             Ops.SetupAccounts => Setup(req, client, () => LocalAccounts.List()),
             Ops.SetupComplete => Setup(req, client, () => SetupComplete(req)),
+            Ops.SetupCreateAccount => Setup(req, client, () => CreateAccount(req)),
+            Ops.ParentAccounts => Parent(req, client, child, () => LocalAccounts.List().Select(a => new { a.Name, a.FullName, a.IsAdmin, a.Disabled, a.Sid,
+                usedBy = _store.Current.Children.FirstOrDefault(c => c.WindowsSid == a.Sid || string.Equals(Bare(c.WindowsAccount), a.Name, StringComparison.OrdinalIgnoreCase))?.DisplayName })),
+            Ops.ParentCreateAccount => Parent(req, client, child, () => CreateAccount(req)),
+            Ops.ParentAddChild => Parent(req, client, child, () => AddChild(req)),
 
             _ => Response.Fail(req.Id, $"unknown op {req.Op}")
         });
@@ -958,6 +965,8 @@ public sealed class RequestRouter
     }
 
     private Child? FirstChild() => _store.Current.Children.FirstOrDefault();
+    /// <summary>The child a parent request is about ("childId"), else the first one (older Parent Consoles send none).</summary>
+    private Child? ChildFor(Request req) => OptStr(req, "childId") is { } id ? _store.Current.Children.FirstOrDefault(c => c.Id == id) ?? FirstChild() : FirstChild();
 
     private string FpRoot() => _fp.Root(FirstChild()?.Arcade.FlashpointRoot) ?? throw new InvalidOperationException("Flashpoint isn't installed yet.");
 
@@ -1062,6 +1071,14 @@ public sealed class RequestRouter
                 "setPrize" => PhoneSetPrize(req),
                 "deletePrize" => PhoneEditChild(Str(req, "childId"), c => c with { Prizes = c.Prizes.Where(p => p.Id != Str(req, "id")).ToList() }),
                 "setSites" => PhoneSetSites(req),
+                "setColor" => PhoneEditChild(Str(req, "childId"), c => System.Text.RegularExpressions.Regex.IsMatch(Str(req, "color"), "^#[0-9a-fA-F]{6}$") ? c with { Color = Str(req, "color") } : c),
+                "setAds" => PhoneEditChild(Str(req, "childId"), c =>
+                {
+                    var site = SiteDomain(Str(req, "site"));
+                    var list = c.Allowlist.AdsAllowed.Where(x => !x.Equals(site, StringComparison.OrdinalIgnoreCase)).ToList();
+                    if (req.Payload?["allow"]?.GetValue<bool>() == true) list.Add(site);
+                    return c with { Allowlist = c.Allowlist with { AdsAllowed = list } };
+                }),
                 "activity" => ActivityDays(Str(req, "childId"), Str(req, "from"), Str(req, "to")),
                 // The reading dashboard (books + Reading Quest), asked for when a parent opens it on the phone.
                 "reading" => PhoneReading(Str(req, "childId")),
@@ -1086,10 +1103,12 @@ public sealed class RequestRouter
         {
             id = c.Id,
             name = c.DisplayName,
+            color = ColorOf(c),
             activityReports = c.ActivityReports,
             modules = c.Modules.Select(kv => new { id = kv.Key, enabled = kv.Value.Enabled, coinsPerActivity = kv.Value.CoinsPerActivity, dailyCap = kv.Value.DailyCap, requireApproval = kv.Value.RequireApproval, options = kv.Value.Options, earnedToday = _ledger.EarnedToday(c.Id, kv.Key) }).ToList(),
             prizes = c.Prizes.Select(p => new { id = p.Id, name = p.Name, cost = p.Cost, kind = p.Kind.ToString(), minutes = p.Minutes, dailyCap = p.DailyCap, enabled = p.Enabled, targets = p.Targets }).ToList(),
             sites = c.Allowlist.Sites,
+            adsAllowed = c.Allowlist.AdsAllowed,
             apps = c.Allowlist.Apps.Select(a => Path.GetFileName(a)).ToList(),
             channels = c.YouTubeChannels.Select(y => new { id = y.Id, title = y.Title, url = y.Url }).ToList(),
         }).ToList(),
@@ -1254,6 +1273,7 @@ public sealed class RequestRouter
                 {
                     id = c.Id,
                     name = c.DisplayName,
+                    color = ColorOf(c),
                     balance = _ledger.Balance(c.Id),
                     earnedToday = recent.Where(e => e.Delta > 0).Sum(e => e.Delta),
                     spentToday = -recent.Where(e => e.Delta < 0).Sum(e => e.Delta),
@@ -1265,7 +1285,7 @@ public sealed class RequestRouter
             claims = _ledger.PendingClaims().Select(p => new
             {
                 seq = p.LedgerSeq, childId = p.ChildId, child = h.Children.FirstOrDefault(c => c.Id == p.ChildId)?.DisplayName ?? "",
-                coins = p.Coins, what = p.Detail.Length > 0 ? p.Detail : p.ModuleId, at = p.At,
+                coins = p.Coins, what = p.Detail.Length > 0 ? p.Detail : p.ModuleId, at = p.At, kind = p.ModuleId,
             }).ToList(),
         };
     }
@@ -1321,12 +1341,48 @@ public sealed class RequestRouter
         return new { ok = true };
     }
 
+    // ---- ads: blocked in the site window everywhere except sites a parent allowed ------------------------------------
+
+    private const string AdsModule = "allow-ads";
+    private static string AdsDetail(string site) => $"Allow ads on {site}";
+    private static string? AdsSiteOf(string? detail) => detail is not null && System.Text.RegularExpressions.Regex.Match(detail, @"^Allow ads on (\S+)$") is { Success: true } m ? m.Groups[1].Value : null;
+
+    private object AdsState(Child child) => new
+    {
+        allowed = child.Allowlist.AdsAllowed,
+        pending = _ledger.PendingClaims(child.Id).Where(c => c.ModuleId == AdsModule).Select(c => AdsSiteOf(c.Detail)).Where(x => x is not null).ToList(),
+    };
+
+    /// <summary>The child asks to see ads on a site (when one won't work with ads blocked). Only a parent can say yes.</summary>
+    private object AdsRequest(Request req, Child child, string account)
+    {
+        var site = SiteDomain(Str(req, "site"));
+        if (!child.Allowlist.Sites.Any(s => site == SiteDomain(s) || site.EndsWith("." + SiteDomain(s))) && !_unlocks.ActiveFor(child.Id).Any(u => u.Targets.Any(t => site.EndsWith(SiteDomain(t)))))
+            throw new InvalidOperationException("That site isn't on your list");
+        if (child.Allowlist.AdsAllowed.Contains(site, StringComparer.OrdinalIgnoreCase)) return new { ok = true, already = "allowed" };
+        if (_ledger.PendingClaims(child.Id).Any(c => c.ModuleId == AdsModule && AdsSiteOf(c.Detail) == site)) return new { ok = true, already = "asked" };
+        _ledger.FileClaim(child.Id, AdsModule, 0, AdsDetail(site), account);
+        ApprovalsChanged?.Invoke();
+        AfterChange();
+        return new { ok = true };
+    }
+
+    private void EditChild(string childId, Func<Child, Child> edit)
+    {
+        _store.Update(h => h with { Children = h.Children.Select(c => c.Id == childId ? edit(c) : c).ToList() });
+        _policy.Invalidate();
+        AfterChange();
+    }
+
     private object ResolveClaim(Request req, string actor)
     {
         var seq = req.Payload?["seq"]?.GetValue<long>() ?? throw new ArgumentException("seq required");
         var approve = req.Payload?["approve"]?.GetValue<bool>() ?? false;
         int? coins = req.Payload?["coins"]?.GetValue<int>();
         var entry = _ledger.ResolveClaim(seq, approve, actor, coins);
+        // An approved "allow ads on <site>" request turns ads on for that site (from the Parent Console or a phone).
+        if (approve && entry is { Source: AdsModule } && AdsSiteOf(entry.Detail) is { } adsSite)
+            EditChild(entry.ChildId, c => c.Allowlist.AdsAllowed.Contains(adsSite, StringComparer.OrdinalIgnoreCase) ? c : c with { Allowlist = c.Allowlist with { AdsAllowed = c.Allowlist.AdsAllowed.Append(adsSite).ToList() } });
         ApprovalsChanged?.Invoke();
         AfterChange();
         return new { ok = entry is not null, entry };
@@ -1352,6 +1408,40 @@ public sealed class RequestRouter
         return Response.Success(req.Id, action());
     }
 
+    /// <summary>A kid's color: their own, else the palette color for their place in the list.</summary>
+    private string ColorOf(Child c) => System.Text.RegularExpressions.Regex.IsMatch(c.Color ?? "", "^#[0-9a-fA-F]{6}$") ? c.Color
+        : Child.Palette[Math.Max(0, _store.Current.Children.FindIndex(x => x.Id == c.Id)) % Child.Palette.Length];
+
+    private static string Bare(string account) => account.Contains('\\') ? account[(account.IndexOf('\\') + 1)..] : account;
+
+    private object CreateAccount(Request req)
+    {
+        var full = OptStr(req, "fullName") ?? Str(req, "userName");
+        var name = LocalAccounts.CreateStandardUser(Str(req, "userName"), full, OptStr(req, "password"));
+        _log.LogInformation("Created Windows account {Account} for a child", name);
+        return new { account = name };
+    }
+
+    /// <summary>Another child on this PC: their own Windows account (made Standard), coins, quests, limits and reports.</summary>
+    private object AddChild(Request req)
+    {
+        var account = Str(req, "windowsAccount");
+        var displayName = OptStr(req, "displayName") is { Length: > 0 } d ? d.Trim() : Bare(account);
+        var sid = Wts.SidForAccount(account) ?? throw new ArgumentException($"Windows account '{account}' not found");
+        if (_store.Current.Children.Any(c => c.WindowsSid == sid)) throw new InvalidOperationException("That Windows account already belongs to one of your kids");
+        // Never demote an administrator from here (it could be a parent's own account): pick a kid's account or create one.
+        if (LocalAccounts.IsLocalAdmin(account)) throw new InvalidOperationException("That's an administrator account (a parent's?). Pick your child's account, or create a new one for them.");
+        LocalAccounts.EnsureStandardUser(account);
+        var color = OptStr(req, "color") is { } col && System.Text.RegularExpressions.Regex.IsMatch(col, "^#[0-9a-fA-F]{6}$") ? col
+            : Child.Palette.FirstOrDefault(p => _store.Current.Children.All(x => !string.Equals(x.Color, p, StringComparison.OrdinalIgnoreCase))) ?? Child.Palette[0];
+        var c = new Child { DisplayName = displayName, Color = color, WindowsAccount = account, WindowsSid = sid, Allowlist = Allowlist.SchoolBasics() };
+        _store.Update(h => h with { Children = h.Children.Append(c).ToList() });
+        _policy.Invalidate();
+        AfterChange();
+        _log.LogInformation("Added child {Child} ({Account})", displayName, account);
+        return new { ok = true, childId = c.Id };
+    }
+
     private object SetupComplete(Request req)
     {
         var pin = Str(req, "pin");
@@ -1363,7 +1453,8 @@ public sealed class RequestRouter
 
         LocalAccounts.EnsureStandardUser(account);
 
-        var child = new Child { DisplayName = displayName, WindowsAccount = account, WindowsSid = sid, Allowlist = Allowlist.SchoolBasics() };
+        var color = req.Payload?["child"]?["color"]?.GetValue<string>() is { } col && System.Text.RegularExpressions.Regex.IsMatch(col, "^#[0-9a-fA-F]{6}$") ? col : Child.Palette[0];
+        var child = new Child { DisplayName = displayName, Color = color, WindowsAccount = account, WindowsSid = sid, Allowlist = Allowlist.SchoolBasics() };
         _store.Update(h => h with { Children = new List<Child> { child } });
         _store.SetPin(pin);
         _policy.Invalidate();
