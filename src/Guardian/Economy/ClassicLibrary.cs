@@ -20,6 +20,11 @@ public sealed class ClassicLibrary
     private readonly HttpClient _http;
     private readonly SemaphoreSlim _one = new(2, 2);
 
+    /// <summary>The archive's official JSON search (flashpointarchive.org, since Oct 2026). Adult titles are left out unless asked for.</summary>
+    public const string SearchApi = "https://flashpointarchive.org/api/search";
+    /// <summary>Where Flashpoint keeps each game's files ("data packs"): {id}-{date added in ms}.zip, as the Flashpoint launcher fetches them.</summary>
+    public static readonly string[] GameFiles = { "https://download.flashpointarchive.org/gib-roms/Games/", "https://download.unstable.life/gib-roms/Games/" };
+    /// <summary>The older catalog service, kept as a fallback (it stopped answering in Nov 2026).</summary>
     public const string Api = "https://db-api.unstable.life";
     public const string LegacyHtdocs = "https://infinity.flashpointarchive.org/Flashpoint/Legacy/htdocs/";
     public static string Dir => Path.Combine(Paths.DataRoot, "classics");
@@ -34,16 +39,51 @@ public sealed class ClassicLibrary
 
     public sealed record Ready(string Url, string Base, string Prefix, string Platform);
 
-    /// <summary>Search the online catalog. Adult ("Extreme") titles are filtered out by the API and again here.</summary>
+    /// <summary>One game from the archive's search, with what's needed to fetch it.</summary>
+    private sealed record Found(FlashpointService.FpGame Game, string Launch, string? DataUrlName, string? Sha256);
+
+    private static string Str(JsonNode? n) => n switch { JsonValue v => v.ToString(), JsonArray a => string.Join("; ", a.Select(x => x?.ToString())), _ => "" };
+
+    /// <summary>The official search: games (adult titles left out by the archive, and again here).</summary>
+    private async Task<List<Found>> SearchNew(string query, int limit)
+    {
+        var json = JsonNode.Parse(await _http.GetStringAsync($"{SearchApi}?query={Uri.EscapeDataString(query)}&limit={limit}"));
+        var list = new List<Found>();
+        foreach (var n in json?["games"] as JsonArray ?? new JsonArray())
+        {
+            if (n is null) continue;
+            var tags = Str(n["tags"]);
+            if (tags.Contains("Extreme", StringComparison.OrdinalIgnoreCase)) continue;
+            if (Str(n["library"]) is { Length: > 0 } lib && lib != "arcade") continue;
+            var data = (n["gameData"] as JsonArray)?.FirstOrDefault();
+            string? file = null;
+            if (data?["dateAdded"] is JsonValue da && DateTimeOffset.TryParse(da.ToString(), System.Globalization.CultureInfo.InvariantCulture, System.Globalization.DateTimeStyles.AssumeUniversal, out var added))
+                file = $"{Str(n["id"])}-{added.ToUnixTimeMilliseconds()}.zip";
+            var launch = data is not null ? Str(data["launchCommand"]) : Str(n["legacyLaunchCommand"]);
+            if (launch.Length == 0) launch = Str(n["legacyLaunchCommand"]);
+            var platform = Str(n["primaryPlatform"]);
+            list.Add(new Found(new FlashpointService.FpGame(Str(n["id"]), Str(n["title"]), Str(n["developer"]), Str(n["publisher"]), platform, tags, "", Str(n["releaseDate"]), ""),
+                launch, file, data is null ? null : Str(data["sha256"])));
+        }
+        return list;
+    }
+
+    /// <summary>Search the online catalog. Adult ("Extreme") titles are filtered out by the archive and again here.</summary>
     public async Task<List<FlashpointService.FpGame>> Search(string query, int limit = 20)
     {
+        try
+        {
+            var found = await SearchNew(query, limit);
+            if (found.Count > 0) return found.Select(f => f.Game).ToList();
+        }
+        catch (Exception ex) { _log.LogInformation("Flashpoint search ({Api}) failed: {Error}", SearchApi, ex.Message); }
         var url = $"{Api}/search?smartSearch={Uri.EscapeDataString(query)}&filter=true&limit={limit}&fields=id,title,developer,publisher,platform,tags,launchCommand,library,releaseDate,extreme";
         var json = JsonNode.Parse(await _http.GetStringAsync(url)) as JsonArray ?? new JsonArray();
         var list = new List<FlashpointService.FpGame>();
         foreach (var n in json)
         {
             if (n is null) continue;
-            string S(string k) => n[k] switch { JsonValue v => v.ToString(), JsonArray a => string.Join("; ", a.Select(x => x?.ToString())), _ => "" };
+            string S(string k) => Str(n[k]);
             var tags = S("tags");
             if (S("extreme").Equals("true", StringComparison.OrdinalIgnoreCase) || tags.Contains("Extreme", StringComparison.OrdinalIgnoreCase)) continue;
             if (S("library") is { Length: > 0 } lib && lib != "arcade") continue;
@@ -52,11 +92,17 @@ public sealed class ClassicLibrary
         return list;
     }
 
-    private async Task<(string Launch, string Platform)> Lookup(string id)
+    private async Task<(string Launch, string Platform, string? File, string? Sha256)> Lookup(string id)
     {
+        try
+        {
+            if ((await SearchNew($"id:{id}", 2)).FirstOrDefault(f => f.Game.Id.Equals(id, StringComparison.OrdinalIgnoreCase)) is { } f)
+                return (f.Launch, f.Game.Platform, f.DataUrlName, f.Sha256);
+        }
+        catch (Exception ex) { _log.LogInformation("Flashpoint lookup ({Api}) failed: {Error}", SearchApi, ex.Message); }
         var json = JsonNode.Parse(await _http.GetStringAsync($"{Api}/search?id={id}&fields=id,title,platform,launchCommand")) as JsonArray;
         var g = json?.FirstOrDefault() ?? throw new InvalidOperationException("That game isn't in the Flashpoint catalog.");
-        return (g["launchCommand"]?.ToString() ?? "", g["platform"]?.ToString() ?? "");
+        return (g["launchCommand"]?.ToString() ?? "", g["platform"]?.ToString() ?? "", null, null);
     }
 
     /// <summary>Make sure the game's files are on disk and say where the player should load it from.</summary>
@@ -70,7 +116,7 @@ public sealed class ClassicLibrary
         {
             if (!File.Exists(metaPath))
             {
-                var (launch, platform) = await Lookup(id);
+                var (launch, platform, packFile, packSha) = await Lookup(id);
                 if (!Playable(platform))
                 {
                     MarkUnavailable(id); // never shown again
@@ -81,7 +127,7 @@ public sealed class ClassicLibrary
                 if (Directory.Exists(tmp)) Directory.Delete(tmp, true);
                 Directory.CreateDirectory(tmp);
 
-                var packed = await FromLocalFlashpoint(id, tmp) || await FromDataPack(id, tmp);
+                var packed = await FromLocalFlashpoint(id, tmp) || await FromDataPack(id, tmp, packFile, packSha);
                 if (IsHtml5(platform) && !packed)
                 {
                     // An HTML5 game without a data pack is only its first page; the rest (often a Unity build) isn't
@@ -229,15 +275,31 @@ public sealed class ClassicLibrary
         }
     }
 
-    private async Task<bool> FromDataPack(string id, string into)
+    /// <summary>The game's data pack: from the archive's file server (checksum checked), else the older service.</summary>
+    private async Task<bool> FromDataPack(string id, string into, string? file, string? sha256)
     {
-        using var resp = await _http.GetAsync($"{Api}/get?id={id}", HttpCompletionOption.ResponseHeadersRead);
-        if (!resp.IsSuccessStatusCode) return false;
         var zipPath = Path.Combine(into, "pack.zip");
-        await using (var fs = File.Create(zipPath)) await resp.Content.CopyToAsync(fs);
-        try { Unpack(zipPath, into); return true; }
-        catch (InvalidDataException) { return false; } // not a zip: the game has no data pack
-        finally { try { File.Delete(zipPath); } catch { } }
+        var urls = (file is null ? Array.Empty<string>() : GameFiles.Select(b => b + file)).Append($"{Api}/get?id={id}");
+        foreach (var url in urls)
+        {
+            try
+            {
+                using var resp = await _http.GetAsync(url, HttpCompletionOption.ResponseHeadersRead);
+                if (!resp.IsSuccessStatusCode) continue;
+                await using (var fs = File.Create(zipPath)) await resp.Content.CopyToAsync(fs);
+                if (sha256 is { Length: 64 } && !url.StartsWith(Api))
+                {
+                    await using var check = File.OpenRead(zipPath);
+                    var got = Convert.ToHexString(await System.Security.Cryptography.SHA256.HashDataAsync(check));
+                    if (!got.Equals(sha256, StringComparison.OrdinalIgnoreCase)) { _log.LogWarning("Flashpoint file {Url}: checksum doesn't match", url); continue; }
+                }
+                try { Unpack(zipPath, into); return true; }
+                catch (InvalidDataException) { continue; } // not a zip: try the next source
+            }
+            catch (Exception ex) when (ex is HttpRequestException or TaskCanceledException or IOException) { _log.LogInformation("Flashpoint file {Url}: {Error}", url, ex.Message); }
+            finally { try { File.Delete(zipPath); } catch { } }
+        }
+        return false;
     }
 
     private Task<bool> FromLocalFlashpoint(string id, string into)
