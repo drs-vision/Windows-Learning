@@ -183,11 +183,11 @@ export class MockGuardian {
             { kind: 'quest', label: 'Khan Academy', sec: 900 + seed * 120 }, { kind: 'site', label: 'khanacademy.org', sec: 1500 + seed * 60 },
             { kind: 'youtube', label: 'Mark Rober', sec: 600 + seed * 90 }, { kind: 'quest', label: 'Scripture Typing', sec: 420 },
             { kind: 'arcade', label: '2048', sec: 300 + seed * 30 }, { kind: 'app', label: 'Read, Write & Type!', sec: 780 }, { kind: 'coinquest', label: 'Home', sec: 240 } ],
-            typing: { sessions: 3, chars: 2400 + seed * 100, ms: 900000, best: 28 + seed }, done: { 'khan-academy:correct': 12 + seed, 'khan-academy:videos': 2, 'bible-typing:finished': 2, 'duolingo:lessons': seed % 3, 'books:chapters': 1 + (seed % 2), 'books:answered': 12, 'books:correct': 9 + (seed % 3), 'books:readWords': 2600, 'books:readSec': 1150 + seed * 20 },
+            typing: { sessions: 3, chars: 2400 + seed * 100, ms: 900000, best: 28 + seed }, done: { 'khan-academy:correct': 12 + seed, 'khan-academy:videos': 2, 'bible-typing:finished': 2, 'duolingo:lessons': seed % 3, 'books:chapters': 1 + (seed % 2), 'books:chaptersRead': 2 + (seed % 2), 'reading-quest:answered': 6 + seed, 'reading-quest:correct': 5 + seed, 'books:answered': 12, 'books:correct': 9 + (seed % 3), 'books:readWords': 2600, 'books:readSec': 1150 + seed * 20 },
             earned: { 'khan-academy': 30 + seed, 'bible-typing': 9, rwt: 20 }, spent: { '20 minutes of YouTube': 48 },
             log: [{ t: '15:42', d: 9, k: 'Earn', s: 'bible-typing', x: 'Psalm 23 · 118 words' }, { t: '16:05', d: 12, k: 'Earn', s: 'khan-academy', x: 'Khan Academy: 1 finished exercise + 7 correct answers' }, { t: '16:30', d: -48, k: 'Spend', s: 'p-yt', x: '20 minutes of YouTube' }, { t: '17:10', d: 5, k: 'Adjust', s: 'parent', x: 'Cleaned his room' }] });
         }
-        if (days.length) (days[days.length - 1] as any).reading = { chapters: 23, firstTry: 84, wpm: 142, level: 4, verified: 3 };
+        if (days.length) (days[days.length - 1] as any).reading = { chapters: 55, passed: 42, firstTry: 82, wpm: 148, level: 8, verified: 7, questLevel: 5 };
         return ok({ childId: 'c1', kid: 'Sam', enabled: true, days });
       }
       // Reading, for the browser preview: one real book (Peter Rabbit). The real marking happens in the Guardian.
@@ -425,8 +425,8 @@ async function mockQuest(op: string, p: any): Promise<any> {
 }
 function mockQuestReport() {
   const d = (n: number) => { const x = new Date(); x.setDate(x.getDate() - n); return x.toISOString().slice(0, 10); };
-  return { rating: 2.8, level: 3, answered: 64, percent30: 78, answered30: 41, percentAll: 75, streak: 3, bestStreak: 11, wpm: 118, minutes: 52,
-    history: Array.from({ length: 21 }, (_, i) => ({ day: d(20 - i), rating: Math.round((1 + i * 0.09 + Math.sin(i) * 0.15) * 10) / 10 })),
+  return { rating: 5.4, level: 4, answered: 64, percent30: 78, answered30: 41, percentAll: 75, streak: 3, bestStreak: 11, wpm: 118, minutes: 52,
+    history: Array.from({ length: 21 }, (_, i) => ({ day: d(20 - i), rating: Math.round((3.6 + i * 0.09 + Math.sin(i) * 0.15) * 10) / 10 })),
     types: [{ type: 'detail', answered: 20, right: 18, percent: 90 }, { type: 'main-idea', answered: 11, right: 8, percent: 73 }, { type: 'vocabulary', answered: 9, right: 7, percent: 78 }, { type: 'inference', answered: 12, right: 6, percent: 50 }, { type: 'sequence', answered: 6, right: 5, percent: 83 }, { type: 'cause-effect', answered: 6, right: 4, percent: 67 }],
     bands: [{ grade: 0, answered: 9, percent: 100 }, { grade: 1, answered: 14, percent: 86 }, { grade: 2, answered: 20, percent: 75 }, { grade: 3, answered: 15, percent: 60 }, { grade: 4, answered: 6, percent: 50 }],
     recent: [], pool: 300, left: 236 };

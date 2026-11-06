@@ -309,6 +309,7 @@ public sealed class RequestRouter
     private System.Text.Json.Nodes.JsonObject ReadingSummary(Child child)
     {
         var r = CoinQuest.Shared.Books.ReadingReport.Build(ReadingEntries(child.Id), DateTimeOffset.Now);
+        var quest = QuestState(child.Id);
         return new System.Text.Json.Nodes.JsonObject
         {
             ["chapters"] = r["chaptersRead"]?.GetValue<int>() ?? 0,
@@ -317,6 +318,8 @@ public sealed class RequestRouter
             ["wpm"] = r["wpm"]?.DeepClone(),
             ["level"] = r["current"]?.DeepClone(),
             ["verified"] = r["comfortable"]?.GetValue<int>() ?? 0,
+            // Reading Quest's level is on the same scale (ReadingLevels): the tile shows it until books verify one.
+            ["questLevel"] = quest.Answered > 0 ? CoinQuest.Shared.Books.ReadingQuest.Level(quest.Rating) : (int?)null,
         };
     }
 
@@ -398,6 +401,15 @@ public sealed class RequestRouter
             }
             default: throw new ArgumentException("Unknown Reading Quest request");
         }
+    }
+
+    /// <summary>The phone's reading dashboard: the same numbers as the Parent Console's (books and Reading Quest).</summary>
+    private object PhoneReading(string childId)
+    {
+        var child = _store.Current.Children.FirstOrDefault(c => c.Id == childId) ?? throw new ArgumentException("That child isn't on this PC");
+        var books = CoinQuest.Shared.Books.ReadingReport.Build(ReadingEntries(child.Id), DateTimeOffset.Now);
+        books["kid"] = child.DisplayName;
+        return new { childId = child.Id, kid = child.DisplayName, at = DateTimeOffset.Now, books, quest = CoinQuest.Shared.Books.ReadingQuest.Report(QuestState(child.Id), _quest, DateTimeOffset.Now) };
     }
 
     /// <summary>The parents' Reading Quest numbers (Today → Reading).</summary>
@@ -1047,6 +1059,8 @@ public sealed class RequestRouter
                 "deletePrize" => PhoneEditChild(Str(req, "childId"), c => c with { Prizes = c.Prizes.Where(p => p.Id != Str(req, "id")).ToList() }),
                 "setSites" => PhoneSetSites(req),
                 "activity" => ActivityDays(Str(req, "childId"), Str(req, "from"), Str(req, "to")),
+                // The reading dashboard (books + Reading Quest), asked for when a parent opens it on the phone.
+                "reading" => PhoneReading(Str(req, "childId")),
                 "setReports" => PhoneEditChild(Str(req, "childId"), c => c with { ActivityReports = req.Payload?["on"]?.GetValue<bool>() ?? true }),
                 "setApps" => PhoneSetApps(req),
                 "grant" => PhoneGrant(req, actor),

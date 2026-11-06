@@ -1,4 +1,4 @@
-export interface DayReport { v?: number; day: string; kid?: string; childId?: string; time?: { kind: string; label: string; sec: number }[]; typing?: { sessions: number; chars: number; ms: number; best: number }; done?: Record<string, number>; earned?: Record<string, number>; spent?: Record<string, number>; log?: { t: string; d: number; k: string; s: string; x: string }[]; reading?: { chapters: number; firstTry: number | null; wpm: number | null; level: number | null; verified: number } }
+export interface DayReport { v?: number; day: string; kid?: string; childId?: string; time?: { kind: string; label: string; sec: number }[]; typing?: { sessions: number; chars: number; ms: number; best: number }; done?: Record<string, number>; earned?: Record<string, number>; spent?: Record<string, number>; log?: { t: string; d: number; k: string; s: string; x: string }[]; reading?: { chapters: number; passed?: number; firstTry: number | null; wpm: number | null; level: number | null; verified: number; questLevel?: number | null } }
 export const QUEST_NAMES: Record<string, string>;
 export function dayKey(d: Date): string;
 export function parseDay(s: string): Date;

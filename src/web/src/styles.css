@@ -748,6 +748,7 @@ button.big { font-size: 1.1em; padding: .7em 1.4em; }
 .parent .ra-head { display: flex; align-items: center; gap: 12px; justify-content: space-between; }
 .parent .ra-head h3 { margin: 0; flex: 1; line-height: 1.2; }
 .parent .ra-head > button { margin: 0; }
+.reading-analysis .ra-head { display: flex; align-items: center; gap: 12px; margin: 0 0 12px; } .parent .card .reading-analysis .ra-head h3, .reading-analysis .ra-head h3 { margin: 0; flex: 1; text-align: center; line-height: 1.2; } .reading-analysis .ra-head > button { margin: 0; } .reading-analysis .ra-head > span { width: 90px; }
 .parent .ra-insight { font-size: 1.05rem; margin: .8em 0 1em; }
 .parent .ra-stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 10px; }
 .parent .ra-stat { border: 1px solid var(--panel-2); border-radius: 12px; padding: 12px 14px; display: grid; gap: 3px; }

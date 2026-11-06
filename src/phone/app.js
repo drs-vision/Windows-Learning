@@ -5,7 +5,8 @@
 // internet lock, arcade, updates and CD games stay on the PC.
 import * as w from './wire.js';
 import * as rep from './report.js';
-document.head.insertAdjacentHTML('beforeend', `<style>${rep.REPORT_CSS}</style>`);
+import * as rd from './reading.js';
+document.head.insertAdjacentHTML('beforeend', `<style>${rep.REPORT_CSS}${rd.READING_CSS}</style>`);
 
 const app = document.getElementById('app');
 const sheet = document.getElementById('sheet');
@@ -105,6 +106,7 @@ let cqRelay = null;                            // CoinQuest's own relay (from re
 let stateAt = 0;                               // when the shown state was made (a snapshot can be older)
 const waiting = new Map();
 let state = null, status = 'wait', error = '', updatedAt = 0;
+let reading = null;                              // the reading dashboard, when open: { childId, open, loading }
 let tab = 'home', kidId = null;               // which screen, which child (for per-child screens)
 let config = null;                             // quests, prizes, websites, channels (loaded when needed)
 let hist = { kid: null, entries: [], more: false, loading: false };
@@ -178,7 +180,7 @@ function send(op, args = {}) {
     setTimeout(() => {
       if (!waiting.has(id)) return;
       waiting.delete(id);
-      reject(new Error(op === 'state' || op === 'config' || op === 'history' || op === 'apps' || op === 'activity'
+      reject(new Error(op === 'state' || op === 'config' || op === 'history' || op === 'apps' || op === 'activity' || op === 'reading'
         ? "The PC isn't answering — it may be off, asleep or offline."
         : `The PC isn't answering right now — this will happen when it's back online (within ${cqRelay ? '7 days' : '12 hours'}).`));
     }, 30000);
@@ -205,6 +207,7 @@ async function refresh() {
     await send('state');
     if (tab === 'rewards' || tab === 'shop' || tab === 'allowed') await loadConfig();
     if (tab === 'home') { actv.fetched = null; actv.checkedAt = 0; }
+    if (tab === 'home' && reading) loadReading();
   } catch (e) { status = 'off'; error = state ? '' : e.message; render(); }
 }
 
@@ -306,7 +309,7 @@ function draw() {
   const statusText = status === 'on' ? `PC answered ${ago(new Date(updatedAt).toISOString())}`
     : status === 'wait' ? (state && asOf ? `Asking the PC… (showing ${asOf})` : 'Asking the PC…')
     : state && asOf ? `PC is offline — showing what it last sent (${asOf})` : 'Not connected to the PC';
-  const body = { home: homeScreen, rewards: rewardsScreen, shop: shopScreen, allowed: allowedScreen }[tab]?.() ?? homeScreen();
+  const body = tab === 'home' && reading ? readingScreen() : { home: homeScreen, rewards: rewardsScreen, shop: shopScreen, allowed: allowedScreen }[tab]?.() ?? homeScreen();
   const tabs = [['home', '🏠', 'Today'], ['rewards', '⭐', 'Earn'], ['shop', '🛍️', 'Rewards'], ['allowed', '🌐', 'Allowed']];
   app.innerHTML = `
     <header><img src="icon-192.png" alt=""><h1>${esc(state?.household || link.household)}</h1><button class="icon" data-refresh aria-label="Refresh">↻</button></header>
@@ -413,8 +416,35 @@ function activitySection() {
     <div class="card activity">
       ${rep.navHtml(actv.sel, actv.mode, !!actv.cal)}
       ${actv.cal ? rep.calendarHtml(actv.month, byDay, actv.sel, actv.mode) : ''}
-      ${rep.reportHtml(reports, { note })}
+      ${rep.reportHtml(reports, { note, readingLink: true })}
     </div>`;
+}
+
+// ---- reading dashboard: books + Reading Quest, asked from the PC when opened (the last copy shows while it's off) ----
+const readKey = (id) => `cq.read.${link.topicIn}.${id}`;
+async function loadReading() {
+  if (!reading) return;
+  const id = reading.childId;
+  reading.loading = true; render();
+  try {
+    const d = await send('reading', { childId: id });
+    if (d?.result) store.set(readKey(id), { ...d.result, at: Date.now() });
+  } catch (e) { if (reading?.childId === id) reading.err = e.message; }
+  if (reading?.childId === id) { reading.loading = false; render(); }
+}
+function openReading(childId) {
+  reading = { childId, open: store.get('cq.read.open', ''), loading: false, err: '' };
+  window.scrollTo(0, 0);
+  loadReading();
+}
+function readingScreen() {
+  const k = (state?.children ?? []).find((x) => x.id === reading.childId);
+  const got = store.get(readKey(reading.childId), null);
+  const note = reading.loading ? (got ? `Asking the PC for the latest… (showing ${ago(new Date(got.at).toISOString())})` : 'Asking the PC…')
+    : reading.err ? `${reading.err}${got ? ` Showing what it sent ${ago(new Date(got.at).toISOString())}.` : ''}`
+    : got ? `From the PC ${ago(new Date(got.at).toISOString())} · ↻ to update` : '';
+  return `<div class="row between rd-head"><button data-rd-back>‹ Today</button><h2>${esc(k?.name ?? got?.kid ?? '')}'s reading</h2><span></span></div>
+    <div class="card">${got ? rd.readingHtml({ books: got.books, quest: got.quest, kid: got.kid ?? k?.name, open: reading.open, note }) : `<p class="note">${esc(note || 'Nothing yet.')}</p>`}</div>`;
 }
 
 const field = (label, attrs, hint = '') => `<label class="field"><span>${label}${hint ? `<small>${hint}</small>` : ''}</span><input ${attrs}></label>`;
@@ -664,7 +694,10 @@ app.addEventListener('click', (e) => {
   const b = e.target.closest('button');
   if (!b || (b.type === 'submit' && b.form)) return;
   if (b.dataset.refresh !== undefined) { if (tab !== 'home') config = null; refresh(); }
+  else if (b.dataset.repReading !== undefined) { const k = kid(); if (k) openReading(k.id); }
+  else if (b.dataset.rdBack !== undefined) { reading = null; render(); }
   else if (b.dataset.tab) {
+    reading = null;
     if (b.dataset.kidgo) kidId = b.dataset.kidgo;
     tab = b.dataset.tab; error = ''; window.scrollTo(0, 0);
     render();
@@ -695,6 +728,14 @@ app.addEventListener('click', (e) => {
 });
 
 // Quest settings save when a field is finished (or a switch flipped).
+// Remember which reading section is open (they open one at a time).
+app.addEventListener('toggle', (e) => {
+  const sec = e.target.closest?.('details[data-rd-sec]');
+  if (!sec || !reading) return;
+  if (sec.open) reading.open = sec.dataset.rdSec; else if (reading.open === sec.dataset.rdSec) reading.open = '';
+  store.set('cq.read.open', reading.open);
+}, true);
+
 app.addEventListener('change', (e) => {
   const el = e.target;
   if (el.dataset?.actrep !== undefined) { act('setReports', { childId: kid().id, on: el.checked }, el.checked ? 'Activity reports on' : 'Activity reports off'); return; }

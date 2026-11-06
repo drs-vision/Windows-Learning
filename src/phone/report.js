@@ -175,28 +175,30 @@ export function reportHtml(reports, { title, note, readingLink } = {}) {
 }
 
 /**
- * Reading, for parents only. In the selection: chapters read (quiz or not), quiz answers right, quizzes passed, reading speed (words a minute
- * while the chapter was on screen and in use). All time: the verified level (the highest level with 3+ chapters at
- * 80%+ on the first try) and the level they're reading now.
+ * Reading, for parents only: one tile for books and Reading Quest. Big: the reading level (verified book level, else
+ * Reading Quest level, else the level being read). Lines: the selection's chapters read (quiz or not), quiz answers
+ * right and reading speed; Reading Quest questions and % right. With `link` the whole tile opens the reading dashboard.
  */
 function readingTile(m, link) {
   const d = m.done, r = m.reading;
   const answered = d['books:answered'] || 0, right = d['books:correct'] || 0;
-  const speed = d['books:readSec'] > 0 ? Math.round(d['books:readWords'] / (d['books:readSec'] / 60)) : 0;
   const read = d['books:chaptersRead'] || 0, passed = d['books:chapters'] || 0;
-  const now = answered || read ? `<div class="rep-tile"><small>Reading</small><b>${read ? `${read} <em>chapter${read === 1 ? '' : 's'} read</em>` : `${Math.round(100 * right / answered)}% <em>right</em>`}</b><small>${[
-    read && answered ? `${Math.round(100 * right / answered)}% of quiz answers right` : '',
-    passed ? `${passed} quiz${passed === 1 ? '' : 'zes'} passed` : '',
-    speed ? `${speed} words/min` : '',
-  ].filter(Boolean).join(' · ') || (answered ? `${answered} questions` : 'no quizzes')}</small></div>` : '';
-  const level = r && r.chapters ? `<div class="rep-tile"><small>Reading level</small><b>${r.verified ? `Level ${r.verified}` : '—'} <em>${r.verified ? 'verified' : 'not yet'}</em></b><small>${[
-    r.level ? `reading Level ${r.level}` : '', r.firstTry != null ? `${r.firstTry}% first try` : '', r.wpm ? `${r.wpm} words/min` : '', `${r.chapters} chapters`,
-  ].filter(Boolean).join(' · ')}</small></div>` : '';
+  const speed = d['books:readSec'] > 0 ? Math.round(d['books:readWords'] / (d['books:readSec'] / 60)) : 0;
   const qa = d['reading-quest:answered'] || 0;
-  const quest = qa ? `<div class="rep-tile"><small>Reading Quest</small><b>${Math.round(100 * (d['reading-quest:correct'] || 0) / qa)}% <em>right</em></b><small>${qa} paragraph${qa === 1 ? '' : 's'}</small></div>` : '';
-  const out = quest + now + level;
-  // On the PC the tiles open the Reading analysis.
-  return link && out ? out.replace(/<div class="rep-tile">/g, '<button class="rep-tile rep-link" data-rep-reading title="Open the reading analysis">').replace(/<\/div>(?=<button|$)/g, '</button>') : out;
+  const level = r?.verified || r?.questLevel || r?.level || 0;
+  if (!read && !answered && !qa && !level) return '';
+  const books = read || answered ? `📖 ${[
+    read ? `${read} chapter${read === 1 ? '' : 's'} read` : '',
+    answered ? `${Math.round(100 * right / answered)}% quiz answers right` : '',
+    passed && !read ? `${passed} quiz${passed === 1 ? '' : 'zes'} passed` : '',
+    speed ? `${speed} words/min` : '',
+  ].filter(Boolean).join(' · ')}` : '';
+  const quest = qa ? `🧭 ${qa} question${qa === 1 ? '' : 's'} · ${Math.round(100 * (d['reading-quest:correct'] || 0) / qa)}% right` : '';
+  const big = level ? `Level ${level} <em>${r?.verified ? 'verified' : r?.questLevel ? 'Reading Quest' : 'reading'}</em>` : '—';
+  const lines = [books, quest].filter(Boolean).map((x) => `<small>${x}</small>`).join('') || '<small>nothing read in this time</small>';
+  return link
+    ? `<button type="button" class="rep-tile rep-link rep-wide" data-rep-reading aria-label="Reading: open the reading dashboard"><small class="rep-tile-head">Reading<span aria-hidden="true">›</span></small><b>${big}</b>${lines}</button>`
+    : `<div class="rep-tile rep-wide"><small>Reading</small><b>${big}</b>${lines}</div>`;
 }
 
 const clock = (hhmm) => { const [h, mi] = String(hhmm).split(':').map(Number); return `${((h + 11) % 12) + 1}:${String(mi).padStart(2, '0')} ${h < 12 ? 'am' : 'pm'}`; };
@@ -286,7 +288,9 @@ export const REPORT_CSS = `
 .activity .rep-tile small { opacity: .65; font-size: 12px; } .activity .rep-tile b { font-size: 22px; } .activity .rep-tile em { font-style: normal; font-size: 13px; opacity: .7; }
 .activity button.rep-tile.rep-link { font: inherit; color: inherit; background: none; text-align: left; cursor: pointer; position: relative; }
 .activity button.rep-tile.rep-link:hover { border-color: var(--accent, #4f7cff); }
-.activity button.rep-tile.rep-link::after { content: 'Details ›'; position: absolute; top: 10px; right: 12px; font-size: 12px; color: var(--accent, #4f7cff); }
+.activity .rep-tile.rep-wide { grid-column: span 2; }
+.activity .rep-tile-head { display: flex; justify-content: space-between; align-items: center; }
+.activity .rep-tile-head span { font-size: 18px; line-height: 1; color: var(--accent, #4f7cff); opacity: .9; }
 .activity h4 { margin: 16px 0 6px; font-size: 13px; text-transform: uppercase; letter-spacing: .04em; opacity: .6; }
 .activity .rep-top, .activity .rep-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; }
 .activity .rep-top li { display: grid; grid-template-columns: 22px minmax(0, 1.4fr) 1fr auto; gap: 8px; align-items: center; font-size: 14px; }
