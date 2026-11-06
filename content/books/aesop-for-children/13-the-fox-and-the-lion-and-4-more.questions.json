@@ -14,7 +14,7 @@
       "id": "aesop-for-children-13-02",
       "type": "detail",
       "q": "In 'The Lion and the Ass', what was the Ass's job in the hunt?",
-      "choices": ["To go into the cave and drive the Goats out", "To stand at the cave entrance", "To find the Goats' footprints", "To carry the Goats home"],
+      "choices": ["To go into the cave and drive the Goats out", "To stand at the cave entrance and keep watch", "To follow the Goats' footprints in the dirt", "To carry the Goats home to the Lion's den"],
       "answer": 0,
       "evidence": "The Ass was to go into the cave and drive the Goats out"
     },
@@ -22,7 +22,7 @@
       "id": "aesop-for-children-13-03",
       "type": "inference",
       "q": "In 'The Lion and the Ass', why was the Lion not scared by the Ass's noise?",
-      "choices": ["He knew the Ass and his kind", "He could not hear inside the cave", "He was too busy eating", "He was asleep the whole time"],
+      "choices": ["He knew the Ass and his kind", "He could not hear inside the cave", "He was too busy eating Goats", "He had fallen asleep outside"],
       "answer": 0,
       "evidence": "if I had not known you and your kind I should certainly have run, too"
     },
@@ -30,7 +30,7 @@
       "id": "aesop-for-children-13-04",
       "type": "main-idea",
       "q": "What is the lesson of 'The Lion and the Ass'?",
-      "choices": ["A loud boaster does not impress people who know him", "Hunting is easier with a friend", "Always share what you catch", "Goats should not hide in caves"],
+      "choices": ["A loud boaster does not impress people who know him", "Hunting is much easier when you have a friend along", "Always share what you catch with those who helped", "Goats should never try to hide inside a dark cave"],
       "answer": 0,
       "evidence": "The loud-mouthed boaster does not impress nor frighten those who know him."
     },
@@ -38,7 +38,7 @@
       "id": "aesop-for-children-13-05",
       "type": "character",
       "q": "In 'The Dog and His Master's Dinner', what was the Dog's mistake?",
-      "choices": ["He stopped to argue with the other Dogs", "He ate the dinner on the way", "He took the wrong road", "He forgot the basket at home"],
+      "choices": ["He stopped to argue with the other Dogs", "He ate the dinner on the way to his master", "He took the wrong road and got lost", "He forgot the basket at the butcher's shop"],
       "answer": 0,
       "evidence": "But at last he stopped to argue."
     },
@@ -46,7 +46,7 @@
       "id": "aesop-for-children-13-06",
       "type": "main-idea",
       "q": "What is the lesson of 'The Dog and His Master's Dinner'?",
-      "choices": ["Do not stop to argue with temptation", "Always share your food with friends", "Dogs make good helpers", "Run as fast as you can"],
+      "choices": ["Do not stop to argue with temptation", "Always share your food with friends", "Dogs make good helpers for masters", "Run as fast as you can on errands"],
       "answer": 0,
       "evidence": "Do not stop to argue with temptation."
     },
@@ -54,7 +54,7 @@
       "id": "aesop-for-children-13-07",
       "type": "detail",
       "q": "In 'The Vain Jackdaw and His Borrowed Feathers', what did the Jackdaw do to look like a Peacock?",
-      "choices": ["Stuck castoff Peacock feathers among his own", "Painted his feathers bright colors", "Asked the King for new feathers", "Grew a long tail"],
+      "choices": ["Stuck castoff Peacock feathers among his own", "Painted his black feathers in bright colors", "Asked the King of birds for new feathers", "Ate special berries to grow a long tail"],
       "answer": 0,
       "evidence": "he picked up some castoff feathers of the Peacocks and stuck them among his own black plumes"
     },
@@ -62,7 +62,7 @@
       "id": "aesop-for-children-13-08",
       "type": "character",
       "q": "In 'The Vain Jackdaw', why did the other Jackdaws drive him away when he came back?",
-      "choices": ["They remembered how he acted better than them", "They thought he was a Peacock", "They had no food to share", "He had pecked them first"],
+      "choices": ["He had acted like he was better than them", "They thought he was a Peacock come to visit", "They had no food to share with a stranger", "He had pecked them first when he came back"],
       "answer": 0,
       "evidence": "They had not forgotten his superior airs toward them"
     },
@@ -70,7 +70,7 @@
       "id": "aesop-for-children-13-09",
       "type": "inference",
       "q": "In 'The Monkey and the Dolphin', how did the Dolphin find out the Monkey was not a man?",
-      "choices": ["The Monkey called Piraeus his friend, but Piraeus is a port", "The Monkey fell off his back", "The Monkey started to chatter", "Another Dolphin told him"],
+      "choices": ["He called Piraeus a friend, but it is a port", "The Monkey fell off his back into the sea", "The Monkey started to chatter and squeak", "Another Dolphin swam up and told him"],
       "answer": 0,
       "evidence": "Piraeus is my very best friend."
     },
@@ -78,7 +78,7 @@
       "id": "aesop-for-children-13-10",
       "type": "main-idea",
       "q": "What is the lesson of 'The Monkey and the Dolphin'?",
-      "choices": ["One lie leads to another", "Dolphins are friendly to everyone", "Never go on a ship", "Monkeys are good swimmers"],
+      "choices": ["One lie leads to another", "Dolphins are friends to all", "Never go to sea in a ship", "Monkeys are good swimmers"],
       "answer": 0,
       "evidence": "One falsehood leads to another."
     }

@@ -6,12 +6,7 @@
       "id": "aesop-for-children-32-01",
       "type": "detail",
       "q": "In 'The Mole and His Mother', what did the little Mole think the frankincense was?",
-      "choices": [
-        "A pebble",
-        "A piece of bread",
-        "A flower",
-        "A worm"
-      ],
+      "choices": ["A pebble", "Some bread", "A flower", "A worm"],
       "answer": 0,
       "evidence": "Why, that's a pebble!"
     },
@@ -19,12 +14,7 @@
       "id": "aesop-for-children-32-02",
       "type": "main-idea",
       "q": "What is the lesson of 'The Mole and His Mother'?",
-      "choices": [
-        "Boast of one thing and you will be found lacking in that and other things too",
-        "Moles can see very well",
-        "Always listen to your mother",
-        "Frankincense smells bad"
-      ],
+      "choices": ["Boast of one thing and you will be found lacking in that and more", "Moles can see very well if they only open their eyes to the light", "Always listen to your mother, even when you think she is wrong", "Frankincense smells bad to moles who live under the ground"],
       "answer": 0,
       "evidence": "Boast of one thing and you will be found lacking"
     },
@@ -32,12 +22,7 @@
       "id": "aesop-for-children-32-03",
       "type": "detail",
       "q": "In 'The North Wind and the Sun', what contest did they agree on?",
-      "choices": [
-        "Whoever could make the Traveler take off his cloak",
-        "Whoever could blow down a tree",
-        "Whoever could make it rain",
-        "Whoever could reach the Traveler first"
-      ],
+      "choices": ["Whoever could make the Traveler take off his cloak", "Whoever could blow down the tallest tree in the land", "Whoever could make it rain on the dusty road first", "Whoever could reach the Traveler on the road first"],
       "answer": 0,
       "evidence": "he is the stronger who can strip that Traveler of his cloak"
     },
@@ -45,12 +30,7 @@
       "id": "aesop-for-children-32-04",
       "type": "sequence",
       "q": "In 'The North Wind and the Sun', what did the Traveler do when the North Wind blew harder?",
-      "choices": [
-        "Held his cloak tighter",
-        "Took off his cloak",
-        "Ran into the woods",
-        "Sat under a tree"
-      ],
+      "choices": ["Held his cloak tighter", "Took off his cloak", "Ran off into the woods", "Sat down under a tree"],
       "answer": 0,
       "evidence": "the tighter he held it to him"
     },
@@ -58,12 +38,7 @@
       "id": "aesop-for-children-32-05",
       "type": "main-idea",
       "q": "What is the lesson of 'The North Wind and the Sun'?",
-      "choices": [
-        "Gentleness and kind persuasion win where force fails",
-        "The Wind is always strongest",
-        "Always wear a cloak",
-        "The Sun is too hot"
-      ],
+      "choices": ["Gentleness and kind persuasion win where force fails", "The North Wind is always stronger than the warm Sun", "Always wear a warm cloak when you go out walking", "The Sun is much too hot for anyone to walk under"],
       "answer": 0,
       "evidence": "Gentleness and kind persuasion win where force and bluster fail."
     },
@@ -71,12 +46,7 @@
       "id": "aesop-for-children-32-06",
       "type": "character",
       "q": "In 'The Hare and His Ears', why did the Hare run away even though he had no horns?",
-      "choices": [
-        "He feared the Lion would say his long ears were horns",
-        "The Cricket told him to go",
-        "He wanted a new home",
-        "The Goat chased him"
-      ],
+      "choices": ["He feared the Lion would call his long ears horns", "The Cricket told him to go away to a new place", "He wanted to find a new home in a quieter field", "The Goat with long horns chased him out of the field"],
       "answer": 0,
       "evidence": "He will certainly make out that my ears are horns"
     },
@@ -84,12 +54,7 @@
       "id": "aesop-for-children-32-07",
       "type": "character",
       "q": "In 'The Wolves and the Sheep', how did the Wolves trick the Sheep?",
-      "choices": [
-        "They told the Sheep to send the Dogs away so they could be friends",
-        "They dressed up as Dogs",
-        "They hid in the grass",
-        "They brought the Sheep food"
-      ],
+      "choices": ["They said to send the Dogs away so they could be friends", "They dressed up in sheepskins so they looked like Sheep", "They hid in the tall grass until the Dogs were asleep", "They brought the Sheep fresh green grass as a gift"],
       "answer": 0,
       "evidence": "Send them away and you will see what good friends we shall become."
     },
@@ -97,12 +62,7 @@
       "id": "aesop-for-children-32-08",
       "type": "inference",
       "q": "In 'The Cock and the Fox', why did the Fox say he was going to visit a sick relative?",
-      "choices": [
-        "To trick the Cock so he would not tell anyone",
-        "Because it was true",
-        "To ask the Cock for help with medicine",
-        "To make the Cock feel sad"
-      ],
+      "choices": ["To trick the Cock so he would not tell anyone", "Because his relative really was very sick", "To ask the Cock for help in finding medicine", "To make the Cock feel sad and come down to him"],
       "answer": 0,
       "evidence": "But please do not tell anybody about it."
     }

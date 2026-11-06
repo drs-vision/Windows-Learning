@@ -6,7 +6,7 @@
       "id": "aesop-for-children-04-01",
       "type": "character",
       "q": "In 'The Fox and the Grapes', what did the Fox say about the grapes after he could not reach them?",
-      "choices": ["They were sour and not worth it", "They were the best grapes ever", "He would come back tomorrow", "Someone else had eaten them"],
+      "choices": ["They were sour and not worth it", "They were the best grapes he had ever seen", "He would come back with a ladder tomorrow", "Some bird must have eaten all the ripe ones"],
       "answer": 0,
       "evidence": "a bunch of sour grapes that are not worth gaping for"
     },
@@ -14,7 +14,7 @@
       "id": "aesop-for-children-04-02",
       "type": "main-idea",
       "q": "What is the lesson of 'The Fox and the Grapes'?",
-      "choices": ["Some pretend to dislike what they cannot have", "Never give up trying", "Grapes are always sour", "Foxes are good jumpers"],
+      "choices": ["Some pretend to dislike what they cannot have", "Never give up trying, no matter how high it is", "Grapes that hang high on a vine are always sour", "A fox can jump higher than any other animal"],
       "answer": 0,
       "evidence": "pretend to despise and belittle that which is beyond their reach"
     },
@@ -22,7 +22,7 @@
       "id": "aesop-for-children-04-03",
       "type": "detail",
       "q": "In 'The Bundle of Sticks', what happened when the Sons tried to break the sticks one at a time?",
-      "choices": ["They broke them very easily", "Nobody could break them", "The sticks bent but did not break", "They hurt their hands"],
+      "choices": ["They broke them very easily", "Nobody could break even one of them", "The sticks bent but would not break", "They cut their hands on the sharp sticks"],
       "answer": 0,
       "evidence": "This they did very easily."
     },
@@ -30,7 +30,7 @@
       "id": "aesop-for-children-04-04",
       "type": "main-idea",
       "q": "What did the Father want to teach his Sons in 'The Bundle of Sticks'?",
-      "choices": ["In unity is strength", "Sticks make good firewood", "The oldest son is the strongest", "Work hard every day"],
+      "choices": ["In unity is strength", "Sticks make good firewood", "The oldest son is strongest", "Work hard every day"],
       "answer": 0,
       "evidence": "In unity is strength."
     },
@@ -38,7 +38,7 @@
       "id": "aesop-for-children-04-05",
       "type": "character",
       "q": "In 'The Wolf and the Crane', why did the Wolf go to the Crane for help?",
-      "choices": ["Her long neck and bill could reach the bone in his throat", "She was a doctor", "She was his best friend", "She had food to share"],
+      "choices": ["Her long neck and bill could reach the bone", "She was a doctor who cured all the animals", "She was his best friend from the river", "She had promised to help him if he was ill"],
       "answer": 0,
       "evidence": "with her long neck and bill, would easily be able to reach the bone"
     },
@@ -46,7 +46,7 @@
       "id": "aesop-for-children-04-06",
       "type": "detail",
       "q": "In 'The Wolf and the Crane', what did the Wolf say the Crane's reward was?",
-      "choices": ["He let her take her head out of his mouth without biting it off", "A big piece of meat", "A bag of gold", "His friendship forever"],
+      "choices": ["Letting her take her head out of his mouth safely", "A big piece of the meat he was going to eat next", "A bag of gold that he had hidden in his den", "His friendship and protection for the rest of her life"],
       "answer": 0,
       "evidence": "Isn't it enough that I let you take your head out of my mouth without snapping it off?"
     },
@@ -54,7 +54,7 @@
       "id": "aesop-for-children-04-07",
       "type": "sequence",
       "q": "In 'The Ass and His Driver', what happened when the master let go of the Ass's tail?",
-      "choices": ["The Ass tumbled down the mountain side", "The Ass walked safely to his stall", "The Ass ran back up the hill", "The Ass stopped and waited"],
+      "choices": ["The Ass tumbled down the mountain side", "The Ass walked safely along the path to his stall", "The Ass turned and ran back up the hill to his master", "The Ass stopped at the edge and waited for help"],
       "answer": 0,
       "evidence": "the foolish Ass tumbled head over heels down the mountain side"
     },
@@ -62,7 +62,7 @@
       "id": "aesop-for-children-04-08",
       "type": "main-idea",
       "q": "What is the lesson of 'The Oxen and the Wheels'?",
-      "choices": ["They complain most who suffer least", "Hard work is always easy", "Wheels need oil", "Never travel on muddy roads"],
+      "choices": ["They complain most who suffer least", "Hard work is always easy", "Wheels need oil or they will creak", "Never travel on a muddy road"],
       "answer": 0,
       "evidence": "They complain most who suffer least."
     }

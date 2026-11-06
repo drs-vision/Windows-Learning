@@ -6,7 +6,7 @@
       "id": "aesop-for-children-20-01",
       "type": "detail",
       "q": "In 'Mercury and the Woodman', how did the Woodman lose his axe?",
-      "choices": ["It slipped from his tired hands into a pool", "A thief stole it", "It broke on a hard tree", "He left it in the forest"],
+      "choices": ["It slipped from his tired hands into a pool", "A thief stole it while he ate his lunch", "It broke in two on a very hard tree", "He left it in the forest and forgot it"],
       "answer": 0,
       "evidence": "the axe slipped and flew out of his hands into the pool"
     },
@@ -14,7 +14,7 @@
       "id": "aesop-for-children-20-02",
       "type": "sequence",
       "q": "In 'Mercury and the Woodman', what kind of axe did Mercury bring up first?",
-      "choices": ["A golden axe", "A silver axe", "The Woodman's own axe", "A wooden axe"],
+      "choices": ["A golden axe", "A silver axe", "His own axe", "A wooden axe"],
       "answer": 0,
       "evidence": "When he came up again he held a wonderful golden axe."
     },
@@ -22,7 +22,7 @@
       "id": "aesop-for-children-20-03",
       "type": "character",
       "q": "In 'Mercury and the Woodman', why did Mercury give the Woodman all three axes?",
-      "choices": ["Because the Woodman was honest", "Because the Woodman begged for them", "Because Mercury did not want them", "Because the Woodman was very strong"],
+      "choices": ["Because the Woodman was honest", "Because the Woodman begged for them", "Because Mercury did not want them", "Because the Woodman worked so hard"],
       "answer": 0,
       "evidence": "I admire your honesty"
     },
@@ -30,7 +30,7 @@
       "id": "aesop-for-children-20-04",
       "type": "detail",
       "q": "In 'Mercury and the Woodman', what did Mercury do to the other Woodmen who claimed the golden axe?",
-      "choices": ["Gave each a hard whack on the head with it", "Gave each a golden axe", "Gave each a silver axe", "Sent them to the pool to look"],
+      "choices": ["Gave each a hard whack on the head with it", "Gave each of them a golden axe of his own", "Gave each of them a silver axe instead", "Sent them all into the pool to look"],
       "answer": 0,
       "evidence": "he gave them each a hard whack over the head with it"
     },
@@ -46,7 +46,7 @@
       "id": "aesop-for-children-20-06",
       "type": "character",
       "q": "In 'The Frog and the Mouse', what did the Frog do after he jumped into the pond with the Mouse?",
-      "choices": ["He pulled the Mouse under the water and drowned him", "He showed the Mouse a good time", "He untied the Mouse and let him go", "He taught the Mouse to swim"],
+      "choices": ["He pulled the Mouse under and drowned him", "He showed the Mouse a very good time in the pond", "He untied the Mouse and let him go home", "He taught the Mouse to swim like a frog"],
       "answer": 0,
       "evidence": "He pulled the Mouse down under the water and drowned him."
     },
@@ -54,7 +54,7 @@
       "id": "aesop-for-children-20-07",
       "type": "inference",
       "q": "In 'The Frog and the Mouse', why was the Frog carried off by the Hawk too?",
-      "choices": ["He was still tied to the Mouse with a reed", "He jumped on the Hawk's back", "The Hawk wanted only the Frog", "He was too slow to swim away"],
+      "choices": ["He was still tied to the Mouse with a reed", "He jumped up on the Hawk's back to fight", "The Hawk only wanted the Frog, not the Mouse", "He was too slow to swim away from the Hawk"],
       "answer": 0,
       "evidence": "with the Frog dangling from its leg"
     },
@@ -62,7 +62,7 @@
       "id": "aesop-for-children-20-08",
       "type": "main-idea",
       "q": "What is the lesson of 'The Fox and the Crab'?",
-      "choices": ["Be content with your lot", "Meadows are better than beaches", "Foxes are always hungry", "Take a walk every day"],
+      "choices": ["Be content with your lot", "Meadows are better than beaches", "Foxes are always very hungry", "Take a walk by the sea each day"],
       "answer": 0,
       "evidence": "Be content with your lot."
     }

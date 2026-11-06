@@ -6,12 +6,7 @@
       "id": "aesop-for-children-23-01",
       "type": "detail",
       "q": "In 'The Goatherd and the Goat', why did the Goat stray away from the flock?",
-      "choices": [
-        "It was tempted by a patch of clover",
-        "It was chased by a wolf",
-        "It wanted to find water",
-        "It was looking for its mother"
-      ],
+      "choices": ["It was tempted by a patch of clover", "It was chased away by a hungry wolf", "It wanted to find water to drink", "It was looking for its lost mother"],
       "answer": 0,
       "evidence": "tempted by a patch of clover"
     },
@@ -19,12 +14,7 @@
       "id": "aesop-for-children-23-02",
       "type": "character",
       "q": "In 'The Goatherd and the Goat', what did the Goatherd beg the Goat to do after breaking its horn?",
-      "choices": [
-        "Not tell the master",
-        "Run back to the flock",
-        "Forgive him",
-        "Hide in the barn"
-      ],
+      "choices": ["Not tell the master", "Run back to the flock", "Forgive him at once", "Hide in the barn"],
       "answer": 0,
       "evidence": "Do not tell the master"
     },
@@ -32,12 +22,7 @@
       "id": "aesop-for-children-23-03",
       "type": "main-idea",
       "q": "What is the lesson of 'The Goatherd and the Goat'?",
-      "choices": [
-        "Wicked deeds will not stay hid",
-        "Always stay with the flock",
-        "Clover is bad for goats",
-        "Masters should be kind"
-      ],
+      "choices": ["Wicked deeds will not stay hid", "Always stay close to the flock", "Clover is bad for goats to eat", "Masters should be kind to goats"],
       "answer": 0,
       "evidence": "Wicked deeds will not stay hid."
     },
@@ -45,12 +30,7 @@
       "id": "aesop-for-children-23-04",
       "type": "detail",
       "q": "In 'The Miser', how did the Thief find out where the gold was?",
-      "choices": [
-        "He watched the Miser make so many trips to the spot",
-        "The Miser told him",
-        "He found a map",
-        "A passerby told him"
-      ],
+      "choices": ["He saw the Miser make so many trips to the spot", "The Miser told him about the gold by mistake", "He found an old map that showed where it was buried", "A passerby on the road told him about the gold"],
       "answer": 0,
       "evidence": "He made so many trips that a Thief, who had been observing him"
     },
@@ -58,12 +38,7 @@
       "id": "aesop-for-children-23-05",
       "type": "main-idea",
       "q": "In 'The Miser', why did the stranger say a stone was worth as much as the lost gold?",
-      "choices": [
-        "The Miser never used the gold, so it did him no good",
-        "The stone was made of gold",
-        "Stones are worth a lot of money",
-        "The stone would scare off thieves"
-      ],
+      "choices": ["The Miser never used the gold, so it did him no good", "The stone was really made of gold under the dirt", "Stones from that garden are worth a lot of money", "The stone would scare off any other thieves later"],
       "answer": 0,
       "evidence": "A possession is worth no more than the use we make of it."
     },
@@ -71,12 +46,7 @@
       "id": "aesop-for-children-23-06",
       "type": "detail",
       "q": "In 'The Wolf and the House Dog', what did the Wolf notice on the Dog's neck?",
-      "choices": [
-        "The hair was worn and the skin was chafed",
-        "A shiny gold tag",
-        "A big scar from a fight",
-        "A pretty ribbon"
-      ],
+      "choices": ["The hair was worn and the skin was chafed", "A shiny gold tag with the master's name on it", "A big scar left from a fight with a wolf", "A pretty red ribbon tied in a bow"],
       "answer": 0,
       "evidence": "the hair on the Dog's neck was worn and the skin was chafed"
     },
@@ -84,12 +54,7 @@
       "id": "aesop-for-children-23-07",
       "type": "character",
       "q": "In 'The Wolf and the House Dog', why did the Wolf run back to the woods?",
-      "choices": [
-        "He would rather be free than be fed and wear a chain",
-        "He was afraid of the people with canes",
-        "He did not like cake",
-        "The Dog chased him away"
-      ],
+      "choices": ["He would rather be free than fed and chained", "He was afraid of the people with canes", "He did not like the cake the Dog described", "The Dog turned on him and chased him away"],
       "answer": 0,
       "evidence": "There is nothing worth so much as liberty."
     },
@@ -97,12 +62,7 @@
       "id": "aesop-for-children-23-08",
       "type": "inference",
       "q": "In 'The Fox and the Hedgehog', why did the Fox not want the flies driven away?",
-      "choices": [
-        "The flies were full, and new hungry ones would take more blood",
-        "He liked the flies",
-        "He wanted to eat the flies later",
-        "He did not trust the Hedgehog"
-      ],
+      "choices": ["Full flies would just be replaced by hungry ones", "He liked the flies and wanted them to stay", "He wanted to save the flies to eat later", "He did not trust the Hedgehog's long sharp quills"],
       "answer": 0,
       "evidence": "another greedy swarm will come"
     }

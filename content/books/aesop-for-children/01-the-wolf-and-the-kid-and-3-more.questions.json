@@ -6,7 +6,7 @@
       "id": "aesop-for-children-01-01",
       "type": "character",
       "q": "In 'The Wolf and the Kid', why did the Kid stay behind when the flock went home?",
-      "choices": ["His growing horns made him think he could take care of himself", "He was lost in the woods", "His mother told him to wait there", "He was too tired to walk"],
+      "choices": ["His growing horns made him think he could take care of himself", "He had wandered into the woods and could not find the path back", "His mother told him to wait by the clump of trees until morning", "He was too tired from frisking all day to walk home with the flock"],
       "answer": 0,
       "evidence": "whose growing horns made him think he was a grown-up Billy Goat"
     },
@@ -14,7 +14,7 @@
       "id": "aesop-for-children-01-02",
       "type": "character",
       "q": "In 'The Wolf and the Kid', what did the Kid ask the Wolf to do before eating him?",
-      "choices": ["Pipe him a tune so he could dance", "Let him say goodbye to his mother", "Tell him a story", "Give him one last bite of grass"],
+      "choices": ["Pipe him a tune so he could dance", "Let him run home and say goodbye to his mother", "Tell him a story about the Shepherd Dogs", "Let him nibble one last bite of tender grass"],
       "answer": 0,
       "evidence": "first please pipe me a tune"
     },
@@ -22,7 +22,7 @@
       "id": "aesop-for-children-01-03",
       "type": "inference",
       "q": "In 'The Wolf and the Kid', how did the Wolf's music save the Kid?",
-      "choices": ["The Shepherd Dogs heard it and came running", "It put the Wolf to sleep", "It scared away the Wolf", "It made the Kid's mother come back"],
+      "choices": ["The Shepherd Dogs heard it and came running", "It put the Wolf to sleep so the Kid could slip away", "It was so loud that it frightened the Wolf himself", "The Kid's mother heard it and came back for him"],
       "answer": 0,
       "evidence": "The Shepherd Dogs pricked up their ears"
     },
@@ -30,7 +30,7 @@
       "id": "aesop-for-children-01-04",
       "type": "detail",
       "q": "In 'The Tortoise and the Ducks', how did the Ducks carry the Tortoise into the air?",
-      "choices": ["He held a stick in his teeth while they held the ends", "He rode on their backs", "They carried him in a basket", "They held him with their feet"],
+      "choices": ["He held a stick in his teeth while they held the ends", "He rode on the back of the biggest Duck in the flock", "They carried him between them in a basket of reeds", "They gripped the edges of his shell with their feet"],
       "answer": 0,
       "evidence": "Take hold of this stick with your teeth"
     },
@@ -38,7 +38,7 @@
       "id": "aesop-for-children-01-05",
       "type": "sequence",
       "q": "In 'The Tortoise and the Ducks', what made the Tortoise fall?",
-      "choices": ["He opened his mouth to answer the Crow", "The Ducks dropped the stick", "The stick broke", "He fell asleep"],
+      "choices": ["He opened his mouth to answer the Crow", "The Ducks grew tired and let go of the stick", "The stick snapped in two above the treetops", "He fell asleep and loosened his hold on the stick"],
       "answer": 0,
       "evidence": "as he opened his mouth to say these foolish words he lost his hold on the stick"
     },
@@ -46,7 +46,7 @@
       "id": "aesop-for-children-01-06",
       "type": "main-idea",
       "q": "What is the lesson of 'The Young Crab and His Mother'?",
-      "choices": ["Do not tell others how to act unless you can set a good example", "Always walk straight forward", "Mothers know best", "Slow and steady wins the race"],
+      "choices": ["Set a good example before you tell others how to act", "Always walk straight forward and never sideways", "Children should obey their mothers in everything", "Slow and steady walking wins in the end"],
       "answer": 0,
       "evidence": "Do not tell others how to act unless you can set a good example."
     },
@@ -54,7 +54,7 @@
       "id": "aesop-for-children-01-07",
       "type": "detail",
       "q": "In 'The Frogs and the Ox', what happened to the old Frog in the end?",
-      "choices": ["She puffed herself up until she burst", "She hopped away from the Ox", "She became as big as the Ox", "She was stepped on by the Ox"],
+      "choices": ["She puffed herself up until she burst", "She hopped away from the Ox into the water", "She grew until she was as big as the Ox", "She was stepped on when the Ox came to drink"],
       "answer": 0,
       "evidence": "she burst"
     },
@@ -62,7 +62,7 @@
       "id": "aesop-for-children-01-08",
       "type": "main-idea",
       "q": "What lesson does 'The Frogs and the Ox' teach?",
-      "choices": ["Do not attempt the impossible", "Always tell the truth", "Big animals are always mean", "Stay away from water"],
+      "choices": ["Do not attempt the impossible", "Always tell your children the truth", "Big animals are always mean to small ones", "Stay away from the pond when an Ox is near"],
       "answer": 0,
       "evidence": "Do not attempt the impossible."
     }

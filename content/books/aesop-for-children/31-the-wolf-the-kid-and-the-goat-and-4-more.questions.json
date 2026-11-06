@@ -6,12 +6,7 @@
       "id": "aesop-for-children-31-01",
       "type": "detail",
       "q": "In 'The Wolf, the Kid, and the Goat', how did the Wolf learn the password?",
-      "choices": [
-        "He heard Mother Goat tell it to the Kid",
-        "The Kid told him",
-        "He read it on the door",
-        "He guessed it"
-      ],
+      "choices": ["He heard Mother Goat tell it to the Kid", "The Kid told him through the door", "He read it carved on the gate", "He made a lucky guess at the door"],
       "answer": 0,
       "evidence": "a Wolf was lurking near and heard what the Goat had said"
     },
@@ -19,12 +14,7 @@
       "id": "aesop-for-children-31-02",
       "type": "character",
       "q": "In 'The Wolf, the Kid, and the Goat', what did the Kid ask the Wolf to show him?",
-      "choices": [
-        "A white paw",
-        "His horns",
-        "The password written down",
-        "His face"
-      ],
+      "choices": ["A white paw", "His long horns", "The password", "His whole face"],
       "answer": 0,
       "evidence": "Show me a white paw"
     },
@@ -32,12 +22,7 @@
       "id": "aesop-for-children-31-03",
       "type": "main-idea",
       "q": "What is the lesson of 'The Wolf, the Kid, and the Goat'?",
-      "choices": [
-        "Two sureties are better than one",
-        "Never open the door",
-        "Always go to market",
-        "Wolves are not clever"
-      ],
+      "choices": ["Two sureties are better than one", "Never open the door to anyone", "Always go to market with mother", "Wolves are not clever enough to trick"],
       "answer": 0,
       "evidence": "Two sureties are better than one."
     },
@@ -45,12 +30,7 @@
       "id": "aesop-for-children-31-04",
       "type": "inference",
       "q": "In 'The Swallow and the Crow', what did the Crow mean when he said he never saw the Swallow in winter?",
-      "choices": [
-        "The Swallow is only around when the weather is nice",
-        "The Swallow likes snow",
-        "The Crow sleeps all winter",
-        "The Swallow has warm feathers"
-      ],
+      "choices": ["The Swallow only comes when the weather is nice", "The Swallow loves snow and plays in it all winter", "The Crow sleeps all winter and misses the Swallow", "The Swallow has warm feathers and stays inside"],
       "answer": 0,
       "evidence": "Friends in fine weather only, are not worth much."
     },
@@ -58,12 +38,7 @@
       "id": "aesop-for-children-31-05",
       "type": "character",
       "q": "In 'Jupiter and the Monkey', how did Mother Monkey feel about her baby when the Animals laughed?",
-      "choices": [
-        "She still thought he was the prettiest darling in the world",
-        "She was ashamed and took him home",
-        "She was angry and left",
-        "She agreed he was ugly"
-      ],
+      "choices": ["She still thought he was the prettiest darling", "She was ashamed of him and took him home at once", "She was angry and left the contest early", "She agreed with them that he was ugly"],
       "answer": 0,
       "evidence": "I know that he is the prettiest, the sweetest, the dearest darling in the world"
     },
@@ -71,12 +46,7 @@
       "id": "aesop-for-children-31-06",
       "type": "main-idea",
       "q": "What is the lesson of 'Jupiter and the Monkey'?",
-      "choices": [
-        "Mother love is blind",
-        "Monkeys always win prizes",
-        "Never enter a contest",
-        "Laughing is rude"
-      ],
+      "choices": ["Mother love is blind", "Monkeys win every prize", "Never enter a contest", "Laughing at others is rude"],
       "answer": 0,
       "evidence": "Mother love is blind."
     },
@@ -84,12 +54,7 @@
       "id": "aesop-for-children-31-07",
       "type": "character",
       "q": "In 'The Lion, the Ass, and the Fox', why did the Fox give almost all the game to the Lion?",
-      "choices": [
-        "He learned a lesson from what happened to the Ass",
-        "He was not hungry",
-        "He did not like the meat",
-        "The Lion asked nicely"
-      ],
+      "choices": ["He learned a lesson from what happened to the Ass", "He was not hungry after the long day of hunting", "He did not like the taste of that kind of meat", "The Lion had asked him nicely to share it all"],
       "answer": 0,
       "evidence": "I learned a lesson from the Ass"
     },
@@ -97,12 +62,7 @@
       "id": "aesop-for-children-31-08",
       "type": "detail",
       "q": "In 'The Lion's Share', who ran down the Stag?",
-      "choices": [
-        "The Wolf",
-        "The Lion",
-        "The Fox",
-        "The Jackal"
-      ],
+      "choices": ["The Wolf", "The Lion", "The Fox", "The Jackal"],
       "answer": 0,
       "evidence": "the Wolf ran down a Stag"
     }

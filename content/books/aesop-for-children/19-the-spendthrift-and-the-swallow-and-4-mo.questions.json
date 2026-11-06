@@ -6,7 +6,7 @@
       "id": "aesop-for-children-19-01",
       "type": "character",
       "q": "In 'The Spendthrift and the Swallow', why did the young man sell his clothes?",
-      "choices": ["He saw a Swallow and thought summer had come", "His clothes were too old", "He wanted to buy a Swallow", "His friends told him to"],
+      "choices": ["He saw a Swallow and thought summer had come", "His clothes were too old and full of holes", "He wanted the money to buy a pet Swallow", "His friends told him to sell them for a feast"],
       "answer": 0,
       "evidence": "thinking summer had come"
     },
@@ -14,7 +14,7 @@
       "id": "aesop-for-children-19-02",
       "type": "main-idea",
       "q": "What is the lesson of 'The Spendthrift and the Swallow'?",
-      "choices": ["One swallow does not make a summer", "Always save your money", "Birds can tell the weather", "Warm clothes are best"],
+      "choices": ["One swallow does not make a summer", "Always save your money for the cold days", "Birds can always tell the weather", "Warm clothes are best in winter"],
       "answer": 0,
       "evidence": "One swallow does not make a summer."
     },
@@ -30,7 +30,7 @@
       "id": "aesop-for-children-19-04",
       "type": "vocabulary",
       "q": "The moral of 'The Cat and the Birds' says to 'shun the quack.' Here, a 'quack' is:",
-      "choices": ["A fake doctor who tricks people", "The sound a duck makes", "A sick bird", "A real doctor"],
+      "choices": ["A fake doctor who tricks people", "The loud sound a duck makes", "A sick bird that cannot fly", "A real doctor who heals"],
       "answer": 0,
       "evidence": "Be wise and shun the quack."
     },
@@ -38,7 +38,7 @@
       "id": "aesop-for-children-19-05",
       "type": "detail",
       "q": "In 'The Dog and the Oyster', why did the Dog swallow the Oyster?",
-      "choices": ["He thought it was an egg", "He was told oysters were tasty", "He wanted to find a pearl", "Another dog dared him"],
+      "choices": ["He thought it was an egg", "He was told oysters taste good", "He wanted to find a pearl", "Another dog dared him to"],
       "answer": 0,
       "evidence": "I've learned that all round things are not eggs"
     },
@@ -46,7 +46,7 @@
       "id": "aesop-for-children-19-06",
       "type": "sequence",
       "q": "In 'The Astrologer', what happened while the man was staring at the stars?",
-      "choices": ["He fell into a hole full of mud and water", "He saw the end of the world", "He found a lost coin", "He walked into a tree"],
+      "choices": ["He fell into a hole full of mud and water", "He saw a sign in the stars of the end of the world", "He found a lost gold coin in the road", "He walked straight into a big tree"],
       "answer": 0,
       "evidence": "down he went into a hole full of mud and water"
     },
@@ -54,7 +54,7 @@
       "id": "aesop-for-children-19-07",
       "type": "main-idea",
       "q": "What is the lesson of 'The Astrologer'?",
-      "choices": ["Take care of the little things and the big things will take care of themselves", "Always look at the stars at night", "Never walk alone on the road", "The future is written in the stars"],
+      "choices": ["Take care of little things and big things take care of themselves", "Always look up at the stars at night to learn about the future", "Never walk alone on a dark road outside of the village", "The future is written in the stars for anyone who can read it"],
       "answer": 0,
       "evidence": "Take care of the little things and the big things will take care of themselves."
     },
@@ -62,7 +62,7 @@
       "id": "aesop-for-children-19-08",
       "type": "inference",
       "q": "In 'Three Bullocks and a Lion', why was the Lion finally able to eat the Bullocks?",
-      "choices": ["They quarreled and stayed apart from each other", "They grew old and weak", "The Lion brought other lions", "They fell asleep in the field"],
+      "choices": ["They quarreled and stayed apart from each other", "They grew old and weak and could not fight any longer", "The Lion brought other lions to help him", "They fell asleep together in the field"],
       "answer": 0,
       "evidence": "he found them in separate corners of the field"
     },
@@ -70,7 +70,7 @@
       "id": "aesop-for-children-19-09",
       "type": "main-idea",
       "q": "What is the lesson of 'Three Bullocks and a Lion'?",
-      "choices": ["In unity is strength", "Lions are the strongest animals", "Never eat in an open field", "Sharp horns keep you safe"],
+      "choices": ["In unity is strength", "Lions are the strongest", "Never eat in an open field", "Sharp horns keep you safe"],
       "answer": 0,
       "evidence": "In unity is strength."
     }

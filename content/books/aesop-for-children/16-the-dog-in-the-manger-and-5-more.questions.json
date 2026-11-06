@@ -6,7 +6,7 @@
       "id": "aesop-for-children-16-01",
       "type": "character",
       "q": "In 'The Dog in the Manger', why did the Cattle call the Dog selfish?",
-      "choices": ["He could not eat the hay but would not let them eat it", "He ate all their hay", "He stole their meat and bones", "He would not let them sleep"],
+      "choices": ["He could not eat the hay but would not let them", "He ate all of their hay while they were working", "He stole the meat and bones from their stalls", "He barked all night and would not let them sleep"],
       "answer": 0,
       "evidence": "He cannot eat the hay and yet he will not let us eat it"
     },
@@ -14,7 +14,7 @@
       "id": "aesop-for-children-16-02",
       "type": "main-idea",
       "q": "What is the lesson of 'The Dog in the Manger'?",
-      "choices": ["Do not keep from others what you cannot enjoy yourself", "Dogs should sleep in the house", "Always work hard in the field", "Farmers are always fair"],
+      "choices": ["Do not keep from others what you cannot enjoy yourself", "Dogs should always sleep in the house, not the barn", "Always work hard in the field before you rest", "Farmers are always fair to every one of the animals in the barn"],
       "answer": 0,
       "evidence": "Do not grudge others what you cannot enjoy yourself."
     },
@@ -22,7 +22,7 @@
       "id": "aesop-for-children-16-03",
       "type": "inference",
       "q": "In 'The Wolf and the Goat', why did the Wolf really want the Goat to come down?",
-      "choices": ["So he could eat her", "So she would be safe", "So she could eat better grass", "So they could be friends"],
+      "choices": ["So he could eat her", "So she would be safe", "So she could eat grass", "So they could be friends"],
       "answer": 0,
       "evidence": "It's your own appetite you are thinking of, not mine!"
     },
@@ -30,7 +30,7 @@
       "id": "aesop-for-children-16-04",
       "type": "detail",
       "q": "In 'The Ass and the Grasshoppers', what did the Grasshoppers tell the Ass gave them their beautiful voices?",
-      "choices": ["The dew they drink", "Special clover", "Divine nectar", "Singing every morning"],
+      "choices": ["The dew they drink", "Special clover", "Divine nectar", "Morning songs"],
       "answer": 0,
       "evidence": "it is the dew we drink!"
     },
@@ -38,7 +38,7 @@
       "id": "aesop-for-children-16-05",
       "type": "sequence",
       "q": "In 'The Mule', how did the Mule feel after being put back into harness to work?",
-      "choices": ["Downhearted, and sure his father was an Ass", "Proud, and sure his father was a racer", "Happy to be working again", "Angry at the farmer"],
+      "choices": ["Downhearted, and sure his father was an Ass", "Proud, and sure his father was a famous racer", "Happy and glad to be working again", "Angry at the farmer who owned him"],
       "answer": 0,
       "evidence": "\"I was mistaken,\" he said. \"My father was an Ass after all.\""
     },
@@ -46,7 +46,7 @@
       "id": "aesop-for-children-16-06",
       "type": "detail",
       "q": "In 'The Fox and the Goat', how did the Fox get out of the well?",
-      "choices": ["He jumped on the Goat's back and leaped off its horns", "He climbed up a rope", "The farmer pulled him out", "He dug a tunnel"],
+      "choices": ["He jumped on the Goat's back and leaped off its horns", "He climbed up the rope that hung down into the well", "The farmer heard him barking and pulled him out", "He dug a tunnel through the side of the well"],
       "answer": 0,
       "evidence": "leaped from the tip of the Goat's horns out of the well"
     },
@@ -62,7 +62,7 @@
       "id": "aesop-for-children-16-08",
       "type": "inference",
       "q": "In 'The Cat, the Cock, and the Young Mouse', who was the 'fearful monster' the young Mouse saw?",
-      "choices": ["The Barnyard Cock", "The Cat", "A big Dog", "The farmer"],
+      "choices": ["The Barnyard Cock", "The Cat", "A big barn Dog", "The old farmer"],
       "answer": 0,
       "evidence": "It was nobody but the Barnyard Cock"
     },
@@ -70,7 +70,7 @@
       "id": "aesop-for-children-16-09",
       "type": "main-idea",
       "q": "What did the Mother Mouse teach her son in 'The Cat, the Cock, and the Young Mouse'?",
-      "choices": ["Never judge others by their looks", "Always stay at home", "Birds are dangerous to mice", "Make friends with gentle creatures"],
+      "choices": ["Never judge others by their looks", "Always stay at home near your mother", "Birds with red combs are dangerous to mice", "Make friends with soft and gentle creatures"],
       "answer": 0,
       "evidence": "never judge people by their looks"
     }

@@ -6,7 +6,7 @@
       "id": "aesop-for-children-06-01",
       "type": "character",
       "q": "In 'The Sheep and the Pig', why did the Pig squeal so much more than the Sheep would?",
-      "choices": ["The Shepherd wanted his bacon, not just wool", "The Shepherd was hurting him", "He was afraid of the Sheep", "He wanted to stay in the meadow to eat"],
+      "choices": ["The Shepherd wanted his bacon, not just wool", "The Shepherd was squeezing him much too tightly", "He was afraid the Sheep would laugh at him later", "He wanted to stay in the meadow to eat more acorns"],
       "answer": 0,
       "evidence": "When he catches you he is only after your wool. But he wants my bacon!"
     },
@@ -14,7 +14,7 @@
       "id": "aesop-for-children-06-02",
       "type": "main-idea",
       "q": "What is the lesson of 'The Sheep and the Pig'?",
-      "choices": ["It is easy to be brave when there is no danger", "Pigs are noisier than sheep", "Always stay in your own meadow", "Shepherds are kind to animals"],
+      "choices": ["It is easy to be brave when there is no danger", "Pigs will always make more noise than sheep do", "Always stay in your own meadow and do not wander", "Shepherds are always kind to the animals they keep"],
       "answer": 0,
       "evidence": "It is easy to be brave when there is no danger."
     },
@@ -22,7 +22,7 @@
       "id": "aesop-for-children-06-03",
       "type": "detail",
       "q": "In 'The Travelers and the Purse', what did one traveler find on the road?",
-      "choices": ["A purse that seemed full of gold", "A lost dog", "A map", "A loaf of bread"],
+      "choices": ["A purse that seemed full of gold", "A lost dog sitting by the road", "A map that showed hidden treasure", "A fresh loaf of bread in a basket"],
       "answer": 0,
       "evidence": "picked up a well-filled purse"
     },
@@ -30,7 +30,7 @@
       "id": "aesop-for-children-06-04",
       "type": "character",
       "q": "In 'The Travelers and the Purse', why did the companion tell the finder to say \"I am lost\"?",
-      "choices": ["The finder would not share the purse, so he could not share the trouble", "He wanted to keep the purse himself", "He thought they were really lost on the road", "He was angry about the mob"],
+      "choices": ["He would not share the purse, so he could not share the trouble", "The companion wanted to keep the purse for himself in the end", "The companion thought they were really lost on the wrong road", "The companion was angry because he had not found it first"],
       "answer": 0,
       "evidence": "You would not say 'we' before, so now stick to your 'I'."
     },
@@ -38,7 +38,7 @@
       "id": "aesop-for-children-06-05",
       "type": "character",
       "q": "In 'The Lion and the Ass', what did the Lion do when the Ass made a scornful remark?",
-      "choices": ["He walked quietly on", "He attacked the Ass", "He roared back at him", "He ran away"],
+      "choices": ["He walked quietly on", "He sprang and attacked the Ass", "He roared back at him loudly", "He turned and ran away in fear"],
       "answer": 0,
       "evidence": "he walked quietly on"
     },
@@ -46,7 +46,7 @@
       "id": "aesop-for-children-06-06",
       "type": "sequence",
       "q": "In 'The Frogs Who Wished for a King', what did Jupiter send the Frogs first?",
-      "choices": ["A huge log", "A Crane", "A Lion", "A big Fish"],
+      "choices": ["A huge log", "A tall Crane", "A fierce Lion", "A big Fish"],
       "answer": 0,
       "evidence": "he threw down a huge log"
     },
@@ -54,7 +54,7 @@
       "id": "aesop-for-children-06-07",
       "type": "detail",
       "q": "In 'The Frogs Who Wished for a King', what did the Crane king do?",
-      "choices": ["Gobbled up the Frogs", "Gave the Frogs a party", "Let the Frogs dive off him", "Built the Frogs a new pond"],
+      "choices": ["Gobbled up the Frogs", "Gave the Frogs a feast", "Let the Frogs dive off him", "Built the Frogs a new pond"],
       "answer": 0,
       "evidence": "He gobbled up the poor Frogs right and left"
     },
@@ -62,7 +62,7 @@
       "id": "aesop-for-children-06-08",
       "type": "main-idea",
       "q": "What is the lesson of 'The Frogs Who Wished for a King'?",
-      "choices": ["Be sure you can better your condition before you seek to change", "Logs make the best kings", "Always do what Jupiter says", "Frogs should live in the reeds"],
+      "choices": ["Be sure you can better your condition before you seek to change", "A quiet log that never moves makes the very best kind of king", "Always do exactly what Jupiter says and never ask him for more", "Frogs should hide among the reeds and never leave their marsh"],
       "answer": 0,
       "evidence": "Be sure you can better your condition before you seek to change."
     }

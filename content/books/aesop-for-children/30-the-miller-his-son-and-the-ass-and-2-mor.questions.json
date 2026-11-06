@@ -6,12 +6,7 @@
       "id": "aesop-for-children-30-01",
       "type": "detail",
       "q": "In 'The Miller, His Son, and the Ass', where were the Miller and his Son taking the Ass?",
-      "choices": [
-        "To market to sell him",
-        "To the river for a drink",
-        "To the mill to work",
-        "To a farm to rest"
-      ],
+      "choices": ["To market to sell him", "To the river to drink", "To the mill to work", "To a farm to rest"],
       "answer": 0,
       "evidence": "on their way to market with an Ass which they hoped to sell"
     },
@@ -19,12 +14,7 @@
       "id": "aesop-for-children-30-02",
       "type": "sequence",
       "q": "In 'The Miller, His Son, and the Ass', what did the Miller do after the merchants told the boy to respect old age?",
-      "choices": [
-        "Made the boy get down and rode himself",
-        "Sold the Ass",
-        "Carried the Ass",
-        "Turned around and went home"
-      ],
+      "choices": ["Made the boy get down and rode himself", "Sold the Ass to the merchants right there", "Told the merchants to mind their own business", "Turned around and went back home again"],
       "answer": 0,
       "evidence": "he made the boy get down and climbed up himself to ride"
     },
@@ -32,12 +22,7 @@
       "id": "aesop-for-children-30-03",
       "type": "character",
       "q": "In 'The Miller, His Son, and the Ass', why did the Miller keep changing who rode the Ass?",
-      "choices": [
-        "He was trying to please the people on the road",
-        "He was very tired",
-        "The Ass would not walk",
-        "His Son kept falling off"
-      ],
+      "choices": ["He was trying to please the people on the road", "He was very tired from the long walk to town", "The Ass would not walk unless ridden", "His Son kept falling off the Ass"],
       "answer": 0,
       "evidence": "just to please the Merchants"
     },
@@ -45,12 +30,7 @@
       "id": "aesop-for-children-30-04",
       "type": "detail",
       "q": "In 'The Miller, His Son, and the Ass', what happened to the Ass at the end?",
-      "choices": [
-        "He fell off the bridge into the river",
-        "He was sold for a high price",
-        "He ran away to the hills",
-        "He was given to the merchants"
-      ],
+      "choices": ["He fell off the bridge into the river", "He was sold at market for a high price", "He ran away to the hills and was lost", "He was given to the merchants for free"],
       "answer": 0,
       "evidence": "down he tumbled into the river"
     },
@@ -58,12 +38,7 @@
       "id": "aesop-for-children-30-05",
       "type": "main-idea",
       "q": "What is the lesson of 'The Miller, His Son, and the Ass'?",
-      "choices": [
-        "If you try to please all, you please none",
-        "Always ride when you can",
-        "Never go to market",
-        "Listen to everyone you meet"
-      ],
+      "choices": ["If you try to please all, you please none", "Always ride when you can instead of walking", "Never take your animals to market in town", "Listen to the advice of everyone you meet"],
       "answer": 0,
       "evidence": "If you try to please all, you please none."
     },
@@ -71,12 +46,7 @@
       "id": "aesop-for-children-30-06",
       "type": "detail",
       "q": "In 'The Ant and the Dove', how did the Dove save the Ant?",
-      "choices": [
-        "She dropped a blade of straw beside it",
-        "She picked it up in her beak",
-        "She pushed it with her wing",
-        "She called for help"
-      ],
+      "choices": ["She dropped a blade of straw beside it", "She picked it up gently in her beak", "She pushed it to the bank with her wing", "She called the other birds for help"],
       "answer": 0,
       "evidence": "the Dove dropped a blade of straw close beside it"
     },
@@ -84,12 +54,7 @@
       "id": "aesop-for-children-30-07",
       "type": "main-idea",
       "q": "In 'The Ant and the Dove', the Ant stung the man so the Dove could escape. What is the lesson?",
-      "choices": [
-        "A kindness is never wasted",
-        "Ants are dangerous",
-        "Doves cannot swim",
-        "Stay away from brooks"
-      ],
+      "choices": ["A kindness is never wasted", "Ants are dangerous to men", "Doves cannot swim in water", "Stay away from deep brooks"],
       "answer": 0,
       "evidence": "A kindness is never wasted."
     },
@@ -97,12 +62,7 @@
       "id": "aesop-for-children-30-08",
       "type": "character",
       "q": "In 'The Man and the Satyr', why did the Satyr leave?",
-      "choices": [
-        "The Man blew hot and cold in the same breath",
-        "The porridge was too hot",
-        "The hut was too cold",
-        "The Man was rude to him"
-      ],
+      "choices": ["The Man blew hot and cold in the same breath", "The porridge the Man served was too hot", "The Man's hut was too cold to stay in", "The Man was rude to him and told him to go"],
       "answer": 0,
       "evidence": "A fellow that blows hot and cold in the same breath cannot be friends with me!"
     }

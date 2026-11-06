@@ -6,12 +6,7 @@
       "id": "aesop-for-children-24-01",
       "type": "character",
       "q": "In 'The Bat and the Weasels', what did the Bat tell the first Weasel, who hated Mice?",
-      "choices": [
-        "That he was a Bird",
-        "That he was a Mouse",
-        "That he was a Cat",
-        "That he was a Weasel too"
-      ],
+      "choices": ["That he was a Bird", "That he was a Mouse", "That he was a Cat", "That he was a Weasel too"],
       "answer": 0,
       "evidence": "I am only a Bird!"
     },
@@ -19,12 +14,7 @@
       "id": "aesop-for-children-24-02",
       "type": "detail",
       "q": "In 'The Bat and the Weasels', how did the Bat prove to the second Weasel that he was not a Bird?",
-      "choices": [
-        "He said all Birds have feathers and he had none",
-        "He showed his wings",
-        "He sang a song",
-        "He ate some cheese"
-      ],
+      "choices": ["He said all Birds have feathers and he had none", "He showed his leathery wings to the Weasel", "He sang a sweet song like a little bird", "He ate some cheese the way a Mouse would"],
       "answer": 0,
       "evidence": "all Birds have feathers!"
     },
@@ -32,12 +22,7 @@
       "id": "aesop-for-children-24-03",
       "type": "main-idea",
       "q": "What is the lesson of 'The Bat and the Weasels'?",
-      "choices": [
-        "Set your sails with the wind",
-        "Never tell a lie",
-        "Stay away from nests",
-        "Birds and mice should be friends"
-      ],
+      "choices": ["Set your sails with the wind", "Never tell a lie to anyone", "Stay away from birds' nests", "Birds and mice should be friends"],
       "answer": 0,
       "evidence": "Set your sails with the wind."
     },
@@ -45,12 +30,7 @@
       "id": "aesop-for-children-24-04",
       "type": "character",
       "q": "In 'The Quack Toad', why did the Fox not believe the Toad could cure anything?",
-      "choices": [
-        "The Toad could not even cure his own blotchy skin and rheumatic gait",
-        "The Toad had no medicine",
-        "The Toad was too young",
-        "The Fox was a doctor himself"
-      ],
+      "choices": ["The Toad could not even cure his own blotchy skin", "The Toad had no medicine at all in his little bag", "The Toad was far too young to be a doctor", "The Fox was a well-known doctor himself"],
       "answer": 0,
       "evidence": "If you can cure yourself of that blotchy skin and that rheumatic gait"
     },
@@ -58,12 +38,7 @@
       "id": "aesop-for-children-24-05",
       "type": "detail",
       "q": "In 'The Fox Without a Tail', how did the Fox lose his tail?",
-      "choices": [
-        "It was caught in a trap",
-        "Hounds bit it off",
-        "A hunter cut it off",
-        "It got stuck in a hedge"
-      ],
+      "choices": ["It was caught in a trap", "Hounds bit it off in a chase", "A hunter cut it off with a knife", "It got stuck in a thorny hedge"],
       "answer": 0,
       "evidence": "A Fox that had been caught in a trap"
     },
@@ -71,12 +46,7 @@
       "id": "aesop-for-children-24-06",
       "type": "inference",
       "q": "In 'The Fox Without a Tail', why did the Fox tell the other Foxes to cut off their tails?",
-      "choices": [
-        "So they would look like him and not laugh at him",
-        "Because tails make Foxes sick",
-        "Because men pay for tails",
-        "Because tails get dirty"
-      ],
+      "choices": ["So they would look like him and not laugh at him", "Because long tails make all Foxes sick in winter", "Because men will pay a high price for fox tails", "Because tails get dirty and full of burrs"],
       "answer": 0,
       "evidence": "Do not listen to the advice of him who seeks to lower you to his own level."
     },
@@ -84,12 +54,7 @@
       "id": "aesop-for-children-24-07",
       "type": "vocabulary",
       "q": "In 'The Mischievous Dog', the moral says 'Notoriety is not fame.' What does notoriety mean here?",
-      "choices": [
-        "Being known for something bad",
-        "Being loved by everyone",
-        "Being very quiet",
-        "Being very fast"
-      ],
+      "choices": ["Being known for something bad", "Being loved by everyone in town", "Being very quiet and well behaved", "Being the fastest dog in the yard"],
       "answer": 0,
       "evidence": "Notoriety is not fame."
     },
@@ -97,12 +62,7 @@
       "id": "aesop-for-children-24-08",
       "type": "main-idea",
       "q": "In 'The Rose and the Butterfly', what lesson does the Butterfly teach the Rose?",
-      "choices": [
-        "Do not expect others to be faithful if you are not faithful yourself",
-        "Flowers should not trust bees",
-        "Butterflies should stay home",
-        "Always be kind to bugs"
-      ],
+      "choices": ["Do not expect faithfulness if you are not faithful", "Flowers should never trust the bees in the garden", "Butterflies should stay home with one flower only", "Always be kind to the little bugs in the garden"],
       "answer": 0,
       "evidence": "Do not expect constancy in others if you have none yourself."
     }

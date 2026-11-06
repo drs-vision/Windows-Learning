@@ -6,7 +6,7 @@
       "id": "aesop-for-children-17-01",
       "type": "sequence",
       "q": "In 'The Wolf and the Shepherd', what happened when the Shepherd left his flock in the Wolf's care?",
-      "choices": ["Many Sheep were killed and carried off", "The Wolf kept every Sheep safe", "The Sheep ran away to the hills", "The Wolf fell asleep"],
+      "choices": ["Many Sheep were killed and carried off", "The Wolf kept every one of the Sheep safe", "The Sheep ran away to the hills to hide", "The Wolf fell asleep and the Sheep wandered"],
       "answer": 0,
       "evidence": "saw how many of the flock had been killed and carried off"
     },
@@ -14,7 +14,7 @@
       "id": "aesop-for-children-17-02",
       "type": "main-idea",
       "q": "What is the lesson of 'The Wolf and the Shepherd'?",
-      "choices": ["Once a wolf, always a wolf", "Shepherds should never run errands", "Wolves can learn to be good", "Always count your sheep"],
+      "choices": ["Once a wolf, always a wolf", "Shepherds should never go away", "Wolves can learn to be good", "Always count your sheep twice"],
       "answer": 0,
       "evidence": "Once a wolf, always a wolf."
     },
@@ -22,7 +22,7 @@
       "id": "aesop-for-children-17-03",
       "type": "character",
       "q": "In 'The Peacock and the Crane', how did the Crane answer the Peacock's bragging?",
-      "choices": ["He flew up toward the sun and said 'Follow me if you can'", "He showed his own colorful tail", "He walked away crying", "He pecked at the Peacock's feathers"],
+      "choices": ["He flew toward the sun and said 'Follow me if you can'", "He spread his own tail and showed its bright colors", "He walked away with his head down, crying softly", "He pecked angrily at the Peacock's beautiful tail feathers"],
       "answer": 0,
       "evidence": "The Crane spread his broad wings and flew up toward the sun."
     },
@@ -30,7 +30,7 @@
       "id": "aesop-for-children-17-04",
       "type": "detail",
       "q": "In 'The Farmer and the Cranes', why did the Cranes stop being afraid of the Farmer at first?",
-      "choices": ["He swung his sling with no stones, so none of them got hurt", "He went home to sleep", "He gave them some grain", "He could not see them"],
+      "choices": ["His sling had no stones, so none of them got hurt", "He went home every night to sleep and left the field", "He scattered extra grain for them by the fence", "He was too far away to see them in the field"],
       "answer": 0,
       "evidence": "they soon began to see that none of them ever got hurt"
     },
@@ -38,7 +38,7 @@
       "id": "aesop-for-children-17-05",
       "type": "sequence",
       "q": "In 'The Farmer and the Cranes', what finally made the Cranes stay away for good?",
-      "choices": ["The Farmer loaded his sling with stones", "The Farmer shouted louder", "The Farmer built a fence", "The Farmer stopped planting seed"],
+      "choices": ["The Farmer loaded his sling with stones", "The Farmer shouted much louder at them", "The Farmer built a tall fence", "The Farmer stopped planting seed"],
       "answer": 0,
       "evidence": "he loaded his sling with stones and killed several of the Cranes"
     },
@@ -46,7 +46,7 @@
       "id": "aesop-for-children-17-06",
       "type": "inference",
       "q": "In 'The Farmer and His Sons', what was the 'treasure' the sons really found?",
-      "choices": ["A big crop from all their hard digging", "A chest of gold", "A hidden bag of coins", "Their father's old letters"],
+      "choices": ["A big crop from all their hard digging", "A chest of gold buried under the old tree", "A hidden bag of coins in the barn", "Their father's old letters in a box"],
       "answer": 0,
       "evidence": "the treasure their father had told them about was the wealth of a bountiful crop"
     },
@@ -54,7 +54,7 @@
       "id": "aesop-for-children-17-07",
       "type": "main-idea",
       "q": "What is the lesson of 'The Farmer and His Sons'?",
-      "choices": ["Hard work is itself a treasure", "Always obey your father", "Never sell your farm", "Gold is hidden on every farm"],
+      "choices": ["Hard work is itself a treasure", "Always obey your father's wishes", "Never sell the farm you were given", "Gold is hidden on every farm"],
       "answer": 0,
       "evidence": "Industry is itself a treasure."
     },
@@ -62,7 +62,7 @@
       "id": "aesop-for-children-17-08",
       "type": "detail",
       "q": "In 'The Two Pots', what happened to the Earthen Pot?",
-      "choices": ["It cracked and broke into a thousand pieces", "It stayed safe by the fire", "The Brass Pot carried it home", "It grew stronger on the trip"],
+      "choices": ["It cracked and broke into a thousand pieces", "It stayed safe and warm beside the kitchen fire", "The Brass Pot kindly carried it home", "It grew stronger and harder on the trip"],
       "answer": 0,
       "evidence": "at the next jolt he flew into a thousand pieces"
     },

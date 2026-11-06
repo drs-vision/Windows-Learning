@@ -6,12 +6,7 @@
       "id": "aesop-for-children-26-01",
       "type": "detail",
       "q": "In 'The Porcupine and the Snakes', why did the Snakes ask the Porcupine to leave?",
-      "choices": [
-        "His sharp quills pricked them",
-        "He ate all their food",
-        "He was too noisy",
-        "He was rude to them"
-      ],
+      "choices": ["His sharp quills pricked them", "He ate all of their food", "He was too noisy at night", "He was rude to them"],
       "answer": 0,
       "evidence": "His sharp quills pricked them at every turn"
     },
@@ -19,12 +14,7 @@
       "id": "aesop-for-children-26-02",
       "type": "main-idea",
       "q": "What is the lesson of 'The Porcupine and the Snakes'?",
-      "choices": [
-        "Give a finger and lose a hand",
-        "Always share your home",
-        "Snakes are not kind",
-        "A cave is the best home"
-      ],
+      "choices": ["Give a finger and lose a hand", "Always share your home with others", "Snakes are never kind to guests", "A cave is the best home of all"],
       "answer": 0,
       "evidence": "Give a finger and lose a hand."
     },
@@ -32,12 +22,7 @@
       "id": "aesop-for-children-26-03",
       "type": "detail",
       "q": "In 'The Fox and the Monkey', why did the Animals make the Monkey their king?",
-      "choices": [
-        "He danced so well with funny capers",
-        "He was the strongest",
-        "He was the wisest",
-        "The Fox voted for him"
-      ],
+      "choices": ["He danced so well with funny capers", "He was the strongest of all the beasts", "He was the wisest animal in the woods", "The Fox told all the Animals to vote for him"],
       "answer": 0,
       "evidence": "the Monkey was asked to dance"
     },
@@ -45,12 +30,7 @@
       "id": "aesop-for-children-26-04",
       "type": "character",
       "q": "In 'The Fox and the Monkey', how did the Fox show the Monkey was not a good king?",
-      "choices": [
-        "He tricked him into a trap with meat in it",
-        "He beat him in a race",
-        "He told the Animals a secret",
-        "He stole his crown"
-      ],
+      "choices": ["He tricked him into a trap with meat in it", "He beat him easily in a race through the woods", "He told the Animals a secret about the Monkey", "He stole his crown while the Monkey slept"],
       "answer": 0,
       "evidence": "One day he found a trap with a bit of meat in it."
     },
@@ -58,12 +38,7 @@
       "id": "aesop-for-children-26-05",
       "type": "inference",
       "q": "In 'The Mother and the Wolf', why did the Wolf wait under the window all day?",
-      "choices": [
-        "He thought the Mother would really give him the child",
-        "He was hiding from the Dogs",
-        "He was too tired to move",
-        "He wanted to hear her sing"
-      ],
+      "choices": ["He thought the Mother would really give him the child", "He was hiding from the farmer's Dogs in the bushes", "He was too tired from hunting all night to move", "He wanted to hear the Mother sing her lullaby again"],
       "answer": 0,
       "evidence": "expecting every moment to have the child handed out to him"
     },
@@ -71,12 +46,7 @@
       "id": "aesop-for-children-26-06",
       "type": "main-idea",
       "q": "What is the lesson of 'The Mother and the Wolf'?",
-      "choices": [
-        "Do not believe everything you hear",
-        "Always be quiet",
-        "Mothers sing the best songs",
-        "Wolves are clever"
-      ],
+      "choices": ["Do not believe everything you hear", "Always be very quiet in the evening", "Mothers sing the best songs of all", "Wolves are much too clever to trick"],
       "answer": 0,
       "evidence": "Do not believe everything you hear."
     },
@@ -84,12 +54,7 @@
       "id": "aesop-for-children-26-07",
       "type": "detail",
       "q": "In 'The Flies and the Honey', what happened to the Flies?",
-      "choices": [
-        "They got stuck in the honey and died",
-        "They flew away full",
-        "They carried the honey home",
-        "They were swatted away"
-      ],
+      "choices": ["They got stuck in the honey and died", "They flew away full and very happy", "They carried the honey back to their nest", "They were swatted away by the housekeeper"],
       "answer": 0,
       "evidence": "Their wings stuck together."
     },
@@ -97,12 +62,7 @@
       "id": "aesop-for-children-26-08",
       "type": "character",
       "q": "In 'The Eagle and the Kite', what did the Kite bring back after the wedding?",
-      "choices": [
-        "A tiny Mouse",
-        "An Ostrich",
-        "A big fish",
-        "Nothing at all"
-      ],
+      "choices": ["A tiny Mouse", "A big Ostrich", "A large fish", "A fat Hare"],
       "answer": 0,
       "evidence": "all he had when he returned, was a tiny Mouse"
     }

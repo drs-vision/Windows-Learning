@@ -6,7 +6,7 @@
       "id": "aesop-for-children-07-01",
       "type": "detail",
       "q": "In 'The Owl and the Grasshopper', why was the old Owl upset with the Grasshopper?",
-      "choices": ["His singing woke her from her daytime sleep", "He ate her food", "He sat in her tree", "He called her names"],
+      "choices": ["His singing woke her from her daytime sleep", "He ate the food she had stored in her tree", "He sat in her hollow tree and would not leave", "He called her names and laughed at her eyes"],
       "answer": 0,
       "evidence": "leave me to sleep in quiet"
     },
@@ -14,7 +14,7 @@
       "id": "aesop-for-children-07-02",
       "type": "character",
       "q": "In 'The Owl and the Grasshopper', how did the Owl trick the Grasshopper?",
-      "choices": ["She flattered him and invited him to taste her wine", "She sang a louder song", "She pretended to be asleep", "She asked him to teach her to sing"],
+      "choices": ["She flattered him and invited him to taste her wine", "She sang an even louder song until he flew away", "She pretended to be asleep until he came closer", "She asked him to teach her his song inside her tree"],
       "answer": 0,
       "evidence": "The foolish Grasshopper was taken in by the Owl's flattering words."
     },
@@ -22,7 +22,7 @@
       "id": "aesop-for-children-07-03",
       "type": "main-idea",
       "q": "What is a lesson of 'The Owl and the Grasshopper'?",
-      "choices": ["Do not let flattery throw you off guard against an enemy", "Always sing as loud as you can", "Owls sleep at night", "Share your drinks with friends"],
+      "choices": ["Do not let flattery throw you off guard against an enemy", "Always sing as loudly as you can to show off your voice", "Owls sleep all night and should be awake in the day", "Share your wine with friends who come to visit you"],
       "answer": 0,
       "evidence": "Do not let flattery throw you off your guard against an enemy."
     },
@@ -30,7 +30,7 @@
       "id": "aesop-for-children-07-04",
       "type": "inference",
       "q": "In 'The Wolf and His Shadow', why did the Wolf think he was bigger than a Lion?",
-      "choices": ["The setting sun made his shadow look huge", "He had eaten a big dinner", "Other animals told him so", "He saw his reflection in a pond"],
+      "choices": ["The setting sun made his shadow look huge", "He had just eaten a very big dinner", "The other animals told him he was huge", "He saw his reflection in a still pond"],
       "answer": 0,
       "evidence": "the setting sun cast his shadow far out on the ground"
     },
@@ -38,7 +38,7 @@
       "id": "aesop-for-children-07-05",
       "type": "detail",
       "q": "In 'The Oak and the Reeds', what did the Reeds do when the wind blew?",
-      "choices": ["They bowed low so they would not break", "They stood up straight and tall", "They hid under the water", "They broke in half"],
+      "choices": ["They bowed low so they would not break", "They stood up straight and tall against it", "They hid down under the water of the stream", "They snapped in half and floated away"],
       "answer": 0,
       "evidence": "We bow before them and so we do not break."
     },
@@ -46,7 +46,7 @@
       "id": "aesop-for-children-07-06",
       "type": "main-idea",
       "q": "What is the lesson of 'The Oak and the Reeds'?",
-      "choices": ["Better to yield than to resist stubbornly and be destroyed", "Big trees are the strongest", "Stay near the water", "Never complain about the wind"],
+      "choices": ["Better to yield than to resist stubbornly and be destroyed", "Big strong trees are always the strongest things in a storm", "Always stay near the water where the ground is soft", "Never complain about the wind, even when it blows hard"],
       "answer": 0,
       "evidence": "Better to yield when it is folly to resist"
     },
@@ -54,7 +54,7 @@
       "id": "aesop-for-children-07-07",
       "type": "character",
       "q": "In 'The Rat and the Elephant', why was the Rat's pride hurt?",
-      "choices": ["Everyone admired the Elephant and nobody noticed him", "The Elephant stepped on him", "The King laughed at him", "The Dog chased him"],
+      "choices": ["Everyone admired the Elephant and not him", "The Elephant stepped on his tail in the road", "The King looked down at him and laughed", "The Dog chased him away from the crowd"],
       "answer": 0,
       "evidence": "the Rat was not noticed. His pride was hurt."
     },
@@ -62,7 +62,7 @@
       "id": "aesop-for-children-07-08",
       "type": "sequence",
       "q": "In 'The Rat and the Elephant', what happened while the Rat was bragging?",
-      "choices": ["The royal Cat spied him", "The crowd started cheering for him", "The Elephant bowed to him", "The King invited him to ride along"],
+      "choices": ["The royal Cat spied him", "The crowd began to cheer for him", "The Elephant bowed down to him", "The King asked him to ride along"],
       "answer": 0,
       "evidence": "the royal Cat spied him"
     }

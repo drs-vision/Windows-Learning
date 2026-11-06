@@ -6,12 +6,7 @@
       "id": "aesop-for-children-25-01",
       "type": "detail",
       "q": "In 'The Cat and the Fox', what was the Cat's one trick?",
-      "choices": [
-        "Climbing up a tree to hide",
-        "Playing dead",
-        "Running into a burrow",
-        "Swimming across a river"
-      ],
+      "choices": ["Climbing up a tree to hide", "Playing dead in the grass", "Running into a deep burrow", "Swimming across a river"],
       "answer": 0,
       "evidence": "In an instant the Cat was up a tree"
     },
@@ -19,12 +14,7 @@
       "id": "aesop-for-children-25-02",
       "type": "character",
       "q": "In 'The Cat and the Fox', why was the Fox caught by the hounds?",
-      "choices": [
-        "He had so many plans he could not decide which to try first",
-        "He was too tired to run",
-        "He fell asleep",
-        "He tried to climb a tree"
-      ],
+      "choices": ["He had so many plans he could not decide which to try", "He was too tired from running all day to get away", "He lay down under a bush and fell fast asleep", "He tried to climb the tree after the Cat and slipped"],
       "answer": 0,
       "evidence": "he could not decide which one to try first"
     },
@@ -32,12 +22,7 @@
       "id": "aesop-for-children-25-03",
       "type": "main-idea",
       "q": "What is the lesson of 'The Cat and the Fox'?",
-      "choices": [
-        "Common sense is always worth more than cunning",
-        "Foxes are faster than cats",
-        "Never travel with a friend",
-        "Hounds always win"
-      ],
+      "choices": ["Common sense is worth more than cunning", "Foxes can always run faster than cats", "Never travel through the woods with a friend", "Hounds always win when they chase a fox"],
       "answer": 0,
       "evidence": "Common sense is always worth more than cunning."
     },
@@ -45,12 +30,7 @@
       "id": "aesop-for-children-25-04",
       "type": "detail",
       "q": "In 'The Boy and the Nettle', what did the mother tell the Boy to do next time?",
-      "choices": [
-        "Grasp the Nettle firmly",
-        "Stay far away from it",
-        "Pull it up by the roots",
-        "Wear gloves"
-      ],
+      "choices": ["Grasp the Nettle firmly", "Stay far away from it", "Pull it up by the roots", "Wear gloves in the garden"],
       "answer": 0,
       "evidence": "grasp it firmly, and it will be as soft as silk"
     },
@@ -58,12 +38,7 @@
       "id": "aesop-for-children-25-05",
       "type": "main-idea",
       "q": "What is the lesson of 'The Old Lion'?",
-      "choices": [
-        "It is cowardly to attack someone who cannot defend himself",
-        "Lions are the kings of beasts",
-        "Old animals should hide",
-        "Bulls are stronger than lions"
-      ],
+      "choices": ["It is cowardly to attack someone who cannot defend himself", "Lions will always be the kings of all the beasts in the forest", "Old animals should hide in their dens so no one can hurt them", "Bulls and boars are much stronger than lions when they are old"],
       "answer": 0,
       "evidence": "It is cowardly to attack the defenseless"
     },
@@ -71,12 +46,7 @@
       "id": "aesop-for-children-25-06",
       "type": "detail",
       "q": "In 'The Old Lion', which animal let fly his heels and brayed insults at the Lion?",
-      "choices": [
-        "An Ass",
-        "A Boar",
-        "A Bull",
-        "A Fox"
-      ],
+      "choices": ["An Ass", "A Boar", "A Bull", "A Fox"],
       "answer": 0,
       "evidence": "Even a contemptible Ass let fly his heels"
     },
@@ -84,12 +54,7 @@
       "id": "aesop-for-children-25-07",
       "type": "inference",
       "q": "In 'The Fox and the Pheasants', why did the Pheasants fall off the limb?",
-      "choices": [
-        "They watched the Fox dance so hard that they became dizzy",
-        "The branch broke",
-        "The Fox climbed up and pushed them",
-        "A strong wind blew them off"
-      ],
+      "choices": ["They watched the Fox dance until they got dizzy", "The branch they sat on cracked and broke", "The Fox climbed up the tree and pushed them", "A strong wind blew them off their perch"],
       "answer": 0,
       "evidence": "so dazed did they become, that they lost their hold on the limb"
     },
@@ -97,12 +62,7 @@
       "id": "aesop-for-children-25-08",
       "type": "character",
       "q": "In 'Two Travelers and a Bear', what did one Man do when the Bear came?",
-      "choices": [
-        "Climbed a tree and left his friend",
-        "Fought the Bear",
-        "Ran to get help",
-        "Gave the Bear some food"
-      ],
+      "choices": ["Climbed a tree and left his friend", "Stood and fought the Bear bravely", "Ran back to the village to get help", "Gave the Bear some of his food"],
       "answer": 0,
       "evidence": "One of the Men, thinking of his own safety, climbed a tree."
     }

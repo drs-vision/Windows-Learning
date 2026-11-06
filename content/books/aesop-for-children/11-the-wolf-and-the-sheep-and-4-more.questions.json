@@ -6,7 +6,7 @@
       "id": "aesop-for-children-11-01",
       "type": "character",
       "q": "In 'The Wolf and the Sheep', why wouldn't the Sheep bring the Wolf a drink?",
-      "choices": ["He guessed the Wolf wanted to eat him next", "He had no water", "He was in a hurry", "The Bear told him not to"],
+      "choices": ["He guessed the Wolf wanted to eat him next", "He had no water and no way to carry any", "He was in a hurry to get back home", "The Shepherd had told him not to go near"],
       "answer": 0,
       "evidence": "it would only serve to wash me down your throat"
     },
@@ -14,7 +14,7 @@
       "id": "aesop-for-children-11-02",
       "type": "detail",
       "q": "In 'The Hares and the Frogs', what did the Frogs do when the Hares ran past?",
-      "choices": ["They hid in the mud in fright", "They croaked at the Hares", "They chased the Hares", "They jumped on the Hares' backs"],
+      "choices": ["They hid in the mud in fright", "They croaked angrily at the Hares", "They chased the Hares away", "They jumped on the Hares' backs"],
       "answer": 0,
       "evidence": "the startled Frogs were seeking safety in the mud"
     },
@@ -22,7 +22,7 @@
       "id": "aesop-for-children-11-03",
       "type": "main-idea",
       "q": "What is the lesson of 'The Hares and the Frogs'?",
-      "choices": ["There is always someone worse off than ourselves", "Frogs are braver than Hares", "Never run away from danger", "Always live near a pond"],
+      "choices": ["There is always someone worse off than ourselves", "Frogs are much braver animals than Hares are", "Never run away from danger, but turn and fight it", "Always live near a pond where you can hide"],
       "answer": 0,
       "evidence": "there is always someone worse off than ourselves"
     },
@@ -30,7 +30,7 @@
       "id": "aesop-for-children-11-04",
       "type": "detail",
       "q": "In 'The Fox and the Stork', how did the Fox serve the soup?",
-      "choices": ["In a very shallow dish", "In a tall jar", "In a big bowl", "In a cup"],
+      "choices": ["In a very shallow dish", "In a tall narrow jar", "In a big deep bowl", "In a little teacup"],
       "answer": 0,
       "evidence": "it was set out in a very shallow dish"
     },
@@ -38,7 +38,7 @@
       "id": "aesop-for-children-11-05",
       "type": "character",
       "q": "In 'The Fox and the Stork', how did the Stork pay the Fox back?",
-      "choices": ["He served dinner in a tall jar with a narrow neck", "He yelled at the Fox", "He ate all the Fox's soup", "He never spoke to the Fox again"],
+      "choices": ["He served dinner in a tall jar with a narrow neck", "He scolded the Fox loudly in front of everyone", "He ate all of the Fox's soup when he was not looking", "He never spoke to the Fox again for the rest of his life"],
       "answer": 0,
       "evidence": "it was served in a tall jar with a very narrow neck"
     },
@@ -46,7 +46,7 @@
       "id": "aesop-for-children-11-06",
       "type": "main-idea",
       "q": "What is the lesson of 'The Fox and the Stork'?",
-      "choices": ["Do not play tricks unless you can stand the same treatment", "Always share your soup", "Storks have long bills", "Eat slowly at dinner"],
+      "choices": ["Do not play tricks unless you can stand the same", "Always share your soup with a hungry neighbor", "Storks have long bills and should always eat from jars", "Eat slowly at dinner so you taste your food"],
       "answer": 0,
       "evidence": "Do not play tricks on your neighbors unless you can stand the same treatment yourself."
     },
@@ -62,7 +62,7 @@
       "id": "aesop-for-children-11-08",
       "type": "inference",
       "q": "In 'The Wolf and the Lion', what did the Lion mean by asking how the Wolf got the Lamb?",
-      "choices": ["The Wolf had stolen it, so it was not really his", "The Lion wanted to buy a Lamb too", "The Lion was a friend of the Shepherd", "The Lion did not know what a Lamb was"],
+      "choices": ["The Wolf had stolen it, so it was not really his", "The Lion wanted to buy a fat Lamb of his own from the Wolf", "The Lion was a good friend of the Shepherd", "The Lion did not know what a Lamb was at all"],
       "answer": 0,
       "evidence": "A Wolf had stolen a Lamb"
     }

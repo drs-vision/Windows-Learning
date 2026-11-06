@@ -6,7 +6,7 @@
       "id": "aesop-for-children-18-01",
       "type": "character",
       "q": "In 'The Goose and the Golden Egg', why did the Countryman kill the Goose?",
-      "choices": ["He wanted to get all the golden eggs at once", "The Goose stopped laying eggs", "He was very hungry", "The Goose bit him"],
+      "choices": ["He wanted to get all the golden eggs at once", "The Goose had stopped laying any golden eggs", "He was very hungry and wanted a goose dinner", "The Goose had bitten him on the hand that day"],
       "answer": 0,
       "evidence": "he could get all the golden eggs at once by killing the Goose"
     },
@@ -14,7 +14,7 @@
       "id": "aesop-for-children-18-02",
       "type": "main-idea",
       "q": "What is the lesson of 'The Goose and the Golden Egg'?",
-      "choices": ["Those who have plenty want more and so lose all they have", "Geese are worth more than gold", "Always sell your eggs at market", "Be patient with animals"],
+      "choices": ["Those who have plenty want more and so lose all", "A goose is worth far more than any golden egg could be", "Always sell your eggs at the market in town", "Be patient and gentle with all your animals"],
       "answer": 0,
       "evidence": "Those who have plenty want more and so lose all they have."
     },
@@ -22,7 +22,7 @@
       "id": "aesop-for-children-18-03",
       "type": "character",
       "q": "In 'The Fighting Bulls and the Frog', why was the old Frog afraid?",
-      "choices": ["The beaten Bull would be driven into the marsh and trample the Frogs", "The Bulls would eat the Frogs", "The marsh was drying up", "The young Frog wanted to fight"],
+      "choices": ["The beaten Bull would run into the marsh and trample them", "The Bulls would come and eat all the Frogs", "The marsh was drying up in the summer sun", "The young Frog wanted to go and fight the Bulls himself"],
       "answer": 0,
       "evidence": "we shall all be trampled into the mud"
     },
@@ -30,7 +30,7 @@
       "id": "aesop-for-children-18-04",
       "type": "detail",
       "q": "In 'The Mouse and the Weasel', why could the Mouse not get out of the basket?",
-      "choices": ["He had eaten so much corn he was too big", "The Weasel was blocking the hole", "The basket was tied shut", "He was stuck in the corn"],
+      "choices": ["He had eaten so much corn he was too big", "The Weasel was blocking the hole in the basket", "The basket had been tied shut with string", "He was stuck fast in the sticky corn"],
       "answer": 0,
       "evidence": "he became about three times as big around the middle"
     },
@@ -38,7 +38,7 @@
       "id": "aesop-for-children-18-05",
       "type": "main-idea",
       "q": "What is the lesson of 'The Mouse and the Weasel'?",
-      "choices": ["Greediness leads to misfortune", "Weasels are good friends", "Baskets are dangerous", "Always help those in trouble"],
+      "choices": ["Greediness leads to misfortune", "Weasels make the best friends", "Baskets are dangerous places", "Always help those in trouble"],
       "answer": 0,
       "evidence": "Greediness leads to misfortune."
     },
@@ -46,7 +46,7 @@
       "id": "aesop-for-children-18-06",
       "type": "sequence",
       "q": "In 'The Farmer and the Snake', what did the Snake do after the Farmer warmed it back to life?",
-      "choices": ["It bit the Farmer", "It thanked the Farmer", "It slid away into the field", "It fell asleep again"],
+      "choices": ["It bit the Farmer", "It thanked the Farmer", "It slid into the field", "It fell asleep again"],
       "answer": 0,
       "evidence": "bit the man who had been so kind to it"
     },
@@ -54,7 +54,7 @@
       "id": "aesop-for-children-18-07",
       "type": "inference",
       "q": "In 'The Sick Stag', why did the Stag starve to death?",
-      "choices": ["The visiting Animals ate all his food", "He was too sick to eat", "He could not find any food", "A Lion took his food"],
+      "choices": ["The visiting Animals ate all his food", "He was much too sick to eat anything", "He could not find any food in the forest", "A Lion came by and took all his food"],
       "answer": 0,
       "evidence": "helped themselves freely to the Stag's food"
     },
@@ -62,7 +62,7 @@
       "id": "aesop-for-children-18-08",
       "type": "character",
       "q": "In 'The Goatherd and the Wild Goats', why did the Wild Goats refuse to join the flock?",
-      "choices": ["They saw he treated his old Goats badly and would treat them that way later", "They did not like the cave", "He gave them too little food", "They were afraid of the storm"],
+      "choices": ["He treated his old Goats badly and would do the same to them", "They did not like the dark cave where he kept all of his flock", "He gave them too little food and they were very hungry", "They were afraid the storm would never come to an end"],
       "answer": 0,
       "evidence": "We know how you would treat us later on"
     },
@@ -70,7 +70,7 @@
       "id": "aesop-for-children-18-09",
       "type": "main-idea",
       "q": "What is the lesson of 'The Goatherd and the Wild Goats'?",
-      "choices": ["Do not treat old friends badly for the sake of new ones", "Wild animals cannot be tamed", "Always feed animals well in a storm", "Stay inside on stormy days"],
+      "choices": ["Do not treat old friends badly for the sake of new ones", "Wild animals can never be tamed, no matter how kind you are", "Always feed your animals well when there is a storm", "Stay inside the cave on stormy days and do not go out"],
       "answer": 0,
       "evidence": "It is unwise to treat old friends badly for the sake of new ones."
     }

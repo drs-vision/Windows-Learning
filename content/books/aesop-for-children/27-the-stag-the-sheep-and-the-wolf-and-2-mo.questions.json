@@ -6,12 +6,7 @@
       "id": "aesop-for-children-27-01",
       "type": "detail",
       "q": "In 'The Stag, the Sheep, and the Wolf', what did the Stag ask the Sheep to lend him?",
-      "choices": [
-        "A measure of wheat",
-        "Some wool",
-        "A bag of gold",
-        "A warm blanket"
-      ],
+      "choices": ["A measure of wheat", "Some of her wool", "A bag of gold coins", "A warm blanket"],
       "answer": 0,
       "evidence": "lend him a measure of wheat"
     },
@@ -19,12 +14,7 @@
       "id": "aesop-for-children-27-02",
       "type": "character",
       "q": "In 'The Stag, the Sheep, and the Wolf', why did the Sheep refuse to trust the Stag?",
-      "choices": [
-        "The Wolf never pays, and the Stag could run away too fast to catch",
-        "The Stag had been rude to her",
-        "She had no wheat left",
-        "The Stag was too young"
-      ],
+      "choices": ["The Wolf never pays, and the Stag could run away", "The Stag had been rude to her the week before", "She had no wheat left in her barn to lend him", "The Stag was too young to borrow from anyone"],
       "answer": 0,
       "evidence": "He takes what he wants and runs off with it without paying."
     },
@@ -32,12 +22,7 @@
       "id": "aesop-for-children-27-03",
       "type": "detail",
       "q": "In 'The Animals and the Plague', why did the Lion call a council?",
-      "choices": [
-        "To find the most guilty animal to sacrifice and end the plague",
-        "To choose a new king",
-        "To plan a big feast",
-        "To fight the shepherds"
-      ],
+      "choices": ["To find the most guilty animal to sacrifice", "To choose which animal should be the next king", "To plan a big feast for all the forest animals", "To get the animals ready to fight the shepherds"],
       "answer": 0,
       "evidence": "the most guilty one of us must be offered in sacrifice"
     },
@@ -45,12 +30,7 @@
       "id": "aesop-for-children-27-04",
       "type": "character",
       "q": "In 'The Animals and the Plague', what did the Fox say about the Lion eating sheep?",
-      "choices": [
-        "That it was no crime and even an honor to the sheep",
-        "That it was a terrible sin",
-        "That the Lion should be punished",
-        "That sheep taste bad"
-      ],
+      "choices": ["That it was no crime and even an honor to the sheep", "That it was a terrible sin that brought the plague", "That the Lion should be punished like the rest of them", "That the sheep tasted bad and were not worth eating"],
       "answer": 0,
       "evidence": "Can it be a crime to eat sheep"
     },
@@ -58,12 +38,7 @@
       "id": "aesop-for-children-27-05",
       "type": "detail",
       "q": "In 'The Animals and the Plague', what did the Ass confess to doing?",
-      "choices": [
-        "Nibbling a bit of grass from the priests' field",
-        "Eating a shepherd",
-        "Stealing a lamb",
-        "Biting the Lion"
-      ],
+      "choices": ["Nibbling a bit of grass from the priests' field", "Eating a shepherd who came into the woods", "Stealing a fat lamb from the farmer's fold at night", "Biting the Lion's tail while he was asleep"],
       "answer": 0,
       "evidence": "I could not resist nibbling a bit of it"
     },
@@ -71,12 +46,7 @@
       "id": "aesop-for-children-27-06",
       "type": "main-idea",
       "q": "What is the lesson of 'The Animals and the Plague'?",
-      "choices": [
-        "The weak are made to suffer for the misdeeds of the powerful",
-        "Always tell the truth",
-        "Grass is bad for an Ass",
-        "Lions are fair rulers"
-      ],
+      "choices": ["The weak are made to suffer for the misdeeds of the powerful", "Always tell the whole truth, even when you are very afraid", "Grass from a priest's field is bad for an Ass to eat", "Lions are always fair rulers who treat every animal the same"],
       "answer": 0,
       "evidence": "The weak are made to suffer for the misdeeds of the powerful."
     },
@@ -84,12 +54,7 @@
       "id": "aesop-for-children-27-07",
       "type": "sequence",
       "q": "In 'The Shepherd and the Lion', what did the Shepherd promise Jupiter after he saw the Lion?",
-      "choices": [
-        "A full-grown Bull if the thief would go away",
-        "A fat Calf to find the thief",
-        "All of his Sheep",
-        "A new temple"
-      ],
+      "choices": ["A full-grown Bull if the thief would go away", "A fat Calf if Jupiter would help find the thief", "All of his Sheep if the Lion would spare him", "A new temple built on the top of the hill"],
       "answer": 0,
       "evidence": "Now I promise you a full-grown Bull, if you but make the thief go away!"
     },
@@ -97,12 +62,7 @@
       "id": "aesop-for-children-27-08",
       "type": "inference",
       "q": "In 'The Shepherd and the Lion', why did the Shepherd no longer want to catch the thief?",
-      "choices": [
-        "The thief was a huge Lion, much scarier than a Wolf",
-        "He found his missing Sheep",
-        "He got tired of looking",
-        "The Wolf said sorry"
-      ],
+      "choices": ["The thief was a huge Lion, much scarier than a Wolf", "He had found his missing Sheep down by the river", "He got tired of looking and wanted to go home", "The Wolf came and said he was sorry for stealing"],
       "answer": 0,
       "evidence": "a huge Lion stalked out, carrying a Sheep"
     }

@@ -6,7 +6,7 @@
       "id": "wind-in-the-willows-07-01",
       "type": "detail",
       "q": "Where had the Rat been while the Mole was out on the river with companions?",
-      "choices": ["Visiting Otter", "Visiting Badger", "At Toad Hall", "Fishing alone at the weir"],
+      "choices": ["Visiting the Otter", "Visiting the Badger", "Rowing up to Toad Hall", "Fishing alone at the weir"],
       "answer": 0,
       "evidence": "keep a engagement of long standing with Otter"
     },
@@ -14,7 +14,7 @@
       "id": "wind-in-the-willows-07-02",
       "type": "detail",
       "q": "What trouble had come to the Otter family?",
-      "choices": ["Little Portly was missing", "Their house had flooded", "Otter had been caught in a trap", "Weasels had stolen their boat"],
+      "choices": ["Little Portly was missing", "Their riverside house had flooded", "Otter had been caught in a trap", "Weasels had stolen their boat"],
       "answer": 0,
       "evidence": "Little Portly is missing again"
     },
@@ -22,7 +22,7 @@
       "id": "wind-in-the-willows-07-03",
       "type": "character",
       "q": "How did the Mole first react to the news that Portly was missing?",
-      "choices": ["He did not worry, because Portly always turned up again", "He burst into tears", "He ran off at once to search", "He blamed Otter for being careless"],
+      "choices": ["He didn't worry, since Portly always turned up", "He burst into tears and could not stop crying", "He ran off at once to search the whole river", "He blamed Otter for being so careless with him"],
       "answer": 0,
       "evidence": "He's always straying off and getting lost, and turning up again"
     },
@@ -30,7 +30,7 @@
       "id": "wind-in-the-willows-07-04",
       "type": "inference",
       "q": "Why was Otter so worried about the weir?",
-      "choices": ["Portly had not yet learned to swim very well", "Portly was afraid of loud noises", "The weir had just been rebuilt", "Weasels lived near the weir"],
+      "choices": ["Portly had not yet learned to swim very well", "Portly was terribly afraid of loud rushing noises", "The weir had just been rebuilt and was unsafe", "Weasels and stoats had moved in near the weir"],
       "answer": 0,
       "evidence": "young Portly hasn't learnt to swim very well yet"
     },
@@ -38,7 +38,7 @@
       "id": "wind-in-the-willows-07-05",
       "type": "detail",
       "q": "Why did Otter keep watch every night at the old ford?",
-      "choices": ["It was where he taught Portly to swim and fish, and Portly loved it", "It was the only place to cross the river", "Portly had been seen there last", "It was close to Otter's home"],
+      "choices": ["It was Portly's favourite spot, where Otter taught him to swim", "It was the only safe place to cross the river for miles", "Portly had been seen there last by the Mole and the Rat", "It was close to Otter's home and easy to watch from"],
       "answer": 0,
       "evidence": "it was there he gave Portly his first swimming-lesson"
     },
@@ -46,7 +46,7 @@
       "id": "wind-in-the-willows-07-06",
       "type": "character",
       "q": "Why did the Mole suggest getting the boat out in the middle of the night?",
-      "choices": ["He could not bear to go to bed and do nothing", "He wanted to catch fish by moonlight", "He wanted to visit Toad Hall", "He was too hot to sleep and wanted a swim"],
+      "choices": ["He could not bear to go to bed and do nothing", "He wanted to catch fish by the light of the moon", "He wanted to row up and visit Toad Hall", "He was too hot to sleep and wanted a cool swim"],
       "answer": 0,
       "evidence": "it will be better than going to bed and doing NOTHING"
     },
@@ -54,7 +54,7 @@
       "id": "wind-in-the-willows-07-07",
       "type": "vocabulary",
       "q": "The moon rose \"with slow majesty.\" What does \"majesty\" mean here?",
-      "choices": ["Grand, stately beauty", "Nervous shaking", "Great speed", "A dim, cloudy color"],
+      "choices": ["Grand, stately beauty", "Nervous, trembling shaking", "Great speed and hurry", "A dim, cloudy colour"],
       "answer": 0,
       "evidence": "the moon lifted with slow majesty"
     },
@@ -62,7 +62,7 @@
       "id": "wind-in-the-willows-07-08",
       "type": "sequence",
       "q": "What did the friends do after the moon rose?",
-      "choices": ["Tied up the boat and searched the hedges, hollow trees and ditches", "Went home to bed", "Visited Otter at the ford", "Rowed straight to the weir"],
+      "choices": ["Tied up the boat and searched hedges, trees and ditches", "Went home to bed and planned to search in the morning", "Rowed to the ford to sit up with Otter all night", "Rowed straight to the weir and waited there quietly"],
       "answer": 0,
       "evidence": "patiently explored the hedges, the hollow trees"
     },
@@ -70,7 +70,7 @@
       "id": "wind-in-the-willows-07-09",
       "type": "detail",
       "q": "What did the Rat suddenly hear as dawn approached?",
-      "choices": ["Distant piping music", "Portly crying", "A dog barking", "Church bells"],
+      "choices": ["Distant piping music", "Portly crying for help", "A dog barking far off", "Church bells ringing"],
       "answer": 0,
       "evidence": "the thin, clear, happy call of the distant piping"
     },
@@ -78,7 +78,7 @@
       "id": "wind-in-the-willows-07-10",
       "type": "detail",
       "q": "At first, what did the Mole say he could hear?",
-      "choices": ["Only the wind in the reeds and rushes", "A bird singing", "The roar of the weir", "Otter calling for Portly"],
+      "choices": ["Only the wind in the reeds and rushes", "A bird singing in a willow tree", "The roar of the weir far ahead", "Otter calling out for Portly"],
       "answer": 0,
       "evidence": "but the wind playing in the reeds and rushes and osiers"
     },
@@ -86,7 +86,7 @@
       "id": "wind-in-the-willows-07-11",
       "type": "vocabulary",
       "q": "The Rat was \"entranced\" and \"spellbound\" by the music. What do these words mean?",
-      "choices": ["So delighted that he was completely held by it", "Bored and sleepy", "Angry and upset", "Confused and lost"],
+      "choices": ["So delighted he was completely held by it", "Bored and sleepy after the long night", "Angry and upset at being kept awake", "Confused and quite lost in the dark wet meadows"],
       "answer": 0,
       "evidence": "Entranced, he was silent for a long space, spellbound."
     },
@@ -94,7 +94,7 @@
       "id": "wind-in-the-willows-07-12",
       "type": "detail",
       "q": "Where did the music lead the two friends?",
-      "choices": ["To a small island in the middle of the weir", "To Toad Hall", "To the Wild Wood", "Back to Rat's house"],
+      "choices": ["To a small island in the middle of the weir", "To the gates of Toad Hall on the river", "To the dark edge of the Wild Wood", "Back to the Rat's house on the bank"],
       "answer": 0,
       "evidence": "a small island lay anchored"
     },
@@ -102,7 +102,7 @@
       "id": "wind-in-the-willows-07-13",
       "type": "vocabulary",
       "q": "On the island the Mole felt a great \"awe.\" What is awe?",
-      "choices": ["A mix of deep wonder and respect, with a little fear", "Plain boredom", "Hunger after a long night", "Anger at being tricked"],
+      "choices": ["Deep wonder and respect, with a little fear", "Plain boredom after waiting all night in the cold boat", "Hunger after a long night of rowing", "Anger at being tricked by the music"],
       "answer": 0,
       "evidence": "the Mole felt a great Awe fall upon him"
     },
@@ -110,7 +110,7 @@
       "id": "wind-in-the-willows-07-14",
       "type": "detail",
       "q": "Where was Portly when the Mole saw the Friend and Helper?",
-      "choices": ["Sleeping between the Helper's hooves", "Swimming in the weir", "Caught in a trap", "Hiding in a hollow tree"],
+      "choices": ["Sleeping between the Helper's hooves", "Swimming happily in the pool below the weir", "Caught in a trap set by a poacher", "Hiding inside a hollow willow tree"],
       "answer": 0,
       "evidence": "nestling between his very hooves, sleeping soundly"
     },
@@ -118,7 +118,7 @@
       "id": "wind-in-the-willows-07-15",
       "type": "inference",
       "q": "What gift did the kindly demi-god give the animals as the breeze touched their faces?",
-      "choices": ["Forgetfulness, so the memory would not spoil their happiness", "A set of pan-pipes", "The power to hear music always", "A safe path home"],
+      "choices": ["Forgetfulness, so the memory would not spoil their joy", "A set of pan-pipes, so that they could play the music too", "The power to hear that wonderful music forever", "A safe path home through the meadows at dawn"],
       "answer": 0,
       "evidence": "the gift of forgetfulness"
     },
@@ -126,7 +126,7 @@
       "id": "wind-in-the-willows-07-16",
       "type": "character",
       "q": "How did Portly feel after he woke up and searched the island?",
-      "choices": ["He cried bitterly because he could not find someone", "He was proud of his adventure", "He was angry at Rat and Mole", "He was hungry and asked for food"],
+      "choices": ["He cried bitterly because he could not find someone", "He was proud of his big adventure on the island", "He was angry at the Rat and the Mole for waking him", "He was hungry and asked them for breakfast"],
       "answer": 0,
       "evidence": "sitting down and crying bitterly"
     },
@@ -134,7 +134,7 @@
       "id": "wind-in-the-willows-07-17",
       "type": "sequence",
       "q": "How did Rat and Mole return Portly to his father?",
-      "choices": ["They set him on the tow-path near the ford and watched him run to Otter", "They carried him all the way to Otter's house", "They left him on the island for Otter to find", "They took him home to Rat's house first"],
+      "choices": ["They set him on the tow-path and watched him run to Otter", "They carried him all the way home to Otter's house", "They left him on the island and went to fetch Otter", "They took him home to the Rat's house first for a hot breakfast"],
       "answer": 0,
       "evidence": "set him on his legs on the tow-path"
     },
@@ -142,7 +142,7 @@
       "id": "wind-in-the-willows-07-18",
       "type": "main-idea",
       "q": "What is this chapter mostly about?",
-      "choices": ["Rat and Mole search for lost Portly and are led to him by a mysterious, kindly Helper", "Toad buys a new motor-car", "Mole gets lost in the Wild Wood in the snow", "Rat decides to leave the River and go to sea"],
+      "choices": ["Rat and Mole are led to lost Portly by a kindly Helper", "Toad escapes from prison and buys a new motor-car", "The Mole gets lost in the snowy Wild Wood and is rescued", "The Rat decides to leave the River and go to sea"],
       "answer": 0,
       "evidence": "Friend and Helper"
     }

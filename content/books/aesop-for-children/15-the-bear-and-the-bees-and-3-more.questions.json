@@ -6,7 +6,7 @@
       "id": "aesop-for-children-15-01",
       "type": "sequence",
       "q": "In 'The Bear and the Bees', what did the Bear do right after one Bee stung him?",
-      "choices": ["Attacked the log to destroy the nest", "Ran away into the woods", "Ate the honey quietly", "Went back to looking for berries"],
+      "choices": ["Attacked the log to destroy the nest", "Ran away into the woods howling", "Ate the honey quietly and left", "Went back to hunting for ripe berries"],
       "answer": 0,
       "evidence": "sprang upon the log tooth and claw, to destroy the nest"
     },
@@ -14,7 +14,7 @@
       "id": "aesop-for-children-15-02",
       "type": "detail",
       "q": "In 'The Bear and the Bees', how did the Bear finally save himself from the swarm?",
-      "choices": ["He dove into a pool of water", "He climbed a tall tree", "He hid inside a cave", "He rolled in the mud"],
+      "choices": ["He dove into a pool of water", "He climbed up a very tall tree", "He hid deep inside a dark cave", "He rolled over and over in the mud"],
       "answer": 0,
       "evidence": "he was able to save himself only by diving into a pool of water"
     },
@@ -22,7 +22,7 @@
       "id": "aesop-for-children-15-03",
       "type": "main-idea",
       "q": "What is the lesson of 'The Bear and the Bees'?",
-      "choices": ["It is wiser to put up with one hurt than to get angry and cause many more", "Honey is worth any danger", "Bees are stronger than bears", "Always look for berries, not honey"],
+      "choices": ["Better to bear one hurt than to get angry and get many more", "Sweet honey is worth any danger, even a swarm of bees", "Bees working together are always stronger than a bear", "Always look for berries in the woods and leave the honey alone"],
       "answer": 0,
       "evidence": "It is wiser to bear a single injury in silence than to provoke a thousand by flying into a rage."
     },
@@ -30,7 +30,7 @@
       "id": "aesop-for-children-15-04",
       "type": "detail",
       "q": "In 'The Fox and the Leopard', what was the Leopard proud of?",
-      "choices": ["His glossy, spotted coat", "His bushy tail", "His sharp mind", "His loud roar"],
+      "choices": ["His glossy, spotted coat", "His long, bushy tail", "His sharp, clever mind", "His loud, deep roar"],
       "answer": 0,
       "evidence": "The Leopard was very proud of his glossy, spotted coat"
     },
@@ -38,7 +38,7 @@
       "id": "aesop-for-children-15-05",
       "type": "main-idea",
       "q": "What did the Fox say was real beauty in 'The Fox and the Leopard'?",
-      "choices": ["Having smartness inside your head", "Having a spotted coat", "Having a white-tipped tail", "Eating a big dinner"],
+      "choices": ["Having smartness inside your head", "Having a glossy spotted coat", "Having a long white-tipped tail", "Having the loudest voice in the woods"],
       "answer": 0,
       "evidence": "if you had a little more smartness inside your head"
     },
@@ -46,7 +46,7 @@
       "id": "aesop-for-children-15-06",
       "type": "character",
       "q": "In 'The Heron', why did the Heron end up eating only a tiny Snail?",
-      "choices": ["He was too picky, and the fish swam away to deep water", "He did not like fish at all", "The Perch bit his beak", "Another bird took his fish"],
+      "choices": ["He was too picky, and the fish swam away", "He did not like the taste of fish at all", "The Perch bit his beak and he let it go", "Another bird flew down and took his fish"],
       "answer": 0,
       "evidence": "The Heron saw no more fish, and very glad was he at last to breakfast on a tiny Snail."
     },
@@ -54,7 +54,7 @@
       "id": "aesop-for-children-15-07",
       "type": "detail",
       "q": "In 'The Cock and the Fox', what 'wonderful news' did the Fox tell the Cock?",
-      "choices": ["All the animals had agreed to live in peace", "There was a feast in the barnyard", "The Dogs had gone away", "The farmer had left the gate open"],
+      "choices": ["All the animals had agreed to live in peace", "There was a great feast that night in the barnyard", "The Dogs had all gone away to the town", "The farmer had left the henhouse gate open"],
       "answer": 0,
       "evidence": "agreed to forget their differences and live in peace and friendship"
     },
@@ -70,7 +70,7 @@
       "id": "aesop-for-children-15-09",
       "type": "main-idea",
       "q": "What is the lesson of 'The Cock and the Fox'?",
-      "choices": ["The trickster is easily tricked", "Always believe good news", "Never sleep in a tree", "Dogs and foxes are friends"],
+      "choices": ["The trickster is easily tricked", "Always believe any good news", "Never sleep high in a tree", "Dogs and foxes are friends"],
       "answer": 0,
       "evidence": "The trickster is easily tricked."
     }

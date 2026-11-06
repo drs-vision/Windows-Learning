@@ -6,7 +6,7 @@
       "id": "aesop-for-children-08-01",
       "type": "main-idea",
       "q": "What is the lesson of 'The Boys and the Frogs'?",
-      "choices": ["Think whether your fun may make someone else unhappy", "Throwing stones is good exercise", "Frogs are brave animals", "Never play near a pond"],
+      "choices": ["Think whether your fun may make someone else unhappy", "Throwing stones is good exercise for growing boys", "Frogs are braver animals than most people think", "Never play near a pond or you may fall into it"],
       "answer": 0,
       "evidence": "Always stop to think whether your fun may not be the cause of another's unhappiness."
     },
@@ -14,7 +14,7 @@
       "id": "aesop-for-children-08-02",
       "type": "detail",
       "q": "In 'The Crow and the Pitcher', how did the Crow get the water?",
-      "choices": ["He dropped pebbles in until the water rose", "He tipped the pitcher over", "He broke the pitcher", "He waited for rain"],
+      "choices": ["He dropped pebbles in until the water rose", "He tipped the pitcher over with his strong beak", "He broke the pitcher open with a heavy stone", "He waited beside it until the rain filled it"],
       "answer": 0,
       "evidence": "he dropped them into the pitcher one by one"
     },
@@ -22,7 +22,7 @@
       "id": "aesop-for-children-08-03",
       "type": "main-idea",
       "q": "What is the lesson of 'The Crow and the Pitcher'?",
-      "choices": ["In a pinch a good use of our wits may help us out", "Always carry water with you", "Crows are greedy birds", "Do not attempt the impossible"],
+      "choices": ["Using our wits well may help us out of trouble", "Always carry water with you on a hot day", "Crows are greedy birds that waste their water", "Do not attempt the impossible, or you will fail"],
       "answer": 0,
       "evidence": "In a pinch a good use of our wits may help us out."
     },
@@ -30,7 +30,7 @@
       "id": "aesop-for-children-08-04",
       "type": "character",
       "q": "In 'The Ants and the Grasshopper', why did the Grasshopper have no food for winter?",
-      "choices": ["He was busy making music all summer", "The Ants took his food", "His food got wet in the rain", "He gave it all away"],
+      "choices": ["He was busy making music all summer", "The Ants had taken all his food away", "His food got wet and rotted in the rain", "He gave all of it away to his friends"],
       "answer": 0,
       "evidence": "I was so busy making music that before I knew it the summer was gone."
     },
@@ -38,7 +38,7 @@
       "id": "aesop-for-children-08-05",
       "type": "character",
       "q": "In 'The Ass Carrying the Image', why did the Ass stop and bray?",
-      "choices": ["He thought the people were honoring him", "He was tired and hungry", "He was scared of the crowd", "His load was too heavy"],
+      "choices": ["He thought the people were honoring him", "He was tired and hungry after the long walk", "He was scared of the large crowd in the street", "His load was far too heavy for him to carry"],
       "answer": 0,
       "evidence": "the Ass thought the honor was being paid to himself"
     },
@@ -46,7 +46,7 @@
       "id": "aesop-for-children-08-06",
       "type": "detail",
       "q": "In 'A Raven and a Swan', why did the Raven move to the lakes and marshes?",
-      "choices": ["He hoped his feathers would turn white like the Swan's", "He wanted to catch fish", "His home in the woods burned down", "The Swan invited him"],
+      "choices": ["He hoped his feathers would turn white", "He wanted to catch fish like the Swan did", "His home in the woods had burned down", "The Swan had invited him to come and stay"],
       "answer": 0,
       "evidence": "his feathers would turn white like the Swan's"
     },
@@ -54,7 +54,7 @@
       "id": "aesop-for-children-08-07",
       "type": "main-idea",
       "q": "What is the lesson of 'A Raven and a Swan'?",
-      "choices": ["A change of habits will not alter nature", "Swimming makes you strong", "Eat your vegetables", "Black is better than white"],
+      "choices": ["A change of habits will not alter nature", "Swimming every day will make you strong", "Eat the same food as those you admire", "Black feathers are better than white ones"],
       "answer": 0,
       "evidence": "A change of habits will not alter nature."
     },
@@ -62,7 +62,7 @@
       "id": "aesop-for-children-08-08",
       "type": "character",
       "q": "In 'The Two Goats', why did both Goats fall into the torrent?",
-      "choices": ["Their pride would not let either one give way", "The log broke under them", "A storm blew them off", "They slipped on wet rocks"],
+      "choices": ["Their pride would not let either one give way", "The log broke under them in the middle", "A strong storm blew them off the bridge", "They slipped on the wet rocks by the stream"],
       "answer": 0,
       "evidence": "Their pride would not permit either to stand aside for the other."
     }

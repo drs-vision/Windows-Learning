@@ -6,12 +6,7 @@
       "id": "aesop-for-children-33-01",
       "type": "detail",
       "q": "In 'The Ass in the Lion's Skin', what did the Ass dress himself in?",
-      "choices": [
-        "A Lion's skin left by a hunter",
-        "A Fox's coat",
-        "A sheep's wool",
-        "A farmer's clothes"
-      ],
+      "choices": ["A Lion's skin left by a hunter", "A Fox's coat he found in a thicket", "Some sheep's wool from the farm", "A farmer's old clothes and hat"],
       "answer": 0,
       "evidence": "An Ass found a Lion's skin left in the forest by a hunter."
     },
@@ -19,12 +14,7 @@
       "id": "aesop-for-children-33-02",
       "type": "character",
       "q": "In 'The Ass in the Lion's Skin', how did the Ass give himself away?",
-      "choices": [
-        "He let out a loud, harsh bray",
-        "His long ears stuck out",
-        "He tripped over the skin",
-        "He ate some grass"
-      ],
+      "choices": ["He let out a loud, harsh bray", "His long ears stuck out of the skin", "He tripped over the long Lion skin", "He stopped to eat some green grass"],
       "answer": 0,
       "evidence": "a loud, harsh bray"
     },
@@ -32,12 +22,7 @@
       "id": "aesop-for-children-33-03",
       "type": "main-idea",
       "q": "What is the lesson of 'The Ass in the Lion's Skin'?",
-      "choices": [
-        "A fool's words will soon show what he really is",
-        "Always wear nice clothes",
-        "Foxes are afraid of lions",
-        "Never hide in a thicket"
-      ],
+      "choices": ["A fool's words will soon show what he really is", "Always wear nice clothes so others will respect you", "Foxes are always afraid of lions in the forest", "Never hide in a thicket when others are near"],
       "answer": 0,
       "evidence": "his words will soon show what he really is"
     },
@@ -45,12 +30,7 @@
       "id": "aesop-for-children-33-04",
       "type": "character",
       "q": "In 'The Fisherman and the Little Fish', why did the little Fish want to be thrown back?",
-      "choices": [
-        "He said he would make a much better meal when he was bigger",
-        "He wanted to find his mother",
-        "He was too sick to eat",
-        "He promised to bring gold"
-      ],
+      "choices": ["He said he would make a better meal when bigger", "He wanted to swim back and find his mother", "He said he was too sick to be good to eat", "He promised to bring the Fisherman gold"],
       "answer": 0,
       "evidence": "When I am bigger, I shall make you a much better meal."
     },
@@ -58,12 +38,7 @@
       "id": "aesop-for-children-33-05",
       "type": "main-idea",
       "q": "What is the lesson of 'The Fisherman and the Little Fish'?",
-      "choices": [
-        "A small gain is worth more than a large promise",
-        "Always throw little fish back",
-        "Fishermen are greedy",
-        "Big fish are hard to catch"
-      ],
+      "choices": ["A small gain is worth more than a large promise", "Always throw the little fish back into the sea", "Fishermen are greedy and catch too many fish", "Big fish are much harder to catch than little ones"],
       "answer": 0,
       "evidence": "A small gain is worth more than a large promise."
     },
@@ -71,12 +46,7 @@
       "id": "aesop-for-children-33-06",
       "type": "sequence",
       "q": "In 'The Fighting Cocks and the Eagle', what did the winning Cock do after the fight?",
-      "choices": [
-        "Flew to the top of the hen-house and crowed",
-        "Hid in a corner",
-        "Went to sleep",
-        "Shared his food with the other Cock"
-      ],
+      "choices": ["Flew to the top of the hen-house and crowed", "Hid in a corner of the yard to rest his wounds", "Went to sleep in the barn after the fight", "Shared his food with the other beaten Cock"],
       "answer": 0,
       "evidence": "crowed with all his might to tell the world about his victory"
     },
@@ -84,12 +54,7 @@
       "id": "aesop-for-children-33-07",
       "type": "main-idea",
       "q": "In 'The Fighting Cocks and the Eagle', the Eagle carried off the boasting Cock. What is the lesson?",
-      "choices": [
-        "Pride goes before a fall",
-        "Eagles are kind",
-        "Never fight with a friend",
-        "The strongest always wins"
-      ],
+      "choices": ["Pride goes before a fall", "Eagles are kind to Cocks", "Never fight with a friend", "The strongest always wins"],
       "answer": 0,
       "evidence": "Pride goes before a fall."
     }
