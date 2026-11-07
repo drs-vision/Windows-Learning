@@ -187,19 +187,33 @@ function send(op, args = {}) {
   });
   (async () => {
     const parts = w.split(await w.seal(key, { id, ts: Date.now(), op, a: args }));
-    // CoinQuest's own relay first; the public one if that can't be reached.
-    for (const relay of cqRelay ? [cqRelay, link.relay] : [link.relay]) {
-      try {
-        for (const part of parts) {
-          const r = await fetch(`${relay}/${link.topicIn}`, { method: 'POST', body: part });
-          if (!r.ok) throw new Error(r.status === 429 ? 'Too many messages right now — wait a minute and try again.' : `The relay said ${r.status}.`);
-        }
-        return;
-      } catch (e) { if (relay === link.relay || !cqRelay) throw e; }
-    }
+    // Both relays at once: the phone and the PC can be on different networks, and one may block one relay (some home
+    // filters block CoinQuest's). The PC answers each request once (it remembers the id), on whichever arrives first.
+    const post = async (relay) => {
+      for (const part of parts) {
+        const r = await fetch(`${relay}/${link.topicIn}`, { method: 'POST', body: part, signal: AbortSignal.timeout?.(15000) });
+        if (!r.ok) throw new Error(r.status === 429 ? 'Too many messages right now — wait a minute and try again.' : `The relay said ${r.status}.`);
+      }
+    };
+    const tries = (cqRelay ? [cqRelay, link.relay] : [link.relay]).map(post);
+    try { await Promise.any(tries); } catch (e) { throw e.errors?.[e.errors.length - 1] ?? e; }
   })().catch((e) => { const p = waiting.get(id); if (p) { waiting.delete(id); p.reject(e); } });
   return done;
 }
+
+// Back to the app (phones pause pages in the background): reconnect if the stream dropped, and ask for fresh numbers.
+document.addEventListener('visibilitychange', () => {
+  if (document.visibilityState !== 'visible' || !link) return;
+  if (!source || source.readyState === 2) {
+    const since = Math.floor(Date.now() / 1000) - 60;
+    if (source) source.close();
+    source = new EventSource(`${link.relay}/${link.topicOut}/sse?since=${since}`);
+    source.onmessage = (ev) => onRelayMessage(ev.data);
+    source.onerror = () => { if (status !== 'on' && !sock) { status = 'off'; render(); } };
+  }
+  if (cqRelay && !sock) openSocket(Math.floor(Date.now() / 1000) - 60);
+  if (Date.now() - updatedAt > 15000) refresh();
+});
 
 async function refresh() {
   status = 'wait'; error = ''; render();
