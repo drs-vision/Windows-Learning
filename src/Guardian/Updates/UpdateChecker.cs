@@ -10,9 +10,10 @@ using CoinQuest.Guardian.Economy;
 namespace CoinQuest.Guardian.Updates;
 
 /// <summary>
-/// Checks GitHub Releases for a newer build every 6 hours, downloads it, verifies the SHA-256 the
+/// Checks GitHub Releases for a newer build every 30 minutes, downloads it, verifies the SHA-256 the
 /// release workflow published next to it, and hands off to CoinQuest.Updater.exe to swap files and
-/// restart the service. Applies right away when no managed child is at the keyboard; otherwise waits.
+/// restart the service. Installs when no kid is signed in, when the kid signs out, or right as CoinQuest opens — never
+/// in the middle of the kid using it.
 /// </summary>
 public sealed class UpdateChecker
 {
@@ -27,8 +28,6 @@ public sealed class UpdateChecker
 
     public const string AssetName = "CoinQuest-win-x64.zip";
     public static readonly TimeSpan Interval = TimeSpan.FromMinutes(30);
-    /// <summary>An update waiting this long installs even in the middle of paid game/YouTube time (the time itself is kept).</summary>
-    public static readonly TimeSpan MaxWait = TimeSpan.FromHours(2);
 
     public sealed record UpdateStatus(string Current, string? Latest, string State, string? Message, DateTimeOffset? LastChecked);
     public UpdateStatus Status { get; private set; }
@@ -121,7 +120,9 @@ public sealed class UpdateChecker
             }
 
             Status = new UpdateStatus(Current, latest, "readyToApply", null, DateTimeOffset.UtcNow);
-            if (applyEvenIfChildActive || GoodMoment()) Apply();
+            // Right as CoinQuest opens counts as a good moment (it restarts before anything has started); later, wait.
+            var justOpened = DateTimeOffset.UtcNow - _lastOpenCheck < TimeSpan.FromSeconds(90);
+            if (applyEvenIfChildActive || justOpened || GoodMoment()) Apply();
             return Status;
         }
         catch (Exception ex) when (ex is UnauthorizedAccessException or IOException)
@@ -140,23 +141,19 @@ public sealed class UpdateChecker
     }
 
     /// <summary>
-    /// Install now unless the child is in the middle of paid game or YouTube time (then wait — at most two hours).
-    /// A lesson in progress just restarts the app for a few seconds; progress and coins are kept by the service.
+    /// Never in the middle of the kid using CoinQuest: an update installs when no kid is signed in, when the kid signs out,
+    /// or right as CoinQuest opens (CheckOnOpen). Until then it waits, downloaded and ready.
     /// </summary>
-    private bool GoodMoment()
-    {
-        if (_session.Current is not { } s) return true;
-        if (_stagedAt is { } at && DateTimeOffset.UtcNow - at > MaxWait) return true;
-        return !_unlocks.ActiveFor(s.Child.Id).Any(u => u.Kind is PrizeKind.ArcadeUnlock or PrizeKind.YouTube);
-    }
+    private bool GoodMoment() => _session.Current is null;
 
     /// <summary>Raised just before an update installs (the kid's app shows "Getting the newest CoinQuest").</summary>
     public event Action<string>? Applying;
 
     private DateTimeOffset _lastOpenCheck = DateTimeOffset.MinValue;
     /// <summary>
-    /// The kid signed in or opened CoinQuest: look for an update now instead of waiting for the half-hourly check, and
-    /// install it straight away if there's one (nothing paid is running yet, so it's the best moment). At most every 2 minutes.
+    /// The kid signed in or opened CoinQuest: install a waiting update now (it's usually already downloaded, so CoinQuest
+    /// restarts before anything has started), or look for one. Found later than ~90 s after opening, it waits for the next
+    /// time CoinQuest opens or the kid signs out, never interrupting a lesson or game. At most every 2 minutes.
     /// </summary>
     public void CheckOnOpen()
     {
