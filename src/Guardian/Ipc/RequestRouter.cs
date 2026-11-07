@@ -1624,6 +1624,9 @@ public sealed class RequestRouter
 
     // ---------------------------------------------------------------- helpers
 
+    /// <summary>Midnight: "today" (coins earned, daily limits, passages paid today, purchases) starts over, so every screen refreshes.</summary>
+    public void NewDay() => StateChanged?.Invoke();
+
     private void AfterChange()
     {
         if (_session.Current is { } s) _policy.Apply(_store.FindChild(s.Child.Id) ?? s.Child);

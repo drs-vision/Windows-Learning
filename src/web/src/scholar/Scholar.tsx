@@ -66,6 +66,13 @@ export function Scholar() {
     return () => { off(); clearInterval(t); };
   }, []);
 
+  // Daily limits start over at midnight: refresh then (the Guardian also announces it), so nothing still says "done for today".
+  useEffect(() => {
+    let t = 0;
+    const arm = () => { const n = new Date(); const next = new Date(n.getFullYear(), n.getMonth(), n.getDate() + 1, 0, 0, 5); t = window.setTimeout(() => { refresh(); arm(); }, next.getTime() - n.getTime()); };
+    arm();
+    return () => clearTimeout(t);
+  }, []);
   useEffect(() => { if (toast) { const t = setTimeout(() => setToast(''), 6000); return () => clearTimeout(t); } }, [toast]);
 
   if (error && !state) return <div class="screen center"><h2>Hmm.</h2><p>{error}</p><button class="primary" onClick={refresh}>Try again</button></div>;

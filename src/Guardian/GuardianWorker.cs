@@ -80,6 +80,9 @@ public sealed class GuardianWorker : BackgroundService
             try { if (!await timer.WaitForNextTickAsync(ct)) break; } catch (OperationCanceledException) { break; }
             // Each duty is isolated: a failure in one (e.g. a registry error) must never stop the others.
             Step("session", _session.Poll);
+            // Daily limits and "today" counts reset at local midnight (the ledger counts from 12:00 am): tell the kid's
+            // screen and the phones, so nothing still says "done for today" from yesterday.
+            if (DateTime.Today != _day) { _day = DateTime.Today; Step("new day", _router.NewDay); }
             Step("unlocks", _unlocks.Tick);
             if (_session.Current is { } s)
             {
@@ -106,6 +109,7 @@ public sealed class GuardianWorker : BackgroundService
 
     private DateTime _lastHeartbeatLog = DateTime.MinValue;
     private bool _wasLocked;
+    private DateTime _day = DateTime.Today;
     private readonly Dictionary<string, DateTime> _lastStepError = new();
 
     private void Step(string name, Action a)

@@ -101,7 +101,7 @@ public static class ReadingReport
 
         JsonObject Row(Entry e) => new()
         {
-            ["at"] = e.At.ToString("yyyy-MM-dd"), ["book"] = e.Book, ["chapter"] = e.OneStory ? null : e.Chapter, ["title"] = e.ChapterTitle,
+            ["at"] = e.At.LocalDateTime.ToString("yyyy-MM-dd"), ["book"] = e.Book, ["chapter"] = e.OneStory ? null : e.Chapter, ["title"] = e.ChapterTitle,
             ["level"] = e.Level, ["formula"] = e.Formula, ["atos"] = e.Atos, ["lexile"] = e.Lexile,
             ["read"] = e.Read, ["quizzed"] = e.Quizzed,
             ["firstTry"] = e.Quizzed ? e.Percent : null, ["correct"] = e.Correct, ["total"] = e.Total, ["tries"] = e.Attempts, ["passed"] = e.Passed, ["wpm"] = e.Wpm, ["status"] = e.Quizzed ? e.Status : "read",

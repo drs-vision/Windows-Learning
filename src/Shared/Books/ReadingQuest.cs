@@ -308,7 +308,7 @@ public static class ReadingQuest
                 var p = lib.Find(x.Id);
                 return (JsonNode)new JsonObject
                 {
-                    ["at"] = x.D.At.ToString("yyyy-MM-dd"), ["title"] = p?.Title ?? x.Id, ["grade"] = Math.Round(x.D.Grade, 1), ["type"] = x.D.Type, ["right"] = x.D.Right,
+                    ["at"] = x.D.At.LocalDateTime.ToString("yyyy-MM-dd"), ["title"] = p?.Title ?? x.Id, ["grade"] = Math.Round(x.D.Grade, 1), ["type"] = x.D.Type, ["right"] = x.D.Right,
                     ["source"] = p?.Source.Name, ["url"] = p?.Source.Url,
                 };
             }).ToArray()),

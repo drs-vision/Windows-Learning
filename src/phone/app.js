@@ -421,7 +421,7 @@ function homeScreen() {
           <button class="lock-mini ${k.lockState?.locked ? 'on' : ''}" data-lock="${esc(k.id)}" aria-label="Lock ${esc(k.name)}">🔒</button>
         </div>
         ${k.lockState?.locked ? `<div class="locked-line">🔒 Locked${k.lockState.until ? ` until ${esc(untilText(k.lockState.until))}` : ''}<button data-lock-open="${esc(k.id)}">Open now</button></div>` : ''}
-        <div class="today">Today: <span class="plus">+${k.earnedToday}</span> earned · <span class="minus">${k.spentToday ? '−' + k.spentToday : '0'}</span> spent</div>
+        <div class="today">${esc(dayLabel(state.at))}: <span class="plus">+${k.earnedToday}</span> earned · <span class="minus">${k.spentToday ? '−' + k.spentToday : '0'}</span> spent</div>
         <div class="row"><button class="give" data-give="${esc(k.id)}">＋ Give</button><button class="take" data-take="${esc(k.id)}">－ Take</button></div>
         ${(k.unlocks || []).map((u) => `<div class="unlock"><span>▶ ${esc(u.name)} · ${mins(u.secondsLeft)} left</span><button data-end="${esc(u.id)}">End now</button></div>`).join('')}
       </div>`).join('');
@@ -634,6 +634,15 @@ function giveSheet(childId, sign) {
       `${sign > 0 ? 'Gave' : 'Took'} ${amount} ${sign > 0 ? 'to' : 'from'} ${k.name}`);
   });
   sheet.showModal();
+}
+
+/** "Today" for a snapshot from today; "Yesterday" / "Tue" when the PC hasn't sent one since midnight. */
+function dayLabel(at) {
+  if (!at) return 'Today';
+  const d = new Date(at), now = new Date();
+  if (d.toDateString() === now.toDateString()) return 'Today';
+  const y = new Date(now.getFullYear(), now.getMonth(), now.getDate() - 1);
+  return d.toDateString() === y.toDateString() ? 'Yesterday' : d.toLocaleDateString([], { weekday: 'short' });
 }
 
 // ---- lock a kid's whole profile (now or every week) ----------------------------------------------------------------
