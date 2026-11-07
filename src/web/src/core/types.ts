@@ -101,6 +101,8 @@ export interface ChildState {
   progress: Record<string, Progress | null>;
   sites: string[];
   youtubeChannels?: number;
+  /** Channel filtering off: any YouTube video during YouTube time. */
+  youtubeAnyVideo?: boolean;
   rwtInstalled?: boolean;
   discGames?: { id: string; title: string }[];
   arcadeMinutesPerPlay?: number;
@@ -119,6 +121,8 @@ export interface Video { id: string; title: string; channelId: string; channelTi
 
 export interface Child {
   id: string;
+  /** Advanced: any YouTube video during YouTube time (no channel filtering). */
+  youTubeAnyVideo?: boolean;
   /** Price rises ease in a little each day (default) instead of jumping. */
   priceRisesEaseIn?: boolean;
   displayName: string;
@@ -185,10 +189,9 @@ export interface FpCatalogGame { id: string; title: string; developer: string; p
 /** Coins per 5 minutes of a game (must match ArcadeSettings.DefaultPrice). More thinking = cheaper. */
 export const defaultArcadePrice = (strategy: number) => 9 - Math.max(1, Math.min(5, Math.round(strategy))); // 4 (heavy thinking) … 8 (pure reflex); must match ArcadeSettings.DefaultPrice
 export const BLOCK_MINUTES = 5;
-/** Must match ArcadeSettings.YouTubeBlockPrice: YouTube always costs more than the priciest arcade game. */
-export function youTubeBlockPrice(cost: number, minutes: number, arcadePrices: number[]) {
-  const own = minutes > 0 ? Math.ceil(cost / (minutes / BLOCK_MINUTES)) : cost;
-  return Math.max(own, (arcadePrices.length ? Math.max(...arcadePrices) : defaultArcadePrice(1)) + 2);
+/** Must match ArcadeSettings.YouTubeBlockPrice: exactly the parent's price per 5 minutes. */
+export function youTubeBlockPrice(cost: number, minutes: number, _arcadePrices?: number[]) {
+  return minutes > 0 ? Math.ceil(cost / (minutes / BLOCK_MINUTES)) : cost;
 }
 /** Must match ArcadeSettings.AutoSamplerPrice. */
 export function autoSamplerPrice(prices: number[], minutes: number) {

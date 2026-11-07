@@ -37,6 +37,8 @@ public sealed record Child
     public Dictionary<string, ModuleSettings> Modules { get; init; } = ModuleSettings.Defaults();
     /// <summary>YouTube channels the child may watch inside CoinQuest (in-app player, never the browser).</summary>
     public List<YouTubeChannel> YouTubeChannels { get; init; } = new();
+    /// <summary>Advanced: during YouTube time, any video on youtube.com (no channel filtering). Off by default.</summary>
+    public bool YouTubeAnyVideo { get; init; }
     public ArcadeSettings Arcade { get; init; } = new();
     /// <summary>Optional hard daily screen-time cap in minutes. Null = coins-only.</summary>
     public int? DailyScreenTimeCapMinutes { get; init; }
@@ -149,16 +151,10 @@ public sealed record ArcadeSettings
     /// <summary>Coins per 5-minute block. More thinking = cheaper.</summary>
     public static int DefaultPrice(int strategy) => 9 - Math.Clamp(strategy, 1, 5); // 4 (heavy thinking) … 8 (pure reflex)
 
-    /// <summary>
-    /// YouTube costs more than the arcade (games beat videos). Per 5 minutes: the prize's own rate, but always at
-    /// least 2 coins above the priciest arcade game.
-    /// </summary>
-    public static int YouTubeBlockPrice(Prize prize, IEnumerable<int> arcadePrices)
-    {
-        var own = prize.Minutes > 0 ? (int)Math.Ceiling(prize.Cost / (prize.Minutes / (double)BlockMinutes)) : prize.Cost;
-        var floor = arcadePrices.DefaultIfEmpty(DefaultPrice(1)).Max() + 2;
-        return Math.Max(own, floor);
-    }
+    /// <summary>YouTube per 5 minutes: exactly the parent's price (the prize's cost for its minutes). The arcade
+    /// prices are no longer used (there was a "2 coins above the priciest game" floor); kept for callers.</summary>
+    public static int YouTubeBlockPrice(Prize prize, IEnumerable<int> arcadePrices) =>
+        prize.Minutes > 0 ? (int)Math.Ceiling(prize.Cost / (prize.Minutes / (double)BlockMinutes)) : prize.Cost;
 
     /// <summary>Automatic sampler price: a bit more than the same time on the most expensive single game.</summary>
     public static int AutoSamplerPrice(IEnumerable<int> prices, int samplerMinutes)

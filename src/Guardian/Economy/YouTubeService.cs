@@ -310,6 +310,7 @@ public sealed partial class YouTubeService
     /// <summary>Is this video from an approved channel? (Checked before the player is allowed to load it.)</summary>
     public async Task<bool> IsAllowed(Child child, string videoId)
     {
+        if (child.YouTubeAnyVideo) return true; // the parent turned channel filtering off (Advanced)
         if (_known.TryGetValue(videoId, out var ch) && child.YouTubeChannels.Any(c => c.Id == ch)) return true;
         foreach (var c in child.YouTubeChannels)
         {

@@ -252,7 +252,7 @@ function LockStatus({ state, child }: { state: ParentState; child: Child }) {
         <b>{netOk ? `Internet lock is on for ${child.displayName}` : `Internet lock is off`}</b>
         <p class="muted small">
           {netOk
-            ? `${child.displayName} can only reach the websites, apps and YouTube channels on this page. Your own account isn't affected.`
+            ? `${child.displayName} can only reach the websites and apps on this page (YouTube is under Rewards). Your own account isn't affected.`
             : `It couldn't be turned on (${net?.error ?? 'not applied yet'}). Restart the computer; if it stays off, see Settings → Advanced.`}
         </p>
       </div>
@@ -331,7 +331,6 @@ function Allowed({ child, onSave }: { child: Child; onSave: (c: Child) => void }
 
   return (
     <div class="allowed two-col">
-      <YouTubeChannels child={child} onSave={onSave} />
       <div class="card">
         <h3>Websites</h3>
         <p class="muted">These are the only websites that open (inside CoinQuest's locked browser). Everything else is blocked.</p>
@@ -406,11 +405,18 @@ function Troubleshooting() {
   );
 }
 
-function YouTubeChannels({ child, onSave }: { child: Child; onSave: (c: Child) => void }) {
+/**
+ * Everything about YouTube in one fold-away section of Rewards (like the arcade): what it costs, an optional daily
+ * limit, which channels; and, tucked under Advanced, turning channel filtering off.
+ */
+function YouTubeSection({ child, onSave }: { child: Child; onSave: (c: Child) => void }) {
   const [url, setUrl] = useState('');
   const [busy, setBusy] = useState(false);
   const [err, setErr] = useState('');
   const list = child.youTubeChannels ?? [];
+  const yt = child.prizes.find((p) => p.kind === 'youTube');
+  const on = !!yt && yt.enabled !== false;
+  const any = !!child.youTubeAnyVideo;
   async function add() {
     setBusy(true); setErr('');
     try {
@@ -420,34 +426,37 @@ function YouTubeChannels({ child, onSave }: { child: Child; onSave: (c: Child) =
     } catch (e) { setErr((e as Error).message); }
     finally { setBusy(false); }
   }
+  const perBlock = yt ? Math.ceil(yt.cost / ((yt.minutes || 20) / BLOCK_MINUTES)) : null;
   return (
-    <div class="card" style={{ gridColumn: '1 / -1' }}>
-      <h3>▶️ YouTube</h3>
-      <p class="muted">youtube.com itself stays blocked. Inside CoinQuest, {child.displayName} can watch recent videos from these channels only, during YouTube time. Paste a channel link (for example youtube.com/@MarkRober).</p>
+    <details class="card fold yt-section">
+      <summary><h3>▶️ YouTube</h3><span class="muted small">{!on ? 'off' : [`🪙 ${perBlock} per ${BLOCK_MINUTES} min`, yt?.maxMinutesPerDay ? `at most ${yt.maxMinutesPerDay} min a day` : '', any ? 'any video' : `${list.length} channel${list.length === 1 ? '' : 's'}`].filter(Boolean).join(' · ')}</span></summary>
+      <YouTubePrice child={child} onSave={onSave} />
+      <h4>Channels</h4>
+      <p class="muted small">youtube.com itself stays blocked. During YouTube time, {child.displayName} watches recent videos from these channels inside CoinQuest. Paste a channel link (for example youtube.com/@MarkRober).</p>
       <div class="row"><input style={{ flex: 1 }} value={url} placeholder="https://www.youtube.com/@channel" onInput={(e) => setUrl((e.target as HTMLInputElement).value)} onKeyDown={(e) => e.key === 'Enter' && url && add()} /><button class="primary" disabled={!url || busy} onClick={add}>{busy ? 'Finding…' : 'Add channel'}</button></div>
       {err && <p class="error">{err}</p>}
       <div class="chips">{list.map((c) => <span class="chip">{c.title}<button onClick={() => onSave({ ...child, youTubeChannels: list.filter((x) => x.id !== c.id) })}>✕</button></span>)}</div>
-      {list.length === 0 && <p class="muted small">No channels yet — the YouTube button won't appear for {child.displayName} until you add one.</p>}
-      <YouTubePrice child={child} onSave={onSave} />
-    </div>
+      {list.length === 0 && !any && <p class="muted small">No channels yet: the YouTube button won't appear for {child.displayName} until you add one.</p>}
+      <details class="more advanced">
+        <summary><span class="muted small">Advanced</span></summary>
+        <label class="check"><input type="checkbox" checked={any} onChange={(e) => onSave({ ...child, youTubeAnyVideo: (e.target as HTMLInputElement).checked })} />
+          <span>Allow any YouTube video during YouTube time <span class="muted small">(no channel filtering: {child.displayName} can search and watch anything on youtube.com while their YouTube time runs; the timer and price still apply)</span></span></label>
+      </details>
+    </details>
   );
 }
 
 /**
- * What YouTube time costs, right with the channels: coins per 5 minutes (the kid buys it with + in 5-minute steps)
- * and how many times a day. Stored as the YouTube reward (cost for its minutes), so price changes ease in like any other.
+ * What YouTube time costs: coins per 5 minutes (the kid buys it with + in 5-minute steps)
+ * and at most how many minutes a day. Stored as the YouTube reward (cost for its minutes), so price changes ease in like any other.
  */
 function YouTubePrice({ child, onSave }: { child: Child; onSave: (c: Child) => void }) {
-  const [games, setGames] = useState<number[]>([]);
-  useEffect(() => { bridge.parentArcadeCatalog(child.id).then((r) => setGames(r.games.filter((g) => g.available && !g.hidden).map((g) => g.target ?? g.price))).catch(() => {}); }, [child.id]);
   const prizes = child.prizes;
   const yt = prizes.find((p) => p.kind === 'youTube');
   const minutes = yt?.minutes || 20;
   const perBlock = yt ? Math.ceil(yt.cost / (minutes / BLOCK_MINUTES)) : 12;
-  const floor = (games.length ? Math.max(...games) : defaultArcadePrice(1)) + 2;
-  const shown = yt ? youTubeBlockPrice(yt.cost, minutes, games) : null;
   const put = (p: Prize) => onSave({ ...child, prizes: yt ? prizes.map((x) => (x.id === yt.id ? p : x)) : [...prizes, p] });
-  const base: Prize = yt ?? { id: 'p' + Math.random().toString(36).slice(2, 10), name: 'YouTube time', cost: perBlock * (minutes / BLOCK_MINUTES), kind: 'youTube', minutes, dailyCap: 3, boughtToday: 0, targets: [], enabled: true };
+  const base: Prize = yt ?? { id: 'p' + Math.random().toString(36).slice(2, 10), name: 'YouTube time', cost: perBlock * (minutes / BLOCK_MINUTES), kind: 'youTube', minutes, dailyCap: 0, boughtToday: 0, targets: [], enabled: true };
   const on = !!yt && yt.enabled !== false;
   return (
     <div class="yt-price">
@@ -460,7 +469,6 @@ function YouTubePrice({ child, onSave }: { child: Child; onSave: (c: Child) => v
           onChange={(e) => put({ ...base, dailyCap: 0, maxMinutesPerDay: Math.max(0, Number((e.target as HTMLInputElement).value) || 0) })} />
         <span>minutes a day</span>
       </div>
-      {on && shown != null && shown > perBlock && <p class="muted small">{child.displayName} pays 🪙 {shown}: YouTube is never cheaper than 2 coins above the priciest arcade game ({floor - 2}), so games stay the better deal.</p>}
     </div>
   );
 }
@@ -480,7 +488,7 @@ function PriceEaseIn({ child, rising, onSave }: { child: Child; rising: Record<s
   return (
     <details class="more price-ease">
       <summary><span class="muted small">💡 Price rises {on ? 'ease in over a few days' : 'apply right away'}{easing ? ` · ${easing} easing in now` : ''}</span></summary>
-      <p class="muted small">This is for {child.displayName}'s feelings: a big jump (48 → 60) feels unfair, small steps don't. A rise climbs about 10% a day, and meanwhile {child.displayName} sees the new price crossed out and today's as a "Limited time!" deal. Price drops always apply at once and show as "Price drop!". You always set the real price.</p>
+      <p class="muted small">This is for {child.displayName}'s feelings: a big jump (48 → 60) feels unfair, small steps don't. A rise eases in over about 3 days in equal steps (bigger ones take up to a week so no single step is more than 10%; a 1-coin or under-8% rise applies at once), and meanwhile {child.displayName} sees the new price crossed out and today's as a "Limited time!" deal. Price drops always apply at once and show as "Price drop!". You always set the real price.</p>
       <label class="check"><input type="checkbox" checked={on} onChange={(e) => onSave({ ...child, priceRisesEaseIn: (e.target as HTMLInputElement).checked })} /> Ease price rises in (recommended)</label>
       {easing > 0 && <button class="ghost small" onClick={() => bridge.parentPricesNow(child.id).then(() => onSave({ ...child }))}>Finish the {easing} rise{easing === 1 ? '' : 's'} now</button>}
     </details>
@@ -495,12 +503,13 @@ function ShopEditor({ child, rising, onSave }: { child: Child; rising: Record<st
 
   return (
     <div class="shop-editor">
-      <p class="muted lead">What {child.displayName} can spend coins on. Tap one to change it. (YouTube's price is with the YouTube channels, under Allowed.)</p>
+      <p class="muted lead">What {child.displayName} can spend coins on. Tap one to change it. YouTube and the arcade are below.</p>
       <div class="prize-list">
         {prizes.filter((p) => p.kind !== 'youTube').map((p) => <button class={'prize-row' + (p.enabled === false ? ' off' : '')} onClick={() => setEditing({ ...p })}><span class="icon">{{ youTube: '▶️', siteUnlock: '🌐', arcadeUnlock: '🕹️', appUnlock: '💻', screenTimeExtension: '🎟️', pass: '🎟️', realWorld: '🎁' }[p.kind]}</span><b>{p.name}</b><span>🪙 {p.cost}{rising['prize:' + p.id] != null && <small class="muted rising" title="Easing in: a little more each day, so it doesn't feel like a jump."> ({rising['prize:' + p.id]} today)</small>}</span><small class="muted">{[p.minutes ? `${p.minutes} min` : '', p.dailyCap ? `max ${p.dailyCap}/day` : '', p.enabled === false ? 'hidden' : ''].filter(Boolean).join(' · ')}</small></button>)}
       </div>
       <div class="section-actions"><button class="secondary" onClick={() => setEditing(blank())}>＋ Add a reward</button></div>
       <PriceEaseIn child={child} rising={rising} onSave={onSave} />
+      <YouTubeSection child={child} onSave={onSave} />
       <ArcadeManager child={child} onSave={onSave} />
       {editing && (
         <div class="modal"><div class="card form">
@@ -511,7 +520,6 @@ function ShopEditor({ child, rising, onSave }: { child: Child; rising: Record<st
           <div class="row">
             <label>Cost 🪙<input type="number" value={editing.cost} min={1} onInput={(e) => setEditing({ ...editing, cost: Number((e.target as HTMLInputElement).value) })} /></label>
             {editing.kind !== 'realWorld' && <label>Minutes<input type="number" value={editing.minutes} min={1} onInput={(e) => setEditing({ ...editing, minutes: Number((e.target as HTMLInputElement).value) })} /></label>}
-            {editing.kind === 'youTube' && <p class="muted small" style={{ flexBasis: '100%' }}>{child.displayName} buys YouTube with + in 5-minute steps at <b>🪙 {youTubeBlockPrice(editing.cost, editing.minutes, [defaultArcadePrice(1)])} per 5 min</b> (this cost ÷ minutes, but never cheaper than 2 coins above the priciest arcade game — games beat videos). "Max per day" counts how many times {child.displayName} buys it.</p>}
             <label>Max per day (0 = no limit)<input type="number" value={editing.dailyCap} min={0} onInput={(e) => setEditing({ ...editing, dailyCap: Number((e.target as HTMLInputElement).value) })} /></label>
           </div>
           <label class="check"><input type="checkbox" checked={editing.enabled !== false} onChange={(e) => setEditing({ ...editing, enabled: (e.target as HTMLInputElement).checked })} /> Show in shop</label>

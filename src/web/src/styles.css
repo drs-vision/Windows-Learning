@@ -960,3 +960,5 @@ details.fold > summary h3 { margin: 0; }
 details.fold > summary::after { content: '▸'; margin-left: auto; color: var(--muted, #64748b); transition: transform .15s; }
 details.fold[open] > summary::after { transform: rotate(90deg); }
 details.fold[open] > summary { margin-bottom: 10px; }
+.yt-section h4 { margin: 14px 0 4px; }
+.yt-section .advanced { margin-top: 12px; }

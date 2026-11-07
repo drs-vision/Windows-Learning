@@ -102,7 +102,7 @@ export function Scholar() {
         {view.name === 'shop' && <Shop state={state} onBought={(msg) => { setToast(msg); refresh(); }} onExit={() => setView({ name: 'home' })} onYouTube={() => setView({ name: 'youtube' })} />}
         {view.name === 'arcade' && <Arcade unlocks={unlocks} balance={state.balance} onChanged={refresh} onExit={() => setView({ name: 'home' })} />}
         {view.name === 'web' && <Websites state={state} onExit={() => setView({ name: 'home' })} />}
-        {view.name === 'youtube' && <YouTube unlock={ytUnlock} onExit={() => setView({ name: 'home' })} prize={state.prizes.find((p) => p.kind === 'youTube')} balance={state.balance} onBought={refresh} />}
+        {view.name === 'youtube' && <YouTube unlock={ytUnlock} onExit={() => setView({ name: 'home' })} prize={state.prizes.find((p) => p.kind === 'youTube')} balance={state.balance} onBought={refresh} anyVideo={!!state.youtubeAnyVideo} />}
         {view.name === 'parent' && <ParentConsole embedded onClose={() => { setView({ name: 'home' }); refresh(); }} />}
       </main>
       {toast && <div class="toast">{toast}</div>}

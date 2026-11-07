@@ -8,8 +8,10 @@ import { fmt } from '../modules/arcade/Arcade';
  * YouTube, but only the channels a parent approved. Videos come from the Guardian (channel feeds), play in a
  * privacy-enhanced embed with related videos limited to the same channel, and stop when YouTube time runs out.
  */
-export function YouTube({ unlock, onExit, prize, balance, onBought }: {
+export function YouTube({ unlock, onExit, prize, balance, onBought, anyVideo = false }: {
   unlock?: Unlock; onExit: () => void; prize?: ChildState['prizes'][number]; balance: number; onBought: () => void;
+  /** A parent turned channel filtering off: during YouTube time, all of youtube.com. */
+  anyVideo?: boolean;
 }) {
   const [blocks, setBlocks] = useState(1);
   const [busy, setBusy] = useState(false);
@@ -116,6 +118,7 @@ export function YouTube({ unlock, onExit, prize, balance, onBought }: {
       <header>
         <h2>▶️ YouTube</h2>
         {unlock && <span class="countdown">{fmt(unlock.secondsLeft)} left</span>}
+        {anyVideo && unlock && <button class="primary" onClick={() => bridge.openSite('https://www.youtube.com', 'YouTube', ['youtube.com'])}>🔍 All of YouTube</button>}
         <button class="ghost" onClick={onExit}>Back</button>
       </header>
       {prize && price > 0 && (
@@ -135,7 +138,7 @@ export function YouTube({ unlock, onExit, prize, balance, onBought }: {
       )}
       {!loading && lib && lib.channels.length > 0 && lib.videos.length === 0 && (lib.errors?.length ?? 0) === 0 && <p class="muted">No videos found yet. <button class="ghost small" onClick={loadLib}>Try again</button></p>}
       {error && <p class="error">{error} <button class="ghost small" onClick={loadLib}>Try again</button></p>}
-      {lib && lib.channels.length === 0 && <p class="muted">No channels yet. A parent can add channels in the Parent Console → Allowed.</p>}
+      {lib && lib.channels.length === 0 && <p class="muted">{anyVideo ? (unlock ? 'Press 🔍 All of YouTube to search for any video.' : 'Get some YouTube time, then you can watch any video.') : 'No channels yet. A parent can add channels in the Parent Console → Rewards → YouTube.'}</p>}
       {lib && lib.channels.length > 0 && (
         <div class="segmented small yt-channels">
           <button class={channel === 'all' ? 'on' : ''} onClick={() => setChannel('all')}>⭐ Newest from all</button>

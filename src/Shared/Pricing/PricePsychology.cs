@@ -5,8 +5,9 @@ namespace CoinQuest.Shared.Pricing;
 /// <summary>
 /// How a parent's price changes reach the kid, the way shops do it:
 /// <list type="bullet">
-/// <item>A price that goes <b>up</b> creeps up instead of jumping: about 10% a day (at least 1 coin), starting the day
-/// it's changed, until it reaches the parent's price. Small steps sit under what people notice; nothing announces them.</item>
+/// <item>A price that goes <b>up</b> creeps up instead of jumping, in equal-percentage steps over about 3 days (first step
+/// the day it's changed). People notice a price change at roughly 8-10% (the "just-noticeable difference"), so a bigger
+/// rise takes more days, keeping each step at most 10%, up to a week. A rise of 1 coin, or 8% or less, applies at once.</item>
 /// <item>While a rise is on its way, the coming price is shown crossed out and today's price as a limited-time deal.</item>
 /// <item>A price that goes <b>down</b> drops at once and is shown as a deal for a few days: the old price crossed out.</item>
 /// </list>
@@ -14,17 +15,31 @@ namespace CoinQuest.Shared.Pricing;
 /// </summary>
 public static class PricePsychology
 {
-    public const double DailyRise = 0.10;
+    /// <summary>Most a price goes up in one day while easing in.</summary>
+    public const double MaxStep = 0.10;
+    /// <summary>A rise this small (or 1 coin) isn't eased in: it's under what anyone notices.</summary>
+    public const double Unnoticed = 0.08;
+    public const int TypicalDays = 3, MaxDays = 7;
+
+    /// <summary>How many days a rise from <paramref name="from"/> to <paramref name="to"/> takes (1 = at once).</summary>
+    public static int Days(int from, int to)
+    {
+        if (to <= from || to - from <= 1 || from <= 0 || to <= from * (1 + Unnoticed)) return 1;
+        var needed = (int)Math.Ceiling(Math.Log(to / (double)from) / Math.Log(1 + MaxStep));
+        return Math.Clamp(Math.Max(TypicalDays, needed), 1, MaxDays);
+    }
     public static readonly TimeSpan ShowDropFor = TimeSpan.FromDays(3);
 
     /// <summary>What the kid pays today for something whose parent price is <paramref name="target"/>.</summary>
     public static int Effective(PriceMemory m, string key, int target, DateTimeOffset now)
     {
         if (!m.Rising.TryGetValue(key, out var r) || target <= r.From) return target;
-        var days = Math.Max(0, (now.LocalDateTime.Date - r.Since.LocalDateTime.Date).Days);
-        var p = r.From;
-        for (var d = 0; d <= days && p < target; d++) p = Math.Min(target, p + Math.Max(1, (int)Math.Round(p * DailyRise)));
-        return p;
+        var n = Days(r.From, target);
+        var step = Math.Min(n, Math.Max(0, (now.LocalDateTime.Date - r.Since.LocalDateTime.Date).Days) + 1); // day 0 = step 1
+        if (step >= n) return target;
+        // Equal percentage steps (48 → 60: 52, 56, 60), each at least a coin more than the one before.
+        var p = (int)Math.Round(r.From * Math.Pow(target / (double)r.From, step / (double)n));
+        return Math.Min(target, Math.Max(p, r.From + step));
     }
 
     /// <summary>

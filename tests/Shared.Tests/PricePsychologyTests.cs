@@ -11,12 +11,14 @@ public class PricePsychologyTests
     private static Dictionary<string, int> Now(int target) => new() { ["prize:yt"] = target };
 
     [Fact]
-    public void A_rise_creeps_up_about_ten_percent_a_day()
+    public void A_rise_eases_in_over_about_three_days_in_equal_steps()
     {
         var m = PricePsychology.Remember(new PriceMemory(), Was(48, 48), Now(60), T0);
-        Assert.Equal(53, PricePsychology.Effective(m, "prize:yt", 60, T0));               // today: +5
-        Assert.Equal(58, PricePsychology.Effective(m, "prize:yt", 60, T0.AddDays(1)));
+        Assert.Equal(52, PricePsychology.Effective(m, "prize:yt", 60, T0));               // today
+        Assert.Equal(56, PricePsychology.Effective(m, "prize:yt", 60, T0.AddDays(1)));
         Assert.Equal(60, PricePsychology.Effective(m, "prize:yt", 60, T0.AddDays(2)));
+        // Bigger rises take longer (each step at most 10%), up to a week; tiny ones apply at once.
+        Assert.Equal((3, 5, 7, 1, 1), (PricePsychology.Days(48, 60), PricePsychology.Days(48, 76), PricePsychology.Days(10, 40), PricePsychology.Days(50, 54), PricePsychology.Days(6, 7)));
         Assert.Null(PricePsychology.Was(m, "prize:yt", 53, T0));
         // While it rises, the coming price is shown crossed out: today's is a limited-time deal.
         Assert.Equal((60, "limited"), PricePsychology.Tag(m, "prize:yt", 60, T0)!.Value);
@@ -44,7 +46,7 @@ public class PricePsychologyTests
     {
         var m = PricePsychology.Remember(new PriceMemory(), Was(48, 48), Now(60), T0);
         var same = PricePsychology.Remember(m, Was(60, 53), Now(60), T0.AddHours(1));       // saved something else
-        Assert.Equal(58, PricePsychology.Effective(same, "prize:yt", 60, T0.AddDays(1)));
+        Assert.Equal(56, PricePsychology.Effective(same, "prize:yt", 60, T0.AddDays(1)));
         var down = PricePsychology.Remember(m, Was(60, 53), Now(50), T0.AddHours(2));
         Assert.Equal(50, PricePsychology.Effective(down, "prize:yt", 50, T0.AddHours(2)));
         Assert.Equal(53, PricePsychology.Was(down, "prize:yt", 50, T0.AddHours(2)));

@@ -192,7 +192,8 @@ public sealed class RequestRouter
             pendingClaims = _ledger.PendingClaims(child.Id),
             progress = ProgressStore.LoadAll(child.Id),
             sites = child.Allowlist.Sites,
-            youtubeChannels = child.YouTubeChannels.Count,
+            youtubeChannels = child.YouTubeAnyVideo ? Math.Max(1, child.YouTubeChannels.Count) : child.YouTubeChannels.Count,
+            youtubeAnyVideo = child.YouTubeAnyVideo,
             rwtInstalled = CoinQuest.Guardian.Rwt.RwtService.Installed,
             discGames = CoinQuest.Guardian.DiscGames.DiscGameService.Games().Where(g => g.Mode != "pending" && !g.Hidden).Select(g => new { g.Id, g.Title }),
             arcadeMinutesPerPlay = child.Arcade.MinutesPerPlay,
@@ -775,7 +776,7 @@ public sealed class RequestRouter
         var balance = _ledger.Balance(child.Id);
         if (balance < prize.Cost) return Response.Fail(req.Id, $"you need {prize.Cost - balance} more coins");
         if (prize.DailyCap > 0 && _ledger.PurchasesToday(child.Id, prizeId) >= prize.DailyCap) return Response.Fail(req.Id, "you've had that one enough for today");
-        if (prize.Kind == PrizeKind.YouTube && child.YouTubeChannels.Count == 0) return Response.Fail(req.Id, "no YouTube channels are set up yet — ask a parent");
+        if (prize.Kind == PrizeKind.YouTube && child.YouTubeChannels.Count == 0 && !child.YouTubeAnyVideo) return Response.Fail(req.Id, "no YouTube channels are set up yet — ask a parent");
 
         _ledger.Append(child.Id, LedgerKind.Spend, -prize.Cost, prize.Id, prize.Name, account);
         Unlock? unlock = null;
@@ -783,7 +784,7 @@ public sealed class RequestRouter
         {
             // The pass: the same minutes on the arcade (any game, like the sampler) and on YouTube; one clock, the kid picks.
             unlock = _unlocks.Start(child, prize with { Kind = PrizeKind.ArcadeUnlock, Targets = new() { "*" } });
-            if (child.YouTubeChannels.Count > 0) _unlocks.Start(child, prize with { Kind = PrizeKind.YouTube, Targets = new() });
+            if (child.YouTubeChannels.Count > 0 || child.YouTubeAnyVideo) _unlocks.Start(child, prize with { Kind = PrizeKind.YouTube, Targets = new() });
         }
         else if (prize.Minutes > 0 && prize.Kind is not (PrizeKind.RealWorld or PrizeKind.ScreenTimeExtension)) unlock = _unlocks.Start(child, prize);
         if (prize.Kind == PrizeKind.RealWorld) ApprovalsChanged?.Invoke();
