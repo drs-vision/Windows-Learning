@@ -46,6 +46,8 @@ public sealed record Child
     public ProfileLock Lock { get; init; } = new();
     /// <summary>Recent price changes, so the kid sees them the way stores show them (PricePsychology).</summary>
     public PriceMemory Prices { get; init; } = new();
+    /// <summary>Price rises ease in a little each day (default) instead of jumping; a parent can switch to "right away".</summary>
+    public bool PriceRisesEaseIn { get; init; } = true;
 }
 
 /// <summary>Price changes being shown gently: rises phased in a little each day, drops shown as "was X".</summary>

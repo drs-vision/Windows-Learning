@@ -436,6 +436,24 @@ function YouTubeChannels({ child, onSave }: { child: Child; onSave: (c: Child) =
 
 const KINDS: [Prize['kind'], string][] = [['youTube', 'YouTube time (approved channels only)'], ['siteUnlock', 'Unlock a website for N minutes'], ['arcadeUnlock', 'Arcade time (any game)'], ['appUnlock', 'Unlock an app for N minutes'], ['screenTimeExtension', 'Extra screen time tonight'], ['realWorld', 'Real-world reward (just logged)']];
 
+/**
+ * How price rises reach the kid. A tool for the kid's feelings, not the parent's wallet: small steps sit under what
+ * people notice, so 48 → 60 doesn't feel like a jump; while it eases in the kid sees the coming price crossed out and
+ * today's as a limited-time deal. Drops always apply at once and show as a deal.
+ */
+function PriceEaseIn({ child, rising, onSave }: { child: Child; rising: Record<string, number>; onSave: (c: Child) => void }) {
+  const on = child.priceRisesEaseIn !== false;
+  const easing = Object.keys(rising).length;
+  return (
+    <details class="more price-ease">
+      <summary><span class="muted small">💡 Price rises {on ? 'ease in over a few days' : 'apply right away'}{easing ? ` · ${easing} easing in now` : ''}</span></summary>
+      <p class="muted small">This is for {child.displayName}'s feelings: a big jump (48 → 60) feels unfair, small steps don't. A rise climbs about 10% a day, and meanwhile {child.displayName} sees the new price crossed out and today's as a "Limited time!" deal. Price drops always apply at once and show as "Price drop!". You always set the real price.</p>
+      <label class="check"><input type="checkbox" checked={on} onChange={(e) => onSave({ ...child, priceRisesEaseIn: (e.target as HTMLInputElement).checked })} /> Ease price rises in (recommended)</label>
+      {easing > 0 && <button class="ghost small" onClick={() => bridge.parentPricesNow(child.id).then(() => onSave({ ...child }))}>Finish the {easing} rise{easing === 1 ? '' : 's'} now</button>}
+    </details>
+  );
+}
+
 function ShopEditor({ child, rising, onSave }: { child: Child; rising: Record<string, number>; onSave: (c: Child) => void }) {
   const [editing, setEditing] = useState<Prize | null>(null);
   const prizes = child.prizes;
@@ -446,9 +464,10 @@ function ShopEditor({ child, rising, onSave }: { child: Child; rising: Record<st
     <div class="shop-editor">
       <p class="muted lead">What {child.displayName} can spend coins on. Tap one to change it.</p>
       <div class="prize-list">
-        {prizes.map((p) => <button class={'prize-row' + (p.enabled === false ? ' off' : '')} onClick={() => setEditing({ ...p })}><span class="icon">{{ youTube: '▶️', siteUnlock: '🌐', arcadeUnlock: '🕹️', appUnlock: '💻', screenTimeExtension: '⏰', realWorld: '🎁' }[p.kind]}</span><b>{p.name}</b><span>🪙 {p.cost}{rising['prize:' + p.id] != null && <small class="muted rising" title="Rises reach your kid a little each day, so it doesn't feel like a jump."> ({rising['prize:' + p.id]} today)</small>}</span><small class="muted">{[p.minutes ? `${p.minutes} min` : '', p.dailyCap ? `max ${p.dailyCap}/day` : '', p.enabled === false ? 'hidden' : ''].filter(Boolean).join(' · ')}</small></button>)}
+        {prizes.map((p) => <button class={'prize-row' + (p.enabled === false ? ' off' : '')} onClick={() => setEditing({ ...p })}><span class="icon">{{ youTube: '▶️', siteUnlock: '🌐', arcadeUnlock: '🕹️', appUnlock: '💻', screenTimeExtension: '⏰', realWorld: '🎁' }[p.kind]}</span><b>{p.name}</b><span>🪙 {p.cost}{rising['prize:' + p.id] != null && <small class="muted rising" title="Easing in: a little more each day, so it doesn't feel like a jump."> ({rising['prize:' + p.id]} today)</small>}</span><small class="muted">{[p.minutes ? `${p.minutes} min` : '', p.dailyCap ? `max ${p.dailyCap}/day` : '', p.enabled === false ? 'hidden' : ''].filter(Boolean).join(' · ')}</small></button>)}
       </div>
       <div class="section-actions"><button class="secondary" onClick={() => setEditing(blank())}>＋ Add a reward</button></div>
+      <PriceEaseIn child={child} rising={rising} onSave={onSave} />
       <ArcadeManager child={child} onSave={onSave} />
       {editing && (
         <div class="modal"><div class="card form">

@@ -321,6 +321,7 @@ export class MockGuardian {
         localStorage.setItem('cq.mock.kids', JSON.stringify([...this.moreKids(), kid]));
         this.emit({ name: 'state' }); return ok({ childId: kid.id });
       }
+      case 'parent.pricesNow': if (!parentOk) return fail('parent PIN required'); return ok({ ok: true });
       case 'parent.removeChild': {
         if (!parentOk) return fail('parent PIN required');
         const all = [this.child, ...this.moreKids()];

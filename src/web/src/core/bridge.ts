@@ -138,6 +138,8 @@ class Bridge {
   parentLock(childId: string, change: { action?: 'lock' | 'open'; minutes?: number | null; schedule?: LockTime[] }) { return this.call<LockSummary>('parent.lock', { childId, ...change }, { parent: true }); }
   /** The child asks a parent to open their locked profile. */
   lockAsk() { return this.call<{ ok: boolean; already?: string }>('lock.ask'); }
+  /** Finish easing in a price rise now (one item key, or all). */
+  parentPricesNow(childId: string, key?: string) { return this.call<{ ok: boolean }>('parent.pricesNow', { childId, key }, { parent: true }); }
   parentRemoveChild(childId: string, deleteAccount: boolean) { return this.call<{ ok: boolean; accountDeleted: boolean; accountError?: string | null }>('parent.removeChild', { childId, deleteAccount }, { parent: true }); }
   parentAddChild(displayName: string, windowsAccount: string, color?: string) { return this.call<{ childId: string }>('parent.addChild', { displayName, windowsAccount, color }, { parent: true }); }
   setupComplete(pin: string, child: { displayName: string; windowsAccount: string; color?: string }, preset: string) { return this.call('setup.complete', { pin, child, preset }); }

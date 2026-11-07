@@ -116,6 +116,8 @@ export interface Video { id: string; title: string; channelId: string; channelTi
 
 export interface Child {
   id: string;
+  /** Price rises ease in a little each day (default) instead of jumping. */
+  priceRisesEaseIn?: boolean;
   displayName: string;
   /** #rrggbb; empty = palette color by position (KID_COLORS). */
   color?: string;

@@ -51,7 +51,7 @@ public sealed class RequestRouter
     /// </summary>
     private static readonly HashSet<string> Slow = new()
     {
-        Ops.ArcadePrepare, Ops.ArcadeClassicFile, Ops.YouTubeLibrary, Ops.YouTubeCheck, Ops.YouTubeChannel, Ops.ParentYouTubeResolve, Ops.ParentCheckUpdate, Ops.ParentInstalledApps, Ops.SetupAccounts, Ops.SetupCreateAccount, Ops.ParentAccounts, Ops.ParentCreateAccount, Ops.ParentAddChild, Ops.ParentRemoveChild,
+        Ops.ArcadePrepare, Ops.ArcadeClassicFile, Ops.YouTubeLibrary, Ops.YouTubeCheck, Ops.YouTubeChannel, Ops.ParentYouTubeResolve, Ops.ParentCheckUpdate, Ops.ParentInstalledApps, Ops.SetupAccounts, Ops.SetupCreateAccount, Ops.ParentAccounts, Ops.ParentCreateAccount, Ops.ParentAddChild, Ops.ParentRemoveChild, Ops.ParentPricesNow,
         Ops.ParentFpStatus, Ops.ParentFpSearch, Ops.ParentFpSuggest, Ops.ParentFpInstallClifp, Ops.ParentFpDownloadInstaller, Ops.ParentFpThumbs, Ops.ParentFpStockNow, Ops.ParentBlocked, Ops.ParentDiagnostics, Ops.ParentRwtImport, Ops.RwtLaunch, Ops.ParentDiscImport, Ops.ParentDiscSetupBegin, Ops.ParentDiscSetupFinish, Ops.DiscLaunch, Ops.ParentDiscRemove,
     };
     private readonly object _sync = new();
@@ -165,6 +165,7 @@ public sealed class RequestRouter
             Ops.ParentCreateAccount => Parent(req, client, child, () => CreateAccount(req)),
             Ops.ParentAddChild => Parent(req, client, child, () => AddChild(req)),
             Ops.ParentRemoveChild => Parent(req, client, child, () => RemoveChild(req)),
+            Ops.ParentPricesNow => Parent(req, client, child, () => PricesNow(req)),
 
             _ => Response.Fail(req.Id, $"unknown op {req.Op}")
         });
@@ -801,6 +802,15 @@ public sealed class RequestRouter
         return d;
     }
 
+    /// <summary>Finish easing in a price rise now: one item ("prize:id", "game:id", "sampler") or all.</summary>
+    private object PricesNow(Request req)
+    {
+        var id = Str(req, "childId");
+        var key = OptStr(req, "key");
+        EditChild(id, c => c with { Prices = c.Prices with { Rising = key is null ? new() : c.Prices.Rising.Where(kv => kv.Key != key).ToDictionary(kv => kv.Key, kv => kv.Value) } });
+        return new { ok = true };
+    }
+
     /// <summary>A parent saved <paramref name="next"/> over <paramref name="old"/>: remember which prices went up or down.</summary>
     private Child Priced(Child old, Child next)
     {
@@ -808,7 +818,10 @@ public sealed class RequestRouter
         {
             var before = PriceSnapshot(old);
             var after = PriceSnapshot(next with { Prices = old.Prices }).ToDictionary(kv => kv.Key, kv => kv.Value.Target);
-            return next with { Prices = CoinQuest.Shared.Pricing.PricePsychology.Remember(old.Prices, before, after, DateTimeOffset.Now) };
+            var mem = CoinQuest.Shared.Pricing.PricePsychology.Remember(old.Prices, before, after, DateTimeOffset.Now);
+            // "Right away": rises apply at once (drops still show as deals).
+            if (!next.PriceRisesEaseIn) mem = mem with { Rising = new() };
+            return next with { Prices = mem };
         }
         catch (Exception ex) { _log.LogWarning(ex, "Price memory"); return next with { Prices = old.Prices }; }
     }

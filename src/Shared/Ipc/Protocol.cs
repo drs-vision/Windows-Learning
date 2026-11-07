@@ -128,6 +128,7 @@ public static class Ops
     public const string ParentAccounts = "parent.accounts";          // Windows accounts on this PC, for "Add a kid"
     public const string ParentCreateAccount = "parent.createAccount"; // { userName, fullName, password? } → { account }
     public const string ParentLock = "parent.lock";                  // { childId, action: "lock"|"open", minutes? (lock; none = until opened), schedule? [{days,from,to}] } → the child's lock state
+    public const string ParentPricesNow = "parent.pricesNow";        // { childId, key? } finish easing in a price rise now (one item, or all)
     public const string ParentRemoveChild = "parent.removeChild";    // { childId, deleteAccount? } take a kid off CoinQuest (locks lifted, their data removed) → { ok, accountDeleted }
     public const string ParentAddChild = "parent.addChild";          // { displayName, windowsAccount } another child on this PC → { childId }
     public const string SetupComplete = "setup.complete";           // { pin, child: { displayName, windowsAccount } }
