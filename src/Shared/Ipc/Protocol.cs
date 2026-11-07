@@ -138,4 +138,5 @@ public static class Ops
     public const string EvUnlockEnded = "unlockEnded"; // { unlockId, prizeName }
     public const string EvBlocked = "blocked";         // { exe } — an app was closed
     public const string EvApprovals = "approvals";     // pending claims changed
+    public const string EvUpdating = "updating";       // { version } — CoinQuest is installing an update and restarts in a moment
 }

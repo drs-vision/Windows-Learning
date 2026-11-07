@@ -43,6 +43,7 @@ public sealed class GuardianWorker : BackgroundService
 
         _router.StateChanged += () => PushState();
         _router.ApprovalsChanged += () => _pipe.Broadcast(Ops.EvApprovals, null);
+        _updates.Applying += v => _pipe.Broadcast(Ops.EvUpdating, new { version = v });
         _enforcer.Blocked += exe => { if (_session.Current is { } s) _pipe.Broadcast(Ops.EvBlocked, new { exe }, s.Account); };
         _unlocks.Started += _ => { if (_session.Current is { } s) _policy.Apply(s.Child); PushState(); };
         _unlocks.Expired += u =>
@@ -64,7 +65,7 @@ public sealed class GuardianWorker : BackgroundService
         _session.Changed += s =>
         {
             if (s is null) _updates.ApplyIfStaged();
-            else { _policy.Invalidate(); _policy.Apply(s.Child); }
+            else { _policy.Invalidate(); _policy.Apply(s.Child); _updates.CheckOnOpen(); } // signed in: get the newest version first
         };
 
         // The gatekeeper must be listening before the lock goes on, so allowed sites keep working.

@@ -25,6 +25,7 @@ export function Scholar() {
   const [error, setError] = useState('');
   const [tick, setTick] = useState(0);
 
+  const [updating, setUpdating] = useState(false);
   const refresh = () => bridge.state().then(setState).catch((e) => setError(e.message));
   // Learning seen in CoinQuest's browser (Khan Academy, Duolingo): counted up, then sent to the Guardian, which pays.
   type Counts = Record<string, number>;
@@ -49,6 +50,7 @@ export function Scholar() {
       if (ev.name === 'unlockEnded') { setToast(`⏰ ${ev.payload?.prizeName ?? 'Your time'} is up`); if (view.name === 'arcade') setView({ name: 'home' }); }
       if (ev.name === 'blocked') setToast(`🚫 ${ev.payload?.exe ?? 'That app'} isn't on your list`);
       if (ev.name === 'openParent') setView({ name: 'parent' });
+      if (ev.name === 'updating') { setUpdating(true); setTimeout(() => setUpdating(false), 180000); } // if it doesn't take, carry on
       if (ev.name === 'learn') {
         const [site, what] = String(ev.payload?.kind ?? '').split(':');
         const l = learn.current;
@@ -82,6 +84,11 @@ export function Scholar() {
   const unlocks = state.unlocks.map((u) => ({ ...u, secondsLeft: Math.max(0, Math.round((Date.parse(u.expiresAt) - Date.now()) / 1000)) }));
   const arcadeUnlock = unlocks.find((u) => u.kind === 'arcadeUnlock' && u.secondsLeft > 0);
   const ytUnlock = unlocks.find((u) => u.kind === 'youTube' && u.secondsLeft > 0);
+
+  // Installing an update: CoinQuest closes and reopens by itself in a moment.
+  if (updating) return (
+    <div class="lock-screen"><div class="lock-card"><div class="lock-icon" aria-hidden="true">✨</div><h1>Getting the newest CoinQuest</h1><p class="lock-when">Back in a moment. Your coins and progress are saved.</p></div></div>
+  );
 
   // The whole profile is locked: only the lock screen (a parent can still open the Parent Console).
   if (state.locked && view.name !== 'parent') return <LockScreen state={state} onAsked={refresh} />;

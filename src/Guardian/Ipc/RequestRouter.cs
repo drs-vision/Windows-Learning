@@ -73,7 +73,7 @@ public sealed class RequestRouter
         {
             Ops.LockAsk => child is null ? Response.Fail(req.Id, "only a child account can ask") : Response.Success(req.Id, LockAsk(child, client.Account)),
             Ops.ParentLock => Parent(req, client, child, () => ParentLock(req)),
-            Ops.Hello => Response.Success(req.Id, new { version = Version, account = client.Account, isAdmin = client.IsAdmin, childId = child?.Id, setupNeeded = !_store.HasPin }),
+            Ops.Hello => Hello(req, client, child),
 
             // ---- child ----
             Ops.State => child is null ? Response.Fail(req.Id, "not a managed account") : Response.Success(req.Id, ChildState(child)),
@@ -1668,6 +1668,13 @@ public sealed class RequestRouter
         AfterChange();
         _log.LogInformation("Setup complete for {Child} ({Account})", displayName, account);
         return new { ok = true, childId = child.Id };
+    }
+
+    private Response Hello(Request req, PipeServer.Client client, Child? child)
+    {
+        // The kid's app just opened: a good moment to pick up an update (it installs before anything paid is running).
+        if (client.IsKidApp && child is not null) _updates.CheckOnOpen();
+        return Response.Success(req.Id, new { version = Version, account = client.Account, isAdmin = client.IsAdmin, childId = child?.Id, setupNeeded = !_store.HasPin });
     }
 
     // ---------------------------------------------------------------- helpers

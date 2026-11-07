@@ -150,6 +150,21 @@ public sealed class UpdateChecker
         return !_unlocks.ActiveFor(s.Child.Id).Any(u => u.Kind is PrizeKind.ArcadeUnlock or PrizeKind.YouTube);
     }
 
+    /// <summary>Raised just before an update installs (the kid's app shows "Getting the newest CoinQuest").</summary>
+    public event Action<string>? Applying;
+
+    private DateTimeOffset _lastOpenCheck = DateTimeOffset.MinValue;
+    /// <summary>
+    /// The kid signed in or opened CoinQuest: look for an update now instead of waiting for the half-hourly check, and
+    /// install it straight away if there's one (nothing paid is running yet, so it's the best moment). At most every 2 minutes.
+    /// </summary>
+    public void CheckOnOpen()
+    {
+        if (Paths.E2ETestMode || DateTimeOffset.UtcNow - _lastOpenCheck < TimeSpan.FromMinutes(2)) return;
+        _lastOpenCheck = DateTimeOffset.UtcNow;
+        _ = Task.Run(async () => { try { await CheckNow(); } catch (Exception ex) { _log.LogInformation("Update check on open: {Msg}", ex.Message); } });
+    }
+
     /// <summary>Called by the worker when a child logs off and an update is waiting.</summary>
     public void ApplyIfStaged() { if (_stagedDir is not null) Apply(); }
 
@@ -164,6 +179,7 @@ public sealed class UpdateChecker
             if (DateTimeOffset.UtcNow - started < TimeSpan.FromMinutes(3)) { Status = Status with { State = "applying" }; return; }
             foreach (var p in Process.GetProcessesByName("CoinQuest.Updater")) { try { p.Kill(true); } catch { } }
         }
+        try { Applying?.Invoke(_stagedVersion ?? ""); } catch { }
         var updater = Path.Combine(_stagedDir, "CoinQuest.Updater.exe");
         if (!File.Exists(updater)) updater = Path.Combine(Paths.InstallRoot, "CoinQuest.Updater.exe");
         // Run the updater from a copy outside the install dir so it can overwrite everything, including itself.
