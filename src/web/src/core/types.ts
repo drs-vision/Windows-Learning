@@ -90,7 +90,8 @@ export interface ChildState {
   child: { id: string; displayName: string };
   balance: number;
   unlocks: Unlock[];
-  prizes: (Prize & { boughtToday: number; blockPrice?: number | null; blockMinutes?: number })[];
+  /** was / blockWas: a recent price drop's old price, shown crossed out as a deal. */
+  prizes: (Prize & { boughtToday: number; blockPrice?: number | null; blockMinutes?: number; was?: number | null; blockWas?: number | null })[];
   modules: Record<string, ModuleSettings & { earnedToday: number }>;
   recent: LedgerEntry[];
   pendingClaims: PendingClaim[];
@@ -133,7 +134,7 @@ export interface ParentState {
   household: { id: string; name: string; children: Child[] };
   pendingClaims: PendingClaim[];
   locks?: Record<string, LockSummary>;
-  perChild: Record<string, { balance: number; today: LedgerEntry[]; unlocks: Unlock[]; earnedToday: Record<string, number> }>;
+  perChild: Record<string, { balance: number; today: LedgerEntry[]; unlocks: Unlock[]; earnedToday: Record<string, number>; rising?: Record<string, number> }>;
   activeChildId?: string | null;
   version: string;
   updateStatus: { current: string; latest?: string | null; state: string; message?: string | null; lastChecked?: string | null };
@@ -161,6 +162,10 @@ export interface Game {
   available: boolean;
   strategy: number;
   price: number;
+  /** The parent's price (price = what the kid pays today; a rise arrives a little each day). */
+  target?: number;
+  /** A recent drop's old price (shown crossed out). */
+  was?: number | null;
   hidden?: boolean;
   source?: 'bundled' | 'uploaded' | 'web' | 'flashpoint';
   thumbnail?: string;

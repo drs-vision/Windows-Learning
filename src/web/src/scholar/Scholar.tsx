@@ -311,7 +311,7 @@ function Shop({ state, onBought, onExit, onYouTube }: { state: ChildState; onBou
             <div class={'prize-card' + (soldOut ? ' soldout' : '')}>
               <div class="prize-icon">{ICON[p.kind]}</div>
               <b>YouTube time</b>
-              <div class="price">🪙 {p.blockPrice} <small>/ 5 min</small></div>
+              <div class="price">{p.blockWas ? <s class="was">{p.blockWas}</s> : null}🪙 {p.blockPrice} <small>/ 5 min</small>{p.blockWas ? <span class="deal">Price drop!</span> : null}</div>
               <small class="muted">Press + for more minutes</small>
               <button class="primary" disabled={soldOut} onClick={onYouTube}>{soldOut ? 'Tomorrow' : 'Choose time'}</button>
             </div>
@@ -321,7 +321,7 @@ function Shop({ state, onBought, onExit, onYouTube }: { state: ChildState; onBou
             <div class={'prize-card' + (soldOut ? ' soldout' : '') + (!canAfford ? ' poor' : '')}>
               <div class="prize-icon">{ICON[p.kind]}</div>
               <b>{p.name}</b>
-              <div class="price">🪙 {p.cost}</div>
+              <div class="price">{p.was ? <s class="was">{p.was}</s> : null}🪙 {p.cost}{p.was ? <span class="deal">Price drop!</span> : null}</div>
               {p.dailyCap > 0 && <small class="muted">{p.boughtToday}/{p.dailyCap} today</small>}
               <button class="primary" disabled={soldOut || !canAfford || busy === p.id} onClick={() => buy(p)}>{soldOut ? 'Tomorrow' : canAfford ? 'Buy' : `${p.cost - state.balance} more`}</button>
             </div>

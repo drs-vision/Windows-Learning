@@ -942,3 +942,12 @@ button.danger-ghost { background: transparent; color: #c0392b; border: 1px solid
 .lock-edit .day { width: 32px; height: 32px; padding: 0; border-radius: 50%; border: 1px solid var(--line, #cbd5e1); background: transparent; font-weight: 600; }
 .lock-edit .day.on { background: #2f5bd3; border-color: #2f5bd3; color: #fff; }
 .lock-edit input[type=time] { width: auto; }
+
+/* Prices: drops shown as deals; rises arrive quietly */
+s.was { opacity: .55; font-size: .85em; margin-right: .3em; text-decoration-thickness: 2px; }
+.deal { display: inline-block; margin-left: .4em; padding: .05em .45em; border-radius: 999px; background: #16a34a; color: #fff; font-size: .7em; font-weight: 700; vertical-align: middle; }
+.tile-price.on-sale { background: rgba(22,163,74,.9); color: #fff; }
+.deal-text { color: #16a34a; }
+.bulk-price { display: inline-flex; gap: 2px; margin-left: 6px; vertical-align: middle; }
+.bulk-price button { padding: 0 .45em; min-height: 0; line-height: 1.6; font-size: .8em; }
+small.rising { display: block; font-size: .75em; }

@@ -44,7 +44,20 @@ public sealed record Child
     public bool ActivityReports { get; init; } = true;
     /// <summary>The whole profile locked (nothing opens, no internet), now or on a schedule. See ProfileLockRules.</summary>
     public ProfileLock Lock { get; init; } = new();
+    /// <summary>Recent price changes, so the kid sees them the way stores show them (PricePsychology).</summary>
+    public PriceMemory Prices { get; init; } = new();
 }
+
+/// <summary>Price changes being shown gently: rises phased in a little each day, drops shown as "was X".</summary>
+public sealed record PriceMemory
+{
+    /// <summary>Key ("prize:id", "game:id", "sampler") → a rise in progress from this price, since this time.</summary>
+    public Dictionary<string, PriceRise> Rising { get; init; } = new();
+    /// <summary>Key → a recent drop from this price (shown crossed out for a few days).</summary>
+    public Dictionary<string, PriceDrop> Dropped { get; init; } = new();
+}
+public sealed record PriceRise { public int From { get; init; } public DateTimeOffset Since { get; init; } }
+public sealed record PriceDrop { public int Was { get; init; } public DateTimeOffset At { get; init; } }
 
 /// <summary>
 /// A full lock of a kid's profile: everything closes and stays closed (apps, CoinQuest's quests and arcade, websites),

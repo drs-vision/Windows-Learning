@@ -85,7 +85,7 @@ export function ParentConsole({ embedded, onClose }: { embedded?: boolean; onClo
         {tab === 'today' && <GettingStarted state={state} />}
         {child && tab === 'today' && <Today state={state} child={child} onChange={refresh} onGo={setTab} />}
         {child && tab === 'earn' && <Quests child={child} onSave={(c) => save(child, c, refresh, setError)} />}
-        {child && tab === 'rewards' && <ShopEditor child={child} onSave={(c) => save(child, c, refresh, setError)} />}
+        {child && tab === 'rewards' && <ShopEditor child={child} rising={state.perChild[child.id]?.rising ?? {}} onSave={(c) => save(child, c, refresh, setError)} />}
         {child && tab === 'allowed' && <><LockStatus state={state} child={child} /><Allowed child={child} onSave={(c) => save(child, c, refresh, setError)} /></>}
         {child && tab === 'settings' && <Settings state={state} child={child} onSave={(c) => save(child, c, refresh, setError)} onChange={refresh} />}
       </section>
@@ -436,7 +436,7 @@ function YouTubeChannels({ child, onSave }: { child: Child; onSave: (c: Child) =
 
 const KINDS: [Prize['kind'], string][] = [['youTube', 'YouTube time (approved channels only)'], ['siteUnlock', 'Unlock a website for N minutes'], ['arcadeUnlock', 'Arcade time (any game)'], ['appUnlock', 'Unlock an app for N minutes'], ['screenTimeExtension', 'Extra screen time tonight'], ['realWorld', 'Real-world reward (just logged)']];
 
-function ShopEditor({ child, onSave }: { child: Child; onSave: (c: Child) => void }) {
+function ShopEditor({ child, rising, onSave }: { child: Child; rising: Record<string, number>; onSave: (c: Child) => void }) {
   const [editing, setEditing] = useState<Prize | null>(null);
   const prizes = child.prizes;
   const put = (p: Prize) => { const i = prizes.findIndex((x) => x.id === p.id); const next = [...prizes]; if (i >= 0) next[i] = p; else next.push(p); onSave({ ...child, prizes: next }); setEditing(null); };
@@ -446,7 +446,7 @@ function ShopEditor({ child, onSave }: { child: Child; onSave: (c: Child) => voi
     <div class="shop-editor">
       <p class="muted lead">What {child.displayName} can spend coins on. Tap one to change it.</p>
       <div class="prize-list">
-        {prizes.map((p) => <button class={'prize-row' + (p.enabled === false ? ' off' : '')} onClick={() => setEditing({ ...p })}><span class="icon">{{ youTube: '▶️', siteUnlock: '🌐', arcadeUnlock: '🕹️', appUnlock: '💻', screenTimeExtension: '⏰', realWorld: '🎁' }[p.kind]}</span><b>{p.name}</b><span>🪙 {p.cost}</span><small class="muted">{[p.minutes ? `${p.minutes} min` : '', p.dailyCap ? `max ${p.dailyCap}/day` : '', p.enabled === false ? 'hidden' : ''].filter(Boolean).join(' · ')}</small></button>)}
+        {prizes.map((p) => <button class={'prize-row' + (p.enabled === false ? ' off' : '')} onClick={() => setEditing({ ...p })}><span class="icon">{{ youTube: '▶️', siteUnlock: '🌐', arcadeUnlock: '🕹️', appUnlock: '💻', screenTimeExtension: '⏰', realWorld: '🎁' }[p.kind]}</span><b>{p.name}</b><span>🪙 {p.cost}{rising['prize:' + p.id] != null && <small class="muted rising" title="Rises reach your kid a little each day, so it doesn't feel like a jump."> ({rising['prize:' + p.id]} today)</small>}</span><small class="muted">{[p.minutes ? `${p.minutes} min` : '', p.dailyCap ? `max ${p.dailyCap}/day` : '', p.enabled === false ? 'hidden' : ''].filter(Boolean).join(' · ')}</small></button>)}
       </div>
       <div class="section-actions"><button class="secondary" onClick={() => setEditing(blank())}>＋ Add a reward</button></div>
       <ArcadeManager child={child} onSave={onSave} />
@@ -483,6 +483,15 @@ function ArcadeManager({ child, onSave }: { child: Child; onSave: (c: Child) => 
   const reload = () => bridge.parentArcadeCatalog(child.id).then((r) => setGames(r.games)).catch((e) => setErr(e.message));
   useEffect(() => { reload(); }, [child]);
   const saveArcade = (a: typeof settings) => onSave({ ...child, arcade: a });
+  /** Every shown game one coin cheaper or dearer (never below 1). */
+  const bumpAll = (d: number) => {
+    const o = { ...settings.priceOverrides };
+    for (const g of (games ?? []).filter((x) => x.available && !settings.hidden.includes(x.id))) {
+      const v = Math.max(1, (g.target ?? g.price) + d);
+      if (v === defaultArcadePrice(g.strategy)) delete o[g.id]; else o[g.id] = v;
+    }
+    saveArcade({ ...settings, priceOverrides: o });
+  };
 
   async function doUpload() {
     if (!upload) return;
@@ -511,7 +520,10 @@ function ArcadeManager({ child, onSave }: { child: Child; onSave: (c: Child) => 
       <p class="muted small">Leave the price blank to set it automatically (a little more than the same time on the priciest game).</p>
       {err && <p class="error">{err}</p>}
       <table class="arcade-table">
-        <thead><tr><th>Game</th><th>Thinking</th><th>🪙 per {BLOCK_MINUTES} min</th><th>Show</th><th /></tr></thead>
+        <thead><tr><th>Game</th><th>Thinking</th><th>🪙 per {BLOCK_MINUTES} min
+          <span class="bulk-price" title="Change every game's price by one coin. A rise reaches the kid a little each day; a drop shows as a deal.">
+            <button class="ghost small" aria-label="All games one coin cheaper" onClick={() => bumpAll(-1)}>−1</button><button class="ghost small" aria-label="All games one coin dearer" onClick={() => bumpAll(1)}>+1</button>
+          </span></th><th>Show</th><th /></tr></thead>
         <tbody>
           {(games ?? []).filter((g) => g.available).map((g) => {
             const hidden = settings.hidden.includes(g.id);
@@ -519,8 +531,9 @@ function ArcadeManager({ child, onSave }: { child: Child; onSave: (c: Child) => 
               <tr class={hidden ? 'off' : ''}>
                 <td><b>{g.title}</b><br /><small class="muted">{g.source === 'web' ? g.author : g.source === 'uploaded' ? 'added by you' : g.license}</small></td>
                 <td>{'🧠'.repeat(g.strategy)}</td>
-                <td><input type="number" min={0} value={g.price} style={{ width: '5em' }}
-                  onChange={(e) => { const v = Number((e.target as HTMLInputElement).value); const o = { ...settings.priceOverrides }; if (v === defaultArcadePrice(g.strategy)) delete o[g.id]; else o[g.id] = v; saveArcade({ ...settings, priceOverrides: o }); }} /></td>
+                <td><input type="number" min={0} value={g.target ?? g.price} style={{ width: '5em' }}
+                  onChange={(e) => { const v = Number((e.target as HTMLInputElement).value); const o = { ...settings.priceOverrides }; if (v === defaultArcadePrice(g.strategy)) delete o[g.id]; else o[g.id] = v; saveArcade({ ...settings, priceOverrides: o }); }} />
+                  {g.target != null && g.price < g.target && <small class="muted rising" title="Rises reach your kid a little each day, so it doesn't feel like a jump.">{g.price} today</small>}</td>
                 <td><input type="checkbox" checked={!hidden} onChange={(e) => saveArcade({ ...settings, hidden: (e.target as HTMLInputElement).checked ? settings.hidden.filter((x) => x !== g.id) : [...settings.hidden, g.id] })} /></td>
                 <td>{g.source === 'uploaded' && <button class="ghost small danger" onClick={() => bridge.parentArcadeRemove(g.id).then(reload)}>Remove</button>}
                   {g.source === 'web' && <button class="ghost small danger" onClick={() => saveArcade({ ...settings, webGames: settings.webGames.filter((w) => w.id !== g.id) })}>Remove</button>}</td>

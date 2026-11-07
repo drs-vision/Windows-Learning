@@ -226,7 +226,7 @@ function TimeBuyer({ game, balance, blocks, maxBlocks, setBlocks, left, busy, on
   const canAfford = balance >= cost;
   return (
     <div class="time-buyer">
-      <p class="muted small">🪙 {game.price} for every {BLOCK_MINUTES} minutes{left > 0 ? <> · <b>{fmt(left)}</b> already on the clock</> : ''}</p>
+      <p class="muted small">{game.was ? <><s class="was">{game.was}</s> <b class="deal-text">now</b> </> : null}🪙 {game.price} for every {BLOCK_MINUTES} minutes{left > 0 ? <> · <b>{fmt(left)}</b> already on the clock</> : ''}</p>
       <TimeStepper price={game.price} blocks={blocks} setBlocks={setBlocks} min={minBlocks} max={maxBlocks} balance={balance} more={left > 0} />
       <button class="coin-btn" disabled={busy || !canAfford || (blocks === 0 && left <= 0)} onClick={() => onPlay(blocks)}>
         {!canAfford ? `Need ${cost - balance} more coins` : blocks === 0 ? <>▶ PLAY</> : left > 0 ? <>ADD TIME & PLAY <b>🪙 {cost}</b></> : <>▶ PLAY <b>🪙 {cost}</b></>}
@@ -239,7 +239,7 @@ function Tile({ g, onClick, balance, left }: { g: Game; onClick: () => void; bal
   return (
     <button class={'tile' + (balance < g.price && !left ? ' poor' : '')} onClick={onClick}>
       <Cover game={g} />
-      {left ? <span class="tile-price time">⏱ {fmt(left)}</span> : <span class="tile-price">🪙 {g.price}<small>/5m</small></span>}
+      {left ? <span class="tile-price time">⏱ {fmt(left)}</span> : <span class={'tile-price' + (g.was ? ' on-sale' : '')}>{g.was ? <s class="was">{g.was}</s> : null}🪙 {g.price}<small>/5m</small></span>}
       <b class="tile-title">{g.title}</b>
       <small class="tile-sub">{g.genre || g.author}</small>
     </button>

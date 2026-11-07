@@ -18,9 +18,24 @@ public static class Arcade
     {
         public string Thumbnail { get; init; } = "";
         public int Plays { get; init; }
+        /// <summary>The parent's price (Price is what the kid pays today: a rise arrives a little each day).</summary>
+        public int Target { get; init; }
+        /// <summary>A recent drop's old price, shown crossed out.</summary>
+        public int? Was { get; init; }
     }
 
     public static List<Game> Catalog(Child child)
+    {
+        var now = DateTimeOffset.Now;
+        return CatalogTargets(child).Select(g =>
+        {
+            var shown = CoinQuest.Shared.Pricing.PricePsychology.Effective(child.Prices, "game:" + g.Id, g.Price, now);
+            return g with { Price = shown, Target = g.Price, Was = CoinQuest.Shared.Pricing.PricePsychology.Was(child.Prices, "game:" + g.Id, shown, now) };
+        }).ToList();
+    }
+
+    /// <summary>The catalog at the parent's prices.</summary>
+    private static List<Game> CatalogTargets(Child child)
     {
         var games = new List<Game>();
         var s = child.Arcade;

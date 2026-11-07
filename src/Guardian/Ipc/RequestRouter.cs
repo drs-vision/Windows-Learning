@@ -182,8 +182,10 @@ public sealed class RequestRouter
             child = new { child.Id, child.DisplayName },
             balance = _ledger.Balance(child.Id),
             unlocks = _unlocks.ActiveFor(child.Id).Select(u => new { u.Id, u.Kind, u.Targets, u.PrizeName, u.ExpiresAt, u.SecondsLeft }),
-            prizes = child.Prizes.Where(p => p.Enabled).Select(p => new { p.Id, p.Name, p.Cost, p.Kind, p.Minutes, p.DailyCap, boughtToday = _ledger.PurchasesToday(child.Id, p.Id),
-                blockPrice = p.Kind == PrizeKind.YouTube ? YouTubeBlockPrice(child, p) : (int?)null, blockMinutes = ArcadeSettings.BlockMinutes }),
+            prizes = child.Prizes.Where(p => p.Enabled).Select(p => new { p.Id, p.Name, Cost = PrizeCost(child, p), Was = PrizeWas(child, p), p.Kind, p.Minutes, p.DailyCap, boughtToday = _ledger.PurchasesToday(child.Id, p.Id),
+                blockPrice = p.Kind == PrizeKind.YouTube ? YouTubeBlockPrice(child, p) : (int?)null,
+                blockWas = p.Kind == PrizeKind.YouTube && PrizeWas(child, p) is { } w ? ArcadeSettings.YouTubeBlockPrice(p with { Cost = w }, Arcade.Catalog(child).Where(g => !g.Hidden && g.Available).Select(g => g.Price)) : (int?)null,
+                blockMinutes = ArcadeSettings.BlockMinutes }),
             modules = child.Modules.ToDictionary(kv => kv.Key, kv => new { kv.Value.Enabled, kv.Value.CoinsPerActivity, kv.Value.DailyCap, kv.Value.RequireApproval, kv.Value.Options, earnedToday = _ledger.EarnedToday(child.Id, kv.Key) }),
             recent = _ledger.Recent(child.Id, 30, new DateTimeOffset(today)),
             pendingClaims = _ledger.PendingClaims(child.Id),
@@ -760,6 +762,7 @@ public sealed class RequestRouter
         var prizeId = Str(req, "prizeId");
         var prize = child.Prizes.FirstOrDefault(p => p.Id == prizeId && p.Enabled);
         if (prize is null) return Response.Fail(req.Id, "that prize isn't available");
+        prize = prize with { Cost = PrizeCost(child, prize) }; // today's price (a rise arrives a little each day)
         if (prize.Kind == PrizeKind.YouTube)
         {
             // Like the arcade: "+" buys 5-minute blocks (priced above the arcade).
@@ -780,7 +783,35 @@ public sealed class RequestRouter
     }
 
     private int YouTubeBlockPrice(Child child, Prize p) =>
-        ArcadeSettings.YouTubeBlockPrice(p, Arcade.Catalog(child).Where(g => !g.Hidden && g.Available).Select(g => g.Price));
+        ArcadeSettings.YouTubeBlockPrice(p with { Cost = PrizeCost(child, p) }, Arcade.Catalog(child).Where(g => !g.Hidden && g.Available).Select(g => g.Price));
+
+    // ---- prices the way shops change them: rises creep in, drops are shown as deals (PricePsychology) ------------------
+
+    /// <summary>What the kid pays today for a prize (a rise arrives a little each day).</summary>
+    private static int PrizeCost(Child c, Prize p) => CoinQuest.Shared.Pricing.PricePsychology.Effective(c.Prices, "prize:" + p.Id, p.Cost, DateTimeOffset.Now);
+    private static int? PrizeWas(Child c, Prize p) => CoinQuest.Shared.Pricing.PricePsychology.Was(c.Prices, "prize:" + p.Id, PrizeCost(c, p), DateTimeOffset.Now);
+
+    /// <summary>Every price the kid sees: key → (parent's price, price shown today).</summary>
+    private Dictionary<string, (int Target, int Shown)> PriceSnapshot(Child c)
+    {
+        var d = new Dictionary<string, (int, int)>();
+        foreach (var p in c.Prizes) d["prize:" + p.Id] = (p.Cost, PrizeCost(c, p));
+        foreach (var g in Arcade.Catalog(c)) d["game:" + g.Id] = (g.Target, g.Price);
+        if (c.Arcade.SamplerPrice > 0) d["sampler"] = (c.Arcade.SamplerPrice, SamplerPrice(c));
+        return d;
+    }
+
+    /// <summary>A parent saved <paramref name="next"/> over <paramref name="old"/>: remember which prices went up or down.</summary>
+    private Child Priced(Child old, Child next)
+    {
+        try
+        {
+            var before = PriceSnapshot(old);
+            var after = PriceSnapshot(next with { Prices = old.Prices }).ToDictionary(kv => kv.Key, kv => kv.Value.Target);
+            return next with { Prices = CoinQuest.Shared.Pricing.PricePsychology.Remember(old.Prices, before, after, DateTimeOffset.Now) };
+        }
+        catch (Exception ex) { _log.LogWarning(ex, "Price memory"); return next with { Prices = old.Prices }; }
+    }
 
     /// <summary>"*" = sampler pass (any game).</summary>
     private Unlock? ArcadeTime(Child child, string gameId) =>
@@ -788,7 +819,7 @@ public sealed class RequestRouter
             .OrderByDescending(u => u.ExpiresAt).FirstOrDefault();
 
     private int SamplerPrice(Child child) =>
-        child.Arcade.SamplerPrice > 0 ? child.Arcade.SamplerPrice
+        child.Arcade.SamplerPrice > 0 ? CoinQuest.Shared.Pricing.PricePsychology.Effective(child.Prices, "sampler", child.Arcade.SamplerPrice, DateTimeOffset.Now)
             : ArcadeSettings.AutoSamplerPrice(Arcade.Catalog(child).Where(g => !g.Hidden && g.Available).Select(g => g.Price), child.Arcade.SamplerMinutes);
 
     /// <summary>Buy blocks × 5 minutes of one game (or resume time already bought / use a running sampler pass).</summary>
@@ -1219,7 +1250,7 @@ public sealed class RequestRouter
     private object PhoneEditChild(string childId, Func<Child, Child> change)
     {
         if (_store.Current.Children.All(c => c.Id != childId)) throw new ArgumentException("That child isn't on this PC");
-        _store.Update(h => h with { Children = h.Children.Select(c => c.Id == childId ? change(c) : c).ToList() });
+        _store.Update(h => h with { Children = h.Children.Select(c => c.Id == childId ? Priced(c, change(c)) : c).ToList() });
         _policy.Invalidate();
         AfterChange();
         return PhoneConfig();
@@ -1398,6 +1429,8 @@ public sealed class RequestRouter
                 today = _ledger.Recent(c.Id, 200, today),
                 unlocks = _unlocks.ActiveFor(c.Id),
                 earnedToday = c.Modules.Keys.ToDictionary(m => m, m => _ledger.EarnedToday(c.Id, m)),
+                // Prices still creeping up to what the parent set: key → what the kid pays today.
+                rising = PriceSnapshot(c).Where(kv => kv.Value.Shown < kv.Value.Target).ToDictionary(kv => kv.Key, kv => kv.Value.Shown),
             }),
             activeChildId = _session.Current?.Child.Id,
             version = Version,
@@ -1434,6 +1467,8 @@ public sealed class RequestRouter
             if (string.IsNullOrEmpty(sid) && !string.IsNullOrEmpty(incoming.WindowsAccount)) sid = Wts.SidForAccount(incoming.WindowsAccount) ?? "";
             // The lock only changes through parent.lock (a settings screen open for a while mustn't undo a phone's "open it").
             var fixedUp = incoming with { WindowsSid = sid, Lock = i >= 0 ? list[i].Lock : incoming.Lock };
+            // Price changes reach the kid the way shops do it: rises creep in, drops show as deals.
+            if (i >= 0) fixedUp = Priced(list[i], fixedUp);
             if (i >= 0) list[i] = fixedUp; else list.Add(fixedUp);
             return h with { Children = list };
         });
