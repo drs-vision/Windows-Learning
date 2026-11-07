@@ -103,10 +103,13 @@ await check('parent gives 400 coins', async () => {
   await shot(parent, 'parent-coins');
 });
 await check('parent adds a YouTube channel', async () => {
-  await parent.click('nav.tabs >> text=Allowed');
+  // YouTube lives under Rewards, in its own fold-away section.
+  await parent.click('nav.tabs >> text=Rewards');
+  await parent.waitForSelector('.yt-section', { timeout: 30000 });
+  await parent.locator('.yt-section').evaluate((d) => { d.open = true; });
   await parent.fill('input[placeholder="https://www.youtube.com/@channel"]', 'https://www.youtube.com/@MarkRober');
   await parent.click('text=Add channel');
-  await parent.waitForSelector('.chip', { timeout: 30000 });
+  await parent.waitForSelector('.yt-section .chip', { timeout: 30000 });
   await shot(parent, 'parent-youtube');
 });
 await check('parent allows duolingo.com', async () => {
@@ -123,7 +126,8 @@ await check('parent allows duolingo.com', async () => {
 await check('Flashpoint panel shows install steps', async () => {
   await parent.click('nav.tabs >> text=Rewards');
   await sleep(1500);
-  await parent.locator('details.more').evaluate((d) => { d.open = true; });
+  await parent.locator('.arcade-manager').evaluate((d) => { d.open = true; });
+  await parent.locator('.arcade-manager details.more').evaluate((d) => { d.open = true; });
   await parent.locator('.fp-panel').scrollIntoViewIfNeeded();
   await shot(parent, 'parent-arcade-flashpoint');
 });
@@ -242,8 +246,9 @@ await check('HTML5 classic (Miniclip Bloxorz) plays, or is taken out of the arca
   await parent.waitForSelector('nav.tabs', { timeout: 30000 });
   try {
   await parent.click('nav.tabs >> text=Rewards');
-  await parent.waitForSelector('details.more', { timeout: 60000 });
-  await parent.locator('details.more').evaluate((d) => { d.open = true; });
+  await parent.waitForSelector('.arcade-manager', { timeout: 60000 });
+  await parent.locator('.arcade-manager').evaluate((d) => { d.open = true; });
+  await parent.locator('.arcade-manager details.more').evaluate((d) => { d.open = true; });
   await parent.waitForSelector('input[placeholder^="Search Flashpoint"]', { timeout: 60000 });
   await parent.fill('input[placeholder^="Search Flashpoint"]', 'Bloxorz');
   await parent.press('input[placeholder^="Search Flashpoint"]', 'Enter');
@@ -359,22 +364,7 @@ await check('"Broken?" takes a game out of the arcade and refunds its coins', as
   expect(after === before, `refund missing: balance ${after}, expected ${before}`);
   expect(still === 0, 'the game is still in the arcade');
 });
-await check('sampler pass: buy and play any game', async () => {
-  if (!(await kid.locator('.portal').count())) { await kid.click('text=/Arcade/').catch(() => undefined); await sleep(2500); }
-  const btn = kid.locator('text=GET PASS');
-  expect(await btn.count(), 'no sampler button');
-  await btn.click();
-  await sleep(1500);
-  await shot(kid, 'arcade-sampler');
-  const last = titles[titles.length - 1];
-  await kid.locator('.tile', { hasText: last }).first().click();
-  await kid.click('.time-buyer .coin-btn');
-  await sleep(6000);
-  await shot(kid, 'arcade-sampler-playing'); desktop('arcade-sampler-playing');
-  expect(await kid.locator('.player, .now-playing').count() > 0, 'sampler game did not open');
-  const back = kid.locator('.player header button').first();
-  if (await back.count()) await back.click(); else await kid.click('text=I\'m done playing');
-});
+// (The sampler pass was retired: "any game" passes are rewards in the shop now.)
 await kid.click('.portal-head button.ghost').catch(() => undefined);
 await sleep(800);
 
