@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'preact/hooks';
 import type { Child, FlashpointGame, FpCatalogGame, Game, LockSummary, LockTime, ParentState, Prize, WebGame } from '../core/types';
-import { BLOCK_MINUTES, kidColor, autoSamplerPrice, defaultArcadePrice, youTubeBlockPrice } from '../core/types';
+import { BLOCK_MINUTES, kidColor, defaultArcadePrice } from '../core/types';
 import { ReadingAnalysis } from './reading';
 import { DAY_LETTERS, DAY_NAMES, daysText, timeText, untilText } from '../core/lock';
 import { KidAccount, type WinAccount } from './KidAccount';
@@ -429,10 +429,10 @@ function YouTubeSection({ child, onSave }: { child: Child; onSave: (c: Child) =>
   const perBlock = yt ? Math.ceil(yt.cost / ((yt.minutes || 20) / BLOCK_MINUTES)) : null;
   return (
     <details class="card fold yt-section">
-      <summary><h3>▶️ YouTube</h3><span class="muted small">{!on ? 'off' : [`🪙 ${perBlock} per ${BLOCK_MINUTES} min`, yt?.maxMinutesPerDay ? `at most ${yt.maxMinutesPerDay} min a day` : '', any ? 'any video' : `${list.length} channel${list.length === 1 ? '' : 's'}`].filter(Boolean).join(' · ')}</span></summary>
+      <summary><h3>▶️ YouTube</h3><span class="muted small">{!on ? 'off' : [`🪙 ${perBlock} per ${BLOCK_MINUTES} min`, yt?.maxMinutesPerDay ? `⏱️ ${yt.maxMinutesPerDay} min a day` : '', any ? 'any video' : `${list.length} channel${list.length === 1 ? '' : 's'}`].filter(Boolean).join(' · ')}</span></summary>
       <YouTubePrice child={child} onSave={onSave} />
       <h4>Channels</h4>
-      <p class="muted small">youtube.com itself stays blocked. During YouTube time, {child.displayName} watches recent videos from these channels inside CoinQuest. Paste a channel link (for example youtube.com/@MarkRober).</p>
+      <p class="muted small">Only these channels' videos. Paste a channel link, like youtube.com/@MarkRober.</p>
       <div class="row"><input style={{ flex: 1 }} value={url} placeholder="https://www.youtube.com/@channel" onInput={(e) => setUrl((e.target as HTMLInputElement).value)} onKeyDown={(e) => e.key === 'Enter' && url && add()} /><button class="primary" disabled={!url || busy} onClick={add}>{busy ? 'Finding…' : 'Add channel'}</button></div>
       {err && <p class="error">{err}</p>}
       <div class="chips">{list.map((c) => <span class="chip">{c.title}<button onClick={() => onSave({ ...child, youTubeChannels: list.filter((x) => x.id !== c.id) })}>✕</button></span>)}</div>
@@ -464,11 +464,14 @@ function YouTubePrice({ child, onSave }: { child: Child; onSave: (c: Child) => v
         <label class="check"><input type="checkbox" checked={on} onChange={(e) => put({ ...base, enabled: (e.target as HTMLInputElement).checked })} /> YouTube time costs</label>
         <input type="number" min={1} class="num" value={perBlock} disabled={!on}
           onChange={(e) => { const v = Math.max(1, Number((e.target as HTMLInputElement).value) || 1); put({ ...base, cost: Math.round(v * (minutes / BLOCK_MINUTES)) }); }} />
-        <span>🪙 per {BLOCK_MINUTES} minutes · at most</span>
-        <input type="number" min={0} step={5} class="num" value={yt?.maxMinutesPerDay || ''} placeholder="no limit" style={{ width: "6.5em" }} disabled={!on}
-          onChange={(e) => put({ ...base, dailyCap: 0, maxMinutesPerDay: Math.max(0, Number((e.target as HTMLInputElement).value) || 0) })} />
-        <span>minutes a day</span>
+        <span>🪙 per {BLOCK_MINUTES} minutes</span>
       </div>
+      {on && <div class="daily-limit">
+        <span>⏱️ Daily limit</span>
+        <input type="number" min={0} step={5} class="num" value={yt?.maxMinutesPerDay || ''} placeholder="none" style={{ width: '5.5em' }}
+          onChange={(e) => put({ ...base, dailyCap: 0, maxMinutesPerDay: Math.max(0, Number((e.target as HTMLInputElement).value) || 0) })} />
+        <span>minutes</span>
+      </div>}
     </div>
   );
 }
@@ -598,24 +601,14 @@ function ArcadeManager({ child, onSave }: { child: Child; onSave: (c: Child) => 
 
   return (
     <details class="card arcade-manager fold">
-      <summary><h3>🕹️ Arcade</h3><span class="muted small">{(games ?? []).filter((g) => g.available && !settings.hidden.includes(g.id)).length} games{settings.maxMinutesPerDay ? ` · at most ${settings.maxMinutesPerDay} min a day` : ''}</span></summary>
-      <p class="muted">Like quarters in a machine: each <b>+</b> buys {BLOCK_MINUTES} minutes of a game. Prices are <b>coins per {BLOCK_MINUTES} minutes</b>; games that take more thinking (🧠) cost less.</p>
-      <div class="sentence">
-        <span>🎟️ <b>Sampler pass</b> — any game for</span>
-        <input type="number" min={5} max={60} step={5} value={settings.samplerMinutes ?? 10} class="num"
-          onChange={(e) => saveArcade({ ...settings, samplerMinutes: Number((e.target as HTMLInputElement).value) || 10 })} />
-        <span>minutes, costs</span>
-        <input type="number" min={0} value={settings.samplerPrice || ''} class="num" placeholder={String(autoSamplerPrice((games ?? []).filter((g) => !g.hidden).map((g) => g.price), settings.samplerMinutes ?? 10))}
-          onChange={(e) => saveArcade({ ...settings, samplerPrice: Number((e.target as HTMLInputElement).value) || 0 })} />
-        <span>🪙</span>
-      </div>
-      <p class="muted small">Leave the price blank to set it automatically (a little more than the same time on the priciest game).</p>
-      <div class="sentence">
-        <span>⏱️ At most</span>
-        <input type="number" min={0} step={5} class="num" value={settings.maxMinutesPerDay || ''} placeholder="no limit" style={{ width: "6.5em" }}
+      <summary><h3>🕹️ Arcade</h3><span class="muted small">{(games ?? []).filter((g) => g.available && !settings.hidden.includes(g.id)).length} games{settings.maxMinutesPerDay ? ` · ⏱️ ${settings.maxMinutesPerDay} min a day` : ''}</span></summary>
+      <div class="daily-limit">
+        <span>⏱️ Daily limit</span>
+        <input type="number" min={0} step={5} class="num" value={settings.maxMinutesPerDay || ''} placeholder="none" style={{ width: '5.5em' }}
           onChange={(e) => saveArcade({ ...settings, maxMinutesPerDay: Math.max(0, Number((e.target as HTMLInputElement).value) || 0) })} />
-        <span>minutes of arcade a day (games and sampler together; blank = no limit)</span>
+        <span>minutes</span>
       </div>
+      <p class="muted small">Prices are 🪙 per {BLOCK_MINUTES} minutes. More 🧠 = cheaper.</p>
       {err && <p class="error">{err}</p>}
       <table class="arcade-table">
         <thead><tr><th>Game</th><th>Thinking</th><th>🪙 per {BLOCK_MINUTES} min

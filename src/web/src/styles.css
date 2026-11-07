@@ -966,3 +966,5 @@ details.fold[open] > summary { margin-bottom: 10px; }
 .prize-editor .give-chip { padding: .45em .9em; border-radius: 999px; border: 1.5px solid var(--line, #cbd5e1); background: transparent; font-weight: 600; }
 .prize-editor .give-chip.on { border-color: #2f5bd3; background: rgba(47,91,211,.1); color: #2f5bd3; }
 .prize-editor .sentence { flex-wrap: wrap; }
+.daily-limit { display: flex; align-items: center; gap: 10px; padding: 10px 14px; margin: 4px 0 8px; border-radius: 12px; background: rgba(47,91,211,.07); font-weight: 700; font-size: 1.05em; }
+.daily-limit input { font-weight: 700; }

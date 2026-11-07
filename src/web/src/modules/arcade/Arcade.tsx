@@ -95,7 +95,7 @@ export function Arcade({ unlocks, balance, onExit, onChanged }: { unlocks: Unloc
   const [error, setError] = useState('');
   const [busy, setBusy] = useState(false);
 
-  const loadGames = () => bridge.arcade().then((r) => { setGames(r.games); setSampler(r.sampler ?? null); setMaxBlocks(r.minutesLeft == null ? (r.maxBlocks ?? 12) : Math.max(0, Math.min(r.maxBlocks ?? 12, Math.floor(r.minutesLeft / BLOCK_MINUTES)))); setMinutesLeft(r.minutesLeft ?? null); setFpRoot(r.flashpointRoot ?? null); }).catch((e) => setError(e.message));
+  const loadGames = () => bridge.arcade().then((r) => { setGames(r.games); setSampler(null); /* the sampler pass is retired: "any game" passes live in the shop */ setMaxBlocks(r.minutesLeft == null ? (r.maxBlocks ?? 12) : Math.max(0, Math.min(r.maxBlocks ?? 12, Math.floor(r.minutesLeft / BLOCK_MINUTES)))); setMinutesLeft(r.minutesLeft ?? null); setFpRoot(r.flashpointRoot ?? null); }).catch((e) => setError(e.message));
   useEffect(() => { loadGames(); }, []);
   // Time ran out (or a parent ended it): close whatever is open.
   useEffect(() => {
