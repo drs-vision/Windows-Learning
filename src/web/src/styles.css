@@ -962,3 +962,7 @@ details.fold[open] > summary::after { transform: rotate(90deg); }
 details.fold[open] > summary { margin-bottom: 10px; }
 .yt-section h4 { margin: 14px 0 4px; }
 .yt-section .advanced { margin-top: 12px; }
+.prize-editor .gives { display: flex; flex-wrap: wrap; gap: 8px; margin: 4px 0 6px; }
+.prize-editor .give-chip { padding: .45em .9em; border-radius: 999px; border: 1.5px solid var(--line, #cbd5e1); background: transparent; font-weight: 600; }
+.prize-editor .give-chip.on { border-color: #2f5bd3; background: rgba(47,91,211,.1); color: #2f5bd3; }
+.prize-editor .sentence { flex-wrap: wrap; }

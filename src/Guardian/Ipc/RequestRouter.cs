@@ -782,9 +782,13 @@ public sealed class RequestRouter
         Unlock? unlock = null;
         if (prize.Kind == PrizeKind.Pass && prize.Minutes > 0)
         {
-            // The pass: the same minutes on the arcade (any game, like the sampler) and on YouTube; one clock, the kid picks.
-            unlock = _unlocks.Start(child, prize with { Kind = PrizeKind.ArcadeUnlock, Targets = new() { "*" } });
-            if (child.YouTubeChannels.Count > 0 || child.YouTubeAnyVideo) _unlocks.Start(child, prize with { Kind = PrizeKind.YouTube, Targets = new() });
+            // A pass: the same minutes on everything it includes (any game, YouTube, its websites, its apps); one clock.
+            var inc = prize.Includes.Count > 0 ? prize.Includes : new List<string> { "games", "youtube" };
+            Unlock? First(Unlock u) => unlock ??= u;
+            if (inc.Contains("games")) First(_unlocks.Start(child, prize with { Kind = PrizeKind.ArcadeUnlock, Targets = new() { "*" } }));
+            if (inc.Contains("youtube") && (child.YouTubeChannels.Count > 0 || child.YouTubeAnyVideo)) First(_unlocks.Start(child, prize with { Kind = PrizeKind.YouTube, Targets = new() }));
+            if (inc.Contains("sites") && prize.Targets.Count > 0) First(_unlocks.Start(child, prize with { Kind = PrizeKind.SiteUnlock }));
+            if (inc.Contains("apps") && prize.Apps.Count > 0) First(_unlocks.Start(child, prize with { Kind = PrizeKind.AppUnlock, Targets = prize.Apps }));
         }
         else if (prize.Minutes > 0 && prize.Kind is not (PrizeKind.RealWorld or PrizeKind.ScreenTimeExtension)) unlock = _unlocks.Start(child, prize);
         if (prize.Kind == PrizeKind.RealWorld) ApprovalsChanged?.Invoke();

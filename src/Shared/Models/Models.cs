@@ -196,6 +196,11 @@ public sealed record Prize
     public int DailyCap { get; init; }
     /// <summary>YouTube: most minutes a day that can be bought (0 = no limit).</summary>
     public int MaxMinutesPerDay { get; init; }
+    /// <summary>Pass: what its minutes open, any of "games" (any arcade game), "youtube", "sites" (Targets), "apps" (Apps).
+    /// Empty = games and YouTube (the original daily deal).</summary>
+    public List<string> Includes { get; init; } = new();
+    /// <summary>Pass with "apps": exe names.</summary>
+    public List<string> Apps { get; init; } = new();
     public bool Enabled { get; init; } = true;
 
     public static List<Prize> Starters() => new()

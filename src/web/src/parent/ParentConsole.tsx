@@ -475,7 +475,56 @@ function YouTubePrice({ child, onSave }: { child: Child; onSave: (c: Child) => v
 
 // ---------------------------------------------------------------- Shop editor
 
-const KINDS: [Prize['kind'], string][] = [['pass', 'Pass: N minutes of any game or YouTube (a deal)'], ['siteUnlock', 'Unlock a website for N minutes'], ['arcadeUnlock', 'Arcade time (any game)'], ['appUnlock', 'Unlock an app for N minutes'], ['realWorld', 'Real-world reward (just logged)']];
+/** What a reward can give: pick any mix of time (one clock), or something real. */
+const GIVES: [string, string, string][] = [['games', '🕹️', 'Any game'], ['youtube', '▶️', 'YouTube'], ['sites', '🌐', 'Websites'], ['apps', '💻', 'Apps'], ['real', '🎁', 'Something real']];
+const GIVE_WORDS: Record<string, string> = { games: 'any game', youtube: 'YouTube', sites: 'websites', apps: 'apps' };
+/** What an older single-kind reward gives, in the new terms. */
+const givesOf = (p: Prize): string[] =>
+  p.kind === 'realWorld' ? ['real'] : p.kind === 'pass' || p.kind === 'screenTimeExtension' ? (p.includes?.length ? p.includes : ['games', 'youtube'])
+  : p.kind === 'siteUnlock' ? ['sites'] : p.kind === 'appUnlock' ? ['apps'] : p.kind === 'arcadeUnlock' ? ['games'] : p.kind === 'youTube' ? ['youtube'] : [];
+const autoName = (gives: string[], minutes: number) => gives.includes('real') ? '' : gives.length ? `${minutes} minutes of ${((w) => w.length > 1 ? w.slice(0, -1).join(', ') + ' or ' + w[w.length - 1] : w[0])(gives.map((g) => GIVE_WORDS[g]))}` : '';
+
+/** One clean form: what it gives (tap any mix), for how long, the price, how often. The name fills itself in. */
+function PrizeEditor({ prize, isNew, onSave, onCancel, onDelete }: { prize: Prize; isNew: boolean; onSave: (p: Prize) => void; onCancel: () => void; onDelete: () => void }) {
+  // A name that was filled in automatically keeps following the choices.
+  const [p, setP] = useState(() => ({ ...prize, name: prize.name === autoName(givesOf(prize), prize.minutes) ? '' : prize.name }));
+  const [gives, setGives] = useState<string[]>(givesOf(prize));
+  const [sites, setSites] = useState((prize.kind === 'appUnlock' ? [] : prize.targets ?? []).join(', '));
+  const [apps, setApps] = useState((prize.kind === 'appUnlock' ? prize.targets ?? [] : prize.apps ?? []).join(', '));
+  const real = gives.includes('real');
+  const toggle = (g: string) => setGives(g === 'real' ? (real ? [] : ['real']) : gives.includes(g) ? gives.filter((x) => x !== g) : [...gives.filter((x) => x !== 'real'), g]);
+  const list = (t: string) => t.split(',').map((x) => x.trim()).filter(Boolean);
+  const auto = autoName(gives, p.minutes || 15);
+  const name = p.name.trim() || auto;
+  function save() {
+    onSave(real
+      ? { ...p, name, kind: 'realWorld', includes: [], targets: [], apps: [], minutes: 0 }
+      : { ...p, name, kind: 'pass', includes: gives, targets: gives.includes('sites') ? list(sites) : [], apps: gives.includes('apps') ? list(apps) : [], minutes: p.minutes || 15 });
+  }
+  const ok = name && gives.length > 0 && (!gives.includes('sites') || list(sites).length > 0) && (!gives.includes('apps') || list(apps).length > 0);
+  return (
+    <div class="modal"><div class="card form prize-editor">
+      <h3>{isNew ? 'New reward' : 'Edit reward'}</h3>
+      <div class="gives" role="group" aria-label="It gives">
+        {GIVES.map(([g, icon, label]) => <button type="button" class={'give-chip' + (gives.includes(g) ? ' on' : '')} aria-pressed={gives.includes(g)} onClick={() => toggle(g)}>{icon} {label}</button>)}
+      </div>
+      {gives.includes('sites') && <label>Websites<input value={sites} placeholder="scratch.mit.edu, minecraft.net" onInput={(e) => setSites((e.target as HTMLInputElement).value)} /></label>}
+      {gives.includes('apps') && <label>Apps<input value={apps} placeholder="Minecraft.exe" onInput={(e) => setApps((e.target as HTMLInputElement).value)} /></label>}
+      <div class="sentence">
+        {!real && <><span>For</span><input type="number" class="num" min={5} step={5} value={p.minutes || 15} onInput={(e) => setP({ ...p, minutes: Number((e.target as HTMLInputElement).value) })} /><span>minutes,</span></>}
+        <span>{real ? 'Costs' : 'costs'}</span><input type="number" class="num" min={1} value={p.cost} onInput={(e) => setP({ ...p, cost: Number((e.target as HTMLInputElement).value) })} /><span>🪙,</span>
+        <input type="number" class="num" min={0} value={p.dailyCap || ''} placeholder="any" onInput={(e) => setP({ ...p, dailyCap: Number((e.target as HTMLInputElement).value) || 0 })} /><span>times a day</span>
+      </div>
+      <label>Name<input value={p.name} placeholder={auto || "Pick Friday's movie"} onInput={(e) => setP({ ...p, name: (e.target as HTMLInputElement).value })} /></label>
+      <label class="check"><input type="checkbox" checked={p.enabled !== false} onChange={(e) => setP({ ...p, enabled: (e.target as HTMLInputElement).checked })} /> Show in shop</label>
+      <div class="row">
+        <button class="primary" disabled={!ok} onClick={save}>Save</button>
+        <button class="ghost" onClick={onCancel}>Cancel</button>
+        {!isNew && <button class="ghost danger" onClick={onDelete}>Delete</button>}
+      </div>
+    </div></div>
+  );
+}
 
 /**
  * How price rises reach the kid. A tool for the kid's feelings, not the parent's wallet: small steps sit under what
@@ -499,37 +548,20 @@ function ShopEditor({ child, rising, onSave }: { child: Child; rising: Record<st
   const [editing, setEditing] = useState<Prize | null>(null);
   const prizes = child.prizes;
   const put = (p: Prize) => { const i = prizes.findIndex((x) => x.id === p.id); const next = [...prizes]; if (i >= 0) next[i] = p; else next.push(p); onSave({ ...child, prizes: next }); setEditing(null); };
-  const blank = (): Prize => ({ id: 'p' + Math.random().toString(36).slice(2, 10), name: '', cost: 50, kind: 'siteUnlock', minutes: 20, dailyCap: 1, boughtToday: 0, targets: [], enabled: true });
+  const blank = (): Prize => ({ id: 'p' + Math.random().toString(36).slice(2, 10), name: '', cost: 30, kind: 'pass', includes: ['games'], minutes: 15, dailyCap: 0, boughtToday: 0, targets: [], enabled: true });
 
   return (
     <div class="shop-editor">
       <p class="muted lead">What {child.displayName} can spend coins on. Tap one to change it. YouTube and the arcade are below.</p>
       <div class="prize-list">
-        {prizes.filter((p) => p.kind !== 'youTube').map((p) => <button class={'prize-row' + (p.enabled === false ? ' off' : '')} onClick={() => setEditing({ ...p })}><span class="icon">{{ youTube: '▶️', siteUnlock: '🌐', arcadeUnlock: '🕹️', appUnlock: '💻', screenTimeExtension: '🎟️', pass: '🎟️', realWorld: '🎁' }[p.kind]}</span><b>{p.name}</b><span>🪙 {p.cost}{rising['prize:' + p.id] != null && <small class="muted rising" title="Easing in: a little more each day, so it doesn't feel like a jump."> ({rising['prize:' + p.id]} today)</small>}</span><small class="muted">{[p.minutes ? `${p.minutes} min` : '', p.dailyCap ? `max ${p.dailyCap}/day` : '', p.enabled === false ? 'hidden' : ''].filter(Boolean).join(' · ')}</small></button>)}
+        {prizes.filter((p) => p.kind !== 'youTube').map((p) => <button class={'prize-row' + (p.enabled === false ? ' off' : '')} onClick={() => setEditing({ ...p })}><span class="icon">{givesOf(p).map((g) => GIVES.find((x) => x[0] === g)?.[1]).join('')}</span><b>{p.name}</b><span>🪙 {p.cost}{rising['prize:' + p.id] != null && <small class="muted rising" title="Easing in: a little more each day, so it doesn't feel like a jump."> ({rising['prize:' + p.id]} today)</small>}</span><small class="muted">{[p.minutes ? `${p.minutes} min` : '', p.dailyCap ? `max ${p.dailyCap}/day` : '', p.enabled === false ? 'hidden' : ''].filter(Boolean).join(' · ')}</small></button>)}
       </div>
       <div class="section-actions"><button class="secondary" onClick={() => setEditing(blank())}>＋ Add a reward</button></div>
       <PriceEaseIn child={child} rising={rising} onSave={onSave} />
       <YouTubeSection child={child} onSave={onSave} />
       <ArcadeManager child={child} onSave={onSave} />
-      {editing && (
-        <div class="modal"><div class="card form">
-          <h3>{prizes.some((p) => p.id === editing.id) ? 'Edit prize' : 'New prize'}</h3>
-          <label>Name<input value={editing.name} onInput={(e) => setEditing({ ...editing, name: (e.target as HTMLInputElement).value })} placeholder="20 minutes of YouTube" /></label>
-          <label>What it does<select value={editing.kind} onChange={(e) => setEditing({ ...editing, kind: (e.target as HTMLSelectElement).value as Prize['kind'] })}>{KINDS.map(([k, l]) => <option value={k}>{l}</option>)}</select></label>
-          {(editing.kind === 'siteUnlock' || editing.kind === 'appUnlock') && <label>{editing.kind === 'siteUnlock' ? 'Websites (comma-separated)' : 'Apps (exe names, comma-separated)'}<input value={(editing.targets ?? []).join(', ')} onInput={(e) => setEditing({ ...editing, targets: (e.target as HTMLInputElement).value.split(',').map((s) => s.trim()).filter(Boolean) })} placeholder={editing.kind === 'siteUnlock' ? 'youtube.com, googlevideo.com, ytimg.com' : 'Minecraft.exe'} /></label>}
-          <div class="row">
-            <label>Cost 🪙<input type="number" value={editing.cost} min={1} onInput={(e) => setEditing({ ...editing, cost: Number((e.target as HTMLInputElement).value) })} /></label>
-            {editing.kind !== 'realWorld' && <label>Minutes<input type="number" value={editing.minutes} min={1} onInput={(e) => setEditing({ ...editing, minutes: Number((e.target as HTMLInputElement).value) })} /></label>}
-            <label>Max per day (0 = no limit)<input type="number" value={editing.dailyCap} min={0} onInput={(e) => setEditing({ ...editing, dailyCap: Number((e.target as HTMLInputElement).value) })} /></label>
-          </div>
-          <label class="check"><input type="checkbox" checked={editing.enabled !== false} onChange={(e) => setEditing({ ...editing, enabled: (e.target as HTMLInputElement).checked })} /> Show in shop</label>
-          <div class="row">
-            <button class="primary" disabled={!editing.name.trim()} onClick={() => put(editing)}>Save</button>
-            <button class="ghost" onClick={() => setEditing(null)}>Cancel</button>
-            {prizes.some((p) => p.id === editing.id) && <button class="ghost danger" onClick={() => { onSave({ ...child, prizes: prizes.filter((p) => p.id !== editing.id) }); setEditing(null); }}>Delete</button>}
-          </div>
-        </div></div>
-      )}
+      {editing && <PrizeEditor prize={editing} isNew={!prizes.some((p) => p.id === editing.id)} onSave={put} onCancel={() => setEditing(null)}
+        onDelete={() => { onSave({ ...child, prizes: prizes.filter((p) => p.id !== editing.id) }); setEditing(null); }} />}
     </div>
   );
 }

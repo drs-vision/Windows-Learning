@@ -67,6 +67,9 @@ export interface Prize {
   boughtToday: number;
   /** YouTube: most minutes a day (0 = no limit). */
   maxMinutesPerDay?: number;
+  /** Pass: what its minutes open ("games", "youtube", "sites" = targets, "apps" = apps). */
+  includes?: string[];
+  apps?: string[];
   targets?: string[];
   enabled?: boolean;
 }
