@@ -698,7 +698,7 @@ function StrategyPicker({ value, onChange }: { value: number; onChange: (v: numb
 function paySummary(m: (typeof MODULES)[number], s: ModSettings): string {
   const o = s.options ?? {};
   const pay = m.paysByWords ? `1 🪙 per ${o.wordsPer ?? 20} words`
-    : m.id === 'khan-academy' ? `${o.perAnswer ?? 1} 🪙 per right answer · ${o.perVideo ?? 3} per video · ${s.coinsPerActivity} per exercise`
+    : m.id === 'khan-academy' ? `${o.perAnswer ?? 1} 🪙 per right answer${Number(o.perVideo ?? 0) > 0 ? ` · ${o.perVideo} per video` : ' · videos don\'t pay'}${s.coinsPerActivity > 0 ? ` · ${s.coinsPerActivity} per finished exercise` : ''}`
     : m.id === 'books' ? `${s.coinsPerActivity} 🪙 per right answer · ${allowedLabel(o.allowed)}`
     : m.id === 'reading-quest' ? `${s.coinsPerActivity} 🪙 per right answer (×2 for longer paragraphs) · streak bonus every ${o.streakEvery ?? 2}`
     : m.id === 'duolingo' ? `${s.coinsPerActivity} 🪙 per lesson`

@@ -2,7 +2,7 @@ import type { Activity, Result, ModuleSettings, ScoreOutcome } from '../../core/
 import { invalid } from '../../core/module';
 
 /** coinsPerActivity = coins for a finished exercise, quiz or unit test. */
-export const DEFAULTS = { coinsPerActivity: 5, dailyCap: 80 };
+export const DEFAULTS = { coinsPerActivity: 0, dailyCap: 80 };
 
 const n = (v: unknown, max: number) => Math.max(0, Math.min(max, Math.floor(Number(v) || 0)));
 
@@ -17,7 +17,7 @@ export function scoreKhanAcademy(activity: Activity, result: Result, settings: M
   const done = n(result.data.done, 3);
   if (correct + videos + done === 0) return invalid('nothing to count');
   const perAnswer = Number(settings.options?.perAnswer ?? 1);
-  const perVideo = Number(settings.options?.perVideo ?? 3);
+  const perVideo = Number(settings.options?.perVideo ?? 0);
   const perTask = settings.coinsPerActivity;
   const parts = [
     done ? `${done} finished exercise/quiz${done > 1 ? 'zes' : ''}` : '',

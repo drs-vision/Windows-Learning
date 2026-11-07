@@ -88,7 +88,7 @@ public sealed class HouseholdStore
         }
     }
 
-    public const int CurrentSchema = 9;
+    public const int CurrentSchema = 10;
 
     /// <summary>Upgrade data written by older versions. Runs on every load; must be idempotent.</summary>
     public static Household Migrate(Household h)
@@ -170,6 +170,14 @@ public sealed class HouseholdStore
                     DailyCap = r9.DailyCap == 60 ? 120 : r9.DailyCap,
                     Options = opts,
                 };
+            }
+            // v10: Khan Academy pays 1 coin per right answer and nothing extra by default (a finished exercise was
+            // 1 per answer + a 5-coin bonus ≈ 12; videos could be skipped to the end). Only the old defaults move.
+            if (h.SchemaVersion < 10 && modules.TryGetValue("khan-academy", out var k10))
+            {
+                var opts = new Dictionary<string, string>(k10.Options);
+                if (opts.GetValueOrDefault("perVideo", "3") == "3") opts["perVideo"] = "0";
+                modules["khan-academy"] = k10 with { CoinsPerActivity = k10.CoinsPerActivity == 5 ? 0 : k10.CoinsPerActivity, Options = opts };
             }
             var allow = c.Allowlist;
             if (h.SchemaVersion < 3)

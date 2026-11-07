@@ -208,7 +208,7 @@ public sealed record ModuleSettings
         ["reading-quest"] = new() { CoinsPerActivity = 1, DailyCap = 40, Options = new() { ["streakEvery"] = "2" } },
             ["books"] = new() { CoinsPerActivity = 3, DailyCap = 120, Options = new() { ["wordsPer"] = "20", ["waitMinutes"] = "5", ["allowed"] = "*" } },
         ["my-passages"] = new() { Enabled = false, CoinsPerActivity = 1, DailyCap = 60, Options = new() { ["wordsPer"] = "20", ["repeatsPerDay"] = "1", ["passages"] = "[]" } },
-        ["khan-academy"] = new() { CoinsPerActivity = 5, DailyCap = 80, Options = new() { ["perAnswer"] = "1", ["perVideo"] = "3" } },
+        ["khan-academy"] = new() { CoinsPerActivity = 0, DailyCap = 80, Options = new() { ["perAnswer"] = "1", ["perVideo"] = "0" } },
         ["duolingo"] = new() { Enabled = false, CoinsPerActivity = 5, DailyCap = 50 },
         ["rwt"] = new() { Enabled = true, CoinsPerActivity = 5, DailyCap = 60 },
         ["discgames"] = new() { Enabled = true, CoinsPerActivity = 5, DailyCap = 60 },
