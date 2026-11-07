@@ -76,6 +76,8 @@ export function Arcade({ unlocks, balance, onExit, onChanged }: { unlocks: Unloc
   const [fpRoot, setFpRoot] = useState<string | null>(null);
   const [sampler, setSampler] = useState<{ minutes: number; price: number } | null>(null);
   const [maxBlocks, setMaxBlocks] = useState(12);
+  /** Arcade minutes still allowed today (null = no daily limit). */
+  const [minutesLeft, setMinutesLeft] = useState<number | null>(null);
   const [blocks, setBlocks] = useState(1);
   const [q, setQ] = useState('');
   const [cat, setCat] = useState('All');
@@ -93,7 +95,7 @@ export function Arcade({ unlocks, balance, onExit, onChanged }: { unlocks: Unloc
   const [error, setError] = useState('');
   const [busy, setBusy] = useState(false);
 
-  const loadGames = () => bridge.arcade().then((r) => { setGames(r.games); setSampler(r.sampler ?? null); setMaxBlocks(r.maxBlocks ?? 12); setFpRoot(r.flashpointRoot ?? null); }).catch((e) => setError(e.message));
+  const loadGames = () => bridge.arcade().then((r) => { setGames(r.games); setSampler(r.sampler ?? null); setMaxBlocks(r.minutesLeft == null ? (r.maxBlocks ?? 12) : Math.max(0, Math.min(r.maxBlocks ?? 12, Math.floor(r.minutesLeft / BLOCK_MINUTES)))); setMinutesLeft(r.minutesLeft ?? null); setFpRoot(r.flashpointRoot ?? null); }).catch((e) => setError(e.message));
   useEffect(() => { loadGames(); }, []);
   // Time ran out (or a parent ended it): close whatever is open.
   useEffect(() => {
@@ -168,6 +170,7 @@ export function Arcade({ unlocks, balance, onExit, onChanged }: { unlocks: Unloc
       </header>
       {error && <p class="error">{error}</p>}
       {preparing && <div class="now-playing"><span>⏳ Getting <b>{preparing}</b> ready… (the first time takes a few seconds)</span></div>}
+      {minutesLeft != null && minutesLeft < BLOCK_MINUTES && <p class="muted">That's all the arcade for today. Time already on the clock still plays; back tomorrow for more!</p>}
       {sampler && (
         pass
           ? <div class="sampler on">🎟️ <b>Sampler pass</b> — play ANY game! <span class="countdown">{fmt(pass.secondsLeft)}</span> left</div>

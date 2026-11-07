@@ -88,7 +88,7 @@ public sealed class HouseholdStore
         }
     }
 
-    public const int CurrentSchema = 10;
+    public const int CurrentSchema = 11;
 
     /// <summary>Upgrade data written by older versions. Runs on every load; must be idempotent.</summary>
     public static Household Migrate(Household h)
@@ -170,6 +170,14 @@ public sealed class HouseholdStore
                     DailyCap = r9.DailyCap == 60 ? 120 : r9.DailyCap,
                     Options = opts,
                 };
+            }
+            // v11: "Extra 15 minutes tonight" never did anything (there's no screen-time limit to extend): it becomes the
+            // daily deal, a pass for any game or YouTube. YouTube's old "3 times a day" default becomes no limit.
+            if (h.SchemaVersion < 11)
+            {
+                prizes = prizes.Select(p =>
+                    p.Kind == PrizeKind.ScreenTimeExtension ? p with { Kind = PrizeKind.Pass, Name = p.Name == "Extra 15 minutes tonight" ? "Daily deal: 15 minutes of any game or YouTube" : p.Name }
+                    : p.Kind == PrizeKind.YouTube && p.DailyCap == 3 ? p with { DailyCap = 0 } : p).ToList();
             }
             // v10: Khan Academy pays 1 coin per right answer and nothing extra by default (a finished exercise was
             // 1 per answer + a 5-coin bonus ≈ 12; videos could be skipped to the end). Only the old defaults move.

@@ -105,7 +105,8 @@ public sealed record Allowlist
     };
 }
 
-public enum PrizeKind { SiteUnlock, ArcadeUnlock, AppUnlock, ScreenTimeExtension, RealWorld, YouTube }
+/// <summary>Pass: N minutes of any game or YouTube, usually a once-a-day deal. ScreenTimeExtension is old and does nothing (became Pass).</summary>
+public enum PrizeKind { SiteUnlock, ArcadeUnlock, AppUnlock, ScreenTimeExtension, RealWorld, YouTube, Pass }
 
 public sealed record YouTubeChannel
 {
@@ -126,6 +127,8 @@ public sealed record ArcadeSettings
     public int SamplerMinutes { get; init; } = 10;
     /// <summary>Sampler pass price; 0 = automatic (a little more than 10 minutes of the priciest game).</summary>
     public int SamplerPrice { get; init; }
+    /// <summary>Most arcade minutes a day that can be bought, games and sampler together (0 = no limit).</summary>
+    public int MaxMinutesPerDay { get; init; }
     public Dictionary<string, int> PriceOverrides { get; init; } = new();
     public List<string> Hidden { get; init; } = new();
     /// <summary>Games hosted on the web by their makers/publishers, played in a locked window.</summary>
@@ -195,12 +198,14 @@ public sealed record Prize
     public int Minutes { get; init; }
     /// <summary>Max purchases per day. 0 = unlimited.</summary>
     public int DailyCap { get; init; }
+    /// <summary>YouTube: most minutes a day that can be bought (0 = no limit).</summary>
+    public int MaxMinutesPerDay { get; init; }
     public bool Enabled { get; init; } = true;
 
     public static List<Prize> Starters() => new()
     {
-        new() { Name = "20 minutes of YouTube", Cost = 48, Kind = PrizeKind.YouTube, Minutes = 20, DailyCap = 3 },
-        new() { Name = "Extra 15 minutes tonight", Cost = 30, Kind = PrizeKind.ScreenTimeExtension, Minutes = 15, DailyCap = 1 },
+        new() { Name = "YouTube time", Cost = 48, Kind = PrizeKind.YouTube, Minutes = 20 },
+        new() { Name = "Daily deal: 15 minutes of any game or YouTube", Cost = 30, Kind = PrizeKind.Pass, Minutes = 15, DailyCap = 1 },
         new() { Name = "Pick Friday's movie", Cost = 150, Kind = PrizeKind.RealWorld, DailyCap = 1 },
     };
 }

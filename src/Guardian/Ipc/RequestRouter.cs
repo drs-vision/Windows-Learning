@@ -186,7 +186,7 @@ public sealed class RequestRouter
             prizes = child.Prizes.Where(p => p.Enabled).Select(p => new { p.Id, p.Name, Cost = PrizeCost(child, p), Was = PrizeTag(child, p)?.Was, Deal = PrizeTag(child, p)?.Deal, p.Kind, p.Minutes, p.DailyCap, boughtToday = _ledger.PurchasesToday(child.Id, p.Id),
                 blockPrice = p.Kind == PrizeKind.YouTube ? YouTubeBlockPrice(child, p) : (int?)null,
                 blockWas = p.Kind == PrizeKind.YouTube && PrizeTag(child, p) is { } t ? ArcadeSettings.YouTubeBlockPrice(p with { Cost = t.Was }, Arcade.Catalog(child).Where(g => !g.Hidden && g.Available).Select(g => g.Price)) : (int?)null,
-                blockMinutes = ArcadeSettings.BlockMinutes }),
+                blockMinutes = ArcadeSettings.BlockMinutes, minutesLeft = p.Kind == PrizeKind.YouTube ? YouTubeMinutesLeft(child, p) : null }),
             modules = child.Modules.ToDictionary(kv => kv.Key, kv => new { kv.Value.Enabled, kv.Value.CoinsPerActivity, kv.Value.DailyCap, kv.Value.RequireApproval, kv.Value.Options, earnedToday = _ledger.EarnedToday(child.Id, kv.Key) }),
             recent = _ledger.Recent(child.Id, 30, new DateTimeOffset(today)),
             pendingClaims = _ledger.PendingClaims(child.Id),
@@ -768,6 +768,8 @@ public sealed class RequestRouter
         {
             // Like the arcade: "+" buys 5-minute blocks (priced above the arcade).
             var blocks = Math.Clamp(req.Payload?["blocks"]?.GetValue<int>() ?? Math.Max(1, prize.Minutes / ArcadeSettings.BlockMinutes), 1, ArcadeSettings.MaxBlocks);
+            if (YouTubeMinutesLeft(child, prize) is { } ytLeft && blocks * ArcadeSettings.BlockMinutes > ytLeft)
+                return Response.Fail(req.Id, ytLeft < ArcadeSettings.BlockMinutes ? "that's all the YouTube for today — back tomorrow!" : $"only {ytLeft} more YouTube minutes today");
             prize = prize with { Cost = YouTubeBlockPrice(child, prize) * blocks, Minutes = blocks * ArcadeSettings.BlockMinutes, Name = $"{blocks * ArcadeSettings.BlockMinutes} minutes of YouTube" };
         }
         var balance = _ledger.Balance(child.Id);
@@ -777,7 +779,13 @@ public sealed class RequestRouter
 
         _ledger.Append(child.Id, LedgerKind.Spend, -prize.Cost, prize.Id, prize.Name, account);
         Unlock? unlock = null;
-        if (prize.Minutes > 0 && prize.Kind != PrizeKind.RealWorld) unlock = _unlocks.Start(child, prize);
+        if (prize.Kind == PrizeKind.Pass && prize.Minutes > 0)
+        {
+            // The pass: the same minutes on the arcade (any game, like the sampler) and on YouTube; one clock, the kid picks.
+            unlock = _unlocks.Start(child, prize with { Kind = PrizeKind.ArcadeUnlock, Targets = new() { "*" } });
+            if (child.YouTubeChannels.Count > 0) _unlocks.Start(child, prize with { Kind = PrizeKind.YouTube, Targets = new() });
+        }
+        else if (prize.Minutes > 0 && prize.Kind is not (PrizeKind.RealWorld or PrizeKind.ScreenTimeExtension)) unlock = _unlocks.Start(child, prize);
         if (prize.Kind == PrizeKind.RealWorld) ApprovalsChanged?.Invoke();
         AfterChange();
         return Response.Success(req.Id, new { balance = _ledger.Balance(child.Id), unlock });
@@ -850,10 +858,12 @@ public sealed class RequestRouter
             if (running is null) return Response.Fail(req.Id, "add some time first (press +)");
             return Response.Success(req.Id, new { balance = _ledger.Balance(child.Id), unlock = running, game, flashpointRoot = fpRoot, alreadyPlaying = true });
         }
+        var minutes = blocks * ArcadeSettings.BlockMinutes;
+        if (ArcadeMinutesLeft(child) is { } left && minutes > left)
+            return Response.Fail(req.Id, left < ArcadeSettings.BlockMinutes ? "that's all the arcade for today — back tomorrow!" : $"only {left} more arcade minutes today");
         var cost = game.Price * blocks;
         var balance = _ledger.Balance(child.Id);
         if (balance < cost) return Response.Fail(req.Id, $"you need {cost - balance} more coins");
-        var minutes = blocks * ArcadeSettings.BlockMinutes;
         _ledger.Append(child.Id, LedgerKind.Spend, -cost, "arcade:" + game.Id, $"Arcade: {minutes} min of {game.Title}", account);
         // Same game again = more time on the same clock.
         var unlock = _unlocks.Start(child, new Prize { Id = "arcade:" + game.Id, Name = game.Title, Kind = PrizeKind.ArcadeUnlock, Targets = new() { game.Id }, Minutes = minutes });
@@ -861,8 +871,18 @@ public sealed class RequestRouter
         return Response.Success(req.Id, new { balance = _ledger.Balance(child.Id), unlock, game, flashpointRoot = fpRoot });
     }
 
+    /// <summary>Arcade minutes still allowed today (games and sampler together), or null when there's no daily limit.</summary>
+    private int? ArcadeMinutesLeft(Child child) =>
+        child.Arcade.MaxMinutesPerDay > 0 ? Math.Max(0, child.Arcade.MaxMinutesPerDay - _ledger.MinutesBoughtToday(child.Id, "arcade:")) : null;
+
+    /// <summary>YouTube minutes still allowed today, or null when there's no daily limit.</summary>
+    private int? YouTubeMinutesLeft(Child child, Prize p) =>
+        p.MaxMinutesPerDay > 0 ? Math.Max(0, p.MaxMinutesPerDay - _ledger.MinutesBoughtToday(child.Id, p.Id)) : null;
+
     private Response ArcadeSampler(Request req, Child child, string account)
     {
+        if (ArcadeMinutesLeft(child) is { } left && child.Arcade.SamplerMinutes > left)
+            return Response.Fail(req.Id, left < ArcadeSettings.BlockMinutes ? "that's all the arcade for today — back tomorrow!" : $"only {left} more arcade minutes today");
         var cost = SamplerPrice(child);
         var balance = _ledger.Balance(child.Id);
         if (balance < cost) return Response.Fail(req.Id, $"you need {cost - balance} more coins");
@@ -1084,6 +1104,7 @@ public sealed class RequestRouter
         {
             games, blockMinutes = ArcadeSettings.BlockMinutes, maxBlocks = ArcadeSettings.MaxBlocks,
             sampler = new { minutes = child.Arcade.SamplerMinutes, price = SamplerPrice(child) },
+            minutesLeft = ArcadeMinutesLeft(child),
             flashpointRoot = child.Arcade.Flashpoint.Count > 0 ? _fp.Root(child.Arcade.FlashpointRoot) : null,
         });
     }

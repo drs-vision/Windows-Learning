@@ -21,7 +21,8 @@ export function YouTube({ unlock, onExit, prize, balance, onBought }: {
     catch (e) { setError((e as Error).message); }
     finally { setBusy(false); }
   }
-  const soldOut = !!prize && prize.dailyCap > 0 && prize.boughtToday >= prize.dailyCap;
+  const soldOut = !!prize && ((prize.dailyCap > 0 && prize.boughtToday >= prize.dailyCap) || (prize.minutesLeft != null && prize.minutesLeft < 5));
+  const maxBlocks = prize?.minutesLeft != null ? Math.max(1, Math.min(12, Math.floor(prize.minutesLeft / 5))) : 12;
   const [lib, setLib] = useState<{ channels: { id: string; title: string }[]; videos: Video[]; errors: string[] } | null>(null);
   const [channel, setChannel] = useState<string>('all');
   const [playing, setPlaying] = useState<Video | null>(null);
@@ -121,7 +122,7 @@ export function YouTube({ unlock, onExit, prize, balance, onBought }: {
         <div class="yt-buy">
           <span class="muted small">🪙 {price} for every 5 minutes{soldOut ? ' · that’s enough YouTube for today' : ''}</span>
           {!soldOut && <>
-            <TimeStepper price={price} blocks={blocks} setBlocks={setBlocks} balance={balance} more={!!unlock} />
+            <TimeStepper price={price} blocks={blocks} setBlocks={setBlocks} max={maxBlocks} balance={balance} more={!!unlock} />
             <button class="coin-btn small" disabled={busy || balance < price * blocks} onClick={buy}>
               {balance < price * blocks ? `Need ${price * blocks - balance} more coins` : unlock ? <>ADD TIME <b>🪙 {price * blocks}</b></> : <>▶ WATCH <b>🪙 {price * blocks}</b></>}
             </button>

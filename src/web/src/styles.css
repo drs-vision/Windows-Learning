@@ -952,3 +952,11 @@ s.was { opacity: .55; font-size: .85em; margin-right: .3em; text-decoration-thic
 .bulk-price button { padding: 0 .45em; min-height: 0; line-height: 1.6; font-size: .8em; }
 small.rising { display: block; font-size: .75em; }
 .deal.limited { background: #e11d48; }
+
+/* Fold-away sections (Arcade) */
+details.fold > summary { list-style: none; cursor: pointer; display: flex; align-items: baseline; gap: 10px; }
+details.fold > summary::-webkit-details-marker { display: none; }
+details.fold > summary h3 { margin: 0; }
+details.fold > summary::after { content: '▸'; margin-left: auto; color: var(--muted, #64748b); transition: transform .15s; }
+details.fold[open] > summary::after { transform: rotate(90deg); }
+details.fold[open] > summary { margin-bottom: 10px; }

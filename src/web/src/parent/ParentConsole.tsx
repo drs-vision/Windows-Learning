@@ -455,10 +455,10 @@ function YouTubePrice({ child, onSave }: { child: Child; onSave: (c: Child) => v
         <label class="check"><input type="checkbox" checked={on} onChange={(e) => put({ ...base, enabled: (e.target as HTMLInputElement).checked })} /> YouTube time costs</label>
         <input type="number" min={1} class="num" value={perBlock} disabled={!on}
           onChange={(e) => { const v = Math.max(1, Number((e.target as HTMLInputElement).value) || 1); put({ ...base, cost: Math.round(v * (minutes / BLOCK_MINUTES)) }); }} />
-        <span>🪙 per {BLOCK_MINUTES} minutes, up to</span>
-        <input type="number" min={0} class="num" value={yt?.dailyCap ?? 3} disabled={!on}
-          onChange={(e) => put({ ...base, dailyCap: Math.max(0, Number((e.target as HTMLInputElement).value) || 0) })} />
-        <span>times a day</span>
+        <span>🪙 per {BLOCK_MINUTES} minutes · at most</span>
+        <input type="number" min={0} step={5} class="num" value={yt?.maxMinutesPerDay || ''} placeholder="no limit" style={{ width: "6.5em" }} disabled={!on}
+          onChange={(e) => put({ ...base, dailyCap: 0, maxMinutesPerDay: Math.max(0, Number((e.target as HTMLInputElement).value) || 0) })} />
+        <span>minutes a day</span>
       </div>
       {on && shown != null && shown > perBlock && <p class="muted small">{child.displayName} pays 🪙 {shown}: YouTube is never cheaper than 2 coins above the priciest arcade game ({floor - 2}), so games stay the better deal.</p>}
     </div>
@@ -467,7 +467,7 @@ function YouTubePrice({ child, onSave }: { child: Child; onSave: (c: Child) => v
 
 // ---------------------------------------------------------------- Shop editor
 
-const KINDS: [Prize['kind'], string][] = [['siteUnlock', 'Unlock a website for N minutes'], ['arcadeUnlock', 'Arcade time (any game)'], ['appUnlock', 'Unlock an app for N minutes'], ['screenTimeExtension', 'Extra screen time tonight'], ['realWorld', 'Real-world reward (just logged)']];
+const KINDS: [Prize['kind'], string][] = [['pass', 'Pass: N minutes of any game or YouTube (a deal)'], ['siteUnlock', 'Unlock a website for N minutes'], ['arcadeUnlock', 'Arcade time (any game)'], ['appUnlock', 'Unlock an app for N minutes'], ['realWorld', 'Real-world reward (just logged)']];
 
 /**
  * How price rises reach the kid. A tool for the kid's feelings, not the parent's wallet: small steps sit under what
@@ -497,7 +497,7 @@ function ShopEditor({ child, rising, onSave }: { child: Child; rising: Record<st
     <div class="shop-editor">
       <p class="muted lead">What {child.displayName} can spend coins on. Tap one to change it. (YouTube's price is with the YouTube channels, under Allowed.)</p>
       <div class="prize-list">
-        {prizes.filter((p) => p.kind !== 'youTube').map((p) => <button class={'prize-row' + (p.enabled === false ? ' off' : '')} onClick={() => setEditing({ ...p })}><span class="icon">{{ youTube: '▶️', siteUnlock: '🌐', arcadeUnlock: '🕹️', appUnlock: '💻', screenTimeExtension: '⏰', realWorld: '🎁' }[p.kind]}</span><b>{p.name}</b><span>🪙 {p.cost}{rising['prize:' + p.id] != null && <small class="muted rising" title="Easing in: a little more each day, so it doesn't feel like a jump."> ({rising['prize:' + p.id]} today)</small>}</span><small class="muted">{[p.minutes ? `${p.minutes} min` : '', p.dailyCap ? `max ${p.dailyCap}/day` : '', p.enabled === false ? 'hidden' : ''].filter(Boolean).join(' · ')}</small></button>)}
+        {prizes.filter((p) => p.kind !== 'youTube').map((p) => <button class={'prize-row' + (p.enabled === false ? ' off' : '')} onClick={() => setEditing({ ...p })}><span class="icon">{{ youTube: '▶️', siteUnlock: '🌐', arcadeUnlock: '🕹️', appUnlock: '💻', screenTimeExtension: '🎟️', pass: '🎟️', realWorld: '🎁' }[p.kind]}</span><b>{p.name}</b><span>🪙 {p.cost}{rising['prize:' + p.id] != null && <small class="muted rising" title="Easing in: a little more each day, so it doesn't feel like a jump."> ({rising['prize:' + p.id]} today)</small>}</span><small class="muted">{[p.minutes ? `${p.minutes} min` : '', p.dailyCap ? `max ${p.dailyCap}/day` : '', p.enabled === false ? 'hidden' : ''].filter(Boolean).join(' · ')}</small></button>)}
       </div>
       <div class="section-actions"><button class="secondary" onClick={() => setEditing(blank())}>＋ Add a reward</button></div>
       <PriceEaseIn child={child} rising={rising} onSave={onSave} />
@@ -557,8 +557,8 @@ function ArcadeManager({ child, onSave }: { child: Child; onSave: (c: Child) => 
   }
 
   return (
-    <div class="card arcade-manager">
-      <h3>🕹️ Arcade</h3>
+    <details class="card arcade-manager fold">
+      <summary><h3>🕹️ Arcade</h3><span class="muted small">{(games ?? []).filter((g) => g.available && !settings.hidden.includes(g.id)).length} games{settings.maxMinutesPerDay ? ` · at most ${settings.maxMinutesPerDay} min a day` : ''}</span></summary>
       <p class="muted">Like quarters in a machine: each <b>+</b> buys {BLOCK_MINUTES} minutes of a game. Prices are <b>coins per {BLOCK_MINUTES} minutes</b>; games that take more thinking (🧠) cost less.</p>
       <div class="sentence">
         <span>🎟️ <b>Sampler pass</b> — any game for</span>
@@ -570,6 +570,12 @@ function ArcadeManager({ child, onSave }: { child: Child; onSave: (c: Child) => 
         <span>🪙</span>
       </div>
       <p class="muted small">Leave the price blank to set it automatically (a little more than the same time on the priciest game).</p>
+      <div class="sentence">
+        <span>⏱️ At most</span>
+        <input type="number" min={0} step={5} class="num" value={settings.maxMinutesPerDay || ''} placeholder="no limit" style={{ width: "6.5em" }}
+          onChange={(e) => saveArcade({ ...settings, maxMinutesPerDay: Math.max(0, Number((e.target as HTMLInputElement).value) || 0) })} />
+        <span>minutes of arcade a day (games and sampler together; blank = no limit)</span>
+      </div>
       {err && <p class="error">{err}</p>}
       <table class="arcade-table">
         <thead><tr><th>Game</th><th>Thinking</th><th>🪙 per {BLOCK_MINUTES} min
@@ -621,7 +627,7 @@ function ArcadeManager({ child, onSave }: { child: Child; onSave: (c: Child) => 
         </div>
       </div>
       </details>
-    </div>
+    </details>
   );
 }
 

@@ -9,7 +9,7 @@ import { lockFor, lockNow, openLock, type StoredLock } from './lock';
 
 const STARTER_PRIZES: Prize[] = [
   { id: 'p-yt', name: '20 minutes of YouTube', cost: 48, kind: 'youTube', minutes: 20, dailyCap: 3, boughtToday: 0, targets: [] },
-  { id: 'p-ext', name: 'Extra 15 minutes tonight', cost: 30, kind: 'screenTimeExtension', minutes: 15, dailyCap: 1, boughtToday: 0, targets: [] },
+  { id: 'p-ext', name: 'Daily deal: 15 minutes of any game or YouTube', cost: 30, kind: 'pass', minutes: 15, dailyCap: 1, boughtToday: 0, targets: [] },
   { id: 'p-movie', name: "Pick Friday's movie", cost: 150, kind: 'realWorld', minutes: 0, dailyCap: 1, boughtToday: 0, targets: [] },
 ];
 

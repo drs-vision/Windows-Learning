@@ -49,7 +49,8 @@ export type Progress = Record<string, unknown>;
 
 export interface Unlock {
   id: string;
-  kind: 'siteUnlock' | 'arcadeUnlock' | 'appUnlock' | 'screenTimeExtension' | 'realWorld' | 'youTube';
+  /** pass = N minutes of any game or YouTube (a daily deal); screenTimeExtension is old (became pass). */
+  kind: 'siteUnlock' | 'arcadeUnlock' | 'appUnlock' | 'screenTimeExtension' | 'realWorld' | 'youTube' | 'pass';
   targets: string[];
   prizeName: string;
   expiresAt: string;
@@ -64,6 +65,8 @@ export interface Prize {
   minutes: number;
   dailyCap: number;
   boughtToday: number;
+  /** YouTube: most minutes a day (0 = no limit). */
+  maxMinutesPerDay?: number;
   targets?: string[];
   enabled?: boolean;
 }
@@ -91,7 +94,7 @@ export interface ChildState {
   balance: number;
   unlocks: Unlock[];
   /** was / blockWas: a recent price drop's old price, shown crossed out as a deal. */
-  prizes: (Prize & { boughtToday: number; blockPrice?: number | null; blockMinutes?: number; was?: number | null; blockWas?: number | null; deal?: 'drop' | 'limited' | null })[];
+  prizes: (Prize & { boughtToday: number; blockPrice?: number | null; blockMinutes?: number; was?: number | null; blockWas?: number | null; deal?: 'drop' | 'limited' | null; minutesLeft?: number | null })[];
   modules: Record<string, ModuleSettings & { earnedToday: number }>;
   recent: LedgerEntry[];
   pendingClaims: PendingClaim[];
@@ -111,7 +114,7 @@ export interface LockSummary { locked: boolean; until: string | null; scheduled:
 
 export interface YouTubeChannel { id: string; title: string; url: string }
 export interface WebGame { id: string; title: string; url: string; strategy: number }
-export interface ArcadeSettings { minutesPerPlay: number; samplerMinutes?: number; samplerPrice?: number; priceOverrides: Record<string, number>; hidden: string[]; webGames: WebGame[]; flashpoint?: FlashpointGame[]; flashpointRoot?: string | null; autoClassics?: boolean; stockedPicks?: string[] }
+export interface ArcadeSettings { minutesPerPlay: number; samplerMinutes?: number; samplerPrice?: number; /** Most arcade minutes a day (0 = no limit). */ maxMinutesPerDay?: number; priceOverrides: Record<string, number>; hidden: string[]; webGames: WebGame[]; flashpoint?: FlashpointGame[]; flashpointRoot?: string | null; autoClassics?: boolean; stockedPicks?: string[] }
 export interface Video { id: string; title: string; channelId: string; channelTitle: string; published: string; thumbnail: string }
 
 export interface Child {

@@ -342,4 +342,4 @@ function Shop({ state, onBought, onExit, onYouTube }: { state: ChildState; onBou
   );
 }
 
-const ICON: Record<string, string> = { youTube: '▶️', siteUnlock: '🌐', arcadeUnlock: '🕹️', appUnlock: '💻', screenTimeExtension: '⏰', realWorld: '🎁' };
+const ICON: Record<string, string> = { youTube: '▶️', siteUnlock: '🌐', arcadeUnlock: '🕹️', appUnlock: '💻', screenTimeExtension: '🎟️', pass: '🎟️', realWorld: '🎁' };

@@ -121,6 +121,25 @@ public sealed class Ledger : IDisposable
         return Convert.ToInt32(cmd.ExecuteScalar());
     }
 
+    /// <summary>
+    /// Minutes bought today from sources starting with <paramref name="sourcePrefix"/> ("arcade:", or a prize id): the
+    /// first number in each purchase's detail ("Arcade: 10 min of …", "20 minutes of YouTube"). For daily minute limits.
+    /// </summary>
+    public int MinutesBoughtToday(string childId, string sourcePrefix, DateTimeOffset? now = null)
+    {
+        var start = (now ?? DateTimeOffset.Now).Date;
+        using var cmd = _db.CreateCommand();
+        cmd.CommandText = "SELECT detail FROM ledger WHERE child=$c AND kind='Spend' AND at>=$a AND substr(source,1,length($s))=$s";
+        cmd.Parameters.AddWithValue("$c", childId);
+        cmd.Parameters.AddWithValue("$s", sourcePrefix);
+        cmd.Parameters.AddWithValue("$a", new DateTimeOffset(start).ToUniversalTime().ToString("O"));
+        var total = 0;
+        using var r = cmd.ExecuteReader();
+        while (r.Read())
+            if (System.Text.RegularExpressions.Regex.Match(r.GetString(0), @"\d+") is { Success: true } m && int.TryParse(m.Value, out var n)) total += n;
+        return total;
+    }
+
     public int PurchasesToday(string childId, string prizeId, DateTimeOffset? now = null)
     {
         var start = (now ?? DateTimeOffset.Now).Date;
