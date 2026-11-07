@@ -81,8 +81,8 @@ public class ReadingQuestTests
         var s = new QuestState(); var rng = new Random(9);
         var a = ReadingQuest.Next(s, all, rng, null, Clock)!; var b = ReadingQuest.Next(s, all, rng, null, Clock)!;
         Assert.Equal((a.Id, string.Join("|", a.Questions[0].Choices)), (b.Id, string.Join("|", b.Questions[0].Choices)));
-        // 1 coin per 100 words, shared by the paragraph's questions.
-        Assert.Equal((1, 2, 2, 1, 1), (ReadingQuest.Pay(40, 1, 1), ReadingQuest.Pay(120, 1, 1), ReadingQuest.Pay(60, 1, 2), ReadingQuest.Pay(180, 2, 1), ReadingQuest.Pay(260, 3, 1)));
+        // The parent's amount per right answer, whatever the paragraph's length (longer ones have more questions instead).
+        Assert.Equal((1, 2, 0), (ReadingQuest.Pay(1), ReadingQuest.Pay(2), ReadingQuest.Pay(-1)));
     }
 
     [Fact]

@@ -487,7 +487,7 @@ public sealed class RequestRouter
                 _questLastTopic[child.Id] = p.Topic;
                 var (coins, pending) = (0, false);
                 var (bonus, bonusPending) = (0, false);
-                if (a.Right && !a.Retry) (coins, pending) = PayQuest(child, "reading-quest", s, CoinQuest.Shared.Books.ReadingQuest.Pay(p.Words, p.Questions.Count, s.CoinsPerActivity), $"Reading Quest: {p.Title}", account);
+                if (a.Right && !a.Retry) (coins, pending) = PayQuest(child, "reading-quest", s, CoinQuest.Shared.Books.ReadingQuest.Pay(s.CoinsPerActivity), $"Reading Quest: {p.Title}", account);
                 // A full streak ring (every N right in a row) pays its number: 1, then 2, then 3 at most.
                 if (a.StreakUp) (bonus, bonusPending) = PayQuest(child, "reading-quest", s, Math.Min(3, a.Streak / streakEvery), $"Reading Quest streak: {a.Streak} in a row", account);
                 if (child.ActivityReports && !a.Retry)

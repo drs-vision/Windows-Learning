@@ -78,8 +78,8 @@ Where the paragraphs come from (all written by people; only the questions were w
   ratings also lean towards longer paragraphs. Children see "Level" (1 below a rating of 2, then the whole rating).
 * Read first: a circle drains for about 4 words a second (15-30 seconds), then the answers open; the PC refuses
   earlier answers.
-* Each question is marked the moment it's clicked, in any order: a right answer pays right away (1 coin per 100 words
-  of the paragraph, shared between its questions, rounded up, x the parent's setting) and fills the streak ring.
+* Each question is marked the moment it's clicked, in any order: a right answer pays right away (the parent's coins per right answer, 1 by default, whatever the length: longer
+  paragraphs earn more by having more questions) and fills the streak ring.
   A right question is done for good. A missed question reveals nothing and comes back (alone, choices reshuffled) on a
   later day, no sooner than tomorrow: no coins, and the rating and streak don't change; a second miss retires it and
   shows the answer. A paragraph is only shown while it has a question the child may answer.

@@ -487,7 +487,7 @@ async function mockQuest(op: string, p: any): Promise<any> {
   if (!right) { const t = new Date(); t.setDate(t.getDate() + 1); qs.later[key] = qday(t); }
   let streakUp = false;
   if (right) { qs.streak++; qs.best = Math.max(qs.best, qs.streak); streakUp = qs.streak % 2 === 0; qs.misses = 0; } else { qs.streak = 0; qs.misses++; }
-  return { index: oq.index, finished, retry: false, right, rightChoice: right ? rightChoice : -1, evidence: right ? qq.evidence : '', streak: qs.streak, streakUp, coins: right ? Math.max(1, Math.ceil(qwords(x) / qsOf(x).length / 100)) : 0, bonus: streakUp ? Math.min(3, qs.streak / 2) : 0, pending: false, levelBefore: qlevel(before), me: qme(pool) };
+  return { index: oq.index, finished, retry: false, right, rightChoice: right ? rightChoice : -1, evidence: right ? qq.evidence : '', streak: qs.streak, streakUp, coins: right ? 1 : 0, bonus: streakUp ? Math.min(3, qs.streak / 2) : 0, pending: false, levelBefore: qlevel(before), me: qme(pool) };
 }
 function mockQuestReport() {
   const d = (n: number) => { const x = new Date(); x.setDate(x.getDate() - n); return x.toISOString().slice(0, 10); };

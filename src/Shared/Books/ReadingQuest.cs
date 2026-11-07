@@ -266,9 +266,9 @@ public static class ReadingQuest
         return new Answered(index, right, rightPos, q.Evidence, before, s.Rating, s.Streak, up, false, finished);
     }
 
-    /// <summary>Coins for a right answer: 1 per 100 words of the paragraph, shared between its questions (rounded up,
-    /// at least 1), times the parent's setting.</summary>
-    public static int Pay(int words, int questions, int perUnit) => Math.Max(1, (int)Math.Ceiling(words / (double)Math.Max(1, questions) / 100.0)) * perUnit;
+    /// <summary>Coins for a right answer: the parent's amount per right answer (1 by default), whatever the paragraph's
+    /// length. A longer paragraph earns more by having more questions, not by paying more per question.</summary>
+    public static int Pay(int perAnswer) => Math.Max(0, perAnswer);
 
     /// <summary>Questions never answered yet (the parents' "left").</summary>
     public static int Left(QuestState s, IReadOnlyList<QuestLibrary.Passage> all) => all.Sum(p => Enumerable.Range(0, p.Questions.Count).Count(i => !s.Done.ContainsKey(Key(p.Id, i))));
