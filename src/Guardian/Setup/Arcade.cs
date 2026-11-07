@@ -22,6 +22,8 @@ public static class Arcade
         public int Target { get; init; }
         /// <summary>A recent drop's old price, shown crossed out.</summary>
         public int? Was { get; init; }
+        /// <summary>"drop" (just got cheaper) or "limited" (going up soon; today's price is a deal).</summary>
+        public string? Deal { get; init; }
     }
 
     public static List<Game> Catalog(Child child)
@@ -30,7 +32,8 @@ public static class Arcade
         return CatalogTargets(child).Select(g =>
         {
             var shown = CoinQuest.Shared.Pricing.PricePsychology.Effective(child.Prices, "game:" + g.Id, g.Price, now);
-            return g with { Price = shown, Target = g.Price, Was = CoinQuest.Shared.Pricing.PricePsychology.Was(child.Prices, "game:" + g.Id, shown, now) };
+            var tag = CoinQuest.Shared.Pricing.PricePsychology.Tag(child.Prices, "game:" + g.Id, g.Price, now);
+            return g with { Price = shown, Target = g.Price, Was = tag?.Was, Deal = tag?.Deal };
         }).ToList();
     }
 

@@ -951,3 +951,4 @@ s.was { opacity: .55; font-size: .85em; margin-right: .3em; text-decoration-thic
 .bulk-price { display: inline-flex; gap: 2px; margin-left: 6px; vertical-align: middle; }
 .bulk-price button { padding: 0 .45em; min-height: 0; line-height: 1.6; font-size: .8em; }
 small.rising { display: block; font-size: .75em; }
+.deal.limited { background: #e11d48; }

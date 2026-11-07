@@ -17,7 +17,10 @@ public class PricePsychologyTests
         Assert.Equal(53, PricePsychology.Effective(m, "prize:yt", 60, T0));               // today: +5
         Assert.Equal(58, PricePsychology.Effective(m, "prize:yt", 60, T0.AddDays(1)));
         Assert.Equal(60, PricePsychology.Effective(m, "prize:yt", 60, T0.AddDays(2)));
-        Assert.Null(PricePsychology.Was(m, "prize:yt", 53, T0));                          // never announced
+        Assert.Null(PricePsychology.Was(m, "prize:yt", 53, T0));
+        // While it rises, the coming price is shown crossed out: today's is a limited-time deal.
+        Assert.Equal((60, "limited"), PricePsychology.Tag(m, "prize:yt", 60, T0)!.Value);
+        Assert.Null(PricePsychology.Tag(m, "prize:yt", 60, T0.AddDays(2)));
         // A one-coin bump arrives at once.
         var one = PricePsychology.Remember(new PriceMemory(), Was(4, 4), Now(5), T0);
         Assert.Equal(5, PricePsychology.Effective(one, "prize:yt", 5, T0));
@@ -30,6 +33,7 @@ public class PricePsychologyTests
         Assert.Equal(48, PricePsychology.Effective(m, "prize:yt", 48, T0));
         Assert.Equal(60, PricePsychology.Was(m, "prize:yt", 48, T0.AddDays(2)));
         Assert.Null(PricePsychology.Was(m, "prize:yt", 48, T0.AddDays(4)));
+        Assert.Equal((60, "drop"), PricePsychology.Tag(m, "prize:yt", 48, T0)!.Value);
         // Dropping again keeps the highest "was".
         var again = PricePsychology.Remember(m, Was(48, 48), Now(40), T0.AddDays(1));
         Assert.Equal(60, PricePsychology.Was(again, "prize:yt", 40, T0.AddDays(1)));

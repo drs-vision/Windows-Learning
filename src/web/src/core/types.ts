@@ -91,7 +91,7 @@ export interface ChildState {
   balance: number;
   unlocks: Unlock[];
   /** was / blockWas: a recent price drop's old price, shown crossed out as a deal. */
-  prizes: (Prize & { boughtToday: number; blockPrice?: number | null; blockMinutes?: number; was?: number | null; blockWas?: number | null })[];
+  prizes: (Prize & { boughtToday: number; blockPrice?: number | null; blockMinutes?: number; was?: number | null; blockWas?: number | null; deal?: 'drop' | 'limited' | null })[];
   modules: Record<string, ModuleSettings & { earnedToday: number }>;
   recent: LedgerEntry[];
   pendingClaims: PendingClaim[];
@@ -166,6 +166,8 @@ export interface Game {
   target?: number;
   /** A recent drop's old price (shown crossed out). */
   was?: number | null;
+  /** Why it's crossed out: "drop" (just got cheaper) or "limited" (going up soon: today's price is a deal). */
+  deal?: 'drop' | 'limited' | null;
   hidden?: boolean;
   source?: 'bundled' | 'uploaded' | 'web' | 'flashpoint';
   thumbnail?: string;

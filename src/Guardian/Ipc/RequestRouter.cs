@@ -182,9 +182,9 @@ public sealed class RequestRouter
             child = new { child.Id, child.DisplayName },
             balance = _ledger.Balance(child.Id),
             unlocks = _unlocks.ActiveFor(child.Id).Select(u => new { u.Id, u.Kind, u.Targets, u.PrizeName, u.ExpiresAt, u.SecondsLeft }),
-            prizes = child.Prizes.Where(p => p.Enabled).Select(p => new { p.Id, p.Name, Cost = PrizeCost(child, p), Was = PrizeWas(child, p), p.Kind, p.Minutes, p.DailyCap, boughtToday = _ledger.PurchasesToday(child.Id, p.Id),
+            prizes = child.Prizes.Where(p => p.Enabled).Select(p => new { p.Id, p.Name, Cost = PrizeCost(child, p), Was = PrizeTag(child, p)?.Was, Deal = PrizeTag(child, p)?.Deal, p.Kind, p.Minutes, p.DailyCap, boughtToday = _ledger.PurchasesToday(child.Id, p.Id),
                 blockPrice = p.Kind == PrizeKind.YouTube ? YouTubeBlockPrice(child, p) : (int?)null,
-                blockWas = p.Kind == PrizeKind.YouTube && PrizeWas(child, p) is { } w ? ArcadeSettings.YouTubeBlockPrice(p with { Cost = w }, Arcade.Catalog(child).Where(g => !g.Hidden && g.Available).Select(g => g.Price)) : (int?)null,
+                blockWas = p.Kind == PrizeKind.YouTube && PrizeTag(child, p) is { } t ? ArcadeSettings.YouTubeBlockPrice(p with { Cost = t.Was }, Arcade.Catalog(child).Where(g => !g.Hidden && g.Available).Select(g => g.Price)) : (int?)null,
                 blockMinutes = ArcadeSettings.BlockMinutes }),
             modules = child.Modules.ToDictionary(kv => kv.Key, kv => new { kv.Value.Enabled, kv.Value.CoinsPerActivity, kv.Value.DailyCap, kv.Value.RequireApproval, kv.Value.Options, earnedToday = _ledger.EarnedToday(child.Id, kv.Key) }),
             recent = _ledger.Recent(child.Id, 30, new DateTimeOffset(today)),
@@ -789,7 +789,7 @@ public sealed class RequestRouter
 
     /// <summary>What the kid pays today for a prize (a rise arrives a little each day).</summary>
     private static int PrizeCost(Child c, Prize p) => CoinQuest.Shared.Pricing.PricePsychology.Effective(c.Prices, "prize:" + p.Id, p.Cost, DateTimeOffset.Now);
-    private static int? PrizeWas(Child c, Prize p) => CoinQuest.Shared.Pricing.PricePsychology.Was(c.Prices, "prize:" + p.Id, PrizeCost(c, p), DateTimeOffset.Now);
+    private static (int Was, string Deal)? PrizeTag(Child c, Prize p) => CoinQuest.Shared.Pricing.PricePsychology.Tag(c.Prices, "prize:" + p.Id, p.Cost, DateTimeOffset.Now);
 
     /// <summary>Every price the kid sees: key → (parent's price, price shown today).</summary>
     private Dictionary<string, (int Target, int Shown)> PriceSnapshot(Child c)

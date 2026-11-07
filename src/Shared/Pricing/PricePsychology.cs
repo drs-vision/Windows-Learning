@@ -7,6 +7,7 @@ namespace CoinQuest.Shared.Pricing;
 /// <list type="bullet">
 /// <item>A price that goes <b>up</b> creeps up instead of jumping: about 10% a day (at least 1 coin), starting the day
 /// it's changed, until it reaches the parent's price. Small steps sit under what people notice; nothing announces them.</item>
+/// <item>While a rise is on its way, the coming price is shown crossed out and today's price as a limited-time deal.</item>
 /// <item>A price that goes <b>down</b> drops at once and is shown as a deal for a few days: the old price crossed out.</item>
 /// </list>
 /// The parent always sets the real price; this only decides how fast a rise arrives and how a drop is shown.
@@ -24,6 +25,17 @@ public static class PricePsychology
         var p = r.From;
         for (var d = 0; d <= days && p < target; d++) p = Math.Min(target, p + Math.Max(1, (int)Math.Round(p * DailyRise)));
         return p;
+    }
+
+    /// <summary>
+    /// The crossed-out price the kid sees next to today's price, and why: "drop" (recently cheaper: the old price) or
+    /// "limited" (a rise is on its way: the price it's going to be, so today's is a limited-time deal). Null: plain price.
+    /// </summary>
+    public static (int Was, string Deal)? Tag(PriceMemory m, string key, int target, DateTimeOffset now)
+    {
+        var shown = Effective(m, key, target, now);
+        if (shown < target) return (target, "limited");
+        return Was(m, key, shown, now) is { } w ? (w, "drop") : null;
     }
 
     /// <summary>The crossed-out "was" price while a recent drop is being shown, else null.</summary>
