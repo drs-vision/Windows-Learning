@@ -27,8 +27,15 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      # A syntax error stops the whole phone app ("Loading…" forever), so never publish one.
+      - name: Check the phone app's scripts load
+        run: |
+          for f in src/phone/*.js; do node --input-type=module --check < "$f" || { echo "::error file=$f::$f doesn't parse"; exit 1; }; done
+
       - name: Deploy CoinQuest's relay to Cloudflare (when connected)
         id: relay
+        # A Cloudflare hiccup must not keep the phone app itself from publishing (phones fall back to ntfy.sh).
+        continue-on-error: true
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
