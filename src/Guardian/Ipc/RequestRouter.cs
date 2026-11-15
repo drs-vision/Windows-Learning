@@ -1230,6 +1230,8 @@ public sealed class RequestRouter
                 "history" => PhoneHistory(Str(req, "childId"), req.Payload?["before"]?.GetValue<long>()),
                 "setQuest" => PhoneSetQuest(req),
                 "setPrize" => PhoneSetPrize(req),
+                "setYouTube" => PhoneSetYouTube(req),
+                "setArcade" => PhoneSetArcade(req),
                 "deletePrize" => PhoneEditChild(Str(req, "childId"), c => c with { Prizes = c.Prizes.Where(p => p.Id != Str(req, "id")).ToList() }),
                 "setSites" => PhoneSetSites(req),
                 "lock" => ParentLock(req),
@@ -1273,8 +1275,61 @@ public sealed class RequestRouter
             adsAllowed = c.Allowlist.AdsAllowed,
             apps = c.Allowlist.Apps.Select(a => Path.GetFileName(a)).ToList(),
             channels = c.YouTubeChannels.Select(y => new { id = y.Id, title = y.Title, url = y.Url }).ToList(),
+            youtube = c.Prizes.FirstOrDefault(p => p.Kind == PrizeKind.YouTube) is { } yt
+                ? new { on = yt.Enabled, perBlock = (int)Math.Ceiling(yt.Cost / ((yt.Minutes > 0 ? yt.Minutes : 20) / (double)ArcadeSettings.BlockMinutes)), maxMinutes = yt.MaxMinutesPerDay, anyVideo = c.YouTubeAnyVideo }
+                : new { on = false, perBlock = 12, maxMinutes = 0, anyVideo = c.YouTubeAnyVideo },
+            arcade = PhoneArcadeSummary(c),
         }).ToList(),
     };
+
+    private object PhoneArcadeSummary(Child c)
+    {
+        var shown = Arcade.Catalog(c).Where(g => g.Available && !g.Hidden).Select(g => g.Target).ToList();
+        return new { maxMinutes = c.Arcade.MaxMinutesPerDay, games = shown.Count, low = shown.DefaultIfEmpty(0).Min(), high = shown.DefaultIfEmpty(0).Max() };
+    }
+
+    /// <summary>Phone: YouTube on/off, price per 5 minutes, daily limit, any video. Creates the YouTube reward if there's none.</summary>
+    private object PhoneSetYouTube(Request req)
+    {
+        int? Int(string k) => req.Payload?[k] is JsonValue v && v.TryGetValue<int>(out var n) ? n : null;
+        bool? Bool(string k) => req.Payload?[k] is JsonValue v && v.TryGetValue<bool>(out var b) ? b : null;
+        return PhoneEditChild(Str(req, "childId"), c =>
+        {
+            var prizes = c.Prizes.ToList();
+            var i = prizes.FindIndex(p => p.Kind == PrizeKind.YouTube);
+            var yt = i >= 0 ? prizes[i] : new Prize { Name = "YouTube time", Cost = 48, Kind = PrizeKind.YouTube, Minutes = 20, Enabled = false };
+            var blocks = (yt.Minutes > 0 ? yt.Minutes : 20) / (double)ArcadeSettings.BlockMinutes;
+            if (Bool("on") is { } on) yt = yt with { Enabled = on };
+            if (Int("perBlock") is { } pb) yt = yt with { Cost = (int)Math.Round(Math.Clamp(pb, 1, 10000) * blocks) };
+            if (Int("maxMinutes") is { } mm) yt = yt with { MaxMinutesPerDay = Math.Clamp(mm, 0, 1440), DailyCap = 0 };
+            if (i >= 0) prizes[i] = yt; else prizes.Add(yt);
+            var next = c with { Prizes = prizes };
+            return Bool("anyVideo") is { } any ? next with { YouTubeAnyVideo = any } : next;
+        });
+    }
+
+    /// <summary>Phone: the arcade's daily limit, and every shown game a coin cheaper or dearer (never below 1).</summary>
+    private object PhoneSetArcade(Request req)
+    {
+        var mm = req.Payload?["maxMinutes"] is JsonValue mv && mv.TryGetValue<int>(out var m) ? m : (int?)null;
+        var bump = req.Payload?["bump"] is JsonValue bv && bv.TryGetValue<int>(out var b) ? Math.Clamp(b, -5, 5) : 0;
+        return PhoneEditChild(Str(req, "childId"), c =>
+        {
+            var a = c.Arcade;
+            if (mm is { } x) a = a with { MaxMinutesPerDay = Math.Clamp(x, 0, 1440) };
+            if (bump != 0)
+            {
+                var o = new Dictionary<string, int>(a.PriceOverrides);
+                foreach (var g in Arcade.Catalog(c).Where(g => g.Available && !g.Hidden))
+                {
+                    var v = Math.Max(1, g.Target + bump);
+                    if (v == ArcadeSettings.DefaultPrice(g.Strategy)) o.Remove(g.Id); else o[g.Id] = v;
+                }
+                a = a with { PriceOverrides = o };
+            }
+            return c with { Arcade = a };
+        });
+    }
 
     private object PhoneHistory(string childId, long? before)
     {

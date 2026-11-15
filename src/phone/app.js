@@ -371,7 +371,7 @@ const OPTION_CHOICES = {
   repeatsPerDay: [['1', 'Once a day'], ['2', 'Twice a day'], ['3', '3 times a day'], ['0', 'Every time']],
 };
 const quest = (id) => QUESTS[id] ?? ['⭐', id.charAt(0).toUpperCase() + id.slice(1).replace(/[-_]/g, ' ')];
-const KINDS = { RealWorld: ['🎁', 'Treat'], YouTube: ['▶️', 'YouTube time'], ScreenTimeExtension: ['⏰', 'Extra screen time'], SiteUnlock: ['🌐', 'Website time'], ArcadeUnlock: ['🕹️', 'Arcade time'], AppUnlock: ['💻', 'App time'] };
+const KINDS = { RealWorld: ['🎁', 'Treat'], YouTube: ['▶️', 'YouTube time'], Pass: ['🎟️', 'Any game or YouTube'], ScreenTimeExtension: ['🎟️', 'Any game or YouTube'], SiteUnlock: ['🌐', 'Website time'], ArcadeUnlock: ['🕹️', 'Arcade time'], AppUnlock: ['💻', 'App time'] };
 const SOURCES = { parent: 'Parent', arcade: 'Arcade', youtube: 'YouTube', discgames: 'Classic CD games', rwt: 'Read, Write & Type!' };
 const sourceName = (s) => QUESTS[s]?.[1] ?? SOURCES[s] ?? s;
 
@@ -579,12 +579,32 @@ function reportsSwitch(kc) {
 function shopScreen() {
   const kc = kidConfig();
   if (!kc) { if (status !== 'off') setTimeout(() => loadConfig().catch((e) => { error = e.message; render(); }), 0); return `<div class="card empty"><p>Loading the shop…</p></div>`; }
+  const yt = kc.youtube ?? { on: false, perBlock: 12, maxMinutes: 0, anyVideo: false };
+  const ar = kc.arcade;
+  const limit = (attr, v) => `<label class="limit">⏱️ Daily limit <input type="text" inputmode="numeric" ${attr} value="${v || ''}" placeholder="none"> min</label>`;
   return `<p class="lead">What ${esc(kc.name)} can buy with coins. Tap one to change it.</p>
-    <div class="card list"><ul class="prizes">${kc.prizes.map((p) => `
+    <details class="card fold"${store.get('cq.fold.yt', false) ? ' open' : ''} data-fold="yt">
+      <summary><b>▶️ YouTube</b><span class="t">${yt.on ? [`${coins(yt.perBlock)} per 5 min`, yt.maxMinutes ? `⏱️ ${yt.maxMinutes} min/day` : '', yt.anyVideo ? 'any video' : `${kc.channels.length} channel${kc.channels.length === 1 ? '' : 's'}`].filter(Boolean).join(' · ') : 'off'}</span></summary>
+      <div class="row between"><span>YouTube time</span>${toggle(yt.on, 'data-yt="on" aria-label="YouTube on or off"')}</div>
+      ${yt.on ? `${field('🪙 per 5 minutes', `type="text" inputmode="numeric" value="${yt.perBlock}" data-yt="perBlock"`)}
+      ${limit('data-yt="maxMinutes"', yt.maxMinutes)}
+      <p class="t" style="margin-bottom:4px">Channels</p>
+      <ul class="feed">${kc.channels.map((c) => `<li><span class="what">${esc(c.title || c.url)}</span><button class="small" data-unchan="${esc(c.id)}">Remove</button></li>`).join('') || '<li><span class="t">None yet.</span></li>'}</ul>
+      <form class="row" data-addchan style="margin-top:8px"><input type="text" inputmode="url" autocapitalize="off" autocomplete="off" placeholder="Channel link, e.g. youtube.com/@MarkRober" name="chan"><button class="primary" type="submit">Add</button></form>
+      <details class="adv"><summary class="t">Advanced</summary>
+        <div class="row between"><span>Any YouTube video<br><span class="t">No channel filtering during YouTube time</span></span>${toggle(yt.anyVideo, 'data-yt="anyVideo" aria-label="Any YouTube video"')}</div>
+      </details>` : ''}
+    </details>
+    ${ar ? `<details class="card fold"${store.get('cq.fold.arc', false) ? ' open' : ''} data-fold="arc">
+      <summary><b>🕹️ Arcade</b><span class="t">${ar.games} games${ar.maxMinutes ? ` · ⏱️ ${ar.maxMinutes} min/day` : ''}</span></summary>
+      ${limit('data-arc="maxMinutes"', ar.maxMinutes)}
+      <div class="row between"><span>Prices ${ar.low === ar.high ? coins(ar.low) : `${coins(ar.low)}–${ar.high}`} per 5 min</span><span class="bump"><button class="small" data-arcbump="-1" aria-label="Every game one coin cheaper">−1</button><button class="small" data-arcbump="1" aria-label="Every game one coin dearer">+1</button></span></div>
+      <p class="t">−1 / +1 changes every game. Each game's own price is set on the PC.</p>
+    </details>` : ''}
+    <div class="card list"><ul class="prizes">${kc.prizes.filter((p) => p.kind !== 'YouTube').map((p) => `
       <li><button data-prize="${esc(p.id)}" class="${p.enabled ? '' : 'off'}"><span class="pi">${(KINDS[p.kind] ?? ['🎁'])[0]}</span><span class="what"><b>${esc(p.name)}</b><br><span class="t">${[p.minutes ? `${p.minutes} min` : '', (p.targets || []).length ? targetText(p) : '', p.dailyCap ? `max ${p.dailyCap}/day` : '', p.enabled ? '' : 'hidden'].filter(Boolean).join(' · ') || (KINDS[p.kind] ?? ['', ''])[1]}</span></span><span class="price">${coins(p.cost)}</span></button></li>`).join('')}
     </ul></div>
-    <button class="wide primary" data-newprize>＋ New prize</button>
-    <p class="note">Arcade prizes and prices are set up on the PC.</p>`;
+    <button class="wide primary" data-newprize>＋ New prize</button>`;
 }
 
 function allowedScreen() {
@@ -603,12 +623,6 @@ function allowedScreen() {
       <p class="t" style="margin-top:0">Programs ${esc(kc.name)} can always open, on top of CoinQuest's own.</p>
       <div class="chips">${(kc.apps || []).map((a) => `<span class="chip">${esc(appName(a))}<button data-unapp="${esc(a)}" aria-label="Remove ${esc(a)}">×</button></span>`).join('') || '<span class="t">None yet.</span>'}</div>
       <button class="wide primary" data-addapp>＋ Add an app</button>
-    </div>
-    <h2>YouTube channels</h2>
-    <div class="card">
-      <p class="t" style="margin-top:0">During YouTube time, ${esc(kc.name)} sees recent videos from these channels only.</p>
-      <ul class="feed">${kc.channels.map((c) => `<li><span class="what">${esc(c.title || c.url)}</span><button class="small" data-unchan="${esc(c.id)}">Remove</button></li>`).join('') || '<li><span class="t">None yet.</span></li>'}</ul>
-      <form class="row" data-addchan style="margin-top:10px"><input type="text" inputmode="url" autocapitalize="off" autocomplete="off" placeholder="Paste a channel link, e.g. youtube.com/@MarkRober" name="chan"><button class="primary" type="submit">Add</button></form>
     </div>
     <p class="note">The internet lock and the parent PIN are only changed on the PC.</p>`;
 }
@@ -765,7 +779,7 @@ function addAppSheet() {
   sheet.showModal();
 }
 
-const NEW_KINDS = ['RealWorld', 'YouTube', 'ScreenTimeExtension', 'SiteUnlock', 'AppUnlock'];
+const NEW_KINDS = ['Pass', 'RealWorld', 'SiteUnlock', 'AppUnlock']; // YouTube has its own section above
 
 function prizeSheet(p) {
   const kc = kidConfig();
@@ -882,6 +896,7 @@ app.addEventListener('click', (e) => {
   else if (b.dataset.unapp) act('setApps', { childId: kidConfig().id, remove: b.dataset.unapp }, `Removed ${appName(b.dataset.unapp)}`);
   else if (b.dataset.ads) { const on = b.dataset.on !== '1'; act('setAds', { childId: kidConfig().id, site: b.dataset.ads, allow: on }, on ? `Ads allowed on ${b.dataset.ads}` : `Ads hidden on ${b.dataset.ads}`).then(() => { config = null; loadConfig().then(render); }); }
   else if (b.dataset.unsite) act('setSites', { childId: kidConfig().id, remove: b.dataset.unsite }, `Removed ${b.dataset.unsite}`);
+  else if (b.dataset.arcbump) act('setArcade', { childId: kidConfig().id, bump: +b.dataset.arcbump }, +b.dataset.arcbump > 0 ? 'Every game +1' : 'Every game −1');
   else if (b.dataset.unchan) act('removeChannel', { childId: kidConfig().id, id: b.dataset.unchan }, 'Channel removed');
   else if (b.dataset.pc) { link = links[+b.dataset.pc]; connect(); }
   else if (b.dataset.hint !== undefined) { store.set('cq.hintDone', true); render(); }
@@ -900,9 +915,16 @@ app.addEventListener('toggle', (e) => {
   store.set('cq.read.open', reading.open);
 }, true);
 
+app.addEventListener('toggle', (e) => { const d = e.target; if (d.dataset?.fold) store.set('cq.fold.' + d.dataset.fold, d.open); }, true);
+
 app.addEventListener('change', (e) => {
   const el = e.target;
   if (el.dataset?.actrep !== undefined) { act('setReports', { childId: kid().id, on: el.checked }, el.checked ? 'Activity reports on' : 'Activity reports off'); return; }
+  if (el.dataset?.yt) {
+    const k = el.dataset.yt, v = el.type === 'checkbox' ? el.checked : Math.max(0, num(el.value));
+    el.blur(); act('setYouTube', { childId: kidConfig().id, [k]: v }, 'Saved'); return;
+  }
+  if (el.dataset?.arc) { el.blur(); act('setArcade', { childId: kidConfig().id, maxMinutes: Math.max(0, num(el.value)) }, 'Saved'); return; }
   if (!el.dataset?.q) return;
   const args = { childId: kidConfig().id, moduleId: el.dataset.q };
   // Passage Typing is Scripture and the family's own passages: the same settings go to both.
